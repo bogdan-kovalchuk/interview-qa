@@ -8,10 +8,10 @@ level: senior
 type: debugging
 tags: [use-after-free, sanitizers, lifetime, asynchronous, undefined-behavior]
 status: published
-updated: 2026-09-03
-content_revision: 1
+updated: 2026-09-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 see_also: [cpp-ptrref-0001]
 applies_to:
   - product: ISO C++
@@ -108,8 +108,10 @@ distinguishes them, because it reports the allocation that was freed.
 AddressSanitizer reports `heap-use-after-free`, an eight-byte read inside `Session::write_response`.
 The three stacks settle it: the allocation stack is the request accept path, the free stack is the
 handler returning and destroying the session, and the access stack is the pool worker running the
-posted lambda.[^clang-address-sanitizer] Hypothesis 2 is confirmed and the others are ruled out; the
-report names one object rather than a range, so it is not container reallocation.
+posted lambda.[^clang-address-sanitizer] Hypothesis 2 is confirmed and the others are ruled out.
+Container reallocation would also report `heap-use-after-free`, so the size of the reported object
+does not rule it out; what rules it out here is the free stack, which is the session destructor on
+the handler path rather than a container growing.
 
 The lambda captured the session by reference and was posted to a pool that runs it later. The handler
 returns as soon as the task is queued, and the session is a local of that handler, so its lifetime

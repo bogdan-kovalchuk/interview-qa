@@ -49,11 +49,18 @@ must be fixed – not worked around.
 
 ## Current state
 
-End of design. Twelve decisions settled, the schema frozen, nine bilingual pilot questions written
-and published, the Anki behaviour measured on real collections. There is no pipeline code yet:
-`tools/` has only the site mirror, and `site/` is the M0.3 spike grown into a working build.
+Design settled, pipeline not built. The decisions are made (`meta/DECISIONS.md`), the Anki behaviour
+is measured on real collections (`meta/MEASUREMENTS.md`), the question contract is frozen, and nine
+bilingual pilots exist.
 
-The next step and everything after it is `PLAN.md`.
+What does **not** exist yet, despite documents that long read as if it did: the mirror does not
+materialise citations, sources or localised headings and does not filter by `status`; the site build
+does not regenerate the mirror; `verify_build.py` does not build anything and derives its
+expectations from whatever was emitted; the validator covers a minority of the documented gates; and
+there is no CI at all. `PLAN.md` opens with that list, and its first three steps close it.
+
+Treat every "the pipeline does X" sentence in `meta/` as a **contract**, not a description, until
+`PLAN.md` step 3 is done.
 
 ## Non-negotiable invariants
 
@@ -84,8 +91,9 @@ Breaking any of these is a migration event, not an edit.
 
 - **Commits:** one short line, empty body. Do not push without explicit permission – the remote is
   configured, the upstream deliberately is not.
-- **Typography:** en dash U+2013, never em dash U+2014. Arrows `←` U+2190 and `→` U+2192 are **not
-  covered** by the embedded font subsets – they fall back to a system font on cards.
+- **Typography:** en dash U+2013, never em dash U+2014. Arrows `←` U+2190 and `→` U+2192 are
+  **forbidden in content** and the validator rejects them: they are not covered by the embedded
+  font subsets, so on a card they fall back to a system font. Use words, or `->` in code.
 - **Language:** `meta/` in Ukrainian, `README.md`, `AGENTS.md` and code in English. Technical terms
   stay English inside Ukrainian text (`event loop`, `GIL`, `move semantics`).
 - **Never leave two live descriptions of one behaviour.** Changed a rule? Find and fix every other

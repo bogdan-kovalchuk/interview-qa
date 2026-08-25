@@ -8,10 +8,10 @@ level: senior
 type: system-design
 tags: [idempotency, at-least-once, webhooks, exactly-once, deduplication]
 status: published
-updated: 2026-09-03
-content_revision: 1
+updated: 2026-09-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 see_also: [db-orm-0001]
 applies_to:
   - product: PostgreSQL
@@ -46,11 +46,11 @@ with retries for up to three days, and an availability target of 99.9% for the r
 
 **Treat delivery as at-least-once and make the effect idempotent, rather than trying to make delivery
 exactly-once.** The provider retries until it gets a 2xx, so the same event will arrive more than once
-and sometimes out of order.[^stripe-webhooks-best-practices] Verify the signature, insert the provider
-event id into a uniquely constrained table, and apply the business effect in the same transaction as
-that insert; a duplicate then fails the insert and is acknowledged without a second
-effect.[^postgresql-17-insert-on-conflict] Acknowledge fast and do the slow work asynchronously, keyed
-by the same event id.
+and sometimes out of order.[^stripe-webhooks-best-practices] Verify the signature, then key
+everything on the provider event id under a unique constraint: whichever transaction applies the
+business effect must commit that event's marker with it, so a retry finds the marker and does
+nothing.[^postgresql-17-insert-on-conflict] Acknowledge fast and do the slow work asynchronously
+under the same id.
 
 ## Detailed explanation
 
@@ -193,8 +193,11 @@ consumer is willing to depend on it.
 ### Expected signals
 
 - Rejects exactly-once delivery as unattainable and moves the guarantee to the effect.
-- Puts the deduplication insert and the business effect in one transaction, and can say what breaks in
-  each of the two orderings without it.
+- Commits the business effect together with its idempotency marker, and can name the two atomic
+  boundaries in this design: the dedup row with the outbox row at ingress, the effect with the done
+  mark in the worker.
+- Can say what breaks in each of the two orderings if the effect and the marker are not committed
+  together.
 - Separates fast acknowledgement from slow processing, and keeps the event id as the idempotency key
   across that boundary.
 - Treats out-of-order arrival as normal and derives state from the payload, not from arrival sequence.

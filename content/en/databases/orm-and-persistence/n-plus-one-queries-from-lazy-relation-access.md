@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: [n-plus-one, lazy-loading, query-count, orm]
 status: published
-updated: 2026-09-03
-content_revision: 1
+updated: 2026-09-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 frameworks: [django, sqlalchemy]
 applies_to:
   - product: Django
@@ -58,8 +58,8 @@ for order in Order.objects.all():          # 1 query
     print(order.customer.name)             # 1 query per order
 ```
 
-The cost is not the work the database does. Each of those statements is a primary key lookup that any
-database answers in microseconds. The cost is the round trip: connection handling, statement planning
+The cost is not the work the database does. Each of those statements is a primary key lookup, cheap
+for the database once the page is warm. The cost is the round trip: connection handling, statement planning
 and network latency, paid `n` times in sequence, so the page time grows linearly with the result set
 and is dominated by waiting rather than by work. This is also why the problem hides in development,
 where the fixture has twenty rows and the database is a local socket.
@@ -71,8 +71,9 @@ suits to-many relations, where a join would multiply the parent row by the size 
 and inflate the transferred result.[^django-52-select-related]
 
 Neither shape is free of its own trap. A join across several to-many relations produces a cartesian
-product; batching adds a second round trip and cannot filter the parents by a related column. Choosing
-between them means knowing the cardinality, not applying a rule.
+product; batching adds a second round trip, and because the parents are selected before the children
+are fetched, filtering parents by a child column still needs a join or a subquery in the parent
+query. Choosing between them means knowing the cardinality, not applying a rule.
 
 ## Symptom
 

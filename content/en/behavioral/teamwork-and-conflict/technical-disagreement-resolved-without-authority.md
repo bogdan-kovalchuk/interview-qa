@@ -8,10 +8,10 @@ level: middle
 type: behavioral
 tags: [conflict, disagree-and-commit, decision-making, communication]
 status: published
-updated: 2026-09-03
-content_revision: 1
+updated: 2026-09-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -97,13 +97,15 @@ the result afterwards. The measurement showed most of the time in repeated queri
 work per query, which favoured fixing the query pattern; it also showed a slow third-party call that
 neither approach addressed, and that the cache would in fact have helped.
 
-**Result.** The query fix landed that sprint and took the endpoint to roughly 400 ms; the caching
-proposal was kept for the third-party call and implemented later by the engineer who had proposed it.
+**Result.** The query fix landed that sprint and took the endpoint to roughly 400 ms, which is a
+large improvement but still short of the 300 ms goal we had agreed on; said so openly rather than
+declaring the ticket done. The caching proposal was kept for the third-party call and implemented
+later by the engineer who had proposed it, which is what finally closed the gap.
 The instrumentation stayed in place and settled two later arguments without a meeting.
 
 **Reflection.** The measurement should have come before the argument. The team adopted a small rule
 afterwards: a performance disagreement lasting more than one conversation gets instrumented rather
-than continued, and the first party to propose a measurement chooses it.
+than continued, and the measurement is agreed by both sides before it is run.
 
 ## Follow-up prompts
 

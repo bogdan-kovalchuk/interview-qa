@@ -54,6 +54,28 @@ card_labels:
   Architecture summary: {en: Architecture summary, uk: Кістяк архітектури}
   Answer framework:     {en: Answer framework,     uk: Каркас відповіді}
 
+# Видимі назви треків і секцій для навігації. Поки заповнено лише те, що вживається
+# дев'ятьма пілотами; решта додається разом із секціями, коли вони наповнюються.
+track_labels:
+  python:        {en: Python,          uk: Python}
+  cpp:           {en: "C/C++",         uk: "C/C++"}
+  cs:            {en: Computer science, uk: Computer science}
+  databases:     {en: Databases,       uk: Бази даних}
+  engineering:   {en: Engineering,     uk: Інженерні практики}
+  system-design: {en: System design,   uk: Проєктування систем}
+  behavioral:    {en: Behavioral,      uk: Поведінкові}
+
+section_labels_nav:
+  python/concurrency-and-gil:         {en: Concurrency and GIL,      uk: Конкурентність і GIL}
+  python/practical-coding:            {en: Practical coding,         uk: Практичні задачі}
+  cpp/pointers-and-references:        {en: Pointers and references,  uk: Вказівники й посилання}
+  cpp/tooling-and-diagnostics:        {en: Tooling and diagnostics,  uk: Інструменти й діагностика}
+  cs/complexity-and-analysis:         {en: Complexity and analysis,  uk: Складність і аналіз}
+  databases/orm-and-persistence:      {en: ORM and persistence,      uk: ORM і збереження}
+  engineering/version-control:        {en: Version control,          uk: Контроль версій}
+  system-design/messaging-and-queues: {en: Messaging and queues,     uk: Черги й повідомлення}
+  behavioral/teamwork-and-conflict:   {en: Teamwork and conflict,    uk: Командна робота й конфлікт}
+
 # Значення фасета `frameworks`. Фреймворк додається тоді, коли з'являється перше питання,
 # що його називає, а не наперед.
 frameworks:

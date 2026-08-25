@@ -8,28 +8,35 @@ level: middle
 type: comparison
 tags: [smart-pointers, ownership, raii, lifetime]
 status: published
-updated: 2026-09-03
-content_revision: 1
+updated: 2026-09-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: ISO C++
     version: "C++20"
 anki:
   export: true
 sources:
+  - source_id: cpp-draft-smartptr
+    title: "C++ working draft: smart pointers ([smartptr])"
+    url: https://eel.is/c++draft/smartptr
+    accessed: 2026-09-04
+    kind: spec
+    version: "C++20"
+    applicability: ownership semantics and stored deleter; the standard specifies behaviour, not object layout
   - source_id: cppreference-unique-ptr
     title: "cppreference: std::unique_ptr"
     url: https://en.cppreference.com/w/cpp/memory/unique_ptr
     accessed: 2026-09-03
-    kind: spec
+    kind: community
     version: "C++20"
     applicability: "Move-only semantics, deleter storage and size guarantees through C++20."
   - source_id: cppreference-shared-ptr
     title: "cppreference: std::shared_ptr"
     url: https://en.cppreference.com/w/cpp/memory/shared_ptr
     accessed: 2026-09-03
-    kind: spec
+    kind: community
     version: "C++20"
     applicability: "Control block, thread safety of the reference count and make_shared allocation behaviour through C++20."
 ---
@@ -50,7 +57,7 @@ Both types express ownership, and the difference is how many owners there may be
 `unique_ptr` states that exactly one owner exists at a time. It cannot be copied, only moved, and that
 restriction is what makes the ownership readable in the signature: a function taking `unique_ptr<T>`
 by value takes ownership, and one taking `T*` or `T&` borrows. With the default deleter the object is
-the size of one pointer and destruction is a direct `delete`, so there is nothing to pay for at run
+the size of one pointer on every implementation in common use, and destruction is a direct `delete`, so there is nothing to pay for at run
 time.[^cppreference-unique-ptr] A stateful deleter, such as a captured lambda or a function pointer,
 is stored inside and does add size.
 
@@ -80,7 +87,7 @@ reference, at a point no one wrote down, and a cycle deletes nothing at all.
 |---|---|---|
 | Owners | exactly one | any number |
 | Copyable | no, move-only | yes |
-| Size, default deleter | one pointer | two pointers |
+| Size, default deleter | one pointer in practice | two pointers in practice |
 | Extra allocation | none | control block, merged by `make_shared` |
 | Cost of copy | pointer move | atomic increment |
 | Destruction point | deterministic, at scope exit | wherever the last owner releases |
