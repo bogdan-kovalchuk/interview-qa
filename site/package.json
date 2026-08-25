@@ -1,0 +1,13 @@
+{
+  "name": "interview-qa-site-spike",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ./scripts/build.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.35.2",
+    "astro": "5.13.5"
+  }
+}

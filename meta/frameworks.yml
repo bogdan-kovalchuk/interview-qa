@@ -1,0 +1,20 @@
+# Закритий словник значень фасета `frameworks` (CONTENT_SPEC.md §2, NAMING.md §5).
+# Ворота `facets-vocabulary` валідують frontmatter проти цього файлу.
+#
+# Правила:
+#   - ключ у kebab-case, як і всі фасети;
+#   - фреймворк додається тоді, коли з'являється перше питання, що його називає,
+#     а не наперед «щоб було»;
+#   - `title` – видима назва, `track` – трек, у якому фреймворк має сенс за
+#     замовчуванням (питання не зобов'язане в ньому лежати).
+
+frameworks:
+  django:
+    title: Django
+    track: python
+  sqlalchemy:
+    title: SQLAlchemy
+    track: python
+  fastapi:
+    title: FastAPI
+    track: python

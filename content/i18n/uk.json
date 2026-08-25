@@ -1,0 +1,51 @@
+{
+  "_note": "Видимі назви структурних ідентифікаторів. Заголовки секцій у content/ завжди англійські (CONTENT_SPEC.md §3); цей файл задає те, що бачить читач. Фаза C розширює його назвами навігації, фасетів і сторінок.",
+  "section": {
+    "Short answer": "Коротка відповідь",
+    "Detailed explanation": "Розгорнуте пояснення",
+    "Comparison": "Порівняння",
+    "When to choose which": "Коли що обирати",
+    "Symptom": "Симптом",
+    "Why it happens": "Чому це стається",
+    "How to avoid": "Як цього уникнути",
+    "Task": "Задача",
+    "Constraints": "Обмеження",
+    "Examples": "Приклади",
+    "Solution": "Розв'язання",
+    "Complexity": "Складність",
+    "Edge cases": "Крайні випадки",
+    "Tests": "Тести",
+    "Observations": "Спостереження",
+    "Reproduction": "Відтворення",
+    "Hypotheses": "Гіпотези",
+    "Diagnosis": "Діагноз",
+    "Fix": "Виправлення",
+    "Prevention": "Запобігання",
+    "Scale prompt": "Вихідний масштаб",
+    "Requirements": "Вимоги",
+    "Scale assumptions": "Припущення про масштаб",
+    "Architecture": "Архітектура",
+    "Alternatives": "Альтернативи",
+    "Trade-offs": "Компроміси",
+    "Failure modes": "Режими відмови",
+    "Competency assessed": "Що оцінюється",
+    "STAR outline or illustrative example": "Каркас STAR або показовий приклад",
+    "Follow-up prompts": "Додаткові питання",
+    "Environment": "Середовище",
+    "Deliverable": "Результат",
+    "Acceptance criteria": "Критерії приймання",
+    "Evaluation guide": "Для інтерв'юера",
+    "Follow-up": "Додаткове питання",
+    "Sources": "Джерела"
+  },
+  "subsection": {
+    "Expected signals": "Очікувані сигнали",
+    "Red flags": "Червоні прапорці",
+    "Level-up follow-up": "Питання на підвищення рівня"
+  },
+  "card_label": {
+    "Solution outline": "Кістяк розв'язання",
+    "Architecture summary": "Кістяк архітектури",
+    "Answer framework": "Каркас відповіді"
+  }
+}
