@@ -1,15 +1,15 @@
 ---
 id: py-gil-0001
 title: "Чому free-threaded build не робить швидшою будь-яку програму на Python?"
-description: "Прибирання GIL прибирає одну глобальну блокіровку, а не координацію, потрібну спільному змінюваному стану."
+description: "Прибирання GIL прибирає одне глобальне блокування, а не координацію, потрібну спільному змінюваному стану."
 track: python
 section: concurrency-and-gil
 level: middle
 type: mechanism
 tags: [gil, free-threading, threads, scaling]
 status: published
-updated: 2026-09-03
-content_revision: 2
+updated: 2026-09-04
+content_revision: 3
 reconciled_with:
   en: 2
 see_also: [cs-cmplx-0001]

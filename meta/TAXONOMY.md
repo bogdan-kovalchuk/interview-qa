@@ -88,7 +88,6 @@ python/
   practical-coding/             задачі «напиши код» на інтерв'ю
   frameworks/                   ⚠ тільки Python-специфічні, не веб (веб → backend/)
     pydantic/
-    numpy/                      ⚠ або в data-science/frameworks/ – див. §9
 ```
 
 ★ – прогалини, знайдені при звірці з наявною таксономією 23 тем.
@@ -256,7 +255,7 @@ data-science/
   frameworks/
     pandas/
     polars/
-    numpy/                      ⚠ канонічна домівка numpy – тут, не в python/frameworks/
+    numpy/                      канонічна домівка numpy – саме тут
     matplotlib/
 
 machine-learning/
@@ -290,7 +289,6 @@ data-engineering/
 ```
 backend/
   web-fundamentals/             HTTP, cookies, CORS, сесії
-  api-design/                   ⚠ дублює system-design/api-design/ – злити в один; див. NAMING §6
   authentication-and-authorization/   OAuth2, JWT, RBAC
   async-and-scaling/            воркери, черги, фонові задачі
   frameworks/

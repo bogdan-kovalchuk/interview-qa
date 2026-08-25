@@ -103,8 +103,11 @@ def check_frontmatter(rel: str, header: str, path: pathlib.Path) -> None:
     if re.search(r"(?m)^roles:", header):
         fail(f"{rel}: roles are derived from programs, not written in frontmatter")
     if track := scalar(header, "track"):
-        if path.parts[2] != track or path.parts[3] != scalar(header, "section"):
-            fail(f"{rel}: path does not match track/section")
+        # `section` is the whole path under the track, so nested sections such as
+        # cpp/frameworks/qt are comparable: parts[3:-1] joined, not a single segment.
+        section = "/".join(path.parts[3:-1])
+        if path.parts[2] != track or section != scalar(header, "section"):
+            fail(f"{rel}: path does not match track `{track}` / section `{section}`")
 
     block = re.search(r"(?m)^execution:\n((?:  .*\n|    .*\n)*)", header)
     if block:

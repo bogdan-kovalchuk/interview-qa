@@ -8,28 +8,35 @@ level: middle
 type: comparison
 tags: [smart-pointers, ownership, raii, lifetime]
 status: published
-updated: 2026-09-03
-content_revision: 1
+updated: 2026-09-04
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: ISO C++
     version: "C++20"
 anki:
   export: true
 sources:
+  - source_id: cpp-draft-smartptr
+    title: "C++ working draft: smart pointers ([smartptr])"
+    url: https://eel.is/c++draft/smartptr
+    accessed: 2026-09-04
+    kind: spec
+    version: "C++20"
+    applicability: семантика володіння і збереження deleter; стандарт задає поведінку, а не розмір об'єкта
   - source_id: cppreference-unique-ptr
     title: "cppreference: std::unique_ptr"
     url: https://en.cppreference.com/w/cpp/memory/unique_ptr
     accessed: 2026-09-03
-    kind: spec
+    kind: community
     version: "C++20"
     applicability: "Move-only семантика, зберігання deleter і гарантії розміру, включно з C++20."
   - source_id: cppreference-shared-ptr
     title: "cppreference: std::shared_ptr"
     url: https://en.cppreference.com/w/cpp/memory/shared_ptr
     accessed: 2026-09-03
-    kind: spec
+    kind: community
     version: "C++20"
     applicability: "Control block, потокобезпека лічильника і поведінка алокації make_shared, включно з C++20."
 ---
@@ -40,8 +47,8 @@ sources:
 `unique_ptr` є move-only і з stateless deleter коштує стільки ж, скільки сирий
 вказівник.[^cppreference-unique-ptr] `shared_ptr` додає control block з атомарними strong і weak
 лічильниками, тож кожне копіювання і знищення – атомарна операція, а об'єкт помирає в непередбачуваній
-точці.[^cppreference-shared-ptr] Спільне володіння також допускає цикли посилань, які й існує розривати
-`weak_ptr`. Звичка одразу тягтися по `shared_ptr` зазвичай означає, що володіння взагалі не визначили.
+точці.[^cppreference-shared-ptr] Спільне володіння також допускає цикли посилань, які й покликаний
+розривати `weak_ptr`. Звичка одразу тягтися по `shared_ptr` зазвичай означає, що володіння взагалі не визначили.
 
 ## Detailed explanation
 
@@ -50,7 +57,7 @@ sources:
 `unique_ptr` стверджує, що власник у кожен момент рівно один. Його не можна копіювати, лише
 переміщувати, і саме це обмеження робить володіння читабельним із сигнатури: функція, що приймає
 `unique_ptr<T>` за значенням, забирає володіння, а та, що приймає `T*` або `T&`, позичає. З deleter
-за замовчуванням об'єкт має розмір одного вказівника, а знищення – це прямий `delete`, тож у рантаймі
+за замовчуванням об'єкт має розмір одного вказівника на всіх поширених реалізаціях, а знищення – це прямий `delete`, тож у рантаймі
 платити нема за що.[^cppreference-unique-ptr] Stateful deleter, наприклад лямбда із захопленням або
 вказівник на функцію, зберігається всередині й таки додає розмір.
 
@@ -79,7 +86,7 @@ struct Node {
 |---|---|---|
 | Власників | рівно один | будь-яка кількість |
 | Копіюється | ні, лише move | так |
-| Розмір, deleter за замовчуванням | один вказівник | два вказівники |
+| Розмір, deleter за замовчуванням | на практиці один вказівник | на практиці два вказівники |
 | Додаткова алокація | немає | control block, об'єднується `make_shared` |
 | Ціна копіювання | переміщення вказівника | атомарний інкремент |
 | Точка знищення | детермінована, на виході зі scope | там, де відпустив останній власник |
