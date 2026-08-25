@@ -1,0 +1,10 @@
+id,created,status,current_path
+cs-cmplx-0001,2026-09-03,published,cs/complexity-and-analysis/amortized-cost-averages-a-worst-case-sequence.md
+py-gil-0001,2026-09-03,published,python/concurrency-and-gil/free-threaded-build-removes-the-gil-not-contention.md
+cpp-ptrref-0001,2026-09-03,published,cpp/pointers-and-references/unique-ptr-vs-shared-ptr-ownership-and-cost.md
+db-orm-0001,2026-09-03,published,databases/orm-and-persistence/n-plus-one-queries-from-lazy-relation-access.md
+py-prac-0001,2026-09-03,published,python/practical-coding/merge-overlapping-intervals-by-sorting-and-sweeping.md
+cpp-tooling-0001,2026-09-03,published,cpp/tooling-and-diagnostics/intermittent-crash-from-callback-outliving-its-object.md
+sd-msgq-0001,2026-09-03,published,system-design/messaging-and-queues/idempotent-consumer-for-at-least-once-webhook-delivery.md
+bhv-team-0001,2026-09-03,published,behavioral/teamwork-and-conflict/technical-disagreement-resolved-without-authority.md
+eng-vcs-0001,2026-09-03,published,engineering/version-control/recover-commits-discarded-by-a-hard-reset.md

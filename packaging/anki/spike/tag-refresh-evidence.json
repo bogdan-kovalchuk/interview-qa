@@ -1,0 +1,452 @@
+{
+  "environment": {
+    "os": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+    "anki": "26.8.1",
+    "genanki": "0.13.1"
+  },
+  "fixture": {
+    "model_id": 1600000000001,
+    "model_name": "Interview QA Basic",
+    "field_names": [
+      "Front",
+      "Back",
+      "Reference",
+      "Sources",
+      "QID"
+    ],
+    "template_names": [
+      "Card 1"
+    ],
+    "note_count": 3,
+    "seed_timestamp": 1788433593,
+    "update_timestamp": 1788433693,
+    "seed_import_log": {
+      "changes": {
+        "card": true,
+        "note": true,
+        "deck": true,
+        "tag": true,
+        "notetype": true,
+        "config": true,
+        "browser_table": true,
+        "browser_sidebar": true,
+        "note_text": true,
+        "study_queues": true,
+        "mtime": true
+      },
+      "log": {
+        "new": [
+          {
+            "id": {
+              "nid": "1788433593000"
+            },
+            "fields": [
+              "Front x-tags-0001 seed",
+              "Back x-tags-0001 seed",
+              "https://example.invalid/uk/q/x-tags-0001/",
+              "Controlled fixture seed",
+              "x-tags-0001"
+            ]
+          },
+          {
+            "id": {
+              "nid": "1788433593002"
+            },
+            "fields": [
+              "Front x-tags-0002 seed",
+              "Back x-tags-0002 seed",
+              "https://example.invalid/uk/q/x-tags-0002/",
+              "Controlled fixture seed",
+              "x-tags-0002"
+            ]
+          },
+          {
+            "id": {
+              "nid": "1788433593004"
+            },
+            "fields": [
+              "Front x-tags-0003 seed",
+              "Back x-tags-0003 seed",
+              "https://example.invalid/uk/q/x-tags-0003/",
+              "Controlled fixture seed",
+              "x-tags-0003"
+            ]
+          }
+        ],
+        "found_notes": 3
+      }
+    },
+    "seed_notes": {
+      "x-tags-0001": {
+        "note_id": 1788433593000,
+        "guid": "tagrefresh01",
+        "fields": [
+          "Front x-tags-0001 seed",
+          "Back x-tags-0001 seed",
+          "https://example.invalid/uk/q/x-tags-0001/",
+          "Controlled fixture seed",
+          "x-tags-0001"
+        ],
+        "tags": [
+          "drop::b",
+          "keep::a",
+          "qid::x-tags-0001"
+        ],
+        "mod": 1788433593
+      },
+      "x-tags-0002": {
+        "note_id": 1788433593002,
+        "guid": "tagrefresh02",
+        "fields": [
+          "Front x-tags-0002 seed",
+          "Back x-tags-0002 seed",
+          "https://example.invalid/uk/q/x-tags-0002/",
+          "Controlled fixture seed",
+          "x-tags-0002"
+        ],
+        "tags": [
+          "keep::todo",
+          "qid::x-tags-0002",
+          "todo::short-answer"
+        ],
+        "mod": 1788433593
+      },
+      "x-tags-0003": {
+        "note_id": 1788433593004,
+        "guid": "tagrefresh03",
+        "fields": [
+          "Front x-tags-0003 seed",
+          "Back x-tags-0003 seed",
+          "https://example.invalid/uk/q/x-tags-0003/",
+          "Controlled fixture seed",
+          "x-tags-0003"
+        ],
+        "tags": [
+          "keep::role",
+          "qid::x-tags-0003",
+          "role::python-backend"
+        ],
+        "mod": 1788433593
+      }
+    }
+  },
+  "scenarios": {
+    "intended": {
+      "name": "update_notes=always, merge_notetypes=true",
+      "options": {
+        "merge_notetypes": true,
+        "update_notes": "IMPORT_ANKI_PACKAGE_UPDATE_CONDITION_ALWAYS",
+        "update_notetypes": "IMPORT_ANKI_PACKAGE_UPDATE_CONDITION_ALWAYS",
+        "with_scheduling": false,
+        "with_deck_configs": false
+      },
+      "update_applied_to_all_notes": true,
+      "all_omitted_tags_kept": false,
+      "all_omitted_tags_removed": true,
+      "all_added_tags_present": true,
+      "answer": "removed",
+      "notes": {
+        "x-tags-0001": {
+          "guid": "tagrefresh01",
+          "tags_before": [
+            "drop::b",
+            "keep::a",
+            "qid::x-tags-0001"
+          ],
+          "tags_in_package": [
+            "add::c",
+            "keep::a",
+            "qid::x-tags-0001"
+          ],
+          "tags_after": [
+            "add::c",
+            "keep::a",
+            "qid::x-tags-0001"
+          ],
+          "kept_tag": "keep::a",
+          "removed_tag": "drop::b",
+          "added_tag": "add::c",
+          "omitted_tag_was_kept": false,
+          "added_tag_is_present": true,
+          "fields_updated": true,
+          "note_id_unchanged": true,
+          "mod_before": 1788433593,
+          "mod_after": 1788433693
+        },
+        "x-tags-0002": {
+          "guid": "tagrefresh02",
+          "tags_before": [
+            "keep::todo",
+            "qid::x-tags-0002",
+            "todo::short-answer"
+          ],
+          "tags_in_package": [
+            "added::todo-cleared",
+            "keep::todo",
+            "qid::x-tags-0002"
+          ],
+          "tags_after": [
+            "added::todo-cleared",
+            "keep::todo",
+            "qid::x-tags-0002"
+          ],
+          "kept_tag": "keep::todo",
+          "removed_tag": "todo::short-answer",
+          "added_tag": "added::todo-cleared",
+          "omitted_tag_was_kept": false,
+          "added_tag_is_present": true,
+          "fields_updated": true,
+          "note_id_unchanged": true,
+          "mod_before": 1788433593,
+          "mod_after": 1788433693
+        },
+        "x-tags-0003": {
+          "guid": "tagrefresh03",
+          "tags_before": [
+            "keep::role",
+            "qid::x-tags-0003",
+            "role::python-backend"
+          ],
+          "tags_in_package": [
+            "added::role-cleared",
+            "keep::role",
+            "qid::x-tags-0003"
+          ],
+          "tags_after": [
+            "added::role-cleared",
+            "keep::role",
+            "qid::x-tags-0003"
+          ],
+          "kept_tag": "keep::role",
+          "removed_tag": "role::python-backend",
+          "added_tag": "added::role-cleared",
+          "omitted_tag_was_kept": false,
+          "added_tag_is_present": true,
+          "fields_updated": true,
+          "note_id_unchanged": true,
+          "mod_before": 1788433593,
+          "mod_after": 1788433693
+        }
+      },
+      "import_log": {
+        "changes": {
+          "note": true,
+          "tag": true,
+          "notetype": true,
+          "browser_table": true,
+          "browser_sidebar": true,
+          "note_text": true,
+          "mtime": true
+        },
+        "log": {
+          "updated": [
+            {
+              "id": {
+                "nid": "1788433593000"
+              },
+              "fields": [
+                "Front x-tags-0001 update",
+                "Back x-tags-0001 update",
+                "https://example.invalid/uk/q/x-tags-0001/",
+                "Controlled fixture update",
+                "x-tags-0001"
+              ]
+            },
+            {
+              "id": {
+                "nid": "1788433593002"
+              },
+              "fields": [
+                "Front x-tags-0002 update",
+                "Back x-tags-0002 update",
+                "https://example.invalid/uk/q/x-tags-0002/",
+                "Controlled fixture update",
+                "x-tags-0002"
+              ]
+            },
+            {
+              "id": {
+                "nid": "1788433593004"
+              },
+              "fields": [
+                "Front x-tags-0003 update",
+                "Back x-tags-0003 update",
+                "https://example.invalid/uk/q/x-tags-0003/",
+                "Controlled fixture update",
+                "x-tags-0003"
+              ]
+            }
+          ],
+          "found_notes": 3
+        }
+      }
+    },
+    "desktop_default": {
+      "name": "Anki Desktop package-import preset",
+      "options": {
+        "merge_notetypes": true,
+        "update_notes": "IMPORT_ANKI_PACKAGE_UPDATE_CONDITION_ALWAYS",
+        "update_notetypes": "IMPORT_ANKI_PACKAGE_UPDATE_CONDITION_ALWAYS",
+        "with_scheduling": false,
+        "with_deck_configs": false
+      },
+      "update_applied_to_all_notes": true,
+      "all_omitted_tags_kept": false,
+      "all_omitted_tags_removed": true,
+      "all_added_tags_present": true,
+      "answer": "removed",
+      "notes": {
+        "x-tags-0001": {
+          "guid": "tagrefresh01",
+          "tags_before": [
+            "drop::b",
+            "keep::a",
+            "qid::x-tags-0001"
+          ],
+          "tags_in_package": [
+            "add::c",
+            "keep::a",
+            "qid::x-tags-0001"
+          ],
+          "tags_after": [
+            "add::c",
+            "keep::a",
+            "qid::x-tags-0001"
+          ],
+          "kept_tag": "keep::a",
+          "removed_tag": "drop::b",
+          "added_tag": "add::c",
+          "omitted_tag_was_kept": false,
+          "added_tag_is_present": true,
+          "fields_updated": true,
+          "note_id_unchanged": true,
+          "mod_before": 1788433593,
+          "mod_after": 1788433693
+        },
+        "x-tags-0002": {
+          "guid": "tagrefresh02",
+          "tags_before": [
+            "keep::todo",
+            "qid::x-tags-0002",
+            "todo::short-answer"
+          ],
+          "tags_in_package": [
+            "added::todo-cleared",
+            "keep::todo",
+            "qid::x-tags-0002"
+          ],
+          "tags_after": [
+            "added::todo-cleared",
+            "keep::todo",
+            "qid::x-tags-0002"
+          ],
+          "kept_tag": "keep::todo",
+          "removed_tag": "todo::short-answer",
+          "added_tag": "added::todo-cleared",
+          "omitted_tag_was_kept": false,
+          "added_tag_is_present": true,
+          "fields_updated": true,
+          "note_id_unchanged": true,
+          "mod_before": 1788433593,
+          "mod_after": 1788433693
+        },
+        "x-tags-0003": {
+          "guid": "tagrefresh03",
+          "tags_before": [
+            "keep::role",
+            "qid::x-tags-0003",
+            "role::python-backend"
+          ],
+          "tags_in_package": [
+            "added::role-cleared",
+            "keep::role",
+            "qid::x-tags-0003"
+          ],
+          "tags_after": [
+            "added::role-cleared",
+            "keep::role",
+            "qid::x-tags-0003"
+          ],
+          "kept_tag": "keep::role",
+          "removed_tag": "role::python-backend",
+          "added_tag": "added::role-cleared",
+          "omitted_tag_was_kept": false,
+          "added_tag_is_present": true,
+          "fields_updated": true,
+          "note_id_unchanged": true,
+          "mod_before": 1788433593,
+          "mod_after": 1788433693
+        }
+      },
+      "import_log": {
+        "changes": {
+          "note": true,
+          "tag": true,
+          "notetype": true,
+          "browser_table": true,
+          "browser_sidebar": true,
+          "note_text": true,
+          "mtime": true
+        },
+        "log": {
+          "updated": [
+            {
+              "id": {
+                "nid": "1788433593000"
+              },
+              "fields": [
+                "Front x-tags-0001 update",
+                "Back x-tags-0001 update",
+                "https://example.invalid/uk/q/x-tags-0001/",
+                "Controlled fixture update",
+                "x-tags-0001"
+              ]
+            },
+            {
+              "id": {
+                "nid": "1788433593002"
+              },
+              "fields": [
+                "Front x-tags-0002 update",
+                "Back x-tags-0002 update",
+                "https://example.invalid/uk/q/x-tags-0002/",
+                "Controlled fixture update",
+                "x-tags-0002"
+              ]
+            },
+            {
+              "id": {
+                "nid": "1788433593004"
+              },
+              "fields": [
+                "Front x-tags-0003 update",
+                "Back x-tags-0003 update",
+                "https://example.invalid/uk/q/x-tags-0003/",
+                "Controlled fixture update",
+                "x-tags-0003"
+              ]
+            }
+          ],
+          "found_notes": 3
+        }
+      }
+    }
+  },
+  "todo_case": {
+    "intended": {
+      "tag": "todo::short-answer",
+      "present_before": true,
+      "present_in_package": false,
+      "present_after": false,
+      "disappears_on_its_own": true
+    },
+    "desktop_default": {
+      "tag": "todo::short-answer",
+      "present_before": true,
+      "present_in_package": false,
+      "present_after": false,
+      "disappears_on_its_own": true
+    }
+  }
+}

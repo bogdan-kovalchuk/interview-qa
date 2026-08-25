@@ -1,0 +1,24 @@
+topic_id,topic_slug,scope,priority,brief_status,sources_status,content_status,review_status,planned_fronts,front_count,accepted_cards,last_reviewed,notes
+01,python_fundamentals,Core,primary,planned,recorded,ready,reviewed,12,12,12,2026-09-02,Backs drafted and independently reviewed
+02,syntax_control_flow,Core,primary,planned,recorded,ready,in_progress,14,14,14,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+03,objects_types_mutability,Core,primary,planned,recorded,ready,in_progress,22,22,22,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+04,collections,Core,primary,planned,recorded,ready,in_progress,24,24,24,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+05,functions_scope_closures,Core,primary,planned,recorded,ready,in_progress,24,24,24,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+06,oop_data_model,Core,primary,planned,recorded,ready,in_progress,31,31,31,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+07,decorators,Core,primary,planned,recorded,ready,in_progress,12,12,12,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+08,iterators_generators,Core,primary,planned,recorded,ready,in_progress,18,18,18,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+09,context_managers,Core,primary,planned,recorded,ready,in_progress,10,10,10,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+10,exceptions,Core,primary,planned,recorded,ready,in_progress,16,16,16,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+11,modules_packages_imports,Core,primary,planned,recorded,ready,in_progress,14,14,14,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+12,files_io,Core,primary,planned,recorded,ready,in_progress,14,14,14,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+13,comprehensions_functional,Core,primary,planned,recorded,ready,in_progress,12,12,12,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+14,cpython_internals_memory,Core,primary,planned,recorded,ready,in_progress,20,20,20,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+15,gil_threads_processes,Core,primary,planned,recorded,ready,in_progress,22,22,22,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+16,asyncio,Core,primary,planned,recorded,ready,in_progress,24,24,24,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+17,standard_library,Core,primary,planned,recorded,ready,in_progress,18,18,18,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+18,testing,Core,primary,planned,recorded,ready,in_progress,19,19,19,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+19,performance_best_practices,Core,primary,planned,recorded,ready,in_progress,21,21,21,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+20,practical_coding,Core,primary,planned,recorded,ready,in_progress,24,24,24,2026-09-02,Backs generated; content review deferred per user decision 2026-09-02
+21,algorithms_data_structures,Overview,brief,planned,recorded,ready,in_progress,7,7,7,2026-09-02,Backs generated under approved hard cap; content review deferred per user decision 2026-09-02
+22,databases_sql,Overview,brief,planned,recorded,ready,in_progress,7,7,7,2026-09-02,Backs generated under approved hard cap; content review deferred per user decision 2026-09-02
+23,git_cicd_sdlc,Overview,brief,planned,recorded,ready,in_progress,7,7,7,2026-09-02,Backs generated under approved hard cap; content review deferred per user decision 2026-09-02

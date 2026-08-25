@@ -1,0 +1,28 @@
+# build output
+/dist/
+/site/dist/
+/site/.astro/
+
+# node
+node_modules/
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# editors
+.idea/
+.vscode/
+.qwen/
+
+# os
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# spike run artifacts
+/packaging/anki/spike/.tag-refresh-run-*/
+/packaging/anki/spike/.tag-refresh-inspect.anki2

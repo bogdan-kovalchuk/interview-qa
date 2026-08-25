@@ -1,0 +1,24 @@
+topic_id,topic_slug,raw_community_candidates,planned_middle,planned_senior,planned_total,objective_clusters,rationale
+01,python_fundamentals,9,9,3,12,5,Language model and implementation boundaries need official supplementation
+02,syntax_control_flow,16,11,3,14,5,Remove syntax trivia and retain behavior with interview value
+03,objects_types_mutability,19,15,7,22,7,Expand identity mutability hashing copying and typing contracts
+04,collections,39,17,7,24,6,Deduplicate lookup questions and test selection trade-offs
+05,functions_scope_closures,14,16,8,24,7,Expand argument binding scope closure and default-value traps
+06,oop_data_model,42,19,12,31,9,Strict review added a distinct dataclass nested-mutability retrieval operation
+07,decorators,8,7,5,12,6,Strict review raised dual-form decorator design to Senior
+08,iterators_generators,16,12,6,18,5,Cover protocols generator state delegation and cleanup
+09,context_managers,1,7,3,10,5,Community source is thin so official contextlib coverage is required
+10,exceptions,20,11,5,16,7,Remove taxonomy trivia and retain control-flow and design behavior
+11,modules_packages_imports,10,10,4,14,6,Add import machinery cache package and packaging behavior
+12,files_io,16,10,4,14,7,Focus on encoding buffering lifecycle paths and safe serialization
+13,comprehensions_functional,8,9,3,12,5,Prefer evaluation scope laziness and trade-offs over definitions
+14,cpython_internals_memory,17,10,10,20,7,Implementation-specific depth justifies equal Middle and Senior coverage
+15,gil_threads_processes,22,12,10,22,8,Preserve concurrency breadth and add supported free-threaded CPython
+16,asyncio,27,14,10,24,8,Remove ecosystem-specific items and retain structured concurrency and cancellation
+17,standard_library,18,13,5,18,10,Final strict review removed the overlapping broad cache prompt
+18,testing,16,13,6,19,8,Strict recheck calibrated mutation testing to Middle
+19,performance_best_practices,5,13,8,21,9,Strict recheck split cache constraints and added string construction coverage
+20,practical_coding,27,18,6,24,7,Keep representative code reasoning and implementation tasks without algorithm bloat
+21,algorithms_data_structures,34,6,1,7,5,Approved overview hard cap despite broad source material
+22,databases_sql,64,6,1,7,7,Approved overview hard cap selects only universal database concepts
+23,git_cicd_sdlc,21,6,1,7,6,Approved overview hard cap selects workflow and delivery fundamentals

@@ -1,0 +1,248 @@
+{
+  "timestamp": "2026-09-03T09:33:02.5751307Z",
+  "predecessor_repo": "C:/Users/bogdan/Desktop/python_interview_questions",
+  "git": {
+    "head": "b73a6d1990a9dc212f149a128c3855e0476f7207",
+    "branch": "main",
+    "remote_exists": false,
+    "status_counts": {
+      "added_untracked_files": 48,
+      "modified_files": 13,
+      "deleted_files": 74,
+      "total_changed_files": 135,
+      "porcelain_entries": 118,
+      "staged_entries": 1,
+      "unstaged_tracked_entries": 86,
+      "untracked_entries_with_default_directory_collapsing": 31
+    },
+    "recent_commits": [
+      {
+        "short": "b73a6d1",
+        "subject": "complete back drafting, smoke testing, promotion to ready, and exhaustive review"
+      },
+      {
+        "short": "ef7e507",
+        "subject": "add first card back preview"
+      },
+      {
+        "short": "f59fa1c",
+        "subject": "simplify project directory layout"
+      },
+      {
+        "short": "d5ca4b1",
+        "subject": "remove superseded review reports"
+      },
+      {
+        "short": "383f05b",
+        "subject": "strengthen project validation gates"
+      },
+      {
+        "short": "f5d2941",
+        "subject": "define minimal production quality gates"
+      },
+      {
+        "short": "ac55cac",
+        "subject": "mark front review complete"
+      },
+      {
+        "short": "54d62ef",
+        "subject": "add final front review verdict"
+      },
+      {
+        "short": "fb1c1c2",
+        "subject": "sync decorator coverage levels"
+      },
+      {
+        "short": "58e7f92",
+        "subject": "remove duplicate front and sync coverage"
+      }
+    ],
+    "baseline_commit": "2372bb7175111701f883cc9dc3aba624dcb0bbdf",
+    "baseline_tag": "baseline-2026-09-03",
+    "dirty_at_measurement": true,
+    "dirty_after_baseline_commit": false,
+    "note": "Hashes were measured on the dirty worktree; that exact state is now captured by baseline_commit and tagged baseline-2026-09-03. head is the pre-baseline commit."
+  },
+  "files": {
+    "authoring/collection/Python Interview Questions.anki2": {
+      "sha256": "f5ad26e9cf164cb1f6a64a76dbb410d537abf39ba4fa7058be8a9a61c0a961f5",
+      "size_bytes": 966656,
+      "mtime_utc": "2026-09-03T04:33:50.590567Z"
+    },
+    "authoring/manifest.json": {
+      "sha256": "dba28dff1aa78cd5bb912a384a4b17c5d3e087472dd38eef664ff3d60948fe46",
+      "size_bytes": 3321,
+      "mtime_utc": "2026-09-03T04:59:20.566730Z"
+    },
+    "cards/01_python_fundamentals.txt": {
+      "sha256": "4bc53e8d99a2db14e75de19c460878a41efd254862ce5451a56d2f41137f8969",
+      "size_bytes": 14803,
+      "mtime_utc": "2026-09-03T04:32:52.293666Z"
+    },
+    "cards/02_syntax_control_flow.txt": {
+      "sha256": "9a6aa6bb610790ab2365f486555fd8a2a0f03cca3ab6de7ee3e46ac1bff28bbd",
+      "size_bytes": 16588,
+      "mtime_utc": "2026-09-03T04:32:52.292665Z"
+    },
+    "cards/03_objects_types_mutability.txt": {
+      "sha256": "f287905acf24644c42ef6e36406ad7cfceb4af3e173b2bcdb0f02686a217b009",
+      "size_bytes": 28062,
+      "mtime_utc": "2026-09-03T04:32:52.300668Z"
+    },
+    "cards/04_collections.txt": {
+      "sha256": "fcab5b7a8ad468ad31df51363029ba2c3924919f7ae0e84563847b1b45456a02",
+      "size_bytes": 28164,
+      "mtime_utc": "2026-09-03T04:32:52.289289Z"
+    },
+    "cards/05_functions_scope_closures.txt": {
+      "sha256": "1549b5dd47b0f9120399e0938aa0b33e47294e9e632da636053e1ce6b3b9a4f2",
+      "size_bytes": 31448,
+      "mtime_utc": "2026-09-03T04:32:52.294666Z"
+    },
+    "cards/06_oop_data_model.txt": {
+      "sha256": "0eb306a114ba3b746e5bc7b7ff3742682eef0bea3361ba85b70282f57e340aa7",
+      "size_bytes": 39733,
+      "mtime_utc": "2026-09-03T04:32:52.300668Z"
+    },
+    "cards/07_decorators.txt": {
+      "sha256": "01bb8860ececa56243cfcf83d623e1a9f53ebb9be0a15f77bb5a38b7872b7146",
+      "size_bytes": 16047,
+      "mtime_utc": "2026-09-03T04:32:52.291664Z"
+    },
+    "cards/08_iterators_generators.txt": {
+      "sha256": "8d776cf3fa30c9ed4e75c00be77c870b05ce4c9cbe8502db6a511aff8432be0b",
+      "size_bytes": 21786,
+      "mtime_utc": "2026-09-03T04:32:52.286291Z"
+    },
+    "cards/09_context_managers.txt": {
+      "sha256": "be4e7e1b54ab12297095f89d5434f84f9bcaae280b03b2fcf970701cabb42291",
+      "size_bytes": 11871,
+      "mtime_utc": "2026-09-03T04:32:52.273495Z"
+    },
+    "cards/10_exceptions.txt": {
+      "sha256": "161e8a8734e31e379d76d5b7c83ae5e2c25ad95b83701575c69ed359633e5fa2",
+      "size_bytes": 20313,
+      "mtime_utc": "2026-09-03T04:32:52.306063Z"
+    },
+    "cards/11_modules_packages_imports.txt": {
+      "sha256": "b11aa7aae8272abee2bb7fecf4dbd41cd51d798d2357eba7642b089be557855c",
+      "size_bytes": 18555,
+      "mtime_utc": "2026-09-03T04:32:52.306063Z"
+    },
+    "cards/12_files_io.txt": {
+      "sha256": "280d0743a9a8f457e892533cdfa97cca27eaa7729685a033b6b813b3ec15f568",
+      "size_bytes": 17199,
+      "mtime_utc": "2026-09-03T04:32:52.304724Z"
+    },
+    "cards/13_comprehensions_functional.txt": {
+      "sha256": "37e66e6929b4271f4bd0c25f8fdb72ec71548b53a1a66b1e27d27722eff04128",
+      "size_bytes": 14362,
+      "mtime_utc": "2026-09-03T04:32:52.308549Z"
+    },
+    "cards/14_cpython_internals_memory.txt": {
+      "sha256": "5037f68ca0b69ef3acbf642b87b586f2824482ae2c26da8834e14b92cd773b60",
+      "size_bytes": 26724,
+      "mtime_utc": "2026-09-03T04:32:52.309549Z"
+    },
+    "cards/15_gil_threads_processes.txt": {
+      "sha256": "ab50cf6125a18643aba30c757ae2e9b3c1a6dbd28ad5c7d3ef77def59b8661c8",
+      "size_bytes": 29339,
+      "mtime_utc": "2026-09-03T04:32:52.302714Z"
+    },
+    "cards/16_asyncio.txt": {
+      "sha256": "96cb1e4f0b6caf1e269fd0f64110c11bfa9f59cfa21d7ab236d5cd698791d858",
+      "size_bytes": 28892,
+      "mtime_utc": "2026-09-03T04:32:52.307549Z"
+    },
+    "cards/17_standard_library.txt": {
+      "sha256": "575a7cf9598ecdc897478651c02b19b8ef5de7358150e77b80c697c9542fa2e1",
+      "size_bytes": 20970,
+      "mtime_utc": "2026-09-03T04:32:52.310549Z"
+    },
+    "cards/18_testing.txt": {
+      "sha256": "9b655cb9940365b4aaff32c4591760573ca12c3869b130ed47a04a2700dd58cb",
+      "size_bytes": 23413,
+      "mtime_utc": "2026-09-03T04:32:52.304724Z"
+    },
+    "cards/19_performance_best_practices.txt": {
+      "sha256": "460c1be32a89f3efc20551a516a638a2191ea6d1c24a0250539b8bcddd864b46",
+      "size_bytes": 31608,
+      "mtime_utc": "2026-09-03T04:32:52.307549Z"
+    },
+    "cards/20_practical_coding.txt": {
+      "sha256": "76b04ae7d5b78316b58edbe5120768a88e456016338fb3faff1c865c9ab83e7c",
+      "size_bytes": 35723,
+      "mtime_utc": "2026-09-03T04:32:52.303726Z"
+    },
+    "cards/21_algorithms_data_structures.txt": {
+      "sha256": "f7f0be0d09885c4c538a0be3963f137ebaf32898c7fa31c0d49d455626969448",
+      "size_bytes": 5564,
+      "mtime_utc": "2026-09-03T04:32:52.298669Z"
+    },
+    "cards/22_databases_sql.txt": {
+      "sha256": "0117402f42ec464374967d2db7253f4b68a6ce8177ccf7095c927b518fb9fbc0",
+      "size_bytes": 9614,
+      "mtime_utc": "2026-09-03T04:32:52.294666Z"
+    },
+    "cards/23_git_cicd_sdlc.txt": {
+      "sha256": "badd6df7a93f1b2ff9e56d81151e5d213dfc189264e8b31742f53b4dc89f083d",
+      "size_bytes": 10147,
+      "mtime_utc": "2026-09-03T04:32:52.287289Z"
+    },
+    "cards/Python Interview Questions.apkg": {
+      "sha256": "3facfdc7533909a1099383241a658b2bedeb56026b8c62e04532325309e5161f",
+      "size_bytes": 214002,
+      "mtime_utc": "2026-09-03T05:27:11.603220Z"
+    }
+  },
+  "collection": {
+    "path": "authoring/collection/Python Interview Questions.anki2",
+    "schema_layout": "modern",
+    "tables": [
+      "cards",
+      "col",
+      "config",
+      "deck_config",
+      "decks",
+      "fields",
+      "graves",
+      "notes",
+      "notetypes",
+      "revlog",
+      "sqlite_stat1",
+      "sqlite_stat4",
+      "tags",
+      "templates"
+    ],
+    "note_type": {
+      "name": "Python Interview Basic",
+      "model_id": "1788409800655",
+      "fields": [
+        {
+          "id": "-96606943922847121",
+          "name": "Front",
+          "ord": 0
+        },
+        {
+          "id": "455697503161544713",
+          "name": "Back",
+          "ord": 1
+        }
+      ],
+      "templates": [
+        {
+          "id": "7535841431736045922",
+          "name": "Card 1",
+          "ord": 0
+        }
+      ],
+      "fingerprint_sha256": "33d9f3dc1f05fdd8bc1094867d6ef9331b82e6a6dd65a6c4c4a21cb6bab412c9",
+      "fingerprint_canonicalization": "UTF-8 JSON of name, model_id, fields and templates; identifiers as decimal strings; keys sorted; compact separators"
+    },
+    "note_count": 392,
+    "card_count": 392,
+    "subdeck_count": 23,
+    "deck_rows_including_default_and_root": 25
+  },
+  "baseline_closed_at": "2026-09-03T09:51:13+00:00"
+}

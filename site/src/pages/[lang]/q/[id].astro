@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const questions = await getCollection('docs', ({ data }) => Boolean(data.question_id));
+  return questions.map(({ data }) => ({
+    params: { lang: data.language, id: data.question_id },
+    props: {
+      canonicalPath: data.canonical,
+      language: data.language,
+      title: data.title,
+    },
+  }));
+}
+
+const { canonicalPath, language, title } = Astro.props;
+const canonicalUrl = new URL(canonicalPath, Astro.site ?? Astro.url).href;
+---
+
+<!doctype html>
+<html lang={language} data-canonical={canonicalPath}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title} | Interview QA</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <script is:inline>
+      const target = document.documentElement.dataset.canonical;
+      if (target) window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <main>
+      <p>Opening the canonical question page.</p>
+      <p><a href={canonicalPath}>Continue to {title}</a></p>
+    </main>
+  </body>
+</html>

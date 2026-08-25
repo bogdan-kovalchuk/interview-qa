@@ -1,0 +1,30 @@
+card_id,python_version,mode,evidence,status,notes
+PYI_02_002,Python 3.14.7,snippet_executed,'fallback',verified,[] or 'fallback' returns the string 'fallback'
+PYI_02_013,3.14,snippet_executed,-9 then 9,verified,print(-3**2) -> -9; print((-3)**2) -> 9
+PYI_03_016,3.14.7,snippet_executed,{1: 'c'} len(d)=1,verified,d = {1: 'a' 1.0: 'b' True: 'c'} — last write wins
+PYI_04_005,3.14.7,snippet_executed,"before: ([1, 2], [3]) | error: 'tuple' object does not support item assignment | after: ([1, 2, 3], [3])",verified,
+PYI_05_004,3.14,snippet_executed,"a=1, args=(2, 3), b=4, kwargs={'x': 5}",verified,
+PYI_05_006,3.14,snippet_executed,"append(1) returned [1]; append(2) returned [1, 2]; r1 is r2: True",verified,
+PYI_05_016,3.14,snippet_executed,"[2, 2, 2]",verified,All three lambdas return 2 due to late binding of i
+PYI_07_002,3.14.7,snippet_executed,inner applied then outer applied at definition time; hello() returns hello at call time,verified,stacking order confirmed bottom-up
+PYI_07_012,3.14,snippet_executed,<class 'NoneType'> None | TypeError: 'NoneType' object is not callable,verified,decorator returns None -> name bound to None -> call raises TypeError
+PYI_10_005,3.14.7,snippet_executed,SyntaxWarning: 'return' in a 'finally' block; output: finally,verified,Return from finally overrides try return; SyntaxWarning emitted at compile time
+PYI_20_001,3.14.7,snippet_executed,[],verified,short-circuit and skips append
+PYI_20_002,3.14.7,snippet_executed,"[[1, 2]]",verified,shallow copy aliasing: b[0] is a[0]
+PYI_20_003,3.14.7,snippet_executed,1,verified,capture pattern binds x=1 in enclosing scope
+PYI_20_004,3.14.7,snippet_executed,TypeError: cannot use 'Key' as a dict key (unhashable type: 'Key'),verified,__eq__ without __hash__ sets __hash__=None
+PYI_20_005,3.14.7,snippet_executed,"['1', '2', 'Fizz', '4', 'Buzz', 'Fizz', '7', '8', 'Fizz', 'Buzz', '11', 'Fizz', '13', '14', 'FizzBuzz']",verified,data-driven FizzBuzz with ordered rules
+PYI_20_006,3.14.7,snippet_executed,True True False,verified,NFKC+casefold+two-pointer palindrome check
+PYI_20_007,3.14.7,snippet_executed,TypeError: bool is not allowed; 10; ValueError: cycle detected; TypeError: unsupported type: str,verified,bool rejected before int; cycle via id() set; str raises TypeError
+PYI_20_009,3.14.7,snippet_executed,result=ok; calls=3; name=flaky,verified,retry decorator: 3 attempts then success; functools.wraps preserves __name__
+PYI_20_011,3.14.7,snippet_executed,top3_words('Hello world hello World foo bar foo bar baz') -> ['bar' 'foo' 'hello']; top3_words('a a b b c c d') -> ['a' 'b' 'c']; top3_words('') -> [],verified,
+PYI_20_012,3.14.7,snippet_executed,"is_anagram('Listen' 'Silent') -> True; is_anagram('Debit card' 'Bad credit') -> True; is_anagram('Hello' 'World') -> False; is_anagram(e-acute, e+combining) -> True",verified,
+PYI_20_013,3.14.7,snippet_executed,list(rle_encode('aaabbc')) -> [('a' 3) ('b' 2) ('c' 1)]; list(rle_encode('')) -> []; list(rle_encode('aaa')) -> [('a' 3)]; list(rle_encode('abcd')) -> [('a' 1) ('b' 1) ('c' 1) ('d' 1)],verified,
+PYI_20_014,3.14.7,snippet_executed,move_zeros([1 0 2 0 3 False 0 4]) -> [1 2 3 False 4 0 0 0]; move_zeros([0 0 1]) -> [1 0 0]; move_zeros([False 0 1 0]) -> [False 1 0 0],verified,
+PYI_20_015,3.14.7,snippet_executed,list(fibonacci(8)) -> [0 1 1 2 3 5 8 13]; list(fibonacci(5 first=2 second=3)) -> [2 3 5 8 13]; list(fibonacci(0)) -> []; two independent iterators each yield [0 1 1],verified,
+PYI_20_016,3.14.7,snippet_executed,slow_add(1 2) -> 3; slow_add.last_elapsed ~ 0.010; slow_add.__name__ -> 'slow_add'; slow_add.__wrapped__ is not None -> True,verified,
+PYI_20_017,3.14.7,snippet_executed,greet('Alice') -> 'Hello Alice'; greet('Bob') -> 'Hello Bob'; third call raises RateLimitExceeded; after clock advance to 1.5s greet('Charlie') -> 'Hello Charlie',verified,Scenario card with deterministic code
+PYI_20_018,3.14.7,snippet_executed,Transaction no-exception: committed=True rolled_back=False; Transaction with ValueError: committed=False rolled_back=True,verified,
+PYI_20_019,3.14.7,snippet_executed,u1.name='Alice' u1.age=30 -> works; u2.name='Bob' u2.age=25 -> independent values; u1.name='' raises ValueError: name must be non-empty str,verified,
+PYI_20_020,3.14.7,snippet_executed,Point(1 2)==Point(1 2) -> True; Point(1 2)==Point(3 4) -> False; hash equal -> True; dict lookup d[p2] -> 'a'; p1.x=10 raises AttributeError: Point is immutable,verified,
+PYI_21_001,3.14.7,snippet_executed,n=5: calls=10 formula=10; n=10: calls=45 formula=45; n=100: calls=4950 formula=4950,verified,triangular sum n*(n-1)//2 confirmed
