@@ -1,3 +1,19 @@
+"""Anki compatibility harness: experiments A-J from the M0.4 brief.
+
+Results live in meta/MEASUREMENTS.md. This script only produces the evidence.
+
+It never accepts the live Anki profile as a work target - pass copied or restored
+collections in an isolated scratch directory. Two fixtures are needed because the
+392-note target model and genuine scheduling history live in different collections:
+
+    --target-collection-source   copy holding model 1788409800655 and its 392 notes
+    --history-collection-source  copy with >= 20 cards where reps > 0
+    --current-profile-copy       copy of the current profile, read-only diagnostics
+    --work-dir                   scratch directory, must not exist yet
+
+Run from a disposable virtualenv with `anki` and `genanki` installed.
+"""
+
 from __future__ import annotations
 
 import argparse

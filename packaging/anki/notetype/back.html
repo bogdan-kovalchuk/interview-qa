@@ -1,0 +1,25 @@
+<div class="card-wrap">
+  <div class="top-bar"></div>
+  <main class="card-body">
+    <div class="deck-label" id="deck-label">Interview QA</div>
+    <section class="prompt">{{Front}}</section>
+    <hr id="answer" class="separator">
+    <section class="answer">{{Back}}</section>
+    {{#Reference}}
+    <div class="learn-more"><a href="{{text:Reference}}">Розгорнуте пояснення</a></div>
+    {{/Reference}}
+    {{#Sources}}<div class="source">{{Sources}}</div>{{/Sources}}
+  </main>
+</div>
+<script>
+(function () {
+  var qid = "{{text:QID}}";
+  var map = { py: "Python", cpp: "C / C++", emb: "Embedded", cs: "Computer science",
+              sys: "Systems", db: "Databases", eng: "Engineering", sd: "System design",
+              ds: "Data science", ml: "Machine learning", de: "Data engineering",
+              be: "Backend", ops: "DevOps", qa: "QA automation", bhv: "Behavioral" };
+  var el = document.getElementById("deck-label");
+  var key = qid.split("-")[0];
+  if (el && map[key]) { el.textContent = map[key] + " interview"; }
+})();
+</script>

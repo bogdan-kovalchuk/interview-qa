@@ -26,3 +26,6 @@ desktop.ini
 # spike run artifacts
 /packaging/anki/spike/.tag-refresh-run-*/
 /packaging/anki/spike/.tag-refresh-inspect.anki2
+
+# generated mirror for the site
+/site/src/content/docs/

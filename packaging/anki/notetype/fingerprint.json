@@ -1,0 +1,38 @@
+{
+  "model_id": 1600000000001,
+  "model_name": "Interview QA Basic",
+  "fields": [
+    {
+      "name": "Front",
+      "ord": 0,
+      "id": 1600000001001
+    },
+    {
+      "name": "Back",
+      "ord": 1,
+      "id": 1600000001002
+    },
+    {
+      "name": "Reference",
+      "ord": 2,
+      "id": 1600000001003
+    },
+    {
+      "name": "Sources",
+      "ord": 3,
+      "id": 1600000001004
+    },
+    {
+      "name": "QID",
+      "ord": 4,
+      "id": 1600000001005
+    }
+  ],
+  "templates": [
+    {
+      "name": "Card 1",
+      "ord": 0,
+      "id": 1600000001101
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+# Закриті словники проєкту: усе, що валідатор звіряє, і всі видимі назви структур.
+#
+# Заголовки секцій у content/ завжди англійські – це ідентифікатори (QUESTIONS.md §4).
+# Тут вони отримують видимі назви, які рендерить сайт.
+
+section_labels:
+  Short answer:      {en: Short answer,      uk: Коротка відповідь}
+  Detailed explanation: {en: Detailed explanation, uk: Розгорнуте пояснення}
+  Comparison:        {en: Comparison,        uk: Порівняння}
+  When to choose which: {en: When to choose which, uk: Коли що обирати}
+  Symptom:           {en: Symptom,           uk: Симптом}
+  Why it happens:    {en: Why it happens,    uk: Чому це стається}
+  How to avoid:      {en: How to avoid,      uk: Як цього уникнути}
+  Task:              {en: Task,              uk: Задача}
+  Constraints:       {en: Constraints,       uk: Обмеження}
+  Examples:          {en: Examples,          uk: Приклади}
+  Solution:          {en: Solution,          uk: Розв'язання}
+  Complexity:        {en: Complexity,        uk: Складність}
+  Edge cases:        {en: Edge cases,        uk: Крайні випадки}
+  Tests:             {en: Tests,             uk: Тести}
+  Observations:      {en: Observations,      uk: Спостереження}
+  Reproduction:      {en: Reproduction,      uk: Відтворення}
+  Hypotheses:        {en: Hypotheses,        uk: Гіпотези}
+  Diagnosis:         {en: Diagnosis,         uk: Діагноз}
+  Fix:               {en: Fix,               uk: Виправлення}
+  Prevention:        {en: Prevention,        uk: Запобігання}
+  Scale prompt:      {en: Scale prompt,      uk: Вихідний масштаб}
+  Requirements:      {en: Requirements,      uk: Вимоги}
+  Scale assumptions: {en: Scale assumptions, uk: Припущення про масштаб}
+  Architecture:      {en: Architecture,      uk: Архітектура}
+  Alternatives:      {en: Alternatives,      uk: Альтернативи}
+  Trade-offs:        {en: Trade-offs,        uk: Компроміси}
+  Failure modes:     {en: Failure modes,     uk: Режими відмови}
+  Competency assessed: {en: Competency assessed, uk: Що оцінюється}
+  STAR outline or illustrative example:
+    {en: STAR outline or illustrative example, uk: Каркас STAR або показовий приклад}
+  Follow-up prompts: {en: Follow-up prompts, uk: Додаткові питання}
+  Environment:       {en: Environment,       uk: Середовище}
+  Deliverable:       {en: Deliverable,       uk: Результат}
+  Acceptance criteria: {en: Acceptance criteria, uk: Критерії приймання}
+  Evaluation guide:  {en: Evaluation guide,  uk: Для інтерв'юера}
+  Follow-up:         {en: Follow-up,         uk: Додаткове питання}
+  Sources:           {en: Sources,           uk: Джерела}
+
+# Три підблоки Evaluation guide.
+subsection_labels:
+  Expected signals:   {en: Expected signals,   uk: Очікувані сигнали}
+  Red flags:          {en: Red flags,          uk: Червоні прапорці}
+  Level-up follow-up: {en: Level-up follow-up, uk: Питання на підвищення рівня}
+
+# Видима мітка над Back для типів, де Short answer має особливу семантику.
+card_labels:
+  Solution outline:     {en: Solution outline,     uk: Кістяк розв'язання}
+  Architecture summary: {en: Architecture summary, uk: Кістяк архітектури}
+  Answer framework:     {en: Answer framework,     uk: Каркас відповіді}
+
+# Значення фасета `frameworks`. Фреймворк додається тоді, коли з'являється перше питання,
+# що його називає, а не наперед.
+frameworks:
+  django:     {title: Django,     track: python}
+  sqlalchemy: {title: SQLAlchemy, track: python}
+  fastapi:    {title: FastAPI,    track: python}
+
+# Префікс секції для схеми ID. Належить секції, а не питанню; фіксується один раз.
+section_prefixes:
+  cs/complexity-and-analysis:       cmplx
+  python/concurrency-and-gil:       gil
+  python/practical-coding:          prac
+  cpp/pointers-and-references:      ptrref
+  cpp/tooling-and-diagnostics:      tooling
+  databases/orm-and-persistence:    orm
+  system-design/messaging-and-queues: msgq
+  behavioral/teamwork-and-conflict: team
+  engineering/version-control:      vcs
+
+# Термінологія перекладу. Ворота lang-glossary звіряють вжиті форми з цим списком.
+glossary:
+  - {en: event loop,          uk: event loop,          note: лишається англійською; «цикл подій» не вживається}
+  - {en: GIL,                 uk: GIL,                 note: абревіатура без розкриття й без транслітерації}
+  - {en: move semantics,      uk: move semantics,      note: лишається англійською}
+  - {en: control block,       uk: control block,       note: термін shared_ptr; лишається англійською}
+  - {en: undefined behaviour, uk: undefined behaviour, note: британське написання; не «невизначена поведінка»}
+  - {en: round trip,          uk: round trip,          note: лишається англійською}
+  - {en: reflog,              uk: reflog,              note: назва механізму git; не перекладається і не відмінюється}
+  - {en: at-least-once,       uk: at-least-once,       note: назва гарантії доставки}
+  - {en: lazy loading,        uk: lazy loading,        note: «ліниве завантаження» не вживається}
+  - {en: retry storm,         uk: retry storm,         note: лишається англійською}
+  - {en: inheritance,         uk: успадкування,        note: завжди цей варіант}

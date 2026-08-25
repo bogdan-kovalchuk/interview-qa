@@ -98,8 +98,8 @@ def write_locale_indexes(output_root: Path, questions: list[tuple[str, str, str]
 
     titles = {"en": "Interview questions", "uk": "Питання для співбесід"}
     descriptions = {
-        "en": "Bilingual interview question spike fixtures.",
-        "uk": "Двомовні тестові питання для перевірки архітектури.",
+        "en": "Bilingual technical interview questions.",
+        "uk": "Двомовні питання для технічних співбесід.",
     }
     for language, entries in sorted(by_language.items()):
         lines = [

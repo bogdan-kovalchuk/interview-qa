@@ -1,9 +1,21 @@
-"""Build the manual-test Anki packages for the Interview QA note type.
+"""Build the manual-test Anki packages, and serve as the reference deck builder.
 
-Produces two packages so the owner can verify, by hand, on desktop and AnkiDroid:
+The real builder (packaging/anki/build.py) does not exist yet; this script is the
+worked example of how to assemble a package: it reads the note type from
+packaging/anki/notetype/, derives GUIDs from question ids, and embeds the font
+subsets from packaging/anki/fonts/.
 
-  v1 - six cards, the full styling, embedded fonts
+Produces two packages for hand-verification on desktop and AnkiDroid:
+
+  v1 - six cards, full styling, embedded fonts
   v2 - the same deck with one card removed and one card edited
+
+The procedure: import v1, study a few cards so they have a real interval, delete
+py-test-0001, then import v2 and confirm three things - the deleted card did not
+come back, the intervals did not reset, and the edited card shows the new text.
+That run was done on 2026-09-03 and all three held; see meta/MEASUREMENTS.md.
+The deck root is `Interview QA Test`, separate from the real deck, so it can be
+deleted whole afterwards. Keep the fonts in collection.media - they are reused.
 
 Run:  python packaging/anki/test-deck/build_test_deck.py
 """
@@ -11,6 +23,7 @@ Run:  python packaging/anki/test-deck/build_test_deck.py
 from __future__ import annotations
 
 import hashlib
+import json
 import pathlib
 import sys
 
@@ -20,20 +33,13 @@ ROOT = pathlib.Path(__file__).resolve().parents[3]
 FONTS = ROOT / "packaging" / "anki" / "fonts"
 OUT = ROOT / "packaging" / "anki" / "test-deck"
 
-# Deliberately fixed ids in the past, so Anki's own timestamp-based id generation
-# can never produce them again and collide. The full set is the frozen fingerprint;
-# see packaging/anki/note_type.md.
-MODEL_ID = 1600000000001
+# The note type lives in packaging/anki/notetype/ and nowhere else: ids in fingerprint.json,
+# markup in front.html / back.html, styling in card.css. Ids are deliberately taken from the
+# past so Anki's timestamp-based generation can never produce them again and collide.
+NOTETYPE = ROOT / "packaging" / "anki" / "notetype"
+FINGERPRINT = json.loads((NOTETYPE / "fingerprint.json").read_text(encoding="utf-8"))
+MODEL_ID = FINGERPRINT["model_id"]
 DECK_ID_BASE = 1600000000100
-
-FIELDS = [
-    {"name": "Front", "ord": 0, "id": 1600000001001},
-    {"name": "Back", "ord": 1, "id": 1600000001002},
-    {"name": "Reference", "ord": 2, "id": 1600000001003},
-    {"name": "Sources", "ord": 3, "id": 1600000001004},
-    {"name": "QID", "ord": 4, "id": 1600000001005},
-]
-TEMPLATE_ID = 1600000001101
 
 SITE = "https://bogdan-kovalchuk.github.io/interview-qa"
 GUID_SALT = "iqa:v1:"
@@ -43,7 +49,7 @@ BASE91 = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 
 def guid_for(qid: str) -> str:
-    """Deterministic note GUID, per ADR-0006. Never change this function."""
+    """Deterministic note GUID. Never change this function."""
     digest = hashlib.sha256((GUID_SALT + qid).encode("utf-8")).digest()[:8]
     n = int.from_bytes(digest, "big")
     out = []
@@ -53,49 +59,8 @@ def guid_for(qid: str) -> str:
     return "".join(reversed(out)) or BASE91[0]
 
 
-LABEL_JS = """
-<script>
-(function () {
-  var qid = "{{text:QID}}";
-  var map = { py: "Python", cpp: "C / C++", emb: "Embedded", cs: "Computer science",
-              sys: "Systems", db: "Databases", eng: "Engineering", sd: "System design",
-              ds: "Data science", ml: "Machine learning", de: "Data engineering",
-              be: "Backend", ops: "DevOps", qa: "QA automation", bhv: "Behavioral" };
-  var el = document.getElementById("deck-label");
-  var key = qid.split("-")[0];
-  if (el && map[key]) { el.textContent = map[key] + " interview"; }
-})();
-</script>
-"""
-
-FRONT_TMPL = """<div class="card-wrap">
-  <div class="top-bar"></div>
-  <main class="card-body">
-    <div class="deck-label" id="deck-label">Interview QA</div>
-    <section class="prompt">{{Front}}</section>
-  </main>
-</div>
-""" + LABEL_JS
-
-BACK_TMPL = """<div class="card-wrap">
-  <div class="top-bar"></div>
-  <main class="card-body">
-    <div class="deck-label" id="deck-label">Interview QA</div>
-    <section class="prompt">{{Front}}</section>
-    <hr id="answer" class="separator">
-    <section class="answer">{{Back}}</section>
-    {{#Reference}}
-    <div class="learn-more"><a href="{{text:Reference}}">Розгорнуте пояснення</a></div>
-    {{/Reference}}
-    {{#Sources}}<div class="source">{{Sources}}</div>{{/Sources}}
-  </main>
-</div>
-""" + LABEL_JS
-
-
 def font_face_css() -> str:
     """One @font-face per family/weight/subset, with the Google unicode-range."""
-    import json
     faces = json.loads((FONTS / "fonts.json").read_text(encoding="utf-8"))
     out = []
     for f in faces:
@@ -112,140 +77,15 @@ def font_face_css() -> str:
     return "\n".join(out)
 
 
-STYLING_BODY = """
-.card {
-  --page-bg: #f4f5f7;
-  --surface: #ffffff;
-  --text: #1c2330;
-  --muted: #98a1b3;
-  --line: #eceef2;
-  --accent: #3776ab;
-  --accent-strong: #245b88;
-  --code-bg: #f7f9fc;
-  --code-line: #dce4ec;
-  --warning: #c43d4b;
-
-  --font-display: "Literata", Georgia, "Times New Roman", serif;
-  --font-text: "Golos Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-mono: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", Consolas, monospace;
-
-  margin: 0;
-  padding: 0;
-  background: var(--page-bg);
-  color: var(--text);
-  font-family: var(--font-text);
-  font-size: 19px;
-  line-height: 1.58;
-  text-align: left;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-.card-wrap {
-  box-sizing: border-box;
-  max-width: 680px;
-  margin: 18px auto;
-  border-radius: 16px;
-  background: var(--surface);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-}
-
-.top-bar { height: 8px; background: linear-gradient(90deg, #3776ab 0%, #5aa7d6 55%, #ffd343 100%); }
-.card-body { padding: 26px 34px 30px; }
-
-.deck-label {
-  margin-bottom: 12px;
-  color: var(--muted);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.prompt {
-  margin: 4px 0 8px;
-  font-family: var(--font-display);
-  font-size: 29px;
-  font-weight: 700;
-  line-height: 1.28;
-  letter-spacing: -0.005em;
-}
-
-.answer { margin: 0; }
-.separator { margin: 24px 0 20px; border: 0; border-top: 1px solid var(--line); }
-
-code {
-  padding: 0.08em 0.32em;
-  border: 1px solid var(--code-line);
-  border-radius: 5px;
-  background: var(--code-bg);
-  color: var(--text);
-  font-family: var(--font-mono);
-  font-size: 0.86em;
-  overflow-wrap: anywhere;
-}
-
-.code-block {
-  margin: 14px 0;
-  padding: 16px 18px;
-  border: 1px solid var(--code-line);
-  border-left: 4px solid var(--accent);
-  border-radius: 8px;
-  background: var(--code-bg);
-  overflow-x: auto;
-  tab-size: 4;
-}
-
-.code-block code {
-  display: block;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  white-space: pre;
-  overflow-wrap: normal;
-  font-size: 0.82em;
-  line-height: 1.5;
-}
-
-.key { color: var(--accent-strong); font-weight: 700; }
-.warn { color: var(--warning); font-weight: 700; }
-.source { display: none; }
-
-.learn-more { margin-top: 22px; font-size: 0.84em; }
-.learn-more a { color: var(--accent-strong); font-weight: 700; text-decoration: none; }
-
-.nightMode.card {
-  --page-bg: #15181d;
-  --surface: #1e232b;
-  --text: #e7ebf2;
-  --muted: #778294;
-  --line: #2b313b;
-  --accent: #65a9dc;
-  --accent-strong: #78b8e6;
-  --code-bg: #232935;
-  --code-line: #354052;
-  --warning: #ff8f92;
-}
-
-.nightMode .card-wrap { box-shadow: none; }
-.nightMode .learn-more a { color: #8bc8f2; }
-
-.mobile .card-wrap { margin: 0; border-radius: 0; box-shadow: none; }
-.mobile .card-body { padding: 22px 18px 26px; }
-.mobile .prompt { font-size: 25px; }
-.mobile.card { font-size: 17px; }
-"""
-
-
 def make_model() -> genanki.Model:
+    read = lambda name: (NOTETYPE / name).read_text(encoding="utf-8")
     return genanki.Model(
         MODEL_ID,
-        "Interview QA Basic",
-        fields=[dict(field) for field in FIELDS],
-        templates=[{"name": "Card 1", "ord": 0, "id": TEMPLATE_ID,
-                    "qfmt": FRONT_TMPL, "afmt": BACK_TMPL}],
-        css=font_face_css() + "\n" + STYLING_BODY,
+        FINGERPRINT["model_name"],
+        fields=[dict(field) for field in FINGERPRINT["fields"]],
+        templates=[dict(FINGERPRINT["templates"][0],
+                        qfmt=read("front.html"), afmt=read("back.html"))],
+        css=font_face_css() + "\n" + read("card.css"),
     )
 
 
