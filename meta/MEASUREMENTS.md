@@ -4,9 +4,14 @@
 документація й вимірювання розходяться, тому правило просте: **не переказуй документацію Anki –
 міряй**. Harness лежить у `packaging/anki/spike/` і запускається повторно.
 
-Повні протоколи з таблицями по кожній картці лишились у git – файли
-`meta/migration/anki-compatibility-report.md`, `anki-tag-refresh.md` і `predecessor-baseline.md`
-до коміту `9ae7403` включно (`git show 9ae7403:meta/migration/anki-compatibility-report.md`).
+Повні протоколи з таблицями по кожній картці лишились у git, у коміті `fb5e50e`:
+
+```
+git show fb5e50e:meta/migration/anki-compatibility-report.md
+git show fb5e50e:meta/migration/anki-tag-refresh.md
+git show fb5e50e:meta/migration/predecessor-baseline.md
+```
+
 Тут – результати й те, з чого вони випливають.
 
 ## Середовище
