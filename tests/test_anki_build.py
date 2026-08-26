@@ -37,13 +37,24 @@ def test_guid_formula_matches_test_deck_reference_implementation() -> None:
         assert anki_build.guid_for(qid) == build_test_deck.guid_for(qid)
 
 
-def test_all_nine_pilots_ship_a_card(payload: dict, vocabulary: dict) -> None:
+def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, vocabulary: dict) -> None:
+    # 401 real questions: the 9 original pilots plus the 392 migrated in
+    # PLAN.md step 4, of which 13 keep type `coding` with `anki.export: false`
+    # (their Task/Solution/Tests were never authored - see the M4 report) and
+    # so must not ship a card even though their Ukrainian Short answer reads
+    # fine on its own.
     model = anki_build.make_model()
     notes = anki_build.build_notes(payload["questions"], vocabulary, model)
-    assert len(notes) == 9
+
+    expected_shipped = {
+        question["id"]
+        for question in payload["questions"]
+        if question["languages"]["uk"]["lifecycle"]["card_in_apkg"]
+    }
+    assert len(notes) == len(expected_shipped) == 388
 
     shipped_ids = {note.fields[anki_build.FIELD_ORDER.index("QID")] for _deck, note in notes}
-    assert shipped_ids == {question["id"] for question in payload["questions"]}
+    assert shipped_ids == expected_shipped
 
 
 def test_front_label_comes_from_vocabulary_not_from_the_qid_prefix(payload: dict, vocabulary: dict) -> None:
@@ -119,6 +130,6 @@ def test_build_package_end_to_end(tmp_path: Path) -> None:
     out_path = tmp_path / "Interview QA - Full Library.apkg"
 
     count = anki_build.build_package(questions_path, ROOT / "meta" / "vocabulary.yml", out_path)
-    assert count == 9
+    assert count == 388
     assert out_path.is_file()
     assert out_path.stat().st_size > 0

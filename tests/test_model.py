@@ -16,7 +16,7 @@ def test_all_real_questions_parse_and_match_generated_schema() -> None:
     validator = Draft202012Validator(schema)
     files = sorted((ROOT / "content").rglob("*.md"))
 
-    assert len(files) == 18
+    assert len(files) == 802
     for path in files:
         question = parse_question_file(path, content_root=ROOT / "content")
         assert list(validator.iter_errors(question.model_dump(mode="json"))) == []
