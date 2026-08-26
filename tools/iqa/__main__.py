@@ -8,6 +8,7 @@ from pathlib import Path
 from . import build as build_module
 from .export import write_export
 from .model import export_question_schema
+from .pinned_actions import main as pinned_actions_main
 from .validate import print_report, validate_repository
 
 
@@ -37,11 +38,22 @@ def _parser() -> argparse.ArgumentParser:
         "build", help="the one build path: validate -> mirror -> astro build -> verify"
     )
     build.add_argument("--root", type=Path, default=Path.cwd())
+
+    pinned_actions = subcommands.add_parser(
+        "check-pinned-actions",
+        help="fail if any `uses:` in .github/workflows/ is not a 40-hex commit SHA",
+    )
+    pinned_actions.add_argument(
+        "--workflows", type=Path, default=Path(".github/workflows")
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.command == "check-pinned-actions":
+        return pinned_actions_main(["--workflows", str(args.workflows)])
+
     root = args.root.resolve()
     if args.command == "export-schema":
         destination = root / "meta" / "schema" / "question.schema.json"

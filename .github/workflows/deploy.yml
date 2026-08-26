@@ -1,0 +1,91 @@
+# Deploy the site to GitHub Pages.
+#
+# DELIBERATELY NOT wired to `push` yet. AGENTS.md: "Do not publish anything
+# outward without direct permission" - the owner has not authorised automatic
+# publication on merge. Until that permission is given, this workflow only
+# runs when someone explicitly clicks "Run workflow" (`workflow_dispatch`).
+#
+# TO ENABLE AUTOMATIC DEPLOY ON MERGE, once the owner authorises it: add a
+# `push: branches: [main]` trigger below, i.e. change
+#
+#   on:
+#     workflow_dispatch:
+#
+# to
+#
+#   on:
+#     workflow_dispatch:
+#     push:
+#       branches: [main]
+#
+# That is the one edit. Nothing else in this file changes. Record the
+# decision to flip it in meta/QUALITY_GATES.md and meta/DECISIONS.md when it
+# happens - do not just change the trigger silently.
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: requirements-lock.txt
+
+      - name: Install Python dependencies from the lock file
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --require-hashes -r requirements-lock.txt
+          python -m pip install --no-deps -e .
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install Node dependencies from the lock file
+        working-directory: site
+        run: npm ci
+
+      # Same one build path CI uses: validate -> export -> mirror -> astro
+      # build -> verify. A build that would fail CI must not be deployable.
+      - name: Full production build path
+        run: python -m iqa build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

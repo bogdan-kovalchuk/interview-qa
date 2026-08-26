@@ -16,7 +16,8 @@ programs. A fix made once is a fix everywhere.
 > thin say so, and `/status/` shows exactly where the gaps are. Nothing is hidden behind a
 > disclaimer in the footer.
 >
-> **Current state:** design complete, nine pilot questions written, no pipeline code yet.
+> **Current state:** the pipeline runs end to end on nine pilot questions - validation, the site
+> build and the Anki deck. The site is not deployed yet, and the 392-card migration has not started.
 
 ## How it works
 
