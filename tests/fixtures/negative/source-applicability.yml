@@ -1,0 +1,5 @@
+gate: source-applicability
+language: en
+replacements:
+  - old: '    applicability: "CPython 3.14 and compatible implementations with asyncio."'
+    new: ''

@@ -1,0 +1,3 @@
+gate: no-duplicates
+severity: warning
+mode: add-duplicate-question

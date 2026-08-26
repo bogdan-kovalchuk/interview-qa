@@ -1,0 +1,4 @@
+gate: id-immutable
+mode: registry-replace
+old: python/concurrency-and-gil/negative-fixture-question.md
+new: python/concurrency-and-gil/a-different-question-path.md

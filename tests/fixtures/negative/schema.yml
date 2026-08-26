@@ -1,0 +1,5 @@
+gate: schema
+language: en
+replacements:
+  - old: 'description: "A minimal valid English fixture."'
+    new: ''

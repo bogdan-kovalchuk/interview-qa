@@ -1,0 +1,5 @@
+gate: lang-links-parity
+language: en
+replacements:
+  - old: 'The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]'
+    new: 'The event loop depends on tasks returning control while they wait.[^missing-parity-source]'

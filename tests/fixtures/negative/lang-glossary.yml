@@ -1,0 +1,7 @@
+gate: lang-glossary
+language: uk
+replacements:
+  - old: 'event loop'
+    new: 'цикл подій'
+  - old: 'Event loop'
+    new: 'Цикл подій'

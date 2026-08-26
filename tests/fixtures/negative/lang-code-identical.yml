@@ -1,0 +1,5 @@
+gate: lang-code-identical
+language: en
+replacements:
+  - old: 'The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]'
+    new: "The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]\n\n```python\nprint('different')\n```"

@@ -1,0 +1,3 @@
+gate: lang-files-exist
+mode: remove-language
+language: uk
