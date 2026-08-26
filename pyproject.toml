@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "interview-qa"
+version = "0.1.0"
+description = "Validation and build tools for the Interview QA knowledge base"
+requires-python = ">=3.14"
+dependencies = [
+  "jsonschema",
+  "pydantic",
+  "PyYAML",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+iqa = "iqa.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "tools"}
+
+[tool.setuptools.packages.find]
+where = ["tools"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tools"]

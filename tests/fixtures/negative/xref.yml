@@ -1,0 +1,5 @@
+gate: xref
+language: en
+replacements:
+  - old: 'The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]'
+    new: 'The event loop depends on tasks returning control while they wait.[^python-asyncio-docs] See [another question](qid:py-gil-9999).'

@@ -1,0 +1,5 @@
+gate: taxonomy
+language: en
+replacements:
+  - old: 'section: concurrency-and-gil'
+    new: 'section: not-in-taxonomy'

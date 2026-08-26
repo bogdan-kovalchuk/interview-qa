@@ -1,0 +1,5 @@
+gate: facets-vocabulary
+language: en
+replacements:
+  - old: 'tags: [event-loop, blocking]'
+    new: "tags: [event-loop, blocking]\nframeworks: [unknown-framework]"

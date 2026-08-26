@@ -1,0 +1,5 @@
+gate: lang-structure-parity
+language: en
+replacements:
+  - old: '## Detailed explanation'
+    new: '## Comparison'

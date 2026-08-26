@@ -1,0 +1,5 @@
+gate: sources
+language: en
+replacements:
+  - old: 'kind: official'
+    new: 'kind: community'

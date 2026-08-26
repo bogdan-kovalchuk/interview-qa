@@ -1,0 +1,5 @@
+gate: claim-linked
+language: en
+replacements:
+  - old: 'The event loop runs callbacks on one thread.[^python-asyncio-docs] A blocking call prevents that thread from advancing other callbacks.'
+    new: 'The event loop runs callbacks on one thread. A blocking call prevents that thread from advancing other callbacks.'

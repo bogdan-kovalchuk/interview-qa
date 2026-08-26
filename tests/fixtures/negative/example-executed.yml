@@ -1,0 +1,13 @@
+gate: example-executed
+language: en
+replacements:
+  - old: 'tags: [event-loop, blocking]'
+    new: |-
+      tags: [event-loop, blocking]
+      execution:
+        language: python
+        standard: null
+        toolchain:
+          name: unavailable-iqa-runner
+          version: "1.0"
+        flags: []

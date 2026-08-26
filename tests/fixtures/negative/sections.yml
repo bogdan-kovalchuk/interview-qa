@@ -1,0 +1,5 @@
+gate: sections
+language: en
+replacements:
+  - old: '## Detailed explanation'
+    new: '## Comparison'

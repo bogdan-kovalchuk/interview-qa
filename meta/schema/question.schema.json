@@ -1,0 +1,463 @@
+{
+  "$defs": {
+    "AnkiSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "export": {
+          "default": true,
+          "title": "Export",
+          "type": "boolean"
+        }
+      },
+      "title": "AnkiSettings",
+      "type": "object"
+    },
+    "Applicability": {
+      "additionalProperties": false,
+      "properties": {
+        "product": {
+          "minLength": 1,
+          "title": "Product",
+          "type": "string"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Version"
+        }
+      },
+      "required": [
+        "product",
+        "version"
+      ],
+      "title": "Applicability",
+      "type": "object"
+    },
+    "Execution": {
+      "additionalProperties": false,
+      "properties": {
+        "flags": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Flags",
+          "type": "array"
+        },
+        "language": {
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Language",
+          "type": "string"
+        },
+        "standard": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Standard"
+        },
+        "toolchain": {
+          "$ref": "#/$defs/Toolchain"
+        }
+      },
+      "required": [
+        "language",
+        "standard",
+        "toolchain",
+        "flags"
+      ],
+      "title": "Execution",
+      "type": "object"
+    },
+    "Language": {
+      "enum": [
+        "en",
+        "uk"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "Level": {
+      "enum": [
+        "junior",
+        "middle",
+        "senior"
+      ],
+      "title": "Level",
+      "type": "string"
+    },
+    "ParsedBody": {
+      "additionalProperties": false,
+      "properties": {
+        "preamble": {
+          "title": "Preamble",
+          "type": "string"
+        },
+        "raw": {
+          "title": "Raw",
+          "type": "string"
+        },
+        "sections": {
+          "items": {
+            "$ref": "#/$defs/ParsedSection"
+          },
+          "title": "Sections",
+          "type": "array"
+        }
+      },
+      "required": [
+        "raw",
+        "preamble",
+        "sections"
+      ],
+      "title": "ParsedBody",
+      "type": "object"
+    },
+    "ParsedSection": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "heading": {
+          "title": "Heading",
+          "type": "string"
+        },
+        "subsections": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/ParsedSubsection"
+          },
+          "title": "Subsections",
+          "type": "array"
+        }
+      },
+      "required": [
+        "heading",
+        "content"
+      ],
+      "title": "ParsedSection",
+      "type": "object"
+    },
+    "ParsedSubsection": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "heading": {
+          "title": "Heading",
+          "type": "string"
+        }
+      },
+      "required": [
+        "heading",
+        "content"
+      ],
+      "title": "ParsedSubsection",
+      "type": "object"
+    },
+    "QuestionFrontmatter": {
+      "additionalProperties": false,
+      "properties": {
+        "anki": {
+          "$ref": "#/$defs/AnkiSettings",
+          "default": {
+            "export": true
+          }
+        },
+        "applies_to": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Applicability"
+          },
+          "title": "Applies To",
+          "type": "array"
+        },
+        "content_revision": {
+          "minimum": 1,
+          "title": "Content Revision",
+          "type": "integer"
+        },
+        "description": {
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "execution": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Execution"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "frameworks": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "title": "Frameworks",
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-[a-z0-9]{3,8}-[0-9]{4}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "level": {
+          "$ref": "#/$defs/Level"
+        },
+        "prerequisites": {
+          "default": [],
+          "items": {
+            "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-[a-z0-9]{3,8}-[0-9]{4}$",
+            "type": "string"
+          },
+          "title": "Prerequisites",
+          "type": "array"
+        },
+        "reconciled_with": {
+          "additionalProperties": {
+            "minimum": 1,
+            "type": "integer"
+          },
+          "propertyNames": {
+            "$ref": "#/$defs/Language"
+          },
+          "title": "Reconciled With",
+          "type": "object"
+        },
+        "section": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$",
+          "title": "Section",
+          "type": "string"
+        },
+        "see_also": {
+          "default": [],
+          "items": {
+            "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-[a-z0-9]{3,8}-[0-9]{4}$",
+            "type": "string"
+          },
+          "title": "See Also",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/Source"
+          },
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "tags": {
+          "default": [],
+          "items": {
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "type": "string"
+          },
+          "title": "Tags",
+          "type": "array"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "track": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Track",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "updated": {
+          "format": "date",
+          "title": "Updated",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "track",
+        "section",
+        "level",
+        "type",
+        "status",
+        "updated",
+        "content_revision",
+        "reconciled_with",
+        "sources"
+      ],
+      "title": "QuestionFrontmatter",
+      "type": "object"
+    },
+    "QuestionType": {
+      "enum": [
+        "concept",
+        "mechanism",
+        "comparison",
+        "pitfall",
+        "practical",
+        "coding",
+        "debugging",
+        "system-design",
+        "behavioral"
+      ],
+      "title": "QuestionType",
+      "type": "string"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "accessed": {
+          "format": "date",
+          "title": "Accessed",
+          "type": "string"
+        },
+        "applicability": {
+          "minLength": 1,
+          "title": "Applicability",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "source_id": {
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "title": {
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "url": {
+          "format": "uri",
+          "maxLength": 2083,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Version"
+        }
+      },
+      "required": [
+        "source_id",
+        "title",
+        "url",
+        "accessed",
+        "kind",
+        "version",
+        "applicability"
+      ],
+      "title": "Source",
+      "type": "object"
+    },
+    "SourceKind": {
+      "enum": [
+        "official",
+        "spec",
+        "book",
+        "community"
+      ],
+      "title": "SourceKind",
+      "type": "string"
+    },
+    "Status": {
+      "enum": [
+        "draft",
+        "review",
+        "published",
+        "withdrawn"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "Toolchain": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "title": "Name",
+          "type": "string"
+        },
+        "version": {
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "title": "Toolchain",
+      "type": "object"
+    }
+  },
+  "$id": "https://interview-qa.invalid/schema/question.schema.json",
+  "additionalProperties": false,
+  "properties": {
+    "body": {
+      "$ref": "#/$defs/ParsedBody"
+    },
+    "frontmatter": {
+      "$ref": "#/$defs/QuestionFrontmatter"
+    },
+    "language": {
+      "$ref": "#/$defs/Language"
+    },
+    "slug": {
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "title": "Slug",
+      "type": "string"
+    },
+    "source_path": {
+      "title": "Source Path",
+      "type": "string"
+    }
+  },
+  "required": [
+    "language",
+    "slug",
+    "source_path",
+    "frontmatter",
+    "body"
+  ],
+  "title": "Interview QA question",
+  "type": "object"
+}

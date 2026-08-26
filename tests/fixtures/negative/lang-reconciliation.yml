@@ -1,0 +1,6 @@
+gate: lang-reconciliation
+severity: warning
+language: en
+replacements:
+  - old: 'content_revision: 1'
+    new: 'content_revision: 2'

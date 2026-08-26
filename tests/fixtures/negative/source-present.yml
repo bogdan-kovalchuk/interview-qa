@@ -1,0 +1,13 @@
+gate: source-present
+language: en
+replacements:
+  - old: |-
+      sources:
+        - source_id: python-asyncio-docs
+          title: "Python asyncio documentation"
+          url: https://docs.python.org/3.14/library/asyncio.html
+          accessed: 2026-09-04
+          kind: official
+          version: "3.14"
+          applicability: "CPython 3.14 and compatible implementations with asyncio."
+    new: 'sources: []'

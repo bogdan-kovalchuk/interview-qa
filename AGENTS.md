@@ -41,8 +41,13 @@ justification is a second person.
 | `packaging/anki/notetype/` | the note type: ids, markup, styling – defined once |
 | `packaging/anki/{fonts,spike,test-deck}/` | embedded fonts, measurement harness, manual-test decks |
 | `site/` | Astro Starlight; the only Node part |
-| `tools/` | the Python pipeline; the only component that reads `content/` |
+| `tools/iqa/` | the Python pipeline; the only component that reads `content/` |
+| `tests/` | negative fixtures - one per gate - plus model, lifecycle and CLI tests |
 | `PLAN.md` | what happens next |
+
+One-time setup: `pip install -e .` and `pip install pytest`. After that
+`python -m iqa validate` checks the content gates and `python -m pytest` runs the suite. Nothing
+else in the repository is runnable yet.
 
 Nothing else outranks this file. If another document disagrees with it, that document is wrong and
 must be fixed – not worked around.
