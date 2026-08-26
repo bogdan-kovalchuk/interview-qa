@@ -54,18 +54,26 @@ must be fixed – not worked around.
 
 ## Current state
 
-Design settled, pipeline not built. The decisions are made (`meta/DECISIONS.md`), the Anki behaviour
-is measured on real collections (`meta/MEASUREMENTS.md`), the question contract is frozen, and nine
-bilingual pilots exist.
+The pipeline runs end to end on nine bilingual pilot questions. Decisions are settled
+(`meta/DECISIONS.md`), the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`),
+and the question contract is frozen.
 
-What does **not** exist yet, despite documents that long read as if it did: the mirror does not
-materialise citations, sources or localised headings and does not filter by `status`; the site build
-does not regenerate the mirror; `verify_build.py` does not build anything and derives its
-expectations from whatever was emitted; the validator covers a minority of the documented gates; and
-there is no CI at all. `PLAN.md` opens with that list, and its first three steps close it.
+What works today, and how to run it:
 
-Treat every "the pipeline does X" sentence in `meta/` as a **contract**, not a description, until
-`PLAN.md` step 3 is done.
+```
+python -m iqa validate    the content and parity gates, one negative fixture each
+python -m iqa export      dist/export/questions.json
+python -m iqa build       validate -> export -> mirror -> astro build -> verify
+python packaging/anki/build.py    the .apkg, from the export
+python -m pytest --basetemp=<writable dir>
+```
+
+CI runs that same sequence on every pull request. Deploying to GitHub Pages is deliberately
+**manual only** (`workflow_dispatch`) until the owner authorises automatic publication, and the
+deck is released by tagging `deck-v*`.
+
+What does not exist yet: site navigation, section and track indexes, `/status/`, the progress
+report, programs, and the 392-card migration. `PLAN.md` steps 4-7.
 
 ## Non-negotiable invariants
 

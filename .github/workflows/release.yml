@@ -1,0 +1,114 @@
+# Deck release: on a `deck-v*` tag, build the `.apkg` and attach it to a
+# GitHub Release.
+#
+# Builds from the TAGGED COMMIT, not from `main`: `actions/checkout` defaults
+# to `github.ref`, which for a tag push is the tag itself. A release must be
+# reproducible from an immutable point - if it built from whatever `main` had
+# moved to by the time the job ran, two runs of the same tag could produce
+# different decks. Push the tag at the exact commit you want released.
+#
+# ANKI GATES - WHAT ACTUALLY RUNS, AND WHAT DOES NOT (YET):
+# meta/QUALITY_GATES.md lists eight blocking Anki gates. Several of them
+# (`anki-guid-stability`, `anki-identity-stable`, `anki-notetype-stable`,
+# `anki-no-silent-removal`, `anki-edit-preserves-progress`) are diffs against
+# `packaging/anki/releases/<previous-version>.json` - a release manifest that
+# does not exist yet. PLAN.md step 4, checkpoint 4, is what writes the FIRST
+# one, as a baseline; there is nothing to diff against before that. No script
+# in this repository computes that diff (tools/iqa and packaging/anki/build.py
+# do not implement it), and this workflow does not invent one - that would be
+# exactly the "documentation describes aspiration as fact" defect AGENTS.md
+# calls out. What this workflow DOES run, because it already exists and is
+# real: `python -m iqa validate` (content gates), the full `pytest` suite -
+# which includes tests/test_anki_build.py: the GUID formula matches the frozen
+# reference implementation, the note type templates carry no QID-parsing
+# logic, every pilot ships a card, fields are written by name - and
+# `python -m iqa build`, which fails if a `Reference` URL the deck will embed
+# does not correspond to a page the production build actually emits. Wiring
+# the remaining diff-based gates is follow-up work for whoever writes
+# `packaging/anki/releases/<version>.json` in step 4, not this workflow.
+name: Deck release
+
+on:
+  push:
+    tags:
+      - "deck-v*"
+
+concurrency:
+  group: deck-release-${{ github.ref }}
+  cancel-in-progress: false
+
+# Least privilege: this workflow only needs to create a release and upload an
+# asset to it. It does not touch Pages and does not need `id-token`.
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the tagged commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: requirements-lock.txt
+
+      - name: Install Python dependencies from the lock file
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --require-hashes -r requirements-lock.txt
+          python -m pip install --no-deps -e .
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install Node dependencies from the lock file
+        working-directory: site
+        run: npm ci
+
+      - name: Validate content gates
+        run: python -m iqa validate
+
+      - name: Run the test suite (includes the Anki-facing checks that exist)
+        run: python -m pytest --basetemp="${{ runner.temp }}/pytest"
+
+      - name: Full production build path (produces dist/export/questions.json)
+        run: python -m iqa build
+
+      - name: Derive the deck version from the tag
+        id: version
+        run: |
+          tag="${GITHUB_REF_NAME}"
+          version="${tag#deck-}"
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Build the .apkg
+        run: |
+          mkdir -p packaging/anki/dist
+          python packaging/anki/build.py \
+            --out "packaging/anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg"
+
+      - name: Checksum the release artifact (release-checksums gate)
+        working-directory: packaging/anki/dist
+        run: |
+          sha256sum "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
+            > "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256"
+          cat "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256"
+
+      - name: Create the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.version.outputs.tag }}" \
+            "packaging/anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
+            "packaging/anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256" \
+            --title "Interview QA deck ${{ steps.version.outputs.version }}" \
+            --generate-notes

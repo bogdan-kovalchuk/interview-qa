@@ -102,16 +102,119 @@
 
 ## Пайплайни
 
-> **Нічого з цього ще не існує.** `.github/` у репозиторії немає, жодні ворота нічого не блокують,
-> і поки CI не написаний, «ворота проходять» означає лише ручний локальний запуск. Таблиці вище –
-> цільовий дизайн, а не чинний стан. Створення workflows – окремий крок у `PLAN.md`.
+CI написаний і реально блокує: три workflow у `.github/workflows/`, кожен `uses:` у них запінений
+за commit SHA, перевіреним GitHub API і `git ls-remote` окремо (не вигаданим – **`pinned-actions`
+тепер реальна перевірка**, `tools/iqa/pinned_actions.py`, викликається як
+`python -m iqa check-pinned-actions`, тест `tests/test_pinned_actions.py` з негативним кейсом на
+`@v4`). Жоден із трьох файлів нічого не реалізує заново: усі викликають `tools/iqa/`,
+`tools/verify_build.py` і `packaging/anki/build.py`, які вже працювали до цього кроку.
 
-| Тригер | Що виконується |
-|---|---|
-| PR | контент, паритет, сайт + звіти коментарем |
-| merge у `main` | те саме + білд і deploy на GitHub Pages |
-| tag `deck-v*` | ворота Anki + збірка `.apkg` + GitHub Release |
-| щотижневий cron | `external-links`, звіт застарілих перекладів |
+| Тригер | Workflow | Що виконується |
+|---|---|---|
+| PR у `main` і push у `main` | `ci.yml` | `check-pinned-actions`, `iqa validate`, `pytest`, `iqa build` (validate -> export -> mirror -> astro build -> verify) |
+| ручний запуск (`workflow_dispatch`) | `deploy.yml` | той самий build path, потім `configure-pages` -> `upload-pages-artifact` -> `deploy-pages` |
+| тег `deck-v*` | `release.yml` | `iqa validate`, `pytest`, `iqa build`, збірка `.apkg`, sha256, GitHub Release |
+| щотижневий cron | – | **не реалізовано в цьому кроці** – `external-links` і звіт застарілих перекладів лишаються ручним запуском; окремий workflow – майбутня робота, не обіцяна тут |
+
+### Деплой навмисно не на `push`
+
+`deploy.yml` тригериться лише `workflow_dispatch`. Власник не давав дозволу на автопублікацію
+(`AGENTS.md`: «Не публікувати нічого назовні без прямого дозволу»), а деплой на GitHub Pages –
+саме зовнішня публікація. Це рішення, не недогляд: коли власник дозволить, у файлі один рядок,
+позначений коментарем на початку `deploy.yml`, вмикає деплой на кожен merge у `main`:
+
+```yaml
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+```
+
+### Реліз колоди – з тега, не з `main`
+
+`release.yml` тригериться на push тега `deck-v*` і збирає **комміт, на який вказує тег**
+(`actions/checkout` за замовчуванням бере `github.ref`, для тега це сам тег), а не поточний
+`main`. Реліз мусить відтворюватись з незмінної точки: якби збірка йшла з `main`, два запуски
+одного тега могли б дати різну колоду, якщо `main` встиг змінитися між ними.
+
+`.apkg` називається `Interview QA - Full Library-<version>.apkg`, де `<version>` – хвіст тега
+після `deck-` (тег `deck-v2026.09.1` дає файл `...-v2026.09.1.apkg`), у форматі версії з
+`meta/ANKI.md`. Поруч – `<...>.apkg.sha256` (`release-checksums`).
+
+**Ворота Anki, які реально виконуються, і які ні:** `anki-guid-stability`, `anki-identity-stable`,
+`anki-notetype-stable`, `anki-no-silent-removal`, `anki-edit-preserves-progress` – це діфи проти
+`packaging/anki/releases/<попередня-версія>.json`. Такого файлу ще немає: перший release manifest
+з'являється в `PLAN.md`, крок 4, чекпойнт 4 (базова лінія), і діфитись поки нема з чим. Жоден
+скрипт цей діф не рахує – `release.yml` його не вигадує. Реально виконується: `iqa validate`,
+повний `pytest` (включно з `tests/test_anki_build.py` – формула GUID збігається з еталонною
+реалізацією, шаблони не парсять QID, кожен пілот віддає картку, поля пишуться за іменем), і
+`iqa build`, який валить збірку, якщо `Reference`-URL картки не відповідає сторінці, яку
+production-збірка реально видає. Дописати діф-ворота – робота того, хто в кроці 4 напише
+`packaging/anki/releases/<version>.json`.
+
+### Lockfiles
+
+`requirements-lock.txt` (корінь репозиторію) – Python, згенерований `pip-compile --generate-hashes`
+з `pyproject.toml` (`[project] dependencies` + `[project.optional-dependencies] test`); CI ставить
+залежності лише командою `pip install --require-hashes -r requirements-lock.txt`, без резолву з
+PyPI під час збірки. `site/package-lock.json` – Node, як і раніше; CI ставить `npm ci`. Обидва
+файли комітяться. Регенерація Python-лока (коли зміниться `pyproject.toml`):
+
+```
+pip install pip-tools
+pip-compile --extra test --generate-hashes -o requirements-lock.txt pyproject.toml
+```
+
+Під час цього кроку виявилось, що `genanki` – реальна залежність (`packaging/anki/build.py`,
+`tests/test_anki_build.py`), яка не була в `pyproject.toml`. Додано до `[project] dependencies`;
+без цього лок і `pip install --no-deps -e .` не покривали б пакет, який тести й реліз реально
+імпортують.
+
+### `dependency-audit` – відкладено, явно
+
+CI цього кроку **не запускає** жодного аудитора вразливостей чи ліцензій. Ні `pip-audit`, ні
+`npm audit`, ні звірка `THIRD_PARTY_NOTICES` нікуди не викликаються – рядок у таблиці вище
+залишається цільовим дизайном, не описом того, що виконується. `THIRD_PARTY_NOTICES` – предмет
+`PLAN.md` кроку 4, чекпойнта 4 (реліз, OFL-тексти шрифтів). Додати `dependency-audit` в CI –
+майбутня робота: не зроблено зараз, і це навмисно сказано тут, а не замовчано.
+
+### Раннер, версії, кеш, дозволи
+
+Усі три workflow – `ubuntu-latest`: дефолтний, найдешевший і найшвидший клас раннерів GitHub
+Actions, і `astro`/`pagefind`/`genanki` не мають нічого, що вимагає саме Windows чи macOS. Окремо
+виміряно на робочій Windows-машині: повторний локальний запуск `iqa build` без очищення
+попереднього дзеркала періодично ловив `WinError 5` від `shutil.rmtree` (файловий вотчер –
+VS Code чи антивірус – тримає щойно створений файл частку секунди). У CI кожен запуск – чистий
+checkout, дзеркала з попереднього разу там немає, тож цей конкретний рейс там не відтворюється
+незалежно від ОС раннера; це спостереження, а не причина вибору `ubuntu-latest`, і тому винесено
+окремо, а не видано за обґрунтування. Python `3.14` (те, що вимагає `pyproject.toml` і що реально
+протестовано локально). Node `24` (задовольняє `astro` `engines.node: >=22.0.0`, і це версія, з
+якою сайт реально збирався локально при написанні цього кроку).
+
+Кеш: `actions/setup-python` кешує `pip` за `requirements-lock.txt`; `actions/setup-node` кешує
+`npm` за `site/package-lock.json`. Дозволи – за принципом найменших прав: `ci.yml` –
+`contents: read` (нічого не публікує); `deploy.yml` – `contents: read`, `pages: write`,
+`id-token: write` (потрібно `actions/deploy-pages`); `release.yml` – `contents: write` (створити
+Release й додати asset), без `pages` і без `id-token`. Конкурентність: `ci.yml` скасовує
+попередній запуск на тому самому ref (`cancel-in-progress: true` – новий пуш робить старий
+запуск нерелевантним); `deploy.yml` – групою `pages`, без скасування (не перебивати живий
+деплой); `release.yml` – групою за тегом.
+
+### Один локальний запуск, ідентичний CI
+
+```
+pip install --require-hashes -r requirements-lock.txt
+pip install --no-deps -e .
+cd site && npm ci && cd ..
+python -m iqa check-pinned-actions
+python -m iqa validate
+python -m pytest --basetemp=<writable dir>
+python -m iqa build
+```
+
+Той самий порядок, ті самі команди, що й у `ci.yml` – «проходить локально» і «проходить у CI»
+означають одне й те саме. `<writable dir>` – будь-яка тека, куди процес точно може писати:
+дефолтна тимчасова тека pytest на цій машині періодично виявляється недоступною для запису.
 
 ## Що перевіряє рев'ю, а не CI
 

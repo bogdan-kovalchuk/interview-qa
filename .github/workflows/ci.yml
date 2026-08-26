@@ -1,0 +1,73 @@
+# PR / push checks: content gates, the test suite, and the full production
+# build path (validate -> export -> mirror -> astro build -> verify).
+#
+# This is the workflow that must fail on a broken question. It runs the exact
+# same commands documented in meta/QUALITY_GATES.md ("Пайплайни" -> PR) and in
+# README-equivalent local instructions: `pip install --require-hashes -r
+# requirements-lock.txt`, `pip install --no-deps -e .`, `npm ci` in `site/`,
+# `python -m iqa validate`, `python -m pytest`, `python -m iqa build`. Nothing
+# here reimplements tools/iqa or packaging/anki - it only calls them.
+#
+# Every `uses:` below is pinned to a commit SHA, verified against the tag it
+# claims to be by querying the GitHub API and `git ls-remote` independently
+# (meta/QUALITY_GATES.md `pinned-actions`). This workflow enforces that rule
+# on itself and on the other two workflows via `check-pinned-actions` below.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Least privilege: this workflow only reads the repository and reports
+# check results. It never deploys and never creates releases.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: requirements-lock.txt
+
+      - name: Install Python dependencies from the lock file
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --require-hashes -r requirements-lock.txt
+          python -m pip install --no-deps -e .
+
+      - name: Check that every GitHub Action is pinned by commit SHA
+        run: python -m iqa check-pinned-actions
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install Node dependencies from the lock file
+        working-directory: site
+        run: npm ci
+
+      - name: Validate content gates
+        run: python -m iqa validate
+
+      - name: Run the test suite
+        run: python -m pytest --basetemp="${{ runner.temp }}/pytest"
+
+      - name: Full production build path (validate -> mirror -> astro build -> verify)
+        run: python -m iqa build
