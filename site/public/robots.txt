@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bogdan-kovalchuk.github.io/interview-qa/sitemap-index.xml

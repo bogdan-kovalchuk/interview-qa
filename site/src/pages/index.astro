@@ -1,0 +1,28 @@
+---
+// The project root (`/interview-qa/`) redirects to the default locale.
+// Static hosting on GitHub Pages cannot issue a real 301, so this follows the
+// same resolver-page pattern as `[lang]/q/[id].astro`: an immediate client-side
+// navigation, a canonical link, and a visible fallback link.
+const target = `${import.meta.env.BASE_URL}en/`;
+const canonicalUrl = new URL(target, Astro.site ?? Astro.url).href;
+---
+
+<!doctype html>
+<html lang="en" data-target={target}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Interview QA</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <script is:inline>
+      const target = document.documentElement.dataset.target;
+      if (target) window.location.replace(target);
+    </script>
+  </head>
+  <body>
+    <main>
+      <p>Opening Interview QA.</p>
+      <p><a href={target}>Continue to Interview QA</a></p>
+    </main>
+  </body>
+</html>

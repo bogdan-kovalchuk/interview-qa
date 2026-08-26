@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+from . import build as build_module
+from .export import write_export
 from .model import export_question_schema
 from .validate import print_report, validate_repository
 
@@ -18,6 +20,23 @@ def _parser() -> argparse.ArgumentParser:
 
     schema = subcommands.add_parser("export-schema", help="regenerate the question JSON Schema")
     schema.add_argument("--root", type=Path, default=Path.cwd())
+
+    export = subcommands.add_parser(
+        "export", help="write dist/export/questions.json from the model"
+    )
+    export.add_argument("--root", type=Path, default=Path.cwd())
+    export.add_argument("--out", type=Path, default=None)
+    export.add_argument("--base", default="/interview-qa")
+    export.add_argument(
+        "--in-withdrawal-window",
+        action="store_true",
+        help="treat withdrawn questions as still inside their two-release removal window",
+    )
+
+    build = subcommands.add_parser(
+        "build", help="the one build path: validate -> mirror -> astro build -> verify"
+    )
+    build.add_argument("--root", type=Path, default=Path.cwd())
     return parser
 
 
@@ -29,6 +48,20 @@ def main(argv: list[str] | None = None) -> int:
         export_question_schema(destination)
         print(destination.as_posix())
         return 0
+
+    if args.command == "export":
+        destination = args.out if args.out is not None else root / "dist" / "export" / "questions.json"
+        count = write_export(
+            root / "content",
+            destination,
+            base=args.base,
+            in_withdrawal_window=args.in_withdrawal_window,
+        )
+        print(f"Exported {count} questions into {destination.as_posix()}")
+        return 0
+
+    if args.command == "build":
+        return build_module.run(root)
 
     report = validate_repository(root)
     print_report(report)
