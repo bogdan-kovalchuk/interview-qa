@@ -129,10 +129,90 @@ def test_negative_fixture_is_caught(tmp_path: Path, scenario_path: Path) -> None
     assert {item.severity for item in matches} == {scenario.get("severity", "error")}
 
 
-def test_real_pilots_pass_all_blocking_content_gates() -> None:
+def _base_repository(tmp_path: Path, *, en_text: str, uk_text: str) -> Path:
+    """A minimal repository around one hand-built question, without going
+    through the yaml-driven negative-fixture machinery above (that path is
+    reserved for the one-fixture-per-gate set `EXPECTED_FIXTURE_GATES`
+    enumerates)."""
+    for name in ("vocabulary.yml", "TAXONOMY.md"):
+        destination = tmp_path / "meta" / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / "meta" / name, destination)
+    schema_destination = tmp_path / "meta" / "schema" / "question.schema.json"
+    schema_destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(ROOT / "meta" / "schema" / "question.schema.json", schema_destination)
+    _write(tmp_path / "content" / "en" / BASE_PATH, en_text)
+    _write(tmp_path / "content" / "uk" / BASE_PATH, uk_text)
+    _registry(tmp_path / "meta" / "id-registry.csv", [("py-gil-9000", "published", BASE_PATH)])
+    return tmp_path
+
+
+def test_lang_parity_gates_ignore_a_todo_section(tmp_path: Path) -> None:
+    """meta/QUALITY_GATES.md: a `TODO` placeholder is exempt from having text -
+
+    including the code block and citation token that section would otherwise
+    need to match between languages. A Ukrainian `Detailed explanation` with a
+    written code block and its own citation must not be compared against an
+    English `Detailed explanation` that is still `TODO`."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+
+    en_text = _replace(
+        en_base,
+        "The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]",
+        "TODO",
+    )
+    uk_text = _replace(
+        uk_base,
+        "Event loop залежить від того, що tasks повертають керування під час очікування.[^python-asyncio-docs]",
+        "Event loop залежить від того, що tasks повертають керування під час очікування.[^python-asyncio-docs]\n\n"
+        "```python\nasync def slow() -> None:\n    time.sleep(1)\n```",
+    )
+
+    repository = _base_repository(tmp_path, en_text=en_text, uk_text=uk_text)
+    report = validate_repository(repository)
+
+    blocked_gates = {item.gate for item in report.errors}
+    assert "lang-code-identical" not in blocked_gates
+    assert "lang-links-parity" not in blocked_gates
+
+
+def test_lang_code_identical_still_catches_a_real_mismatch(tmp_path: Path) -> None:
+    """Two sections that are written in *both* languages must still match -
+
+    the TODO exemption only ever widens what is skipped, never what a written
+    section is allowed to disagree on."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+
+    en_text = _replace(
+        en_base,
+        "The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]",
+        "The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]\n\n"
+        "```python\nasync def slow() -> None:\n    time.sleep(1)\n```",
+    )
+    uk_text = _replace(
+        uk_base,
+        "Event loop залежить від того, що tasks повертають керування під час очікування.[^python-asyncio-docs]",
+        "Event loop залежить від того, що tasks повертають керування під час очікування.[^python-asyncio-docs]\n\n"
+        "```python\nasync def slow() -> None:\n    time.sleep(2)\n```",
+    )
+
+    repository = _base_repository(tmp_path, en_text=en_text, uk_text=uk_text)
+    report = validate_repository(repository)
+
+    assert "lang-code-identical" in {item.gate for item in report.errors}
+
+
+def test_real_content_passes_all_blocking_content_gates() -> None:
+    """The whole real `content/` tree - the nine original pilots plus the
+
+    392 questions migrated from the predecessor deck in PLAN.md step 4 - has
+    zero blocking failures. Word-count is a documented soft warning
+    (meta/QUESTIONS.md SS7), not asserted away here."""
     report = validate_repository(ROOT)
-    assert report.files_checked == 18
-    assert report.questions_checked == 9
+    assert report.files_checked == 802
+    assert report.questions_checked == 401
     assert report.errors == []
 
 

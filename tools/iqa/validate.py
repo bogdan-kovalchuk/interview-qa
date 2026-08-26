@@ -741,18 +741,40 @@ def _language_gates(
                 "lang-structure-parity",
                 f"`{qid}` section sequences differ",
             )
-        if CODE_BLOCK_RE.findall(en.body.raw) != CODE_BLOCK_RE.findall(uk.body.raw):
+
+        # Both gates below compare *written* text between languages. Per
+        # meta/QUALITY_GATES.md's framing rule, a `TODO` placeholder is
+        # exempt from having text at all - it carries no code and no
+        # citation/qid tokens to be identical or parallel to anything, so a
+        # section that is `TODO` on either side is excluded from both
+        # comparisons rather than compared against an empty section on the
+        # other side. A section written in both languages is still compared
+        # in full - this only stops the gate from treating "not written yet"
+        # as a mismatch.
+        en_by_heading = {section.heading: section for section in en.body.sections}
+        uk_by_heading = {section.heading: section for section in uk.body.sections}
+        written_headings = [
+            heading
+            for heading in en_by_heading
+            if heading in uk_by_heading
+            and en_by_heading[heading].content.strip() != "TODO"
+            and uk_by_heading[heading].content.strip() != "TODO"
+        ]
+        en_written_raw = "\n".join(en_by_heading[h].content for h in written_headings)
+        uk_written_raw = "\n".join(uk_by_heading[h].content for h in written_headings)
+
+        if CODE_BLOCK_RE.findall(en_written_raw) != CODE_BLOCK_RE.findall(uk_written_raw):
             report.add("lang-code-identical", f"`{qid}` code blocks differ")
 
         en_links = {
             "sources": {source.source_id for source in en.frontmatter.sources},
-            "citations": set(CITATION_RE.findall(en.body.raw)),
-            "qids": set(QID_RE.findall(en.body.raw)),
+            "citations": set(CITATION_RE.findall(en_written_raw)),
+            "qids": set(QID_RE.findall(en_written_raw)),
         }
         uk_links = {
             "sources": {source.source_id for source in uk.frontmatter.sources},
-            "citations": set(CITATION_RE.findall(uk.body.raw)),
-            "qids": set(QID_RE.findall(uk.body.raw)),
+            "citations": set(CITATION_RE.findall(uk_written_raw)),
+            "qids": set(QID_RE.findall(uk_written_raw)),
         }
         if en_links != uk_links:
             report.add("lang-links-parity", f"`{qid}` sources or link tokens differ")

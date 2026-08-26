@@ -75,6 +75,36 @@ section_labels_nav:
   engineering/version-control:        {en: Version control,          uk: Контроль версій}
   system-design/messaging-and-queues: {en: Messaging and queues,     uk: Черги й повідомлення}
   behavioral/teamwork-and-conflict:   {en: Teamwork and conflict,    uk: Командна робота й конфлікт}
+  # Додано міграцією M4 (PLAN.md крок 4): 26 секцій, наповнені 392 картками
+  # з predecessor-колоди. python/* - пряме перенесення 20 тем Anki-репозиторію
+  # 1:1 із meta/TAXONOMY.md; cs/, databases/, engineering/ - теми 21-23,
+  # перенесені за meta/migration/tag-mapping.md.
+  python/fundamentals:                  {en: Fundamentals,                  uk: Основи}
+  python/syntax-and-control-flow:       {en: Syntax and control flow,       uk: Синтаксис і потік керування}
+  python/objects-and-types:             {en: Objects and types,             uk: Об'єкти і типи}
+  python/collections:                   {en: Collections,                   uk: Колекції}
+  python/functions-and-scope:           {en: Functions and scope,           uk: Функції та область видимості}
+  python/oop-and-data-model:            {en: OOP and data model,            uk: ООП і модель даних}
+  python/decorators:                    {en: Decorators,                    uk: Декоратори}
+  python/iterators-and-generators:      {en: Iterators and generators,      uk: Ітератори та генератори}
+  python/context-managers:              {en: Context managers,              uk: Контекстні менеджери}
+  python/exceptions:                    {en: Exceptions,                    uk: Винятки}
+  python/modules-and-imports:           {en: Modules and imports,           uk: Модулі та імпорти}
+  python/files-and-io:                  {en: Files and I/O,                 uk: Файли та ввід-вивід}
+  python/comprehensions-and-functional: {en: Comprehensions and functional, uk: "Comprehensions і функціональний стиль"}
+  python/cpython-internals:             {en: CPython internals,             uk: Внутрішній устрій CPython}
+  python/asyncio:                       {en: Asyncio,                       uk: Asyncio}
+  python/standard-library:              {en: Standard library,              uk: Стандартна бібліотека}
+  python/testing:                       {en: Testing,                       uk: Тестування}
+  python/performance:                   {en: Performance,                   uk: Продуктивність}
+  cs/algorithms:                        {en: Algorithms,                    uk: Алгоритми}
+  cs/data-structures:                   {en: Data structures,               uk: Структури даних}
+  databases/indexing-and-query-plans:   {en: Indexing and query plans,      uk: Індексація та плани запитів}
+  databases/sql-queries:                {en: SQL queries,                   uk: SQL-запити}
+  databases/transactions-and-isolation: {en: Transactions and isolation,    uk: Транзакції та ізоляція}
+  databases/relational-model:           {en: Relational model,              uk: Реляційна модель}
+  engineering/ci-cd:                    {en: "CI/CD",                       uk: "CI/CD"}
+  engineering/code-quality:             {en: Code quality,                  uk: Якість коду}
 
 # Значення фасета `frameworks`. Фреймворк додається тоді, коли з'являється перше питання,
 # що його називає, а не наперед.
@@ -94,6 +124,34 @@ section_prefixes:
   system-design/messaging-and-queues: msgq
   behavioral/teamwork-and-conflict: team
   engineering/version-control:      vcs
+  # M4 migration additions - one prefix per section, issued once and frozen
+  # (meta/QUESTIONS.md SS2: "belongs to the section, not the question").
+  python/fundamentals:                  fund
+  python/syntax-and-control-flow:       syntax
+  python/objects-and-types:             objtypes
+  python/collections:                   coll
+  python/functions-and-scope:           funcs
+  python/oop-and-data-model:            oop
+  python/decorators:                    decor
+  python/iterators-and-generators:      itergen
+  python/context-managers:              ctxmgr
+  python/exceptions:                    excpt
+  python/modules-and-imports:           modimp
+  python/files-and-io:                  fileio
+  python/comprehensions-and-functional: compfn
+  python/cpython-internals:             cpyint
+  python/asyncio:                       async
+  python/standard-library:              stdlib
+  python/testing:                       testing
+  python/performance:                   perf
+  cs/algorithms:                        algo
+  cs/data-structures:                   dstruct
+  databases/indexing-and-query-plans:   idxplan
+  databases/sql-queries:                sqlq
+  databases/transactions-and-isolation: txiso
+  databases/relational-model:           relmod
+  engineering/ci-cd:                    cicd
+  engineering/code-quality:             codeq
 
 # Термінологія перекладу. Ворота lang-glossary звіряють вжиті форми з цим списком.
 glossary:

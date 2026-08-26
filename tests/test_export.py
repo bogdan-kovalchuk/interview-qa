@@ -11,10 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 
 
-def test_export_has_nine_questions_with_both_languages() -> None:
+def test_export_has_401_questions_with_both_languages() -> None:
     payload = build_export(CONTENT)
     assert payload["base"] == "/interview-qa"
-    assert len(payload["questions"]) == 9
+    assert len(payload["questions"]) == 401
     for question in payload["questions"]:
         assert set(question["languages"]) == {"en", "uk"}
 
