@@ -29,6 +29,8 @@ import os
 from pathlib import Path
 import re
 import shutil
+import stat
+import time
 import tempfile
 from typing import Any
 
@@ -203,6 +205,30 @@ def mirror_question(
     return language.value, question_id, question.frontmatter.title
 
 
+def remove_tree(path: Path) -> None:
+    """Delete a generated tree, retrying past the transient locks Windows hands out.
+
+    On Windows an indexer, an editor or an antivirus scanner can hold a handle on a
+    file inside the freshly written mirror, and `shutil.rmtree` then fails with
+    WinError 5 even though the same delete succeeds a moment later. That aborts the
+    build for a reason that has nothing to do with the content, and it happened on
+    three separate occasions here. Clearing the read-only bit and retrying a few
+    times turns it back into what it is: noise.
+    """
+    def on_error(func, target, _exc):
+        os.chmod(target, stat.S_IWRITE)
+        func(target)
+
+    for attempt in range(5):
+        try:
+            shutil.rmtree(path, onexc=on_error)
+            return
+        except OSError:
+            if attempt == 4:
+                raise
+            time.sleep(0.3)
+
+
 def write_locale_indexes(output_root: Path, questions: list[tuple[str, str, str]], base: str) -> None:
     by_language: dict[str, list[tuple[str, str]]] = {}
     for language, question_id, title in questions:
@@ -280,11 +306,11 @@ def generate(source: Path, output: Path, base: str, *, preview: bool = False, ro
                 mirrored.append(result)
         write_locale_indexes(temporary, mirrored, base)
         if output.exists():
-            shutil.rmtree(output)
+            remove_tree(output)
         os.replace(temporary, output)
     finally:
         if temporary.exists():
-            shutil.rmtree(temporary)
+            remove_tree(temporary)
 
     return len(mirrored)
 
