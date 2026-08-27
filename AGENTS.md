@@ -36,8 +36,7 @@ justification is a second person.
 | `meta/MEASUREMENTS.md` | what was measured on real Anki collections |
 | `meta/vocabulary.yml` | section labels, glossary, frameworks, section prefixes |
 | `meta/id-registry.csv` | issued question IDs – the arbiter |
-| `meta/topic-briefs/` | 23 research briefs, raw material for objectives and questions |
-| `meta/migration/` | frozen inputs for the predecessor deck migration |
+| `meta/predecessor-baseline.json` | hashes of the migrated predecessor deck, kept as evidence |
 | `packaging/anki/notetype/` | the note type: ids, markup, styling – defined once |
 | `packaging/anki/{fonts,spike,test-deck}/` | embedded fonts, measurement harness, manual-test decks |
 | `site/` | Astro Starlight; the only Node part |
@@ -54,9 +53,14 @@ must be fixed – not worked around.
 
 ## Current state
 
-The pipeline runs end to end on nine bilingual pilot questions. Decisions are settled
-(`meta/DECISIONS.md`), the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`),
-and the question contract is frozen.
+**401 questions, both languages, 388 cards in the deck.** The 392 predecessor cards are migrated;
+nine hand-written pilots cover every question type. Decisions are settled (`meta/DECISIONS.md`),
+the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`), and the question
+contract is frozen.
+
+Every migrated question has a real Ukrainian `Short answer` and `TODO` everywhere else, including
+the whole English body. That is the documented skeleton state, not an unfinished job: the card
+ships from the Ukrainian answer, and the page shows honestly what is not written yet.
 
 What works today, and how to run it:
 
@@ -73,7 +77,7 @@ CI runs that same sequence on every pull request. Deploying to GitHub Pages is d
 deck is released by tagging `deck-v*`.
 
 What does not exist yet: site navigation, section and track indexes, `/status/`, the progress
-report, programs, and the 392-card migration. `PLAN.md` steps 4-7.
+report, and programs. `PLAN.md` steps 5-7.
 
 ## Non-negotiable invariants
 
@@ -124,8 +128,6 @@ Breaking any of these is a migration event, not an edit.
 - **Do not revive `legacy_card_id` or a GUID map.** The predecessor's 392 notes exist in no
   collection; on the new `model_id` an inherited GUID is the one combination that can corrupt a
   collection.
-- **Do not treat `meta/migration/legacy/` as a live specification.** It is a frozen input; it
-  disappears after the migration.
 - **`type::Definition` and `level::Junior` have zero cards in the old deck**, so their mapping and
   the junior criteria are not validated against any real question.
 - **Do not publish anything outward without direct permission.**

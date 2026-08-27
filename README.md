@@ -16,8 +16,9 @@ programs. A fix made once is a fix everywhere.
 > thin say so, and `/status/` shows exactly where the gaps are. Nothing is hidden behind a
 > disclaimer in the footer.
 >
-> **Current state:** the pipeline runs end to end on nine pilot questions - validation, the site
-> build and the Anki deck. The site is not deployed yet, and the 392-card migration has not started.
+> **Current state:** 401 questions in both languages, 388 of them shipping as Ukrainian flashcards.
+> Every question has a short answer; detailed explanations and the English text are still `TODO` and
+> the site says so on each page. The site itself is not deployed yet.
 
 ## How it works
 
