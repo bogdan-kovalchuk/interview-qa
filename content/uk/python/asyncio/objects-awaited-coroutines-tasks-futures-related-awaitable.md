@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,30 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Bytecode-рівень `await` фактично каже: викликати `__await__()` на об'єкті, отримати iterator і
+резюмувати його доти, доки він не підніме `StopIteration` (значення якого й стає результатом
+`await`) або якийсь інший exception.[^py314-library-asyncio-task] Різні типи реалізують цей
+iterator по-різному, і саме ця різниця пояснює, чим вони відрізняються один від одного.
+
+`Future.__await__` – найпростіший випадок: якщо результат ще не встановлено, метод один раз
+`yield self`, тобто повертає сам Future об'єкт назовні як "проміжне значення" iterator-а. Саме цей
+yield розпізнає machinery Task, що керує coroutine: коли всередині coroutine yield'иться Future
+(а не звичайне значення), Task реєструє на ньому `add_done_callback` і призупиняє себе, а не
+трактує це як помилку. Коли Future отримує результат чи exception, callback резюмує `__await__`
+через `send`/`throw`, і `StopIteration` завершує очікування.
+
+Coroutine object не yield'ить Future напряму сама – вона делегує це вглиб, до того місця, де її
+власний код зробив `await` на чомусь іншому. Тобто `await` на coroutine просто драйвить її як
+iterator, і врешті-решт цей ланцюг `await` усередині `await` доходить до якогось Future
+(найчастіше – Future, що представляє I/O-подію в selector-і), саме він і є єдиним місцем, звідки
+насправді береться "проміжна зупинка".
+
+Task – підклас Future, і тому успадковує його `__await__`: `await task` веде себе так само, як
+`await` будь-якого Future – призупиняє викликача, поки `task` не встановить свій результат. Але
+всередині сама Task – окремий driver: вона резюмує обгорнуту coroutine через власний internal
+`__step()`, ловить кожен Future, який ця coroutine yield'ить, підписується на нього і повторює
+цикл, аж доки coroutine не завершиться – і саме тоді Task як Future встановлює власний результат,
+розбуджуючи все, що на неї чекало.
 
 ## Evaluation guide
 

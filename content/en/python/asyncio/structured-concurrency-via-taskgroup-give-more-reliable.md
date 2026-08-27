@@ -8,10 +8,10 @@ level: senior
 type: comparison
 tags: [taskgroup, create-task]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,40 @@ sources:
 
 ## Short answer
 
-TODO
+**`TaskGroup` guarantees that when any task fails, all sibling tasks are cancelled and exceptions
+are collected into an `ExceptionGroup` – whereas a loose set of `create_task()` calls requires
+manual tracking and can leave a task unsupervised.**[^py314-library-asyncio-task] Exiting
+`async with TaskGroup()` implicitly awaits every task; if one of them failed with an exception
+(other than `CancelledError`), the rest are cancelled, no new tasks are accepted, and once all of
+them finish it raises an `ExceptionGroup`. This eliminates the classic mistake of a "forgotten" task
+that fails silently.
 
 ## Detailed explanation
 
-TODO
+The core idea of structured concurrency is that no asynchronous operation should outlive the scope
+it was started in. `TaskGroup` implements this literally: exiting `async with TaskGroup()` is
+impossible until every Task created inside it via `tg.create_task()` has finished, so the function
+containing that block physically cannot return while leaving behind work that is still
+running.[^py314-library-asyncio-task] Each Task's lifetime is tightly bound to the lifetime of the
+block it was born in.
+
+A bare set of `create_task()` calls gives no such guarantee at all. A function can create several
+Tasks and return right away without waiting on any of them – they keep running, tied only to the
+loop, not to any visible scope in the code. If the caller of that function did not keep a reference
+to those Tasks, it does not even know they exist, and the further fate of those Tasks is a separate
+story: if one fails with an exception, nobody finds out until someone explicitly reads its result.
+
+The second difference is the direction cancellation propagates. If the outer coroutine containing
+`async with TaskGroup()` is cancelled, the group intercepts that `CancelledError` and cascades
+cancellation to all of its children before letting the cancellation continue propagating further.
+Bare Tasks created via `create_task()` with no group have no such binding: cancelling the coroutine
+that spawned them does not automatically cancel the orphaned Tasks in any way – they simply keep
+running on their own, detached from the logic that created them.
+
+So "reliability" here is not about performance or API surface, but about whether, looking at the
+boundaries of one block of code, you can say for certain what concurrent work is still in flight.
+With `TaskGroup` the answer is always unambiguous: everything inside the block has either already
+finished, or is guaranteed to finish (successfully or via cancellation) before the block exits.
 
 ## Comparison
 

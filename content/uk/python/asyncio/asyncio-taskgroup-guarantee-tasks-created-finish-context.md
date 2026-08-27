@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [asyncio-taskgroup]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,25 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`TaskGroup.__aexit__` не просто виходить з блоку – він виконує внутрішню логіку, яка в циклі чекає,
+поки set задач, зареєстрованих через `create_task()`, не стане порожнім.
+[^py314-library-asyncio-task] Кожен виклик `tg.create_task(coro)` додає `Task` у внутрішній `set` і
+навішує на неї `done_callback`, який видаляє Task із цього set та, якщо вона впала з exception,
+ініціює скасування решти задач групи. Тому `__aexit__` не завершується, доки останній callback не
+спрацює для всіх задач – незалежно від того, скільки їх було створено і в якому порядку вони
+фінішували.
+
+Якщо одна з Tasks кидає exception (окрім `CancelledError`), `TaskGroup` скасовує всі інші ще активні
+Tasks у групі та чекає, поки вони теж завершаться (включно з обробкою `CancelledError` всередині
+них), і лише потім піднімає `ExceptionGroup`, що об'єднує всі зібрані помилки, навіть якщо впала
+лише одна Task. Це і є structured concurrency: неможливо вийти з блоку, залишивши осиротілі задачі,
+що виконуються у фоні без нагляду, – на відміну від "голого" `asyncio.create_task()` без TaskGroup,
+де забута Task може продовжувати жити і після того, як функція, що її створила, повернула
+керування.
+
+`create_task()` можна викликати лише всередині самого блоку `async with`; спроба додати нову Task
+після початку `__aexit__` (наприклад, з callback-а іншої задачі) підніме `RuntimeError`, бо група
+вже перейшла у стан завершення і більше не приймає нових членів.
 
 ## Evaluation guide
 

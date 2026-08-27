@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,35 @@ sources:
 
 ## Short answer
 
-TODO
+**A coroutine function is an `async def` function; a coroutine object is the object that calling
+such a function returns; the result of `await` is the value the coroutine returns once it
+finishes.**[^py314-library-asyncio-task] Calling an `async def` function does not run its body, it
+only creates a coroutine object. For the code to actually run, that object has to be passed to
+`await`, `asyncio.create_task()`, or another launch mechanism. The result of `await coro()` is
+whatever the coroutine returns via `return`.
 
 ## Detailed explanation
 
-TODO
+If a coroutine object that nobody awaits gets garbage collected while still unstarted, Python
+issues a `RuntimeWarning: coroutine '...' was never awaited`, because this is a common mistake: a
+developer called an `async def` function, forgot the `await`, and the code silently did
+nothing.[^py314-library-asyncio-task] This is what sets a coroutine object apart from an ordinary
+function call: an ordinary function runs immediately when called, while a coroutine object only
+reserves state (an execution frame) and waits for something to start "advancing" it via `await` or
+an equivalent.
+
+Every call to an `async def` function creates a new, independent coroutine object with its own
+frame – two calls to the same function with the same arguments do not share state. At the same
+time, the same coroutine object cannot be awaited twice: once it has finished, awaiting it again
+raises a `RuntimeError` ("cannot reuse already awaited coroutine"), because its internal frame has
+already been released.
+
+Awaiting a coroutine object runs it synchronously within the current Task – it does not create a
+new unit of scheduling, it just "inlines" the coroutine's logic into whatever is awaiting it. By
+contrast, `asyncio.create_task(coro())` registers the coroutine with the event loop as a separate
+Task that runs concurrently with the rest of the code, and the result of `await`-ing that Task is
+the same `return` value, but obtained after the Task got to run alongside other code, rather than
+immediately in the same call frame.[^py314-library-asyncio-eventloop]
 
 ## Comparison
 

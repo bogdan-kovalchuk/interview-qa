@@ -58,16 +58,24 @@ nine hand-written pilots cover every question type. Decisions are settled (`meta
 the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`), and the question
 contract is frozen.
 
-Every migrated question has a real Ukrainian `Short answer` and `TODO` everywhere else, including
-the whole English body. That is the documented skeleton state, not an unfinished job: the card
-ships from the Ukrainian answer, and the page shows honestly what is not written yet.
+A migrated question starts with a real Ukrainian `Short answer` and `TODO` everywhere else,
+including the whole English body. That is the documented skeleton state, not an unfinished job: the
+card ships from the Ukrainian answer, and the page shows honestly what is not written yet.
+
+Writing over that skeleton has started (`PLAN.md` step 7). **60 of the 392** now carry a written
+Ukrainian `Detailed explanation`; **59** of those also carry the full English body – the translated
+`Short answer` and `Detailed explanation`. The odd one out, `py-coll-0020`, is Ukrainian-only and
+`lang-reconciliation` says so in every validate run; that warning is the mechanism working, not a
+defect to silence. The card count is unchanged at 388, because a card ships on the Ukrainian
+`Short answer` alone and every one of those was already written.
 
 What works today, and how to run it:
 
 ```
 python -m iqa validate    the content and parity gates, one negative fixture each
 python -m iqa export      dist/export/questions.json
-python -m iqa build       validate -> export -> mirror -> astro build -> verify
+python -m iqa report      dist/export/progress.{json,csv}; --todo prints the next gaps
+python -m iqa build       validate -> export+report -> mirror -> astro build -> verify
 python packaging/anki/build.py    the .apkg, from the export
 python -m pytest --basetemp=<writable dir>
 ```
@@ -76,8 +84,10 @@ CI runs that same sequence on every pull request. Deploying to GitHub Pages is d
 **manual only** (`workflow_dispatch`) until the owner authorises automatic publication, and the
 deck is released by tagging `deck-v*`.
 
-What does not exist yet: site navigation, section and track indexes, `/status/`, the progress
-report, and programs. `PLAN.md` steps 5-7.
+What does not exist yet: site navigation, section and track indexes, the `/status/` page, and
+programs. `PLAN.md` steps 6-7. The progress report itself exists as data (`python -m iqa report`)
+and the page that renders it does not; an unwritten section already shows a WIP callout instead of
+the bare word `TODO`, and an index entry carries a completeness badge.
 
 ## Non-negotiable invariants
 

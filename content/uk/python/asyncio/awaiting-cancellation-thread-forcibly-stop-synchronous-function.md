@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: [to-thread]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,27 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Скасування в asyncio працює через доставку `CancelledError` у coroutine, яка чекає на результат –
+це можливо лише тому, що coroutine кооперативно повертає керування на кожному `await`. Worker
+thread, у якому виконується функція, передана в `to_thread()`, – не coroutine: він виконує звичайний
+Python bytecode без жодних точок, де event loop міг би "втрутитися" і підмінити виконання винятком.
+[^py314-library-asyncio-task] Коли caller скасовує awaiting Task, `CancelledError` піднімається у
+тій точці, де coroutine чекала на `Future` від thread pool executor-а, – тобто в головному thread-і,
+а не всередині worker-а.
+
+`concurrent.futures.Future`, яку обгортає `to_thread()`, підтримує `cancel()` лише доки завдання ще
+не почало виконуватися в worker thread; щойно `func` реально запустилася, `cancel()` повертає
+`False` і ніяк на неї не впливає – у CPython немає безпечного публічного API для примусового
+переривання довільного thread ззовні (аналог примусового `kill` для довільного bytecode небезпечний,
+бо може перервати виконання посеред утримання internal lock-а чи мутації структури даних). Тому
+await, що скасовується, лише "відпускає" очікуючу coroutine із exception, а сам worker thread
+продовжує виконуватися до природного `return` або `raise`, і його результат просто ігнорується,
+коли він зрештою прийде.
+
+Практичний наслідок – ресурси, відкриті всередині функції (файлові дескриптори, сокети, locks),
+залишаються зайнятими на весь час, доки функція сама не завершиться, навіть якщо caller давно
+отримав `CancelledError` і рухається далі; якщо функція тримає, наприклад, `threading.Lock`, і
+виконання застрягло, це може призвести до resource leak, що переживає саму cancellation.
 
 ## Symptom
 

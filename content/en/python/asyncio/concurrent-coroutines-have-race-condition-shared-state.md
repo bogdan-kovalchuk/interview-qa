@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,43 @@ sources:
 
 ## Short answer
 
-TODO
+**Because `await` is a voluntary yield point: the event loop can switch execution to another Task,
+and that Task will see an intermediate state of the shared resource.**[^py314-library-asyncio-task]
+In CPython the event loop cooperatively schedules tasks: until a Task executes an `await`, no other
+Task in that same thread runs. But as soon as a coroutine does an `await` (for example, on I/O or
+`asyncio.sleep`), the loop hands control to another Task, which can change a shared dict, counter,
+or list before the first Task resumes. The fix is to use `asyncio.Lock` around critical sections, or
+design the code so that state stays consistent between `await` points.
 
 ## Detailed explanation
 
-TODO
+The key difference from a race condition between OS threads: here a switch can only happen at an
+`await` point, not at an arbitrary spot, so a straight-line stretch of code with no `await` in it
+always runs atomically with respect to other Tasks. That narrows the surface of the problem but
+does not remove it: a classic example is "check, then act" over a shared resource, where the check
+and the action are separated by an `await`:
+
+```python
+if balance >= amount:
+    await ledger.write(amount)   # інша Task встигає списати тут
+    balance -= amount
+```
+
+If there is an `await ledger.write(...)` between checking `balance >= amount` and actually
+deducting it, another Task can run the same block in between and also pass the check against the
+old value of `balance`, after which both deduct funds even though there was not enough for both
+combined.[^py314-library-asyncio-dev]
+
+Unlike a race condition between threads, the order of switches here is not arbitrary in the sense
+of a hardware race – it is deterministic relative to which callbacks became ready and in what
+order. But to the caller it looks just as nondeterministic, because the order of readiness depends
+on external factors (for example, exactly when a network response arrives), not on the order of
+lines in the code.
+
+The most reliable way to avoid the problem is to keep the critical section that contains both the
+check and the state change free of any `await` inside it; if an `await` is unavoidable (for
+example, I/O is needed to write), the section has to be wrapped in an `asyncio.Lock`, so other
+Tasks wait for it to be released instead of running through the same block in parallel.
 
 ## Symptom
 

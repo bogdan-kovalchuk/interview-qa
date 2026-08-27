@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [asyncio-to-thread]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,27 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`asyncio.to_thread(func, *args, **kwargs)` – це тонка обгортка над `loop.run_in_executor()` з
+дефолтним `ThreadPoolExecutor` циклу, яка додатково копіює поточний `contextvars.Context` у worker
+thread, тому змінні контексту (наприклад, ті, що встановлені через `ContextVar.set()`) залишаються
+видимими всередині blocking функції.[^py314-library-asyncio-eventloop] На відміну від прямого
+виклику `run_in_executor(None, func, arg1, arg2)`, де keyword arguments довелося б передавати через
+`functools.partial(func, kw=value)`, `to_thread()` приймає `**kwargs` напряму – це суто ергономічна
+відмінність, механіка виконання та сама.
+
+Чому саме thread, а не звичайний виклик у корутині: I/O-bound blocking виклик (читання файлу,
+DNS-резолюшн, blocking HTTP-клієнт) утримує GIL лише короткими сплесками, а більшість часу
+проводить у системному виклику з GIL, звільненим на час очікування ОС; поки цей thread чекає на
+I/O, event loop у головному thread може продовжувати виконувати інші coroutines. Дефолтний
+executor – `ThreadPoolExecutor` з обмеженою кількістю worker-ів (`min(32, os.cpu_count() + 4)`),
+тож паралельних blocking викликів не може бути безмежно багато без явного налаштування
+`loop.set_default_executor()`.
+
+Для CPU-bound роботи (важкі обчислення без I/O) `to_thread()` не рятує: GIL не звільняється між
+bytecode-інструкціями достатньо, щоб дати реальний паралелізм, тому такий thread просто конкурує з
+головним thread-ом за GIL і навіть додає overhead на перемикання контексту. У цьому випадку
+потрібен окремий процес через `ProcessPoolExecutor`, де кожен worker має власний інтерпретатор і
+власний GIL.
 
 ## Environment
 

@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [asyncio-gather]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,25 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`gather()` не чекає awaitables послідовно і не сортує результати за часом завершення – він від
+самого початку створює для кожного вхідного awaitable окрему `Task` (або обгортку `Future`, якщо
+це вже Future) і зберігає впорядкований список цих об'єктів за позицією аргументу.
+[^py314-library-asyncio-task] Коли конкретна Task завершується, її callback записує результат у
+result list за тим самим індексом, яким ця Task була додана, а не за моментом виконання. Сам event
+loop планує coroutines кооперативно: кожен `await` всередині них – точка, де контроль повертається
+до loop, і саме loop вирішує, яка з задач отримає час на CPU далі; порядок виконання кроків може
+бути яким завгодно, але масив індексів фіксований одразу при виклику `gather()`.
+
+Це принципово відрізняє `gather()` від `asyncio.as_completed()`, який навпаки повертає awaitables
+у порядку фактичного завершення, а не у вхідному порядку – вибір між ними залежить від того, чи
+потрібен caller-у порядок результатів, чи швидкість реакції на перший готовий результат.
+
+За замовчуванням `return_exceptions=False`: якщо одна з awaitables кидає exception, `gather()`
+одразу піднімає його caller-у, але решта Tasks не скасовуються автоматично і продовжують
+виконуватися у фоні – це джерело поширеної помилки, коли забуті Tasks логують exceptions пізніше в
+повідомленні `Task exception was never retrieved`. З `return_exceptions=True` exception сам стає
+значенням у result list на своїй позиції, і caller отримує повний список без обриву на першій
+помилці.
 
 ## Evaluation guide
 

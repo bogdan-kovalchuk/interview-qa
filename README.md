@@ -12,13 +12,15 @@ programs. A fix made once is a fix everywhere.
 - Question permalink: `…/interview-qa/{lang}/q/{id}/` – stable forever, taxonomy-independent
 
 > **Work in progress, by design.** Every question exists in both languages from the day it is
-> created, with unwritten sections marked `TODO`, and is filled in over time. Pages that are still
-> thin say so, and `/status/` shows exactly where the gaps are. Nothing is hidden behind a
-> disclaimer in the footer.
+> created, with unwritten sections marked `TODO`, and is filled in over time. A page that is still
+> thin says so, in place, with a visible notice instead of the bare word `TODO`. Nothing is hidden
+> behind a disclaimer in the footer.
 >
-> **Current state:** 401 questions in both languages, 388 of them shipping as Ukrainian flashcards.
-> Every question has a short answer; detailed explanations and the English text are still `TODO` and
-> the site says so on each page. The site itself is not deployed yet.
+> **Current state:** 401 questions in both languages, 388 of them shipping as Ukrainian flashcards,
+> and the site is live at the link above. Every question has a Ukrainian short answer. 60 have a
+> written detailed explanation and 59 of those a full English body; for the rest, the detailed
+> explanation and the English text are still `TODO`. A `/status/` page that reports the gaps as a
+> table is next – the data behind it is already generated as `dist/export/progress.{json,csv}`.
 
 ## How it works
 

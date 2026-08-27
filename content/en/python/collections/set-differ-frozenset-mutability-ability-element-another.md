@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [set, frozenset]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,34 @@ sources:
 
 ## Short answer
 
-TODO
+**`set` is mutable and not hashable, so it cannot be an element of another set; `frozenset` is
+immutable and hashable, so it can.**[^py314-library-stdtypes] Trying to add a `set` to another set
+raises `TypeError: unhashable type: 'set'`. `frozenset` supports the same set operations (union,
+intersection, subset), but has no `add()` or `remove()` methods.
 
 ## Detailed explanation
 
-TODO
+The reason for the restriction is not an arbitrary rule but a necessary condition for the
+correctness of a hash table: an object's hash determines which bucket it is placed in, and that
+bucket must not change while the object sits inside the hash table. If `set` were hashable and
+could be mutated after being added to another structure, changing its contents would also change
+its hash – the object would stay in its old bucket, but a lookup by the new hash would no longer
+find it; the hash table would become inconsistent.[^py314-library-stdtypes] That is why Python
+deliberately does not define `__hash__` for a mutable `set`, and trying to use `{1, 2}` as an
+element of another set immediately raises `TypeError: unhashable type: 'set'`, instead of silently
+corrupting the structure.
+
+`frozenset` solves this by fixing its contents at creation time: after construction, no element can
+be added or removed, so its hash can be computed once and relied on forever. This makes `frozenset`
+usable both as an element of another set and as a dict key – wherever a set-valued value needs to
+participate in a hashed structure itself.
+
+Operationally, `frozenset` supports all the same binary operations as `set` – `union`,
+`intersection`, `difference`, `symmetric_difference`, as well as the `|`, `&`, `-`, `^` operators and
+the subset/superset comparisons – but each of them returns a new `frozenset` rather than modifying
+the existing one.[^py314-library-collections] The in-place mutating methods (`add`, `remove`,
+`discard`, `update`, `pop`, `clear`) simply do not exist on `frozenset` – consistent with
+immutability being a guarantee of the type, not a recommendation.
 
 ## Comparison
 

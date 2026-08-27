@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [wait, as-completed]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,34 @@ sources:
 
 ## Short answer
 
-TODO
+**`wait()` returns two sets `(done, pending)` and fits controlling completion via `return_when`;
+`as_completed()` returns an iterator of results in the order they finish – convenient for streaming
+processing.**[^py314-library-asyncio-task] That said, `wait()` does not cancel pending tasks on
+timeout and only accepts Task/Future (not a coroutine). And `as_completed()` likewise does not
+cancel tasks when iteration stops, but it gives results as soon as they are ready, which is better
+for progress bars or early-exit scenarios.
 
 ## Detailed explanation
 
-TODO
+`wait()` accepts a `return_when` parameter with three modes: `ALL_COMPLETED` (the default) waits
+for everything, `FIRST_COMPLETED` returns as soon as the first task finishes, and
+`FIRST_EXCEPTION` returns as soon as some task finishes with an exception (or once everything
+finishes without one). In all three cases `wait()` itself does not cancel anything and does not
+raise – each task's exception has to be retrieved manually via `task.exception()` or
+`task.result()`, otherwise it just sits silently in the `done` set.[^py314-library-asyncio-task]
+
+Historically `wait()` accepted both coroutines and Task/Future objects, but passing bare coroutines
+directly was deprecated and removed: arguments now have to already be wrapped in a Task (for
+example via `asyncio.create_task()`), otherwise `wait()` raises `TypeError`.[^py314-library-asyncio-dev]
+This is an important difference from `as_completed()`, which still accepts an awaitable of any
+kind and wraps it in a Task itself when needed.
+
+`as_completed()` does not return the results themselves, but awaitable wrappers in completion
+order; getting the result or exception of a specific operation requires `await`-ing each element of
+the iterator, and that is where (not when the element is pulled from the iterator) an exception
+surfaces if the task failed. If the code exits the `for` loop early (for example via `break` after
+finding the first result it needed), the remaining tasks keep running in the background –
+`as_completed()` has no way to cancel them automatically; that is the caller's responsibility.
 
 ## Comparison
 

@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [contextvar]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,26 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Технічно `Context` – незмінна (immutable) мапа: `ContextVar.set()` не мутує наявний контекст, а
+створює нове значення у поточному контексті виконання, повертаючи `Token`, який можна передати в
+`reset()`, щоб повернути попереднє значення. Coroutine, Task і callback завжди виконуються всередині
+якогось `Context`; коли `asyncio.create_task()` створює нову Task, вона отримує **копію** поточного
+`Context` на момент створення – це знімок, а не спільне посилання.[^py314-library-asyncio-task]
+
+Звідси важливий нюанс, якого немає в короткій відповіді: успадкування односпрямоване. Дочірня Task
+бачить значення `ContextVar`, встановлені батьківською Task **до** моменту `create_task()`, але
+зміна `ContextVar` усередині дочірньої Task ніяк не повертається назад у батьківську – кожна Task
+працює зі своєю копією, а не зі спільним мутабельним сховищем. Це відрізняється від `threading.local()`
+лише термінологічно, у нюансі copy-on-fork, а не поведінково: `threading.local()` теж не ділиться
+між потоками, але прив'язка йде до OS thread, а не до логічної одиниці виконання, тож усередині
+одного thread з кількома Task усі вони бачили б те саме значення `threading.local()`, тоді як
+`ContextVar` розрізняє їх.
+
+Є одна пастка: якщо код виконує callback через `loop.call_soon()` або відправляє роботу в
+`run_in_executor()`, `Context` копіюється автоматично лише для `call_soon`/`call_later`/Task, а
+явний виклик у `ThreadPoolExecutor` виконується в чужому потоці без автоматичного перенесення
+`Context` – щоб отримати ті самі значення там, потрібно обгорнути виклик у
+`contextvars.copy_context().run(...)`.[^py314-library-asyncio-eventloop]
 
 ## Comparison
 
