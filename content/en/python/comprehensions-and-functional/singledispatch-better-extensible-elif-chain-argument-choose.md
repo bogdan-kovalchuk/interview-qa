@@ -8,10 +8,10 @@ level: senior
 type: comparison
 tags: [singledispatch, if-elif]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -54,11 +54,38 @@ sources:
 
 ## Short answer
 
-TODO
+**`singledispatch` chooses the implementation by the type of the first argument, using the MRO to
+find the closest registered type.**[^py314-howto-functional] It is better than an `if/elif` chain
+when extensibility is needed: new types are registered via `@fn.register(type)` without modifying
+existing code (the open/closed principle). The base implementation (for `object`) serves as the
+fallback. <span class="warn">Dispatch happens only on the first argument; the types of other
+parameters do not affect the choice.</span>
 
 ## Detailed explanation
 
-TODO
+Type resolution does not work by simple equality comparison; it walks the `__mro__` of the
+argument's concrete type: `singledispatch` looks for the closest registered ancestor in the class's
+linearization order and calls that implementation, not necessarily the one registered for the
+instance's exact class.[^py314-library-functools] So a subclass with no implementation of its own
+automatically gets the implementation of its closest registered ancestor – that is the main
+difference from an `if isinstance(...)` chain, where this behavior would have to be written out by
+hand for every subclass.
+
+The resolution result is cached: after the first call with a given concrete type, `singledispatch`
+remembers the implementation it found for that type, so subsequent calls with the same type skip
+walking `__mro__` again. The cache is cleared automatically whenever a new implementation is
+registered via `register`, so types already called can re-evaluate their choice.
+
+If, because of multiple inheritance, a type has two registered ancestors at the same distance in
+`__mro__` and neither is an ancestor of the other, `singledispatch` does not pick one arbitrarily –
+it raises a `RuntimeError` about the ambiguity, requiring an explicit implementation to be
+registered for the problematic type itself.
+
+An implementation can be registered two ways: explicitly, with `@fn.register(SomeType)`, or – since
+Python 3.7 – via the type annotation on the function's first parameter, `@fn.register` with no
+argument, when the function is declared as `def _(arg: SomeType): ...`. For methods on a class there
+is a separate `functools.singledispatchmethod`, which ignores `self` and dispatches on the type of
+the first argument after it.[^py314-library-functools]
 
 ## Comparison
 

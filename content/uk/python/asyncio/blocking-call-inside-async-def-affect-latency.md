@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: [async-def]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,27 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Event loop asyncio однопотоковий і кооперативний: у кожен момент часу виконується щонайбільше один
+шматок Python bytecode, а перемикання між Tasks відбувається виключно в точках `await`, де coroutine
+явно повертає керування циклу.[^py314-library-asyncio-eventloop] Blocking call – `time.sleep()`,
+синхронний файловий I/O, синхронний DB-драйвер, важке CPU-обчислення – не містить жодної такої
+точки: це звичайний виклик функції, який виконується до кінця, перш ніж повернути керування. Доки
+цей виклик триває, loop фізично не може зробити нічого іншого: жоден інший `Task` не отримає CPU,
+жоден selector-callback на готовий сокет не спрацює, і навіть `asyncio.sleep()`, чий таймер уже
+спрацював, не поверне керування своїй Task, бо loop не встигає дійти до обробки цього callback-а.
+
+Наслідок – затримка **всіх** очікуючих операцій на тому ж loop зростає щонайменше на тривалість
+blocking call, незалежно від того, скільки Tasks очікували: п'ять Tasks, кожна з яких мала
+прокинутися через 10 мс, усі відкладаються однаково, якщо в той самий момент десь виконався blocking
+call на 500 мс. Це відрізняється від блокування в багатопотоковій моделі, де ОС може витіснити
+довгий thread; у asyncio такого примусового витіснення немає взагалі.
+
+Рішення – винести blocking виклик туди, де він не займає loop thread: `asyncio.to_thread()` або
+`loop.run_in_executor()` для I/O-bound роботи, `ProcessPoolExecutor` для CPU-bound. Для діагностики
+служить debug mode event loop-а: якщо ввімкнути його (`asyncio.run(main(), debug=True)` або
+`PYTHONASYNCIODEBUG=1`), loop логує попередження про будь-який callback, що виконувався довше за
+`slow_callback_duration` (за замовчуванням 100 мс) – це прямий спосіб знайти blocking call, який
+непомітно псує latency решти системи.[^py314-library-asyncio-dev]
 
 ## Environment
 

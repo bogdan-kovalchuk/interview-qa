@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [collections-defaultdict]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,27 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Механізм, на якому побудований `defaultdict`, – перевизначений `__missing__`: коли `__getitem__`
+не знаходить ключ, замість `KeyError` викликається `default_factory()` без аргументів, а
+результат одразу записується в словник і повертається.[^py314-library-collections] Це відрізняє
+`defaultdict` від `dict.setdefault(key, default)`: `setdefault` обчислює вираз-default щоразу під
+час виклику, навіть якщо ключ уже існує і default не використовується, тоді як `default_factory`
+викликається лише в разі реального промаху.
+
+Типове застосування – групування: `d = defaultdict(list); d[key].append(item)` уникає ручного
+`if key not in d: d[key] = []`. Для лічильників природний вибір – `defaultdict(int)`, бо `int()`
+повертає `0`. Для вкладених структур можна передати не сам тип, а callable:
+`defaultdict(lambda: defaultdict(int))` створює дерево словників на льоту.
+
+Помилка, яку легко приховати, – неправильна factory, що приймає аргументи або має side effects:
+`default_factory` викликається без параметрів, тож `defaultdict(list.append)` чи будь-яка factory,
+що очікує на key, зламається на першому промаху з `TypeError`. Ще одна пастка – переплутати
+`defaultdict(list)` із `defaultdict(list())`: другий варіант передає вже створений список як
+`default_factory`, а не сам тип, і виклик `list()(...)` впаде з `TypeError`, бо список не
+викликається.
+
+Механізм тісно повʼязаний із `__missing__` у звичайних словниках qid:py-coll-0012 – `defaultdict`
+є, по суті, найпростішим прикладом його застосування.
 
 ## Comparison
 

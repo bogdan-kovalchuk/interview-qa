@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [dict-keys, dict-values, dict-items]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,37 @@ sources:
 
 ## Short answer
 
-TODO
+**No, they are live views – they reflect any change to the dictionary immediately, rather than a
+snapshot taken at call time.**[^py314-library-stdtypes] Adding or removing a key in the
+dictionary is immediately visible through a previously saved view object. `dict.keys()` and
+`dict.items()` support set operations (union, intersection). <span class="warn">Changing the
+dictionary while iterating over one of its views raises `RuntimeError`.</span> To get a snapshot
+you need to explicitly make a copy: `list(d.keys())`.
 
 ## Detailed explanation
 
-TODO
+View objects are implemented as thin C structures that hold only a pointer back to the dictionary
+itself, rather than copying the keys or values at the moment they are
+created.[^py314-library-stdtypes] So `len(d.keys())` reads the dictionary's current size every
+time, and a membership check `key in d.keys()` goes through the same hash lookup as `key in d` –
+O(1), not a linear scan over a stored list.
+
+This is a fundamental difference from Python 2, where `dict.keys()` returned a plain `list` – a
+materialized copy of the keys taken at call time; for large dictionaries that wasted memory and
+time building a list that was often only needed for a single pass.
+
+`dict.keys()` and `dict.items()` support set operations (`&`, `|`, `^`, `-`) precisely because
+dictionary keys are unique and hashable by definition – the same invariant that makes a set a
+set. `dict.values()` does not support these operations: values can repeat and are not required to
+be hashable, so treating them as a set would be incorrect.
+
+A practical use of the set semantics is finding the difference between two state snapshots:
+`added = d2.keys() - d1.keys()` gives the keys that were not there before, without building
+intermediate lists or writing manual loops.
+
+Because a view is bound to the live dictionary, iterating over it while the dictionary's size
+changes falls under the same `RuntimeError: dictionary changed size during iteration` rule as
+iterating over the dictionary directly.
 
 ## Evaluation guide
 

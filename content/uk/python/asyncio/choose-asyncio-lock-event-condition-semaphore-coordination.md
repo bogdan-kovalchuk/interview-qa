@@ -8,10 +8,10 @@ level: senior
 type: comparison
 tags: [asyncio-lock, event, condition, semaphore]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,26 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Усі чотири примітиви побудовані на `Future` й не є thread-safe – вони призначені для координації
+Task у межах одного event loop, а не потоків чи процесів; спроба поділити один об'єкт `Lock` між
+двома event loop дає непередбачувані результати.[^py314-library-asyncio-task]
+
+`Condition` фактично обгортає `Lock` (свій або переданий) і додає `wait()`/`notify()`: викликати
+`wait()` можна лише утримуючи lock, після чого він тимчасово звільняється, а Task блокується, доки
+хтось не викличе `notify()` або `notify_all()` – і lock автоматично повертається перед тим, як
+`wait()` завершиться. Це відрізняє `Condition` від голого `Event`: `Event` не пов'язаний з жодним
+ресурсом і не гарантує ексклюзивного доступу після пробудження, тоді як `Condition` гарантує його,
+бо lock захоплюється знову перед поверненням з `wait()`.
+
+`asyncio.Lock` не є reentrant: повторний `acquire()` тим самим Task, який уже утримує lock,
+призводить до deadlock, на відміну від `threading.RLock`. Усі очікувачі `Lock` і `Semaphore`
+обслуговуються у порядку FIFO, тому голодування (starvation) окремого Task теоретично неможливе,
+доки інші Task коректно звільняють ресурс.
+
+`BoundedSemaphore` – варіант `Semaphore`, який кидає `ValueError`, якщо `release()` викликано
+більше разів, ніж було `acquire()`; це корисно для виявлення баги «зайвого release» під час
+розробки connection pool або rate limiter, коли звичайний `Semaphore` просто мовчки дозволив би
+лічильнику зрости понад початкове значення.
 
 ## Comparison
 

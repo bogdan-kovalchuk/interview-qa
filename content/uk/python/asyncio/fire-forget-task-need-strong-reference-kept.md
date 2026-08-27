@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,35 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Це свідомий вибір дизайну, а не недогляд: якби loop сам тримав strong reference на кожну створену
+Task, довгоживучий процес, що постійно робить `create_task()` для fire-and-forget роботи, ніколи б
+не звільняв пам'ять цих Tasks, навіть після їхнього завершення.[^py314-library-asyncio-eventloop]
+Тому відповідальність за lifetime Task свідомо покладена на код, який її створив.
+
+Момент, коли GC знищує Task, має значення для того, яке саме попередження побачить розробник. Якщо
+Task знищується, ще не завершившись (немає жодного strong reference, а вона все ще pending), Python
+видає інше попередження – «Task was destroyed but it is pending!» – і робота, яку вона мала
+зробити, просто обривається на середині. Якщо ж Task встигла завершитися з exception до знищення,
+спрацьовує саме `__del__` Task, який перевіряє, чи exception був прочитаний через `.result()` або
+`.exception()`, і якщо ні – друкує «Task exception was never retrieved» у обробник exception
+loop.[^py314-library-asyncio-task]
+
+Ідіоматичний патерн, рекомендований документацією, – тримати всі fire-and-forget Tasks у
+module-level `set` і видаляти посилання лише після завершення:
+
+```python
+background_tasks: set[asyncio.Task] = set()
+task = asyncio.create_task(worker())
+background_tasks.add(task)
+task.add_done_callback(background_tasks.discard)
+```
+
+`add_done_callback` тут не для обробки результату, а лише для очищення набору – сам callback
+викликається loop-ом уже після завершення Task, коли зберігати посилання більше не потрібно.
+
+`TaskGroup` вирішує цю саму проблему структурно: він сам тримає strong references на всі свої
+children, поки `async with` блок не завершиться, і саме тому там неможливо випадково "загубити"
+Task – lifetime Task жорстко прив'язаний до lifetime блоку.
 
 ## Symptom
 

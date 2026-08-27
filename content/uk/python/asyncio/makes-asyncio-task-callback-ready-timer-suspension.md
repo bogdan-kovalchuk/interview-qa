@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,27 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Усередині loop на кожній ітерації робить дві речі: опитує selector (`epoll`/`kqueue`/`select` –
+залежно від ОС) із timeout до найближчого запланованого timer, і переносить у ready-чергу callbacks
+для file descriptors, що стали готові, а також ті timers з внутрішньої heap, чий час уже
+настав.[^py314-library-asyncio-eventloop] Тільки після цього loop послідовно виконує все, що
+накопичилось у ready-черзі на цей момент.
+
+Резюм Task після `await` теж проходить через цей самий механізм, а не якийсь окремий "task
+scheduler". Коли Task призупиняється на Future, вона реєструє на цьому Future callback через
+`add_done_callback`. Коли Future отримує результат (наприклад, I/O завершилось), викликається цей
+callback, який просто ставить продовження Task у ready-чергу через `call_soon()`. Тобто "чекаюча"
+Task – це просто callback, підвішений на подію, а не окрема сутність із власним пріоритетом.
+
+Звідси й межі fairness. Ready-черга не знає, скільки часу Task уже чекала чи наскільки вона
+"термінова" – єдиний критерій порядку виконання це FIFO-позиція в черзі callbacks на цю ітерацію.
+Дві Tasks, розбуджені в одній ітерації, виконаються в порядку, в якому їхні `call_soon()`
+відбулися, а не в порядку створення чи важливості. А для timers з однаковим `deadline` порядок
+залежить від внутрішньої реалізації heap (порівняння за порядком вставки як tie-breaker не
+гарантовано специфікацією).[^py314-library-asyncio-eventloop] Це означає, що код не має права
+припускати ні "round-robin по Tasks", ні "перший запланований timer виконається першим при рівних
+часах" – єдина тверда гарантія: callbacks, поставлені через `call_soon`, виконуються в порядку
+виклику `call_soon`.
 
 ## Evaluation guide
 

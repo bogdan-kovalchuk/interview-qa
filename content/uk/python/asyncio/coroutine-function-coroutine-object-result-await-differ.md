@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,25 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Незапущений coroutine object, який ніхто не await, і збирач сміття його знищує – Python видає
+`RuntimeWarning: coroutine '...' was never awaited`, бо є типова помилка: розробник викликав
+`async def`-функцію, забув `await`, і код мовчки нічого не зробив.[^py314-library-asyncio-task] Це
+відрізняє coroutine object від звичайного виклику функції: звичайна функція виконується одразу
+під час виклику, а coroutine object лише резервує стан (кадр виконання) і чекає, доки хтось
+почне його «просувати» через `await` чи еквівалент.
+
+Кожен виклик `async def`-функції створює новий, незалежний coroutine object зі своїм власним
+кадром – два виклики тієї самої функції з тими самими аргументами не поділяють стан. Водночас
+один і той самий coroutine object не можна await двічі: після завершення повторний `await`
+піднімає `RuntimeError` ("cannot reuse already awaited coroutine"), бо його внутрішній кадр уже
+звільнений.
+
+`await` на coroutine object виконує її синхронно в межах поточної Task – це не створює нову
+одиницю планування, а просто «вбудовує» логіку coroutine у виконання того, хто на неї await.
+На відміну від цього, `asyncio.create_task(coro())` реєструє coroutine у event loop як окрему
+Task, яка виконується конкурентно з рештою коду, а результат `await` на такому Task – це те саме
+значення `return`, але отримане після того, як Task встигла виконатися паралельно з іншими,
+а не негайно в тому самому кадрі виклику.[^py314-library-asyncio-eventloop]
 
 ## Comparison
 

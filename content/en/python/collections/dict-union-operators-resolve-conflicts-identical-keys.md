@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,34 @@ sources:
 
 ## Short answer
 
-TODO
+**Both operators, on duplicate keys, keep the value from the right-hand operand; `|` returns a
+new dict, while `|=` updates the left one in place.**[^py314-library-stdtypes] `d1 | d2` creates a
+new dictionary; `d1` is not changed. `d1 |= d2` is equivalent to `d1.update(d2)` – it modifies
+`d1` in place. The order of keys in the result: first the keys from the left operand in their own
+order, then the new keys from the right.
 
 ## Detailed explanation
 
-TODO
+The `|` and `|=` operators for `dict` appeared in Python 3.9 (PEP 584) as a syntactic counterpart
+to set operations – before that, merging dictionaries was done with `{**d1, **d2}` or
+`dict(d1, **d2)`, both less obvious to read.[^py314-library-stdtypes]
+
+There is an asymmetry in what each operator accepts: `d1 | d2` requires the right-hand operand to
+be a `dict` (or support `keys()` like a mapping) – otherwise it raises `TypeError`. But
+`d1 |= d2` is implemented through `__ior__`, which for `dict` effectively calls `update()`, so it
+accepts a much wider range of types: any iterable of `(key, value)` pairs, not just a mapping.
+This asymmetry mirrors the familiar pair `list.__add__` versus `list.__iadd__`, where `+=` also
+accepts an arbitrary iterable while `+` accepts only the same type.
+
+The position of a key in the result is determined only by the order of its first appearance:
+`d1 | d2` is equivalent to building a copy of `d1` and then calling `update(d2)` on it, so
+existing keys from `d1` keep their position in iteration order even when their value is
+overwritten by a value from `d2`; new keys from `d2` are appended at the end in the order they
+appear in `d2`.
+
+Unlike `dict.update()`, which always mutates `self` and returns `None`, `d1 | d2` is an
+expression that can be passed along immediately as an argument, without creating an intermediate
+named variable.
 
 ## Comparison
 

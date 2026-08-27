@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,37 @@ sources:
 
 ## Short answer
 
-TODO
+**The event loop runs ready callbacks in FIFO order for `call_soon`, but the order of timer
+callbacks with the same deadline is unspecified, and there is no strict fairness guarantee between
+Tasks.**[^py314-library-asyncio-task] When I/O finishes or a timer fires, the loop adds the
+corresponding callback to the ready queue. Callbacks registered via `call_soon` are invoked in
+registration order. But for `call_later` / `call_at` with the same timestamp, the order is not
+guaranteed. A Task that never yields control via `await` can delay other Tasks indefinitely.
 
 ## Detailed explanation
 
-TODO
+Internally, on every iteration the loop does two things: it polls the selector
+(`epoll`/`kqueue`/`select`, depending on the OS) with a timeout up to the nearest scheduled timer,
+and moves into the ready queue both the callbacks for file descriptors that became ready and any
+timers from its internal heap whose time has already arrived.[^py314-library-asyncio-eventloop]
+Only after that does the loop run, in sequence, everything that has piled up in the ready queue at
+that point.
+
+A Task resuming after `await` goes through this exact same mechanism, not some separate "task
+scheduler". When a Task suspends on a Future, it registers a callback on that Future via
+`add_done_callback`. When the Future gets a result (for example, I/O finished), that callback runs
+and simply puts the Task's continuation onto the ready queue via `call_soon()`. In other words, a
+"waiting" Task is just a callback hanging off an event, not a separate entity with its own priority.
+
+That is the source of the fairness limits. The ready queue does not know how long a Task has been
+waiting or how "urgent" it is – the only ordering criterion is FIFO position in the queue of
+callbacks for that iteration. Two Tasks woken up in the same iteration run in the order their
+`call_soon()` calls happened, not in the order they were created or how important they are. And for
+timers with the same `deadline`, the order depends on the internal heap implementation
+(insertion-order tie-breaking is not guaranteed by the
+specification).[^py314-library-asyncio-eventloop] That means code has no right to assume either
+"round-robin across Tasks" or "the timer scheduled first runs first when deadlines tie" – the only
+hard guarantee is that callbacks queued via `call_soon` run in the order `call_soon` was called.
 
 ## Evaluation guide
 

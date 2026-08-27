@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [taskgroup]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,28 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Послідовність подій усередині `TaskGroup` фіксована. Щойно перша child Task падає з "справжнім"
+exception (не `CancelledError`), group переходить у стан "aborting" і одразу викликає `.cancel()`
+на кожній ще не завершеній sibling Task.[^py314-library-asyncio-task] Після цього `__aexit__`
+чекає, поки геть усі children фактично завершаться – і скасовані, і та, що впала першою, – перш ніж
+вирішувати, що піднімати далі.
+
+Важливо, що скасування siblings не гарантує "тихого" завершення: Task, яку скасували, може
+перехопити `CancelledError` у `try/except` і замість повторного `raise` кинути щось інше під час
+cleanup. Таке "друге" exception теж потрапляє до фінального `ExceptionGroup`, тому набір зібраних
+exception може бути більшим за один. А ось сам `CancelledError`, який виникає в sibling саме
+внаслідок скасування з боку group, до `ExceptionGroup` не додається – це очікуваний, а не
+аварійний результат.
+
+`TaskGroup` навмисно піднімає `ExceptionGroup` (PEP 654), а не просто перше exception, як робить
+`gather()` за замовчуванням: якщо впало кілька Tasks одночасно (наприклад, дві з них звертались до
+одного недоступного сервісу), розробник бачить усі причини одразу, а не лише ту, що встигла
+першою. Обробляти такий результат треба через `except*`, а не звичайний `except`, бо `ExceptionGroup`
+не є прямим instance жодного окремого типу exception усередині нього.
+
+Стан "aborting" також блокує подальше `create_task()` на цій самій group – спроба додати нову Task
+після початку скасування піднімає `RuntimeError`, бо group більше не гарантує, що встигне дочекатися
+й скасувати щось, додане після старту завершення.
 
 ## Evaluation guide
 

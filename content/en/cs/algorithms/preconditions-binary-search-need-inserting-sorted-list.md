@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,38 @@ sources:
 
 ## Short answer
 
-TODO
+**Binary search requires a sorted sequence; `bisect` finds the insertion position in O(log n), but
+`list.insert()` shifts elements in O(n).**[^py314-library-collections] The precondition is sorted
+input: `bisect_left` and `bisect_right` rely on ordering via `__lt__`. Even though the search
+itself is logarithmic, inserting into a `list` still requires shifting up to n elements, so the
+total cost of an insertion is O(n).
 
 ## Detailed explanation
 
-TODO
+`bisect` does not check that the input sequence is sorted – that is a contract, not a runtime
+check. If the list is not actually sorted, `bisect_left`/`bisect_right` still return some index
+without raising, but that index no longer guarantees a correct order after insertion. The only
+requirement on elements is a total order via `__lt__`; `bisect` never calls `__eq__` directly, so
+a custom class that defines only `__lt__` is already usable for the search.
+
+For duplicates, `bisect_left` returns the position of the first occurrence and `bisect_right` the
+position right after the last one; this lets you control the stability of an insertion relative to
+equal elements without changing the search algorithm itself.[^py314-library-bisect]
+
+The reason `list.insert()` stays O(n) even after an O(log n) search for the position is the data
+structure itself: a Python `list` is a contiguous array of pointers, and inserting in the middle
+requires physically shifting every element to the right of the insertion point one slot over in
+memory. That cost does not depend on how fast the position was found, even if it was found
+instantly. Switching to `collections.deque` does not fix this either: a `deque` gives O(1) append
+and pop at both ends, but inserting or removing at an arbitrary middle position is still O(n),
+because it is a double-ended queue, not a structure with O(log n) access to an arbitrary middle
+position.[^py314-library-collections]
+
+A structure that genuinely gives O(log n) for both search and insertion is a self-balancing
+structure with an ordered index (a skip list, or a balanced BST with rank support), not an array
+and not a singly linked list: a linked list gives O(1) insertion once the position is known, but
+finding that position in it is linear, because it has no random access by index, which binary
+search needs to halve the range.
 
 ## Evaluation guide
 

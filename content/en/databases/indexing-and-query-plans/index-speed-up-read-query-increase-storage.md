@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -68,11 +68,37 @@ sources:
 
 ## Short answer
 
-TODO
+**An index is a separate data structure (usually a B-tree) that stores copies of the indexed
+column values together with pointers to the table rows.**[^postgres-indexes] On reads, the index
+lets you find the rows you need in O(log n) instead of a full table scan. But every `INSERT`,
+`UPDATE`, or `DELETE` must update every matching index, which adds I/O and CPU. On top of that,
+indexes take extra disk space proportional to the number of indexed columns and rows.
 
 ## Detailed explanation
 
-TODO
+Structurally, a B-tree index stores ordered keys in a balanced tree of pages: each internal node
+holds ranges that lead to child pages, and the leaf nodes hold the values themselves and
+pointers to the row's physical location in the table. The height of this tree grows
+logarithmically with the row count, so a key lookup is, in essence, a handful of page reads
+(usually 2-4 even at millions of rows), not a scan of the whole table.[^postgres-indexes]
+
+Write cost does not come only from adding a new key: when an index leaf page fills up, an
+insertion triggers a page split – trading one write for two pages plus an update of the parent
+node, which can cascade all the way to the root. PostgreSQL adds one more cost on top through
+MVCC: an `UPDATE` creates a new version of the row, and if the updated column is indexed, every
+index on the table gets an extra entry for the new version, while the old version stays in the
+index until `VACUUM`. So the number of indexes on a table multiplies the cost of every
+`INSERT`/`UPDATE`.[^postgres-ddl-constraints]
+
+Disk space grows because an index physically duplicates the values of the indexed columns (and,
+for a composite index, all of its columns) for every table row – for wide columns (such as
+`text`) or multi-column indexes this can amount to a substantial fraction of the table's own
+size, and sometimes exceed it.
+
+So the decision to add an index is always a trade-off that depends on the read-to-write ratio: a
+table that is mostly `SELECT` with rare writes benefits from extra indexes at almost no cost,
+while a table with a high rate of `INSERT`/`UPDATE` pays a noticeable write slowdown for every
+extra index.
 
 ## Comparison
 

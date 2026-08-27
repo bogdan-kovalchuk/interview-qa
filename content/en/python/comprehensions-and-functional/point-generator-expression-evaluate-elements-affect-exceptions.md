@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -54,11 +54,37 @@ sources:
 
 ## Short answer
 
-TODO
+**A generator expression creates the iterator immediately, but evaluates each element only when
+`next()` is called (lazy evaluation).**[^py314-howto-functional] This means exceptions and side
+effects are deferred until consumption time, rather than occurring when the expression is created.
+For example, `g = (1/x for x in data)` does not raise `ZeroDivisionError` until the first `next(g)`
+that reaches the element `x == 0`.
 
 ## Detailed explanation
 
-TODO
+The key asymmetry: only the iterable expression of the very first (outermost) `for` is evaluated
+immediately – `iter()` is called on it right away when the generator is created, before the first
+`next()`.[^py314-howto-functional] Everything else – the iterable expressions of later `for`
+clauses, the `if` conditions, and the result expression itself – is evaluated only lazily, one
+element at a time, during iteration. So `(x for x in get_items())` calls `get_items()` immediately
+when the expression is created, but the contents it returns are processed only incrementally.
+
+This has a practical consequence for side effects and exceptions: if the generator is never fully
+iterated (say, a loop `break`s early, or the generator is simply discarded), the elements execution
+never reaches are never evaluated, and no side effects or exceptions occur for them. That is what
+distinguishes a generator expression from a list comprehension, where the whole result is
+materialized immediately, so every side effect and every exception happens right away, in element
+order, before the comprehension returns a list.
+
+Another difference is single use: a generator expression is an iterator, and once fully consumed
+(`StopIteration`), it is exhausted for good; iterating the same object again with another `for`
+yields nothing. A list comprehension, by contrast, produces a new list that can be iterated as many
+times as needed.
+
+For nested `for` clauses inside a generator expression, the lazy behavior extends to the inner
+iterable expressions too: the iterable expression of an inner `for` is evaluated freshly on every
+iteration of the outer one, not computed once up front – exactly as in ordinary nested loops, just
+with deferred execution.
 
 ## Evaluation guide
 

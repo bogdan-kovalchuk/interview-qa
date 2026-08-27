@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: [cancellederror]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,29 @@ sources:
 
 ## Detailed explanation
 
-TODO
+До Python 3.8 `CancelledError` успадковувався від `Exception`, тому звичайний `except Exception:`
+у коді (наприклад, generic retry-логіка) випадково ковтав скасування разом зі справжніми помилками.
+Зміна на `BaseException` – свідоме рішення, щоб широкий `except Exception` більше не перехоплював
+скасування мовчки; тепер його ловить лише явний `except CancelledError` або голий
+`except:`.[^py314-library-asyncio-dev]
+
+Наслідок для `TaskGroup`: коли одна дочірня Task падає з винятком, група скасовує решту дочірніх
+Task і чекає, доки кожна з них дійсно завершиться – або з `CancelledError`, або штатно. Якщо
+дочірня Task перехопила `CancelledError` і не пере-підняла його, вона завершується як «успішна»,
+а `TaskGroup` вважає скасування виконаним і продовжує далі, навіть якщо задум був зупинити всю
+роботу; зовнішній код втрачає сигнал про те, що частина роботи насправді не виконалась
+коректно.[^py314-library-asyncio-task]
+
+Патерн `try/finally` найбезпечніший саме тому, що `finally` виконується незалежно від того, чим
+завершився `try`, і не змінює сам виняток – він автоматично «пролітає» далі після `finally`, якщо
+там немає окремого `return` чи `raise`, який його замінить. Явний `except CancelledError: ...
+raise` еквівалентний, але легше зламати випадковим `return` усередині `except`-блоку, який мовчки
+поглинає скасування.
+
+`gather(..., return_exceptions=True)` – окремий випадок: він збирає `CancelledError` окремих
+задач як звичайний результат у списку замість того, щоб підняти його, тож викликач мусить сам
+перевірити кожен елемент результату на `isinstance(r, BaseException)`, інакше скасована задача
+буде непомітно проігнорована.
 
 ## Symptom
 

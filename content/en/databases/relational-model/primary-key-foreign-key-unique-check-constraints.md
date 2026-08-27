@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -68,11 +68,43 @@ sources:
 
 ## Short answer
 
-TODO
+**Constraints declare validation rules directly in the database schema, and the DBMS enforces
+them automatically on every `INSERT`/`UPDATE`/`DELETE`, independent of application
+code.**[^postgres-indexes] `PRIMARY KEY` guarantees uniqueness and NOT NULL; `FOREIGN KEY`
+enforces referential integrity against a value in another table; `UNIQUE` prevents duplicates;
+and `CHECK` validates an arbitrary boolean condition, such as `price > 0`. This means that even
+if the application code has a bug or bypasses validation, the database will not admit invalid
+data.
 
 ## Detailed explanation
 
-TODO
+Mechanically, each of these constraints is implemented differently, even though the goal is
+shared – reject an invalid state before it ever reaches the table. `PRIMARY KEY` is syntactic
+sugar over a `UNIQUE` index plus `NOT NULL` on the same columns: the DBMS builds a B-tree index
+on the key and, on every `INSERT`/`UPDATE`, checks through that index whether such a key already
+exists before allowing the operation – so the uniqueness check itself costs O(log n), not
+O(n).[^postgres-indexes]
+
+`FOREIGN KEY` performs a lookup in the parent table at write time: before inserting or updating a
+row with a reference, the DBMS checks the parent table's primary (or unique) key index for the
+existence of the matching value, and on deletion or update of the parent row it applies the
+configured action (`RESTRICT`, `CASCADE`, `SET NULL`). Without an index on the parent table
+side, this check would be O(n) per write, so a FK practically always relies on an existing
+unique index.[^postgres-ddl-constraints]
+
+`UNIQUE` is the same mechanism as the uniqueness part of `PRIMARY KEY`, but without the
+`NOT NULL` requirement; several `NULL` values in a unique column do not conflict with each
+other, because `NULL` is by definition never equal to `NULL`.
+
+`CHECK` is fundamentally different: it is not an index but a boolean expression that the DBMS
+evaluates for each row separately at write time, comparing only values within that same row
+(`price > 0`, `end_date > start_date`) – it cannot reference other rows or other tables, unlike
+a FK.
+
+What all four share is the moment they are applied: the check happens in the very same
+transaction as the write operation itself, and on violation the transaction is rolled back, so
+it is impossible to commit data that violates a constraint, even if a concurrency bug in the
+application code skipped the validation.
 
 ## Evaluation guide
 

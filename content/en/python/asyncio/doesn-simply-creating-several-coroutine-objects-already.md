@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,36 @@ sources:
 
 ## Short answer
 
-TODO
+**Calling an `async def` function only creates a coroutine object, but does not schedule it to run –
+the code will not run until the object is `await`-ed or passed to
+`asyncio.create_task()`.**[^py314-library-asyncio-task] Sequentially `await`-ing several coroutines
+runs them one after another, not in parallel. True concurrency requires creating a Task for each
+coroutine so the event loop can switch between them at suspension points.
 
 ## Detailed explanation
 
-TODO
+Calling an `async def` function does not run a single line of its body. Technically it creates a
+coroutine object – a state machine similar to a generator, with its own frame that has never been
+executed. The body only starts running once something calls `send(None)` on that object (which is
+exactly what `await` or an event-loop step does), and it stops at the first point where the body
+itself `await`s something else.[^py314-library-asyncio-task] If a coroutine object is created and
+never driven – neither directly nor through a Task – the interpreter emits a
+`RuntimeWarning: coroutine '...' was never awaited` during garbage collection, because that is
+almost always a logic error rather than intended behavior.
+
+`await coro` and `create_task(coro)` start execution differently. `await` drives the coroutine in
+the current Task's context: the code immediately starts running the coroutine's body synchronously,
+up to its first internal suspension point, and the line after `await` does not run until that
+coroutine finishes completely. `create_task()`, by contrast, only registers a new Task with the loop
+and returns control to the caller right away – the coroutine's body itself only starts running later,
+when the loop reaches that Task in its queue, possibly even after the caller has already moved on to
+the next lines.
+
+That difference explains the behavior for several coroutines in a row: `await a(); await b()` runs
+`a` to completion, then `b` to completion – sequential execution on one logical line, even though
+both are async. But `t1 = create_task(a()); t2 = create_task(b()); await t1; await t2` lets the loop
+switch between `a` and `b` at each of their internal suspension points, so work waiting on I/O in one
+does not block progress in the other.
 
 ## Symptom
 

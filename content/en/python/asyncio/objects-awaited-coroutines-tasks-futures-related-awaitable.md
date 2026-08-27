@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,39 @@ sources:
 
 ## Short answer
 
-TODO
+**`await` accepts any awaitable object – a coroutine, a Task, or a Future – that is, an object with
+an `__await__` method.**[^py314-library-asyncio-task] A coroutine is the "raw" object produced by
+`async def`. A Task is a wrapper around a coroutine that the event loop runs concurrently. A Future
+is a low-level primitive representing a future result; Task is a subclass of Future. All three
+implement the awaitable protocol, so they are interchangeable inside `await`.
 
 ## Detailed explanation
 
-TODO
+At the bytecode level, `await` effectively means: call `__await__()` on the object, get an
+iterator, and resume it until it raises `StopIteration` (whose value becomes the result of `await`)
+or some other exception.[^py314-library-asyncio-task] Different types implement that iterator
+differently, and that difference is exactly what distinguishes them from one another.
+
+`Future.__await__` is the simplest case: if the result has not been set yet, the method does a
+single `yield self`, meaning it returns the Future object itself out to the caller as the
+iterator's "intermediate value". This exact yield is what the Task machinery driving a coroutine
+recognizes: when a Future (rather than an ordinary value) is yielded from inside a coroutine, the
+Task registers an `add_done_callback` on it and suspends itself, rather than treating it as an
+error. When the Future gets a result or an exception, the callback resumes `__await__` via
+`send`/`throw`, and `StopIteration` ends the wait.
+
+A coroutine object does not yield a Future directly itself – it delegates that down, to the point
+where its own code did `await` on something else. So `await` on a coroutine simply drives it as an
+iterator, and eventually that chain of `await` inside `await` reaches some Future (most often a
+Future representing an I/O event in the selector), which is the only place the "intermediate
+suspension" actually comes from.
+
+Task is a subclass of Future, and so it inherits its `__await__`: `await task` behaves the same way
+as `await`-ing any Future – it suspends the caller until `task` sets its own result. But internally
+a Task is itself a separate driver: it resumes the wrapped coroutine through its own internal
+`__step()`, catches every Future that coroutine yields, subscribes to it, and repeats the cycle
+until the coroutine finishes – and only then does the Task, as a Future, set its own result, waking
+up everything that was waiting on it.
 
 ## Evaluation guide
 

@@ -8,10 +8,10 @@ level: senior
 type: mechanism
 tags: [dict-missing]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,34 @@ sources:
 
 ## Short answer
 
-TODO
+**`__missing__(key)` is called only by the `__getitem__()` method when a key is absent; `get()`,
+`pop()`, and `setdefault()` do not call it.**[^py314-library-stdtypes] This means `d[missing_key]`
+triggers `__missing__`, while `d.get(missing_key)` returns `None` (or the given default) without
+calling `__missing__`. This is exactly the mechanism `collections.defaultdict` is built on: its
+`__missing__` calls `default_factory` and stores the result in the dictionary.
 
 ## Detailed explanation
 
-TODO
+The key distinction is that `__missing__` is a hook invoked by `dict.__getitem__()` itself at the
+C level, not a universal interceptor for all dictionary access. So any code path that bypasses
+`__getitem__` simply never sees this hook: `key in d` (i.e. `__contains__`) checks for the key
+directly in the table and never calls `__missing__`, and likewise `pop(key, default)` and
+`setdefault(key, default)` are implemented through their own C-level logic that does not delegate
+to `__missing__`.[^py314-library-stdtypes]
+
+The consequence is a possible inconsistency: if `__missing__` creates an entry (as in
+`defaultdict`), then `key in d` returns `False` before the first `d[key]` but `True` right after
+it, even though no explicit assignment appeared in the code. If `__missing__` does not mutate the
+dictionary and only computes and returns a value (as `collections.Counter` does, where a missing
+key is treated as `0` without being written to the table), then `d[key]` and `key in d` stay
+consistent – the dictionary does not "grow" from reads alone.
+
+Plain `dict` does not define `__missing__` at all, so the `KeyError` from `d[missing_key]` on an
+ordinary dictionary is the standard behaviour of `__getitem__` with no delegation; the hook only
+applies in subclasses where it is explicitly overridden.
+
+One more practical trap – if `__missing__` itself accesses `self[key]` for the same key without a
+base case, it leads to infinite recursion, because every miss calls `__missing__` again.
 
 ## Evaluation guide
 

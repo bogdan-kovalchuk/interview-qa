@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [cancellederror]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,36 @@ sources:
 
 ## Short answer
 
-TODO
+**`Task.cancel()` schedules a throw of `CancelledError` into the coroutine at the next `await`, but
+the coroutine can catch that exception – which is why cancellation is cooperative.**[^py314-library-asyncio-task]
+`CancelledError` is a subclass of `BaseException`. If the coroutine catches it and does not
+re-raise, the task is considered to have completed normally rather than cancelled. Proper
+cancellation requires either a re-raise or calling `Task.uncancel()` to clear the cancellation
+state.
 
 ## Detailed explanation
 
-TODO
+`Task.cancel()` does not raise an exception immediately – it only marks the Task as pending
+cancellation and, if the Task is currently awaiting some `Future`, cancels that `Future`. The
+`CancelledError` itself only appears in the coroutine at the point of the nearest `await` – until
+then the code keeps running as usual, even if cancellation has already been requested.[^py314-library-asyncio-eventloop]
+If a suspension point is far away (for example, a long CPU-bound loop with no `await`), delivery is
+postponed until the first `await`, or until the coroutine finishes naturally, and `cancel()`
+effectively has no effect.
+
+Since 3.11, every call to `cancel()` increments an internal counter that `Task.cancelling()`
+returns. This lets you distinguish the case where cancellation was requested multiple times
+independently of each other – for instance, both an outer caller and `asyncio.timeout()` at the
+same time. `Task.uncancel()` decrements the counter by one; only once it reaches zero does the
+task fully leave the cancellation state. Code that deliberately catches `CancelledError` for its
+own purposes (`asyncio.timeout()` itself does this when it was its own timeout that fired) must
+call `uncancel()` rather than just swallowing the exception – otherwise the outer caller will see
+the task as having completed successfully even though it asked for cancellation.
+
+A specific `await` can be shielded from cancellation with `asyncio.shield()`: it wraps the
+awaitable in a separate Task, and cancelling the outer coroutine cancels only the shield, not the
+inner Task, so the protected operation keeps running in the background to completion even after
+whoever was awaiting it has already received a `CancelledError`.
 
 ## Evaluation guide
 

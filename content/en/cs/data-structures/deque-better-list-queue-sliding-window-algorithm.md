@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [deque, list]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,39 @@ sources:
 
 ## Short answer
 
-TODO
+**`deque` gives O(1) for append and pop at both ends, while `list` costs O(n) for `pop(0)` or
+`insert(0, v)`, because the elements have to be shifted in memory.**[^py314-library-collections]
+For a FIFO queue or a sliding-window algorithm that adds/removes elements at the front,
+`collections.deque` avoids that linear cost. Use `list` when append/pop are only needed at the
+end (a stack) or when you need O(1) access by index.
 
 ## Detailed explanation
 
-TODO
+`collections.deque` is implemented as a doubly linked list of fixed-size blocks (not of
+individual elements), so each block holds several pointers in a row – this gives better cache
+locality than a classic singly linked list, and at the same time O(1) amortized cost for
+`append`, `appendleft`, `pop`, `popleft`, because adding or removing at an edge never requires
+shifting other elements.
+
+`list`, by contrast, is a contiguous array of pointers. `append`/`pop` at the end are O(1)
+amortized (Python occasionally over-allocates the array), while `pop(0)`/`insert(0, v)` require
+physically shifting every other element one slot over, i.e. O(n).
+
+This directly explains why `deque` is the natural choice for sliding-window algorithms: the
+classic example is finding the maximum in every window of size k (a `monotonic deque`), where
+elements are simultaneously added at the right edge and removed at the left, and a deque keeps
+both O(1). Implementing the same pattern with a `list` would cost O(n) per removal from the
+front, i.e. O(n*k) overall instead of O(n).
+
+The price for this advantage is losing random access by index: `deque[i]` for an `i` in the
+middle is O(n), because you have to walk the blocks sequentially from the nearest edge, whereas
+`list[i]` is always O(1), since it is a directly computed offset into a contiguous array.
+Likewise, slicing (`deque[a:b]`) is not supported as efficiently natively as `list[a:b]`.
+
+So the choice is a trade-off: if the algorithm mainly works at the ends of the sequence (a
+queue, a stack, a sliding window), `deque` is the better fit; if you need frequent random access
+by index or slicing, `list` remains the better choice, even when it occasionally needs an
+insertion at the front.[^py314-library-collections]
 
 ## Comparison
 

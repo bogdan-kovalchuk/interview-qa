@@ -8,10 +8,10 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -50,11 +50,38 @@ sources:
 
 ## Short answer
 
-TODO
+**Hash flooding is a situation where many keys land in the same hash table bucket, and lookup
+degrades from average O(1) to O(n) because of long probe sequences.**[^py314-library-stdtypes] In
+CPython, `dict` and `set` use open addressing, so collisions force the interpreter to search for
+a free slot by probing. The dictionary's logical contract is not broken by this: `__eq__` is
+checked against every candidate in the bucket, so the right key is still found – only speed
+changes, not correctness.
 
 ## Detailed explanation
 
-TODO
+Average O(1) for `dict`/`set` is a statistical statement: it holds when keys are evenly
+distributed across buckets and the load factor is kept low by automatic table resizing. If many
+keys share the same or a nearby `hash()`, they compete for the same slots, and CPython is forced
+to walk a longer probe sequence (linear probing perturbed by a `perturb` value) before finding a
+free slot or an `__eq__` match. In the worst case, when all keys collide, every operation
+degenerates to O(n).[^py314-library-stdtypes]
+
+Collisions come in two flavours. Accidental ones follow from the birthday paradox: even with an
+even hash distribution, some pairs are bound to coincide, but resizing keeps their share small.
+Deliberate ones are hash flooding proper: an attacker crafts input strings so that their
+`hash()` values coincide or land in the same bucket, then sends a mass of such keys (a classic
+example is field names in a POST request that a server stores in a `dict`). This turns a normally
+O(1) service into O(n) per request, i.e. a denial of service.
+
+CPython's defence is randomising the hash of strings and bytes via SipHash with a secret
+`PYTHONHASHSEED`, regenerated for every process unless it is explicitly pinned. Without knowing
+the seed, an attacker cannot predict which strings will produce the same `hash()`, so preparing a
+colliding set of keys in advance is not possible.[^py314-library-collections]
+
+Crucially, none of these scenarios break correctness: `__eq__` is called against every candidate
+in the probe sequence until an exact match or an empty slot is found, so the requested key (or
+its absence) is always determined correctly. Only performance degrades, while the logical
+contract – "keys equal by `__eq__` and `__hash__` are found" – stays intact.
 
 ## Evaluation guide
 

@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [asyncio-gather]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,34 @@ sources:
 
 ## Short answer
 
-TODO
+**`gather()` returns the list of results in the same order as the input awaitables, regardless of
+the order in which they actually finish.**[^py314-library-asyncio-task] Each awaitable corresponds
+to a position in the result list by its input index. For example, if `gather(slow(), fast())` is
+called and `fast()` finishes first, the result is still `[result_slow, result_fast]`.
 
 ## Detailed explanation
 
-TODO
+`gather()` does not await the awaitables sequentially and does not sort the results by completion
+time – it immediately wraps each input awaitable in its own `Task` (or a `Future` wrapper, if it is
+already a Future) and keeps an ordered list of these objects by argument position.
+[^py314-library-asyncio-task] When a particular Task finishes, its callback writes the result into
+the result list at the same index the Task was added at, not at the moment it finished. The event
+loop itself schedules coroutines cooperatively: every `await` inside them is a point where control
+returns to the loop, and it is the loop that decides which task gets CPU time next; the order in
+which steps run can be arbitrary, but the array of indices is fixed the moment `gather()` is
+called.
+
+This is what fundamentally separates `gather()` from `asyncio.as_completed()`, which instead yields
+awaitables in the order they actually finish rather than the input order – the choice between them
+depends on whether the caller needs the results in order or needs to react to the first ready
+result as fast as possible.
+
+By default `return_exceptions=False`: if one of the awaitables raises an exception, `gather()`
+immediately raises it to the caller, but the remaining Tasks are not cancelled automatically and
+keep running in the background – this is a common source of bugs where forgotten Tasks later log
+exceptions as `Task exception was never retrieved`. With `return_exceptions=True` the exception
+itself becomes the value in the result list at its position, and the caller gets the full list
+without an early break on the first failure.
 
 ## Evaluation guide
 
