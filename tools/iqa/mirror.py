@@ -73,6 +73,27 @@ def subsection_label(vocabulary: dict[str, Any], heading: str, language: Languag
     return _label(vocabulary.get("subsection_labels") or {}, heading, language, what="subsection")
 
 
+def wip_notice(vocabulary: dict[str, Any], language: Language) -> str:
+    entry = vocabulary.get("wip_notice") or {}
+    if language.value not in entry:
+        raise ValueError(f"no {language.value} label for `wip_notice` in meta/vocabulary.yml")
+    return entry[language.value]
+
+
+def completeness_label(vocabulary: dict[str, Any], completeness: str, language: Language) -> str:
+    return _label(vocabulary.get("completeness_labels") or {}, completeness, language, what="completeness")
+
+
+# Sidebar badge variant per completeness (PLAN.md step 6, item 3: "the reader must be
+# able to see at a glance which entries in an index are thin"). `complete` gets no
+# badge at all - see mirror_question - so it is not listed here.
+COMPLETENESS_BADGE_VARIANT: dict[str, str] = {
+    "empty": "danger",
+    "stub": "caution",
+    "partial": "note",
+}
+
+
 def replace_qids(text: str, known_ids: set[str], base: str, language: Language) -> str:
     def replace(match: re.Match[str]) -> str:
         target_id = match.group(1)
@@ -111,6 +132,20 @@ def render_footnotes(body_raw: str, sources: tuple[Source, ...]) -> str:
     return "\n".join(lines)
 
 
+def _render_content_or_wip(content: str, vocabulary: dict[str, Any], language: Language) -> str:
+    """A section/subsection body, or a visible WIP callout when it is unwritten.
+
+    PLAN.md step 6, item 3: a question whose text is `TODO` must say so on its own
+    page, not render the bare word `TODO`. Uses a Starlight directive aside, which
+    Starlight's own bundled translations (site/node_modules/@astrojs/starlight/
+    translations/{en,uk}.json) already title correctly per locale - only the body
+    text is a project string, and it comes from meta/vocabulary.yml.
+    """
+    if content.strip() == "TODO":
+        return f":::caution\n{wip_notice(vocabulary, language)}\n:::"
+    return content
+
+
 def render_section(
     section: ParsedSection,
     language: Language,
@@ -123,10 +158,12 @@ def render_section(
         parts = [f"## {heading}"]
         for subsection in section.subsections:
             sub_heading = subsection_label(vocabulary, subsection.heading, language)
-            content = replace_qids(subsection.content, known_ids, base, language)
+            content = _render_content_or_wip(subsection.content, vocabulary, language)
+            content = replace_qids(content, known_ids, base, language)
             parts.append(f"### {sub_heading}\n\n{content}")
         return "\n\n".join(parts)
-    content = replace_qids(section.content, known_ids, base, language)
+    content = _render_content_or_wip(section.content, vocabulary, language)
+    content = replace_qids(content, known_ids, base, language)
     return f"## {heading}\n\n{content}"
 
 
@@ -189,14 +226,23 @@ def mirror_question(
     else:
         body_markdown = render_body(question, vocabulary, known_ids, base)
 
-    computed = {
+    completeness = decision.completeness.value
+    computed: dict[str, Any] = {
         "slug": route_slug,
         "canonical": canonical,
         "source_path": source_label,
         "question_id": question_id,
         "language": language.value,
-        "completeness": decision.completeness.value,
+        "completeness": completeness,
     }
+    variant = COMPLETENESS_BADGE_VARIANT.get(completeness)
+    if page_mode is PageMode.PAGE and variant is not None:
+        computed["sidebar"] = {
+            "badge": {
+                "text": completeness_label(vocabulary, completeness, language),
+                "variant": variant,
+            }
+        }
     rendered = f"---\n{_frontmatter_yaml(question, computed)}\n---\n\n{body_markdown}"
 
     destination = output_root / language.value / "q" / question_id / f"{file_slug}.md"
@@ -222,6 +268,26 @@ def remove_tree(path: Path) -> None:
     for attempt in range(5):
         try:
             shutil.rmtree(path, onexc=on_error)
+            return
+        except OSError:
+            if attempt == 4:
+                raise
+            time.sleep(0.3)
+
+
+def swap_tree(temporary: Path, output: Path) -> None:
+    """Move the freshly written tree into place, retrying past the same Windows locks.
+
+    `remove_tree` above already survives a handle held on the mirror being deleted.
+    The rename that follows it needs the same treatment and did not have it: a watcher
+    that opened one of the 800-odd files this run just wrote makes `os.replace` fail
+    with WinError 5 on the directory itself, with an empty destination and nothing
+    wrong with the content. Measured here, not assumed - it is reproducible on this
+    machine and it aborted the build twice in a row.
+    """
+    for attempt in range(5):
+        try:
+            os.replace(temporary, output)
             return
         except OSError:
             if attempt == 4:
@@ -307,7 +373,7 @@ def generate(source: Path, output: Path, base: str, *, preview: bool = False, ro
         write_locale_indexes(temporary, mirrored, base)
         if output.exists():
             remove_tree(output)
-        os.replace(temporary, output)
+        swap_tree(temporary, output)
     finally:
         if temporary.exists():
             remove_tree(temporary)
