@@ -9,6 +9,7 @@ from . import build as build_module
 from .export import write_export
 from .model import export_question_schema
 from .pinned_actions import main as pinned_actions_main
+from .report import main as report_main
 from .validate import print_report, validate_repository
 
 
@@ -38,6 +39,16 @@ def _parser() -> argparse.ArgumentParser:
         "build", help="the one build path: validate -> mirror -> astro build -> verify"
     )
     build.add_argument("--root", type=Path, default=Path.cwd())
+
+    report = subcommands.add_parser(
+        "report", help="write dist/export/progress.{json,csv}, or print the next TODO with --todo"
+    )
+    report.add_argument("--root", type=Path, default=Path.cwd())
+    report.add_argument(
+        "--todo",
+        action="store_true",
+        help="print the next incomplete (question, language) pairs instead of writing files",
+    )
 
     pinned_actions = subcommands.add_parser(
         "check-pinned-actions",
@@ -74,6 +85,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "build":
         return build_module.run(root)
+
+    if args.command == "report":
+        report_argv = ["--root", str(root)]
+        if args.todo:
+            report_argv.append("--todo")
+        return report_main(report_argv)
 
     report = validate_repository(root)
     print_report(report)

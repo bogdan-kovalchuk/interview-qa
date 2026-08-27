@@ -127,7 +127,7 @@ Pagefind (у Starlight з коробки) читає `lang` з `<html>` і бу�
 ```
 python -m iqa build
   1/4 validate   ворота контенту
-  2/4 export     dist/export/questions.json
+  2/4 export     dist/export/questions.json + progress.{json,csv}
   3/4 npm run build   регенерує дзеркало, потім astro build
   4/4 verify     tools/verify_build.py
 ```
@@ -142,5 +142,8 @@ python -m iqa build
 `generated from frontmatter`, англійські заголовки на `/uk/`, відсутній корінь, `robots.txt`,
 sitemap і `hreflang`.
 
-Лишається нереалізованим лише те, що належить наступним крокам: навігація з дерева, індекси
-треків і секцій, `/status/`, WIP-плашки і scale spike (`PLAN.md` крок 6).
+З кроку 6 уже зроблено те, що не потребує нових сторінок: `dist/export/progress.{json,csv}` і
+`python -m iqa report --todo` (`tools/iqa/report.py`), WIP-плашка замість голого `TODO` на
+ненаписаній секції і бейдж `completeness` у сайдбарі. Лишається нереалізованим: навігація з дерева,
+індекси треків і секцій, сторінка `/status/`, яка рендерить уже наявний `progress.json`, і scale
+spike (`PLAN.md` крок 6).

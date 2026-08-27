@@ -106,6 +106,57 @@ section_labels_nav:
   engineering/ci-cd:                    {en: "CI/CD",                       uk: "CI/CD"}
   engineering/code-quality:             {en: Code quality,                  uk: Якість коду}
 
+# Стан completeness (tools/iqa/lifecycle.py), як видиме слово: бейдж у сайдбарі,
+# індексах треку/секції і на /status/. Значення самого поля лишаються англійськими
+# кодами (empty/stub/partial/complete) - це ключі цієї таблиці, не текст на сторінці.
+completeness_labels:
+  empty:    {en: Not started, uk: Не розпочато}
+  stub:     {en: Short answer only, uk: Лише коротка відповідь}
+  partial:  {en: Partial,     uk: Частково}
+  complete: {en: Complete,    uk: Завершено}
+
+# Плашка на місці секції, чий текст дорівнює TODO (PLAN.md крок 6, п.3): сторінка
+# питання показує це чесно замість голого слова TODO.
+wip_notice:
+  {en: "This section has not been written yet.", uk: "Цей розділ ще не написано."}
+
+# Видимі підписи навколо індексів треку/секції і /status/ (PLAN.md крок 6). `level`
+# і `type` самі лишаються англійськими кодами закритого словника (QUALITY_GATES.md
+# facets-vocabulary) - тут перекладаються тільки підписи навколо них, не значення.
+site_labels:
+  status_page_title:       {en: Progress,          uk: Прогрес}
+  status_page_description: {en: "Generated progress report: one row per question.",
+                             uk: "Згенерований звіт прогресу: один рядок на питання."}
+  filter_track:             {en: Track,              uk: Трек}
+  filter_section:           {en: Section,            uk: Секція}
+  filter_language:          {en: Language,           uk: Мова}
+  filter_completeness:      {en: Completeness,       uk: Повнота}
+  filter_all:                {en: All,                uk: Усі}
+  column_id:                 {en: ID,                 uk: ID}
+  column_title:               {en: Title,              uk: Назва}
+  column_track:                {en: Track,              uk: Трек}
+  column_section:               {en: Section,            uk: Секція}
+  column_level:                  {en: Level,              uk: Рівень}
+  column_type:                    {en: Type,               uk: Тип}
+  column_status:                   {en: Status,             uk: Статус}
+  column_sources:                   {en: Sources,            uk: Джерела}
+  column_updated:                    {en: Updated,            uk: Оновлено}
+  column_card:                        {en: Card,               uk: Картка}
+  aggregate_by_track:                  {en: "By track",         uk: "За треком"}
+  aggregate_by_section:                 {en: "By section",       uk: "За секцією"}
+  aggregate_by_language:                 {en: "By language",     uk: "За мовою"}
+  aggregate_by_type:                      {en: "By question type", uk: "За типом питання"}
+  aggregate_by_section_field:              {en: "By body section (systemic gaps)",
+                                             uk: "За розділом тіла (системні прогалини)"}
+  aggregate_by_program:                     {en: "By program",   uk: "За програмою"}
+  aggregate_no_programs:                     {en: "No programs are defined yet (PLAN.md step 9).",
+                                               uk: "Програм ще не визначено (PLAN.md крок 9)."}
+  aggregate_total:                            {en: Total,        uk: Разом}
+  section_field_written:                       {en: written,     uk: написано}
+  breadcrumb_all_tracks:                        {en: "All tracks", uk: "Усі треки"}
+  index_no_questions:                            {en: "No published questions yet.",
+                                                    uk: "Опублікованих питань ще немає."}
+
 # Значення фасета `frameworks`. Фреймворк додається тоді, коли з'являється перше питання,
 # що його називає, а не наперед.
 frameworks:

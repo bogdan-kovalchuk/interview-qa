@@ -21,6 +21,7 @@ import subprocess
 import sys
 
 from .export import run as run_export
+from .report import run as run_report
 from .validate import print_report, validate_repository
 
 
@@ -38,11 +39,15 @@ def run(root: Path) -> int:
     # belongs inside the one build path. Left outside it, a stale questions.json would
     # silently produce a deck from old content - the exact failure mode the mirror guard
     # exists to prevent.
-    print("\n== 2/4: export dist/export/questions.json ==")
+    print("\n== 2/4: export dist/export/questions.json and progress.{json,csv} ==")
     exported = run_export(root)
     if exported != 0:
         print("Export failed; refusing to build.", file=sys.stderr)
         return exported
+    reported = run_report(root)
+    if reported != 0:
+        print("Progress report failed; refusing to build.", file=sys.stderr)
+        return reported
 
     print("\n== 3/4: npm run build (regenerates the mirror, then astro build) ==")
     npm = shutil.which("npm")
