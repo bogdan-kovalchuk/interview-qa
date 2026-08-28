@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [sys-getrefcount]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython free-threaded build"
     version: "3.14"
@@ -75,7 +75,44 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Immortalization – це механізм CPython, який позначає окремі об'єкти як такі, що ніколи не будуть
+deallocated: замість звичайного reference counting їхнє поле `ob_refcnt` встановлюється у фіксоване
+sentinel-значення (дуже велике число, підібране так, щоб подальші inc/dec ніколи не переповнили й не
+занулили його), і подальші incref/decref над таким об'єктом стають no-op.[^py314-howto-free-threading-python]
+
+Ідея з'явилася для free-threaded build (PEP 703): без GIL кожен incref/decref мав би бути
+atomic-операцією, а найгарячіші об'єкти – `None`, `True`, `False`, малі кешовані int, interned
+strings, code constants – читаються й "утримуються" мільйонами місць одночасно. Зробивши їх
+immortal, інтерпретатор прибирає ці atomic-операції з hot path замість того, щоб намагатися їх
+оптимізувати.[^py314-c-api-memory]
+
+`sys.getrefcount(obj)` не має спеціального case для immortal об'єктів: вона просто читає те саме
+поле `ob_refcnt` і додає 1 за тимчасове посилання на `obj` під час самого виклику.[^py314-library-sys]
+Для immortal об'єкта це поле – не лічильник, а sentinel-константа, тому повернене число не має
+жодного стосунку до кількості реальних посилань і виглядає невиправдано великим.
+
+Приклад, який показує різницю між звичайним і immortal об'єктом:
+
+```python
+import sys
+
+class Plain:
+    pass
+
+obj = Plain()
+print(sys.getrefcount(obj))     # small, real number of references
+
+print(sys.getrefcount(None))    # huge sentinel value, not a real count
+```
+
+**Типові помилки:**
+- читати повернене значення як точну кількість `del`, потрібних для деструкції об'єкта;
+- дивуватися, чому число не зменшується після видалення локальних змінних, що посилалися на
+  immortal об'єкт;
+- використовувати `sys.getrefcount()` для діагностики memory leaks замість `tracemalloc` чи
+  `gc.get_referrers()`;
+- забувати, що з Python 3.12+ immortal стали не лише `None`/`True`/`False`, а й малі кешовані int та
+  деякі рядки, тож поведінка відрізняється від старіших версій.
 
 ## Environment
 

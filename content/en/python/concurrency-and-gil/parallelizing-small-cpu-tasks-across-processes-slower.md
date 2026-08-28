@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -64,11 +64,53 @@ sources:
 
 ## Short answer
 
-TODO
+**The overhead of creating processes, pickling arguments and results, and IPC communication over
+pipes exceeds the computation time itself for small tasks.**[^py314-library-threading] Every
+`submit()` call on a `ProcessPoolExecutor` requires pickling the callable and its arguments and
+sending them through a pipe. If a task runs in microseconds while serialization and communication
+take milliseconds, the combined overhead dominates. The fix is to group tasks into larger batches.
 
 ## Detailed explanation
 
-TODO
+Parallelizing across processes has a fixed per-task cost that has nothing to do with the work
+itself; when a task is small, that cost dominates the total time, and the parallel version ends up
+slower than a plain sequential loop.[^py314-library-concurrent-futures]
+
+The cost is made up of several steps, and each `submit()` (or element in `map()`) pays for them
+separately: pickling the callable and its arguments in the parent process, writing the bytes to a
+pipe, unpickling them in the worker process, running the task, pickling the result back, and
+unpickling it in the parent process. Starting the worker processes themselves is amortized over the
+lifetime of the pool, but this serialize/IPC cycle is not - it repeats for every task.
+
+Order of magnitude, pickling and an IPC round trip take tens to hundreds of microseconds even for
+simple objects, while a computation like multiplying two numbers takes nanoseconds. So the overhead
+can outweigh the useful work by thousands of times.
+
+```python
+from concurrent.futures import ProcessPoolExecutor
+
+def square(x):
+    return x * x
+
+# naive: one task per element - overhead dominates for cheap work
+with ProcessPoolExecutor() as pool:
+    results = list(pool.map(square, range(1_000_000)))
+
+# batched: fewer, larger tasks amortize the per-submit overhead
+def square_batch(chunk):
+    return [x * x for x in chunk]
+```
+
+The simplest way to cut this overhead is to group work into larger batches: instead of a million
+separate tasks, hand each worker a list of elements and get back a list of results in one pickle
+cycle. `ProcessPoolExecutor.map()` does some of this for you through the `chunksize` parameter,
+which bundles several elements of the iterable into a single task.[^py314-library-multiprocessing]
+
+**When this is worth worrying about:**
+- a task runs in microseconds rather than milliseconds or longer;
+- the arguments or the result are large or complex objects that are expensive to serialize;
+- the number of `submit()` calls or elements in `map()` is much larger than the number of worker
+  processes.
 
 ## Environment
 

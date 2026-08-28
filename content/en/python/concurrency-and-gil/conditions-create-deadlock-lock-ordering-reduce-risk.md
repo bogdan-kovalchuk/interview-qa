@@ -8,10 +8,10 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -61,11 +61,57 @@ sources:
 
 ## Short answer
 
-TODO
+**A deadlock occurs when two or more threads block forever, each waiting for a resource held by
+another; the classic condition is a circular wait on locks acquired in different
+order.**[^py314-library-threading] If thread A holds Lock1 and waits for Lock2, while thread B
+holds Lock2 and waits for Lock1, neither can proceed. Lock ordering reduces the risk: if all
+threads acquire locks in a single global order (for example, always Lock1 before Lock2), a cycle
+becomes impossible. Additionally, use `with` to guarantee release and a timeout on `acquire()`.
 
 ## Detailed explanation
 
-TODO
+A deadlock is a state where several threads wait on each other forever and none can proceed.
+Classically this requires four conditions at once: mutual exclusion (a resource belongs to only
+one owner at a time), hold-and-wait (a thread holds one lock while waiting for another), no
+preemption (a lock cannot be taken away from outside), and a circular wait. Removing any one of
+these conditions is enough to make a deadlock impossible.[^py314-library-threading]
+
+In practice, the circular wait is the easiest one to remove, which is why it names the typical
+scenario: two threads acquire two locks in opposite order.
+
+```python
+import threading
+
+lock_a = threading.Lock()
+lock_b = threading.Lock()
+
+def thread_1():
+    with lock_a:
+        with lock_b:  # waits for lock_b, held by thread_2
+            ...
+
+def thread_2():
+    with lock_b:
+        with lock_a:  # waits for lock_a, held by thread_1
+            ...
+```
+
+If `thread_1` manages to acquire `lock_a` and `thread_2` acquires `lock_b`, each is waiting for a
+resource the other holds, and neither will release its own. Neither a default timeout nor the GIL
+prevents this – the GIL only governs bytecode execution, not the order in which locks are
+acquired.
+
+Lock ordering removes the possibility of a cycle: if every thread in the program acquires several
+locks always in the same global order (for example, by object id, or by a predefined list), a
+wait cycle cannot form, because a thread will never wait on a lock that comes "earlier" than one
+it already holds.
+
+**Other ways to lower deadlock risk:**
+- use `with lock:` instead of manual `acquire()`/`release()`, so the lock is always released even
+  on an exception;
+- pass a `timeout` to `acquire()` and handle the failure instead of waiting forever;
+- minimize the number of locks that must be held at once by narrowing the critical section;
+- where possible, replace several small locks with one lock that covers the whole related state.
 
 ## Evaluation guide
 

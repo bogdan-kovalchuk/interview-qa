@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [async-with, aenter, aexit]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,49 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`__aenter__` і `__aexit__` – асинхронні аналоги `__enter__` і `__exit__`: вони оголошені як
+`async def`, тому виклик повертає coroutine, яку `async with` awaits, замість того щоб отримати
+значення напряму.[^py314-reference-datamodel-with-statement-context-managers]
+
+Через це `async with` можна писати лише всередині `async def` – синтаксично поза coroutine-функцією
+його немає. Сам вираз працює так само, як `with`: `async with expr as x:` викликає `__aenter__()`,
+await-ить результат і присвоює його `x`, а по виходу await-ить `__aexit__(exc_type, exc_val,
+exc_tb)`.
+
+Семантика suppression exception та сама, що й у синхронного protocol: truthy return з `__aexit__`
+пригнічує exception, а falsy (у тому числі `None`) дозволяє йому поширитися
+далі.[^py314-reference-datamodel-with-statement-context-managers] Різниця лише в тому, що і сам
+виклик `__aexit__`, і будь-який await всередині нього можуть призупинити coroutine, поки event loop
+обробляє інші задачі.
+
+Приклад асинхронного context manager, який відкриває з'єднання в `__aenter__` і закриває в
+`__aexit__`:
+
+```python
+class AsyncConn:
+    async def __aenter__(self):
+        self.conn = await connect()
+        return self.conn
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.conn.close()
+        return False
+
+async def main():
+    async with AsyncConn() as conn:
+        ...
+```
+
+Клас, що має лише `__aenter__`/`__aexit__`, не працює зі звичайним `with` – Python шукає саме
+`__enter__`/`__exit__` і не підмінює їх асинхронними варіантами. Для generator-based варіанту
+синхронного `@contextmanager` асинхронний аналог – `contextlib.asynccontextmanager`, який так само
+перетворює `async def` generator з одним `yield` на async context manager.[^py314-library-contextlib]
+
+**Коли потрібен саме async варіант:**
+- enter/exit виконують мережеві I/O-операції (HTTP, черги, бази даних) і не повинні блокувати event
+  loop;
+- потрібна async-безпечна synchronization (наприклад, `asyncio.Lock` як context manager);
+- ресурс сам надає лише async API для встановлення й закриття з'єднання.
 
 ## Comparison
 

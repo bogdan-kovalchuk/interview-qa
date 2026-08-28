@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [left-join, inner-join]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -68,11 +68,51 @@ sources:
 
 ## Short answer
 
-TODO
+**Use a `LEFT JOIN` from the customers table to orders, and put the filter for paid orders (for
+example, `status = 'paid'`) in the `ON` condition, not in `WHERE`.**[^postgres-indexes] The
+condition in `ON` decides which rows of the right table get joined; when there is no match, the
+customer row is still returned with `NULL` for orders. If the same filter is put in `WHERE`
+instead, rows with `NULL` (customers with no paid orders) get filtered out, which effectively
+turns the `LEFT JOIN` into an `INNER JOIN`.
 
 ## Detailed explanation
 
-TODO
+A `LEFT JOIN` is a join type that returns every row of the left table regardless of whether it has
+a match in the right table; when there is no match, the right table's columns are filled with
+`NULL`.[^postgres-queries-table-expressions]
+
+The condition in `ON` runs during the join itself: it decides which rows of the right table get
+attached to each row of the left table, but it does not drop left-table rows that have no match –
+they stay, with `NULL`. The condition in `WHERE` runs after the join has already been built, and
+acts as an ordinary filter over the resulting row set.
+
+If a filter on a right-table column (for example, `orders.status = 'paid'`) is put in `WHERE`,
+customer rows with no paid orders will have `NULL` in that column, and `NULL = 'paid'` evaluates to
+`UNKNOWN`, so those rows get filtered out. The result looks as if the `LEFT JOIN` turned into an
+`INNER JOIN`, even though it is still syntactically a `LEFT JOIN`.
+
+The difference between correct and incorrect placement of the filter:
+
+```sql
+-- correct: filter lives in ON, customers without paid orders still appear
+SELECT c.id, c.name, o.id AS order_id
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id AND o.status = 'paid';
+
+-- wrong: filter in WHERE drops customers with no matching paid order
+SELECT c.id, c.name, o.id AS order_id
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id
+WHERE o.status = 'paid';
+```
+
+**Common mistakes with predicate placement:**
+- moving every filter condition into `WHERE` out of habit, without accounting for what that does
+  to a `JOIN`;
+- testing the query only on data where every customer already has at least one order, and missing
+  that zero-order rows disappear;
+- forgetting that `IS NULL` on a right-table column in `WHERE` is the correct way to filter for
+  "rows with no match" after a `LEFT JOIN`.
 
 ## Environment
 

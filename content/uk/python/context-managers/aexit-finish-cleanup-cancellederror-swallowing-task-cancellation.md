@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: [aexit, cancellederror]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -44,7 +44,43 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`CancelledError` – це виняток, яким asyncio сигналізує coroutine про потребу зупинитися; він
+приходить у `__aexit__` так само, як будь-яка інша помилка, через параметри `exc_type`, `exc_val`
+і `exc_tb`.[^py314-reference-datamodel-with-statement-context-managers]
+
+Головна пастка – `CancelledError` успадковує `BaseException`, а не
+`Exception`.[^py314-library-asyncio-task-task-cancellation] Тому `except Exception` його не ловить,
+і cleanup-код, написаний "як завжди", коректно пропускає скасування далі. Проблема виникає, коли
+`__aexit__` явно ловить ширший виняток (`except BaseException` або голий `except:`) заради cleanup –
+тоді він зобов'язаний виконати потрібні дії і одразу підняти виняток повторно (`raise`), інакше
+cancellation завдання буде "проковтнуте", і задача продовжить виконання, ніби нічого не відбулося.
+
+Безпечний патерн – виконати cleanup у `try`, а `CancelledError` не перехоплювати або підняти
+повторно:
+
+```python
+async def __aexit__(self, exc_type, exc_val, exc_tb):
+    try:
+        await self.conn.close()
+    except asyncio.CancelledError:
+        # cleanup already ran above; re-raise so cancellation reaches the task
+        raise
+```
+
+Якщо cleanup сам виконує await-виклики, вони теж можуть отримати `CancelledError` – огортання в
+`try/finally` гарантує, що ресурс закриється навіть тоді, коли скасування прийшло саме під час
+закриття.
+
+Якщо код навмисно вирішує подавити скасування (наприклад, `__aexit__` повертає truthy значення),
+він зобов'язаний викликати `task.uncancel()`, бо `asyncio.TaskGroup` і `asyncio.timeout()`
+рахують кількість активних cancellation-запитів і без цього виклику вважатимуть задачу досі
+скасованою.[^py314-library-asyncio-task-task-cancellation]
+
+**Типові помилки з `__aexit__` і скасуванням:**
+- ловити `CancelledError` через `except Exception`, вважаючи, що це звичайний виняток;
+- перехопити `CancelledError` заради cleanup і забути `raise`, через що скасування губиться;
+- подавити `CancelledError` (`return True`) без виклику `task.uncancel()`, ламаючи облік у
+  `TaskGroup`.
 
 ## Environment
 

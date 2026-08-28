@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -61,11 +61,56 @@ sources:
 
 ## Short answer
 
-TODO
+**`Queue` and `Pipe` are message passing with built-in synchronization; shared memory is justified
+only when the serialization overhead for large data is a real bottleneck.**[^py314-library-threading]
+`multiprocessing.Queue` supports many producers/consumers and serializes objects via `pickle`.
+`Pipe` is more efficient for two processes but does not guarantee integrity when reading and
+writing the same end concurrently. `SharedMemory`, `Array`, and `Value` give zero-copy access
+without serialization, but any shared mutation requires explicit locks (even `counter.value += 1`
+is not atomic). Documentation favors message passing over shared state where possible.
 
 ## Detailed explanation
 
-TODO
+IPC (inter-process communication) in `multiprocessing` is a way to pass data between processes
+that do not share memory by default. Message passing (`Queue`, `Pipe`) and shared memory are two
+fundamentally different approaches to this problem, with different costs and different
+guarantees.
+
+`multiprocessing.Queue` is implemented on top of a `Pipe` and a background feeder thread: every
+item put on the queue is serialized via `pickle`, sent through an OS channel, and deserialized on
+the other end.[^py314-library-multiprocessing] This makes `Queue` convenient for an arbitrary
+number of producers and consumers, and safe for concurrent use from multiple processes without
+extra locks on the caller's side.
+
+`Pipe` is a lower-level primitive: it gives a pair of connected ends for exchange between exactly
+two processes. It is faster than `Queue`, since it has no feeder thread and no extra in-memory
+queue, but it does not guarantee data integrity if several processes concurrently write to or read
+from the same end – the documentation warns about this directly.
+
+Example of passing a large array through shared memory instead of serialization:
+
+```python
+from multiprocessing import shared_memory
+
+shm = shared_memory.SharedMemory(create=True, size=array.nbytes)
+buf = np.ndarray(array.shape, dtype=array.dtype, buffer=shm.buf)
+buf[:] = array[:]  # zero-copy: no pickle round-trip
+```
+
+`SharedMemory`, `Array`, and `Value` give zero-copy access to a single block of memory from all
+processes, avoiding the cost of serializing large objects. The price is losing built-in
+synchronization: any shared mutation (even incrementing a counter) requires an explicit `Lock`,
+because an operation on shared memory is not atomic by itself.
+
+**When shared memory is justified:**
+- the data is large (arrays, buffers), and the serialization overhead measurably dominates
+  computation time;
+- access is mostly read-only, or updates are rare and easy to protect with a single lock;
+- what is actually needed is zero-copy access, not just "a faster channel".
+
+In other cases `Queue` or `Pipe` are simpler, safer by default, and that is exactly why the
+documentation recommends them as the primary way to exchange data between
+processes.[^py314-library-multiprocessing]
 
 ## Comparison
 

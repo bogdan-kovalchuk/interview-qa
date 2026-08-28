@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [dis]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -78,11 +78,55 @@ sources:
 
 ## Short answer
 
-TODO
+**`dis.dis(func)` prints a table of bytecode instructions: offset, opname (for example `LOAD_FAST`,
+`CALL`), argument, and their interpretation – this lets you see exactly which operations the
+compiler generated.**[^py314-library-dis] It shows, for example, whether the compiler chose
+`LOAD_FAST` over `LOAD_GLOBAL`, how a closure uses `LOAD_DEREF`/`STORE_DEREF`, or whether constant
+folding happened. For programmatic analysis, `dis.Bytecode(func)` iterates `Instruction` tuples with
+`opcode`, `argval`, `offset`. <span class="warn">Bytecode is a CPython implementation detail and can
+change between versions.</span>
 
 ## Detailed explanation
 
-TODO
+`dis` is a built-in module that disassembles the bytecode of a function or code object into a
+readable table of instructions, letting you see exactly what the compiler generated instead of
+guessing from the source code.[^py314-library-dis]
+
+Calling `dis.dis(func)` prints one line per bytecode instruction: the source line number (for the
+first instruction of each line), the byte offset, the `opname` (for example `LOAD_FAST`, `CALL`,
+`RETURN_VALUE`), and, where applicable, the argument and its interpretation (`argval`) – for
+example the local variable name for `LOAD_FAST`.
+
+This makes compiler decisions visible that you would otherwise have to guess: whether a variable
+access compiles to `LOAD_FAST` (local) or `LOAD_GLOBAL` (global); how a closure is implemented –
+via `LOAD_DEREF`/`STORE_DEREF` instead of a plain `LOAD_FAST`; or whether constant folding kicked
+in, turning `2 + 3` in the source into a single `5` constant in `co_consts` rather than two separate
+operations.
+
+An example of disassembling a small function:
+
+```python
+def add(a, b):
+    return a + b
+
+dis.dis(add)
+#   1  RESUME                   0
+#   2  LOAD_FAST                0 (a)
+#      LOAD_FAST                1 (b)
+#      BINARY_OP                0 (+)
+#      RETURN_VALUE
+```
+
+For programmatic analysis (rather than just reading by eye), `dis.Bytecode(func)` returns an
+iterator of `Instruction` objects with `opcode`, `opname`, `arg`, `argval`, `offset` attributes –
+this lets you, for example, write a test that checks a certain instruction is absent from a hot
+path.
+
+**Practical uses of `dis`:**
+- checking whether the compiler inlines a constant expression instead of relying on a guess;
+- comparing the bytecode of the same function across two CPython versions to see exactly what
+  changed;
+- finding unnecessary `LOAD_GLOBAL`s in a hot loop and replacing them with a local name for speed.
 
 ## Environment
 

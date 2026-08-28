@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [and, or, bool]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,45 @@ sources:
 
 ## Short answer
 
-TODO
+**`and` and `or` return one of their operands, not necessarily a `bool`.**[^py314-reference-expressions] `x and y` evaluates `x`: if `x` is falsy it returns it, otherwise it returns `y`. `x or y` evaluates `x`: if `x` is truthy it returns it, otherwise it returns `y`. Short-circuiting means the second operand is not evaluated once the first has settled the result.
 
 ## Detailed explanation
 
-TODO
+`and` and `or` are not boolean operators in the sense of "returning `True`/`False`" but selection
+operators: they return **the operand** that settled the result, in its original
+form.[^py314-reference-expressions]
+
+One rule covers both. `x or y` evaluates `x`; if it is truthy that is the result, and `y` is not
+evaluated at all. `x and y` evaluates `x`; if it is falsy the result is `x`, and again `y` is not
+evaluated.
+
+```python
+0 or 'default'      # 'default' - the str, not True
+'a' or 'b'          # 'a'       - the first truthy operand
+[] and crash()      # []        - crash() is never called
+1 and 2             # 2         - the last operand, because 1 is truthy
+```
+
+Truthiness is decided by the object itself through `__bool__`, or through `__len__` in its absence;
+the result therefore depends on the operand's type rather than on some universal
+coercion.[^py314-reference-simple-stmts]
+
+Short-circuiting is a guarantee of the language, not an optimisation, and can be relied on. That is
+why the idiom `obj is not None and obj.value > 0` works: if the first part is false the attribute is
+never read, and no `AttributeError` occurs.
+
+**Practical consequences worth naming:**
+- a default via `or` replaces any falsy value, not just `None` - the classic trap with `0` and `''`;
+- the chain `a or b or c` returns the first truthy operand, and if all are falsy the **last** one,
+  not `False`;
+- annotating the result as `bool` is wrong: the result type is the union of the operand types;
+- if a `bool` is what you need, say so explicitly: `bool(x or y)`;
+- side effects in the second operand may not happen - that is the whole point of short-circuiting,
+  and guard checks are built on it.
+
+Separately, `and`/`or` should not be confused with `&`/`|`: the latter are bitwise operators, they
+do not short-circuit, and for ordinary objects they mean something else
+entirely.[^py314-reference-expressions]
 
 ## Evaluation guide
 

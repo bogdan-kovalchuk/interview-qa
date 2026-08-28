@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Execution frame (`frame object`) – це структура даних, яку CPython створює під час кожного виклику
+функції чи методу, щоб зберігати весь стан цього конкретного виклику окремо від коду, який
+виконується.[^py314-reference-datamodel-traceback-objects]
+
+Frame тримає посилання на `code object`, з якого він виконується (`f_code`), – це те, що зв'язує
+frame з конкретним bytecode, `co_consts` і `co_varnames`. Окремо frame зберігає два словники:
+`f_globals` – простір імен модуля, у якому визначено функцію, і `f_locals` – локальні змінні цього
+виклику. Поле `f_lasti` фіксує offset останньої виконаної bytecode-інструкції – саме звідси
+traceback знає, на якому рядку стався виняток.
+
+Кожен виклик функції створює новий frame, а поле `f_back` вказує на frame, з якого відбувся виклик.
+Цей ланцюжок `f_back` – і є call stack: щоб пройти стек від поточного виклику до `__main__`, досить
+ітеруватися по `f_back`, поки він не стане `None`. Traceback objects і функції на кшталт
+`sys._getframe()` чи `traceback.extract_stack()` саме так і роблять.[^py314-library-sys]
+
+```python
+import sys
+
+def inner():
+    frame = sys._getframe()
+    print(frame.f_code.co_name)  # inner
+    print(frame.f_back.f_code.co_name)  # outer
+
+def outer():
+    inner()
+
+outer()
+```
+
+**Типові помилки при роботі з frame objects:**
+- тримати посилання на frame довше, ніж триває виклик – це не дає звільнити всі локальні змінні
+  цього виклику, доки живий сам frame;
+- зберігати traceback винятку (а разом з ним і ланцюжок frames) у змінній поза `except`-блоком без
+  явного `del`, створюючи reference cycle;
+- плутати `f_locals` зі звичайним, завжди синхронізованим словником – для функцій (на відміну від
+  module/class scope) це знімок, який не завжди відображає live-зміни змінних.
 
 ## Evaluation guide
 

@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: [dis]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,40 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Офіційна документація Python прямо називає bytecode деталлю реалізації: набір опкодів, їх
+кодування й навіть кількість аргументів можуть змінюватися між будь-якими версіями CPython –
+включно з minor-релізами – без гарантії зворотної сумісності.[^py314-library-dis]
+
+Це не гіпотетичний ризик: наприклад, у 3.11 з'явився `RESUME` на початку кожного code object, а
+кілька опкодів викликів (`CALL_FUNCTION`, `CALL_FUNCTION_KW`, `CALL_METHOD`) об'єднали в один
+`CALL` зі спільною підготовкою стека. Код, написаний під bytecode однієї версії, після оновлення
+interpreter може або впасти з помилкою, або – гірше – мовчки почати аналізувати неправильні
+інструкції.
+
+Мовний контракт – це синтаксис і семантика, які описані в reference-документації та мають процес
+зміни через PEP з періодом deprecation. Bytecode такого процесу не проходить: він оптимізується під
+конкретну версію eval loop, і зміна опкоду не вважається breaking change мови, навіть якщо код,
+побудований поверх `dis`, ламається.
+
+```python
+# CPython 3.10 and earlier
+CALL_FUNCTION            2
+
+# CPython 3.11+: unified into CALL with a preceding PUSH_NULL/precall setup
+CALL                      2
+```
+
+Інші реалізації Python підтверджують, що bytecode – не частина мови: PyPy має власний набір
+опкодів для свого interpreter, а MicroPython генерує ще компактніший формат під обмежену пам'ять.
+Обидві виконують той самий Python-код коректно, не маючи нічого спільного з bytecode CPython.
+
+**Практичні наслідки для коду, що читає bytecode:**
+- будь-яка перевірка чи інструмент на основі конкретних opcode-імен має бути прив'язана до версії
+  interpreter і повторно перевірена після оновлення;
+- не варто зберігати чи кешувати `code object` з одного patch-релізу CPython для виконання на
+  іншому – формат `.pyc` теж версіюється;
+- аналіз продуктивності чи покриття краще будувати на `sys.settrace`/`sys.monitoring`, а не на
+  парсингу конкретних опкодів.
 
 ## Symptom
 

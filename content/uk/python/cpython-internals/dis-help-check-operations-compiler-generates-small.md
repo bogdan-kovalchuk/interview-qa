@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [dis]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`dis` – це вбудований модуль, який дизасемблює bytecode функції чи code object у читабельну таблицю
+інструкцій, тому дозволяє побачити, що саме згенерував compiler, а не лише здогадуватися з
+source code.[^py314-library-dis]
+
+Виклик `dis.dis(func)` друкує один рядок на кожну bytecode-інструкцію: номер рядка source code (для
+першої інструкції кожного рядка), offset у байтах, `opname` (наприклад `LOAD_FAST`, `CALL`,
+`RETURN_VALUE`) і, де застосовно, аргумент та його інтерпретацію (`argval`) – наприклад ім'я
+локальної змінної для `LOAD_FAST`.
+
+Це робить видимими рішення compiler, які інакше довелося б вгадувати: чи звертання до змінної
+скомпільоване як `LOAD_FAST` (локальна) або `LOAD_GLOBAL` (глобальна); як реалізовано closure –
+через `LOAD_DEREF`/`STORE_DEREF` замість звичайного `LOAD_FAST`; чи спрацював constant folding, коли
+`2 + 3` в source перетворюється на єдину константу `5` в `co_consts`, а не на дві окремі операції.
+
+Приклад дизасемблювання невеликої функції:
+
+```python
+def add(a, b):
+    return a + b
+
+dis.dis(add)
+#   1  RESUME                   0
+#   2  LOAD_FAST                0 (a)
+#      LOAD_FAST                1 (b)
+#      BINARY_OP                0 (+)
+#      RETURN_VALUE
+```
+
+Для програмного аналізу (а не лише читання очима) `dis.Bytecode(func)` повертає ітератор
+`Instruction`-об'єктів з атрибутами `opcode`, `opname`, `arg`, `argval`, `offset` – це дозволяє,
+наприклад, написати тест, який перевіряє відсутність певної інструкції в hot path.
+
+**Практичні застосування `dis`:**
+- перевірити, чи compiler інлайнить константний вираз, замість покладатися на здогад;
+- порівняти bytecode тієї самої функції на двох версіях CPython, щоб побачити, що саме змінилося;
+- знайти зайві `LOAD_GLOBAL` у hot loop і замінити на локальне ім'я для пришвидшення.
 
 ## Environment
 

@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [threading-local]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -65,7 +65,45 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`threading.local()` – це клас, що дає кожному thread власну, ізольовану копію своїх атрибутів:
+запис `local.value = 1` в одному thread ніяк не впливає на те, що бачить `local.value` в
+іншому.[^py314-library-threading]
+
+Функціонально це схоже на shared dictionary, ключем якого є `threading.get_ident()`, а значенням –
+дані конкретного потоку. Різниця – у тому, хто відповідає за ізоляцію і за прибирання. У
+`threading.local()` ізоляція вбудована: не потрібен lock, щоб читати чи писати «своє» значення, і
+запис автоматично прибирається, коли thread завершується. У shared dict усе це доводиться робити
+руками: lock навколо кожного доступу за ключем і явне видалення запису мертвого потоку, інакше
+словник росте назавжди.
+
+Приклад двох еквівалентних за призначенням, але різних за витратами реалізацій:
+
+```python
+# threading.local: isolation and cleanup are automatic
+local_data = threading.local()
+local_data.connection = get_connection()
+
+# shared dict keyed by thread id: isolation and cleanup are manual
+connections = {}
+connections[threading.get_ident()] = get_connection()
+```
+
+**Коли `threading.local()` виграє:**
+- дані справді потрібні лише в межах одного потоку (наприклад, per-thread DB connection чи request
+  context) і не повинні «протікати» між потоками;
+- важливий автоматичний cleanup при завершенні потоку без ручного видалення записів.
+
+**Коли shared dict з явним ключем кращий:**
+- потрібно з іншого thread (наприклад, для моніторингу чи graceful shutdown) переглянути чи
+  завершити стан усіх потоків одразу – `threading.local()` цього просто не дає, бо кожен thread
+  бачить лише своє;
+- важлива явність: код, що читає `connections[tid]`, одразу показує, що це саме per-thread
+  структура з lock-ом, тоді як атрибути `local_data` виглядають як звичайні атрибути, і це і є
+  ризик.
+
+Небезпека тут саме в implicit state: значення `threading.local()` виглядають як прості атрибути
+об'єкта, тому легко забути, що вони невидимі з інших потоків, і випадково передати посилання на
+`local_data` в інший thread, очікуючи побачити там ті самі дані.
 
 ## Comparison
 

@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: [gc-freeze, fork]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -75,7 +75,46 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`gc.freeze()` бере всі об'єкти, які на цей момент відстежує cyclic collector, і переносить їх у
+permanent generation – групу, яку подальші виклики `gc.collect()` більше не перевіряють і не
+чіпають.[^py314-library-gc]
+
+Без freeze кожен прохід cyclic GC фізично записує службове поле (внутрішній лічильник для
+trial-deletion алгоритму) у кожен tracked об'єкт, щоб порахувати досяжність. Навіть якщо з точки
+зору Python-коду об'єкт не змінювався, ця службова модифікація на C-рівні "бруднить" сторінку
+пам'яті. Після `fork()` така сторінка перестає бути спільною між parent і child і копіюється –
+відбувається copy-on-write, хоча дані фактично не мінялись.[^py314-c-api-memory]
+
+Типовий workflow: parent-процес (наприклад, pre-fork модель gunicorn чи uwsgi) завантажує довгоживучі
+дані – конфіги, ORM-моделі, кеші – викликає `gc.freeze()` безпосередньо перед `fork()`, а кожен child
+одразу після старту може викликати `gc.enable()`, якщо GC вимикали в parent для стабільності перед
+freeze. Заморожені об'єкти child більше не переглядає жоден cyclic collector, тож їхні сторінки
+лишаються спільними з parent.
+
+Умови, за яких pattern дійсно працює: заморожені об'єкти мають бути дійсно довгоживучими й по суті
+незмінними; якщо child модифікує їх на рівні Python (не лише GC-переходом), CoW все одно
+станеться – freeze захищає лише від записів, спричинених самим collector, а не від мутацій коду.
+Об'єкти, створені вже після `fork()` у кожному child, у permanent generation не потрапляють і
+відстежуються окремо.
+
+```python
+import gc
+import os
+
+load_shared_data()   # populate long-lived objects
+gc.freeze()           # move them out of future collections
+pid = os.fork()
+if pid == 0:
+    serve_requests()   # child; frozen objects' pages stay shared
+```
+
+**Типові помилки:**
+- викликати `gc.freeze()` до того, як усі довгоживучі дані завантажені – нові об'єкти лишаються
+  tracked і writable;
+- очікувати, що freeze захищає й від Python-рівневих мутацій – він прибирає лише GC-спричинені
+  записи;
+- забувати про `gc.unfreeze()` чи моніторинг `gc.get_freeze_count()`, коли pattern більше не
+  потрібен, і накопичувати permanent generation, яку ніхто не збирає.
 
 ## Environment
 

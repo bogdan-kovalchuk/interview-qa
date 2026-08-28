@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -82,11 +82,54 @@ sources:
 
 ## Short answer
 
-TODO
+**Rolling – gradual instance updates with no downtime, a simple but slow rollback; blue-green –
+two full environments with an instant rollback via a traffic switch; canary – the smallest blast
+radius through progressively growing the share of traffic sent to the new version.**
+[^git-git-merge] Rolling fits ordinary releases where simplicity and zero downtime are what
+matter. Blue-green fits cases where rollback speed is critical (a load-balancer switch in seconds)
+and there are resources for a fully duplicated environment. Canary fits risky changes (for example,
+payment logic), where the new version must first be checked against a small slice of users before
+the traffic is grown further.
 
 ## Detailed explanation
 
-TODO
+A deployment strategy determines how a new version of a service replaces the old one in
+production, and how much traffic reaches each version at the same time during the
+rollout.[^gcloud-deployment-strategies]
+
+Rolling deployment sequentially replaces old instances with new ones, in small batches, until the
+whole fleet is updated. There is no downtime, because some instances always keep serving traffic,
+but rollback requires the same gradual process in reverse, so it is slow, and for a while the old
+and the new code run side by side.
+
+Blue-green keeps two fully identical environments (blue – the current one, green – the new one)
+and switches all traffic in one atomic step at the load-balancer or DNS level. Rollback is the same
+switch in reverse, so it takes seconds, but the price is double the resources for the whole
+duration of the rollout.
+
+Canary first routes a small percentage of traffic to the new version (for example, 1-5%), watches
+error and latency metrics, and only then grows the share gradually. The blast radius is the
+smallest of the three approaches, because a bug in the new version affects a small slice of users
+before it is caught and rolled back.
+
+An example of a canary configuration that routes 5% of traffic to the new version:
+
+```yaml
+# istio VirtualService: 95% to stable, 5% to canary
+http:
+  - route:
+      - destination: {host: svc, subset: stable}
+        weight: 95
+      - destination: {host: svc, subset: canary}
+        weight: 5
+```
+
+**Common mistakes when choosing a deployment strategy:**
+- choosing blue-green for a service where doubling resource cost is unacceptable;
+- running a canary without real metrics and alerts – without observability, progressively growing
+  the traffic share gives no advantage over rolling;
+- treating rolling deployment as safe for database schema changes, even though the old and the new
+  code run against the same database at the same time for a while.
 
 ## Comparison
 

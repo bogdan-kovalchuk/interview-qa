@@ -8,10 +8,10 @@ level: senior
 type: comparison
 tags: [queue-queue]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -65,7 +65,37 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`queue.Queue` – це FIFO-черга з потокобезпечним інтерфейсом: усередині кожного виклику `put()` і
+`get()` вона сама бере і звільняє внутрішній lock, тож зовнішньому коду не потрібна жодна додаткова
+синхронізація.[^py314-library-threading]
+
+Shared list без lock натомість не дає жодного контракту. Окремі виклики на кшталт `list.append()`
+чи `list.pop(0)` самі по собі безпечні, але послідовність із кількох таких викликів – ні. Якщо один
+потік перевіряє `if my_list:` перед `pop(0)`, а інший встигає забрати останній елемент між
+перевіркою і `pop`, виникає race condition і `IndexError`.
+
+Приклад hand-off без і з `Queue`:
+
+```python
+# fragile: check-then-act on a shared list
+if job_list:
+    job = job_list.pop(0)  # another thread may empty the list in between
+
+# robust: Queue blocks and hands off exactly one item per get()
+job = job_queue.get()
+```
+
+`Queue` додає й те, чого немає у списку: `put()` може блокуватися, коли черга досягла `maxsize`, а
+це дає простий backpressure – producer сповільнюється, коли consumer не встигає. Є також
+`task_done()` і `join()`, які дозволяють producer дочекатися, поки всі поставлені jobs будуть
+оброблені.[^py314-library-threading]
+
+**Чого не дає shared list без явного протоколу:**
+- гарантії, що кожен job дістанеться рівно одному consumer, а не нулю чи двом одразу;
+- сигналу «черга порожня, чекай» замість busy-wait циклу з перевіркою довжини списку;
+- backpressure, коли producer працює швидше за consumer;
+- єдиної точки, де видно весь контракт hand-off, замість розкиданих перевірок і locks навколо
+  списку.
 
 ## Comparison
 

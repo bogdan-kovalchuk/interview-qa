@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -82,11 +82,46 @@ sources:
 
 ## Short answer
 
-TODO
+**For payment calculation, the minimum CI gate is unit tests for boundary values and currency
+formats, integration tests against a real or emulated database, and static checks (linter + type
+checker).**[^git-git-merge] An error in the calculation carries a high failure risk (financial
+loss, incorrect transactions), so skipping any of the three levels is not acceptable. Unit tests
+cover the formulas and edge cases, integration tests cover the interaction with the database and
+external services, and static checks catch type errors and unused variables before the tests even
+run. Merging is allowed only after the full pipeline is green.
 
 ## Detailed explanation
 
-TODO
+A CI gate is a set of automated checks that must pass before a change is allowed to merge into the
+main branch.[^github-continuous-integration]
+
+The minimum required set depends on failure risk: the more expensive the error, the wider the
+coverage required before merge. For payment calculation, the cost of a defect is money (a wrong
+amount, a double charge, a lost cent from rounding), so none of the three check levels can be
+skipped.
+
+Unit tests exercise the calculation formula itself – boundary values (zero, negative amounts, the
+maximum), rounding, and handling different currencies and locales. Integration tests check that
+the calculation interacts correctly with a real or emulated database and external services (for
+example, a payment gateway) – this is where bugs like the wrong column type for money get caught.
+Static checks (linter, type checker) catch a class of errors that do not depend on the logic –
+a wrong argument type, an unused variable – and do it before the tests even run, so it is cheaper
+and faster.
+
+An example of a unit test for a boundary value in payment calculation:
+
+```python
+def test_rounds_half_cent_down():
+    assert calculate_total(cents=1005, tax_rate=0.0725) == 1078  # not 1079
+```
+
+**Common mistakes with the CI gate for payment code:**
+- treating static checks as a formality and not blocking merge on them, even though they catch
+  type errors in money calculations;
+- covering only the "happy path" with unit tests, skipping boundary values (zero, rounding,
+  negative amounts);
+- testing the calculation in isolation from the database, missing that the real column stores the
+  amount as a `float` instead of a `decimal`.
 
 ## Environment
 

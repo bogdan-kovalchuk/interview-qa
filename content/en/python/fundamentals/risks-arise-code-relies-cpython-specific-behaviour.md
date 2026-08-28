@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -50,11 +50,51 @@ sources:
 
 ## Short answer
 
-TODO
+**Such code can lose correctness, portability or the expected performance characteristics.**[^py314-reference-executionmodel] Another implementation may have a different garbage collector, a different moment of finalization, different bytecode, a JIT and a different object layout. Rely on documented language semantics, manage resources through context managers, and test on the target implementations.
 
 ## Detailed explanation
 
-TODO
+The Python language and its implementation are different things. The Language Reference describes
+the semantics every implementation must honour; everything else - how exactly CPython achieves it -
+may differ in PyPy, GraalPy or MicroPython.[^py314-reference-executionmodel]
+
+The most common implicit dependency is the moment an object is destroyed. CPython uses reference
+counting, so an object disappears as soon as the last reference is gone, and a file opened without
+`with` closes "by itself". In PyPy the collector is different, the moment of finalization is
+undefined, and the same code holds the file descriptor until the next collection.
+
+```python
+data = open('report.csv').read()   # CPython: the file closes right away
+                                   # PyPy: the descriptor stays open, unpredictably long
+
+with open('report.csv') as f:      # both: closed at the end of the block, by contract
+    data = f.read()
+```
+
+The second dependency is the identity of small objects. CPython caches small integers and some
+strings, so `a is b` is often true for equal small values. That is an implementation cache, not a
+rule of the language: values are compared with `==`, while `is` checks
+identity.[^py314-reference-datamodel]
+
+The third is bytecode and `dis`. The code object format, the opcode set and the output of `dis` are
+documented as a CPython detail and change between versions, so any code parsing disassembled output
+breaks on the next release.[^py314-faq-general]
+
+**The categories of risk worth naming separately:**
+- **correctness**: relying on immediate finalization or on destruction order leaks resources on
+  another implementation;
+- **portability**: a C extension built against the CPython ABI simply will not load where the ABI
+  differs;
+- **performance**: the assumption "string concatenation in a loop is cheap" rests on a CPython
+  optimisation another implementation may lack - and conversely, a JIT makes fast what is slow in
+  CPython;
+- **compatibility over time**: an implementation detail can change between 3.13 and 3.14 without any
+  warning, precisely because no guarantee was given for it.
+
+The practical rule is simple: if a behaviour is not in the Language Reference, or is marked as an
+implementation detail, it must not become part of your code's contract. Resources are closed through
+context managers, equality is checked with `==`, and assumptions about speed are checked by
+measuring on the implementation the code will actually run on.
 
 ## Environment
 

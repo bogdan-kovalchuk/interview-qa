@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython with GIL"
     version: null
@@ -68,7 +68,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+GIL (global interpreter lock) – це один mutex на весь процес CPython, який потрібно утримувати,
+щоб виконувати Python bytecode. У будь-який момент часу лише той thread, що тримає GIL, може
+виконувати інструкції інтерпретатора – усі інші threads, готові до виконання, чекають своєї
+черги.[^py314-library-threading]
+
+Причина існування GIL – не сама по собі multithreading-модель, а внутрішня реалізація CPython.
+Reference counting, яким CPython керує пам'яттю об'єктів, не є thread-safe операцією сам по собі:
+інкремент і декремент лічильника посилань – це read-modify-write, і без глобального lock-а два
+threads могли б одночасно зіпсувати лічильник того самого об'єкта, спричинивши передчасне
+звільнення пам'яті або витік.[^py314-howto-free-threading-python]
+
+GIL захищає саме ці внутрішні структури – лічильники посилань, стан списків, словників, самого
+інтерпретатора – а не логіку, яку пише розробник програми. Це принципова відмінність: GIL робить
+безпечними одиночні bytecode-операції на рівні CPython, але нічого не гарантує щодо послідовностей
+операцій, які пише прикладний код.
+
+```python
+import sys
+
+x = []
+sys.getrefcount(x)  # internal refcount, protected by the GIL from concurrent corruption
+```
+
+Планувальник CPython періодично змушує thread, що тримає GIL, звільнити його – за замовчуванням
+приблизно кожні 5 мілісекунд (`sys.setswitchinterval()`), або одразу, коли thread сам звільняє GIL
+на блокуючому виклику. Це дає ілюзію паралельності на рівні ОС, хоча bytecode усе одно виконується
+по одному thread за раз.
+
+**Що саме серіалізує, а що ні:**
+- серіалізує виконання bytecode-інструкцій інтерпретатора – одночасно виконує лише один thread;
+- серіалізує доступ до внутрішнього стану CPython (reference counts, внутрішні структури
+  об'єктів) – саме заради цього GIL і існує;
+- не серіалізує весь Python-код як атомарний блок – композитні вислови з кількох bytecode можуть
+  бути перервані між ними;
+- не заважає C-розширенням явно звільняти GIL на час своїх обчислень – саме так numpy чи
+  free-threaded build (3.13+) дають реальний паралелізм.[^py314-howto-free-threading-extensions]
 
 ## Evaluation guide
 

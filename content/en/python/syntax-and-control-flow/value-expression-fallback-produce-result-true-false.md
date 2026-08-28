@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [or-fallback]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 execution:
   language: python
   standard: null
@@ -54,11 +54,46 @@ sources:
 
 ## Short answer
 
-TODO
+**The result is `'fallback'`, because `[]` is falsy and `or` returns its second operand.**[^py314-reference-expressions] The `or` operator does not reduce its result to a `bool`; it returns the very object that settled the result. An empty list has `__bool__` -> `False`, so `or` evaluates and returns `"fallback"` as it is.
+
+```text
+>>> [] or "fallback"
+'fallback'
+```
 
 ## Detailed explanation
 
-TODO
+`or` is not a converter to `bool`. It evaluates the left operand, asks it for truthiness, and
+returns an **object**: the left one if it is truthy, otherwise the right one - as
+is.[^py314-reference-expressions]
+
+Here the left operand is an empty list. A list defines `__len__`, and a zero length makes it falsy,
+so `or` moves on to the right operand and returns the string `'fallback'` rather than `True`.
+
+```python
+[] or 'fallback'      # 'fallback' - the str object itself
+[1] or 'fallback'     # [1]        - the list, because it is truthy
+[] or []              # []         - the second empty list; still falsy
+bool([] or 'fallback')  # True     - only bool() actually converts
+```
+
+The truthiness rule is simple: an object is falsy if its `__bool__` returned `False`, or, in the
+absence of `__bool__`, if `__len__` returned zero. Everything else is truthy, including non-empty
+containers, non-zero numbers and any object defining neither
+method.[^py314-reference-simple-stmts]
+
+**What follows from this:**
+- the result type of `or` is the union of the operand types, not `bool`; an annotation `-> bool`
+  would be wrong;
+- the chain `a or b or c` returns the first truthy operand, and if all are falsy the last one, `c`;
+- `x or default` cannot tell "no value given" from "a falsy value given": `0` and `''` get replaced
+  too;
+- if a boolean result is what is needed, say so explicitly: `bool(x or y)`;
+- inside an `if` the difference is invisible, because `if` reduces the result to truthiness itself -
+  which is why the mistake is only noticed once the value is stored or returned.
+
+The same applies to `and`, only mirrored: `[] and 'x'` gives `[]`, because the first operand is
+falsy and settles the result immediately.
 
 ## Evaluation guide
 

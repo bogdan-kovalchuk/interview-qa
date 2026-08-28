@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [break]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,52 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`else` при циклі означає не «інакше», а «якщо цикл дійшов до кінця сам». Він виконується рівно тоді,
+коли цикл завершився природно: iterable вичерпався у `for`, або умова стала хибною у
+`while`.[^py314-reference-compound-stmts]
+
+Єдине, що його скасовує, – `break`. Ані `continue`, ані виняток, ані `return` тут ні до чого: перший
+не заважає циклу дійти до кінця, а два останніх взагалі виводять керування з конструкції, тож до
+`else` справа не доходить.
+
+Найкорисніший випадок – пошук, де треба відрізнити «знайшли» від «перебрали все й не знайшли». Без
+`else` для цього заводять прапорець.
+
+```python
+for item in items:
+    if item.matches(query):
+        found = item
+        break
+else:
+    raise LookupError('nothing matched')   # runs only if the loop was not broken
+```
+
+Той самий код з прапорцем довший і має зайву змінну, стан якої треба тримати в голові:
+
+```python
+found = None
+for item in items:
+    if item.matches(query):
+        found = item
+        break
+if found is None:
+    raise LookupError('nothing matched')
+```
+
+Назва справді невдала – це визнавав і сам автор мови. Читати її варто як `for ... else` = «нічого не
+перервало цикл», а не як пару до `if`.
+
+**Що варто пам'ятати про поведінку:**
+- порожній iterable – це теж природне завершення, тож `else` виконається, хоч тіло циклу не
+  виконалося жодного разу;
+- `while` з умовою, хибною одразу, поводиться так само: тіло не виконалось, `else` виконався;
+- `continue` не впливає ні на що: цикл усе одно може завершитися природно і виконати `else`;
+- виняток усередині циклу пропускає `else`, бо керування залишає конструкцію не через нормальне
+  завершення.[^py314-reference-simple-stmts]
+
+Через невідому більшості семантику `for ... else` варто або супроводжувати коротким коментарем, або
+використовувати там, де альтернатива з прапорцем справді помітно
+гірша.[^py314-reference-expressions]
 
 ## Evaluation guide
 

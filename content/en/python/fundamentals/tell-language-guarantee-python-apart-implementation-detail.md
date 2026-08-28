@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -50,11 +50,53 @@ sources:
 
 ## Short answer
 
-TODO
+**Look the rule up in the Python Language Reference and check whether the documentation marks it as an implementation detail.**[^py314-reference-executionmodel] For example, every object having an identity, a type and a value is part of the data model, while the memory address returned by `id()` and the bytecode format are described outright as CPython details. Code must not build portable logic on such details.
 
 ## Detailed explanation
 
-TODO
+A language guarantee is a rule written down in the Python Language Reference: every implementation
+must honour it, or it is not Python. An implementation detail is how CPython specifically chose to
+carry that rule out; another implementation is entitled to do it
+differently.[^py314-reference-executionmodel]
+
+The practical check is textual. Find the statement in the Language Reference or in the type's
+description in the standard library, and see whether a caveat such as "CPython implementation
+detail" sits next to it. Those places are marked explicitly, and they are exactly where portability
+ends.
+
+It helps to keep a few contrasting pairs in mind. Guarantee: every object has an identity, a type
+and a value, and `id()` returns a constant unique number for the lifetime of the object. Detail:
+that this number is a memory address, and that small integers are cached, which is why `a is b` is
+often true.[^py314-reference-datamodel]
+
+```python
+x = 256
+y = 256
+x is y            # True in CPython - small-int cache, an implementation detail
+
+x = 257
+y = 257
+x is y            # False in CPython - and either result is valid per the language
+
+x == y            # True - this is the guarantee, and the only thing to rely on
+```
+
+Another pair: the guarantee is that a `dict` preserves insertion order (since 3.7 that is part of
+the language). The detail is how it does so internally and how much memory it takes. And one more:
+the guarantee is that `with` calls `__exit__` on leaving the block; the detail is that in CPython an
+object with no references disappears immediately thanks to reference counting.
+
+**Practical heuristics when the documentation is not at hand:**
+- the behaviour is described in the Language Reference or in the PEP that introduced it - a
+  guarantee;
+- the behaviour is visible only through `dis`, `sys.getrefcount`, `id()` or an object's size - a
+  detail;
+- the module is named `_something` or documented as internal - a detail;
+- the behaviour changed between minor versions with no entry under "Deprecations" - almost certainly
+  a detail.[^py314-faq-general]
+
+The simplest sanity check: is PyPy entitled to do this differently and still be Python? If so, you
+are leaning on an implementation detail.
 
 ## Environment
 
