@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython free-threaded build"
     version: "3.14"
@@ -68,7 +68,39 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Free-threaded build - окрема конфігурація CPython, яка збирається з прапорцем `--disable-gil` і в
+якій глобальний interpreter lock вимкнений на рівні самого interpreter, а не просто не
+використовується в конкретному коді.[^py314-howto-free-threading-python]
+
+Ця конфігурація не замінює GIL-enabled build, а існує паралельно з ним: обидві збираються з одного
+вихідного дерева CPython, але розповсюджуються як окремі бінарні пакети з різним тегом ABI
+(наприклад, `cp314` для звичайного build і `cp314t` для free-threaded, де `t` означає threading).
+Інструмент встановлення пакетів обирає wheel за тегом інтерпретатора; C extension, зібраний під
+звичайний ABI, несумісний із free-threaded build і потребує окремої збірки.[^py314-howto-free-threading-extensions]
+
+Визначити, на якому build виконується код, можна двома способами:
+
+```python
+import sys
+
+print(sys.version)            # contains "free-threading build" on that build
+print(sys._is_gil_enabled())  # False on free-threaded build, unless re-enabled
+```
+
+`sys._is_gil_enabled()` може повернути `True` навіть на free-threaded build, якщо GIL був вимкнений
+явно (`PYTHON_GIL=1`) або автоматично увімкнений через несумісний C extension.
+
+Free-threaded build змінює й внутрішню memory-модель: замість pymalloc використовується allocator
+mimalloc, а reference counting стає biased - кожен об'єкт має окремі поля для лічильника власного
+(owning) потоку і для спільного (shared) лічильника, що дозволяє уникнути atomic-операцій на
+швидкому шляху, коли об'єктом користується лише один потік. Ціна цього - single-threaded overhead
+приблизно 1-8% порівняно зі звичайним build.
+
+**На що зважати при виборі:**
+- екосистема бібліотек (особливо C extensions) ще не повністю сумісна з free-threaded ABI;
+- потрібен окремий деплой - відповідний wheel tag, а не просто прапорець запуску;
+- виграш з'являється лише для CPU-bound коду на кількох threads; для I/O-bound навантаження різниця
+  мінімальна.
 
 ## Comparison
 

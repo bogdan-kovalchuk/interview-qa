@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: [gc-disable]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,45 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`gc.disable()` вимикає лише cyclic-колектор – три generations, які періодично шукають reference
+cycles – а не reference counting: об'єкти без циклів, як і завжди, звільняються негайно, щойно їхній
+refcount падає до нуля.[^py314-library-gc]
+
+Причина, чому це буває корисним: прохід cyclic GC зупиняє поточний потік на паузу, довжина якої
+залежить від кількості tracked об'єктів у generation, що перевіряється. Для latency-sensitive коду
+(наприклад, обробника запиту, де важливий p99) навіть рідкісна пауза в кілька мілісекунд помітна на
+хвостових перцентилях, тоді як звичайне reference counting цю затримку не створює.
+
+Ризик симетричний вигоді: якщо код усе ж створює reference cycles (батько<->дитина, closures, що
+захоплюють `self`, збережені traceback-и), вони ніколи не звільняться самі, і пам'ять
+зростатиме необмежено, доки хтось не викличе `gc.collect()` вручну.
+
+Перед вимкненням варто виміряти baseline: `gc.get_stats()` і `gc.get_count()` показують частоту й
+кількість зібраних об'єктів по generation, а профайлер алокацій чи `objgraph` – реальні джерела
+циклів у коді й бібліотеках. Після вимкнення потрібно тримати invariant: або цикли гарантовано не
+створюються, або `gc.collect()` викликається вручну в передбачувані, безпечні моменти (кінець
+запиту, простій воркера), і за пам'яттю після цього спостерігають у продакшені, а не лише на етапі
+рев'ю коду.
+
+Типовий pattern:
+
+```python
+import gc
+
+gc.disable()  # keep refcounting; stop only cyclic collection
+
+def handle_request(request_count):
+    ...
+    if request_count % 1000 == 0:
+        gc.collect()  # release accumulated cycles at a safe point
+```
+
+**Типові помилки:**
+- вимикати GC без вимірювання baseline, просто сподіваючись, що стане краще;
+- забувати про цикли всередині сторонніх бібліотек (ORM, callbacks event loop), які раніше
+  прибирались автоматично;
+- ніколи не викликати `gc.collect()` вручну, перетворюючи `disable()` на повільний memory leak;
+- плутати `gc.disable()` з вимкненням reference counting – останнє взагалі не можна вимкнути.
 
 ## Environment
 

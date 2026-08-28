@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython with GIL"
     version: "3.14"
@@ -78,11 +78,41 @@ sources:
 
 ## Short answer
 
-TODO
+**In GIL-enabled CPython an object is deallocated immediately once its reference count reaches
+zero; in the free-threaded build this is not guaranteed, because of biased, deferred, and per-thread
+reference counting.**[^py314-library-dis] The GIL makes refcount operations atomic, so zero ->
+immediate deallocation. In the free-threaded build (Python 3.13+), some objects use deferred
+refcounting (freed only at the next GC), per-thread counting (freed at a safe point or when the
+thread exits), or biased counting (the object is "queued" for deferred release).
 
 ## Detailed explanation
 
-TODO
+In a GIL-enabled build every object has one counter, `ob_refcnt`, and the GIL guarantees that incref
+and decref run without races between threads. When decref drops the counter to zero, the object's
+destructor runs right there, synchronously, in that same call.[^py314-c-api-memory]
+
+In the free-threaded build (PEP 703, from Python 3.13) there is no GIL, so a naive atomic
+incref/decref on every access to an object would be too costly under concurrent access from many
+threads.[^py314-howto-free-threading-python]
+
+CPython solves this with biased reference counting: every object has a "local" counter that only
+its owning thread updates non-atomically, and a "shared" counter for decrefs from other threads,
+which is updated atomically. Some decrefs from other threads are deferred entirely (deferred
+reference counting) until the nearest safe point, instead of an immediate atomic
+decrement.[^py314-c-api-memory]
+
+So the "local" counter can in theory look like zero while the object's actual state is only
+resolved once the runtime merges the local, shared, and deferred counters at the nearest safe point
+or during a GC pause. Deallocation therefore becomes a deferred event rather than an immediate
+consequence of the last decref.
+
+**Common mistakes:**
+- expecting identical `__del__`/destructor behaviour between the GIL-enabled and free-threaded
+  builds;
+- assuming the free-threaded build "breaks" reference counting – it only makes the moment of
+  deallocation less deterministic;
+- writing code that relies on the immediate release of resources (files, locks) as a side effect of
+  refcounting instead of an explicit `with`/`close()`.
 
 ## Comparison
 

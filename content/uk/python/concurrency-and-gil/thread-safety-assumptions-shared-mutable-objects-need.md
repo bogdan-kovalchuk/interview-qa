@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython free-threaded build"
     version: "3.14"
@@ -68,7 +68,45 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Free-threaded CPython (build без GIL) – це режим, у якому кілька threads одного процесу можуть
+виконувати Python bytecode буквально одночасно на різних ядрах, а не по черзі, як у GIL-enabled
+build.[^py314-howto-free-threading-python]
+
+У звичайному CPython GIL випадково, але зазвичай досить надійно, захищав окремі операції built-in
+типів від переривання посеред виконання: наприклад, `list.append()` виглядав атомарним не тому, що
+це гарантія API, а тому, що GIL не давав іншому thread втрутитися. У free-threaded build це
+припущення більше не тримається – внутрішні locks built-in типів існують, щоб не пошкодити саму
+структуру об'єкта, а не для того, щоб зробити послідовність операцій атомарною на рівні
+застосунку.[^py314-howto-free-threading-python]
+
+Це означає, що будь-який доступ до спільного mutable стану – dict, list, set, атрибутів об'єкта –
+без явного `Lock` тепер реально небезпечний, а не лише теоретично. Ітерація по спільній колекції,
+яку паралельно змінює інший thread, може пропустити елементи, повторити їх або кинути виняток.
+
+Приклад коду, який раніше «випадково працював» під GIL, а на free-threaded build – ні:
+
+```python
+shared = {}
+
+def writer():
+    for i in range(1000):
+        shared[i] = i  # mutating a dict from multiple threads without a lock
+
+def reader():
+    for key in shared:  # iterating while another thread mutates - unsafe here
+        ...
+```
+
+Окрема небезпека – C extensions, написані під припущення GIL. Патерни на кшталт запозичених
+посилань (`PyList_GET_ITEM`) більше не безпечні, бо власник об'єкта може звільнити його з іншого
+thread; потрібна міграція на strong-reference API на кшталт `PyList_GetItemRef` і
+`PyDict_GetItemRef`.[^py314-howto-free-threading-extensions]
+
+**Що варто переглянути під час переходу на free-threaded build:**
+- будь-який спільний mutable стан без явного `Lock` чи іншого synchronization primitive;
+- ітерацію по спільних колекціях у одному thread, поки інший їх змінює;
+- доступ до `frame.f_locals` з чужого thread – може призвести до crash інтерпретатора;
+- C-розширення, що покладаються на borrowed references built-in типів.
 
 ## Environment
 

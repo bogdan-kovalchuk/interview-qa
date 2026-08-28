@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: [dis]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -78,11 +78,49 @@ sources:
 
 ## Short answer
 
-TODO
+**Bytecode is a CPython implementation detail: the documentation explicitly states that
+instructions can be added, removed, or changed between versions without warning.**[^py314-library-dis]
+Opcodes, their encoding, and their semantics are not guaranteed even between CPython minor releases,
+and other implementations (PyPy, MicroPython) have their own bytecode. Code that relies on specific
+opcodes or their order becomes non-portable and fragile across upgrades.
 
 ## Detailed explanation
 
-TODO
+The official Python documentation explicitly calls bytecode an implementation detail: the set of
+opcodes, their encoding, and even the number of arguments can change between any CPython versions –
+including minor releases – without a backward-compatibility guarantee.[^py314-library-dis]
+
+This is not a hypothetical risk: for example, 3.11 introduced `RESUME` at the start of every code
+object, and several call opcodes (`CALL_FUNCTION`, `CALL_FUNCTION_KW`, `CALL_METHOD`) were merged
+into a single `CALL` with shared stack setup. Code written against one version's bytecode can, after
+an interpreter upgrade, either fail with an error or – worse – silently start analyzing the wrong
+instructions.
+
+The language contract is the syntax and semantics described in the reference documentation, which
+change through a PEP process with a deprecation period. Bytecode goes through no such process: it is
+optimized for a specific version of the eval loop, and an opcode change is not considered a breaking
+change to the language, even if code built on top of `dis` breaks.
+
+```python
+# CPython 3.10 and earlier
+CALL_FUNCTION            2
+
+# CPython 3.11+: unified into CALL with a preceding PUSH_NULL/precall setup
+CALL                      2
+```
+
+Other Python implementations confirm that bytecode is not part of the language: PyPy has its own
+opcode set for its interpreter, and MicroPython generates an even more compact format for
+constrained memory. Both execute the same Python code correctly while sharing nothing with
+CPython's bytecode.
+
+**Practical consequences for code that reads bytecode:**
+- any check or tool based on specific opcode names must be pinned to an interpreter version and
+  re-verified after an upgrade;
+- do not store or cache a `code object` from one CPython patch release to run it on another – the
+  `.pyc` format is versioned too;
+- build performance or coverage analysis on `sys.settrace`/`sys.monitoring` rather than on parsing
+  specific opcodes.
 
 ## Symptom
 

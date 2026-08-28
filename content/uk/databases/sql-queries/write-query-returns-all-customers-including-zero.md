@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [left-join, inner-join]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -72,7 +72,41 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`LEFT JOIN` – це тип з'єднання, який повертає всі рядки лівої таблиці незалежно від того, чи є для
+них збіг у правій таблиці; якщо збігу немає, колонки правої таблиці заповнюються
+`NULL`.[^postgres-queries-table-expressions]
+
+Умова в `ON` виконується під час самого з'єднання: вона визначає, які рядки правої таблиці
+приєднати до кожного рядка лівої, але не видаляє рядки лівої таблиці, для яких збігу немає – вони
+залишаються з `NULL`. Умова у `WHERE` виконується вже після того, як з'єднання побудоване, і працює
+як звичайний фільтр по результуючому набору.
+
+Якщо фільтр по колонці правої таблиці (наприклад, `orders.status = 'paid'`) розмістити в `WHERE`,
+то рядки customers без paid orders матимуть `NULL` у цій колонці, і умова `NULL = 'paid'` дає
+`UNKNOWN`, тому такі рядки відфільтровуються. Результат виглядає так, ніби `LEFT JOIN` перетворився
+на `INNER JOIN`, хоча синтаксично залишився `LEFT JOIN`.
+
+Різниця між правильним і помилковим розміщенням фільтра:
+
+```sql
+-- correct: filter lives in ON, customers without paid orders still appear
+SELECT c.id, c.name, o.id AS order_id
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id AND o.status = 'paid';
+
+-- wrong: filter in WHERE drops customers with no matching paid order
+SELECT c.id, c.name, o.id AS order_id
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.id
+WHERE o.status = 'paid';
+```
+
+**Типові помилки з розміщенням предиката:**
+- переносити всі умови фільтрації у `WHERE` за звичкою, не враховуючи, що це вимагає `JOIN`;
+- перевіряти запит лише на даних, де кожен customer має хоча б одне замовлення, і не помічати, що
+  zero-order рядки зникають;
+- забувати, що умова `IS NULL` на колонці правої таблиці в `WHERE` – єдиний коректний спосіб
+  фільтрувати «рядки без збігу» після `LEFT JOIN`.
 
 ## Environment
 

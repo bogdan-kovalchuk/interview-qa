@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -65,7 +65,43 @@ sources:
 
 ## Detailed explanation
 
-TODO
+IPC (inter-process communication) у `multiprocessing` – це спосіб передати дані між процесами, які
+не мають спільної пам'яті за замовчуванням. Message passing (`Queue`, `Pipe`) і shared memory –
+два принципово різні підходи до цієї задачі, з різною ціною й різними гарантіями.
+
+`multiprocessing.Queue` реалізована поверх `Pipe` і фонового feeder-потоку: кожен елемент, який
+кладуть у чергу, серіалізується через `pickle`, передається через канал ОС і десеріалізується на
+іншому кінці.[^py314-library-multiprocessing] Це робить `Queue` зручною для довільної кількості
+producer-ів і consumer-ів і безпечною для одночасного використання з кількох процесів без
+додаткових locks з боку користувача.
+
+`Pipe` – низькорівніший примітив: дає пару з'єднаних кінців для обміну між рівно двома процесами.
+Він швидший за `Queue`, бо не має feeder-потоку й додаткової черги в пам'яті, але не гарантує
+цілісності даних, якщо кілька процесів одночасно пишуть або читають з одного кінця – про це прямо
+попереджає документація.
+
+Приклад передачі великого масиву через shared memory замість серіалізації:
+
+```python
+from multiprocessing import shared_memory
+
+shm = shared_memory.SharedMemory(create=True, size=array.nbytes)
+buf = np.ndarray(array.shape, dtype=array.dtype, buffer=shm.buf)
+buf[:] = array[:]  # zero-copy: no pickle round-trip
+```
+
+`SharedMemory`, `Array` і `Value` дають zero-copy доступ до одного блоку пам'яті з усіх процесів,
+уникаючи витрат на серіалізацію великих об'єктів. Ціна – втрата вбудованої синхронізації: будь-яка
+спільна зміна (навіть інкремент лічильника) вимагає явного `Lock`, бо операція над спільною
+пам'яттю не атомарна сама по собі.
+
+**Коли виправдана shared memory:**
+- дані великі (масиви, буфери), а serialization overhead вимірювано домінує над часом обчислень;
+- доступ переважно read-only або оновлення рідкісні й легко захищаються одним lock-ом;
+- потрібен саме zero-copy доступ, а не просто «швидший канал».
+
+В інших випадках `Queue` або `Pipe` простіші, безпечніші за замовчуванням і саме тому рекомендовані
+документацією як основний спосіб обміну між процесами.[^py314-library-multiprocessing]
 
 ## Comparison
 

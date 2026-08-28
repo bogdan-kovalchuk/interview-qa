@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython with GIL"
     version: null
@@ -64,11 +64,50 @@ sources:
 
 ## Short answer
 
-TODO
+**CPython releases the GIL for the duration of blocking I/O operations (system calls, network,
+file operations), letting other threads execute bytecode.**[^py314-library-threading] While one
+thread waits for a response from the network or disk, another thread can acquire the GIL and run
+computation. So threads are effective for I/O-bound workloads but not for CPU-bound ones (those
+need `multiprocessing` or a free-threaded build).
 
 ## Detailed explanation
 
-TODO
+The GIL is a mutex that lets only one thread execute Python bytecode at a time within one process.
+This might seem to rule out any concurrency, but the GIL protects only the interpreter, not the
+thread itself at the operating-system level – when a thread is waiting on something external, it
+can give up the GIL without holding up the others.[^py314-library-threading]
+
+The key point is exactly in blocking I/O calls. Functions such as `socket.recv()`, `file.read()`,
+or `time.sleep()` are implemented so that the interpreter explicitly releases the GIL before
+calling into the operating system, and reacquires it after returning. While one thread is
+"parked" in a system call, the GIL is free, and the CPython scheduler can hand it to another
+thread that is meanwhile doing computation or its own I/O.
+
+Example: in a network client with several threads, each waiting for a response from the server,
+the total run time is close to the slowest single request rather than the sum of all requests,
+because the waits overlap:
+
+```python
+import threading
+
+def fetch(url):
+    response = session.get(url)  # GIL released while waiting on the socket
+    process(response)
+
+threads = [threading.Thread(target=fetch, args=(u,)) for u in urls]
+```
+
+For CPU-bound code the situation is the opposite: bytecode that computes something in a loop does
+not voluntarily release the GIL (only periodically, on a switch-interval timer), so threads
+effectively run one after another and give no extra speedup.[^py314-howto-free-threading-python]
+
+**Common mistakes in judging the benefit of threads:**
+- expecting a speedup from threads for CPU-bound work (parsing, computation) – that needs
+  `multiprocessing` or a free-threaded build;
+- forgetting that C extensions also have to explicitly release the GIL around blocking or
+  long-running operations – if an extension does not do this, threads give no benefit;
+- confusing "a thread does not block the whole process during I/O" with "the GIL does not exist" –
+  the GIL still serializes bytecode, just not while a thread is waiting.
 
 ## Evaluation guide
 

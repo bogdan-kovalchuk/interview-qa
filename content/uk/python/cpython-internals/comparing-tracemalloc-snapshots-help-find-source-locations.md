@@ -8,10 +8,10 @@ level: middle
 type: practical
 tags: [tracemalloc]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,44 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`tracemalloc` – це вбудований модуль, який записує, звідки (source location) було виконано кожен
+allocation пам'яті для Python-об'єктів, і дозволяє порівнювати ці записи між двома моментами
+часу.[^py314-library-tracemalloc]
+
+Метод `Snapshot.compare_to(old_snapshot, key_type)` порівнює поточний snapshot з попереднім і
+повертає список `StatisticDiff`, де кожен елемент має поля `size`, `size_diff`, `count` і
+`count_diff` – абсолютне значення та зміну відносно старого snapshot. Параметр `key_type` визначає
+рівень групування: `'filename'` групує за файлом, `'lineno'` – за конкретним рядком, а
+`'traceback'` – за повним call stack allocation. Список завжди відсортований за спаданням
+абсолютного `size_diff`, тому перші елементи – це місця з найбільшим зростанням.
+
+Типовий workflow – зробити snapshot до підозрілого коду, виконати цей код, зробити другий snapshot і
+порівняти їх; так видно лише зміну, а не весь baseline allocations процесу.
+
+Приклад порівняння двох snapshots за рядком коду:
+
+```python
+tracemalloc.start()
+snapshot1 = tracemalloc.take_snapshot()
+run_suspect_code()
+snapshot2 = tracemalloc.take_snapshot()
+
+diff = snapshot2.compare_to(snapshot1, 'lineno')
+for stat in diff[:3]:
+    print(stat)  # top growth: <file>:<line>: size=..., count=...
+```
+
+Щоб отримати `key_type='traceback'` з повним call stack, а не лише останнім рядком, треба викликати
+`tracemalloc.start(nframe)` з `nframe > 1` ще до першого snapshot – кількість збережених кадрів
+фіксується на старті і не може бути змінена заднім числом.
+
+**Типові помилки при роботі з tracemalloc:**
+- порівнювати snapshots з різних процесів або перезапусків interpreter – адреси й lineno можуть не
+  відповідати одна одній;
+- забувати викликати `tracemalloc.start(nframe)` з потрібним `nframe` до першого snapshot, коли
+  потрібен `key_type='traceback'`;
+- інтерпретувати `count_diff` без `size_diff` – багато дрібних allocations можуть важити менше, ніж
+  кілька великих.
 
 ## Environment
 

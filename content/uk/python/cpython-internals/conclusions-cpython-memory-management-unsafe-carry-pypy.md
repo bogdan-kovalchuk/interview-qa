@@ -8,10 +8,10 @@ level: senior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,30 @@ sources:
 
 ## Detailed explanation
 
-TODO
+CPython – лише одна з реалізацій Python, і частина спостережуваної поведінки, яка здається частиною
+мови, насправді є деталлю саме CPython allocator і reference counting.[^py314-c-api-memory]
+Перенесення такого висновку на PyPy, MicroPython чи Jython може дати цілком інший результат.
+
+Найважливіший приклад – момент виклику `__del__`. У CPython об'єкт звільняється синхронно, щойно
+refcount падає до нуля, тому фіналізатор спрацьовує детерміновано в момент останнього `del` або
+виходу зі scope. PyPy натомість використовує tracing (generational) GC без reference counting:
+`__del__` викликається під час чергового циклу збору, який може статися значно пізніше або взагалі
+не встигнути до завершення процесу.[^py314-library-gc]
+
+`sys.getrefcount()` та `id()` – ще два інструменти, чия семантика прив'язана до CPython.
+`sys.getrefcount()` читає поле `ob_refcnt`, якого немає в реалізаціях без reference counting, тому
+виклик або відсутній, або повертає значення без сенсу. `id()` у CPython – це фізична адреса об'єкта
+в пам'яті, а в PyPy – довільний ідентифікатор, не пов'язаний з розташуванням об'єкта.[^py314-library-sys]
+
+Bytecode CPython (`dis`-вивід) – ще одна деталь, якої взагалі немає в PyPy: там методи компілюються
+JIT-трасувальником у machine code, минаючи стабільний набір опкодів CPython.
+
+**Що небезпечно переносити з CPython на іншу реалізацію:**
+- очікування, що ресурс (файл, socket, lock) звільниться одразу після того, як об'єкт вийшов зі
+  scope, без явного `with` чи `close()`;
+- порівняння продуктивності чи allocation count через `sys.getrefcount()`;
+- використання `id()` як стабільного, порівнюваного значення адреси;
+- припущення про порядок або момент виконання `__del__` у циклах з посиланнями.
 
 ## Comparison
 

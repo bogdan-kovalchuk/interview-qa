@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,38 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Компіляція в CPython – це багатоетапний процес, який перетворює текст source code на виконуваний
+`code object` ще до того, як інтерпретатор виконає бодай одну інструкцію.[^py314-library-dis]
+
+Спочатку токенізатор і parser будують abstract syntax tree (AST) з тексту програми. Компілятор
+обходить це AST і генерує `code object` – об'єкт, що містить `bytecode` (послідовність low-level
+інструкцій для CPython eval loop) разом зі статичними даними, потрібними для його виконання. Сам
+компілятор написаний на C і недоступний напряму з чистого Python, але вбудована функція `compile()`
+виконує ті самі кроки і повертає готовий `code object`.
+
+`Code object` зберігає декілька окремих полів: `co_code` – байти bytecode; `co_consts` – кортеж
+літералів і вкладених `code object` (наприклад, тіл функцій); `co_names` – імена глобальних змінних
+і атрибутів; `co_varnames` – імена локальних змінних. Інтерпретатор читає ці поля під час виконання,
+а не парсить джерело повторно.
+
+Приклад ручної компіляції та перегляду bytecode:
+
+```python
+src = "x = 1 + 2"
+code = compile(src, "<string>", "exec")
+print(code.co_consts)  # (1, 2, 3, None)
+dis.dis(code)
+```
+
+Коли модуль імпортується (а не виконується як `__main__`), CPython кешує скомпільований
+`code object` у файлі `.pyc` під `__pycache__/`, серіалізуючи його через `marshal`. Наступний
+import того самого модуля пропускає повторний парсинг і компіляцію, якщо файл джерела не
+змінився.
+
+**Типові помилки в розумінні цього процесу:**
+- вважати, що Python інтерпретує source code рядок за рядком без проміжного bytecode;
+- думати, що `.pyc` кешується для скриптів, запущених напряму як `__main__` – це не так;
+- плутати AST-рівень (структура мови) з bytecode-рівнем (деталь реалізації CPython).
 
 ## Evaluation guide
 

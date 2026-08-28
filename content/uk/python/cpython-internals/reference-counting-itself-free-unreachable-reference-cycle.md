@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Reference counting звільняє об'єкт лише тоді, коли його refcount падає рівно до нуля. У циклі
+кожен елемент тримає посилання на інший, тому навіть якщо ззовні на весь цикл ніхто більше не
+посилається, кожен окремий refcount лишається ≥ 1 і природним чином ніколи не досягне
+нуля.[^py314-library-gc]
+
+Наприклад: `a = []`, `b = []`, `a.append(b)`, `b.append(a)`, потім `del a` і `del b`. Після цього
+обидва refcount дорівнюють 1 (кожен елемент тримає інший), хоча жодна змінна більше не називає ні
+`a`, ні `b`.
+
+Reference counting – суто локальний механізм: він знає лише "скільки разів на мене посилаються", а
+не "чи існує шлях до мене від коренів" (стек викликів, глобальні змінні, модулі). Для циклу ці дві
+речі розходяться, і без глобального аналізу графа об'єктів цю розбіжність не виправити.
+
+Cyclic GC (модуль `gc`) вирішує це trial-deletion алгоритмом: для кожного container-об'єкта в
+generation він рахує, скільки посилань на нього приходить від інших container-об'єктів тієї ж
+generation, і віднімає це число від справжнього refcount. Якщо результат дорівнює нулю, об'єкт (і
+решта циклу) недосяжний ззовні generation і вважається сміттям.[^py314-library-gc]
+
+```python
+import gc
+
+class Node:
+    def __init__(self):
+        self.other = None
+
+a, b = Node(), Node()
+a.other, b.other = b, a  # reference cycle
+del a, b                  # refcount of each node is still 1
+gc.collect()               # only the cyclic collector can free them
+```
+
+**Типові помилки:**
+- вважати `del` еквівалентом гарантованого звільнення пам'яті;
+- забувати, що cyclic collector відстежує лише container-типи (list, dict, об'єкти з `__dict__`
+  тощо) – прості non-container об'єкти в циклах не бувають;
+- вимикати `gc` і одночасно створювати цикли без ручного `gc.collect()`, отримуючи memory leak.
 
 ## Evaluation guide
 

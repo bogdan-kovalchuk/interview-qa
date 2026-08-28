@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -47,11 +47,30 @@ sources:
 
 ## Short answer
 
-TODO
+**Stability means that elements with an equal key keep their original relative order; that is what lets you sort by several keys in sequence, from the least significant to the most significant.**[^py314-library-stdtypes] For example, to sort by `grade` descending and `age` ascending: first `sorted(data, key=age)`, then `sorted(result, key=grade, reverse=True)`. Stability guarantees that the order by `age` survives within an equal `grade`. The alternative, when one direction suffices, is a tuple key: `key=itemgetter(grade, age)`.
 
 ## Detailed explanation
 
-TODO
+Stability is a property of a particular sorting algorithm, not an abstract guarantee of the notion
+of "sorting": `sorted()` and `list.sort()` in CPython are implemented with Timsort, a hybrid merge
+sort which, when merging two sorted runs, always takes the element from the left run if the keys are
+equal, and never swaps elements with an equal key.[^py314-howto-sorting] It is that property of the
+algorithm, not the language documentation, that makes the sequential-sort trick correct.
+
+The correctness of the sequential approach rests on induction: after sorting by the least
+significant key the elements are ordered by it. The next sort by a more significant key groups the
+elements by the new key, but because it is stable, within each group of an equal new key the order
+established by the previous sort is not disturbed. Repeating that from the least significant key to
+the most significant yields a correct multi-key order without writing a comparator of your own.
+
+The trick is especially useful when different keys need opposite directions (one ascending, another
+descending), because the tuple-key approach (`key=itemgetter(a, b)`) sorts both fields in the one
+direction given by the single `reverse`. For numeric fields the direction can be inverted by
+replacing the key with `-value`, but for string fields there is no such direct trick - and that is
+exactly where sequential `sorted()` calls with a separate `reverse` per key beat the tuple key.
+
+The limit of the approach: it needs as many passes as there are keys, that is O(k * n log n) instead
+of a single O(n log n) for the tuple-key variant - acceptable for a few keys, not for many.[^py314-library-stdtypes]
 
 ## Evaluation guide
 

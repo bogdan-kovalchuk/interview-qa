@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -82,11 +82,41 @@ sources:
 
 ## Short answer
 
-TODO
+**Running CI automatically on every PR reports errors to the developer instantly, while the size
+of the change is small and easy to localize, whereas infrequent manual integration lets
+incompatible changes from several developers pile up.**[^git-git-merge] Every PR runs linters,
+unit tests, and integration tests, so a defect is caught within a single small change and debugging
+is fast. With infrequent integration, conflicts and compatibility errors accumulate over weeks, and
+fixing them takes far longer. Merging is allowed only after all CI checks pass.
 
 ## Detailed explanation
 
-TODO
+CI on every pull request means running automated checks (linters, unit and integration tests)
+right after every push to the change's branch, before it is merged.[^github-continuous-integration]
+
+When checks run on every PR, the developer gets a result within minutes of writing the code, while
+the context of the change is still fresh and the diff itself is small. Localizing why a test fails
+is simple, because few files changed and there is no need to figure out "whose change" broke
+something – there is only one.
+
+With infrequent manual integration (for example, once a week), changes from several developers,
+written independently of each other, land in the main branch at the same time. If something breaks
+after integration, the conflict can be the result of several changes interacting at once, and no
+single author saw the full picture – diagnosis requires bisecting across dozens of commits instead
+of one.
+
+This is the same idea behind continuous integration as a practice: the shorter the interval between
+a change and checking it, the smaller the amount of independent variation you have to hold in your
+head while debugging, and the lower the chance that two incompatible changes ever land in the main
+branch at the same time.
+
+**Common mistakes with integration frequency:**
+- allowing long-lived feature branches that are not rebased and do not go through CI for weeks –
+  a large, hard-to-diagnose diff builds up before merge;
+- running CI only before a release rather than on every PR, so feedback comes back after days
+  instead of minutes;
+- ignoring flaky tests instead of fixing them – this erodes trust in the CI signal and pushes the
+  team back toward manual integration by default.
 
 ## Evaluation guide
 

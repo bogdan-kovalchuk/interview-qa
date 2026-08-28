@@ -8,10 +8,10 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -72,7 +72,39 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Isolation level – це налаштування транзакції, яке визначає, наскільки конкурентні транзакції
+ізольовані одна від одної і які аномалії читання вони можуть побачити.[^postgres-transaction-iso]
+
+Read Committed – мінімальний практичний рівень: кожен запит бачить лише закомічені дані на момент
+свого виконання, але два запити в межах однієї транзакції можуть побачити різні значення того
+самого рядка (non-repeatable read) або нові рядки, що з'явилися між ними (phantom read). Repeatable
+Read фіксує snapshot даних на момент початку транзакції, тому обидві аномалії зникають – кожен
+запит у транзакції бачить той самий знімок. Serializable іде далі: він гарантує, що результат
+конкурентного виконання транзакцій еквівалентний якомусь послідовному порядку їх виконання,
+усуваючи навіть тонші аномалії на кшталт serialization anomaly, які Repeatable Read не ловить.
+
+Ціна за сильнішу ізоляцію – конфлікти замість мовчазно неправильного результату. Замість того щоб
+дозволити транзакції прочитати застарілі чи несумісні дані, база даних виявляє конфлікт і відхиляє
+одну з транзакцій помилкою серіалізації, а не мовчки псує консистентність.
+
+Приклад обробки помилки серіалізації в Repeatable Read чи Serializable:
+
+```sql
+-- application retries the whole transaction on a serialization failure
+BEGIN;
+-- ... reads and writes ...
+COMMIT;
+-- on error SQLSTATE 40001 ('could not serialize access due to concurrent update'):
+-- roll back and re-run the same transaction from the start
+```
+
+**Типові помилки з isolation level:**
+- обирати Serializable «про всяк випадок» без retry-логіки в application, через що частина запитів
+  просто падає під навантаженням;
+- плутати Repeatable Read зі «снапшотом на весь час з'єднання» – snapshot береться на початок
+  транзакції, а не сесії;
+- вважати, що вищий isolation level сам по собі усуває необхідність правильного дизайну запитів
+  (наприклад, `SELECT ... FOR UPDATE` для явного блокування).
 
 ## Evaluation guide
 

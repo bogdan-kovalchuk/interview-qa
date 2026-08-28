@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,37 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Python object lifetime і повернення пам'яті операційній системі – це дві різні стадії одного
+процесу, розділені шаром allocator, і плутати їх означає неправильно тлумачити, чому RSS процесу не
+падає одразу після того, як об'єкти стали «мертвими».[^py314-c-api-memory]
+
+Lifetime об'єкта закінчується на рівні Python: коли `refcount` падає до нуля (або коли cyclic GC
+звільняє цикл), CPython викликає деструктор і звільняє блок пам'яті об'єкта. Це видно з погляду
+Python – наступний виклик `id()` для того самого адреса дасть інший об'єкт, а `sys.getrefcount()`
+для видаленого імені вже не має сенсу.
+
+Звільнений блок, однак, не повертається одразу в ОС. Для малих об'єктів (до 512 байт) CPython
+використовує `pymalloc`: блок повертається у pool певного розміру всередині arena (типово 1 MiB),
+щоб наступний allocation того самого розміру не звертався до ОС. Arena повертається операційній
+системі лише тоді, коли всі pool у ній стають повністю порожніми – якщо хоч один блок в arena ще
+живий, уся arena лишається зарезервованою за процесом.
+
+```python
+big = [object() for _ in range(1_000_000)]
+del big  # objects are freed at the Python level immediately
+# process RSS typically does not shrink here: arenas stay reserved
+```
+
+Тому довгоживучий процес, який один раз виділив і звільнив велику структуру, може тримати значний
+RSS без жодного memory leak на рівні Python: фрагментація arena, а не витік, пояснює графік
+пам'яті.[^py314-c-api-memory]
+
+**Практичні наслідки цієї різниці:**
+- падіння RSS після `del` чи `gc.collect()` не гарантоване і не є ознакою leak, якщо його немає;
+- для перевірки саме leak варто відстежувати кількість живих об'єктів (`tracemalloc`,
+  `gc.get_objects()`), а не RSS;
+- періодичний restart worker-процесів – типовий обхідний шлях для фрагментації arena, а не баг у
+  коді.
 
 ## Comparison
 

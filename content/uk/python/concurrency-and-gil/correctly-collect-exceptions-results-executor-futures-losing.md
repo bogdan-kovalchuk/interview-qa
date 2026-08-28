@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -65,7 +65,47 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`Future` – це об'єкт-обіцянка результату асинхронної задачі, надісланої в executor. Він завжди
+переходить в один із трьох станів: успішно завершений з результатом, завершений з exception, або
+скасований. Проблема на практиці не в тому, що результат втрачається технічно – `Future`
+зберігає exception усередині, – а в тому, що код може просто ніколи не перевірити цей
+стан.[^py314-library-concurrent-futures]
+
+`future.result()` повертає значення, якщо задача завершилась успішно, і повторно піднімає той
+самий exception, якщо worker впав. `future.exception()` дає доступ до exception-об'єкта без
+повторного підняття, повертаючи `None` при успіху. Обидва методи блокують виклик до завершення
+задачі (з опційним `timeout`).
+
+Приклад коректного збору результатів і помилок з кількох futures:
+
+```python
+from concurrent.futures import as_completed
+
+futures = [executor.submit(worker, item) for item in items]
+for future in as_completed(futures):
+    try:
+        result = future.result()
+    except Exception as exc:
+        log_failure(future, exc)
+    else:
+        process(result)
+```
+
+`as_completed()` yield-ить futures у порядку завершення, а не подання, тому обробка кожного
+результату або помилки відбувається щойно вони готові, без очікування на найповільніший.
+`Executor.map()` натомість зберігає порядок виклику й піднімає exception лише в момент ітерації по
+відповідному елементу – якщо ітерацію перервати раніше, помилки решти задач залишаться непобаченими.
+
+**Типові способи silently втратити worker failure:**
+- надіслати задачі через `submit()` і ніколи не викликати `result()` або `exception()` на
+  отриманих futures – виконання завершиться, а exception просто зникне;
+- пройтись по списку futures у порядку подання замість `as_completed()`, тоді як `map()`
+  застосований без обробки exception на кожному кроці ітерації;
+- використати `executor.map()` і зберегти лише сам generator, не ітеруючи по ньому повністю –
+  exception на пізньому елементі ніколи не підніметься.
+
+Явна перевірка кожного `Future` – через `result()`, `exception()` або `add_done_callback()` –
+єдиний спосіб гарантовано побачити помилку worker-а.[^py314-library-concurrent-futures]
 
 ## Environment
 

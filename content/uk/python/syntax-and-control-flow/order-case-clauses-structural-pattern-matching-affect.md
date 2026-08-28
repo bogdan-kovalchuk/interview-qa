@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: [case]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,47 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`match` – це не таблиця переходів і не пошук найкращого збігу. Це послідовна перевірка зверху вниз:
+перший pattern, який зіставився (і чий guard істинний), виконує свій блок, а решта не
+розглядається.[^py314-reference-compound-stmts]
+
+Тому порядок case – це логіка, а не оформлення. Ширший pattern, поставлений раніше, робить усі
+вужчі за ним недосяжними: керування до них просто не дійде.
+
+```python
+match command:
+    case [action, *rest]:        # matches ANY non-empty sequence
+        generic(action, rest)
+    case ['quit']:               # unreachable - the case above already matched
+        do_quit()
+```
+
+Найгостріше це проявляється з irrefutable pattern – таким, що не може не зіставитися: голе ім'я
+(`case value:`) або wildcard (`case _:`). Для них компілятор навіть не чекає рантайму: якщо такий
+case стоїть не останнім, це `SyntaxError`.[^py314-reference-expressions]
+
+```python
+match value:
+    case _:          # SyntaxError: wildcard makes remaining patterns unreachable
+        default()
+    case 42:
+        answer()
+```
+
+Guard змінює картину, але не правило. `case x if x > 100:` не є irrefutable, бо guard може бути
+хибним, тож такий case дозволено ставити перед іншими – і саме так пишуть діапазони, від вужчого до
+ширшого.
+
+**Як тримати порядок правильним:**
+- специфічні літерали й точні структури – зверху, загальні форми – нижче;
+- `case _:` – завжди останній, як `default` у switch;
+- варіанти з guard упорядковувати від найвужчої умови до найширшої, бо перевіряються вони теж по
+  черзі;
+- якщо гілка виглядає мертвою, це майже завжди означає, що вище стоїть надто широкий pattern –
+  зокрема capture з голим іменем, яке зіставляється з чим завгодно.
+
+На відміну від `switch` у C, тут немає fallthrough: після виконання блоку `match` завершується, і
+`break` не потрібен.[^py314-reference-simple-stmts]
 
 ## Symptom
 

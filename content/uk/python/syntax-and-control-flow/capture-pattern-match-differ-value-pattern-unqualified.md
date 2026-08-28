@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [match]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,43 @@ sources:
 
 ## Detailed explanation
 
-TODO
+У `match` голе ім'я ніколи не означає «порівняй з тим, що в цій змінній». Граматика вирішує це за
+формою імені: некваліфіковане ім'я – це capture pattern, а ім'я з крапкою – value
+pattern.[^py314-reference-compound-stmts]
+
+Capture pattern завжди успішний. Він нічого не порівнює, а просто прив'язує subject до цього імені –
+тому будь-який `case x:` збігається з чим завгодно й перекриває всі наступні case.
+
+Value pattern порівнює. Він обчислює кваліфіковане ім'я (`Color.RED`, `settings.MODE`) і звіряє
+subject з ним через `==`.
+
+```python
+status = 404
+
+match code:
+    case status:          # capture pattern: matches ANY code and rebinds `status`
+        print('matched')  # runs always; `status` is now equal to `code`
+
+match code:
+    case HTTPStatus.NOT_FOUND:   # value pattern: compares with ==
+        print('not found')
+```
+
+Причина такого рішення – читабельність у типовому випадку. Більшість патернів розбирають структуру і
+дають іменам частини subject, тож форма без крапки зарезервована саме під це; порівняння зі
+збереженим значенням – рідший випадок, і для нього треба написати щось відмінне.
+
+**Як порівняти з наявним значенням:**
+- перенести константу в клас або enum і використати dotted name: `case Status.ACTIVE:`;
+- зібрати константи в модуль і писати `case codes.NOT_FOUND:`;
+- використати літерал безпосередньо, якщо значення відоме: `case 404:`;
+- у крайньому разі – capture з guard: `case value if value == status:`, але це вже звичайне
+  порівняння, лише багатослівніше.
+
+Помилку легко не помітити, бо код не падає: гілка просто спрацьовує завжди, а змінна тихо
+перезаписується. Статичні аналізатори здебільшого попереджають про недосяжні наступні case – і це
+найнадійніший сигнал, що замість порівняння написано
+capture.[^py314-reference-expressions]
 
 ## Comparison
 

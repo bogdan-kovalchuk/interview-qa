@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -82,7 +82,33 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Immediate deallocation – коли об'єкт звільняється рівно там, де зникає останнє посилання на нього –
+є наслідком конкретної реалізації reference counting в CPython, а не гарантією, яку дає специфікація
+мови Python.
+
+Python Language Reference описує lifecycle об'єктів у загальних термінах: об'єкт колись буде
+"reclaimed", можливо буде викликаний `__del__`, але специфікація не фіксує, коли саме це станеться,
+і навіть не гарантує виклик `__del__` у всіх випадках – наприклад, при reference cycles або
+наприкінці роботи інтерпретатора.[^py314-reference-datamodel-traceback-objects]
+
+Інші реалізації дотримуються цієї специфікації, але не CPython-механізму: PyPy використовує
+generational tracing GC, де об'єкти звільняються пачками під час collection pass, а не в момент
+останнього decref. Це правда й для самого CPython у free-threaded build (3.13+), де deferred та
+biased reference counting відкладають фактичне звільнення до найближчого safe point замість того,
+щоб робити це синхронно.[^py314-howto-free-threading-python]
+
+Практичний наслідок: код, який покладається на побічний ефект деструктора – закриття файлу,
+звільнення lock, commit транзакції – одразу після того, як змінна вийшла з області видимості чи їй
+присвоєно нове значення, працюватиме на "звичайному" CPython, але може накопичувати незакриті
+ресурси (file descriptor leak, задачі, що тримають блокування довше, ніж потрібно) на PyPy чи в
+майбутніх варіантах CPython.
+
+**Типові помилки:**
+- писати `f = open(path); ...; f = None`, розраховуючи, що файл закриється негайно, замість
+  `with open(path) as f: ...`;
+- покладатися на порядок виклику `__del__` для звільнення взаємопов'язаних ресурсів;
+- тестувати лише на CPython і вважати поведінку деструкторів частиною мови, а не деталлю
+  реалізації.
 
 ## Symptom
 

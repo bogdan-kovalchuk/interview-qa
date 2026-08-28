@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -78,11 +78,41 @@ sources:
 
 ## Short answer
 
-TODO
+**Immediate deallocation at refcount=0 is a CPython implementation detail, not a guarantee of the
+Python language; other implementations and the free-threaded build may defer freeing
+objects.**[^py314-library-dis] The Python Language Reference describes object lifecycle in general
+terms and does not mandate immediate finalization. PyPy uses a tracing GC, and free-threaded
+CPython uses deferred refcounting. So resources (files, sockets, locks) should be managed through
+`with` / context managers, not by relying on the moment of destruction.
 
 ## Detailed explanation
 
-TODO
+Immediate deallocation – an object being freed exactly at the point where its last reference
+disappears – is a consequence of CPython's specific reference-counting implementation, not a
+guarantee made by the Python language specification.
+
+The Python Language Reference describes the object lifecycle in general terms: an object will
+eventually be "reclaimed", `__del__` may be called, but the specification does not fix exactly when
+that happens, and does not even guarantee `__del__` is called in every case – for instance, with
+reference cycles or at interpreter shutdown.[^py314-reference-datamodel-traceback-objects]
+
+Other implementations honor that specification but not the CPython mechanism: PyPy uses a
+generational tracing GC, where objects are freed in batches during a collection pass rather than at
+the moment of the last decref. The same is true within CPython itself in the free-threaded build
+(3.13+), where deferred and biased reference counting postpone the actual release until the nearest
+safe point instead of doing it synchronously.[^py314-howto-free-threading-python]
+
+The practical consequence: code that relies on a destructor's side effect – closing a file,
+releasing a lock, committing a transaction – right after a variable goes out of scope or is
+reassigned will work on "ordinary" CPython, but can accumulate unclosed resources (a file-descriptor
+leak, tasks holding a lock longer than needed) on PyPy or in future CPython variants.
+
+**Common mistakes:**
+- writing `f = open(path); ...; f = None`, expecting the file to close immediately, instead of
+  `with open(path) as f: ...`;
+- relying on the order in which `__del__` is called to release interdependent resources;
+- testing only on CPython and treating destructor behaviour as part of the language rather than an
+  implementation detail.
 
 ## Symptom
 

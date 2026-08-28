@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [or-fallback]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 execution:
   language: python
   standard: null
@@ -63,7 +63,37 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`or` не є перетворювачем у `bool`. Він обчислює лівий операнд, питає в нього truthiness і повертає
+**об'єкт**: лівий, якщо той truthy, інакше правий – як
+є.[^py314-reference-expressions]
+
+Тут лівий операнд – порожній список. Список визначає `__len__`, і нульова довжина робить його falsy,
+тому `or` переходить до правого операнда й повертає рядок `'fallback'`, а не `True`.
+
+```python
+[] or 'fallback'      # 'fallback' - the str object itself
+[1] or 'fallback'     # [1]        - the list, because it is truthy
+[] or []              # []         - the second empty list; still falsy
+bool([] or 'fallback')  # True     - only bool() actually converts
+```
+
+Правило truthiness просте: об'єкт falsy, якщо його `__bool__` повернув `False`, або, за відсутності
+`__bool__`, якщо `__len__` повернув нуль. Усе інше truthy, включно з непорожніми контейнерами,
+ненульовими числами і будь-яким об'єктом без обох
+методів.[^py314-reference-simple-stmts]
+
+**Що з цього випливає:**
+- тип результату `or` – це об'єднання типів операндів, а не `bool`; анотація `-> bool` буде
+  неправильною;
+- ланцюжок `a or b or c` повертає перший truthy операнд, а якщо всі falsy – останній, тобто `c`;
+- `x or default` не відрізняє «значення не задане» від «задане falsy значення»: `0` і `''` теж
+  замінюються;
+- якщо потрібен саме булевий результат, це треба сказати явно: `bool(x or y)`;
+- у `if` різниці не видно, бо `if` сам зводить результат до truthiness – тому помилку помічають лише
+  тоді, коли значення зберігають або повертають.
+
+Те саме стосується `and`, лише дзеркально: `[] and 'x'` дає `[]`, бо перший операнд falsy й одразу
+визначає результат.
 
 ## Evaluation guide
 

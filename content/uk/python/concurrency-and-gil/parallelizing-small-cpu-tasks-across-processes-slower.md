@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -68,7 +68,44 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Паралелізація через процеси має фіксовані витрати на кожну задачу, які не залежать від самої
+роботи; якщо задача маленька, ці витрати домінують над часом обчислення, і паралельна версія
+виявляється повільнішою за звичайний послідовний цикл.[^py314-library-concurrent-futures]
+
+Витрати складаються з кількох кроків, і кожен `submit()` (або елемент у `map()`) платить за них
+окремо: серіалізація callable та аргументів через `pickle` у батьківському процесі, запис байтів у
+pipe, десеріалізація у worker-процесі, виконання, серіалізація результату назад і десеріалізація в
+батьківському процесі. Сам запуск worker-процесів амортизується на весь час життя `pool`, але цей
+цикл серіалізація/IPC - ні, він повторюється для кожної задачі.
+
+За порядком величини pickle і IPC round trip для навіть простих об'єктів займають десятки-сотні
+мікросекунд, тоді як обчислення на кшталт множення двох чисел - наносекунди. Тобто накладні витрати
+можуть перевищувати корисну роботу в тисячі разів.
+
+```python
+from concurrent.futures import ProcessPoolExecutor
+
+def square(x):
+    return x * x
+
+# naive: one task per element - overhead dominates for cheap work
+with ProcessPoolExecutor() as pool:
+    results = list(pool.map(square, range(1_000_000)))
+
+# batched: fewer, larger tasks amortize the per-submit overhead
+def square_batch(chunk):
+    return [x * x for x in chunk]
+```
+
+Найпростіший спосіб зменшити overhead - групувати роботу в більші батчі: замість мільйона окремих
+задач передати worker-у список елементів і повернути список результатів одним pickle-циклом.
+`ProcessPoolExecutor.map()` частково робить це сам через параметр `chunksize`, який об'єднує кілька
+елементів ітерабла в одну задачу.[^py314-library-multiprocessing]
+
+**Коли варто занепокоїтись:**
+- задача виконується мікросекунди, а не мілісекунди чи довше;
+- аргументи або результат - великі чи складні об'єкти, що дорого серіалізуються;
+- кількість викликів `submit()`/елементів у `map()` набагато більша за кількість worker-процесів.
 
 ## Environment
 

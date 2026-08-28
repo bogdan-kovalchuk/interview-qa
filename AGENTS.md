@@ -62,13 +62,12 @@ A migrated question starts with a real Ukrainian `Short answer` and `TODO` every
 including the whole English body. That is the documented skeleton state, not an unfinished job: the
 card ships from the Ukrainian answer, and the page shows honestly what is not written yet.
 
-Writing over that skeleton has started (`PLAN.md` step 7). **60 of the 392** now carry a written
-Ukrainian `Detailed explanation`; **59** of those also carry the full English body – the translated
-`Short answer` and `Detailed explanation`. The odd one out, `py-coll-0020`, is Ukrainian-only and
-`lang-reconciliation` says so in every validate run; that warning is the mechanism working, not a
-defect to silence. The Ukrainian card count is unchanged at 388 - a card ships on the `Short
-answer` in its own language, and every Ukrainian one was already written. The English package is
-new and holds 68: the nine pilots plus the 59 written here.
+Writing over that skeleton has started (`PLAN.md` step 7). **136 of the 392** now carry a written
+Ukrainian `Detailed explanation` together with the full English body – the translated `Short answer`
+and `Detailed explanation`. Two sections, `python/fundamentals` and `python/syntax-and-control-flow`,
+are finished end to end. The Ukrainian card count is unchanged at 388 – a card ships on the `Short
+answer` in its own language, and every Ukrainian one was already written – while the English package
+grows with each English `Short answer` that gets translated.
 
 What works today, and how to run it:
 

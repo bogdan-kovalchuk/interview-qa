@@ -8,10 +8,10 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython free-threaded build"
     version: "3.14"
@@ -61,7 +61,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Free-threaded build CPython вимагає, щоб кожен C extension явно підтвердив, що він safe для роботи
+без GIL; без такого підтвердження extension вважається несумісним і за замовчуванням змушує CPython
+повернути GIL.[^py314-howto-free-threading-extensions]
+
+Спосіб декларації залежить від стилю ініціалізації extension. Для multi-phase init (PEP 489,
+`Py_mod_exec` слоти) додається окремий слот `Py_mod_gil` зі значенням `Py_MOD_GIL_NOT_USED` у масиві
+`PyModuleDef_Slot`. Для старішого single-phase init, де модуль створюється напряму через
+`PyModule_Create`, той самий ефект дає виклик `PyUnstable_Module_SetGIL(module, Py_MOD_GIL_NOT_USED)`
+у функції `PyInit_*` одразу після створення об'єкта module.
+
+Приклад декларації підтримки free-threaded build у multi-phase init:
+
+```c
+static PyModuleDef_Slot module_slots[] = {
+    {Py_mod_exec, module_exec},
+    {Py_mod_gil, Py_MOD_GIL_NOT_USED},
+    {0, NULL},
+};
+```
+
+Якщо extension не містить жодної з цих декларацій, import на free-threaded build видає
+`RuntimeWarning` і автоматично вмикає GIL для всього процесу – навіть якщо extension фактично
+thread-safe. Це консервативна поведінка "за замовчуванням небезпечно": CPython не намагається
+вгадати безпеку extension, а покладається на explicit opt-in автора.[^py314-howto-free-threading-python]
+
+Для умовного коду під free-threaded build використовується макрос `Py_GIL_DISABLED`, визначений
+лише в такому build. Він дозволяє огортати ділянки, що потребують додаткової синхронізації (critical
+sections, atomic operations), у `#ifdef Py_GIL_DISABLED`, не дублюючи весь файл для обох
+конфігурацій.
+
+**Типові помилки:**
+- декларувати `Py_MOD_GIL_NOT_USED`, не перевіривши реальну thread-safety внутрішніх C-структур та
+  кешів;
+- забувати, що декларація – це обіцянка автора extension, а не автоматична перевірка з боку CPython;
+- плутати `Py_mod_gil` (per-module slot) із загальним прапорцем компіляції `Py_GIL_DISABLED`
+  (per-build macro).
 
 ## Evaluation guide
 

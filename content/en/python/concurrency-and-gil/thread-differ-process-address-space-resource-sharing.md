@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -61,11 +61,55 @@ sources:
 
 ## Short answer
 
-TODO
+**A thread runs inside its parent process and shares the same address space; a process has its own,
+isolated address space.**[^py314-library-threading] Threads share the heap, loaded modules, and open
+file descriptors, while each process gets its own copy of memory and needs IPC (pickling through
+`Queue`/`Pipe`, shared memory through `Value`/`Array`). A crash in one thread (an unhandled
+exception) terminates the whole process; a crash in a separate process is isolated – the parent
+process keeps running.
 
 ## Detailed explanation
 
-TODO
+A thread is a unit of execution inside one process; several threads of the same process share one
+and the same address space, while each process gets its own, isolated address space – a separate
+memory mapping managed by the operating system.[^py314-library-threading]
+
+Because of the shared address space, threads see the same objects in memory: a variable, a list, or
+a dict created in one thread is accessible from another without any copying or serialization. This
+is cheap and fast, but it is exactly why it requires explicit synchronization for shared mutable
+state.
+
+A process, by contrast, is isolated at the memory level by the operating system: two processes
+cannot simply read each other's variables. Data exchange between them goes through IPC –
+`multiprocessing.Queue`, `Pipe`, or shared memory (`Value`, `Array`) – and in most cases the data is
+serialized (`pickle`) before it is sent.[^py314-library-multiprocessing]
+
+Example: creating a worker as a thread and as a process looks almost identical in code, but the
+memory behaviour differs:
+
+```python
+import threading
+import multiprocessing
+
+def worker(shared_list):
+    shared_list.append(1)  # visible to the parent immediately for a thread,
+                            # needs a Manager/shared memory for a process
+
+t = threading.Thread(target=worker, args=([],))
+p = multiprocessing.Process(target=worker, args=([],))
+```
+
+The difference also shows up on failure. An unhandled exception in a non-main thread terminates only
+that thread; the rest of the process keeps running, though the shared memory state may end up
+inconsistent. A process that crashes or is killed (for example, by the OOM killer) does not touch
+the memory of its parent or of other processes – the OS simply frees its address space.
+
+**The main consequences of this difference:**
+- threads are cheaper to create and switch between, but need locks or queues for safe access to
+  shared data;
+- processes are more expensive and need serialization to exchange data, but give real failure
+  isolation and bypass the GIL for CPU-bound work;[^py314-library-multiprocessing]
+- the choice between them is a trade-off between cheap shared state and safe isolation.
 
 ## Comparison
 

@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [lock, rlock, semaphore, condition]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -61,11 +61,54 @@ sources:
 
 ## Short answer
 
-TODO
+**`Lock` provides mutual exclusion (one thread in the critical section); `RLock` is a reentrant lock
+that the same thread can reacquire; `Semaphore` is a counter limiting the number of concurrent
+entries; `Condition` waits for a state change via notify/notify_all.**[^py314-library-threading] Any
+thread can release a `Lock`; an `RLock` can only be released by its owning thread, with a matching
+number of `release()` calls. `Semaphore` suits resource pools (a connection pool, for example).
+`Condition` is for producer-consumer patterns, where one thread waits for a signal from another.
 
 ## Detailed explanation
 
-TODO
+In the `threading` module, each synchronization primitive expresses a different intent, not just a
+different API: they differ in which property of a shared resource they protect, not only in call
+details.[^py314-library-threading]
+
+`Lock` and `RLock` both implement mutual exclusion, but for different scenarios. `Lock` can only be
+acquired once; acquiring it again from the same thread deadlocks. `RLock` keeps an internal count of
+acquisitions and an owning thread: the same thread can reacquire it without blocking, but must call
+`release()` the same number of times. `RLock` exists specifically for recursive functions or methods
+that call one another while holding the same lock.
+
+`Semaphore` expresses a different intent - not "one thread at a time" but "no more than N threads at
+a time". That is the natural choice for limiting access to a fixed-size resource pool (for example, a
+connection pool). `BoundedSemaphore` adds a check: if `release()` is called more often than
+`acquire()`, it raises an exception, whereas a plain `Semaphore` silently lets the counter grow past
+its initial value, hiding a bug.
+
+`Condition` solves a different problem - waiting for a state change, not just acquiring a resource.
+It is built on top of `Lock` (or `RLock`) and adds `wait()`/`notify()`/`notify_all()`: a waiting
+thread atomically releases the underlying lock while it waits and reacquires it on waking. This is
+the basis of the producer-consumer pattern:
+
+```python
+condition = threading.Condition()
+queue = []
+
+def consumer():
+    with condition:
+        while not queue:
+            condition.wait()
+        item = queue.pop(0)
+```
+
+**Common mistakes:**
+- using `Lock` where a recursive call from the same thread needs `RLock`, causing a self-deadlock;
+- using a plain `Semaphore` for a resource pool where a `BoundedSemaphore` is needed to catch extra
+  `release()` calls as an error instead of silently hiding them;
+- calling `notify()` or `wait()` outside a `with condition` block, which raises `RuntimeError`;
+- checking the condition with `if` instead of `while` around `condition.wait()`, ignoring spurious
+  wakeups.
 
 ## Comparison
 

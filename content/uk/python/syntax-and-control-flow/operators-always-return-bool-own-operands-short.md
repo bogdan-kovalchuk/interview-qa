@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [and, or, bool]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,41 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`and` і `or` – це не булеві оператори в сенсі «повертають `True`/`False`», а оператори вибору: вони
+повертають **той операнд**, який визначив результат, у його первісному
+вигляді.[^py314-reference-expressions]
+
+Правило одне на обидва. `x or y` обчислює `x`; якщо він truthy, це і є результат, і `y` не
+обчислюється взагалі. `x and y` обчислює `x`; якщо він falsy, результат – це `x`, і `y` знову не
+обчислюється.
+
+```python
+0 or 'default'      # 'default' - the str, not True
+'a' or 'b'          # 'a'       - the first truthy operand
+[] and crash()      # []        - crash() is never called
+1 and 2             # 2         - the last operand, because 1 is truthy
+```
+
+Truthiness визначає сам об'єкт через `__bool__`, а за його відсутності через `__len__`; тому
+результат залежить від типу операнда, а не від якогось універсального
+приведення.[^py314-reference-simple-stmts]
+
+Short-circuit – це не оптимізація, а гарантія мови, і на неї можна спиратися. Саме тому працює
+ідіома `obj is not None and obj.value > 0`: якщо перша частина хибна, атрибут не читається, і
+`AttributeError` не виникає.
+
+**Практичні наслідки, які варто називати:**
+- значення за замовчуванням через `or` замінює будь-яке falsy значення, не лише `None` – класична
+  пастка з `0` і `''`;
+- ланцюжок `a or b or c` повертає перший truthy операнд, а якщо всі falsy – **останній**, а не
+  `False`;
+- анотувати результат як `bool` неправильно: тип результату – об'єднання типів операндів;
+- якщо потрібен саме `bool`, треба сказати це явно: `bool(x or y)`;
+- побічні ефекти в другому операнді можуть не статися – це і є суть short-circuit, і на цьому
+  будують охоронні перевірки.
+
+Окремо варто відрізняти `and`/`or` від `&`/`|`: останні є бітовими операторами, вони не роблять
+short-circuit і для звичайних об'єктів означають зовсім інше.[^py314-reference-expressions]
 
 ## Evaluation guide
 

@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython with GIL"
     version: null
@@ -68,7 +68,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+GIL – це mutex, який дозволяє лише одному thread одночасно виконувати Python bytecode всередині
+одного process. Здавалося б, це має унеможливити будь-яку паралельність, але GIL захищає лише
+інтерпретатор, а не сам thread на рівні операційної системи – коли thread чекає на щось зовнішнє,
+він може віддати GIL і не заважати іншим.[^py314-library-threading]
+
+Ключовий момент саме в блокуючих I/O-викликах. Функції на кшталт `socket.recv()`, `file.read()`
+або `time.sleep()` реалізовані так, що перед зверненням до операційної системи інтерпретатор
+явно звільняє GIL, а після повернення захоплює його знову. Поки один thread «зависає» в
+системному виклику, GIL вільний, і планувальник CPython може передати його іншому thread, який
+у цей час виконує обчислення або робить власний I/O.
+
+Приклад: у мережевому клієнті з кількома threads, кожен з яких очікує відповіді від сервера,
+загальний час виконання близький до часу найповільнішого запиту, а не до суми всіх запитів,
+бо очікування перекриваються:
+
+```python
+import threading
+
+def fetch(url):
+    response = session.get(url)  # GIL released while waiting on the socket
+    process(response)
+
+threads = [threading.Thread(target=fetch, args=(u,)) for u in urls]
+```
+
+Для CPU-bound коду ситуація протилежна: bytecode, що обчислює щось у циклі, не звільняє GIL
+добровільно (лише періодично, за таймером перемикання), тому threads фактично виконуються по
+черзі й додаткового прискорення не дають.[^py314-howto-free-threading-python]
+
+**Типові помилки в оцінці вигоди від threads:**
+- очікувати прискорення від threads для CPU-bound задач (парсинг, обчислення) – тут потрібен
+  `multiprocessing` або free-threaded build;
+- забувати, що C-розширення теж мають явно звільняти GIL навколо блокуючих або довгих операцій –
+  якщо розширення цього не робить, вигоди від threads не буде;
+- плутати «thread не блокує весь process під час I/O» з «GIL взагалі не існує» – GIL і далі
+  серіалізує bytecode, просто не в момент очікування.
 
 ## Evaluation guide
 
