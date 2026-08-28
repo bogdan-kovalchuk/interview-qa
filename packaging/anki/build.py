@@ -13,9 +13,11 @@ Invariants this file must never violate (meta/ANKI.md, meta/DECISIONS.md #7-8):
   same frozen formula, not a second formula;
 - fields are written by name (`FIELD_ORDER` from the fingerprint), never by a
   hardcoded position;
-- a card ships only when `tools/iqa/lifecycle.py` says `card_in_apkg` for that
-  question's Ukrainian file - nothing else decides that (meta/ANKI.md: cards
-  are Ukrainian; no English fallback is substituted into Back).
+- a card ships only when `tools/iqa/lifecycle.py` says `card_in_apkg` for the
+  language being built - nothing else decides that, and no other language is
+  ever substituted into Back (meta/ANKI.md: a mixed-language deck is worse than
+  a smaller one). One package holds one language; the Ukrainian one is the
+  default and keeps the GUID namespace it was released with.
 """
 
 from __future__ import annotations
@@ -39,8 +41,19 @@ MODEL_ID = FINGERPRINT["model_id"]
 FIELD_ORDER = [field["name"] for field in sorted(FINGERPRINT["fields"], key=lambda f: f["ord"])]
 
 SITE_ORIGIN = "https://bogdan-kovalchuk.github.io"
-CARD_LANGUAGE = "uk"
+DEFAULT_CARD_LANGUAGE = "uk"
 GUID_SALT = "iqa:v1:"
+
+# meta/ANKI.md "GUID": `iqa:v1:` is fixed forever for the Ukrainian deck, and a separate
+# English deck gets its own namespace `iqa:v1:en:` so the two never collide in one
+# collection. The Ukrainian namespace is empty here on purpose - adding a segment to it
+# would rewrite every existing GUID, which is the one change that loses review progress.
+GUID_NAMESPACE = {"uk": "", "en": "en:"}
+
+# Separate deck trees per language. meta/ANKI.md: a deck holds one language, because
+# "змішана мова в колоді гірша за меншу колоду"; the deck names stay English in both,
+# so the trees sort next to each other in the profile.
+DECK_ROOT = {"uk": "Interview QA", "en": "Interview QA (EN)"}
 BASE91 = (
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
     "!#$%&()*+,-./:;<=>?@[]^_`{|}~"
@@ -53,14 +66,16 @@ BOLD_RE = re.compile(r"\*\*(.+?)\*\*", re.S)
 LIST_ITEM_RE = re.compile(r"(?m)^-[ \t]+(.+)$")
 
 
-def guid_for(qid: str) -> str:
+def guid_for(qid: str, language: str = DEFAULT_CARD_LANGUAGE) -> str:
     """Deterministic note GUID. Never change this function.
 
     Identical formula to packaging/anki/test-deck/build_test_deck.py:guid_for -
     meta/ANKI.md fixes this once; this is a second reading of it, not a second
-    definition.
+    definition. `language` selects the namespace and defaults to Ukrainian, whose
+    namespace is empty, so every GUID already issued keeps its exact value.
     """
-    digest = hashlib.sha256((GUID_SALT + qid).encode("utf-8")).digest()[:8]
+    namespaced = GUID_SALT + GUID_NAMESPACE[language] + qid
+    digest = hashlib.sha256(namespaced.encode("utf-8")).digest()[:8]
     n = int.from_bytes(digest, "big")
     out = []
     while n:
@@ -157,11 +172,11 @@ def render_sources_field(sources: list[dict[str, Any]]) -> str:
     return "<br>".join(f'<a href="{source["url"]}">{source["title"]}</a>' for source in sources)
 
 
-def track_label(vocabulary: dict[str, Any], track: str) -> str:
+def track_label(vocabulary: dict[str, Any], track: str, language: str = DEFAULT_CARD_LANGUAGE) -> str:
     labels = (vocabulary.get("track_labels") or {}).get(track)
-    if not isinstance(labels, dict) or CARD_LANGUAGE not in labels:
-        raise ValueError(f"no {CARD_LANGUAGE} label for track `{track}` in meta/vocabulary.yml")
-    return labels[CARD_LANGUAGE]
+    if not isinstance(labels, dict) or language not in labels:
+        raise ValueError(f"no {language} label for track `{track}` in meta/vocabulary.yml")
+    return labels[language]
 
 
 def track_label_en(vocabulary: dict[str, Any], track: str) -> str:
@@ -179,7 +194,9 @@ def section_nav_label_en(vocabulary: dict[str, Any], track: str, section: str) -
     return labels["en"]
 
 
-def card_label(vocabulary: dict[str, Any], question_type: str) -> str | None:
+def card_label(
+    vocabulary: dict[str, Any], question_type: str, language: str = DEFAULT_CARD_LANGUAGE
+) -> str | None:
     """The visible label above Back for types whose Short answer has special
 
     semantics (meta/ANKI.md "Що в яких полях"). Types with no entry here get
@@ -193,17 +210,25 @@ def card_label(vocabulary: dict[str, Any], question_type: str) -> str | None:
     if key is None:
         return None
     labels = (vocabulary.get("card_labels") or {}).get(key)
-    if not isinstance(labels, dict) or CARD_LANGUAGE not in labels:
-        raise ValueError(f"no {CARD_LANGUAGE} card label for `{key}` in meta/vocabulary.yml")
-    return labels[CARD_LANGUAGE]
+    if not isinstance(labels, dict) or language not in labels:
+        raise ValueError(f"no {language} card label for `{key}` in meta/vocabulary.yml")
+    return labels[language]
 
 
-def deck_name(vocabulary: dict[str, Any], track: str, section: str) -> str:
+def deck_name(
+    vocabulary: dict[str, Any], track: str, section: str, language: str = DEFAULT_CARD_LANGUAGE
+) -> str:
     """Deck names are English Title Case with `::`, even for Ukrainian cards
 
-    (meta/ANKI.md: "predictably sorts next to others in the profile").
+    (meta/ANKI.md: "predictably sorts next to others in the profile"). Only the root
+    segment carries the language, so the two trees sort next to each other and a deck
+    still holds exactly one language.
     """
-    return f"Interview QA::{track_label_en(vocabulary, track)}::{section_nav_label_en(vocabulary, track, section)}"
+    return (
+        f"{DECK_ROOT[language]}"
+        f"::{track_label_en(vocabulary, track)}"
+        f"::{section_nav_label_en(vocabulary, track, section)}"
+    )
 
 
 def build_tags(question: dict[str, Any]) -> list[str]:
@@ -221,8 +246,14 @@ def build_tags(question: dict[str, Any]) -> list[str]:
     return tags
 
 
-def render_front(vocabulary: dict[str, Any], question: dict[str, Any], card: dict[str, Any], title: str) -> str:
-    label = track_label(vocabulary, question["track"])
+def render_front(
+    vocabulary: dict[str, Any],
+    question: dict[str, Any],
+    card: dict[str, Any],
+    title: str,
+    language: str = DEFAULT_CARD_LANGUAGE,
+) -> str:
+    label = track_label(vocabulary, question["track"], language)
     parts = [f'<div class="deck-label">{label}</div>', render_inline(title)]
     if question["type"] == "coding":
         task_html = render_paragraphs(card["task"], key_lead=False)
@@ -234,8 +265,13 @@ def render_front(vocabulary: dict[str, Any], question: dict[str, Any], card: dic
     return "".join(parts)
 
 
-def render_back(vocabulary: dict[str, Any], question: dict[str, Any], card: dict[str, Any]) -> str:
-    label = card_label(vocabulary, question["type"])
+def render_back(
+    vocabulary: dict[str, Any],
+    question: dict[str, Any],
+    card: dict[str, Any],
+    language: str = DEFAULT_CARD_LANGUAGE,
+) -> str:
+    label = card_label(vocabulary, question["type"], language)
     answer_html = render_paragraphs(card["short_answer"], key_lead=True)
     if label is None:
         return answer_html
@@ -280,29 +316,32 @@ def note_fields(values: dict[str, str]) -> list[str]:
 
 
 def build_notes(
-    questions: list[dict[str, Any]], vocabulary: dict[str, Any], model: genanki.Model
+    questions: list[dict[str, Any]],
+    vocabulary: dict[str, Any],
+    model: genanki.Model,
+    language: str = DEFAULT_CARD_LANGUAGE,
 ) -> list[tuple[str, genanki.Note]]:
-    """Return (deck_name, note) pairs for every question whose Ukrainian card ships."""
+    """Return (deck_name, note) pairs for every question whose card ships in `language`."""
     notes: list[tuple[str, genanki.Note]] = []
     for question in questions:
-        uk = question["languages"].get("uk")
-        if uk is None:
+        entry = question["languages"].get(language)
+        if entry is None:
             continue
-        if not uk["lifecycle"]["card_in_apkg"]:
+        if not entry["lifecycle"]["card_in_apkg"]:
             continue
-        card = uk["card"]
+        card = entry["card"]
         if card["short_answer"] is None:
             # lifecycle says it ships but the body says otherwise: a contract
             # invariant broke upstream. Fail loudly rather than ship an empty card.
             raise ValueError(f"{question['id']}: card_in_apkg is true but short_answer is empty")
 
-        reference = f"{SITE_ORIGIN}{uk['resolver_path']}"
+        reference = f"{SITE_ORIGIN}{entry['resolver_path']}"
         fields = note_fields(
             {
-                "Front": render_front(vocabulary, question, card, uk["title"]),
-                "Back": render_back(vocabulary, question, card),
+                "Front": render_front(vocabulary, question, card, entry["title"], language),
+                "Back": render_back(vocabulary, question, card, language),
                 "Reference": reference,
-                "Sources": render_sources_field(uk["sources"]),
+                "Sources": render_sources_field(entry["sources"]),
                 "QID": question["id"],
             }
         )
@@ -310,13 +349,20 @@ def build_notes(
             model=model,
             fields=fields,
             tags=build_tags(question),
-            guid=guid_for(question["id"]),
+            guid=guid_for(question["id"], language),
         )
-        notes.append((deck_name(vocabulary, question["track"], question["section"]), note))
+        notes.append(
+            (deck_name(vocabulary, question["track"], question["section"], language), note)
+        )
     return notes
 
 
-def build_package(questions_path: Path, vocabulary_path: Path, out_path: Path) -> int:
+def build_package(
+    questions_path: Path,
+    vocabulary_path: Path,
+    out_path: Path,
+    language: str = DEFAULT_CARD_LANGUAGE,
+) -> int:
     payload = json.loads(questions_path.read_text(encoding="utf-8"))
     vocabulary = yaml.safe_load(vocabulary_path.read_text(encoding="utf-8")) or {}
 
@@ -324,7 +370,7 @@ def build_package(questions_path: Path, vocabulary_path: Path, out_path: Path) -
     # template, per the frozen fingerprint.
     model = make_model()
 
-    notes = build_notes(payload["questions"], vocabulary, model)
+    notes = build_notes(payload["questions"], vocabulary, model, language)
 
     decks: dict[str, genanki.Deck] = {}
     for name, note in notes:
@@ -343,11 +389,25 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--questions", type=Path, default=ROOT / "dist" / "export" / "questions.json")
     parser.add_argument("--vocabulary", type=Path, default=ROOT / "meta" / "vocabulary.yml")
-    parser.add_argument("--out", type=Path, default=ROOT / "packaging" / "anki" / "dist" / "Interview QA - Full Library.apkg")
+    parser.add_argument(
+        "--language",
+        choices=sorted(GUID_NAMESPACE),
+        default=DEFAULT_CARD_LANGUAGE,
+        help="which language's cards to package; one package holds exactly one language",
+    )
+    parser.add_argument(
+        "--out",
+        type=Path,
+        default=None,
+        help="output .apkg; defaults to the Full Library name for the chosen language",
+    )
     args = parser.parse_args()
 
-    count = build_package(args.questions, args.vocabulary, args.out)
-    print(f"{args.out.name}: {count} notes")
+    out = args.out or (
+        ROOT / "packaging" / "anki" / "dist" / f"{DECK_ROOT[args.language]} - Full Library.apkg"
+    )
+    count = build_package(args.questions, args.vocabulary, out, args.language)
+    print(f"{out.name}: {count} notes")
     return 0
 
 
