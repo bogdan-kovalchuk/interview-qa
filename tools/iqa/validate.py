@@ -17,6 +17,7 @@ from jsonschema import Draft202012Validator
 from pydantic import ValidationError
 import yaml
 
+from .taxonomy import ordered_paths
 from .model import (
     EVALUATION_SUBSECTIONS,
     OPTIONAL_SECTIONS,
@@ -154,28 +155,14 @@ def _load_vocabulary(path: Path, report: ValidationReport) -> dict[str, Any]:
 
 
 def _taxonomy_paths(path: Path, report: ValidationReport) -> set[str]:
+    # The parse itself lives in tools/iqa/taxonomy.py: the mirror needs the same
+    # tree in document order to build the site navigation, and one file must not
+    # be read by two different parsers.
     try:
-        text = path.read_text(encoding="utf-8")
+        return set(ordered_paths(path))
     except OSError as error:
         report.add("taxonomy", f"cannot read taxonomy: {error}", path=path.as_posix())
         return set()
-
-    paths: set[str] = set()
-    for block in re.findall(r"(?ms)^```[^\r\n]*\r?\n(.*?)^```[ \t]*$", text):
-        stack: list[tuple[int, str]] = []
-        for line in block.splitlines():
-            match = re.match(r"^(?P<indent> *)(?P<name>[a-z0-9][a-z0-9-]*)/", line)
-            if not match:
-                continue
-            indent = len(match.group("indent"))
-            name = match.group("name")
-            while stack and stack[-1][0] >= indent:
-                stack.pop()
-            stack.append((indent, name))
-            candidate = "/".join(item[1] for item in stack)
-            if candidate != "content":
-                paths.add(candidate)
-    return paths
 
 
 def _schema_gate(

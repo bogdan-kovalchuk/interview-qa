@@ -36,3 +36,6 @@ desktop.ini
 
 # generated mirror for the site
 /site/src/content/docs/
+
+# generated Starlight sidebar (tools/iqa/mirror.py), like the mirror itself
+/site/src/generated/

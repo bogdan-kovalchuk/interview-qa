@@ -27,12 +27,23 @@ def _make_content_tree(tmp_path: Path, fixture_names: list[str]) -> Path:
     return content
 
 
+def _question_stems(out: Path) -> set[str]:
+    """Stems of the question pages only.
+
+    The mirror also writes index pages (home, track, section) that carry the
+    navigation, and those are all named `index.md`. Question pages are the ones
+    under `{lang}/q/`, so select on that rather than on "not directly in the
+    locale directory", which stopped meaning the same thing.
+    """
+    return {path.stem for path in out.rglob("*.md") if "q" in path.relative_to(out).parts}
+
+
 def test_production_excludes_draft_and_review(tmp_path: Path) -> None:
     content = _make_content_tree(tmp_path, ["draft", "review", "published", "withdrawn"])
     out = tmp_path / "out"
     count = mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
 
-    mirrored_ids = {path.stem for path in out.rglob("*.md") if path.parent.name != "en"}
+    mirrored_ids = _question_stems(out)
     assert "draft-fixture" not in mirrored_ids
     assert "review-fixture" not in mirrored_ids
     assert "published-fixture" in mirrored_ids
@@ -45,7 +56,7 @@ def test_preview_includes_draft_and_review(tmp_path: Path) -> None:
     out = tmp_path / "out"
     count = mirror.generate(content, out, "/interview-qa", preview=True, root=ROOT)
 
-    mirrored_ids = {path.stem for path in out.rglob("*.md") if path.parent.name != "en"}
+    mirrored_ids = _question_stems(out)
     assert mirrored_ids == {"draft-fixture", "review-fixture", "published-fixture", "withdrawn-fixture"}
     assert count == 4
 
