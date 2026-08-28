@@ -53,8 +53,8 @@ must be fixed – not worked around.
 
 ## Current state
 
-**401 questions, both languages, 388 cards in the deck.** The 392 predecessor cards are migrated;
-nine hand-written pilots cover every question type. Decisions are settled (`meta/DECISIONS.md`),
+**401 questions, both languages, 388 Ukrainian cards and 68 English ones.** The 392 predecessor
+cards are migrated; nine hand-written pilots cover every question type. Decisions are settled (`meta/DECISIONS.md`),
 the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`), and the question
 contract is frozen.
 
@@ -66,8 +66,9 @@ Writing over that skeleton has started (`PLAN.md` step 7). **60 of the 392** now
 Ukrainian `Detailed explanation`; **59** of those also carry the full English body – the translated
 `Short answer` and `Detailed explanation`. The odd one out, `py-coll-0020`, is Ukrainian-only and
 `lang-reconciliation` says so in every validate run; that warning is the mechanism working, not a
-defect to silence. The card count is unchanged at 388, because a card ships on the Ukrainian
-`Short answer` alone and every one of those was already written.
+defect to silence. The Ukrainian card count is unchanged at 388 - a card ships on the `Short
+answer` in its own language, and every Ukrainian one was already written. The English package is
+new and holds 68: the nine pilots plus the 59 written here.
 
 What works today, and how to run it:
 
@@ -76,7 +77,7 @@ python -m iqa validate    the content and parity gates, one negative fixture eac
 python -m iqa export      dist/export/questions.json
 python -m iqa report      dist/export/progress.{json,csv}; --todo prints the next gaps
 python -m iqa build       validate -> export+report -> mirror -> astro build -> verify
-python packaging/anki/build.py    the .apkg, from the export
+python packaging/anki/build.py --language {uk,en}    the .apkg, from the export
 python -m pytest --basetemp=<writable dir>
 ```
 
@@ -95,7 +96,8 @@ Breaking any of these is a migration event, not an edit.
 
 - **A question ID is immutable and never reused**, even after the question is deleted.
 - **Anki note GUIDs never change.** Every GUID is derived deterministically from the question id
-  with the salt `iqa:v1:`; nothing is inherited and there is no GUID map.
+  with the salt `iqa:v1:` (`iqa:v1:en:` for the English package, so the two never collide in one
+  collection); nothing is inherited and there is no GUID map.
 - **The note type is frozen from the first published package.** It is defined once, in
   `packaging/anki/notetype/`. After a package ships, changing `model_id`, the fields or the template
   count silently merges note types, shifts fields to other ords and creates extra cards – measured,

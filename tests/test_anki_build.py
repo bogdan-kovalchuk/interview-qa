@@ -35,6 +35,53 @@ def test_guid_formula_matches_test_deck_reference_implementation() -> None:
 
     for qid in ("py-asyncio-0007", "cpp-mem-0001", "bhv-team-0001"):
         assert anki_build.guid_for(qid) == build_test_deck.guid_for(qid)
+        # The default is Ukrainian and its namespace is empty, so asking for it
+        # explicitly must not move a single GUID that has already been issued.
+        assert anki_build.guid_for(qid, "uk") == build_test_deck.guid_for(qid)
+
+
+def test_english_notes_get_their_own_guid_namespace(payload: dict, vocabulary: dict) -> None:
+    # meta/ANKI.md "GUID": a separate English deck uses `iqa:v1:en:{id}`. If the two
+    # languages shared a GUID, importing both packages into one collection would make
+    # each note overwrite the other - the one failure this project cannot recover from.
+    model = anki_build.make_model()
+    uk_notes = anki_build.build_notes(payload["questions"], vocabulary, model, "uk")
+    en_notes = anki_build.build_notes(payload["questions"], vocabulary, model, "en")
+
+    uk_guids = {note.guid for _deck, note in uk_notes}
+    en_guids = {note.guid for _deck, note in en_notes}
+    assert uk_guids and en_guids
+    assert uk_guids.isdisjoint(en_guids)
+
+    # And the two languages never share a deck either, so no deck holds both.
+    uk_decks = {deck for deck, _note in uk_notes}
+    en_decks = {deck for deck, _note in en_notes}
+    assert uk_decks.isdisjoint(en_decks)
+    assert all(deck.startswith("Interview QA::") for deck in uk_decks)
+    assert all(deck.startswith("Interview QA (EN)::") for deck in en_decks)
+
+
+def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
+    payload: dict, vocabulary: dict
+) -> None:
+    # A card ships on the Short answer written in *that* language, nothing else
+    # (meta/ANKI.md "Коли картка з'являється в пакеті"). Most English bodies are
+    # still TODO, so this number is far below the Ukrainian one - and that is the
+    # honest state, not a bug.
+    model = anki_build.make_model()
+    notes = anki_build.build_notes(payload["questions"], vocabulary, model, "en")
+
+    expected = {
+        question["id"]
+        for question in payload["questions"]
+        if question["languages"]["en"]["lifecycle"]["card_in_apkg"]
+    }
+    assert len(notes) == len(expected)
+    shipped = {note.fields[anki_build.FIELD_ORDER.index("QID")] for _deck, note in notes}
+    assert shipped == expected
+
+    reference_index = anki_build.FIELD_ORDER.index("Reference")
+    assert all("/en/q/" in note.fields[reference_index] for _deck, note in notes)
 
 
 def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, vocabulary: dict) -> None:
