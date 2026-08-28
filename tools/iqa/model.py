@@ -349,6 +349,23 @@ FRONTMATTER_RE = re.compile(
 )
 SECTION_RE = re.compile(r"(?m)^## (?P<heading>[^\r\n]+)\r?\n")
 SUBSECTION_RE = re.compile(r"(?m)^### (?P<heading>[^\r\n]+)\r?\n")
+CODE_FENCE_RE = re.compile(r"(?ms)^```[^\r\n]*\r?\n.*?^```[ \t]*$")
+
+
+def code_spans(text: str) -> list[tuple[int, int]]:
+    """(start, end) of every fenced code block, so a `#` line inside one is code.
+
+    A Markdown heading and a shell or Python comment are the same characters at
+    the start of a line. Without this, `# note` inside a fence reads as a level-1
+    heading, and - worse - `## note` inside a fence becomes a whole phantom
+    section in the parsed document. Both were real: the second silently changed
+    the section sequence a question is validated and rendered against.
+    """
+    return [(match.start(), match.end()) for match in CODE_FENCE_RE.finditer(text)]
+
+
+def outside_code(position: int, spans: list[tuple[int, int]]) -> bool:
+    return not any(start <= position < end for start, end in spans)
 
 
 def load_frontmatter(text: str) -> tuple[dict[str, Any], str]:
@@ -362,13 +379,19 @@ def load_frontmatter(text: str) -> tuple[dict[str, Any], str]:
 
 
 def parse_body(body: str) -> ParsedBody:
-    matches = list(SECTION_RE.finditer(body))
+    spans = code_spans(body)
+    matches = [match for match in SECTION_RE.finditer(body) if outside_code(match.start(), spans)]
     preamble = body[: matches[0].start()] if matches else body
     sections: list[ParsedSection] = []
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(body)
         content = body[match.end() : end].rstrip("\r\n")
-        subsection_matches = list(SUBSECTION_RE.finditer(content))
+        content_spans = code_spans(content)
+        subsection_matches = [
+            sub
+            for sub in SUBSECTION_RE.finditer(content)
+            if outside_code(sub.start(), content_spans)
+        ]
         subsections: list[ParsedSubsection] = []
         for sub_index, sub_match in enumerate(subsection_matches):
             sub_end = (

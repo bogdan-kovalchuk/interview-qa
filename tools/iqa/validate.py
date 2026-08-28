@@ -19,6 +19,8 @@ import yaml
 
 from .taxonomy import ordered_paths
 from .model import (
+    code_spans,
+    outside_code,
     EVALUATION_SUBSECTIONS,
     OPTIONAL_SECTIONS,
     EvaluationSubsection,
@@ -405,7 +407,13 @@ def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
 
     if question.body.preamble:
         report.add("sections", "body content appears before the first section", path=record.label)
+    # Fenced code is skipped: `# note` at the start of a line inside a Python or
+    # shell example is a comment, not a level-1 heading, and the house style for
+    # `Detailed explanation` puts exactly such comments in its examples.
+    spans = code_spans(question.body.raw)
     for marker in re.finditer(r"(?m)^(#{1,6})[ \t]+", question.body.raw):
+        if not outside_code(marker.start(), spans):
+            continue
         level = len(marker.group(1))
         if level not in {2, 3}:
             report.add("sections", f"heading level {level} is forbidden", path=record.label)
