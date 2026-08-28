@@ -142,8 +142,25 @@ python -m iqa build
 `generated from frontmatter`, англійські заголовки на `/uk/`, відсутній корінь, `robots.txt`,
 sitemap і `hreflang`.
 
-З кроку 6 уже зроблено те, що не потребує нових сторінок: `dist/export/progress.{json,csv}` і
-`python -m iqa report --todo` (`tools/iqa/report.py`), WIP-плашка замість голого `TODO` на
-ненаписаній секції і бейдж `completeness` у сайдбарі. Лишається нереалізованим: навігація з дерева,
-індекси треків і секцій, сторінка `/status/`, яка рендерить уже наявний `progress.json`, і scale
+З кроку 6 зроблено: `dist/export/progress.{json,csv}` і `python -m iqa report --todo`
+(`tools/iqa/report.py`); WIP-плашка замість голого `TODO` на ненаписаній секції; бейдж
+`completeness`; **навігація з дерева таксономії та індекси треків і секцій**. Лишається:
+сторінка `/status/`, яка рендерить уже наявний `progress.json`, Pagefind обома мовами і scale
 spike (`PLAN.md` крок 6).
+
+## Навігація і оформлення
+
+Сайдбар **генерується**, як і дзеркало: `tools/iqa/mirror.py` пише
+`site/src/generated/sidebar.json` з порядку `meta/TAXONOMY.md` і підписів `meta/vocabulary.yml`, а
+`astro.config.mjs` його імпортує. Без явного `sidebar` Starlight будує меню з дерева тек дзеркала –
+а це `{lang}/q/{id}/{slug}`, тобто меню з ідентифікаторів питань. Два рівні: трек, потім секція;
+самі питання перелічені на сторінці своєї секції, не в меню. Порядок – **документний порядок**
+`TAXONOMY.md`, ніколи не алфавітний: саме там записано, що `fundamentals` іде перед `asyncio`.
+
+Ціна старого меню виміряна: сторінка питання важила 476 КБ і несла 405 посилань на інші питання,
+`site/dist` – 388 МБ. Після переходу на таксономію – 62 КБ і 48,6 МБ.
+
+Оформлення – порт теми Material for MkDocs 9.7.6 (палітра `slate`/`indigo`/`light-blue`, Roboto і
+Roboto Mono) на Starlight: `site/src/styles/material.css` для палітри й типографіки,
+`site/src/styles/code-theme.mjs` для підсвітки коду. Значення взяті з CSS референсного сайту, не
+підібрані на око; звідки саме – у шапці кожного з цих двох файлів.

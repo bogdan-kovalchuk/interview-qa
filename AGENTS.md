@@ -85,10 +85,15 @@ CI runs that same sequence on every pull request. Deploying to GitHub Pages is d
 **manual only** (`workflow_dispatch`) until the owner authorises automatic publication, and the
 deck is released by tagging `deck-v*`.
 
-What does not exist yet: site navigation, section and track indexes, the `/status/` page, and
-programs. `PLAN.md` steps 6-7. The progress report itself exists as data (`python -m iqa report`)
-and the page that renders it does not; an unwritten section already shows a WIP callout instead of
-the bare word `TODO`, and an index entry carries a completeness badge.
+The site navigates by taxonomy: a generated sidebar (track, then section, in `meta/TAXONOMY.md`
+order) plus track and section index pages, with the questions listed on their section's page rather
+than in the menu. It is styled as a port of the reference site's Material for MkDocs theme
+(`site/src/styles/`, values read off that site's CSS). An unwritten section shows a WIP callout
+instead of the bare word `TODO`, and an index entry carries a completeness badge.
+
+What does not exist yet: the `/status/` page, Pagefind checked in both locales, the scale spike, and
+programs. `PLAN.md` steps 6-7. The progress report exists as data (`python -m iqa report`) and the
+page that renders it does not.
 
 ## Non-negotiable invariants
 
