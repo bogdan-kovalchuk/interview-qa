@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [outer, inner]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 execution:
   language: python
   standard: null
@@ -74,7 +74,56 @@ def hello(): pass
 
 ## Detailed explanation
 
-TODO
+Застосування decorator – це виклик його функції одразу під час виконання `def` (definition time),
+а не під час подальшого виклику декорованої функції. Python обробляє список decorators над однією
+функцією знизу вгору: спочатку викликається той, що ближче до `def`, і лише його результат
+передається наступному.[^py314-glossary-term-decorator]
+
+Це прямий наслідок синтаксису: `@outer` `@inner` `def hello(): ...` – це скорочення для
+`hello = outer(inner(hello))`, і Python обчислює вкладені виклики зсередини назовні, тобто
+`inner(hello)` рахується першим.[^py314-reference-compound-stmts-function-definitions] Кожен
+наступний decorator отримує вже обгорнуту функцію як аргумент, а не оригінал.
+
+Порядок *застосування* (хто кого обгортає під час визначення) варто відрізняти від порядку
+*виконання* під час виклику. Якщо кожен wrapper робить щось до і після виклику наступної функції, то
+на виклику код `outer` спрацьовує першим (бо він зовнішній), потім код `inner`, потім оригінальна
+функція, а після повернення – у зворотному порядку. Це той самий стек викликів, що й у звичайній
+вкладеній функції, і саме тут найлегше сплутати «хто застосований першим» із «чий код виконається
+першим».
+
+Приклад, який показує різницю між порядком застосування і порядком виконання:
+
+```python
+def outer(func):
+    def wrapper(*args, **kwargs):
+        print('outer: before')
+        result = func(*args, **kwargs)
+        print('outer: after')
+        return result
+    return wrapper
+
+def inner(func):
+    def wrapper(*args, **kwargs):
+        print('inner: before')
+        result = func(*args, **kwargs)
+        print('inner: after')
+        return result
+    return wrapper
+
+@outer
+@inner
+def hello():
+    print('hello')
+
+hello()  # order: outer:before, inner:before, hello, inner:after, outer:after
+```
+
+**Типові помилки з порядком decorators:**
+- вважати, що порядок написання не має значення, якщо decorators «просто щось логують»;
+- плутати порядок застосування (знизу вгору, один раз при визначенні) з порядком виконання
+  wrapper-коду (при кожному виклику, зовнішній першим);
+- переставляти decorators під час рефакторингу без перевірки, чи не зламало це поведінку, яка
+  залежала від того, хто кого обгортає.
 
 ## Evaluation guide
 

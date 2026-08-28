@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: [functools-wraps]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-05
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -51,7 +51,50 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Без `functools.wraps` wrapper-функція, яку decorator повертає замість оригіналу, стає новим
+об'єктом з власними `__name__`, `__doc__`, `__qualname__`, `__module__` і `__annotations__`, і саме
+ці порожні за замовчуванням атрибути бачить будь-який код, що звертається до декорованої
+функції.[^py314-glossary-term-decorator]
+
+Причина в тому, як `def wrapper(*args, **kwargs): ...` визначається всередині decorator: це нова
+функція з нуля, і Python не копіює метадані замкненої функції автоматично. `functools.wraps(func)`
+саме й виконує це копіювання – переносить перелічені атрибути з `func` на `wrapper`, а також додає
+`wrapper.__wrapped__ = func` як посилання на оригінал.[^py314-library-functools-functools-wraps]
+
+Без цього кроку introspection ламається одразу на кількох рівнях. `help(decorated)` показує
+docstring (або її відсутність) від wrapper, а не від функції, яку насправді викликають.
+`inspect.signature(decorated)` повертає узагальнений `(*args, **kwargs)` замість реальних
+параметрів, тож інструменти статичного аналізу й автодоповнення в IDE не бачать справжню сигнатуру.
+Автогенератори документації на кшталт Sphinx підставляють у сторінку неправильний опис функції.
+
+Для debugging наслідок ще прикріший: stack trace, logging і профайлери показують ім'я `wrapper`
+замість імені функції, яку кандидат насправді написав. Якщо decorator застосований до кількох
+різних функцій, усі вони в traceback виглядають однаково, і зрозуміти, яка саме впала, стає
+складніше без додаткового контексту.
+
+Приклад decorator без `functools.wraps` і наслідок для introspection:
+
+```python
+def logged(func):
+    def wrapper(*args, **kwargs):
+        return func(*args, **kwargs)
+    return wrapper
+
+@logged
+def greet(name):
+    """Greet a person by name."""
+    ...
+
+print(greet.__name__)  # wrapper, not "greet"
+print(greet.__doc__)   # None, not "Greet a person by name."
+```
+
+**Типові прояви без `functools.wraps`:**
+- `__name__` і `__qualname__` показують `wrapper` замість справжнього імені функції;
+- `__doc__` губиться, і `help()` виводить нерелевантну або порожню довідку;
+- `__annotations__` зникають, тож type checkers й IDE не бачать сигнатуру оригіналу;
+- `inspect.signature()` повертає `(*args, **kwargs)` замість реальних параметрів;
+- traceback і логи показують `wrapper` як місце помилки, а не оригінальну функцію.
 
 ## Symptom
 
