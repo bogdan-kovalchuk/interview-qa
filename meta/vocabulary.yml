@@ -115,11 +115,6 @@ completeness_labels:
   partial:  {en: Partial,     uk: Частково}
   complete: {en: Complete,    uk: Завершено}
 
-# Плашка на місці секції, чий текст дорівнює TODO (PLAN.md крок 6, п.3): сторінка
-# питання показує це чесно замість голого слова TODO.
-wip_notice:
-  {en: "This section has not been written yet.", uk: "Цей розділ ще не написано."}
-
 # Видимі підписи навколо індексів треку/секції і /status/ (PLAN.md крок 6). `level`
 # і `type` самі лишаються англійськими кодами закритого словника (QUALITY_GATES.md
 # facets-vocabulary) - тут перекладаються тільки підписи навколо них, не значення.

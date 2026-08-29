@@ -66,6 +66,26 @@ def test_title_markup_escapes_everything_it_did_not_generate() -> None:
     assert mirror.title_text(title) == "Why does a < b & c differ from <script>?"
 
 
+def test_unwritten_sections_are_not_rendered_at_all(tmp_path: Path) -> None:
+    """A `TODO` section leaves no trace on the page.
+
+    The skeleton keeps every required heading in `content/` because the contract
+    demands it, but rendering them produced up to nine "not written yet" notices
+    on a single page. The gaps are data now - `dist/export/progress.{json,csv}`
+    and `/status/` - rather than noise repeated down every page.
+    """
+    content = _make_content_tree(tmp_path, ["partial"])
+    out = tmp_path / "out"
+    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+
+    body = next(out.rglob("partial-fixture.md")).read_text(encoding="utf-8").split("---", 2)[2]
+    headings = [line[3:].strip() for line in body.splitlines() if line.startswith("## ")]
+
+    # The fixture has Short answer written, Detailed explanation `TODO`, Sources.
+    assert "TODO" not in body
+    assert headings == ["Short answer", "Sources"]
+
+
 def test_production_excludes_draft_and_review(tmp_path: Path) -> None:
     content = _make_content_tree(tmp_path, ["draft", "review", "published", "withdrawn"])
     out = tmp_path / "out"

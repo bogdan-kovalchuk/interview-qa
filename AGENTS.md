@@ -53,7 +53,7 @@ must be fixed – not worked around.
 
 ## Current state
 
-**401 questions, both languages, 388 Ukrainian cards and 68 English ones.** The 392 predecessor
+**401 questions, both languages, 388 Ukrainian cards and 145 English ones.** The 392 predecessor
 cards are migrated; nine hand-written pilots cover every question type. Decisions are settled (`meta/DECISIONS.md`),
 the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`), and the question
 contract is frozen.
@@ -87,8 +87,10 @@ deck is released by tagging `deck-v*`.
 The site navigates by taxonomy: a generated sidebar (track, then section, in `meta/TAXONOMY.md`
 order) plus track and section index pages, with the questions listed on their section's page rather
 than in the menu. It is styled as a port of the reference site's Material for MkDocs theme
-(`site/src/styles/`, values read off that site's CSS). An unwritten section shows a WIP callout
-instead of the bare word `TODO`, and an index entry carries a completeness badge.
+(`site/src/styles/`, values read off that site's CSS). **An unwritten section is not rendered on the
+page at all** - the heading stays in `content/` because the contract requires it, but the gaps are
+reported as data (`dist/export/progress.{json,csv}`, and `/status/` once it exists) rather than as a
+notice repeated down every page.
 
 What does not exist yet: the `/status/` page, Pagefind checked in both locales, the scale spike, and
 programs. `PLAN.md` steps 6-7. The progress report exists as data (`python -m iqa report`) and the
