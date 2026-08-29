@@ -38,6 +38,34 @@ def _question_stems(out: Path) -> set[str]:
     return {path.stem for path in out.rglob("*.md") if "q" in path.relative_to(out).parts}
 
 
+def test_title_inline_code_is_stripped_for_text_and_rendered_for_the_heading() -> None:
+    """One title, two shapes: plain text where markup cannot go, `<code>` where it can.
+
+    Starlight puts `title` into the browser `<title>`, `og:title` and the
+    sidebar, none of which can hold markup - so the backticks used to show up
+    there literally. The heading can hold markup, and the section index already
+    rendered the same titles with `<code>`, so leaving the heading as plain text
+    made one title look formatted in the list and raw on its own page.
+    """
+    title = "Спроєктуйте object з узгодженими `__eq__` та `__hash__`"
+
+    assert mirror.title_text(title) == "Спроєктуйте object з узгодженими __eq__ та __hash__"
+    assert mirror.title_markup(title) == (
+        "Спроєктуйте object з узгодженими <code>__eq__</code> та <code>__hash__</code>"
+    )
+
+
+def test_title_markup_escapes_everything_it_did_not_generate() -> None:
+    # The result is injected with `set:html`, so anything the author wrote must
+    # arrive as text - inside the code span as well as outside it.
+    title = "Why does `a < b & c` differ from <script>?"
+
+    assert mirror.title_markup(title) == (
+        "Why does <code>a &lt; b &amp; c</code> differ from &lt;script&gt;?"
+    )
+    assert mirror.title_text(title) == "Why does a < b & c differ from <script>?"
+
+
 def test_production_excludes_draft_and_review(tmp_path: Path) -> None:
     content = _make_content_tree(tmp_path, ["draft", "review", "published", "withdrawn"])
     out = tmp_path / "out"

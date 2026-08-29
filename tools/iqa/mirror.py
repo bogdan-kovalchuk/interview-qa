@@ -24,6 +24,7 @@ already-parsed section text.
 from __future__ import annotations
 
 import argparse
+from html import escape
 import json
 import os
 from pathlib import Path
@@ -110,6 +111,38 @@ class MirroredPage(NamedTuple):
     section: str
     route_slug: str
     completeness: str
+
+
+INLINE_CODE_RE = re.compile(r"`([^`\r\n]+)`")
+
+
+def title_text(title: str) -> str:
+    """The title with the inline-code markers removed.
+
+    A `title` may carry Markdown inline code - 475 of the 802 files do. Starlight
+    puts `title` into places that are plain text and cannot hold markup: the
+    browser `<title>`, `og:title`, the sidebar. Left as they are, the backticks
+    show up literally there, which is what this strips.
+    """
+    return INLINE_CODE_RE.sub(lambda match: match.group(1), title)
+
+
+def title_markup(title: str) -> str:
+    """The title with inline code as real `<code>`, for the rendered heading.
+
+    The page heading is the one place that *can* hold markup, and the section
+    index already renders the same titles with `<code>` because there they pass
+    through Markdown as link text. Rendering the heading as plain text was the
+    inconsistency: one title, formatted in the list and raw on its own page.
+    """
+    parts: list[str] = []
+    position = 0
+    for match in INLINE_CODE_RE.finditer(title):
+        parts.append(escape(title[position : match.start()]))
+        parts.append(f"<code>{escape(match.group(1))}</code>")
+        position = match.end()
+    parts.append(escape(title[position:]))
+    return "".join(parts)
 
 
 def replace_qids(text: str, known_ids: set[str], base: str, language: Language) -> str:
@@ -246,6 +279,8 @@ def mirror_question(
 
     completeness = decision.completeness.value
     computed: dict[str, Any] = {
+        "title": title_text(question.frontmatter.title),
+        "title_html": title_markup(question.frontmatter.title),
         "slug": route_slug,
         "canonical": canonical,
         "source_path": source_label,
