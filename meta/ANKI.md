@@ -90,8 +90,11 @@ guid = base91(sha256("iqa:v1:" + question_id).digest()[:8])
 | `Interview QA - Full Library.apkg` | `uk` | `iqa:v1:{id}` | `Interview QA::` | 388 |
 | `Interview QA (EN) - Full Library.apkg` | `en` | `iqa:v1:en:{id}` | `Interview QA (EN)::` | 68 |
 
-`python packaging/anki/build.py --language {uk,en}`; без прапорця – українська, і саме її збирає
-`release.yml`. Англійська поки не релізиться: 68 карток – це дев'ять пілотів плюс те, що написано
+`python packaging/anki/build.py --language {uk,en} [--track <track>]`; без прапорців – українська і
+всі треки, і саме це збирає `release.yml`. `--track python` дає `Interview QA - Python.apkg` –
+**підмножину тих самих нотаток**: ті самі `id`, ті самі GUID, ті самі колоди. Тому вужчий пакет і
+Full Library можна імпортувати в одну колекцію без дублікатів, як і сказано нижче про перетин
+пакетів. Англійська поки не релізиться: 68 карток – це дев'ять пілотів плюс те, що написано
 в кроці 7, і релізити її має сенс, коли англійських `Short answer` стане суттєво більше.
 
 Два корені дерева колод, а не один спільний – прямий наслідок правила «одна колода = одна мова».

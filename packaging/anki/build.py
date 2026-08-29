@@ -320,10 +320,19 @@ def build_notes(
     vocabulary: dict[str, Any],
     model: genanki.Model,
     language: str = DEFAULT_CARD_LANGUAGE,
+    track: str | None = None,
 ) -> list[tuple[str, genanki.Note]]:
-    """Return (deck_name, note) pairs for every question whose card ships in `language`."""
+    """Return (deck_name, note) pairs for every question whose card ships in `language`.
+
+    `track` narrows the package to one track. It selects a subset of the same
+    notes - same ids, same GUIDs, same decks - so a narrowed package and the full
+    library import into one collection without duplicating anything
+    (meta/ANKI.md: "перетин пакетів нешкідливий").
+    """
     notes: list[tuple[str, genanki.Note]] = []
     for question in questions:
+        if track is not None and question["track"] != track:
+            continue
         entry = question["languages"].get(language)
         if entry is None:
             continue
@@ -362,6 +371,7 @@ def build_package(
     vocabulary_path: Path,
     out_path: Path,
     language: str = DEFAULT_CARD_LANGUAGE,
+    track: str | None = None,
 ) -> int:
     payload = json.loads(questions_path.read_text(encoding="utf-8"))
     vocabulary = yaml.safe_load(vocabulary_path.read_text(encoding="utf-8")) or {}
@@ -370,7 +380,7 @@ def build_package(
     # template, per the frozen fingerprint.
     model = make_model()
 
-    notes = build_notes(payload["questions"], vocabulary, model, language)
+    notes = build_notes(payload["questions"], vocabulary, model, language, track)
 
     decks: dict[str, genanki.Deck] = {}
     for name, note in notes:
@@ -396,6 +406,11 @@ def main() -> int:
         help="which language's cards to package; one package holds exactly one language",
     )
     parser.add_argument(
+        "--track",
+        default=None,
+        help="package only this track (e.g. `python`); default is every track",
+    )
+    parser.add_argument(
         "--out",
         type=Path,
         default=None,
@@ -403,10 +418,11 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    scope = "Full Library" if args.track is None else args.track.replace("-", " ").title()
     out = args.out or (
-        ROOT / "packaging" / "anki" / "dist" / f"{DECK_ROOT[args.language]} - Full Library.apkg"
+        ROOT / "packaging" / "anki" / "dist" / f"{DECK_ROOT[args.language]} - {scope}.apkg"
     )
-    count = build_package(args.questions, args.vocabulary, out, args.language)
+    count = build_package(args.questions, args.vocabulary, out, args.language, args.track)
     print(f"{out.name}: {count} notes")
     return 0
 
