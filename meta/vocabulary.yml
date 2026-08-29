@@ -57,6 +57,7 @@ card_labels:
 # Видимі назви треків і секцій для навігації. Поки заповнено лише те, що вживається
 # дев'ятьма пілотами; решта додається разом із секціями, коли вони наповнюються.
 track_labels:
+  embedded:      {en: Embedded,        uk: Вбудовані системи}
   python:        {en: Python,          uk: Python}
   cpp:           {en: "C/C++",         uk: "C/C++"}
   cs:            {en: Computer science, uk: Computer science}
@@ -66,6 +67,29 @@ track_labels:
   behavioral:    {en: Behavioral,      uk: Поведінкові}
 
 section_labels_nav:
+  cpp/c-core:                     {en: "C core", uk: "Ядро C"}
+  cpp/language-basics:            {en: "Language basics", uk: "Основи мови"}
+  cpp/types-and-conversions:      {en: "Types and conversions", uk: "Типи і перетворення"}
+  cpp/memory-model-and-lifetime:  {en: "Memory model and lifetime", uk: "Модель пам'яті і час життя"}
+  cpp/oop-and-polymorphism:       {en: "OOP and polymorphism", uk: "ООП і поліморфізм"}
+  cpp/templates-and-generics:     {en: "Templates and generics", uk: "Шаблони"}
+  cpp/compilation-and-linking:    {en: "Compilation and linking", uk: "Компіляція і лінкування"}
+  cpp/idioms-and-patterns:        {en: "Idioms and patterns", uk: "Ідіоми і патерни"}
+  embedded/fundamentals:          {en: "Fundamentals", uk: "Основи"}
+  embedded/toolchain-and-build:   {en: "Toolchain and build", uk: "Тулчейн і збірка"}
+  embedded/c-in-embedded:         {en: "C in embedded", uk: "C у вбудованих системах"}
+  embedded/cpp-in-embedded:       {en: "C++ in embedded", uk: "C++ у вбудованих системах"}
+  embedded/memory-and-linker:     {en: "Memory and linker", uk: "Пам'ять і лінкер"}
+  embedded/interrupts-and-timing: {en: "Interrupts and timing", uk: "Переривання і час"}
+  embedded/peripherals-and-buses: {en: "Peripherals and buses", uk: "Периферія і шини"}
+  embedded/rtos:                  {en: "RTOS", uk: "RTOS"}
+  embedded/power-management:      {en: "Power management", uk: "Керування живленням"}
+  embedded/bootloaders-and-ota:   {en: "Bootloaders and OTA", uk: "Завантажники і OTA"}
+  embedded/debugging-and-tracing: {en: "Debugging and tracing", uk: "Налагодження і трасування"}
+  embedded/testing-embedded:      {en: "Testing embedded", uk: "Тестування вбудованих систем"}
+  embedded/safety-and-standards:  {en: "Safety and standards", uk: "Безпека і стандарти"}
+  embedded/connectivity:          {en: "Connectivity", uk: "Зв'язок"}
+  embedded/hardware-basics:       {en: "Hardware basics", uk: "Основи апаратури"}
   python/concurrency-and-gil:         {en: Concurrency and GIL,      uk: Конкурентність і GIL}
   python/practical-coding:            {en: Practical coding,         uk: Практичні задачі}
   cpp/pointers-and-references:        {en: Pointers and references,  uk: Вказівники й посилання}
@@ -164,6 +188,29 @@ frameworks:
 
 # Префікс секції для схеми ID. Належить секції, а не питанню; фіксується один раз.
 section_prefixes:
+  cpp/c-core:                     ccore
+  cpp/language-basics:            langbase
+  cpp/types-and-conversions:      types
+  cpp/memory-model-and-lifetime:  memlife
+  cpp/oop-and-polymorphism:       oop
+  cpp/templates-and-generics:     tmpl
+  cpp/compilation-and-linking:    complink
+  cpp/idioms-and-patterns:        idioms
+  embedded/fundamentals:          fund
+  embedded/toolchain-and-build:   build
+  embedded/c-in-embedded:         cemb
+  embedded/cpp-in-embedded:       cppemb
+  embedded/memory-and-linker:     memlink
+  embedded/interrupts-and-timing: irq
+  embedded/peripherals-and-buses: periph
+  embedded/rtos:                  rtos
+  embedded/power-management:      power
+  embedded/bootloaders-and-ota:   boot
+  embedded/debugging-and-tracing: debug
+  embedded/testing-embedded:      testemb
+  embedded/safety-and-standards:  safety
+  embedded/connectivity:          conn
+  embedded/hardware-basics:       hwbasic
   cs/complexity-and-analysis:       cmplx
   python/concurrency-and-gil:       gil
   python/practical-coding:          prac
