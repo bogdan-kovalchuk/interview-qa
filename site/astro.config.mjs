@@ -37,6 +37,11 @@ export default defineConfig({
       },
       disable404Route: true,
       sidebar: generatedSidebar(),
+      components: {
+        // Renders inline code in a question title as `<code>` instead of
+        // printing the backticks; see the component for why.
+        PageTitle: './src/components/PageTitle.astro',
+      },
       // Roboto and Roboto Mono are the reference site's fonts. They are taken
       // from npm rather than the Google Fonts stylesheet the reference links,
       // so the built site makes no third-party request; the faces are the same.

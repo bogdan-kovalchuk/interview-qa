@@ -1,0 +1,45 @@
+---
+/**
+ * Renders the page heading, using the pre-rendered markup the mirror computed
+ * when the title carries inline code.
+ *
+ * A question title such as "Спроєктуйте immutable value object з коректно
+ * узгодженими `__eq__` та `__hash__`" is Markdown. Starlight's own PageTitle
+ * prints `title` as text, so the backticks appeared literally in the heading -
+ * while the very same title, listed on its section page, went through Markdown
+ * and rendered as `<code>`. This makes the heading agree with the list.
+ *
+ * `title` itself stays plain text (tools/iqa/mirror.py strips the markers), so
+ * the browser `<title>`, `og:title` and the sidebar - none of which can hold
+ * markup - are unaffected.
+ *
+ * `title_html` is generated and already escaped by `title_markup()`; it never
+ * contains anything but `<code>` around escaped text.
+ */
+const { entry } = Astro.locals.starlightRoute;
+const data = entry.data as { title: string; title_html?: string };
+// '_top' is Starlight's PAGE_TITLE_ID: the anchor its table of contents links
+// to as "Overview". The constant is not part of the package's public exports,
+// so the value is repeated here rather than imported from a private path.
+const PAGE_TITLE_ID = '_top';
+---
+
+{
+	data.title_html ? (
+		<h1 id={PAGE_TITLE_ID} set:html={data.title_html} />
+	) : (
+		<h1 id={PAGE_TITLE_ID}>{data.title}</h1>
+	)
+}
+
+<style>
+	@layer starlight.core {
+		h1 {
+			margin-top: 1rem;
+			font-size: var(--sl-text-h1);
+			line-height: var(--sl-line-height-headings);
+			font-weight: 600;
+			color: var(--sl-color-white);
+		}
+	}
+</style>
