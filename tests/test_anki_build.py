@@ -40,6 +40,26 @@ def test_guid_formula_matches_test_deck_reference_implementation() -> None:
         assert anki_build.guid_for(qid, "uk") == build_test_deck.guid_for(qid)
 
 
+def test_a_track_package_is_a_subset_with_the_same_guids(payload: dict, vocabulary: dict) -> None:
+    # meta/ANKI.md: "перетин пакетів нешкідливий - та сама нотатка, той самий GUID,
+    # та сама колода". A narrowed package must therefore change nothing except
+    # which notes are present, so importing it alongside the full library cannot
+    # duplicate a note or move one to another deck.
+    model = anki_build.make_model()
+    everything = anki_build.build_notes(payload["questions"], vocabulary, model)
+    python_only = anki_build.build_notes(payload["questions"], vocabulary, model, "uk", "python")
+
+    assert 0 < len(python_only) < len(everything)
+
+    by_guid = {note.guid: (deck, note.fields) for deck, note in everything}
+    for deck, note in python_only:
+        assert note.guid in by_guid
+        assert (deck, note.fields) == by_guid[note.guid]
+
+    qid_index = anki_build.FIELD_ORDER.index("QID")
+    assert all(note.fields[qid_index].startswith("py-") for _deck, note in python_only)
+
+
 def test_english_notes_get_their_own_guid_namespace(payload: dict, vocabulary: dict) -> None:
     # meta/ANKI.md "GUID": a separate English deck uses `iqa:v1:en:{id}`. If the two
     # languages shared a GUID, importing both packages into one collection would make
