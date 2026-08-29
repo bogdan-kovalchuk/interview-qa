@@ -75,13 +75,6 @@ def subsection_label(vocabulary: dict[str, Any], heading: str, language: Languag
     return _label(vocabulary.get("subsection_labels") or {}, heading, language, what="subsection")
 
 
-def wip_notice(vocabulary: dict[str, Any], language: Language) -> str:
-    entry = vocabulary.get("wip_notice") or {}
-    if language.value not in entry:
-        raise ValueError(f"no {language.value} label for `wip_notice` in meta/vocabulary.yml")
-    return entry[language.value]
-
-
 def completeness_label(vocabulary: dict[str, Any], completeness: str, language: Language) -> str:
     return _label(vocabulary.get("completeness_labels") or {}, completeness, language, what="completeness")
 
@@ -183,18 +176,9 @@ def render_footnotes(body_raw: str, sources: tuple[Source, ...]) -> str:
     return "\n".join(lines)
 
 
-def _render_content_or_wip(content: str, vocabulary: dict[str, Any], language: Language) -> str:
-    """A section/subsection body, or a visible WIP callout when it is unwritten.
-
-    PLAN.md step 6, item 3: a question whose text is `TODO` must say so on its own
-    page, not render the bare word `TODO`. Uses a Starlight directive aside, which
-    Starlight's own bundled translations (site/node_modules/@astrojs/starlight/
-    translations/{en,uk}.json) already title correctly per locale - only the body
-    text is a project string, and it comes from meta/vocabulary.yml.
-    """
-    if content.strip() == "TODO":
-        return f":::caution\n{wip_notice(vocabulary, language)}\n:::"
-    return content
+def is_unwritten(content: str) -> bool:
+    """Whether a section body is the `TODO` placeholder rather than written text."""
+    return content.strip() == "TODO"
 
 
 def render_section(
@@ -209,18 +193,24 @@ def render_section(
         parts = [f"## {heading}"]
         for subsection in section.subsections:
             sub_heading = subsection_label(vocabulary, subsection.heading, language)
-            content = _render_content_or_wip(subsection.content, vocabulary, language)
-            content = replace_qids(content, known_ids, base, language)
+            content = replace_qids(subsection.content, known_ids, base, language)
             parts.append(f"### {sub_heading}\n\n{content}")
         return "\n\n".join(parts)
-    content = _render_content_or_wip(section.content, vocabulary, language)
-    content = replace_qids(content, known_ids, base, language)
+    content = replace_qids(section.content, known_ids, base, language)
     return f"## {heading}\n\n{content}"
 
 
 def render_body(question: Question, vocabulary: dict[str, Any], known_ids: set[str], base: str) -> str:
     rendered_sections: list[str] = []
     for section in question.body.sections:
+        # An unwritten section is not rendered at all. The skeleton keeps the
+        # heading in `content/` because the contract requires it, but a reader
+        # gains nothing from four identical "not written yet" notices on one page
+        # - 224 of 401 pages carried four or more. The gaps are reported as data,
+        # in `dist/export/progress.{json,csv}` and on `/status/`, not as noise on
+        # every page.
+        if is_unwritten(section.content) and not section.subsections:
+            continue
         if section.heading == SectionName.SOURCES.value:
             heading = section_label(vocabulary, section.heading, question.language)
             sources_markdown = render_sources(question.frontmatter.sources)
