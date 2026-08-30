@@ -218,6 +218,21 @@ system-design/
 
 ```
 embedded/
+  # Phase 1: C/C++ Foundations - структура джерела Embedded Interview Lab,
+  # збережена один в один. Порядок тут - порядок навчання, і саме він керує
+  # сайдбаром сайту.
+  data-types-and-memory-layout/     типи, представлення, layout структур у пам'яті
+  pointers-and-arrays/              вказівники, масиви, адресна арифметика
+  structs-unions-and-bitfields/     агрегати, packed, бітові поля
+  volatile-and-const/               volatile, const, їхня взаємодія й типові помилки
+  function-pointers-and-callbacks/  вказівники на функції, таблиці, callbacks
+  inline-and-macros/                препроцесор, inline, макроси проти функцій
+  memory-alignment-and-endianness/  вирівнювання, padding, порядок байтів
+  common-code-patterns/             типові прийоми C у прошивках
+  cpp-classes-and-oop/              класи, віртуальність, ціна ООП на MCU
+  raii-and-smart-pointers/          RAII, unique_ptr, володіння без heap
+  templates-and-constexpr/          шаблони, constexpr, обчислення на етапі компіляції
+  cpp-embedded-constraints-and-stl/ exceptions/RTTI, STL і статична алокація
   fundamentals/                 MCU vs MPU vs SoC, bare-metal vs RTOS vs Linux, крос-компіляція
   toolchain-and-build/          GCC/Clang для ARM, лінкер, флаги, розмір бінаря
   c-in-embedded/                volatile, const, бітові поля, фіксована точка, freestanding

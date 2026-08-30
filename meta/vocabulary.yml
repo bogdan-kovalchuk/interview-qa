@@ -67,14 +67,18 @@ track_labels:
   behavioral:    {en: Behavioral,      uk: Поведінкові}
 
 section_labels_nav:
-  cpp/c-core:                     {en: "C core", uk: "Ядро C"}
-  cpp/language-basics:            {en: "Language basics", uk: "Основи мови"}
-  cpp/types-and-conversions:      {en: "Types and conversions", uk: "Типи і перетворення"}
-  cpp/memory-model-and-lifetime:  {en: "Memory model and lifetime", uk: "Модель пам'яті і час життя"}
-  cpp/oop-and-polymorphism:       {en: "OOP and polymorphism", uk: "ООП і поліморфізм"}
-  cpp/templates-and-generics:     {en: "Templates and generics", uk: "Шаблони"}
-  cpp/compilation-and-linking:    {en: "Compilation and linking", uk: "Компіляція і лінкування"}
-  cpp/idioms-and-patterns:        {en: "Idioms and patterns", uk: "Ідіоми і патерни"}
+  embedded/data-types-and-memory-layout: {en: "Data types and memory layout", uk: "Типи даних і розкладка пам'яті"}
+  embedded/pointers-and-arrays: {en: "Pointers, arrays and pointer arithmetic", uk: "Вказівники, масиви й адресна арифметика"}
+  embedded/structs-unions-and-bitfields: {en: "Structs, unions and bitfields", uk: "Структури, об'єднання й бітові поля"}
+  embedded/volatile-and-const: {en: "Volatile and const", uk: "Volatile і const"}
+  embedded/function-pointers-and-callbacks: {en: "Function pointers and callbacks", uk: "Вказівники на функції й callbacks"}
+  embedded/inline-and-macros: {en: "Inline and macros", uk: "Inline і макроси"}
+  embedded/memory-alignment-and-endianness: {en: "Memory alignment and endianness", uk: "Вирівнювання пам'яті й порядок байтів"}
+  embedded/common-code-patterns: {en: "Common code patterns", uk: "Типові патерни коду"}
+  embedded/cpp-classes-and-oop: {en: "C++ classes and OOP", uk: "Класи C++ і ООП"}
+  embedded/raii-and-smart-pointers: {en: "RAII and smart pointers", uk: "RAII і smart pointers"}
+  embedded/templates-and-constexpr: {en: "Templates and constexpr", uk: "Шаблони і constexpr"}
+  embedded/cpp-embedded-constraints-and-stl: {en: "C++ embedded constraints and STL", uk: "Обмеження C++ у вбудованих системах і STL"}
   embedded/fundamentals:          {en: "Fundamentals", uk: "Основи"}
   embedded/toolchain-and-build:   {en: "Toolchain and build", uk: "Тулчейн і збірка"}
   embedded/c-in-embedded:         {en: "C in embedded", uk: "C у вбудованих системах"}
@@ -188,14 +192,18 @@ frameworks:
 
 # Префікс секції для схеми ID. Належить секції, а не питанню; фіксується один раз.
 section_prefixes:
-  cpp/c-core:                     ccore
-  cpp/language-basics:            langbase
-  cpp/types-and-conversions:      types
-  cpp/memory-model-and-lifetime:  memlife
-  cpp/oop-and-polymorphism:       oop
-  cpp/templates-and-generics:     tmpl
-  cpp/compilation-and-linking:    complink
-  cpp/idioms-and-patterns:        idioms
+  embedded/data-types-and-memory-layout: dtypes
+  embedded/pointers-and-arrays: ptrarr
+  embedded/structs-unions-and-bitfields: structs
+  embedded/volatile-and-const: volconst
+  embedded/function-pointers-and-callbacks: fnptr
+  embedded/inline-and-macros: macros
+  embedded/memory-alignment-and-endianness: align
+  embedded/common-code-patterns: patterns
+  embedded/cpp-classes-and-oop: cppoop
+  embedded/raii-and-smart-pointers: raii
+  embedded/templates-and-constexpr: tmplcx
+  embedded/cpp-embedded-constraints-and-stl: cppstl
   embedded/fundamentals:          fund
   embedded/toolchain-and-build:   build
   embedded/c-in-embedded:         cemb
