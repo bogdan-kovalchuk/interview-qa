@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <span class="key">Array decay</span> – автоматичне перетворення масиву на вказівник на його перший елемент.<br><br>Відбувається у більшості виразів:<br>• При передачі у функцію: <code>f(arr)</code> -> функція отримує <code>int*</code>;<br>• У арифметиці: <code>arr+1</code> -> <code>int*</code>;<br>• При присвоєнні: <code>int *p = arr</code>.<br><br>Наслідок: функція <span class="warn">втрачає інформацію про розмір</span> масиву. Тип стає <code>int*</code>, а не <code>int[N]</code>.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

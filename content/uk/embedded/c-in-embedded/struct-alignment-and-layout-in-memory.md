@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 <span class="key">Alignment</span> змушує поля структури починатися з адрес, кратних вимогам їхніх типів або ABI. Компілятор може вставляти padding між полями й у кінці структури, тому фактичний layout не завжди дорівнює сумі розмірів полів.[^dou-embedded-interview] Для DMA, MMIO mirror-структур і binary protocol це критично: layout треба фіксувати явно або серіалізувати вручну.
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

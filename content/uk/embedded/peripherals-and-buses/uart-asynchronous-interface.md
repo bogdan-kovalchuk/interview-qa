@@ -22,13 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 <span class="key">Universal Asynchronous Receiver-Transmitter</span> – асинхронний послідовний інтерфейс. Два дроти: <code>TX</code> (передача) і <code>RX</code> (прийом). Немає спільного тактового сигналу – обидва пристрої заздалегідь домовляються про <span class="key">baud rate</span> (напр. 115200 бод).[^dou-embedded-interview]
 
-Кадр: START bit -> data bits -> parity (опційно) -> STOP bit(s). Типово використовують 8 data bits, але hardware/configuration можуть підтримувати 5–9. UART описує framing даних; електричні рівні можуть бути TTL/CMOS, RS-232, RS-485 тощо.
+Кадр: START bit -> data bits -> parity (опційно) -> STOP bit(s); Типово використовують 8 data bits, але hardware/configuration можуть підтримувати 5–9; UART описує framing даних; електричні рівні можуть бути TTL/CMOS, RS-232, RS-485 тощо.
 
 ## Detailed explanation
 

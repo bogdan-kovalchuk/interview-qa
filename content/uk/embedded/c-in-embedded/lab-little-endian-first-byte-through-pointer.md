@@ -22,11 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="key">0x78</span>.<br><br>Cast <code>(uint8_t*)(&amp;val)</code> – вказівник на перший байт <code>val</code> у пам'яті. На little-endian: LSB знаходиться за найменшою адресою -> <code>0x78</code>.<br><br>Розкладка у пам'яті: <code>[78][56][34][12]</code>. Наступний байт: <code>*((uint8_t*)(&amp;val) + 1) = 0x56</code>.<br><br>Доступ через byte pointer дозволений для character types (<code>unsigned char*</code>). На практиці <code>uint8_t</code> зазвичай є typedef до <code>unsigned char</code>.[^embeddedinterviewlab]
+<span class="key">0x78</span>.<br><br>Cast <code>(uint8_t*)(&amp;val)</code> – вказівник на перший байт <code>val</code> у пам'яті. На little-endian: LSB знаходиться за найменшою адресою -> <code>0x78</code>.<br><br>Розкладка у пам'яті: <code>[78][56][34][12]</code>. Наступний байт: <code>*((uint8_t*)(&amp;val) + 1) = 0x56</code>;<br><br>Доступ через byte pointer дозволений для character types (<code>unsigned char*</code>); На практиці <code>uint8_t</code> зазвичай є typedef до <code>unsigned char</code>.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

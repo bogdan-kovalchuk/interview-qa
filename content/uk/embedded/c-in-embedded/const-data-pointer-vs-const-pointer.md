@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <code>const int *p</code> (або <code>int const *p</code>) – <span class="key">вказівник на константний int</span>:<br>• <code>*p = 5</code> – заборонено (дані захищені);<br>• <code>p = &amp;y</code> – дозволено (адресу можна змінити).<br><br><code>int * const p</code> – <span class="key">константний вказівник на int</span>:<br>• <code>*p = 5</code> – дозволено;<br>• <code>p = &amp;y</code> – заборонено (адреса фіксована).<br><br><code>const int * const p</code> – і дані, і адреса незмінні. Правило: читай справа наліво.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

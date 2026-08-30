@@ -22,13 +22,28 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gnu-ld-manual
+    title: "GNU linker ld manual"
+    url: https://sourceware.org/binutils/docs/ld/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "2.47"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="key">NOR Flash</span> – побайтове читання, XIP (execute-in-place), адресована шина. Використовується для зберігання firmware (MCU вбудована Flash). Повільне стирання блоками (~10K циклів).<br><br><span class="key">NAND Flash</span> – висока щільність, дешевший. Лише посторінкове читання, не XIP. SD-карти, eMMC, SSD. Потребує FTL (flash translation layer).<br><br><span class="key">EEPROM</span> – байтове стирання/запис, ~1M циклів. Повільний, малий обсяг. Для конфігурацій і налаштувань.<br><br><span class="key">ROM / OTP</span> – записується одноразово або при виробництві. Bootloader у деяких MCU.[^dou-embedded-interview]
+<span class="key">NOR Flash</span> – побайтове читання, XIP (execute-in-place), адресована шина. Використовується для зберігання firmware (MCU вбудована Flash). Повільне стирання блоками (~10K циклів).<br><br><span class="key">NAND Flash</span> – висока щільність, дешевший. Лише посторінкове читання, не XIP; SD-карти, eMMC, SSD; Потребує FTL (flash translation layer);<br><br><span class="key">EEPROM</span> – байтове стирання/запис, ~1M циклів; Повільний, малий обсяг; Для конфігурацій і налаштувань;<br><br><span class="key">ROM / OTP</span> – записується одноразово або при виробництві; Bootloader у деяких MCU.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Comparison
+
+TODO
+
+## When to choose which
 
 TODO
 

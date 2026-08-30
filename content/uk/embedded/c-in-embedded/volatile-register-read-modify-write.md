@@ -22,21 +22,23 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-Read-Modify-Write (RMW) операція над hardware register:<br>1. <span class="key">Read</span>: читає поточне значення регістру з адреси <code>0x40020010</code>;<br>2. <span class="key">Modify</span>: встановлює біт 5 (<code>|= (1&lt;&lt;5)</code>), не змінюючи інші біти;<br>3. <span class="key">Write</span>: записує назад у регістр.<br><br><span class="warn">Ризик</span>: між read і write інший потік або ISR може змінити регістр -> race condition. Для атомарного RMW: STM32 BSRR (GPIO), або disable IRQ навколо RMW.[^embeddedinterviewlab]
+Read-Modify-Write (RMW) операція над hardware register:<br>1. <span class="key">Read</span>: читає поточне значення регістру з адреси <code>0x40020010</code>;<br>2. <span class="key">Modify</span>: встановлює біт 5 (<code>|= (1&lt;&lt;5)</code>), не змінюючи інші біти;<br>3. <span class="key">Write</span>: записує назад у регістр.<br><br><span class="warn">Ризик</span>: між read і write інший потік або ISR може змінити регістр -> race condition; Для атомарного RMW: STM32 BSRR (GPIO), або disable IRQ навколо RMW.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 
 ## Sources
 
 <!-- generated from frontmatter -->
-

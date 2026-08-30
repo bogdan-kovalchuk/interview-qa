@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: iso-cpp-n4861
+    title: "C++ International Standard working draft N4861"
+    url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N4861"
+    applicability: "Authoritative section-level reference for cpp in embedded concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 TODO
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

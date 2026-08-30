@@ -1,4 +1,4 @@
-﻿---
+---
 id: emb-irq-0009
 title: "How is data transferred between an ISR and a main loop or RTOS task without a race condition?"
 description: "English translation pending."
@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: cmsis-core-nvic
+    title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
+    accessed: 2026-09-06
+    kind: official
+    version: "6.2.0"
+    applicability: "Authoritative section-level reference for interrupts and timing concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

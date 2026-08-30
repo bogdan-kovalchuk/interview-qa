@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0023
-title: "What are common uses of `volatile`?"
-description: "`volatile` makes the compiler perform accesses that may change outside ordinary code flow, but it does not make operations atomic."
+title: "What use cases for volatile do you know?"
+description: "What use cases for volatile do you know?"
 track: embedded
 section: c-in-embedded
 level: junior
@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

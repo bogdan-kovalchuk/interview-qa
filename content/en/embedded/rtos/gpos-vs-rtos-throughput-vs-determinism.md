@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: freertos-kernel-book
+    title: "FreeRTOS Kernel Book and Reference Manual"
+    url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "Authoritative section-level reference for rtos concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

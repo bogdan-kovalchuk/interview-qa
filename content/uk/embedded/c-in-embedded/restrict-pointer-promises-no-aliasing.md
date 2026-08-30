@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <code>restrict</code> (C99) – кваліфікатор вказівника, що гарантує компілятору: через цей вказівник і через жоден інший вказівник у цій функції <span class="key">не відбувається aliasing</span> (перекриття областей пам'яті).<br><br>Приклад: <code>void add(int * restrict dst, const int * restrict src, int n)</code>.<br><br>Дає компілятору дозвіл на агресивну оптимізацію (векторизація, підкачка у регістри). Важливо для DSP, crypto, memcpy-like функцій. Якщо aliasing все ж є – UB.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

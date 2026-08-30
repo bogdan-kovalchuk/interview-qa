@@ -22,13 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 У **C**: це поширений union type punning. Він не є strict-aliasing порушенням, але отримане значення залежить від IEEE 754 representation, endianness і реалізації. Для максимально переносимого коду краще `memcpy(&r, &pun.f, sizeof r)`.
 
-У **C++**: формально - <span class="warn">undefined behavior</span> (active member rule: активним є `f`, читання `u` - UB). GCC/Clang підтримують як extension, але стандарт не гарантує.
+У **C++**: формально - <span class="warn">undefined behavior</span> (active member rule: активним є `f`, читання `u` - UB). GCC/Clang підтримують як extension, але стандарт не гарантує;
 
 Безпечна альтернатива для C++ (C++20): `std::bit_cast<uint32_t>(1.0f)`.[^embeddedinterviewlab]
 

@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <code>30</code>.<br><br><code>arr</code> decay-ується до вказівника на перший елемент. <code>p = arr</code> -> <code>p</code> вказує на <code>arr[0]</code>.<br><br><code>p+2</code> -> вказівник на <code>arr[2]</code> (кроком <code>2 * sizeof(int) = 8</code> байт на 32-bit).<br><code>*(p+2)</code> -> розіменування -> <code>arr[2] = 30</code>.<br><br>За стандартом: <code>arr[i] ≡ *(arr+i) ≡ *(i+arr) ≡ i[arr]</code> – всі чотири форми еквівалентні.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

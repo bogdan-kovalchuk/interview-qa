@@ -22,17 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="key">ptrdiff_t</span> – знаковий цілочисельний тип для зберігання результату відняття двох вказівників. Визначений у <code>&lt;stddef.h&gt;</code>.<br><br>Розмір: відповідає розрядності платформи (32-bit -> 4B, 64-bit -> 8B).<br><br>Навіщо: <code>p - q</code> дає кількість елементів між вказівниками. Результат – знаковий (може бути від'ємним). Зберігати у <code>int</code> може бути недостатньо на 64-bit.<br><br>Форматна специфікація: <code>%td</code> для <code>printf</code>.[^embeddedinterviewlab]
+<span class="key">ptrdiff_t</span> – знаковий цілочисельний тип для зберігання результату відняття двох вказівників. Визначений у <code>&lt;stddef.h&gt;</code>.<br><br>Розмір: відповідає розрядності платформи (32-bit -> 4B, 64-bit -> 8B).<br><br>Навіщо: <code>p - q</code> дає кількість елементів між вказівниками. Результат – знаковий (може бути від'ємним); Зберігати у <code>int</code> може бути недостатньо на 64-bit;<br><br>Форматна специфікація: <code>%td</code> для <code>printf</code>.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

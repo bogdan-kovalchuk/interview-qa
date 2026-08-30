@@ -22,16 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-**General Purpose Input/Output** – універсальний цифровий пін мікроконтролера, що конфігурується програмно.[^dou-embedded-interview]
-
-Режими: `Input` (з pull-up / pull-down / floating); `Output Push-Pull` – керує HIGH/LOW; `Output Open-Drain` – керує лише LOW, HIGH через зовнішній резистор; `Alternate Function` – пін підключається до UART/SPI/I2C/Timer.
-
-Управління через регістри: `MODER`, `ODR`, `IDR`, `BSRR` (STM32). Атомарний запис: `BSRR` встановлює або скидає біт за один цикл без ризику race condition.
-
+<span class="key">General Purpose Input/Output</span> – універсальний цифровий пін мікроконтролера, що конфігурується програмно.<br><br>Режими: <code>Input</code> (з pull-up / pull-down / floating); <code>Output Push-Pull</code> – керує HIGH/LOW; <code>Output Open-Drain</code> – керує лише LOW, HIGH через зовнішній резистор; <code>Alternate Function</code> – пін підключається до UART/SPI/I2C/Timer.<br><br>Управління через регістри: <code>MODER</code>, <code>ODR</code>, <code>IDR</code>, <code>BSRR</code> (STM32). Атомарний запис: <code>BSRR</code> встановлює або скидає біт за один цикл без ризику race condition.[^dou-embedded-interview]
 ## Detailed explanation
 
 TODO

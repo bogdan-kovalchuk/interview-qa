@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 Забезпечує **zero-wait-state** доступ: ідеально для time-critical буферів, lookup tables, стека ISR.
 
-Потрібно: 1. Визначити секцію у linker script (`MEMORY { CCMRAM ... }`); 2. Ініціалізувати у startup code. Не доступна DMA на деяких MCU - перевіряй reference manual.[^embeddedinterviewlab]
+Потрібно: 1. Визначити секцію у linker script (`MEMORY { CCMRAM ... }`); 2. Ініціалізувати у startup code; Не доступна DMA на деяких MCU - перевіряй reference manual.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

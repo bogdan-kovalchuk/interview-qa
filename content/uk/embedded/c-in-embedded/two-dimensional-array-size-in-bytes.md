@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <span class="key">48</span> байт.<br><br><code>arr</code> – 2D масив: 3 рядки × 4 стовпці × <code>sizeof(int) = 4</code> байти = 48B.<br><br><code>sizeof(arr[0])</code> = <code>sizeof(int[4])</code> = 16B (один рядок).<br><code>sizeof(arr[0][0])</code> = <code>sizeof(int)</code> = 4B.<br><br>Кількість рядків: <code>sizeof(arr)/sizeof(arr[0]) = 48/16 = 3</code>. Цей трюк працює лише у тому ж scope де оголошений масив.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

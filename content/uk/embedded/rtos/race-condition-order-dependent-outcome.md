@@ -22,13 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: freertos-kernel-book
+    title: "FreeRTOS Kernel Book and Reference Manual"
+    url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 **Race condition** – ситуація, коли результат залежить від порядку виконання потоків, процесів або ISR.[^dou-embedded-interview] Якщо порядок змінюється, програма може іноді працювати правильно, а іноді давати помилку.
 
-Класичний приклад: `counter++`. Це не одна атомарна дія, а послідовність read, modify, write. Якщо два потоки одночасно читають старе значення, один інкремент може загубитися.
+Класичний приклад: `counter++`. Це не одна атомарна дія, а послідовність read, modify, write. Якщо два потоки одночасно читають старе значення, один інкремент може загубитися;
 
 Захист: `mutex`, spinlock, atomic operations, critical section або вимкнення interrupt-ів на короткий час в embedded-коді.
 

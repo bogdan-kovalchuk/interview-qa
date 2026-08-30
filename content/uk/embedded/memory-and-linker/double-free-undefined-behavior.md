@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gnu-ld-manual
+    title: "GNU linker ld manual"
+    url: https://sourceware.org/binutils/docs/ld/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "2.47"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -31,6 +38,18 @@ sources:
 Безпечний патерн: після звільнення обнулити вказівник – <code>free(ptr); ptr = NULL;</code>. Виклик <code>free(NULL)</code> дозволений і нічого не робить, тому обнулення зменшує ризик повторного звільнення. Але якщо є кілька копій одного вказівника, треба контролювати ownership, а не покладатися тільки на <code>NULL</code>.
 
 ## Detailed explanation
+
+TODO
+
+## Symptom
+
+TODO
+
+## Why it happens
+
+TODO
+
+## How to avoid
 
 TODO
 

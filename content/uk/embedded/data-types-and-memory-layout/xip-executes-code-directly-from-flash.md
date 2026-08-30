@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 NOR Flash підтримує random byte access -> CPU може адресувати та виконувати інструкції прямо. Більшість Cortex-M MCU використовують XIP за замовчуванням.
 
-**Переваги**: не витрачається RAM на код, менший boot time. <span class="warn">Недолік</span>: Flash повільніша (wait states). Для часокритичних ISR: `__attribute__((section(".ramcode")))`.[^embeddedinterviewlab]
+**Переваги**: не витрачається RAM на код, менший boot time. <span class="warn">Недолік</span>: Flash повільніша (wait states); Для часокритичних ISR: `__attribute__((section(".ramcode")))`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

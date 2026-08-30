@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 За стандартом C (§6.5.2.1): <span class="key"><code>arr[i]</code> визначається як <code>*(arr+i)</code></span>. Це не синтаксичний цукор – це точне визначення subscript operator.<br><br>Наслідки:<br>• <code>arr[2] == *(arr+2) == *(2+arr) == 2[arr]</code> – всі еквівалентні;<br>• Індексування – просто pointer arithmetic + dereference;<br>• Від'ємні індекси (<code>arr[-1]</code>) формально дозволені якщо вказівник вже зсунутий і результат вказує у межах масиву.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

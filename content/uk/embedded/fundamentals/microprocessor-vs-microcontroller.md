@@ -22,13 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-introduction
+    title: "Zephyr Project documentation: Introduction"
+    url: https://docs.zephyrproject.org/latest/introduction/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 **Мікропроцесор (MPU)** – переважно CPU, що зазвичай потребує зовнішньої RAM, Flash і периферії.[^dou-embedded-interview] Висока продуктивність, частіше запускає повноцінну ОС. Приклади: Intel Core, ARM Cortex-A.
 
-**Мікроконтролер (MCU)** – CPU + Flash + RAM + GPIO/UART/SPI/ADC/таймери на одному кристалі. Низьке споживання, дешевший, детермінована поведінка. Багато MCU, наприклад ARM Cortex-M, використовують **modified Harvard architecture**, але не всі MCU треба категорично називати Harvard.
+**Мікроконтролер (MCU)** – CPU + Flash + RAM + GPIO/UART/SPI/ADC/таймери на одному кристалі. Низьке споживання, дешевший, детермінована поведінка; Багато MCU, наприклад ARM Cortex-M, використовують **modified Harvard architecture**, але не всі MCU треба категорично називати Harvard;
 
 Вибір: MPU – ОС і складні обчислення; MCU – управління апаратурою в реальному часі.
 

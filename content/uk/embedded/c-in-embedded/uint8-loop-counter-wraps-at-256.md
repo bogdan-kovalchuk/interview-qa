@@ -22,11 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="warn">Так, нескінченний цикл!</span> <code>uint8_t i</code> – беззнаковий 8-bit. При <code>i=255</code> -> <code>i++</code> -> wrap до 0 -> умова <code>0 &lt; 256</code> -> true. Цикл ніколи не завершується.<br><br>Виправлення: <code>for(int i=0; i&lt;256; i++)</code> або <code>for(size_t i=0; i&lt;256; i++)</code>.<br><br>GCC з <code>-Wtype-limits</code>: попередить якщо умова завжди true. Типова помилка при роботі з буферами розміром 256.[^embeddedinterviewlab]
+<span class="warn">Так, нескінченний цикл!</span> <code>uint8_t i</code> – беззнаковий 8-bit. При <code>i=255</code> -> <code>i++</code> -> wrap до 0 -> умова <code>0 &lt; 256</code> -> true. Цикл ніколи не завершується.<br><br>Виправлення: <code>for(int i=0; i&lt;256; i++)</code> або <code>for(size_t i=0; i&lt;256; i++)</code>.<br><br>GCC з <code>-Wtype-limits</code>: попередить якщо умова завжди true; Типова помилка при роботі з буферами розміром 256.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
@@ -44,12 +51,6 @@ TODO
 
 TODO
 
-## Evaluation guide
-
-TODO
-
 ## Sources
 
 <!-- generated from frontmatter -->
-
-

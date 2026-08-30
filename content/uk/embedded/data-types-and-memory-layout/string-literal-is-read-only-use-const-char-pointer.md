@@ -22,13 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 У C рядковий літерал `"hello"` має тип **`char[6]`**, але зберігається у read-only області, зазвичай `.rodata`. Модифікація такого масиву має <span class="warn">undefined behavior</span>. У C++ тип рядкового літерала - `const char[6]`.
 
-Практично правильно: `const char *p = "hello";` - тип не дозволяє випадково написати `p[0] = 'H'`. У C присвоєння `char *p = "hello";` історично дозволене, але GCC з `-Wwrite-strings` попередить про нього.
+Практично правильно: `const char *p = "hello";` - тип не дозволяє випадково написати `p[0] = 'H'`. У C присвоєння `char *p = "hello";` історично дозволене, але GCC з `-Wwrite-strings` попередить про нього;
 
 Ця різниця критична: `char*` приховує read-only nature від системи типів.[^embeddedinterviewlab]
 

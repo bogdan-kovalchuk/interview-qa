@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 Єдиний залишковий ефект: **забороняє взяти адресу** змінної (`&reg_var` - помилка компіляції).
 
-У C++17 - deprecated. У C11 збережений для сумісності. Не використовуй у нових проектах - довір register allocation компілятору.[^embeddedinterviewlab]
+У C++17 - deprecated. У C11 збережений для сумісності; Не використовуй у нових проектах - довір register allocation компілятору.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

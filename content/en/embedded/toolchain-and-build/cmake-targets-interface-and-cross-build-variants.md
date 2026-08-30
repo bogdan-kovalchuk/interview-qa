@@ -1,4 +1,4 @@
-﻿---
+---
 id: emb-build-0021
 title: "How can CMake describe dependencies, targets, interface include directories, and cross-platform build variants?"
 description: "English translation pending."
@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "Authoritative section-level reference for toolchain and build concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

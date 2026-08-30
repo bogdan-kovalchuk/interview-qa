@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <span class="key">void*</span> – type-erased pointer: може зберігати адресу об'єкта будь-якого типу без explicit cast.<br><br>Обмеження:<br>• <span class="warn">Не можна розіменувати</span> без cast: <code>*p</code> – помилка компіляції;<br>• <span class="warn">Не можна виконати arithmetic</span> без cast (стандарт C). GCC дозволяє як extension (розмір елемента = 1 байт).<br><br>Використання: <code>malloc</code>/<code>free</code>, <code>memcpy</code>/<code>memset</code>, generic callbacks, <code>qsort</code>. У embedded: generic ISR handler tables.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

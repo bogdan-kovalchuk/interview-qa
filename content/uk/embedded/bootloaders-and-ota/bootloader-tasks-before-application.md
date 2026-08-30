@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: mcuboot-design
+    title: "MCUboot design documentation"
+    url: https://docs.mcuboot.com/design.html
+    accessed: 2026-09-06
+    kind: official
+    version: "current"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? bootloaders-and-ota; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Bootloader – маленький firmware, який стартує першим після reset. Він може перевірити image signature/CRC, вибрати slot, оновити firmware через UART/USB/CAN/BLE, налаштувати vector table і передати керування application. У safety/security системах він також контролює rollback, anti-bricking і chain of trust.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

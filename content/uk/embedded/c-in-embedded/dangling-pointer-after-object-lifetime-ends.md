@@ -22,17 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="key">Dangling pointer</span> – вказівник, що вказує на <span class="warn">вже звільнену або знищену</span> пам'ять.<br><br>Причини:<br>1. Повернення адреси локальної змінної: <code>int* f(){ int x=5; return &amp;x; }</code> – x знищена при поверненні;<br>2. Після <code>free(ptr)</code> без обнулення: <code>free(ptr); *ptr = 1;</code> – UB;<br>3. Вказівник на об'єкт, термін дії якого закінчився.<br><br>Небезпека: пам'ять <span class="warn">виглядає валідною</span> до її перевикористання. Баги надзвичайно важко відтворити.[^embeddedinterviewlab]
+<span class="key">Dangling pointer</span> – вказівник, що вказує на <span class="warn">вже звільнену або знищену</span> пам'ять.<br><br>Причини:<br>1; Повернення адреси локальної змінної: <code>int* f(){ int x=5; return &amp;x; }</code> – x знищена при поверненні;<br>2; Після <code>free(ptr)</code> без обнулення: <code>free(ptr); *ptr = 1;</code> – UB;<br>3. Вказівник на об'єкт, термін дії якого закінчився.<br><br>Небезпека: пам'ять <span class="warn">виглядає валідною</span> до її перевикористання. Баги надзвичайно важко відтворити.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

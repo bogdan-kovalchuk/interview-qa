@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <code>5</code>.<br><br><code>str</code> decay-ується до <code>char*</code>. Цикл йде до <code>'\0'</code>: після <code>'h','e','l','l','o'</code> – <code>*p = '\0'</code> (false) -> стоп. <code>p</code> вказує на null-terminator.<br><br><code>p - str</code> = 5 елементів = <code>strlen("hello")</code>. Це стандартний спосіб реалізації <code>strlen</code> через pointer arithmetic. <code>%td</code> для <code>ptrdiff_t</code>.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

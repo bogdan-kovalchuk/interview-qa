@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: freertos-kernel-book
+    title: "FreeRTOS Kernel Book and Reference Manual"
+    url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 Перевага: низька латентність, якщо очікування дуже коротке. У kernel-space spinlock використовують там, де sleep заборонений; залежно від типу lock і контексту він може вимикати preemption або IRQ. У user-space spinlock – це просто busy waiting primitive.
 
-Правило: <span class="warn">не можна спати, тримаючи spinlock</span>. Якщо критична секція довга або код може блокуватися – краще mutex.
+Правило: <span class="warn">не можна спати, тримаючи spinlock</span>; Якщо критична секція довга або код може блокуватися – краще mutex.
 
 ## Detailed explanation
 

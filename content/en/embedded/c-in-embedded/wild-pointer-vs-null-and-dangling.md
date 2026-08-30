@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 TODO
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

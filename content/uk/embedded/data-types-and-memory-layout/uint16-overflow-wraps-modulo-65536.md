@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -32,7 +39,7 @@ sources:
 
 Unsigned overflow **визначений стандартом** як modular arithmetic: `70000 mod 65536 = 4464`. Це НЕ undefined behavior (на відміну від signed overflow).
 
-Але якщо очікувалось `70000` - баг від неправильного вибору типу. Використовуй `uint32_t`.[^embeddedinterviewlab]
+Але якщо очікувалось `70000` - баг від неправильного вибору типу; Використовуй `uint32_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

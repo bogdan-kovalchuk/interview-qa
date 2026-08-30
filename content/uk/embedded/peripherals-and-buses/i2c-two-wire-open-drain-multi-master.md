@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 Ключовий нюанс: пристрої на шині можуть тільки **тягнути лінію вниз**; стан HIGH формується pull-up резистором. Це дозволяє кільком пристроям безпечно ділити одну шину.
 
-Multi-master, multi-slave. Кожен slave має унікальну 7-бітну адресу. Напів-дуплекс. Швидкості: 100 kHz, 400 kHz, 1 MHz. Є ACK/NACK. Типово: датчики, EEPROM, RTC, OLED.
+Multi-master, multi-slave; Кожен slave має унікальну 7-бітну адресу; Напів-дуплекс; Швидкості: 100 kHz, 400 kHz, 1 MHz; Є ACK/NACK; Типово: датчики, EEPROM, RTC, OLED.
 
 ## Detailed explanation
 

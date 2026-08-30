@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: cmsis-core-nvic
+    title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
+    accessed: 2026-09-06
+    kind: official
+    version: "6.2.0"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Timer clock ділиться через <code>prescaler</code>, після чого <code>counter</code> рахує ticks. <code>auto-reload</code> задає період overflow/update event, а <code>compare</code> генерує подію при збігу counter з каналом. Interrupt або DMA trigger виникає на update/compare/capture, якщо відповідні flags і NVIC enabled.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

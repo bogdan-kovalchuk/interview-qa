@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: freertos-kernel-book
+    title: "FreeRTOS Kernel Book and Reference Manual"
+    url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 <span class="key">RTOS</span> дає bounded interrupt/task latency, priority-based scheduling і primitives для deterministic embedded tasks. General-purpose OS оптимізує throughput, fairness і багатокористувацькі можливості, тому latency може бути менш передбачуваною. RTOS не гарантує «швидко завжди»; вона дає контрольовані worst-case умови, якщо код і пріоритети спроєктовані правильно.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

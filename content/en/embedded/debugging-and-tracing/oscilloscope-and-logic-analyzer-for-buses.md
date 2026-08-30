@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: gdb-manual
+    title: "Debugging with GDB"
+    url: https://sourceware.org/gdb/current/onlinedocs/gdb.pdf
+    accessed: 2026-09-06
+    kind: official
+    version: "current"
+    applicability: "Authoritative section-level reference for debugging and tracing concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
