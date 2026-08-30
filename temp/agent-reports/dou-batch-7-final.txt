@@ -1,0 +1,10 @@
+Batch 7 виконано й перевірено.
+
+- Створено 20 UK/EN пар, 40 Markdown-файлів.
+- Імпортовано Middle 58–70 і Senior 1–7.
+- Усі focused checks пройшли.
+- Registry, taxonomy, PLAN і generated outputs не змінювались.
+- Commit/push не виконувались.
+- Full validator має очікувані checkout-wide baseline failures.
+
+Звіт: [temp/agent-reports/dou-batch-7.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-7.md)

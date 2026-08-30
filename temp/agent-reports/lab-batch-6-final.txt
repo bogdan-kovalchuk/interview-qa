@@ -1,0 +1,8 @@
+Batch 6 виконано.
+
+- Створено 20 UK + 20 EN файлів для ID `0081–0100`.
+- Усі сфокусовані перевірки пройшли.
+- Повний validator має глобальні pre-existing помилки; registry не змінювався.
+- Комітів і push не виконано.
+
+Звіт: [lab-batch-6.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/lab-batch-6.md)

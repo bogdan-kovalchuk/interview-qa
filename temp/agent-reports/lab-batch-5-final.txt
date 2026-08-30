@@ -1,0 +1,7 @@
+Batch 5 перевірено й завершено.
+
+- Перевірено 20 UK + 20 EN файлів для IDs 0061–0080.
+- Виправлено лише конкретні дефекти: прибрано `Evaluation guide` і скориговано sentence-boundary у 3 UK-відповідях.
+- Focused checks пройдено; залишилися лише 2 warnings щодо довжини відповідей.
+- Створено звіт: [lab-batch-5.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/lab-batch-5.md)
+- Commit/push не виконувалися.

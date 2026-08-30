@@ -1,0 +1,40 @@
+﻿---
+id: emb-irq-0009
+title: "Як передаються дані між ISR і main loop або RTOS task без race condition?"
+description: "Використовують volatile/atomic flags, lock-free ring buffers, critical sections, RTOS queues/semaphores або direct task notification.Shared multi-byte…"
+track: embedded
+section: interrupts-and-timing
+level: senior
+type: concept
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  en: 1
+anki:
+  export: true
+sources:
+  - source_id: dou-embedded-interview
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
+    url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+---
+
+## Short answer
+
+Використовують <span class="key">volatile/atomic flags</span>, lock-free ring buffers, critical sections, RTOS queues/semaphores або direct task notification.<br>Shared multi-byte state захищають interrupt disable, mutex у task context або atomic operations, залежно від платформи.<br><span class="warn">Сам по собі <code>volatile</code> не робить операцію atomic і не вирішує race condition.</span>[^dou-embedded-interview]
+## Detailed explanation
+
+TODO
+
+## Evaluation guide
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

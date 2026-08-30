@@ -1,0 +1,10 @@
+Аудит і ремонт завершено.
+
+- Виявлено 5 відсутніх пар: Senior 23–27.
+- Додано лише 5 UK/EN-пар із новими IDs.
+- Senior 8–27: 20/20 coverage, Front/Back parity, pairing, markup і forbidden-character checks пройдено.
+- Реєстр, taxonomy, PLAN, generated outputs не змінювалися.
+- Commit/push не виконувалися.
+- Залишено pre-existing EN-only `emb-build-0016`, бо це unrelated baseline issue.
+
+Звіт: [dou-batch-8-audit.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-8-audit.md)

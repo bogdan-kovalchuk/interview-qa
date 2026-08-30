@@ -1,0 +1,41 @@
+---
+id: emb-build-0025
+title: "Як забезпечити Continuous Delivery для MCU, якщо пристрій має фізичний target, bootloader і hardware-in-the-loop тести?"
+description: "CD pipeline має збирати signed artifacts, прошивати фізичний target через bootloader, запускати HIL та перевіряти update path і rollback."
+track: embedded
+section: toolchain-and-build
+level: senior
+type: concept
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  en: 1
+anki:
+  export: true
+sources:
+  - source_id: dou-embedded-interview
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
+    url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+---
+
+## Short answer
+
+CD pipeline має збирати signed artifacts, прошивати device через bootloader/debug probe, запускати smoke/HIL tests і збирати logs/trace.<br>Потрібні керовані test rigs: power cycling, serial logs, reset control, version readback і failure recovery.<br><span class="key">Release gate</span> має перевіряти не лише build, а й update path, rollback і базову роботу hardware.[^dou-embedded-interview]
+
+## Detailed explanation
+
+TODO
+
+## Evaluation guide
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

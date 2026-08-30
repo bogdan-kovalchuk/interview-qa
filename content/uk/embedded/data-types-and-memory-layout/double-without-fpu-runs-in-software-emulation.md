@@ -1,0 +1,60 @@
+---
+id: emb-dtypes-0066
+title: "Trap: `double` у embedded без FPU - у чому небезпека?"
+description: "Без hardware FPU double виконується у software emulation, що займає десятки разів більше тактів."
+track: embedded
+section: data-types-and-memory-layout
+level: middle
+type: pitfall
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  en: 1
+anki:
+  export: true
+sources:
+  - source_id: embeddedinterviewlab
+    title: "Embedded Interview Lab"
+    url: https://embeddedinterviewlab.com/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+---
+
+## Short answer
+
+MCU без FPU (Cortex-M0/M0+/M3) виконує `double` у <span class="warn">software emulation</span>: десятки/сотні тактів замість 1–2 для hardware FPU.
+
+Проблеми:
+1. Збільшений час виконання -> RTOS deadline missed;
+2. Збільшений розмір коду (soft-float library);
+3. `double` = 8B, вдвічі більше RAM/stack.
+
+Cortex-M4F/M7 має FPU тільки для `float` (32-bit). Завжди: `float` замість `double` у embedded. Перевіряй ABI: `-mfloat-abi=hard -mfpu=fpv4-sp-d16`.[^embeddedinterviewlab]
+
+## Detailed explanation
+
+TODO
+
+## Symptom
+
+TODO
+
+## Why it happens
+
+TODO
+
+## How to avoid
+
+TODO
+
+## Evaluation guide
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

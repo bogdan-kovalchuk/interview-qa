@@ -1,0 +1,9 @@
+Виконано batch 2:
+
+- Імпортовано рівно 10 DOU-карток, 20 UK/EN файлів.
+- Діапазон: Junior lines 76–83 і Middle lines 6–7.
+- Усі 73 сфокусовані перевірки пройшли.
+- Реєстр, плани та наявні питання не змінювалися.
+- Коміт і push не виконувалися.
+
+Звіт: [temp/agent-reports/dou-batch-2.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-2.md)
