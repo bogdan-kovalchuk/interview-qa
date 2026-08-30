@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Спершу preprocessing розкриває <code>#include</code>, <code>#define</code> і conditional compilation. Далі compiler генерує assembly або IR, assembler створює object file, linker об'єднує objects/libraries і розміщує sections. Для firmware часто ще виконують <code>objcopy</code> у <code>.hex</code>/<code>.bin</code> і генерують map-файл.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

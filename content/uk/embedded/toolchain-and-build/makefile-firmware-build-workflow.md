@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 <code>make</code> читає targets, dependencies і recipes з <code>Makefile</code>. Якщо source новіший за object або binary, виконується потрібна команда компіляції, link чи post-build. У firmware Makefile часто задає MCU flags, include paths, linker script, output <code>.elf/.hex/.bin</code> і flash/debug targets.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

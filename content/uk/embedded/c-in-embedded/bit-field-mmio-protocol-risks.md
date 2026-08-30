@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,22 @@ sources:
 <span class="key">Bit-field</span> – поле struct із заданою кількістю бітів, наприклад <code>unsigned mode:3</code>. Його порядок бітів, allocation unit, padding і навіть signedness деяких форм залежать від implementation. <span class="warn">Для MMIO і wire protocols це небезпечно</span>: краще використовувати masks/shifts над <code>uint32_t</code>.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Symptom
+
+TODO
+
+## Why it happens
+
+TODO
+
+## How to avoid
+
+TODO
+
+## Evaluation guide
 
 TODO
 

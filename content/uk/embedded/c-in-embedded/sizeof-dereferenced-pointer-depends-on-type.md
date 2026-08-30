@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <code>sizeof(*p)</code> -> <span class="key">4</span>. Розіменування <code>uint32_t*</code> дає об'єкт типу <code>uint32_t</code> – 4 байти.<br><br><code>sizeof(*q)</code> -> <span class="key">1</span>. Розіменування <code>uint8_t*</code> дає <code>uint8_t</code> – 1 байт.<br><br>Важливо: <code>sizeof</code> операнда-розіменування визначається типом вказівника, а не адресою. Обидва вказівники вказують на ту саму адресу <code>0x2000</code>, але sizeof повертає різні значення.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

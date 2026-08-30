@@ -1,4 +1,4 @@
-﻿# DOU Embedded Interview migration batch 8 report
+# DOU Embedded Interview migration batch 8 report
 
 ## Scope
 

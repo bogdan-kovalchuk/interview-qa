@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: mcuboot-design
+    title: "MCUboot design documentation"
+    url: https://docs.mcuboot.com/design.html
+    accessed: 2026-09-06
+    kind: official
+    version: "current"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? bootloaders-and-ota; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 Файли: `.dts` (Device Tree Source, текст) компілюється `dtc` у `.dtb` (Device Tree Blob, бінарний файл). Bootloader (U-Boot) передає адресу DTB ядру при завантаженні.
 
-Приклад вузла: описує UART1 – базову адресу регістрів, номер переривання, тактування. Драйвер у ядрі читає ці параметри через DT API.
+Приклад вузла: описує UART1 – базову адресу регістрів, номер переривання, тактування; Драйвер у ядрі читає ці параметри через DT API.
 
 ## Detailed explanation
 

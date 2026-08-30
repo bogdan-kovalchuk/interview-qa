@@ -22,11 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<code>2</code>. Це не trap, але перевіряє розуміння pointer subtraction.<br><br>Справжній trap: люди очікують <span class="warn">байтову різницю</span> (8 байт), але отримують <span class="key">кількість елементів</span> (2). <code>p - q</code> = <code>(arr+3) - (arr+1) = 2</code>.<br><br>Байтова різниця: <code>2 * sizeof(int) = 8</code>. Але <code>ptrdiff_t</code> повертає елементи. Якщо потрібна байтова різниця: <code>(char*)p - (char*)q</code> або <code>(uintptr_t)p - (uintptr_t)q</code>.[^embeddedinterviewlab]
+<code>2</code>. Це не trap, але перевіряє розуміння pointer subtraction.<br><br>Справжній trap: люди очікують <span class="warn">байтову різницю</span> (8 байт), але отримують <span class="key">кількість елементів</span> (2). <code>p - q</code> = <code>(arr+3) - (arr+1) = 2</code>.<br><br>Байтова різниця: <code>2 * sizeof(int) = 8</code>. Але <code>ptrdiff_t</code> повертає елементи; Якщо потрібна байтова різниця: <code>(char*)p - (char*)q</code> або <code>(uintptr_t)p - (uintptr_t)q</code>.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
@@ -44,12 +51,6 @@ TODO
 
 TODO
 
-## Evaluation guide
-
-TODO
-
 ## Sources
 
 <!-- generated from frontmatter -->
-
-

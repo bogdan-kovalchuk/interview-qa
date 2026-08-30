@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iec-61508-1-2010
+    title: "IEC 61508-1:2010 ? Functional safety: General requirements"
+    url: https://webstore.iec.ch/en/publication/5515
+    accessed: 2026-09-06
+    kind: spec
+    version: "IEC 61508-1:2010"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? safety-and-standards; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Watchdog скидає систему, якщо firmware не виконує refresh у правильний час. <span class="key">Independent watchdog</span> зазвичай має окремий low-speed clock і працює навіть при проблемах main clock. <span class="key">Window watchdog</span> вимагає refresh не надто рано й не надто пізно, тому ловить як зависання, так і runaway loop.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

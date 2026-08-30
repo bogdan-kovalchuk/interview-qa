@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <span class="warn">Скопіює лише 4 або 8 байт</span> (розмір вказівника), а не розмір масиву.<br><br>У параметрі функції <code>src</code> – це <code>uint8_t*</code>, не масив. <code>sizeof(src) = sizeof(uint8_t*) = 4</code>. Тому <code>memcpy</code> копіює тільки 4 байти замість N.<br><br>Правильно: передавати розмір явно: <code>memcpy(dst, src, n * sizeof(src[0]))</code> або <code>memcpy(dst, src, n)</code> де <code>n</code> – окремий параметр.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

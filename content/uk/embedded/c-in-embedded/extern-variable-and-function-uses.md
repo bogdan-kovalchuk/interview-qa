@@ -22,14 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<code>extern</code> оголошує ім'я, яке визначене в іншому translation unit: у header пишуть <code>extern int counter;</code>, а в одному <code>.c</code> файлі має бути визначення <code>int counter;</code>. Це дозволяє розділяти declaration і definition без дублювання глобальної змінної.[^dou-embedded-interview]
-
-Також <code>extern</code> застосовують для функцій, хоча для звичайних функцій external linkage є типовим. У C++ є окремий випадок <code>extern "C"</code> – він вимикає C++ name mangling, щоб C++ код міг лінкуватися з C API або динамічною бібліотекою.
-
+<code>extern</code> оголошує ім'я, яке визначене в іншому translation unit: у header пишуть <code>extern int counter;</code>, а в одному <code>.c</code> файлі має бути визначення <code>int counter;</code>. Це дозволяє розділяти declaration і definition без дублювання глобальної змінної.<br><br>Також <code>extern</code> застосовують для функцій, хоча для звичайних функцій external linkage є типовим. У C++ є окремий випадок <code>extern "C"</code> – він вимикає C++ name mangling, щоб C++ код міг лінкуватися з C API або динамічною бібліотекою.[^dou-embedded-interview]
 ## Detailed explanation
 
 TODO

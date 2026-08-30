@@ -1,6 +1,6 @@
 # Закриті словники проєкту: усе, що валідатор звіряє, і всі видимі назви структур.
 #
-# Заголовки секцій у content/ завжди англійські – це ідентифікатори (QUESTIONS.md §4).
+# Заголовки секцій у content/ завжди англійські – це ідентифікатори (questions.md §4).
 # Тут вони отримують видимі назви, які рендерить сайт.
 
 section_labels:
@@ -105,7 +105,7 @@ section_labels_nav:
   behavioral/teamwork-and-conflict:   {en: Teamwork and conflict,    uk: Командна робота й конфлікт}
   # Додано міграцією M4 (PLAN.md крок 4): 26 секцій, наповнені 392 картками
   # з predecessor-колоди. python/* - пряме перенесення 20 тем Anki-репозиторію
-  # 1:1 із meta/TAXONOMY.md; cs/, databases/, engineering/ - теми 21-23,
+  # 1:1 із meta/taxonomy.md; cs/, databases/, engineering/ - теми 21-23,
   # перенесені за meta/migration/tag-mapping.md.
   python/fundamentals:                  {en: Fundamentals,                  uk: Основи}
   python/syntax-and-control-flow:       {en: Syntax and control flow,       uk: Синтаксис і потік керування}
@@ -144,7 +144,7 @@ completeness_labels:
   complete: {en: Complete,    uk: Завершено}
 
 # Видимі підписи навколо індексів треку/секції і /status/ (PLAN.md крок 6). `level`
-# і `type` самі лишаються англійськими кодами закритого словника (QUALITY_GATES.md
+# і `type` самі лишаються англійськими кодами закритого словника (quality-gates.md
 # facets-vocabulary) - тут перекладаються тільки підписи навколо них, не значення.
 site_labels:
   home_title:               {en: Interview questions, uk: Питання для співбесід}
@@ -229,7 +229,7 @@ section_prefixes:
   behavioral/teamwork-and-conflict: team
   engineering/version-control:      vcs
   # M4 migration additions - one prefix per section, issued once and frozen
-  # (meta/QUESTIONS.md SS2: "belongs to the section, not the question").
+  # (meta/questions.md SS2: "belongs to the section, not the question").
   python/fundamentals:                  fund
   python/syntax-and-control-flow:       syntax
   python/objects-and-types:             objtypes

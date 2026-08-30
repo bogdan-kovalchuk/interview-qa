@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gnu-ld-manual
+    title: "GNU linker ld manual"
+    url: https://sourceware.org/binutils/docs/ld/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "2.47"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Виділити буфери статично або в pool і явно визначити owner: driver, task, queue чи caller. Передавати не «сирий ресурс назавжди», а handle або descriptor зі станом <code>free/in_use/done</code>. Для ISR/DMA добре працюють ring buffer, double buffer і callback/queue, де lifetime завершується після явного release.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

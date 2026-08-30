@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 `200 + 100` обчислюється як `int` (integer promotion): `300`. Явний cast `(uint8_t)` усікає до 8 біт: `300 & 0xFF = 0x2C = 44`.
 
-Відмінність від implicit: явний cast показує усвідомлення truncation. Але результат однаковий - 44.
+Відмінність від implicit: явний cast показує усвідомлення truncation. Але результат однаковий - 44;
 
 Для portable коду: перевіряй що значення вміщується у цільовий тип перед звуженням.[^embeddedinterviewlab]
 

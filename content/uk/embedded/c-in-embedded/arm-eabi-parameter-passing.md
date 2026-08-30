@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 За ARM EABI/AAPCS перші прості integer/pointer аргументи зазвичай передаються в <code>r0-r3</code>, результат – у <code>r0</code> або <code>r0:r1</code>. Додаткові аргументи та частина великих aggregate objects ідуть через stack з потрібним alignment. Registers <code>r4-r11</code> є callee-saved, а <code>r0-r3,r12,lr</code> caller-saved у звичайному calling convention.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

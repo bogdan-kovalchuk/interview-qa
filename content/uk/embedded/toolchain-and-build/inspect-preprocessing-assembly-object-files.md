@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Для GCC/Clang: <code>-E</code> дає preprocessed output, <code>-S</code> – assembly, <code>-c</code> – object file без link. Для аналізу firmware корисні <code>objdump -d</code>, <code>readelf -S</code> і linker map. У CMake ці flags можна тимчасово додати до target або виконати compiler command з <code>compile_commands.json</code>.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

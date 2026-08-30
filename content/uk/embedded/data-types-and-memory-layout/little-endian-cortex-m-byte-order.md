@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 **Little-endian**: LSB (молодший байт) за нижчою адресою. Cortex-M за замовчуванням little-endian: `0x12345678` у пам'яті -> `[78][56][34][12]` (адреса зростає ->).
 
-**Big-endian**: MSB перший. Використовується у мережевих протоколах (TCP/IP, MODBUS). Для конвертації: `htonl()` / `ntohl()`.[^embeddedinterviewlab]
+**Big-endian**: MSB перший. Використовується у мережевих протоколах (TCP/IP, MODBUS); Для конвертації: `htonl()` / `ntohl()`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

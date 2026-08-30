@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 I2C master формує <code>START</code>, передає 7/10-bit address плюс R/W bit, а receiver відповідає ACK або NACK. <code>STOP</code> завершує transaction; repeated START дозволяє змінити напрям без відпускання bus. Arbitration потрібен для multi-master, а clock stretching дозволяє slave утримати SCL low, якщо йому треба більше часу.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: mcuboot-design
+    title: "MCUboot design documentation"
+    url: https://docs.mcuboot.com/design.html
+    accessed: 2026-09-06
+    kind: official
+    version: "current"
+    applicability: "Authoritative section-level reference for bootloaders and ota concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

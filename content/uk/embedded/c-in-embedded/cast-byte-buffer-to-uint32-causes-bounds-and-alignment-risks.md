@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <span class="warn">Out-of-bounds write!</span> <code>buf</code> – 256 байт. <code>p</code> – <code>uint32_t*</code>, кожен елемент = 4 байти. Цикл <code>p[0]..p[255]</code> записує <code>256 × 4 = 1024 байти</code> – у 4 рази більше розміру буфера.<br><br>Правильно: <code>for(int i=0; i &lt; 256/sizeof(uint32_t); i++) p[i]=0;</code> або <code>memset(buf, 0, sizeof(buf))</code>.<br><br>Також: <code>uint8_t buf[256]</code> може бути не вирівняний для <code>uint32_t</code> -> misaligned access.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

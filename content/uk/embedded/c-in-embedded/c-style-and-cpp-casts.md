@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -31,6 +38,14 @@ sources:
 У C++ краще використовувати явні casts: <code>static_cast</code> для звичайних безпечніших перетворень, <code>const_cast</code> тільки для зміни cv-qualifier-ів, <code>reinterpret_cast</code> для низькорівневої переінтерпретації, <code>dynamic_cast</code> для runtime-перевірки в поліморфних класах. Вони довші, зате показують намір і легше знаходяться в коді.
 
 ## Detailed explanation
+
+TODO
+
+## Comparison
+
+TODO
+
+## When to choose which
 
 TODO
 

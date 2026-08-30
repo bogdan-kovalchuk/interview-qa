@@ -1,0 +1,7 @@
+Batch 9 виконано.
+
+- Створено 5 UK/EN пар для Senior 28–32.
+- Перевірки parity, ID, pairing, markup і forbidden characters: PASS.
+- Звіт: [dou-batch-9.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-9.md)
+- Повна валідація має лише попередні baseline-помилки registry/source.
+- Коміт і push не виконувалися.

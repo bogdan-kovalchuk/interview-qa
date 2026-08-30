@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 <code>a=10, b=10</code>.<br><br><code>*p = *q</code> – копіює <span class="key">значення</span> <code>*q</code> (тобто <code>b=10</code>) у <code>*p</code> (тобто у <code>a</code>). Самі вказівники <code>p</code> і <code>q</code> не змінюються.<br><br>Якби <code>p = q</code> (без *) – обидва вказівники вказували б на <code>b</code>. <code>a</code> лишився б <code>5</code>.<br><br>Типова помилка: плутати присвоєння вказівників та значень.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

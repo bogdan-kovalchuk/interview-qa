@@ -22,15 +22,22 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 **Pulse Width Modulation** – метод управління потужністю через зміну шпаруватості (duty cycle) прямокутного сигналу.[^dou-embedded-interview]
 
-Duty cycle = T_ON / T × 100%. При 50% – половина потужності. Частота зазвичай фіксована (напр. 20 kHz для моторів, 50 Hz для серводвигунів).
+Duty cycle = T_ON / T × 100%. При 50% – половина потужності. Частота зазвичай фіксована (напр. 20 kHz для моторів, 50 Hz для серводвигунів);
 
-Застосування: регулювання яскравості LED, керування DC-моторами (через H-міст), серводвигуни, DC/DC-перетворювачі. Генерується апаратним таймером MCU – не навантажує CPU. Приклад: `TIM3->CCR1 = 500;` при ARR=1000 дає 50% duty.
+Застосування: регулювання яскравості LED, керування DC-моторами (через H-міст), серводвигуни, DC/DC-перетворювачі; Генерується апаратним таймером MCU – не навантажує CPU; Приклад: `TIM3->CCR1 = 500;` при ARR=1000 дає 50% duty.
 
 ## Detailed explanation
 

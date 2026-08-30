@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: gnu-ld-manual
+    title: "GNU linker ld manual"
+    url: https://sourceware.org/binutils/docs/ld/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "2.47"
+    applicability: "Authoritative section-level reference for memory and linker concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

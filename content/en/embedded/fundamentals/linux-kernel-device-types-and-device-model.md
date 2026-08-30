@@ -1,4 +1,4 @@
-﻿---
+---
 id: emb-fund-0022
 title: "Which device types exist in the Linux kernel, and how are they represented by the device model?"
 description: "English translation pending."
@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: zephyr-introduction
+    title: "Zephyr Project documentation: Introduction"
+    url: https://docs.zephyrproject.org/latest/introduction/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "Authoritative section-level reference for fundamentals concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

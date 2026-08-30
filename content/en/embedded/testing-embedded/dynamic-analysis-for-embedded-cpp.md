@@ -1,4 +1,4 @@
-﻿---
+---
 id: emb-testemb-0008
 title: "Which dynamic-analysis approaches are possible for embedded C/C++: host sanitizers, Valgrind, tracing, and fault injection?"
 description: "English translation pending."
@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: zephyr-testing
+    title: "Zephyr Project documentation: Testing"
+    url: https://docs.zephyrproject.org/latest/develop/test/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "Authoritative section-level reference for testing embedded concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer

@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,7 +36,7 @@ sources:
 **Memory-mapped I/O** - периферійні регістри (GPIO, UART, ADC) доступні за фіксованими адресами у адресному просторі CPU як звичайна пам'ять.
 
 `volatile` необхідний тому що:
-1. Значення може змінитися апаратурою між читаннями (status register);
+1. Значення може змінитися апаратурою між читаннями (status register).
 2. Без `volatile` компілятор може видалити "зайвий" запис (dead store) або кешувати значення у регістрі.
 
 Правильно: `volatile uint32_t * const GPIOA_ODR = (volatile uint32_t*)0x40020014U;`[^embeddedinterviewlab]

@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,10 +36,6 @@ sources:
 Для статично розмірного масиву потрібно вказати <span class="key">розмір внутрішнього виміру</span>:<br><code>void f(int arr[][4], int rows) { arr[2][3] = 99; }</code><br>або еквівалентно:<br><code>void f(int (*arr)[4], int rows) { ... }</code><br><br>Без розміру компілятор не знає крок рядка (stride). <code>arr[i][j]</code> -> <code>*(*(arr+i)+j)</code> -> в пам'яті: <code>arr + i*4*sizeof(int) + j*sizeof(int)</code>.<br><br>Для динамічного: передавай як <code>int *</code> і обчислюй offset вручну.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

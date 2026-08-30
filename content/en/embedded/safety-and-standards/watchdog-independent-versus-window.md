@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: iec-61508-1-2010
+    title: "IEC 61508-1:2010 ? Functional safety: General requirements"
+    url: https://webstore.iec.ch/en/publication/5515
+    accessed: 2026-09-06
+    kind: spec
+    version: "IEC 61508-1:2010"
+    applicability: "Authoritative section-level reference for safety and standards concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 TODO
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

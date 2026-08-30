@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 З `__attribute__((packed))`: `a`@0 + `b`@1 + `c`@5 = **6 байт**. Нема padding.
 
-<span class="warn">Але!</span> На Cortex-M0/M0+ доступ до misaligned `int b` (offset 1) -> <span class="warn">HardFault</span>. На M3/M4 - повільніше. Packed корисний для serial протоколів, але не для прямого доступу до полів на MCU.[^embeddedinterviewlab]
+<span class="warn">Але!</span> На Cortex-M0/M0+ доступ до misaligned `int b` (offset 1) -> <span class="warn">HardFault</span>; На M3/M4 - повільніше; Packed корисний для serial протоколів, але не для прямого доступу до полів на MCU.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

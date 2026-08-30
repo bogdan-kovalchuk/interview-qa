@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 <code>static</code> керує linkage або storage duration, <code>const</code> забороняє зміну через цей lvalue, <code>volatile</code> змушує реально виконувати access, а <code>restrict</code> обіцяє відсутність aliasing для оптимізації. Для MMIO типовий pointer: <code>volatile uint32_t *</code>; для read-only register може бути <code>volatile const uint32_t *</code>. <code>static const</code> часто кладе таблиці у flash/rodata, а <code>restrict</code> доречний у DSP/buffer code, якщо контракт справді виконується.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

@@ -22,21 +22,23 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="warn">Undefined behavior за стандартом C</span>. Реляційне порівняння (<code>&lt;</code>, <code>&gt;</code>) вказівників з різних об'єктів не визначено стандартом.<br><br>На практиці (більшість платформ, flat memory): результат залежить від розміщення змінних у пам'яті (порядок на стеку залежить від компілятора). Не portable.<br><br>Дозволено: <code>p == q</code>, <code>p != q</code> – порівняння на рівність між будь-якими вказівниками. Реляційні – тільки в межах одного масиву.[^embeddedinterviewlab]
+<span class="warn">Undefined behavior за стандартом C</span>. Реляційне порівняння (<code>&lt;</code>, <code>&gt;</code>) вказівників з різних об'єктів не визначено стандартом.<br><br>На практиці (більшість платформ, flat memory): результат залежить від розміщення змінних у пам'яті (порядок на стеку залежить від компілятора). Не portable;<br><br>Дозволено: <code>p == q</code>, <code>p != q</code> – порівняння на рівність між будь-якими вказівниками. Реляційні – тільки в межах одного масиву.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 
 ## Sources
 
 <!-- generated from frontmatter -->
-

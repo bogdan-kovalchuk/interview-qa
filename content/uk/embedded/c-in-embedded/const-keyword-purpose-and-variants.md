@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -30,7 +37,7 @@ sources:
 
 Варіанти: `const int x = 5;` – константна змінна; `const int *p` – вказівник на константу (дані захищені); `int * const p` – константний вказівник (адреса захищена); `const int * const p` – обидва захищені.
 
-В Embedded `const` не гарантує конкретне місце зберігання. У багатьох toolchain такі дані кладуть у `.rodata` у Flash, але це залежить від ABI, linker script і платформи. В C++ методи: `void get() const` – гарантує, що метод не змінює стан об'єкта.
+В Embedded `const` не гарантує конкретне місце зберігання. У багатьох toolchain такі дані кладуть у `.rodata` у Flash, але це залежить від ABI, linker script і платформи; В C++ методи: `void get() const` – гарантує, що метод не змінює стан об'єкта.
 
 ## Detailed explanation
 

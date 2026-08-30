@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gnu-ld-manual
+    title: "GNU linker ld manual"
+    url: https://sourceware.org/binutils/docs/ld/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "2.47"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 <span class="key">Linker</span> вирішує symbols/relocations, підтягує потрібні objects з libraries і розміщує sections у memory regions. Зазвичай <code>.text</code>/<code>.rodata</code> ідуть у Flash, <code>.data</code> має load image у Flash і runtime address у RAM, <code>.bss</code> zero-init у RAM. Stack/heap межі задаються linker script або startup code, і помилка тут дає hard fault або corruption.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

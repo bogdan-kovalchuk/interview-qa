@@ -1,4 +1,4 @@
-﻿---
+---
 id: emb-build-0019
 title: "Які типи optimization використовує компілятор і як перевірити, що оптимізація не зламала MMIO або delay loop?"
 description: "Компілятор робить inlining, dead-code elimination, constant propagation, loop optimization, instruction scheduling і LTO.MMIO перевіряй через volatile…"
@@ -22,12 +22,32 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 Компілятор робить inlining, dead-code elimination, constant propagation, loop optimization, instruction scheduling і LTO.<br>MMIO перевіряй через <code>volatile</code> register definitions, barriers там, де потрібен порядок, disassembly/map review і target tests.<br><span class="warn">Busy delay loop без <code>volatile</code>, timer або intrinsic barrier може бути скорочений чи прибраний оптимізатором.</span>[^dou-embedded-interview]
+
 ## Detailed explanation
+
+TODO
+
+## Symptom
+
+TODO
+
+## Why it happens
+
+TODO
+
+## How to avoid
 
 TODO
 

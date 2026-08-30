@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: iso-cpp-n4861
+    title: "C++ International Standard working draft N4861"
+    url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N4861"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? cpp-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 Virtual destructor потрібен, якщо об'єкт видаляють через pointer/reference на base class: тоді викликається destructor derived class. Без нього <code>delete basePtr</code> для polymorphic object має undefined behavior. В embedded C++ це актуально для driver interfaces, HAL abstractions або state machines, але dynamic allocation часто замінюють static lifetime чи placement new.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

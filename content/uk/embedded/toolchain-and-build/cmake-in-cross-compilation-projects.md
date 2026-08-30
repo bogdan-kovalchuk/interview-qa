@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
@@ -29,6 +36,10 @@ sources:
 CMake спочатку configure-ить build graph: читає <code>CMakeLists.txt</code>, toolchain file, target flags і генерує Ninja/Make project. Потім build tool викликає cross-compiler, assembler, linker і post-build утиліти на кшталт <code>objcopy</code>. Важливо розділяти host tools, які запускаються на PC, і target binaries, які призначені для MCU або Linux target.[^dou-embedded-interview]
 
 ## Detailed explanation
+
+TODO
+
+## Evaluation guide
 
 TODO
 

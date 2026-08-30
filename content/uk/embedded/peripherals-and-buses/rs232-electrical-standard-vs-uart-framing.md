@@ -22,18 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-RS-232 – це **електричний стандарт сигналів**, а UART – блок/протокол framing даних.[^dou-embedded-interview] Тобто UART і RS-232 не одне й те саме: UART описує кадр, baud rate, start/stop/parity bits; RS-232 описує рівні напруг і фізичний інтерфейс.
-
-Відмінності від TTL UART:
-- **Рівні напруг**: логічний 1 = −3 до −15 В; логічний 0 = +3 до +15 В (інверсія!). TTL: 0/3.3–5 В.
-- Відстань: до ~15 м (на відміну від TTL ~1 м).
-- Роз'єм: DB-9 з лініями `RTS`/`CTS` для flow-control.
-- Для підключення MCU до RS-232 потрібен конвертер рівнів, напр. `MAX232`.
-
+RS-232 – це <span class="key">електричний стандарт сигналів</span>, а UART – блок/протокол framing даних. Тобто UART і RS-232 не одне й те саме: UART описує кадр, baud rate, start/stop/parity bits; RS-232 описує рівні напруг і фізичний інтерфейс.<br><br>Відмінності від TTL UART:<br>• <span class="key">Рівні напруг</span>: логічний 1 = −3 до −15 В; логічний 0 = +3 до +15 В (інверсія!). TTL: 0/3.3–5 В.<br>• Відстань: до ~15 м (на відміну від TTL ~1 м).<br>• Роз'єм: DB-9 з лініями <code>RTS</code>/<code>CTS</code> для flow-control.<br>• Для підключення MCU до RS-232 потрібен конвертер рівнів, напр. <code>MAX232</code>.[^dou-embedded-interview]
 ## Detailed explanation
 
 TODO

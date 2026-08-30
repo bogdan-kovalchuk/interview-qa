@@ -22,17 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<code>2</code>.<br><br><code>int *arr[3]</code> – масив з 3 вказівників на <code>int</code>. <code>arr[1]</code> -> другий елемент = <code>&amp;b</code>. <code>*arr[1]</code> -> розіменування <code>&amp;b</code> -> значення <code>b = 2</code>.<br><br>Зберігання: <code>arr</code> – масив адрес (3 × 4 байти = 12 байт). Кожен елемент – окрема адреса. Зміна <code>*arr[1] = 99</code> -> змінить <code>b</code>.[^embeddedinterviewlab]
+<code>2</code>.<br><br><code>int *arr[3]</code> – масив з 3 вказівників на <code>int</code>. <code>arr[1]</code> -> другий елемент = <code>&amp;b</code>. <code>*arr[1]</code> -> розіменування <code>&amp;b</code> -> значення <code>b = 2</code>.<br><br>Зберігання: <code>arr</code> – масив адрес (3 × 4 байти = 12 байт). Кожен елемент – окрема адреса; Зміна <code>*arr[1] = 99</code> -> змінить <code>b</code>.[^embeddedinterviewlab]
 
 ## Detailed explanation
-
-TODO
-
-## Evaluation guide
 
 TODO
 

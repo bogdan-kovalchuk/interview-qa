@@ -22,11 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="key">VLA</span> (C99) – масив з розміром визначеним під час виконання: <code>void f(int n) { int arr[n]; }</code>.<br><br>Небезпеки у embedded:<br>1. <span class="warn">Stack overflow</span>: розмір не відомий на compile-time -> не можна гарантувати достатньо стека;<br>2. Нема compile-time <code>sizeof</code> – важко аналізувати stack usage;<br>3. MISRA C:2012 та C11 – VLA опціональний (removed from mandatory);<br>4. Clang/GCC: <code>-Wvla</code> для попереджень.<br><br>Замість VLA: static масив максимального розміру + runtime перевірка розміру.[^embeddedinterviewlab]
+<span class="key">VLA</span> (C99) – масив з розміром визначеним під час виконання: <code>void f(int n) { int arr[n]; }</code>.<br><br>Небезпеки у embedded:<br>1. <span class="warn">Stack overflow</span>: розмір не відомий на compile-time -> не можна гарантувати достатньо стека;<br>2. Нема compile-time <code>sizeof</code> – важко аналізувати stack usage;<br>3. MISRA C:2012 та C11 – VLA опціональний (removed from mandatory);<br>4; Clang/GCC: <code>-Wvla</code> для попереджень;<br><br>Замість VLA: static масив максимального розміру + runtime перевірка розміру.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

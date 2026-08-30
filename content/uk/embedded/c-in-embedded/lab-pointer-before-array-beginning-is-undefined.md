@@ -22,11 +22,18 @@ sources:
     kind: community
     version: null
     applicability: "Source question and answer; answer not independently verified."
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-09-06
+    kind: spec
+    version: "N1570"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
-<span class="warn">Так, UB.</span> <code>p = arr</code> -> вказівник на <code>arr[0]</code>. <code>p--</code> -> <code>arr-1</code>, що знаходиться <span class="warn">поза масивом</span>.<br><br>Допустимі вказівники для <code>arr[3]</code>: <code>arr</code> (=arr+0) до <code>arr+3</code> (one-past-the-end). <code>arr-1</code> – UB вже при формуванні, не тільки при розіменуванні.<br><br>Компілятор може припустити що UB не відбувається -> непередбачувані оптимізації. Отже, arr-1 формувати не можна.[^embeddedinterviewlab]
+<span class="warn">Так, UB.</span> <code>p = arr</code> -> вказівник на <code>arr[0]</code>. <code>p--</code> -> <code>arr-1</code>, що знаходиться <span class="warn">поза масивом</span>.<br><br>Допустимі вказівники для <code>arr[3]</code>: <code>arr</code> (=arr+0) до <code>arr+3</code> (one-past-the-end). <code>arr-1</code> – UB вже при формуванні, не тільки при розіменуванні.<br><br>Компілятор може припустити що UB не відбувається -> непередбачувані оптимізації; Отже, arr-1 формувати не можна.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

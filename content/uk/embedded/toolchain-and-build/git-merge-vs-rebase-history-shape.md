@@ -22,13 +22,20 @@ sources:
     kind: community
     version: null
     applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+  - source_id: gcc-overall-options
+    title: "GCC manual: Options Controlling the Kind of Output"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+    accessed: 2026-09-06
+    kind: official
+    version: "latest"
+    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
 ---
 
 ## Short answer
 
 `git merge` об'єднує дві гілки, зберігаючи їхню історію.[^dou-embedded-interview] Якщо історії розійшлися, Git створює merge commit. Плюс: чесно показує, коли й де гілки були об'єднані. Мінус: історія може стати розгалуженою.
 
-`git rebase` переносить commits поточної гілки поверх іншої бази, ніби робота починалась від новішого commit. Плюс: лінійна й чистіша історія. Мінус: rebase переписує commit hash-и.
+`git rebase` переносить commits поточної гілки поверх іншої бази, ніби робота починалась від новішого commit. Плюс: лінійна й чистіша історія; Мінус: rebase переписує commit hash-и;
 
 Практичне правило: **merge** безпечний для спільних/published гілок; **rebase** зручний для локальної feature-гілки перед merge, але не варто rebase-ити чужу опубліковану історію без домовленості.
 
