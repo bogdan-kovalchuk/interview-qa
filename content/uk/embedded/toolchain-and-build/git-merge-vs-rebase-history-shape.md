@@ -1,0 +1,49 @@
+---
+id: emb-build-0007
+title: "В чому полягає різниця між merge та rebase?"
+description: "git merge зберігає розгалужену історію через merge commit, а git rebase переносить commits на нову базу і робить історію лінійною, переписуючи хеші."
+track: embedded
+section: toolchain-and-build
+level: junior
+type: comparison
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  en: 1
+anki:
+  export: true
+sources:
+  - source_id: dou-embedded-interview
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
+    url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+---
+
+## Short answer
+
+`git merge` об'єднує дві гілки, зберігаючи їхню історію.[^dou-embedded-interview] Якщо історії розійшлися, Git створює merge commit. Плюс: чесно показує, коли й де гілки були об'єднані. Мінус: історія може стати розгалуженою.
+
+`git rebase` переносить commits поточної гілки поверх іншої бази, ніби робота починалась від новішого commit. Плюс: лінійна й чистіша історія. Мінус: rebase переписує commit hash-и.
+
+Практичне правило: **merge** безпечний для спільних/published гілок; **rebase** зручний для локальної feature-гілки перед merge, але не варто rebase-ити чужу опубліковану історію без домовленості.
+
+## Detailed explanation
+
+TODO
+
+## Comparison
+
+TODO
+
+## When to choose which
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

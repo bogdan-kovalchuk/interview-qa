@@ -1,0 +1,39 @@
+---
+id: emb-memlink-0003
+title: "Для чого використовують realloc?"
+description: "realloc змінює розмір раніше виділеного heap-блоку, копіюючи дані в новий блок за потреби, і при помилці лишає старий вказівник валідним."
+track: embedded
+section: memory-and-linker
+level: junior
+type: concept
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  en: 1
+anki:
+  export: true
+sources:
+  - source_id: dou-embedded-interview
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
+    url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+---
+
+## Short answer
+
+`realloc(ptr, new_size)` змінює розмір раніше виділеного heap-блоку.[^dou-embedded-interview] Якщо поруч є місце, блок може бути розширений на місці; інакше буде виділений новий блок, старі дані скопійовані, а старий блок звільнений.
+
+Типове використання – динамічні масиви, буфери вводу, рядки змінної довжини. Важливий патерн: `tmp = realloc(ptr, n); if (tmp) ptr = tmp;`, бо при помилці `realloc` повертає `NULL`, але старий `ptr` лишається валідним. `realloc(NULL, size)` працює як `malloc`. На `realloc(ptr, 0)` portable code не повинен покладатися: на багатьох реалізаціях це поводиться як `free(ptr)`, але деталі залежать від стандарту/реалізації.
+
+## Detailed explanation
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

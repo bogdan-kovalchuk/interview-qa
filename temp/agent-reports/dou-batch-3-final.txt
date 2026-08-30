@@ -1,0 +1,6 @@
+Batch 3 виконано.
+
+- Імпортовано Middle records 8–17: 10 карток, 20 UK/EN файлів.
+- Усі focused checks пройшли.
+- Звіт: [dou-batch-3.md](/C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-3.md)
+- Коміт і push не виконувались.

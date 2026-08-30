@@ -1,0 +1,40 @@
+﻿---
+id: emb-build-0021
+title: "Як CMake може описувати залежності, targets, interface include dirs і cross-platform build variants?"
+description: "У CMake кожна library/application має бути target з власними sources, compile definitions, include dirs і link dependencies.target_include_directories…"
+track: embedded
+section: toolchain-and-build
+level: senior
+type: concept
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  en: 1
+anki:
+  export: true
+sources:
+  - source_id: dou-embedded-interview
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
+    url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
+---
+
+## Short answer
+
+У CMake кожна library/application має бути <span class="key">target</span> з власними sources, compile definitions, include dirs і link dependencies.<br><code>target_include_directories(... INTERFACE)</code> публікує headers для consumers, а <code>PRIVATE</code> лишає їх локальними.<br>Cross-build variants задають toolchain file, presets, target-specific options і окремі targets для MCU, host tests та utilities.[^dou-embedded-interview]
+## Detailed explanation
+
+TODO
+
+## Evaluation guide
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

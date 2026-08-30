@@ -1,0 +1,41 @@
+---
+id: emb-dtypes-0098
+title: "What happens with `uint32_t *ptr = (uint32_t*)0x40020000; *ptr = 0xFF;` without `volatile`?"
+description: "Without `volatile`, the compiler may eliminate the write as a dead store, since nothing reads `*ptr` again."
+track: embedded
+section: data-types-and-memory-layout
+level: middle
+type: mechanism
+tags: []
+status: published
+updated: 2026-09-06
+content_revision: 1
+reconciled_with:
+  uk: 1
+anki:
+  export: true
+sources:
+  - source_id: embeddedinterviewlab
+    title: "Embedded Interview Lab"
+    url: https://embeddedinterviewlab.com/
+    accessed: 2026-09-06
+    kind: community
+    version: null
+    applicability: "Origin of the question and answer; the answer is not independently verified."
+---
+
+## Short answer
+
+TODO
+
+## Detailed explanation
+
+TODO
+
+## Evaluation guide
+
+TODO
+
+## Sources
+
+<!-- generated from frontmatter -->

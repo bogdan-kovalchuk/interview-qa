@@ -1,0 +1,10 @@
+Repair виконано.
+
+Додано пару карток:
+
+- [UK card](C:/Users/bogdan/Desktop/interview-qa/content/uk/embedded/c-in-embedded/pointer-subtraction-counts-elements.md)
+- [EN card](C:/Users/bogdan/Desktop/interview-qa/content/en/embedded/c-in-embedded/pointer-subtraction-counts-elements.md)
+
+Звіт: [repair-lab-card-32.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/repair-lab-card-32.md)
+
+Focused checks пройшли. `iqa validate` лишився невдалим через наявні repository-wide registry/source failures. Commit і push не виконувались.
