@@ -1,6 +1,6 @@
 """The progress report: dist/export/progress.{json,csv} and ``python -m iqa report``.
 
-Single generator for the table described in meta/SITE.md's "Звіт прогресу" - one row
+Single generator for the table described in meta/site.md's "Звіт прогресу" - one row
 per question, per-language columns, and the same table rolled up by section, track,
 project, language, question type and body-section field. Everything here is derived
 from ``tools/iqa/model.py`` and ``tools/iqa/lifecycle.py``; there is no second notion
@@ -10,7 +10,7 @@ of "done" - ``completeness`` and the lifecycle decision are read, never recomput
 ``site/src/data/`` by ``site/scripts/build.mjs``, the same way ``tools/iqa/mirror.py``
 mirrors ``content/`` - the site never reads ``content/`` or ``dist/export/`` directly,
 only its own generated copy). ``dist/export/progress.csv`` is for opening in a
-spreadsheet, per meta/SITE.md.
+spreadsheet, per meta/site.md.
 """
 
 from __future__ import annotations
@@ -29,11 +29,9 @@ from .mirror import QID_TOKEN_RE
 from .model import Language, Question, required_text_sections
 
 
-# Identical formula to packaging/anki/build.py:guid_for and
-# packaging/anki/test-deck/build_test_deck.py:guid_for (meta/ANKI.md "GUID").
+# Identical formula to packaging/anki/build.py:guid_for (meta/anki.md "GUID").
 # This is a second reading of the frozen formula, not a second definition of it -
-# the same relationship packaging/anki/build.py already documents against the
-# test-deck copy. tests/test_report.py asserts all three agree.
+# the same relationship packaging/anki/build.py already documents.
 GUID_SALT = "iqa:v1:"
 BASE91 = (
     "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -168,7 +166,7 @@ def build_aggregates(rows: list[dict[str, Any]], questions: list[Question]) -> d
                 by_language[language_code][language_row["completeness"]] += 1
 
     # Systemic gaps: for each body-section field (SectionName), how many questions that
-    # require it actually have it written, per language. This is the cut meta/SITE.md
+    # require it actually have it written, per language. This is the cut meta/site.md
     # calls out as most useful - it is exactly how "392/401 miss Detailed explanation"
     # becomes visible as one row instead of being buried in per-question detail.
     by_section_field: dict[str, Any] = {}

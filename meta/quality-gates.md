@@ -18,7 +18,7 @@
 
 | Ворота | Що перевіряє |
 |---|---|
-| `schema` | frontmatter відповідає `meta/schema/question.schema.json` |
+| `schema` | frontmatter відповідає `meta/question.schema.json` |
 | `id-unique` | `id` не повторюється (звірка з `meta/id-registry.csv`) |
 | `id-immutable` | наявний `id` не змінив значення і не перевикористаний після видалення |
 | `sections` | усі обов'язкові секції у правильному порядку; секції – рівно `##`, підблоки `Evaluation guide` – рівно `###`, інших `##` немає |
@@ -27,7 +27,7 @@
 | `sources` | ≥1 джерело; якщо всі `kind: community` – відхилити |
 | `facets-vocabulary` | `level`, `type`, `status`, `frameworks` – тільки зі словників |
 | `xref` | кожен токен `qid:` резолвиться; готових URL у контенті немає |
-| `taxonomy` | `track`/`section` існують у `meta/TAXONOMY.md`, і шлях їм відповідає |
+| `taxonomy` | `track`/`section` існують у `meta/taxonomy.md`, і шлях їм відповідає |
 | `no-duplicates` | семантичний дублікат (схожість `title` + перетин тегів) – **звітне**, бо потребує ручного підтвердження і не може блокувати unattended CI |
 
 ## Паритет мов – блокуючі
@@ -85,7 +85,7 @@
 | Ворота | Що перевіряє | Тип |
 |---|---|---|
 | `source-present` | ≥1 джерело, не лише `community` | автоматичне |
-| `claim-linked` | наявність `source_id` на нетривіальних твердженнях, **за таблицею типів** у `QUESTIONS.md` §6 | блокує лише наявність; доречність – звіт авторові, не ворота |
+| `claim-linked` | наявність `source_id` на нетривіальних твердженнях, **за таблицею типів** у `questions.md` §6 | блокує лише наявність; доречність – звіт авторові, не ворота |
 | `source-applicability` | у джерела є версія, дата доступу і межі застосовності | автоматичне |
 | `example-executed` | приклад компілюється або виконується в оголошеному `execution`: `toolchain` як runner, `flags` обов'язкові | автоматичне |
 | `review-invalidated` | змістовна правка тіла скидає позначку пройденого рев'ю | автоматичне |
@@ -143,7 +143,7 @@ on:
 
 `.apkg` називається `Interview QA - Full Library-<version>.apkg`, де `<version>` – хвіст тега
 після `deck-` (тег `deck-v2026.09.1` дає файл `...-v2026.09.1.apkg`), у форматі версії з
-`meta/ANKI.md`. Поруч – `<...>.apkg.sha256` (`release-checksums`).
+`meta/anki.md`. Поруч – `<...>.apkg.sha256` (`release-checksums`).
 
 **Ворота Anki, які реально виконуються, і які ні:** `anki-guid-stability`, `anki-identity-stable`,
 `anki-notetype-stable`, `anki-no-silent-removal`, `anki-edit-preserves-progress` – це діфи проти

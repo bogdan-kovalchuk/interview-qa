@@ -3,19 +3,19 @@
 Reads only `dist/export/questions.json` (never `content/` - only `tools/` reads
 that, per AGENTS.md) and the frozen note type in `packaging/anki/notetype/`.
 
-Invariants this file must never violate (meta/ANKI.md, meta/DECISIONS.md #7-8):
+Invariants this file must never violate (meta/anki.md, meta/decisions.md #7-8):
 
 - the note type is read from `packaging/anki/notetype/`, not copied here;
 - `model_id`, field ids/ords and template ids come from `fingerprint.json` and
   are never invented here;
 - the GUID formula (`guid_for`) is exactly the one in
-  `packaging/anki/test-deck/build_test_deck.py` - a second definition of the
+  `packaging/anki/test-deck/build_test_deck.py` – a second definition of the
   same frozen formula, not a second formula;
 - fields are written by name (`FIELD_ORDER` from the fingerprint), never by a
   hardcoded position;
 - a card ships only when `tools/iqa/lifecycle.py` says `card_in_apkg` for the
   language being built - nothing else decides that, and no other language is
-  ever substituted into Back (meta/ANKI.md: a mixed-language deck is worse than
+  ever substituted into Back (meta/anki.md: a mixed-language deck is worse than
   a smaller one). One package holds one language; the Ukrainian one is the
   default and keeps the GUID namespace it was released with.
 """
@@ -44,13 +44,13 @@ SITE_ORIGIN = "https://bogdan-kovalchuk.github.io"
 DEFAULT_CARD_LANGUAGE = "uk"
 GUID_SALT = "iqa:v1:"
 
-# meta/ANKI.md "GUID": `iqa:v1:` is fixed forever for the Ukrainian deck, and a separate
+# meta/anki.md "GUID": `iqa:v1:` is fixed forever for the Ukrainian deck, and a separate
 # English deck gets its own namespace `iqa:v1:en:` so the two never collide in one
 # collection. The Ukrainian namespace is empty here on purpose - adding a segment to it
 # would rewrite every existing GUID, which is the one change that loses review progress.
 GUID_NAMESPACE = {"uk": "", "en": "en:"}
 
-# Separate deck trees per language. meta/ANKI.md: a deck holds one language, because
+# Separate deck trees per language. meta/anki.md: a deck holds one language, because
 # "змішана мова в колоді гірша за меншу колоду"; the deck names stay English in both,
 # so the trees sort next to each other in the profile.
 DECK_ROOT = {"uk": "Interview QA", "en": "Interview QA (EN)"}
@@ -69,8 +69,8 @@ LIST_ITEM_RE = re.compile(r"(?m)^-[ \t]+(.+)$")
 def guid_for(qid: str, language: str = DEFAULT_CARD_LANGUAGE) -> str:
     """Deterministic note GUID. Never change this function.
 
-    Identical formula to packaging/anki/test-deck/build_test_deck.py:guid_for -
-    meta/ANKI.md fixes this once; this is a second reading of it, not a second
+    Identical formula to packaging/anki/test-deck/build_test_deck.py:guid_for –
+    meta/anki.md fixes this once; this is a second reading of it, not a second
     definition. `language` selects the namespace and defaults to Ukrainian, whose
     namespace is empty, so every GUID already issued keeps its exact value.
     """
@@ -101,7 +101,7 @@ def render_inline(text: str) -> str:
 
     Shared by every Anki field that is not the Short answer (title, Task,
     Constraints, Scale prompt): none of those get the leading-bold `.key`
-    treatment that meta/QUESTIONS.md section 7 reserves for Short answer.
+    treatment that meta/questions.md section 7 reserves for Short answer.
     """
     text = CITATION_RE.sub("", text)
     text = BOLD_RE.sub(lambda m: f"<strong>{m.group(1)}</strong>", text)
@@ -110,7 +110,7 @@ def render_inline(text: str) -> str:
 
 
 def render_paragraphs(text: str, *, key_lead: bool) -> str:
-    """Render a Markdown answer body into the restricted HTML meta/QUESTIONS.md
+    """Render a Markdown answer body into the restricted HTML meta/questions.md
 
     section 7 allows: paragraphs, at most one fenced code block, inline code,
     bold (the leading bold becomes `<span class="key">` only when `key_lead`
@@ -155,7 +155,7 @@ def render_paragraphs(text: str, *, key_lead: bool) -> str:
 
 
 def render_constraints_list(text: str) -> str:
-    """Compact-rendered Constraints: a single-level list, per meta/ANKI.md.
+    """Compact-rendered Constraints: a single-level list, per meta/anki.md.
 
     "Compact rendering changes only the HTML: it removes extra margins and
     shows Constraints as a single-level list. The exporter does not shorten or
@@ -168,7 +168,7 @@ def render_constraints_list(text: str) -> str:
 
 
 def render_sources_field(sources: list[dict[str, Any]]) -> str:
-    """One line per source: title as link text, url as href (meta/ANKI.md)."""
+    """One line per source: title as link text, url as href (meta/anki.md)."""
     return "<br>".join(f'<a href="{source["url"]}">{source["title"]}</a>' for source in sources)
 
 
@@ -199,8 +199,8 @@ def card_label(
 ) -> str | None:
     """The visible label above Back for types whose Short answer has special
 
-    semantics (meta/ANKI.md "Що в яких полях"). Types with no entry here get
-    no label, matching the ANKI.md table's "solid" (no label) row.
+    semantics (meta/anki.md "Що в яких полях"). Types with no entry here get
+    no label, matching the anki.md table's "solid" (no label) row.
     """
     key = {
         "coding": "Solution outline",
@@ -220,7 +220,7 @@ def deck_name(
 ) -> str:
     """Deck names are English Title Case with `::`, even for Ukrainian cards
 
-    (meta/ANKI.md: "predictably sorts next to others in the profile"). Only the root
+    (meta/anki.md: "predictably sorts next to others in the profile"). Only the root
     segment carries the language, so the two trees sort next to each other and a deck
     still holds exactly one language.
     """
@@ -327,7 +327,7 @@ def build_notes(
     `track` narrows the package to one track. It selects a subset of the same
     notes - same ids, same GUIDs, same decks - so a narrowed package and the full
     library import into one collection without duplicating anything
-    (meta/ANKI.md: "перетин пакетів нешкідливий").
+    (meta/anki.md: "перетин пакетів нешкідливий").
     """
     notes: list[tuple[str, genanki.Note]] = []
     for question in questions:

@@ -13,7 +13,7 @@ Produces two packages for hand-verification on desktop and AnkiDroid:
 The procedure: import v1, study a few cards so they have a real interval, delete
 py-test-0001, then import v2 and confirm three things - the deleted card did not
 come back, the intervals did not reset, and the edited card shows the new text.
-That run was done on 2026-09-03 and all three held; see meta/MEASUREMENTS.md.
+That run was done on 2026-09-03 and all three held; see meta/measurements.md.
 The deck root is `Interview QA Test`, separate from the real deck, so it can be
 deleted whole afterwards. Keep the fonts in collection.media - they are reused.
 

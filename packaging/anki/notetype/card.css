@@ -75,7 +75,7 @@
 .constraints { margin: 8px 0 0; padding-left: 20px; }
 .constraints li { margin: 4px 0; }
 
-/* The label meta/ANKI.md calls out above Back for coding/system-design/behavioral. */
+/* The label meta/anki.md calls out above Back for coding/system-design/behavioral. */
 .answer-label {
   margin-bottom: 8px;
   color: var(--muted);

@@ -1,7 +1,7 @@
 """Generate the Starlight docs mirror from generator-agnostic question Markdown.
 
 This is the one place that turns authored ``content/`` into what the site renders.
-Per ``meta/SITE.md`` and ``meta/QUESTIONS.md``, it is responsible for everything the
+Per ``meta/site.md`` and ``meta/questions.md``, it is responsible for everything the
 site is not allowed to see for itself:
 
 - materialising citation tokens ``[^source_id]`` into real Markdown footnote
@@ -13,7 +13,7 @@ site is not allowed to see for itself:
   language from ``meta/vocabulary.yml``, since the headings in ``content/`` are
   always the English structural identifiers;
 - filtering by ``status`` through ``tools/iqa/lifecycle.py`` - the single
-  implementation of the lifecycle table in ``meta/QUESTIONS.md`` section 8 - with
+  implementation of the lifecycle table in ``meta/questions.md`` section 8 - with
   an explicit ``--preview`` mode that also includes ``draft``/``review``.
 
 Uses ``tools/iqa/model.py`` to parse content; nothing here re-parses Markdown with
@@ -152,7 +152,7 @@ def render_sources(sources: tuple[Source, ...]) -> str:
     """One line per source: ``title`` as link text, ``url`` as href.
 
     ``version``, ``accessed``, ``kind`` and ``applicability`` stay on the page's
-    frontmatter only, per meta/ANKI.md's "Рендер Sources" - and per SITE.md's rule
+    frontmatter only, per meta/anki.md's "Рендер Sources" - and per site.md's rule
     that templates carry no bare English/Ukrainian string, only vocabulary keys.
     Adding those fields here would mean inventing new UI strings with no entry in
     meta/vocabulary.yml to localise them.
@@ -384,7 +384,7 @@ def write_navigation(
     `{lang}/q/{id}/{slug}`, so the menu read `q` -> `cs-algo-0001` -> title.
 
     The shape here is the taxonomy instead: track, then section, then the
-    questions listed on the section's own page. Order is `meta/TAXONOMY.md`'s
+    questions listed on the section's own page. Order is `meta/taxonomy.md`'s
     document order, never alphabetical, because that file is where the intended
     reading order is declared.
     """
@@ -534,7 +534,7 @@ def generate(
             )
             if result is not None:
                 mirrored.append(result)
-        taxonomy = ordered_tracks_and_sections(root / "meta" / "TAXONOMY.md")
+        taxonomy = ordered_tracks_and_sections(root / "meta" / "taxonomy.md")
         sidebar = write_navigation(temporary, mirrored, base, vocabulary, taxonomy)
         if output.exists():
             remove_tree(output)

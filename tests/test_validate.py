@@ -67,13 +67,12 @@ def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
 
 def _make_repository(tmp_path: Path, scenario_path: Path) -> tuple[Path, dict]:
     scenario = yaml.safe_load(scenario_path.read_text(encoding="utf-8"))
-    for name in ("vocabulary.yml", "TAXONOMY.md"):
+    for name in ("vocabulary.yml", "taxonomy.md"):
         destination = tmp_path / "meta" / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / "meta" / name, destination)
-    schema_destination = tmp_path / "meta" / "schema" / "question.schema.json"
-    schema_destination.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT / "meta" / "schema" / "question.schema.json", schema_destination)
+    schema_destination = tmp_path / "meta" / "question.schema.json"
+    shutil.copy2(ROOT / "meta" / "question.schema.json", schema_destination)
 
     texts = {
         "en": (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8"),
@@ -140,13 +139,12 @@ def _base_repository(tmp_path: Path, *, en_text: str, uk_text: str) -> Path:
     through the yaml-driven negative-fixture machinery above (that path is
     reserved for the one-fixture-per-gate set `EXPECTED_FIXTURE_GATES`
     enumerates)."""
-    for name in ("vocabulary.yml", "TAXONOMY.md"):
+    for name in ("vocabulary.yml", "taxonomy.md"):
         destination = tmp_path / "meta" / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / "meta" / name, destination)
-    schema_destination = tmp_path / "meta" / "schema" / "question.schema.json"
-    schema_destination.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(ROOT / "meta" / "schema" / "question.schema.json", schema_destination)
+    schema_destination = tmp_path / "meta" / "question.schema.json"
+    shutil.copy2(ROOT / "meta" / "question.schema.json", schema_destination)
     _write(tmp_path / "content" / "en" / BASE_PATH, en_text)
     _write(tmp_path / "content" / "uk" / BASE_PATH, uk_text)
     _registry(tmp_path / "meta" / "id-registry.csv", [("py-gil-9000", "published", BASE_PATH)])
@@ -154,7 +152,7 @@ def _base_repository(tmp_path: Path, *, en_text: str, uk_text: str) -> Path:
 
 
 def test_lang_parity_gates_ignore_a_todo_section(tmp_path: Path) -> None:
-    """meta/QUALITY_GATES.md: a `TODO` placeholder is exempt from having text -
+    """meta/quality-gates.md: a `TODO` placeholder is exempt from having text -
 
     including the code block and citation token that section would otherwise
     need to match between languages. A Ukrainian `Detailed explanation` with a
@@ -215,10 +213,10 @@ def test_real_content_passes_all_blocking_content_gates() -> None:
 
     392 questions migrated from the predecessor deck in PLAN.md step 4 - has
     zero blocking failures. Word-count is a documented soft warning
-    (meta/QUESTIONS.md SS7), not asserted away here."""
+    (meta/questions.md SS7), not asserted away here."""
     report = validate_repository(ROOT)
-    assert report.files_checked == 802
-    assert report.questions_checked == 401
+    assert report.files_checked == 1616
+    assert report.questions_checked == 808
     assert report.errors == []
 
 

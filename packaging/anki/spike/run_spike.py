@@ -1,6 +1,6 @@
 """Anki compatibility harness: experiments A-J from the M0.4 brief.
 
-Results live in meta/MEASUREMENTS.md. This script only produces the evidence.
+Results live in meta/measurements.md. This script only produces the evidence.
 
 It never accepts the live Anki profile as a work target - pass copied or restored
 collections in an isolated scratch directory. Two fixtures are needed because the

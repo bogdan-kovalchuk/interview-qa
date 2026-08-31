@@ -1,4 +1,4 @@
-"""Implements the `pinned-actions` quality gate (meta/QUALITY_GATES.md).
+"""Implements the `pinned-actions` quality gate (meta/quality-gates.md).
 
 A GitHub Actions `uses:` reference that names a tag (`@v4`) or a branch
 (`@main`) can change what code runs on the next checkout without anything in

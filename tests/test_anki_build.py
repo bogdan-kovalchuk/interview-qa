@@ -28,7 +28,7 @@ def payload() -> dict:
 
 def test_guid_formula_matches_test_deck_reference_implementation() -> None:
     # packaging/anki/test-deck/build_test_deck.py is the worked example whose
-    # guid_for() the real builder must reproduce exactly (meta/ANKI.md "GUID").
+    # guid_for() the real builder must reproduce exactly (meta/anki.md "GUID").
     test_deck_dir = ROOT / "packaging" / "anki" / "test-deck"
     sys.path.insert(0, str(test_deck_dir))
     import build_test_deck  # noqa: E402
@@ -41,7 +41,7 @@ def test_guid_formula_matches_test_deck_reference_implementation() -> None:
 
 
 def test_a_track_package_is_a_subset_with_the_same_guids(payload: dict, vocabulary: dict) -> None:
-    # meta/ANKI.md: "перетин пакетів нешкідливий - та сама нотатка, той самий GUID,
+    # meta/anki.md: "перетин пакетів нешкідливий - та сама нотатка, той самий GUID,
     # та сама колода". A narrowed package must therefore change nothing except
     # which notes are present, so importing it alongside the full library cannot
     # duplicate a note or move one to another deck.
@@ -61,7 +61,7 @@ def test_a_track_package_is_a_subset_with_the_same_guids(payload: dict, vocabula
 
 
 def test_english_notes_get_their_own_guid_namespace(payload: dict, vocabulary: dict) -> None:
-    # meta/ANKI.md "GUID": a separate English deck uses `iqa:v1:en:{id}`. If the two
+    # meta/anki.md "GUID": a separate English deck uses `iqa:v1:en:{id}`. If the two
     # languages shared a GUID, importing both packages into one collection would make
     # each note overwrite the other - the one failure this project cannot recover from.
     model = anki_build.make_model()
@@ -85,7 +85,7 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
     payload: dict, vocabulary: dict
 ) -> None:
     # A card ships on the Short answer written in *that* language, nothing else
-    # (meta/ANKI.md "Коли картка з'являється в пакеті"). Most English bodies are
+    # (meta/anki.md "Коли картка з'являється в пакеті"). Most English bodies are
     # still TODO, so this number is far below the Ukrainian one - and that is the
     # honest state, not a bug.
     model = anki_build.make_model()
@@ -105,8 +105,9 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
 
 
 def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, vocabulary: dict) -> None:
-    # 401 real questions: the 9 original pilots plus the 392 migrated in
-    # PLAN.md step 4, of which 13 keep type `coding` with `anki.export: false`
+    # 808 real questions: the original 401 plus 407 embedded questions imported
+    # in PLAN.md step 7a. Of the original set, 13 keep type `coding` with
+    # `anki.export: false`
     # (their Task/Solution/Tests were never authored - see the M4 report) and
     # so must not ship a card even though their Ukrainian Short answer reads
     # fine on its own.
@@ -118,7 +119,7 @@ def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, v
         for question in payload["questions"]
         if question["languages"]["uk"]["lifecycle"]["card_in_apkg"]
     }
-    assert len(notes) == len(expected_shipped) == 388
+    assert len(notes) == len(expected_shipped) == 795
 
     shipped_ids = {note.fields[anki_build.FIELD_ORDER.index("QID")] for _deck, note in notes}
     assert shipped_ids == expected_shipped
@@ -197,6 +198,6 @@ def test_build_package_end_to_end(tmp_path: Path) -> None:
     out_path = tmp_path / "Interview QA - Full Library.apkg"
 
     count = anki_build.build_package(questions_path, ROOT / "meta" / "vocabulary.yml", out_path)
-    assert count == 388
+    assert count == 795
     assert out_path.is_file()
     assert out_path.stat().st_size > 0

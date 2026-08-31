@@ -8,7 +8,7 @@
 # different decks. Push the tag at the exact commit you want released.
 #
 # ANKI GATES - WHAT ACTUALLY RUNS, AND WHAT DOES NOT (YET):
-# meta/QUALITY_GATES.md lists eight blocking Anki gates. Several of them
+# meta/quality-gates.md lists eight blocking Anki gates. Several of them
 # (`anki-guid-stability`, `anki-identity-stable`, `anki-notetype-stable`,
 # `anki-no-silent-removal`, `anki-edit-preserves-progress`) are diffs against
 # `packaging/anki/releases/<previous-version>.json` - a release manifest that
