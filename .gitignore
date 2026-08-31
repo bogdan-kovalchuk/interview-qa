@@ -33,6 +33,8 @@ desktop.ini
 # spike run artifacts
 /packaging/anki/spike/.tag-refresh-run-*/
 /packaging/anki/spike/.tag-refresh-inspect.anki2
+/packaging/anki/spike/.tag-refresh-venv/
+/packaging/anki/spike/.tag-refresh-inspect.media/
 
 # generated mirror for the site
 /site/src/content/docs/

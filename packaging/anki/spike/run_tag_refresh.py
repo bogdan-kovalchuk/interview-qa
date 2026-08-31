@@ -271,6 +271,10 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
 
     # Capture the package-import UI preset before any explicit import can persist
     # different choices in the collection configuration.
+    # The captured preset serializes all flags as false. In the measured
+    # desktop_default scenario Anki still updates fields on matching notes; keep
+    # the observation separate from an unmeasured explanation of protobuf
+    # defaults. Evidence: tag-refresh-evidence.json.
     preset_probe_dir = args.work_dir / "desktop-preset-probe"
     preset_probe_dir.mkdir()
     preset_probe_path = preset_probe_dir / "collection.anki2"
