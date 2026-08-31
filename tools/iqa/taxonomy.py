@@ -1,6 +1,6 @@
-"""Read the track and section tree out of ``meta/TAXONOMY.md``, in order.
+"""Read the track and section tree out of ``meta/taxonomy.md``, in order.
 
-``meta/TAXONOMY.md`` is the single declaration of which tracks and sections
+``meta/taxonomy.md`` is the single declaration of which tracks and sections
 exist and in what order they are meant to be read. Two consumers need it and
 they need different shapes of the same answer: the validator asks "does this
 path exist" (a set), the mirror asks "what comes after what" (a sequence).

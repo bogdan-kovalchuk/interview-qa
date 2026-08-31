@@ -7,7 +7,7 @@ import { materialCodeThemes } from './src/styles/code-theme.mjs';
 
 /**
  * The sidebar is generated, like the mirror it navigates: `tools/iqa/mirror.py`
- * writes it from `meta/TAXONOMY.md`'s order and `meta/vocabulary.yml`'s labels,
+ * writes it from `meta/taxonomy.md`'s order and `meta/vocabulary.yml`'s labels,
  * and `scripts/build.mjs` runs that before astro. Without an explicit sidebar
  * Starlight autogenerates one from the mirror's directory layout, which is
  * `{lang}/q/{id}/{slug}` - a menu of question ids, which is what this replaces.

@@ -16,7 +16,7 @@ def test_all_real_questions_parse_and_match_generated_schema() -> None:
     validator = Draft202012Validator(schema)
     files = sorted((ROOT / "content").rglob("*.md"))
 
-    assert len(files) == 802
+    assert len(files) == 1616
     for path in files:
         question = parse_question_file(path, content_root=ROOT / "content")
         assert list(validator.iter_errors(question.model_dump(mode="json"))) == []
@@ -68,6 +68,6 @@ def test_a_comment_inside_a_fence_is_code_not_a_heading() -> None:
 
 
 def test_generated_schema_is_reproducible() -> None:
-    path = ROOT / "meta" / "schema" / "question.schema.json"
+    path = ROOT / "meta" / "question.schema.json"
     assert path.read_text(encoding="utf-8") == schema_json()
     assert json.loads(path.read_text(encoding="utf-8")) == question_schema()

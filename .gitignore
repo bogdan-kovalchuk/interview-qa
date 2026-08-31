@@ -4,7 +4,7 @@
 /site/.astro/
 
 # built Anki packages - binaries, published as GitHub Release assets, never committed
-# (meta/ANKI.md: ".apkg не комітиться"), except the fixed manual-test artifacts under test-deck/
+# (meta/anki.md: ".apkg не комітиться"), except the fixed manual-test artifacts under test-deck/
 /packaging/anki/dist/
 
 # node
@@ -14,7 +14,7 @@ node_modules/
 __pycache__/
 *.py[cod]
 .pytest_cache/
-# meta/QUALITY_GATES.md tells you to run pytest with an explicit --basetemp; this is where
+# meta/quality-gates.md tells you to run pytest with an explicit --basetemp; this is where
 # that lands when the writable directory you pick is inside the repository
 .pytest-basetemp/
 .venv/

@@ -67,7 +67,7 @@ def main(argv: list[str] | None = None) -> int:
 
     root = args.root.resolve()
     if args.command == "export-schema":
-        destination = root / "meta" / "schema" / "question.schema.json"
+        destination = root / "meta" / "question.schema.json"
         export_question_schema(destination)
         print(destination.as_posix())
         return 0

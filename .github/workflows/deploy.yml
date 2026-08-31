@@ -19,7 +19,7 @@
 #       branches: [main]
 #
 # That is the one edit. Nothing else in this file changes. Record the
-# decision to flip it in meta/QUALITY_GATES.md and meta/DECISIONS.md when it
+# decision to flip it in meta/quality-gates.md and meta/decisions.md when it
 # happens - do not just change the trigger silently.
 name: Deploy to GitHub Pages
 

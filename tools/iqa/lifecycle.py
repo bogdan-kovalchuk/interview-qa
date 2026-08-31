@@ -61,7 +61,7 @@ def lifecycle_for(
     *,
     in_withdrawal_window: bool = False,
 ) -> LifecycleDecision:
-    """Apply QUESTIONS.md section 8 to one language of one question.
+    """Apply questions.md section 8 to one language of one question.
 
     ``in_withdrawal_window`` is release context that is not stored in a question.
     It controls the one conditional card state in the normative table.

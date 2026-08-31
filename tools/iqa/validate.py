@@ -589,7 +589,7 @@ def _taxonomy_gate(
         return
     expected_path = f"{question.frontmatter.track}/{question.frontmatter.section}"
     if expected_path not in taxonomy_paths:
-        report.add("taxonomy", f"`{expected_path}` is not in meta/TAXONOMY.md", path=record.label)
+        report.add("taxonomy", f"`{expected_path}` is not in meta/taxonomy.md", path=record.label)
     parts = record.relative.parts
     actual_track = parts[1] if len(parts) > 1 else ""
     actual_section = "/".join(parts[2:-1]) if len(parts) > 3 else ""
@@ -747,7 +747,7 @@ def _language_gates(
             )
 
         # Both gates below compare *written* text between languages. Per
-        # meta/QUALITY_GATES.md's framing rule, a `TODO` placeholder is
+        # meta/quality-gates.md's framing rule, a `TODO` placeholder is
         # exempt from having text at all - it carries no code and no
         # citation/qid tokens to be identical or parallel to anything, so a
         # section that is `TODO` on either side is excluded from both
@@ -848,9 +848,9 @@ def validate_repository(root: Path) -> ValidationReport:
     content_root = root / "content"
     records = _read_records(content_root, report)
     vocabulary = _load_vocabulary(root / "meta" / "vocabulary.yml", report)
-    taxonomy_paths = _taxonomy_paths(root / "meta" / "TAXONOMY.md", report)
+    taxonomy_paths = _taxonomy_paths(root / "meta" / "taxonomy.md", report)
     registry = _load_registry(root / "meta" / "id-registry.csv", report)
-    _schema_gate(records, root / "meta" / "schema" / "question.schema.json", report)
+    _schema_gate(records, root / "meta" / "question.schema.json", report)
     _vocabulary_contract_gate(vocabulary, report)
 
     for record in records:

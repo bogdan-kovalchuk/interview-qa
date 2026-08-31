@@ -2,7 +2,7 @@
 # build path (validate -> export -> mirror -> astro build -> verify).
 #
 # This is the workflow that must fail on a broken question. It runs the exact
-# same commands documented in meta/QUALITY_GATES.md ("Пайплайни" -> PR) and in
+# same commands documented in meta/quality-gates.md ("Пайплайни" -> PR) and in
 # README-equivalent local instructions: `pip install --require-hashes -r
 # requirements-lock.txt`, `pip install --no-deps -e .`, `npm ci` in `site/`,
 # `python -m iqa validate`, `python -m pytest`, `python -m iqa build`. Nothing
@@ -10,7 +10,7 @@
 #
 # Every `uses:` below is pinned to a commit SHA, verified against the tag it
 # claims to be by querying the GitHub API and `git ls-remote` independently
-# (meta/QUALITY_GATES.md `pinned-actions`). This workflow enforces that rule
+# (meta/quality-gates.md `pinned-actions`). This workflow enforces that rule
 # on itself and on the other two workflows via `check-pinned-actions` below.
 name: CI
 

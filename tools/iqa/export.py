@@ -4,7 +4,7 @@ This is the single place that turns ``content/`` into data other tools consume:
 the deck builder (``packaging/anki/build.py``) and, later, the progress report.
 Nothing downstream re-parses Markdown; everything downstream reads this file.
 
-Per ``meta/DECISIONS.md`` sections 5-6, cross-references (``see_also``,
+Per ``meta/decisions.md`` sections 5-6, cross-references (``see_also``,
 ``prerequisites``) are exported as ``{"qid": "..."}`` objects, never as URLs -
 only the site and Anki materialise a ``qid:`` reference into a URL, and each
 does so in its own form.
@@ -69,7 +69,7 @@ def _raw_section(question: Question, name: SectionName) -> str | None:
 
 
 def _card_payload(question: Question) -> dict[str, Any]:
-    """The only body content this export carries: exactly what meta/ANKI.md's
+    """The only body content this export carries: exactly what meta/anki.md's
 
     field table says a card is built from - `Short answer` for every type, plus
     `Task`/`Constraints` for `coding` and `Scale prompt` for `system-design`.
@@ -136,7 +136,7 @@ def _question_payload(
     *,
     in_withdrawal_window: bool,
 ) -> dict[str, Any]:
-    # Language-neutral facets are authoritative on the English file (DECISIONS.md #14);
+    # Language-neutral facets are authoritative on the English file (decisions.md #14);
     # fall back to whichever language exists so a question missing English stub still exports.
     primary = by_language.get(Language.EN) or next(iter(by_language.values()))
     frontmatter = primary.frontmatter

@@ -166,7 +166,7 @@ def test_ukrainian_content_shows_ukrainian_headings(tmp_path: Path) -> None:
     section_dir = content / "uk" / "python" / "concurrency-and-gil"
     section_dir.mkdir(parents=True)
     # A Ukrainian-language fixture: same structural (English) headings in the
-    # source, per meta/QUESTIONS.md section 4 - "headings are identifiers,
+    # source, per meta/questions.md section 4 - "headings are identifiers,
     # not text" - but reconciled_with must point at "en", not "uk", to satisfy
     # the model's own-language exclusion rule.
     text = (FIXTURES / "statuses" / "published.md").read_text(encoding="utf-8")
