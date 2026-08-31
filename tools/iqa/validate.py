@@ -485,6 +485,15 @@ def _without_code(text: str) -> str:
 def _sentence_count(text: str) -> int:
     cleaned = _without_code(text)
     cleaned = CITATION_RE.sub("", cleaned)
+    # Inline code or highlighting can legitimately start the next sentence
+    # with a lowercase identifier, for example `<code>mutex</code>`.
+    cleaned = re.sub(
+        r"(?<=[.!?])(\s+)<(?=(?:code|span)\b)", r"\1X<", cleaned, flags=re.IGNORECASE
+    )
+    # Preserve a word boundary where legacy/imported answers use HTML line
+    # breaks. Removing the tag directly would join `sentence.<br>Next` into
+    # `sentence.Next` and undercount otherwise valid prose.
+    cleaned = re.sub(r"<br\s*/?>", " ", cleaned, flags=re.IGNORECASE)
     cleaned = re.sub(r"<[^>]+>", "", cleaned)
     cleaned = re.sub(r"[*_`]", "", cleaned)
     cleaned = re.sub(r"(?m)^\s*(?:[-+*]|\d+[.)])\s+", "", cleaned)

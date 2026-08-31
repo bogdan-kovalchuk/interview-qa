@@ -8,7 +8,7 @@ import pytest
 import yaml
 
 from iqa.__main__ import main
-from iqa.validate import validate_repository
+from iqa.validate import _sentence_count, validate_repository
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,6 +48,12 @@ def _write(path: Path, text: str) -> None:
 def _replace(text: str, old: str, new: str) -> str:
     assert text.count(old) >= 1, f"fixture mutation did not find {old!r}"
     return text.replace(old, new)
+
+
+def test_sentence_count_preserves_boundaries_across_html_breaks() -> None:
+    assert _sentence_count("First sentence.<br>Second sentence.") == 2
+    assert _sentence_count("First sentence.<br />Second sentence.") == 2
+    assert _sentence_count("First sentence. <code>mutex</code> starts the second.") == 2
 
 
 def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
