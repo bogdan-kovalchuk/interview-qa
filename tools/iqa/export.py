@@ -1,7 +1,7 @@
 """Export the canonical machine-readable view of every question.
 
 This is the single place that turns ``content/`` into data other tools consume:
-the deck builder (``packaging/anki/build.py``) and, later, the progress report.
+the deck builder (``anki/build.py``) and, later, the progress report.
 Nothing downstream re-parses Markdown; everything downstream reads this file.
 
 Per ``meta/decisions.md`` sections 5-6, cross-references (``see_also``,

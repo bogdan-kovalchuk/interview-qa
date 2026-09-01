@@ -5,7 +5,7 @@ import sys
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "packaging" / "anki"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "anki"))
 
 import build as anki_build  # noqa: E402  (path insertion must happen first)
 from iqa.export import build_export
@@ -26,18 +26,17 @@ def payload() -> dict:
     return build_export(ROOT / "content")
 
 
-def test_guid_formula_matches_test_deck_reference_implementation() -> None:
-    # packaging/anki/test-deck/build_test_deck.py is the worked example whose
-    # guid_for() the real builder must reproduce exactly (meta/anki.md "GUID").
-    test_deck_dir = ROOT / "packaging" / "anki" / "test-deck"
-    sys.path.insert(0, str(test_deck_dir))
-    import build_test_deck  # noqa: E402
-
-    for qid in ("py-asyncio-0007", "cpp-mem-0001", "bhv-team-0001"):
-        assert anki_build.guid_for(qid) == build_test_deck.guid_for(qid)
-        # The default is Ukrainian and its namespace is empty, so asking for it
-        # explicitly must not move a single GUID that has already been issued.
-        assert anki_build.guid_for(qid, "uk") == build_test_deck.guid_for(qid)
+def test_guid_formula_matches_frozen_vectors() -> None:
+    vectors = {
+        "py-asyncio-0007": ("n]E+uj-m)+", "D6lFSx(GBF"),
+        "cpp-mem-0001": ("wpQwRgBDb/", "QG.5@&4Wg."),
+        "bhv-team-0001": ("iZkvA-a5~j", "qzNLi3Nt`Y"),
+        "emb-dtypes-0113": ("NF6SM#hdrt", "Jy@~xst2Q4"),
+    }
+    for qid, (uk_guid, en_guid) in vectors.items():
+        assert anki_build.guid_for(qid) == uk_guid
+        assert anki_build.guid_for(qid, "uk") == uk_guid
+        assert anki_build.guid_for(qid, "en") == en_guid
 
 
 def test_a_track_package_is_a_subset_with_the_same_guids(payload: dict, vocabulary: dict) -> None:
@@ -147,7 +146,7 @@ def test_front_and_back_templates_no_longer_parse_the_qid() -> None:
     # generated Front field instead; the templates must carry neither the
     # QID field reference nor any prefix-splitting logic.
     for name in ("front.html", "back.html"):
-        text = (ROOT / "packaging" / "anki" / "notetype" / name).read_text(encoding="utf-8")
+        text = (ROOT / "anki" / "notetype" / name).read_text(encoding="utf-8")
         assert "{{text:QID}}" not in text
         assert ".split(" not in text
         assert "<script>" not in text

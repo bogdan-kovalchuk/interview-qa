@@ -6,7 +6,7 @@
 # README-equivalent local instructions: `pip install --require-hashes -r
 # requirements/python-lock.txt`, `pip install --no-deps -e .`, `npm ci` in `site/`,
 # `python -m iqa validate`, `python -m pytest`, `python -m iqa build`. Nothing
-# here reimplements tools/iqa or packaging/anki - it only calls them.
+# here reimplements tools/iqa or anki - it only calls them.
 #
 # Every `uses:` below is pinned to a commit SHA, verified against the tag it
 # claims to be by querying the GitHub API and `git ls-remote` independently

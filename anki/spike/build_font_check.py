@@ -12,7 +12,7 @@ Latin and Cyrillic are measured separately on purpose: the faces are embedded as
 per-subset files with `unicode-range`, so one subset can load while the other
 falls back.
 
-Run:  python packaging/anki/test-deck/build_font_check.py
+Run:  python anki/spike/build_font_check.py
 """
 
 from __future__ import annotations
@@ -22,15 +22,15 @@ import sys
 
 import genanki
 
-ROOT = pathlib.Path(__file__).resolve().parents[3]
-FONTS = ROOT / "packaging" / "anki" / "fonts"
-OUT = ROOT / "packaging" / "anki" / "test-deck"
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+FONTS = ROOT / "anki" / "fonts"
+OUT = ROOT / "anki" / "dist"
 
 MODEL_ID = 1600000000002
 DECK_ID = 1600000000200
 
-sys.path.insert(0, str(pathlib.Path(__file__).parent))
-from build_test_deck import font_face_css, guid_for  # noqa: E402
+sys.path.insert(0, str(ROOT / "anki"))
+from build import font_face_css, guid_for  # noqa: E402
 
 FRONT = r"""
 <div class="fc">
@@ -163,6 +163,7 @@ code { font-family: var(--font-mono); font-size: .9em; }
 
 
 def main() -> int:
+    OUT.mkdir(parents=True, exist_ok=True)
     model = genanki.Model(
         MODEL_ID, "Interview QA Font Check",
         fields=[{"name": "Front"}, {"name": "QID"}],

@@ -20,15 +20,12 @@ def _write_question(directory: Path, text: str, filename: str) -> None:
     (directory / filename).write_text(text, encoding="utf-8")
 
 
-def test_guid_formula_matches_the_anki_builder_and_the_test_deck() -> None:
-    sys.path.insert(0, str(ROOT / "packaging" / "anki"))
+def test_guid_formula_matches_the_anki_builder() -> None:
+    sys.path.insert(0, str(ROOT / "anki"))
     import build as anki_build  # noqa: E402
 
-    sys.path.insert(0, str(ROOT / "packaging" / "anki" / "test-deck"))
-    import build_test_deck  # noqa: E402
-
     for qid in ("py-asyncio-0007", "cpp-mem-0001", "bhv-team-0001"):
-        assert report.guid_for(qid) == anki_build.guid_for(qid) == build_test_deck.guid_for(qid)
+        assert report.guid_for(qid) == anki_build.guid_for(qid)
 
 
 def test_report_covers_all_808_questions_both_languages() -> None:

@@ -4,8 +4,7 @@
 /site/.astro/
 
 # built Anki packages - binaries, published as GitHub Release assets, never committed
-# (meta/anki.md: ".apkg не комітиться"), except the fixed manual-test artifacts under test-deck/
-/packaging/anki/dist/
+/anki/dist/
 
 # node
 node_modules/
@@ -31,10 +30,10 @@ desktop.ini
 .DS_Store
 
 # spike run artifacts
-/packaging/anki/spike/.tag-refresh-run-*/
-/packaging/anki/spike/.tag-refresh-inspect.anki2
-/packaging/anki/spike/.tag-refresh-venv/
-/packaging/anki/spike/.tag-refresh-inspect.media/
+/anki/spike/.tag-refresh-run-*/
+/anki/spike/.tag-refresh-inspect.anki2
+/anki/spike/.tag-refresh-venv/
+/anki/spike/.tag-refresh-inspect.media/
 
 # generated mirror for the site
 /site/src/content/docs/
