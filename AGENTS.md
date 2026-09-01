@@ -27,13 +27,13 @@ justification is a second person.
 | Path | What it holds |
 |---|---|
 | `content/{en,uk}/{track}/**/*.md` | the questions – the only source of truth for content |
-| `meta/QUESTIONS.md` | the question contract: naming, frontmatter, body, types, lifecycle |
-| `meta/TAXONOMY.md` | the track and section tree |
-| `meta/ANKI.md` | note type, GUID, packaging, when a card ships |
-| `meta/SITE.md` | site build, URLs, localisation, progress report |
-| `meta/QUALITY_GATES.md` | what CI checks |
-| `meta/DECISIONS.md` | every decision that is settled, and why |
-| `meta/MEASUREMENTS.md` | what was measured on real Anki collections |
+| `meta/questions.md` | the question contract: naming, frontmatter, body, types, lifecycle |
+| `meta/taxonomy.md` | the track and section tree |
+| `meta/anki.md` | note type, GUID, packaging, when a card ships |
+| `meta/site.md` | site build, URLs, localisation, progress report |
+| `meta/quality-gates.md` | what CI checks |
+| `meta/decisions.md` | every decision that is settled, and why |
+| `meta/measurements.md` | what was measured on real Anki collections |
 | `meta/vocabulary.yml` | section labels, glossary, frameworks, section prefixes |
 | `meta/id-registry.csv` | issued question IDs – the arbiter |
 | `meta/predecessor-baseline.json` | hashes of the migrated predecessor deck, kept as evidence |
@@ -45,29 +45,29 @@ justification is a second person.
 | `PLAN.md` | what happens next |
 
 One-time setup: `pip install -e .` and `pip install pytest`. After that
-`python -m iqa validate` checks the content gates and `python -m pytest` runs the suite. Nothing
-else in the repository is runnable yet.
+`python -m iqa validate` checks the content gates and `python -m pytest` runs the suite. The build
+commands are listed under "Current state" below.
 
 Nothing else outranks this file. If another document disagrees with it, that document is wrong and
 must be fixed – not worked around.
 
 ## Current state
 
-**401 questions, both languages, 388 Ukrainian cards and 145 English ones.** The 392 predecessor
-cards are migrated; nine hand-written pilots cover every question type. Decisions are settled (`meta/DECISIONS.md`),
-the Anki behaviour is measured on real collections (`meta/MEASUREMENTS.md`), and the question
-contract is frozen.
+**808 questions in both languages, 795 Ukrainian cards and 145 English ones.** The 392 predecessor
+cards are migrated; all 207 DOU records and the first 200 of 646 Embedded Interview Lab records are
+imported (step 7a). Nine hand-written pilots cover every question type. Decisions are settled
+(`meta/decisions.md`), the Anki behaviour is measured on real collections
+(`meta/measurements.md`), and the question contract is frozen.
 
 A migrated question starts with a real Ukrainian `Short answer` and `TODO` everywhere else,
 including the whole English body. That is the documented skeleton state, not an unfinished job: the
 card ships from the Ukrainian answer, and the page shows honestly what is not written yet.
 
-Writing over that skeleton has started (`PLAN.md` step 7). **136 of the 392** now carry a written
+Writing over the predecessor skeleton has started (`PLAN.md` step 7). **136 of the 392** now carry a written
 Ukrainian `Detailed explanation` together with the full English body – the translated `Short answer`
 and `Detailed explanation`. Two sections, `python/fundamentals` and `python/syntax-and-control-flow`,
-are finished end to end. The Ukrainian card count is unchanged at 388 – a card ships on the `Short
-answer` in its own language, and every Ukrainian one was already written – while the English package
-grows with each English `Short answer` that gets translated.
+are finished end to end. That original set still contributes 388 Ukrainian cards; the 407 imported
+embedded questions add Ukrainian cards immediately, while their English bodies remain `TODO`.
 
 What works today, and how to run it:
 
@@ -84,7 +84,7 @@ CI runs that same sequence on every pull request. Deploying to GitHub Pages is d
 **manual only** (`workflow_dispatch`) until the owner authorises automatic publication, and the
 deck is released by tagging `deck-v*`.
 
-The site navigates by taxonomy: a generated sidebar (track, then section, in `meta/TAXONOMY.md`
+The site navigates by taxonomy: a generated sidebar (track, then section, in `meta/taxonomy.md`
 order) plus track and section index pages, with the questions listed on their section's page rather
 than in the menu. It is styled as a port of the reference site's Material for MkDocs theme
 (`site/src/styles/`, values read off that site's CSS). **An unwritten section is not rendered on the
@@ -92,9 +92,9 @@ page at all** - the heading stays in `content/` because the contract requires it
 reported as data (`dist/export/progress.{json,csv}`, and `/status/` once it exists) rather than as a
 notice repeated down every page.
 
-What does not exist yet: the `/status/` page, Pagefind checked in both locales, the scale spike, and
-programs. `PLAN.md` steps 6-7. The progress report exists as data (`python -m iqa report`) and the
-page that renders it does not.
+What does not exist yet: the `/status/` page, the scale spike, and programs. Pagefind is built and
+verified in both locales. `PLAN.md` steps 6-9. The progress report exists as data
+(`python -m iqa report`) and the page that renders it does not.
 
 ## Non-negotiable invariants
 
@@ -119,7 +119,7 @@ Breaking any of these is a migration event, not an edit.
   An absent section is a structural error; an empty one is not.
 - **An AI translation is the translation.** There is no translation-quality gate and there will not
   be one. Machine parity stays because it catches mechanical breakage cheaply.
-- **Publication, card shipping and `Reference` follow the lifecycle table** in `meta/QUESTIONS.md`
+- **Publication, card shipping and `Reference` follow the lifecycle table** in `meta/questions.md`
   §8 and nothing else.
 
 ## How work is done here
@@ -134,7 +134,7 @@ Breaking any of these is a migration event, not an edit.
 - **Never leave two live descriptions of one behaviour.** Changed a rule? Find and fix every other
   place it is stated. This class of defect has cost this project a whole phase.
 - **Measure, do not paraphrase.** Claims about Anki behaviour come from `packaging/anki/spike/`,
-  which is re-runnable, and land in `meta/MEASUREMENTS.md`. Documentation and measurement have
+  which is re-runnable, and land in `meta/measurements.md`. Documentation and measurement have
   already disagreed twice here, and measurement won both times.
 - **Report a phase, then stop.** Each phase in `PLAN.md` ends with a report and waits for the owner.
 

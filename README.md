@@ -16,7 +16,7 @@ programs. A fix made once is a fix everywhere.
 > thin says so, in place, with a visible notice instead of the bare word `TODO`. Nothing is hidden
 > behind a disclaimer in the footer.
 >
-> **Current state:** 401 questions in both languages, 388 shipping as Ukrainian flashcards and 145
+> **Current state:** 808 questions in both languages, 795 shipping as Ukrainian flashcards and 145
 > as English ones, and the site is live at the link above. Every question has a Ukrainian short
 > answer, and 145 have a written detailed explanation together with a full English body; for the
 > rest, the detailed explanation and the English text are still `TODO`. A `/status/` page that
@@ -39,7 +39,7 @@ after the taxonomy is reorganised.
 
 Cards are updated, not replaced: note GUIDs are derived deterministically from the question id, so
 re-importing a rebuilt deck edits the existing note and **keeps your review schedule**. This was
-measured on real collections, not assumed – see `meta/MEASUREMENTS.md`.
+measured on real collections, not assumed – see `meta/measurements.md`.
 
 ## Layout
 
