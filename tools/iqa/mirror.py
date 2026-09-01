@@ -79,7 +79,7 @@ def completeness_label(vocabulary: dict[str, Any], completeness: str, language: 
     return _label(vocabulary.get("completeness_labels") or {}, completeness, language, what="completeness")
 
 
-# Sidebar badge variant per completeness (PLAN.md step 6, item 3: "the reader must be
+# Sidebar badge variant per completeness (meta/plan.md step 6, item 3: "the reader must be
 # able to see at a glance which entries in an index are thin"). `complete` gets no
 # badge at all - see mirror_question - so it is not listed here.
 COMPLETENESS_BADGE_VARIANT: dict[str, str] = {

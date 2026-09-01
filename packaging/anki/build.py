@@ -241,7 +241,7 @@ def build_tags(question: dict[str, Any]) -> list[str]:
     tags.extend(f"framework::{framework}" for framework in question["frameworks"])
     tags.extend(f"tag::{tag}" for tag in question["tags"])
     # role:: tags are omitted: they are derived from programs/*.yml membership,
-    # which does not exist yet (PLAN.md step 7). Nothing to derive from means
+    # which does not exist yet (meta/plan.md step 7). Nothing to derive from means
     # no role:: tag - not a placeholder value.
     return tags
 

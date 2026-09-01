@@ -1,5 +1,0 @@
-Виконано рівно batch із 10 DOU-карток, lines 66–75 Junior, створено 20 UK/EN файлів.
-
-Перевірки пройшли: pairing, required sections, English `TODO`, forbidden characters. Registry, taxonomy, validators, plans та існуючі питання не змінювалися. Commit/push не виконувалися.
-
-Звіт: [dou-next-batch.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-next-batch.md)

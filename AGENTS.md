@@ -42,7 +42,7 @@ justification is a second person.
 | `site/` | Astro Starlight; the only Node part |
 | `tools/iqa/` | the Python pipeline; the only component that reads `content/` |
 | `tests/` | negative fixtures - one per gate - plus model, lifecycle and CLI tests |
-| `PLAN.md` | what happens next |
+| `meta/plan.md` | what happens next |
 
 One-time setup: `pip install -e .` and `pip install pytest`. After that
 `python -m iqa validate` checks the content gates and `python -m pytest` runs the suite. The build
@@ -63,7 +63,7 @@ A migrated question starts with a real Ukrainian `Short answer` and `TODO` every
 including the whole English body. That is the documented skeleton state, not an unfinished job: the
 card ships from the Ukrainian answer, and the page shows honestly what is not written yet.
 
-Writing over the predecessor skeleton has started (`PLAN.md` step 7). **136 of the 392** now carry a written
+Writing over the predecessor skeleton has started (`meta/plan.md` step 7). **136 of the 392** now carry a written
 Ukrainian `Detailed explanation` together with the full English body – the translated `Short answer`
 and `Detailed explanation`. Two sections, `python/fundamentals` and `python/syntax-and-control-flow`,
 are finished end to end. That original set still contributes 388 Ukrainian cards; the 407 imported
@@ -93,7 +93,7 @@ reported as data (`dist/export/progress.{json,csv}`, and `/status/` once it exis
 notice repeated down every page.
 
 What does not exist yet: the `/status/` page, the scale spike, and programs. Pagefind is built and
-verified in both locales. `PLAN.md` steps 6-9. The progress report exists as data
+verified in both locales. `meta/plan.md` steps 6-9. The progress report exists as data
 (`python -m iqa report`) and the page that renders it does not.
 
 ## Non-negotiable invariants
@@ -136,7 +136,7 @@ Breaking any of these is a migration event, not an edit.
 - **Measure, do not paraphrase.** Claims about Anki behaviour come from `packaging/anki/spike/`,
   which is re-runnable, and land in `meta/measurements.md`. Documentation and measurement have
   already disagreed twice here, and measurement won both times.
-- **Report a phase, then stop.** Each phase in `PLAN.md` ends with a report and waits for the owner.
+- **Report a phase, then stop.** Each phase in `meta/plan.md` ends with a report and waits for the owner.
 
 ## Traps already stepped in
 

@@ -103,7 +103,7 @@ section_labels_nav:
   engineering/version-control:        {en: Version control,          uk: Контроль версій}
   system-design/messaging-and-queues: {en: Messaging and queues,     uk: Черги й повідомлення}
   behavioral/teamwork-and-conflict:   {en: Teamwork and conflict,    uk: Командна робота й конфлікт}
-  # Додано міграцією M4 (PLAN.md крок 4): 26 секцій, наповнені 392 картками
+  # Додано міграцією M4 (meta/plan.md крок 4): 26 секцій, наповнені 392 картками
   # з predecessor-колоди. python/* - пряме перенесення 20 тем Anki-репозиторію
   # 1:1 із meta/taxonomy.md; cs/, databases/, engineering/ - теми 21-23,
   # перенесені за meta/migration/tag-mapping.md.
@@ -143,7 +143,7 @@ completeness_labels:
   partial:  {en: Partial,     uk: Частково}
   complete: {en: Complete,    uk: Завершено}
 
-# Видимі підписи навколо індексів треку/секції і /status/ (PLAN.md крок 6). `level`
+# Видимі підписи навколо індексів треку/секції і /status/ (meta/plan.md крок 6). `level`
 # і `type` самі лишаються англійськими кодами закритого словника (quality-gates.md
 # facets-vocabulary) - тут перекладаються тільки підписи навколо них, не значення.
 site_labels:
@@ -175,8 +175,8 @@ site_labels:
   aggregate_by_section_field:              {en: "By body section (systemic gaps)",
                                              uk: "За розділом тіла (системні прогалини)"}
   aggregate_by_program:                     {en: "By program",   uk: "За програмою"}
-  aggregate_no_programs:                     {en: "No programs are defined yet (PLAN.md step 9).",
-                                               uk: "Програм ще не визначено (PLAN.md крок 9)."}
+  aggregate_no_programs:                     {en: "No programs are defined yet (meta/plan.md step 9).",
+                                               uk: "Програм ще не визначено (meta/plan.md крок 9)."}
   aggregate_total:                            {en: Total,        uk: Разом}
   section_field_written:                       {en: written,     uk: написано}
   breadcrumb_all_tracks:                        {en: "All tracks", uk: "Усі треки"}

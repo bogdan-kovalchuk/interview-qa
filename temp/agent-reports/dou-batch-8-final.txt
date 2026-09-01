@@ -1,5 +1,0 @@
-Batch 8 виконано: Senior 8–27, 20 UK/EN пар, перевірки пройдено. Звіт:
-
-[temp/agent-reports/dou-batch-8.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-8.md)
-
-Комітів і push не виконувалось.

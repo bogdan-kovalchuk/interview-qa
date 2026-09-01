@@ -14,7 +14,7 @@
 |---|---|
 | 1. Модель і валідатор | `tools/iqa/model.py`, `lifecycle.py`, `validate.py`, `meta/`, негативна фікстура на кожну ворота |
 | 2. Вертикальний зріз | `export.py`, полагоджене дзеркало, єдиний шлях збірки, переписаний `verify_build.py`, `packaging/anki/build.py` |
-| 3. CI | три workflow, ворота `pinned-actions`, `requirements-lock.txt` з хешами |
+| 3. CI | три workflow, ворота `pinned-actions`, `requirements/python-lock.txt` з хешами |
 | 4. Міграція | 392 картки в `content/`, числа й наслідки – `meta/measurements.md` |
 
 Поточний стан: **808 питань обома мовами, 795 українських карток і 145 англійських**,

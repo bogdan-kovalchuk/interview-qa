@@ -164,7 +164,7 @@ sitemap і `hreflang`.
 З кроку 6 зроблено: `dist/export/progress.{json,csv}` і `python -m iqa report --todo`
 (`tools/iqa/report.py`); **навігація з дерева таксономії та індекси треків і секцій**. Лишається:
 сторінка `/status/`, яка рендерить уже наявний `progress.json`, Pagefind обома мовами і scale
-spike (`PLAN.md` крок 6).
+spike (`meta/plan.md` крок 6).
 
 ## Навігація і оформлення
 

@@ -1,7 +1,0 @@
-Batch 4 виконано.
-
-- Додано 40 файлів: 20 UK + 20 EN.
-- IDs: `emb-cppfound-0041`–`0060`.
-- Усі фокусовані перевірки пройшли.
-- Commit/push не виконувалися.
-- Звіт: [lab-batch-4.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/lab-batch-4.md)
