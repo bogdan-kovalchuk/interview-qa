@@ -1,7 +1,0 @@
-Batch 3 виконано точно:
-
-- Додано 20 UK і 20 EN файлів.
-- IDs: `emb-cppfound-0021`–`emb-cppfound-0040`.
-- Усі сфокусовані перевірки пройшли.
-- Коміт і push не виконувалися.
-- Звіт: [lab-batch-3.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/lab-batch-3.md)

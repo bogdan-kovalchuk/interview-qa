@@ -1,7 +1,0 @@
-Батч 4 виконано.
-
-- Імпортовано Middle 18–27: 10 карток, 20 UK/EN файлів.
-- Focused checks пройшли: parity 10/10, структура, ID, markup, forbidden characters.
-- `python -m iqa validate` має baseline-помилки registry/source для Embedded corpus; файли, реєстр і taxonomy не змінювались.
-- Звіт: [dou-batch-4.md](/C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-4.md)
-- Коміт і push не виконувались.

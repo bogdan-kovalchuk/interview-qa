@@ -12,7 +12,7 @@
 # (`anki-guid-stability`, `anki-identity-stable`, `anki-notetype-stable`,
 # `anki-no-silent-removal`, `anki-edit-preserves-progress`) are diffs against
 # `packaging/anki/releases/<previous-version>.json` - a release manifest that
-# does not exist yet. PLAN.md step 4, checkpoint 4, is what writes the FIRST
+# does not exist yet. meta/plan.md step 4, checkpoint 4, is what writes the FIRST
 # one, as a baseline; there is nothing to diff against before that. No script
 # in this repository computes that diff (tools/iqa and packaging/anki/build.py
 # do not implement it), and this workflow does not invent one - that would be
@@ -54,12 +54,12 @@ jobs:
         with:
           python-version: "3.14"
           cache: pip
-          cache-dependency-path: requirements-lock.txt
+          cache-dependency-path: requirements/python-lock.txt
 
       - name: Install Python dependencies from the lock file
         run: |
           python -m pip install --upgrade pip
-          python -m pip install --require-hashes -r requirements-lock.txt
+          python -m pip install --require-hashes -r requirements/python-lock.txt
           python -m pip install --no-deps -e .
 
       - name: Set up Node

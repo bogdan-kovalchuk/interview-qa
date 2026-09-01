@@ -1,5 +1,0 @@
-Batch 6 виконано: імпортовано Middle 38–57, створено 20 UK/EN пар, усі focused checks пройшли.
-
-Звіт: [dou-batch-6.md](C:/Users/bogdan/Desktop/interview-qa/temp/agent-reports/dou-batch-6.md)
-
-Коміт і push не виконувалися.

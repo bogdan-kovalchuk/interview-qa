@@ -106,7 +106,7 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
 
 def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, vocabulary: dict) -> None:
     # 808 real questions: the original 401 plus 407 embedded questions imported
-    # in PLAN.md step 7a. Of the original set, 13 keep type `coding` with
+    # in meta/plan.md step 7a. Of the original set, 13 keep type `coding` with
     # `anki.export: false`
     # (their Task/Solution/Tests were never authored - see the M4 report) and
     # so must not ship a card even though their Ukrainian Short answer reads
@@ -126,7 +126,7 @@ def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, v
 
 
 def test_front_label_comes_from_vocabulary_not_from_the_qid_prefix(payload: dict, vocabulary: dict) -> None:
-    # The trap PLAN.md calls out: the track label must not be decoded from the
+    # The trap meta/plan.md calls out: the track label must not be decoded from the
     # QID prefix. Build the same question under a spoofed id whose prefix maps
     # to a different track in the old front.html/back.html JS map, and confirm
     # the rendered label still reflects the real `track` field.
@@ -142,7 +142,7 @@ def test_front_label_comes_from_vocabulary_not_from_the_qid_prefix(payload: dict
 
 
 def test_front_and_back_templates_no_longer_parse_the_qid() -> None:
-    # PLAN.md's named trap: the visible track label used to come from splitting
+    # meta/plan.md's named trap: the visible track label used to come from splitting
     # the QID prefix in a <script> block. Fixed by baking the label into the
     # generated Front field instead; the templates must carry neither the
     # QID field reference nor any prefix-splitting logic.

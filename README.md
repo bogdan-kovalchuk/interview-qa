@@ -51,7 +51,7 @@ measured on real collections, not assumed – see `meta/measurements.md`.
 | `site/` | Astro Starlight – the only Node part |
 | `tools/` | the Python pipeline |
 | `AGENTS.md` | how to work in this repository – read first |
-| `PLAN.md` | what happens next |
+| `meta/plan.md` | what happens next |
 
 ## Stack
 

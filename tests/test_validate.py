@@ -211,7 +211,7 @@ def test_lang_code_identical_still_catches_a_real_mismatch(tmp_path: Path) -> No
 def test_real_content_passes_all_blocking_content_gates() -> None:
     """The whole real `content/` tree - the nine original pilots plus the
 
-    392 questions migrated from the predecessor deck in PLAN.md step 4 - has
+    392 questions migrated from the predecessor deck in meta/plan.md step 4 - has
     zero blocking failures. Word-count is a documented soft warning
     (meta/questions.md SS7), not asserted away here."""
     report = validate_repository(ROOT)

@@ -148,7 +148,7 @@ on:
 **Ворота Anki, які реально виконуються, і які ні:** `anki-guid-stability`, `anki-identity-stable`,
 `anki-notetype-stable`, `anki-no-silent-removal`, `anki-edit-preserves-progress` – це діфи проти
 `packaging/anki/releases/<попередня-версія>.json`. Такого файлу ще немає: перший release manifest
-з'являється в `PLAN.md`, крок 4, чекпойнт 4 (базова лінія), і діфитись поки нема з чим. Жоден
+з'являється в `meta/plan.md`, крок 4, чекпойнт 4 (базова лінія), і діфитись поки нема з чим. Жоден
 скрипт цей діф не рахує – `release.yml` його не вигадує. Реально виконується: `iqa validate`,
 повний `pytest` (включно з `tests/test_anki_build.py` – формула GUID збігається з еталонною
 реалізацією, шаблони не парсять QID, кожен пілот віддає картку, поля пишуться за іменем), і
@@ -158,15 +158,15 @@ production-збірка реально видає. Дописати діф-во�
 
 ### Lockfiles
 
-`requirements-lock.txt` (корінь репозиторію) – Python, згенерований `pip-compile --generate-hashes`
+`requirements/python-lock.txt` – Python lock у теці `requirements/`, згенерований `pip-compile --generate-hashes`
 з `pyproject.toml` (`[project] dependencies` + `[project.optional-dependencies] test`); CI ставить
-залежності лише командою `pip install --require-hashes -r requirements-lock.txt`, без резолву з
+залежності лише командою `pip install --require-hashes -r requirements/python-lock.txt`, без резолву з
 PyPI під час збірки. `site/package-lock.json` – Node, як і раніше; CI ставить `npm ci`. Обидва
 файли комітяться. Регенерація Python-лока (коли зміниться `pyproject.toml`):
 
 ```
 pip install pip-tools
-pip-compile --extra test --generate-hashes -o requirements-lock.txt pyproject.toml
+pip-compile --extra test --generate-hashes -o requirements/python-lock.txt pyproject.toml
 ```
 
 Під час цього кроку виявилось, що `genanki` – реальна залежність (`packaging/anki/build.py`,
@@ -179,7 +179,7 @@ pip-compile --extra test --generate-hashes -o requirements-lock.txt pyproject.to
 CI цього кроку **не запускає** жодного аудитора вразливостей чи ліцензій. Ні `pip-audit`, ні
 `npm audit`, ні звірка `THIRD_PARTY_NOTICES` нікуди не викликаються – рядок у таблиці вище
 залишається цільовим дизайном, не описом того, що виконується. `THIRD_PARTY_NOTICES` – предмет
-`PLAN.md` кроку 4, чекпойнта 4 (реліз, OFL-тексти шрифтів). Додати `dependency-audit` в CI –
+`meta/plan.md` кроку 4, чекпойнта 4 (реліз, OFL-тексти шрифтів). Додати `dependency-audit` в CI –
 майбутня робота: не зроблено зараз, і це навмисно сказано тут, а не замовчано.
 
 ### Раннер, версії, кеш, дозволи
@@ -198,7 +198,7 @@ checkout, дзеркала з попереднього разу там нема�
 протестовано локально). Node `24` (задовольняє `astro` `engines.node: >=22.0.0`, і це версія, з
 якою сайт реально збирався локально при написанні цього кроку).
 
-Кеш: `actions/setup-python` кешує `pip` за `requirements-lock.txt`; `actions/setup-node` кешує
+Кеш: `actions/setup-python` кешує `pip` за `requirements/python-lock.txt`; `actions/setup-node` кешує
 `npm` за `site/package-lock.json`. Дозволи – за принципом найменших прав: `ci.yml` –
 `contents: read` (нічого не публікує); `deploy.yml` – `contents: read`, `pages: write`,
 `id-token: write` (потрібно `actions/deploy-pages`); `release.yml` – `contents: write` (створити
@@ -210,7 +210,7 @@ Release й додати asset), без `pages` і без `id-token`. Конку�
 ### Один локальний запуск, ідентичний CI
 
 ```
-pip install --require-hashes -r requirements-lock.txt
+pip install --require-hashes -r requirements/python-lock.txt
 pip install --no-deps -e .
 cd site && npm ci && cd ..
 python -m iqa check-pinned-actions
