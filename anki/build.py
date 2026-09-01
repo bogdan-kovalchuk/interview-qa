@@ -1,16 +1,15 @@
 """Build the real Interview QA `.apkg` package from `dist/export/questions.json`.
 
 Reads only `dist/export/questions.json` (never `content/` - only `tools/` reads
-that, per AGENTS.md) and the frozen note type in `packaging/anki/notetype/`.
+that, per AGENTS.md) and the frozen note type in `anki/notetype/`.
 
 Invariants this file must never violate (meta/anki.md, meta/decisions.md #7-8):
 
-- the note type is read from `packaging/anki/notetype/`, not copied here;
+- the note type is read from `anki/notetype/`, not copied here;
 - `model_id`, field ids/ords and template ids come from `fingerprint.json` and
   are never invented here;
-- the GUID formula (`guid_for`) is exactly the one in
-  `packaging/anki/test-deck/build_test_deck.py` – a second definition of the
-  same frozen formula, not a second formula;
+- the GUID formula comes from the single frozen implementation in
+  `tools/iqa/guid.py` and is protected by golden-vector tests;
 - fields are written by name (`FIELD_ORDER` from the fingerprint), never by a
   hardcoded position;
 - a card ships only when `tools/iqa/lifecycle.py` says `card_in_apkg` for the
@@ -33,55 +32,30 @@ from typing import Any
 import genanki
 import yaml
 
-ROOT = Path(__file__).resolve().parents[2]
-NOTETYPE = ROOT / "packaging" / "anki" / "notetype"
-FONTS = ROOT / "packaging" / "anki" / "fonts"
+from iqa.guid import GUID_NAMESPACE, guid_for
+
+ROOT = Path(__file__).resolve().parents[1]
+NOTETYPE = ROOT / "anki" / "notetype"
+FONTS = ROOT / "anki" / "fonts"
 FINGERPRINT = json.loads((NOTETYPE / "fingerprint.json").read_text(encoding="utf-8"))
 MODEL_ID = FINGERPRINT["model_id"]
 FIELD_ORDER = [field["name"] for field in sorted(FINGERPRINT["fields"], key=lambda f: f["ord"])]
 
 SITE_ORIGIN = "https://bogdan-kovalchuk.github.io"
 DEFAULT_CARD_LANGUAGE = "uk"
-GUID_SALT = "iqa:v1:"
-
 # meta/anki.md "GUID": `iqa:v1:` is fixed forever for the Ukrainian deck, and a separate
 # English deck gets its own namespace `iqa:v1:en:` so the two never collide in one
 # collection. The Ukrainian namespace is empty here on purpose - adding a segment to it
 # would rewrite every existing GUID, which is the one change that loses review progress.
-GUID_NAMESPACE = {"uk": "", "en": "en:"}
-
 # Separate deck trees per language. meta/anki.md: a deck holds one language, because
 # "змішана мова в колоді гірша за меншу колоду"; the deck names stay English in both,
 # so the trees sort next to each other in the profile.
 DECK_ROOT = {"uk": "Interview QA", "en": "Interview QA (EN)"}
-BASE91 = (
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    "!#$%&()*+,-./:;<=>?@[]^_`{|}~"
-)
-
 CITATION_RE = re.compile(r"\[\^[a-z0-9]+(?:-[a-z0-9]+)*\]")
 CODE_FENCE_RE = re.compile(r"```[^\n]*\n(.*?)```", re.S)
 INLINE_CODE_RE = re.compile(r"`([^`\n]+)`")
 BOLD_RE = re.compile(r"\*\*(.+?)\*\*", re.S)
 LIST_ITEM_RE = re.compile(r"(?m)^-[ \t]+(.+)$")
-
-
-def guid_for(qid: str, language: str = DEFAULT_CARD_LANGUAGE) -> str:
-    """Deterministic note GUID. Never change this function.
-
-    Identical formula to packaging/anki/test-deck/build_test_deck.py:guid_for –
-    meta/anki.md fixes this once; this is a second reading of it, not a second
-    definition. `language` selects the namespace and defaults to Ukrainian, whose
-    namespace is empty, so every GUID already issued keeps its exact value.
-    """
-    namespaced = GUID_SALT + GUID_NAMESPACE[language] + qid
-    digest = hashlib.sha256(namespaced.encode("utf-8")).digest()[:8]
-    n = int.from_bytes(digest, "big")
-    out = []
-    while n:
-        n, rem = divmod(n, len(BASE91))
-        out.append(BASE91[rem])
-    return "".join(reversed(out)) or BASE91[0]
 
 
 def deterministic_id(name: str, *, low: int, high: int) -> int:
@@ -420,7 +394,7 @@ def main() -> int:
 
     scope = "Full Library" if args.track is None else args.track.replace("-", " ").title()
     out = args.out or (
-        ROOT / "packaging" / "anki" / "dist" / f"{DECK_ROOT[args.language]} - {scope}.apkg"
+        ROOT / "anki" / "dist" / f"{DECK_ROOT[args.language]} - {scope}.apkg"
     )
     count = build_package(args.questions, args.vocabulary, out, args.language, args.track)
     print(f"{out.name}: {count} notes")

@@ -17,36 +17,16 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import io
 import json
 from pathlib import Path
 from typing import Any
 
 from .export import group_by_id, read_all_questions
+from .guid import guid_for
 from .lifecycle import Completeness, _is_todo, lifecycle_for
 from .mirror import QID_TOKEN_RE
 from .model import Language, Question, required_text_sections
-
-
-# Identical formula to packaging/anki/build.py:guid_for (meta/anki.md "GUID").
-# This is a second reading of the frozen formula, not a second definition of it -
-# the same relationship packaging/anki/build.py already documents.
-GUID_SALT = "iqa:v1:"
-BASE91 = (
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    "!#$%&()*+,-./:;<=>?@[]^_`{|}~"
-)
-
-
-def guid_for(qid: str) -> str:
-    digest = hashlib.sha256((GUID_SALT + qid).encode("utf-8")).digest()[:8]
-    n = int.from_bytes(digest, "big")
-    out: list[str] = []
-    while n:
-        n, rem = divmod(n, len(BASE91))
-        out.append(BASE91[rem])
-    return "".join(reversed(out)) or BASE91[0]
 
 
 def _qid_targets(question: Question) -> set[str]:

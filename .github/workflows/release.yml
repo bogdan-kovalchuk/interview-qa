@@ -11,10 +11,10 @@
 # meta/quality-gates.md lists eight blocking Anki gates. Several of them
 # (`anki-guid-stability`, `anki-identity-stable`, `anki-notetype-stable`,
 # `anki-no-silent-removal`, `anki-edit-preserves-progress`) are diffs against
-# `packaging/anki/releases/<previous-version>.json` - a release manifest that
+# `anki/releases/<previous-version>.json` - a release manifest that
 # does not exist yet. meta/plan.md step 4, checkpoint 4, is what writes the FIRST
 # one, as a baseline; there is nothing to diff against before that. No script
-# in this repository computes that diff (tools/iqa and packaging/anki/build.py
+# in this repository computes that diff (tools/iqa and anki/build.py
 # do not implement it), and this workflow does not invent one - that would be
 # exactly the "documentation describes aspiration as fact" defect AGENTS.md
 # calls out. What this workflow DOES run, because it already exists and is
@@ -25,7 +25,7 @@
 # `python -m iqa build`, which fails if a `Reference` URL the deck will embed
 # does not correspond to a page the production build actually emits. Wiring
 # the remaining diff-based gates is follow-up work for whoever writes
-# `packaging/anki/releases/<version>.json` in step 4, not this workflow.
+# `anki/releases/<version>.json` in step 4, not this workflow.
 name: Deck release
 
 on:
@@ -92,12 +92,12 @@ jobs:
 
       - name: Build the .apkg
         run: |
-          mkdir -p packaging/anki/dist
-          python packaging/anki/build.py \
-            --out "packaging/anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg"
+          mkdir -p anki/dist
+          python anki/build.py \
+            --out "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg"
 
       - name: Checksum the release artifact (release-checksums gate)
-        working-directory: packaging/anki/dist
+        working-directory: anki/dist
         run: |
           sha256sum "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
             > "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256"
@@ -108,7 +108,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${{ steps.version.outputs.tag }}" \
-            "packaging/anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
-            "packaging/anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256" \
+            "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
+            "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256" \
             --title "Interview QA deck ${{ steps.version.outputs.version }}" \
             --generate-notes
