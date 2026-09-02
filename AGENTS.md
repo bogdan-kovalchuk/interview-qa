@@ -37,11 +37,12 @@ justification is a second person.
 | `meta/vocabulary.yml` | section labels, glossary, frameworks, section prefixes |
 | `meta/id-registry.csv` | issued question IDs – the arbiter |
 | `meta/predecessor-baseline.json` | hashes of the migrated predecessor deck, kept as evidence |
-| `packaging/anki/notetype/` | the note type: ids, markup, styling – defined once |
-| `packaging/anki/{fonts,spike,test-deck}/` | embedded fonts, measurement harness, manual-test decks |
+| `anki/notetype/` | the note type: ids, markup, styling – defined once |
+| `anki/{fonts,spike}/` | embedded fonts and the measurement harness |
 | `site/` | Astro Starlight; the only Node part |
 | `tools/iqa/` | the Python pipeline; the only component that reads `content/` |
 | `tests/` | negative fixtures - one per gate - plus model, lifecycle and CLI tests |
+| `requirements/` | reproducible Python dependency lock |
 | `meta/plan.md` | what happens next |
 
 One-time setup: `pip install -e .` and `pip install pytest`. After that
@@ -76,7 +77,7 @@ python -m iqa validate    the content and parity gates, one negative fixture eac
 python -m iqa export      dist/export/questions.json
 python -m iqa report      dist/export/progress.{json,csv}; --todo prints the next gaps
 python -m iqa build       validate -> export+report -> mirror -> astro build -> verify
-python packaging/anki/build.py --language {uk,en}    the .apkg, from the export
+python anki/build.py --language {uk,en}    the .apkg, from the export
 python -m pytest --basetemp=<writable dir>
 ```
 
@@ -105,7 +106,7 @@ Breaking any of these is a migration event, not an edit.
   with the salt `iqa:v1:` (`iqa:v1:en:` for the English package, so the two never collide in one
   collection); nothing is inherited and there is no GUID map.
 - **The note type is frozen from the first published package.** It is defined once, in
-  `packaging/anki/notetype/`. After a package ships, changing `model_id`, the fields or the template
+  `anki/notetype/`. After a package ships, changing `model_id`, the fields or the template
   count silently merges note types, shifts fields to other ords and creates extra cards – measured,
   not assumed.
 - **Content links are written as `qid:<id>` tokens, never as URLs.** Each consumer materialises its
@@ -133,7 +134,7 @@ Breaking any of these is a migration event, not an edit.
   stay English inside Ukrainian text (`event loop`, `GIL`, `move semantics`).
 - **Never leave two live descriptions of one behaviour.** Changed a rule? Find and fix every other
   place it is stated. This class of defect has cost this project a whole phase.
-- **Measure, do not paraphrase.** Claims about Anki behaviour come from `packaging/anki/spike/`,
+- **Measure, do not paraphrase.** Claims about Anki behaviour come from `anki/spike/`,
   which is re-runnable, and land in `meta/measurements.md`. Documentation and measurement have
   already disagreed twice here, and measurement won both times.
 - **Report a phase, then stop.** Each phase in `meta/plan.md` ends with a report and waits for the owner.
