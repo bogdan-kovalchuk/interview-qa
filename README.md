@@ -30,7 +30,7 @@ content/{en,uk}/{track}/**/*.md      plain Markdown + YAML frontmatter, no gener
         │
         ├─ tools/   →  site/         generated mirror → Astro Starlight → GitHub Pages
         ├─ tools/   →  dist/export/  questions.json, progress table
-        └─ packaging/anki/           .apkg decks, one per study direction
+        └─ anki/                    .apkg decks, one per study direction
 ```
 
 Links inside content are written as `qid:<id>` tokens, never as URLs – the site, the JSON export and
@@ -47,9 +47,11 @@ measured on real collections, not assumed – see `meta/measurements.md`.
 |---|---|
 | `content/` | the questions, in both languages |
 | `meta/` | the specification, decisions and measurements (Ukrainian) |
-| `packaging/anki/` | note type, fonts, deck builder, measurement harness |
+| `anki/` | note type, fonts, deck builder, measurement harness |
 | `site/` | Astro Starlight – the only Node part |
 | `tools/` | the Python pipeline |
+| `tests/` | automated quality gates and regression tests |
+| `requirements/` | reproducible Python dependency lock |
 | `AGENTS.md` | how to work in this repository – read first |
 | `meta/plan.md` | what happens next |
 

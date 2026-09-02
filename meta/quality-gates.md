@@ -111,7 +111,7 @@ CI написаний і реально блокує: три workflow у `.githu
 тепер реальна перевірка**, `tools/iqa/pinned_actions.py`, викликається як
 `python -m iqa check-pinned-actions`, тест `tests/test_pinned_actions.py` з негативним кейсом на
 `@v4`). Жоден із трьох файлів нічого не реалізує заново: усі викликають `tools/iqa/`,
-`tools/verify_build.py` і `packaging/anki/build.py`, які вже працювали до цього кроку.
+`tools/verify_build.py` і `anki/build.py`, які вже працювали до цього кроку.
 
 | Тригер | Workflow | Що виконується |
 |---|---|---|
@@ -147,14 +147,15 @@ on:
 
 **Ворота Anki, які реально виконуються, і які ні:** `anki-guid-stability`, `anki-identity-stable`,
 `anki-notetype-stable`, `anki-no-silent-removal`, `anki-edit-preserves-progress` – це діфи проти
-`packaging/anki/releases/<попередня-версія>.json`. Такого файлу ще немає: перший release manifest
+`anki/releases/<попередня-версія>.json`. Такого файлу ще немає: перший release manifest
 з'являється в `meta/plan.md`, крок 4, чекпойнт 4 (базова лінія), і діфитись поки нема з чим. Жоден
 скрипт цей діф не рахує – `release.yml` його не вигадує. Реально виконується: `iqa validate`,
-повний `pytest` (включно з `tests/test_anki_build.py` – формула GUID збігається з еталонною
-реалізацією, шаблони не парсять QID, кожен пілот віддає картку, поля пишуться за іменем), і
+повний `pytest` (включно з `tests/test_anki_build.py` – єдина реалізація GUID збігається із
+зафіксованими векторами, шаблони не парсять QID, кожен пілот віддає картку, поля пишуться за
+іменем), і
 `iqa build`, який валить збірку, якщо `Reference`-URL картки не відповідає сторінці, яку
 production-збірка реально видає. Дописати діф-ворота – робота того, хто в кроці 4 напише
-`packaging/anki/releases/<version>.json`.
+`anki/releases/<version>.json`.
 
 ### Lockfiles
 
@@ -169,7 +170,7 @@ pip install pip-tools
 pip-compile --extra test --generate-hashes -o requirements/python-lock.txt pyproject.toml
 ```
 
-Під час цього кроку виявилось, що `genanki` – реальна залежність (`packaging/anki/build.py`,
+Під час цього кроку виявилось, що `genanki` – реальна залежність (`anki/build.py`,
 `tests/test_anki_build.py`), яка не була в `pyproject.toml`. Додано до `[project] dependencies`;
 без цього лок і `pip install --no-deps -e .` не покривали б пакет, який тести й реліз реально
 імпортують.
