@@ -52,7 +52,6 @@ measured on real collections, not assumed – see `meta/measurements.md`.
 | `tools/` | the Python pipeline |
 | `tests/` | automated quality gates and regression tests |
 | `requirements/` | reproducible Python dependency lock |
-| `AGENTS.md` | how to work in this repository – read first |
 | `meta/plan.md` | what happens next |
 
 ## Stack
