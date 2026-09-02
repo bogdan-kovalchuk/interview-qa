@@ -24,6 +24,9 @@ __pycache__/
 .vscode/
 .qwen/
 
+# local agent instructions are maintained and transferred by the owner
+/AGENTS.md
+
 # os
 Thumbs.db
 desktop.ini
