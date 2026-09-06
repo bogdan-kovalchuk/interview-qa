@@ -159,21 +159,42 @@ def render_sources(sources: tuple[Source, ...]) -> str:
     """
     if not sources:
         return ""
-    return "\n".join(f"- [{source.title}]({source.url})" for source in sources)
+    items = [
+        f'<li id="{source_anchor(source.source_id)}">'
+        f'<a href="{escape(str(source.url), quote=True)}">{escape(source.title)}</a></li>'
+        for source in sources
+    ]
+    return '<ol class="iqa-sources">\n' + "\n".join(items) + "\n</ol>"
 
 
-def render_footnotes(body_raw: str, sources: tuple[Source, ...]) -> str:
-    used = sorted(set(CITATION_RE.findall(body_raw)))
-    if not used:
-        return ""
-    by_id = {source.source_id: source for source in sources}
-    lines = []
-    for source_id in used:
-        source = by_id.get(source_id)
-        if source is None:
+def source_anchor(source_id: str) -> str:
+    """The id a citation superscript links to, inside the `Sources` list."""
+    return f"source-{source_id}"
+
+
+def replace_citations(text: str, order: dict[str, int]) -> str:
+    """`[^source-id]` -> a superscript link into the `Sources` list.
+
+    This replaces Markdown footnotes. Emitting footnote definitions made the
+    renderer append its own footnote block *below* the `Sources` section, so
+    every cited source appeared twice on the page - and the two lists were not
+    even the same, because a footnote block can only show sources that happen to
+    be cited. One list that is both the provenance list and the citation target
+    shows each source once and still shows the uncited ones.
+
+    The number is the source's position in the question's own `sources`, so it
+    matches the list a reader scrolls to and stays the same on both language
+    pages, `sources` being parity-checked.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        source_id = match.group(1)
+        number = order.get(source_id)
+        if number is None:
             raise ValueError(f"citation `[^{source_id}]` has no matching source")
-        lines.append(f"[^{source_id}]: [{source.title}]({source.url})")
-    return "\n".join(lines)
+        return f'<sup class="iqa-cite"><a href="#{source_anchor(source_id)}">{number}</a></sup>'
+
+    return CITATION_RE.sub(replace, text)
 
 
 def is_unwritten(content: str) -> bool:
@@ -187,20 +208,27 @@ def render_section(
     vocabulary: dict[str, Any],
     known_ids: set[str],
     base: str,
+    citations: dict[str, int],
 ) -> str:
     heading = section_label(vocabulary, section.heading, language)
+
+    def body(text: str) -> str:
+        return replace_citations(replace_qids(text, known_ids, base, language), citations)
+
     if section.subsections:
         parts = [f"## {heading}"]
         for subsection in section.subsections:
             sub_heading = subsection_label(vocabulary, subsection.heading, language)
-            content = replace_qids(subsection.content, known_ids, base, language)
-            parts.append(f"### {sub_heading}\n\n{content}")
+            parts.append(f"### {sub_heading}\n\n{body(subsection.content)}")
         return "\n\n".join(parts)
-    content = replace_qids(section.content, known_ids, base, language)
-    return f"## {heading}\n\n{content}"
+    return f"## {heading}\n\n{body(section.content)}"
 
 
 def render_body(question: Question, vocabulary: dict[str, Any], known_ids: set[str], base: str) -> str:
+    citations = {
+        source.source_id: number
+        for number, source in enumerate(question.frontmatter.sources, 1)
+    }
     rendered_sections: list[str] = []
     for section in question.body.sections:
         # An unwritten section is not rendered at all. The skeleton keeps the
@@ -217,13 +245,11 @@ def render_body(question: Question, vocabulary: dict[str, Any], known_ids: set[s
             rendered_sections.append(f"## {heading}\n\n{sources_markdown}".rstrip())
         else:
             rendered_sections.append(
-                render_section(section, question.language, vocabulary, known_ids, base)
+                render_section(
+                    section, question.language, vocabulary, known_ids, base, citations
+                )
             )
-    body = "\n\n".join(rendered_sections)
-    footnotes = render_footnotes(question.body.raw, question.frontmatter.sources)
-    if footnotes:
-        body = f"{body}\n\n{footnotes}"
-    return body.strip() + "\n"
+    return "\n\n".join(rendered_sections).strip() + "\n"
 
 
 def render_tombstone(question: Question) -> str:

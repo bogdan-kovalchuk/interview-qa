@@ -5,6 +5,7 @@ from pathlib import Path
 
 from jsonschema import Draft202012Validator
 
+from corpus import FILES
 from iqa.model import parse_body, parse_question_file, question_schema, schema_json
 
 
@@ -16,7 +17,7 @@ def test_all_real_questions_parse_and_match_generated_schema() -> None:
     validator = Draft202012Validator(schema)
     files = sorted((ROOT / "content").rglob("*.md"))
 
-    assert len(files) == 1616
+    assert len(files) == FILES
     for path in files:
         question = parse_question_file(path, content_root=ROOT / "content")
         assert list(validator.iter_errors(question.model_dump(mode="json"))) == []

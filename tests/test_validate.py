@@ -7,6 +7,7 @@ import shutil
 import pytest
 import yaml
 
+from corpus import FILES, QUESTIONS
 from iqa.__main__ import main
 from iqa.validate import _sentence_count, validate_repository
 
@@ -208,15 +209,50 @@ def test_lang_code_identical_still_catches_a_real_mismatch(tmp_path: Path) -> No
     assert "lang-code-identical" in {item.gate for item in report.errors}
 
 
-def test_real_content_passes_all_blocking_content_gates() -> None:
-    """The whole real `content/` tree - the nine original pilots plus the
+def test_inline_code_indexing_a_function_pointer_table_is_not_a_link(tmp_path: Path) -> None:
+    """`table[opcode](ctx, frame)` in backticks is C, not a Markdown link.
 
-    392 questions migrated from the predecessor deck in meta/plan.md step 4 - has
-    zero blocking failures. Word-count is a documented soft warning
-    (meta/questions.md SS7), not asserted away here."""
+    `MARKDOWN_LINK_RE` matches `[...](...)` and the link and URL checks used to
+    run over text that still contained inline code spans, so a perfectly legal
+    array of function pointers tripped both `xref` and `short-answer-limits`.
+    There is no other way to write that expression in prose."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+
+    en_text = _replace(
+        en_base,
+        "The event loop depends on tasks returning control while they wait.[^python-asyncio-docs]",
+        "A dispatch table calls `table[opcode](ctx, frame)` for the selected "
+        "handler.[^python-asyncio-docs]",
+    )
+    uk_text = _replace(
+        uk_base,
+        "Event loop залежить від того, що tasks повертають керування під час очікування.[^python-asyncio-docs]",
+        "Dispatch table викликає `table[opcode](ctx, frame)` для обраного "
+        "handler-а.[^python-asyncio-docs]",
+    )
+
+    repository = _base_repository(tmp_path, en_text=en_text, uk_text=uk_text)
+    report = validate_repository(repository)
+
+    assert "xref" not in {item.gate for item in report.errors}
+    assert not [
+        item
+        for item in report.errors
+        if item.gate == "short-answer-limits" and "ready URL" in item.message
+    ]
+
+
+def test_real_content_passes_all_blocking_content_gates() -> None:
+    """The whole real `content/` tree has zero blocking failures.
+
+    The nine original pilots, the 392 questions migrated from the predecessor
+    deck (meta/plan.md step 4) and the embedded import of step 7a. Word-count
+    is a documented soft warning (meta/questions.md SS7), not asserted away
+    here. The sizes live in `tests/corpus.py`."""
     report = validate_repository(ROOT)
-    assert report.files_checked == 1616
-    assert report.questions_checked == 808
+    assert report.files_checked == FILES
+    assert report.questions_checked == QUESTIONS
     assert report.errors == []
 
 

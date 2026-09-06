@@ -8,6 +8,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "anki"))
 
 import build as anki_build  # noqa: E402  (path insertion must happen first)
+from corpus import EN_CARDS, UK_CARDS
 from iqa.export import build_export
 
 
@@ -95,7 +96,7 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
         for question in payload["questions"]
         if question["languages"]["en"]["lifecycle"]["card_in_apkg"]
     }
-    assert len(notes) == len(expected)
+    assert len(notes) == len(expected) == EN_CARDS
     shipped = {note.fields[anki_build.FIELD_ORDER.index("QID")] for _deck, note in notes}
     assert shipped == expected
 
@@ -118,7 +119,7 @@ def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, v
         for question in payload["questions"]
         if question["languages"]["uk"]["lifecycle"]["card_in_apkg"]
     }
-    assert len(notes) == len(expected_shipped) == 795
+    assert len(notes) == len(expected_shipped) == UK_CARDS
 
     shipped_ids = {note.fields[anki_build.FIELD_ORDER.index("QID")] for _deck, note in notes}
     assert shipped_ids == expected_shipped
@@ -197,6 +198,6 @@ def test_build_package_end_to_end(tmp_path: Path) -> None:
     out_path = tmp_path / "Interview QA - Full Library.apkg"
 
     count = anki_build.build_package(questions_path, ROOT / "meta" / "vocabulary.yml", out_path)
-    assert count == 795
+    assert count == UK_CARDS
     assert out_path.is_file()
     assert out_path.stat().st_size > 0
