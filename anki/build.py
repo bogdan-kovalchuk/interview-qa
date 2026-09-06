@@ -33,6 +33,7 @@ import genanki
 import yaml
 
 from iqa.guid import GUID_NAMESPACE, guid_for
+from iqa.taxonomy import ordered_tracks_and_sections
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTETYPE = ROOT / "anki" / "notetype"
@@ -189,19 +190,45 @@ def card_label(
     return labels[language]
 
 
+def section_order(taxonomy_path: Path) -> dict[str, int]:
+    """`track/section` -> its 1-based position in meta/taxonomy.md.
+
+    The same ordered tree the site sidebar reads, so a deck sits in the same
+    place in Anki as its section does in the navigation.
+    """
+    order: dict[str, int] = {}
+    for track, sections in ordered_tracks_and_sections(taxonomy_path):
+        for index, section in enumerate(sections, 1):
+            order[f"{track}/{section}"] = index
+    return order
+
+
 def deck_name(
-    vocabulary: dict[str, Any], track: str, section: str, language: str = DEFAULT_CARD_LANGUAGE
+    vocabulary: dict[str, Any],
+    order: dict[str, int],
+    track: str,
+    section: str,
+    language: str = DEFAULT_CARD_LANGUAGE,
 ) -> str:
     """Deck names are English Title Case with `::`, even for Ukrainian cards
 
     (meta/anki.md: "predictably sorts next to others in the profile"). Only the root
     segment carries the language, so the two trees sort next to each other and a deck
     still holds exactly one language.
+
+    The section segment is numbered because Anki sorts sibling decks
+    alphabetically and offers no custom order. Without the number the tree
+    opens on `Asyncio` and buries `Fundamentals` in the middle, which is the
+    opposite of the taxonomy order the site navigates by. The number is padded
+    to two digits so `10` sorts after `09` rather than after `01`.
     """
+    key = f"{track}/{section}"
+    if key not in order:
+        raise ValueError(f"`{key}` is not in meta/taxonomy.md, so it has no deck position")
     return (
         f"{DECK_ROOT[language]}"
         f"::{track_label_en(vocabulary, track)}"
-        f"::{section_nav_label_en(vocabulary, track, section)}"
+        f"::{order[key]:02d} {section_nav_label_en(vocabulary, track, section)}"
     )
 
 
@@ -295,6 +322,7 @@ def build_notes(
     model: genanki.Model,
     language: str = DEFAULT_CARD_LANGUAGE,
     track: str | None = None,
+    order: dict[str, int] | None = None,
 ) -> list[tuple[str, genanki.Note]]:
     """Return (deck_name, note) pairs for every question whose card ships in `language`.
 
@@ -303,6 +331,7 @@ def build_notes(
     library import into one collection without duplicating anything
     (meta/anki.md: "перетин пакетів нешкідливий").
     """
+    positions = section_order(ROOT / "meta" / "taxonomy.md") if order is None else order
     notes: list[tuple[str, genanki.Note]] = []
     for question in questions:
         if track is not None and question["track"] != track:
@@ -335,7 +364,12 @@ def build_notes(
             guid=guid_for(question["id"], language),
         )
         notes.append(
-            (deck_name(vocabulary, question["track"], question["section"], language), note)
+            (
+                deck_name(
+                    vocabulary, positions, question["track"], question["section"], language
+                ),
+                note,
+            )
         )
     return notes
 
@@ -346,15 +380,17 @@ def build_package(
     out_path: Path,
     language: str = DEFAULT_CARD_LANGUAGE,
     track: str | None = None,
+    taxonomy_path: Path | None = None,
 ) -> int:
     payload = json.loads(questions_path.read_text(encoding="utf-8"))
     vocabulary = yaml.safe_load(vocabulary_path.read_text(encoding="utf-8")) or {}
+    order = section_order(taxonomy_path or ROOT / "meta" / "taxonomy.md")
 
     # Exactly one shared Model instance for the whole package: one model_id, one
     # template, per the frozen fingerprint.
     model = make_model()
 
-    notes = build_notes(payload["questions"], vocabulary, model, language, track)
+    notes = build_notes(payload["questions"], vocabulary, model, language, track, order)
 
     decks: dict[str, genanki.Deck] = {}
     for name, note in notes:
@@ -373,6 +409,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--questions", type=Path, default=ROOT / "dist" / "export" / "questions.json")
     parser.add_argument("--vocabulary", type=Path, default=ROOT / "meta" / "vocabulary.yml")
+    parser.add_argument("--taxonomy", type=Path, default=ROOT / "meta" / "taxonomy.md")
     parser.add_argument(
         "--language",
         choices=sorted(GUID_NAMESPACE),
@@ -396,7 +433,9 @@ def main() -> int:
     out = args.out or (
         ROOT / "anki" / "dist" / f"{DECK_ROOT[args.language]} - {scope}.apkg"
     )
-    count = build_package(args.questions, args.vocabulary, out, args.language, args.track)
+    count = build_package(
+        args.questions, args.vocabulary, out, args.language, args.track, args.taxonomy
+    )
     print(f"{out.name}: {count} notes")
     return 0
 

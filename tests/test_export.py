@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from corpus import QUESTIONS
 from iqa.export import build_export, canonical_path, resolver_path
 from iqa.lifecycle import lifecycle_for
 from iqa.model import Language, parse_question_file
@@ -11,10 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content"
 
 
-def test_export_has_808_questions_with_both_languages() -> None:
+def test_export_covers_every_question_in_both_languages() -> None:
     payload = build_export(CONTENT)
     assert payload["base"] == "/interview-qa"
-    assert len(payload["questions"]) == 808
+    assert len(payload["questions"]) == QUESTIONS
     for question in payload["questions"]:
         assert set(question["languages"]) == {"en", "uk"}
 

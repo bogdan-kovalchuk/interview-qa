@@ -119,19 +119,24 @@ def test_withdrawn_renders_tombstone_not_full_body(tmp_path: Path) -> None:
     assert "This answer is written" not in mirrored  # the fixture's real body must not leak
 
 
-def test_citations_become_footnote_definitions_and_no_raw_token_survives(tmp_path: Path) -> None:
+def test_citations_become_links_into_the_sources_list(tmp_path: Path) -> None:
+    """A citation is a superscript link to its entry in `Sources`, and no raw
+
+    token survives. Markdown footnotes are deliberately not used: the renderer
+    appends its own footnote block below `Sources`, which put every cited source
+    on the page twice."""
     content = _make_content_tree(tmp_path, ["published"])
     out = tmp_path / "out"
     mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
 
     mirrored = next(out.rglob("published-fixture.md")).read_text(encoding="utf-8")
-    assert "[^fixture-source]: [Fixture source](https://example.com/reference)" in mirrored
-    # every remaining `[^...]` must be an inline reference, never left un-defined
+    assert '<sup class="iqa-cite"><a href="#source-fixture-source">1</a></sup>' in mirrored
+    assert '<li id="source-fixture-source">' in mirrored
+    # no raw token and no footnote definition is left for the renderer to expand
     import re
 
-    tokens = set(re.findall(r"\[\^([a-z0-9-]+)\]", mirrored))
-    definitions = set(re.findall(r"(?m)^\[\^([a-z0-9-]+)\]:", mirrored))
-    assert tokens == definitions == {"fixture-source"}
+    assert re.search(r"\[\^[a-z0-9-]+\]", mirrored) is None
+    assert re.search(r"(?m)^\[\^[a-z0-9-]+\]:", mirrored) is None
 
 
 def test_sources_section_is_rendered_not_the_placeholder_comment(tmp_path: Path) -> None:
@@ -141,7 +146,10 @@ def test_sources_section_is_rendered_not_the_placeholder_comment(tmp_path: Path)
 
     mirrored = next(out.rglob("published-fixture.md")).read_text(encoding="utf-8")
     assert "generated from frontmatter" not in mirrored
-    assert "- [Fixture source](https://example.com/reference)" in mirrored
+    assert (
+        '<li id="source-fixture-source">'
+        '<a href="https://example.com/reference">Fixture source</a></li>' in mirrored
+    )
 
 
 def test_english_page_shows_english_headings(tmp_path: Path) -> None:

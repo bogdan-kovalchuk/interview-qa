@@ -16,10 +16,10 @@ programs. A fix made once is a fix everywhere.
 > thin says so, in place, with a visible notice instead of the bare word `TODO`. Nothing is hidden
 > behind a disclaimer in the footer.
 >
-> **Current state:** 808 questions in both languages, 795 shipping as Ukrainian flashcards and 145
-> as English ones, and the site is live at the link above. Every question has a Ukrainian short
-> answer, and 145 have a written detailed explanation together with a full English body; for the
-> rest, the detailed explanation and the English text are still `TODO`. A `/status/` page that
+> **Current state:** 1254 questions in both languages, 1222 shipping as Ukrainian flashcards and
+> 145 as English ones, and the site is live at the link above. Nearly every question has a
+> Ukrainian short answer, and 145 have a written detailed explanation together with a full English
+> body; for the rest, the detailed explanation and the English text are still `TODO`. A `/status/` page that
 > reports the gaps as a table is next – the data behind it is already generated as
 > `dist/export/progress.{json,csv}`.
 

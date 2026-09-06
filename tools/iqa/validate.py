@@ -41,6 +41,7 @@ from .model import (
 CITATION_RE = re.compile(r"\[\^([a-z0-9]+(?:-[a-z0-9]+)*)\]")
 QID_RE = re.compile(r"(?<![a-z0-9-])qid:([a-z0-9][a-z0-9-]*)", re.IGNORECASE)
 CODE_BLOCK_RE = re.compile(r"(?ms)^```[^\r\n]*\r?\n.*?^```[ \t]*(?=\r?$)")
+INLINE_CODE_RE = re.compile(r"`[^`\r\n]+`")
 READY_URL_RE = re.compile(r"https?://|(?<![\w])/(?:en|uk)/q/", re.IGNORECASE)
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]\r\n]+\]\([^)\r\n]+\)")
 MARKDOWN_LINK_TARGET_RE = re.compile(
@@ -482,6 +483,19 @@ def _without_code(text: str) -> str:
     return CODE_BLOCK_RE.sub("", text)
 
 
+def _without_any_code(text: str) -> str:
+    """Fenced blocks *and* inline spans removed.
+
+    Only the link and URL checks use this. They look for `[text](target)` and
+    a bare `http://`, and C writes both by accident: `table[opcode](ctx, frame)`
+    inside backticks is an array of function pointers, not a Markdown link, and
+    `_without_code` leaves inline spans in place. Sentence and word counts
+    deliberately keep using `_without_code`, because a term in backticks is
+    still a word the reader reads.
+    """
+    return INLINE_CODE_RE.sub("", _without_code(text))
+
+
 def _sentence_count(text: str) -> int:
     cleaned = _without_code(text)
     cleaned = CITATION_RE.sub("", cleaned)
@@ -532,7 +546,8 @@ def _short_answer_gate(record: FileRecord, report: ValidationReport) -> None:
         )
     if re.search(r"(?m)^#{1,6}[ \t]+", outside_code):
         report.add("short-answer-limits", "Short answer contains a heading", path=record.label)
-    if MARKDOWN_LINK_RE.search(outside_code) or READY_URL_RE.search(outside_code):
+    outside_any_code = _without_any_code(short.content)
+    if MARKDOWN_LINK_RE.search(outside_any_code) or READY_URL_RE.search(outside_any_code):
         report.add(
             "short-answer-limits", "Short answer contains a ready URL", path=record.label
         )
@@ -566,7 +581,7 @@ def _xref_gate(record: FileRecord, known_ids: set[str], report: ValidationReport
     question = record.question
     if question is None:
         return
-    body_without_code = _without_code(question.body.raw)
+    body_without_code = _without_any_code(question.body.raw)
     ready_markdown_link = any(
         not match.group("target").strip().lower().startswith("qid:")
         for match in MARKDOWN_LINK_TARGET_RE.finditer(body_without_code)

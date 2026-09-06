@@ -5,6 +5,7 @@ import sys
 
 import pytest
 
+from corpus import QUESTIONS
 from iqa import report
 from iqa.lifecycle import Completeness
 from iqa.model import parse_question_text
@@ -28,13 +29,13 @@ def test_guid_formula_matches_the_anki_builder() -> None:
         assert report.guid_for(qid) == anki_build.guid_for(qid)
 
 
-def test_report_covers_all_808_questions_both_languages() -> None:
+def test_report_covers_every_question_in_both_languages() -> None:
     built = report.build_report(CONTENT)
-    assert len(built["questions"]) == 808
+    assert len(built["questions"]) == QUESTIONS
     for row in built["questions"]:
         assert set(row["languages"]) == {"en", "uk"}
         assert row["guid"] == report.guid_for(row["id"])
-    assert built["aggregates"]["totals"]["total"] == 808
+    assert built["aggregates"]["totals"]["total"] == QUESTIONS
 
 
 def test_missing_required_sections_reported_for_a_stub_question(tmp_path: Path) -> None:
@@ -109,7 +110,7 @@ def test_write_report_creates_both_files(tmp_path: Path) -> None:
     json_path = tmp_path / "progress.json"
     csv_path = tmp_path / "progress.csv"
     count = report.write_report(CONTENT, json_path, csv_path)
-    assert count == 808
+    assert count == QUESTIONS
     assert json_path.exists()
     assert csv_path.exists()
 

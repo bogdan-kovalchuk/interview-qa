@@ -160,33 +160,19 @@
 	color: var(--md-default-fg-light);
 }
 
-.sl-markdown-content h2 {
-	font-weight: 700;
-	letter-spacing: -0.01em;
-}
-
 /* extra.css declares an `::after` block under h1 and h2 but never gives it a
    colour, so on the reference site it occupies 1-2px and draws nothing. It is
    reproduced here at the same size and with the same absence of a colour: a
-   visible rule would be our invention, not the reference's look. */
-.sl-markdown-content h1::after,
-.sl-markdown-content h2::after {
+   visible rule would be our invention, not the reference's look. The h2 half is
+   gone: the only h2 in this content is a question's section heading, and the
+   reference draws no rule under one of those. */
+.sl-markdown-content h1::after {
 	content: '';
 	display: block;
-}
-
-.sl-markdown-content h1::after {
 	width: 93%;
 	height: 2px;
 	margin-top: 1px;
 	opacity: 0.3;
-}
-
-.sl-markdown-content h2::after {
-	width: 100%;
-	height: 1px;
-	margin-top: -5px;
-	opacity: 0.2;
 }
 
 /* Material's own heading rhythm: `1.6em` above, `.64em` below, measured in the
@@ -231,6 +217,107 @@
 
 :root[data-theme='light'] .sl-markdown-content h4 {
 	color: #00695c;
+}
+
+/* ------------------------------------------------- question page headings */
+
+/*
+ * On the reference site a question is a heading *inside* a page that lists
+ * many of them: `h3` on `/top_questions/` ("10. Що таке event loop ..."), `h4`
+ * on a topic page ("Що таке ключові слова в Python?"). Here one question is one
+ * page, so the same two things are the page `h1` and the section `h2` - which
+ * meant they were styled as a page title and a section rule instead, and looked
+ * nothing like the reference. These two blocks give them the reference's own
+ * type: `.md-typeset h3` and `.md-typeset h4` out of `main.484c7ddc.min.css`,
+ * coloured by its `stylesheets/extra.css`.
+ *
+ * The `h2` rules need no page hook: a `h2` inside `.sl-markdown-content` occurs
+ * on 2508 built pages and every one of them is a question page - the track and
+ * section indexes are a title and a link list, nothing else. Counted, not
+ * assumed.
+ *
+ * One deliberate departure: extra.css puts `margin-top: 2.5em` on `h4`, which
+ * separates one question from the next on a page that lists many. Here the
+ * `h2`s divide `Коротка відповідь` from `Розгорнуте пояснення` inside a single
+ * question, so Material's own `margin: 1em 0` is used instead. Copying the
+ * 2.5em would reproduce the wide gaps this change exists to remove.
+ */
+
+.iqa-question-title {
+	font-size: calc(1.25rem * var(--iqa-type-scale)); /* Material h3: 1.25em of 16px */
+	font-weight: 400;
+	letter-spacing: -0.01em;
+	line-height: 1.5;
+	color: deepskyblue;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+:root[data-theme='light'] .iqa-question-title {
+	color: #0277bd;
+}
+
+.sl-markdown-content h2 {
+	font-size: var(--sl-text-body); /* Material h4 inherits the body size */
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: aquamarine;
+}
+
+:root[data-theme='light'] .sl-markdown-content h2 {
+	color: #00695c;
+}
+
+/* Material's h4 rhythm, `1em 0`, in place of the h2 rhythm the wrapper carries.
+   The font-size goes with it: Starlight sizes the wrapper at `--sl-text-h2`,
+   so an `em` margin here would be measured against 24px and land at 38px - most
+   of the gap this is meant to close. Sized to the heading, `1em` is the 16px
+   Material means. */
+.sl-markdown-content .sl-heading-wrapper.level-h2 {
+	font-size: var(--sl-text-body);
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+/* The first heading sits directly under the question title, which already has
+   the panel's own padding beneath it; its 1.5em would be stacked on top. */
+.sl-markdown-content > .sl-heading-wrapper:first-child {
+	margin-top: 0;
+}
+
+/* ------------------------------------------------------------- sources */
+
+/*
+ * One compact numbered list, and the target of the citation superscripts. The
+ * metrics are Material's own for the block this replaces: `.md-typeset
+ * .footnote` is `.64rem` on a 20px root - the same 12.8px as `--sl-text-body-sm`
+ * here - in `--md-default-fg-color--light`, and `.md-typeset .footnote-ref` is
+ * `.75em` bold with `sup`'s `.078125em` side margins.
+ *
+ * Only the row spacing is ours, and only because Starlight's is not Material's:
+ * Starlight gives every sibling `margin-top: 1rem` and every `li + li`
+ * `.25rem`, which spreads four sources over as much height as four paragraphs.
+ */
+.sl-markdown-content ol.iqa-sources {
+	margin-top: 0.5em;
+	padding-inline-start: 1.6em;
+	font-size: var(--sl-text-body-sm);
+	color: var(--md-default-fg-light);
+}
+
+.sl-markdown-content ol.iqa-sources li + li {
+	margin-top: 0.2em;
+}
+
+.iqa-cite {
+	font-size: 0.75em;
+	font-weight: 700;
+	margin-inline: 0.078125em;
+	line-height: 0;
+}
+
+.iqa-cite a {
+	text-decoration: none;
 }
 
 /* extra.css underlines body links; Starlight only underlines on hover. */

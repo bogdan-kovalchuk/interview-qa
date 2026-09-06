@@ -17,7 +17,12 @@
  * contains anything but `<code>` around escaped text.
  */
 const { entry } = Astro.locals.starlightRoute;
-const data = entry.data as { title: string; title_html?: string };
+const data = entry.data as { title: string; title_html?: string; question_id?: string };
+// A question page's title is styled as the reference site styles a question
+// (its `h3`), not as a page title; a track or section index keeps the page
+// title. `question_id` is written by tools/iqa/mirror.py and is present on
+// question pages only, so it is the honest way to tell the two apart.
+const titleClass = data.question_id ? 'iqa-question-title' : undefined;
 // '_top' is Starlight's PAGE_TITLE_ID: the anchor its table of contents links
 // to as "Overview". The constant is not part of the package's public exports,
 // so the value is repeated here rather than imported from a private path.
@@ -26,9 +31,11 @@ const PAGE_TITLE_ID = '_top';
 
 {
 	data.title_html ? (
-		<h1 id={PAGE_TITLE_ID} set:html={data.title_html} />
+		<h1 id={PAGE_TITLE_ID} class={titleClass} set:html={data.title_html} />
 	) : (
-		<h1 id={PAGE_TITLE_ID}>{data.title}</h1>
+		<h1 id={PAGE_TITLE_ID} class={titleClass}>
+			{data.title}
+		</h1>
 	)
 }
 
