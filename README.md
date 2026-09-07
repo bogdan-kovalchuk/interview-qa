@@ -12,14 +12,14 @@ programs. A fix made once is a fix everywhere.
 - Question permalink: `…/interview-qa/{lang}/q/{id}/` – stable forever, taxonomy-independent
 
 > **Work in progress, by design.** Every question exists in both languages from the day it is
-> created, with unwritten sections marked `TODO`, and is filled in over time. A page that is still
-> thin says so, in place, with a visible notice instead of the bare word `TODO`. Nothing is hidden
-> behind a disclaimer in the footer.
+> created, with unwritten sections marked `TODO`, and is filled in over time. An unwritten section
+> is not rendered on the page at all: on 224 of the pages that existed at the time it produced four
+> or more identical "not written yet" notices, so the gaps are reported as data instead.
 >
 > **Current state:** 1254 questions in both languages, 1222 shipping as Ukrainian flashcards and
-> 145 as English ones, and the site is live at the link above. Nearly every question has a
-> Ukrainian short answer, and 145 have a written detailed explanation together with a full English
-> body; for the rest, the detailed explanation and the English text are still `TODO`. A `/status/` page that
+> 145 as English ones, and the site is live at the link above. 1235 have a Ukrainian short answer;
+> 145 also carry a written detailed explanation and a full English body, 9 of them complete. For the
+> rest, the detailed explanation and the English text are still `TODO`. A `/status/` page that
 > reports the gaps as a table is next – the data behind it is already generated as
 > `dist/export/progress.{json,csv}`.
 
@@ -64,6 +64,9 @@ hosting.
 
 [MIT](LICENSE) – code and content alike.
 
-Community sources used to locate topics carry no licence of their own and are treated as
-all-rights-reserved: they are used to find questions worth asking, never to copy wording.
-Everything published here is written for this project.
+Community sources are treated as all-rights-reserved, since they carry no licence of their own, and
+they are used in two different ways. The Python material uses them only to find questions worth
+asking; its wording is written for this project. The `embedded/` track is different: 853 of its
+questions were imported from the owner's own two decks, and their Ukrainian short answers keep the
+source's wording, normalised rather than rewritten. Every such question names its origin in
+`sources`, and `meta/questions.md` records which is which.
