@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+```c
+void swap(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+```
+
+Call: `int x=5, y=10; swap(&x, &y);` -> `x=10, y=5`.
+
+Without tmp via XOR: `*a^=*b; *b^=*a; *a^=*b;` – but <span class="warn">undefined behavior if `a == b`</span> (aliasing the same object). Always pass addresses (via `&` at the caller), not values.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

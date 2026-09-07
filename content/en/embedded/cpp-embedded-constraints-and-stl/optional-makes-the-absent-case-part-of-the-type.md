@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0012
 title: "How is `std::optional<T>` better than a null pointer?"
-description: "How is `std::optional<T>` better than a null pointer?"
+description: "It stores the value inline with no heap and makes the absent case explicit in the type system"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**It stores the value inline (no heap) and makes the "no value" case explicit in the type system.**
+
+This reduces the risk of null dereference: before accessing `*opt` you must check `opt.has_value()`. For example, `std::optional<FaultCode>` expresses "fault present/absent" better than null signalling.
+
+Rule: for "a value may be absent" use `std::optional`, not a sentinel/null pointer.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

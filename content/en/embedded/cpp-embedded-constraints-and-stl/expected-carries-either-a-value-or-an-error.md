@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0005
 title: "What is `std::expected<T, E>` and what replaces it before C++23?"
-description: "What is `std::expected<T, E>` and what replaces it before C++23?"
+description: "A type that carries either a value or an error, making result checking explicit in the type"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A type that carries EITHER a value OR an error, making result checking explicit in the type system.**
+
+Before C++23 you write a lightweight `Result<T, E>` with no heap allocation – a small class with a success/error flag and union-like storage.
+
+Rule: `expected`/`Result` combines value and error in one type, without exceptions and without the heap.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

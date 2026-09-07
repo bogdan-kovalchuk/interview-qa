@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-**MISRA (Motor Industry Software Reliability Association) C++ обмежує exception-based control flow, dynamic allocation, RTTI (run-time type information), небезпечні casts, `goto`, складну inheritance-ієрархію та сирі unions.**
+**MISRA (Motor Industry Software Reliability Association) C++ обмежує exception-based control flow, dynamic allocation, RTTI (run-time type information), небезпечні casts, `goto`, складну ієрархію успадкування та сирі unions.**
 
 Мета – детермінізм, аналізованість і контрольований data/control flow. Конкретні формулювання залежать від версії стандарту й профілю проєкту, тому на співбесіді краще казати «обмежує/регламентує», а не «забороняє все».
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+When an array is passed to a function, it **automatically converts** to a pointer to the first element (decay). `int arr[8];` `f(arr)` -> `f(int *)` – the function receives a pointer. Consequences:
+- `sizeof(arr)` inside the function = `sizeof(int*)`, not 32;
+- No copy – the function accesses the original array;
+- No range checking.
+Solution: `f(int arr[], size_t n)` or in C++: `template<size_t N> f(int (&arr)[N])`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

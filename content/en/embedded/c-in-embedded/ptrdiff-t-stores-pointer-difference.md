@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-**ptrdiff_t** – a signed integer type for storing the result of subtracting two pointers. Defined in `<stddef.h>`.
-
-Size: matches the platform width (32-bit -> 4B, 64-bit -> 8B).
+**ptrdiff_t** – a signed integer type for storing the result of subtracting two pointers, defined in `<stddef.h>`. Size: matches the platform width (32-bit -> 4B, 64-bit -> 8B).
 
 Why: `p - q` gives the number of elements between the pointers. The result is signed (can be negative); storing it in `int` may be insufficient on 64-bit.
 

@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -43,7 +43,7 @@ printf("%d",*q);
 
 ## Short answer
 
-TODO
+<span class="warn">Undefined behavior</span>. `q++` -> `q` now points to the address immediately after `a` on the stack – this is not an array element, only a standalone variable. Pointer arithmetic is defined only within an array (or struct under certain conditions). For two separate variables – even if adjacent on the stack – `&a + 1` -> UB; the compiler may place `a` in a register with no memory address -> `*q` reads garbage.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

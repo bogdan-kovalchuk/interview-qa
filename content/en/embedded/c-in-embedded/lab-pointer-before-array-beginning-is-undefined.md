@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -42,7 +42,7 @@ printf("%d",*p);
 
 ## Short answer
 
-TODO
+<span class="warn">Yes, UB.</span> `p = arr` -> pointer to `arr[0]`. `p--` -> `arr-1`, which is <span class="warn">outside the array</span>. Valid pointers for `arr[3]`: `arr` (=arr+0) to `arr+3` (one-past-the-end). `arr-1` – UB already when formed, not only when dereferenced; the compiler may assume UB does not occur -> unpredictable optimizations, so arr-1 must not be formed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+**Wild pointer** – an uninitialized pointer with a garbage value (a random address from the stack).
+
+Comparison:
+- **NULL pointer**: explicitly invalid address 0, can be checked;
+- **Dangling pointer**: pointed to a valid object that has been destroyed;
+- **Wild pointer**: never pointed to a valid object.
+
+All three -> undefined behavior when dereferenced. A wild pointer is the most dangerous: its address is non-zero and random, so it passes the `if(p != NULL)` check.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

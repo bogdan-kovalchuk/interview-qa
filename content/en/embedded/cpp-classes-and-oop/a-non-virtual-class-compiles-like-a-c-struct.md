@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0001
 title: "What does \"zero-overhead abstraction\" mean for a C++ class?"
-description: "What does \"zero-overhead abstraction\" mean for a C++ class?"
+description: "A non-virtual class compiles to the same code as a C struct with free functions when the optimizer sees the method bodies."
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A non-virtual class can compile to the same machine code as a C struct with free functions, provided the optimizer sees the method bodies.**
+
+A non-static member function effectively receives an implicit `this`; without `virtual` there is no vtable/vptr, and simple methods are usually inlined. At `-O0` or across separate translation units, the call may remain a regular call.
+
+Rule: encapsulation via a class in embedded is usually free in a release build, as long as there are no virtual functions or extra state.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

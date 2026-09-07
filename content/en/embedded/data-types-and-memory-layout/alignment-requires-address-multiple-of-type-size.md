@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Alignment is the requirement that data of a given type resides at an address **divisible by its size**. For example, `uint32_t` (4B) -> address divisible by 4.
+
+The CPU reads memory in word-aligned chunks. Misaligned access:
+- Cortex-M0/M0+: <span class="warn">HardFault</span>
+- Cortex-M3/M4: performance penalty or fault depending on the CCR.UNALIGN_TRP setting
+
+`_Alignof(T)` returns the alignment requirement of type T.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

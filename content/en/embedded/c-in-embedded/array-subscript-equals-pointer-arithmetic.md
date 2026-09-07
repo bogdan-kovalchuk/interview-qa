@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,11 @@ printf("%d %d",*(arr+3), arr[3]);
 
 ## Short answer
 
-TODO
+Both print `40`.
+
+`*(arr+3)` -> pointer arithmetic: offset by 3 elements, dereference = `arr[3] = 40`. `arr[3]` -> subscript operator, by definition = `*(arr+3)`.
+
+They are **identical per the standard**. The compiler generates the same machine code for both variants.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

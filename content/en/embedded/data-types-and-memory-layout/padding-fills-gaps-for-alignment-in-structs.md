@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**Padding** – unused bytes the compiler inserts between fields (or at the end) of a struct to satisfy alignment requirements.
+
+Rule: a field of type T is placed at an address divisible by `alignof(T)`.
+
+Example: `struct { char c; int x; }` – after `char` (1B) the compiler adds 3B of padding so that `int` is at offset 4.
+
+Struct size is always a multiple of the alignment of its largest field.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

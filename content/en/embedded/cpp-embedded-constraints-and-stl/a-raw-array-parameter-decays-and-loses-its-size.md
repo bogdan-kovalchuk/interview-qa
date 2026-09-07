@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0031
 title: "Trap: why is a raw C array in a C++ signature a bad signal in an interview?"
-description: "Trap: why is a raw C array in a C++ signature a bad signal in an interview?"
+description: "A raw C array decays to a pointer losing its size and signals ignorance of modern C++ practices."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">It decays to a pointer (losing the size) and shows ignorance of modern practices.</span>
+
+`void f(int arr[])` actually takes `int*`; `sizeof` inside gives the pointer size. `std::array`/`std::span` preserve the size and are safer.
+
+Protection: in C++ pass `std::array&`, `std::span` or (container + size), not a bare `T[]`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

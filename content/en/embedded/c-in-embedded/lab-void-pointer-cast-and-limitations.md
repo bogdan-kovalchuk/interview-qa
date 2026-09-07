@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+In **C**: assigning `void*` to `T*` (and vice versa) does not require an explicit cast – conversion is implicit. `int *p = malloc(n);` – valid in C. In **C++**: <span class="warn">an explicit cast is required</span>: `int *p = (int*)malloc(n);`. void* limitations:
+- Cannot be dereferenced without a cast;
+- No pointer arithmetic (C standard);
+- Does not preserve type-safety;
+Before dereferencing: `*(int*)vp = 42;`. This rule preserves the correct access type.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

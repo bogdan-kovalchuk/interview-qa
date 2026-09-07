@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+**VLA** (C99) – an array with a size determined at runtime: `void f(int n) { int arr[n]; }`. Dangers in embedded:
+1. <span class="warn">Stack overflow</span>: size is unknown at compile-time -> cannot guarantee sufficient stack;
+2. No compile-time `sizeof` – difficult to analyze stack usage;
+3. MISRA C:2012 and C11 – VLA is optional (removed from mandatory);
+4. Clang/GCC: `-Wvla` for warnings;
+Instead of VLA: a static array of maximum size + runtime size check.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

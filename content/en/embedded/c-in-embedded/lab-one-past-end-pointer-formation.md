@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**One-past-the-end pointer** – a pointer to the element immediately after the last one in an array: `arr + N` for an array of N elements. Per the C standard: forming it is **allowed**, but <span class="warn">dereferencing it is UB</span>. Usage – the standard end idiom: `int *end = arr + N; for(int *p=arr; p!=end; p++)`. Pointers further (arr+N+1 etc.) – UB already when formed; therefore: <span class="warn">only one element "past the end"</span>.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -42,7 +42,11 @@ printf("%td", p-q);
 
 ## Short answer
 
-TODO
+`2`. This is not a trap, but it tests understanding of pointer subtraction.
+
+The real trap: people expect a <span class="warn">byte difference</span> (8 bytes) but get the **element count** (2). `p - q` = `(arr+3) - (arr+1) = 2`.
+
+Byte difference: `2 * sizeof(int) = 8`. But `ptrdiff_t` returns elements; for a byte difference: `(char*)p - (char*)q` or `(uintptr_t)p - (uintptr_t)q`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+Since an array decays to a pointer, the size is <span class="warn">not passed automatically</span>. Options:
+
+1) **Explicit parameter**: `void f(int *arr, size_t n)` – simplest;
+2) **Sentinel value**: null-terminator for strings, a special value;
+3) **Struct + array**: `struct { int *data; size_t len; }`;
+4) C++ **std::span** or `std::array<int,N>`.
+
+Protection: `_Static_assert(sizeof(arr) != sizeof(int*), "Use real array")` at the caller.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

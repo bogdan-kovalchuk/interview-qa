@@ -11,7 +11,7 @@ status: published
 updated: 2026-09-07
 content_revision: 2
 reconciled_with:
-  en: 1
+  en: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У C рядковий літерал `"hello"` має тип **`char[6]`**, але зберігається у read-only області, зазвичай `.rodata`. Модифікація такого масиву має <span class="warn">undefined behavior</span>. У C++ тип рядкового літерала - `const char[6]`.
+У C рядковий літерал `"hello"` має тип **`char[6]`**, але зберігається у read-only області, зазвичай `.rodata`, тож модифікація такого масиву має <span class="warn">undefined behavior</span>. У C++ тип рядкового літерала - `const char[6]`.
 
 Практично правильно: `const char *p = "hello";` - тип не дозволяє випадково написати `p[0] = 'H'`. У C присвоєння `char *p = "hello";` історично дозволене, але GCC з `-Wwrite-strings` попередить про нього.
 

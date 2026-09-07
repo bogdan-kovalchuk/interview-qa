@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0008
 title: "Trap: when do global constructors run and what must startup do?"
-description: "Trap: when do global constructors run and what must startup do?"
+description: "Global constructors run before main via .initarray; bare-metal startup must walk it or objects stay unconstructed."
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Global constructors run before `main()` via the `.init_array` section.</span>
+
+On bare metal, startup code must manually walk `.init_array` and call each constructor; otherwise global objects remain only zero-initialized, not constructed (for a polymorphic object this may mean an incorrect vptr).
+
+Protection: make sure startup iterates `.init_array` before `main()`; this is a common bug when porting C++ to bare metal.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

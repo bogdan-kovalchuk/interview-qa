@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0008
 title: "Which memory section: `uint32_t error_count;` (global) and `uint32_t sensor_count = 5;` (global)?"
-description: "An uninitialized global goes to `.bss`; one initialized with a non-zero value goes to `.data`."
+description: "An uninitialized global goes to .bss; one initialized with a non-zero value goes to .data."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`uint32_t error_count;` -> **.bss**: uninitialized global, zeroed at boot, takes no Flash.
+
+`uint32_t sensor_count = 5;` -> **.data**: initialized global, the value `5` is stored in Flash and copied to RAM at load.
+
+Both live for the entire program runtime.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

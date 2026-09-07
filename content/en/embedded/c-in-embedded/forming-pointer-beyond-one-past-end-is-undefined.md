@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ int *q=arr+5;
 
 ## Short answer
 
-TODO
+<span class="warn">Yes, undefined behavior already when forming `arr+5`</span>.
+
+For array `arr[4]` (4 elements), valid pointers are: `arr` through `arr+4` inclusive (one-past-the-end). `arr+5` goes beyond one-past-the-end -> <span class="warn">undefined behavior even without dereferencing</span>.
+
+The compiler may use this assumption for optimization, leading to unpredictable behavior. GCC with `-fsanitize=undefined` will detect it.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

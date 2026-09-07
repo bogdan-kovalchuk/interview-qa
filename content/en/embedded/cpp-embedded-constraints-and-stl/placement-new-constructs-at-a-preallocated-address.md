@@ -1,7 +1,7 @@
 ---
 id: emb-cppstl-0007
 title: "How do you build an object without `new`, using placement new?"
-description: "How do you build an object without `new`, using placement new?"
+description: "Placement new constructs an object at a pre-allocated address without the heap"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ Sensor* s = new (buf) Sensor(config);
 
 ## Short answer
 
-TODO
+**Placement new constructs an object at a pre-allocated address, without the heap.**
+
+The memory is a static buffer or a memory-mapped region. `delete` does not apply here: the destructor must be called explicitly (`s->~Sensor()`).
+
+Rule: placement new + explicit dtor = dynamic construction without the heap.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

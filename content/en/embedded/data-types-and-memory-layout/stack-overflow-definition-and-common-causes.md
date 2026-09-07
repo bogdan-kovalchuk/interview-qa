@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+Stack overflow – exceeding the stack size -> overwriting adjacent memory regions (`.bss`, heap, another stack).
+
+Causes:
+1. **Large local arrays**: `uint8_t buf[2048]` on the stack;
+2. Deep recursion;
+3. Nested ISRs (each uses ≥8B for the exception frame on Cortex-M);
+4. Stack too small in the linker script.
+
+Diagnostics: stack canaries, `-fstack-usage`, MPU protection, filling the stack with the `0xDEAD` pattern.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

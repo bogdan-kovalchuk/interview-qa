@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0019
 title: "What are the key compilation flags for embedded C++?"
-description: "What are the key compilation flags for embedded C++?"
+description: "Flags like -fno-exceptions, -fno-rtti, -fno-threadsafe-statics, -fno-use-cxa-atexit and -fno-unwind-tables strip heavy runtime features."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`-fno-exceptions`, `-fno-rtti`, `-fno-threadsafe-statics`, `-fno-use-cxa-atexit`, `-fno-unwind-tables`.**
+
+They strip: exceptions, RTTI, the mutex on static initialization (pthread), destructor registration via `__cxa_atexit`, and `.eh_frame` tables. Often combined with `-Os` and `-std=c++17`.
+
+Rule: these flags make C++ deterministic and compact on bare metal.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`void(*isr_table[16])(void)` – an array of 16 function pointers: each points to a function with no arguments that returns void. Initialization: `isr_table[0] = nmi_handler; isr_table[1] = hardfault_handler;` Call: `isr_table[irq_num]();` or `(*isr_table[irq_num])();` This is a software interrupt controller or event dispatcher pattern; the Cortex-M Vector Table in Flash is the hardware analogue: an array of interrupt handler addresses.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

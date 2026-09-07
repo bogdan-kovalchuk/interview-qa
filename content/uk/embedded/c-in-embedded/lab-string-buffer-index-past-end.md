@@ -11,7 +11,7 @@ status: published
 updated: 2026-09-07
 content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -40,9 +40,9 @@ buf[4]='\0';
 
 ## Short answer
 
-<span class="warn">Buffer overflow!</span> `char buf[4] = "abc"` -> `buf = {'a','b','c','\0'}`. Масив 4 елементи, індекси 0..3. `buf[4]` – п'ятий елемент, за межами масиву.
+<span class="warn">Buffer overflow!</span> `char buf[4] = "abc"` -> `buf = {'a','b','c','\0'}`. Масив 4 елементи, індекси 0..3, а `buf[4]` – п'ятий елемент, за межами масиву.
 
-Ще проблема: `"abc"` вже має '\0' на позиції 3 – null-terminator вже є. Рядок коректний.
+Ще проблема: `"abc"` вже має '\0' на позиції 3 – null-terminator вже є, тож рядок коректний.
 
 Якби `char buf[3] = "abc"` – компілятор попередить або поміщає 'a','b','c' без '\0' (усікання); Завжди розмір буфера > довжина рядка + 1.[^embeddedinterviewlab]
 

@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0017
 title: "Why does a base class with virtual methods need a virtual destructor?"
-description: "Why does a base class with virtual methods need a virtual destructor?"
+description: "Without a virtual destructor, deleting a derived object through a base pointer is undefined behavior"
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Without a virtual destructor, deleting a derived object through a `Base*` is undefined behavior.</span>
+
+`Base* p = new Derived; delete p;` calls only `~Base()`, not `~Derived()` -> the derived resources are never freed.
+
+Protection: if a class has virtual functions and is deleted polymorphically, declare `virtual ~Base()`. (In embedded without a heap this is less critical, but the interface contract is still worth keeping.)[^embeddedinterviewlab]
 
 ## Detailed explanation
 

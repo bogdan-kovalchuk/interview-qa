@@ -11,7 +11,7 @@ status: published
 updated: 2026-09-07
 content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -43,7 +43,7 @@ printf("%d",*q);
 
 ## Short answer
 
-<span class="warn">Undefined behavior</span>. `q++` -> `q` тепер вказує на адресу одразу після `a` на стеку. Це не елемент масиву – лише окрема змінна.
+<span class="warn">Undefined behavior</span>. `q++` -> `q` тепер вказує на адресу одразу після `a` на стеку, а це не елемент масиву – лише окрема змінна.
 
 Pointer arithmetic визначена тільки в межах масиву (або struct за умовами). Для двох окремих змінних – навіть якщо вони поруч на стеку – `&a + 1` -> UB.
 

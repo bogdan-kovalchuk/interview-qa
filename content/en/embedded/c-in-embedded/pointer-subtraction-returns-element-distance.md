@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Subtracting two pointers of the same type returns **ptrdiff_t** – the number of elements between them (not bytes).
+
+`int *p = arr+4; int *q = arr+1; p - q = 3` (three `int` elements).
+
+Condition: both pointers must point to the **same array** (or one-past-the-end). Subtracting pointers that point to different arrays/objects -> <span class="warn">undefined behavior</span>.
+
+Application: `strlen`-like counting, offset between buffer elements.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

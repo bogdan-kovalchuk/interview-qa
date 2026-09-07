@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+`p+1 = 0x2004`.
+
+Pointer arithmetic for `uint32_t*`: step = `sizeof(uint32_t) = 4` bytes. `0x2000 + 1*4 = 0x2004`.
+
+General formula: `p + n` -> address = `(uintptr_t)p + n * sizeof(*p)`.
+
+Register bank: if `volatile uint32_t *reg = (volatile uint32_t*)0x40020000;` -> `reg+1` -> register at address `0x40020004`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-cppoop-0016
 title: "What is a pure virtual function and an abstract class?"
-description: "What is a pure virtual function and an abstract class?"
+description: "A pure virtual function declared with = 0 makes its class abstract and uninstantiable"
 track: embedded
 section: cpp-classes-and-oop
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ public:
 
 ## Short answer
 
-TODO
+**`= 0` makes a function pure virtual; a class containing one becomes abstract and cannot be instantiated.**
+
+An abstract class defines an interface (contract) that derived classes must implement. Polymorphic derived objects will have vptr/vtable; the abstract base object itself cannot be created.
+
+Rule: an abstract base is the C++ way to describe a driver/HAL (hardware abstraction layer) interface.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

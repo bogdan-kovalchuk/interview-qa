@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-**NULL pointer** – гарантовано невалідна адреса (null pointer constant). У C визначений як `0` або `(void*)0`. У C++ – `nullptr`.
+**NULL pointer** – гарантовано невалідна адреса (null pointer constant): у C визначений як `0` або `(void*)0`, у C++ – `nullptr`.
 
-Розіменування NULL -> <span class="warn">undefined behavior</span>. На Cortex-M: адреса `0x00000000` – початок Flash (Vector Table). Запис туди -> HardFault або пошкодження Vector Table.
+Розіменування NULL -> <span class="warn">undefined behavior</span>. На Cortex-M: адреса `0x00000000` – початок Flash (Vector Table), тож запис туди -> HardFault або пошкодження Vector Table.
 
 Захист: завжди перевіряй перед розіменуванням: `if(p != NULL) *p = val;`; Ініціалізуй: `int *p = NULL;`[^embeddedinterviewlab]
 

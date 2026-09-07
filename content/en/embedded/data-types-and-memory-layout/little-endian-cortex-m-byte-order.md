@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Endianness** – the byte order of multi-byte types in memory.
+
+**Little-endian**: LSB (least-significant byte) at the lowest address. Cortex-M is little-endian by default: `0x12345678` in memory -> `[78][56][34][12]` (address increases ->).
+
+**Big-endian**: MSB first. Used in network protocols (TCP/IP, MODBUS); for conversion: `htonl()` / `ntohl()`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

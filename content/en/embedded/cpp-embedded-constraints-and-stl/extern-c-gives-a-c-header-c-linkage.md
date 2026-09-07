@@ -1,7 +1,7 @@
 ---
 id: emb-cppstl-0015
 title: "How do you call C code from C++ through `extern \"C\"`?"
-description: "How do you call C code from C++ through `extern \"C\"`?"
+description: "extern \"C\" enables C linkage without name mangling so the linker finds C symbols."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ extern "C" {
 
 ## Short answer
 
-TODO
+**`extern "C"` enables C linkage – no name mangling, so the linker finds C symbols.**
+
+Without it C++ would look for a mangled name (`_Z...`), which does not exist in the C object file -> undefined reference. Many vendor headers already carry their own `__cplusplus` guard; in that case no extra wrapper is needed.
+
+Rule: a C API (application programming interface) must be declared with C linkage, but do not wrap a header that already does this on its own.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

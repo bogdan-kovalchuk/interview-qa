@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0032
 title: "What is memory-mapped I/O, and why do such registers need `volatile`?"
-description: "Peripheral registers are accessed like ordinary memory, and `volatile` stops the compiler from caching or eliding accesses to them."
+description: "Peripheral registers are accessed like ordinary memory, and volatile stops the compiler from caching or eliding accesses to them."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**Memory-mapped I/O** – peripheral registers (GPIO, UART, ADC) are accessible at fixed addresses in the CPU address space like ordinary memory.
+
+`volatile` is required because:
+1. The value can change by hardware between reads (status register).
+2. Without `volatile` the compiler may eliminate a "redundant" write (dead store) or cache the value in a register.
+
+Correct: `volatile uint32_t * const GPIOA_ODR = (volatile uint32_t*)0x40020014U;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

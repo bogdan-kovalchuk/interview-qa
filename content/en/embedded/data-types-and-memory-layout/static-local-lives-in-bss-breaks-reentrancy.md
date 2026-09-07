@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0013
 title: "Where is this stored when declared inside a function? `static uint32_t call_count;`"
-description: "A `static` local variable lives in `.bss`, not on the stack, and keeps its value across calls."
+description: "A static local variable lives in .bss, not on the stack, and keeps its value across calls."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+In the **.bss** section (zeroed at boot, no initializer).
+
+`static` moves the variable from the stack to static storage: lifetime = the entire program. The value persists between function calls.
+
+<span class="warn">The cost: loss of reentrancy</span> – if an ISR and the main loop call the function simultaneously, they share one `call_count` -> race condition.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

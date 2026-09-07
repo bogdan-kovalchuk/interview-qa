@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,7 @@ buf[4]='\0';
 
 ## Short answer
 
-TODO
+<span class="warn">Buffer overflow!</span> `char buf[4] = "abc"` -> `buf = {'a','b','c','\0'}` – the array has 4 elements, indices 0..3, so `buf[4]` is the fifth element, outside the array. Another issue: `"abc"` already has '\0' at position 3 – the null-terminator is already there, so the string is valid. If `char buf[3] = "abc"` – the compiler warns or stores 'a','b','c' without '\0' (truncation); always make buffer size > string length + 1.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

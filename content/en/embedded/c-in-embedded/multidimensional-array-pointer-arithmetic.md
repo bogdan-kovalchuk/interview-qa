@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,11 @@ printf("%d", *(*(arr+1)+2));
 
 ## Short answer
 
-TODO
+`6`.
+
+`arr+1` -> pointer to the second row `arr[1]` (type `int(*)[3]`). `*(arr+1)` -> decays to `int*`, points to `arr[1][0] = 4`. `*(arr+1)+2` -> points to `arr[1][2] = 6`. `*(*(arr+1)+2)` -> value = `6`.
+
+Equivalent: `arr[1][2]`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

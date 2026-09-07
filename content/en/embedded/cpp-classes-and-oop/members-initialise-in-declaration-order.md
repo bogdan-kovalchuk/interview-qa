@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0032
 title: "What is the initialisation order of members in a constructor?"
-description: "What is the initialisation order of members in a constructor?"
+description: "Members are initialised in declaration order in the class, not in init-list order"
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Members are initialised in the order of DECLARATION in the class, not in the order they appear in the init list.**
+
+So if `b_` comes before `a_` in the list but is declared after it, `a_` is actually initialised first. A dependency like `b_{a_}` with the wrong declaration order will read uninitialised `a_`.
+
+Defence: write the init list in the same order as the member declarations; `-Wreorder` will warn.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0001
 title: "Why are exceptions often disabled in embedded (`-fno-exceptions`)?"
-description: "Why are exceptions often disabled in embedded (`-fno-exceptions`)?"
+description: "Exception and unwinding metadata can noticeably increase the binary size"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Exception/unwinding metadata can noticeably increase the binary, and stack unwinding is ill-suited for hard real-time analysis.**
+
+The exact cost depends on the ABI (application binary interface), compiler runtime and standard library. Some implementations also carry extra runtime infrastructure for `throw`/`catch`.
+
+Rule: on flash- and real-time-constrained targets exceptions are often disabled, and errors are passed via codes or `Result` types.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

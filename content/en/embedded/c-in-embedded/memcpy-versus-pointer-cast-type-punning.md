@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Pointer cast + dereference**: `uint32_t x = *(uint32_t*)bytes;` – potential UB (strict aliasing, misalignment). The compiler may optimize "incorrectly".
+
+**memcpy**: `uint32_t x; memcpy(&x, bytes, 4);` – always correct: does not violate aliasing, the compiler optimizes it to a single LDR if aligned.
+
+Rule: for type punning use `memcpy` (or `union` in C). Pointer cast is safe only for `char*`/`unsigned char*`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

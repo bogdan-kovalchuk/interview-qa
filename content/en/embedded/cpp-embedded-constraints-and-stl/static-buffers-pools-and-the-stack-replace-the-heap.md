@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0006
 title: "Which allocation strategies are used instead of the heap?"
-description: "Which allocation strategies are used instead of the heap?"
+description: "Static allocation, placement new, fixed-size memory pools and stack allocation"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Static allocation, placement new, fixed-size memory pools, stack allocation.**
+
+All objects have static/automatic storage; there is no `new`/`delete`. A pool gives O(1) with no fragmentation; the stack is for locals, but small (stacks 1–4 KB).
+
+Rule: in safety-critical embedded the heap is either forbidden or used only during initialisation.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

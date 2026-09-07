@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0003
 title: "What is the implicit `this` pointer?"
-description: "What is the implicit `this` pointer?"
+description: "A hidden parameter of every non-static member function, holding the address of the object it was called on."
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A hidden parameter of every non-static member function – the address of the object it was called on.**
+
+`obj.set()` compiles roughly as a function call that receives `&obj`. That is why a member function sees the object's fields without a prefix.
+
+Rule: `this` makes a member function close to a C function with an explicit pointer to a struct; the optimizer can reduce the difference to zero.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

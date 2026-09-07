@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0018
 title: "How does virtual dispatch hurt determinism on simple cores?"
-description: "How does virtual dispatch hurt determinism on simple cores?"
+description: "A virtual call is an indirect branch through the vptr and vtable, which hurts WCET analysis and branch prediction"
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A virtual call is an indirect branch through the vptr/vtable, so the call target is not visible directly from the instruction.**
+
+On simple Cortex-M cores this is an extra pointer read and an indirect branch; on more complex cores it can also hurt branch prediction. The main problem for safety/real-time is that proving worst-case execution time and the call graph becomes harder.
+
+Rule: AUTOSAR (Automotive Open System Architecture) C++14 and MISRA C++ (Motor Industry Software Reliability Association C++) restrict virtual dispatch in time-critical paths; in hot paths CRTP or templates are often chosen instead.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

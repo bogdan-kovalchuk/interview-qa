@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,7 @@ printf("%d", *p);
 
 ## Short answer
 
-TODO
+**Yes, valid** within the same block. `(int){5}` is a compound literal (C99): a temporary object with automatic block storage duration. <span class="warn">But dangling pointer</span> if the block scope is exited: `int *p; { p = &(int){5}; } *p; // UB – the block has ended`. GCC may not warn; safe usage: only within the same scope where the literal is defined.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0018
 title: "Trap: what happens to a shared header without an `#ifdef __cplusplus` guard?"
-description: "Trap: what happens to a shared header without an `#ifdef __cplusplus` guard?"
+description: "A C compiler hits extern \"C\" and fails with a syntax error because it is a C++ construct."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">A C compiler hits `extern "C"` and fails with a syntax error</span> – this is a C++ construct unknown to C.
+
+A header intended for both languages, without the guard, breaks the C build.
+
+Protection: always wrap `extern "C" { ... }` in `#ifdef __cplusplus ... #endif` on both sides.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

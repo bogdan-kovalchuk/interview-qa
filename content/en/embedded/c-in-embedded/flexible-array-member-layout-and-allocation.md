@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Flexible Array Member** (FAM) – the last field of a struct with an unspecified size: `struct Packet { uint8_t len; uint8_t data[]; };`
+
+`sizeof(struct Packet)` does not include `data`. The FAM is allocated together with the struct: `malloc(sizeof(Packet) + n)` – then `data` occupies `n` bytes immediately after the struct fields.
+
+It is stored in the same memory block as the struct (heap or static). It cannot be the only member of a struct and cannot be in an array.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

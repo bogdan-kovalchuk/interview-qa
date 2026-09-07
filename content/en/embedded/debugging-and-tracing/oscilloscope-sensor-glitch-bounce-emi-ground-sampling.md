@@ -1,7 +1,7 @@
 ---
 id: emb-debug-0004
 title: "Oscilloscope shows a glitch on a sensor 0-1 transition. How to distinguish bounce, EMI, ground issue, and sampling problem?"
-description: "Oscilloscope shows a glitch on a sensor 0-1 transition. How to distinguish bounce, EMI, ground issue, and sampling problem?"
+description: "Bounce is repetitive and tied to a mechanical edge; EMI correlates with switching events; ground issues shift the reference; sampling problems show aliasing."
 track: embedded
 section: debugging-and-tracing
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Bounce** is usually repetitive and tied to a mechanical edge; EMI may correlate with motor/PWM/radio events. A ground issue shows up as a reference shift, ringing between ground points, or a change with different probe grounding. A sampling problem appears when the analog signal is normal but the firmware catches alias/metastability due to a wrong threshold, debounce, or sample rate.[^dou-embedded-interview]
 
 ## Detailed explanation
 
