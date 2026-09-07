@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0023
 title: "What compiles here: `const int * const p`?"
-description: "What compiles here: `const int * const p`?"
+description: "Neither p = 3 nor p = &y compiles; both the pointer and the pointed-to data are const-qualified."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ p = &y;
 
 ## Short answer
 
-TODO
+**Neither assignment compiles: `*p = 3` and `p = &y`.**
+
+`const int * const p` means const pointer to const int. Through this pointer, neither the pointed-to value nor the pointer value itself can be changed.
+
+Embedded example: a fixed pointer to a read-only lookup table, or to a read-only register if you add `volatile` for hardware.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

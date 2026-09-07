@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0013
 title: "Trap: what is wrong with \"RAII only works with smart pointers\"?"
-description: "Trap: what is wrong with \"RAII only works with smart pointers\"?"
+description: "RAII is a scope-lifetime principle, not about smart pointers."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">RAII is a scope-lifetime principle, not about smart pointers.</span>
+
+Lock guard, interrupt guard, scoped handle live on the stack and manage no pointer at all – this is full RAII. A smart pointer is just one application of the idea.
+
+Defense: think of RAII as ctor acquires, dtor releases, not as `unique_ptr`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

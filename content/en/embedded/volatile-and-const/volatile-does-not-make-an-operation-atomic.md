@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0004
 title: "Trap: does `volatile` make an operation atomic?"
-description: "Trap: does `volatile` make an operation atomic?"
+description: "No, volatile does not guarantee atomicity; it only forces the compiler to perform a memory access."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No. `volatile` does not guarantee atomicity.</span> It only forces the compiler to perform a memory access: for example, a `volatile uint32_t` on an 8-bit MCU may be read in several instructions, and an ISR can fire between bytes and see a partially updated value; even on Cortex-M, `counter++` is a read-modify-write, not a single indivisible operation.
+
+Mitigation: for shared state use atomic operations, a critical section, briefly disabling interrupts, or dedicated CMSIS/RTOS primitives.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-raii-0015
 title: "How do you construct an object without `malloc` in a preallocated buffer?"
-description: "How do you construct an object without `malloc` in a preallocated buffer?"
+description: "Placement new constructs an object in provided memory without allocation."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ obj->~T(); // явний виклик dtor
 
 ## Short answer
 
-TODO
+**Placement new constructs an object in provided memory without allocation.**
+
+The memory can be a static array or a memory pool and must have proper alignment. The destructor must be called explicitly (`obj->~T()`) because `delete` does not apply here.
+
+Rule: placement new plus explicit dtor equals dynamic construction without the heap.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

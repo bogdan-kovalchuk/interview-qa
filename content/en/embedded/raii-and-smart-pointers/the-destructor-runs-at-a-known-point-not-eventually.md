@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0028
 title: "Why does RAII give deterministic destruction while garbage collection does not?"
-description: "Why does RAII give deterministic destruction while garbage collection does not?"
+description: "The destructor runs at a precisely known moment, at scope exit."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The destructor runs at a precisely known moment, at scope exit.**
+
+Unlike GC (garbage collection), where the moment of release is indeterminate, RAII releases the resource immediately and predictably, which is critical for real-time and hardware resources (a port is occupied exactly until the end of the scope).
+
+Rule: deterministic teardown is the main reason embedded relies on RAII rather than GC-like approaches.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

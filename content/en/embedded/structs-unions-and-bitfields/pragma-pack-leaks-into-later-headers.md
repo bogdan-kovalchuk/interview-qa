@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0047
 title: "Trap: what is wrong with `#pragma pack` in a public header used carelessly?"
-description: "Trap: what is wrong with `#pragma pack` in a public header used carelessly?"
+description: "A packing pragma can change packing for subsequent structs in other code."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">It can change packing for subsequent structs in other code.</span>
+
+If a header enables packing and does not restore the previous state, it breaks the layout of unrelated structs, the ABI, and alignment. This is especially nasty in embedded, where one header can affect driver structs or RTOS control blocks.
+
+Mitigation: use push/pop pragmas or local attributes, minimize the scope of packing, and verify layout with static assertions.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

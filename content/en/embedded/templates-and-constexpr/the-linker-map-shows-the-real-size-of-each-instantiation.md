@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0025
 title: "Why should you check the linker map after adding template-heavy code?"
-description: "Why should you check the linker map after adding template-heavy code?"
+description: "The map file shows the real size of each instantiation, the only way to spot hidden bloat."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The map file shows the real size of each instantiation – the only way to spot hidden bloat.**
+
+Drivers that look identical can duplicate kilobytes; the map reveals that `Uart<USART1>` and `Uart<USART2>` are two nearly identical copies.
+
+Rule: after template-heavy changes, check the `.map` and move type-independent logic out of the template.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0042
 title: "What does `alignas`/`_Alignas` or a compiler-specific alignment attribute do?"
-description: "What does `alignas`/`_Alignas` or a compiler-specific alignment attribute do?"
+description: "Sets or strengthens the alignment requirement of an object or type."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Sets or strengthens the alignment requirement of an object or type.**
+
+In embedded, this is needed for DMA buffers, cache line alignment, vector tables, or peripheral requirements. For example, a DMA descriptor may require 16-byte alignment; cache maintenance on Cortex-M7 often operates on cache lines.
+
+Rule: alignment is part of the hardware contract. Check the address at runtime or compile time and describe the requirement in the type/attribute/linker script.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

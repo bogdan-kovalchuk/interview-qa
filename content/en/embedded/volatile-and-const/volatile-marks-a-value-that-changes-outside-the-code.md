@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0001
 title: "What does the `volatile` qualifier mean in C?"
-description: "What does the `volatile` qualifier mean in C?"
+description: "volatile means the value of an object can change outside the visible program flow, by hardware, ISR, DMA, or another asynchronous mechanism."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`volatile`** means that the value of an object can change outside the visible flow of the program: by hardware, an ISR, DMA, or another asynchronous mechanism.
+
+The compiler must perform an actual memory access for every read or write of such an object, rather than keeping the value only in a CPU register. For Cortex-M this is critical for memory-mapped registers: reading an address can return peripheral state, and writing can trigger a hardware action.
+
+Rule: `volatile` is not applied for reliability, only when the object can genuinely change outside the control of ordinary C code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

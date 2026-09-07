@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0052
 title: "Why is `sizeof(struct with flexible array)` not the full packet size?"
-description: "Why is `sizeof(struct with flexible array)` not the full packet size?"
+description: "The flexible array member has no compile-time size and is not included in sizeof."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Because the flexible array member has no compile-time size and is not included in `sizeof`.**
+
+`sizeof(struct Packet)` returns only the header size up to the payload, possibly with padding before `data[]`. The real packet size must be calculated as `sizeof(struct Packet) + payload_len`.
+
+Rule: a flexible array member describes the prefix layout, it does not own storage automatically.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

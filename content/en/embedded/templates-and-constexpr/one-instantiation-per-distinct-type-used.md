@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0002
 title: "How many template instantiations end up in the binary?"
-description: "How many template instantiations end up in the binary?"
+description: "Exactly as many instantiations as there are different types actually used."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Exactly as many as there are DIFFERENT types actually used.**
+
+If you call `max<int>()` and `max<float>()`, the binary will contain two instantiations. The compiler generates code only for types actually used, not for "all possible" ones.
+
+Rule: each unique set of template arguments equals a separate copy of code in Flash.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

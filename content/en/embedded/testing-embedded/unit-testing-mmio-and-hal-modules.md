@@ -1,7 +1,7 @@
 ---
 id: emb-testemb-0006
 title: "How do you write a unit test for a module that uses MMIO registers or a HAL driver?"
-description: "English translation pending."
+description: "Abstract register access behind a thin interface or fake register block and test logic on the host."
 track: embedded
 section: testing-embedded
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Move register/HAL access behind a thin interface or fake register block, and test the business logic on the host. In the test, verify which bits are written, in what sequence, how flags, timeouts, and errors are handled. <span class="warn">Do not test a real MMIO pointer on the host directly; replace `volatile` register access with a controlled fake/shim layer.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

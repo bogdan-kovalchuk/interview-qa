@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0008
 title: "Why is a `constexpr` variable better than a `#define` constant?"
-description: "Why is a `constexpr` variable better than a `#define` constant?"
+description: "A constexpr variable has type and scope, making it type-safe unlike textual substitution."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ constexpr int MAX_SENSORS = 16;
 
 ## Short answer
 
-TODO
+**It has type and scope – type-safe, unlike textual substitution.**
+
+A `constexpr` variable is initialized at compile time, visible to the debugger, respects namespace and participates in type checking. `#define` is just text with no type.
+
+Rule: integer compile-time constants in C++ are `constexpr`, not `#define`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

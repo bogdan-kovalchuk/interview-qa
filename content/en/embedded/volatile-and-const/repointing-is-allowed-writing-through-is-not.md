@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0021
 title: "What compiles here: `const int *p`?"
-description: "What compiles here: `const int *p`?"
+description: "p = &y compiles but p = 3 does not; const is to the left of so the pointed-to data is protected, not the pointer."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ p = &y;
 
 ## Short answer
 
-TODO
+**`p = &y` compiles, `*p = 3` does not compile.**
+
+`const int *p` means pointer to const int. Const applies to the data pointed to by `p`, not to the pointer itself. So the pointer can be changed, but writing through it is forbidden.
+
+Rule: if `const` is to the left of `*`, the pointed-to data is protected.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

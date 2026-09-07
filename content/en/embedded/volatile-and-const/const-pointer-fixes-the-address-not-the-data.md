@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0017
 title: "What does `uint8_t * const buf` mean in a parameter or a local variable?"
-description: "What does `uint8_t * const buf` mean in a parameter or a local variable?"
+description: "buf is a const pointer to mutable uint8t; the address cannot change but the bytes it points to can be modified."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`buf` is a const pointer to mutable `uint8_t`**.
+
+You cannot assign `buf = other`, but you can modify `buf[0]`. In a function parameter, top-level `const` on the pointer itself is rarely part of the API, because the parameter is already a copy of the pointer value.
+
+Embedded use case: a local alias for a fixed address or register pointer that must not be accidentally reassigned.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

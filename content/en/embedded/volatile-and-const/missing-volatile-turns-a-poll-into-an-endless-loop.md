@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0005
 title: "What can happen to this loop without `volatile`?"
-description: "What can happen to this loop without `volatile`?"
+description: "The compiler can turn the loop into an infinite one because the flag never changes within the visible code."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ while (flag == 0) {
 
 ## Short answer
 
-TODO
+The compiler can turn the loop into an <span class="warn">infinite</span> one because `flag` never changes within the visible code.
+
+At `-O2` it is allowed to read `flag` once, keep the value in a CPU register, and never re-read RAM. The ISR will physically change the byte in memory, but the main loop may never see it.
+
+Mitigation: declare the flag as `volatile uint8_t flag`. If the flag is wider than the platform atomic access or there are more complex invariants, add a critical section or an atomic API.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

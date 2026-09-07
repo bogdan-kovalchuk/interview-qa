@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0003
 title: "What does a class template for a fixed-size buffer look like?"
-description: "What does a class template for a fixed-size buffer look like?"
+description: "Type and size are template parameters, so the buffer lives on the stack without heap."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ CircularBuffer<uint8_t, 64> uart_rx;
 
 ## Short answer
 
-TODO
+**Type and size are template parameters, so the buffer lives on the stack without heap.**
+
+Size `N` is known at compile time, array `buf_[N]` is embedded in the object. No `malloc`, optimal sizing, no runtime flexibility.
+
+Rule: parameterize containers by type and size – you get a heap-free structure with type safety.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

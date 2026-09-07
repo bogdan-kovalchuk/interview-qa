@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0015
 title: "What is the typical size of the union?"
-description: "What is the typical size of the union?"
+description: "Typically sizeof(union U) equals 4 if uint32t has size 4 and the largest alignment does not increase the size beyond 4."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ union U {
 
 ## Short answer
 
-TODO
+Typically `sizeof(union U) == 4` if `uint32_t` has size 4 and the largest alignment does not increase the size beyond 4.
+
+All fields start at offset 0. `b` uses the first byte of storage, `h` the first 2 bytes, `w` all 4 bytes. The actual interpretation of the bytes depends on endianness and access rules.
+
+Rule: union size is determined by the largest member, not the sum of members.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

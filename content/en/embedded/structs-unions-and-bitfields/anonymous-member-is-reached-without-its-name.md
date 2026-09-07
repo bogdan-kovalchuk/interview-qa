@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0044
 title: "What is an anonymous struct/union and where does it appear?"
-description: "What is an anonymous struct/union and where does it appear?"
+description: "Anonymous struct/union allows accessing nested members without an intermediate object name."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An anonymous struct/union** allows accessing nested members without naming the intermediate object, provided the standard/compiler supports it in the relevant mode.
+
+In embedded headers this is often used for register views: one register can be seen as a raw `uint32_t` or as a set of fields. This is convenient but may be compiler-specific in older C modes.
+
+Rule: check whether anonymous union/struct are allowed by the standard and the project coding standard; for portable public headers, err on the side of caution.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0013
 title: "What does `volatile const uint32_t * const STATUS` mean?"
-description: "What does `volatile const uint32_t * const STATUS` mean?"
+description: "STATUS is a const pointer to volatile const uint32t; the address is fixed, data is read-only yet must be reloaded each time."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`STATUS` is a const pointer to volatile const `uint32_t`**.
+
+The pointer address does not change. The data at the address cannot be written through this type, but it must be reloaded every time because hardware can change the status bits. This is the classic type for a read-only status register.
+
+Rule: `const` guards against firmware writes, `volatile` guards against caching the hardware value.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

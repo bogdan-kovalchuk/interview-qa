@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0008
 title: "What does this code check?"
-description: "What does this code check?"
+description: "It checks that the ODR field in GPIOTypeDef has offset 0x14."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ _Static_assert(offsetof(GPIO_TypeDef, ODR) == 0x14,
 
 ## Short answer
 
-TODO
+It checks that the `ODR` field in `GPIO_TypeDef` has offset `0x14`.
+
+For a peripheral struct overlay this is critical: if preceding fields or reserved gaps are described incorrectly, `GPIOA->ODR` will access not the output data register but a different address. On Cortex-M this can mean accessing the wrong peripheral, a silent bug, or a fault.
+
+Rule: register maps must have compile-time checks of offsets and total size.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

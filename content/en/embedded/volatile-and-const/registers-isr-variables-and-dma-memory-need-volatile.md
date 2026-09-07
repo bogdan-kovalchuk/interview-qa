@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0003
 title: "Name three mandatory use cases for `volatile` in embedded C."
-description: "Name three mandatory use cases for `volatile` in embedded C."
+description: "Three classic use cases: memory-mapped hardware registers, variables shared with an ISR, and memory modified by DMA."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Three classic use cases: memory-mapped hardware registers, variables shared with an ISR, and memory modified by DMA.
+
+In all three cases the compiler does not see an ordinary C write that changes the value. Without `volatile` it may cache the old value or remove the access as redundant.
+
+Rule: if the source of a value change is invisible to the compiler in the current control flow, consider `volatile`; if the problem is about mutual exclusion or atomicity, `volatile` alone is not enough.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

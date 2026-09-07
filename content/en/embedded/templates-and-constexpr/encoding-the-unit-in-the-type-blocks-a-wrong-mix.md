@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0020
 title: "How do templates give type-safe physical units?"
-description: "How do templates give type-safe physical units?"
+description: "The unit is encoded in the type so mixing incompatible quantities is a compile error."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ using Milliamp  = Quantity<MilliampTag>;
 
 ## Short answer
 
-TODO
+**The unit is encoded in the type – mixing incompatible quantities is impossible (compile error).**
+
+`set_led_current(read_battery())` will not compile (Millivolt ≠ Milliamp). At the same time `Quantity` has the size of `int32_t`: tag types exist only at compile time and are fully optimized away.
+
+Rule: type-safe units give compile-time checking without additional runtime fields; recall the Mars Climate Orbiter crash (pound-seconds vs newton-seconds).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

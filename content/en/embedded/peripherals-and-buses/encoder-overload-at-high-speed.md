@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0013
 title: "An encoder produces many pulses and the MCU hangs at high speed. How do you assess interrupt rate, debounce, timer capture, and CPU load?"
-description: "Estimate the edge rate and ISR budget, then move high-rate capture into timer, DMA, or hardware support instead of delaying inside an ISR."
+description: "Calculate the edge rate from pulses per revolution, RPM and edges per pulse, then move to timer capture, DMA or a hardware counter when the ISR load is too high."
 track: embedded
 section: peripherals-and-buses
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Calculate the edge rate: pulses per revolution × RPM × edges per pulse, and compare it with the ISR time. If an ISR on every edge takes a significant share of CPU, switch to timer encoder mode/input capture, DMA, or a hardware counter. <span class="warn">Debounce via ISR delays only makes things worse</span>; a mechanical encoder needs hardware/filter or a non-blocking state machine.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -11,7 +11,7 @@ status: published
 updated: 2026-09-07
 content_revision: 1
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -37,7 +37,7 @@ sources:
 
 При знищенні обох dtor двічі звільнить мьютекс/DMA/handle – UB (undefined behavior), corruption або повторне закриття вже закритого.
 
-Захист: для ресурс-обгорток завжди або `= delete` copy, або реалізуй move-семантику з обнуленням джерела.[^embeddedinterviewlab]
+Захист: для ресурс-обгорток завжди або `= delete` copy, або реалізуй move semantics з обнуленням джерела.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

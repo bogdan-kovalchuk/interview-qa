@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0006
 title: "What changes once `volatile` is added?"
-description: "What changes once `volatile` is added?"
+description: "The compiler must re-read rxdone from memory on every iteration, letting the main loop see changes made by the ISR or DMA."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ while (rx_done == 0) { }
 
 ## Short answer
 
-TODO
+The compiler must re-read `rx_done` from memory on every iteration.
+
+This allows the main loop to see the change made by the ISR or DMA completion callback. Without `volatile`, the optimiser may decide the value is stable because there is no write to `rx_done` in the loop body.
+
+Embedded rule: for a simple ISR flag of type `uint8_t`, `volatile` is often sufficient for visibility, but not for more complex read-modify-write scenarios.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0037
 title: "Why can a read-modify-write on a volatile register be unsafe?"
-description: "Why can a read-modify-write on a volatile register be unsafe?"
+description: "The read-modify-write operation is not atomic: it reads the register, modifies in the CPU, then writes back."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ GPIOA_ODR |= (1u << pin);
 
 ## Short answer
 
-TODO
+The operation is <span class="warn">not atomic</span>: it reads the register, modifies in the CPU, then writes back.
+
+If hardware or an ISR changes other bits between the read and the write, the final write can overwrite those changes. On Cortex-M, GPIO ports often have set/reset registers such as BSRR in STM32, which allow atomically setting or clearing bits without RMW.
+
+Protection: for hardware registers, use atomic set/clear registers, bit-banding where available, or a critical section if RMW is unavoidable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

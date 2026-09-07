@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0052
 title: "What does `volatile` mean in multi-threaded C/C++: is it a replacement for a mutex or an atomic?"
-description: "What does `volatile` mean in multi-threaded C/C++: is it a replacement for a mutex or an atomic?"
+description: "No, volatile does not replace a mutex, an atomic, or RTOS synchronization."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No. `volatile` does not replace a mutex, an atomic, or RTOS synchronization.</span>
+
+It describes observable memory access, but provides no inter-thread synchronization, memory ordering, or race-free increments. In an embedded RTOS, tasks that share variables need atomic primitives, a mutex, a queue, a semaphore, or a critical section.
+
+Rule: `volatile` for hardware/ISR/DMA visibility; synchronization primitives for concurrency correctness.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

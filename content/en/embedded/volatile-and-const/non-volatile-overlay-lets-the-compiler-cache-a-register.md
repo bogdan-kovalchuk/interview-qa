@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0046
 title: "Trap: what is wrong with this struct overlay?"
-description: "Trap: what is wrong with this struct overlay?"
+description: "The register overlay fields are not volatile-qualified."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ typedef struct {
 
 ## Short answer
 
-TODO
+<span class="warn">The register overlay fields are not volatile-qualified.</span>
+
+`GPIOA->IDR` has the type of a plain `uint32_t`, so the compiler can cache or optimize the access. For peripheral registers, this is wrong because hardware can change IDR independently of the C code.
+
+Protection: declare the fields as `volatile uint32_t MODER;`, `volatile uint32_t IDR;` or use vendor CMSIS headers where the qualifiers are already set.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

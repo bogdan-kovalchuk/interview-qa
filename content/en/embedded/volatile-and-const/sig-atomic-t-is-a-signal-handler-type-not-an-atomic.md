@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0044
 title: "Trap: does `volatile sig_atomic_t` give the same guarantees as a hardware atomic?"
-description: "Trap: does `volatile sig_atomic_t` give the same guarantees as a hardware atomic?"
+description: "volatile sigatomict is a specific portable C pattern for signal handlers, not a general embedded atomic primitive."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No. This is a specific portable C pattern for signal handlers, not a general embedded atomic primitive.</span>
+
+`sig_atomic_t` guarantees safe access in the context of a C signal handler within the standard library, but this does not mean that any volatile type on an MCU is atomic or has memory ordering. For bare-metal ISRs, you need to look at bus width, CPU instructions, and the ABI.
+
+Protection: for Cortex-M shared ISR data, use types that are atomically read and written on that architecture, or critical sections.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0016
 title: "What does `extern template` do?"
-description: "What does `extern template` do?"
+description: "Suppresses implicit template instantiation in every translation unit."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ extern template class Buffer<uint8_t>;
 
 ## Short answer
 
-TODO
+**Suppresses implicit template instantiation in every translation unit.**
+
+Instantiation happens explicitly in one `.cpp`, and the rest of the TUs only reference it – this removes duplication of identical code across object files.
+
+Rule: `extern template` + one explicit instantiation = one copy of code instead of many.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

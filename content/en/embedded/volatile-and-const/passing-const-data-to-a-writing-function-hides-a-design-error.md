@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0050
 title: "Trap: can you pass a `const uint8_t *` to a function expecting `uint8_t *`?"
-description: "Trap: can you pass a `const uint8_t *` to a function expecting `uint8_t *`?"
+description: "Without a cast it is not allowed; with a cast you can hide a design error."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Without a cast you cannot; with a cast you can hide a design error.</span>
+
+A function with a `uint8_t *` parameter has the right to write to the buffer, so passing a `const uint8_t *` violates that contract. If the buffer lives in Flash/`.rodata`, an accidental write can end in a fault or undefined behavior.
+
+Defense: separate the API: input buffer as `const uint8_t *`, output buffer as `uint8_t *`. Do not strip qualifiers with a cast for convenience.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

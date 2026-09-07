@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0025
 title: "What are the rule of three, five and zero?"
-description: "What are the rule of three, five and zero?"
+description: "If a class manages a resource, define or delete all special functions together."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**If a class manages a resource, define or delete all special functions together.**
+
+Rule of three: dtor, copy ctor, copy assign. Rule of five (C++11): plus move ctor, move assign. Rule of zero: do not manage resources manually, let RAII members (smart pointers, guards) do it, and write no special function at all.
+
+Rule: aim for the rule of zero; if you manage a resource yourself, do not leave the default copy operations that would cause double-free.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0036
 title: "Trap: what is wrong with reading a register and discarding the result?"
-description: "Trap: what is wrong with reading a register and discarding the result?"
+description: "If the macro is not volatile, the compiler can remove that read."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ ADC_DR;
 
 ## Short answer
 
-TODO
+<span class="warn">If the macro is not volatile, the compiler can remove that read.</span>
+
+For a data register, a read may clear a hardware flag or pull a sample from a FIFO. But for a plain `uint32_t`, an expression statement that discards the result has no observable effect, so the optimizer is free to remove it.
+
+Protection: a register macro must be `(*(volatile uint32_t *)address)`. If the read is intentionally discarded, an explicit `(void)ADC_DR` cast is sometimes added for readability.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

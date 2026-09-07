@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0016
 title: "Trap: what is dangerous about union type punning?"
-description: "Trap: what is dangerous about union type punning?"
+description: "The trap is not in C syntax but in the portability of the result and the difference between C and C++."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ uint32_t bits = x.u;
 
 ## Short answer
 
-TODO
+<span class="warn">The trap is not in C syntax but in the portability of the result and the difference between C and C++.</span>
+
+In C99/C11, reading a different union member to inspect object representation is a standard-described type punning pattern; this is not the same as a pointer-cast strict aliasing violation. But the value of `bits` still depends on the representation of `float` and on endianness. In C++, reading an inactive union member is usually undefined behavior.
+
+Defense: for a portable bit copy, use `memcpy(&bits, &x.f, sizeof bits)`, and in C++20 use `std::bit_cast`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

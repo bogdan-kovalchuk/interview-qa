@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0007
 title: "Trap: what is wrong with this polling code?"
-description: "Trap: what is wrong with this polling code?"
+description: "The hardware register access is missing volatile, so the compiler can cache the first read and polling may hang."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ while ((UART_SR & 0x20) == 0) { }
 
 ## Short answer
 
-TODO
+<span class="warn">The hardware register access is missing `volatile`.</span>
+
+`UART_SR` dereferences a plain `uint32_t *`, so the compiler can cache the first read value of the status register and never re-read the peripheral. In a release build, polling may hang or see stale state.
+
+Mitigation: `#define UART_SR (*(volatile uint32_t *)0x40011000u)`. In vendor headers, every register field in a struct overlay must be volatile-qualified.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

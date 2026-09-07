@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0009
 title: "What is full template specialisation?"
-description: "What is full template specialisation?"
+description: "A completely different implementation for a specific type."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ template<> class SpiDriver<STM32F4> {
 
 ## Short answer
 
-TODO
+**A completely different implementation for a specific type.**
+
+It allows centralizing platform-dependent code in one place instead of scattered `#ifdef` across the project.
+
+Rule: full specialization – for one specific type/platform with a unique layout.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

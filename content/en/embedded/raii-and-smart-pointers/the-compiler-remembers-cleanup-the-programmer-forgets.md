@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0020
 title: "How is RAII better than manual init/deinit?"
-description: "How is RAII better than manual init/deinit?"
+description: "RAII gives cleanup guarantee, safe early return, one destructor instead of repetition, automatic destruction order and zero runtime after inlining."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+- **Cleanup guarantee:** the compiler calls the dtor vs the programmer must remember;
+- **Error path:** early return is safe vs every exit is a chance for a bug;
+- **Duplication:** the dtor is written once vs repeated at every exit;
+- **Order:** automatic reverse destruction vs manual calls in reverse order;
+- **Runtime:** often zero after inlining, but this must be verified with release flags.
+
+Rule: RAII adds no capabilities, it removes an entire class of human errors.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

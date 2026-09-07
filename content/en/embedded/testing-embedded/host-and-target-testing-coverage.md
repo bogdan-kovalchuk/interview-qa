@@ -1,7 +1,7 @@
 ---
 id: emb-testemb-0002
 title: "How should embedded C code be tested on the host and target, and what should each level cover?"
-description: "Host tests cover portable logic, while target and HIL tests cover hardware behavior, real timing, and integration boundaries."
+description: "Host tests cover portable logic, target tests cover hardware-dependent behavior and real timing."
 track: embedded
 section: testing-embedded
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Host tests** cover pure logic: state machines, parsers, protocol framing, boundary cases, mocks for HAL/MMIO. **Target tests** verify what depends on the hardware: clocks, drivers, DMA, ISR latency, buses, power states, and real timing. HIL or board tests must catch integration defects that unit tests on a PC cannot see.[^dou-embedded-interview]
 
 ## Detailed explanation
 

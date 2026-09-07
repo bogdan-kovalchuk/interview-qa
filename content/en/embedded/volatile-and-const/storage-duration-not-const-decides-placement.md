@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0027
 title: "Trap: does a local `const` array always live in Flash?"
-description: "Trap: does a local `const` array always live in Flash?"
+description: "No; const forbids writes through the identifier, but storage placement depends on storage duration, ABI, optimization, and the linker script."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No, not always.</span>
+
+`const` forbids writes through that identifier, but storage placement depends on storage duration, ABI, optimization, and the linker script. A local automatic `const` object may end up on the stack or be optimized into immediate constants. File-scope or `static const` objects are far more likely to land in `.rodata`.
+
+Fix: for large embedded LUTs, use `static const` or file-scope `const` and check the map file.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

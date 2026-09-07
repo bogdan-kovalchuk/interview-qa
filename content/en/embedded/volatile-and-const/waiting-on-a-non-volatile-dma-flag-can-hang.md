@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0059
 title: "Trap: what is wrong with this way of waiting for DMA?"
-description: "Trap: what is wrong with this way of waiting for DMA?"
+description: "If dmadone is modified by an ISR or a DMA callback, it is missing volatile."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ while (!dma_done) { }
 
 ## Short answer
 
-TODO
+<span class="warn">If `dma_done` is modified by an ISR or a DMA callback, it is missing `volatile`.</span>
+
+The compiler can read `dma_done` once and stay in the loop forever. DMA hardware does not change a C variable directly, but a callback/ISR changes it asynchronously with respect to the main loop.
+
+Defense: `static volatile uint8_t dma_done;`. For an RTOS, prefer a semaphore/event notification over busy-wait.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

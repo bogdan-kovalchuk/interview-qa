@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0001
 title: "What is a function template and why is it better than a macro?"
-description: "What is a function template and why is it better than a macro?"
+description: "A function template is one type-safe definition that works for any type."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ T clamp(T v, T lo, T hi) {
 
 ## Short answer
 
-TODO
+**One definition that works for any type, with full type checking.**
+
+Unlike a macro: type safety, arguments are evaluated exactly once (no double evaluation), full debugging, proper error messages, overload resolution.
+
+Rule: a function template is the modern replacement for a function-like macro.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

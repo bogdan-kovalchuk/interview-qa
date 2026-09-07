@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0004
 title: "What is a non-type template parameter (NTTP)?"
-description: "What is a non-type template parameter (NTTP)?"
+description: "A template parameter that is a value (not a type), e.g. sizet N."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A template parameter that is a value (not a type) – e.g. `size_t N`.**
+
+In `CircularBuffer<T, N>` the size `N` is an NTTP: the compiler knows it at build time, so it can allocate a fixed-size array and fold computations into constants.
+
+Rule: NTTP lets you bake sizes/configuration into the type and get compile-time bounds checking.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

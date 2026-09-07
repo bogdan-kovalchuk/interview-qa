@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0047
 title: "What does `const volatile` mean for a memory-mapped device ID register?"
-description: "What does `const volatile` mean for a memory-mapped device ID register?"
+description: "Firmware must not write the register but must read it as a volatile hardware value."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Firmware must not write the register, but must read it as a volatile hardware value.**
+
+A device ID can be read-only from the CPU's perspective, but physically on the bus it is a hardware register, not an ordinary constant in Flash. Even if the value practically never changes, the type `const volatile` describes the correct ownership: hardware owns, firmware observes.
+
+Rule: a read-only hardware register should not be described as just `const`, because the compiler may treat it as ordinary read-only data.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

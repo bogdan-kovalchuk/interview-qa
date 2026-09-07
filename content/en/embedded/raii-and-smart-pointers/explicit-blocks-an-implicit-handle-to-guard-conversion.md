@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0027
 title: "Why is an RAII guard constructor made `explicit`?"
-description: "Why is an RAII guard constructor made `explicit`?"
+description: "To forbid implicit conversion from handle to guard."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**To forbid implicit conversion from handle to guard.**
+
+`explicit LockGuard(osMutexId_t)` prevents accidentally creating a temporary guard through implicit conversion (for example, when passing a mutex to a function), which could acquire or release the lock at an unexpected moment.
+
+Rule: make single-argument wrapper constructors `explicit`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

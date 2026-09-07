@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0048
 title: "Trap: why does \"works in debug, breaks in release\" often point at a missing `volatile`?"
-description: "Trap: why does \"works in debug, breaks in release\" often point at a missing `volatile`?"
+description: "A debug build typically uses -O0, while a release build enables optimizations."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Because a debug build typically uses `-O0`, while a release build enables optimizations.</span>
+
+At `-O0`, the compiler often performs every read literally, so a missing `volatile` can go unnoticed. At `-O2`, it caches values, removes redundant reads and writes, and exposes the false assumption that hardware memory behaves like ordinary RAM.
+
+Protection: if peripheral polling or a sensor read returns stale data only in release, check register pointer types and volatile qualifiers first.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

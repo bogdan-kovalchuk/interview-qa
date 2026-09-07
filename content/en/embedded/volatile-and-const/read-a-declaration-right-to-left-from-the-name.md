@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0019
 title: "How do you read the declaration `const int *p`?"
-description: "How do you read the declaration `const int *p`?"
+description: "p is a pointer to const int; the pointer can be reassigned but writing through it is not allowed."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`p` is a pointer to const `int`**.
+
+`p` can be redirected to another `int`, but `*p = 5` is not allowed. Important: the object itself is not necessarily physically immutable; it is just read-only through this pointer.
+
+Rule: read from the variable name right and left: `p` is pointer to const int.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

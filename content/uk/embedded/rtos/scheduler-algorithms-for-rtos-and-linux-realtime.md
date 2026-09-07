@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-В RTOS типово важливий **fixed-priority preemptive scheduling**, інколи round-robin для tasks одного priority. Для Linux real-time важливі `SCHED_FIFO`, `SCHED_RR`, priority inheritance і PREEMPT_RT поведінка latency. <span class="warn">Алгоритм scheduler треба оцінювати разом з interrupt latency, locks і worst-case execution time.</span>[^dou-embedded-interview]
+В RTOS типово важливий **fixed-priority preemptive scheduling**, інколи round-robin для tasks одного priority. Для Linux real-time важливі `SCHED_FIFO`, `SCHED_RR`, пріоритетне успадкування (priority inheritance) і PREEMPT_RT поведінка latency. <span class="warn">Алгоритм scheduler треба оцінювати разом з interrupt latency, locks і worst-case execution time.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

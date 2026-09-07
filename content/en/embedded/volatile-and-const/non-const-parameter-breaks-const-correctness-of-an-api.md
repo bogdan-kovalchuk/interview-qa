@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0028
 title: "Trap: what is wrong with this API?"
-description: "Trap: what is wrong with this API?"
+description: "The API loses const-correctness; a read-only buffer parameter should be const uint8t so callers can pass const data safely."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ uart_send(msg, 2);
 
 ## Short answer
 
-TODO
+<span class="warn">The API loses const-correctness.</span>
+
+If `uart_send` only reads the buffer, the parameter must be `const uint8_t *data`. Otherwise the caller cannot safely pass a `const` buffer from Flash/`.rodata`, and casting away const hides a potential write into read-only memory.
+
+Fix: declare read-only input parameters as `const T *`. This is also a typical MISRA Rule 8.13 requirement.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

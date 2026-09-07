@@ -1,7 +1,7 @@
 ---
 id: emb-testemb-0008
 title: "Which dynamic-analysis approaches are possible for embedded C/C++: host sanitizers, Valgrind, tracing, and fault injection?"
-description: "English translation pending."
+description: "Host sanitizers cover portable logic; on target, use trace, coverage, fault injection, and HIL tests."
 track: embedded
 section: testing-embedded
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+On the host, you can run **ASan/UBSan/TSan** for logic without hardware dependencies, and `Valgrind` is useful for Linux-target or host scenarios. On target, trace, coverage, watchpoints, stack watermarking, fault injection, bus/error simulation, and HIL tests are more common. <span class="warn">A sanitizer on a PC does not prove correctness of ISRs, DMA cache coherency, or real timing.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

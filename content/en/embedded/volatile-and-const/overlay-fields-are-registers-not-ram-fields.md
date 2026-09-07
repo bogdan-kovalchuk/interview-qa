@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0045
 title: "Why are peripheral register struct fields declared `volatile`?"
-description: "Why are peripheral register struct fields declared `volatile`?"
+description: "Each field of the struct overlay represents a hardware register, not an ordinary RAM field."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Because each field of the struct overlay represents a hardware register, not an ordinary RAM field.**
+
+When code writes `GPIOA->ODR` or reads `GPIOA->IDR`, this is a bus transaction to a peripheral address. The compiler must not cache a field value, merge writes, or remove reads.
+
+Rule: in a CMSIS-style register overlay, volatile must be placed on the register fields or on the access type so that every field access is a volatile access.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

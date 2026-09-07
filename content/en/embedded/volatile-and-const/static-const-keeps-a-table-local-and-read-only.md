@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0056
 title: "What does `static const` mean for a table inside a C file?"
-description: "What does `static const` mean for a table inside a C file?"
+description: "static limits linkage to this translation unit and const makes the data read-only through this identifier."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`static` limits linkage to this translation unit, and `const` makes the data read-only through this identifier.**
+
+For an embedded lookup table this is often the ideal form: the symbol is not exported, the data can reside in `.rodata`/Flash, and the compiler can optimize accesses within the file.
+
+Rule: declare file-private immutable tables as `static const` unless they must be part of the external ABI.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

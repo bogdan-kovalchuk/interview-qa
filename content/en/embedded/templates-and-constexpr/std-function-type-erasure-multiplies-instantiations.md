@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0017
 title: "Trap: why can `std::function` inflate Flash sharply?"
-description: "Trap: why can `std::function` inflate Flash sharply?"
+description: "std::function is template-heavy type erasure that can produce a lot of separate code for different signatures."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`std::function` is template-heavy type erasure; different signatures and callable types can produce a lot of separate code.</span>
+
+Each signature is a separate instantiation of the type-erasure machinery, and the implementation may pull in additional runtime code.
+
+Defense: for simple callbacks a function pointer + `void* context` is often sufficient. On flash-constrained MCUs check `std::function` via the linker map.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

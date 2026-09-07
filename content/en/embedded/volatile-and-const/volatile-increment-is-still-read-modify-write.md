@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0053
 title: "Why is `volatile uint32_t counter; counter++;` unsafe for an ISR-shared counter?"
-description: "Why is `volatile uint32_t counter; counter++;` unsafe for an ISR-shared counter?"
+description: "counter++ is a read-modify-write, not an atomic operation."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`counter++` is a read-modify-write, not an atomic operation.</span>
+
+The compiler performs a volatile read, adds 1 in a CPU register, then a volatile write. If an ISR also modifies `counter` between the read and the write, one update can be lost. `volatile` only guarantees that the read and write will not be removed.
+
+Defense: update the shared counter in a critical section, or use an atomic operation if the platform and toolchain support it.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

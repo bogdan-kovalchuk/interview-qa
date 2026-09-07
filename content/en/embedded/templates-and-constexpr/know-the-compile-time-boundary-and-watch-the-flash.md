@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0034
 title: "What should a candidate demonstrate on templates and constexpr questions?"
-description: "What should a candidate demonstrate on templates and constexpr questions?"
+description: "Understanding of the compile-time vs runtime boundary, ability to spot template bloat on a flash-constrained MCU, and when CRTP beats virtual."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Understanding of the compile-time vs runtime boundary, the ability to spot template bloat on a flash-constrained MCU, and when CRTP is better than virtual.**
+
+Plus: `constexpr` for moving computations to build time, `if constexpr` as a type-safe `#ifdef`, strategies against bloat, and verification via the linker map.
+
+Rule: always distinguish zero runtime cost from real Flash and compile cost.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

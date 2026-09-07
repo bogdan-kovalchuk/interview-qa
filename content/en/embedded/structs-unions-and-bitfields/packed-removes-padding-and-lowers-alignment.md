@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0011
 title: "What is a `packed` struct?"
-description: "What is a `packed` struct?"
+description: "A packed structure asks the compiler not to insert normal padding between fields or to reduce the struct alignment."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Packed structure** asks the compiler not to insert normal padding between fields or to reduce the struct alignment.
+
+This is useful for wire-format headers, on-flash records, or a precisely specified binary layout. But packed can cause unaligned accesses: a `uint32_t` field may end up at offset 1, which on some MCUs is slow or even faults.
+
+Rule: packed is applied at format boundaries, not as a universal way to save RAM. For internal data, it is better to reorder fields.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

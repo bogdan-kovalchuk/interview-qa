@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0021
 title: "Why are nested resources released in reverse order automatically?"
-description: "Why are nested resources released in reverse order automatically?"
+description: "Destructors of local objects are called in reverse order of construction."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Destructors of local objects are called in reverse order of construction.**
+
+If you acquired clock, then SPI, then CS, the release order will be CS -> SPI -> clock, which is usually the correct teardown order. By hand, this is easy to mix up.
+
+Rule: declare RAII guards in dependency order; reverse destruction will take care of correct teardown.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
