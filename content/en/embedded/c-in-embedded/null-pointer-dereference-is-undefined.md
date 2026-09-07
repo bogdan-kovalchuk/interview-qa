@@ -35,7 +35,7 @@ sources:
 
 **NULL pointer** – a guaranteed invalid address (null pointer constant): `0` or `(void*)0` in C, `nullptr` in C++.
 
-Dereferencing NULL -> <span class="warn">undefined behavior</span>. On Cortex-M: address `0x00000000` is the start of Flash (Vector Table). Writing there -> HardFault or Vector Table corruption;
+Dereferencing NULL -> <span class="warn">undefined behavior</span>. On Cortex-M: address `0x00000000` is the start of Flash (Vector Table). Writing there -> HardFault or Vector Table corruption.
 
 Protection: always check before dereferencing: `if(p != NULL) *p = val;`; initialize: `int *p = NULL;`[^embeddedinterviewlab]
 

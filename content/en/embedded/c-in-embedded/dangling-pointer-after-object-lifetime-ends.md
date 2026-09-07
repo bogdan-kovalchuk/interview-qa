@@ -35,7 +35,10 @@ sources:
 
 **Dangling pointer** – a pointer that refers to <span class="warn">already freed or destroyed</span> memory.
 
-Causes: 1; Returning the address of a local variable: `int* f(){ int x=5; return &x; }` – x is destroyed on return; 2; After `free(ptr)` without nulling: `free(ptr); *ptr = 1;` – undefined behavior;
+Causes:
+
+1. Returning the address of a local variable: `int* f(){ int x=5; return &x; }` – x is destroyed on return;
+2. After `free(ptr)` without nulling: `free(ptr); *ptr = 1;` – undefined behavior;
 3. A pointer to an object whose lifetime has ended.
 
 The danger: the memory <span class="warn">appears valid</span> until it is reused. The bugs are extremely hard to reproduce.[^embeddedinterviewlab]

@@ -44,7 +44,7 @@ typedef void (*callback_t)(int);
 callback_t fp = my_func;
 ```
 
-Якщо без typedef для масиву: `void (*table[8])(int);` – масив з 8 function pointers;
+Якщо без typedef для масиву: `void (*table[8])(int);` – масив з 8 function pointers.
 
 Виклик: `fp(42);` або `(*fp)(42);` – обидва коректні.[^embeddedinterviewlab]
 

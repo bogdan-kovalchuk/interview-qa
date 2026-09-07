@@ -40,7 +40,7 @@ sources:
 Обмеження void*:
 - Не можна розіменувати без cast;
 - Не можна pointer arithmetic (стандарт C);
-- Не зберігає type-safety;
+- Не зберігає type-safety.
 
 Перед розіменуванням: `*(int*)vp = 42;`. Це правило зберігає правильний тип доступу.[^embeddedinterviewlab]
 

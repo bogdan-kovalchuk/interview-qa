@@ -35,9 +35,9 @@ sources:
 
 `n = 1` (on 32-bit) or `n = 2` (on 64-bit).
 
-In a function parameter, `int arr[]` ≡ `int *arr` – decay to a pointer. `sizeof(arr) = sizeof(int*) = 4` (or 8). `sizeof(arr[0]) = sizeof(int) = 4`. So `4/4 = 1`;
+In a function parameter, `int arr[]` ≡ `int *arr` – decay to a pointer. `sizeof(arr) = sizeof(int*) = 4` (or 8). `sizeof(arr[0]) = sizeof(int) = 4`. So `4/4 = 1`.
 
-<span class="warn">Not 8, not 256, not the array size</span> – only 1 or 2;
+<span class="warn">Not 8, not 256, not the array size</span> – only 1 or 2.
 
 Always pass the size explicitly: `void f(int *arr, size_t n)`; safeguard: `_Static_assert` at the caller.[^embeddedinterviewlab]
 

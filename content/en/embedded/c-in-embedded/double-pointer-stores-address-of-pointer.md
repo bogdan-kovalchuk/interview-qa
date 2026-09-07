@@ -38,7 +38,7 @@ sources:
 Why:
 1. **Modify the caller's pointer**: `void alloc(int **pp){ *pp = malloc(n); }` – without `**` the caller would not see the new address;
 2. **2D arrays via arrays of pointers**;
-3. Advancing a parse cursor: `void parse(char **p){ (*p)++; }`;
+3. Advancing a parse cursor: `void parse(char **p){ (*p)++; }`.
 
 Reading the type: `int **pp` – "pointer to pointer to int"; `*pp` -> a pointer, `**pp` -> an int value.[^embeddedinterviewlab]
 

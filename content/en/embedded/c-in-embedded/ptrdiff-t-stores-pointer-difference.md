@@ -37,7 +37,7 @@ sources:
 
 Size: matches the platform width (32-bit -> 4B, 64-bit -> 8B).
 
-Why: `p - q` gives the number of elements between the pointers. The result is signed (can be negative); storing it in `int` may be insufficient on 64-bit;
+Why: `p - q` gives the number of elements between the pointers. The result is signed (can be negative); storing it in `int` may be insufficient on 64-bit.
 
 Format specifier: `%td` for `printf`.[^embeddedinterviewlab]
 
