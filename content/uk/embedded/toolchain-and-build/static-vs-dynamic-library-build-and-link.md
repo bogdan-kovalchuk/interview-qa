@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Static library</span> (<code>.a</code>/<code>.lib</code>) копіюється linker-ом у firmware або executable тільки потрібними object files. <span class="key">Dynamic library</span> (<code>.so</code>/<code>.dll</code>) підвантажується loader-ом у runtime і лишається окремим артефактом. Для bare-metal MCU зазвичай використовують static linking; Embedded Linux часто підтримує обидва варіанти.[^dou-embedded-interview]
+**Static library** (`.a`/`.lib`) копіюється linker-ом у firmware або executable тільки потрібними object files. **Dynamic library** (`.so`/`.dll`) підвантажується loader-ом у runtime і лишається окремим артефактом. Для bare-metal MCU зазвичай використовують static linking; Embedded Linux часто підтримує обидва варіанти.[^dou-embedded-interview]
 
 ## Detailed explanation
 

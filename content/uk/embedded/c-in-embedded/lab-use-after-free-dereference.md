@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0061
-title: "Trap: що не так?<br><pre class=\"code-block\"><code>int *p = malloc(sizeof(int)*10);<br>free(p);<br>printf(\"%d\", p[0]);</code></pre>"
+title: "Trap: що не так?"
 description: "Why dereferencing freed heap memory is undefined behavior."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,24 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int *p = malloc(sizeof(int)*10);
+free(p);
+printf("%d", p[0]);
+```
 
 ## Short answer
 
-<span class="warn">Use-after-free – undefined behavior.</span> Після <code>free(p)</code> пам'ять повернута heap manager-у і може бути негайно перевикористана (наприклад, наступним <code>malloc</code>).<br><br><code>p[0]</code> після <code>free</code>: може повернути 0 (heap manager записав туди metadata), старе значення, або crash. У security контексті: джерело use-after-free exploits.<br><br>Захист: <code>free(p); p = NULL;</code>. Потім <code>if(p != NULL)</code> перед доступом.[^embeddedinterviewlab]
+<span class="warn">Use-after-free – undefined behavior.</span> Після `free(p)` пам'ять повернута heap manager-у і може бути негайно перевикористана (наприклад, наступним `malloc`).
+
+`p[0]` після `free`: може повернути 0 (heap manager записав туди metadata), старе значення, або crash. У security контексті: джерело use-after-free exploits.
+
+Захист: `free(p); p = NULL;`. Потім `if(p != NULL)` перед доступом.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

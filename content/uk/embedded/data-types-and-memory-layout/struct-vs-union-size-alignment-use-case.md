@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>struct</code> зберігає всі поля послідовно з можливим padding, тому її розмір приблизно сума полів плюс вирівнювання. <code>union</code> розділяє одну пам'ять між members, тому розмір дорівнює найбільшому member з потрібним alignment. Struct підходить для запису стану або register map, union – для взаємовиключних варіантів даних, але не для безпечного парсингу wire format.[^dou-embedded-interview]
+`struct` зберігає всі поля послідовно з можливим padding, тому її розмір приблизно сума полів плюс вирівнювання. `union` розділяє одну пам'ять між members, тому розмір дорівнює найбільшому member з потрібним alignment. Struct підходить для запису стану або register map, union – для взаємовиключних варіантів даних, але не для безпечного парсингу wire format.[^dou-embedded-interview]
 
 ## Detailed explanation
 

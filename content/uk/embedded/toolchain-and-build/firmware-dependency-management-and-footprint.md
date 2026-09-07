@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Фіксуй версії залежностей, перевіряй licenses, supported toolchains, heap/RTTI/exceptions usage і footprint у map file.<br>Краще явно додавати маленькі libraries з known configuration, ніж тягнути generic package з прихованими POSIX, filesystem або allocation assumptions.<br><span class="key">Dependency review</span> для MCU має включати RAM/flash cost і behavior у ISR/RTOS context.[^dou-embedded-interview]
+Фіксуй версії залежностей, перевіряй licenses, supported toolchains, heap/RTTI/exceptions usage і footprint у map file. Краще явно додавати маленькі libraries з known configuration, ніж тягнути generic package з прихованими POSIX, filesystem або allocation assumptions. **Dependency review** для MCU має включати RAM/flash cost і behavior у ISR/RTOS context.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

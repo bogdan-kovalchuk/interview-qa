@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0034
-title: "Find the bug<br><pre class=\"code-block\"><code><span class=\"code-type\">uint8_t</span> buf[<span class=\"code-num\">256</span>];<br><span class=\"code-type\">uint32_t</span> *p = (<span class=\"code-type\">uint32_t</span>*)buf;<br><span class=\"code-kw\">for</span>(<span class=\"code-type\">int</span> i=<span class=\"code-num\">0</span>;<br>i&lt;<span class=\"code-num\">256</span>;<br>i++) p[i]=<span class=\"code-num\">0</span>;</code></pre>"
+title: "Find the bug"
 description: "How a byte buffer cast can cause bounds and alignment problems."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,16 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+uint8_t buf[256];
+uint32_t *p = (uint32_t*)buf;
+for(int i=0;
+i<256;
+i++) p[i]=0;
+```
 
 ## Short answer
 

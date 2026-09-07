@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0045
-title: "Що виведе?<br><pre class=\"code-block\"><code>int x=10;<br>int *p=&amp;x;<br>int **pp=&amp;p;<br>**pp=20;<br>printf(\"%d\",x);</code></pre>"
+title: "Що виведе?"
 description: "How double dereferencing changes an object through a pointer chain."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int x=10;
+int *p=&x;
+int **pp=&p;
+**pp=20;
+printf("%d",x);
+```
 
 ## Short answer
 
-<code>20</code>.<br><br>Ланцюжок: <code>pp</code> -> <code>&amp;p</code> (адреса вказівника <code>p</code>). <code>*pp</code> -> розіменування = сам вказівник <code>p</code> (адреса <code>x</code>). <code>**pp</code> -> подвійне розіменування = значення <code>x</code>.<br><br><code>**pp = 20</code> -> запис 20 у <code>x</code> через ланцюжок. <code>x</code> стає 20. Всі три: <code>x</code>, <code>*p</code>, <code>**pp</code> тепер = 20.[^embeddedinterviewlab]
+`20`.
+
+Ланцюжок: `pp` -> `&p` (адреса вказівника `p`). `*pp` -> розіменування = сам вказівник `p` (адреса `x`). `**pp` -> подвійне розіменування = значення `x`.
+
+`**pp = 20` -> запис 20 у `x` через ланцюжок. `x` стає 20. Всі три: `x`, `*p`, `**pp` тепер = 20.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

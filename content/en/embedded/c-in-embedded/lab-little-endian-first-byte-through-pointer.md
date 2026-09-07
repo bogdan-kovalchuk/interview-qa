@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0073
-title: "What is the value of <code>*(uint8_t*)(&amp;val)</code> for a little-endian value?"
+title: "What is the value of `*(uint8_t*)(&val)` for a little-endian value?"
 description: "How a byte pointer exposes the least significant byte on little-endian systems."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

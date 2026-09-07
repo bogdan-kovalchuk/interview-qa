@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "current"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? bootloaders-and-ota; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">OTA</span> - оновлення firmware через мережу без фізичного доступу до пристрою.<br>Потрібні atomic install, image integrity, signature verification, anti-rollback policy, version compatibility з config/protocol і recovery після power loss.<br><span class="warn">Без rollback або safe boot OTA може перетворити remote device на недоступний brick.</span>[^dou-embedded-interview]
+**OTA** - оновлення firmware через мережу без фізичного доступу до пристрою. Потрібні atomic install, image integrity, signature verification, anti-rollback policy, version compatibility з config/protocol і recovery після power loss. <span class="warn">Без rollback або safe boot OTA може перетворити remote device на недоступний brick.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

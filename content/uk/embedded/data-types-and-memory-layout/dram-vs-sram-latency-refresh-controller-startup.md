@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">SRAM</span> швидка, проста для MCU, не потребує refresh, але дорога за площу і зазвичай менша.<br><span class="key">DRAM</span> щільніша і більша, але потребує memory controller, refresh, calibration/training і має складнішу latency.<br>На startup DRAM може бути недоступна до ініціалізації controller, тому early boot часто працює з internal SRAM.[^dou-embedded-interview]
+**SRAM** швидка, проста для MCU, не потребує refresh, але дорога за площу і зазвичай менша. **DRAM** щільніша і більша, але потребує memory controller, refresh, calibration/training і має складнішу latency. На startup DRAM може бути недоступна до ініціалізації controller, тому early boot часто працює з internal SRAM.[^dou-embedded-interview]
 
 ## Detailed explanation
 

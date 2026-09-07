@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Модель доречна для control algorithms, plant simulation, fixed-point analysis, auto-generated code і requirements traceability.<br>Вона корисна, коли команда валідує поведінку до hardware або має safety/process requirements.<br><span class="warn">Generated code все одно треба review-ити як firmware: timing, memory, toolchain settings, MISRA rules і target integration.</span>[^dou-embedded-interview]
+Модель доречна для control algorithms, plant simulation, fixed-point analysis, auto-generated code і requirements traceability. Вона корисна, коли команда валідує поведінку до hardware або має safety/process requirements. <span class="warn">Generated code все одно треба review-ити як firmware: timing, memory, toolchain settings, MISRA rules і target integration.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

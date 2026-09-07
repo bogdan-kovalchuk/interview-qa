@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Pointer aliasing</span> – ситуація коли два вказівники різних типів вказують на одну область пам'яті.<br><br>Strict aliasing rule (C99 §6.5): компілятор може вважати, що вказівники різних типів не alias-ують (окрім <code>char*</code>/<code>unsigned char*</code>). Це дозволяє більш агресивну оптимізацію.<br><br>Порушення: <code>int x; float *fp = (float*)&amp;x; *fp = 1.0f;</code> -> UB.<br><br>Захист: <code>memcpy</code> для type punning, <code>char*</code> для byte access, <code>restrict</code> для явної гарантії no-aliasing.[^embeddedinterviewlab]
+**Pointer aliasing** – ситуація коли два вказівники різних типів вказують на одну область пам'яті.
+
+Strict aliasing rule (C99 §6.5): компілятор може вважати, що вказівники різних типів не alias-ують (окрім `char*`/`unsigned char*`). Це дозволяє більш агресивну оптимізацію.
+
+Порушення: `int x; float *fp = (float*)&x; *fp = 1.0f;` -> UB.
+
+Захист: `memcpy` для type punning, `char*` для byte access, `restrict` для явної гарантії no-aliasing.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

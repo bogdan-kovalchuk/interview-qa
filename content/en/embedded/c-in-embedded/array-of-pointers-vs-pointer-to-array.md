@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0042
-title: "What is the difference between an array of pointers <code>int *arr[8]</code> and a pointer to an array <code>int (*arr)[8]</code>?"
+title: "What is the difference between an array of pointers `int *arr[8]` and a pointer to an array `int (*arr)[8]`?"
 description: "How array-of-pointers and pointer-to-array declarations differ."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

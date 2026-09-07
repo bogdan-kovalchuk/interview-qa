@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0027
-title: "Що виведе?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> a=<span class=\"code-num\">5</span>, b=<span class=\"code-num\">10</span>;<br><span class=\"code-type\">int</span> *p=&amp;a, *q=&amp;b;<br>*p=*q;<br><span class=\"code-fn\">printf</span>(\"%d %d\",a,b);</code></pre>"
+title: "Що виведе?"
 description: "Why dereferencing pointers copies the pointed-to value."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,27 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int a=5, b=10;
+int *p=&a, *q=&b;
+*p=*q;
+printf("%d %d",a,b);
+```
 
 ## Short answer
 
-<code>a=10, b=10</code>.<br><br><code>*p = *q</code> – копіює <span class="key">значення</span> <code>*q</code> (тобто <code>b=10</code>) у <code>*p</code> (тобто у <code>a</code>). Самі вказівники <code>p</code> і <code>q</code> не змінюються.<br><br>Якби <code>p = q</code> (без *) – обидва вказівники вказували б на <code>b</code>. <code>a</code> лишився б <code>5</code>.<br><br>Типова помилка: плутати присвоєння вказівників та значень.[^embeddedinterviewlab]
+`a=10, b=10`.
+
+`*p = *q` – копіює **значення** `*q` (тобто `b=10`) у `*p` (тобто у `a`). Самі вказівники `p` і `q` не змінюються.
+
+Якби `p = q` (без *) – обидва вказівники вказували б на `b`. `a` лишився б `5`.
+
+Типова помилка: плутати присвоєння вказівників та значень.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

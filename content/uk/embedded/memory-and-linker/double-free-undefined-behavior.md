@@ -8,8 +8,8 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,14 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "2.47"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу memory-and-linker; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Повторний <code>free(ptr)</code> для того самого виділеного блоку – це <span class="warn">double free</span> і undefined behavior.[^dou-embedded-interview] Наслідки можуть бути різні: crash, пошкодження heap metadata, випадкові помилки пізніше або security vulnerability.
+Повторний `free(ptr)` для того самого виділеного блоку – це <span class="warn">double free</span> і undefined behavior.[^dou-embedded-interview] Наслідки можуть бути різні: crash, пошкодження heap metadata, випадкові помилки пізніше або security vulnerability.
 
-Безпечний патерн: після звільнення обнулити вказівник – <code>free(ptr); ptr = NULL;</code>. Виклик <code>free(NULL)</code> дозволений і нічого не робить, тому обнулення зменшує ризик повторного звільнення. Але якщо є кілька копій одного вказівника, треба контролювати ownership, а не покладатися тільки на <code>NULL</code>.
+Безпечний патерн: після звільнення обнулити вказівник – `free(ptr); ptr = NULL;`. Виклик `free(NULL)` дозволений і нічого не робить, тому обнулення зменшує ризик повторного звільнення. Але якщо є кілька копій одного вказівника, треба контролювати ownership, а не покладатися тільки на `NULL`.
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0037
-title: "Що виведе?<br><pre class=\"code-block\"><code><span class=\"code-type\">char</span> str[] = \"hello\";<br><span class=\"code-type\">char</span> *p = str;<br><span class=\"code-kw\">while</span>(*p) p++;<br><span class=\"code-fn\">printf</span>(\"%td\", p-str);</code></pre>"
+title: "Що виведе?"
 description: "How pointer iteration reaches the string null terminator."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,25 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+char str[] = "hello";
+char *p = str;
+while(*p) p++;
+printf("%td", p-str);
+```
 
 ## Short answer
 
-<code>5</code>.<br><br><code>str</code> decay-ується до <code>char*</code>. Цикл йде до <code>'\0'</code>: після <code>'h','e','l','l','o'</code> – <code>*p = '\0'</code> (false) -> стоп. <code>p</code> вказує на null-terminator.<br><br><code>p - str</code> = 5 елементів = <code>strlen("hello")</code>. Це стандартний спосіб реалізації <code>strlen</code> через pointer arithmetic. <code>%td</code> для <code>ptrdiff_t</code>.[^embeddedinterviewlab]
+`5`.
+
+`str` decay-ується до `char*`. Цикл йде до `'\0'`: після `'h','e','l','l','o'` – `*p = '\0'` (false) -> стоп. `p` вказує на null-terminator.
+
+`p - str` = 5 елементів = `strlen("hello")`. Це стандартний спосіб реалізації `strlen` через pointer arithmetic. `%td` для `ptrdiff_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

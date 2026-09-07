@@ -8,8 +8,8 @@ level: junior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,14 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">C-style cast</span> виглядає як <code>(T)x</code> і може виконати одразу різні типи приведень: numeric conversion, зняття <code>const</code>, reinterpretation pointer-ів. Через це він короткий, але нечіткий і може приховати небезпечну операцію.[^dou-embedded-interview]
+**C-style cast** виглядає як `(T)x` і може виконати одразу різні типи приведень: numeric conversion, зняття `const`, reinterpretation pointer-ів. Через це він короткий, але нечіткий і може приховати небезпечну операцію.[^dou-embedded-interview]
 
-У C++ краще використовувати явні casts: <code>static_cast</code> для звичайних безпечніших перетворень, <code>const_cast</code> тільки для зміни cv-qualifier-ів, <code>reinterpret_cast</code> для низькорівневої переінтерпретації, <code>dynamic_cast</code> для runtime-перевірки в поліморфних класах. Вони довші, зате показують намір і легше знаходяться в коді.
+У C++ краще використовувати явні casts: `static_cast` для звичайних безпечніших перетворень, `const_cast` тільки для зміни cv-qualifier-ів, `reinterpret_cast` для низькорівневої переінтерпретації, `dynamic_cast` для runtime-перевірки в поліморфних класах. Вони довші, зате показують намір і легше знаходяться в коді.
 
 ## Detailed explanation
 

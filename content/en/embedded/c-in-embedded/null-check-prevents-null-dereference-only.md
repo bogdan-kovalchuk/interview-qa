@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0035
-title: "Trap: <code>int *p = NULL; if(p) *p = 5;</code> vs <code>int *p = NULL; *p = 5;</code> – is the first safe?"
+title: "Trap: `int *p = NULL; if(p) *p = 5;` vs `int *p = NULL; *p = 5;` – is the first safe?"
 description: "Why a NULL check prevents only one class of invalid dereference."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "IEC 61508-1:2010"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? safety-and-standards; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу safety-and-standards; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Завислий PWM може залишити MOSFET/IGBT у небезпечному duty або одночасно відкрити плечі, що веде до shoot-through, перегріву чи руйнування навантаження.<br>Потрібні hardware shutdown, dead-time, current/temperature limits, watchdog, fault inputs timer-а і safe default state pins.<br><span class="warn">Safety не можна покладати тільки на main loop; критичний вимикач має працювати навіть при зависанні firmware.</span>[^dou-embedded-interview]
+Завислий PWM може залишити MOSFET/IGBT у небезпечному duty або одночасно відкрити плечі, що веде до shoot-through, перегріву чи руйнування навантаження. Потрібні hardware shutdown, dead-time, current/temperature limits, watchdog, fault inputs timer-а і safe default state pins. <span class="warn">Safety не можна покладати тільки на main loop; критичний вимикач має працювати навіть при зависанні firmware.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

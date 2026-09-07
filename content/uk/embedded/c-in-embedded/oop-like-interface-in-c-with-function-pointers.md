@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Публічний API оголошує opaque тип <code>typedef struct uart uart_t;</code>, а реалізація ховає поля struct у <code>.c</code>. Методи приймають <code>uart_t*</code>, а polymorphism можна зробити через table з function pointers: <code>read</code>, <code>write</code>, <code>ioctl</code>. Так driver API має інкапсуляцію без C++ ABI і без відкриття внутрішнього MMIO/стану.[^dou-embedded-interview]
+Публічний API оголошує opaque тип `typedef struct uart uart_t;`, а реалізація ховає поля struct у `.c`. Методи приймають `uart_t*`, а polymorphism можна зробити через table з function pointers: `read`, `write`, `ioctl`. Так driver API має інкапсуляцію без C++ ABI і без відкриття внутрішнього MMIO/стану.[^dou-embedded-interview]
 
 ## Detailed explanation
 

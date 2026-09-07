@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Physical medium обслуговує <span class="key">PHY/transceiver</span>, який перетворює electrical/radio signals у digital link signals.<br><span class="key">MAC/controller</span> формує frames, filters, interrupts і часто працює з DMA descriptors у RAM.<br>Driver stack ініціалізує hardware, керує buffers/cache coherency, обробляє IRQ і передає packets у TCP/IP або fieldbus stack.[^dou-embedded-interview]
+Physical medium обслуговує **PHY/transceiver**, який перетворює electrical/radio signals у digital link signals. **MAC/controller** формує frames, filters, interrupts і часто працює з DMA descriptors у RAM. Driver stack ініціалізує hardware, керує buffers/cache coherency, обробляє IRQ і передає packets у TCP/IP або fieldbus stack.[^dou-embedded-interview]
 
 ## Detailed explanation
 

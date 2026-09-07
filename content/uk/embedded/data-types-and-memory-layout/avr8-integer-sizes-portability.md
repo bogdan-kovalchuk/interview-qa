@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-На типовому AVR-GCC для AVR8: <code>char</code> 8 біт, <code>int</code> 16 біт, <code>long</code> 32 біти, pointer часто 16 біт для data address space. На 32-bit MCU <code>int</code> зазвичай 32 біти, тому overflow, printf format і struct layout можуть змінитися. <span class="warn">У portable firmware краще використовувати <code>stdint.h</code>: <code>uint8_t</code>, <code>uint16_t</code>, <code>uint32_t</code></span>.[^dou-embedded-interview]
+На типовому AVR-GCC для AVR8: `char` 8 біт, `int` 16 біт, `long` 32 біти, pointer часто 16 біт для data address space. На 32-bit MCU `int` зазвичай 32 біти, тому overflow, printf format і struct layout можуть змінитися. <span class="warn">У portable firmware краще використовувати `stdint.h`: `uint8_t`, `uint16_t`, `uint32_t`</span>.[^dou-embedded-interview]
 
 ## Detailed explanation
 

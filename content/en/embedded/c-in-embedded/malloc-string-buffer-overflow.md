@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0100
-title: "Trap: where is the error?<br><pre class=\"code-block\"><code><span class=\"code-type\">char</span> *p = <span class=\"code-fn\">malloc</span>(<span class=\"code-num\">5</span>);<br>strcpy(p, \"hello\");<br>p[<span class=\"code-num\">5</span>] = '\\<span class=\"code-num\">0</span>';</code></pre>"
+title: "Trap: where is the error?"
 description: "Why allocating five bytes is insufficient for the string hello and its terminator."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+char *p = malloc(5);
+strcpy(p, "hello");
+p[5] = '\0';
+```
 
 ## Short answer
 

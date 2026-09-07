@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Перевірити довжину frame, потім читати кожне поле з <code>uint8_t</code> буфера через <code>memcpy</code> або byte shifts. Для multi-byte полів явно застосувати <code>le16toh</code>/<code>ntohs</code> або власну конверсію. <span class="warn">Не кастити wire-format buffer у struct</span>, якщо layout, packing, alignment і endianness не зафіксовані та не перевірені.[^dou-embedded-interview]
+Перевірити довжину frame, потім читати кожне поле з `uint8_t` буфера через `memcpy` або byte shifts. Для multi-byte полів явно застосувати `le16toh`/`ntohs` або власну конверсію. <span class="warn">Не кастити wire-format buffer у struct</span>, якщо layout, packing, alignment і endianness не зафіксовані та не перевірені.[^dou-embedded-interview]
 
 ## Detailed explanation
 

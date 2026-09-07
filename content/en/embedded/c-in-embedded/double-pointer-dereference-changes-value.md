@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0045
-title: "What does this print?<br><pre class=\"code-block\"><code>int x=10;<br>int *p=&amp;x;<br>int **pp=&amp;p;<br>**pp=20;<br>printf(\"%d\",x);</code></pre>"
+title: "What does this print?"
 description: "How double dereferencing changes an object through a pointer chain."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,16 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int x=10;
+int *p=&x;
+int **pp=&p;
+**pp=20;
+printf("%d",x);
+```
 
 ## Short answer
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? testing-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу testing-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-На host можна запускати <span class="key">ASan/UBSan/TSan</span> для логіки без hardware dependency, а <code>Valgrind</code> корисний для Linux-target або host-сценаріїв.<br>На target частіше використовують trace, coverage, watchpoints, stack watermarking, fault injection, bus/error simulation і HIL tests.<br><span class="warn">Sanitizer на PC не доводить коректність ISR, DMA cache coherency або реального timing.</span>[^dou-embedded-interview]
+На host можна запускати **ASan/UBSan/TSan** для логіки без hardware dependency, а `Valgrind` корисний для Linux-target або host-сценаріїв. На target частіше використовують trace, coverage, watchpoints, stack watermarking, fault injection, bus/error simulation і HIL tests. <span class="warn">Sanitizer на PC не доводить коректність ISR, DMA cache coherency або реального timing.</span>[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

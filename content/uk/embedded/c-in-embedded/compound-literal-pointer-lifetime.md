@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0081
-title: "Trap: чи коректно у C99?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> *p = &amp;(<span class=\"code-type\">int</span>){<span class=\"code-num\">5</span>};<br><span class=\"code-fn\">printf</span>(\"%d\", *p);</code></pre>"
+title: "Trap: чи коректно у C99?"
 description: "Whether a pointer to a C99 compound literal remains valid within its block."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int *p = &(int){5};
+printf("%d", *p);
+```
 
 ## Short answer
 
-<span class="key">Так, коректно</span> у межах того ж блоку. <code>(int){5}</code> – compound literal (C99): тимчасовий об'єкт зі storage duration автоматичного блоку.<br><br><span class="warn">Але dangling pointer</span> якщо вийти за межі блоку:<br><code>int *p; { p = &amp;(int){5}; } *p; // UB – блок закінчився</code><br><br>GCC може не попередити. Безпечне використання: лише у тому ж scope де literal визначений.[^embeddedinterviewlab]
+**Так, коректно** у межах того ж блоку. `(int){5}` – compound literal (C99): тимчасовий об'єкт зі storage duration автоматичного блоку.
+
+<span class="warn">Але dangling pointer</span> якщо вийти за межі блоку: `int *p; { p = &(int){5}; } *p; // UB – блок закінчився`
+
+GCC може не попередити. Безпечне використання: лише у тому ж scope де literal визначений.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

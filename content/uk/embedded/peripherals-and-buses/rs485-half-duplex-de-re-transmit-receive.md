@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-RS485 half-duplex має спільну differential bus, тому пристрій або передає, або слухає.<br>Перед transmit увімкни driver через <code>DE</code>, зазвичай вимкни receiver через <code>RE</code> або залиш для echo-check, після повного завершення transmission повернися в receive.<br><span class="warn">Занадто раннє перемикання обрізає stop bit, занадто пізнє блокує відповідь іншого вузла.</span>[^dou-embedded-interview]
+RS485 half-duplex має спільну differential bus, тому пристрій або передає, або слухає. Перед transmit увімкни driver через `DE`, зазвичай вимкни receiver через `RE` або залиш для echo-check, після повного завершення transmission повернися в receive. <span class="warn">Занадто раннє перемикання обрізає stop bit, занадто пізнє блокує відповідь іншого вузла.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

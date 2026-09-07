@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Flexible Array Member</span> (FAM) – останнє поле структури з невказаним розміром: <code>struct Packet { uint8_t len; uint8_t data[]; };</code><br><br><code>sizeof(struct Packet)</code> не включає <code>data</code>. FAM виділяється разом зі структурою: <code>malloc(sizeof(Packet) + n)</code> – тоді <code>data</code> займає <code>n</code> байт одразу після полів структури.<br><br>Зберігається у тому ж блоці пам'яті що й структура (heap або static). Не може бути єдиним членом struct і не може у масиві.[^embeddedinterviewlab]
+**Flexible Array Member** (FAM) – останнє поле структури з невказаним розміром: `struct Packet { uint8_t len; uint8_t data[]; };`
+
+`sizeof(struct Packet)` не включає `data`. FAM виділяється разом зі структурою: `malloc(sizeof(Packet) + n)` – тоді `data` займає `n` байт одразу після полів структури.
+
+Зберігається у тому ж блоці пам'яті що й структура (heap або static). Не може бути єдиним членом struct і не може у масиві.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-CI має матрицю <span class="key">target x toolchain x config</span>: наприклад GCC/Clang, debug/release, board variants.<br>Кожна job ставить pinned toolchain, запускає configure/build, static analysis, unit tests і збирає artifacts: ELF, HEX/BIN, map, logs.<br>Для target-only перевірок окремо підключають HIL runners або nightly hardware jobs.[^dou-embedded-interview]
+CI має матрицю **target x toolchain x config**: наприклад GCC/Clang, debug/release, board variants. Кожна job ставить pinned toolchain, запускає configure/build, static analysis, unit tests і збирає artifacts: ELF, HEX/BIN, map, logs. Для target-only перевірок окремо підключають HIL runners або nightly hardware jobs.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

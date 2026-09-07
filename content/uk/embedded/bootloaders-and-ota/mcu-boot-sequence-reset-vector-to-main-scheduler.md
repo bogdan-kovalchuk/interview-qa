@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "current"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? bootloaders-and-ota; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Після reset CPU бере initial stack pointer і reset handler з vector table.<br>Startup code налаштовує low-level runtime: clock мінімально або пізніше, копіює <code>.data</code> з flash у RAM, очищає <code>.bss</code>, викликає constructors у C++ і переходить у <code>main</code>.<br>Далі firmware ініціалізує HAL/drivers, interrupts, RTOS objects і запускає scheduler.[^dou-embedded-interview]
+Після reset CPU бере initial stack pointer і reset handler з vector table. Startup code налаштовує low-level runtime: clock мінімально або пізніше, копіює `.data` з flash у RAM, очищає `.bss`, викликає constructors у C++ і переходить у `main`. Далі firmware ініціалізує HAL/drivers, interrupts, RTOS objects і запускає scheduler.[^dou-embedded-interview]
 
 ## Detailed explanation
 

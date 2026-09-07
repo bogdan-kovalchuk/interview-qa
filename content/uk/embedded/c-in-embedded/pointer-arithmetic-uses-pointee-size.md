@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0005
-title: "Що виведе?<br><pre class=\"code-block\"><code>uint8_t *p = (uint8_t*)0x1000;<br>p++;<br>printf(\"%p\", (void*)p);</code></pre>"
+title: "Що виведе?"
 description: "How pointer arithmetic scales with the pointed-to type."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+uint8_t *p = (uint8_t*)0x1000;
+p++;
+printf("%p", (void*)p);
+```
 
 ## Short answer
 
-<code>0x1001</code>.<br><br>Pointer arithmetic масштабується по <code>sizeof(*p)</code>. Для <code>uint8_t*</code>: <code>sizeof(uint8_t) = 1</code>, тому <code>p++</code> -> адреса + 1 байт.<br><br>Якби <code>uint32_t *p = (uint32_t*)0x1000; p++;</code> -> <code>0x1004</code> (кроком 4 байти).<br><br>Правило: <code>p + n</code> = <code>(char*)p + n * sizeof(*p)</code>.[^embeddedinterviewlab]
+`0x1001`.
+
+Pointer arithmetic масштабується по `sizeof(*p)`. Для `uint8_t*`: `sizeof(uint8_t) = 1`, тому `p++` -> адреса + 1 байт.
+
+Якби `uint32_t *p = (uint32_t*)0x1000; p++;` -> `0x1004` (кроком 4 байти).
+
+Правило: `p + n` = `(char*)p + n * sizeof(*p)`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

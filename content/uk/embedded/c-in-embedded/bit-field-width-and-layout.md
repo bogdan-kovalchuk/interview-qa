@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Ширина задається після двокрапки: <code>unsigned field : 5;</code>. Layout залежить від compiler ABI: порядок розміщення, alignment allocation unit, padding і packing rules не є універсальними. Тому bit-fields годяться для локального компактного state, але не як переносимий binary layout.[^dou-embedded-interview]
+Ширина задається після двокрапки: `unsigned field : 5;`. Layout залежить від compiler ABI: порядок розміщення, alignment allocation unit, padding і packing rules не є універсальними. Тому bit-fields годяться для локального компактного state, але не як переносимий binary layout.[^dou-embedded-interview]
 
 ## Detailed explanation
 

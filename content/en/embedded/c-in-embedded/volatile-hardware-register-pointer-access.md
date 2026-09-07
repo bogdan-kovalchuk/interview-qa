@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0044
-title: "Why is <code>volatile</code> needed when accessing hardware registers through a pointer?"
+title: "Why is `volatile` needed when accessing hardware registers through a pointer?"
 description: "How volatile affects compiler access to hardware registers."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

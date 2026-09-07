@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "IEC 61508-1:2010"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? safety-and-standards; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу safety-and-standards; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">TLS</span> шифрує transport, автентифікує server/client і захищає telemetry або firmware update від MITM. Проблеми embedded: certificate chain займає flash/RAM, handshake потребує buffers і crypto time, а ключі вимагають якісного entropy source/TRNG. <span class="warn">Без правильного time/certificate validation TLS може виглядати увімкненим, але не давати реальної автентифікації</span>.[^dou-embedded-interview]
+**TLS** шифрує transport, автентифікує server/client і захищає telemetry або firmware update від MITM. Проблеми embedded: certificate chain займає flash/RAM, handshake потребує buffers і crypto time, а ключі вимагають якісного entropy source/TRNG. <span class="warn">Без правильного time/certificate validation TLS може виглядати увімкненим, але не давати реальної автентифікації</span>.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0050
-title: "Що виведе?<br><pre class=\"code-block\"><code>int arr[5]={1,2,3,4,5};<br>int *p=arr;<br>printf(\"%d %d\", *p++, *p);</code></pre>"
+title: "Що виведе?"
 description: "Why modifying and reading a pointer in one printf call is undefined behavior."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,24 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[5]={1,2,3,4,5};
+int *p=arr;
+printf("%d %d", *p++, *p);
+```
 
 ## Short answer
 
-<span class="warn">Undefined behavior</span> – порядок обчислення аргументів <code>printf</code> не визначений стандартом.<br><br><code>p++</code> – post-increment: повертає поточне значення і збільшує. Але між обчисленням <code>*p++</code> і <code>*p</code> в межах одного виклику функції немає sequence point. Компілятор може обчислити аргументи у будь-якому порядку.<br><br>Результат залежить від компілятора/платформи. Краще: <code>printf("%d %d", arr[0], arr[1]);</code>[^embeddedinterviewlab]
+<span class="warn">Undefined behavior</span> – порядок обчислення аргументів `printf` не визначений стандартом.
+
+`p++` – post-increment: повертає поточне значення і збільшує. Але між обчисленням `*p++` і `*p` в межах одного виклику функції немає sequence point. Компілятор може обчислити аргументи у будь-якому порядку.
+
+Результат залежить від компілятора/платформи. Краще: `printf("%d %d", arr[0], arr[1]);`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

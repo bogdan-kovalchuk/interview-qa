@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу rtos; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>mutex</code> захищає shared state з одним owner у критичній секції. <code>semaphore</code> рахує ресурси або сигналізує event між ISR/task у RTOS-стилі, якщо це дозволено API. <code>condition variable</code> будить потоки, які чекають на predicate під mutex; вона не зберігає подію сама по собі.[^dou-embedded-interview]
+`mutex` захищає shared state з одним owner у критичній секції. `semaphore` рахує ресурси або сигналізує event між ISR/task у RTOS-стилі, якщо це дозволено API. `condition variable` будить потоки, які чекають на predicate під mutex; вона не зберігає подію сама по собі.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0020
-title: "Що виведе?<br><pre class=\"code-block\"><code>int a=1,b=2,c=3;<br>int *arr[3]={&amp;a,&amp;b,&amp;c};<br>printf(\"%d\",*arr[1]);</code></pre>"
+title: "Що виведе?"
 description: "How dereferencing an element of an array of pointers accesses its value."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,24 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int a=1,b=2,c=3;
+int *arr[3]={&a,&b,&c};
+printf("%d",*arr[1]);
+```
 
 ## Short answer
 
-<code>2</code>.<br><br><code>int *arr[3]</code> – масив з 3 вказівників на <code>int</code>. <code>arr[1]</code> -> другий елемент = <code>&amp;b</code>. <code>*arr[1]</code> -> розіменування <code>&amp;b</code> -> значення <code>b = 2</code>.<br><br>Зберігання: <code>arr</code> – масив адрес (3 × 4 байти = 12 байт). Кожен елемент – окрема адреса; Зміна <code>*arr[1] = 99</code> -> змінить <code>b</code>.[^embeddedinterviewlab]
+`2`.
+
+`int *arr[3]` – масив з 3 вказівників на `int`. `arr[1]` -> другий елемент = `&b`. `*arr[1]` -> розіменування `&b` -> значення `b = 2`.
+
+Зберігання: `arr` – масив адрес (3 × 4 байти = 12 байт). Кожен елемент – окрема адреса; Зміна `*arr[1] = 99` -> змінить `b`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

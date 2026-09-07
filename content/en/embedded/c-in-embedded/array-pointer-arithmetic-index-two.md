@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0008
-title: "What does this print?<br><pre class=\"code-block\"><code>int arr[5] = {10,20,30,40,50};<br>int *p = arr;<br>printf(\"%d\", *(p+2));</code></pre>"
+title: "What does this print?"
 description: "How pointer arithmetic accesses the third array element."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[5] = {10,20,30,40,50};
+int *p = arr;
+printf("%d", *(p+2));
+```
 
 ## Short answer
 

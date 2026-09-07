@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Компілятор робить inlining, dead-code elimination, constant propagation, loop optimization, instruction scheduling і LTO.<br>MMIO перевіряй через <code>volatile</code> register definitions, barriers там, де потрібен порядок, disassembly/map review і target tests.<br><span class="warn">Busy delay loop без <code>volatile</code>, timer або intrinsic barrier може бути скорочений чи прибраний оптимізатором.</span>[^dou-embedded-interview]
+Компілятор робить inlining, dead-code elimination, constant propagation, loop optimization, instruction scheduling і LTO. MMIO перевіряй через `volatile` register definitions, barriers там, де потрібен порядок, disassembly/map review і target tests. <span class="warn">Busy delay loop без `volatile`, timer або intrinsic barrier може бути скорочений чи прибраний оптимізатором.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

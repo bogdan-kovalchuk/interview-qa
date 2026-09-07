@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>static</code> керує linkage або storage duration, <code>const</code> забороняє зміну через цей lvalue, <code>volatile</code> змушує реально виконувати access, а <code>restrict</code> обіцяє відсутність aliasing для оптимізації. Для MMIO типовий pointer: <code>volatile uint32_t *</code>; для read-only register може бути <code>volatile const uint32_t *</code>. <code>static const</code> часто кладе таблиці у flash/rodata, а <code>restrict</code> доречний у DSP/buffer code, якщо контракт справді виконується.[^dou-embedded-interview]
+`static` керує linkage або storage duration, `const` забороняє зміну через цей lvalue, `volatile` змушує реально виконувати access, а `restrict` обіцяє відсутність aliasing для оптимізації. Для MMIO типовий pointer: `volatile uint32_t *`; для read-only register може бути `volatile const uint32_t *`. `static const` часто кладе таблиці у flash/rodata, а `restrict` доречний у DSP/buffer code, якщо контракт справді виконується.[^dou-embedded-interview]
 
 ## Detailed explanation
 

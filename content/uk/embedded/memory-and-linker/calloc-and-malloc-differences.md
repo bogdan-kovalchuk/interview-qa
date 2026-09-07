@@ -8,8 +8,8 @@ level: junior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,15 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "2.47"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу memory-and-linker; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>malloc(size)</code> виділяє блок пам'яті заданого розміру, але <span class="warn">не ініціалізує</span> його: там можуть бути старі байти. <code>calloc(n, size)</code> виділяє пам'ять під <code>n</code> елементів по <code>size</code> байтів і заповнює її нулями.<br><br>Ще одна практична різниця: якісна реалізація <code>calloc</code> може перевіряти overflow множення <code>n * size</code>, тоді як у ручному <code>malloc(n * size)</code> цю перевірку легко забути. Обидві функції повертають <code>NULL</code> при помилці й пам'ять треба звільняти через <code>free</code>.[^dou-embedded-interview]
+`malloc(size)` виділяє блок пам'яті заданого розміру, але <span class="warn">не ініціалізує</span> його: там можуть бути старі байти. `calloc(n, size)` виділяє пам'ять під `n` елементів по `size` байтів і заповнює її нулями.
+
+Ще одна практична різниця: якісна реалізація `calloc` може перевіряти overflow множення `n * size`, тоді як у ручному `malloc(n * size)` цю перевірку легко забути. Обидві функції повертають `NULL` при помилці й пам'ять треба звільняти через `free`.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "IEC 61508-1:2010"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? safety-and-standards; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу safety-and-standards; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Watchdog скидає систему, якщо firmware не виконує refresh у правильний час. <span class="key">Independent watchdog</span> зазвичай має окремий low-speed clock і працює навіть при проблемах main clock. <span class="key">Window watchdog</span> вимагає refresh не надто рано й не надто пізно, тому ловить як зависання, так і runaway loop.[^dou-embedded-interview]
+Watchdog скидає систему, якщо firmware не виконує refresh у правильний час. **Independent watchdog** зазвичай має окремий low-speed clock і працює навіть при проблемах main clock. **Window watchdog** вимагає refresh не надто рано й не надто пізно, тому ловить як зависання, так і runaway loop.[^dou-embedded-interview]
 
 ## Detailed explanation
 

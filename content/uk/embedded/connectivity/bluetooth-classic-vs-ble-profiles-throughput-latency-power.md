@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Bluetooth Classic</span> орієнтований на постійніші з'єднання і профілі на кшталт audio/serial, часто з вищим throughput і більшим power cost.<br><span class="key">BLE</span> оптимізований для коротких подій, advertising, GATT data model і низьке споживання.<br>Для sensors/control BLE зазвичай кращий, для audio або legacy SPP частіше потрібен Classic.[^dou-embedded-interview]
+**Bluetooth Classic** орієнтований на постійніші з'єднання і профілі на кшталт audio/serial, часто з вищим throughput і більшим power cost. **BLE** оптимізований для коротких подій, advertising, GATT data model і низьке споживання. Для sensors/control BLE зазвичай кращий, для audio або legacy SPP частіше потрібен Classic.[^dou-embedded-interview]
 
 ## Detailed explanation
 

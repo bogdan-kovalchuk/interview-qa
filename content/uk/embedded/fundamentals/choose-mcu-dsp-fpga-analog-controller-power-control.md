@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">MCU</span> підходить для control logic, communication і помірних loops; <span class="key">DSP</span> - для швидких чисельних control algorithms.<br><span class="key">FPGA</span> дає паралельність і deterministic sub-microsecond timing, але дорожча у розробці.<br>Аналоговий контролер доречний, коли потрібна проста, дуже швидка або fail-safe regulation без залежності від firmware.[^dou-embedded-interview]
+**MCU** підходить для control logic, communication і помірних loops; **DSP** - для швидких чисельних control algorithms. **FPGA** дає паралельність і deterministic sub-microsecond timing, але дорожча у розробці. Аналоговий контролер доречний, коли потрібна проста, дуже швидка або fail-safe regulation без залежності від firmware.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0008
-title: "Що виведе?<br><pre class=\"code-block\"><code>int arr[5] = {10,20,30,40,50};<br>int *p = arr;<br>printf(\"%d\", *(p+2));</code></pre>"
+title: "Що виведе?"
 description: "How pointer arithmetic accesses the third array element."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[5] = {10,20,30,40,50};
+int *p = arr;
+printf("%d", *(p+2));
+```
 
 ## Short answer
 
-<code>30</code>.<br><br><code>arr</code> decay-ується до вказівника на перший елемент. <code>p = arr</code> -> <code>p</code> вказує на <code>arr[0]</code>.<br><br><code>p+2</code> -> вказівник на <code>arr[2]</code> (кроком <code>2 * sizeof(int) = 8</code> байт на 32-bit).<br><code>*(p+2)</code> -> розіменування -> <code>arr[2] = 30</code>.<br><br>За стандартом: <code>arr[i] ≡ *(arr+i) ≡ *(i+arr) ≡ i[arr]</code> – всі чотири форми еквівалентні.[^embeddedinterviewlab]
+`30`.
+
+`arr` decay-ується до вказівника на перший елемент. `p = arr` -> `p` вказує на `arr[0]`.
+
+`p+2` -> вказівник на `arr[2]` (кроком `2 * sizeof(int) = 8` байт на 32-bit). `*(p+2)` -> розіменування -> `arr[2] = 30`.
+
+За стандартом: `arr[i] ≡ *(arr+i) ≡ *(i+arr) ≡ i[arr]` – всі чотири форми еквівалентні.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-У CMake кожна library/application має бути <span class="key">target</span> з власними sources, compile definitions, include dirs і link dependencies.<br><code>target_include_directories(... INTERFACE)</code> публікує headers для consumers, а <code>PRIVATE</code> лишає їх локальними.<br>Cross-build variants задають toolchain file, presets, target-specific options і окремі targets для MCU, host tests та utilities.[^dou-embedded-interview]
+У CMake кожна library/application має бути **target** з власними sources, compile definitions, include dirs і link dependencies. `target_include_directories(... INTERFACE)` публікує headers для consumers, а `PRIVATE` лишає їх локальними. Cross-build variants задають toolchain file, presets, target-specific options і окремі targets для MCU, host tests та utilities.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

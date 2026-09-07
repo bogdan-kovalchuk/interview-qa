@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,19 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Array decay</span> – автоматичне перетворення масиву на вказівник на його перший елемент.<br><br>Відбувається у більшості виразів:<br>• При передачі у функцію: <code>f(arr)</code> -> функція отримує <code>int*</code>;<br>• У арифметиці: <code>arr+1</code> -> <code>int*</code>;<br>• При присвоєнні: <code>int *p = arr</code>.<br><br>Наслідок: функція <span class="warn">втрачає інформацію про розмір</span> масиву. Тип стає <code>int*</code>, а не <code>int[N]</code>.[^embeddedinterviewlab]
+**Array decay** – автоматичне перетворення масиву на вказівник на його перший елемент.
+
+Відбувається у більшості виразів:
+- При передачі у функцію: `f(arr)` -> функція отримує `int*`;
+- У арифметиці: `arr+1` -> `int*`;
+- При присвоєнні: `int *p = arr`.
+
+Наслідок: функція <span class="warn">втрачає інформацію про розмір</span> масиву. Тип стає `int*`, а не `int[N]`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

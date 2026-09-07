@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0060
-title: "Що виведе?<br><pre class=\"code-block\"><code>int arr[3][3]={{1,2,3},{4,5,6},{7,8,9}};<br>printf(\"%d\", *(*(arr+1)+2));</code></pre>"
+title: "Що виведе?"
 description: "How multidimensional-array pointer arithmetic reaches an element."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[3][3]={{1,2,3},{4,5,6},{7,8,9}};
+printf("%d", *(*(arr+1)+2));
+```
 
 ## Short answer
 
-<code>6</code>.<br><br><code>arr+1</code> -> вказівник на другий рядок <code>arr[1]</code> (тип <code>int(*)[3]</code>). <code>*(arr+1)</code> -> decay до <code>int*</code>, вказує на <code>arr[1][0] = 4</code>. <code>*(arr+1)+2</code> -> вказує на <code>arr[1][2] = 6</code>. <code>*(*(arr+1)+2)</code> -> значення = <code>6</code>.<br><br>Еквівалентно: <code>arr[1][2]</code>.[^embeddedinterviewlab]
+`6`.
+
+`arr+1` -> вказівник на другий рядок `arr[1]` (тип `int(*)[3]`). `*(arr+1)` -> decay до `int*`, вказує на `arr[1][0] = 4`. `*(arr+1)+2` -> вказує на `arr[1][2] = 6`. `*(*(arr+1)+2)` -> значення = `6`.
+
+Еквівалентно: `arr[1][2]`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Padding</span> – невикористані байти, які компілятор додає для alignment наступного поля або всієї структури. Якщо розташувати поля від більших alignment-вимог до менших, padding часто зменшується. <span class="warn">Не можна покладатися на padding bytes як на стабільні дані</span>: вони можуть бути неініціалізовані й не підходять для прямого порівняння чи передачі по шині.[^dou-embedded-interview]
+**Padding** – невикористані байти, які компілятор додає для alignment наступного поля або всієї структури. Якщо розташувати поля від більших alignment-вимог до менших, padding часто зменшується. <span class="warn">Не можна покладатися на padding bytes як на стабільні дані</span>: вони можуть бути неініціалізовані й не підходять для прямого порівняння чи передачі по шині.[^dou-embedded-interview]
 
 ## Detailed explanation
 

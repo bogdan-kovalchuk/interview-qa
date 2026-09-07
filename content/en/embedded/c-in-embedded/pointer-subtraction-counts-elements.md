@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0032
-title: "What does this print?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[]={<span class=\"code-num\">1</span>,<span class=\"code-num\">2</span>,<span class=\"code-num\">3</span>,<span class=\"code-num\">4</span>,<span class=\"code-num\">5</span>};<br><span class=\"code-type\">int</span> *p=arr+<span class=\"code-num\">4</span>;<br><span class=\"code-type\">int</span> *q=arr+<span class=\"code-num\">1</span>;<br><span class=\"code-fn\">printf</span>(\"%td\", p-q);</code></pre>"
+title: "What does this print?"
 description: "How pointer subtraction reports the number of elements between pointers."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[]={1,2,3,4,5};
+int *p=arr+4;
+int *q=arr+1;
+printf("%td", p-q);
+```
 
 ## Short answer
 

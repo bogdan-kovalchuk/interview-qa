@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0048
-title: "Що поверне на 32-bit?<br><pre class=\"code-block\"><code>char *p = \"hello\";<br>printf(\"%zu\", sizeof(p));</code></pre>"
+title: "Що поверне на 32-bit?"
 description: "Why sizeof on a string pointer returns the pointer size."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,25 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+char *p = "hello";
+printf("%zu", sizeof(p));
+```
 
 ## Short answer
 
-<span class="key">4</span> (на 64-bit – 8).<br><br><code>p</code> – вказівник типу <code>char*</code>. <code>sizeof(p) = sizeof(char*) = 4</code> на 32-bit. Не розмір рядка, не 6 (з '\0'), а лише розмір вказівника.<br><br>Для розміру рядка: <code>strlen(p) + 1</code> = 6 (з null-terminator) або <code>strlen(p)</code> = 5.<br><br>Порівняй: <code>char arr[] = "hello"; sizeof(arr) = 6</code> – тут масив, не вказівник.[^embeddedinterviewlab]
+**4** (на 64-bit – 8).
+
+`p` – вказівник типу `char*`. `sizeof(p) = sizeof(char*) = 4` на 32-bit. Не розмір рядка, не 6 (з '\0'), а лише розмір вказівника.
+
+Для розміру рядка: `strlen(p) + 1` = 6 (з null-terminator) або `strlen(p)` = 5.
+
+Порівняй: `char arr[] = "hello"; sizeof(arr) = 6` – тут масив, не вказівник.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

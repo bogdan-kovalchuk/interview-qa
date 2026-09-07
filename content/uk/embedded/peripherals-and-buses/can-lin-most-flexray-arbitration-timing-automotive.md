@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">CAN</span> має multi-master arbitration за message ID і добре підходить для robust control networks.<br><span class="key">LIN</span> дешевший master-slave bus для простих actuators/sensors; <span class="key">FlexRay</span> дає deterministic time-triggered communication для safety-critical systems.<br><span class="key">MOST</span> історично використовувався для automotive multimedia; його роль інша, ніж у control buses.[^dou-embedded-interview]
+**CAN** має multi-master arbitration за message ID і добре підходить для robust control networks. **LIN** дешевший master-slave bus для простих actuators/sensors; **FlexRay** дає deterministic time-triggered communication для safety-critical systems. **MOST** історично використовувався для automotive multimedia; його роль інша, ніж у control buses.[^dou-embedded-interview]
 
 ## Detailed explanation
 

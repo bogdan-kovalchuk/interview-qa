@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "2.47"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу memory-and-linker; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Виділити буфери статично або в pool і явно визначити owner: driver, task, queue чи caller. Передавати не «сирий ресурс назавжди», а handle або descriptor зі станом <code>free/in_use/done</code>. Для ISR/DMA добре працюють ring buffer, double buffer і callback/queue, де lifetime завершується після явного release.[^dou-embedded-interview]
+Виділити буфери статично або в pool і явно визначити owner: driver, task, queue чи caller. Передавати не «сирий ресурс назавжди», а handle або descriptor зі станом `free/in_use/done`. Для ISR/DMA добре працюють ring buffer, double buffer і callback/queue, де lifetime завершується після явного release.[^dou-embedded-interview]
 
 ## Detailed explanation
 

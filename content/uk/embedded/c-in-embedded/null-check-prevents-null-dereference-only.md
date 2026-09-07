@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0035
-title: "Trap: <code>int *p = NULL; if(p) *p = 5;</code> vs <code>int *p = NULL; *p = 5;</code> – чи безпечний перший?"
+title: "Trap: `int *p = NULL; if(p) *p = 5;` vs `int *p = NULL; *p = 5;` – чи безпечний перший?"
 description: "Why a NULL check prevents only one class of invalid dereference."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Перший – безпечний</span>. <code>if(p)</code> ≡ <code>if(p != NULL)</code> – перевірка перед розіменуванням. Якщо <code>p == NULL</code> -> умова false, <code>*p</code> не виконується.<br><br><span class="warn">Другий – UB</span>: <code>*p = 5</code> при <code>p == NULL</code> -> HardFault на Cortex-M.<br><br>Але: перевірка NULL не захищає від dangling pointer або wild pointer – вони ненульові, але невалідні; NULL-check – необхідна, але недостатня умова безпеки.[^embeddedinterviewlab]
+**Перший – безпечний**. `if(p)` ≡ `if(p != NULL)` – перевірка перед розіменуванням. Якщо `p == NULL` -> умова false, `*p` не виконується.
+
+<span class="warn">Другий – UB</span>: `*p = 5` при `p == NULL` -> HardFault на Cortex-M.
+
+Але: перевірка NULL не захищає від dangling pointer або wild pointer – вони ненульові, але невалідні; NULL-check – необхідна, але недостатня умова безпеки.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

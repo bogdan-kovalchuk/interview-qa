@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Для GCC/Clang: <code>-E</code> дає preprocessed output, <code>-S</code> – assembly, <code>-c</code> – object file без link. Для аналізу firmware корисні <code>objdump -d</code>, <code>readelf -S</code> і linker map. У CMake ці flags можна тимчасово додати до target або виконати compiler command з <code>compile_commands.json</code>.[^dou-embedded-interview]
+Для GCC/Clang: `-E` дає preprocessed output, `-S` – assembly, `-c` – object file без link. Для аналізу firmware корисні `objdump -d`, `readelf -S` і linker map. У CMake ці flags можна тимчасово додати до target або виконати compiler command з `compile_commands.json`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

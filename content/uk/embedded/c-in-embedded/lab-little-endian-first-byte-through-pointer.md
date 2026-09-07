@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0073
-title: "Яке значення матиме <code>*(uint8_t*)(&amp;val)</code> якщо <code>uint32_t val = 0x12345678</code> (little-endian)?"
+title: "Яке значення матиме `*(uint8_t*)(&val)` якщо `uint32_t val = 0x12345678` (little-endian)?"
 description: "How a byte pointer exposes the least significant byte on little-endian systems."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">0x78</span>.<br><br>Cast <code>(uint8_t*)(&amp;val)</code> – вказівник на перший байт <code>val</code> у пам'яті. На little-endian: LSB знаходиться за найменшою адресою -> <code>0x78</code>.<br><br>Розкладка у пам'яті: <code>[78][56][34][12]</code>. Наступний байт: <code>*((uint8_t*)(&amp;val) + 1) = 0x56</code>;<br><br>Доступ через byte pointer дозволений для character types (<code>unsigned char*</code>); На практиці <code>uint8_t</code> зазвичай є typedef до <code>unsigned char</code>.[^embeddedinterviewlab]
+**0x78**.
+
+Cast `(uint8_t*)(&val)` – вказівник на перший байт `val` у пам'яті. На little-endian: LSB знаходиться за найменшою адресою -> `0x78`.
+
+Розкладка у пам'яті: `[78][56][34][12]`. Наступний байт: `*((uint8_t*)(&val) + 1) = 0x56`;
+
+Доступ через byte pointer дозволений для character types (`unsigned char*`); На практиці `uint8_t` зазвичай є typedef до `unsigned char`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

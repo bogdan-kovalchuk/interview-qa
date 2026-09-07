@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0085
-title: "Що робить <code>void(*isr_table[16])(void)</code> і як викликати ISR за індексом?"
+title: "Що робить `void(*isr_table[16])(void)` і як викликати ISR за індексом?"
 description: "How an indexed table of function pointers dispatches interrupt handlers."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>void(*isr_table[16])(void)</code> – масив із 16 function pointers: кожен вказує на функцію без аргументів що повертає void.<br><br>Ініціалізація: <code>isr_table[0] = nmi_handler; isr_table[1] = hardfault_handler;</code><br><br>Виклик: <code>isr_table[irq_num]();</code> або <code>(*isr_table[irq_num])();</code><br><br>Це паттерн software interrupt controller або event dispatcher. Cortex-M Vector Table у Flash – апаратний аналог: масив адрес обробників переривань.[^embeddedinterviewlab]
+`void(*isr_table[16])(void)` – масив із 16 function pointers: кожен вказує на функцію без аргументів що повертає void.
+
+Ініціалізація: `isr_table[0] = nmi_handler; isr_table[1] = hardfault_handler;`
+
+Виклик: `isr_table[irq_num]();` або `(*isr_table[irq_num])();`
+
+Це паттерн software interrupt controller або event dispatcher. Cortex-M Vector Table у Flash – апаратний аналог: масив адрес обробників переривань.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

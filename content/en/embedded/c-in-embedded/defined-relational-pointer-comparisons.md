@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0059
-title: "Can pointers be compared with <code>&lt;</code> and <code>&gt;</code>, and when is this defined behavior?"
+title: "Can pointers be compared with `<` and `>`, and when is this defined behavior?"
 description: "When relational pointer comparisons are defined."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

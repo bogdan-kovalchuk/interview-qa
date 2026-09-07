@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0055
-title: "How can you implement <code>swap</code> for two <code>int</code> values using pointers?"
+title: "How can you implement `swap` for two `int` values using pointers?"
 description: "How to swap two integers through pointer parameters."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

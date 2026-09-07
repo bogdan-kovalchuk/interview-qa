@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "current"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? debugging-and-tracing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу debugging-and-tracing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Bounce</span> зазвичай повторюваний і прив'язаний до механічного edge; EMI може корелювати з motor/PWM/radio events.<br>Ground issue видно як зсув reference, ringing між ground points або зміна при іншому probe grounding.<br>Sampling problem проявляється, коли analog сигнал нормальний, але firmware ловить alias/metastability через неправильний threshold, debounce або sample rate.[^dou-embedded-interview]
+**Bounce** зазвичай повторюваний і прив'язаний до механічного edge; EMI може корелювати з motor/PWM/radio events. Ground issue видно як зсув reference, ringing між ground points або зміна при іншому probe grounding. Sampling problem проявляється, коли analog сигнал нормальний, але firmware ловить alias/metastability через неправильний threshold, debounce або sample rate.[^dou-embedded-interview]
 
 ## Detailed explanation
 

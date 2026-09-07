@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,14 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Граф складається з вершин і ребер; може бути орієнтованим/неорієнтованим, зваженим/незваженим. Базові обходи: <span class="key">DFS</span> і <span class="key">BFS</span>; BFS знаходить найкоротший шлях у незваженому графі.[^dou-embedded-interview]
+Граф складається з вершин і ребер; може бути орієнтованим/неорієнтованим, зваженим/незваженим. Базові обходи: **DFS** і **BFS**; BFS знаходить найкоротший шлях у незваженому графі.[^dou-embedded-interview]
 
-Для найкоротших шляхів: <code>Dijkstra</code> для невід'ємних ваг, <code>Bellman-Ford</code> допускає від'ємні ребра, <code>Floyd-Warshall</code> рахує всі пари. Для мінімального остовного дерева: <code>Kruskal</code> і <code>Prim</code>. Також часто питають topological sort для DAG, пошук циклів і компоненти зв'язності.
+Для найкоротших шляхів: `Dijkstra` для невід'ємних ваг, `Bellman-Ford` допускає від'ємні ребра, `Floyd-Warshall` рахує всі пари. Для мінімального остовного дерева: `Kruskal` і `Prim`. Також часто питають topological sort для DAG, пошук циклів і компоненти зв'язності.
 
 ## Detailed explanation
 

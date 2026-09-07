@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-User space входить у kernel через <code>syscall</code>: <code>read</code>, <code>write</code>, <code>open</code>, <code>mmap</code> тощо. Для device-specific control часто використовують <code>ioctl</code>, для простих атрибутів driver-а – <code>sysfs</code>, а <code>procfs</code> переважно для process/kernel diagnostic info. <span class="warn">Не варто робити нестабільний binary protocol у sysfs</span>; там очікуються прості текстові атрибути.[^dou-embedded-interview]
+User space входить у kernel через `syscall`: `read`, `write`, `open`, `mmap` тощо. Для device-specific control часто використовують `ioctl`, для простих атрибутів driver-а – `sysfs`, а `procfs` переважно для process/kernel diagnostic info. <span class="warn">Не варто робити нестабільний binary protocol у sysfs</span>; там очікуються прості текстові атрибути.[^dou-embedded-interview]
 
 ## Detailed explanation
 

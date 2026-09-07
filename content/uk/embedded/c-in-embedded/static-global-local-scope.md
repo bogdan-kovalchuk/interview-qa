@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,15 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Для <span class="key">локальної змінної</span> <code>static</code> змінює час життя: змінна створюється один раз, живе до завершення програми й зберігає значення між викликами функції. Область видимості при цьому лишається локальною для блоку.<br><br>Для <span class="key">глобальної змінної</span> або функції <code>static</code> змінює linkage: ім'я видно тільки в поточному <code>.c</code>/<code>.cpp</code> файлі. Це називається internal linkage і допомагає уникати конфліктів імен між translation units.[^dou-embedded-interview]
+Для **локальної змінної** `static` змінює час життя: змінна створюється один раз, живе до завершення програми й зберігає значення між викликами функції. Область видимості при цьому лишається локальною для блоку.
+
+Для **глобальної змінної** або функції `static` змінює linkage: ім'я видно тільки в поточному `.c`/`.cpp` файлі. Це називається internal linkage і допомагає уникати конфліктів імен між translation units.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

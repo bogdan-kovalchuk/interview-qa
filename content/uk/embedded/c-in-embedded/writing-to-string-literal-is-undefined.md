@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0011
-title: "Trap: що станеться?<br><pre class=\"code-block\"><code>char *s = \"hello\";<br>s[0] = 'H';</code></pre>"
+title: "Trap: що станеться?"
 description: "Why modifying a string literal is undefined behavior."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+char *s = "hello";
+s[0] = 'H';
+```
 
 ## Short answer
 
-Рядковий літерал <code>"hello"</code> зберігається у <span class="key">.rodata</span> (Flash/read-only). <code>s</code> вказує на цю read-only область.<br><br>Запис <code>s[0] = 'H'</code> -> <span class="warn">undefined behavior</span>: на ПК – segfault, на MCU – HardFault (якщо MPU захищає Flash) або тихий запис у Flash (що не спрацьовує).<br><br>Правильно: <code>char arr[] = "hello";</code> – компілятор копіює рядок у writable масив (stack або .data). Тоді <code>arr[0] = 'H'</code> – легально.[^embeddedinterviewlab]
+Рядковий літерал `"hello"` зберігається у **.rodata** (Flash/read-only). `s` вказує на цю read-only область.
+
+Запис `s[0] = 'H'` -> <span class="warn">undefined behavior</span>: на ПК – segfault, на MCU – HardFault (якщо MPU захищає Flash) або тихий запис у Flash (що не спрацьовує).
+
+Правильно: `char arr[] = "hello";` – компілятор копіює рядок у writable масив (stack або .data). Тоді `arr[0] = 'H'` – легально.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

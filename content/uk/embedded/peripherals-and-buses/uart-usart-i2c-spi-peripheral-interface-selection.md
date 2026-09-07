@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">UART/USART</span> простий point-to-point async/sync serial, добрий для logs або простих links.<br><span class="key">I2C</span> має addressable multi-drop bus, але нижчу швидкість і чутливість до pull-ups/capacitance.<br><span class="key">SPI</span> швидкий і простий electrically, але потребує chip select на slave і не має стандартного addressing/error handling.[^dou-embedded-interview]
+**UART/USART** простий point-to-point async/sync serial, добрий для logs або простих links. **I2C** має addressable multi-drop bus, але нижчу швидкість і чутливість до pull-ups/capacitance. **SPI** швидкий і простий electrically, але потребує chip select на slave і не має стандартного addressing/error handling.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-CD pipeline має збирати signed artifacts, прошивати device через bootloader/debug probe, запускати smoke/HIL tests і збирати logs/trace.<br>Потрібні керовані test rigs: power cycling, serial logs, reset control, version readback і failure recovery.<br><span class="key">Release gate</span> має перевіряти не лише build, а й update path, rollback і базову роботу hardware.[^dou-embedded-interview]
+CD pipeline має збирати signed artifacts, прошивати device через bootloader/debug probe, запускати smoke/HIL tests і збирати logs/trace. Потрібні керовані test rigs: power cycling, serial logs, reset control, version readback і failure recovery. **Release gate** має перевіряти не лише build, а й update path, rollback і базову роботу hardware.[^dou-embedded-interview]
 
 ## Detailed explanation
 

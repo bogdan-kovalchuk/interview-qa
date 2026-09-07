@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "current"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? bootloaders-and-ota; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Wired flashing</span> через SWD/JTAG/UART простий для factory/service, але не для field updates.<br>Bootloader може приймати image з UART/USB/CAN/network; dual-bank або A/B дозволяють записати новий image без стирання робочого.<br>Rollback потрібен, щоб повернутися на попередню valid версію після failed boot або health check.[^dou-embedded-interview]
+**Wired flashing** через SWD/JTAG/UART простий для factory/service, але не для field updates. Bootloader може приймати image з UART/USB/CAN/network; dual-bank або A/B дозволяють записати новий image без стирання робочого. Rollback потрібен, щоб повернутися на попередню valid версію після failed boot або health check.[^dou-embedded-interview]
 
 ## Detailed explanation
 

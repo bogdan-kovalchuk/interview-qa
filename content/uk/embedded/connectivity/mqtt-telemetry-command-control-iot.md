@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">MQTT</span> - lightweight publish/subscribe protocol поверх TCP, де clients обмінюються messages через broker.<br>Він зручний для telemetry і command/control через topics, QoS levels, retained messages і last will.<br>Для embedded треба врахувати TLS cost, reconnect behavior, offline queue і обмеження RAM для payload/buffers.[^dou-embedded-interview]
+**MQTT** - lightweight publish/subscribe protocol поверх TCP, де clients обмінюються messages через broker. Він зручний для telemetry і command/control через topics, QoS levels, retained messages і last will. Для embedded треба врахувати TLS cost, reconnect behavior, offline queue і обмеження RAM для payload/buffers.[^dou-embedded-interview]
 
 ## Detailed explanation
 

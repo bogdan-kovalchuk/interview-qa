@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0018
-title: "What does this print?<br><pre class=\"code-block\"><code>uint32_t *p=(uint32_t*)0x2000;<br>uint8_t *q=(uint8_t*)p;<br>printf(\"%zu %zu\", sizeof(*p), sizeof(*q));</code></pre>"
+title: "What does this print?"
 description: "Why sizeof a dereferenced pointer depends on its pointer type."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+uint32_t *p=(uint32_t*)0x2000;
+uint8_t *q=(uint8_t*)p;
+printf("%zu %zu", sizeof(*p), sizeof(*q));
+```
 
 ## Short answer
 

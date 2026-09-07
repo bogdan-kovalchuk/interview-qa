@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? testing-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу testing-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Для firmware доречні <span class="key">clang-tidy</span>, <code>cppcheck</code>, compiler warnings, commercial analyzers на кшталт PC-lint/FlexeLint, Coverity, Polyspace або Klocwork.<br>У CI запускають аналіз на кожен target/config, фіксують rule set, suppressions і baseline, а MISRA/AUTOSAR deviation оформлюють явно.<br><span class="warn">Важливо аналізувати той самий code path, include dirs і defines, що й cross-build.</span>[^dou-embedded-interview]
+Для firmware доречні **clang-tidy**, `cppcheck`, compiler warnings, commercial analyzers на кшталт PC-lint/FlexeLint, Coverity, Polyspace або Klocwork. У CI запускають аналіз на кожен target/config, фіксують rule set, suppressions і baseline, а MISRA/AUTOSAR deviation оформлюють явно. <span class="warn">Важливо аналізувати той самий code path, include dirs і defines, що й cross-build.</span>[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

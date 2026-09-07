@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">EABI</span> – embedded ABI, який фіксує calling convention, object format, type layout, alignment, exception/unwind правила й floating-point ABI. Якщо object files зібрані з різними ABI flags, наприклад soft-float vs hard-float, linker або runtime може зламатися. Для firmware всі libraries мають відповідати target CPU, FPU, endian, ABI і compiler runtime.[^dou-embedded-interview]
+**EABI** – embedded ABI, який фіксує calling convention, object format, type layout, alignment, exception/unwind правила й floating-point ABI. Якщо object files зібрані з різними ABI flags, наприклад soft-float vs hard-float, linker або runtime може зламатися. Для firmware всі libraries мають відповідати target CPU, FPU, endian, ABI і compiler runtime.[^dou-embedded-interview]
 
 ## Detailed explanation
 

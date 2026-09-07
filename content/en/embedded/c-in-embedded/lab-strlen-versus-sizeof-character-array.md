@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0070
-title: "What do <code>strlen(s)</code> and <code>sizeof(s)</code> return for <code>char s[20] = \"hello\"</code>?"
+title: "What do `strlen(s)` and `sizeof(s)` return for `char s[20] = \"hello\"`?"
 description: "The difference between string length and character-array capacity."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

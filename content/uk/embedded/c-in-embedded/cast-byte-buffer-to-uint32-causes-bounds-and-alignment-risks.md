@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0034
-title: "Знайдіть помилку?<br><pre class=\"code-block\"><code><span class=\"code-type\">uint8_t</span> buf[<span class=\"code-num\">256</span>];<br><span class=\"code-type\">uint32_t</span> *p = (<span class=\"code-type\">uint32_t</span>*)buf;<br><span class=\"code-kw\">for</span>(<span class=\"code-type\">int</span> i=<span class=\"code-num\">0</span>;<br>i&lt;<span class=\"code-num\">256</span>;<br>i++) p[i]=<span class=\"code-num\">0</span>;</code></pre>"
+title: "Знайдіть помилку?"
 description: "How a byte buffer cast can cause bounds and alignment problems."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+uint8_t buf[256];
+uint32_t *p = (uint32_t*)buf;
+for(int i=0;
+i<256;
+i++) p[i]=0;
+```
 
 ## Short answer
 
-<span class="warn">Out-of-bounds write!</span> <code>buf</code> – 256 байт. <code>p</code> – <code>uint32_t*</code>, кожен елемент = 4 байти. Цикл <code>p[0]..p[255]</code> записує <code>256 × 4 = 1024 байти</code> – у 4 рази більше розміру буфера.<br><br>Правильно: <code>for(int i=0; i &lt; 256/sizeof(uint32_t); i++) p[i]=0;</code> або <code>memset(buf, 0, sizeof(buf))</code>.<br><br>Також: <code>uint8_t buf[256]</code> може бути не вирівняний для <code>uint32_t</code> -> misaligned access.[^embeddedinterviewlab]
+<span class="warn">Out-of-bounds write!</span> `buf` – 256 байт. `p` – `uint32_t*`, кожен елемент = 4 байти. Цикл `p[0]..p[255]` записує `256 × 4 = 1024 байти` – у 4 рази більше розміру буфера.
+
+Правильно: `for(int i=0; i < 256/sizeof(uint32_t); i++) p[i]=0;` або `memset(buf, 0, sizeof(buf))`.
+
+Також: `uint8_t buf[256]` може бути не вирівняний для `uint32_t` -> misaligned access.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

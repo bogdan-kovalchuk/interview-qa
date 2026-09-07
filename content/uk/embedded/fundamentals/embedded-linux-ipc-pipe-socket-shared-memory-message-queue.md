@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>pipe</code> простий для stream між related processes, але локальний і односторонній. <code>socket</code> гнучкий: Unix domain для local IPC або TCP/UDP для network, але має overhead. <code>shared memory</code> найшвидша для великих даних, проте потребує synchronization; <code>message queue</code> дає message boundaries і priority, але обмежена розмірами/лімітами system.[^dou-embedded-interview]
+`pipe` простий для stream між related processes, але локальний і односторонній. `socket` гнучкий: Unix domain для local IPC або TCP/UDP для network, але має overhead. `shared memory` найшвидша для великих даних, проте потребує synchronization; `message queue` дає message boundaries і priority, але обмежена розмірами/лімітами system.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,14 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу rtos; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Memory barrier</span> – інструкція або compiler primitive, яка обмежує переупорядкування операцій пам'яті компілятором або CPU. Вона потрібна, коли порядок доступів важливий: lock-free код, MMIO-регістри, DMA, multi-core synchronization.[^dou-embedded-interview]
+**Memory barrier** – інструкція або compiler primitive, яка обмежує переупорядкування операцій пам'яті компілятором або CPU. Вона потрібна, коли порядок доступів важливий: lock-free код, MMIO-регістри, DMA, multi-core synchronization.[^dou-embedded-interview]
 
-<span class="key">Cache coherence</span> – узгодженість копій даних у кешах різних CPU/core або між cache і пам'яттю, з якою працює DMA. Якщо DMA записав буфер у RAM, CPU може все ще бачити стару copy в cache без invalidate/clean.
+**Cache coherence** – узгодженість копій даних у кешах різних CPU/core або між cache і пам'яттю, з якою працює DMA. Якщо DMA записав буфер у RAM, CPU може все ще бачити стару copy в cache без invalidate/clean.
 
 Практично: для shared memory використовують atomics/barriers, а для DMA – cache clean/invalidate або non-cacheable buffers залежно від MCU/MPU.
 

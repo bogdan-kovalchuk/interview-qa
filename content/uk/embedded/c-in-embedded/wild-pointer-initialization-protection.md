@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,22 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Wild pointer</span> – вказівник з garbage-адресою (значення стека), не NULL. Перевірка <code>if(p != NULL)</code> не виявляє його.<br><br>Небезпеки:<br>• Запис за довільною адресою -> corruption критичних даних;<br>• На MCU: запис у периферійні регістри -> непередбачувана поведінка hardware;<br>• Важко відтворити – залежить від стану стека.<br><br>Захист:<br>• Завжди ініціалізуй: <code>int *p = NULL;</code> або одразу <code>= &amp;x</code>;<br>• <code>-fsanitize=address</code> при розробці;<br>• Static analysis: PC-lint, Coverity.[^embeddedinterviewlab]
+**Wild pointer** – вказівник з garbage-адресою (значення стека), не NULL. Перевірка `if(p != NULL)` не виявляє його.
+
+Небезпеки:
+- Запис за довільною адресою -> corruption критичних даних;
+- На MCU: запис у периферійні регістри -> непередбачувана поведінка hardware;
+- Важко відтворити – залежить від стану стека.
+
+Захист:
+- Завжди ініціалізуй: `int *p = NULL;` або одразу `= &x`;
+- `-fsanitize=address` при розробці;
+- Static analysis: PC-lint, Coverity.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

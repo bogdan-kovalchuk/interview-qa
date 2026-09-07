@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0088
-title: "Що виведе?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> a=<span class=\"code-num\">1</span>,b=<span class=\"code-num\">2</span>;<br><span class=\"code-type\">int</span> *p=&amp;a,*q=&amp;b;<br><span class=\"code-fn\">printf</span>(\"%d\", p&lt;q);</code></pre>"
+title: "Що виведе?"
 description: "Why relational comparison of pointers to different objects is undefined in C."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,24 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int a=1,b=2;
+int *p=&a,*q=&b;
+printf("%d", p<q);
+```
 
 ## Short answer
 
-<span class="warn">Undefined behavior за стандартом C</span>. Реляційне порівняння (<code>&lt;</code>, <code>&gt;</code>) вказівників з різних об'єктів не визначено стандартом.<br><br>На практиці (більшість платформ, flat memory): результат залежить від розміщення змінних у пам'яті (порядок на стеку залежить від компілятора). Не portable;<br><br>Дозволено: <code>p == q</code>, <code>p != q</code> – порівняння на рівність між будь-якими вказівниками. Реляційні – тільки в межах одного масиву.[^embeddedinterviewlab]
+<span class="warn">Undefined behavior за стандартом C</span>. Реляційне порівняння (`<`, `>`) вказівників з різних об'єктів не визначено стандартом.
+
+На практиці (більшість платформ, flat memory): результат залежить від розміщення змінних у пам'яті (порядок на стеку залежить від компілятора). Не portable;
+
+Дозволено: `p == q`, `p != q` – порівняння на рівність між будь-якими вказівниками. Реляційні – тільки в межах одного масиву.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

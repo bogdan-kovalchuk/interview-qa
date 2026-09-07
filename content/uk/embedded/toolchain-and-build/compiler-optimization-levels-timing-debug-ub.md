@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Вищі <code>-O</code> рівні змінюють instruction order, inline, register allocation і timing, тому delay loops, race conditions і UB можуть проявитися інакше.<br>Debug стає складнішим: змінні optimized out, breakpoints зсуваються, call stack може бути неточним.<br><span class="warn">Коректний firmware не повинен залежати від побічних ефектів UB або не-<code>volatile</code> доступу до MMIO.</span>[^dou-embedded-interview]
+Вищі `-O` рівні змінюють instruction order, inline, register allocation і timing, тому delay loops, race conditions і UB можуть проявитися інакше. Debug стає складнішим: змінні optimized out, breakpoints зсуваються, call stack може бути неточним. <span class="warn">Коректний firmware не повинен залежати від побічних ефектів UB або не-`volatile` доступу до MMIO.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

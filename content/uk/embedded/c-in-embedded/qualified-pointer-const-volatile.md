@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0092
-title: "Що таке qualified pointer (<code>volatile</code>, <code>const</code>) і як qualifier поширюється?"
+title: "Що таке qualified pointer (`volatile`, `const`) і як qualifier поширюється?"
 description: "How const and volatile qualifiers affect pointed-to data and pointer use."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Qualifier – частина типу вказівника, що вказує на властивості даних або самого вказівника.<br><br><code>const int *p</code> – qualifier на дані: не можна змінити <code>*p</code>. Можна дати менш qualified вказівник: <code>int *p</code> -> <code>const int *q = p</code> (додавання const – OK). Зворотне -> warning/error.<br><br><code>volatile uint32_t *reg</code> – кожен доступ реально виконується (для registers).<br><br>Правило: можна <span class="key">додавати</span> qualifier при присвоєнні, але <span class="warn">не знімати</span> без explicit cast.[^embeddedinterviewlab]
+Qualifier – частина типу вказівника, що вказує на властивості даних або самого вказівника.
+
+`const int *p` – qualifier на дані: не можна змінити `*p`. Можна дати менш qualified вказівник: `int *p` -> `const int *q = p` (додавання const – OK). Зворотне -> warning/error.
+
+`volatile uint32_t *reg` – кожен доступ реально виконується (для registers).
+
+Правило: можна **додавати** qualifier при присвоєнні, але <span class="warn">не знімати</span> без explicit cast.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

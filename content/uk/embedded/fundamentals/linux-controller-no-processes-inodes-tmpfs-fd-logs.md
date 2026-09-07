@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Перевір <code>df -i</code> для inodes, <code>df -h</code> для <code>/tmp</code>/<code>/run</code> tmpfs, <code>ulimit -n</code> і <code>lsof</code> для file descriptors.<br>Подивись <code>dmesg</code>, <code>journalctl</code>, OOM messages, read-only remount і errors filesystem.<br><span class="warn">Вільні bytes на rootfs не допоможуть, якщо закінчились inodes, PID limit, fd limit або tmpfs.</span>[^dou-embedded-interview]
+Перевір `df -i` для inodes, `df -h` для `/tmp`/`/run` tmpfs, `ulimit -n` і `lsof` для file descriptors. Подивись `dmesg`, `journalctl`, OOM messages, read-only remount і errors filesystem. <span class="warn">Вільні bytes на rootfs не допоможуть, якщо закінчились inodes, PID limit, fd limit або tmpfs.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

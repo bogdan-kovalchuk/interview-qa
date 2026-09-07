@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0093
-title: "Що виведе?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">4</span>]={<span class=\"code-num\">10</span>,<span class=\"code-num\">20</span>,<span class=\"code-num\">30</span>,<span class=\"code-num\">40</span>};<br><span class=\"code-fn\">printf</span>(\"%d %d\",*(arr+<span class=\"code-num\">3</span>), arr[<span class=\"code-num\">3</span>]);</code></pre>"
+title: "Що виведе?"
 description: "Why array subscripting and pointer arithmetic are equivalent in C."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[4]={10,20,30,40};
+printf("%d %d",*(arr+3), arr[3]);
+```
 
 ## Short answer
 
-Обидва виводять <code>40</code>.<br><br><code>*(arr+3)</code> -> pointer arithmetic: зсув на 3 елементи, розіменування = <code>arr[3] = 40</code>.<br><code>arr[3]</code> -> subscript operator, за визначенням = <code>*(arr+3)</code>.<br><br>Вони <span class="key">ідентичні за стандартом</span>. Компілятор генерує однаковий машинний код для обох варіантів.[^embeddedinterviewlab]
+Обидва виводять `40`.
+
+`*(arr+3)` -> pointer arithmetic: зсув на 3 елементи, розіменування = `arr[3] = 40`. `arr[3]` -> subscript operator, за визначенням = `*(arr+3)`.
+
+Вони **ідентичні за стандартом**. Компілятор генерує однаковий машинний код для обох варіантів.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

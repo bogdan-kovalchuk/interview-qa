@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">DMA</span> переносить дані між peripheral і memory без копіювання кожного байта CPU. Проблема в тому, що CPU cache може містити старі або ще не записані дані, а DMA бачить RAM напряму. Перед TX потрібен clean/flush cache, після RX – invalidate, плюс правильне alignment, memory barriers і buffers у DMA-accessible memory.[^dou-embedded-interview]
+**DMA** переносить дані між peripheral і memory без копіювання кожного байта CPU. Проблема в тому, що CPU cache може містити старі або ще не записані дані, а DMA бачить RAM напряму. Перед TX потрібен clean/flush cache, після RX – invalidate, плюс правильне alignment, memory barriers і buffers у DMA-accessible memory.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0056
-title: "Cortex-M0 trap: what is the risk?<br><pre class=\"code-block\"><code>uint8_t *p=(uint8_t*)0x40020000;<br>uint32_t val=*(uint32_t*)p;</code></pre>"
+title: "Cortex-M0 trap: what is the risk?"
 description: "How misaligned accesses can fault on Cortex-M0."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+uint8_t *p=(uint8_t*)0x40020000;
+uint32_t val=*(uint32_t*)p;
+```
 
 ## Short answer
 

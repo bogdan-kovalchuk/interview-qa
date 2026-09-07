@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0052
-title: "What is the difference between <code>char arr[] = \"hello\"</code> and <code>char *p = \"hello\"</code>?"
+title: "What is the difference between `char arr[] = \"hello\"` and `char *p = \"hello\"`?"
 description: "How writable character arrays differ from pointers to string literals."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

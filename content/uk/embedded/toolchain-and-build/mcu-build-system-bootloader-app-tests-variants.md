@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Розбий build на окремі targets: <code>bootloader</code>, <code>app</code>, shared drivers, host tests, target tests і board configs.<br>Кожен target має свій linker script, startup file, compile definitions, memory layout і output artifacts.<br>Hardware variants краще описувати через board files/config targets, а не умовні блоки у кожному source file.[^dou-embedded-interview]
+Розбий build на окремі targets: `bootloader`, `app`, shared drivers, host tests, target tests і board configs. Кожен target має свій linker script, startup file, compile definitions, memory layout і output artifacts. Hardware variants краще описувати через board files/config targets, а не умовні блоки у кожному source file.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

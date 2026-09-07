@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0088
-title: "What is printed?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> a=<span class=\"code-num\">1</span>,b=<span class=\"code-num\">2</span>;<br><span class=\"code-type\">int</span> *p=&amp;a,*q=&amp;b;<br><span class=\"code-fn\">printf</span>(\"%d\", p&lt;q);</code></pre>"
+title: "What is printed?"
 description: "Why relational comparison of pointers to different objects is undefined in C."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int a=1,b=2;
+int *p=&a,*q=&b;
+printf("%d", p<q);
+```
 
 ## Short answer
 

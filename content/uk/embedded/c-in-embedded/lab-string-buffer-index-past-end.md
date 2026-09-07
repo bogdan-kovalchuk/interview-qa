@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0076
-title: "Trap: яка помилка?<br><pre class=\"code-block\"><code>char buf[4]=\"abc\";<br>buf[4]='\\0';</code></pre>"
+title: "Trap: яка помилка?"
 description: "Why writing at the first index after a string buffer is a buffer overflow."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+char buf[4]="abc";
+buf[4]='\0';
+```
 
 ## Short answer
 
-<span class="warn">Buffer overflow!</span> <code>char buf[4] = "abc"</code> -> <code>buf = {'a','b','c','\0'}</code>. Масив 4 елементи, індекси 0..3. <code>buf[4]</code> – п'ятий елемент, за межами масиву.<br><br>Ще проблема: <code>"abc"</code> вже має '\0' на позиції 3 – null-terminator вже є. Рядок коректний;<br><br>Якби <code>char buf[3] = "abc"</code> – компілятор попередить або поміщає 'a','b','c' без '\0' (усікання); Завжди розмір буфера &gt; довжина рядка + 1.[^embeddedinterviewlab]
+<span class="warn">Buffer overflow!</span> `char buf[4] = "abc"` -> `buf = {'a','b','c','\0'}`. Масив 4 елементи, індекси 0..3. `buf[4]` – п'ятий елемент, за межами масиву.
+
+Ще проблема: `"abc"` вже має '\0' на позиції 3 – null-terminator вже є. Рядок коректний;
+
+Якби `char buf[3] = "abc"` – компілятор попередить або поміщає 'a','b','c' без '\0' (усікання); Завжди розмір буфера > довжина рядка + 1.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

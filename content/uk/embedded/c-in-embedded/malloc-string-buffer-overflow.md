@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0100
-title: "Trap: де помилка?<br><pre class=\"code-block\"><code><span class=\"code-type\">char</span> *p = <span class=\"code-fn\">malloc</span>(<span class=\"code-num\">5</span>);<br>strcpy(p, \"hello\");<br>p[<span class=\"code-num\">5</span>] = '\\<span class=\"code-num\">0</span>';</code></pre>"
+title: "Trap: де помилка?"
 description: "Why allocating five bytes is insufficient for the string hello and its terminator."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,24 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+char *p = malloc(5);
+strcpy(p, "hello");
+p[5] = '\0';
+```
 
 ## Short answer
 
-<span class="warn">Buffer overflow.</span> <code>malloc(5)</code> – 5 байт. <code>"hello"</code> = <code>{'h','e','l','l','o','\0'}</code> – 6 байт включно з null-terminator.<br><br><code>strcpy(p, "hello")</code> вже переповнює буфер: копіює 6 байт у 5-байтний буфер. <code>p[5] = '\0'</code> – шостий запис за межами.<br><br>Правильно: <code>malloc(strlen("hello") + 1)</code> = <code>malloc(6)</code>. Або <code>strncpy(p, "hello", 5); p[4]='\0';</code> – обрізати якщо треба.[^embeddedinterviewlab]
+<span class="warn">Buffer overflow.</span> `malloc(5)` – 5 байт. `"hello"` = `{'h','e','l','l','o','\0'}` – 6 байт включно з null-terminator.
+
+`strcpy(p, "hello")` вже переповнює буфер: копіює 6 байт у 5-байтний буфер. `p[5] = '\0'` – шостий запис за межами.
+
+Правильно: `malloc(strlen("hello") + 1)` = `malloc(6)`. Або `strncpy(p, "hello", 5); p[4]='\0';` – обрізати якщо треба.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

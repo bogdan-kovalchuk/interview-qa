@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "2.47"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу memory-and-linker; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Linker script</span> описує Flash/RAM regions, entry point, sections, vector table і symbols для startup. Типові помилки: неправильна адреса vector table, overlap <code>.data/.bss/heap/stack</code>, неекспортовані <code>_sidata/_sdata/_edata/_sbss/_ebss</code>, невірний RAM origin/length. <span class="warn">Такі помилки часто виглядають як reset loop або HardFault до main</span>.[^dou-embedded-interview]
+**Linker script** описує Flash/RAM regions, entry point, sections, vector table і symbols для startup. Типові помилки: неправильна адреса vector table, overlap `.data/.bss/heap/stack`, неекспортовані `_sidata/_sdata/_edata/_sbss/_ebss`, невірний RAM origin/length. <span class="warn">Такі помилки часто виглядають як reset loop або HardFault до main</span>.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Virtual memory дає кожному process власний address space, memory protection, lazy mapping, shared libraries, <code>mmap</code> і copy-on-write. Bare-metal MCU зазвичай має малу RAM/Flash, deterministic requirements і часто тільки MPU або взагалі без memory protection. Тому там працюють з physical addresses, linker script і прямим MMIO.[^dou-embedded-interview]
+Virtual memory дає кожному process власний address space, memory protection, lazy mapping, shared libraries, `mmap` і copy-on-write. Bare-metal MCU зазвичай має малу RAM/Flash, deterministic requirements і часто тільки MPU або взагалі без memory protection. Тому там працюють з physical addresses, linker script і прямим MMIO.[^dou-embedded-interview]
 
 ## Detailed explanation
 

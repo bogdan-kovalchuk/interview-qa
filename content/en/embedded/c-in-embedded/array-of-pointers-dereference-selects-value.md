@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0020
-title: "What does this array-of-pointers example print?<br><pre class=\"code-block\"><code>int a=1,b=2,c=3;<br>int *arr[3]={&amp;a,&amp;b,&amp;c};<br>printf(\"%d\",*arr[1]);</code></pre>"
+title: "What does this array-of-pointers example print?"
 description: "How dereferencing an element of an array of pointers accesses its value."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int a=1,b=2,c=3;
+int *arr[3]={&a,&b,&c};
+printf("%d",*arr[1]);
+```
 
 ## Short answer
 

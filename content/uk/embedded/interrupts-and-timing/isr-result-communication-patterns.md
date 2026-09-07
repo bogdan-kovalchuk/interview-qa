@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-ISR викликається hardware/CPU exception механізмом, а не caller-ом, який чекає return value.<br>Результат передають через flags, buffers, queues, semaphores, event bits або deferred work/task notification.<br><span class="key">ISR має сигналізувати подію</span>, а важку обробку виконувати у main loop, worker task або bottom half.[^dou-embedded-interview]
+ISR викликається hardware/CPU exception механізмом, а не caller-ом, який чекає return value. Результат передають через flags, buffers, queues, semaphores, event bits або deferred work/task notification. **ISR має сигналізувати подію**, а важку обробку виконувати у main loop, worker task або bottom half.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

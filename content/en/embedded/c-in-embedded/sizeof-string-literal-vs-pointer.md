@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0053
-title: "What do <code>sizeof(\"hello\")</code> and <code>sizeof(char*)</code> return on 32-bit?<br>"
+title: "What do `sizeof(\"hello\")` and `sizeof(char*)` return on 32-bit?"
 description: "How sizeof treats a string literal and a pointer."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

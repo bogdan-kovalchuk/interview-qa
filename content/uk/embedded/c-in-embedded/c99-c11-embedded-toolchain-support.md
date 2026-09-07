@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-C99 приніс <code>stdint.h</code>, <code>stdbool.h</code>, designated initializers, mixed declarations і <code>inline</code>, що дуже корисно для embedded. C11 додав atomics, threads, alignment features і static assertions. <span class="warn">На MCU toolchains C11 threads/atomics можуть бути неповними або залежати від runtime/libc</span>, тому треба перевіряти конкретний compiler і flags.[^dou-embedded-interview]
+C99 приніс `stdint.h`, `stdbool.h`, designated initializers, mixed declarations і `inline`, що дуже корисно для embedded. C11 додав atomics, threads, alignment features і static assertions. <span class="warn">На MCU toolchains C11 threads/atomics можуть бути неповними або залежати від runtime/libc</span>, тому треба перевіряти конкретний compiler і flags.[^dou-embedded-interview]
 
 ## Detailed explanation
 

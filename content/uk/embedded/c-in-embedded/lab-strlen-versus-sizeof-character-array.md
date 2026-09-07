@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0070
-title: "Що поверне <code>strlen(s)</code> і <code>sizeof(s)</code> якщо <code>char s[20] = \"hello\"</code>?"
+title: "Що поверне `strlen(s)` і `sizeof(s)` якщо `char s[20] = \"hello\"`?"
 description: "The difference between string length and character-array capacity."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>strlen(s)</code> -> <span class="key">5</span>. Рахує символи до '\0' (не включаючи). Runtime функція.<br><br><code>sizeof(s)</code> -> <span class="key">20</span>. Розмір масиву оголошений при компіляції – весь буфер, незалежно від вмісту. Compile-time операція;<br><br>Рядок "hello" займає 6 байт (<code>h,e,l,l,o,\0</code>), решта 14 байт – нулі (через <code>= "hello"</code> ініціалізацію масиву); <code>sizeof(s)/sizeof(s[0]) = 20/1 = 20</code> – ємність буфера.[^embeddedinterviewlab]
+`strlen(s)` -> **5**. Рахує символи до '\0' (не включаючи). Runtime функція.
+
+`sizeof(s)` -> **20**. Розмір масиву оголошений при компіляції – весь буфер, незалежно від вмісту. Compile-time операція;
+
+Рядок "hello" займає 6 байт (`h,e,l,l,o,\0`), решта 14 байт – нулі (через `= "hello"` ініціалізацію масиву); `sizeof(s)/sizeof(s[0]) = 20/1 = 20` – ємність буфера.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

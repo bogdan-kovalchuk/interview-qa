@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Strict aliasing rule</span> (C99 §6.5): компілятор може вважати що вказівники різних несумісних типів НЕ alias-ують (не вказують на одну область пам'яті).<br><br>Дозволяє агресивну оптимізацію: якщо змінили через <code>float*</code> – компілятор не зобов'язаний перечитати через <code>int*</code>.<br><br>Виключення: <code>char*</code> та <code>unsigned char*</code> можуть alias-увати будь-що.<br><br>Порушення: <code>int x; float *fp=(float*)&amp;x; *fp=1.0f;</code> -> UB. Захист: <code>memcpy</code> або <code>union</code> (у C).[^embeddedinterviewlab]
+**Strict aliasing rule** (C99 §6.5): компілятор може вважати що вказівники різних несумісних типів НЕ alias-ують (не вказують на одну область пам'яті).
+
+Дозволяє агресивну оптимізацію: якщо змінили через `float*` – компілятор не зобов'язаний перечитати через `int*`.
+
+Виключення: `char*` та `unsigned char*` можуть alias-увати будь-що.
+
+Порушення: `int x; float *fp=(float*)&x; *fp=1.0f;` -> UB. Захист: `memcpy` або `union` (у C).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

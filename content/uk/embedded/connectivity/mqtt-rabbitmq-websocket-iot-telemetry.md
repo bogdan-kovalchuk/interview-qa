@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">MQTT</span> найчастіше підходить device-to-cloud: легкий publish/subscribe, QoS і reconnect model. <span class="key">WebSocket</span> доречний, коли потрібен bidirectional channel із web/backend через HTTP infrastructure. <span class="key">RabbitMQ</span> – broker для backend messaging; напряму на малий device його зазвичай не ставлять, але device може говорити з gateway, який уже публікує в RabbitMQ.[^dou-embedded-interview]
+**MQTT** найчастіше підходить device-to-cloud: легкий publish/subscribe, QoS і reconnect model. **WebSocket** доречний, коли потрібен bidirectional channel із web/backend через HTTP infrastructure. **RabbitMQ** – broker для backend messaging; напряму на малий device його зазвичай не ставлять, але device може говорити з gateway, який уже публікує в RabbitMQ.[^dou-embedded-interview]
 
 ## Detailed explanation
 

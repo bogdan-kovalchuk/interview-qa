@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Hardware register</span> керує peripheral або відображає його status.<br><span class="key">Memory-mapped register</span> доступний як адреса у memory map і зазвичай оголошується через <code>volatile</code> pointer/struct.<br>CPU general-purpose register - внутрішній register ядра для обчислень; він не є peripheral control register.[^dou-embedded-interview]
+**Hardware register** керує peripheral або відображає його status. **Memory-mapped register** доступний як адреса у memory map і зазвичай оголошується через `volatile` pointer/struct. CPU general-purpose register - внутрішній register ядра для обчислень; він не є peripheral control register.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

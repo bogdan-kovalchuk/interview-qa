@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,19 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Оскільки масив decay-ується до вказівника, розмір <span class="warn">не передається автоматично</span>. Варіанти:<br><br>1) <span class="key">Явний параметр</span>: <code>void f(int *arr, size_t n)</code> – найпростіше;<br>2) <span class="key">Sentinel value</span>: null-terminator для рядків, спеціальне значення;<br>3) <span class="key">Struct + масив</span>: <code>struct { int *data; size_t len; }</code>;<br>4) C++ <span class="key">std::span</span> або <code>std::array&lt;int,N&gt;</code>.<br><br>Захист: <code>_Static_assert(sizeof(arr) != sizeof(int*), "Use real array")</code> у caller.[^embeddedinterviewlab]
+Оскільки масив decay-ується до вказівника, розмір <span class="warn">не передається автоматично</span>. Варіанти:
+
+1) **Явний параметр**: `void f(int *arr, size_t n)` – найпростіше;
+2) **Sentinel value**: null-terminator для рядків, спеціальне значення;
+3) **Struct + масив**: `struct { int *data; size_t len; }`;
+4) C++ **std::span** або `std::array<int,N>`.
+
+Захист: `_Static_assert(sizeof(arr) != sizeof(int*), "Use real array")` у caller.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

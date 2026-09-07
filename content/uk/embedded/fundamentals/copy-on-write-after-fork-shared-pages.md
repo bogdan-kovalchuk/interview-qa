@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Copy-on-write</span> дозволяє кільком mappings спільно читати одні physical pages, доки хтось не спробує записати. Після <code>fork</code> parent і child спочатку ділять pages, а при write kernel створює приватну копію сторінки. Це економить RAM і пришвидшує fork, але перший write може мати page fault latency.[^dou-embedded-interview]
+**Copy-on-write** дозволяє кільком mappings спільно читати одні physical pages, доки хтось не спробує записати. Після `fork` parent і child спочатку ділять pages, а при write kernel створює приватну копію сторінки. Це економить RAM і пришвидшує fork, але перший write може мати page fault latency.[^dou-embedded-interview]
 
 ## Detailed explanation
 

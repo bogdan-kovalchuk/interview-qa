@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0081
-title: "Trap: Is this valid in C99?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> *p = &amp;(<span class=\"code-type\">int</span>){<span class=\"code-num\">5</span>};<br><span class=\"code-fn\">printf</span>(\"%d\", *p);</code></pre>"
+title: "Trap: Is this valid in C99?"
 description: "Whether a pointer to a C99 compound literal remains valid within its block."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int *p = &(int){5};
+printf("%d", *p);
+```
 
 ## Short answer
 

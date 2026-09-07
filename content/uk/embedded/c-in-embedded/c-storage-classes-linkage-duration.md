@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Основні specifiers: <code>auto</code>, <code>register</code>, <code>static</code>, <code>extern</code>, <code>_Thread_local</code>. <code>static</code> у block scope дає static storage duration, а на file scope дає internal linkage. <code>extern</code> зазвичай оголошує object/function з external linkage, але lifetime визначається самим об'єктом, не словом <code>extern</code>.[^dou-embedded-interview]
+Основні specifiers: `auto`, `register`, `static`, `extern`, `_Thread_local`. `static` у block scope дає static storage duration, а на file scope дає internal linkage. `extern` зазвичай оголошує object/function з external linkage, але lifetime визначається самим об'єктом, не словом `extern`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

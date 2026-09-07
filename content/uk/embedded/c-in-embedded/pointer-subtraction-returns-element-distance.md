@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Відняття двох вказівників одного типу повертає <span class="key">ptrdiff_t</span> – кількість елементів між ними (не байт).<br><br><code>int *p = arr+4; int *q = arr+1; p - q = 3</code> (три <code>int</code>-елементи).<br><br>Умова: обидва вказівники мають вказувати на <span class="key">один масив</span> (або one-past-the-end). Відняття вказівників що вказують на різні масиви/об'єкти -> <span class="warn">UB</span>.<br><br>Застосування: <code>strlen</code>-подібний підрахунок, offset між елементами буфера.[^embeddedinterviewlab]
+Відняття двох вказівників одного типу повертає **ptrdiff_t** – кількість елементів між ними (не байт).
+
+`int *p = arr+4; int *q = arr+1; p - q = 3` (три `int`-елементи).
+
+Умова: обидва вказівники мають вказувати на **один масив** (або one-past-the-end). Відняття вказівників що вказують на різні масиви/об'єкти -> <span class="warn">UB</span>.
+
+Застосування: `strlen`-подібний підрахунок, offset між елементами буфера.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

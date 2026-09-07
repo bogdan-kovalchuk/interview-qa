@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0063
-title: "Що виведе?<br><pre class=\"code-block\"><code>void f(int *p, int n){<br>  p[0]=99;<br>} int a[3]={1,2,3};<br>f(a,3);<br>printf(\"%d\",a[0]);</code></pre>"
+title: "Що виведе?"
 description: "How a function changes the caller's array through a pointer parameter."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+void f(int *p, int n){
+  p[0]=99;
+} int a[3]={1,2,3};
+f(a,3);
+printf("%d",a[0]);
+```
 
 ## Short answer
 
-<code>99</code>.<br><br><code>a</code> decay-ується до вказівника. Функція <code>f</code> отримує <code>int*</code> – вказівник на перший елемент <code>a[0]</code>. <code>p[0] = 99</code> -> змінює <code>a[0]</code> у caller.<br><br>Масиви у C передаються by reference (через вказівник на перший елемент) – функція може змінювати оригінальні дані. Якщо потрібна тільки читання: <code>const int *p</code>.[^embeddedinterviewlab]
+`99`.
+
+`a` decay-ується до вказівника. Функція `f` отримує `int*` – вказівник на перший елемент `a[0]`. `p[0] = 99` -> змінює `a[0]` у caller.
+
+Масиви у C передаються by reference (через вказівник на перший елемент) – функція може змінювати оригінальні дані. Якщо потрібна тільки читання: `const int *p`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

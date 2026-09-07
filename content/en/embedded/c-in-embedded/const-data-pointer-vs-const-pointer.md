@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0026
-title: "What is the difference between <code>const int *p</code> and <code>int * const p</code>?"
+title: "What is the difference between `const int *p` and `int * const p`?"
 description: "How const applies to pointed-to data and to the pointer itself."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

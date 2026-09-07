@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,22 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>void swap(int *a, int *b) {<br>&nbsp;&nbsp;int tmp = *a;<br>&nbsp;&nbsp;*a = *b;<br>&nbsp;&nbsp;*b = tmp;<br>}</code><br><br>Виклик: <code>int x=5, y=10; swap(&amp;x, &amp;y);</code> -> <code>x=10, y=5</code>.<br><br>Без tmp через XOR: <code>*a^=*b; *b^=*a; *a^=*b;</code> – але <span class="warn">UB якщо <code>a == b</code></span> (aliasing той самий об'єкт). Передавай завжди адреси (через <code>&amp;</code> у caller), не значення.[^embeddedinterviewlab]
+```c
+void swap(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+```
+
+Виклик: `int x=5, y=10; swap(&x, &y);` -> `x=10, y=5`.
+
+Без tmp через XOR: `*a^=*b; *b^=*a; *a^=*b;` – але <span class="warn">UB якщо `a == b`</span> (aliasing той самий об'єкт). Передавай завжди адреси (через `&` у caller), не значення.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

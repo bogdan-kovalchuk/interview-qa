@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">EtherCAT</span> - deterministic industrial Ethernet для motion/control, часто з dedicated slave controller.<br><span class="key">FPD-Link III</span> і <span class="key">MIPI CSI</span> часто зустрічаються у camera/display pipelines на embedded SoC.<br><span class="key">GigE Vision</span> і <span class="key">USB3 Vision</span> - machine-vision transports, де важливі bandwidth, latency, drivers і buffer handling.[^dou-embedded-interview]
+**EtherCAT** - deterministic industrial Ethernet для motion/control, часто з dedicated slave controller. **FPD-Link III** і **MIPI CSI** часто зустрічаються у camera/display pipelines на embedded SoC. **GigE Vision** і **USB3 Vision** - machine-vision transports, де важливі bandwidth, latency, drivers і buffer handling.[^dou-embedded-interview]
 
 ## Detailed explanation
 

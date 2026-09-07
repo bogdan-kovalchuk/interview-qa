@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0014
-title: "Що таке <code>void*</code> і які обмеження має цей тип вказівника?"
+title: "Що таке `void*` і які обмеження має цей тип вказівника?"
 description: "The capabilities and restrictions of a void pointer."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">void*</span> – type-erased pointer: може зберігати адресу об'єкта будь-якого типу без explicit cast.<br><br>Обмеження:<br>• <span class="warn">Не можна розіменувати</span> без cast: <code>*p</code> – помилка компіляції;<br>• <span class="warn">Не можна виконати arithmetic</span> без cast (стандарт C). GCC дозволяє як extension (розмір елемента = 1 байт).<br><br>Використання: <code>malloc</code>/<code>free</code>, <code>memcpy</code>/<code>memset</code>, generic callbacks, <code>qsort</code>. У embedded: generic ISR handler tables.[^embeddedinterviewlab]
+**void*** – type-erased pointer: може зберігати адресу об'єкта будь-якого типу без explicit cast.
+
+Обмеження:
+- <span class="warn">Не можна розіменувати</span> без cast: `*p` – помилка компіляції;
+- <span class="warn">Не можна виконати arithmetic</span> без cast (стандарт C). GCC дозволяє як extension (розмір елемента = 1 байт).
+
+Використання: `malloc`/`free`, `memcpy`/`memset`, generic callbacks, `qsort`. У embedded: generic ISR handler tables.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

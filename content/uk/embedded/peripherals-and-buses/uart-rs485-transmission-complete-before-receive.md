@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Чекай не лише empty TX buffer, а <span class="key">transmission complete</span>: shift register теж має бути порожній.<br>Практично це flag на кшталт <code>TC</code>, interrupt/DMA complete плюс перевірка UART TC, або timer guard time для протоколу.<br><span class="warn"><code>TXE</code> часто означає тільки готовність data register, а не завершення останнього bit на дроті.</span>[^dou-embedded-interview]
+Чекай не лише empty TX buffer, а **transmission complete**: shift register теж має бути порожній. Практично це flag на кшталт `TC`, interrupt/DMA complete плюс перевірка UART TC, або timer guard time для протоколу. <span class="warn">`TXE` часто означає тільки готовність data register, а не завершення останнього bit на дроті.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

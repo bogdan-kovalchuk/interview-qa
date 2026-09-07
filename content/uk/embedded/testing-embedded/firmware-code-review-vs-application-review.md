@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? testing-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу testing-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Firmware review</span> перевіряє не лише логіку, а й взаємодію з MCU: регістри, ISR, DMA, clock/reset, timing, memory layout і power states.<br>Окремо дивляться на undefined behavior, volatile/MMIO, concurrency між ISR і tasks, stack/heap budget, error paths і fail-safe стани.<br><span class="warn">Код, який виглядає коректно як application logic, може ламати hardware через race, неправильний register sequence або timing.</span>[^dou-embedded-interview]
+**Firmware review** перевіряє не лише логіку, а й взаємодію з MCU: регістри, ISR, DMA, clock/reset, timing, memory layout і power states. Окремо дивляться на undefined behavior, volatile/MMIO, concurrency між ISR і tasks, stack/heap budget, error paths і fail-safe стани. <span class="warn">Код, який виглядає коректно як application logic, може ламати hardware через race, неправильний register sequence або timing.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

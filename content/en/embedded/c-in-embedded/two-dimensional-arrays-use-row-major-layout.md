@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0036
-title: "How is a 2D array <code>int arr[3][4]</code> laid out in memory (row-major)?"
+title: "How is a 2D array `int arr[3][4]` laid out in memory (row-major)?"
 description: "How C stores two-dimensional arrays in row-major order."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

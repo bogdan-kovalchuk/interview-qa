@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Безпечно записати integer і скопіювати його bytes через <code>memcpy</code> у <code>unsigned char</code> buffer, бо character types можуть представляти object representation. Наприклад, <code>uint32_t x=1</code>, <code>memcpy(b,&amp;x,4)</code>, потім перевірити <code>b[0]</code>. Для portable protocol code краще не залежати від host endianness, а явно збирати/розбирати bytes.[^dou-embedded-interview]
+Безпечно записати integer і скопіювати його bytes через `memcpy` у `unsigned char` buffer, бо character types можуть представляти object representation. Наприклад, `uint32_t x=1`, `memcpy(b,&x,4)`, потім перевірити `b[0]`. Для portable protocol code краще не залежати від host endianness, а явно збирати/розбирати bytes.[^dou-embedded-interview]
 
 ## Detailed explanation
 
