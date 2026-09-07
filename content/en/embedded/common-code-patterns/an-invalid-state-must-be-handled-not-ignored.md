@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0006
 title: "Why must a state machine handle the default or invalid state?"
-description: "Why must a state machine handle the default or invalid state?"
+description: "An invalid state or unexpected event must be handled explicitly rather than silently ignored."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An invalid state or unexpected event must be handled explicitly, not silently ignored.**
+
+Memory corruption, a bug or external input can produce a state outside the `enum`; without a `default` handler this leads to undefined behavior or out-of-bounds access in the table.
+
+Rule: always have a default branch/handler and a bounds check on the state index.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

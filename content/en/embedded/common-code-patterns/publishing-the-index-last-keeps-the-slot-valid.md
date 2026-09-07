@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0035
 title: "Why does the ISR write the slot before advancing `head`?"
-description: "Why does the ISR write the slot before advancing `head`?"
+description: "So the consumer never sees an advanced head pointing at a byte not yet written."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**To ensure the consumer never sees an advanced `head` pointing at a byte not yet written.**
+
+If `head` were incremented first and data written afterwards, an interrupt or reschedule between those two steps would let the consumer read garbage. Updating the index is always the producer's last action. ISR here means interrupt service routine.
+
+Rule: producer: data -> `head`; consumer: data -> `tail` – the index publishes the record only once the data is ready.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

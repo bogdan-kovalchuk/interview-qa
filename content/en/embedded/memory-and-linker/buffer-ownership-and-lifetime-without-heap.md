@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Allocate buffers statically or in a pool and define the owner explicitly: driver, task, queue or caller. Pass not a raw resource forever, but a handle or descriptor with a `free/in_use/done` state. For ISR/DMA, ring buffer, double buffer and callback/queue patterns work well, where the lifetime ends after an explicit release.[^dou-embedded-interview]
 
 ## Detailed explanation
 

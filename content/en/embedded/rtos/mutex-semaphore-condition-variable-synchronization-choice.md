@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0008
 title: "Which synchronization mechanisms are used in POSIX/RTOS, and when should you choose a mutex, semaphore, or condition variable?"
-description: "A <code>mutex</code> protects shared state with one owner in a critical section."
+description: "A mutex protects shared state with one owner in a critical section."
 track: embedded
 section: rtos
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`mutex` protects shared state with a single owner in a critical section. `semaphore` counts resources or signals an event between ISR/task in RTOS style, if the API allows it. `condition variable` wakes threads waiting on a predicate under a mutex; it does not store the event by itself.[^dou-embedded-interview]
 
 ## Detailed explanation
 

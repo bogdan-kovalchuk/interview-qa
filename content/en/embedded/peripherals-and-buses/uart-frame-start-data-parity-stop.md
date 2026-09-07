@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0004
 title: "How does UART communication work?"
-description: "How does UART communication work?"
+description: "UART sends a frame as a START bit, data bits, optional parity, and a STOP bit; the receiver synchronizes on the START edge."
 track: embedded
 section: peripherals-and-buses
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+The line is held HIGH in the IDLE state.[^dou-embedded-interview] Transmitter:
+
+- Pulls the line LOW for 1 bit-time – this is the **START bit**
+- Sends data bits, usually 8, though 5–9 are possible depending on hardware/configuration
+- Optional: parity bit
+- Raises the line HIGH – this is the **STOP bit**
+
+The receiver synchronizes on the START edge and samples the line in the middle of each bit-time. If the baud rates differ, the data will be corrupted. TX of one side connects to RX of the other; a shared GND is mandatory.
 
 ## Detailed explanation
 

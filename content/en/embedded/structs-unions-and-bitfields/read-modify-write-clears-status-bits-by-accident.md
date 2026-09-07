@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0026
 title: "Trap: what is wrong with a read-modify-write on a status register?"
-description: "Trap: what is wrong with a read-modify-write on a status register?"
+description: "The compiler may generate a read-modify-write of the entire register."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ STATUS.bits.error = 0;
 
 ## Short answer
 
-TODO
+<span class="warn">The compiler may generate a read-modify-write of the entire register.</span>
+
+If STATUS has read-to-clear bits or write-one-to-clear bits, writing a single bit-field may inadvertently clear or modify other flags. For hardware registers, semantics matter more than C-level convenience.
+
+Defence: use the documented clear register or write the exact mask, for example `STATUS = ERROR_Msk;` for W1C, if the manual requires it.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**RTOS task** has its own stack, priority, and scheduler-managed state. An interrupt handler runs asynchronously in interrupt context, must be short, and does not behave like a regular task. A bare-metal superloop is a single main loop without a scheduler; concurrency there is typically built on flags, ISRs, and state machines.[^dou-embedded-interview]
 
 ## Detailed explanation
 

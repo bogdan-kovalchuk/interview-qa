@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A watchdog resets the system if firmware does not perform a refresh in time. **Independent watchdog** typically has a separate low-speed clock and works even during main clock problems. **Window watchdog** requires a refresh neither too early nor too late, so it catches both hangs and runaway loops.[^dou-embedded-interview]
 
 ## Detailed explanation
 

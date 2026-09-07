@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0009
 title: "What does `rb_get` (the consumer) look like in a lock-free ring buffer?"
-description: "What does `rb_get` (the consumer) look like in a lock-free ring buffer?"
+description: "Consumer reads the tail slot and then updates tail last to release it."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ static inline bool rb_get(ringbuf_t *rb, uint8_t *b) {
 
 ## Short answer
 
-TODO
+**Consumer reads data, then updates `tail` last.**
+
+`head == tail` means empty. Read the `tail` slot, then advance `tail` with the mask. Only the consumer touches `tail`.
+
+Rule: the producer owns `head`, the consumer owns `tail`; neither side writes the other’s index.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

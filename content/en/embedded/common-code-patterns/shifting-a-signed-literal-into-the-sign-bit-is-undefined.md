@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0015
 title: "Trap: why do bit shifts need an unsigned literal rather than `1`?"
-description: "Trap: why do bit shifts need an unsigned literal rather than `1`?"
+description: "1 31 is undefined behavior because the literal 1 is a signed int and shifting into the sign bit overflows it"
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`1 << 31` is undefined behavior</span>: the literal `1` has type signed `int`, and shifting into the sign bit overflows it.
+
+`1U << 31` is defined only if `unsigned int` is wider than 31 bits. On a 16-bit `unsigned int` it is also incorrect because the shift count is too large.
+
+Defense: for 32-bit masks write `UINT32_C(1) << n`; for register-width masks pick a literal of the appropriate width.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

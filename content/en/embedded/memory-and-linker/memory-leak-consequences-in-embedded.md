@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0002
 title: "What problems can arise from not freeing memory?"
-description: "What problems can arise from not freeing memory?"
+description: "Unfreed memory causes a memory leak that exhausts the heap, eventually making malloc return NULL and crashing or resetting the device."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**Memory leak** – allocated memory is not returned to the system even though it is no longer used.[^dou-embedded-interview] Consequences:
+
+- the heap is gradually exhausted, so `malloc` returns `NULL`;
+- the system slows down or hangs;
+- in embedded (MCU without MMU or OS) this is especially critical: a small heap can run out after hours or days, and the device goes into reset/fault or an incorrect state.
+
+Related problems: <span class="warn">dangling pointer</span> (accessing freed memory), <span class="warn">double free</span> (UB).
 
 ## Detailed explanation
 

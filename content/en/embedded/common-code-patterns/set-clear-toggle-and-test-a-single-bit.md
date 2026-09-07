@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0014
 title: "What do the four basic bit operations look like?"
-description: "What do the four basic bit operations look like?"
+description: "Set uses OR, clear uses AND with inverted mask, toggle uses XOR, test uses AND."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,18 @@ sources:
 
 ## Short answer
 
-TODO
+**Set / Clear / Toggle / Test:**
+
+```c
+reg |=  BIT32(n);   // set
+reg &= ~BIT32(n);   // clear
+reg ^=  BIT32(n);   // toggle
+if (reg & BIT32(n)) { ... } // test
+```
+
+Set is OR, clear is AND with the inverted mask, toggle is XOR, test is AND.
+
+Rule: these four idioms are the foundation of register and flag configuration; for 32-bit registers use a 32-bit unsigned literal.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

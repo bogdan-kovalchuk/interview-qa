@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0013
 title: "Why are the fields of a ring buffer struct marked `volatile`?"
-description: "Why are the fields of a ring buffer struct marked `volatile`?"
+description: "head and tail are modified in one context and read in another, so volatile prevents the compiler from caching them."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Because `head` and `tail` are modified in one context (ISR) and read in another (main).**
+
+Without `volatile` the compiler can cache the index in a register and miss the update from the other side, breaking the full/empty logic. The data buffer itself is often not made `volatile` if the order “write byte -> publish `head`” is maintained; volatile is needed specifically for shared control state.
+
+Rule: indexes/flags shared between ISR (interrupt service routine) and main are `volatile`; but `volatile` does not provide atomicity, it only prevents caching/optimization of access.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

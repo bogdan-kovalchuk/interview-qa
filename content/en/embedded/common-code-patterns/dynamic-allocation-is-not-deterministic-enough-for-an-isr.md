@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0030
 title: "Trap: why can `malloc` not be used for a ring buffer?"
-description: "Trap: why can `malloc` not be used for a ring buffer?"
+description: "Dynamic memory is non-deterministic and fragments, unacceptable for real-time and ISR contexts"
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Dynamic memory is non-deterministic and fragments</span> – unacceptable for a real-time or ISR context.
+
+A ring buffer often lives for the entire system lifetime and is used from interrupts, where `malloc` is forbidden (non-reentrant, may block). The size is known in advance.
+
+Defense: always use static allocation of a fixed power-of-two size.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0005
 title: "What is the difference between stack and heap?"
-description: "What is the difference between stack and heap?"
+description: "Stack is automatic LIFO memory for locals managed by the compiler, while heap is manual dynamic memory allocated via malloc with fragmentation risk."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Stack** is automatic memory: local variables and function return addresses, managed by the compiler/CPU in LIFO order.[^dou-embedded-interview] Fast access, limited size, freed automatically on function exit.
+
+**Heap** is dynamic memory: allocated manually via `malloc`/`free`. Larger capacity, but slower access and a risk of fragmentation; requires explicit deallocation.
+
+In embedded, the heap is avoided because of nondeterminism: stack and heap bounds are set in the linker script.
 
 ## Detailed explanation
 

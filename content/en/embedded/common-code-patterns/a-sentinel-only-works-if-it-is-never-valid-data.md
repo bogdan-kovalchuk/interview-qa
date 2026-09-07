@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0021
 title: "Trap: what is the danger of sentinel values for errors?"
-description: "Trap: what is the danger of sentinel values for errors?"
+description: "It works only if the sentinel value is never valid data"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ uint16_t adc_read(uint8_t ch) {
 
 ## Short answer
 
-TODO
+<span class="warn">It works only if the sentinel value is never valid data.</span>
+
+If `UINT16_MAX` is a legitimate ADC (analog-to-digital converter) reading, the caller cannot distinguish an error from a real maximum.
+
+Defense: use a sentinel when the special value is physically impossible; otherwise use a return code plus an output pointer.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

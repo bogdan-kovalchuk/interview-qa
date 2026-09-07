@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0021
 title: "What is an X-macro and which problem does it solve?"
-description: "What is an X-macro and which problem does it solve?"
+description: "An X-macro is a single list expanded in multiple contexts to keep related definitions in sync."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An X-macro is a list defined once that is expanded in different contexts**.
+
+The classic task: keeping `enum` and a string/handler table in sync. The list of elements is described through a macro `X(...)`, and then `X` is defined differently each time to generate an enum, a name array, a switch, and so on.
+
+Adding a new element to a single list automatically updates all generated entities – <span class="warn">impossible to forget</span> to update a pair.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+On an MCU the **interrupt vector table** usually sits at a fixed address and holds the initial stack pointer and handler addresses. The startup code provides weak default handlers, and the firmware replaces the ISR entries it needs. In Linux, hardware interrupt routing is hidden behind the architecture/kernel IRQ subsystem: a driver registers its handler through the kernel API rather than editing the startup vector table directly.[^dou-embedded-interview]
 
 ## Detailed explanation
 

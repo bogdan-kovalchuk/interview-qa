@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0029
 title: "Trap: what is wrong with `#define SIZE 256;`?"
-description: "Trap: what is wrong with `#define SIZE 256;`?"
+description: "A trailing semicolon becomes part of the replacement text and causes syntax errors or silent bugs."
 track: embedded
 section: inline-and-macros
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">The extra semicolon becomes part of the replacement text.</span>
+
+`int a[SIZE];` expands to `int a[256;];` -> syntax error. And in `x = SIZE + 1;` you get `x = 256; + 1;`, which compiles but does the wrong thing.
+
+Protection: never end an object-like macro with a semicolon: `#define SIZE 256`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

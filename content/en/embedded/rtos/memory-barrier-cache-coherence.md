@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0007
 title: "What are a memory barrier and cache coherence?"
-description: "A memory barrier constrains memory-operation reordering, while cache coherence keeps data copies consistent between CPUs, caches, and DMA."
+description: "A memory barrier constrains memory operation reordering, while cache coherence keeps data copies consistent between CPUs, caches, and DMA."
 track: embedded
 section: rtos
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Memory barrier** is an instruction or compiler primitive that constrains reordering of memory operations by the compiler or CPU. It is needed when the order of accesses matters: lock-free code, MMIO regions, DMA, multi-core synchronization.[^dou-embedded-interview]
+
+**Cache coherence** is consistency of data copies in caches of different CPUs/cores or between cache and memory accessed by DMA. If DMA wrote a buffer into RAM, the CPU may still see an old copy in cache without invalidate/clean.
+
+In practice: atomics/barriers are used for shared memory, and cache clean/invalidate or non-cacheable buffers for DMA, depending on the MCU/MPU.
 
 ## Detailed explanation
 

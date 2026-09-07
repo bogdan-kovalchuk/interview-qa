@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0031
 title: "Trap: why is a positional initializer fragile?"
-description: "Trap: why is a positional initializer fragile?"
+description: "Values are bound to field order, not to field names."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ struct Cfg c = { 115200, 0, 1 };
 
 ## Short answer
 
-TODO
+<span class="warn">Values are bound to field order, not to field names.</span>
+
+If someone inserts a new field between `baud` and `parity`, the initializer may remain syntactically valid, but the values will land in the wrong fields. In driver configs this creates silent runtime bugs.
+
+Defence: for non-trivial structs use designated initializers: `{ .baud = 115200, .parity = 0, .stop = 1 }`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

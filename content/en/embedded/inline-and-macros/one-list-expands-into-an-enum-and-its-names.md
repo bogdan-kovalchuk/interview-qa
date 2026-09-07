@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0022
 title: "How does an X-macro keep an `enum` and a string array in sync?"
-description: "How does an X-macro keep an `enum` and a string array in sync?"
+description: "A single ERRLIST is expanded twice with different X so the enum and string array stay in sync."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,17 @@ sources:
 
 ## Short answer
 
-TODO
+The same list is expanded twice with different `X`:
+
+```c
+#define AS_ENUM(n, s) n,
+typedef enum { ERR_LIST(AS_ENUM) } err_t;
+
+#define AS_STR(n, s) [n] = s,
+static const char *const names[] = { ERR_LIST(AS_STR) };
+```
+
+One list – two generated objects. A new error code is added in one place, and both `enum` and `names[]` are updated together.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

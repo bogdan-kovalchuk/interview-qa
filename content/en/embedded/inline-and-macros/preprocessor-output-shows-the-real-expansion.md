@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0027
 title: "How do you see what a macro actually expanded into?"
-description: "How do you see what a macro actually expanded into?"
+description: "Inspect the preprocessor output with gcc -E to see the actual macro expansion."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Inspect the preprocessor output: `gcc -E file.c` (or `arm-none-eabi-gcc -E`).
+
+This shows the text after all `#include` and `#define` expansions – the fastest way to catch double evaluation, missing parentheses, or incorrect token pasting.
+
+Rule: when a macro 'behaves strangely', do not guess – look at the `-E` output and read the actual expansion.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

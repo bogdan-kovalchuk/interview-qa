@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0003
 title: "What is an atomic operation?"
-description: "What is an atomic operation?"
+description: "An atomic operation executes indivisibly with no visible intermediate state to other threads or CPUs, and is needed for lock-free synchronization."
 track: embedded
 section: rtos
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Atomic operation** is an operation that executes indivisibly: other threads or CPUs do not see an intermediate state.[^dou-embedded-interview] For example, an atomic increment does not break down into separate read/modify/write steps for other participants.
+
+Typical examples: atomic load/store, increment/decrement, compare-and-swap (`CAS`). In C++, `std::atomic<T>` is used.
+
+Atomics are needed for counters, flags, and lock-free synchronization; but memory ordering must be understood: atomicity of the variable itself does not always mean correct ordering of access to all related data.
 
 ## Detailed explanation
 

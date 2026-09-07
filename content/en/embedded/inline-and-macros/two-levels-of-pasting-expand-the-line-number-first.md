@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0041
 title: "How do you generate a unique variable name from the line number?"
-description: "How do you generate a unique variable name from the line number?"
+description: "Two macro levels are needed: an inner one expands LINE to a number, an outer one pastes it onto the prefix via ##."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Two levels are needed**: `CAT` pastes tokens, while `XCAT` first expands `__LINE__` into a number before pasting.
+
+Then `int UNIQUE(tmp_);` on line 42 yields `int tmp_42;`. Used for scope guards, RAII helpers, test macros.
+
+Rule: for both `#` and `##` with built-in macros an extra indirection level is always required.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

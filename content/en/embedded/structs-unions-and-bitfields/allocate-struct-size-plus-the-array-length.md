@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0033
 title: "How do you allocate memory for a flexible array member correctly?"
-description: "How do you allocate memory for a flexible array member correctly?"
+description: "Allocate sizeof(struct Packet) plus len bytes to cover the header and the flexible array."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ struct Packet {
 
 ## Short answer
 
-TODO
+You need to allocate `sizeof(struct Packet) + len` bytes.
+
+For example: `struct Packet *p = malloc(sizeof *p + len);`. Then `p->len = len`, and the payload sits in `p->data[0..len-1]`. `sizeof *p` does not include the flexible array.
+
+Embedded rule: in bare-metal without a heap, this layout is often used in a statically allocated byte buffer with placement/offset discipline.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

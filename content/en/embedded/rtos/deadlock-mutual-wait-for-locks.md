@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0004
 title: "What is a deadlock?"
-description: "What is a deadlock?"
+description: "Deadlock occurs when two or more threads mutually wait for each other's resources; fixed lock order and timeout prevent it."
 track: embedded
 section: rtos
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Deadlock** is a situation where two or more threads mutually wait for each other's resources and none can proceed.[^dou-embedded-interview]
+
+Example: Thread A took `m1` and waits for `m2`, while Thread B took `m2` and waits for `m1`. Both are blocked forever.
+
+Prevention: fixed order of acquiring locks, short critical sections, timeout, lock hierarchy, avoiding nested locks, or using higher-level primitives.
 
 ## Detailed explanation
 

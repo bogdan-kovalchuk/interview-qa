@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0008
 title: "What happens if `free` is called twice?"
-description: "Calling `free` twice for the same block is a double free and undefined behavior that can corrupt the heap or crash the program."
+description: "Calling free twice on the same block is double free and undefined behavior that can crash the program, corrupt the heap, or open a security vulnerability."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+A repeated `free(ptr)` on the same allocated block is <span class="warn">double free</span> and undefined behavior.[^dou-embedded-interview] Consequences can vary: crash, heap metadata corruption, random errors later, or a security vulnerability.
+
+Safe pattern: null out the pointer after freeing – `free(ptr); ptr = NULL;`. Calling `free(NULL)` is allowed and does nothing, so nulling reduces the risk of a repeated free. But if there are multiple copies of the same pointer, ownership must be tracked rather than relying on `NULL` alone.
 
 ## Detailed explanation
 

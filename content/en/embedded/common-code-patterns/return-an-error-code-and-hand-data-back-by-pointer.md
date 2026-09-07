@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0018
 title: "What does the return-code error handling pattern look like?"
-description: "What does the return-code error handling pattern look like?"
+description: "The function returns errt and passes data through an output pointer"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ err_t sensor_read(uint8_t a, uint16_t *out);
 
 ## Short answer
 
-TODO
+**The function returns `err_t` and passes data through an output pointer.**
+
+`ERR_OK = 0` is always zero, so `if (result) { /* error */ }` is readable. Each error branch returns a specific code.
+
+Rule: return codes are the default pattern because they force the caller to check the result.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

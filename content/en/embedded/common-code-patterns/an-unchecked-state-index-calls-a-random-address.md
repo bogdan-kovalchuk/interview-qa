@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0040
 title: "Trap: what happens if a state machine does not check the state index before `handlers[state]`?"
-description: "Trap: what happens if a state machine does not check the state index before `handlers[state]`?"
+description: "An invalid or corrupted state causes an out-of-bounds read and an indirect call at a random address, likely a HardFault."
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Invalid/corrupted state -> out-of-bounds table read and an indirect call at a random address</span> (likely a HardFault).
+
+Data becomes control flow, so a state from external input or corruption directly controls which function is called.
+
+Defense: `if (state < ARRAY_SIZE(handlers) && handlers[state]) handlers[state](evt); else on_error();`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

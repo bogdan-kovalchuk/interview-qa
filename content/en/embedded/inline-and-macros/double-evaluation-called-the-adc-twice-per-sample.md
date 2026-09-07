@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0028
 title: "Trap: why did adding a MIN/MAX clamp to a filter macro add noise to the ADC readings?"
-description: "Trap: why did adding a MIN/MAX clamp to a filter macro add noise to the ADC readings?"
+description: "The macro argument containing adcread() is evaluated multiple times, causing double evaluation and noisy samples."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">The argument expression with `adc_read()` is evaluated multiple times</span> in the macro body (double evaluation).
+
+Each expansion of `adc_read()` triggers a new ADC conversion with a different value and noise, and the extra conversions also waste energy. The filter computes on mismatched samples.
+
+Protection: use `static inline` with a single parameter, or read `adc_read()` into a local variable once before computation.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

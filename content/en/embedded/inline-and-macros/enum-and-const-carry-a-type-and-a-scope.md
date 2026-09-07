@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0030
 title: "Why are `enum`/`const` often better than `#define` for named constants in C?"
-description: "Why are `enum`/`const` often better than `#define` for named constants in C?"
+description: "enum and const have type and scope visible to the debugger, unlike the typeless text substitution of #define."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`enum` and `const` have a type and scope, visible to the debugger**, whereas `#define` is a typeless text substitution with no scope.
+
+`enum { MAX_CH = 8 };` gives a compile-time integer constant with a name in the debug info and does not pollute the global namespace. `const` is also type-safe, but in C it occupies memory and is not an integer constant expression for array size.
+
+Rule: integer compile-time constants -> `enum`; typed constants -> `const`; `#define` when you specifically need the preprocessor.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

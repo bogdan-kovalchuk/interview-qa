@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0025
 title: "Trap: why does this polling loop become endless without `volatile`?"
-description: "Trap: why does this polling loop become endless without `volatile`?"
+description: "The compiler reads SR once and never re-reads it because nothing in the C abstract machine changes SR"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ while (!(REG->SR & FLAG))
 
 ## Short answer
 
-TODO
+<span class="warn">The compiler reads `SR` once, sees the flag is not set, and never re-reads it</span> – in the C abstract machine nothing changes `SR`.
+
+Result: the loop spins on the cached value forever, even after the hardware has already set the flag.
+
+Defense: declare the register `volatile` – then `SR` is re-read on every iteration.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

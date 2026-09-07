@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0011
 title: "What is the difference between `calloc` and `malloc`?"
-description: "`malloc` allocates uninitialized memory, while `calloc` allocates an array of elements and fills the memory with zeroes."
+description: "malloc allocates uninitialized memory, while calloc allocates an array of elements and fills the memory with zeroes."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+`malloc(size)` allocates a block of memory of the given size but <span class="warn">does not initialize</span> it: old bytes may remain. `calloc(n, size)` allocates memory for `n` elements of `size` bytes each and fills it with zeroes.
+
+Another practical difference: a quality `calloc` implementation can check for overflow in the `n * size` multiplication, whereas in a manual `malloc(n * size)` that check is easy to forget. Both functions return `NULL` on failure and the memory must be freed with `free`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

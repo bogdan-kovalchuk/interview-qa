@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0045
 title: "Why are compiler errors inside a macro hard to read?"
-description: "Why are compiler errors inside a macro hard to read?"
+description: "The compiler reports errors at the expanded call site rather than at the #define line, and nested macros make it worse."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The error points to the expanded code, not to the `#define` line.**
+
+The compiler sees the already-substituted text at the call site, so diagnostics refer there; nested macros multiply the effect. This is a classic reason why complex logic should not be hidden in a macro.
+
+Fix: use `gcc -E` to see the actual expansion; for logic that will need debugging, choose `static inline`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0036
 title: "What does this return and why?"
-description: "What does this return and why?"
+description: "next == 0 means wraparound to the start of the buffer."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ uint16_t next = (head + 1) & RB_MASK;
 
 ## Short answer
 
-TODO
+**`next == 0`** – wraparound to the start of the buffer.
+
+`(7 + 1) & 7 = 8 & 0b0111 = 0`. The `SIZE-1` mask = `0b0111` clears the overflow bit, so the index wraps around without `%` or `if`.
+
+Rule: this trick works only when `SIZE` is a power of two.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0005
 title: "Trap: why must an FSM dispatcher take `state_t *state` rather than `state_t state`?"
-description: "Trap: why must an FSM dispatcher take `state_t *state` rather than `state_t state`?"
+description: "In C arguments are passed by value, so a local copy of state loses the transition on return."
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,18 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">In C, arguments are passed by value</span> – modifying a local copy of `state` is lost on return, and the state transition is gone. FSM here stands for finite state machine.
+
+```c
+// баг: правиться лише копія
+void process(state_t state, ...);
+// fix: правиться справжній стан
+void process(state_t *state, ...);
+```
+
+Especially easy to forget with `enum`, since it behaves like a plain int.
+
+Mitigation: to let a function modify a variable that outlives the call, pass a pointer.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

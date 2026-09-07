@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0040
 title: "Trap: why is this not a function-like macro?"
-description: "Trap: why is this not a function-like macro?"
+description: "A space between the macro name and the opening parenthesis makes it object-like, so invocation text is pasted after the full replacement."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ int r = F(3);
 
 ## Short answer
 
-TODO
+<span class="warn">The space between `F` and `(x)` makes it an object-like macro.</span>
+
+The preprocessor sees the name `F` replaced with the entire text `(x) (x) * (x)`. Then `F(3)` expands to `(x) (x) * (x)(3)` – it uses an undefined `x`, an obvious error.
+
+Fix: in a function-like macro the opening parenthesis `(` must follow the name immediately, with no space: `#define F(x) ((x) * (x))`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

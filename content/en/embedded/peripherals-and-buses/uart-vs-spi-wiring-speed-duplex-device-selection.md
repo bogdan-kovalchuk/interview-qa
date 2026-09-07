@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+UART is simple: TX/RX/GND, asynchronous, good for console, modem, GPS and slower point-to-point links. SPI is faster, synchronous, full-duplex, but needs SCLK/MOSI/MISO and a separate CS per device or a decoder. For high-throughput sensor/display/flash on a board – often SPI; for a longer simple serial link without a shared clock – UART.[^dou-embedded-interview]
 
 ## Detailed explanation
 

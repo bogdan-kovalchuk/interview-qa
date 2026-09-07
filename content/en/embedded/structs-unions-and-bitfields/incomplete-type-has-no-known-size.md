@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0036
 title: "Why can an incomplete struct not be created as an object in a header?"
-description: "Why can an incomplete struct not be created as an object in a header?"
+description: "Impossible because the compiler does not know the size of Driver."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ Driver d;
 
 ## Short answer
 
-TODO
+<span class="warn">Impossible, because the compiler does not know the size of `Driver`.</span>
+
+A forward declaration creates an incomplete type. You can declare pointers to it because the pointer size is known, but you cannot allocate an object by value or access its fields.
+
+Defence: an opaque API returns a `Driver *` or accepts caller-provided storage through a separate API that knows the required size/alignment.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

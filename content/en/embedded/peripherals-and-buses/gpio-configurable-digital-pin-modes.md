@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0002
 title: "What is `GPIO`?"
-description: "What is `GPIO`?"
+description: "GPIO is a software-configurable digital MCU pin supporting input, push-pull, open-drain, and alternate function modes."
 track: embedded
 section: peripherals-and-buses
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**General Purpose Input/Output** – a general-purpose digital microcontroller pin configured in software.
+
+Modes: `Input` (with pull-up / pull-down / floating); `Output Push-Pull` – drives HIGH/LOW; `Output Open-Drain` – drives only LOW, HIGH via an external resistor; `Alternate Function` – the pin is routed to UART/SPI/I2C/Timer.
+
+Control via registers: `MODER`, `ODR`, `IDR`, `BSRR` (STM32). Atomic write: `BSRR` sets or clears a bit in one cycle with no race-condition risk.[^dou-embedded-interview]
 
 ## Detailed explanation
 

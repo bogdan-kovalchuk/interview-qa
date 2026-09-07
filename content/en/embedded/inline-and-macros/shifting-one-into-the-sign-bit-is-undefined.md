@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0044
 title: "Trap: what is wrong with `#define BIT(n) (1 << (n))` at `BIT(31)`?"
-description: "Trap: what is wrong with `#define BIT(n) (1 << (n))` at `BIT(31)`?"
+description: "The literal 1 is signed int, so 1 31 shifts into the sign bit, which is undefined behavior on a 32-bit signed int."
 track: embedded
 section: inline-and-macros
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">The literal `1` has type `int`</span> (signed), so `1 << 31` shifts a bit into the sign position -> <span class="warn">undefined behavior</span> for signed on a 32-bit `int`.
+
+On many MCUs it "works" as `0x80000000`, but the standard does not guarantee this, and the compiler may optimize unpredictably.
+
+Fix: `#define BIT(n) (1u << (n))` or `(UINT32_C(1) << (n))` – unsigned shift is defined.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0014
 title: "Trap: why does `STR(__LINE__)` give `\"__LINE__\"` instead of the line number?"
-description: "Trap: why does `STR(__LINE__)` give `\"__LINE__\"` instead of the line number?"
+description: "The # operator stringifies argument text before expansion so an intermediate level is needed to expand built-in macros first."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,17 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`#` stringifies the argument text before it is expanded</span>, so the built-in macro `__LINE__` never gets a chance to turn into a number.
+
+Fix: add an intermediate level – expand first, then stringify:
+
+```c
+#define STR(x) #x
+#define XSTR(x) STR(x)
+// XSTR(__LINE__) -> "42"
+```
+
+This is the classic two-level stringification idiom.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

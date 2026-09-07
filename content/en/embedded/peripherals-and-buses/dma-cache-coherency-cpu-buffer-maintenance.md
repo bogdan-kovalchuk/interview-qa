@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0010
 title: "What is DMA, and what problems can occur between DMA, the cache, and the CPU?"
-description: "<span class=\"key\">DMA</span> transfers data between a peripheral and memory without the CPU copying every byte."
+description: "DMA transfers data between a peripheral and memory without the CPU copying every byte."
 track: embedded
 section: peripherals-and-buses
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**DMA** transfers data between a peripheral and memory without the CPU copying every byte. The problem is that the CPU cache may hold stale or not-yet-written data while DMA sees RAM directly. Before TX a cache clean/flush is needed; after RX – invalidate; plus proper alignment, memory barriers and buffers in DMA-accessible memory.[^dou-embedded-interview]
 
 ## Detailed explanation
 

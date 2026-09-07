@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0002
 title: "What does a state machine built on `enum` plus `switch` look like?"
-description: "What does a state machine built on `enum` plus `switch` look like?"
+description: "Nested switch on state with an inner event check and return of the new state."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -47,7 +47,11 @@ oven_state_t step(oven_state_t s, oven_event_t e) {
 
 ## Short answer
 
-TODO
+**Nested `switch` on state, inside – event check and return of the new state.**
+
+Advantages: easy to step through in a debugger, the compiler warns about missed `enum` cases. If there is no transition – return the current state.
+
+Rule: enum+switch is the best choice for small FSMs.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

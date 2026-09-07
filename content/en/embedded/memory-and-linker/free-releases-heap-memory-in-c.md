@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0001
 title: "How do you free memory in C?"
-description: "How do you free memory in C?"
+description: "Memory allocated by malloc, calloc, or realloc is released with free, and the pointer should be set to NULL to avoid a dangling pointer."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+With the `free(ptr)` function from `<stdlib.h>`.[^dou-embedded-interview] After the call, every pointer to that block becomes a <span class="warn">dangling pointer</span>. It is common practice to null out the variable right away: `free(ptr); ptr = NULL;`.
+
+Important caveat: this only helps for that one pointer variable. Other copies of the same address are still dangling, so ownership must be tracked; rules: only free what was allocated via `malloc`/`calloc`/`realloc`; never double free; never free stack or static objects.
 
 ## Detailed explanation
 

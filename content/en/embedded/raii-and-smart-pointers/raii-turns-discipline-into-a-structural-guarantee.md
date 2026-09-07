@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0034
 title: "How would you state the main value of RAII in one sentence?"
-description: "How would you state the main value of RAII in one sentence?"
+description: "RAII turns resource management from a discipline problem into a structural guarantee provided by the compiler."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**RAII turns resource management from a discipline problem (remembering `deinit()`) into a structural guarantee (the compiler does it for you).**
+
+Instead of relying on the programmer not forgetting to free a resource on every path, you encode the release once in the destructor.
+
+Rule: this phrase is a strong summary answer to the question "why RAII".[^embeddedinterviewlab]
 
 ## Detailed explanation
 

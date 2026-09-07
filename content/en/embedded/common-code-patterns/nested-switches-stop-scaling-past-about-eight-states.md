@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0003
 title: "Trap: when does an enum plus switch state machine become unwieldy?"
-description: "Trap: when does an enum plus switch state machine become unwieldy?"
+description: "After roughly eight states nested switches grow large and become hard to read and maintain."
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">After roughly ~8 states</span> the nested `switch` grows large and becomes hard to read and maintain.
+
+Each new state requires editing a large `switch`, increasing the risk of missing a transition or case.
+
+Mitigation: for a large number of states, switch to a function-pointer table – adding a state does not touch existing code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

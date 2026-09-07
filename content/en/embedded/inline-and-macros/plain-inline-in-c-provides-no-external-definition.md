@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0031
 title: "Trap: why can `inline` without `static` produce a linker error in C?"
-description: "Trap: why can `inline` without `static` produce a linker error in C?"
+description: "In C99+ a bare inline function provides only an inline definition and creates no external symbol for the linker."
 track: embedded
 section: inline-and-macros
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+In C99+, a function declared as just `inline` (without `static`/`extern`) provides only an inline definition; it <span class="warn">does not create an external symbol</span>.
+
+If the compiler decides at some point not to inline and makes a regular call, the linker will not find an external definition -> `undefined reference`.
+
+Protection: in a header write `static inline` – each translation unit (TU) gets its own definition, and no linkage problem arises. (In C++ the semantics of `inline` are different and safer.)[^embeddedinterviewlab]
 
 ## Detailed explanation
 

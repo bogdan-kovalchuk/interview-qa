@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0023
 title: "How do you describe a peripheral register block with a struct?"
-description: "How do you describe a peripheral register block with a struct?"
+description: "A struct with volatile fields overlaid on the peripheral base address"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ typedef struct {
 
 ## Short answer
 
-TODO
+**A struct with `volatile` fields overlaid on the peripheral base address.**
+
+Fields follow the same order and offsets as the registers in the datasheet; access looks like `USART1->DR = b;`. This is exactly how vendor HALs (hardware abstraction layer) such as STM32 HAL, NXP SDK (software development kit), and TI DriverLib define peripheral access.
+
+Rule: lock down the layout with `offsetof` asserts so the match with the datasheet does not break.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

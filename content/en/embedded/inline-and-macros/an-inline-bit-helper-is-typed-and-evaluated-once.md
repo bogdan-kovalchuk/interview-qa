@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0043
 title: "Why is `static inline` safer than a macro for a bit operation?"
-description: "Why is `static inline` safer than a macro for a bit operation?"
+description: "A static inline function gives type checking, single argument evaluation, and debugger visibility that a macro cannot provide."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ static inline uint32_t set_bit(uint32_t v, unsigned n) {
 
 ## Short answer
 
-TODO
+**Type checking + single evaluation of arguments + debugger visibility.**
+
+The macro `#define SET_BIT(v,n) ((v) | (1u << (n)))` may work in this simple case, but it does not check parameter types, provides no proper symbol/debug info, and easily turns into a double-evaluation bug as the body grows. The inline version takes typed parameters and inlines just as well.
+
+Rule: in embedded, keep bit manipulations as `static inline`, leaving macros for addresses and masks.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

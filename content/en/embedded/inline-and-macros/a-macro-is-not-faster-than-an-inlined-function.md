@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0026
 title: "Trap: is it true that a macro is always faster than a function?"
-description: "Trap: is it true that a macro is always faster than a function?"
+description: "No, the claim that a macro is always faster than a function is an outdated myth."
 track: embedded
 section: inline-and-macros
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No – this is an outdated myth.</span>
+
+Modern compilers inline small `static inline` functions the same way a macro expands, and additionally apply constant folding, dead-code elimination, and other optimizations unavailable to already-substituted preprocessor text.
+
+Protection: at an interview do not say 'a macro is faster'; say '`static inline` gives the same speed plus type safety and single evaluation of arguments'.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

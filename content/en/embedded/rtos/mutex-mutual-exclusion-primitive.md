@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0002
 title: "What is a mutex?"
-description: "What is a mutex?"
+description: "A mutex is a synchronization primitive for mutually exclusive access to a shared resource, blocking the thread in sleep instead of busy waiting."
 track: embedded
 section: rtos
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Mutex** is a synchronization primitive for mutually exclusive access to a shared resource.[^dou-embedded-interview] Only one thread can hold a mutex at a time; other threads must wait.
+
+If the mutex is taken, the thread typically blocks and enters sleep, so CPU is not wasted on busy waiting. This is the key difference from a spinlock, which spins in a loop.
+
+Used to protect shared data such as lists, queues, counters, or state structures; important to acquire and release the mutex in a consistent order to avoid deadlock.
 
 ## Detailed explanation
 

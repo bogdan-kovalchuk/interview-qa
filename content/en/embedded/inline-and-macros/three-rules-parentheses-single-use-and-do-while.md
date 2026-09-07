@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0006
 title: "What are the three rules of a safe function-like macro?"
-description: "What are the three rules of a safe function-like macro?"
+description: "Parentheses around parameters and the whole expression plus do-while-zero wrapping eliminate most classic macro bugs."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+1. **Parentheses around every use of a parameter**: `(x)`;
+2. **Parentheses around the whole expression**: `((x) + (y))`;
+3. **Wrap a statement macro in `do { ... } while(0)`** so it behaves correctly with `if/else` and requires a `;`.
+
+Rule: these three points eliminate most classic macro bugs – precedence, truncated expressions and broken control flow.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

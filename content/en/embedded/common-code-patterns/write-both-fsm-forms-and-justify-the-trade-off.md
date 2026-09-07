@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0042
 title: "What should a candidate be able to do on embedded code pattern questions?"
-description: "What should a candidate be able to do on embedded code pattern questions?"
+description: "Write FSMs in both forms, explain trade-offs, build a power-of-two ring buffer, and do unsigned mask-and-shift bit ops."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Write an FSM (finite state machine) in both forms – switch and table; explain the trade-offs; build a power-of-two ring buffer with the `count` race; perform bit operations via unsigned mask-and-shift.**
+
+Plus: consistent return codes with every result checked, `volatile` for registers, guard clauses for null/range.
+
+Rule: for every pattern have answers for "when to apply", "is it ISR-safe (interrupt service routine safe)" and "why no heap".[^embeddedinterviewlab]
 
 ## Detailed explanation
 

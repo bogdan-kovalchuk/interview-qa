@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0011
 title: "Which scheduler algorithms matter for RTOS and Linux real-time workloads?"
-description: "RTOS commonly uses fixed-priority preemptive scheduling, while Linux real-time workloads use SCHED_FIFO, SCHED_RR, and PREEMPT_RT."
+description: "RTOS commonly uses fixed-priority preemptive scheduling, while Linux real-time workloads rely on SCHEDFIFO, SCHEDRR, and PREEMPTRT."
 track: embedded
 section: rtos
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+In RTOS, **fixed-priority preemptive scheduling** is typically important, sometimes round-robin for tasks of the same priority. For Linux real-time, `SCHED_FIFO`, `SCHED_RR`, priority inheritance, and PREEMPT_RT latency behaviour matter. <span class="warn">A scheduler algorithm must be evaluated together with interrupt latency, locks, and worst-case execution time.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0024
 title: "Why must peripheral registers be `volatile`?"
-description: "Why must peripheral registers be `volatile`?"
+description: "The status register is changed by hardware asynchronously not by code"
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The status register is changed by hardware asynchronously, not by code.**
+
+Without `volatile` the compiler assumes memory changes only through program writes: it may read the register once, cache it in a CPU (central processing unit) register, and never re-read it. `volatile` forces every read and write to go to real memory.
+
+Rule: any memory-mapped register is `volatile`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

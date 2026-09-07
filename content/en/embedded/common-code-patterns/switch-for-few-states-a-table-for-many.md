@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0029
 title: "When do you choose enum plus switch and when a function-pointer table for an FSM?"
-description: "When do you choose enum plus switch and when a function-pointer table for an FSM?"
+description: "enum+switch for few states with debug simplicity and warnings on missing cases"
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**enum+switch** – few states (<~8), debug simplicity matters, and warnings on missing cases.
+
+Function-pointer table – many states, O(1) dispatch is needed, and states are added without changing existing code (table in Flash).
+
+Rule: a small FSM (finite state machine) uses switch; a large or dynamic one uses a handler table with bounds check and default.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

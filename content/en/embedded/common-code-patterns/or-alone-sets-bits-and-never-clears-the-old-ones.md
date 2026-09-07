@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0034
 title: "Trap: why is `reg |= (value << SHIFT)` without clearing the mask a bug?"
-description: "Trap: why is `reg |= (value << SHIFT)` without clearing the mask a bug?"
+description: "OR only sets bits but does not clear old ones so the new value layers on top of the existing field"
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">OR only sets bits but does not clear old ones</span> – if the field already had a value, the new one is layered on top.
+
+For example, the old field is `0b110`, we write `0b001` via `|=` -> we get `0b111`, not `0b001`.
+
+Defense: first `reg &= ~MASK;`, then `reg |= (value << SHIFT) & MASK;` – a full read-modify-write.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

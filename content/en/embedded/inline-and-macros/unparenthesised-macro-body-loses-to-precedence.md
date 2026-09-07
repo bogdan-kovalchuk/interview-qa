@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0004
 title: "What does this code actually compute?"
-description: "What does this code actually compute?"
+description: "r equals 11 instead of 25 because the macro expands without parentheses and operator precedence changes the computation."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ int r = SQUARE(2 + 3);
 
 ## Short answer
 
-TODO
+`r == 11`, not <span class="warn">25</span>.
+
+A macro is text substitution without parentheses, so `SQUARE(2 + 3)` expands to `2 + 3 * 2 + 3`. By precedence rules, `3 * 2 = 6` is computed first, then `2 + 6 + 3 = 11`.
+
+Fix: `#define SQUARE(x) ((x) * (x))` – then the result is `((2 + 3) * (2 + 3)) = 25`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

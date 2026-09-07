@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0032
 title: "How does an FSM on a function-pointer table scale?"
-description: "How does an FSM on a function-pointer table scale?"
+description: "A 12-state FSM for HVAC can add a defrost priority mode through one new handler and one table row"
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**For example, a 12-state FSM (finite state machine) for HVAC (heating, ventilation, and air conditioning) can add a "defrost priority" mode through one new handler function plus one table row**, without changing existing handlers.
+
+This is the main advantage of the table: open/closed – you extend without modifying. The table is `static const` in Flash.
+
+Rule: when states or commands are added frequently, a function-pointer table minimizes regression risk.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

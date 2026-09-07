@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0013
 title: "What does the token pasting operator `##` do?"
-description: "What does the token pasting operator `##` do?"
+description: "The ## operator joins two tokens into one at the preprocessing stage to generate register names and identifiers."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`##` joins two tokens into one** at the preprocessing stage: `GPIOA` + `_` + `ODR` -> the identifier `GPIOA_ODR`.
+
+Used to generate register names, wrapper functions, unique identifiers and X-macro patterns.
+
+Rule: the result of pasting must be a valid token; otherwise it is a preprocessor error.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

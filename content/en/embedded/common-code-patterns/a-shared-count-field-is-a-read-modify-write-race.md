@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0011
 title: "Trap: why does a `count` field in a ring buffer create a race condition?"
-description: "Trap: why does a `count` field in a ring buffer create a race condition?"
+description: "ISR increments count and main decrements it, creating a read-modify-write race on a shared variable."
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">ISR (interrupt service routine) increments `count`, main decrements – this is a read-modify-write on a shared variable.</span>
+
+`count++` is not atomic (read, modify, write); if the ISR preempts main between these steps, an update is lost -> off-by-one and corrupted buffer state.
+
+Mitigation: either a critical section/atomic, or drop `count` entirely – determine full/empty from `head`/`tail` alone.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

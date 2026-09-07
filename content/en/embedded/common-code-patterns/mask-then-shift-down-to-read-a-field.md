@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0016
 title: "How do you read a multi-bit field (mask and shift)?"
-description: "How do you read a multi-bit field (mask and shift)?"
+description: "Apply the field mask then shift down to position zero"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ uint8_t p = (reg & PRESC_MASK) >> PRESC_SHIFT;
 
 ## Short answer
 
-TODO
+**Apply the field mask, then shift down to position 0.**
+
+`reg & PRESC_MASK` keeps only bits [6:4], `>> PRESC_SHIFT` brings them to the value 0..7.
+
+Rule: for each field define a MASK+SHIFT pair and use them consistently.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

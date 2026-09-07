@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0035
 title: "What is an opaque struct pointer in a C API?"
-description: "What is an opaque struct pointer in a C API?"
+description: "An opaque pointer hides the struct definition from the API user; the header has only a forward declaration."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+An **opaque pointer** hides the struct definition from the API user: the header contains only a forward declaration.
+
+For example, `typedef struct UartDriver UartDriver;`, while the fields of `struct UartDriver` are defined only in the `.c` file. The caller works with `UartDriver *` through API functions and does not depend on the internal layout.
+
+Embedded use case: a stable driver API, a hidden state machine, the ability to change fields without recompiling all users or breaking the ABI.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
