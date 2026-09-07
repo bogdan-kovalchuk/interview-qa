@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0040
 title: "What storage classes exist in C, and how do they relate to linkage and storage duration?"
-description: "C storage-class specifiers affect visibility, linkage, or object lifetime, but not all in the same way."
+description: "Storage-class specifiers in C affect visibility, linkage, or object lifetime, but not all in the same way."
 track: embedded
 section: c-in-embedded
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The main specifiers are: `auto`, `register`, `static`, `extern`, `_Thread_local`. `static` at block scope gives static storage duration, and at file scope gives internal linkage. `extern` typically declares an object/function with external linkage, but the lifetime is determined by the object itself, not by the `extern` keyword.[^dou-embedded-interview]
 
 ## Detailed explanation
 

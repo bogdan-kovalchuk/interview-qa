@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Interrupt latency is the time from a hardware event to the first useful instruction of the ISR. It is increased by disabled interrupts, higher-priority ISRs, long critical sections, flash wait states, cache misses, bus contention, FPU stacking and RTOS interrupt masking. To reduce latency, keep the ISR short and move heavy work to a task or deferred handler.[^dou-embedded-interview]
 
 ## Detailed explanation
 

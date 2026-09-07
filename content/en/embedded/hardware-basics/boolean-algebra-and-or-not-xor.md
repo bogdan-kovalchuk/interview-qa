@@ -1,7 +1,7 @@
 ---
 id: emb-hwbasic-0001
 title: "What is Boolean algebra?"
-description: "What is Boolean algebra?"
+description: "Boolean algebra is a mathematical system for true/false values with AND, OR, NOT and XOR operations, underlying logic gates in electronics and conditions in code."
 track: embedded
 section: hardware-basics
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**Boolean algebra** is a mathematical system for true/false or 1/0 values.[^dou-embedded-interview] Basic operations: AND (`&&` or logical multiplication), OR (`||` or logical addition), NOT (`!`), and XOR.
+
+In electronics it describes logic gates and digital circuits; in programming – conditions, masks, flags and optimization of logical expressions. For example, De Morgan's laws: `!(A && B) == (!A || !B)` and `!(A || B) == (!A && !B)`.
 
 ## Detailed explanation
 

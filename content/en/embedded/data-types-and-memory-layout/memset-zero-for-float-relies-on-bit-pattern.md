@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0061
 title: "What's wrong with `memset(ptr, 0, sizeof(*ptr))` to zero a `float` field in a struct?"
-description: "`memset` relies on zero bytes producing `float` 0.0f, which the C standard does not formally guarantee."
+description: "memset relies on zero bytes producing float 0.0f, which the C standard does not formally guarantee."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Formally: `memset` sets all bytes to 0. IEEE 754 `0.0f` = bit pattern `0x00000000` -> works in practice.
+
+However: the C standard does not guarantee that float zero = all zero bytes (theoretically). A bigger problem: `memset(struct_ptr, 0, sizeof(*struct_ptr))` for a struct with `void*` - <span class="warn">NULL pointer</span> is not guaranteed to have bit-pattern 0x0 by the standard (although practically it does).
+
+Better practice: explicit initialization of each field.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

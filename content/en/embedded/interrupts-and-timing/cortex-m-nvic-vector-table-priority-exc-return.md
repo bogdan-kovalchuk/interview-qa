@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The vector table contains the initial SP and handler addresses; the NVIC enables an IRQ, sets the pending state and selects the highest priority. On ISR entry, Cortex-M automatically stacks part of the registers, switches to handler mode and can perform nested interrupts. Return from ISR uses a special `EXC_RETURN` to restore context; in an RTOS this is also the point for a context switch.[^dou-embedded-interview]
 
 ## Detailed explanation
 

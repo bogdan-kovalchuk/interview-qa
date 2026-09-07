@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0043
 title: "How are function parameters passed under EABI on ARM Cortex-M?"
-description: "Under ARM EABI, simple integer and pointer arguments usually use r0–r3, while additional or large aggregate arguments use the stack."
+description: "Under ARM EABI, simple integer and pointer arguments use r0–r3, while additional or large aggregate arguments go through the stack."
 track: embedded
 section: c-in-embedded
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Under ARM EABI/AAPCS the first simple integer/pointer arguments are typically passed in `r0-r3`, and the result in `r0` or `r0:r1`. Additional arguments and parts of large aggregate objects go through the stack with proper alignment. Registers `r4-r11` are callee-saved, and `r0-r3,r12,lr` are caller-saved in the normal calling convention.[^dou-embedded-interview]
 
 ## Detailed explanation
 

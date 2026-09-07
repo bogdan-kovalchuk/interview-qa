@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ printf("%d", p[0]);
 
 ## Short answer
 
-TODO
+<span class="warn">Use-after-free – undefined behavior.</span> After `free(p)` the memory is returned to the heap manager and may be immediately reused (for example, by the next `malloc`).
+
+`p[0]` after `free`: may return 0 (the heap manager wrote metadata there), the old value, or crash. In a security context: a source of use-after-free exploits.
+
+Protection: `free(p); p = NULL;`, then `if(p != NULL)` before access.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

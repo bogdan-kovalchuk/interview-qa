@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0011
 title: "Why is virtual memory used in Embedded Linux, and why is it usually absent on a bare-metal MCU?"
-description: "Virtual memory gives each process its own address space, memory protection, lazy mapping, shared libraries, <code>mmap</code>, and copy-on-write."
+description: "Virtual memory gives each process its own address space, memory protection, lazy mapping, shared libraries, mmap, and copy-on-write."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Virtual memory gives each process its own address space, memory protection, lazy mapping, shared libraries, `mmap`, and copy-on-write. A bare-metal MCU typically has little RAM/Flash, deterministic requirements, and often only an MPU or no memory protection at all. Therefore it works with physical addresses, a linker script, and direct MMIO.[^dou-embedded-interview]
 
 ## Detailed explanation
 

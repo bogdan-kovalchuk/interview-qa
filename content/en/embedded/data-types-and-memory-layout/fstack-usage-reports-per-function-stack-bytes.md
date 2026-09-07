@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0058
 title: "How do you check a function's stack frame size in GCC?"
-description: "The `-fstack-usage` flag makes GCC emit `.su` files reporting each function's stack frame size."
+description: "The -fstack-usage flag makes GCC emit .su files reporting each function's stack frame size."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+The **-fstack-usage** flag: GCC generates `.su` files alongside `.o`.
+
+Line format in `.su`: `file.c:10:5:foo 2048 static`
+Fields (space-separated): [1] `file:line:col:func`, [2] bytes, [3] type.
+
+Analyzing the largest stack frames: `cat *.su | sort -k2 -rn | head -20`
+
+Also: `-Wstack-usage=N` - warning if a function uses >N bytes. Always check functions called from ISR.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

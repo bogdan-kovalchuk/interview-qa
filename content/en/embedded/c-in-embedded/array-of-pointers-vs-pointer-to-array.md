@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`int *arr[8]` is an **array of 8 pointers** to int. Size: 8 × 4 = 32 bytes. Each element is a separate address and can point to different arrays of different sizes.
+
+`int (*arr)[8]` is a **pointer to an array** of 8 int; the size of `arr` itself = 4 bytes (a pointer); `arr+1` -> +32 bytes (the size of an array of 8 int).
+
+Operator precedence: `[]` binds tighter than `*`, which is why parentheses are needed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

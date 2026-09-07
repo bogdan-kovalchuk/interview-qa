@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**XIP** (Execute in Place) is a mode where the CPU executes code directly from Flash without copying into RAM.
+
+NOR Flash supports random byte access -> the CPU can address and execute instructions directly. Most Cortex-M MCUs use XIP by default.
+
+**Advantages**: no RAM spent on code, shorter boot time. <span class="warn">Disadvantage</span>: Flash is slower (wait states); for time-critical ISRs: `__attribute__((section(".ramcode")))`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0002
 title: "What is a watchdog?"
-description: "What is a watchdog?"
+description: "A Watchdog Timer resets the microcontroller if the program does not periodically feed it, protecting against hangs and infinite loops."
 track: embedded
 section: interrupts-and-timing
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Watchdog Timer (WDT)** is a hardware timer that automatically resets the microcontroller if the program does not "feed" it in time.[^dou-embedded-interview]
+
+Principle: the program must regularly write a special value to the WDT register ("kick" or "feed"). If this does not happen, the timer fires and a system reset is performed.
+
+Protects against: program hang, infinite loop, stack overflow. Types: **IWDG** (independent, runs from a separate oscillator, does not stop when the main clock stops) and **WWDG** (window watchdog – must be fed only within a specific time window, protects against feeding too early).
 
 ## Detailed explanation
 

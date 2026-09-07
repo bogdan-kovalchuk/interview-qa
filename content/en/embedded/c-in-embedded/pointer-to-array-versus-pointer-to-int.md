@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`int *p` is a pointer to `int`, so `p+1` -> +4 bytes (one `int`), while `int (*p)[8]` is a **pointer to an array** of 8 `int`, where `p+1` -> +32 bytes (one array of 8 elements).
+
+Usage: when working with 2D arrays: `int arr[3][8]; int (*p)[8] = arr;`. `p[1]` -> second row; `p[1][3]` -> `arr[1][3]`.
+
+Reading rule: `(*p)` -> "pointer to" (parentheses matter because of operator precedence).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

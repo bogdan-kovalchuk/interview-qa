@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`static` controls linkage or storage duration, `const` disallows modification through that lvalue, `volatile` forces actual access execution, and `restrict` promises no aliasing for optimization. For MMIO a typical pointer is: `volatile uint32_t *`; for a read-only register it can be `volatile const uint32_t *`. `static const` often places tables in flash/rodata, and `restrict` is appropriate in DSP/buffer code if the contract is actually honored.[^dou-embedded-interview]
 
 ## Detailed explanation
 

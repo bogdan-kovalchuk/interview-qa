@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0062
 title: "Which memory section is the most expensive for boot time, and why?"
-description: "`.data` is the most expensive because startup code must copy its whole content from Flash into RAM before `main()`."
+description: ".data is the most expensive because startup code must copy its whole content from Flash into RAM before main()."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**.data** is the most expensive: startup code must copy all of `.data` from Flash (slow, wait states) into RAM (fast), so a large `.data` -> slower boot. `.bss` is cheaper (only zero-fill in RAM), while `.rodata` and `.text` need no copying at all.
+
+Optimization: replace initialized globals with `const` -> `.rodata` in Flash, no RAM copying.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

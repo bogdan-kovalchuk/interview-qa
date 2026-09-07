@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0002
 title: "What is POSIX?"
-description: "What is POSIX?"
+description: "POSIX is an IEEE standard defining an API for compatibility between Unix-like operating systems, with subsets implemented even by RTOSes."
 track: embedded
 section: fundamentals
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**POSIX** (Portable Operating System Interface) is an IEEE standard that defines an API for compatibility between Unix-like operating systems.[^dou-embedded-interview] It describes the file API (`open`/`read`/`write`/`close`), processes (`fork`/`exec`), threads (`pthread`), signals, IPC and regular expressions.
+
+Goal: code written for POSIX compiles and runs on Linux, macOS, FreeBSD and QNX without changes. In Embedded Linux it is the foundation for portability. RTOSes (Zephyr, FreeRTOS) implement POSIX subsets (pthreads, semaphores) for code portability.
 
 ## Detailed explanation
 

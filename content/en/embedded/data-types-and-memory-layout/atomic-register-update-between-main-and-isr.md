@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0104
 title: "How do you ensure an atomic register update when both main code and an ISR modify one register?"
-description: "English translation pending."
+description: "Use set/clear aliases or a critical section to make register updates atomic; an unprotected read-modify-write can lose a bit changed by an ISR."
 track: embedded
 section: data-types-and-memory-layout
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+If the register has set/clear/toggle aliases or bit-banding, use them instead of read-modify-write. Otherwise, protect with a critical section: temporarily disable the relevant interrupt or use an atomic primitive if the architecture supports it. <span class="warn">An unprotected read-modify-write can lose a bit changed by an ISR between the read and the write.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

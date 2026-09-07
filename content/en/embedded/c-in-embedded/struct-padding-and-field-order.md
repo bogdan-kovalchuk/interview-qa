@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Padding** is unused bytes that the compiler inserts for alignment of the next field or the entire structure. If fields are ordered from larger to smaller alignment requirements, padding often decreases. <span class="warn">Padding bytes cannot be relied on as stable data</span>: they may be uninitialized and are not suitable for direct comparison or bus transmission.[^dou-embedded-interview]
 
 ## Detailed explanation
 

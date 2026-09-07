@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0007
 title: "How is delay implemented in firmware, and why is busy-wait often worse than a timer-based approach?"
-description: "English translation pending."
+description: "Delay can be implemented as a busy loop, cycle counter, SysTick, hardware timer or RTOS sleep, with timer-based approaches preferred over busy-wait."
 track: embedded
 section: interrupts-and-timing
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Delay can be a busy loop, CPU cycle counter, SysTick, hardware timer or RTOS sleep. **Timer-based delay** better preserves CPU time, allows sleep/power saving and does not break when the clock or optimization changes. <span class="warn">Busy-wait blocks the main loop/task and scales poorly for ISR-driven or RTOS firmware.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

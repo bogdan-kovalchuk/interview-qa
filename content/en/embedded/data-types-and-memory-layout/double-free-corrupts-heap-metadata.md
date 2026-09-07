@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Double free -> undefined behavior.</span> Consequences:
+1. Corrupt heap metadata -> crash at the next `malloc`/`free`;
+2. <span class="warn">Security exploit</span>: heap-based buffer overflow, use-after-free;
+3. Silent data corruption.
+
+Protection: always after `free`: `ptr = NULL;`. `free(NULL)` is a safe no-op.
+
+In RTOS/embedded: heap corruption often manifests far from the error location.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

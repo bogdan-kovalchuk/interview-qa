@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Scope** is where a name is visible in source code. **Linkage** is whether the same name can refer to the same object/function across scopes or translation units. **Lifetime/storage duration** is when the object itself exists in memory; for example, a block-scope `static` has local visibility but lives for the entire runtime.[^dou-embedded-interview]
 
 ## Detailed explanation
 

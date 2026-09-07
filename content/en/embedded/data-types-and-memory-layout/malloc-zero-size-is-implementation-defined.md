@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0096
 title: "Trap: what does malloc return? `char *p = malloc(0);`"
-description: "`malloc(0)` may return `NULL` or a unique non-null pointer - the behavior is implementation-defined."
+description: "malloc(0) may return NULL or a unique non-null pointer – the behavior is implementation-defined."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Implementation-defined behavior</span> per the C standard (§7.22.3): the implementation may return either `NULL` or a unique non-null pointer.
+
+In both cases `*p` -> undefined behavior; glibc returns a non-null unique pointer, while an embedded heap may return `NULL`.
+
+Practical rule: <span class="warn">never call `malloc(0)`</span> – it is pointless and the behavior is non-portable. Always check `size > 0` before allocation.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

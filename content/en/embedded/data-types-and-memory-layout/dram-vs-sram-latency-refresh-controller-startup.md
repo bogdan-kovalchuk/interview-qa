@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0105
 title: "How does DRAM differ from SRAM and what are the implications for latency, refresh, controller, and startup?"
-description: "How does DRAM differ from SRAM and what are the implications for latency, refresh, controller, and startup?"
+description: "SRAM is fast and needs no refresh but is expensive in area; DRAM is denser but needs a controller, refresh, and calibration, and may be unavailable at early boot."
 track: embedded
 section: data-types-and-memory-layout
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**SRAM** is fast, simple for an MCU, requires no refresh, but is expensive in area and usually smaller. **DRAM** is denser and larger, but requires a memory controller, refresh, calibration/training, and has more complex latency. At startup, DRAM may be unavailable until the controller is initialized, so early boot typically runs from internal SRAM.[^dou-embedded-interview]
 
 ## Detailed explanation
 

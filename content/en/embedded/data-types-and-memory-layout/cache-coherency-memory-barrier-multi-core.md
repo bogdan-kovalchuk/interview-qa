@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0106
 title: "What are cache coherency and memory barrier in a multi-core MCU, MPU, or Embedded Linux system?"
-description: "What are cache coherency and memory barrier in a multi-core MCU, MPU, or Embedded Linux system?"
+description: "Cache coherency means data consistency between CPU caches, DMA, and peripheral views; a memory barrier enforces operation order, and DMA often needs cache clean/invalidate to avoid stale data."
 track: embedded
 section: data-types-and-memory-layout
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Cache coherency** means consistency of data between CPU caches, DMA, and peripheral views of memory. A **memory barrier** enforces the order of memory operations so that the CPU/compiler does not reorder critical accesses. <span class="warn">For DMA, cache clean/invalidate and barriers are often required, otherwise the device or CPU sees stale data.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

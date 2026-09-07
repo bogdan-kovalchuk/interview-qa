@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A BLE peripheral broadcasts advertising packets with an address, flags and optional service data, while a central scans and initiates a connection. After the connection the data model is usually GATT: services group characteristics, and a characteristic has a value and properties such as read/write/notify. For low-power telemetry the key parameters are connection interval, MTU, notification rate and sleep between events.[^dou-embedded-interview]
 
 ## Detailed explanation
 

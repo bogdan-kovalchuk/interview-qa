@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0043
 title: "Trap: what is wrong with registering a callback and never unregistering it?"
-description: "Trap: what is wrong with registering a callback and never unregistering it?"
+description: "The driver can invoke the callback after the module or object has been destroyed."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">The driver can invoke the callback after the module or object has been destroyed.</span>
+
+Especially in C++ embedded: the object destructor may have finished, but the C HAL still holds `ctx = this`. The next interrupt calls the thunk with a dangling `this` pointer.
+
+Defence: in the destructor or shutdown path, unregister the callback and disable interrupts or events before destroying state. Define ownership in the API.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

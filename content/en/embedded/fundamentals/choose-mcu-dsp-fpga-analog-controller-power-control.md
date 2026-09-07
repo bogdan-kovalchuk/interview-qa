@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0025
 title: "How to choose between MCU, DSP, FPGA, or an analog controller for a power control task?"
-description: "How to choose between MCU, DSP, FPGA, or an analog controller for a power control task?"
+description: "MCU fits control logic and moderate loops, DSP handles fast numerical algorithms, FPGA gives parallel deterministic timing, and analog controllers suit simple or fail-safe regulation."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**MCU** suits control logic, communication and moderate loops; **DSP** – for fast numerical control algorithms. **FPGA** provides parallelism and deterministic sub-microsecond timing, but is more expensive to develop. An analog controller is appropriate when simple, very fast or fail-safe regulation is needed without firmware dependency.[^dou-embedded-interview]
 
 ## Detailed explanation
 

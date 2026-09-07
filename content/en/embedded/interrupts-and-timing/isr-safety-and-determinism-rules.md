@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0008
 title: "What is an ISR, and which rules make an ISR safe and predictable?"
-description: "English translation pending."
+description: "An ISR is an interrupt service routine that must be short, deterministic, non-blocking and use minimal shared state to stay safe and predictable."
 track: embedded
 section: interrupts-and-timing
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**ISR** is an interrupt service routine, code executed in response to a hardware/software interrupt. It must be short, deterministic, non-blocking, with no heap or long locks, and minimal shared state. Typical pattern: clear the interrupt flag, take/post minimal data, notify a task or the main loop.[^dou-embedded-interview]
 
 ## Detailed explanation
 

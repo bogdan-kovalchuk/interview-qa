@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`volatile` only tells the compiler not to remove or cache specific accesses. It <span class="warn">does not make the operation atomic</span>, does not place a memory barrier between cores/interrupts, and does not protect data structure invariants. For shared state between tasks/ISRs, atomic operations, interrupt locks, mutexes, or RTOS primitives are needed depending on the context.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0048
 title: "How do you declare a function that returns a function pointer?"
-description: "How do you declare a function that returns a function pointer?"
+description: "Without typedef: int (selectop(int id))(int, int); with typedef it is far more readable."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Example without typedef:
+
+`int (*select_op(int id))(int, int);`
+
+This means: `select_op` takes an `int` and returns a pointer to a function that takes two `int` values and returns an `int`. With a typedef it is cleaner: `typedef int (*op_t)(int, int); op_t select_op(int id);`
+
+Rule: if a declaration is hard to read at first glance, typedef is the right engineering choice.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0109
 title: "How is union represented in memory and what limitations does type punning through union have?"
-description: "How is union represented in memory and what limitations does type punning through union have?"
+description: "In a union all members share the same offset and the size is determined by the largest member; for portable byte interpretation in firmware, prefer memcpy over union type punning."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a **union**, all members start at the same offset, and the size and alignment are determined by the largest member. Writing to one member overwrites the same bytes that can be read through another member, but the access rules depend on the C/C++ standard, effective type, and compiler behavior. <span class="warn">For portable byte interpretation in firmware, prefer `memcpy`</span> over relying on union type punning.[^dou-embedded-interview]
 
 ## Detailed explanation
 

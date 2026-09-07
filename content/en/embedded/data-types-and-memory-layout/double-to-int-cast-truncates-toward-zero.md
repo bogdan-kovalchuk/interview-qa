@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0095
 title: "What value does this hold? `int x = (int)(3.7);`"
-description: "Converting `double` to `int` truncates toward zero, so 3.7 becomes 3 rather than being rounded."
+description: "Converting double to int truncates toward zero, so 3.7 becomes 3 rather than being rounded."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+`x = 3`.
+
+Converting `double -> int` in C happens through **truncation** (discarding the fractional part, NOT rounding): `3.7 -> 3`, `-3.7 -> -3` (toward zero).
+
+For rounding: `round(3.7) = 4`, `floor(3.7) = 3`, `ceil(3.7) = 4`.
+
+Important in DSP and control systems: `int duty = (int)(percentage * 100.0f);` can introduce systematic error due to truncation.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

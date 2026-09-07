@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0009
 title: "How is data transferred between an ISR and a main loop or RTOS task without a race condition?"
-description: "English translation pending."
+description: "Data moves between ISR and main loop or task via volatile/atomic flags, ring buffers, critical sections, RTOS queues or task notification, with volatile alone insufficient."
 track: embedded
 section: interrupts-and-timing
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Use **volatile/atomic flags**, lock-free ring buffers, critical sections, RTOS queues/semaphores or direct task notification. Shared multi-byte state is protected by interrupt disable, mutex in task context or atomic operations, depending on the platform. <span class="warn">`volatile` alone does not make an operation atomic and does not resolve a race condition.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

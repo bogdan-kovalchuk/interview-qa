@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+On typical AVR-GCC for AVR8: `char` is 8 bits, `int` is 16 bits, `long` is 32 bits, pointer is often 16 bits for the data address space. On a 32-bit MCU, `int` is usually 32 bits, so overflow, printf format, and struct layout can change. <span class="warn">In portable firmware, prefer `stdint.h`: `uint8_t`, `uint16_t`, `uint32_t`</span>.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0053
 title: "Trap: why are weak hooks worse than an explicit callback for several driver instances?"
-description: "Trap: why are weak hooks worse than an explicit callback for several driver instances?"
+description: "A weak function has one global name and carries no per-instance context."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">A weak function has one global name and carries no per-instance context.</span>
+
+If there are two UARTs or two timers, one weak hook does not know which object the event belongs to unless this is passed separately. Also, a weak override is hidden at the linker level, which complicates testing and dependency tracking.
+
+Defence: for reusable drivers use explicit registration `cb + ctx`; keep weak hooks for startup defaults or board-level extension points.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

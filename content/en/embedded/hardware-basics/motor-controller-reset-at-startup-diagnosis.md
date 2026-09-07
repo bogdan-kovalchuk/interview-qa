@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Software: brown-out/reset flags, watchdog, startup current path, PWM ramp, fault handlers and stack overflow. Power integrity: supply sag at inrush/stall current, ground bounce, weak regulator, poor decoupling and EMI from the motor. Hardware: driver shoot-through, flyback/TVS, high-current loop layout; probe Vcc/reset line with an oscilloscope right at the moment of startup.[^dou-embedded-interview]
 
 ## Detailed explanation
 

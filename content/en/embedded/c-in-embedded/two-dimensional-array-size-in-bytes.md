@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,13 @@ printf("%zu", sizeof(arr));
 
 ## Short answer
 
-TODO
+**48** bytes.
+
+`arr` is a 2D array: 3 rows × 4 columns × `sizeof(int) = 4` bytes = 48B.
+
+`sizeof(arr[0])` = `sizeof(int[4])` = 16B (one row), `sizeof(arr[0][0])` = `sizeof(int)` = 4B.
+
+Row count: `sizeof(arr)/sizeof(arr[0]) = 48/16 = 3`. This trick works only in the same scope where the array is declared.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

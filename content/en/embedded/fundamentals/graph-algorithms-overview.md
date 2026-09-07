@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+A graph consists of vertices and edges; it can be directed/undirected, weighted/unweighted. Basic traversals: **DFS** and **BFS**; BFS finds the shortest path in an unweighted graph.[^dou-embedded-interview]
+
+For shortest paths: `Dijkstra` for non-negative weights, `Bellman-Ford` allows negative edges, `Floyd-Warshall` computes all pairs. For minimum spanning tree: `Kruskal` and `Prim`. Also commonly asked: topological sort for DAGs, cycle detection, and connected components.
 
 ## Detailed explanation
 

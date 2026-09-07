@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The public API declares an opaque type `typedef struct uart uart_t;`, and the implementation hides the struct fields in a `.c` file. Methods accept `uart_t*`, and polymorphism can be achieved through a table of function pointers: `read`, `write`, `ioctl`. This way the driver API has encapsulation without C++ ABI and without exposing internal MMIO/state.[^dou-embedded-interview]
 
 ## Detailed explanation
 

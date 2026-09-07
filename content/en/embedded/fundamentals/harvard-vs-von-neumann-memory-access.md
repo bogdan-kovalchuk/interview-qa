@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+In **von Neumann**, code and data share one address space/bus. In **Harvard**, instruction and data memories/buses are separate, so Flash and RAM can have different access rules. On some MCUs, reading constants from program memory requires special instructions/API, and self-programming Flash has erase/write and timing limitations.[^dou-embedded-interview]
 
 ## Detailed explanation
 

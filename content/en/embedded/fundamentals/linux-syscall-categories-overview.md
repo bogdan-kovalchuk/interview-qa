@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0001
 title: "What system calls do you know?"
-description: "What system calls do you know?"
+description: "System calls are grouped into categories: file system, processes, memory, network, synchronisation and devices."
 track: embedded
 section: fundamentals
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,16 @@ sources:
 
 ## Short answer
 
-TODO
+Main categories:[^dou-embedded-interview]
+
+- **File system**: `open()`, `read()`, `write()`, `close()`, `lseek()`, `stat()`, `unlink()`
+- **Processes**: `fork()`, `exec()`, `wait()`, `exit()`, `getpid()`
+- **Memory**: `mmap()`, `munmap()`, `brk()`
+- **Network**: `socket()`, `bind()`, `connect()`, `send()`, `recv()`
+- **Synchronisation**: `futex()`
+- **Devices**: `ioctl()`.
+
+Browse them all: `man 2 syscalls` or the file `arch/x86/entry/syscalls/syscall_64.tbl` in the kernel source.
 
 ## Detailed explanation
 

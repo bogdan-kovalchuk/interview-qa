@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0053
 title: "What is the bug here? `char buf[256]; buf[256] = '\\0';`"
-description: "Valid indices for `buf[256]` are 0..255, so writing to `buf[256]` is an out-of-bounds write."
+description: "Valid indices for buf[256] are 0..255, so writing to buf[256] is an out-of-bounds write."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Off-by-one error -> buffer overflow.</span> Valid indices for array `buf[256]`: `0..255`. `buf[256]` is already out of bounds.
+
+Writing there -> undefined behavior: it can corrupt another local variable, the return address, or `.bss`.
+
+Correct: `buf[255] = '\0';` or `char buf[257]` if a 256-character string + null-terminator is needed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

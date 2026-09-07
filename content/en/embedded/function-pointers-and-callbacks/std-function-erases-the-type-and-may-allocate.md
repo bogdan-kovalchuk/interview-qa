@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0042
 title: "Why is `std::function` not always suitable for an embedded callback API?"
-description: "Why is `std::function` not always suitable for an embedded callback API?"
+description: "std::function is convenient but can carry overhead and potential allocations."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`std::function` is convenient but can carry overhead and potential allocations.**
+
+It type-erases the callable and can store lambdas and functors, but this increases code size, may pull in exceptions and RTTI depending on the toolchain, and sometimes uses the heap when the callable does not fit in the small buffer optimization.
+
+Embedded rule: in low-level drivers, `function pointer + void *ctx` is used more often; in the application layer, `std::function` is acceptable if project policy allows it.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

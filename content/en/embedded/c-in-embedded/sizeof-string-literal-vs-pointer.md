@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`sizeof("hello")` -> **6**: a string literal is an array `{'h','e','l','l','o','\0'}`, and `sizeof` returns the array size including the null terminator.
+
+`sizeof(char*)` -> **4**: the pointer size equals the platform word size.
+
+Key point: `sizeof("hello")` does not decay to a pointer (sizeof is one of the three array decay exceptions), so we get the array size.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0008
 title: "What is the difference between a microprocessor and a microcontroller?"
-description: "What is the difference between a microprocessor and a microcontroller?"
+description: "A microprocessor (MPU) is mainly a CPU needing external memory and peripherals for an OS, while a microcontroller (MCU) integrates CPU, Flash, RAM, and peripherals on one die."
 track: embedded
 section: fundamentals
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Microprocessor (MPU)** is primarily a CPU that usually requires external RAM, Flash, and peripherals.[^dou-embedded-interview] High performance, more often runs a full OS; examples: Intel Core, ARM Cortex-A.
+
+**Microcontroller (MCU)** – CPU + Flash + RAM + GPIO/UART/SPI/ADC/timers on a single chip. Low power, cheaper, deterministic behavior; many MCUs such as ARM Cortex-M use **modified Harvard architecture**, but not all MCUs should strictly be called Harvard.
+
+Choice: MPU for an OS and complex computation; MCU for real-time hardware control.
 
 ## Detailed explanation
 

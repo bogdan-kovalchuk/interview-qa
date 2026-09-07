@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0029
 title: "Why is structure alignment needed in C, and how does it affect memory layout?"
-description: "Alignment determines structure-field addresses, while padding can change the structure's actual memory layout and size."
+description: "Alignment determines structure field addresses, and padding can change the actual memory layout and size."
 track: embedded
 section: c-in-embedded
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Alignment** forces structure fields to start at addresses that are multiples of their type's or ABI's requirements. The compiler may insert padding between fields and at the end of the structure, so the actual layout does not always equal the sum of field sizes.[^dou-embedded-interview] For DMA, MMIO mirror structures, and binary protocols this is critical: the layout must be fixed explicitly or serialized manually.
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+An array is an object with N elements; in most expressions it decays to a pointer to the first element. In a function parameter, `int a[]` is actually `int *a`, so the length is not passed automatically. `sizeof array` in the same scope gives the full size of the array, while `sizeof pointer` gives only the size of the address.[^dou-embedded-interview]
 
 ## Detailed explanation
 

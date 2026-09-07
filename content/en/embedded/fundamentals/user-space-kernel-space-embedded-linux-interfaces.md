@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0012
 title: "How does user space communicate with kernel space in Embedded Linux through syscalls, ioctl, procfs, or sysfs?"
-description: "User space enters the kernel through <code>syscall</code>, including <code>read</code>, <code>write</code>, <code>open</code>, and <code>mmap</code>."
+description: "User space enters the kernel through syscall: read, write, open, mmap, and others."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+User space enters the kernel via `syscall`: `read`, `write`, `open`, `mmap`, and so on. For device-specific control `ioctl` is commonly used; for simple driver attributes – `sysfs`; and `procfs` is mainly for process and kernel diagnostic info. <span class="warn">Do not put an unstable binary protocol into sysfs</span>; it expects simple text attributes.[^dou-embedded-interview]
 
 ## Detailed explanation
 

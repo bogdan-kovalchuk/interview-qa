@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0070
 title: "What does this return on 32-bit? `sizeof(struct { char a; char b; int c; })`"
-description: "The compiler adds 2 bytes of padding before the `int`, so `struct { char; char; int; }` takes 8 bytes."
+description: "The compiler adds 2 bytes of padding before the int, so struct { char; char; int; } takes 8 bytes."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**8 bytes**.
+
+Layout: `a`@0 (1B) + `b`@1 (1B) + <span class="warn">2B padding</span> + `c`@4 (4B). Trailing padding = 0.
+
+If the fields were in a different order: `struct { char a; int c; char b; }` -> 12 bytes (3B padding after `a`, 3B trailing).
+
+Rule: arrange fields from largest alignment to smallest for minimum sizeof.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

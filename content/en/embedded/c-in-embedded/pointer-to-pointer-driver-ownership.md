@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`T **` is needed when a function must change the caller's pointer: to issue a handle, add a node at the list head, or return a buffer from a pool. In drivers this often looks like `driver_open(dev_t **out)` or a queue API that updates head/tail. It is important to document ownership: who frees or returns the resource afterward.[^dou-embedded-interview]
 
 ## Detailed explanation
 

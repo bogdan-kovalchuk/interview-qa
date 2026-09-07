@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0046
 title: "Can you have an array of functions in C?"
-description: "Can you have an array of functions in C?"
+description: "An array of functions is impossible; you can have an array of function pointers."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No, an array of functions is impossible; you can have an array of function pointers.</span>
+
+`void handlers[4](void);` is an invalid idea because functions are not objects that can be stored in an array. Correct: `void (*handlers[4])(void);` or via typedef `handler_t handlers[4];`.
+
+Rule: a function is not copied or stored by value; you store the address of a function.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0051
 title: "Trap: why can a callback be a reentrancy problem?"
-description: "Trap: why can a callback be a reentrancy problem?"
+description: "A callback can be called again before the previous invocation has finished."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">A callback can be called again before the previous invocation has finished.</span>
+
+For example, a UART RX interrupt can arrive while the previous byte is still being handled, or a callback can call an API that synchronously triggers a new callback. If the callback uses a static local buffer without protection, state can be corrupted.
+
+Defence: document reentrancy, minimise shared mutable state, use queues or critical sections, or forbid nested callbacks by design.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

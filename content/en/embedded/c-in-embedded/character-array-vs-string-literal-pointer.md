@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`char arr[] = "hello"` is an **array**: the compiler allocates 6 bytes and copies the characters; the data resides in writable memory (stack or .data). `arr[0] = 'H'` is legal.
+
+`char *p = "hello"` is a **pointer** to a string literal in .rodata (Flash/read-only). `p[0] = 'H'` -> <span class="warn">UB/HardFault</span>.
+
+`sizeof(arr) = 6`, `sizeof(p) = 4` (or 8) – the array is on the stack, the pointer only holds the address.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Buildroot** is simpler for generating rootfs/toolchain/images with fixed configuration. **Yocto** is more complex but flexible for products with layers, recipes, package management, and a long lifecycle. **OpenWrt** targets network devices, and a vendor BSP often gives a quick start but may ship with an outdated kernel and patches.[^dou-embedded-interview]
 
 ## Detailed explanation
 

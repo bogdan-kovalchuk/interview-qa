@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -42,7 +42,11 @@ printf("%td", p-str);
 
 ## Short answer
 
-TODO
+`5`.
+
+`str` decays to `char*`, so the loop runs until `'\0'`: after `'h','e','l','l','o'` – `*p = '\0'` (false) -> stop. `p` points to the null terminator.
+
+`p - str` = 5 elements = `strlen("hello")`. This is the standard way to implement `strlen` via pointer arithmetic, using `%td` for `ptrdiff_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
