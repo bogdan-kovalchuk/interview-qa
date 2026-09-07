@@ -1,15 +1,15 @@
 ---
 id: emb-align-0014
 title: "Why is network byte order big-endian and how do you work with it?"
-description: "Why is network byte order big-endian and how do you work with it?"
+description: "Network protocols use big-endian byte order and POSIX provides htonl and ntohl for conversion"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,18 @@ sources:
 
 ## Short answer
 
-TODO
+**Network protocols are standardized on big-endian (network byte order).**
+
+POSIX (Portable Operating System Interface) provides host-vs-network converters:
+
+```c
+uint32_t net = htonl(host); // to BE
+uint32_t h   = ntohl(net);  // back to host
+```
+
+For 16-bit values – `htons`/`ntohs`.
+
+Rule: always convert multi-byte fields when sending or receiving over the network.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

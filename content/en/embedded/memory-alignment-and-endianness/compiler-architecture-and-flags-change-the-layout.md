@@ -1,15 +1,15 @@
 ---
 id: emb-align-0041
 title: "Trap: why can the same `struct` in source have a different binary layout?"
-description: "Trap: why can the same `struct` in source have a different binary layout?"
+description: "Padding and alignment depend on the compiler, architecture, and build options, so the same struct header can yield different binary layouts."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Padding and alignment depend on the compiler, architecture, and build options.</span>
+
+The same code on M4 and PowerPC will produce different field offsets, and opposite endianness also reverses the bytes. So "the same .h file" ≠ "the same byte format".
+
+Defense: never assume two compilers have compatible layouts; define an explicit wire format and serialize field by field.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

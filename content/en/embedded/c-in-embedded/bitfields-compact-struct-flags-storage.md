@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0016
 title: "Tell me about bitfields."
-description: "Tell me about bitfields."
+description: "Bitfields specify an exact number of bits in a struct field for compact flag storage, but their layout is often implementation-defined."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**Bitfields** are struct fields with an explicitly specified number of bits: `struct Flags { unsigned ready:1; unsigned mode:3; };`.[^dou-embedded-interview] They are convenient for compact storage of flags or describing parts of a register or status word.
+
+Limitations: you cannot take the address of a bitfield, and the bit packing order, signedness, and padding are often implementation-defined, so the layout can differ between compilers and ABIs. For hardware registers and protocols it is often more reliable to use masks and shifts on `uint32_t`, and bitfields only when the layout is controlled and verified.
 
 ## Detailed explanation
 

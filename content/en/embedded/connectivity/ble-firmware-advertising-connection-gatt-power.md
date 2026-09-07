@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0005
 title: "How does BLE work from the embedded firmware perspective: advertising interval, connection parameters, GATT, and power budget?"
-description: "How does BLE work from the embedded firmware perspective: advertising interval, connection parameters, GATT, and power budget?"
+description: "A BLE device advertises at a set interval, connects with negotiated parameters, uses GATT for services and characteristics, and its power budget depends on radio activity and sleep states."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+In BLE, a device advertises with an **advertising interval**, and after connection operates with negotiated connection interval, latency and supervision timeout. **GATT** defines services/characteristics for data and commands. Power budget depends heavily on radio wakeups, payload size, connection parameters, sleep states, and whether the firmware promptly returns the MCU to low power.[^dou-embedded-interview]
 
 ## Detailed explanation
 

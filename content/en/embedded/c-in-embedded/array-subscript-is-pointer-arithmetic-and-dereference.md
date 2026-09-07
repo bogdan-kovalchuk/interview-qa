@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0031
 title: "How are `arr[i]` and `*(arr+i)` related in standard C?"
-description: "Why array subscripting is defined through pointer arithmetic."
+description: "The C standard defines arr[i] as (arr+i), making indexing pointer arithmetic plus dereference and even allowing 2[arr]."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+Per the C standard (§6.5.2.1): **`arr[i]` is defined as `*(arr+i)`**. This is not syntactic sugar – it is the exact definition of the subscript operator.
+
+Consequences:
+- `arr[2] == *(arr+2) == *(2+arr) == 2[arr]` – all equivalent;
+- Indexing is simply pointer arithmetic + dereference;
+- Negative indices (`arr[-1]`) are formally allowed if the pointer is already offset and the result points within the array.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

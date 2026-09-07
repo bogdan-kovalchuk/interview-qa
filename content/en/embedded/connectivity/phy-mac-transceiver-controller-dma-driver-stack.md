@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0012
 title: "What sits between the network interface and the MCU: PHY, MAC, transceiver, controller, DMA, and driver stack?"
-description: "What sits between the network interface and the MCU: PHY, MAC, transceiver, controller, DMA, and driver stack?"
+description: "A PHY/transceiver converts signals to a digital link, a MAC/controller builds frames and drives DMA descriptors, and the driver stack initializes hardware, manages buffers and cache coherency, and handles IRQs."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The physical medium is handled by a **PHY/transceiver**, which converts electrical/radio signals into digital link signals. A **MAC/controller** forms frames, filters, interrupts and often works with DMA descriptors in RAM. The driver stack initializes the hardware, manages buffers/cache coherency, handles IRQs and passes packets to the TCP/IP or fieldbus stack.[^dou-embedded-interview]
 
 ## Detailed explanation
 

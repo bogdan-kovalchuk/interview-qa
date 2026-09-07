@@ -1,15 +1,15 @@
 ---
 id: emb-align-0001
 title: "What is natural alignment?"
-description: "What is natural alignment?"
+description: "An N-byte type must reside at an address that is a multiple of N"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An N-byte type must reside at an address that is a multiple of N.**
+
+`uint32_t` requires 4-byte alignment, `uint16_t` – 2, `uint64_t` – 8. The CPU reads memory in fixed-size words: an aligned access completes in one bus transaction, a misaligned one takes several, and sometimes triggers a fault.
+
+Rule: `_Alignof(T)` returns the alignment requirement of type `T`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

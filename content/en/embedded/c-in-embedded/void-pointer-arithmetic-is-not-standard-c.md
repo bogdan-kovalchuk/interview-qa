@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0025
 title: "Is this legal in standard C?"
-description: "Why arithmetic on void pointers is not standard C."
+description: "Pointer arithmetic on void is a constraint violation in standard C because sizeof(void) is undefined; cast to a concrete type first."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,11 @@ p++;
 
 ## Short answer
 
-TODO
+<span class="warn">NO, this is not valid standard C</span> (constraint violation). The standard forbids pointer arithmetic on `void*` – the element size is unknown (sizeof(void) is undefined), so the compiler must issue a diagnostic.
+
+GCC allows it as an extension: it treats `sizeof(void) = 1`, so `p++` -> +1 byte. With `-pedantic-errors`: an error.
+
+Correct approach: before arithmetic, cast to a concrete type: `uint8_t *bp = (uint8_t*)p; bp++;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

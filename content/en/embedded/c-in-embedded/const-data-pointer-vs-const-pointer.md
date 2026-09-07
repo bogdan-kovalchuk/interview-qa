@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0026
 title: "What is the difference between `const int *p` and `int * const p`?"
-description: "How const applies to pointed-to data and to the pointer itself."
+description: "const int p makes the pointed-to data constant; int const p makes the pointer itself constant; read right to left."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+`const int *p` (or `int const *p`) – **a pointer to a constant int**:
+- `*p = 5` – forbidden (the data is protected);
+- `p = &y` – allowed (the address can be changed).
+
+`int * const p` – **a constant pointer to int**:
+- `*p = 5` – allowed;
+- `p = &y` – forbidden (the address is fixed).
+
+`const int * const p` – both the data and the address are immutable. Rule: read right to left.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

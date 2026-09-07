@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0005
 title: "What does this print?"
-description: "How pointer arithmetic scales with the pointed-to type."
+description: "Pointer arithmetic scales by sizeof the pointed-to type, so a uint8t pointer increments by one byte and a uint32t pointer by four bytes."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,13 @@ printf("%p", (void*)p);
 
 ## Short answer
 
-TODO
+`0x1001`.
+
+Pointer arithmetic scales by `sizeof(*p)`. For `uint8_t*`: `sizeof(uint8_t) = 1`, so `p++` -> address + 1 byte.
+
+If `uint32_t *p = (uint32_t*)0x1000; p++;` -> `0x1004` (step of 4 bytes).
+
+Rule: `p + n` = `(char*)p + n * sizeof(*p)`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

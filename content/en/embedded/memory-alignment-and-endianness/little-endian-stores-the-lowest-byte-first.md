@@ -1,15 +1,15 @@
 ---
 id: emb-align-0012
 title: "How does `0xDEADBEEF` sit in memory on a little-endian machine?"
-description: "How does `0xDEADBEEF` sit in memory on a little-endian machine?"
+description: "On a little-endian machine the bytes are stored EF BE AD DE from lowest to highest address"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`EF BE AD DE`** (from lowest address to highest).
+
+Little-endian places the lowest byte first: `0xEF` @0, `0xBE` @1, `0xAD` @2, `0xDE` @3.
+
+Rule: to "read" an LE dump as a number, read the bytes from right to left.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

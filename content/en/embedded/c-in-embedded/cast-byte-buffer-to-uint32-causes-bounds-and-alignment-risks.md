@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0034
 title: "Find the bug"
-description: "How a byte buffer cast can cause bounds and alignment problems."
+description: "Casting a byte buffer to uint32t and looping 256 times writes 1024 bytes, four times the buffer size, and may also misalign."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -43,7 +43,11 @@ i++) p[i]=0;
 
 ## Short answer
 
-TODO
+<span class="warn">Out-of-bounds write!</span> `buf` – 256 bytes. `p` – `uint32_t*`, each element = 4 bytes. The loop `p[0]..p[255]` writes `256 × 4 = 1024 bytes` – 4 times the buffer size.
+
+Correct: `for(int i=0; i < 256/sizeof(uint32_t); i++) p[i]=0;` or `memset(buf, 0, sizeof(buf))`.
+
+Also: `uint8_t buf[256]` may not be aligned for `uint32_t` -> misaligned access.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

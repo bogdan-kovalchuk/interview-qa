@@ -1,7 +1,7 @@
 ---
 id: emb-build-0008
 title: "How do static and dynamic libraries differ during build and linking?"
-description: "Static libraries are linked into the image, while dynamic libraries remain runtime-loaded artifacts."
+description: "Static libraries are linked into the image by the linker, while dynamic libraries remain separate artifacts loaded at runtime."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Static library** (`.a`/`.lib`) is copied by the linker into the firmware or executable using only the needed object files. **Dynamic library** (`.so`/`.dll`) is loaded by the loader at runtime and remains a separate artifact. Bare-metal MCUs typically use static linking; Embedded Linux often supports both.[^dou-embedded-interview]
 
 ## Detailed explanation
 

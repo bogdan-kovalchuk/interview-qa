@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0010
 title: "What is alignment in structs?"
-description: "What is alignment in structs?"
+description: "Alignment places struct fields at addresses that are multiples of their alignment requirements; the compiler adds padding for fast and correct CPU access."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**Alignment** means that struct fields are placed at addresses that are multiples of their alignment requirements.[^dou-embedded-interview] For example, `uint32_t` often requires an address that is a multiple of 4. The compiler inserts unused padding bytes so that access is fast and correct for the CPU.
+
+This matters in embedded: misaligned access on some MCUs is slow or triggers a fault, and register or protocol layout may require exact offsets. Size can be reduced by reordering fields from largest to smallest, but for a binary protocol or hardware registers it is better to serialize data explicitly or verify the layout with `static_assert` and `offsetof`.
 
 ## Detailed explanation
 

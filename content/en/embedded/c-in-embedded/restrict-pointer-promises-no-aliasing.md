@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0028
 title: "What is `restrict` and why is it useful in embedded systems?"
-description: "How restrict communicates non-aliasing to the compiler."
+description: "A C99 pointer qualifier that promises no aliasing, enabling vectorization and register promotion; aliasing through it is undefined behavior."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`restrict` (C99) – a pointer qualifier that promises the compiler: through this pointer and through no other pointer in this function **does aliasing occur** (no overlapping memory regions).
+
+Example: `void add(int * restrict dst, const int * restrict src, int n)`.
+
+Gives the compiler freedom for aggressive optimization (vectorization, register promotion). Important for DSP, crypto, memcpy-like functions. If aliasing does occur – undefined behavior.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

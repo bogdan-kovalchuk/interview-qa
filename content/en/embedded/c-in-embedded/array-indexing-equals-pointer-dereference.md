@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0013
 title: "What does this example print?"
-description: "Why array indexing and pointer dereferencing are equivalent."
+description: "Array subscript arr[2] is defined as (arr+2), so even 2[arr] works via commutativity of addition."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,11 @@ printf("%d %d", arr[2], *(arr+2));
 
 ## Short answer
 
-TODO
+Both expressions print **3** and are fully equivalent per the C standard.
+
+`arr[2]` -> the standard defines it as `*(arr+2)`: `2 * sizeof(int) = 8` bytes are added to the address `arr`, then dereferenced.
+
+Therefore even `2[arr]` -> `*(2+arr)` -> 3 – also valid (due to commutativity of addition, although unreadable).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

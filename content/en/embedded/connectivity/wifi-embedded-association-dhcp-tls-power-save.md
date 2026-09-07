@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0007
 title: "How does Wi-Fi work on an embedded device and what are the implications of association, DHCP, TLS, and power save modes?"
-description: "How does Wi-Fi work on an embedded device and what are the implications of association, DHCP, TLS, and power save modes?"
+description: "Embedded Wi-Fi associates with an AP, gets an IP via DHCP, pays CPU and RAM for TLS handshakes and certificates, and trades power save for added latency and harder reconnect paths."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Embedded Wi-Fi goes through scan/auth/association with an AP, then obtains an IP via DHCP or static config. TLS adds CPU/RAM cost, certificates, entropy and long handshakes, which matters for a small MCU. Power save modes reduce consumption but add latency, buffering at the AP, and more complex reconnect/error paths.[^dou-embedded-interview]
 
 ## Detailed explanation
 

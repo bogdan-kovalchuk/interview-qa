@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0008
 title: "What does this print?"
-description: "How pointer arithmetic accesses the third array element."
+description: "Pointer arithmetic with p+2 reaches arr[2] and dereferences to 30; the standard defines arr[i], (arr+i), (i+arr) and i[arr] as equivalent."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,13 @@ printf("%d", *(p+2));
 
 ## Short answer
 
-TODO
+`30`.
+
+`arr` decays to a pointer to the first element. `p = arr` -> `p` points to `arr[0]`.
+
+`p+2` -> pointer to `arr[2]` (step of `2 * sizeof(int) = 8` bytes on 32-bit). `*(p+2)` -> dereference -> `arr[2] = 30`.
+
+Per the standard: `arr[i] ≡ *(arr+i) ≡ *(i+arr) ≡ i[arr]` – all four forms are equivalent.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

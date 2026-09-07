@@ -1,7 +1,7 @@
 ---
 id: emb-build-0019
 title: "Which optimization types does a compiler use, and how can you check that optimization did not break MMIO or a delay loop?"
-description: "English translation pending."
+description: "Compiler optimizations include inlining, dead-code elimination, constant propagation, loop optimization, instruction scheduling, and LTO; MMIO and delay loops require volatile and barriers."
 track: embedded
 section: toolchain-and-build
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The compiler performs inlining, dead-code elimination, constant propagation, loop optimization, instruction scheduling, and LTO. Check MMIO through `volatile` register definitions, barriers where ordering matters, disassembly/map review, and target tests. <span class="warn">A busy delay loop without `volatile`, a timer, or an intrinsic barrier can be shortened or removed by the optimizer.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

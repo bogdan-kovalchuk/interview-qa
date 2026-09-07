@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0007
 title: "How does pointer arithmetic work and why does it scale by sizeof(T)?"
-description: "How pointer arithmetic advances by elements rather than raw bytes."
+description: "Pointer arithmetic advances by sizeof(T) per step so p++ always reaches the next element; this scaling is critical in embedded when iterating register banks and DMA buffers."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,16 @@ sources:
 
 ## Short answer
 
-TODO
+Pointer arithmetic always accounts for the **size of the element type**:
+
+`T *p; p + n` -> physically: `(char*)p + n * sizeof(T)`
+
+Examples:
+- `uint8_t *p; p+1` -> +1 byte
+- `uint16_t *p; p+1` -> +2 bytes
+- `uint32_t *p; p+1` -> +4 bytes
+
+This allows iterating arrays naturally: `p++` moves to the next element regardless of size. Critical in embedded when working with register banks and DMA buffers.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

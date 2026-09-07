@@ -1,7 +1,7 @@
 ---
 id: emb-align-0022
 title: "How do you deserialise a byte buffer back into a struct?"
-description: "How do you deserialise a byte buffer back into a struct?"
+description: "Read bytes safely via memcpy, then convert from network to host order."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ r->id  = buf[6];
 
 ## Short answer
 
-TODO
+**First read the bytes safely via `memcpy`, then convert from network to host order.**
+
+The order is the mirror of serialization; offsets must match the defined wire format exactly.
+
+Rule: `memcpy` from a `uint8_t*` into an aligned variable lets you read multi-byte fields even from an unaligned buffer.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

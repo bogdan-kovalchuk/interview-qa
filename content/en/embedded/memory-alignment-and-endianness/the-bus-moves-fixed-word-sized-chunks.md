@@ -1,15 +1,15 @@
 ---
 id: emb-align-0002
 title: "Why does a CPU require aligned data at all?"
-description: "Why does a CPU require aligned data at all?"
+description: "The bus reads and writes memory in word-aligned chunks of fixed size"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The bus reads and writes memory in word-aligned chunks of fixed size.**
+
+An aligned access fits in one word -> one transaction. A misaligned value straddles a word boundary -> two transactions plus stitching, or the hardware forbids the access altogether.
+
+Rule: on simpler cores (Cortex-M0) this is not "slower" but a <span class="warn">HardFault</span>; on M3/M4 it is a cycle penalty.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

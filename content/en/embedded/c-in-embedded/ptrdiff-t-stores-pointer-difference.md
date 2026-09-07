@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0033
 title: "What is `ptrdiff_t` and why is it needed?"
-description: "The signed type used for differences between pointers."
+description: "A signed integer type from stddef.h for pointer differences, sized to the platform width and printed with %td."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**ptrdiff_t** – a signed integer type for storing the result of subtracting two pointers. Defined in `<stddef.h>`.
+
+Size: matches the platform width (32-bit -> 4B, 64-bit -> 8B).
+
+Why: `p - q` gives the number of elements between the pointers. The result is signed (can be negative); storing it in `int` may be insufficient on 64-bit;
+
+Format specifier: `%td` for `printf`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

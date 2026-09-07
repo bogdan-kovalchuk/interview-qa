@@ -1,15 +1,15 @@
 ---
 id: emb-align-0007
 title: "Trap: what happens on a misaligned 32-bit access on a Cortex-M0?"
-description: "Trap: what happens on a misaligned 32-bit access on a Cortex-M0?"
+description: "A HardFault occurs because Cortex-M0 does not support misaligned access"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">HardFault.</span>
+
+Cortex-M0/M0+ (as well as some RISC-V and ARM7TDMI) <span class="warn">do not support misaligned access</span>: any read or write of `uint16_t`/`uint32_t` at a misaligned address -> fault.
+
+Fix: do not cast an offset `uint8_t*` to `uint32_t*`; for misaligned data use `memcpy` into an aligned variable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

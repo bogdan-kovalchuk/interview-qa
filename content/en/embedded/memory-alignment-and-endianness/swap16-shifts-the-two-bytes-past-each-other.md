@@ -1,7 +1,7 @@
 ---
 id: emb-align-0017
 title: "How do you write `swap16` to reverse the byte order?"
-description: "How do you write `swap16` to reverse the byte order?"
+description: "Shift the high byte down and the low byte up then combine them with bitwise OR"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ static inline uint16_t swap16(uint16_t v) {
 
 ## Short answer
 
-TODO
+**The high byte is shifted down, the low byte – up, and they are combined with `|`.**
+
+For `0xAABB` -> `0xBBAA`. GCC/Clang recognize this pattern and generate a single `REV16` instruction on ARM.
+
+Rule: write byte-swap in readable C – inline asm is usually not needed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

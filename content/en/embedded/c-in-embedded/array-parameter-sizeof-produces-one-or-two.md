@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0016
 title: "Trap: what value does sizeof(arr)/sizeof(arr[0]) produce in this function?"
-description: "Why the array-length idiom fails for an array parameter."
+description: "In a function parameter int arr[] decays to int, so sizeof(arr)/sizeof(arr[0]) yields 1 or 2, not the array length."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+`n = 1` (on 32-bit) or `n = 2` (on 64-bit).
+
+In a function parameter, `int arr[]` ≡ `int *arr` – decay to a pointer. `sizeof(arr) = sizeof(int*) = 4` (or 8). `sizeof(arr[0]) = sizeof(int) = 4`. So `4/4 = 1`;
+
+<span class="warn">Not 8, not 256, not the array size</span> – only 1 or 2;
+
+Always pass the size explicitly: `void f(int *arr, size_t n)`; safeguard: `_Static_assert` at the caller.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

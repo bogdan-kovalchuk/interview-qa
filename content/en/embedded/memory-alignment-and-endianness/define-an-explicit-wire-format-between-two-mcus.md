@@ -1,15 +1,15 @@
 ---
 id: emb-align-0032
 title: "How do you correctly send data between two different MCUs?"
-description: "How do you correctly send data between two different MCUs?"
+description: "Define an explicit wire format and serialize field by field with explicit byte order."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Define an explicit wire format and serialize field by field with explicit byte order.**
+
+This is the canonical interview answer: no raw `memcpy` of structs, because padding and endianness differ. Each multi-byte field goes through `htonl`/`htons` into a fixed offset.
+
+Rule: a documented wire format plus field-by-field (de)serialization gives portability across any platforms.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

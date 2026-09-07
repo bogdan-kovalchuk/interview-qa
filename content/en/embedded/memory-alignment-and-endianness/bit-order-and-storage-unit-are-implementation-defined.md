@@ -1,15 +1,15 @@
 ---
 id: emb-align-0034
 title: "Trap: why is bitfield layout not portable between platforms?"
-description: "Trap: why is bitfield layout not portable between platforms?"
+description: "The standard defines neither bit order nor storage unit for bitfields; this is implementation-defined."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">The standard defines neither the bit order within a storage unit nor the storage unit itself; this is implementation-defined.</span>
+
+On LE and BE (and between different compilers), fields may be packed from opposite ends, so the same bitfield struct will produce different bits on the wire.
+
+Guard: for protocols and registers, do not rely on bitfields in a wire format; use explicit masks and shifts over `uint32_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

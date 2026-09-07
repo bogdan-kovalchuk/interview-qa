@@ -1,15 +1,15 @@
 ---
 id: emb-align-0033
 title: "Why is `memcpy` safer than a typed-pointer cast for multi-byte access?"
-description: "Why is `memcpy` safer than a typed-pointer cast for multi-byte access?"
+description: "memcpy has no alignment requirement and does not violate strict aliasing."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`memcpy` has no alignment requirement** for source or destination and does not violate strict aliasing.
+
+The compiler optimizes a fixed-size `memcpy` into efficient load/store operations (and on M0 into safe byte-wise accesses), so you get both correctness and speed.
+
+Rule: for unaligned reads and writes of multi-byte values, `memcpy` is the standard portable tool.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

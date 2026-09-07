@@ -1,15 +1,15 @@
 ---
 id: emb-align-0009
 title: "What does `__attribute__((packed))` do and why is it dangerous?"
-description: "What does `__attribute__((packed))` do and why is it dangerous?"
+description: "The packed attribute removes padding but risks misaligned access and HardFault on some cores"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Removes padding** – fields are placed back-to-back and the size approaches the sum of the fields.
+
+<span class="warn">Risk</span>: a multi-byte field may end up at a misaligned address. On Cortex-M0 direct access to such a field can cause a HardFault; on M3/M4 the compiler often generates <span class="warn">byte-wise load/store</span> instructions, which are slower.
+
+Rule: `packed` is for wire formats and protocol headers. For MMIO (memory-mapped I/O) register maps a naturally aligned `volatile` struct with explicit reserved fields is usually better, to avoid incorrect access width to registers.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-build-0013
 title: "How do make and Makefiles work in a firmware project?"
-description: "make compares Makefile targets and dependencies and runs only the required build, link, and post-build steps."
+description: "make reads targets, dependencies, and recipes from a Makefile and runs only the required compile, link, or post-build steps when sources change."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`make` reads targets, dependencies, and recipes from the `Makefile`. If a source is newer than its object or binary, the required compile, link, or post-build command runs. In firmware, a Makefile typically defines MCU flags, include paths, a linker script, `.elf/.hex/.bin` outputs, and flash/debug targets.[^dou-embedded-interview]
 
 ## Detailed explanation
 

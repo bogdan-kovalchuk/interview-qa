@@ -1,7 +1,7 @@
 ---
 id: emb-boot-0001
 title: "What is a device tree?"
-description: "What is a device tree?"
+description: "A device tree is a data structure that describes board hardware separately from kernel code, allowing one Linux kernel image to support different boards."
 track: embedded
 section: bootloaders-and-ota
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Device Tree** is a data structure that describes board hardware (CPU, memory, peripherals, interrupts, buses) in a kernel-code-independent form.[^dou-embedded-interview] It allows a single Linux kernel image to support different boards.
+
+Files: `.dts` (Device Tree Source, text) is compiled by `dtc` into `.dtb` (Device Tree Blob, binary). The bootloader (U-Boot) passes the DTB address to the kernel at boot.
+
+Example node: describes UART1 – base register address, interrupt number, clocking; the kernel driver reads these parameters through the DT API.
 
 ## Detailed explanation
 

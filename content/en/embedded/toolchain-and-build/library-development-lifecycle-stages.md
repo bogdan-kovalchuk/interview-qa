@@ -1,7 +1,7 @@
 ---
 id: emb-build-0006
 title: "Describe the stages of developing a library or program."
-description: "Describe the stages of developing a library or program."
+description: "The typical development cycle is requirements, API design, implementation, tests, integration, documentation, release, and maintenance, with upfront attention to the public API and version compatibility."
 track: embedded
 section: toolchain-and-build
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+Typical cycle: requirements, API/architecture design, implementation, tests, integration, documentation, release, and maintenance.[^dou-embedded-interview] For a library it is especially important to define the public API, invariants, errors, dependencies, and version compatibility upfront.
+
+In practice this means: write headers and function contracts, implement modules, add unit tests and usage examples, check edge cases, set up build/CI, document limitations. In embedded, memory checks, execution time, interrupt-safety, and behavior on target hardware are also added.
 
 ## Detailed explanation
 

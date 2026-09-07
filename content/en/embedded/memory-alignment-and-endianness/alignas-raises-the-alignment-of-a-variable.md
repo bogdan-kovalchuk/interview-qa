@@ -1,7 +1,7 @@
 ---
 id: emb-align-0026
 title: "What does `_Alignas` / `alignas` do and what for?"
-description: "What does `_Alignas` / `alignas` do and what for?"
+description: "Sets an increased alignment requirement for a variable, needed for DMA and cache-line alignment."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ _Alignas(32) uint8_t dma_buf[256];
 
 ## Short answer
 
-TODO
+**Sets an increased alignment requirement for a variable.**
+
+Needed when hardware demands it: DMA buffers, cache-line alignment (32/64 bytes) for lock-free structures, special peripheral blocks.
+
+Rule: align DMA and cache-sensitive buffers explicitly via `_Alignas` (or `__attribute__((aligned(N)))`); do not rely on a "lucky" layout.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

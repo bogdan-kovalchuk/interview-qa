@@ -1,15 +1,15 @@
 ---
 id: emb-align-0040
 title: "Why do single-byte fields need no byte swap when serialising?"
-description: "Why do single-byte fields need no byte swap when serialising?"
+description: "Endianness concerns only the byte order within a multi-byte value; a single byte has no internal order."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Endianness concerns only the byte order within a multi-byte value.**
+
+A single byte has no "internal order", so `uint8_t` is the same on LE and BE and is placed into the buffer as is.
+
+Rule: apply `htonl`/`htons` to 16/32/64-bit fields; no conversion is needed for `uint8_t` and byte arrays.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

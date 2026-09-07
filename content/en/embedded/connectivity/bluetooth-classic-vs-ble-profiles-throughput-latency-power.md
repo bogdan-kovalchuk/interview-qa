@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0006
 title: "How does Bluetooth Classic differ from BLE in profiles, throughput, latency, and power consumption?"
-description: "How does Bluetooth Classic differ from BLE in profiles, throughput, latency, and power consumption?"
+description: "Bluetooth Classic suits persistent audio/serial links with higher throughput and power; BLE targets short events, advertising, GATT and low consumption, so BLE fits sensors while Classic fits audio and legacy SPP."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Bluetooth Classic** targets more persistent connections and profiles like audio/serial, often with higher throughput and greater power cost. **BLE** is optimized for short events, advertising, GATT data model and low consumption. For sensors/control BLE is usually better; for audio or legacy SPP, Classic is more often needed.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-align-0006
 title: "Why does a struct need trailing padding?"
-description: "Why does a struct need trailing padding?"
+description: "Trailing padding ensures every element in an array of structs starts at an aligned address"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**So that in an array of structs every subsequent element is also aligned.**
+
+If `sizeof(struct)` is not a multiple of the largest field's alignment, then `arr[1]` would start at a misaligned address and accesses to its fields would be misaligned. That is why the compiler rounds the size up to a multiple.
+
+Rule: trailing padding is exactly why `sizeof` a struct is not the sum of its fields.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

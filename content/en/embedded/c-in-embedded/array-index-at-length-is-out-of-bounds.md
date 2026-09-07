@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0030
 title: "Trap: what is wrong?"
-description: "Why an index equal to the array length is out of bounds."
+description: "Index 5 on a 5-element array is out of bounds, causing undefined behavior that may silently corrupt data or crash on return."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,13 @@ arr[5] = 0;
 
 ## Short answer
 
-TODO
+<span class="warn">Out-of-bounds write -> undefined behavior.</span> Valid indices: `0..4`. `arr[5]` – beyond the array.
+
+In memory `arr[5]` sits right after the array: it may be another local variable, a return address, a saved LR.
+
+Consequences: silent data corruption or a crash on function return (corrupted return address);
+
+Protection: `-fsanitize=address`, explicit index checks, `static_assert(i < ARRAY_SIZE)`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

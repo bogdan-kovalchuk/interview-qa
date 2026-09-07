@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0020
 title: "What does this array-of-pointers example print?"
-description: "How dereferencing an element of an array of pointers accesses its value."
+description: "Dereferencing an element of an array of pointers accesses the pointed-to value; arr[1] yields b which is 2."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ printf("%d",*arr[1]);
 
 ## Short answer
 
-TODO
+`2`.
+
+`int *arr[3]` – an array of 3 pointers to `int`. `arr[1]` -> the second element = `&b`, so `*arr[1]` -> dereferencing `&b` -> the value of `b = 2`.
+
+Storage: `arr` – an array of addresses (3 × 4 bytes = 12 bytes). Each element is a separate address; changing `*arr[1] = 99` -> modifies `b`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

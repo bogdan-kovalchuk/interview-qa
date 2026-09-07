@@ -1,7 +1,7 @@
 ---
 id: emb-build-0025
 title: "How can you provide Continuous Delivery for an MCU device with a physical target, bootloader, and hardware-in-the-loop tests?"
-description: "The CD pipeline should build signed artifacts, flash the physical target through its bootloader, run HIL tests, and verify updates and rollback."
+description: "The CD pipeline builds signed artifacts, flashes via bootloader or debug probe, runs HIL tests, and uses managed rigs with power cycling, logs, reset control, and version readback."
 track: embedded
 section: toolchain-and-build
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The CD pipeline must build signed artifacts, flash the device through the bootloader/debug probe, run smoke/HIL tests, and collect logs/trace. Managed test rigs are needed: power cycling, serial logs, reset control, version readback, and failure recovery. The **release gate** must verify not only the build but also the update path, rollback, and basic hardware operation.[^dou-embedded-interview]
 
 ## Detailed explanation
 

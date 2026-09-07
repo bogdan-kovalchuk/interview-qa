@@ -1,7 +1,7 @@
 ---
 id: emb-build-0003
 title: "What is an interactive rebase?"
-description: "What is an interactive rebase?"
+description: "git rebase -i opens a list of commits before a chosen base and lets you pick, reword, squash, edit, drop, or reorder each commit, rewriting history."
 track: embedded
 section: toolchain-and-build
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`git rebase -i` is a mode for editing commit history before a chosen base.[^dou-embedded-interview] It opens a list of commits where you can change the action for each one.
+
+Typical actions: `pick` – keep the commit; `reword` – change the message; `squash`/`fixup` – combine commits; `edit` – stop to amend the commit; `drop` – remove the commit; you can also reorder commits.
+
+Usage: clean up a local feature branch before a pull request, combine small fixup commits, fix a commit message. Important: this <span class="warn">rewrites history</span>, so be careful with commits that have already been pushed and are used by others.
 
 ## Detailed explanation
 

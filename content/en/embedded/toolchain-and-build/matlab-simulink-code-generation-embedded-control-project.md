@@ -1,7 +1,7 @@
 ---
 id: emb-build-0026
 title: "When is a MATLAB/Simulink model or code generation appropriate in an embedded control project?"
-description: "When is a MATLAB/Simulink model or code generation appropriate in an embedded control project?"
+description: "A model is appropriate for control algorithms, plant simulation, fixed-point analysis, auto-generated code, and requirements traceability, but generated code still needs firmware-level review."
 track: embedded
 section: toolchain-and-build
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A model is appropriate for control algorithms, plant simulation, fixed-point analysis, auto-generated code, and requirements traceability. It is useful when the team validates behavior before hardware or has safety/process requirements. <span class="warn">Generated code still needs to be reviewed as firmware: timing, memory, toolchain settings, MISRA rules, and target integration.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

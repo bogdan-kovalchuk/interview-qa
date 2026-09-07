@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0013
 title: "Which industrial or vision interfaces can be embedded-relevant but niche: EtherCAT, FPD-Link III, MIPI CSI, GigE Vision, USB3 Vision?"
-description: "Which industrial or vision interfaces can be embedded-relevant but niche: EtherCAT, FPD-Link III, MIPI CSI, GigE Vision, USB3 Vision?"
+description: "EtherCAT is deterministic industrial Ethernet for motion, FPD-Link III and MIPI CSI handle camera/display pipelines on SoCs, and GigE Vision and USB3 Vision are machine-vision transports."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**EtherCAT** is deterministic industrial Ethernet for motion/control, often with a dedicated slave controller. **FPD-Link III** and **MIPI CSI** appear frequently in camera/display pipelines on embedded SoC. **GigE Vision** and **USB3 Vision** are machine-vision transports where bandwidth, latency, drivers and buffer handling matter.[^dou-embedded-interview]
 
 ## Detailed explanation
 

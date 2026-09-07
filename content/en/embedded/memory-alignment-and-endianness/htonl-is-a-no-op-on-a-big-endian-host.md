@@ -1,15 +1,15 @@
 ---
 id: emb-align-0015
 title: "What does `htonl()` return on a big-endian host?"
-description: "What does `htonl()` return on a big-endian host?"
+description: "On a big-endian host htonl returns the same value unchanged because host and network order match"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The same value unchanged – it is a no-op.**
+
+On a big-endian host, host order equals network order, so there is nothing to convert. On a little-endian host `htonl`/`ntohl` swap the bytes. The key point: the code does not need to know which case it is – always write `htonl` and it will do the right thing on any platform.
+
+Rule: never do a byte swap "manually based on the platform" when `hton*`/`ntoh*` is available.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

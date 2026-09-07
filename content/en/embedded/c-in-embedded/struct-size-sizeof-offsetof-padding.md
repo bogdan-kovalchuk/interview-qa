@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0005
 title: "How do you determine the size of a struct?"
-description: "How do you determine the size of a struct?"
+description: "Use sizeof to get the struct size including padding, and offsetof from stddef.h to inspect the layout; exact size depends on ABI, compiler, packing, and field order."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+The size of a struct is determined by the `sizeof(struct_type)` operator or `sizeof variable`.[^dou-embedded-interview] It includes all fields, internal padding between them, and possible trailing padding at the end so that an array of such structs has correct alignment for every element.
+
+For layout analysis, use `offsetof(struct_type, field)` from `<stddef.h>`. Example: `struct S { char c; int x; };` often has size 8 rather than 5 because `int` is aligned to 4 bytes. The exact size depends on the ABI, compiler, packing options, and field order.
 
 ## Detailed explanation
 

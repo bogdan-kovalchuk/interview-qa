@@ -1,7 +1,7 @@
 ---
 id: emb-align-0004
 title: "What `sizeof` will this have on a 32-bit MCU?"
-description: "What `sizeof` will this have on a 32-bit MCU?"
+description: "12 bytes due to internal and trailing padding for natural alignment of each field"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ typedef struct {
 
 ## Short answer
 
-TODO
+**12 bytes.**
+
+Layout: `flags`@0 (1B) -> <span class="warn">3B padding</span> -> `timestamp`@4 (4B) -> `sensor_id`@8 (1B) -> <span class="warn">3B trailing padding</span> (so the size is a multiple of 4).
+
+Fix: reorder fields from largest alignment to smallest – then it becomes 8 bytes.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
