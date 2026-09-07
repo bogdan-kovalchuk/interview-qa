@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні, не завжди.
+<span class="warn">Ні, не завжди.</span>
 
 `const` забороняє запис через цей identifier, але storage placement залежить від storage duration, ABI, оптимізації та linker script. Локальний automatic `const` object може бути на stack або оптимізований у immediate constants. File-scope або `static const` значно частіше потрапляє в `.rodata`.
 

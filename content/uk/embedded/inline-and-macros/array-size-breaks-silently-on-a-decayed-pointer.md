@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ sources:
 
 Повертає кількість елементів масиву на етапі компіляції.
 
-Trap: якщо передати вказівник (зокрема масив-параметр функції, що decay-иться до pointer), `sizeof(a)` дасть розмір вказівника, і результат буде неправильний.
+<span class="warn">Trap</span>: якщо передати вказівник (зокрема масив-параметр функції, що decay-иться до pointer), `sizeof(a)` дасть розмір вказівника, і результат буде неправильний.
 
 Захист: застосовуй лише до справжніх масивів у тому ж scope; у GCC/Clang є trick з `__builtin_types_compatible_p`, що дає compile error на pointer; у C++ – `std::size`/шаблон.[^embeddedinterviewlab]
 

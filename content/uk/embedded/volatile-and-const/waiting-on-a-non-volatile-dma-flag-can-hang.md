@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ uint8_t dma_done = 0;
 while (!dma_done) { }
 ```
 
-Якщо `dma_done` змінює ISR або DMA callback, бракує `volatile`.
+<span class="warn">Якщо `dma_done` змінює ISR або DMA callback, бракує `volatile`.</span>
 
 Компілятор може прочитати `dma_done` один раз і залишитися в циклі назавжди. DMA hardware не змінює C-змінну напряму, але callback/ISR змінює її асинхронно відносно main loop.
 

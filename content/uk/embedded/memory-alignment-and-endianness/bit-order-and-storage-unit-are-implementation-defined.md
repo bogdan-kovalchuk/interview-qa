@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Стандарт не визначає ані порядок бітів усередині слова, ані storage unit – це implementation-defined.
+<span class="warn">Стандарт не визначає ані порядок бітів усередині слова, ані storage unit – це implementation-defined.</span>
 
 На LE і BE (та між різними компіляторами) поля можуть пакуватися з протилежних кінців, тож той самий bitfield-struct дасть різні біти на дроті.
 

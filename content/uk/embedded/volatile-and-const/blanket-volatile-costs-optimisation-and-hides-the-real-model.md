@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Надмірний `volatile` погіршує оптимізацію і може маскувати неправильну модель синхронізації.
+<span class="warn">Надмірний `volatile` погіршує оптимізацію і може маскувати неправильну модель синхронізації.</span>
 
 Компілятор змушений частіше ходити в пам'ять, не тримати значення в регістрах і обмежувати reorder. Це збільшує код, час виконання і енергоспоживання. При цьому race conditions, atomicity і ordering для non-volatile data воно не лікує.
 

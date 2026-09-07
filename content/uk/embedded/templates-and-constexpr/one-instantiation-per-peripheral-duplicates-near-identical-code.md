@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Кожна інстанціація per-периферію може дати майже ідентичний код – різниться лише константа base address.
+<span class="warn">Кожна інстанціація per-периферію може дати майже ідентичний код – різниться лише константа base address.</span>
 
 На малих MCU (microcontroller unit) це швидко накопичується, якщо так само зробити `Uart<...>`, `Spi<...>`, `I2c<...>` для багатьох периферій.
 

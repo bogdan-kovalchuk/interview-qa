@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -43,7 +43,7 @@ typedef struct {
 
 **12 байт.**
 
-Layout: `flags`@0 (1B) -> 3B padding -> `timestamp`@4 (4B) -> `sensor_id`@8 (1B) -> 3B trailing padding (щоб розмір був кратний 4).
+Layout: `flags`@0 (1B) -> <span class="warn">3B padding</span> -> `timestamp`@4 (4B) -> `sensor_id`@8 (1B) -> <span class="warn">3B trailing padding</span> (щоб розмір був кратний 4).
 
 Захист: перевпорядкуй поля від більшого alignment до меншого – тоді буде 8 байт.[^embeddedinterviewlab]
 

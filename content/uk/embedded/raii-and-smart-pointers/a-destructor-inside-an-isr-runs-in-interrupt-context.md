@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ void isr() {
 }
 ```
 
-Деструктор виконується в тому ж контексті, що й вихід зі scope – тобто в ISR (interrupt service routine).
+<span class="warn">Деструктор виконується в тому ж контексті, що й вихід зі scope – тобто в ISR (interrupt service routine).</span>
 
 Якщо dtor робить блокуючу операцію (mutex release із RTOS, алокація, UART TX), це недопустимо в перериванні: deadlock або jitter.
 

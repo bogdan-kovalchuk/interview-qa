@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ volatile const uint32_t * const STATUS =
 *STATUS = 0;
 ```
 
-Ні. Це має бути помилка компіляції, бо `*STATUS` має const-qualified type.
+<span class="warn">Ні. Це має бути помилка компіляції</span>, бо `*STATUS` має const-qualified type.
 
 `volatile` не скасовує `const`. Воно лише каже, що читання не можна кешувати або прибирати. `const` каже, що через цей lvalue firmware не має права записувати дані.
 

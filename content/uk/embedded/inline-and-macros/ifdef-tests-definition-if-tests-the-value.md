@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -35,7 +35,7 @@ sources:
 
 **`#ifdef FOO`** перевіряє лише факт визначення макроса – істинно навіть для `#define FOO 0`.
 
-`#if FOO` обчислює значення як integer-вираз: для `#define FOO 0` буде хибно, а для невизначеного `FOO` препроцесор підставить `0` (істинно-хибно), не помилку.
+`#if FOO` обчислює значення як integer-вираз: для `#define FOO 0` буде хибно, а <span class="warn">для невизначеного `FOO`</span> препроцесор підставить `0` (істинно-хибно), не помилку.
 
 Захист: для feature-флагів зі значеннями використовуй `#if defined(FOO) && FOO`, щоб не плутати «визначено» і «увімкнено».[^embeddedinterviewlab]
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ void init(void) {
 }
 ```
 
-`&app` стає dangling pointer після повернення з `init`.
+<span class="warn">`&app` стає dangling pointer після повернення з `init`.</span>
 
 Якщо timer callback спрацює пізніше, він отримає адресу stack object-а, якого вже не існує. На MCU це може виглядати як випадкова корупція стану, HardFault або нестабільний баг.
 

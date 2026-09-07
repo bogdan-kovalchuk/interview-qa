@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Driver може викликати callback після знищення module/object-а.
+<span class="warn">Driver може викликати callback після знищення module/object-а.</span>
 
 Особливо у C++ embedded: object destructor може завершитися, але C HAL усе ще зберігає `ctx = this`. Наступний interrupt викликає thunk із dangling `this` pointer.
 

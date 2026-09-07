@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -42,7 +42,7 @@ union Payload {
 union Payload p;
 ```
 
-Немає tag-а, який каже, яке поле валідне.
+<span class="warn">Немає tag-а, який каже, яке поле валідне.</span>
 
 Union економить пам'ять, але втрачає інформацію про активний варіант. Якщо receiver не знає тип payload із header або enum, він може неправильно інтерпретувати ті самі bytes.
 

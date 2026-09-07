@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-C не гарантує portable conversion між function pointer і object pointer `void *`.
+<span class="warn">C не гарантує portable conversion між function pointer і object pointer `void *`.</span>
 
 На деяких платформax код і дані мають різні address spaces або різний розмір pointer-а. POSIX має свої вимоги для `dlsym`, але це не загальне правило ISO C і не embedded-гарантія.
 

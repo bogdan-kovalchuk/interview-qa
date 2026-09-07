@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Стандарт C++ не визначає порядок конструювання глобалів між translation units (static initialization order fiasco).
+<span class="warn">Стандарт C++ не визначає порядок конструювання глобалів між translation units</span> (static initialization order fiasco).
 
 Якщо глобал з `a.cpp` у своєму constructor використовує глобал з `b.cpp`, той може бути ще не сконструйований -> undefined behavior.
 

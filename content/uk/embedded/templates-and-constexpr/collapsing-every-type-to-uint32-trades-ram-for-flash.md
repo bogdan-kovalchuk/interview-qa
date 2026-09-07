@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Менше інстанціацій (менше Flash), але `uint32_t` марнує RAM на дрібних значеннях.
+<span class="warn">Менше інстанціацій (менше Flash), але `uint32_t` марнує RAM на дрібних значеннях.</span>
 
 Якщо буфер міг бути `uint8_t`, а ти зробив `uint32_t` заради однієї інстанціації – економиш ROM, але вчетверо роздуваєш RAM-буфер.
 

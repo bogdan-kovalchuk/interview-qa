@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Деструктор не викличеться -> ресурс не звільниться (leak), попри те що це «RAII-клас».
+<span class="warn">Деструктор не викличеться -> ресурс не звільниться (leak), попри те що це «RAII-клас».</span>
 
 RAII гарантує очищення лише для об'єктів з автоматичним (stack) lifetime або керованих smart pointer'ом. `new LockGuard(...)` без delete = той самий забутий unlock.
 

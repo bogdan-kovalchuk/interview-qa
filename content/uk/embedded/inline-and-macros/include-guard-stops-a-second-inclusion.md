@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -42,7 +42,7 @@ sources:
 
 **Include guard запобігає повторному включенню header** у той самий translation unit.
 
-Без нього подвійний `#include` призведе до redefinition типів, `struct`, прототипів. При першому проході `SENSOR_H` ще не визначений -> вміст обробляється і guard визначається; наступні рази вміст пропускається.
+Без нього подвійний `#include` призведе до <span class="warn">redefinition</span> типів, `struct`, прототипів. При першому проході `SENSOR_H` ще не визначений -> вміст обробляється і guard визначається; наступні рази вміст пропускається.
 
 Правило: кожен header має guard з унікальним ім'ям, або `#pragma once`.[^embeddedinterviewlab]
 

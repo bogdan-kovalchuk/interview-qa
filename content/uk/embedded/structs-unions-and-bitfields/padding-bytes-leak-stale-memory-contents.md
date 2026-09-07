@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Якщо відправити або записати raw bytes структури, padding може містити старі дані зі stack/RAM.
+<span class="warn">Якщо відправити або записати raw bytes структури, padding може містити старі дані зі stack/RAM.</span>
 
 Наприклад, `send(fd, &msg, sizeof msg)` може включити padding bytes між полями. Ці bytes не ініціалізуються окремим assignment до полів і можуть містити фрагменти попередніх змінних.
 

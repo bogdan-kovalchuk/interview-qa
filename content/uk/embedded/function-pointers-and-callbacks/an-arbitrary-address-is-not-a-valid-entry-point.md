@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Адреса може не бути валідною entry address для функції з потрібною ABI-сигнатурою.
+<span class="warn">Адреса може не бути валідною entry address для функції з потрібною ABI-сигнатурою.</span>
 
 На Cortex-M function addresses мають Thumb-state bit semantics; виклик невірної адреси може дати HardFault. Також адреса може вказувати на data memory, padding, bootloader table або функцію з іншою calling convention.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Літерал `1` має тип `int` (signed), тому `1 << 31` зсуває біт у знаковий розряд -> undefined behavior для signed на 32-бітному `int`.
+<span class="warn">Літерал `1` має тип `int`</span> (signed), тому `1 << 31` зсуває біт у знаковий розряд -> <span class="warn">undefined behavior</span> для signed на 32-бітному `int`.
 
 На багатьох MCU «спрацює» як `0x80000000`, але стандарт цього не гарантує, і compiler може оптимізувати непередбачувано.
 

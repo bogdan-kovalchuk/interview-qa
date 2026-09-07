@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ struct F {
 };
 ```
 
-1-bit signed field не може представляти значення `+1` у two's complement моделі.
+<span class="warn">1-bit signed field не може представляти значення `+1` у two's complement моделі.</span>
 
 Типовий діапазон для signed 1-bit: `-1` і `0`. Якщо очікуєш boolean `0/1`, читання після присвоєння `flag = 1` може дати `-1`. Це ламає порівняння на кшталт `flag == 1`.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Це повністю різні типи.
+<span class="warn">Це повністю різні типи.</span>
 
 `void (*f)(void)` – змінна `f`, яка є pointer to function returning void. `void *f(void)` – функція `f`, яка приймає nothing і повертає `void *`.
 

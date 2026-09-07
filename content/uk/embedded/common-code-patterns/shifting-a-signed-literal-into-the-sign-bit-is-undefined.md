@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`1 << 31` – undefined behavior: літерал `1` має тип signed `int`, і зсув у знаковий розряд переповнює його.
+<span class="warn">`1 << 31` – undefined behavior</span>: літерал `1` має тип signed `int`, і зсув у знаковий розряд переповнює його.
 
 `1U << 31` визначено лише якщо `unsigned int` має ширину більше 31 біта. На 16-bit `unsigned int` це теж некоректно, бо shift count завеликий.
 

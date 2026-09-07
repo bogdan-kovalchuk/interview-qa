@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Без virtual-деструктора видалення похідного через `Base*` – undefined behavior.
+<span class="warn">Без virtual-деструктора видалення похідного через `Base*` – undefined behavior.</span>
 
 `Base* p = new Derived; delete p;` викличе лише `~Base()`, не `~Derived()` -> ресурси нащадка не звільняться.
 

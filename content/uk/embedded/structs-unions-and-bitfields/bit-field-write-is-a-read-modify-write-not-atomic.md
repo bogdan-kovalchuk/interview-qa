@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Не варто.
+<span class="warn">Не варто.</span>
 
 Запис bit-field зазвичай є read-modify-write storage unit-а. Якщо ISR і main змінюють різні bit-fields в одному storage unit, один запис може перетерти інший. `volatile` не робить цю операцію атомарною.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Не завжди.
+<span class="warn">Не завжди.</span>
 
 `volatile` може змусити CPU перечитувати descriptor або flag, які змінює DMA. Але воно не вирішує cache coherency, alignment, ownership, memory barriers і race conditions. На Cortex-M7 з D-cache DMA може записати RAM, а CPU все ще читатиме старі cache lines.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -41,7 +41,7 @@ void uart_isr(void) {
 }
 ```
 
-Callback може бути не зареєстрований або бути `NULL`.
+<span class="warn">Callback може бути не зареєстрований або бути `NULL`.</span>
 
 Якщо ISR викличе `rx_cb` до реєстрації, буде undefined behavior і на MCU дуже ймовірний HardFault. У interrupt context це ще гірше: fault може виникнути асинхронно і важко відтворюватися.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ int a = 2;
 int b = SQR(a++);
 ```
 
-Надійної відповіді немає: це undefined behavior.
+<span class="warn">Надійної відповіді немає: це undefined behavior.</span>
 
 Макрос підставляє аргумент у два місця: `((a++) * (a++))`. Дужки рятують від precedence, але не від double evaluation. Два інкременти одного scalar object у межах одного виразу не впорядковані між собою, тому стандарт C не визначає ні результат множення, ні фінальне значення `a`.
 

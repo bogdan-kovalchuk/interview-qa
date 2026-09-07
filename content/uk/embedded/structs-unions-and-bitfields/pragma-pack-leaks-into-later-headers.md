@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Він може змінити packing для наступних структур у чужому коді.
+<span class="warn">Він може змінити packing для наступних структур у чужому коді.</span>
 
 Якщо header вмикає packing і не відновлює попередній стан, він ламає layout unrelated structs, ABI і alignment. Це особливо неприємно в embedded, де один header може вплинути на driver structs або RTOS control blocks.
 

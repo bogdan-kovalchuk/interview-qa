@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -37,7 +37,7 @@ sources:
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 ```
 
-Double evaluation: параметр `a` зустрічається у тілі двічі, тому `++x` виконається двічі, якщо умова істинна.
+<span class="warn">Double evaluation</span>: параметр `a` зустрічається у тілі двічі, тому `++x` виконається двічі, якщо умова істинна.
 
 Розгортання: `((++x) > (y) ? (++x) : (y))` – `x` інкрементується вдруге у true-гілці. Будь-який аргумент із side effect (`++`, `--`, виклик функції, читання volatile регістра) дає неочікуваний результат.
 

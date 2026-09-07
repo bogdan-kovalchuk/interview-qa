@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Запис у string literal має undefined behavior.
+<span class="warn">Запис у string literal має undefined behavior.</span>
 
 У C string literal часто лежить у read-only області, наприклад `.rodata` у Flash. Історично C дозволяє присвоїти literal у `char *` з попередженням у деяких компіляторах, але модифікація об'єкта за цим pointer заборонена семантично і може дати HardFault на MCU.
 

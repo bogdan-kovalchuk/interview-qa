@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Callback може бути викликаний повторно до завершення попереднього виклику.
+<span class="warn">Callback може бути викликаний повторно до завершення попереднього виклику.</span>
 
 Наприклад, UART RX interrupt може прийти під час обробки попереднього байта, або callback може викликати API, який синхронно породжує новий callback. Якщо callback використовує static local buffer без захисту, стан може пошкодитися.
 

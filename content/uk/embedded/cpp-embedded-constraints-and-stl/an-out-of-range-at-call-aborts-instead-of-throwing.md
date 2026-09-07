@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У багатьох embedded toolchain замість винятку `std::out_of_range` library-шлях завершується `abort()` або іншим fatal handler.
+<span class="warn">У багатьох embedded toolchain замість винятку `std::out_of_range` library-шлях завершується `abort()` або іншим fatal handler.</span>
 
 `-fno-exceptions` не прибирає bounds check; змінюється реакція на провал. На MCU це часто виглядає як аварійна зупинка або HardFault без нормальної діагностики.
 

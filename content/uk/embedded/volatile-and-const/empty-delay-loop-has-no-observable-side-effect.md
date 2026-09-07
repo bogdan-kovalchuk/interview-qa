@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ for (uint32_t i = 0; i < 100000; ++i) {
 }
 ```
 
-Компілятор може повністю прибрати порожній loop, бо він не має observable side effects.
+<span class="warn">Компілятор може повністю прибрати порожній loop</span>, бо він не має observable side effects.
 
 Додавання `volatile` до лічильника іноді змушує виконати інкременти, але це погана основа для точного timing: оптимізація, частота CPU, wait states і pipeline змінюють реальну затримку.
 

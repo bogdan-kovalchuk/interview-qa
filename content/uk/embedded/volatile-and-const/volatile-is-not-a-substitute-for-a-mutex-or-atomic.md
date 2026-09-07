@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні. `volatile` не замінює mutex, atomic або RTOS synchronization.
+<span class="warn">Ні. `volatile` не замінює mutex, atomic або RTOS synchronization.</span>
 
 Воно описує observable memory access, але не дає міжпотокової синхронізації, memory ordering або race-free інкрементів. У embedded RTOS задачі, які ділять змінні, потребують atomic primitives, mutex, queue, semaphore або critical section.
 

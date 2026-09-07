@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Бо debug build зазвичай має `-O0`, а release build вмикає оптимізації.
+<span class="warn">Бо debug build зазвичай має `-O0`, а release build вмикає оптимізації.</span>
 
 На `-O0` компілятор часто виконує кожне читання буквально, тому missing `volatile` може маскуватися. На `-O2` він кешує значення, прибирає redundant reads/writes і розкриває помилкове припущення, що hardware memory поводиться як звичайна RAM.
 

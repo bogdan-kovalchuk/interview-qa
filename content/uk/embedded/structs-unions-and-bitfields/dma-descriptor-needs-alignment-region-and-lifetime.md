@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-DMA може вимагати конкретне alignment, memory region і lifetime довший за stack frame.
+<span class="warn">DMA може вимагати конкретне alignment, memory region і lifetime довший за stack frame.</span>
 
 Stack object може зникнути після повернення функції, бути невирівняним для DMA engine або лежати в cacheable RAM без clean/invalidate. Структура descriptor-а також має мати layout, який точно збігається з hardware manual.
 

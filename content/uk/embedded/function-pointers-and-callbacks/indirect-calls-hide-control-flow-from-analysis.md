@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Indirect calls приховують control flow від читача, debugger-а і деяких static analyzers.
+<span class="warn">Indirect calls приховують control flow від читача, debugger-а і деяких static analyzers.</span>
 
 Замість явного `switch` видно лише `handlers[state](...)`. Якщо table ініціалізується runtime або змінюється, важче довести, які функції можуть викликатися. Це може вплинути на safety certification і MISRA-перевірки.
 

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Кожна унікальна інстанціація = окрема повна копія коду у Flash.
+<span class="warn">Кожна унікальна інстанціація = окрема повна копія коду у Flash.</span>
 
 `CircularBuffer<uint8_t,64>`, `<uint16_t,64>`, `<uint32_t,64>` дадуть три повні копії всіх методів, хоча логіка однакова.
 

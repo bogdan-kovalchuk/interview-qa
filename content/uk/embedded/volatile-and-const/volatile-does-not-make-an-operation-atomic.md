@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні. `volatile` не гарантує atomicity.
+<span class="warn">Ні. `volatile` не гарантує atomicity.</span>
 
 Він лише змушує компілятор виконати доступ до пам'яті. Наприклад, `volatile uint32_t` на 8-bit MCU може читатися кількома інструкціями; ISR може спрацювати між байтами і побачити частково оновлене значення. Навіть на Cortex-M операція `counter++` є read-modify-write, а не одна неподільна дія.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ void (*cb)(void) = NULL;
 cb();
 ```
 
-Undefined behavior.
+<span class="warn">Undefined behavior.</span>
 
 На Cortex-M це часто спроба перейти за адресою 0 або іншою invalid address, що може закінчитись HardFault. Але стандарт C не гарантує жодного конкретного результату: це просто неправильний виклик.
 

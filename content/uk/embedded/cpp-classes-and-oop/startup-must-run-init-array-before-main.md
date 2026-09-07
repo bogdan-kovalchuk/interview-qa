@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Глобальні constructors запускаються до `main()` через секцію `.init_array`.
+<span class="warn">Глобальні constructors запускаються до `main()` через секцію `.init_array`.</span>
 
 На bare-metal startup-код мусить вручну пройти `.init_array` і викликати кожен конструктор; інакше глобальні об'єкти лишаться лише zero-initialized, але не constructed (для polymorphic object це може означати некоректний vptr).
 

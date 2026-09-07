@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -42,7 +42,7 @@ public:
 uart_register(&App::on_rx);
 ```
 
-`&App::on_rx` має тип pointer-to-member, не `void (*)(uint8_t)`.
+<span class="warn">`&App::on_rx` має тип pointer-to-member, не `void (*)(uint8_t)`.</span>
 
 Метод потребує конкретний object для `this`. C callback ABI не знає, який object викликати. Навіть якщо cast-ом змусити типи збігтися, виклик буде неправильний.
 

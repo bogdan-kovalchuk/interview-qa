@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Structure assignment копіює pointer value, а не дані, на які він вказує.
+<span class="warn">Structure assignment копіює pointer value, а не дані, на які він вказує.</span>
 
 Після `b = a` обидві структури можуть вказувати на той самий buffer. Якщо одна структура звільняє або змінює buffer, інша бачить наслідки. У embedded це часто трапляється з DMA buffers, queues і driver config pointers.
 

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`<iostream>` може тягнути locale, heap-буфери, глобальну ініціалізацію й десятки КБ Flash.
+<span class="warn">`<iostream>` може тягнути locale, heap-буфери, глобальну ініціалізацію й десятки КБ Flash.</span>
 
 `std::cout` ініціалізує важку інфраструктуру ще до `main()`; на MCU це часто неприйнятно. `printf` (особливо урізаний/nano) або власний trace backend зазвичай значно легші.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ sources:
 int r = SQUARE(2 + 3);
 ```
 
-`r == 11`, а не 25.
+`r == 11`, а <span class="warn">не 25</span>.
 
 Макрос – це текстова заміна без дужок, тому `SQUARE(2 + 3)` розгортається у `2 + 3 * 2 + 3`. За правилами precedence спершу `3 * 2 = 6`, потім `2 + 6 + 3 = 11`.
 

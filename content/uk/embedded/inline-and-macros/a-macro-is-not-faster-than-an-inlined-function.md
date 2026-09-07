@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні – це застарілий міф.
+<span class="warn">Ні – це застарілий міф.</span>
 
 Сучасні компілятори inline-ять дрібні `static inline` функції так само, як розгортається макрос, і при цьому додають constant folding, dead-code elimination та інші оптимізації, недоступні вже підставленому препроцесором тексту.
 

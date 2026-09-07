@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Це не flexible array member, а реальний масив з 1 байта.
+<span class="warn">Це не flexible array member, а реальний масив з 1 байта.</span>
 
 `sizeof(struct)` включає цей байт і padding після нього. Код, який виділяє `sizeof(struct) + len`, може отримати off-by-one layout або залежати від нестандартного extension. Сучасний C має стандартний синтаксис `data[]`.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ typedef struct Driver Driver;
 Driver d;
 ```
 
-Неможливо, бо compiler не знає розмір `Driver`.
+<span class="warn">Неможливо, бо compiler не знає розмір `Driver`.</span>
 
 Forward declaration створює incomplete type. Можна оголошувати pointer-и на нього, бо розмір pointer відомий, але не можна виділити object by value або звертатися до полів.
 

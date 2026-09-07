@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У C аргументи передаються за значенням – зміна локальної копії `state` зникне після повернення, і перехід стану загубиться. FSM тут означає finite state machine. 
+<span class="warn">У C аргументи передаються за значенням</span> – зміна локальної копії `state` зникне після повернення, і перехід стану загубиться. FSM тут означає finite state machine. 
 
 ```c
 // баг: правиться лише копія

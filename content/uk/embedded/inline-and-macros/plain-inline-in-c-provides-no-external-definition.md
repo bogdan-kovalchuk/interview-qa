@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У C99+ функція, оголошена просто `inline` (без `static`/`extern`), надає лише inline definition; вона не створює external symbol.
+У C99+ функція, оголошена просто `inline` (без `static`/`extern`), надає лише inline definition; вона <span class="warn">не створює external symbol</span>.
 
 Якщо компілятор у якомусь місці вирішить не inline-ити і зробити звичайний виклик, лінкер не знайде зовнішнього визначення -> `undefined reference`.
 

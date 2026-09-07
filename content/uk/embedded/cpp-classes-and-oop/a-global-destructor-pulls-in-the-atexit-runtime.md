@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Деструктор глобального об'єкта може змусити лінкер підтягнути `atexit()`/`__cxa_atexit` runtime cleanup інфраструктуру – зайві байти ROM.
+<span class="warn">Деструктор глобального об'єкта може змусити лінкер підтягнути `atexit()`/`__cxa_atexit` runtime cleanup інфраструктуру</span> – зайві байти ROM.
 
 Для глобальних об'єктів компілятор має зареєструвати dtor, щоб викликати його при завершенні програми. У bare-metal firmware завершення часто не буває, тому ця інфраструктура непотрібна.
 

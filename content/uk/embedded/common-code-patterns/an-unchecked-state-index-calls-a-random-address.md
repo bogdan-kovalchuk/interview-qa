@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Невалідний/пошкоджений стан -> out-of-bounds read таблиці й indirect call за випадковою адресою (ймовірний HardFault).
+<span class="warn">Невалідний/пошкоджений стан -> out-of-bounds read таблиці й indirect call за випадковою адресою</span> (ймовірний HardFault).
 
 Дані стають control flow, тож стан із зовнішнього входу чи corruption напряму керує тим, яку функцію викличуть.
 

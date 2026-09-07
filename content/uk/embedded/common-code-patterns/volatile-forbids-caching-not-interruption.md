@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`volatile` забороняє кешування, але НЕ робить операцію атомарною.
+<span class="warn">`volatile` забороняє кешування, але НЕ робить операцію атомарною.</span>
 
 `count++` – це read-modify-write (RMW, 3 кроки); ISR (interrupt service routine) може перебити main посередині, і інкремент загубиться. `volatile` лише гарантує, що кожен крок іде в пам'ять, а не що кроки неподільні.
 

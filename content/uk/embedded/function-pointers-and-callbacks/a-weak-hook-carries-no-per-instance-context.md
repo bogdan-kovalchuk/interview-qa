@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Weak function має одне глобальне ім'я і не несе per-instance context.
+<span class="warn">Weak function має одне глобальне ім'я і не несе per-instance context.</span>
 
 Якщо є два UART-и або два timer-и, один weak hook не знає, до якого об'єкта належить подія, якщо це не передано окремо. Також weak override прихований на рівні linker-а, що ускладнює тестування і dependency tracking.
 

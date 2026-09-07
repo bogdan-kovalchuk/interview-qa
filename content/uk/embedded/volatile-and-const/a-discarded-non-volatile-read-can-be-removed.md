@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ sources:
 ADC_DR;
 ```
 
-Якщо macro не volatile, компілятор може прибрати це читання.
+<span class="warn">Якщо macro не volatile, компілятор може прибрати це читання.</span>
 
 Для data register читання може очищати апаратний flag або витягувати sample з FIFO. Але для звичайного `uint32_t` expression statement без використання результату не має observable effect, тому оптимізатор має право його видалити.
 

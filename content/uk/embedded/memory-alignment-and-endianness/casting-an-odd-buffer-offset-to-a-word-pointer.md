@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ uint8_t buf[8];
 uint32_t v = *(uint32_t*)&buf[1];
 ```
 
-Адреса `&buf[1]` не кратна 4 -> misaligned access (HardFault на M0, штраф на M3/M4), плюс потенційне порушення strict aliasing.
+<span class="warn">Адреса `&buf[1]` не кратна 4 -> misaligned access</span> (HardFault на M0, штраф на M3/M4), плюс потенційне порушення strict aliasing.
 
 Cast `uint8_t*` -> `uint32_t*` обіцяє компілятору вирівнювання, якого немає.
 

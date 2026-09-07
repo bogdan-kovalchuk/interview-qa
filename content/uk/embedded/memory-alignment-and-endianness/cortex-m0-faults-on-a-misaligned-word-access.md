@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-HardFault.
+<span class="warn">HardFault.</span>
 
-Cortex-M0/M0+ (а також деякі RISC-V, ARM7TDMI) не підтримують misaligned access: будь-яке читання/запис `uint16_t`/`uint32_t` за невирівняною адресою -> fault.
+Cortex-M0/M0+ (а також деякі RISC-V, ARM7TDMI) <span class="warn">не підтримують misaligned access</span>: будь-яке читання/запис `uint16_t`/`uint32_t` за невирівняною адресою -> fault.
 
 Захист: не приводь `uint8_t*` зі зсувом до `uint32_t*`; для невирівняних даних використовуй `memcpy` у вирівняну змінну.[^embeddedinterviewlab]
 

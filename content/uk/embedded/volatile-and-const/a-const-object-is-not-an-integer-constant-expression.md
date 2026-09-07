@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У C `const` означає read-only object через цей identifier, але не завжди integer constant expression.
+<span class="warn">У C `const` означає read-only object через цей identifier, але не завжди integer constant expression.</span>
 
 Наприклад, file-scope `const int n = 10;` у C не можна всюди використовувати як розмір static array там, де потрібна compile-time constant expression. У C++ правила інші. Для C embedded коду часто використовують `enum`, `#define` або linker symbols для compile-time constants.
 

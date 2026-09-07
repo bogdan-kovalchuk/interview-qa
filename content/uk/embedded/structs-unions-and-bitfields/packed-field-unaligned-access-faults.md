@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Бо multi-byte поле може стати невирівняним.
+<span class="warn">Бо multi-byte поле може стати невирівняним.</span>
 
 Якщо `uint32_t value` у packed struct лежить на offset 1, доступ до нього може згенерувати unaligned load/store. На Cortex-M це залежить від ядра, налаштувань і типу інструкції: іноді працює повільніше, іноді дає UsageFault/HardFault, особливо для певних halfword/word або peripheral accesses.
 

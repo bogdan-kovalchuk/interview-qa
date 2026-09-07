@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-На `-O0` компілятор не інлайнить – кожен `set()` стає реальним викликом функції з прологом/епілогом.
+<span class="warn">На `-O0` компілятор не інлайнить – кожен `set()` стає реальним викликом функції з прологом/епілогом.</span>
 
 Тобто zero-overhead абстракція проявляється лише з увімкненою оптимізацією; у debug-збірці клас-обгортка коштує як виклик.
 

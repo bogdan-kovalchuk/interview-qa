@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Зайва крапка з комою стає частиною тексту заміни.
+<span class="warn">Зайва крапка з комою стає частиною тексту заміни.</span>
 
 `int a[SIZE];` розгорнеться у `int a[256;];` -> синтаксична помилка. А в `x = SIZE + 1;` вийде `x = 256; + 1;`, що компілюється, але робить не те.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`volatile` застосований до pointer variable, а не до даних за адресою.
+<span class="warn">`volatile` застосований до pointer variable, а не до даних за адресою.</span>
 
 Компілятор не кешуватиме саму змінну `reg`, але після отримання адреси доступ до `*reg` має тип звичайного `uint32_t`. Отже, читання register data все ще може оптимізуватися як звичайна пам'ять.
 

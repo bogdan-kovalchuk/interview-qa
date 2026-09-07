@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Бо padding bytes можуть відрізнятися, навіть якщо всі поля рівні.
+<span class="warn">Бо padding bytes можуть відрізнятися, навіть якщо всі поля рівні.</span>
 
 Padding не є логічною частиною стану структури. Він може містити старі stack bytes або різні значення після різних шляхів ініціалізації. `memcmp` порівнює raw bytes, тому може повернути "не рівні" для структур з однаковими member values.
 

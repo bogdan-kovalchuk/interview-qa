@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -37,7 +37,7 @@ sources:
 
 Вирівняний доступ потрапляє в одне слово -> одна транзакція. Misaligned значення перетинає межу слова -> потрібні дві транзакції плюс склеювання, або апаратура взагалі забороняє такий доступ.
 
-Правило: на простіших ядрах (Cortex-M0) це не «повільніше», а HardFault; на M3/M4 – штраф у такти.[^embeddedinterviewlab]
+Правило: на простіших ядрах (Cortex-M0) це не «повільніше», а <span class="warn">HardFault</span>; на M3/M4 – штраф у такти.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

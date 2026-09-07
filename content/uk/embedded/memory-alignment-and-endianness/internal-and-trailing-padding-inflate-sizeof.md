@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Через padding – внутрішній (для вирівнювання полів) і хвостовий (щоб розмір був кратний найбільшому alignment).
+<span class="warn">Через padding</span> – внутрішній (для вирівнювання полів) і хвостовий (щоб розмір був кратний найбільшому alignment).
 
 Приклад: `{uint8_t; uint32_t; uint16_t;}` = 1 + 3pad + 4 + 2 + 2pad = 12, а не 7.
 

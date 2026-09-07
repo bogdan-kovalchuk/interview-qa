@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-M4-gateway (LE – little-endian) і PowerPC-нода (BE – big-endian) обмінювалися сирими `memcpy` структурами.
+<span class="warn">M4-gateway (LE – little-endian) і PowerPC-нода (BE – big-endian) обмінювалися сирими `memcpy` структурами.</span>
 
 Поле `uint8_t sensor_id` мало різний padding (3B на M4, 1B на PowerPC), що зсувало наступний `uint32_t` на 2 байти. Непарні id «випадково» працювали, парні давали сміття (~14000°C).
 
