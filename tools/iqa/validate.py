@@ -517,9 +517,13 @@ def _sentence_count(text: str) -> int:
     cleaned = _without_code(text)
     cleaned = CITATION_RE.sub("", cleaned)
     # Inline code or highlighting can legitimately start the next sentence
-    # with a lowercase identifier, for example `<code>mutex</code>`.
+    # with a lowercase identifier, for example `<code>mutex</code>`. The marker
+    # is removed below, so the position is marked in both markup forms - the
+    # imported HTML one and the Markdown one. Counting only the HTML form made
+    # the same answer count a different number of sentences depending on how it
+    # was written, which is what the limit is not allowed to depend on.
     cleaned = re.sub(
-        r"(?<=[.!?])(\s+)<(?=(?:code|span)\b)", r"\1X<", cleaned, flags=re.IGNORECASE
+        r"(?<=[.!?])(\s+)(?=<(?:code|span)\b|`|\*\*)", r"\1X", cleaned, flags=re.IGNORECASE
     )
     # Preserve a word boundary where legacy/imported answers use HTML line
     # breaks. Removing the tag directly would join `sentence.<br>Next` into

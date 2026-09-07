@@ -57,6 +57,24 @@ def test_sentence_count_preserves_boundaries_across_html_breaks() -> None:
     assert _sentence_count("First sentence. <code>mutex</code> starts the second.") == 2
 
 
+def test_sentence_count_does_not_depend_on_the_markup_form() -> None:
+    """The 2-5 sentence limit bounds what fits on a card, so the same answer
+    must count the same however it is written.
+
+    A sentence may legitimately start with a lowercase identifier in inline code
+    or in a highlighted fragment. Marking that position only for the HTML form
+    made `<code>mutex</code>` count as a new sentence and `` `mutex` `` not, so
+    normalising an imported answer from HTML to Markdown silently changed how
+    many sentences the gate saw in it."""
+    html_form = "First sentence. <code>mutex</code> starts the second."
+    markdown_form = "First sentence. `mutex` starts the second."
+    bold_html = "First sentence. <span class=\"key\">mutex</span> starts the second."
+    bold_markdown = "First sentence. **mutex** starts the second."
+
+    assert _sentence_count(html_form) == _sentence_count(markdown_form) == 2
+    assert _sentence_count(bold_html) == _sentence_count(bold_markdown) == 2
+
+
 def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
