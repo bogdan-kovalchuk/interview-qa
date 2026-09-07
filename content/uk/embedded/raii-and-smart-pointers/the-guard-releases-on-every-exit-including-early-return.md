@@ -1,14 +1,14 @@
 ---
 id: emb-raii-0019
 title: "Як RAII вирішує проблему early return між lock і unlock?"
-description: "How does RAII solve the early-return problem between lock and unlock?"
+description: "RAII-guard звільняє мьютекс на кожному нормальному виході зі scope, включно з early return."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,22 @@ sources:
 
 ## Short answer
 
-TODO
+**RAII-guard звільняє мьютекс на кожному нормальному виході зі scope, включно з early return.**
+
+```cpp
+// C: баг на error-шляху
+mutex_lock(&m);
+if (error) return -1; // забули unlock!
+mutex_unlock(&m);
+
+// C++: RAII-guard
+{ LockGuard lock(m);
+  if (error) return -1; } // dtor розблокує
+```
+
+Типовий failure mode: early return між lock/unlock дає deadlock через забутий unlock на error path.
+
+Правило: RAII перетворює дисципліну (пам'ятати unlock) на структурну гарантію.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

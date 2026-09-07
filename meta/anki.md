@@ -85,9 +85,9 @@ guid = base91(sha256("iqa:v1:" + question_id).digest()[:8])
 на `/{lang}/q/{id}/`. Якщо тексту цією мовою ще немає, картка не їде – fallback іншою мовою у
 зворот не підставляється, бо змішана мова в колоді гірша за меншу колоду.
 
-| Пакет | Мова | Простір GUID | Корінь дерева колод | Карток на 2026-09-06 |
+| Пакет | Мова | Простір GUID | Корінь дерева колод | Карток на 2026-09-07 |
 |---|---|---|---|---|
-| `Interview QA - Full Library.apkg` | `uk` | `iqa:v1:{id}` | `Interview QA::` | 1222 |
+| `Interview QA - Full Library.apkg` | `uk` | `iqa:v1:{id}` | `Interview QA::` | 1241 |
 | `Interview QA (EN) - Full Library.apkg` | `en` | `iqa:v1:en:{id}` | `Interview QA (EN)::` | 145 |
 
 `python anki/build.py --language {uk,en} [--track <track>]`; без прапорців – українська і

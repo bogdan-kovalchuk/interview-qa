@@ -1,14 +1,14 @@
 ---
 id: emb-volconst-0032
 title: "Trap: чи безпечно прибрати `const` cast-ом?"
-description: "Trap: is it safe to cast `const` away?"
+description: "Ні: якщо початковий об'єкт був оголошений const, спроба змінити його через non-const lvalue має undefined behavior."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+```c
+const uint32_t cfg = 10;
+uint32_t *p = (uint32_t *)&cfg;
+*p = 20;
+```
+
+<span class="warn">Ні: якщо початковий об'єкт був оголошений `const`, спроба змінити його через non-const lvalue має undefined behavior.</span>
+
+На MCU `cfg` може лежати у Flash/`.rodata`, і запис через `p` може спричинити BusFault/HardFault або просто не змінити дані. Навіть якщо адреса в RAM, оптимізатор може припускати, що `cfg` не змінюється.
+
+Захист: не cast-away `const` для запису. Якщо дані мають змінюватися, вони не повинні бути `const`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

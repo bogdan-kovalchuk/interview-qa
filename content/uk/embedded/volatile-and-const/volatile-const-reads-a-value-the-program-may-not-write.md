@@ -1,14 +1,14 @@
 ---
 id: emb-volconst-0014
 title: "Що таке `volatile const` і навіщо воно потрібне?"
-description: "What is `volatile const` and what is it for?"
+description: "volatile const описує об'єкт, який програма не має права змінювати, але значення якого може змінитися без участі програми."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`volatile const`** описує об'єкт, який програма не має права змінювати, але значення якого може змінитися без участі програми.
+
+Типовий приклад: read-only status register. Firmware тільки читає; hardware оновлює біти стану. Без `volatile` компілятор може повторно використати старе значення, а без `const` програміст може випадково записати в read-only register.
+
+Embedded-правило: для апаратних read-only регістрів використовуй pointer to `volatile const` data.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

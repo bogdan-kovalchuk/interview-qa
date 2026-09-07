@@ -1,14 +1,14 @@
 ---
 id: emb-volconst-0050
 title: "Trap: чи можна передати `const uint8_t *` у функцію, яка очікує `uint8_t *`?"
-description: "Trap: can you pass a `const uint8_t *` to a function expecting `uint8_t *`?"
+description: "Без cast не можна; з cast можна приховати помилку дизайну."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Без cast не можна; з cast можна приховати помилку дизайну.</span>
+
+Функція з параметром `uint8_t *` має право писати у buffer, тож передача `const uint8_t *` порушує цей контракт. Якщо buffer лежить у Flash/`.rodata`, випадковий запис може закінчитися fault-ом або undefined behavior.
+
+Захист: розділяй API: input buffer як `const uint8_t *`, output buffer як `uint8_t *`. Не прибирай qualifiers cast-ом для зручності.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

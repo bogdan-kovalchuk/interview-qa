@@ -1,14 +1,14 @@
 ---
 id: emb-patterns-0014
 title: "Як виглядають чотири базові бітові операції?"
-description: "What do the four basic bit operations look like?"
+description: "Set – OR з маскою, clear – AND з інверсією маски, toggle – XOR, test – AND; маску роблять через BIT32(n)."
 track: embedded
 section: common-code-patterns
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,20 @@ sources:
 
 ## Short answer
 
-TODO
+**Set / Clear / Toggle / Test:**
+
+```c
+#define BIT32(n) (UINT32_C(1) << (n))
+
+reg |=  BIT32(n);   // set
+reg &= ~BIT32(n);   // clear
+reg ^=  BIT32(n);   // toggle
+if (reg & BIT32(n)) { ... } // test
+```
+
+Set – OR, clear – AND з інверсією маски, toggle – XOR, test – AND.
+
+Правило: ці чотири ідіоми – основа конфігурації регістрів і прапорців; для 32-bit регістрів використовуй 32-bit unsigned literal.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

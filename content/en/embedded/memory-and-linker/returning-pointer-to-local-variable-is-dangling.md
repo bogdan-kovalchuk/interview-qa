@@ -22,6 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+  - source_id: embeddedinterviewlab
+    title: "Embedded Interview Lab"
+    url: https://embeddedinterviewlab.com/
+    accessed: 2026-09-07
+    kind: community
+    version: null
+    applicability: "Origin of the code snippet and the GCC warning in this answer; the DOU deck supports the remaining claims."
   - source_id: gnu-ld-manual
     title: "GNU linker ld manual"
     url: https://sourceware.org/binutils/docs/ld/index.html

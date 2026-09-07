@@ -1,14 +1,14 @@
 ---
 id: emb-fnptr-0030
 title: "Як правильно передати стан у C callback без global variables?"
-description: "How do you pass state into a C callback without global variables?"
+description: "Через пару callback + context pointer."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Через пару `callback + context pointer`.
+
+Приклад: `timer_start(timer, on_timeout, &app);` – driver зберігає `on_timeout` і `&app`. Коли timer спрацьовує, він викликає `on_timeout(&app)`. Callback приводить `void *` назад до `struct App *`.
+
+Правило: callback не повинен здогадуватись про global instance; context робить залежність явною.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

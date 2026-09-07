@@ -1,14 +1,14 @@
 ---
 id: emb-structs-0053
 title: "Trap: чи можна порівнювати layout C struct між різними компіляторами без перевірки?"
-description: "Trap: can you rely on C struct layout across different compilers without checking?"
+description: "Ні: ABI, alignment, packing pragmas і bit-field rules можуть відрізнятися."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Ні: ABI, alignment, packing pragmas і bit-field rules можуть відрізнятися.</span>
+
+Навіть однаковий source може мати інші offsets або розмір на іншій архітектурі. Для host tool + MCU firmware це частий баг: PC tool пише binary file за своїм struct layout, firmware читає за іншим.
+
+Захист: external binary formats описуй у байтах, не в C structs. Додай version, length, endian і static/runtime checks.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
