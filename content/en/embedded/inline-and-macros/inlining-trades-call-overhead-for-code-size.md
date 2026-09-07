@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0049
 title: "How does `inline` affect code size in embedded?"
-description: "How does `inline` affect code size in embedded?"
+description: "Inline removes call overhead but duplicates the function body at every call site, which can bloat flash on larger functions."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Inline removes call overhead but duplicates the function body at every call site.**
+
+For tiny functions this often reduces code (the call is more expensive than the body). For larger or frequently called ones, it <span class="warn">bloats flash and pressures the I-cache</span>, sometimes slowing the system down.
+
+Rule: `inline` small helpers; keep large functions as regular ones and trust the optimizer. On limited flash, weigh `-Os` against the actual map file.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

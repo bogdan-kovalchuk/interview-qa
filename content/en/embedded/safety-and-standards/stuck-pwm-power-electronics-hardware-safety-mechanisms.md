@@ -1,7 +1,7 @@
 ---
 id: emb-safety-0003
 title: "Why can a stuck PWM in power electronics be dangerous for hardware and what safety mechanisms should be built in?"
-description: "Why can a stuck PWM in power electronics be dangerous for hardware and what safety mechanisms should be built in?"
+description: "A stuck PWM can leave power switches in a dangerous state, so hardware shutdown, dead-time, current and temperature limits, and watchdog are required."
 track: embedded
 section: safety-and-standards
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A stuck PWM can leave a MOSFET or IGBT in a dangerous duty or open both legs simultaneously, leading to shoot-through, overheating, or load destruction. Required measures: hardware shutdown, dead-time, current and temperature limits, watchdog, timer fault inputs, and safe default state of pins. <span class="warn">Safety must not rely only on the main loop; the critical shutdown mechanism must work even during a firmware hang.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

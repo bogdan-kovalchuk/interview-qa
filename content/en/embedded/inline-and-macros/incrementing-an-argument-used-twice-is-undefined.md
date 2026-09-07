@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0046
 title: "Trap: how many times is `a` incremented?"
-description: "Trap: how many times is `a` incremented?"
+description: "There is no reliable answer because the macro expands its argument twice, producing unsequenced modifications and undefined behavior."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ int b = SQR(a++);
 
 ## Short answer
 
-TODO
+<span class="warn">There is no reliable answer: this is undefined behavior.</span>
+
+The macro substitutes the argument in two places: `((a++) * (a++))`. Parentheses save you from precedence issues, but not from double evaluation. Two increments of the same scalar object within one expression are unsequenced relative to each other, so the C standard defines neither the multiplication result nor the final value of `a`.
+
+Fix: correct parentheses do not cure side effects; for arguments with effects, use a `static inline` function or a local variable assigned before the macro.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

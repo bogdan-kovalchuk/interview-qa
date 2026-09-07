@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0007
 title: "What is an SPSC lock-free ring buffer and what is it for?"
-description: "What is an SPSC lock-free ring buffer and what is it for?"
+description: "SPSC ring buffer, safe without disabling interrupts when each index has one writer and is accessed atomically."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**SPSC (single-producer / single-consumer) ring buffer**, safe without disabling interrupts provided each index has a single writer and is read/written atomically for that MCU (microcontroller unit).
+
+Typically: producer is the ISR (interrupt service routine), for example UART RX (universal asynchronous receiver-transmitter receive), consumer is the main loop. `head` and `tail` are each updated by their own side, so there is no shared read-modify-write.
+
+Rule: SPSC ring buffer is the standard for UART RX/TX (receive/transmit), ADC (analog-to-digital converter) sample queues and logging; always static allocation, no `malloc`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

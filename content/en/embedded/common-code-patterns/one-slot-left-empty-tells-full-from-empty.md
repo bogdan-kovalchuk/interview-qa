@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0010
 title: "How are full and empty distinguished in a ring buffer without a counter?"
-description: "How are full and empty distinguished in a ring buffer without a counter?"
+description: "Full and empty are distinguished by head and tail with one slot always left empty."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Empty: `head == tail`. Full: `(head + 1) & MASK == tail`** (one slot is always left empty).
+
+This avoids a shared `count` variable that creates a read-modify-write race between the ISR (interrupt service routine) and main.
+
+Rule: one slot is sacrificed, but true lock-free safety is gained without critical sections.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0005
 title: "Trap: what is wrong with the call `MAX(++x, y)`?"
-description: "Trap: what is wrong with the call `MAX(++x, y)`?"
+description: "Double evaluation in a function-like macro causes arguments with side effects to execute more than once."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Double evaluation</span>: the parameter `a` appears twice in the body, so `++x` executes twice when the condition is true.
+
+Expansion: `((++x) > (y) ? (++x) : (y))` – `x` is incremented a second time in the true branch. Any argument with a side effect (`++`, `--`, a function call, reading a volatile register) produces an unexpected result.
+
+Fix: use a `static inline` function – it evaluates its argument exactly once.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

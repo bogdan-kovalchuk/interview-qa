@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0037
 title: "How do you define access to a memory-mapped register with a macro?"
-description: "How do you define access to a memory-mapped register with a macro?"
+description: "The macro expands into lvalue access to a fixed address for read and write of a memory-mapped register."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The macro expands into lvalue access to a fixed address**, so you can write `GPIOA_ODR = 0xFF;` and `x = GPIOA_ODR;`.
+
+`volatile` prevents the compiler from caching or eliminating the access; the cast converts a numeric address to a typed pointer; the outer `*` dereferences it. The `U` suffix makes the literal unsigned.
+
+Rule: this is one of the cases where a macro is justified – such an address constant is not conveniently expressed as a function.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

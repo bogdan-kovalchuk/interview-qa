@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0020
 title: "What is the error struct pattern and when is it better than a plain code?"
-description: "What is the error struct pattern and when is it better than a plain code?"
+description: "It stores not only the code but also context: the failing source line and the time"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ typedef struct {
 
 ## Short answer
 
-TODO
+**It stores not only the code but also context: the failing source line and the time.**
+
+Useful for diagnostics: `record_error(code, __LINE__)` into a global `last_error` gives minimal overhead and the ability to understand exactly where the error occurred.
+
+Rule: context-rich error info is for diagnosing complex or rare faults.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0003
 title: "How does `RS232` communication work?"
-description: "How does `RS232` communication work?"
+description: "RS-232 is an electrical signal standard with inverted levels and longer range; UART describes data framing – they are different things."
 track: embedded
 section: peripherals-and-buses
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+RS-232 is an **electrical signal standard**, while UART is the data-framing block/protocol, so they are not the same thing: UART describes the frame, baud rate, start/stop/parity bits, whereas RS-232 describes voltage levels and the physical interface.
+
+Differences from TTL UART:
+
+- **Voltage levels**: logic 1 = −3 to −15 V, logic 0 = +3 to +15 V (inverted!), vs TTL 0/3.3–5 V;
+- distance: up to ~15 m (TTL ~1 m);
+- connector: DB-9 with `RTS`/`CTS` lines for flow-control;
+- connecting an MCU to RS-232 requires a level converter, e.g. `MAX232`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

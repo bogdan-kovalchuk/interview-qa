@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0041
 title: "Which shared invariant makes an SPSC ring buffer safe without locks?"
-description: "Which shared invariant makes an SPSC ring buffer safe without locks?"
+description: "Each index has exactly one writer: the producer writes only head, the consumer writes only tail."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Each index has exactly one writer: the producer writes only `head`, the consumer – only `tail`.**
+
+Since there is no shared variable modified by both sides (like `count`), there is no read-modify-write race either. Reading the other side's index is safe provided it is `volatile` and updated atomically for that MCU (microcontroller unit).
+
+Rule: "one writer per variable" is the foundation of all lock-free SPSC (single-producer / single-consumer) structures.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0024
 title: "How do you define an `ARRAY_SIZE` macro and where does it break dangerously?"
-description: "How do you define an `ARRAY_SIZE` macro and where does it break dangerously?"
+description: "Returns the number of array elements at compile time but breaks dangerously when passed a pointer."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ sources:
 
 ## Short answer
 
-TODO
+Returns the number of elements in an array at compile time.
+
+<span class="warn">Trap</span>: if you pass a pointer (including a function parameter array that decays to a pointer), `sizeof(a)` gives the pointer size, and the result is wrong.
+
+Protection: apply only to real arrays in the same scope; GCC/Clang have a trick with `__builtin_types_compatible_p` that gives a compile error on a pointer; in C++ – `std::size`/template.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

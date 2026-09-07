@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0019
 title: "What does MISRA C Rule 4.9 require about function-like macros?"
-description: "What does MISRA C Rule 4.9 require about function-like macros?"
+description: "MISRA C requires preferring functions over function-like macros where they are interchangeable."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**MISRA C (Motor Industry Software Reliability Association C) requires preferring functions over function-like macros** where they are interchangeable.
+
+Rationale: macros bypass type checking, can evaluate arguments unpredictably (double evaluation) and complicate debugging and static analysis.
+
+Practical consequence: in safety-critical projects, replace function-like macros with `static inline`; keep macros only for what cannot be a function (register defs, conditional compilation, X-macros).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

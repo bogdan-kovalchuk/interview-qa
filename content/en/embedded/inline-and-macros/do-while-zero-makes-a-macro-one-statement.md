@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0010
 title: "Why is a statement macro wrapped in `do { ... } while(0)`?"
-description: "Why is a statement macro wrapped in `do { ... } while(0)`?"
+description: "Do-while-zero makes a multi-statement macro behave as a single statement that works correctly with if-else and semicolons."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ sources:
 
 ## Short answer
 
-TODO
+**So that a multi-statement macro behaves as a single statement** and works correctly with `if/else` and a semicolon.
+
+`do { ... } while(0)` forms a single block that requires a `;` at the call site, so `if (c) LOG_ERR(x); else ...` compiles correctly.
+
+Rule: wrap any multi-statement macro in `do { ... } while(0)`, with `\\` at the end of each line for continuation.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

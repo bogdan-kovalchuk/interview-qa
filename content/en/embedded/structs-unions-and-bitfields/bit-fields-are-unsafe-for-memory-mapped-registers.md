@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0024
 title: "Trap: why are bit-fields dangerous for memory-mapped registers?"
-description: "Trap: why are bit-fields dangerous for memory-mapped registers?"
+description: "Bit-field layout is implementation-defined and access often generates a read-modify-write."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Bit-field layout is implementation-defined, and access often generates a read-modify-write.</span>
+
+Bit ordering within a storage unit, signedness of plain `int` bit-fields, and padding between them all depend on the compiler/ABI. Moreover, writing one bit-field may read the entire register and write it back, which is dangerous for write-one-to-clear or read-to-clear bits.
+
+Defence: for hardware registers it is often better to use masks/shifts and atomic set/clear registers. If bit-fields are allowed, pin to a specific compiler ABI and test the generated code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0019
 title: "Why is `ERR_OK` always zero?"
-description: "Why is `ERR_OK` always zero?"
+description: "So that zero means success and any non-zero value means an error"
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**So that `0` means success and any non-zero value means an error** (truthiness).
+
+Then `if (result) { handle_error(); }` and `if (sensor_read(...) != ERR_OK)` work naturally. This is the typical convention of a HAL (hardware abstraction layer) and many POSIX-like APIs (application programming interface): 0 = success, non-zero/negative value = error.
+
+Rule: in an error enum `ERR_OK = 0` comes first; real codes are non-zero.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

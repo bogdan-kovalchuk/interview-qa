@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0015
 title: "What is an include guard and which problem does it solve?"
-description: "What is an include guard and which problem does it solve?"
+description: "An include guard prevents a header from being included more than once in the same translation unit."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An include guard prevents a header from being included more than once** in the same translation unit.
+
+Without it, a double `#include` causes <span class="warn">redefinition</span> of types, `struct`s and prototypes. On the first pass `SENSOR_H` is not yet defined -> the content is processed and the guard is defined; on subsequent passes the content is skipped.
+
+Rule: every header needs a guard with a unique name, or `#pragma once`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

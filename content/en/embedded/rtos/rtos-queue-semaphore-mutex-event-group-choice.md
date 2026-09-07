@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Queue** transfers data between ISR/tasks or tasks; **semaphore** signals an event or counts resources. **Mutex** protects a shared resource and preferably has priority inheritance. **Event group** is convenient for a set of flags when a task waits on one or more conditions.[^dou-embedded-interview]
 
 ## Detailed explanation
 

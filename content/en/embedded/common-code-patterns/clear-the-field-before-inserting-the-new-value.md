@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0017
 title: "How do you write a multi-bit field without disturbing the other bits?"
-description: "How do you write a multi-bit field without disturbing the other bits?"
+description: "First clear the field bits then insert the new shifted and masked value"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ reg = (reg & ~PRESC_MASK)
 
 ## Short answer
 
-TODO
+**First clear the field bits (`& ~MASK`), then insert the new value (shifted and masked).**
+
+Masking `value` with `& MASK` guards against overflow into adjacent bits if `value` is too large.
+
+Rule: writing a register field is always clear + set, otherwise you corrupt neighboring settings.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

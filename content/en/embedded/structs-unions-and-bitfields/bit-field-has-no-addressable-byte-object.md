@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0023
 title: "Why can you not take the address of a bit-field?"
-description: "Why can you not take the address of a bit-field?"
+description: "A bit-field has no addressable byte object like a regular field."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">A bit-field has no addressable byte object like a regular field.</span>
+
+It may occupy several bits within a storage unit, and the C address-of operator works with objects that have an address. Therefore `&s.flag` for a bit-field is a compile error.
+
+Embedded consequence: a bit-field cannot be passed to a function as a pointer to the field or used with APIs that expect a variable address.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

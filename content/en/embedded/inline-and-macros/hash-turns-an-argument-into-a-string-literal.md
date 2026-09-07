@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0012
 title: "What does the stringification operator `#` do in a macro?"
-description: "What does the stringification operator `#` do in a macro?"
+description: "The # operator turns a macro argument into a string literal using the argument text as written before expansion."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ printf("%s", STR(hello));
 
 ## Short answer
 
-TODO
+**`#x` turns a macro argument into a string literal**: here `"hello"` is substituted.
+
+It works only inside a function-like macro and applies to the argument text as written. Useful for assert messages, debug tracing and name tables.
+
+Rule: `#` takes the argument text, not its value – expanding a nested macro requires a second level.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

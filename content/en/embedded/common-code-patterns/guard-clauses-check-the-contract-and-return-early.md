@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0027
 title: "What are guard clauses and what are they for?"
-description: "What are guard clauses and what are they for?"
+description: "Early-return checks at function entry against null dereference and invalid parameters"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ err_t motor_set_speed(motor_t *m, int32_t rpm) {
 
 ## Short answer
 
-TODO
+**Early-return checks at function entry** against null dereference and invalid parameters.
+
+After the guards, the main logic works only with guaranteed-valid data – less nesting, a cleaner happy path.
+
+Rule: every public API (application programming interface) function starts with guard clauses (null + range + state).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

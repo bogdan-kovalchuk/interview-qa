@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0006
 title: "What problems can arise if a function returns a pointer to a local variable?"
-description: "What problems can arise if a function returns a pointer to a local variable?"
+description: "A local variable is destroyed on function return, so the returned pointer becomes dangling and accessing it is undefined behavior."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,15 @@ sources:
 
 ## Short answer
 
-TODO
+A local variable lives on the **stack** and is destroyed when the function returns (SP changes).[^dou-embedded-interview] The returned pointer becomes a <span class="warn">dangling pointer</span> – it points to memory that is no longer valid. Reading or writing through it is <span class="warn">undefined behavior</span>: it may return garbage, overwrite other variables, or cause a crash.
+
+```c
+int* f(void) { int x = 42; return &x; }
+```
+
+The memory may be overwritten by the next function call, and GCC warns: `warning: function returns address of local variable [-Wreturn-local-addr]`.[^embeddedinterviewlab]
+
+Correct alternatives: return a value (not a pointer); allocate via `malloc` (heap); use a `static` variable (but not thread-safe); pass a buffer through a parameter.
 
 ## Detailed explanation
 

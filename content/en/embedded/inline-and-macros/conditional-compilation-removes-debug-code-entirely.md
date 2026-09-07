@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0017
 title: "How do you write debug-only code that disappears completely in a release build?"
-description: "How do you write debug-only code that disappears completely in a release build?"
+description: "Conditional compilation removes debug code entirely before compilation leaving zero flash and RAM overhead."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Conditional compilation**: with `DEBUG` the macro expands to `printf`, otherwise to nothing, and the code is removed entirely before compilation (zero flash/RAM).
+
+This is better than `if (debug)` because it leaves no dead branches and no string literals in the firmware.
+
+Rule: define `DEBUG` via a build flag (`-DDEBUG`), not in the code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

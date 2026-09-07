@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0029
 title: "What is a designated initializer and why is it useful for structs?"
-description: "What is a designated initializer and why is it useful for structs?"
+description: "A designated initializer explicitly names the field being initialized, such as .baud = 115200."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+A **designated initializer** explicitly specifies which field is being initialized: `.baud = 115200`.
+
+This makes the code more resilient to field reordering and more readable for configuration structs. Unspecified fields receive zero initialization when the initializer is an aggregate initializer.
+
+Embedded rule: for driver config, `UART_Config cfg = { .baud = 115200, .parity = PARITY_NONE };` is better than a positional initializer with a long list of numbers.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

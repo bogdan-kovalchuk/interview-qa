@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0038
 title: "Trap: what is wrong with this definition?"
-description: "Trap: what is wrong with this definition?"
+description: "The struct contains itself by value, so its size would be infinite."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ struct Node {
 
 ## Short answer
 
-TODO
+<span class="warn">The struct contains itself by value, so its size would be infinite.</span>
+
+The compiler cannot complete the layout: to know the size of `Node`, it needs the size of `next`, which is again `Node`. The allowed variant is a pointer: `struct Node *next;`.
+
+Defence: for recursive data structures use a pointer or an index into a pool, not a nested object of the same type.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0008
 title: "What does `rb_put` (the producer) look like in a lock-free ring buffer?"
-description: "What does `rb_put` (the producer) look like in a lock-free ring buffer?"
+description: "Producer writes data into the slot and then updates head last to publish it."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -45,7 +45,11 @@ static inline bool rb_put(ringbuf_t *rb, uint8_t b) {
 
 ## Short answer
 
-TODO
+**Producer writes data, then updates `head` last.**
+
+First compute `next` with the mask; if `next == tail` the buffer is full and nothing is written. Writing into `buf` before updating `head` guarantees the consumer does not see a half-written slot.
+
+Rule: only the producer touches `head` – that is what makes it lock-free.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

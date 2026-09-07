@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+An RTOS scheduler selects the ready task with the highest priority or by policy for equal priority. **Task state** describes ready, running, blocked, or suspended; **tick** provides the system time base; **context switch** saves the current task's registers and restores another. Preemption allows a higher-priority task to preempt a lower one.[^dou-embedded-interview]
 
 ## Detailed explanation
 

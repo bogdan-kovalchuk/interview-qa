@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0028
 title: "Trap: is the in-memory order of bit-fields portable?"
-description: "Trap: is the in-memory order of bit-fields portable?"
+description: "No, the allocation order of bit-fields within a storage unit is implementation-defined."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No: the allocation order of bit-fields within a storage unit is implementation-defined.</span>
+
+One compiler may place the first field in the least significant bits; another compiler or a different ABI may behave differently. Endianness also does not give a simple portable rule for bit-field layout within bytes.
+
+Defence: do not use bit-fields as a wire format between different compilers/targets. For protocol bits use masks/shifts over an integer obtained from explicitly parsed bytes.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

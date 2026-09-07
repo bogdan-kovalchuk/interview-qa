@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0025
 title: "When do you choose `static inline` and when a function-like macro?"
-description: "When do you choose `static inline` and when a function-like macro?"
+description: "static inline is for everything function-like: small helpers, type-safe bit manipulation, and single-evaluation argument computations."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`static inline`** is for everything that resembles a function: small helpers, type-safe bit manipulation, computations with arguments (exactly one evaluation of each).
+
+A macro is only for what cannot be a function: working with tokens/names (`#`, `##`), conditional compilation, register address definitions, X-macros, `STATIC_ASSERT`.
+
+Rule: default to `static inline`; a macro is an exception that requires justification.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

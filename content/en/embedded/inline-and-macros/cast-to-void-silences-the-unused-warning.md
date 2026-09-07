@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0034
 title: "What is the `UNUSED(x)` macro for and what does it look like?"
-description: "What is the `UNUSED(x)` macro for and what does it look like?"
+description: "Suppresses the unused parameter warning while explicitly showing the value is deliberately unused."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Suppresses the 'unused parameter/variable' warning**, explicitly showing the intent that the value is deliberately unused.
+
+Typical in callback signatures where some parameters are not needed: `void cb(void *ctx) { UNUSED(ctx); ... }`. A cast to `void` generates no code.
+
+Rule: an explicit `UNUSED(x)` is better than globally disabling `-Wunused` – the warning remains useful elsewhere.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

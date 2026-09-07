@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0005
 title: "What is the difference between a general-purpose OS and a real-time OS?"
-description: "What is the difference between a general-purpose OS and a real-time OS?"
+description: "GPOS is optimised for throughput and fairness with unpredictable latency, while RTOS targets determinism with bounded latency and low jitter."
 track: embedded
 section: rtos
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**GPOS** (Linux, Windows): optimised for throughput, fairness, and convenience for many processes; latency can be unpredictable without special real-time configuration.[^dou-embedded-interview]
+
+**RTOS** (FreeRTOS, Zephyr, VxWorks): optimised for **determinism** – bounded latency and predictable worst-case response with properly designed priorities, ISRs, and critical sections. In a preemptive RTOS, a ready task with higher priority preempts a lower one.
+
+Key metric – **jitter** (spread of response time). RTOS task examples: motor control, ABS, medical devices.
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0022
 title: "Why are return codes the default pattern in safety-critical code?"
-description: "Why are return codes the default pattern in safety-critical code?"
+description: "MISRA C requires return values not to be ignored and IEC 62304 requires a controlled software fault handling process"
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**MISRA C (Motor Industry Software Reliability Association C) requires that return values not be ignored, and IEC 62304 requires a controlled process for handling software faults.**
+
+Return codes force the caller to inspect the result, whereas a sentinel or a silent failure is easy to ignore. This makes errors visible in an audit.
+
+Rule: in certified systems every call that can fail returns a defined code, and every code is checked.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

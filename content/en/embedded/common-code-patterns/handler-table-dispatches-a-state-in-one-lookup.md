@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0004
 title: "What does a state machine built on a function-pointer table look like?"
-description: "What does a state machine built on a function-pointer table look like?"
+description: "Array of function pointers indexed by state with a single O(1) lookup for dispatch."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -45,7 +45,11 @@ handlers[*state](evt);
 
 ## Short answer
 
-TODO
+**Array of pointers to handlers, indexed by state; dispatch is a single lookup, O(1).**
+
+Advantages: a new state is a new function plus a table row, with no changes to existing code. The `static const` table sits in Flash (`.rodata`).
+
+Rule: scalable for many states, but harder to read in a debugger.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

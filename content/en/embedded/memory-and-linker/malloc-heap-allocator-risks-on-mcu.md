@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`malloc` takes a block from the heap, maintains metadata and searches for a free chunk of sufficient size; `free` returns the block to the allocator. On an MCU the heap is small, the allocator can be nondeterministic in time and create fragmentation. <span class="warn">In long-running firmware this is a risk of runtime failure</span>, so static buffers, pools or an arena allocator are often used instead.[^dou-embedded-interview]
 
 ## Detailed explanation
 

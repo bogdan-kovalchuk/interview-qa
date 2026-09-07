@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0002
 title: "How does an object-like macro differ from an ordinary constant?"
-description: "How does an object-like macro differ from an ordinary constant?"
+description: "An object-like macro is plain text substitution with no type and no scope, visible from the define site to end of file."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An object-like macro is plain text substitution**: wherever `BUFFER_SIZE` appears, the preprocessor inserts `256`.
+
+Unlike a `const` variable, a macro <span class="warn">has no type and no scope</span> – it is visible from the `#define` site to the end of the file (or `#undef`) and ignores blocks, functions and namespaces.
+
+Rule: for named constants in C++ and modern C, `const`/`constexpr`/`enum` are usually preferable because they are type-safe and visible to the debugger.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

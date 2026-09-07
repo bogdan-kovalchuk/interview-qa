@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0001
 title: "Which seven basic embedded C patterns are worth knowing for an interview?"
-description: "Which seven basic embedded C patterns are worth knowing for an interview?"
+description: "State machines, ring buffers, bit manipulation, error handling, memory-mapped I/O, volatile-safe patterns, guard clauses."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**State machines, ring buffers, bit manipulation, error handling, memory-mapped I/O, volatile-safe patterns, guard clauses.**
+
+A good embedded version of these patterns is usually heap-free and has a clear answer to whether it is safe for ISR (interrupt service routine) / main loop interaction. Not every pattern is automatically ISR-safe – safety depends on shared state, atomicity and blocking calls.
+
+Rule: when asked “which patterns do you use”, name them with their trade-offs, not just a list.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0031
 title: "Why is `volatile` not enough for a safe `count++` between an ISR and main?"
-description: "Why is `volatile` not enough for a safe `count++` between an ISR and main?"
+description: "volatile prevents caching but does not make the operation atomic"
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`volatile` prevents caching but does NOT make the operation atomic.</span>
+
+`count++` is a read-modify-write (RMW, 3 steps); an ISR (interrupt service routine) can preempt main in the middle, and the increment is lost. `volatile` only guarantees that each step goes to memory, not that the steps are indivisible.
+
+Defense: a critical section, an atomic type, or a design without shared RMW (head/tail-only ring buffer).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

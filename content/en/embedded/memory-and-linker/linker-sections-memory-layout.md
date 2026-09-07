@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Linker** resolves symbols/relocations, pulls the needed objects from libraries and places sections into memory regions. Typically `.text`/`.rodata` go into Flash, `.data` has a load image in Flash and a runtime address in RAM, `.bss` is zero-initialized in RAM. Stack/heap boundaries are set by the linker script or startup code, and a mistake here causes a hard fault or corruption.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Linker script** describes Flash/RAM regions, entry point, sections, vector table and symbols for startup. Typical errors: wrong vector table address, overlap of `.data/.bss/heap/stack`, unexported `_sidata/_sdata/_edata/_sbss/_ebss`, incorrect RAM origin/length. <span class="warn">Such errors often appear as a reset loop or HardFault before main</span>.[^dou-embedded-interview]
 
 ## Detailed explanation
 

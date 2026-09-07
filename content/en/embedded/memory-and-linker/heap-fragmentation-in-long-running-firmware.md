@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Heap fragmentation** is a situation where there is enough total free memory, but it is split into small non-contiguous blocks. In firmware this appears as random `malloc` failures after hours or days of operation, especially with varying allocation sizes. Typical countermeasures: fixed-size pools, allocate-on-startup, bounded lifetimes and no heap in ISR.[^dou-embedded-interview]
 
 ## Detailed explanation
 

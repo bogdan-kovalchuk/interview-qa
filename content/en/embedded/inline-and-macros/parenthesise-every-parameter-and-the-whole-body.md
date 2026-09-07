@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0003
 title: "What does a correct function-like `MAX` macro look like and why is every parenthesis needed?"
-description: "What does a correct function-like `MAX` macro look like and why is every parenthesis needed?"
+description: "Parentheses around every parameter and around the whole expression protect against operator precedence problems after substitution."
 track: embedded
 section: inline-and-macros
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+```c
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+```
+
+Parentheses around every parameter and around the whole expression protect against operator precedence problems after substitution.
+
+Without them, an expression like `MAX(x & 1, y)` or `MAX(a, b) * 2` can expand with the wrong order of operations.
+
+Rule: always write a function-like macro using the `((param)...)` pattern – parameters in parentheses, result in parentheses.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

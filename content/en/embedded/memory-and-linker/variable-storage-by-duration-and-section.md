@@ -1,7 +1,7 @@
 ---
 id: emb-memlink-0009
 title: "Where can a variable be stored?"
-description: "A variable's storage depends on storage duration and the linker script: it may be placed on the stack, heap, in static storage, or in sections such as .data, .bss, .rodata, and .text."
+description: "A variable may reside on the stack, heap, or static storage depending on storage duration, with typical sections .data, .bss, .rodata, and .text."
 track: embedded
 section: memory-and-linker
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+A variable can reside in different places depending on storage duration and the linker script. Local automatic variables typically live on the **stack**, dynamic objects from `malloc` on the **heap**, globals and `static` in static storage.[^dou-embedded-interview]
+
+Typical sections: `.data` – initialized global/static variables, copied from Flash to RAM; `.bss` – zeroed or uninitialized global/static, zeroed by startup code; `.rodata` – constants; `.text` – machine code. The compiler may also hold values in registers temporarily.
 
 ## Detailed explanation
 

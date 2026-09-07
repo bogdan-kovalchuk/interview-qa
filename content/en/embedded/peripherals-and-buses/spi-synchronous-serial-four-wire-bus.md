@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0001
 title: "What is `SPI`?"
-description: "What is `SPI`?"
+description: "SPI is a synchronous full-duplex serial interface on four lines with no addressing and no ACK."
 track: embedded
 section: peripherals-and-buses
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**Serial Peripheral Interface** – a synchronous serial interface. Four lines: `SCK` (clock), `MOSI` (Master Out Slave In), `MISO` (Master In Slave Out), `CS/SS` (Chip Select, active LOW).
+
+Master-slave architecture. Full duplex. High speed (tens of MHz); Separate CS for each slave; No addressing – device selection via CS; No ACK; Typical: Flash memory, ADCs, displays, SD cards.[^dou-embedded-interview]
 
 ## Detailed explanation
 

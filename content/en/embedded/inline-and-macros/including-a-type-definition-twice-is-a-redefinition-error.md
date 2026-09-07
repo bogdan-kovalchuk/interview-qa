@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0039
 title: "Trap: what happens if a header defining a `struct` is included twice without an include guard?"
-description: "Trap: what happens if a header defining a `struct` is included twice without an include guard?"
+description: "Redefinition error because redefining the same type or struct in one translation unit is forbidden."
 track: embedded
 section: inline-and-macros
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Redefinition error</span>: redefining the same type/`struct`/`typedef` in one translation unit is forbidden.
+
+Double inclusion happens easily through transitive paths: `a.h` and `b.h` both include `types.h`, and `main.c` includes both. Without a guard the contents of `types.h` are processed twice.
+
+Protection: wrap every header in an `#ifndef` guard or `#pragma once` – then the second `#include` becomes a no-op.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

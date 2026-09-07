@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0009
 title: "How does a mutex differ from a semaphore in threads and RTOS tasks?"
-description: "A <code>mutex</code> has ownership: the task or thread that locks it must unlock it, and it often supports priority inheritance."
+description: "A mutex has ownership and often supports priority inheritance, while a semaphore is a counter of permits or events without ownership."
 track: embedded
 section: rtos
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`mutex` has ownership: the task or thread that locked it must unlock it, and it often supports priority inheritance. `semaphore` is a counter of permits or events without such ownership, so it can be given and taken for resources or signaling. For shared data protection, choose mutex; for producer-consumer signaling or pool count, choose semaphore.[^dou-embedded-interview]
 
 ## Detailed explanation
 

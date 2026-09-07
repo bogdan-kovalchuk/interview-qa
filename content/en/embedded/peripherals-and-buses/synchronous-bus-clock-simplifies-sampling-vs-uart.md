@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0012
 title: "What is the advantage of synchronous interfaces with a shared clock compared with asynchronous UART?"
-description: "On a synchronous bus such as SPI or I2C, the master supplies the clock, so the receiver does not have to recover bit timing from the baud rate."
+description: "On a synchronous bus such as SPI or I2C the master supplies the clock, so the receiver need not recover bit timing from the baud rate."
 track: embedded
 section: peripherals-and-buses
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+On a synchronous bus such as SPI/I2C the master supplies the clock, so the receiver does not have to recover bit timing from the baud rate on its own. This simplifies sampling and allows higher speeds on short traces or a controlled board. UART is simpler in wiring, but more sensitive to baud mismatch, jitter and framing errors.[^dou-embedded-interview]
 
 ## Detailed explanation
 

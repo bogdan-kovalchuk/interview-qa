@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0008
 title: "What is UART?"
-description: "UART is an asynchronous serial interface with TX/RX, an agreed baud rate, and frames containing start, data, optional parity, and stop bits."
+description: "UART is an asynchronous serial interface with TX/RX, an agreed baud rate, and frames of start, data, optional parity, and stop bits."
 track: embedded
 section: peripherals-and-buses
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**Universal Asynchronous Receiver-Transmitter** – an asynchronous serial interface. Two wires: `TX` (transmit) and `RX` (receive). No shared clock – both devices agree on the **baud rate** in advance (e.g. 115200 baud).[^dou-embedded-interview]
+
+Frame: START bit -> data bits -> parity (optional) -> STOP bit(s); Typically 8 data bits are used, though hardware/configuration may support 5–9; UART describes data framing; electrical levels can be TTL/CMOS, RS-232, RS-485, etc.
 
 ## Detailed explanation
 

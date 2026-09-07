@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0010
 title: "What is an RTOS, and how does it differ from a general-purpose OS in latency, scheduling, and determinism?"
-description: "An <span class=\"key\">RTOS</span> provides bounded interrupt and task latency, priority-based scheduling, and primitives for deterministic embedded tasks."
+description: "An RTOS provides bounded interrupt and task latency, priority-based scheduling, and primitives for deterministic embedded tasks."
 track: embedded
 section: rtos
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**RTOS** provides bounded interrupt and task latency, priority-based scheduling, and primitives for deterministic embedded tasks. A general-purpose OS optimises throughput, fairness, and multi-user capabilities, so latency can be less predictable. An RTOS does not guarantee "fast always"; it provides controlled worst-case conditions when code and priorities are designed correctly.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-patterns-0033
 title: "Why define register fields as MASK plus SHIFT rather than magic numbers?"
-description: "Why define register fields as MASK plus SHIFT rather than magic numbers?"
+description: "MASK+SHIFT pairs are self-documenting and centralize the register layout"
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**MASK+SHIFT pairs are self-documenting and centralize the register layout.**
+
+`(reg & PRESC_MASK) >> PRESC_SHIFT` clearly states which field is being read; magic `(reg & 0x70) >> 4` scattered across code is easy to desynchronize from the datasheet.
+
+Rule: one `#define` MASK and one SHIFT per field; use them for both reading and read-modify-write.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

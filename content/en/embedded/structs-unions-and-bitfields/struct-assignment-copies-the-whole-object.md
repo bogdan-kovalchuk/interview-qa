@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0039
 title: "How do assignment and `memcpy` differ for structs?"
-description: "How do assignment and `memcpy` differ for structs?"
+description: "Structure assignment copies the struct as a whole object; memcpy copies raw bytes including padding."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Structure assignment copies the struct value as a whole object**; practically this may include padding bytes, but the semantics describe copying member values.
+
+`memcpy` copies the raw object representation byte by byte. For trivially stored C structs both often give the same observable result for the fields, but `memcpy` may copy padding with undefined bytes.
+
+Rule: for ordinary struct copying use assignment; for wire/storage serialization do not copy padding bytes unnecessarily.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

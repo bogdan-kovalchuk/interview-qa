@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0037
 title: "How do you add a timeout to a flag-polling loop?"
-description: "How do you add a timeout to a flag-polling loop?"
+description: "Record the start tick and check the elapsed difference against the limit on every iteration."
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ while (!(REG->SR & FLAG)) {
 
 ## Short answer
 
-TODO
+**Remember the start; on every iteration check the tick difference against the limit.**
+
+Subtracting unsigned ticks survives counter wraparound correctly. This prevents an infinite hang if the hardware never sets the flag.
+
+Rule: never busy-wait on a hardware flag without a timeout – always timeout plus an error return.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

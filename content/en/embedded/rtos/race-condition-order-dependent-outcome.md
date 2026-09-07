@@ -1,7 +1,7 @@
 ---
 id: emb-rtos-0001
 title: "What is a race condition?"
-description: "What is a race condition?"
+description: "A race condition is a situation where the outcome depends on the execution order of threads, processes, or ISRs."
 track: embedded
 section: rtos
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Race condition** is a situation where the outcome depends on the execution order of threads, processes, or ISRs.[^dou-embedded-interview] If the order changes, the program may sometimes work correctly and sometimes produce an error.
+
+Classic example: `counter++` is not a single atomic action but a sequence of read, modify, write; if two threads read the old value simultaneously, one increment can be lost.
+
+Protection: `mutex`, spinlock, atomic operations, critical section, or briefly disabling interrupts in embedded code.
 
 ## Detailed explanation
 

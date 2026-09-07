@@ -1,7 +1,7 @@
 ---
 id: emb-macros-0011
 title: "Trap: why does this macro break `if/else`?"
-description: "Trap: why does this macro break `if/else`?"
+description: "A macro without do-while-zero leaves else without a matching if and causes unconditional execution of trailing statements."
 track: embedded
 section: inline-and-macros
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ else
 
 ## Short answer
 
-TODO
+<span class="warn">Expands to `if (err) a(); b(); else ok();`</span> – `else` no longer has a matching `if` -> compile error, or (with a single statement) `b()` is always called.
+
+Only `a()` belongs to the `if`; `b();` executes unconditionally and `else` is left dangling.
+
+Fix: `#define RST() do { a(); b(); } while(0)` – then the whole block is bound to the `if`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-patterns-0026
 title: "How do you correctly wait for the TXE flag before writing to a UART?"
-description: "How do you correctly wait for the TXE flag before writing to a UART?"
+description: "Spin on a bit test of the status register then write to the data register"
 track: embedded
 section: common-code-patterns
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ void usart1_send(uint8_t b) {
 
 ## Short answer
 
-TODO
+**Spin on a bit test of the status register, then write to the data register.**
+
+This works only with `volatile` fields (otherwise an infinite loop). `BIT(7)` is the TXE (transmit data register empty) mask; when the FIFO/TX (first-in, first-out / transmit) is ready, the bit is set by hardware.
+
+Rule: poll -> check the ready flag -> act; for long waits add a timeout.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

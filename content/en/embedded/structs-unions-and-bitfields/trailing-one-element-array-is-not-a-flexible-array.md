@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0034
 title: "Trap: what is wrong with the old `uint8_t data[1]` pattern at the end of a struct?"
-description: "Trap: what is wrong with the old `uint8_t data[1]` pattern at the end of a struct?"
+description: "It is a real 1-byte array, not a flexible array member, so sizeof includes that byte and padding."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">This is not a flexible array member but a real 1-byte array.</span>
+
+`sizeof(struct)` includes that byte and any padding after it. Code that allocates `sizeof(struct) + len` may get an off-by-one layout or depend on a non-standard extension. Modern C has the standard `data[]` syntax.
+
+Defence: for C99+ use a flexible array member `uint8_t data[];` and carefully compute the allocation size with overflow checks.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

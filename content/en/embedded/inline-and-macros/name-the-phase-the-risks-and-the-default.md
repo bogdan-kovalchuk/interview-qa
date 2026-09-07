@@ -1,15 +1,15 @@
 ---
 id: emb-macros-0047
 title: "What should a candidate say when asked to choose between a macro and `inline`?"
-description: "What should a candidate say when asked to choose between a macro and `inline`?"
+description: "Distinguish preprocessing from compilation, list macro risks such as double evaluation and precedence bugs, and default to static inline."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Distinguish the phase, list the macro risks, and default to `static inline`.**
+
+Strong answer: preprocessing is not compilation; a macro is text without types or scope, at risk of double evaluation and precedence bugs; `static inline` gives the same speed plus type safety, single evaluation, and debuggability. Macros I keep for register defs, conditional compilation, `#`/`##`, X-macros, `STATIC_ASSERT`, and I mention MISRA C (Motor Industry Software Reliability Association C) 4.9/20.7.
+
+Rule: do not stop at syntax – explain why and when.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
