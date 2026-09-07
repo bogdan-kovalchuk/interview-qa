@@ -69,6 +69,7 @@ class SourceKind(str, Enum):
 
 
 class SectionName(str, Enum):
+    QUESTION_CODE = "Question code"
     SHORT_ANSWER = "Short answer"
     DETAILED_EXPLANATION = "Detailed explanation"
     COMPARISON = "Comparison"
@@ -116,6 +117,7 @@ class EvaluationSubsection(str, Enum):
 SECTION_SEQUENCES: Mapping[QuestionType, tuple[SectionName, ...]] = MappingProxyType(
     {
         QuestionType.CONCEPT: (
+            SectionName.QUESTION_CODE,
             SectionName.SHORT_ANSWER,
             SectionName.DETAILED_EXPLANATION,
             SectionName.EVALUATION_GUIDE,
@@ -123,6 +125,7 @@ SECTION_SEQUENCES: Mapping[QuestionType, tuple[SectionName, ...]] = MappingProxy
             SectionName.SOURCES,
         ),
         QuestionType.MECHANISM: (
+            SectionName.QUESTION_CODE,
             SectionName.SHORT_ANSWER,
             SectionName.DETAILED_EXPLANATION,
             SectionName.EVALUATION_GUIDE,
@@ -130,6 +133,7 @@ SECTION_SEQUENCES: Mapping[QuestionType, tuple[SectionName, ...]] = MappingProxy
             SectionName.SOURCES,
         ),
         QuestionType.COMPARISON: (
+            SectionName.QUESTION_CODE,
             SectionName.SHORT_ANSWER,
             SectionName.DETAILED_EXPLANATION,
             SectionName.COMPARISON,
@@ -139,6 +143,7 @@ SECTION_SEQUENCES: Mapping[QuestionType, tuple[SectionName, ...]] = MappingProxy
             SectionName.SOURCES,
         ),
         QuestionType.PITFALL: (
+            SectionName.QUESTION_CODE,
             SectionName.SHORT_ANSWER,
             SectionName.DETAILED_EXPLANATION,
             SectionName.SYMPTOM,
@@ -213,7 +218,9 @@ SECTION_SEQUENCES: Mapping[QuestionType, tuple[SectionName, ...]] = MappingProxy
 )
 
 EVALUATION_SUBSECTIONS: tuple[EvaluationSubsection, ...] = tuple(EvaluationSubsection)
-OPTIONAL_SECTIONS = frozenset({SectionName.FOLLOW_UP, SectionName.REPRODUCTION})
+OPTIONAL_SECTIONS = frozenset(
+    {SectionName.QUESTION_CODE, SectionName.FOLLOW_UP, SectionName.REPRODUCTION}
+)
 
 
 class CanonicalModel(BaseModel):
@@ -456,6 +463,8 @@ def expected_sections(
             continue
         if section is SectionName.REPRODUCTION and section not in present:
             continue
+        if section is SectionName.QUESTION_CODE and section not in present:
+            continue
         result.append(section)
     return tuple(result)
 
@@ -466,7 +475,7 @@ def required_text_sections(
     return tuple(
         section
         for section in expected_sections(question_type, level)
-        if section is not SectionName.SOURCES
+        if section not in (SectionName.SOURCES, SectionName.QUESTION_CODE)
     )
 
 

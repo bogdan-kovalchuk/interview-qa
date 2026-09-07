@@ -452,6 +452,23 @@ def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
                         f"Evaluation guide subblock `{subsection.heading}` is empty",
                         path=record.label,
                     )
+        elif section.heading == SectionName.QUESTION_CODE.value:
+            # The snippet the question is about, and nothing else: the question's
+            # own wording is the title, and the section is optional - a question
+            # with no code omits it instead of filling it with `TODO`.
+            blocks = len(CODE_BLOCK_RE.findall(section.content))
+            if section.content.strip() == "TODO":
+                report.add(
+                    "sections",
+                    "Question code is optional: omit the section rather than mark it TODO",
+                    path=record.label,
+                )
+            elif blocks != 1 or _without_code(section.content).strip():
+                report.add(
+                    "sections",
+                    f"Question code must hold exactly one code block and no other text (found {blocks})",
+                    path=record.label,
+                )
         elif section.subsections:
             report.add(
                 "sections", f"`###` is forbidden in `{section.heading}`", path=record.label

@@ -243,6 +243,50 @@ def test_inline_code_indexing_a_function_pointer_table_is_not_a_link(tmp_path: P
     ]
 
 
+def test_question_code_is_an_optional_section_before_the_answer(tmp_path: Path) -> None:
+    """`Question code` holds the snippet the question is about.
+
+    It is optional, it sits immediately before `Short answer`, it does not take
+    part in `completeness`, and - because both languages carry it written - its
+    block is compared byte-for-byte by `lang-code-identical` like any other."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    block = "## Question code\n\n```python\nasync def slow() -> None:\n    time.sleep(1)\n```\n\n## Short answer"
+
+    repository = _base_repository(
+        tmp_path,
+        en_text=_replace(en_base, "## Short answer", block),
+        uk_text=_replace(uk_base, "## Short answer", block),
+    )
+    report = validate_repository(repository)
+
+    assert report.errors == []
+
+
+def test_question_code_holds_one_block_and_nothing_else(tmp_path: Path) -> None:
+    """Prose belongs to the title or to the answer, not to `Question code`.
+
+    The section exists to carry one snippet onto the card Front next to the
+    title; a second block or a run of text around it would be rendered as part
+    of the question without being one."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    block = (
+        "## Question code\n\nSome prose that is not code.\n\n"
+        "```python\nasync def slow() -> None:\n    time.sleep(1)\n```\n\n## Short answer"
+    )
+
+    repository = _base_repository(
+        tmp_path,
+        en_text=_replace(en_base, "## Short answer", block),
+        uk_text=_replace(uk_base, "## Short answer", block),
+    )
+    report = validate_repository(repository)
+
+    messages = [item.message for item in report.errors if item.gate == "sections"]
+    assert any("exactly one code block" in message for message in messages), messages
+
+
 def test_real_content_passes_all_blocking_content_gates() -> None:
     """The whole real `content/` tree has zero blocking failures.
 

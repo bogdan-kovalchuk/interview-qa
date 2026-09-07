@@ -4,6 +4,7 @@
 # Тут вони отримують видимі назви, які рендерить сайт.
 
 section_labels:
+  Question code:     {en: Question code,     uk: Код питання}
   Short answer:      {en: Short answer,      uk: Коротка відповідь}
   Detailed explanation: {en: Detailed explanation, uk: Розгорнуте пояснення}
   Comparison:        {en: Comparison,        uk: Порівняння}

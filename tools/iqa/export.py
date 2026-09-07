@@ -71,13 +71,16 @@ def _raw_section(question: Question, name: SectionName) -> str | None:
 def _card_payload(question: Question) -> dict[str, Any]:
     """The only body content this export carries: exactly what meta/anki.md's
 
-    field table says a card is built from - `Short answer` for every type, plus
-    `Task`/`Constraints` for `coding` and `Scale prompt` for `system-design`.
-    Everything else in the body stays in content/, read only by the site mirror.
+    field table says a card is built from - `Short answer` for every type, the
+    optional `Question code` snippet that belongs to the question rather than
+    the answer, plus `Task`/`Constraints` for `coding` and `Scale prompt` for
+    `system-design`. Everything else in the body stays in content/, read only by
+    the site mirror.
     """
     question_type = question.frontmatter.type
     return {
         "short_answer": _raw_section(question, SectionName.SHORT_ANSWER),
+        "question_code": _raw_section(question, SectionName.QUESTION_CODE),
         "task": (
             _raw_section(question, SectionName.TASK)
             if question_type is QuestionType.CODING
