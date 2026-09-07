@@ -53,7 +53,7 @@ ord]*` і `[template id, name, ord]*`**. Він включає ідентифі�
 | `coding` | `title`, потім повний `Task` і compact-rendered `Constraints` | `Solution outline` |
 | `system-design` | `title`, потім `Scale prompt` | `Architecture summary` |
 | `behavioral` | `title` | `Answer framework` |
-| решта | `title` | без мітки |
+| решта | `title`, а за наявності – блок коду з необов'язкової `Question code` | без мітки |
 
 Compact rendering змінює лише HTML: прибирає зайві margins і показує `Constraints` однорівневим
 списком. Експортер не скорочує і не переказує authored constraints.
