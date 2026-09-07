@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0001
 title: "How is the TCP/IP stack used in an IoT device, and where is the boundary between firmware, the OS, and the network stack?"
-description: "The TCP/IP stack may run as a library on a bare-metal MCU or in the kernel on Embedded Linux."
+description: "On a bare-metal MCU the TCP/IP stack is often a library like lwIP, while on Embedded Linux it runs in the kernel."
 track: embedded
 section: connectivity
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+On a bare-metal MCU the TCP/IP stack is often provided by a library like lwIP, and the firmware directly controls the Ethernet/Wi-Fi driver and sockets-like API. In Embedded Linux the kernel contains the network stack and drivers, and the application works through the socket API. The boundary is where a frame from the hardware driver becomes a packet for the stack, and then an application protocol like MQTT/HTTP runs on top of TCP/TLS.[^dou-embedded-interview]
 
 ## Detailed explanation
 

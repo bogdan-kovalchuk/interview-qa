@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0065
 title: "What does a typical section layout look like in a Cortex-M `.elf` file?"
-description: "Flash holds `.text`, `.rodata`, and the `.data` LMA; RAM holds the `.data` VMA, `.bss`, the heap, and the stack."
+description: "Flash holds .text, .rodata, and the .data LMA; RAM holds the .data VMA, .bss, the heap, and the stack."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+**Flash (ROM)**: `[.text][.rodata][.data LMA]`
+**RAM**: `[.data VMA][.bss][heap ↑]...[stack ↓]`
+
+LMA (Load Memory Address) is where bytes are stored in Flash. VMA (Virtual Memory Address) is where the CPU expects them in RAM. Startup code copies LMA -> VMA for `.data`.
+
+Check: `arm-none-eabi-objdump -h firmware.elf` or `arm-none-eabi-size firmware.elf`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

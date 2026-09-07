@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0107
 title: "What risks arise when casting a byte array to a struct in C?"
-description: "What risks arise when casting a byte array to a struct in C?"
+description: "Casting a byte array pointer to a struct pointer risks violating alignment, strict aliasing, and layout; it is safer to read fields via memcpy and convert byte order explicitly."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Casting `uint8_t*` to `struct*` risks violating <span class="warn">alignment</span>, strict aliasing, and the expected layout with padding. The frame may also have a different endianness or packed format than the compiler ABI. It is safer to read fields via `memcpy` into local types, check the length, and explicitly convert byte order.[^dou-embedded-interview]
 
 ## Detailed explanation
 

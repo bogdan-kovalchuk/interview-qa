@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0045
 title: "Trap: why is a function pointer state machine harder to analyse?"
-description: "Trap: why is a function pointer state machine harder to analyse?"
+description: "Indirect calls hide control flow from the reader, the debugger and some static analysers."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Indirect calls hide control flow from the reader, the debugger and some static analysers.</span>
+
+Instead of an explicit `switch`, you see only `handlers[state](...)`. If the table is initialised at runtime or modified, it is harder to prove which functions can be called. This can affect safety certification and MISRA checks.
+
+Defence: make tables `static const`, name handlers explicitly, check state bounds and document the transition table.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0041
 title: "How do you make a C callback for a C++ object?"
-description: "How do you make a C callback for a C++ object?"
+description: "Use a static thunk plus a context pointer."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Use a static thunk plus a context pointer.
+
+`static void thunk(void *ctx, uint8_t b) { static_cast<App *>(ctx)->on_rx(b); }` `uart_register(thunk, this);`
+
+A static member function has no hidden `this` and is compatible with a plain function pointer if the signature matches. `ctx` restores the object instance manually.
+
+Rule: this is the standard bridge between a C HAL and C++ class design.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

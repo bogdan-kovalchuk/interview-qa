@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0010
 title: "What is an MMU, and how does an MCU without an MMU differ from an Embedded Linux system?"
-description: "<span class=\"key\">MMU</span> translates virtual addresses into physical addresses and provides page permissions and isolation."
+description: "MMU translates virtual addresses to physical addresses and provides page permissions and isolation."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**MMU** translates virtual addresses into physical addresses and provides page permissions and isolation. Most bare-metal MCUs have no MMU: code runs in a single address space, with no process isolation and no demand paging. Embedded Linux usually needs an MMU for processes, virtual memory, mmap, and kernel/user space protection.[^dou-embedded-interview]
 
 ## Detailed explanation
 

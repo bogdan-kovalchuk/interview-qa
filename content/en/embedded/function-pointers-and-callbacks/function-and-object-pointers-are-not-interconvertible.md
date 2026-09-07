@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0049
 title: "Trap: why should function pointers and `void *` not be mixed?"
-description: "Trap: why should function pointers and `void *` not be mixed?"
+description: "C does not guarantee portable conversion between a function pointer and the object pointer void ."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">C does not guarantee portable conversion between a function pointer and the object pointer `void *`.</span>
+
+On some platforms, code and data have different address spaces or different pointer sizes. POSIX has its own requirements for `dlsym`, but this is not a general ISO C rule and not an embedded guarantee.
+
+Defence: keep function pointers in function pointer types and data pointers in `void *`. Do not put a callback address into a generic data pointer field.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

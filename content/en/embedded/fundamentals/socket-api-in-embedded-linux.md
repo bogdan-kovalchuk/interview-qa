@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0015
 title: "What is a socket in Linux, and when does an embedded device actually need the socket API?"
-description: "A <span class=\"key\">socket</span> is a file descriptor for a network or local-IPC endpoint."
+description: "A socket is a file descriptor for a network or local-IPC endpoint."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Socket** is a file descriptor for a network or local-IPC endpoint. An embedded device needs the socket API when it speaks TCP/UDP, Unix domain IPC, Bluetooth sockets, or has a daemon/client architecture. For a simple sensor-to-MCU link without an OS, a socket is not needed; there you get UART/SPI/I2C or a lightweight network stack API.[^dou-embedded-interview]
 
 ## Detailed explanation
 

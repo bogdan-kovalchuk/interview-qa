@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0058
 title: "What should a good interview answer about embedded callbacks contain?"
-description: "What should a good interview answer about embedded callbacks contain?"
+description: "Mechanism, contract and risks."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Mechanism, contract and risks.**
+
+Mechanism: a function pointer with a concrete signature. Contract: who registers, who calls, when, with which context pointer and lifetime. Risks: null pointer, wrong signature UB, ISR context, dangling context, reentrancy, blocking calls and dispatch index validation.
+
+Rule: a strong embedded answer does not stop at the syntax of `void (*cb)(void)`; it explains runtime ownership and execution context.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0068
 title: "Where is this stored inside a function? `static const uint16_t lookup[] = {1, 2, 3};`"
-description: "`static const` places the array in `.rodata` in Flash, so it costs zero bytes of RAM."
+description: "static const places the array in .rodata in Flash, so it costs zero bytes of RAM."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+In the **.rodata** section (Flash). The `static const` combination: `static` -> not on the stack (static storage duration); `const` -> read-only.
+
+Result: data in Flash, **zero RAM cost**.
+
+If it were `static uint16_t lookup[] = {1,2,3};` (without `const`) -> `.data` (RAM + Flash copy at boot).
+
+Rule: for lookup tables, calibration data, string tables - always `static const`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

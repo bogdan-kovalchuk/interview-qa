@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0110
 title: "How do struct and union differ in size, alignment, and use-case?"
-description: "How do struct and union differ in size, alignment, and use-case?"
+description: "A struct stores fields sequentially with padding, while a union shares memory among members; struct suits state or register maps, union suits mutually exclusive variants but not safe wire parsing."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`struct` stores all fields sequentially with possible padding, so its size is roughly the sum of fields plus alignment. `union` shares one block of memory among members, so its size equals the largest member with the required alignment. A struct suits state records or register maps; a union suits mutually exclusive data variants, but not safe wire-format parsing.[^dou-embedded-interview]
 
 ## Detailed explanation
 

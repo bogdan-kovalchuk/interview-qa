@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+`sizeof(union)` = **largest member's size** + trailing padding to satisfy alignment.
+
+All union members occupy the same memory region.
+
+Example: `union { char c; int x; double d; }` -> sizeof = 8 (double is the largest, align = 8).
+
+Useful for: type punning, variant types, byte-level inspection. In C++, only one member can be active at a time.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

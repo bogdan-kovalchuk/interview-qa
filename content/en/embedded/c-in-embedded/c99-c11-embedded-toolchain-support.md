@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+C99 brought `stdint.h`, `stdbool.h`, designated initializers, mixed declarations, and `inline`, which are very useful for embedded. C11 added atomics, threads, alignment features, and static assertions. <span class="warn">On MCU toolchains C11 threads/atomics may be incomplete or depend on the runtime/libc</span>, so the specific compiler and flags must be checked.[^dou-embedded-interview]
 
 ## Detailed explanation
 

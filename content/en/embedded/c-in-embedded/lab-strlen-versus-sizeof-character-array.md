@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`strlen(s)` -> **5**: counts characters up to '\0' (not including it) – a runtime function.
+
+`sizeof(s)` -> **20**: the array size declared at compile time – the entire buffer, regardless of content. A compile-time operation.
+
+The string "hello" occupies 6 bytes (`h,e,l,l,o,\0`), the remaining 14 bytes are zeros (due to `= "hello"` array initialization); `sizeof(s)/sizeof(s[0]) = 20/1 = 20` – the buffer capacity.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

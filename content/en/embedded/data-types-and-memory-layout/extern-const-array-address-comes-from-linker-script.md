@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+In Flash, in the `.rodata` section or a special section defined in the linker script.
+
+`extern const` without an initializer in C code is only a declaration. The linker script defines the symbol `image_data` with an address in Flash:
+`image_data = LOADADDR(.flash_resources);`
+
+Typical use: binary resources (images, certificates, tables) embedded into firmware via `KEEP(*(.flash_data))` or `objcopy -I binary`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

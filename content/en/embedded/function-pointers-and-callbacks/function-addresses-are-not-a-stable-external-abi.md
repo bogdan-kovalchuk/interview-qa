@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0055
 title: "Trap: why should function pointer addresses not be serialised or stored in a Flash config?"
-description: "Trap: why should function pointer addresses not be serialised or stored in a Flash config?"
+description: "Function addresses are not a stable external ABI."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Function addresses are not a stable external ABI.</span>
+
+After a rebuild, link-time optimisation, linker script change or firmware update the addresses will change. On an MCU with bootloader and application layout the address can depend on the slot. Calling a stale stored address can jump into the wrong code.
+
+Defence: serialise a symbolic ID or opcode, not a function address, and after boot select the handler through the current dispatch table.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

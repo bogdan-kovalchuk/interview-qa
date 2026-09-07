@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0092
 title: "What is the difference between `malloc` and a static array for a buffer in embedded?"
-description: "A static array is deterministic and fragmentation-free, while `malloc` is non-deterministic and unsafe in an ISR."
+description: "A static array is deterministic and fragmentation-free, while malloc is non-deterministic and unsafe in an ISR."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Static array** (`static uint8_t buf[256]`): known at compile time, placed in `.bss`/`.data`, deterministic access, no fragmentation.
+
+**malloc(256)**: runtime allocation, non-deterministic time, heap fragmentation, may return NULL (must be checked), unsafe in ISR.
+
+In safety-critical embedded (MISRA, IEC 61508): <span class="warn">static allocation is mandatory</span>. `malloc` only during initialization – and only before the real-time part of execution.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

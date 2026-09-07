@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0021
 title: "How do you abstract the hardware layer without excessive runtime overhead?"
-description: "English translation pending."
+description: "Keep the abstraction thin with inline functions, static dispatch, and templates, using function tables only where runtime substitution is needed."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Keep the abstraction thin: inline functions, static dispatch, templates in C++, function tables only where runtime substitution is needed. **HAL boundary** should hide register details but must not mask timing, blocking behavior, DMA ownership, or interrupt context. <span class="warn">An overly thick HAL makes the driver unpredictable and hard to debug on an MCU.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

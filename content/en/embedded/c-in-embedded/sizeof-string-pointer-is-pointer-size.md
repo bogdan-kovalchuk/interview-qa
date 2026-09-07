@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,13 @@ printf("%zu", sizeof(p));
 
 ## Short answer
 
-TODO
+**4** (on 64-bit – 8).
+
+`p` is a pointer of type `char*`, so `sizeof(p) = sizeof(char*) = 4` on 32-bit. Not the string length, not 6 (with '\0'), but only the pointer size.
+
+For the string length: `strlen(p) + 1` = 6 (with null terminator) or `strlen(p)` = 5.
+
+Compare: `char arr[] = "hello"; sizeof(arr) = 6` – here it is an array, not a pointer.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

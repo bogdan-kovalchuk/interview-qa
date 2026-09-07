@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+TCP provides an ordered reliable byte stream with retransmission and flow control, making it suitable for firmware updates or commands where integrity matters. UDP provides datagrams with no delivery or ordering guarantee, but lower overhead and latency, useful for frequent telemetry samples or real-time data. If UDP is used for a critical command or update, reliability, ordering and authentication must be built on top.[^dou-embedded-interview]
 
 ## Detailed explanation
 

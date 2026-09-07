@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0022
 title: "Which device types exist in the Linux kernel, and how are they represented by the device model?"
-description: "English translation pending."
+description: "Linux has character, block, network, platform, and bus-specific devices represented through struct device, bus, driver, class, and sysfs nodes."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Linux has **character**, **block**, **network**, platform, and bus-specific devices, among others. The device model represents them through `struct device`, bus, driver, class, and sysfs nodes. For embedded, platform devices, devicetree/ACPI hardware description, and driver binding to compatible/resource data are important.[^dou-embedded-interview]
 
 ## Detailed explanation
 

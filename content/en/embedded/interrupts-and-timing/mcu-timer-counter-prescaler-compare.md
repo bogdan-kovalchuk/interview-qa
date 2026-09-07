@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The timer clock is divided by the `prescaler`, after which the `counter` counts ticks. `auto-reload` sets the period for the overflow/update event, and `compare` generates an event when the counter matches a channel. An interrupt or DMA trigger occurs on update/compare/capture if the corresponding flags and NVIC are enabled.[^dou-embedded-interview]
 
 ## Detailed explanation
 

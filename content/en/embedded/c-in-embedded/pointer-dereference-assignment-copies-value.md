@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -42,7 +42,13 @@ printf("%d %d",a,b);
 
 ## Short answer
 
-TODO
+`a=10, b=10`.
+
+`*p = *q` copies the **value** of `*q` (that is, `b=10`) into `*p` (that is, into `a`). The pointers `p` and `q` themselves do not change.
+
+If it were `p = q` (without *) – both pointers would point to `b`, and `a` would remain `5`.
+
+Common mistake: confusing pointer assignment with value assignment.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

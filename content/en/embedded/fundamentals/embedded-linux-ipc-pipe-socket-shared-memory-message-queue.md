@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0014
 title: "Which IPC mechanisms are appropriate in Embedded Linux, and what are the trade-offs of pipes, sockets, shared memory, and message queues?"
-description: "A <code>pipe</code> is simple for a stream between related processes but is local and one-way."
+description: "A pipe is simple for a stream between related processes but is local and one-way."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+`pipe` is simple for a stream between related processes, but local and one-way. `socket` is flexible: Unix domain for local IPC or TCP/UDP for network, but has overhead. `shared memory` is fastest for large data but requires synchronization; `message queue` provides message boundaries and priority, but is limited in size by system limits.[^dou-embedded-interview]
 
 ## Detailed explanation
 

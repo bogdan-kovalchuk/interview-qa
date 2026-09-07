@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0044
 title: "What is a state machine built on function pointers?"
-description: "What is a state machine built on function pointers?"
+description: "A table of state handlers or transition handlers where the current state selects the function to handle an event."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**It is a table of state handlers or transition handlers** where the current state selects the function to handle an event.
+
+For example: `state = handlers[state](ctx, event);`. This makes each state a separate function and removes a large nested `switch`. For embedded protocol stacks this is often more readable and testable per state handler.
+
+Rule: the state enum must be bounds-checked before indexing into the handler table.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

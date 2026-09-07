@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0113
 title: "What are little-endian and big-endian, and where do they matter in embedded systems?"
-description: "Endianness defines the byte order of multibyte values in memory and matters in protocols, peripherals, flash images, and debugging."
+description: "Endianness defines the byte order of multibyte values in memory and matters in protocols, peripherals, flash images, and debugging; bit order in SPI or I2C is a separate property."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Endianness** defines the byte order of a multibyte value in memory: little-endian places the least significant byte at the lowest address, big-endian – the most significant. In embedded systems, this matters in binary protocols, peripheral FIFOs, network byte order, flash images, and debug memory view. Bit order within an SPI/I2C frame is a separate property and does not equal CPU endianness.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0103
 title: "What are hardware registers, and how does a memory-mapped register differ from a CPU general-purpose register?"
-description: "English translation pending."
+description: "A hardware register controls a peripheral or reflects its status; a memory-mapped register is accessed via a volatile pointer at a fixed address, unlike a CPU general-purpose register."
 track: embedded
 section: data-types-and-memory-layout
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A **hardware register** controls a peripheral or reflects its status. A **memory-mapped register** is accessible as an address in the memory map and is typically declared through a `volatile` pointer/struct. A CPU general-purpose register is an internal core register for computation; it is not a peripheral control register.[^dou-embedded-interview]
 
 ## Detailed explanation
 

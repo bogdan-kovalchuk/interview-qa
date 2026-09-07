@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+`&` AND – clear a bit: `reg &= ~(1<<n)` `|` OR – set a bit: `reg |= (1<<n)` `^` XOR – toggle: `reg ^= (1<<n)` `~` NOT – bitwise inversion `<<` left shift: `x << 3` = x × 8 `>>` right shift: `x >> 1` = x / 2.
+
+Typical patterns in Embedded: Test a bit: `if (reg & (1<<n))` Set: `reg |= (1<<n)` Clear: `reg &= ~(1<<n)` Toggle: `reg ^= (1<<n)`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

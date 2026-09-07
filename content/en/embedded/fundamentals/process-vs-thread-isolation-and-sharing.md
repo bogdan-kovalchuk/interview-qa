@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0006
 title: "What is the difference between a process and a thread?"
-description: "What is the difference between a process and a thread?"
+description: "A process has its own address space and is isolated from others, while threads of one process share memory but require synchronization."
 track: embedded
 section: fundamentals
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Process** is a separate running program with its own address space, OS resources, file descriptor table, and at least one thread.[^dou-embedded-interview] Processes are isolated: a fault in one process usually does not corrupt the memory of another.
+
+**Thread** is a unit of execution within a process. Threads of the same process share memory, heap, globals, and file descriptors, but each has its own stack, registers, and instruction pointer.
+
+Consequence: processes are more safely isolated but costlier to create and require IPC; threads are lighter and exchange data faster but need synchronization (`mutex`, `semaphore`, `atomic`) because of race condition risk.
 
 ## Detailed explanation
 

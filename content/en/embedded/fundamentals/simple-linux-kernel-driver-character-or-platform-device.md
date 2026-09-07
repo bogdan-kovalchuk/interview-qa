@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a character device, define file operations: `open`, `read`, `write`, `ioctl`, plus registration and lifetime cleanup. For a platform driver, implement `probe`/`remove`, take resources from devicetree, map MMIO, register IRQ, and expose the interface. <span class="warn">In a kernel driver you cannot think like in user space: different allocation rules, locking, sleep context, and error handling.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

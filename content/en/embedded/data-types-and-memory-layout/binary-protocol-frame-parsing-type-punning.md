@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0108
 title: "How to safely parse a binary protocol frame without invalid type punning and alignment issues?"
-description: "How to safely parse a binary protocol frame without invalid type punning and alignment issues?"
+description: "Check the frame length, read each field via memcpy or byte shifts, apply explicit byte-order conversion, and never cast a wire-format buffer to a struct unless layout and endianness are guaranteed."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Check the frame length, then read each field from the `uint8_t` buffer via `memcpy` or byte shifts. For multi-byte fields, explicitly apply `le16toh`/`ntohs` or a custom conversion. <span class="warn">Do not cast a wire-format buffer to a struct</span> unless layout, packing, alignment, and endianness are fixed and verified.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0066
 title: "Trap: what is the danger of `double` on embedded without an FPU?"
-description: "Without a hardware FPU, `double` runs in software emulation, taking tens of times more cycles."
+description: "Without a hardware FPU, double runs in software emulation, taking tens of times more cycles."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+MCUs without an FPU (Cortex-M0/M0+/M3) execute `double` in <span class="warn">software emulation</span>: tens to hundreds of cycles instead of 1–2 for a hardware FPU.
+
+Problems:
+1. Increased execution time -> RTOS deadline missed;
+2. Increased code size (soft-float library);
+3. `double` = 8B, twice as much RAM/stack.
+
+Cortex-M4F/M7 has an FPU only for `float` (32-bit). Always: use `float` instead of `double` in embedded. Check the ABI: `-mfloat-abi=hard -mfpu=fpv4-sp-d16`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

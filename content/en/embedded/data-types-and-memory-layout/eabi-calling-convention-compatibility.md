@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**EABI** – the embedded ABI, which fixes the calling convention, object format, type layout, alignment, exception/unwind rules, and floating-point ABI. If object files are built with different ABI flags, for example soft-float vs hard-float, the linker or runtime can break. For firmware, all libraries must match the target CPU, FPU, endian, ABI, and compiler runtime.[^dou-embedded-interview]
 
 ## Detailed explanation
 

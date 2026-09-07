@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The width is specified after a colon: `unsigned field : 5;`. The layout depends on the compiler ABI: placement order, alignment allocation unit, padding, and packing rules are not universal. Therefore bit-fields are suitable for local compact state, but not as a portable binary layout.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+The ABI defines which arguments and return value go in registers, what is placed on the stack, and which registers the caller/callee must preserve. During a call the return address is saved, a stack frame is created for locals/spills, then the callee returns the result and restores the required state. For debugging HardFault it is useful to examine SP, LR, PC, and the stack frame.[^dou-embedded-interview]
 
 ## Detailed explanation
 

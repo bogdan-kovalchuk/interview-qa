@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Assess line length relative to rise time: if propagation delay is significant, treat the line as a transmission line. Check impedance, termination, return path, ground reference, crosstalk, ringing and overshoot with an oscilloscope using proper probing. For long or noisy lines, a differential interface like RS-485/CAN/Ethernet, lower speed or galvanic isolation is often better.[^dou-embedded-interview]
 
 ## Detailed explanation
 

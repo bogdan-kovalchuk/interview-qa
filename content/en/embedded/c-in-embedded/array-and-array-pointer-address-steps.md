@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`arr` -> `0x1000` (decays to `int*`, points to arr[0]). `&arr` -> `0x1000` (points to the entire array, type `int(*)[4]`). Same address, different type!
+
+`arr+1` -> `0x1004` (step = `sizeof(int) = 4`), `&arr+1` -> `0x1010` (step = `sizeof(int[4]) = 16`).
+
+This is where the type difference shows: same starting address, different step.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

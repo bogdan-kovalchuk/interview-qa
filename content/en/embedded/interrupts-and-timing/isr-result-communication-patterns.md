@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0010
 title: "Why should an ISR not return a result like an ordinary function, and which patterns replace that?"
-description: "English translation pending."
+description: "An ISR is invoked by hardware, not a caller, so results are passed through flags, buffers, queues or task notification instead of a return value."
 track: embedded
 section: interrupts-and-timing
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+An ISR is invoked by a hardware/CPU exception mechanism, not by a caller expecting a return value. Results are passed through flags, buffers, queues, semaphores, event bits or deferred work/task notification. **An ISR should signal an event**, while heavy processing belongs in the main loop, a worker task or a bottom half.[^dou-embedded-interview]
 
 ## Detailed explanation
 

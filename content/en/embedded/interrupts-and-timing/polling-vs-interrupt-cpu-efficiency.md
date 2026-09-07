@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0001
 title: "What is the difference between polling and interrupts?"
-description: "What is the difference between polling and interrupts?"
+description: "Polling wastes CPU cycles actively reading peripheral state, while an interrupt lets the peripheral signal an event and frees the CPU until it occurs."
 track: embedded
 section: interrupts-and-timing
 level: junior
@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Polling** – the CPU continuously reads peripheral state in a loop: `while(!(UART->SR & TXE));`.[^dou-embedded-interview] Simple to implement, but the CPU stays busy even without events, wasting power and time.
+
+**Interrupt** – the peripheral signals the CPU only when an event occurs. The CPU runs the main code, and on an interrupt request it saves context and executes the ISR; efficient CPU use, low latency.
+
+Choice: polling – for simple cases with predictable events; interrupt – when events are infrequent, asynchronous or low latency is required.
 
 ## Detailed explanation
 

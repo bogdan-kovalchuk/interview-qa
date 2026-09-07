@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0098
 title: "What happens with `uint32_t *ptr = (uint32_t*)0x40020000; *ptr = 0xFF;` without `volatile`?"
-description: "Without `volatile`, the compiler may eliminate the write as a dead store, since nothing reads `*ptr` again."
+description: "Without volatile, the compiler may eliminate the write as a dead store, since nothing reads the pointer again."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+The compiler may <span class="warn">eliminate the write as a dead store</span> (dead store elimination): `*ptr` is never read later in the program flow, so the compiler considers the write redundant.
+
+Without `volatile`, there is <span class="warn">no guarantee</span> that the bytes actually reach the GPIO.
+
+Correct approach: `volatile uint32_t * const GPIOA_ODR = (volatile uint32_t*)0x40020014U;` – every write/read is actually performed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

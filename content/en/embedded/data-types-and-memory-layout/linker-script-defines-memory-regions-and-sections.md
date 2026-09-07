@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+**Linker script** (`.ld` file) - linker configuration that defines:
+
+`MEMORY` block: named memory regions:
+`FLASH (rx) : ORIGIN = 0x08000000, LENGTH = 512K`
+`RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 128K`.
+
+`SECTIONS` block: where to place each section:
+`.text : { *(.text*) } > FLASH`
+`.data : { *(.data*) } > RAM AT> FLASH`
+
+The linker generates symbols `_sdata`, `_edata`, `_sidata` for startup code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

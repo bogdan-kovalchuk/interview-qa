@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0055
 title: "`.bss` vs `.data` for: `uint32_t cnt;` and `uint32_t cnt = 0;` (globals)?"
-description: "`uint32_t cnt;` lands explicitly in `.bss`; `uint32_t cnt = 0;` depends on whether the compiler recognizes the zero-init."
+description: "uint32t cnt; lands explicitly in .bss; uint32t cnt = 0; depends on whether the compiler recognizes the zero-init."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`uint32_t cnt;` -> **.bss**: takes no Flash, zeroed by startup code.
+
+`uint32_t cnt = 0;` -> depends on the compiler: may be `.data` (explicit initializer, value 0 in Flash) or `.bss` (compiler recognizes zero-init).
+
+The C standard guarantees both = 0, but Flash/RAM usage may differ. Check: `arm-none-eabi-nm --print-size firmware.elf`. Write `uint32_t cnt;` for explicit `.bss`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

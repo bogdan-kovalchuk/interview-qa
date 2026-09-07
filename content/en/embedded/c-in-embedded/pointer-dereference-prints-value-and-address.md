@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0002
 title: "What does this print?"
-description: "How dereferencing and pointer values differ in a C example."
+description: "Dereferencing a pointer reads the pointed-to value, while the pointer itself holds the address."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,9 @@ printf("%d %p", *p, (void*)p);
 
 ## Short answer
 
-TODO
+`*p` -> `42` (dereferencing – reads the value of `x`). `p` -> address of variable `x` (for example, `0x2000FFE0` on the Cortex-M stack).
+
+Key point: `p` and `x` are different objects. `p` holds the address, `x` holds the value. Changing `*p = 100` changes `x`, while changing `p = &y` does not change `x`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

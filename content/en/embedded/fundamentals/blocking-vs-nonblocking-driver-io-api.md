@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0013
 title: "How do blocking operations differ from non-blocking operations in drivers and I/O APIs?"
-description: "A blocking call sleeps or waits until data or a resource is available, such as <code>read</code> on an empty device queue."
+description: "A blocking call sleeps or waits until data or a resource is available, such as read on an empty device queue."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A blocking call sleeps or waits until data or a resource becomes available, for example `read` on an empty device queue. A non-blocking call immediately returns `EAGAIN`/`EWOULDBLOCK` if the operation cannot be performed. In drivers this affects wait queues, poll/select/epoll support, timeouts, and whether the API can be called from a given context.[^dou-embedded-interview]
 
 ## Detailed explanation
 

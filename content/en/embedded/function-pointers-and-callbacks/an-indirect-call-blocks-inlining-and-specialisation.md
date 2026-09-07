@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0056
 title: "Why do function pointers affect optimisation?"
-description: "Why do function pointers affect optimisation?"
+description: "An indirect call is harder to optimise than a direct call."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**An indirect call is harder to optimise than a direct call.**
+
+The compiler often does not know the exact callee function, so it cannot inline it, remove unused branches inside the callee or build an accurate call graph. LTO sometimes helps when the table is static and visible, but the guarantees are weaker.
+
+Embedded conclusion: function pointers give flexibility but can increase code size and latency; in hot paths evaluate the generated assembly.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

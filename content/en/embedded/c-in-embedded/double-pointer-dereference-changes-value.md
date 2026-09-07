@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -43,7 +43,11 @@ printf("%d",x);
 
 ## Short answer
 
-TODO
+`20`.
+
+Chain: `pp` -> `&p` (address of pointer `p`), `*pp` -> dereference = the pointer `p` itself (address of `x`), `**pp` -> double dereference = the value of `x`.
+
+`**pp = 20` -> writes 20 into `x` through the chain, so `x` becomes 20. All three: `x`, `*p`, `**pp` are now = 20.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

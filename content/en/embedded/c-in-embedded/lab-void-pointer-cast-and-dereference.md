@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,13 @@ printf("%d", *(int*)p);
 
 ## Short answer
 
-TODO
+`42`.
+
+`void *p = &x` is allowed in C (implicit conversion); `p` holds the address of `x`, but the type is "erased".
+
+`*(int*)p` – cast to `int*`, then dereference. Correct because `p` points to an actual `int`.
+
+If cast to the wrong type: `*(float*)p` -> UB (strict aliasing), so the rule is: always cast `void*` back to the type it was obtained from.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

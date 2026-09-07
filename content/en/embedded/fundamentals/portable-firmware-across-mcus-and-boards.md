@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0020
 title: "How do you maintain one codebase for different MCUs, boards, and peripheral configurations?"
-description: "English translation pending."
+description: "Separate a portable core, MCU-specific drivers, board support package, and configuration data, describing hardware differences through build options rather than scattered ifdefs."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Separate a **portable core**, MCU-specific drivers, board support package, and configuration data. Describe hardware differences through target-specific build options, linker scripts, pin/clock tables, and devicetree-like configuration rather than chaotic `#ifdef` scattered through the logic. CI should build key variants so divergence is caught early.[^dou-embedded-interview]
 
 ## Detailed explanation
 

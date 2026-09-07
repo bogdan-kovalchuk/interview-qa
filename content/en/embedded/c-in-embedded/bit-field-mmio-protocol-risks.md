@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A **bit-field** is a struct field with a specified number of bits, for example `unsigned mode:3`. Its bit order, allocation unit, padding, and even the signedness of some forms depend on the implementation. <span class="warn">This is dangerous for MMIO and wire protocols</span>: it is better to use masks/shifts over `uint32_t`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

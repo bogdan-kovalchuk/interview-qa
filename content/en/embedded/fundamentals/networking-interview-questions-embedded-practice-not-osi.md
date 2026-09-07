@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0026
 title: "How to formulate networking interview questions that test embedded practice rather than theoretical OSI recitation?"
-description: "How to formulate networking interview questions that test embedded practice rather than theoretical OSI recitation?"
+description: "Frame networking questions around real scenarios like IP loss, MQTT storms or stale DMA packets so candidates demonstrate diagnosis across firmware, driver, PHY/MAC and wire level."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Ask through a scenario: device not getting an IP, MQTT reconnect storming, TCP buffer overflow, Ethernet DMA seeing a stale packet or ARP cache expiring. The candidate should explain what they would check at the firmware, driver, PHY/MAC, network stack and wire level. **A good question** requires diagnosis, trade-offs and constraints of the MCU/Linux target, not a list of OSI layers.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0016
 title: "What is copy-on-write, and where does it appear in Linux fork or memory mapping?"
-description: "<span class=\"key\">Copy-on-write</span> lets multiple mappings share physical pages for reading until one attempts a write."
+description: "Copy-on-write lets multiple mappings share physical pages for reading until one attempts a write."
 track: embedded
 section: fundamentals
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Copy-on-write** lets multiple mappings share the same physical pages for reading until someone attempts to write. After `fork`, parent and child initially share pages, and on a write the kernel creates a private copy of the page. This saves RAM and speeds up fork, but the first write may incur page fault latency.[^dou-embedded-interview]
 
 ## Detailed explanation
 

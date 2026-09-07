@@ -1,7 +1,7 @@
 ---
 id: emb-irq-0003
 title: "What is an interrupt?"
-description: "What is an interrupt?"
+description: "An interrupt is a hardware or software signal that makes the CPU suspend its code and run an ISR, saving and later restoring context."
 track: embedded
 section: interrupts-and-timing
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Interrupt** is a hardware or software signal that forces the CPU to suspend the current code and execute a special function – an **ISR (Interrupt Service Routine)**.[^dou-embedded-interview]
+
+Sequence: an event occurs, then the interrupt controller (NVIC), then the CPU saves context (PC, registers), executes the ISR, restores context and returns to the main code.
+
+ISR rules: keep it short and fast; do not use blocking functions; shared variables must be `volatile`; critical sections (disable/enable IRQ for atomic access) may be needed.
 
 ## Detailed explanation
 

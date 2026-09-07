@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ printf("%zu %zu", sizeof(*p), sizeof(*q));
 
 ## Short answer
 
-TODO
+`sizeof(*p)` -> **4**. Dereferencing `uint32_t*` yields an object of type `uint32_t` – 4 bytes.
+
+`sizeof(*q)` -> **1**. Dereferencing `uint8_t*` yields `uint8_t` – 1 byte.
+
+Key point: `sizeof` on a dereferenced operand is determined by the pointer type, not the address – both pointers point to the same address `0x2000`, but sizeof returns different values.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

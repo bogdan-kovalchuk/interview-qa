@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+It is safe to store an integer and copy its bytes via `memcpy` into an `unsigned char` buffer, because character types can represent object representation. For example, `uint32_t x=1`, `memcpy(b,&x,4)`, then check `b[0]`. For portable protocol code it is better not to depend on host endianness but to explicitly assemble and disassemble bytes.[^dou-embedded-interview]
 
 ## Detailed explanation
 

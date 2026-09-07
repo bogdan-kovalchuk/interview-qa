@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0028
 title: "How to assess whether a problem should be solved by firmware, hardware design, or system architecture?"
-description: "How to assess whether a problem should be solved by firmware, hardware design, or system architecture?"
+description: "Identify the symptom, constraint and failure mode, then decide whether firmware, hardware or system architecture should solve it based on responsibility boundaries."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+First identify the symptom, constraint and failure mode: timing, noise margin, resource limit, protocol mismatch or requirement gap. Firmware suits sequencing, filtering, diagnostics and policy; hardware – signal integrity, protection, analog limits and deterministic safety cutoff. **System architecture** is needed when the problem arises from a wrong distribution of responsibility between blocks or impossible requirements.[^dou-embedded-interview]
 
 ## Detailed explanation
 

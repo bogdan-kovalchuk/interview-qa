@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0099
 title: "Why use `static_assert` when working with structs in embedded systems?"
-description: "`static_assert` checks a struct's `sizeof` and `offsetof` at compile time, guaranteeing it matches the protocol."
+description: "staticassert checks sizeof and offsetof of structs at compile time, guaranteeing they match the protocol."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+`static_assert` (C11 `_Static_assert`, C++ `static_assert`) checks a condition **at compile time** -> error if false.
+
+For embedded: `static_assert(sizeof(CanFrame) == 13, "Wrong CAN frame size");`
+`static_assert(offsetof(UartPacket, crc) == 6, "CRC offset mismatch");`
+
+Guarantees that the struct layout matches the protocol or hardware register map regardless of compiler, ABI, or flag changes.
+
+Best practice: every protocol struct should have `static_assert` on `sizeof` and `offsetof`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

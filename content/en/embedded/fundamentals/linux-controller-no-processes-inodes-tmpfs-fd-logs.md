@@ -1,7 +1,7 @@
 ---
 id: emb-fund-0027
 title: "Linux controller cannot start new processes even though df shows free space. How to check inodes, tmpfs, file descriptors, and logs?"
-description: "Linux controller cannot start new processes even though df shows free space. How to check inodes, tmpfs, file descriptors, and logs?"
+description: "Check inodes with df -i, tmpfs with df -h, file descriptors with ulimit and lsof, and review dmesg and journalctl for OOM, read-only remount or filesystem errors."
 track: embedded
 section: fundamentals
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Check `df -i` for inodes, `df -h` for `/tmp`/`/run` tmpfs, `ulimit -n` and `lsof` for file descriptors. Look at `dmesg`, `journalctl`, OOM messages, read-only remount and filesystem errors. <span class="warn">Free bytes on rootfs won't help if inodes, PID limit, fd limit or tmpfs are exhausted.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 
