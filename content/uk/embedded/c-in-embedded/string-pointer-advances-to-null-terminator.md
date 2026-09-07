@@ -44,9 +44,9 @@ printf("%td", p-str);
 
 `5`.
 
-`str` decay-ується до `char*`. Цикл йде до `'\0'`: після `'h','e','l','l','o'` – `*p = '\0'` (false) -> стоп. `p` вказує на null-terminator.
+`str` decay-ується до `char*`, тож цикл йде до `'\0'`: після `'h','e','l','l','o'` – `*p = '\0'` (false) -> стоп. `p` вказує на null-terminator.
 
-`p - str` = 5 елементів = `strlen("hello")`. Це стандартний спосіб реалізації `strlen` через pointer arithmetic. `%td` для `ptrdiff_t`.[^embeddedinterviewlab]
+`p - str` = 5 елементів = `strlen("hello")`. Це стандартний спосіб реалізації `strlen` через pointer arithmetic, `%td` для `ptrdiff_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

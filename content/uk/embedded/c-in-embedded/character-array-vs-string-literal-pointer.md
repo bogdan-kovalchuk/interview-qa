@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-`char arr[] = "hello"` – **масив**: компілятор виділяє 6 байт і копіює символи. Дані у writable пам'яті (stack або .data). `arr[0] = 'H'` – легально.
+`char arr[] = "hello"` – **масив**: компілятор виділяє 6 байт і копіює символи, дані у writable пам'яті (stack або .data). `arr[0] = 'H'` – легально.
 
 `char *p = "hello"` – **вказівник** на рядковий літерал у .rodata (Flash/read-only). `p[0] = 'H'` -> <span class="warn">UB/HardFault</span>.
 
-`sizeof(arr) = 6`, `sizeof(p) = 4` (або 8). Масив у стеку, вказівник тільки зберігає адресу.[^embeddedinterviewlab]
+`sizeof(arr) = 6`, `sizeof(p) = 4` (або 8) – масив у стеку, вказівник тільки зберігає адресу.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
