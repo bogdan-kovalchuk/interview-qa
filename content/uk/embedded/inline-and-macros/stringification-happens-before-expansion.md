@@ -1,14 +1,14 @@
 ---
 id: emb-macros-0014
 title: "Trap: чому `STR(__LINE__)` дає `\"__LINE__\"`, а не номер рядка?"
-description: "Trap: why does `STR(__LINE__)` give `\"__LINE__\"` instead of the line number?"
+description: "Оператор # стрінгіфікує текст аргументу до його розгортання, тому потрібен проміжний рівень – two-level stringification idiom."
 track: embedded
 section: inline-and-macros
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`#` стрінгіфікує текст аргументу до його розгортання</span>, тому вбудований макрос `__LINE__` не встигає перетворитися на число.
+
+Захист: додай проміжний рівень – спершу розгорни, потім стрінгіфікуй:
+
+```c
+#define STR(x) #x
+#define XSTR(x) STR(x)
+// XSTR(__LINE__) -> "42"
+```
+
+Це класичний two-level stringification idiom.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

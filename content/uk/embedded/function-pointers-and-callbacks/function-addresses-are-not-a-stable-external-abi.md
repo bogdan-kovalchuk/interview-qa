@@ -1,14 +1,14 @@
 ---
 id: emb-fnptr-0055
 title: "Trap: чому адреси function pointers не варто серіалізувати або зберігати у Flash config?"
-description: "Trap: why should function pointer addresses not be serialised or stored in a Flash config?"
+description: "Адреси функцій не є стабільним зовнішнім ABI."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Адреси функцій не є стабільним зовнішнім ABI.</span>
+
+Після rebuild, link-time optimization, зміни linker script або firmware update адреси зміняться. На MCU з bootloader/application layout адреса може залежати від slot-а. Виклик старої збереженої адреси може перейти в неправильний код.
+
+Захист: серіалізуй symbolic ID/opcode, а не function address, і після boot обирай handler через актуальну dispatch table.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

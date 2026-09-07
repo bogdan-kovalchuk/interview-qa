@@ -1,14 +1,14 @@
 ---
 id: emb-structs-0016
 title: "Trap: що небезпечно в union type punning?"
-description: "Trap: what is dangerous about union type punning?"
+description: "Пастка не в C-синтаксисі, а в переносимості результату і різниці C vs C++."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,18 @@ sources:
 
 ## Short answer
 
-TODO
+```c
+union U { float f; uint32_t u; };
+union U x;
+x.f = 1.0f;
+uint32_t bits = x.u;
+```
+
+<span class="warn">Пастка не в C-синтаксисі, а в переносимості результату і різниці C vs C++.</span>
+
+У C99/C11 читання іншого member-а union для inspection object representation є стандартно описаним type punning pattern; це не те саме, що pointer-cast strict aliasing violation. Але значення `bits` все одно залежить від representation `float` і endianness. У C++ читання inactive union member зазвичай є undefined behavior.
+
+Захист: для portable bit copy використовуй `memcpy(&bits, &x.f, sizeof bits)`, а у C++20 – `std::bit_cast`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

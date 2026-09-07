@@ -1,14 +1,14 @@
 ---
 id: emb-structs-0028
 title: "Trap: чи portable порядок bit-field-ів у пам'яті?"
-description: "Trap: is the in-memory order of bit-fields portable?"
+description: "Ні: порядок allocation bit-field-ів у storage unit implementation-defined."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Ні: порядок allocation bit-field-ів у storage unit implementation-defined.</span>
+
+Один компілятор може розміщувати перше поле в least significant bits, інший або інший ABI може поводитися інакше. Endianness також не дає простого portable правила для bit-field layout у bytes.
+
+Захист: не використовуй bit-fields як wire format між різними compiler/targets. Для protocol bits використовуй masks/shifts над integer, отриманим із явно розпарсених bytes.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

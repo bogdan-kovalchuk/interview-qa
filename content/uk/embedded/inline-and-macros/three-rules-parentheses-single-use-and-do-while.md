@@ -1,14 +1,14 @@
 ---
 id: emb-macros-0006
 title: "Які три правила безпечного function-like макроса?"
-description: "What are the three rules of a safe function-like macro?"
+description: "Дужки навколо кожного використання параметра, дужки навколо всього виразу і do { ... } while(0) для statement-макроса."
 track: embedded
 section: inline-and-macros
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+1. **Дужки навколо кожного використання параметра**: `(x)`;
+2. **Дужки навколо всього виразу**: `((x) + (y))`;
+3. **Statement-макрос обгортай у `do { ... } while(0)`**, щоб він коректно поводився з `if/else` і вимагав `;`.
+
+Правило: ці три пункти прибирають більшість класичних macro-багів – precedence, обрізані вирази та зламаний control flow.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

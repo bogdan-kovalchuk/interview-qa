@@ -1,14 +1,14 @@
 ---
 id: emb-macros-0022
 title: "Як X-macro синхронізує `enum` і масив рядків?"
-description: "How does an X-macro keep an `enum` and a string array in sync?"
+description: "Один список ERR_LIST розгортають двічі з різним X, тож enum і масив рядків оновлюються разом."
 track: embedded
 section: inline-and-macros
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,21 @@ sources:
 
 ## Short answer
 
-TODO
+Той самий список розгортають двічі з різним `X`:
+
+```c
+#define ERR_LIST(X) \
+  X(ERR_NONE, "OK") \
+  X(ERR_TIMEOUT, "Timeout")
+
+#define AS_ENUM(n, s) n,
+typedef enum { ERR_LIST(AS_ENUM) } err_t;
+
+#define AS_STR(n, s) [n] = s,
+static const char *const names[] = { ERR_LIST(AS_STR) };
+```
+
+Один список – два згенерованих об'єкти. Новий код помилки додається в одному місці, і `enum`, і `names[]` оновлюються разом.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,31 +1,12 @@
 question_id,source,reason
 emb-structs-0007,03_Structs_Unions_Bitfields_anki_cards.txt:12,possible duplicate of an existing question
 emb-structs-0014,03_Structs_Unions_Bitfields_anki_cards.txt:19,possible duplicate of an existing question
-emb-structs-0016,03_Structs_Unions_Bitfields_anki_cards.txt:21,sentences=6
-emb-structs-0028,03_Structs_Unions_Bitfields_anki_cards.txt:33,sentences=6
-emb-structs-0053,03_Structs_Unions_Bitfields_anki_cards.txt:58,sentences=6
-emb-volconst-0007,04_Volatile_Const_anki_cards.txt:12,sentences=6
 emb-volconst-0013,04_Volatile_Const_anki_cards.txt:18,possible duplicate of an existing question
-emb-volconst-0014,04_Volatile_Const_anki_cards.txt:19,sentences=6
 emb-volconst-0020,04_Volatile_Const_anki_cards.txt:25,possible duplicate of an existing question
 emb-volconst-0022,04_Volatile_Const_anki_cards.txt:27,possible duplicate of an existing question
 emb-volconst-0023,04_Volatile_Const_anki_cards.txt:28,possible duplicate of an existing question
 emb-volconst-0026,04_Volatile_Const_anki_cards.txt:31,possible duplicate of an existing question
-emb-volconst-0032,04_Volatile_Const_anki_cards.txt:37,sentences=6
-emb-volconst-0050,04_Volatile_Const_anki_cards.txt:55,sentences=6
 emb-fnptr-0002,05_Function_Pointers_Callbacks_anki_cards.txt:7,possible duplicate of an existing question
-emb-fnptr-0014,05_Function_Pointers_Callbacks_anki_cards.txt:19,sentences=1
-emb-fnptr-0030,05_Function_Pointers_Callbacks_anki_cards.txt:35,sentences=6
-emb-fnptr-0047,05_Function_Pointers_Callbacks_anki_cards.txt:52,sentences=1
-emb-fnptr-0055,05_Function_Pointers_Callbacks_anki_cards.txt:60,sentences=6
-emb-macros-0006,06_Inline_Macros_anki_cards.txt:11,sentences=6
-emb-macros-0014,06_Inline_Macros_anki_cards.txt:19,more than one code block
-emb-macros-0022,06_Inline_Macros_anki_cards.txt:27,more than one code block
-emb-align-0005,07_Memory_Alignment_Endianness_anki_cards.txt:10,more than one code block
 emb-align-0011,07_Memory_Alignment_Endianness_anki_cards.txt:16,possible duplicate of an existing question
-emb-patterns-0014,08_Common_Code_Patterns_anki_cards.txt:19,more than one code block
-emb-patterns-0035,08_Common_Code_Patterns_anki_cards.txt:40,sentences=6
 emb-patterns-0038,08_Common_Code_Patterns_anki_cards.txt:43,possible duplicate of an existing question
-emb-raii-0019,10_RAII_Smart_Pointers_anki_cards.txt:24,more than one code block
-emb-raii-0020,10_RAII_Smart_Pointers_anki_cards.txt:25,sentences=6
 emb-raii-0033,10_RAII_Smart_Pointers_anki_cards.txt:38,possible duplicate of an existing question

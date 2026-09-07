@@ -1,14 +1,14 @@
 ---
 id: emb-patterns-0035
 title: "Чому ISR пише дані у слот ДО оновлення `head` (порядок операцій)?"
-description: "Why does the ISR write the slot before advancing `head`?"
+description: "Щоб consumer ніколи не побачив просунутий head, який вказує на ще не записаний байт."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Щоб consumer ніколи не побачив просунутий `head`, який вказує на ще не записаний байт.**
+
+Якби спершу інкрементувати `head`, а потім писати дані, переривання/перепланування між цими кроками дало б consumer'у читання сміття. Оновлення індексу – завжди остання дія producer'а. ISR тут означає interrupt service routine.
+
+Правило: producer: дані -> `head`; consumer: дані -> `tail` – індекс публікує запис лише після того, як дані готові.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

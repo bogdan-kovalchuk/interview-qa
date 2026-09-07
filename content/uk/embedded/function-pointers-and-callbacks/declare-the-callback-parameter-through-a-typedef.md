@@ -1,14 +1,14 @@
 ---
 id: emb-fnptr-0014
 title: "Як оголосити функцію, яка приймає callback `void cb(int)`?"
-description: "How do you declare a function that takes a callback `void cb(int)`?"
+description: "Параметр оголошують як void (*cb)(int), а в production API читабельніше використати typedef event_cb_t."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,16 @@ sources:
 
 ## Short answer
 
-TODO
+Так. Безпосереднє оголошення параметра, але читабельніше – через typedef:
+
+```c
+void register_cb(void (*cb)(int));
+
+typedef void (*event_cb_t)(int);
+void register_cb(event_cb_t cb);
+```
+
+Правило: raw syntax корисно знати для інтерв'ю, але в production API typedef робить контракт стабільним і менш помилковим.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
