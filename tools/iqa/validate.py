@@ -529,7 +529,11 @@ def _sentence_count(text: str) -> int:
     # breaks. Removing the tag directly would join `sentence.<br>Next` into
     # `sentence.Next` and undercount otherwise valid prose.
     cleaned = re.sub(r"<br\s*/?>", " ", cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r"<[^>]+>", "", cleaned)
+    # Only a real tag. `<[^>]+>` also matches from the `<` of a shift operator to
+    # the `>` of an arrow further along - `1<<5` ... `->` - and silently deletes
+    # every sentence in between, which is how an answer of seven sentences came
+    # to count as one.
+    cleaned = re.sub(r"</?[a-zA-Z][^>]*>", "", cleaned)
     cleaned = re.sub(r"[*_`]", "", cleaned)
     cleaned = re.sub(r"(?m)^\s*(?:[-+*]|\d+[.)])\s+", "", cleaned)
     cleaned = " ".join(cleaned.split())

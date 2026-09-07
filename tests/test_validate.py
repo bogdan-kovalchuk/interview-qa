@@ -75,6 +75,17 @@ def test_sentence_count_does_not_depend_on_the_markup_form() -> None:
     assert _sentence_count(bold_html) == _sentence_count(bold_markdown) == 2
 
 
+def test_sentence_count_is_not_fooled_by_operators_that_look_like_tags() -> None:
+    """A `<` in code is an operator, not the start of a tag.
+
+    Stripping every `<[^>]+>` matched from the `<` of a shift to the `>` of an
+    arrow further along in the same answer and deleted all the text in between,
+    so an answer of three sentences counted as two - and one imported answer of
+    seven counted as one."""
+    answer = "Set bit 5 with `|= (1<<5)`. Then write it back -> done. Third sentence."
+    assert _sentence_count(answer) == 3
+
+
 def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
