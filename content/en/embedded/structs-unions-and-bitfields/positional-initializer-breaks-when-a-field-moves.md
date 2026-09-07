@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+struct Cfg { uint32_t baud; uint8_t parity; uint8_t stop; };
+struct Cfg c = { 115200, 0, 1 };
+```
 
 ## Short answer
 

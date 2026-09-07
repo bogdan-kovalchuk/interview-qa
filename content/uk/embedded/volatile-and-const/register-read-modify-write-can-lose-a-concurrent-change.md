@@ -31,11 +31,13 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 GPIOA_ODR |= (1u << pin);
 ```
+
+## Short answer
 
 Операція <span class="warn">не атомарна</span>: це читання register, модифікація в CPU, потім запис назад.
 

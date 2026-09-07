@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 uint8_t dma_done = 0;
 
 while (!dma_done) { }
 ```
+
+## Short answer
 
 <span class="warn">Якщо `dma_done` змінює ISR або DMA callback, бракує `volatile`.</span>
 

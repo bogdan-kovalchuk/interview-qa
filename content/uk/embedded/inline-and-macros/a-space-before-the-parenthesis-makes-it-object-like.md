@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define F (x) (x) * (x)
 int r = F(3);
 ```
+
+## Short answer
 
 <span class="warn">Пробіл між `F` і `(x)` робить його object-like макросом.</span>
 

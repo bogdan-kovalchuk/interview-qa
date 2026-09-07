@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define GPIOA_ODR \
   (*(volatile uint32_t *)0x40020014U)
 ```
+
+## Short answer
 
 **Макрос розгортається у lvalue-доступ до фіксованої адреси**, тому можна писати `GPIOA_ODR = 0xFF;` і `x = GPIOA_ODR;`.
 

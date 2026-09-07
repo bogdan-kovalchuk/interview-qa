@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,17 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+static inline bool rb_get(ringbuf_t *rb, uint8_t *b) {
+  if (rb->head == rb->tail) return false; // empty
+  *b = rb->buf[rb->tail];
+  rb->tail = (rb->tail + 1) & RB_MASK;
+  return true;
+}
+```
 
 ## Short answer
 

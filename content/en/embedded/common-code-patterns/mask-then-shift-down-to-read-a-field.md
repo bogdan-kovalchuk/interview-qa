@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+#define PRESC_MASK  (0x7U << 4) // bits [6:4]
+#define PRESC_SHIFT 4
+uint8_t p = (reg & PRESC_MASK) >> PRESC_SHIFT;
+```
 
 ## Short answer
 

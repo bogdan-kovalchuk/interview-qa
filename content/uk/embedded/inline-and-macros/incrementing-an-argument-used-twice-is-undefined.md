@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define SQR(x) ((x) * (x))
 int a = 2;
 int b = SQR(a++);
 ```
+
+## Short answer
 
 <span class="warn">Надійної відповіді немає: це undefined behavior.</span>
 

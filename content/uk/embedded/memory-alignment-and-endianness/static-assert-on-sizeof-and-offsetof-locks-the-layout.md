@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 _Static_assert(sizeof(wire_t) == 7, "layout");
 _Static_assert(offsetof(wire_t, id) == 6, "offset");
 ```
+
+## Short answer
 
 **Через `_Static_assert` + `sizeof`/`offsetof`** – будь-яка зміна padding чи порядку полів зламає збірку, а не runtime.
 

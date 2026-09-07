@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 uint32_t value;
 memcpy(&value, &buf[3], sizeof value);
 ```
+
+## Short answer
 
 **Через `memcpy`, а не cast `(uint32_t*)&buf[3]`.**
 

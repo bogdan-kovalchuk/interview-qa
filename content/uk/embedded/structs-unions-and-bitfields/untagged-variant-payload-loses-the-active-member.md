@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 union Payload {
@@ -41,6 +41,8 @@ union Payload {
 
 union Payload p;
 ```
+
+## Short answer
 
 <span class="warn">Немає tag-а, який каже, яке поле валідне.</span>
 

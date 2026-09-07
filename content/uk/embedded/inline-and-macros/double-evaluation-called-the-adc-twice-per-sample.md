@@ -31,11 +31,13 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define FILT(s) ((s) + ((adc_read() - (s)) >> 3))
 ```
+
+## Short answer
 
 <span class="warn">Аргумент-вираз із `adc_read()` обчислюється кілька разів</span> у тілі макроса (double evaluation).
 

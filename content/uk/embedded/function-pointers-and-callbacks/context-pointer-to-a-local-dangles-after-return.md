@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 void init(void) {
@@ -39,6 +39,8 @@ void init(void) {
     timer_register(on_timer, &app);
 }
 ```
+
+## Short answer
 
 <span class="warn">`&app` стає dangling pointer після повернення з `init`.</span>
 

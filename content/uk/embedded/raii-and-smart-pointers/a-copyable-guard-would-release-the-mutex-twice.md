@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 LockGuard(const LockGuard&) = delete;
 LockGuard& operator=(const LockGuard&) = delete;
 ```
+
+## Short answer
 
 <span class="warn">Якби guard можна було скопіювати, два деструктори звільнили б той самий мьютекс – double-release і миттєва corruption.</span>
 

@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 union U { float f; uint32_t u; };
@@ -39,6 +39,8 @@ union U x;
 x.f = 1.0f;
 uint32_t bits = x.u;
 ```
+
+## Short answer
 
 <span class="warn">Пастка не в C-синтаксисі, а в переносимості результату і різниці C vs C++.</span>
 

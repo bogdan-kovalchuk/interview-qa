@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 static void (*rx_cb)(uint8_t);
@@ -40,6 +40,8 @@ void uart_isr(void) {
     rx_cb(0x55);
 }
 ```
+
+## Short answer
 
 <span class="warn">Callback може бути не зареєстрований або бути `NULL`.</span>
 

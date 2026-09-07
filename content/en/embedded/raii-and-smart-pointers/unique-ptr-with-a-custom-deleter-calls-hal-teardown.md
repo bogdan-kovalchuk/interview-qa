@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,16 @@ sources:
     version: "N4861"
     applicability: "Authoritative section-level reference for the C++ language rules involved; freestanding and vendor toolchains can differ."
 ---
+
+## Question code
+
+```cpp
+auto del = [](UART_HandleTypeDef* h) {
+  HAL_UART_DeInit(h);
+};
+std::unique_ptr<UART_HandleTypeDef, decltype(del)>
+  uart(&huart1, del);
+```
 
 ## Short answer
 

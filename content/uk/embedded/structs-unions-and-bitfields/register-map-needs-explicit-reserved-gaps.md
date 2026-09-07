@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 typedef struct {
@@ -40,6 +40,8 @@ typedef struct {
     volatile uint32_t DR;
 } UART_TypeDef;
 ```
+
+## Short answer
 
 <span class="warn">Можуть бракувати reserved gaps між регістрами.</span>
 

@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 oven_state_t step(oven_state_t s, oven_event_t e) {
@@ -44,6 +44,8 @@ oven_state_t step(oven_state_t s, oven_event_t e) {
   return s; // no transition
 }
 ```
+
+## Short answer
 
 **Вкладений `switch` по стану, всередині – перевірка події і повернення нового стану.**
 

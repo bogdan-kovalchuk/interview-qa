@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 constexpr int MAX_SENSORS = 16;
 // vs  #define MAX_SENSORS 16
 ```
+
+## Short answer
 
 **Має тип і scope – типобезпечна, на відміну від текстової заміни.**
 

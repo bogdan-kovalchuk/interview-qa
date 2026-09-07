@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 class Sensor {
@@ -40,6 +40,8 @@ public:
   virtual ~Sensor() = default;
 };
 ```
+
+## Short answer
 
 **`= 0` робить функцію pure virtual; клас з нею стає abstract і його не можна інстанціювати.**
 

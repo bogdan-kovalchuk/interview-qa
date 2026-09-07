@@ -31,11 +31,13 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 STATUS.bits.error = 0;
 ```
+
+## Short answer
 
 <span class="warn">Компілятор може згенерувати read-modify-write усього register-а.</span>
 

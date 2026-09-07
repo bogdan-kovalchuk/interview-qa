@@ -31,17 +31,20 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
+## Question code
+
+```c
+// C: баг на error-шляху
+mutex_lock(&m);
+if (error) return -1; // забули unlock!
+mutex_unlock(&m);
+```
+
 ## Short answer
 
 **RAII-guard звільняє мьютекс на кожному нормальному виході зі scope, включно з early return.**
 
 ```cpp
-// C: баг на error-шляху
-mutex_lock(&m);
-if (error) return -1; // забули unlock!
-mutex_unlock(&m);
-
-// C++: RAII-guard
 { LockGuard lock(m);
   if (error) return -1; } // dtor розблокує
 ```

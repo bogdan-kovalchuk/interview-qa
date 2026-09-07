@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define PRESC_MASK  (0x7U << 4) // bits [6:4]
 #define PRESC_SHIFT 4
 uint8_t p = (reg & PRESC_MASK) >> PRESC_SHIFT;
 ```
+
+## Short answer
 
 **Накладаємо маску поля, потім зсуваємо вниз до позиції 0.**
 

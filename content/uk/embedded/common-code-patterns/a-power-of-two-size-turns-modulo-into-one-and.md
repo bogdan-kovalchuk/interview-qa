@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define RB_SIZE 64
 #define RB_MASK (RB_SIZE - 1)
 ```
+
+## Short answer
 
 **`(index + 1) & MASK` – одна інструкція AND, а `(index + 1) % SIZE` вимагає ділення.**
 

@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define RB_SIZE 8
@@ -39,6 +39,8 @@ sources:
 uint16_t head = 7;
 uint16_t next = (head + 1) & RB_MASK;
 ```
+
+## Short answer
 
 **`next == 0`** – wraparound на початок буфера.
 

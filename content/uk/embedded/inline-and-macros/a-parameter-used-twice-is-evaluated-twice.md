@@ -31,11 +31,13 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 ```
+
+## Short answer
 
 <span class="warn">Double evaluation</span>: параметр `a` зустрічається у тілі двічі, тому `++x` виконається двічі, якщо умова істинна.
 

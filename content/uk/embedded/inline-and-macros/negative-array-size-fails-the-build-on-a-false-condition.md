@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define STATIC_ASSERT(c, name) \
   typedef char name[(c) ? 1 : -1]
 ```
+
+## Short answer
 
 **Трюк із від'ємним розміром масиву**: якщо умова хибна, оголошується масив розміру `-1` -> <span class="warn">compile error</span> ще до запуску.
 

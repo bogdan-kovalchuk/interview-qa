@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 err_t motor_set_speed(motor_t *m, int32_t rpm) {
@@ -41,6 +41,8 @@ err_t motor_set_speed(motor_t *m, int32_t rpm) {
   // далі - лише валідні параметри
 }
 ```
+
+## Short answer
 
 **Early-return перевірки на вході функції** проти null-розіменування і невалідних параметрів.
 

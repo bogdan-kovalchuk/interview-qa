@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 uint8_t buf[8];
 uint32_t v = *(uint32_t*)&buf[1];
 ```
+
+## Short answer
 
 <span class="warn">Адреса `&buf[1]` не кратна 4 -> misaligned access</span> (HardFault на M0, штраф на M3/M4), плюс потенційне порушення strict aliasing.
 

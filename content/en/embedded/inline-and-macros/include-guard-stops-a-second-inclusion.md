@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+#ifndef SENSOR_H
+#define SENSOR_H
+/* вміст header */
+#endif
+```
 
 ## Short answer
 

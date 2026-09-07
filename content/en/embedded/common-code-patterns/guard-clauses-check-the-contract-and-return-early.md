@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,17 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+err_t motor_set_speed(motor_t *m, int32_t rpm) {
+  if (m == NULL)        return ERR_PARAM;
+  if (rpm < MIN || rpm > MAX) return ERR_PARAM;
+  if (m->state != RUNNING) return ERR_BUSY;
+  // далі - лише валідні параметри
+}
+```
 
 ## Short answer
 

@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,19 @@ sources:
     version: "N4861"
     applicability: "Authoritative section-level reference for the C++ language rules involved; freestanding and vendor toolchains can differ."
 ---
+
+## Question code
+
+```cpp
+class Gpio {
+  volatile uint32_t *const odr_;
+  const uint8_t pin_;
+public:
+  Gpio(volatile uint32_t *odr, uint8_t pin) : odr_{odr}, pin_{pin} {}
+  void set() const { *odr_ |= (UINT32_C(1) << pin_); }
+  void clear() const { *odr_ &= ~(UINT32_C(1) << pin_); }
+};
+```
 
 ## Short answer
 

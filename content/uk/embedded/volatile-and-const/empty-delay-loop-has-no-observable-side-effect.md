@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 for (uint32_t i = 0; i < 100000; ++i) {
 }
 ```
+
+## Short answer
 
 <span class="warn">Компілятор може повністю прибрати порожній loop</span>, бо він не має observable side effects.
 

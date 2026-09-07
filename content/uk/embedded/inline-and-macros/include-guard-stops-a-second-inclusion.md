@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #ifndef SENSOR_H
@@ -39,6 +39,8 @@ sources:
 /* вміст header */
 #endif
 ```
+
+## Short answer
 
 **Include guard запобігає повторному включенню header** у той самий translation unit.
 

@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 void isr() {
@@ -39,6 +39,8 @@ void isr() {
   // ...
 }
 ```
+
+## Short answer
 
 <span class="warn">Деструктор виконується в тому ж контексті, що й вихід зі scope – тобто в ISR (interrupt service routine).</span>
 

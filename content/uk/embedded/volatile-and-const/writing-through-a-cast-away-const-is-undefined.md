@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 const uint32_t cfg = 10;
 uint32_t *p = (uint32_t *)&cfg;
 *p = 20;
 ```
+
+## Short answer
 
 <span class="warn">Ні: якщо початковий об'єкт був оголошений `const`, спроба змінити його через non-const lvalue має undefined behavior.</span>
 

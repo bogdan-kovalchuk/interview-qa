@@ -31,11 +31,13 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 volatile uint32_t GPIOA_ODR = *(volatile uint32_t *)0x40020014;
 ```
+
+## Short answer
 
 <span class="warn">Це створює окрему volatile-змінну і лише ініціалізує її значенням register-а.</span>
 

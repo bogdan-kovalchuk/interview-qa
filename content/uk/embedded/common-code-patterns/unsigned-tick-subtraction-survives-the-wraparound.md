@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 uint32_t start = tick();
@@ -39,6 +39,8 @@ while (!(REG->SR & FLAG)) {
   if (tick() - start > TIMEOUT_MS) return ERR_TIMEOUT;
 }
 ```
+
+## Short answer
 
 **Запам'ятай старт, на кожній ітерації перевіряй різницю тіків проти ліміту.**
 

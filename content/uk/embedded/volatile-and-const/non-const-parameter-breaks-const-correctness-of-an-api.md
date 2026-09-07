@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 void uart_send(uint8_t *data, size_t len);
 const uint8_t msg[] = { 0x55, 0xAA };
 uart_send(msg, 2);
 ```
+
+## Short answer
 
 <span class="warn">API втрачає const-correctness.</span>
 

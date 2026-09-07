@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 typedef struct Driver Driver;
 
 Driver d;
 ```
+
+## Short answer
 
 <span class="warn">Неможливо, бо compiler не знає розмір `Driver`.</span>
 

@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,17 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+typedef struct {
+  volatile uint32_t CR;  // control
+  volatile uint32_t SR;  // status
+  volatile uint32_t DR;  // data
+} USART_t;
+#define USART1 ((USART_t *)0x40011000U)
+```
 
 ## Short answer
 
