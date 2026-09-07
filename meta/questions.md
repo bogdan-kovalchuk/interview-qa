@@ -191,7 +191,9 @@ sources:
 | Позначка | Значення |
 |---|---|
 | `Evaluation guide*` | обов'язкова для `middle` і `senior`; для `junior` її не має бути |
-| `[Follow-up]†` | єдина дозволена необов'язкова секція, і лише для `junior` |
+| `[X]†` | необов'язкова секція: або відсутня, або стоїть рівно на цьому місці. `TODO` у ній не пишуть – незастосовну секцію пропускають |
+| `[Follow-up]†` | лише для `junior` |
+| `[Question code]†` | лише `concept`, `mechanism`, `comparison`, `pitfall`, і лише коли питанню потрібен власний фрагмент коду |
 
 Для middle і senior роль follow-up несе виключно підблок `Level-up follow-up` усередині
 `Evaluation guide`. Для `behavioral` необов'язкова `Follow-up` заборонена на будь-якому рівні – у
@@ -199,10 +201,10 @@ sources:
 
 | `type` | Послідовність заголовків |
 |---|---|
-| `concept` | `Short answer` → `Detailed explanation` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
+| `concept` | [`Question code`]† → `Short answer` → `Detailed explanation` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
 | `mechanism` | те саме |
-| `comparison` | `Short answer` → `Detailed explanation` → `Comparison` → `When to choose which` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
-| `pitfall` | `Short answer` → `Detailed explanation` → `Symptom` → `Why it happens` → `How to avoid` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
+| `comparison` | [`Question code`]† → `Short answer` → `Detailed explanation` → `Comparison` → `When to choose which` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
+| `pitfall` | [`Question code`]† → `Short answer` → `Detailed explanation` → `Symptom` → `Why it happens` → `How to avoid` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
 | `coding` | `Task` → `Constraints` → `Short answer` → `Detailed explanation` → `Examples` → `Solution` → `Complexity` → `Edge cases` → `Tests` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
 | `debugging` | `Short answer` → `Detailed explanation` → `Symptom` → `Observations` → [`Reproduction`] → `Hypotheses` → `Diagnosis` → `Fix` → `Prevention` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
 | `system-design` | `Scale prompt` → `Short answer` → `Detailed explanation` → `Requirements` → `Scale assumptions` → `Architecture` → `Alternatives` → `Trade-offs` → `Failure modes` → `Evaluation guide*` → [`Follow-up`]† → `Sources` |
@@ -217,6 +219,15 @@ sources:
 **Для `coding` і `system-design` питання стоїть перед відповіддю.** `Front` цих типів будується з
 `Task` + `Constraints` і зі `Scale prompt`, тож інакше експортер мусив би читати вперед, а файл
 читався б знизу вгору.
+
+**Той самий принцип для коду в питанні.** `Question code` – необов'язкова секція перед
+`Short answer` у чотирьох типах (`concept`, `mechanism`, `comparison`, `pitfall`): рівно один
+fenced block і більше нічого. Формулювання питання лишається в `title`, а фрагмент, про який
+питання, – тут; експортер складає `Front` картки з `title` і цього блока. Раніше такого місця не
+було, і код питання або з'їдав ліміт одного блока в `Short answer`, або потрапляв у заголовок як
+сирий HTML. Секція не входить у `completeness` і не потребує citation-токена: це частина питання,
+а не твердження, яке треба доводити. Код у ній підпадає під `lang-code-identical` – обидві мови
+несуть той самий блок побайтово.
 
 ### Рівні заголовків
 

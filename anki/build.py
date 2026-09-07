@@ -263,6 +263,12 @@ def render_front(
     elif question["type"] == "system-design":
         scale_html = render_paragraphs(card["scale_prompt"], key_lead=False)
         parts.append(f'<div class="prompt-body">{scale_html}</div>')
+    elif card.get("question_code"):
+        # The snippet the question is about. It belongs to the Front, not to the
+        # answer: `coding` and `system-design` already carry their prompt here,
+        # and every other type has only the title to put it next to.
+        code_html = render_paragraphs(card["question_code"], key_lead=False)
+        parts.append(f'<div class="prompt-body">{code_html}</div>')
     return "".join(parts)
 
 
