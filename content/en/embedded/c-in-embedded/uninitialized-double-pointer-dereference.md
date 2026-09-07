@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,19 @@ int **pp;
 
 ## Short answer
 
-TODO
+<span class="warn">Wild pointer – UB.</span> `int **pp;` – an uninitialized double pointer, contains a garbage address.
+
+`*pp = malloc(...)` – dereferences `pp` (UB!) and writes the allocated memory address to an unknown location. This can corrupt any memory region.
+
+Correct:
+
+```c
+int *p = NULL;
+int **pp = &p;
+*pp = malloc(10*sizeof(int));
+```
+
+Always initialize pointers before use.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

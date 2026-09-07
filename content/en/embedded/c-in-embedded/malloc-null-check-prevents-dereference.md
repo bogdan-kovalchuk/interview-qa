@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+`malloc` returns **NULL** on allocation failure (no memory, heap fragmentation). If not checked and NULL is dereferenced -> <span class="warn">HardFault on MCU</span>.
+
+```c
+int *p = malloc(n * sizeof(int));
+if(p == NULL) { error_handler(); return; }
+// Тепер безпечно використовувати
+```
+
+In embedded: malloc can fail even for small requests due to fragmentation; safety-critical standards forbid malloc altogether – but if you use it, the check is mandatory.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

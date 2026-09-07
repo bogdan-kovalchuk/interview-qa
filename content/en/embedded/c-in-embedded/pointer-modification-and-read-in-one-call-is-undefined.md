@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ printf("%d %d", *p++, *p);
 
 ## Short answer
 
-TODO
+<span class="warn">Undefined behavior</span> – the order of evaluation of `printf` arguments is not defined by the standard.
+
+`p++` – post-increment: returns the current value and then increments. But there is no sequence point between evaluating `*p++` and `*p` within a single function call. The compiler may evaluate the arguments in any order.
+
+The result depends on the compiler/platform. Better: `printf("%d %d", arr[0], arr[1]);`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

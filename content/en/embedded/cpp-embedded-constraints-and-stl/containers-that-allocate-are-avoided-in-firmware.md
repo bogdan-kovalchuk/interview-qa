@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0010
 title: "Which STL components are avoided in embedded and why?"
-description: "Which STL components are avoided in embedded and why?"
+description: "std::vector, std::string, std::map, std::sharedptr and iostream pull in heap or heavy runtime"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`std::vector`, `std::string`, `std::map`/`unordered_map`, `std::shared_ptr`, `<iostream>` – they often pull in the heap or heavy runtime infrastructure.</span>
+
+`vector`/`string` typically allocate a dynamic array; `map` uses nodes on the heap; `shared_ptr` has a control block; `<iostream>` can pull in locales, buffers and tens of KB of Flash depending on the library.
+
+Rule: replace with `std::array`, `std::string_view`/`char[]`, a sorted `array` + binary search.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

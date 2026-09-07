@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0014
 title: "Why are `<algorithm>` and `<numeric>` safe even without a heap?"
-description: "Why are `<algorithm>` and `<numeric>` safe even without a heap?"
+description: "They operate on iterators rather than containers and never allocate memory themselves."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**They operate on iterators rather than containers – they never allocate memory themselves.**
+
+`std::sort`, `std::find`, `std::copy`, `std::accumulate` work on a `[begin, end)` range, so they can be applied to `std::array` or even a C array.
+
+Rule: STL algorithms are header-only and heap-free; it is the heap containers that are dangerous, not the algorithms.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

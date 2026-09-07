@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Local variables are stored on the **stack**. They are <span class="warn">NOT initialized automatically</span> – they contain garbage (random data from previous calls or the boot process).
+
+Initialized only if there is an explicit initializer: `int x = 0;` – the compiler generates a write instruction.
+
+Buggy code: `int sum; for(...) sum += x;` -> undefined behavior. Only `.data` and `.bss` are initialized by startup code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

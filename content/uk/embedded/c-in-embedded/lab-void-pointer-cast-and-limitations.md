@@ -11,7 +11,7 @@ status: published
 updated: 2026-09-07
 content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-В **C**: присвоєння `void*` до `T*` (і навпаки) не потребує explicit cast – автоматичне перетворення. `int *p = malloc(n);` – коректно у C.
+В **C**: присвоєння `void*` до `T*` (і навпаки) не потребує explicit cast – автоматичне перетворення, тож `int *p = malloc(n);` – коректно у C.
 
 В **C++**: <span class="warn">обов'язковий explicit cast</span>: `int *p = (int*)malloc(n);`.
 

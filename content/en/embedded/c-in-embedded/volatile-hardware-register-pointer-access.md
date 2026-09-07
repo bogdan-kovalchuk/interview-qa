@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+Without `volatile`, the compiler may:
+1. <span class="warn">Cache</span> the register value in a CPU register and not re-read it (missing a hardware change);
+2. <span class="warn">Remove "unnecessary" writes</span> (dead store elimination) – if the value is not read later;
+3. <span class="warn">Reorder</span> operations for optimization.
+
+With `volatile`: every read/write is actually performed in the order written.
+
+Pattern: `volatile uint32_t * const GPIOA_ODR = (volatile uint32_t*)0x40020014U;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

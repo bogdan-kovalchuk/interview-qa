@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ void advance(char *p, int n){
 
 ## Short answer
 
-TODO
+<span class="warn">NO.</span> In C, parameters are passed **by value**. The function receives a copy of the pointer `p`. `p += n` modifies the local copy but not the original pointer in the caller.
+
+To change the caller's pointer: a double pointer is needed: `void advance(char **p, int n){ *p += n; }` Call: `advance(&cursor, 5);`
+
+A classic mistake when implementing parsers and stream handlers.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0021
 title: "Trap: what is actually being compared? `uint8_t a = 200, b = 100; if(a + b > 250)`"
-description: "The intermediate `a + b` is computed as `int`, so comparing 300>250 differs from comparing the truncated `uint8_t` result."
+description: "The intermediate a + b is computed as int, so comparing 300250 differs from comparing the truncated uint8t result."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`a + b` is promoted to `int`: the result is `300` of type `int`. Comparison `300 > 250` -> `true`.
+
+But: `uint8_t result = a + b; if(result > 250)` -> result = 44, condition `false`!
+
+<span class="warn">Same expression – different result</span> depending on where the intermediate value is stored. Promotion happens before the operation; assignment truncates.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

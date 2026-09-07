@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Strict aliasing rule** (C99 §6.5): the compiler may assume that pointers of different incompatible types do NOT alias (do not point to the same memory area). This allows aggressive optimization: if modified through `float*` – the compiler is not required to re-read through `int*`. Exception: `char*` and `unsigned char*` may alias anything. Violation: `int x; float *fp=(float*)&x; *fp=1.0f;` -> UB; protection: `memcpy` or `union` (in C).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-cppstl-0004
 title: "How do you report errors without exceptions, using error codes?"
-description: "How do you report errors without exceptions, using error codes?"
+description: "An enum class with statuses plus data via reference or output parameter"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -44,7 +44,11 @@ Status sensor_read(uint8_t a, uint16_t& out) {
 
 ## Short answer
 
-TODO
+**`enum class` with statuses + data via reference/output parameter.**
+
+An `enum class` gives type safety (unlike a bare `enum`), and the caller is forced to check the result. This is the embedded analogue of exceptions.
+
+Rule: return codes are the default error handling without exceptions.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

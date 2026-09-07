@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0035
 title: "What should a candidate demonstrate about C++ constraints and the STL in embedded?"
-description: "What should a candidate demonstrate about C++ constraints and the STL in embedded?"
+description: "Why exceptions and RTTI are disabled, the safe STL subset, extern C, placement new, and MISRA C++ restrictions."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Why exceptions/RTTI are disabled, which STL subset is safe, how `extern "C"` works, placement new, and what MISRA C++ typically restricts.**
+
+Plus: `std::array` as the default container, `std::optional`/`std::string_view` instead of null/`std::string`, and the fact that C++ provides zero-cost abstractions (not "heavy for embedded").
+
+Rule: show specific flags, specific container replacements, and specific standards.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

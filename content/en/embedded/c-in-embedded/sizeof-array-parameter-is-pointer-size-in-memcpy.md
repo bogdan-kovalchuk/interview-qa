@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">It copies only 4 or 8 bytes</span> (the pointer size), not the array size.
+
+In a function parameter, `src` is `uint8_t*`, not an array. `sizeof(src) = sizeof(uint8_t*) = 4`. So `memcpy` copies only 4 bytes instead of N.
+
+Correct approach: pass the size explicitly: `memcpy(dst, src, n * sizeof(src[0]))` or `memcpy(dst, src, n)` where `n` is a separate parameter.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

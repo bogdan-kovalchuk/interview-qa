@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+`void (*handlers[8])(void)` – an array of 8 function pointers.
+
+Usage:
+- **Software interrupt router**: `handlers[irq_id]();`;
+- **State machine**: `state_fn[current_state]();`;
+- **Protocol parser**: `cmd_handlers[cmd_id](payload);`;
+- **Bootloader jump**: a table of entry points in Flash.
+
+Advantages: O(1) dispatch, easy to extend by changing the table. The Cortex-M Vector Table is a hardware implementation of this pattern.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

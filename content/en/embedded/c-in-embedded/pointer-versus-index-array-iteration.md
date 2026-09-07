@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Pointer iteration: `for(int *p=arr; p!=arr+n; p++) use(*p);` Index iteration: `for(int i=0; i<n; i++) use(arr[i]);`
+
+With modern optimizing compilers (`-O2`): **the code is usually identical** – the compiler converts between forms on its own.
+
+However: pointer iteration avoids recomputing the base address (`arr + i` each time). Without optimization, pointer iteration can be faster. In embedded (no optimization): pointer iteration is more efficient for Cortex-M0.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

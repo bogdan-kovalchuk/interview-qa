@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A string in C is an array of characters where the last element is **'\0' (null-terminator)**, a byte with value 0. "hello" -> `['h','e','l','l','o','\0']` – 6 bytes in memory. The null-terminator signals to standard functions (`strlen`, `strcpy`, `printf %s`) where the string ends; without '\0' – reading goes out of bounds -> UB. String literals automatically have '\0'; when filling manually: `buf[n] = '\0';` is mandatory.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

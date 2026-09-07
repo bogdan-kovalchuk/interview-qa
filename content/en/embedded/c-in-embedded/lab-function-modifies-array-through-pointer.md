@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -43,7 +43,7 @@ printf("%d",a[0]);
 
 ## Short answer
 
-TODO
+`99`. `a` decays to a pointer, so the function `f` receives `int*` – a pointer to the first element `a[0]`. `p[0] = 99` -> modifies `a[0]` in the caller. Arrays in C are passed by reference (through a pointer to the first element) – the function can modify the original data; if only reading is needed: `const int *p`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

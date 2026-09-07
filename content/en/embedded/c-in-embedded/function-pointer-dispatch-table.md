@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,18 @@ sources:
 
 ## Short answer
 
-TODO
+**Dispatch table** – an array of function pointers for selecting a handler by index. Replaces large `switch` constructs.
+
+```c
+typedef void (*handler_t)(void);
+handler_t table[16] = {
+    isr0, isr1, isr2, ...
+};
+// Виклик:
+table[irq_num]();
+```
+
+Advantages: O(1) dispatch, easy to extend, suitable for RTOS task tables, state machines, protocol demultiplexers. In embedded: the Cortex-M Vector Table is a built-in dispatch table in Flash.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

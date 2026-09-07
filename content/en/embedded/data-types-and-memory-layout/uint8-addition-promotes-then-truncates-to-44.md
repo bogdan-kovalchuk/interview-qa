@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0005
 title: "What is the result? `uint8_t a = 200; uint8_t b = 100; uint8_t result = a + b;`"
-description: "The operands promote to `int` before adding, so 200+100 is 300, and the assignment truncates it to 44."
+description: "The operands promote to int before adding, so 200+100 is 300, and the assignment truncates it to 44."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`result = 44`.
+
+Before addition, `a` and `b` are **promoted to `int`**: `200 + 100 = 300` (as `int`). On assignment to `uint8_t` -> truncation: `300 % 256 = 44`.
+
+This is a combination of integer promotion and type truncation. If overflow was expected, the code is correct; if 300 was expected, it is a bug.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

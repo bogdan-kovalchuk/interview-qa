@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**0x78**. The cast `(uint8_t*)(&val)` is a pointer to the first byte of `val` in memory. On little-endian: the LSB is at the lowest address -> `0x78`. Memory layout: `[78][56][34][12]`; next byte: `*((uint8_t*)(&val) + 1) = 0x56`. Access through a byte pointer is allowed for character types (`unsigned char*`); in practice `uint8_t` is typically a typedef for `unsigned char`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

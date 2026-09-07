@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+**Wild pointer** – a pointer with a garbage address (stack value), not NULL. A check `if(p != NULL)` does not detect it.
+
+Dangers:
+- Write to an arbitrary address -> corruption of critical data;
+- On an MCU: write to peripheral registers -> unpredictable hardware behavior;
+- Hard to reproduce – depends on stack state.
+
+Protection:
+- Always initialize: `int *p = NULL;` or immediately `= &x`;
+- `-fsanitize=address` during development;
+- Static analysis: PC-lint, Coverity.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Connect a probe via SWD/JTAG, load the ELF with symbols, and verify the reset/halt sequence. Breakpoints stop in code, watchpoints catch read/write of a specific address, and trace/SWO/ETM shows events without brute-force printf. For ISR/DMA bugs, combine the debugger with a logic analyzer and avoid stopping timing-sensitive code unless necessary.[^dou-embedded-interview]
 
 ## Detailed explanation
 

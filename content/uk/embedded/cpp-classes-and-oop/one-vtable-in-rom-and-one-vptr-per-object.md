@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -35,7 +35,7 @@ sources:
 
 **Зазвичай vtable – одна на polymorphic class у ROM (read-only memory, `.rodata`), vptr – один прихований pointer на кожен polymorphic object у RAM (random-access memory).**
 
-Спрощена оцінка: vtable entries ≈ кількість virtual functions × розмір pointer-а; vptr ≈ один pointer на екземпляр. Реальний layout залежить від ABI (application binary interface): destructor-и, RTTI або multiple inheritance можуть додати entries.
+Спрощена оцінка: vtable entries ≈ кількість virtual functions × розмір pointer-а; vptr ≈ один pointer на екземпляр. Реальний layout залежить від ABI (application binary interface): destructor-и, RTTI або множинне успадкування можуть додати entries.
 
 Правило: vtable рахуй приблизно на клас (ROM), vptr – на екземпляр (RAM); при сотнях об'єктів RAM-вартість стає відчутною.[^embeddedinterviewlab]
 

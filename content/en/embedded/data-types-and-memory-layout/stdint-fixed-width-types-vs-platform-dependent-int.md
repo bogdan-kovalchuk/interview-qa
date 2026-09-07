@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0009
 title: "Why use `stdint.h` types instead of plain `int`, `short`, `long`?"
-description: "`stdint.h` types guarantee an exact width across platforms, unlike plain `int`/`short`/`long`."
+description: "stdint.h types guarantee an exact width across platforms, unlike plain int/short/long."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+The sizes of `int`, `short`, `long` depend on the platform and ABI: `int` is 2 bytes on MSP430, 4 bytes on Cortex-M.
+
+`<stdint.h>` guarantees exact width: `uint8_t` is always 8 bits, `uint32_t` is always 32 bits.
+
+In embedded: register maps, protocols, struct layout – **always fixed-width types**. "For anything stored in a struct, sent over a protocol, or written to a register – use fixed-width types."[^embeddedinterviewlab]
 
 ## Detailed explanation
 

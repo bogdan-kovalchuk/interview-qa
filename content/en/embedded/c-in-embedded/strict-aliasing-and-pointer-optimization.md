@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**Pointer aliasing** – a situation where two pointers of different types point to the same memory area.
+
+Strict aliasing rule (C99 §6.5): the compiler may assume that pointers of different types do not alias (except for `char*`/`unsigned char*`). This allows more aggressive optimization.
+
+Violation: `int x; float *fp = (float*)&x; *fp = 1.0f;` -> undefined behavior.
+
+Protection: `memcpy` for type punning, `char*` for byte access, `restrict` for an explicit no-aliasing guarantee.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

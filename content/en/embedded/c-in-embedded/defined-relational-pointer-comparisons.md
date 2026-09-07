@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Comparisons `==` and `!=` are always **defined** between any two pointers of the same type.
+
+Comparisons `<`, `>`, `<=`, `>=` are **defined only** if both pointers point to the **same array** (or struct). Comparing pointers to different objects -> <span class="warn">undefined behavior per the standard</span>.
+
+In practice: most platforms give a correct answer even for different objects, but do not rely on this in portable code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0020
 title: "What does `-fno-threadsafe-statics` do?"
-description: "What does `-fno-threadsafe-statics` do?"
+description: "It removes the mutex guard around function-local static initialization."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**It removes the mutex guard around function-local static initialization.**
+
+By default the compiler adds a guard (possibly with pthread) so that two threads do not initialize the static simultaneously. On bare metal without threads this is extra code and a dependency.
+
+Rule: `-fno-threadsafe-statics` is appropriate when there is no concurrent access to lazy-init statics (single-threaded bare metal).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -35,9 +35,7 @@ sources:
 
 **Tentative definition** - оголошення глобальної змінної без ініціалізатора і без `extern`: `int x;` у файловому scope.
 
-За правилами C: якщо немає іншого визначення у цьому translation unit - автоматично стає визначенням з нульовою ініціалізацією -> розміщується у **.bss** або common-секції залежно від компілятора/прапорців.
-
-Якщо у тому ж translation unit є `int x = 5;` - tentative definition об'єднується з цим визначенням. Якщо `int x;` покласти у header і включити в кілька `.c` файлів, сучасний GCC з `-fno-common` дасть multiple definition. Для зовнішньої змінної у header треба `extern int x;`.
+За правилами C: якщо немає іншого визначення у цьому translation unit - автоматично стає визначенням з нульовою ініціалізацією -> розміщується у **.bss** або common-секції залежно від компілятора/прапорців. Якщо у тому ж translation unit є `int x = 5;` - tentative definition об'єднується з цим визначенням. Якщо `int x;` покласти у header і включити в кілька `.c` файлів, сучасний GCC з `-fno-common` дасть multiple definition; для зовнішньої змінної у header треба `extern int x;`.
 
 <span class="warn">У C++ немає tentative definitions</span> - кожне оголошення або `extern` або визначення (ODR).[^embeddedinterviewlab]
 

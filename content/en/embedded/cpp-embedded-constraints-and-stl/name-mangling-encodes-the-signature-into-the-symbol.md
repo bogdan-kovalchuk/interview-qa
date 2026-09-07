@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0017
 title: "What is name mangling and why does it make `extern \"C\"` necessary?"
-description: "What is name mangling and why does it make `extern \"C\"` necessary?"
+description: "C++ encodes the function signature into the symbol for overload resolution, so cross-language interfaces require C linkage."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**C++ encodes the signature into the symbol (for overload resolution): `sensor_read(uint8_t)` -> `_Z10sensor_readh`; C does not mangle.**
+
+Without `extern "C"` the linker looks for the mangled name and does not find the unmangled C symbol -> link error.
+
+Rule: mangling is the reason a cross-language interface requires C linkage.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

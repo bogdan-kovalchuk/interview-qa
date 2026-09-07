@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,11 @@ uint32_t val=*(uint32_t*)p;
 
 ## Short answer
 
-TODO
+`p` is `uint8_t*`: no alignment guarantees. Casting to `uint32_t*` and dereferencing:
+
+If the address `0x40020000` is aligned to 4 -> OK. But if `p` points to `0x40020001` (misaligned) -> Cortex-M0: <span class="warn">HardFault</span>. Cortex-M3/M4: slow but no fault.
+
+Safe approach: `uint32_t val; memcpy(&val, p, sizeof(val));` – the compiler optimizes to a single LDR if aligned.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

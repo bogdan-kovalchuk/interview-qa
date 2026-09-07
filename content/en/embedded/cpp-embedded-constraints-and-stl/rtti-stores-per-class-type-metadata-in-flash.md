@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0003
 title: "Why is RTTI disabled (`-fno-rtti`) and what does it take away?"
-description: "Why is RTTI disabled (`-fno-rtti`) and what does it take away?"
+description: "RTTI stores per-class type metadata in Flash; disabling it saves ROM"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**RTTI (run-time type information) stores per-class type metadata in Flash; disabling it saves ROM.**
+
+Consequences: `dynamic_cast` is unavailable (use `static_cast` when the type is known) and `typeid` (replace with template specialisation / tag dispatch). Virtual functions still work – vtable is not RTTI.
+
+Rule: without RTTI rely on compile-time type knowledge, not runtime checks.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

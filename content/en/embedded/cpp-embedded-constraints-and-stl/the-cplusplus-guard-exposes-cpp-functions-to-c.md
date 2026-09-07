@@ -1,7 +1,7 @@
 ---
 id: emb-cppstl-0016
 title: "How do you expose C++ functions for calling from C?"
-description: "How do you expose C++ functions for calling from C?"
+description: "An #ifdef cplusplus guard enables extern \"C\" only for the C++ compiler."
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -45,7 +45,11 @@ extern "C" {
 
 ## Short answer
 
-TODO
+**The `#ifdef __cplusplus` guard enables `extern "C"` only for the C++ compiler.**
+
+A C compiler does not understand the `extern "C"` syntax (it is a C++ keyword); the guard lets a single header work in both languages.
+
+Rule: shared headers must always have an `#ifdef __cplusplus` guard around `extern "C"`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

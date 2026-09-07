@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ printf("%d", p<q);
 
 ## Short answer
 
-TODO
+<span class="warn">Undefined behavior per the C standard</span>. Relational comparison (`<`, `>`) of pointers from different objects is not defined by the standard.
+
+In practice (most platforms, flat memory): the result depends on variable placement in memory (stack order is compiler-dependent). Not portable;
+
+Allowed: `p == q`, `p != q` – equality comparison between any pointers. Relational comparisons – only within a single array.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

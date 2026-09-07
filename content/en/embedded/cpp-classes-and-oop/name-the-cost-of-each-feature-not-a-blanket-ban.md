@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0037
 title: "What should a candidate say about C++ OOP in embedded?"
-description: "What should a candidate say about C++ OOP in embedded?"
+description: "Non-virtual classes can be zero-overhead; vtable lives in ROM, vptr costs RAM per instance"
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**OOP (object-oriented programming) in embedded: non-virtual classes can be zero-overhead in release; vtable lives in ROM, vptr costs RAM per instance; CRTP gives compile-time polymorphism; composition is the default.**
+
+Plus startup requirements: bare-metal must iterate `.init_array`; global destructors may pull in `atexit`; `-fno-exceptions`/`-fno-rtti` to control runtime support.
+
+Rule: show that you know the cost of every feature in bytes and cycles, not just the syntax.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

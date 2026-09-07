@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0027
 title: "Why is heap allocation often banned in safety-critical embedded systems?"
-description: "`malloc` is non-deterministic, fragments memory, and resists worst-case analysis, so safety standards require static allocation."
+description: "malloc is non-deterministic, fragments memory, and resists worst-case analysis, so safety standards require static allocation."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Heap (`malloc`/`free`) has three problems:
+
+1. **Non-deterministic time** – `malloc` takes varying time depending on heap state;
+2. **Heap fragmentation** – free memory exists, but not as a contiguous block of the needed size -> `malloc` returns NULL;
+3. **Hard to analyze** worst-case memory usage.
+
+MISRA C, DO-178C require static allocation. `malloc` only at initialization, not in the real-time part.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -43,7 +43,7 @@ i++) *p++=i;
 
 ## Short answer
 
-TODO
+<span class="warn">Yes, an infinite loop!</span> `uint8_t i` is an unsigned 8-bit type. At `i=255` -> `i++` -> wraps to 0 -> condition `0 < 256` -> true; the loop never terminates. Fix: `for(int i=0; i<256; i++)` or `for(size_t i=0; i<256; i++)`. GCC with `-Wtype-limits` warns if the condition is always true; this is a typical mistake when working with buffers of size 256.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

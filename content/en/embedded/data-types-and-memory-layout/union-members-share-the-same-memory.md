@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+All fields occupy **the same memory region**. Size = `max(sizeof(uint32_t), sizeof(uint8_t[4])) = 4` bytes.
+
+On little-endian (Cortex-M): if `word = 0x12345678`, then:
+`bytes[0] = 0x78` (LSB), `bytes[1] = 0x56`, `bytes[2] = 0x34`, `bytes[3] = 0x12` (MSB).
+
+Uses: endianness detection, byte-level serialization, IEEE 754 bit inspection.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

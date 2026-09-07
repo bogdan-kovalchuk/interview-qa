@@ -1,7 +1,7 @@
 ---
 id: emb-cppoop-0006
 title: "What is a member initialisation list in a constructor for?"
-description: "What is a member initialisation list in a constructor for?"
+description: "It initializes members before the constructor body, and is the only way to initialize const and reference members."
 track: embedded
 section: cpp-classes-and-oop
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ Gpio(uint32_t base, uint8_t pin)
 
 ## Short answer
 
-TODO
+**It initializes members before entering the constructor body – the only way for `const` and reference members.**
+
+`const uint8_t pin_` cannot be assigned in the body; it must be initialized in the list. This is also more efficient: direct initialization instead of "default + assignment".
+
+Rule: initialize all members in the list, in the order they are declared in the class.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

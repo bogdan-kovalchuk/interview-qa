@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0036
 title: "Trap: where does the `sizeof(arr)/sizeof(arr[0])` trick fail?"
-description: "An array passed to a function decays to a pointer, so `sizeof(arr)` there gives the pointer's size, not the array's."
+description: "An array passed to a function decays to a pointer, so sizeof(arr) there gives the pointer's size, not the array's."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+When passing an array to a function: `void f(int arr[]) { int n = sizeof(arr)/sizeof(arr[0]); }`
+
+Here `arr` is not an array but a <span class="warn">pointer</span> to the first element (`int*`). `sizeof(arr) = sizeof(int*) = 4 or 8`. The result is wrong.
+
+Correct: pass the size explicitly or use `sizeof` only for arrays in the same scope where they are declared. In C++: `std::array` or `std::span`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

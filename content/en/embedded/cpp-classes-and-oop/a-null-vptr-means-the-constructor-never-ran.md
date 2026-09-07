@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0026
 title: "Trap: you see a null vptr in a global object. What is the cause?"
-description: "Trap: you see a null vptr in a global object. What is the cause?"
+description: "Global constructors have not run because startup did not walk the init array"
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Global constructors have not run – startup did not walk `.init_array`.</span>
+
+Until the ctor executes, the vptr (and the rest of the fields) remain zero/garbage; the first virtual call jumps through a null address -> HardFault.
+
+Protection: make sure the bare-metal startup iterates `.init_array` and calls global ctors before `main()`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

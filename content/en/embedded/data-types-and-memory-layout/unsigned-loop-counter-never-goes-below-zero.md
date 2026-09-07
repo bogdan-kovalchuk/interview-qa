@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0011
 title: "Trap: what happens? `for(uint8_t i = 10; i >= 0; i--)`"
-description: "`uint8_t` is unsigned, so `i >= 0` is always true and the decrementing loop never ends."
+description: "uint8t is unsigned, so i = 0 is always true and the decrementing loop never ends."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Infinite loop!</span> `uint8_t` is an unsigned type, so `i >= 0` is always `true`.
+
+When `i` reaches `0` and `i--` executes -> the value becomes `255` (wraparound), not `-1`.
+
+Fix: `for(int i = 10; i >= 0; i--)` or `do { ... } while(i-- > 0);`. GCC with `-Wtype-limits` will warn about this.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

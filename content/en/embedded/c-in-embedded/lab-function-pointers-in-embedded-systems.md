@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Function pointer** – a pointer that stores a function address in .text (Flash). Syntax: `void (*fp)(uint8_t) = &send_byte;`. Usage in embedded:
+- **HAL callbacks**: `HAL_UART_RegisterCallback(huart, id, fp)`;
+- **RTOS task**: `xTaskCreate(task_fn, ...)`;
+- **Bootloader**: `void (*jump)(void) = (void(*)(void))app_addr; jump();`;
+- **State machine**: a table of state handler functions. These are typical embedded use cases.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

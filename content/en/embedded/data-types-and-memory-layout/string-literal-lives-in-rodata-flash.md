@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0035
 title: "Where does the string literal `\"Hello, World!\"` live in an embedded program's memory?"
-description: "The compiler places string literals in `.rodata` in Flash, so they cost no RAM."
+description: "The compiler places string literals in .rodata in Flash, so they cost no RAM."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+In the **.rodata** section in Flash. The compiler places string literals in a read-only section – they take no RAM.
+
+The same string is used only once (deduplication is compiler-dependent).
+
+<span class="warn">Exception</span>: `char arr[] = "hello";` – the compiler initializes the array with the string's values, and the array (local/static) is placed on the stack / in `.data` respectively.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

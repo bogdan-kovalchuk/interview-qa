@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У **C**: це поширений union type punning. Він не є strict-aliasing порушенням, але отримане значення залежить від IEEE 754 representation, endianness і реалізації. Для максимально переносимого коду краще `memcpy(&r, &pun.f, sizeof r)`.
+У **C**: це поширений union type punning. Він не є strict-aliasing порушенням, але отримане значення залежить від IEEE 754 representation, endianness і реалізації; для максимально переносимого коду краще `memcpy(&r, &pun.f, sizeof r)`.
 
 У **C++**: формально - <span class="warn">undefined behavior</span> (active member rule: активним є `f`, читання `u` - UB). GCC/Clang підтримують як extension, але стандарт не гарантує.
 

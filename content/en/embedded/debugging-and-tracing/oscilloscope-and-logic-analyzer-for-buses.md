@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Use an oscilloscope to check voltage levels, edges, ringing, rise/fall time, clock, and reset/power timing. A logic analyzer decodes UART/SPI/I2C frames, showing baud/clock, ACK/NACK, CS timing, and gaps between bytes. Best practice is to trigger on the problem event and simultaneously watch a firmware GPIO marker to link the code path with the signal.[^dou-embedded-interview]
 
 ## Detailed explanation
 

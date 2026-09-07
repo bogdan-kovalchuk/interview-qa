@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0008
 title: "Trap: why is overriding the global `operator new` with a pool allocator dangerous?"
-description: "Trap: why is overriding the global `operator new` with a pool allocator dangerous?"
+description: "Overriding global operator new silently changes the semantics of every allocation"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">It silently changes the semantics of EVERY allocation, including third-party libraries.</span>
+
+Any code that calls `new` anywhere inside (even library code) will suddenly go through your pool – with unpredictable consequences for size/timing.
+
+Defence: it is safer to `= delete` the global `operator new` entirely, so that an accidental heap allocation becomes a compile error.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

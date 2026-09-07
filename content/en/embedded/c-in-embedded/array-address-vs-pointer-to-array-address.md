@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0043
 title: "What value does `&arr` return, and how does it differ from `arr` when `int arr[8]`?"
-description: "Why <code>arr</code> and <code>&amp;arr</code> share an address but have different pointer types."
+description: "arr and &arr share an address but have different pointer types."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Both expressions yield the **same numeric address** (the address of the first element of the array), but have different **types**:
+
+`arr` -> decays to `int*`. `arr+1` -> +4 bytes (one int). `&arr` -> `int(*)[8]` (pointer to array). `&arr+1` -> +32 bytes (one array).
+
+In practice: `&arr` is used to pass to a function that expects `int(*)[8]` – it preserves the array size in the type.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0031
 title: "Is there a difference between `int x;` and `int x = 0;` declared globally?"
-description: "Both are zero at startup, but `int x;` lands explicitly in `.bss` and costs no Flash."
+description: "Both are zero at startup, but int x; lands explicitly in .bss and costs no Flash."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+Behaviorally – **NO**: both are 0 at startup. But there is a section difference:
+
+`int x;` -> `.bss`: takes no Flash, startup code sets zero.
+`int x = 0;` -> `.data` (or `.bss` if the compiler recognizes zero-init): value 0 may be stored in Flash.
+
+<span class="warn">Practice</span>: write `int x;` without `= 0` for globals – explicitly in `.bss`, does not waste Flash on zeros.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0010
 title: "What size does this have on a 32-bit Cortex-M? `struct { char c; int x; };`"
-description: "The compiler inserts padding before the `int`, so `struct { char; int; }` takes 8 bytes, not 5."
+description: "The compiler inserts padding before the int, so struct { char; int; } takes 8 bytes, not 5."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**8 bytes** (not 5!).
+
+Layout: `char c` @ offset 0 (1B) -> <span class="warn">3 bytes of padding</span> -> `int x` @ offset 4 (4B). Trailing padding = 0.
+
+Padding is inserted so that `int` sits at an address divisible by 4 (alignment requirement). Check: `offsetof(s, x) == 4`; always use `sizeof()` and `offsetof()` to analyze layout.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

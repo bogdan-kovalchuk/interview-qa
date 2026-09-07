@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Heap fragmentation occurs after multiple `malloc`/`free` calls: free blocks exist, but not a contiguous block of the needed size -> `malloc` returns NULL.
+
+**External**: many small free blocks. **Internal**: allocated block is larger than requested (alignment/metadata).
+
+In embedded (MCU without MMU) – <span class="warn">no defragmentation</span>. Solution: static allocation or memory pool (fixed-size blocks).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

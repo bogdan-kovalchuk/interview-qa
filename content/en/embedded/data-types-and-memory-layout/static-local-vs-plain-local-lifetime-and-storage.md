@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0017
 title: "How does a `static` local variable differ from a plain local one?"
-description: "A plain local lives on the stack and dies with the call; a `static` local lives in static memory for the program's lifetime."
+description: "A plain local lives on the stack and dies with the call; a static local lives in static memory for the program's lifetime."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Plain local** – on the stack, lifetime = function call duration, not initialized automatically.
+
+**Static local** – in `.bss`/`.data` (static memory), lifetime = entire program lifetime, initialized once (to zero or the given value). Retains its value between calls.
+
+<span class="warn">Downside: the function is not reentrant</span> – not thread-safe without synchronization.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

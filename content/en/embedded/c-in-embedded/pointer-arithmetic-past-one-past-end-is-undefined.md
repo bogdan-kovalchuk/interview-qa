@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 4
 reconciled_with:
   uk: 2
 anki:
@@ -42,7 +42,11 @@ p+=5;
 
 ## Short answer
 
-TODO
+<span class="warn">Yes, undefined behavior</span> (even without dereferencing).
+
+Forming the pointer `p += 5` goes beyond the array by more than one: `arr` has 4 elements, so valid pointers are `arr` through `arr+4` (inclusive of "one-past-the-end"). `arr+5` -> undefined behavior already at formation.
+
+One-past-the-end (`arr+4`) – may be formed, but <span class="warn">must not be dereferenced</span>.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

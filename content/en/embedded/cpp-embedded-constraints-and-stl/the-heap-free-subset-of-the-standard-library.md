@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0009
 title: "Which STL components are safe (heap-free) for embedded?"
-description: "Which STL components are safe (heap-free) for embedded?"
+description: "std::array, std::optional, std::stringview, std::bitset, std::tuple, std::variant are heap-free"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`std::array`, `std::optional`, `std::string_view`, `std::bitset`, `std::tuple`/`std::pair`, `std::variant`, ``, ``.**
+
+All of them have fixed size or work on iterators without allocation. `std::sort`, `std::find`, `std::accumulate` are header-only, no heap.
+
+Rule: STL (standard template library) is not forbidden entirely – its heap-free subset is safe.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

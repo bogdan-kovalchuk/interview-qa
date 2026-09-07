@@ -1,15 +1,15 @@
 ---
 id: emb-cppoop-0002
 title: "How does `class` differ from `struct` in C++?"
-description: "How does `class` differ from `struct` in C++?"
+description: "The main difference is default access: class is private, struct is public; default inheritance differs the same way."
 track: embedded
 section: cpp-classes-and-oop
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The main difference is default access: `class` is private, `struct` is public.**
+
+Default inheritance also differs: `class Derived : Base` inherits private, while `struct Derived : Base` inherits public. Otherwise, both can equally have methods, constructors, and inheritance.
+
+Convention: `struct` is for simple POD-like (plain old data) aggregates, `class` is used when there are invariants and encapsulation.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

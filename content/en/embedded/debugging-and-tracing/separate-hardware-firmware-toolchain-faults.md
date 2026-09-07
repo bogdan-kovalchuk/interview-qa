@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+First check power, clocks, reset, boot pins, and signal levels with an oscilloscope or logic analyzer. Then minimize the firmware to a known-good test: blink, UART, single peripheral, no RTOS/DMA. If the symptom depends on optimization, linker script, startup, or wrong flags, it looks like toolchain/config; if it repeats with minimal code and is visible on signals, it is a hardware/power issue.[^dou-embedded-interview]
 
 ## Detailed explanation
 

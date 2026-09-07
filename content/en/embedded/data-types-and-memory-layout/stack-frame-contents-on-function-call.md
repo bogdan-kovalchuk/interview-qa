@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Stack frame contains:
+1. **Saved registers** (callee-saved per ABI: r4–r11 on ARM);
+2. **Return address** (LR, or pushed onto the stack);
+3. **Local variables** of the function;
+4. Padding for alignment (Cortex-M: 8-byte aligned).
+
+On an exception (ISR): hardware automatically pushes xPSR, PC, LR, R12, R3–R0. Therefore deep ISR nesting -> large stack.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

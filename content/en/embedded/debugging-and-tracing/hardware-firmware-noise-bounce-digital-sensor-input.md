@@ -1,7 +1,7 @@
 ---
 id: emb-debug-0005
 title: "What simple hardware and firmware methods remove noise/bounce on a digital sensor input?"
-description: "What simple hardware and firmware methods remove noise/bounce on a digital sensor input?"
+description: "Hardware methods include pull resistors, RC filters, Schmitt triggers, and shielding; firmware uses debounce timers, majority vote, and interrupt masking."
 track: embedded
 section: debugging-and-tracing
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Hardware: pull-up/pull-down of the correct value, RC filter, Schmitt trigger, shielding/grounding, series resistor, or opto/isolator where needed. Firmware: debounce timer, majority vote, state machine with stable time, interrupt masking over the debounce window. <span class="warn">Do not mask a wiring/grounding problem with a firmware filter if the noise can damage the input or cause a safety event.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0020
 title: "What happens? `int8_t x = 127; x++;`"
-description: "Overflowing `int8_t` past 127 is undefined behavior in the C standard, though it often wraps to -128 in practice."
+description: "Overflowing int8t past 127 is undefined behavior in the C standard, though it often wraps to -128 in practice."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Signed integer overflow -> undefined behavior</span> per the C standard (§6.5).
+
+In practice (two's complement, most compilers): `127 + 1 = -128` (wrap). But the standard does not guarantee this behavior – the compiler may optimize code assuming overflow never occurs.
+
+For defined wraparound: use `uint8_t`. For checking: `if(x < INT8_MAX) x++;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

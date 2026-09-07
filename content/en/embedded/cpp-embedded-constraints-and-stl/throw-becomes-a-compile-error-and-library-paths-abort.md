@@ -1,15 +1,15 @@
 ---
 id: emb-cppstl-0002
 title: "Trap: what happens to `throw` and `try`/`catch` under `-fno-exceptions`?"
-description: "Trap: what happens to `throw` and `try`/`catch` under `-fno-exceptions`?"
+description: "Under -fno-exceptions, throw and try/catch become compile errors and library throws become abort"
 track: embedded
 section: cpp-embedded-constraints-and-stl
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">In your own code `throw`/`try`/`catch` usually become compile errors; library paths that would have thrown an exception often end in `abort()`.</span>
+
+This is not "magic error removal": a path through `vector::at()` out-of-range may crash the system instead of raising a handled exception.
+
+Defence: audit throwing API (application programming interface) in the standard library and replace them with explicit checks/statuses.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

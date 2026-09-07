@@ -40,11 +40,9 @@ arr[5] = 0;
 
 ## Short answer
 
-<span class="warn">Out-of-bounds write -> undefined behavior.</span> Valid indices: `0..4`. `arr[5]` – beyond the array.
+<span class="warn">Out-of-bounds write -> undefined behavior.</span> Valid indices: `0..4`, and `arr[5]` is beyond the array.
 
-In memory `arr[5]` sits right after the array: it may be another local variable, a return address, a saved LR.
-
-Consequences: silent data corruption or a crash on function return (corrupted return address).
+In memory `arr[5]` sits right after the array: it may be another local variable, a return address, a saved LR, so the consequences are silent data corruption or a crash on function return (a corrupted return address).
 
 Protection: `-fsanitize=address`, explicit index checks, `static_assert(i < ARRAY_SIZE)`.[^embeddedinterviewlab]
 
