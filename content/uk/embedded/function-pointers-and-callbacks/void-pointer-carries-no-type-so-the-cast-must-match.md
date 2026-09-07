@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Неправильний cast context pointer-а дає undefined behavior при доступі до об'єкта.
+<span class="warn">Неправильний cast context pointer-а дає undefined behavior при доступі до об'єкта.</span>
 
 `void *` не містить runtime type information. Якщо callback очікує `struct Uart *`, а driver передав `struct Spi *`, compiler не захистить. Далі доступ до полів інтерпретує чужий layout як неправильний тип.
 

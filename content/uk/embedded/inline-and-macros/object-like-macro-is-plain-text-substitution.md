@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ sources:
 
 **Object-like макрос – це проста текстова заміна**: усюди, де зустрінеться `BUFFER_SIZE`, препроцесор підставить `256`.
 
-На відміну від `const` змінної, макрос не має типу і не має scope – він видимий від місця `#define` до кінця файлу (або `#undef`) і ігнорує блоки, функції та namespace.
+На відміну від `const` змінної, макрос <span class="warn">не має типу і не має scope</span> – він видимий від місця `#define` до кінця файлу (або `#undef`) і ігнорує блоки, функції та namespace.
 
 Правило: для іменованих констант у C++ і сучасному C частіше кращі `const`/`constexpr`/`enum`, бо вони типобезпечні й видимі дебагеру.[^embeddedinterviewlab]
 

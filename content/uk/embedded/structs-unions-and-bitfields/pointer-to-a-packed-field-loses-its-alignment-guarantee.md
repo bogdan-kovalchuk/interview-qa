@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -42,7 +42,7 @@ struct __attribute__((packed)) P {
 uint32_t *p = &pkt.value;
 ```
 
-`&pkt.value` може бути unaligned address для `uint32_t *`.
+<span class="warn">`&pkt.value` може бути unaligned address для `uint32_t *`.</span>
 
 Звичайний `uint32_t *` несе припущення, що адреса достатньо вирівняна для `uint32_t`. Якщо поле packed, це припущення може бути хибним. Розіменування такого pointer може бути undefined behavior або fault на MCU.
 

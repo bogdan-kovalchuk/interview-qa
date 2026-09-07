@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ sources:
 printf("%d", HALF(2 + 2));
 ```
 
-Виведе `3`, а не 2.
+Виведе `3`, а <span class="warn">не 2</span>.
 
 Розгортання: `2 + 2 / 2`. Через precedence спершу `2 / 2 = 1`, потім `2 + 1 = 3`. Очікувалося `(2 + 2) / 2 = 2`, але відсутні дужки змінюють порядок операцій.
 

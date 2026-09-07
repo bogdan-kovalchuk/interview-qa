@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -35,7 +35,7 @@ sources:
 
 **`#pragma once` дає той самий захист одним рядком** на початку файлу, без ризику зіткнення імен макросів-guard.
 
-Мінус: він не входить до стандарту C/C++, хоча підтримується GCC, Clang, MSVC, IAR. Класичний `#ifndef`-guard портативніший і працює навіть з дивними файловими системами та symlink-ами.
+Мінус: він <span class="warn">не входить до стандарту C/C++</span>, хоча підтримується GCC, Clang, MSVC, IAR. Класичний `#ifndef`-guard портативніший і працює навіть з дивними файловими системами та symlink-ами.
 
 Правило: для максимальної портативності – `#ifndef`-guard; для зручності у відомому toolchain – `#pragma once` прийнятний.[^embeddedinterviewlab]
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -37,7 +37,7 @@ sources:
 volatile uint32_t GPIOA_ODR = *(volatile uint32_t *)0x40020014;
 ```
 
-Це створює окрему volatile-змінну і лише ініціалізує її значенням register-а.
+<span class="warn">Це створює окрему volatile-змінну і лише ініціалізує її значенням register-а.</span>
 
 Після ініціалізації `GPIOA_ODR` не є alias на address `0x40020014`; це object у RAM або іншій секції. Запис у `GPIOA_ODR` не запише hardware register.
 

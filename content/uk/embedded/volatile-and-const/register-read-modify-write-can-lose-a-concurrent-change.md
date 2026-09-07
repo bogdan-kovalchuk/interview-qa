@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -37,7 +37,7 @@ sources:
 GPIOA_ODR |= (1u << pin);
 ```
 
-Операція не атомарна: це читання register, модифікація в CPU, потім запис назад.
+Операція <span class="warn">не атомарна</span>: це читання register, модифікація в CPU, потім запис назад.
 
 Якщо hardware або ISR змінить інші біти між read і write, фінальний запис може перетерти ці зміни. На Cortex-M для GPIO часто існують set/reset registers, наприклад BSRR у STM32, які дозволяють атомарно встановити або скинути біти без RMW.
 

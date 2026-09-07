@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Padding і alignment залежать від компілятора, архітектури та опцій збірки.
+<span class="warn">Padding і alignment залежать від компілятора, архітектури та опцій збірки.</span>
 
 Той самий код на M4 і PowerPC дасть різні зсуви полів, а протилежна endianness ще й перевертає байти. Тому «однаковий .h файл» ≠ «однаковий байтовий формат».
 

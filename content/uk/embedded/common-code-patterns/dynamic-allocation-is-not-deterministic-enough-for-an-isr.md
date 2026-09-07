@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Динамічна пам'ять недетермінована і фрагментується – неприйнятно для real-time/ISR-контексту.
+<span class="warn">Динамічна пам'ять недетермінована і фрагментується</span> – неприйнятно для real-time/ISR-контексту.
 
 Ring buffer часто живе весь час роботи системи й використовується з переривань, де `malloc` заборонений (non-reentrant, може блокувати). Розмір відомий заздалегідь.
 

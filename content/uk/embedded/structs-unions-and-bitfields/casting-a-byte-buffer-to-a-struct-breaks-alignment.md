@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ uint8_t buf[8];
 struct Header *h = (struct Header *)buf;
 ```
 
-`buf` має alignment для `uint8_t`, не обов'язково для `struct Header`.
+<span class="warn">`buf` має alignment для `uint8_t`, не обов'язково для `struct Header`.</span>
 
 Якщо `Header` містить `uint32_t`, pointer `h` може бути невирівняним. Розіменування такого pointer може бути undefined behavior або fault. Крім того, strict aliasing і effective type rules теж можуть бути проблемою.
 

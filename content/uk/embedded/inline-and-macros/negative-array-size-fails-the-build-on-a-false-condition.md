@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ sources:
   typedef char name[(c) ? 1 : -1]
 ```
 
-**Трюк із від'ємним розміром масиву**: якщо умова хибна, оголошується масив розміру `-1` -> compile error ще до запуску.
+**Трюк із від'ємним розміром масиву**: якщо умова хибна, оголошується масив розміру `-1` -> <span class="warn">compile error</span> ще до запуску.
 
 Це класичний спосіб перевіряти layout: `STATIC_ASSERT(sizeof(Frame) == 8, frame_size)`.
 

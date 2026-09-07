@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ while (!(REG->SR & FLAG))
     ;
 ```
 
-Компілятор читає `SR` один раз, бачить, що прапорець не виставлений, і більше не перечитує – у C abstract machine ніщо не змінює `SR`.
+<span class="warn">Компілятор читає `SR` один раз, бачить, що прапорець не виставлений, і більше не перечитує</span> – у C abstract machine ніщо не змінює `SR`.
 
 Результат: цикл крутиться на закешованому значенні вічно, навіть коли апаратура вже виставила прапорець.
 

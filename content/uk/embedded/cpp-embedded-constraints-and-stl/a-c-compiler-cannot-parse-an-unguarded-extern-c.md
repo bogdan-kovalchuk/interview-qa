@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-C-компілятор зустріне `extern "C"` і впаде з syntax error – це C++-конструкція, невідома C.
+<span class="warn">C-компілятор зустріне `extern "C"` і впаде з syntax error</span> – це C++-конструкція, невідома C.
 
 Header, призначений для обох мов, без guard'а зламає C-збірку.
 

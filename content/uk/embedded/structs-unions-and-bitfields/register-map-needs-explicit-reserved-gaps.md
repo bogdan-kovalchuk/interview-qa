@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -41,7 +41,7 @@ typedef struct {
 } UART_TypeDef;
 ```
 
-Можуть бракувати reserved gaps між регістрами.
+<span class="warn">Можуть бракувати reserved gaps між регістрами.</span>
 
 Hardware register map часто має пропуски адрес. Якщо manual каже, що `DR` на offset `0x10`, а структура ставить його на offset `0x08`, усі доступи після gap будуть неправильними. `volatile` не рятує неправильний layout.
 

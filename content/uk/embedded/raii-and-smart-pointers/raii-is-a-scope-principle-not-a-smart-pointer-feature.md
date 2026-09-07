@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-RAII – це принцип scope-lifetime, а не про smart pointers.
+<span class="warn">RAII – це принцип scope-lifetime, а не про smart pointers.</span>
 
 Lock guard, interrupt guard, scoped handle живуть на стеку й не керують жодним вказівником – це повноцінний RAII. Smart pointer – лише один із застосувань ідеї.
 

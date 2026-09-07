@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ LockGuard(const LockGuard&) = delete;
 LockGuard& operator=(const LockGuard&) = delete;
 ```
 
-Якби guard можна було скопіювати, два деструктори звільнили б той самий мьютекс – double-release і миттєва corruption.
+<span class="warn">Якби guard можна було скопіювати, два деструктори звільнили б той самий мьютекс – double-release і миттєва corruption.</span>
 
 Заборона копіювання гарантує рівно один власник lock'а й рівно одне звільнення.
 

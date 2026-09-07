@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні, масив функцій неможливий; можна мати масив вказівників на функції.
+<span class="warn">Ні, масив функцій неможливий; можна мати масив вказівників на функції.</span>
 
 `void handlers[4](void);` – некоректна ідея, бо функції не є object-ами, які можна зберігати в масиві. Правильно: `void (*handlers[4])(void);` або typedef `handler_t handlers[4];`.
 

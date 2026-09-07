@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ sources:
 
 **`(index + 1) & MASK` – одна інструкція AND, а `(index + 1) % SIZE` вимагає ділення.**
 
-На Cortex-M0 немає апаратного дільника, тож modulo у 10–20 разів повільніше. Степінь двійки дозволяє замінити `%` на бітову маску.
+На Cortex-M0 немає апаратного дільника, тож modulo <span class="warn">у 10–20 разів повільніше</span>. Степінь двійки дозволяє замінити `%` на бітову маску.
 
 Правило: розмір кільцевого буфера = степінь 2, wrap через `& (SIZE-1)`.[^embeddedinterviewlab]
 

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Дорогий: control block на об'єкт, reference counting на copy/assign/destroy і зазвичай heap allocation.
+<span class="warn">Дорогий: control block на об'єкт, reference counting на copy/assign/destroy і зазвичай heap allocation.</span>
 
 Розмір control block implementation-defined, але це точно не «один pointer». Плюс недетермінізм: очищення стається лише коли знищено останнього власника, і не завжди очевидно, де саме це відбудеться.
 

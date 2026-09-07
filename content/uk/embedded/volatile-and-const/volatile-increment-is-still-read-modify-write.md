@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`counter++` є read-modify-write, а не атомарна операція.
+<span class="warn">`counter++` є read-modify-write, а не атомарна операція.</span>
 
 Компілятор виконає volatile read, додасть 1 у регістрі CPU, потім volatile write. Якщо ISR теж змінює `counter` між read і write, одне оновлення може загубитися. `volatile` лише гарантує, що read і write не будуть прибрані.
 

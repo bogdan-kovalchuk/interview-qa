@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Макрос не має scope – після `#define` він замінює кожне входження ідентифікатора у всіх наступних рядках і включених файлах.
+<span class="warn">Макрос не має scope</span> – після `#define` він замінює кожне входження ідентифікатора у всіх наступних рядках і включених файлах.
 
 Класика: `#define max(a,b) ...` у header ламає `std::max`, поле `obj.max` чи локальну змінну `max` у будь-якому коді, що включив цей header (типова біда з `min`/`max` у Windows-заголовках).
 

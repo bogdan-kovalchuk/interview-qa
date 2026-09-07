@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Він переносить control-flow decision у дані.
+<span class="warn">Він переносить control-flow decision у дані.</span>
 
 Якщо function pointer перезаписаний через memory corruption, out-of-bounds або stack bug, програма може перейти в непередбачуваний код. Для safety/security це серйозний ризик, особливо якщо таблиці mutable в RAM.
 

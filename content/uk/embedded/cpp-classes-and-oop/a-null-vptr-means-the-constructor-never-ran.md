@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Глобальні конструктори не викликані – startup не пройшов `.init_array`.
+<span class="warn">Глобальні конструктори не викликані – startup не пройшов `.init_array`.</span>
 
 Поки ctor не виконався, vptr (і решта полів) лишаються нульовими/сміттям; перший же virtual-виклик стрибне за нульовою адресою -> HardFault.
 

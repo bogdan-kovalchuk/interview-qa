@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -35,7 +35,7 @@ sources:
 
 **Прибирає padding** – поля кладуться впритул, а розмір наближається до суми полів.
 
-Ризик: багатобайтове поле може опинитися за невирівняною адресою. На Cortex-M0 прямий доступ до такого поля може дати HardFault; на M3/M4 компілятор часто генерує побайтові load/store, які повільніші.
+<span class="warn">Ризик</span>: багатобайтове поле може опинитися за невирівняною адресою. На Cortex-M0 прямий доступ до такого поля може дати HardFault; на M3/M4 компілятор часто генерує <span class="warn">побайтові load/store</span>, які повільніші.
 
 Правило: `packed` – для wire-форматів і заголовків протоколів. Для MMIO (memory-mapped I/O) register maps зазвичай краще природно вирівняна `volatile`-структура з явними reserved fields, щоб не отримати неправильну ширину доступу до регістрів.[^embeddedinterviewlab]
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -42,7 +42,7 @@ typedef struct {
 #define GPIOA ((GPIO_TypeDef *)0x40020000)
 ```
 
-Поля register overlay не volatile-qualified.
+<span class="warn">Поля register overlay не volatile-qualified.</span>
 
 `GPIOA->IDR` має тип звичайного `uint32_t`, тому compiler може кешувати або оптимізувати доступ. Для peripheral registers це неправильно, бо hardware може змінювати IDR незалежно від C-коду.
 

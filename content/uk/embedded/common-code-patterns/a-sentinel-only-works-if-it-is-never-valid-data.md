@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ uint16_t adc_read(uint8_t ch) {
 }
 ```
 
-Працює лише якщо sentinel-значення ніколи не буває валідним даним.
+<span class="warn">Працює лише якщо sentinel-значення ніколи не буває валідним даним.</span>
 
 Якщо `UINT16_MAX` – легітимне показання ADC (analog-to-digital converter), викликач не відрізнить помилку від реального максимуму.
 

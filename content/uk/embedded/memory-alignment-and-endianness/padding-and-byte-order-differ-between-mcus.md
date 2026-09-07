@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Різні компілятори/архітектури дають різний padding і byte order для того самого коду.
+<span class="warn">Різні компілятори/архітектури дають різний padding і byte order для того самого коду.</span>
 
 Одна сторона може мати інші зсуви полів і протилежну endianness, тож той самий `struct` у пам'яті виглядає по-різному. Сирий `memcpy` передасть несумісний layout.
 

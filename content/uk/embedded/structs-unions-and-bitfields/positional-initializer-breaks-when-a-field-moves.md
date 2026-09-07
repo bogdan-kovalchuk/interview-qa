@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ struct Cfg { uint32_t baud; uint8_t parity; uint8_t stop; };
 struct Cfg c = { 115200, 0, 1 };
 ```
 
-Значення прив'язані до порядку полів, а не до імен.
+<span class="warn">Значення прив'язані до порядку полів, а не до імен.</span>
 
 Якщо хтось вставить нове поле між `baud` і `parity`, initializer може залишитися синтаксично валідним, але значення поїдуть у неправильні поля. У driver configs це створює тихі runtime bugs.
 

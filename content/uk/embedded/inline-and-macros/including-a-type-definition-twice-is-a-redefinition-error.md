@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Redefinition error: повторне визначення того самого типу/`struct`/`typedef` у одному translation unit заборонене.
+<span class="warn">Redefinition error</span>: повторне визначення того самого типу/`struct`/`typedef` у одному translation unit заборонене.
 
 Подвійне включення легко стається транзитивно: `a.h` і `b.h` обидва включають `types.h`, а `main.c` включає обидва. Без guard вміст `types.h` обробиться двічі.
 

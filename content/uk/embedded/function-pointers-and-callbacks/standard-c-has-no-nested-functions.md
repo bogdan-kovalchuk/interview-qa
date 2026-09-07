@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні. Standard C не має nested functions.
+<span class="warn">Ні. Standard C не має nested functions.</span>
 
 GCC підтримує nested functions як extension, але вони можуть використовувати trampolines на stack і погано підходять для portable embedded code, MPU/NX memory і static analysis. Такий callback може зламатися при іншому compiler або security settings.
 

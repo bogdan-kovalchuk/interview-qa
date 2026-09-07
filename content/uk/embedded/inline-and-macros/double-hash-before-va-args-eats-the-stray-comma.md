@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ sources:
 
 **`##__VA_ARGS__` прибирає зайву кому**, коли variadic-аргументів немає.
 
-Без `##` виклик `DBG("hi")` розгорнувся б у `printf("hi", )` – синтаксична помилка через висячу кому. З `##` кома зникає -> `printf("hi")`.
+Без `##` виклик `DBG("hi")` розгорнувся б у `printf("hi", )` – <span class="warn">синтаксична помилка</span> через висячу кому. З `##` кома зникає -> `printf("hi")`.
 
 Правило: `##__VA_ARGS__` – GNU-розширення (GCC/Clang); у C23/C++20 портативний аналог – `__VA_OPT__(,)`.[^embeddedinterviewlab]
 

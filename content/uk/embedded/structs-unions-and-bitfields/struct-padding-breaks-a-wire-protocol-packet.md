@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Бо структура може містити padding bytes і ABI-залежний layout.
+<span class="warn">Бо структура може містити padding bytes і ABI-залежний layout.</span>
 
 Padding bytes можуть мати невизначені значення, порядок байтів залежить від endianness, а offsets можуть відрізнятися між компіляторами, опціями packing і target ABI. Те, що працює між двома однаковими Cortex-M build-ами, може зламатися при зміні compiler або protocol peer.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Capturing lambda є object-ом зі станом, а не просто адресою функції.
+<span class="warn">Capturing lambda є object-ом зі станом, а не просто адресою функції.</span>
 
 Вона потребує storage для captured variables і викликається через `operator()`. C function pointer не має місця для state. Тому компілятор не може неявно перетворити capturing lambda на `void (*)(void)`.
 

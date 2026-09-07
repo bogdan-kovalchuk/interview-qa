@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Приблизно після ~8 станів вкладені `switch` розростаються і їх важко читати/підтримувати.
+<span class="warn">Приблизно після ~8 станів</span> вкладені `switch` розростаються і їх важко читати/підтримувати.
 
 Кожен новий стан потребує редагування великого `switch`, зростає ризик пропустити перехід або case.
 

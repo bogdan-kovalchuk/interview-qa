@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ struct Node {
 };
 ```
 
-Структура містить саму себе by value, тому її розмір був би нескінченним.
+<span class="warn">Структура містить саму себе by value, тому її розмір був би нескінченним.</span>
 
 Compiler не може завершити layout: щоб знати розмір `Node`, треба знати розмір `next`, який знову є `Node`. Дозволений варіант – pointer: `struct Node *next;`.
 

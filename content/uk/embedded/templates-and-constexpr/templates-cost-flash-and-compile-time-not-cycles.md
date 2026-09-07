@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Templates можуть мати нульову runtime-вартість, але мають реальну вартість у Flash і часі компіляції.
+<span class="warn">Templates можуть мати нульову runtime-вартість, але мають реальну вартість у Flash і часі компіляції.</span>
 
 Кожна унікальна інстанціація може згенерувати власну копію коду у Flash; білд сповільнюється через інстанціацію + перевірку типів.
 

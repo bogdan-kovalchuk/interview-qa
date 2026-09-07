@@ -72,6 +72,11 @@ def _inline_to_markdown(fragment: str) -> str:
     following `>`: `return (x &gt; y) - (x &lt; y);` silently became
     `return (x > y) - (x `. The legacy deck happened never to hit it; this one
     does, in comparators and template code.
+
+    The `.warn` wrapper the contract allows in `Short answer` travels as a
+    sentinel for the same reason: written back as a real tag, the very next
+    line strips it along with the source's other markup, and 136 imported
+    answers lost the highlight that marks the dangerous half of the sentence.
     """
     text = PARAGRAPH_BR_RE.sub("\x00PARA\x00", fragment)
     text = SOFT_BR_RE.sub(" ", text)
@@ -79,7 +84,7 @@ def _inline_to_markdown(fragment: str) -> str:
     def _warn(match: re.Match[str]) -> str:
         inner = htmlconv.CODE_INLINE_RE.sub(lambda c: f"`{c.group(1)}`", match.group(1))
         inner = re.sub(r"<[^>]+>", "", inner)
-        return f'<span class="warn">{inner}</span>'
+        return f"\x00WARNOPEN\x00{inner}\x00WARNCLOSE\x00"
 
     text = htmlconv.WARN_SPAN_RE.sub(_warn, text)
     text = htmlconv.CODE_INLINE_RE.sub(lambda m: f"`{m.group(1)}`", text)
@@ -87,7 +92,10 @@ def _inline_to_markdown(fragment: str) -> str:
     text = html.unescape(text)
     text = htmlconv.fix_typography(text)
     text = re.sub(r"[ \t]+", " ", text)
-    return text.replace("\x00PARA\x00", "\n\n").strip()
+    text = text.replace("\x00PARA\x00", "\n\n").strip()
+    return text.replace("\x00WARNOPEN\x00", '<span class="warn">').replace(
+        "\x00WARNCLOSE\x00", "</span>"
+    )
 
 
 def split_front(front_html: str) -> tuple[str, str | None, str | None]:

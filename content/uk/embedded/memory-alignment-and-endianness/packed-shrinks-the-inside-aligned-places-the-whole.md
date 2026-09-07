@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -35,7 +35,7 @@ sources:
 
 **`packed` зменшує padding усередині типу, а `aligned(N)` задає мінімальне вирівнювання самого об'єкта або типу.**
 
-Це може бути корисно для wire headers або DMA (direct memory access) descriptors, де layout має бути щільним, але початкова адреса повинна бути вирівняна для апаратури. Водночас для MMIO (memory-mapped I/O) register blocks не варто автоматично ставити `packed`: регістри зазвичай мають природні 32-bit offsets, а пропуски краще описувати reserved fields.
+Це може бути корисно для wire headers або DMA (direct memory access) descriptors, де layout має бути щільним, але початкова адреса повинна бути вирівняна для апаратури. Водночас для MMIO (memory-mapped I/O) register blocks <span class="warn">не варто автоматично ставити `packed`</span>: регістри зазвичай мають природні 32-bit offsets, а пропуски краще описувати reserved fields.
 
 Правило: `packed` відповідає за layout, `aligned` – за базову адресу; для register maps перевіряй ширину доступу й `offsetof`, а не просто пакуй структуру.[^embeddedinterviewlab]
 

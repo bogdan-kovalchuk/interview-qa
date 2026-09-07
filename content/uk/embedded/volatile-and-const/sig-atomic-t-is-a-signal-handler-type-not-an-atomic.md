@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Ні. Це спеціальний portable C-патерн для signal handlers, а не загальний embedded atomic primitive.
+<span class="warn">Ні. Це спеціальний portable C-патерн для signal handlers, а не загальний embedded atomic primitive.</span>
 
 `sig_atomic_t` гарантує безпечний доступ у контексті C signal handler у межах стандартної бібліотеки, але це не означає, що будь-який volatile тип на MCU є атомарним або має memory ordering. Для ISR на bare-metal треба дивитися ширину bus, інструкції CPU і ABI.
 

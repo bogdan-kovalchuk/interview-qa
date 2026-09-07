@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Cast вимикає перевірку типів, але не змінює реальну сигнатуру функції.
+<span class="warn">Cast вимикає перевірку типів, але не змінює реальну сигнатуру функції.</span>
 
 Якщо API очікує `void (*)(void *)`, а ти передаєш `void (*)(int)` через cast, caller усе одно викличе функцію за контрактом API. Аргументи будуть передані не так, як очікує callee. Це не portable і може бути UB.
 

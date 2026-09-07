@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Дефолтний copy ctor зробить поверхневу копію handle -> два об'єкти «володіють» одним ресурсом -> подвійне звільнення.
+<span class="warn">Дефолтний copy ctor зробить поверхневу копію handle -> два об'єкти «володіють» одним ресурсом -> подвійне звільнення.</span>
 
 При знищенні обох dtor двічі звільнить мьютекс/DMA/handle – UB (undefined behavior), corruption або повторне закриття вже закритого.
 

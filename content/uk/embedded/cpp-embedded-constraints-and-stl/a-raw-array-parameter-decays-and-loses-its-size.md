@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Він decay-иться у вказівник (втрата розміру) і показує незнання сучасних практик.
+<span class="warn">Він decay-иться у вказівник (втрата розміру) і показує незнання сучасних практик.</span>
 
 `void f(int arr[])` насправді приймає `int*`; `sizeof` усередині дасть розмір вказівника. `std::array`/`std::span` зберігають розмір і безпечніші.
 

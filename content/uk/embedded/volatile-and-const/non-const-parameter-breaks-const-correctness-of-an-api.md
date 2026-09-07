@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ const uint8_t msg[] = { 0x55, 0xAA };
 uart_send(msg, 2);
 ```
 
-API втрачає const-correctness.
+<span class="warn">API втрачає const-correctness.</span>
 
 Якщо `uart_send` лише читає buffer, параметр має бути `const uint8_t *data`. Інакше caller не може безпечно передати `const` buffer з Flash/`.rodata`, а cast away const приховає потенційний запис у read-only memory.
 

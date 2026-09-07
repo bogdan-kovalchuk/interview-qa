@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ int cmp(const void *a, const void *b) {
 }
 ```
 
-Віднімання може переповнити `int`, що для signed overflow є undefined behavior.
+<span class="warn">Віднімання може переповнити `int`, що для signed overflow є undefined behavior.</span>
 
 Якщо один елемент `INT_MIN`, а інший `INT_MAX`, різниця не представима в `int`. Comparator має повертати порядок, а не обов'язково арифметичну різницю.
 

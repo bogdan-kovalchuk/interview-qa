@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -40,7 +40,7 @@ static handler_t table[4];
 table[opcode]();
 ```
 
-Якщо `opcode >= 4`, буде out-of-bounds read і indirect call за випадковою адресою.
+<span class="warn">Якщо `opcode >= 4`, буде out-of-bounds read і indirect call за випадковою адресою.</span>
 
 На Cortex-M це може стати HardFault або, гірше, перейти у валідну, але неправильну адресу коду. Dispatch tables особливо чутливі до input validation, бо дані одразу стають control flow.
 

@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Bit-field не має адресованого byte object-а як звичайне поле.
+<span class="warn">Bit-field не має адресованого byte object-а як звичайне поле.</span>
 
 Він може займати кілька бітів усередині storage unit, а C address-of operator працює з об'єктами, які мають адресу. Тому `&s.flag` для bit-field є помилкою компіляції.
 

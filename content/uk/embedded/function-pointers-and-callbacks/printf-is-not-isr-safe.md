@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`printf` зазвичай не є ISR-safe і може бути blocking/reentrant-unsafe.
+<span class="warn">`printf` зазвичай не є ISR-safe і може бути blocking/reentrant-unsafe.</span>
 
 Воно може брати lock, використовувати heap, чекати UART TX або змінювати global state. В interrupt context це може спричинити deadlock, jitter або corrupt output, особливо якщо main code теж друкує.
 

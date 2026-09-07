@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-ISR (interrupt service routine) інкрементує `count`, main декрементує – це read-modify-write над спільною змінною.
+<span class="warn">ISR (interrupt service routine) інкрементує `count`, main декрементує – це read-modify-write над спільною змінною.</span>
 
 `count++` не атомарне (read, modify, write); якщо ISR переб'є main між цими кроками, оновлення загубиться -> off-by-one і пошкоджений стан буфера.
 

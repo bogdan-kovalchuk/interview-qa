@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -42,7 +42,7 @@ else
     ok();
 ```
 
-Розгортається у `if (err) a(); b(); else ok();` – `else` більше не має парного `if` -> compile error, або (з одним statement) `b()` викликається завжди.
+<span class="warn">Розгортається у `if (err) a(); b(); else ok();`</span> – `else` більше не має парного `if` -> compile error, або (з одним statement) `b()` викликається завжди.
 
 Тільки `a()` належить `if`; `b();` виконується безумовно, а `else` зависає.
 

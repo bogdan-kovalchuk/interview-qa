@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-ARM bi-endian, і навіть LE (little-endian) система постійно працює з big-endian даними.
+<span class="warn">ARM bi-endian, і навіть LE (little-endian) система постійно працює з big-endian даними.</span>
 
 Cortex-M за замовчуванням little-endian, але архітектура підтримує і big-endian режим. Головне – мережеві й польові протоколи (TCP/IP – Transmission Control Protocol/Internet Protocol, CAN – Controller Area Network, Modbus TCP) – big-endian, тож конвертація потрібна завжди.
 

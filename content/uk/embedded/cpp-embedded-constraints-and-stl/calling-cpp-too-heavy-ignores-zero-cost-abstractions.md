@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Це демонструє незнання zero-cost abstractions і реальних важелів контролю runtime.
+<span class="warn">Це демонструє незнання zero-cost abstractions і реальних важелів контролю runtime.</span>
 
 Non-virtual класи, templates, `constexpr`, RAII (resource acquisition is initialization) можуть компілюватися без додаткового runtime-оверхеду, якщо вимкнути/уникати важких фіч і перевіряти map-файл. Реальна ціна залежить від ABI, стандартної бібліотеки й оптимізацій.
 

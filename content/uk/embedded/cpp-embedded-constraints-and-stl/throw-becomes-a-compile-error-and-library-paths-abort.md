@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-У власному коді `throw`/`try`/`catch` зазвичай стають compile error; library-шляхи, які мали кинути виняток, часто завершуються `abort()`.
+<span class="warn">У власному коді `throw`/`try`/`catch` зазвичай стають compile error; library-шляхи, які мали кинути виняток, часто завершуються `abort()`.</span>
 
 Це не «магічне прибирання» помилок: шлях із `vector::at()` out-of-range може аварійно зупинити систему замість обробленого винятку.
 

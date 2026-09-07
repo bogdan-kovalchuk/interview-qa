@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -39,7 +39,7 @@ void (*cb)(void) = (void (*)(void))f;
 cb();
 ```
 
-Виклик через function pointer несумісного типу має undefined behavior.
+<span class="warn">Виклик через function pointer несумісного типу має undefined behavior.</span>
 
 Навіть якщо адреса функції фізично правильна, calling convention очікує інші аргументи, return value або register usage. На embedded ABI це може пошкодити stack/registers або передати випадкові значення.
 

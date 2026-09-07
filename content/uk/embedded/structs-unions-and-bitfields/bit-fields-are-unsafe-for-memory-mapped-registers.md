@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Layout bit-field-ів implementation-defined, а доступ часто генерує read-modify-write.
+<span class="warn">Layout bit-field-ів implementation-defined, а доступ часто генерує read-modify-write.</span>
 
 Порядок розміщення бітів у storage unit, signedness plain `int` bit-fields і padding між ними залежать від компілятора/ABI. Крім того, запис одного bit-field може прочитати весь register і записати назад, що небезпечно для write-one-to-clear або read-to-clear bits.
 

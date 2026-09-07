@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`std::vector`, `std::string`, `std::map`/`unordered_map`, `std::shared_ptr`, `<iostream>` – вони часто тягнуть heap або важку runtime-інфраструктуру.
+<span class="warn">`std::vector`, `std::string`, `std::map`/`unordered_map`, `std::shared_ptr`, `<iostream>` – вони часто тягнуть heap або важку runtime-інфраструктуру.</span>
 
 `vector`/`string` зазвичай алокують динамічний масив; `map` – вузли в купі; `shared_ptr` – control block; `<iostream>` може тягнути locale, буфери й десятки КБ Flash залежно від бібліотеки.
 

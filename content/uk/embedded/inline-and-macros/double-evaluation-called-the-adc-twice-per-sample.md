@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -37,7 +37,7 @@ sources:
 #define FILT(s) ((s) + ((adc_read() - (s)) >> 3))
 ```
 
-Аргумент-вираз із `adc_read()` обчислюється кілька разів у тілі макроса (double evaluation).
+<span class="warn">Аргумент-вираз із `adc_read()` обчислюється кілька разів</span> у тілі макроса (double evaluation).
 
 Кожне розгортання `adc_read()` запускає нову конверсію АЦП з іншим значенням і шумом, а зайві конверсії ще й марнують енергію. Фільтр рахує на неузгоджених семплах.
 

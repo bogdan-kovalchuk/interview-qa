@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -37,7 +37,7 @@ sources:
 STATUS.bits.error = 0;
 ```
 
-Компілятор може згенерувати read-modify-write усього register-а.
+<span class="warn">Компілятор може згенерувати read-modify-write усього register-а.</span>
 
 Якщо STATUS має read-to-clear bits або write-one-to-clear bits, простий запис одного bit-field може ненавмисно очистити або змінити інші flags. Для hardware registers semantics важливіша за C-level зручність.
 

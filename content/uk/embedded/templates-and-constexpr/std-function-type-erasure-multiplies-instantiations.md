@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`std::function` – template-heavy type erasure; різні сигнатури й callable-типи можуть породити багато окремого коду.
+<span class="warn">`std::function` – template-heavy type erasure; різні сигнатури й callable-типи можуть породити багато окремого коду.</span>
 
 Кожна сигнатура – окрема інстанціація type-erasure машинерії, а реалізація може тягнути додатковий runtime-код.
 

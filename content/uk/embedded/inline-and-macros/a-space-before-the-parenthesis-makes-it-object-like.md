@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -38,7 +38,7 @@ sources:
 int r = F(3);
 ```
 
-Пробіл між `F` і `(x)` робить його object-like макросом.
+<span class="warn">Пробіл між `F` і `(x)` робить його object-like макросом.</span>
 
 Препроцесор бачить ім'я `F`, що замінюється на весь текст `(x) (x) * (x)`. Тоді `F(3)` розгорнеться у `(x) (x) * (x)(3)` – використовується невизначений `x`, очевидна помилка.
 
