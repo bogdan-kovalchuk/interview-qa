@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 struct Cfg { uint32_t baud; uint8_t parity; uint8_t stop; };
 struct Cfg c = { 115200, 0, 1 };
 ```
+
+## Short answer
 
 <span class="warn">Значення прив'язані до порядку полів, а не до імен.</span>
 

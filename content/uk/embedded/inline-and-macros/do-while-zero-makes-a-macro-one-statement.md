@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define LOG_ERR(m) do { \
@@ -39,6 +39,8 @@ sources:
     uart_puts(m); \
 } while (0)
 ```
+
+## Short answer
 
 **Щоб макрос із кількох інструкцій поводився як один statement** і коректно працював з `if/else` та крапкою з комою.
 

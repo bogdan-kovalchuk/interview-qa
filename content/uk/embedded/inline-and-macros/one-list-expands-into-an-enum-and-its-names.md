@@ -31,15 +31,19 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
-
-Той самий список розгортають двічі з різним `X`:
+## Question code
 
 ```c
 #define ERR_LIST(X) \
   X(ERR_NONE, "OK") \
   X(ERR_TIMEOUT, "Timeout")
+```
 
+## Short answer
+
+Той самий список розгортають двічі з різним `X`:
+
+```c
 #define AS_ENUM(n, s) n,
 typedef enum { ERR_LIST(AS_ENUM) } err_t;
 

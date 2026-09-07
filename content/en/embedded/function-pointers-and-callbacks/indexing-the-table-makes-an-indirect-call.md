@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int inc(int x) { return x + 1; }
+int dbl(int x) { return x * 2; }
+int (*ops[])(int) = { inc, dbl };
+printf("%d", ops[1](21));
+```
 
 ## Short answer
 

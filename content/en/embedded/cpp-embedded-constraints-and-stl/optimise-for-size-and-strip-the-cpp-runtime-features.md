@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,15 @@ sources:
     version: "N4861"
     applicability: "Authoritative section-level reference for the C++ language rules involved; freestanding and vendor toolchains can differ."
 ---
+
+## Question code
+
+```text
+arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -Os \
+  -fno-exceptions -fno-rtti -fno-threadsafe-statics \
+  -fno-use-cxa-atexit -fno-unwind-tables \
+  -std=c++17 -Wall -Werror
+```
 
 ## Short answer
 

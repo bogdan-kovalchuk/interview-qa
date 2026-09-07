@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 struct __attribute__((packed)) P {
@@ -41,6 +41,8 @@ struct __attribute__((packed)) P {
 
 uint32_t *p = &pkt.value;
 ```
+
+## Short answer
 
 <span class="warn">`&pkt.value` може бути unaligned address для `uint32_t *`.</span>
 

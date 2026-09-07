@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 int inc(int x) { return x + 1; }
@@ -39,6 +39,8 @@ int dbl(int x) { return x * 2; }
 int (*ops[])(int) = { inc, dbl };
 printf("%d", ops[1](21));
 ```
+
+## Short answer
 
 Виведе `42`.
 

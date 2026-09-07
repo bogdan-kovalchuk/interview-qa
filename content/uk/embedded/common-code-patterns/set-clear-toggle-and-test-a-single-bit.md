@@ -31,13 +31,17 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
+## Question code
+
+```c
+#define BIT32(n) (UINT32_C(1) << (n))
+```
+
 ## Short answer
 
 **Set / Clear / Toggle / Test:**
 
 ```c
-#define BIT32(n) (UINT32_C(1) << (n))
-
 reg |=  BIT32(n);   // set
 reg &= ~BIT32(n);   // clear
 reg ^=  BIT32(n);   // toggle

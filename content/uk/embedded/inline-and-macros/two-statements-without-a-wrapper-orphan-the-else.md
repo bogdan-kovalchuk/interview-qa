@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define RST() a(); b()
@@ -41,6 +41,8 @@ if (err)
 else
     ok();
 ```
+
+## Short answer
 
 <span class="warn">Розгортається у `if (err) a(); b(); else ok();`</span> – `else` більше не має парного `if` -> compile error, або (з одним statement) `b()` викликається завжди.
 

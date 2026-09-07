@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 uint16_t adc_read(uint8_t ch) {
@@ -39,6 +39,8 @@ uint16_t adc_read(uint8_t ch) {
   // ...
 }
 ```
+
+## Short answer
 
 <span class="warn">Працює лише якщо sentinel-значення ніколи не буває валідним даним.</span>
 

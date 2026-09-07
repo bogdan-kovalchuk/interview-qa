@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 struct F {
     signed int flag : 1;
 };
 ```
+
+## Short answer
 
 <span class="warn">1-bit signed field не може представляти значення `+1` у two's complement моделі.</span>
 

@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 class Gpio {
@@ -43,6 +43,8 @@ public:
   void clear() const { *odr_ &= ~(UINT32_C(1) << pin_); }
 };
 ```
+
+## Short answer
 
 **Приватний вказівник на GPIO (general-purpose input/output) register + публічні методи доступу.**
 

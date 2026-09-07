@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 struct Node {
@@ -39,6 +39,8 @@ struct Node {
     struct Node next;
 };
 ```
+
+## Short answer
 
 <span class="warn">Структура містить саму себе by value, тому її розмір був би нескінченним.</span>
 

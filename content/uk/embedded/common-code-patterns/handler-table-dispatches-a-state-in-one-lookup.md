@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 typedef void (*handler_t)(oven_event_t e);
@@ -42,6 +42,8 @@ static const handler_t handlers[] = {
 };
 handlers[*state](evt);
 ```
+
+## Short answer
 
 **Масив вказівників на handler-и, індексований станом; диспетчеризація – один lookup, O(1).**
 

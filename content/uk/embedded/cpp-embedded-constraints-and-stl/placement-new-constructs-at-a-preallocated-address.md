@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 alignas(Sensor) static uint8_t buf[sizeof(Sensor)];
 Sensor* s = new (buf) Sensor(config);
 // потім вручну: s->~Sensor();
 ```
+
+## Short answer
 
 **Placement new конструює об'єкт за наперед виділеною адресою, без heap.**
 

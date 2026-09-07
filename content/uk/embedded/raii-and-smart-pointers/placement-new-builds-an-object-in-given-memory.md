@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 alignas(T) std::byte storage[sizeof(T)];
 T* obj = new (storage) T(args); // placement new
 obj->~T(); // явний виклик dtor
 ```
+
+## Short answer
 
 **Placement new будує об'єкт у наданій пам'яті без алокації.**
 

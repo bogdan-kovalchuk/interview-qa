@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 template<typename T>
@@ -39,6 +39,8 @@ class Buffer<T*> {
   // для всіх вказівникових типів
 };
 ```
+
+## Short answer
 
 **Спеціалізація за патерном (напр., усі вказівники), а не одним типом.**
 

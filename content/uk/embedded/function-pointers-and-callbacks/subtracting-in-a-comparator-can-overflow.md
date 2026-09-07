@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 int cmp(const void *a, const void *b) {
     return *(const int *)a - *(const int *)b;
 }
 ```
+
+## Short answer
 
 <span class="warn">Віднімання може переповнити `int`, що для signed overflow є undefined behavior.</span>
 

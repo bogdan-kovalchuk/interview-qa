@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 void (*cb)(void) = NULL;
 cb();
 ```
+
+## Short answer
 
 <span class="warn">Undefined behavior.</span>
 

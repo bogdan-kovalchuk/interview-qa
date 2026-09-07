@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```text
 arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -Os \
@@ -39,6 +39,8 @@ arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -Os \
   -fno-use-cxa-atexit -fno-unwind-tables \
   -std=c++17 -Wall -Werror
 ```
+
+## Short answer
 
 **`-Os` (оптимізація за розміром) + набір `-fno-*`, що прибирають C++-runtime-важкі фічі, + `-std=c++17`.**
 

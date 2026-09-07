@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 auto del = [](UART_HandleTypeDef* h) {
@@ -40,6 +40,8 @@ auto del = [](UART_HandleTypeDef* h) {
 std::unique_ptr<UART_HandleTypeDef, decltype(del)>
   uart(&huart1, del);
 ```
+
+## Short answer
 
 **unique_ptr з stateless лямбдою-deleter автоматично викликає HAL teardown при виході зі scope.**
 

@@ -31,18 +31,22 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
+## Question code
+
+```c
+struct { uint8_t a; uint32_t b; uint8_t c; };
+```
+
 ## Short answer
 
 Сортуй від найбільшого alignment до найменшого:
 
 ```c
-struct { uint8_t a; uint32_t b; uint8_t c; };  // було: sizeof = 12
-
 struct {
   uint32_t b; // @0
   uint8_t  a; // @4
   uint8_t  c; // @5, +2 tail
-};  // стало: sizeof = 8
+};
 ```
 
 Тепер `sizeof = 8` замість 12: дрібні поля згруповані разом, внутрішнього padding немає.

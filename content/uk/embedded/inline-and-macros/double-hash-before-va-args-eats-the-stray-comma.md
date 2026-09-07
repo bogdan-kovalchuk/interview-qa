@@ -31,11 +31,13 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define DBG(fmt, ...) printf(fmt, ##__VA_ARGS__)
 ```
+
+## Short answer
 
 **`##__VA_ARGS__` прибирає зайву кому**, коли variadic-аргументів немає.
 

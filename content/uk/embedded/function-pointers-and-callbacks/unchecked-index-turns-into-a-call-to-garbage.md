@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 typedef void (*handler_t)(void);
@@ -39,6 +39,8 @@ static handler_t table[4];
 
 table[opcode]();
 ```
+
+## Short answer
 
 <span class="warn">Якщо `opcode >= 4`, буде out-of-bounds read і indirect call за випадковою адресою.</span>
 

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 union { float f; uint32_t u; } x;
 x.f = 1.5f;
 // читаємо x.u - бітовий патерн float
 ```
+
+## Short answer
 
 **Перегляд тих самих байтів як інший тип**. У C union-punning є поширеним прийомом, але значення при читанні іншого члена залежить від представлення типів і реалізації; у C++ читання неактивного члена зазвичай є UB (undefined behavior), тож краще `memcpy` або `std::bit_cast`.
 

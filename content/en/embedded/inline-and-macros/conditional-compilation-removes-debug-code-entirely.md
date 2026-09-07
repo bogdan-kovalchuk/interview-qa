@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,16 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+#ifdef DEBUG
+  #define DBG(fmt, ...) printf(fmt, ##__VA_ARGS__)
+#else
+  #define DBG(fmt, ...)
+#endif
+```
 
 ## Short answer
 

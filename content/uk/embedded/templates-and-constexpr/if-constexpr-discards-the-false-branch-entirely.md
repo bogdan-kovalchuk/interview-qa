@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   en: 1
@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 if constexpr (std::is_same_v<P, STM32F4>) {
@@ -40,6 +40,8 @@ if constexpr (std::is_same_v<P, STM32F4>) {
   static_assert(always_false<P>, "unsupported");
 }
 ```
+
+## Short answer
 
 **Умова обчислюється на етапі компіляції; хибна гілка повністю відкидається – код для неї не генерується.**
 

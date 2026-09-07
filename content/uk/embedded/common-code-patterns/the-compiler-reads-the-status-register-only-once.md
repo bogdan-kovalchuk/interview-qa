@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 while (!(REG->SR & FLAG))
     ;
 ```
+
+## Short answer
 
 <span class="warn">Компілятор читає `SR` один раз, бачить, що прапорець не виставлений, і більше не перечитує</span> – у C abstract machine ніщо не змінює `SR`.
 

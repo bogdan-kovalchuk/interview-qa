@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define ADC_DR (*( uint32_t *)0x4001204C)
 
 ADC_DR;
 ```
+
+## Short answer
 
 <span class="warn">Якщо macro не volatile, компілятор може прибрати це читання.</span>
 

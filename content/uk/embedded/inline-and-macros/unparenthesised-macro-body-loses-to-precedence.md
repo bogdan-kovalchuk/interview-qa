@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define SQUARE(x) x * x
 int r = SQUARE(2 + 3);
 ```
+
+## Short answer
 
 `r == 11`, а <span class="warn">не 25</span>.
 

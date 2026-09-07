@@ -31,12 +31,14 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 uint8_t buf[8];
 struct Header *h = (struct Header *)buf;
 ```
+
+## Short answer
 
 <span class="warn">`buf` має alignment для `uint8_t`, не обов'язково для `struct Header`.</span>
 

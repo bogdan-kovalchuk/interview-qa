@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 #define UART_SR (*( uint32_t *)0x40011000)
 
 while ((UART_SR & 0x20) == 0) { }
 ```
+
+## Short answer
 
 <span class="warn">Бракує `volatile` у доступі до hardware register.</span>
 

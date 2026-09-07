@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
+updated: 2026-09-07
 content_revision: 1
 reconciled_with:
   uk: 1
@@ -30,6 +30,18 @@ sources:
     version: "N4861"
     applicability: "Authoritative section-level reference for the C++ language rules involved; freestanding and vendor toolchains can differ."
 ---
+
+## Question code
+
+```cpp
+constexpr auto make_crc_table() {
+  std::array<uint32_t, 256> t{};
+  for (uint32_t i = 0; i < 256; ++i)
+    t[i] = crc32_for_byte(i);
+  return t;
+}
+constexpr auto crc_table = make_crc_table();
+```
 
 ## Short answer
 

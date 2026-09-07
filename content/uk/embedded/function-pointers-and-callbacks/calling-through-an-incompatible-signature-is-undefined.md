@@ -31,13 +31,15 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```c
 void f(int x);
 void (*cb)(void) = (void (*)(void))f;
 cb();
 ```
+
+## Short answer
 
 <span class="warn">Виклик через function pointer несумісного типу має undefined behavior.</span>
 

@@ -31,7 +31,7 @@ sources:
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
-## Short answer
+## Question code
 
 ```cpp
 class App {
@@ -41,6 +41,8 @@ public:
 
 uart_register(&App::on_rx);
 ```
+
+## Short answer
 
 <span class="warn">`&App::on_rx` має тип pointer-to-member, не `void (*)(uint8_t)`.</span>
 
