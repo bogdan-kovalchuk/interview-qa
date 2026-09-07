@@ -17,9 +17,9 @@ programs. A fix made once is a fix everywhere.
 > or more identical "not written yet" notices, so the gaps are reported as data instead.
 >
 > **Current state:** 1254 questions in both languages, 1241 shipping as Ukrainian flashcards and
-> 145 as English ones, and the site is live at the link above. Every question now has a Ukrainian
-> short answer; 145 also carry a written detailed explanation and a full English body, 9 of them
-> complete. For the rest, the detailed explanation and the English text are still `TODO`. A
+> 998 as English ones, and the site is live at the link above. Every question has a Ukrainian short
+> answer and 998 have an English one; 145 also carry a written detailed explanation and a full
+> English body, 9 of them complete. For the rest, the detailed explanation is still `TODO`. A
 > `/status/` page that reports the gaps as a table is next – the data behind it is already generated
 > as `dist/export/progress.{json,csv}`.
 
@@ -67,6 +67,7 @@ hosting.
 Community sources are treated as all-rights-reserved, since they carry no licence of their own, and
 they are used in two different ways. The Python material uses them only to find questions worth
 asking; its wording is written for this project. The `embedded/` track is different: 853 of its
-questions were imported from the owner's own two decks, and their Ukrainian short answers keep the
-source's wording, normalised rather than rewritten. Every such question names its origin in
+questions were imported from the owner's own two decks, their Ukrainian short answers keep the
+source's wording, normalised rather than rewritten, and their English short answers are translations
+of that same wording rather than independently written text. Every such question names its origin in
 `sources`, and `meta/questions.md` records which is which.
