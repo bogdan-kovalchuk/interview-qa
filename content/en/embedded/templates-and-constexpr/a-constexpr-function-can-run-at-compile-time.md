@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0005
 title: "What is a constexpr function?"
-description: "What is a constexpr function?"
+description: "A function evaluable at compile time when inputs are constant, and at runtime otherwise."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A function that can be evaluated at compile time when its inputs are constant, and at runtime otherwise.**
+
+This enables zero-runtime-cost lookup tables, configuration values and computations: the result can land in Flash/`.rodata` as a ready constant if the object has appropriate static storage.
+
+Rule: `constexpr` moves computation from runtime to build time where the result is genuinely needed as a constant expression.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

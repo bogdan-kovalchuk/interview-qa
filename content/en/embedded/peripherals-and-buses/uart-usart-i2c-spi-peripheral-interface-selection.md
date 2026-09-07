@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0018
 title: "What UART, USART, I2C, and SPI characteristics matter when choosing a peripheral interface?"
-description: "What UART, USART, I2C, and SPI characteristics matter when choosing a peripheral interface?"
+description: "UART is simple point-to-point serial, I2C adds addressable multi-drop at lower speed, and SPI is fast with chip select but no standard addressing."
 track: embedded
 section: peripherals-and-buses
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**UART/USART** is a simple point-to-point async/sync serial, good for logs or simple links. **I2C** has an addressable multi-drop bus, but lower speed and sensitivity to pull-ups/capacitance. **SPI** is fast and electrically simple, but needs a chip select per slave and has no standard addressing/error handling.[^dou-embedded-interview]
 
 ## Detailed explanation
 

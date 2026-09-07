@@ -1,7 +1,7 @@
 ---
 id: emb-raii-0007
 title: "How do you use `unique_ptr` with a custom deleter for a HAL resource?"
-description: "How do you use `unique_ptr` with a custom deleter for a HAL resource?"
+description: "A uniqueptr with a stateless lambda deleter calls the HAL teardown on scope exit without a control block or reference counting, managing an already existing handle."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ std::unique_ptr<UART_HandleTypeDef, decltype(del)>
 
 ## Short answer
 
-TODO
+**A `unique_ptr` with a stateless lambda deleter automatically calls the HAL teardown on scope exit.**
+
+A HAL is a hardware abstraction layer. Here `unique_ptr` does not allocate `huart1`; it only manages the teardown call for an already existing handle. There is no control block and no reference counting.
+
+Rule: for a pointer-sized `unique_ptr`, use a stateless deleter type (a lambda without capture or an empty functor); a function pointer deleter is also possible but usually increases the `unique_ptr` size.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

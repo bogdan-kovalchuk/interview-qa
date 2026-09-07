@@ -1,7 +1,7 @@
 ---
 id: emb-raii-0019
 title: "How does RAII solve the early-return problem between lock and unlock?"
-description: "How does RAII solve the early-return problem between lock and unlock?"
+description: "An RAII guard releases the mutex on every normal scope exit, including early return."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,16 @@ mutex_unlock(&m);
 
 ## Short answer
 
-TODO
+**An RAII guard releases the mutex on every normal scope exit, including early return.**
+
+```cpp
+{ LockGuard lock(m);
+  if (error) return -1; } // dtor розблокує
+```
+
+A typical failure mode: an early return between lock and unlock causes deadlock due to a forgotten unlock on the error path.
+
+Rule: RAII turns discipline (remembering to unlock) into a structural guarantee.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

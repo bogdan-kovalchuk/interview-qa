@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0014
 title: "What is a `union` in C?"
-description: "What is a `union` in C?"
+description: "A union stores several alternative fields in the same memory area; the union size equals the size of the largest member, accounting for alignment."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`union`** stores several alternative fields in the same memory area; the union size equals the size of the largest member, accounting for alignment.
+
+Unlike a struct, union fields do not lie sequentially. All members start at offset 0 and overlap. Writing to one member changes the bytes visible through other members.
+
+Embedded use cases: variant data, register views, protocol payload alternatives, raw byte access with caution about aliasing and endianness.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

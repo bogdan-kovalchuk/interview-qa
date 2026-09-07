@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0019
 title: "Trap: how is `if constexpr` safer than `#ifdef` against mistakes?"
-description: "Trap: how is `if constexpr` safer than `#ifdef` against mistakes?"
+description: "#ifdef completely cuts out the unselected branch so syntax errors in it are never caught."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`#ifdef` completely cuts out the unselected branch – syntax errors/typos in it are never noticed.</span>
+
+`if constexpr` forces the compiler to check the syntax of both branches (if they do not depend on a template parameter), so a bug in the "inactive" platform is caught immediately.
+
+Defense: for platform switching prefer `if constexpr` – fewer hidden bugs in untested paths.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

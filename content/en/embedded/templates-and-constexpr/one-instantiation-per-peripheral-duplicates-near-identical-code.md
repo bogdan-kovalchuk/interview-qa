@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0024
 title: "Trap: why can `Uart<USART1>` and `Uart<USART2>` inflate Flash?"
-description: "Trap: why can `Uart<USART1>` and `Uart<USART2>` inflate Flash?"
+description: "Each instantiation per peripheral can produce nearly identical code, differing only in the base address constant."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Each instantiation per peripheral can produce nearly identical code – only the base address constant differs.</span>
+
+On small MCUs (microcontroller unit) this adds up quickly if you do the same with `Uart<...>`, `Spi<...>`, `I2c<...>` for many peripherals.
+
+Mitigation: a non-template `UartImpl` with base address as a ctor parameter plus a thin template wrapper with a `constexpr` address; confirm the savings with the linker map.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

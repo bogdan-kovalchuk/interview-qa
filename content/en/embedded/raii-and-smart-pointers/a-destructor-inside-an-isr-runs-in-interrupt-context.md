@@ -1,7 +1,7 @@
 ---
 id: emb-raii-0018
 title: "Trap: what makes an RAII destructor inside an ISR dangerous?"
-description: "Trap: what makes an RAII destructor inside an ISR dangerous?"
+description: "The destructor runs in the same context as the scope exit, that is inside the ISR."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ void isr() {
 
 ## Short answer
 
-TODO
+<span class="warn">The destructor runs in the same context as the scope exit, that is inside the ISR (interrupt service routine).</span>
+
+If the dtor performs a blocking operation (mutex release from an RTOS, allocation, UART TX), this is unacceptable in an interrupt: deadlock or jitter.
+
+Defense: in ISR RAII, only register-level actions are allowed (interrupt enable/disable), no blocking teardown.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

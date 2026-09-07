@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0043
 title: "What happens to this code in C?"
-description: "What happens to this code in C?"
+description: "At block scope in C99+, this can be a VLA rather than a compile-time fixed array."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ int a[n];
 
 ## Short answer
 
-TODO
+At block scope in C99+, this can be a VLA (variable length array), not necessarily a compile-time fixed array.
+
+`const int n` does not make `n` an integer constant expression in C the way many expect after C++. On embedded targets, this matters because a VLA allocates stack memory at runtime and is often banned by coding standards.
+
+Protection: for compile-time sizes in C, use `#define N 8`, `enum { N = 8 }`, or static assertions depending on the standard.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0021
 title: "Why does `Quantity<Tag>` have no runtime overhead?"
-description: "Why does `Quantity<Tag>` have no runtime overhead?"
+description: "The tag type has no fields; it exists only in the type system and disappears after compilation."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The tag type has no fields – it exists only in the type system and completely disappears after compilation.**
+
+The object contains only `Rep value` (e.g. `int32_t`), so `sizeof(Quantity) == sizeof(int32_t)`. Unit compatibility checking costs zero bytes and zero cycles.
+
+Rule: phantom types give unit safety without any runtime cost.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

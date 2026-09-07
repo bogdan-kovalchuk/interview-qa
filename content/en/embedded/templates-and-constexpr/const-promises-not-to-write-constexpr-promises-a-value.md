@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0007
 title: "What is the difference between `const` and `constexpr`?"
-description: "What is the difference between `const` and `constexpr`?"
+description: "const means read-only but the value may be computed at runtime; constexpr means usable as a constant expression."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`const` means "I will not modify it", but the value may be computed at runtime. `constexpr` means "can be a constant expression".**
+
+For embedded, `constexpr` is stronger: it forces initialization to be suitable for compile-time evaluation and for objects with static storage typically leads to ready data in Flash/`.rodata` rather than a startup calculation in RAM.
+
+Rule: for compile-time constants/tables use `constexpr`, not just `const`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

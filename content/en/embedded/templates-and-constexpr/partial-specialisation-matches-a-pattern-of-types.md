@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0010
 title: "What is partial template specialisation?"
-description: "What is partial template specialisation?"
+description: "Specialization by pattern (e.g. all pointers), not by a single type."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ class Buffer<T*> {
 
 ## Short answer
 
-TODO
+**Specialization by pattern (e.g. all pointers), not by a single type.**
+
+`Buffer<T*>` applies to any `T*`, allowing shared logic for an entire family of types.
+
+Rule: partial specialization – when behavior is common to a class of types (pointers, arrays, etc.).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

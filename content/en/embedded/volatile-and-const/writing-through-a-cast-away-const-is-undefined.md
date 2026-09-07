@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0032
 title: "Trap: is it safe to cast `const` away?"
-description: "Trap: is it safe to cast `const` away?"
+description: "If the original object was declared const, modifying it through a non-const lvalue has undefined behavior."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ uint32_t *p = (uint32_t *)&cfg;
 
 ## Short answer
 
-TODO
+<span class="warn">No: if the original object was declared `const`, attempting to modify it through a non-const lvalue has undefined behavior.</span>
+
+On an MCU, `cfg` may reside in Flash/`.rodata`, and a write through `p` can cause a BusFault/HardFault or simply leave the data unchanged. Even if the address is in RAM, the optimizer may assume that `cfg` does not change.
+
+Protection: do not cast away `const` for writing. If the data must change, it must not be `const`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

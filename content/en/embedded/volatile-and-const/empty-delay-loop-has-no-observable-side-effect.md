@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0034
 title: "Trap: what is wrong with this delay loop?"
-description: "Trap: what is wrong with this delay loop?"
+description: "The compiler can remove an empty loop entirely because it has no observable side effects."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ for (uint32_t i = 0; i < 100000; ++i) {
 
 ## Short answer
 
-TODO
+<span class="warn">The compiler can remove an empty loop entirely</span> because it has no observable side effects.
+
+Adding `volatile` to the counter sometimes forces the increments to execute, but this is a poor basis for accurate timing: optimization level, CPU frequency, wait states, and pipeline all change the real delay.
+
+Protection: for delays, use a hardware timer, SysTick, DWT cycle counter, or RTOS delay. `volatile` is not a timing API.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

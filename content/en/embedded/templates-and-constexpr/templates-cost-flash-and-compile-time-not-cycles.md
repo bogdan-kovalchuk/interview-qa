@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0013
 title: "Trap: why can you not say \"templates are free\"?"
-description: "Trap: why can you not say \"templates are free\"?"
+description: "Templates may have zero runtime cost but real cost in Flash and compile time."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Templates may have zero runtime cost, but they have real cost in Flash and compile time.</span>
+
+Each unique instantiation can generate its own copy of code in Flash; the build slows down due to instantiation + type checking.
+
+Defense: in an interview say "zero runtime cost does not mean zero flash cost", and check the linker map.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

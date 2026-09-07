@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0019
 title: "How do CAN, LIN, MOST, and FlexRay work, and how do they differ in arbitration, timing, and automotive use-case?"
-description: "How do CAN, LIN, MOST, and FlexRay work, and how do they differ in arbitration, timing, and automotive use-case?"
+description: "CAN offers multi-master arbitration for control networks, LIN is a cheap master-slave bus, FlexRay gives deterministic time-triggered communication, and MOST served multimedia."
 track: embedded
 section: peripherals-and-buses
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**CAN** has multi-master arbitration by message ID and suits robust control networks. **LIN** is a cheaper master-slave bus for simple actuators/sensors; **FlexRay** provides deterministic time-triggered communication for safety-critical systems. **MOST** was historically used for automotive multimedia; its role differs from that of control buses.[^dou-embedded-interview]
 
 ## Detailed explanation
 

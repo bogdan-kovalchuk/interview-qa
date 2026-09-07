@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0015
 title: "How do you read 256 channels when the MCU has only 8 GPIOs, and what are the trade-offs of multiplexers, shift registers, and an external ADC?"
-description: "Multiplexers, shift registers, and external ADCs expand channel capacity with different trade-offs in signal type, timing, accuracy, bandwidth, cost, and complexity."
+description: "Shift registers, GPIO expanders, analog multiplexers, and external ADCs extend channel count with different trade-offs in signal type, timing, accuracy, cost, and complexity."
 track: embedded
 section: peripherals-and-buses
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+For digital inputs, cascade shift registers or GPIO expanders over SPI/I2C; for analog, use analog multiplexers or an external multi-channel ADC. A multiplexer saves pins but needs settling time and sequential sampling; a shift register is fast for digital but cannot read analog. An external ADC gives better accuracy and sampling isolation, but adds cost, bus bandwidth, and driver complexity.[^dou-embedded-interview]
 
 ## Detailed explanation
 

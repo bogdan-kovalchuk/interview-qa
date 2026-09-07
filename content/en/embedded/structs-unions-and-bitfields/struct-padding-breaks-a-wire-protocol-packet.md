@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0006
 title: "Trap: why can you not send `sizeof(struct)` bytes as a protocol packet?"
-description: "Trap: why can you not send `sizeof(struct)` bytes as a protocol packet?"
+description: "Because a struct may contain padding bytes and an ABI-dependent layout."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Because a struct may contain padding bytes and an ABI-dependent layout.</span>
+
+Padding bytes can have indeterminate values, byte order depends on endianness, and offsets can differ between compilers, packing options, and target ABIs. What works between two identical Cortex-M builds can break when the compiler or protocol peer changes.
+
+Defense: serialize fields explicitly into a buffer, specify the endian format, and check the packet length. For a fixed binary layout, use static assertions and controlled packing.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

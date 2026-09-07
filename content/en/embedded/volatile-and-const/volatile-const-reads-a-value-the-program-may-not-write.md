@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0014
 title: "What is `volatile const` and what is it for?"
-description: "What is `volatile const` and what is it for?"
+description: "volatile const describes an object the program must not modify but whose value can change without the program's involvement."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`volatile const`** describes an object the program must not modify, but whose value can change without the program's involvement.
+
+Typical example: a read-only status register. Firmware only reads; hardware updates the status bits. Without `volatile`, the compiler may reuse an old value; without `const`, the programmer may accidentally write to the read-only register.
+
+Embedded rule: for hardware read-only registers, use a pointer to `volatile const` data.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

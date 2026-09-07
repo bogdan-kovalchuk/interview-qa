@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0021
 title: "When can PCI/PCIe be an embedded topic and what basic concepts should you know: enumeration, BAR, DMA, interrupts?"
-description: "When can PCI/PCIe be an embedded topic and what basic concepts should you know: enumeration, BAR, DMA, interrupts?"
+description: "PCI/PCIe appears on SoCs, industrial PCs, and FPGA cards; key concepts are enumeration, config space, BAR regions for MMIO, bus mastering DMA, and MSI/MSI-X interrupts."
 track: embedded
 section: peripherals-and-buses
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+PCI/PCIe becomes an embedded topic on SoCs, industrial computers, FPGA cards, high-speed peripherals, or Linux-based controllers. You need to know **enumeration**, config space, `BAR` regions for MMIO, bus mastering DMA, and MSI/MSI-X or legacy INTx interrupts. <span class="warn">The driver must map BAR correctly, manage DMA buffers, and account for IOMMU/cache coherency.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

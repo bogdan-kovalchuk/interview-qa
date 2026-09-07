@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0025
 title: "Which section does a `const` lookup table land in?"
-description: "Which section does a `const` lookup table land in?"
+description: "A const table lands in .rodata in Flash when it is file-scope or static and the linker script makes no special exceptions."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ const uint16_t sine_lut[256] = { 0, 402, 804 };
 
 ## Short answer
 
-TODO
+Into `.rodata` in Flash, if it is a file-scope or static object and the linker script makes no special exceptions.
+
+The array is read-only, so startup code does not have to copy it into RAM. For Cortex-M this saves RAM and startup time. The size here is about `256 * 2 = 512` bytes that do not occupy SRAM.
+
+Rule: large immutable tables must be `const`, otherwise they may end up in `.data`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

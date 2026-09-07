@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0061
 title: "How does `const` help the compiler catch mistakes?"
-description: "How does `const` help the compiler catch mistakes?"
+description: "const turns an accidental write into a compile-time error when the access goes through a const-qualified type."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`const` turns an accidental write into a compile-time error** when the access goes through a const-qualified type.
+
+For example, a parser with a `const uint8_t *frame` parameter cannot accidentally modify the input packet. This is especially important when the input can be in Flash, in a shared communication buffer, or in a memory region with MPU read-only permissions.
+
+Rule: const-correctness is cheaper than debugging accidental side effects in a driver or protocol stack.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

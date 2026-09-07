@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0018
 title: "How does `if constexpr` work and why is it better than `#ifdef`?"
-description: "How does `if constexpr` work and why is it better than `#ifdef`?"
+description: "The condition is evaluated at compile time and the false branch is completely discarded."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ if constexpr (std::is_same_v<P, STM32F4>) {
 
 ## Short answer
 
-TODO
+**The condition is evaluated at compile time; the false branch is completely discarded – no code is generated for it.**
+
+Unlike the preprocessor, the compiler still parses both branches for syntax (if they do not depend on a template parameter), catching errors even in uncollected paths. In the example `BRR` is the baud rate register.
+
+Rule: `if constexpr` is a type-safe replacement for `#ifdef` for platform-dependent code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

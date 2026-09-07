@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0049
 title: "Trap: can a bit-field be used as an atomic flag between an ISR and main?"
-description: "Trap: can a bit-field be used as an atomic flag between an ISR and main?"
+description: "Bit-field writes are read-modify-write of the storage unit and are not atomic."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Do not.</span>
+
+Writing a bit-field is typically a read-modify-write of the storage unit. If the ISR and main modify different bit-fields in the same storage unit, one write can clobber the other. `volatile` does not make this operation atomic.
+
+Mitigation: for ISR flags, use separate volatile byte/word flags, atomic masks with a critical section, or RTOS event flags.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

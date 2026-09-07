@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0039
 title: "Trap: is `volatile` enough for a DMA buffer?"
-description: "Trap: is `volatile` enough for a DMA buffer?"
+description: "volatile is not always enough for a DMA buffer."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Not always.</span>
+
+`volatile` can force the CPU to re-read a descriptor or flag that DMA modifies. But it does not address cache coherency, alignment, ownership, memory barriers, or race conditions. On a Cortex-M7 with D-cache, DMA can write to RAM while the CPU still reads stale cache lines.
+
+Protection: beyond correct volatile flags and descriptors, use non-cacheable memory or cache clean/invalidate, barriers, and a clear ownership protocol between the CPU and DMA.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

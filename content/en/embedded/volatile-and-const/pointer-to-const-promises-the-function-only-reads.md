@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0016
 title: "What does `const uint8_t *buf` mean in a function parameter?"
-description: "What does `const uint8_t *buf` mean in a function parameter?"
+description: "The function receives a pointer to const uint8t: it can move the pointer but cannot change the buffer bytes through it."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The function receives a pointer to const `uint8_t`**: it can move the pointer, but it cannot change the buffer bytes through `buf`.
+
+For example, `void uart_write(const uint8_t *buf, size_t len)` documents that the passed buffer will only be read. This allows passing both a mutable RAM buffer and a read-only flash table.
+
+Rule: if the function does not modify the pointed-to data, the parameter must be `const T *`. This supports const-correctness and follows the MISRA approach.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

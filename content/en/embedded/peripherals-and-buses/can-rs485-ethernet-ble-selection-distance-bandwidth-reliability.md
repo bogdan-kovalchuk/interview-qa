@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0020
 title: "How to choose between CAN, RS485, Ethernet, and BLE for an embedded device with specific distance, bandwidth, and reliability requirements?"
-description: "How to choose between CAN, RS485, Ethernet, and BLE for an embedded device with specific distance, bandwidth, and reliability requirements?"
+description: "Choose by distance, data rate, determinism, topology, noise immunity, power, cost, and certification, weighing CAN, RS485, Ethernet, and BLE against the existing ecosystem."
 track: embedded
 section: peripherals-and-buses
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Choose from the requirements: distance, data rate, determinism, topology, noise immunity, power, cost, and certification. **CAN** is good for robust multi-node control, **RS485** – for long industrial links, **Ethernet** – for bandwidth/IP integration, **BLE** – for low-power wireless/mobile access. Also consider the existing ecosystem, diagnostics, and firmware update path.[^dou-embedded-interview]
 
 ## Detailed explanation
 

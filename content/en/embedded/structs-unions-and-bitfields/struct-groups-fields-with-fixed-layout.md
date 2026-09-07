@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0001
 title: "What is a `struct` in C and what is it for in embedded?"
-description: "What is a `struct` in C and what is it for in embedded?"
+description: "A struct groups several fields of different types into a single object with a fixed field declaration order."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`struct`** groups several fields of different types into a single object with a fixed field declaration order.
+
+In embedded, structs are used for peripheral register maps, protocol frames, driver state, configuration blocks, and DMA descriptors. Importantly, a struct has not only logical fields but also a physical layout in memory: offsets, padding, alignment.
+
+Rule: when a struct crosses the boundary to hardware, a binary protocol, or a Flash layout, its size and offsets must be verified explicitly.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

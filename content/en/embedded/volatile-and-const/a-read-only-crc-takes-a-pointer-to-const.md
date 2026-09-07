@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0051
 title: "Which declaration is better for a CRC function that only reads the data?"
-description: "Which declaration is better for a CRC function that only reads the data?"
+description: "Better: uint32t crc32(const uint8t data, sizet len); CRC does not modify the buffer, so the pointer must point to const data."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ uint32_t crc32(? data, size_t len);
 
 ## Short answer
 
-TODO
+Better: `uint32_t crc32(const uint8_t *data, size_t len);`
+
+CRC does not modify the buffer, so the pointer must point to const data. This allows computing CRC over a RAM buffer, Flash table, firmware image slice, or string literal without losing type safety.
+
+Embedded rule: read-only algorithm input must be `const`; this saves the caller's RAM and reduces the risk of accidental writes.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

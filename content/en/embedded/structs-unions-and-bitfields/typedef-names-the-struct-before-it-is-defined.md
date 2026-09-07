@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0050
 title: "What does `typedef struct Foo Foo;` mean?"
-description: "What does `typedef struct Foo Foo;` mean?"
+description: "It creates a typedef name for struct Foo, often before the struct is fully defined."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**It creates a typedef name `Foo` for the type `struct Foo`**, often before the struct is fully defined.
+
+If the struct body is not given, `Foo` is an incomplete type. You can use `Foo *` in an API, but you cannot create a `Foo` object by value until the full definition.
+
+Embedded use case: opaque handles for drivers: `Foo_Init(Foo *self)` or `Foo *Foo_Open(...)`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

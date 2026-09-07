@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0042
 title: "Trap: why does `const` in C not mean compile-time constant everywhere?"
-description: "Trap: why does `const` in C not mean compile-time constant everywhere?"
+description: "In C, const means a read-only object through that identifier, but not always an integer constant expression."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">In C, `const` means a read-only object through that identifier, but not always an integer constant expression.</span>
+
+For example, a file-scope `const int n = 10;` in C cannot be used everywhere as the size of a static array where a compile-time constant expression is required. In C++, the rules differ. For C embedded code, `enum`, `#define`, or linker symbols are often used for compile-time constants.
+
+Protection: do not confuse object immutability with a preprocessor or translation-time constant.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

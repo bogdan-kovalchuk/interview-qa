@@ -1,7 +1,7 @@
 ---
 id: emb-volconst-0015
 title: "Trap: can you write to a register declared like this?"
-description: "Trap: can you write to a register declared like this?"
+description: "No; writing must be a compile error because STATUS has a const-qualified type, and volatile does not cancel const."
 track: embedded
 section: volatile-and-const
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ volatile const uint32_t * const STATUS =
 
 ## Short answer
 
-TODO
+<span class="warn">No. This must be a compile error</span>, because `*STATUS` has a const-qualified type.
+
+`volatile` does not cancel `const`: it only says that reads must not be cached or removed, while `const` says that through this lvalue the firmware must not write data.
+
+Fix: declare read-only registers as `volatile const`; if a vendor header allows a write into a read-only register, that is a weak type contract.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

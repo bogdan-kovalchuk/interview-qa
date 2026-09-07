@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0020
 title: "What is a bit-field in a C struct?"
-description: "What is a bit-field in a C struct?"
+description: "A bit-field lets you declare a struct field with a specified number of bits, for example unsigned mode : 3;."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Bit-field** lets you declare a struct field with a specified number of bits, for example `unsigned mode : 3;`.
+
+The compiler packs such fields into a storage unit of the underlying type, but the exact bit order, the signedness of certain types, and crossing storage units are implementation-defined. This is convenient for compact flags but risky for hardware register layouts and wire formats.
+
+Rule: bit-fields suit internal flags; for hardware or protocol layouts, they should be used only with a full understanding of the compiler ABI.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0032
 title: "Does the compiler generate code for unused member functions of a template?"
-description: "Does the compiler generate code for unused member functions of a template?"
+description: "Usually no, only member functions that are actually needed are generated during implicit instantiation of a class template."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Usually no – during implicit instantiation of a class template, only the member functions that are actually needed are generated.**
+
+This limits bloat: if `pop()` is never called on `CircularBuffer<T,N>`, its code typically does not end up in Flash for that instantiation. Exceptions: explicit instantiation, virtual functions, and other ODR-use scenarios can force more code to be generated.
+
+Rule: unused template methods are often free, but check the linker map for template-heavy code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

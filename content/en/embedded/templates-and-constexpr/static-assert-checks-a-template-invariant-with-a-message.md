@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0027
 title: "How is `static_assert` used with templates?"
-description: "How is `static_assert` used with templates?"
+description: "Compile-time checking of type and size invariants with a clear message."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Compile-time checking of type and size invariants with a clear message.**
+
+For example, in the default branch of `if constexpr`: `static_assert(always_false<P>, "Unsupported platform")` catches an unsupported type at compile time. Also `static_assert(N > 0, "...")` validates an NTTP.
+
+Rule: `static_assert` is the primary tool for turning incorrect template usage into a clear error.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

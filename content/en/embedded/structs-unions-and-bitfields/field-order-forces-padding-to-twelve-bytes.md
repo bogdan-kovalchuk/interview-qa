@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0003
 title: "What is the typical size on a 32-bit ABI?"
-description: "What is the typical size on a 32-bit ABI?"
+description: "Typically sizeof(struct S) equals 12."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ struct S {
 
 ## Short answer
 
-TODO
+Typically `sizeof(struct S) == 12`.
+
+Layout: `a` occupies offset 0, then 3 bytes of padding, `b` at offset 4, `c` at offset 8, then 3 bytes of tail padding. Tail padding is needed so that the next element in an array `struct S arr[]` again has `b` at a 4-byte aligned offset.
+
+Rule: field order affects the RAM/Flash footprint. For arrays of structs, padding is multiplied by the number of elements.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0011
 title: "Trap: why is `uint32_t * volatile reg` the wrong type for hardware register data?"
-description: "Trap: why is `uint32_t * volatile reg` the wrong type for hardware register data?"
+description: "volatile is applied to the pointer variable, not to the data at the address, so register reads can still be optimized away."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`volatile` applies to the pointer variable, not to the data at the address.</span>
+
+The compiler will not cache the `reg` variable itself, but once the address is loaded, the `*reg` access has the type of a plain `uint32_t`. So reading the register data can still be optimized as ordinary memory.
+
+Fix: use `volatile uint32_t *reg` for pointer to volatile data, or `volatile uint32_t * const reg` if the address is fixed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

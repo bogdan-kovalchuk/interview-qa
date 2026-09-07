@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0010
 title: "What does the declaration `uint32_t * volatile p` mean?"
-description: "What does the declaration `uint32_t * volatile p` mean?"
+description: "p is a volatile pointer to plain uint32t; volatile qualifies the pointer value, not the data at the address."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`p` is a volatile pointer to a plain `uint32_t`**.
+
+Here volatile applies to the pointer variable itself, not to the data at the address. The compiler must reload the address stored in `p`, but the `*p` access is not a volatile access to hardware data.
+
+Embedded takeaway: for registers you almost always need `volatile uint32_t *p`, not `uint32_t * volatile p`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

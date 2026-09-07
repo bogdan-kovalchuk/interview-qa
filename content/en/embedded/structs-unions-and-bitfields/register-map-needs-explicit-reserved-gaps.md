@@ -1,7 +1,7 @@
 ---
 id: emb-structs-0009
 title: "Trap: what is wrong with this register map?"
-description: "Trap: what is wrong with this register map?"
+description: "Reserved gaps between registers may be missing."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ typedef struct {
 
 ## Short answer
 
-TODO
+<span class="warn">Reserved gaps between registers may be missing.</span>
+
+A hardware register map often has address gaps. If the manual says `DR` is at offset `0x10` but the struct places it at offset `0x08`, all accesses after the gap will be wrong. `volatile` does not fix an incorrect layout.
+
+Defense: add reserved fields of the correct size, for example `uint32_t RESERVED0[2]`, and verify with `offsetof`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

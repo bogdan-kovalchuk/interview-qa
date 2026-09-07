@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0024
 title: "Why does `const` matter in embedded beyond write protection?"
-description: "Why does `const` matter in embedded beyond write protection?"
+description: "const allows placing file-scope or static read-only data into Flash, typically into .rodata, saving RAM."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`const` allows placing file-scope/static read-only data into Flash, typically into `.rodata`**.
+
+Without `const`, an initialized global array goes into `.data`: the initial bytes are stored in Flash, but at startup they are copied into RAM. On an MCU with 16 KB of RAM, a 1 KB lookup table can be a noticeable loss.
+
+Rule: calibration tables, strings, protocol descriptors, CRC tables and LUTs that do not change should be declared `const`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

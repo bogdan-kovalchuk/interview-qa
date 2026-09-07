@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-**Queue** передає дані між ISR/tasks або tasks, **semaphore** сигналізує подію чи рахує ресурси. **Mutex** захищає shared resource і бажано має priority inheritance. **Event group** зручний для набору flags, коли task чекає одну або кілька умов.[^dou-embedded-interview]
+**Queue** передає дані між ISR/tasks або tasks, **semaphore** сигналізує подію чи рахує ресурси. **Mutex** захищає shared resource і бажано має пріоритетне успадкування (priority inheritance). **Event group** зручний для набору flags, коли task чекає одну або кілька умов.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-periph-0014
 title: "A USB device is unstable over a 5–10 metre distance. Which USB, cable, power, and alternative-interface limits should you check?"
-description: "Long USB connections require checking speed-specific cable limits, signal integrity, VBUS, grounding, and whether a different physical interface is more suitable."
+description: "Check the speed-specific cable length limit, signal integrity, VBUS drop, grounding, and consider alternatives such as active cables, extenders, or a different bus."
 track: embedded
 section: peripherals-and-buses
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Check the specification length limit for the required USB speed, cable quality, shielding, hubs/repeaters, and VBUS drop under load. At 5–10 m, signal integrity problems, ground potential difference, and device power below the minimum often appear. Alternatives: powered hub/active cable, USB extender, RS-485/CAN/Ethernet, or move the MCU closer to the sensor.[^dou-embedded-interview]
 
 ## Detailed explanation
 

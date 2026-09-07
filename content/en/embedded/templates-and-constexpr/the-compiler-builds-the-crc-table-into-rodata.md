@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0006
 title: "How do you generate a CRC-32 table at compile time?"
-description: "How do you generate a CRC-32 table at compile time?"
+description: "The entire 1 KB table is computed by the compiler and typically placed in Flash .rodata."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -45,7 +45,11 @@ constexpr auto crc_table = make_crc_table();
 
 ## Short answer
 
-TODO
+**The entire 1 KB table is computed by the compiler and typically placed in Flash `.rodata`.**
+
+This replaces hand-written (error-prone) tables and startup loops that waste boot time. At runtime the table is already ready.
+
+Rule: generate large immutable tables (CRC, gamma/lookup tables) via `constexpr` rather than computing them at startup.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

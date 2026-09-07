@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0030
 title: "Trap: what is unsafe about `char *p = \"OK\"; p[0] = 'N';`?"
-description: "Trap: what is unsafe about `char *p = \"OK\"; p[0] = 'N';`?"
+description: "Writing to a string literal has undefined behavior."
 track: embedded
 section: volatile-and-const
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Writing to a string literal has undefined behavior.</span>
+
+In C, a string literal often resides in a read-only region such as `.rodata` in Flash. Historically, C allows assigning a literal to `char *` with a warning on some compilers, but modifying the object through that pointer is semantically forbidden and can cause a HardFault on an MCU.
+
+Protection: use `const char *p = "OK";` or a mutable array: `char p[] = "OK";`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

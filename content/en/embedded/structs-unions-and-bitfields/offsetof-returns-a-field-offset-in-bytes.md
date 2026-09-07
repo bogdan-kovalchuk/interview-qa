@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0007
 title: "What is `offsetof` and what is it needed for?"
-description: "What is `offsetof` and what is it needed for?"
+description: "offsetof(T, field) returns the offset of a field inside a struct in bytes."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`offsetof(T, field)`** returns the offset of a field inside a struct in bytes.
+
+This is the standard way to verify layout without manual assumptions. In embedded, it is used for static assertions of register maps, protocol headers, Flash records, and DMA descriptors.
+
+Rule: if the hardware manual says `STATUS` must be at offset `0x10`, verify it with `_Static_assert(offsetof(Type, STATUS) == 0x10, "...")`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

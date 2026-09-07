@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0053
 title: "Trap: can you rely on C struct layout across different compilers without checking?"
-description: "Trap: can you rely on C struct layout across different compilers without checking?"
+description: "ABI, alignment, packing pragmas, and bit-field rules can differ across compilers."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No: ABI, alignment, packing pragmas, and bit-field rules can differ.</span>
+
+Even identical source can have different offsets or size on another architecture. For a host tool plus MCU firmware this is a frequent bug: the PC tool writes a binary file per its struct layout, the firmware reads it per a different one.
+
+Mitigation: describe external binary formats in bytes, not in C structs. Add version, length, endian, and static/runtime checks.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

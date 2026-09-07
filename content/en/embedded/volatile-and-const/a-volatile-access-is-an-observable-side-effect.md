@@ -1,15 +1,15 @@
 ---
 id: emb-volconst-0035
 title: "Is reading a volatile object a side effect?"
-description: "Is reading a volatile object a side effect?"
+description: "Yes, a volatile access is considered an observable side effect for the C abstract machine."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Yes, a volatile access is considered an observable side effect for the C abstract machine.**
+
+Therefore, the compiler cannot simply discard a hardware register read as an "unused result" if the read itself can clear a flag, acknowledge an interrupt, or trigger a bus transaction. This is one reason why register definitions must be volatile.
+
+Embedded rule: if a read-to-clear or read-has-side-effect register is described without `volatile`, the optimizer can break the peripheral protocol.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

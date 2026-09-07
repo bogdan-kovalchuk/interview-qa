@@ -1,15 +1,15 @@
 ---
 id: emb-tmplcx-0030
 title: "Trap: why is collapsing all types to `uint32_t` to reduce bloat a trade-off?"
-description: "Trap: why is collapsing all types to `uint32_t` to reduce bloat a trade-off?"
+description: "Fewer instantiations reduce Flash usage, but uint32t wastes RAM on small values."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Fewer instantiations (less Flash), but `uint32_t` wastes RAM on small values.</span>
+
+If a buffer could have been `uint8_t` and you made it `uint32_t` for a single instantiation, you save ROM but quadruple the RAM buffer.
+
+Mitigation: balance the number of instantiations (Flash) against the type width (RAM) for the specific MCU.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

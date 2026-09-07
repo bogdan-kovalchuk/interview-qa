@@ -1,15 +1,15 @@
 ---
 id: emb-raii-0001
 title: "What is RAII and what does the acronym stand for?"
-description: "What is RAII and what does the acronym stand for?"
+description: "RAII ties a resource lifetime to a C++ object lifetime so the constructor acquires and the destructor releases, with cleanup guaranteed on scope exit."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**RAII (Resource Acquisition Is Initialization)** – the resource lifetime is tied to the C++ object lifetime.
+
+The constructor acquires the resource, the destructor releases it. The compiler guarantees cleanup on scope exit: normal path, early `return`, and – if exceptions are enabled – stack unwinding.
+
+Rule: anything that must be taken and given back, wrap in an object with a ctor/dtor.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

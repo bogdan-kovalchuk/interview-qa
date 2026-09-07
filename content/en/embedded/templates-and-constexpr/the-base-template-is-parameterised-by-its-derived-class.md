@@ -1,7 +1,7 @@
 ---
 id: emb-tmplcx-0011
 title: "What is CRTP and what is it for in templates?"
-description: "What is CRTP and what is it for in templates?"
+description: "CRTP is a pattern where a base class template is parameterized by the derived class."
 track: embedded
 section: templates-and-constexpr
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -46,7 +46,11 @@ public:
 
 ## Short answer
 
-TODO
+**CRTP (curiously recurring template pattern): the base is a template parameterized by the derived class: `class Derived : public Base`.**
+
+The base calls derived methods through `static_cast<D*>(this)`, which resolves at compile time – polymorphism without a vtable.
+
+Rule: CRTP gives a "virtual" structure without virtual dispatch; after optimization it often has no additional runtime overhead.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

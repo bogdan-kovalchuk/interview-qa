@@ -1,15 +1,15 @@
 ---
 id: emb-structs-0041
 title: "Trap: how can padding become an information leak?"
-description: "Trap: how can padding become an information leak?"
+description: "Sending or writing raw struct bytes can leak old stack or RAM data through padding."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">If you send or write raw bytes of a struct, padding may contain old data from the stack/RAM.</span>
+
+For example, `send(fd, &msg, sizeof msg)` may include padding bytes between fields. These bytes are not initialized by individual field assignments and may contain fragments of previous variables.
+
+Mitigation: zero-initialize the struct before populating it, serialize fields explicitly, and do not export raw struct layout as a security boundary.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
