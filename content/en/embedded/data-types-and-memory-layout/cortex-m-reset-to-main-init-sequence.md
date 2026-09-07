@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0007
 title: "What is the C runtime init sequence before `main()` on Cortex-M?"
-description: "The hardware reads the vector table, copies `.data`, zeroes `.bss`, and only then calls `main()`."
+description: "The hardware reads the vector table, copies .data, zeroes .bss, and only then calls main()."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+The hardware reads the Vector Table: SP <- value at address `0x00000000`, PC <- Reset Handler at address `0x00000004`. Startup code copies `.data` from Flash (LMA) to RAM (VMA), zeroes `.bss`, calls global C++ constructors (if any), and finally `main()`.
+
+Local variables in `main()` live on the stack and are <span class="warn">not initialized</span>.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

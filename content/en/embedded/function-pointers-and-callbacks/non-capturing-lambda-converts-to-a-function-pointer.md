@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0037
 title: "Can a C++ non-capturing lambda be passed to a C-style callback?"
-description: "Can a C++ non-capturing lambda be passed to a C-style callback?"
+description: "Yes, if the lambda has no captures and the signature is compatible."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Yes, if the lambda has no captures and the signature is compatible.**
+
+A non-capturing lambda can decay to a function pointer. A capturing lambda has a hidden state object, so it cannot be a plain C function pointer. For state you need `void *context` or `std::function` where it is acceptable.
+
+Embedded rule: for C HAL callbacks in C++ use a non-capturing lambda or a static/free function plus context.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

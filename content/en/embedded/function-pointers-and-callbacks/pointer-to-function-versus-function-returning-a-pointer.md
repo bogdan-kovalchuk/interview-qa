@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0003
 title: "Trap: how do `void (*f)(void)` and `void *f(void)` differ?"
-description: "Trap: how do `void (*f)(void)` and `void *f(void)` differ?"
+description: "void (f)(void) and void f(void) are completely different types."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">These are completely different types.</span>
+
+`void (*f)(void)` – variable `f` is a pointer to function returning void. `void *f(void)` – function `f` that takes nothing and returns `void *`.
+
+Defense: for callback types use `typedef` or `using` so you don't have to read complex declarations by hand every time.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

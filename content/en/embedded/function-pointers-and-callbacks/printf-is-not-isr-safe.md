@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0027
 title: "Trap: what is unsafe about calling `printf` from an ISR callback?"
-description: "Trap: what is unsafe about calling `printf` from an ISR callback?"
+description: "printf is usually not ISR-safe and may be blocking or reentrant-unsafe."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">`printf` is usually not ISR-safe and may be blocking or reentrant-unsafe.</span>
+
+It may take a lock, use the heap, wait for UART TX or modify global state. In interrupt context this can cause deadlock, jitter or corrupt output, especially if the main code also prints.
+
+Protection: in the ISR callback set a flag, write to a lock-free or ring buffer, or use a dedicated non-blocking trace backend.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

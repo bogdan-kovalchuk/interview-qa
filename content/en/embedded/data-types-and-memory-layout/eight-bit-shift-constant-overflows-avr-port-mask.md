@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0081
 title: "What's wrong on an 8-bit AVR MCU? `if(!(PORTA & (1<<8)))`"
-description: "`1<<8 = 256` does not fit the 8-bit `PORTA`, so the mask always evaluates to 0 and the condition is always true."
+description: "18 = 256 does not fit the 8-bit PORTA, so the mask always evaluates to 0 and the condition is always true."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+AVR is an 8-bit architecture, so `PORTA` is an 8-bit register, and the constant `1<<8 = 256 = 0x100` does not fit in 8 bits.
+
+During evaluation (int = 16-bit on AVR): `1 << 8 = 0x0100`. `PORTA & 0x0100 = 0` always (the upper byte of PORTA is 0).
+
+The condition is <span class="warn">always true</span> regardless of the PORTA state.
+
+Correct: `if(!(PORTA & (1<<7)))` (maximum bit is 7 for an 8-bit port).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

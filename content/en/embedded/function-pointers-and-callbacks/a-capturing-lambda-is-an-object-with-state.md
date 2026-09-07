@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0038
 title: "Trap: why can a capturing lambda not be passed directly as `void (*)(void)`?"
-description: "Trap: why can a capturing lambda not be passed directly as `void (*)(void)`?"
+description: "A capturing lambda is an object with state, not just a function address."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">A capturing lambda is an object with state, not just a function address.</span>
+
+It needs storage for captured variables and is invoked through `operator()`. A C function pointer has no room for state, so the compiler cannot implicitly convert a capturing lambda to `void (*)(void)`.
+
+Protection: pass state through `void *ctx`, or use a C++ callback abstraction if embedded constraints allow.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

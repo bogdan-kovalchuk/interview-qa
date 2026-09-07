@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0017
 title: "Why does casting a function pointer often hide the real bug?"
-description: "Why does casting a function pointer often hide the real bug?"
+description: "A cast disables type checking but does not change the actual function signature."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">A cast disables type checking but does not change the actual function signature.</span>
+
+If the API expects `void (*)(void *)` and you pass `void (*)(int)` through a cast, the caller still invokes the function according to the API contract. Arguments will be passed differently from what the callee expects. This is not portable and may be UB.
+
+Defense: write a thin wrapper: `static void wrapper(void *ctx) { real_handler((int)(intptr_t)ctx); }`, if that model is truly needed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

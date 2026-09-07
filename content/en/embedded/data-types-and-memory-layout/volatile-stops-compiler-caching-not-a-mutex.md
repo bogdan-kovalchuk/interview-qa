@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0082
 title: "What is `volatile`, and how does it interact with compiler optimization?"
-description: "`volatile` forbids caching or eliding accesses to a variable, but gives no atomicity or ordering across threads."
+description: "volatile forbids caching or eliding accesses to a variable, but gives no atomicity or ordering across threads."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+`volatile` tells the compiler that the value can change **outside its control** (hardware, ISR, multi-threading).
+
+Without `volatile` the compiler may:
+1. Cache the value in a register (not re-read it);
+2. Eliminate "unnecessary" reads/writes as dead code;
+3. Reorder operations.
+
+<span class="warn">volatile is NOT synchronization</span>: it does not guarantee atomicity or memory ordering across threads. For threads – use `std::atomic` or `mutex`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

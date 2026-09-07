@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0043
 title: "Find the bug: `int sum; for(int i = 0; i < n; i++) sum += arr[i];`"
-description: "`sum` has no initializer, so the first addition reads stack garbage - undefined behavior."
+description: "sum has no initializer, so the first addition reads stack garbage - undefined behavior."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`int sum;` is a local variable <span class="warn">without an initializer</span>, it contains garbage. The first operation `sum += arr[0]` -> <span class="warn">undefined behavior</span> (reading an uninitialized variable).
+
+In practice: `sum` starts with a random value from the stack -> the result is wrong, but the code may sometimes "work".
+
+Fix: `int sum = 0;`. GCC with `-Wall`: `warning: 'sum' is used uninitialized`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+32-bit (Cortex-M): `sizeof(void*) = 4` bytes.
+64-bit (x86-64, Cortex-A): `sizeof(void*) = 8` bytes.
+
+A pointer's size is determined by the **width of the address space**, NOT by the type it points to: `sizeof(char*) == sizeof(int*) == sizeof(void*)` on the same platform.
+
+Check: `sizeof(void*)`. Do not rely on a specific value in portable code.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

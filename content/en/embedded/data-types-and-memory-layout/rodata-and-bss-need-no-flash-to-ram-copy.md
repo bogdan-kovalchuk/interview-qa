@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0048
 title: "Which sections need a Flash-to-RAM copy at boot, and which don't?"
-description: "`.data` is copied from Flash into RAM at boot, while `.rodata` and `.bss` need no copy."
+description: ".data is copied from Flash into RAM at boot, while .rodata and .bss need no copy."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+**Requires copying:** `.data` – initialized globals/statics (values stored in Flash LMA, copied into RAM VMA).
+
+**Does not require:**
+- `.rodata` – the CPU reads directly from Flash;
+- `.bss` – zeroed by startup code (nothing to copy);
+- `.text` – executed from Flash (XIP).
+
+<span class="warn">Large `.data` -> slower boot</span>. Optimization: move data to `const` -> `.rodata`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

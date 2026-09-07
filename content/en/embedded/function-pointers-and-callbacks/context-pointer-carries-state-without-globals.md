@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0005
 title: "Why do callback APIs often carry a `void *context` parameter?"
-description: "Why do callback APIs often carry a `void *context` parameter?"
+description: "context passes the callback user state without global variables."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`context` passes the callback user state without global variables.**
+
+A callback function by itself carries no captured state, unlike a lambda with capture in C++. Therefore the driver stores a pair: function pointer + context pointer. When the event occurs, the driver calls `cb(context)`, and the callback casts context to its own type.
+
+Rule: a callback without context quickly forces the use of globals; a callback with context scales to multiple UART/SPI/timer instances.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

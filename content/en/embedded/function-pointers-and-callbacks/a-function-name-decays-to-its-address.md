@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0007
 title: "What does this code print?"
-description: "What does this code print?"
+description: "The code prints 42 because the function name implicitly decays to a function pointer."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ printf("%d", op(41));
 
 ## Short answer
 
-TODO
+Prints `42`.
+
+The function name `add1` in most expressions is implicitly converted to a pointer to function. Therefore `op = add1` is equivalent to `op = &add1`. The call `op(41)` performs an indirect call through the function address.
+
+Rule: for a function pointer you can write both `op(41)` and `(*op)(41)`; the first form is more readable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

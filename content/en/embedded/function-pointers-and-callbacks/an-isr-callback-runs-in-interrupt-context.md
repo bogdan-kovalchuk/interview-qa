@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0026
 title: "Why must a callback invoked from an ISR be short?"
-description: "Why must a callback invoked from an ISR be short?"
+description: "The ISR callback runs in interrupt context where the system must not be blocked for long."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The ISR callback runs in interrupt context**, where the system must not be blocked for long.
+
+A long callback increases interrupt latency, can break real-time deadlines and is often not allowed to call blocking RTOS or API functions. If the callback is registered by user code, the driver must explicitly document that it is called from an ISR.
+
+Rule: an ISR callback should quickly save the event or wake a task; heavy work belongs in thread or main context.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0034
 title: "What is a safer way to write a `qsort` comparator for `int`?"
-description: "What is a safer way to write a `qsort` comparator for `int`?"
+description: "Use return (x y) - (x y) after casting to avoid signed overflow."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Like this:
+
+`return (x > y) - (x < y);`
+
+Full fragment: `const int x = *(const int *)a; const int y = *(const int *)b;`. Such a comparator returns `1`, `0` or `-1` without signed overflow.
+
+Rule: a comparator must be strict and stable in its ordering logic; do not rely on overflow arithmetic.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

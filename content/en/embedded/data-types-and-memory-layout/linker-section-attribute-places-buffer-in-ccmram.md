@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0050
 title: "What does this do? `__attribute__((section(\".ccmram\"))) uint32_t fast_buf[256];`"
-description: "The `section` attribute places the array in `.ccmram`, a zero-wait-state RAM for time-critical buffers."
+description: "The section attribute places the array in .ccmram, a zero-wait-state RAM for time-critical buffers."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Places the array in the **.ccmram** section (Core Coupled Memory RAM) on STM32 F4/F7 – a dedicated RAM connected directly to the CPU without a bus matrix.
+
+Provides **zero-wait-state** access: ideal for time-critical buffers, lookup tables, ISR stacks.
+
+Required: 1. Define the section in the linker script (`MEMORY { CCMRAM ... }`); 2. Initialize in startup code; Not available to DMA on some MCUs – check the reference manual.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

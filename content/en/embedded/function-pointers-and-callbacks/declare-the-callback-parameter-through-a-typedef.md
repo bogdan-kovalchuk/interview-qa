@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0014
 title: "How do you declare a function that takes a callback `void cb(int)`?"
-description: "How do you declare a function that takes a callback `void cb(int)`?"
+description: "Declare the parameter directly as a function pointer, or use a typedef for readability."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,16 @@ sources:
 
 ## Short answer
 
-TODO
+Yes. Direct parameter declaration, but a typedef is more readable:
+
+```c
+void register_cb(void (*cb)(int));
+
+typedef void (*event_cb_t)(int);
+void register_cb(event_cb_t cb);
+```
+
+Rule: raw syntax is useful to know for interviews, but in production APIs a typedef makes the contract stable and less error-prone.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

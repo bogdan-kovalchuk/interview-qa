@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Unsigned overflow is **defined by the standard** as modular arithmetic modulo `2^N`:
+- `uint8_t: 255 + 1 = 0`
+- `uint16_t: 65535 + 1 = 0`
+
+Signed overflow is <span class="warn">undefined behavior</span>: the standard guarantees nothing. The compiler may optimize code assuming signed overflow does not occur.
+
+Rule: for arithmetic where wraparound is possible, use unsigned types.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

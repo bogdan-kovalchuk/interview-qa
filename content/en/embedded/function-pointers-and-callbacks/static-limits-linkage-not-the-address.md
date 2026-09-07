@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0035
 title: "Can a callback be a `static` function?"
-description: "Can a callback be a `static` function?"
+description: "Yes; static at file scope limits linkage but the address can still be passed as a callback."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Yes.**
+
+`static` at file scope limits the function's linkage to the current `.c` file, but its address can still be passed as a callback within that translation unit. This is even preferable for private handlers that should not be part of the public symbol table.
+
+Rule: a callback must be visible where its address is passed; external linkage is needed only if another translation unit must refer to the function name directly.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

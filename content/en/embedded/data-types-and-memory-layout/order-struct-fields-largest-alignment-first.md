@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+Ordering from largest alignment to smallest **minimizes internal padding**.
+
+Bad order: `struct { char a; int b; char c; }` -> 12B (3B + 3B padding).
+Good order: `struct { int b; char a; char c; }` -> 8B (no internal padding).
+
+Rule: first `uint64_t`/`double` (align 8), then `uint32_t`/`float` (align 4), then `uint16_t` (align 2), finally `uint8_t`/`char` (align 1). Verify with `sizeof()`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

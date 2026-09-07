@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0076
 title: "Trap in embedded: what are the risks? `static uint8_t buffer[4096];`"
-description: "A `static` buffer inside a function lives in `.bss` forever, permanently costs RAM, and breaks reentrancy."
+description: "A static buffer inside a function lives in .bss forever, permanently costs RAM, and breaks reentrancy."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+`static` in a function -> buffer in `.bss` (RAM, zeroed at boot). 4096B can be a critical portion of RAM (20% of 20KB!).
+
+Risks:
+1. <span class="warn">Function is not reentrant</span> – ISR and main loop share the buffer;
+2. Occupies RAM all the time (even when unused);
+3. If in multiple functions – RAM is quickly exhausted;
+4. Static analysis does not always detect the overlap.
+
+Alternative: one global buffer + mutex, or a memory pool.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

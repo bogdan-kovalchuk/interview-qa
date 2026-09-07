@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0021
 title: "Why can a dispatch table be better than a large `switch`?"
-description: "Why can a dispatch table be better than a large `switch`?"
+description: "It separates the opcode-to-handler mapping from handler logic and simplifies adding commands."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**It separates the opcode -> handler mapping from handler logic** and simplifies adding commands.
+
+In an embedded protocol parser this can reduce cyclomatic complexity and allow storing the table in Flash as `static const`. But indirect calls can be less transparent to the optimizer and harder for static analysis.
+
+Rule: a dispatch table is good for stable opcode maps; for a small switch with 3–5 cases a plain `switch` is often more readable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

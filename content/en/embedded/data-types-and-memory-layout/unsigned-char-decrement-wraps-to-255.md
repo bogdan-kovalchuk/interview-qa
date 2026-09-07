@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,12 @@ sources:
 
 ## Short answer
 
-TODO
+`x` becomes **255**. Unsigned arithmetic in C is **defined** as modular (wraparound): `0 - 1 = UCHAR_MAX = 255`.
+
+This is **NOT undefined behavior** (unlike signed overflow). But it is often a logic bug in loops:
+`for(unsigned char i = n; i >= 0; i--)` – an infinite loop.
+
+Rule: always think about wraparound when decrementing unsigned types.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

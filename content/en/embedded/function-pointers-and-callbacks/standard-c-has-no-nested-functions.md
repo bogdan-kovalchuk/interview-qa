@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0036
 title: "Trap: can a callback be an ordinary nested function in standard C?"
-description: "Trap: can a callback be an ordinary nested function in standard C?"
+description: "No; standard C has no nested functions."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">No. Standard C has no nested functions.</span>
+
+GCC supports nested functions as an extension, but they may use stack trampolines and are poorly suited for portable embedded code, MPU/NX memory and static analysis. Such a callback can break with a different compiler or security settings.
+
+Protection: use a file-scope static function plus `void *context`, or in C++ a non-capturing lambda or static member wrapper.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

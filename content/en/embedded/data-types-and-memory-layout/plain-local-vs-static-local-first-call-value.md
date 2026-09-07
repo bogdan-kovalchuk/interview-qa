@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0086
 title: "Trap: do `int x;` and `static int x;` behave the same on a function's first call?"
-description: "`int x;` holds stack garbage, while `static int x;` is guaranteed zero on the first call."
+description: "int x; holds stack garbage, while static int x; is guaranteed zero on the first call."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">NO!</span>
+
+`int x;` – on the stack, <span class="warn">contains garbage</span> (undefined value, a new slot each call).
+
+`static int x;` – in `.bss`, guaranteed = 0 on the first call (zeroed at boot). On subsequent calls – retains the value from the previous call.
+
+Mistake: assuming `int x;` = 0 on the first call. The compiler does not add initialization automatically.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

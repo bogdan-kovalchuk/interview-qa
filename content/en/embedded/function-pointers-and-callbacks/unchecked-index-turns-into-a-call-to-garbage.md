@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0020
 title: "Trap: what is wrong with a dispatch table without an index check?"
-description: "Trap: what is wrong with a dispatch table without an index check?"
+description: "Without an index check, an out-of-bounds read leads to an indirect call at a random address."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ table[opcode]();
 
 ## Short answer
 
-TODO
+<span class="warn">If `opcode >= 4`, there will be an out-of-bounds read and an indirect call to a random address.</span>
+
+On Cortex-M this can cause a HardFault or, worse, jump to a valid but wrong code address. Dispatch tables are especially sensitive to input validation because data immediately becomes control flow.
+
+Defense: check `if (opcode < ARRAY_SIZE(table) && table[opcode])`, otherwise call a default error handler.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

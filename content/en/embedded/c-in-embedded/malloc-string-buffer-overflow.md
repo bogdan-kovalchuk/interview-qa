@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,11 @@ p[5] = '\0';
 
 ## Short answer
 
-TODO
+<span class="warn">Buffer overflow.</span> `malloc(5)` – 5 bytes, but `"hello"` = `{'h','e','l','l','o','\0'}` – 6 bytes including the null terminator.
+
+`strcpy(p, "hello")` already overflows the buffer (6 bytes into 5), and `p[5] = '\0'` is a sixth write past the end.
+
+Correct: `malloc(strlen("hello") + 1)` = `malloc(6)`, or `strncpy(p, "hello", 5); p[4]='\0';` – truncate if needed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

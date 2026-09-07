@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0001
 title: "What is a function pointer in C?"
-description: "What is a function pointer in C?"
+description: "A function pointer stores the address of a function executable code with a specific signature."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**A function pointer** stores the address of a function's executable code with a specific signature.
+
+Unlike an object pointer, it does not point at data in RAM/Flash like a regular object; it is used for an indirect call: the code decides which function to call at runtime. In embedded, this is the foundation of callbacks, interrupt vector tables, driver HAL interfaces, state machines, and command dispatch tables.
+
+Rule: the function pointer type must exactly match the return type and parameter types of the function called through it.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

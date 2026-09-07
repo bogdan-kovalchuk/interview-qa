@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0075
 title: "What happens? `int *p = (int*)malloc(10*sizeof(int)); p[10] = 0;`"
-description: "`malloc(10*sizeof(int))` allocates only `p[0]..p[9]`, so `p[10]` writes past the allocated heap block."
+description: "malloc(10sizeof(int)) allocates only p[0]..p[9], so p[10] writes past the allocated heap block."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Out-of-bounds write on the heap -> undefined behavior.</span>
+
+`malloc(10*sizeof(int))` allocates memory for `p[0]..p[9]`. `p[10]` is out of bounds, overwriting heap metadata or an adjacent block.
+
+Consequences:
+1. Heap metadata corruption -> crash on the next `malloc`/`free`;
+2. Silent data corruption (manifests later).
+
+Protection: `-fsanitize=address` during development, Valgrind on Linux, heap guard regions.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
