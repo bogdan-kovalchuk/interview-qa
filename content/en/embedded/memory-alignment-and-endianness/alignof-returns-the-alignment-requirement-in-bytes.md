@@ -1,15 +1,15 @@
 ---
 id: emb-align-0025
 title: "What does `_Alignof(T)` (C11) / `alignof(T)` return?"
-description: "What does `_Alignof(T)` (C11) / `alignof(T)` return?"
+description: "The alignment requirement of the type in bytes, a compile-time value."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The alignment requirement of the type, in bytes.**
+
+`_Alignof(uint32_t)` -> 4, `_Alignof(double)` -> typically 8. It is a compile-time value, useful for layout checks and custom allocators.
+
+Rule: in C11 use `_Alignof` (the `alignof` macro in `<stdalign.h>`); in C++ `alignof` is built-in.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

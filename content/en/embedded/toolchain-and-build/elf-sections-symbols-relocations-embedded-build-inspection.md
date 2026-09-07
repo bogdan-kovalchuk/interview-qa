@@ -1,7 +1,7 @@
 ---
 id: emb-build-0014
 title: "What is an ELF file, and what information is useful to inspect in an embedded build?"
-description: "<span class=\"key\">ELF</span> is an object or executable format containing headers, sections, symbols, relocations, and debug information."
+description: "ELF is an object/executable format; in embedded builds one inspects the entry point, section sizes and addresses, symbol table, and RAM placement."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**ELF** is an object/executable format with headers, sections, symbols, relocations, and debug info. In embedded, one inspects the entry point, section sizes/addresses, symbol table, vector table placement, and whether `.data/.bss` landed in the correct RAM. Useful commands: `readelf -S`, `readelf -s`, `objdump -d`, `size`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

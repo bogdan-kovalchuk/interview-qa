@@ -1,7 +1,7 @@
 ---
 id: emb-build-0024
 title: "How do you build an MCU project build system with a bootloader, application, tests, and hardware variants?"
-description: "English translation pending."
+description: "Split the build into separate targets for bootloader, app, shared drivers, host tests, target tests, and board configs, each with its own linker script and memory layout."
 track: embedded
 section: toolchain-and-build
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Split the build into separate targets: `bootloader`, `app`, shared drivers, host tests, target tests, and board configs. Each target has its own linker script, startup file, compile definitions, memory layout, and output artifacts. Hardware variants are better described through board files/config targets rather than conditional blocks in every source file.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-build-0017
 title: "What is cross-compilation, and what common mistakes occur when running a binary on another architecture?"
-description: "Cross-compilation builds on a host machine for a different CPU, OS, or ABI target."
+description: "Cross-compilation builds on a host for a different CPU, OS, or ABI; common mistakes include wrong sysroot, mixed ABI or endianness, and host-target confusion."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Cross-compilation is building on a host machine for a different CPU/OS/ABI target. Common mistakes: building for the host, mixing up the sysroot, soft/hard-float ABI, endianness, or libc, then getting an `Exec format error` or a runtime crash. Verification requires `file`, `readelf -h`, the target triplet, and toolchain flags.[^dou-embedded-interview]
 
 ## Detailed explanation
 

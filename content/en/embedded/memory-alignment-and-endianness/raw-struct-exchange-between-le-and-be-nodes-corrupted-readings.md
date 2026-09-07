@@ -1,15 +1,15 @@
 ---
 id: emb-align-0024
 title: "Trap: a real \"every second sensor\" bug. What happened?"
-description: "Trap: a real \"every second sensor\" bug. What happened?"
+description: "Raw memcpy structs between LE and BE MCUs had different padding, shifting fields by two bytes."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">An M4 gateway (LE, little-endian) and a PowerPC node (BE, big-endian) were exchanging raw `memcpy` structs.</span>
+
+The `uint8_t sensor_id` field had different padding (3 bytes on M4, 1 byte on PowerPC), which shifted the next `uint32_t` by 2 bytes. Odd IDs "happened to work"; even IDs produced garbage (~14000 degrees C).
+
+Guard: explicit wire format plus field-by-field serialization with `htonl`/`htons`. Never assume two compilers produce the same layout.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

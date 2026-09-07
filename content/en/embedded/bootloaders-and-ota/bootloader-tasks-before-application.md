@@ -1,7 +1,7 @@
 ---
 id: emb-boot-0004
 title: "What is an MCU bootloader, and what does it do before application firmware starts?"
-description: "A bootloader starts after reset, verifies or updates an image, selects a slot, and transfers control to application firmware."
+description: "An MCU bootloader starts after reset, verifies or updates an image, selects a slot, and transfers control to application firmware."
 track: embedded
 section: bootloaders-and-ota
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A bootloader is a small firmware that starts first after reset. It can verify an image signature/CRC, select a slot, update firmware over UART/USB/CAN/BLE, configure the vector table, and transfer control to the application. In safety/security systems it also manages rollback, anti-bricking, and chain of trust.[^dou-embedded-interview]
 
 ## Detailed explanation
 

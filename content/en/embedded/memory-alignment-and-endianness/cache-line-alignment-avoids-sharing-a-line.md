@@ -1,15 +1,15 @@
 ---
 id: emb-align-0027
 title: "Why align a buffer to a cache line?"
-description: "Why align a buffer to a cache line?"
+description: "To prevent false sharing and DMA incoherency by keeping data off shared cache lines."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**So that data does not share a cache line with anything else, avoiding false sharing and DMA incoherency.**
+
+On cores with a cache (Cortex-M7/A), a buffer not aligned to a cache line may be partially cached; during DMA this leads to reading stale data unless you perform clean/invalidate. A cache-line-aligned buffer simplifies maintenance operations.
+
+Rule: on cached cores, align DMA buffers to a cache line (32/64 bytes) and manage the cache explicitly.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

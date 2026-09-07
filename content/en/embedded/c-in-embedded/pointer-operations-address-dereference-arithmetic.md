@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0003
 title: "What pointer operations are there?"
-description: "What pointer operations are there?"
+description: "Pointer operations include address-of, dereference, field access, comparison, assignment, casting, and passing to functions; pointer arithmetic advances by sizeof the pointed-to type."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+Main operations: take the address `&x`, dereference `*p`, access a field via `p->field`, compare with `NULL` or another pointer, assign an address, cast the type, pass to a function.[^dou-embedded-interview]
+
+There is pointer arithmetic: `p + 1` advances not by 1 byte but by `sizeof(*p)` bytes. So for `int *p`, `p++` shifts by the size of `int`. Correct arithmetic is defined within a single array or one past its end; going out of bounds and dereferencing an invalid address is undefined behavior.
 
 ## Detailed explanation
 

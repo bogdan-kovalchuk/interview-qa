@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+It depends on the processor architecture: **16-bit** -> 2 bytes, **32-bit** -> 4 bytes, **64-bit** -> 8 bytes. The pointer type does not matter: `char *`, `int *`, `struct Foo *` – all occupy the same number of bytes. In embedded (ARM Cortex-M) it is always 4 bytes. To check: `sizeof(void *)`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

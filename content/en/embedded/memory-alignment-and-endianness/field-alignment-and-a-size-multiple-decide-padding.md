@@ -1,15 +1,15 @@
 ---
 id: emb-align-0003
 title: "Which two rules determine the padding in a struct?"
-description: "Which two rules determine the padding in a struct?"
+description: "Each field is aligned to its natural alignment and the struct size is a multiple of the largest field alignment"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+1. Each field sits at an address that is a multiple of its natural alignment (padding is inserted between fields). 2. The total size of the struct is a multiple of the largest field's alignment (trailing padding) – so that in an array of structs every element is also aligned.
+
+Rule: `sizeof(struct)` ≠ the sum of field sizes; always account for both internal and trailing padding.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0009
 title: "What bitwise operations are there?"
-description: "What bitwise operations are there?"
+description: "Bitwise operators &, |, ^, ~, , enable typical embedded patterns for testing, setting, clearing, and toggling bits in registers."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+The main bitwise operators: `&` AND, `|` OR, `^` XOR, `~` NOT, `<<` left shift, `>>` right shift.[^dou-embedded-interview]
+
+Common embedded patterns: test a bit – `reg & (1u << n)`; set – `reg |= (1u << n)`; clear – `reg &= ~(1u << n)`; toggle – `reg ^= (1u << n)`; build a mask – `(1u << width) - 1`. For registers, prefer unsigned types to avoid surprises with signed shifts.
 
 ## Detailed explanation
 

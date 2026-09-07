@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0010
 title: "What do sizeof(arr) and sizeof(p) return for int arr[8] and int *p = arr?"
-description: "Why sizeof an array differs from sizeof a pointer."
+description: "sizeof on a real array returns the total byte count while sizeof on a pointer returns only the pointer size, so the same element type yields completely different results."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`sizeof(arr)` -> **32** (8 elements × 4 bytes = 32B). `sizeof` on a real array returns the total size in bytes.
+
+`sizeof(p)` -> **4** (or 8 on 64-bit). A pointer stores only an address – its size equals the architecture's word size.
+
+Key difference: array and pointer have the same element type, but `sizeof` gives completely different results.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

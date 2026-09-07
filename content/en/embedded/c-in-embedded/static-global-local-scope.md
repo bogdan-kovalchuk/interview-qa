@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0020
 title: "How does `static` affect global and local variables?"
-description: "For a local variable, `static` changes lifetime; for a global variable or function, it gives the name internal linkage within the current file."
+description: "For a local variable, static changes lifetime; for a global variable or function, it gives the name internal linkage within the current file."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+For a **local variable**, `static` changes the lifetime: the variable is created once, lives until the program ends, and retains its value between function calls. The scope remains local to the block.
+
+For a **global variable** or function, `static` changes the linkage: the name is visible only in the current `.c`/`.cpp` file. This is called internal linkage and helps avoid name conflicts between translation units.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-align-0035
 title: "What does this code print on a little-endian machine?"
-description: "What does this code print on a little-endian machine?"
+description: "44, because on little-endian the least significant byte sits at the lowest address."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ printf("%02X", p[0]);
 
 ## Short answer
 
-TODO
+**`44`**.
+
+On little-endian the least significant byte sits at the lowest address, so `p[0]` is the LSB `0x44`. On big-endian it would print `11`.
+
+Rule: accessing individual bytes through `uint8_t*` is the typical way to "see" endianness; the result depends on the platform.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

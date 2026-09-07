@@ -1,15 +1,15 @@
 ---
 id: emb-align-0042
 title: "How can `__attribute__((aligned))` and `packed` work together?"
-description: "How can `__attribute__((aligned))` and `packed` work together?"
+description: "packed reduces padding inside a type while aligned(N) sets the minimum alignment of the object itself; use them together for compact yet properly addressed layouts."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`packed` reduces padding within a type, and `aligned(N)` sets the minimum alignment of the object or type itself.**
+
+This can be useful for wire headers or DMA (direct memory access) descriptors, where the layout must be compact but the starting address must be aligned for the hardware. At the same time, for MMIO (memory-mapped I/O) register blocks <span class="warn">you should not automatically apply `packed`</span>: registers usually have natural 32-bit offsets, and gaps are better described with reserved fields.
+
+Rule: `packed` controls the layout, `aligned` controls the base address; for register maps check the access width and `offsetof` rather than just packing the structure.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

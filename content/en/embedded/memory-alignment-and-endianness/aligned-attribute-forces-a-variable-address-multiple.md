@@ -1,7 +1,7 @@
 ---
 id: emb-align-0030
 title: "What does `__attribute__((aligned(N)))` do for a variable?"
-description: "What does `__attribute__((aligned(N)))` do for a variable?"
+description: "Guarantees that the variable's address is a multiple of N bytes."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,11 @@ uint8_t buf[64] __attribute__((aligned(32)));
 
 ## Short answer
 
-TODO
+**Guarantees that the variable's address is a multiple of N bytes.**
+
+Used for DMA buffers, cache-line alignment, and special memory regions. It is a GCC/Clang extension; the standard equivalent is `_Alignas(N)`.
+
+Rule: `aligned` increases alignment; `packed` reduces padding. They can be combined for wire/DMA descriptors that need both a dense layout and an aligned base address.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

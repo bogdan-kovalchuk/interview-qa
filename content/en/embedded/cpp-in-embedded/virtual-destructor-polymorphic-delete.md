@@ -1,7 +1,7 @@
 ---
 id: emb-cppemb-0001
 title: "Why is a virtual destructor needed in C++, and when does it matter in embedded C++?"
-description: "A virtual destructor enables correct deletion of a polymorphic object through a base pointer; in embedded systems this concerns driver and HAL interfaces."
+description: "A virtual destructor ensures the derived destructor runs when deleting through a base pointer; without it, deletion of a polymorphic object is undefined behavior, and in embedded C++ this applies to driver and HAL interfaces."
 track: embedded
 section: cpp-in-embedded
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+A virtual destructor is needed when an object is deleted through a pointer/reference to the base class: then the derived class destructor is called. Without it, `delete basePtr` on a polymorphic object has undefined behavior. In embedded C++ this matters for driver interfaces, HAL abstractions or state machines, but dynamic allocation is often replaced with static lifetime or placement new.[^dou-embedded-interview]
 
 ## Detailed explanation
 

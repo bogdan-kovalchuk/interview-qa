@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0017
 title: "What is alignment used for, and can it be controlled?"
-description: "What is alignment used for, and can it be controlled?"
+description: "Alignment ensures fast and correct CPU data access and can be controlled via field order, alignas, and compiler attributes like packed."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+Alignment is needed for fast and correct CPU access to data.[^dou-embedded-interview] Many architectures read 2/4/8-byte values more efficiently when the address is a multiple of the type size; some MCUs can generate a fault on misaligned access.
+
+You can control it through field order in a struct, standard `alignas` in C++ or `_Alignas`/`alignas` in modern C, and compiler-specific attributes like `__attribute__((aligned))`, `__attribute__((packed))`, `#pragma pack`. `packed` should be used carefully: it saves bytes but can slow down access or break hardware requirements.
 
 ## Detailed explanation
 

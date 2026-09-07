@@ -1,15 +1,15 @@
 ---
 id: emb-align-0018
 title: "How do you write `swap32` for a 32-bit byte swap?"
-description: "How do you write `swap32` for a 32-bit byte swap?"
+description: "Each byte is moved to its mirror position using shifts and masks and the compiler folds it into one REV instruction"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,18 @@ sources:
 
 ## Short answer
 
-TODO
+```c
+static inline uint32_t swap32(uint32_t v) {
+  return ((v >> 24) & 0xFF)
+       | ((v >>  8) & 0xFF00)
+       | ((v <<  8) & 0xFF0000)
+       | ((v << 24) & 0xFF000000);
+}
+```
+
+Each byte moves to its mirror position; masks cut off the extras.
+
+Rule: GCC/Clang fold this into a single `REV` instruction on ARM – fast and portable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

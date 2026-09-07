@@ -1,15 +1,15 @@
 ---
 id: emb-align-0036
 title: "Why are masks and shifts on a `uint32_t` more portable than unions or bitfields for parsing fields?"
-description: "Why are masks and shifts on a `uint32_t` more portable than unions or bitfields for parsing fields?"
+description: "Arithmetic shifts and masks produce the same result regardless of endianness and compiler."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Arithmetic shifts and masks produce the same result regardless of endianness and compiler.**
+
+`(reg >> 4) & 0x7` always extracts the same logical bits of the value, whereas union overlays and bitfields depend on the platform's byte and bit order.
+
+Rule: for register decode and protocol parsing, work with the value through shift and mask, not with its byte layout in memory.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

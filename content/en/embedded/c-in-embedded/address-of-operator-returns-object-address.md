@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0004
 title: "What is the address-of operator and what does it return?"
-description: "What the address-of operator returns and where it cannot be used."
+description: "The address-of operator returns the memory address of an object as a pointer to its type; it cannot be applied to non-lvalue expressions, register variables, or bit-field members."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,16 @@ sources:
 
 ## Short answer
 
-TODO
+The `&` operator (address-of) returns the **address of an object** in memory – a value of type "pointer to the object's type".
+
+`int x = 5; int *p = &x;` – `p` now points to `x`.
+
+You cannot take the address of:
+- expressions without an lvalue (`&(a+b)` – error);
+- `register` variables;
+- bit-field members of a structure.
+
+Types: `&int` -> `int*`, `&arr` -> `int(*)[N]` (pointer to array, not to element).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

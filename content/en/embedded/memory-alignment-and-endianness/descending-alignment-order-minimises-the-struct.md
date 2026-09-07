@@ -1,15 +1,15 @@
 ---
 id: emb-align-0029
 title: "How do you reorder `uint64_t, uint8_t, uint32_t, uint8_t` to minimise the size?"
-description: "How do you reorder `uint64_t, uint8_t, uint32_t, uint8_t` to minimise the size?"
+description: "From largest alignment to smallest: uint64t, uint32t, uint8t, uint8t."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**From largest alignment to smallest: `uint64_t, uint32_t, uint8_t, uint8_t`.**
+
+This gives: `u64`@0(8) + `u32`@8(4) + `u8`@12 + `u8`@13 + 2 tail -> 16 bytes. The original order would have produced 24 bytes due to padding after `uint8_t`.
+
+Rule: "largest first" almost always yields the minimum size without packed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

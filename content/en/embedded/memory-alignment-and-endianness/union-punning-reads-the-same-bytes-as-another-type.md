@@ -1,7 +1,7 @@
 ---
 id: emb-align-0039
 title: "What is type punning through a union and what makes it risky?"
-description: "What is type punning through a union and what makes it risky?"
+description: "Viewing the same bytes as a different type, risky because it depends on representation and may be undefined behavior."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ x.f = 1.5f;
 
 ## Short answer
 
-TODO
+**Viewing the same bytes as a different type.** In C, union punning is a common technique, but the value read from a different member depends on type representation and implementation; in C++, reading the inactive member is usually undefined behavior, so prefer `memcpy` or `std::bit_cast`.
+
+The result depends on endianness and representation (for example IEEE 754), so for local inspection it can be useful but not for portable serialization.
+
+Rule: for the wire do not use union layout; serialize explicitly with a known byte order.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

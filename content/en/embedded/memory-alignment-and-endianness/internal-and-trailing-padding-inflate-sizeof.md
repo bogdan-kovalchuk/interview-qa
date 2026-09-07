@@ -1,15 +1,15 @@
 ---
 id: emb-align-0028
 title: "Trap: why is `sizeof(struct)` not the sum of its field sizes?"
-description: "Trap: why is `sizeof(struct)` not the sum of its field sizes?"
+description: "Because of internal padding for field alignment and trailing padding to match the largest alignment."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Because of padding</span>, both internal (to align fields) and trailing (to make the size a multiple of the largest alignment).
+
+Example: `{uint8_t; uint32_t; uint16_t;}` = 1 + 3 pad + 4 + 2 + 2 pad = 12, not 7.
+
+Guard: for layout analysis always use `sizeof` and `offsetof`; do not sum fields in your head.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

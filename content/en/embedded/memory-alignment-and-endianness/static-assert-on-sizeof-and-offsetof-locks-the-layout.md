@@ -1,7 +1,7 @@
 ---
 id: emb-align-0038
 title: "How do you check a struct layout at compile time?"
-description: "How do you check a struct layout at compile time?"
+description: "Via Staticassert plus sizeof and offsetof so any layout change breaks the build."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ _Static_assert(offsetof(wire_t, id) == 6, "offset");
 
 ## Short answer
 
-TODO
+**Via `_Static_assert` plus `sizeof`/`offsetof`** so that any change in padding or field order breaks the build, not the runtime.
+
+This is critical for packed wire formats and register maps where the exact layout is part of the contract.
+
+Rule: pin expected `sizeof` and `offsetof` with asserts next to the struct definition.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

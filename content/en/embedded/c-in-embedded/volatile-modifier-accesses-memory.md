@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0026
 title: "Describe the use of the `volatile` qualifier."
-description: "`volatile` makes the compiler perform accesses that may change outside the ordinary execution flow."
+description: "volatile makes the compiler perform accesses that may change outside the ordinary execution flow."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,14 @@ sources:
 
 ## Short answer
 
-TODO
+It prevents the compiler from caching a variable's value in a register or removing accesses as "dead" – every access performs a real read or write.[^dou-embedded-interview]
+
+It is used when a value can change outside the ordinary execution flow:
+- **Peripheral registers**: `volatile uint32_t *GPIOA = (uint32_t *)0x40020000;`
+- **A variable modified by an ISR**: `volatile bool flag = false;`
+- **Signal handler** or hardware status flag.
+
+For threads, `volatile` by itself <span class="warn">is not synchronization</span>: it does not guarantee atomicity, ordering, or mutual exclusion. For that you need a `mutex`, critical section, or atomics.
 
 ## Detailed explanation
 

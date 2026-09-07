@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0009
 title: "How does TCP work in the context of a constrained embedded device: handshake, retransmission, buffers, and keepalive?"
-description: "How does TCP work in the context of a constrained embedded device: handshake, retransmission, buffers, and keepalive?"
+description: "TCP provides an ordered byte stream over a three-way handshake with ACK, retransmission and windowing; on embedded, RAM buffers, partial I/O and reconnect logic matter, and keepalive alone cannot replace an application-level heartbeat."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+TCP starts with a **three-way handshake**, then guarantees an ordered byte stream via ACK, retransmission, windowing and congestion control. On embedded, RAM buffers, timeout/reconnect logic, partial writes/reads and backpressure from the network stack matter. <span class="warn">Keepalive does not replace an application-level heartbeat if you need to detect a hung peer quickly.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

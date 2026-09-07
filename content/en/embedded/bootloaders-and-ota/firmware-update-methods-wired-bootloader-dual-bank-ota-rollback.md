@@ -1,7 +1,7 @@
 ---
 id: emb-boot-0006
 title: "What firmware update methods exist: wired flashing, bootloader, dual-bank, A/B image, OTA, and rollback?"
-description: "What firmware update methods exist: wired flashing, bootloader, dual-bank, A/B image, OTA, and rollback?"
+description: "Wired flashing suits factory use, a bootloader accepts images over serial or network, dual-bank or A/B preserves the working image, and rollback restores the last valid version after failure."
 track: embedded
 section: bootloaders-and-ota
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Wired flashing** over SWD/JTAG/UART is simple for factory/service but not for field updates. A bootloader can accept an image over UART/USB/CAN/network; dual-bank or A/B allows writing a new image without erasing the working one. Rollback is needed to return to the previous valid version after a failed boot or health check.[^dou-embedded-interview]
 
 ## Detailed explanation
 

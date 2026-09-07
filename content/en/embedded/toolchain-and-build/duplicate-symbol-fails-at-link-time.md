@@ -1,7 +1,7 @@
 ---
 id: emb-build-0005
 title: "What happens if two files define a function with the same name and parameters? At which stage does the error occur?"
-description: "What happens if two files define a function with the same name and parameters? At which stage does the error occur?"
+description: "Two non-static functions with the same name in different translation units compile separately but the linker rejects them as a multiple definition or duplicate symbol error."
 track: embedded
 section: toolchain-and-build
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+If you define a non-`static` function with the same name in two `.c`/`.cpp` files, compilation of each translation unit may succeed because each is compiled separately.[^dou-embedded-interview]
+
+The error will usually occur at the **linking** stage: the linker will see two global symbols with the same name and emit a multiple definition / duplicate symbol error. If you make the functions `static`, each will have internal linkage and there will be no conflict between files. In C++, overloading is only possible if the signatures differ; the same signature still violates the ODR.
 
 ## Detailed explanation
 

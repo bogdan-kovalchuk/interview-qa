@@ -1,7 +1,7 @@
 ---
 id: emb-build-0012
 title: "How can you obtain preprocessing, assembly, and object files during compilation?"
-description: "GCC and Clang flags -E, -S, and -c expose the preprocessing output, assembly, and object file separately."
+description: "GCC/Clang flags -E, -S, and -c produce preprocessed output, assembly, and object files, and tools like objdump and readelf help analyze firmware."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+For GCC/Clang: `-E` produces preprocessed output, `-S` – assembly, `-c` – object file without linking. For firmware analysis, `objdump -d`, `readelf -S`, and the linker map are useful. In CMake, these flags can be temporarily added to a target or the compiler command can be run from `compile_commands.json`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

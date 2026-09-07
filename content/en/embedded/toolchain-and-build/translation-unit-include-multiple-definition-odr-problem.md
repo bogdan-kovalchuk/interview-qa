@@ -1,7 +1,7 @@
 ---
 id: emb-build-0015
 title: "What is a translation unit, and why can include files cause multiple-definition or ODR problems?"
-description: "A translation unit is one preprocessed source file together with its included headers; definitions in headers can create multiple definitions."
+description: "A translation unit is one preprocessed source file with its included headers; non-static definitions in headers cause multiple definitions or ODR violations."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Translation unit** is the result of preprocessing one `.c/.cpp` file together with all included headers. If a header contains a non-static object or function definition, it ends up in every translation unit and the linker sees multiple definitions. In C++ this can also violate the ODR; headers should contain only declarations, `inline`/`constexpr`, or templates as the language rules allow.[^dou-embedded-interview]
 
 ## Detailed explanation
 

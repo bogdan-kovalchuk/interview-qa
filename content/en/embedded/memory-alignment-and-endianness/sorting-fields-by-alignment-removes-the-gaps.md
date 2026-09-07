@@ -1,7 +1,7 @@
 ---
 id: emb-align-0005
 title: "How do you reorder the fields to remove the extra padding?"
-description: "How do you reorder the fields to remove the extra padding?"
+description: "Sort fields from largest alignment to smallest to eliminate internal padding"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -39,7 +39,19 @@ struct { uint8_t a; uint32_t b; uint8_t c; };
 
 ## Short answer
 
-TODO
+Sort from largest alignment to smallest:
+
+```c
+struct {
+  uint32_t b; // @0
+  uint8_t  a; // @4
+  uint8_t  c; // @5, +2 tail
+};
+```
+
+Now `sizeof = 8` instead of 12: small fields are grouped together, no internal padding.
+
+Rule: "largest alignment first" is a simple and safe way to save RAM/Flash.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

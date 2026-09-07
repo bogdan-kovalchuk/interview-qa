@@ -1,7 +1,7 @@
 ---
 id: emb-build-0011
 title: "What stages does a C file pass through from preprocessing to an executable or firmware image?"
-description: "A C file passes through preprocessing, compilation, assembly, linking, and firmware image conversion."
+description: "A C file passes through preprocessing, compilation, assembly, linking, and for firmware, conversion into a target image format."
 track: embedded
 section: toolchain-and-build
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+First, preprocessing expands `#include`, `#define`, and conditional compilation. Then the compiler generates assembly or IR, the assembler produces an object file, the linker combines objects/libraries and places sections. For firmware, `objcopy` into `.hex`/`.bin` is often performed and a map file is generated.[^dou-embedded-interview]
 
 ## Detailed explanation
 

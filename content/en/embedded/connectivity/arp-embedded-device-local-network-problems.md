@@ -1,7 +1,7 @@
 ---
 id: emb-conn-0008
 title: "What is ARP and when does an embedded device actually encounter ARP problems in a local network?"
-description: "What is ARP and when does an embedded device actually encounter ARP problems in a local network?"
+description: "ARP maps IPv4 to MAC on a local segment; embedded devices hit ARP issues at first connect, on IP conflict, stale cache, link flap, or sleep/wake, with symptoms like lost first packets and failed LAN pings."
 track: embedded
 section: connectivity
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+**ARP** maps an IPv4 address to a MAC address within a local Ethernet/Wi-Fi segment. An embedded device encounters ARP at the first connect to a gateway/peer, on IP conflict, stale ARP cache, link flap, or sleep/wake scenarios. Symptoms: ping fails within the LAN, the first packet is lost, and after an IP/MAC change a gratuitous ARP is needed.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-build-0018
 title: "How do compiler optimization levels affect timing, debugging, and undefined behavior in firmware?"
-description: "English translation pending."
+description: "Higher optimization levels change instruction order, inlining, register allocation, and timing, which affects delay loops, race conditions, and debuggability."
 track: embedded
 section: toolchain-and-build
 level: senior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+Higher `-O` levels change instruction order, inlining, register allocation, and timing, so delay loops, race conditions, and undefined behavior may manifest differently. Debugging becomes harder: variables are optimized out, breakpoints shift, and the call stack may be inaccurate. <span class="warn">Correct firmware must not depend on side effects of undefined behavior or non-`volatile` MMIO access.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

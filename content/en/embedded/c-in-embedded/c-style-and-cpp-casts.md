@@ -9,7 +9,7 @@ type: comparison
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**A C-style cast** looks like `(T)x` and can perform several kinds of conversion at once: numeric conversion, removing `const`, pointer reinterpretation. Because of this it is short but imprecise and can hide a dangerous operation.[^dou-embedded-interview]
+
+In C++ it is better to use explicit casts: `static_cast` for ordinary safer conversions, `const_cast` only for changing cv-qualifiers, `reinterpret_cast` for low-level reinterpretation, `dynamic_cast` for runtime-checked casts in polymorphic classes. They are longer, but they show intent and are easier to find in code.
 
 ## Detailed explanation
 

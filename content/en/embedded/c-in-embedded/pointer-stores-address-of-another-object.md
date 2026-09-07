@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0014
 title: "What is a pointer?"
-description: "What is a pointer?"
+description: "A pointer is a variable that stores the address of another object or function; it enables pass-by-reference, arrays, dynamic memory, and memory-mapped I/O."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+**A pointer** is a variable that stores the address of another object or function in memory.[^dou-embedded-interview] For example: `int x = 10; int *p = &x;`. The `&` operator takes the address, and `*p` dereferences the pointer and provides access to the value.
+
+Pointers are needed for passing objects to functions without copying, working with arrays, dynamic memory, callbacks, data structures, and memory-mapped registers. Dangers: `NULL`, dangling pointer, out-of-bounds array access, incorrect type casting.
 
 ## Detailed explanation
 

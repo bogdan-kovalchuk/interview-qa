@@ -1,15 +1,15 @@
 ---
 id: emb-align-0019
 title: "Why are hand-written byte-swap functions a fine choice on ARM?"
-description: "Why are hand-written byte-swap functions a fine choice on ARM?"
+description: "The compiler recognizes the shift and mask pattern and emits a single REV or REV16 instruction"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**The compiler recognizes the shift/mask pattern and generates a single `REV`/`REV16` instruction.**
+
+That is, readable portable C compiles just as efficiently as inline assembly, but works on any toolchain and is easier to maintain.
+
+Rule: start with clear C; reach for intrinsics/asm only if profiling shows a need.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

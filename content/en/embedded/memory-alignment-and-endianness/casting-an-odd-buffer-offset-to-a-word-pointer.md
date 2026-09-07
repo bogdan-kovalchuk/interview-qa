@@ -1,7 +1,7 @@
 ---
 id: emb-align-0031
 title: "Trap: why is `*(uint32_t*)&buf[1]` dangerous?"
-description: "Trap: why is `*(uint32_t*)&buf[1]` dangerous?"
+description: "The address is not aligned to 4 bytes, causing misaligned access and a potential strict aliasing violation."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ uint32_t v = *(uint32_t*)&buf[1];
 
 ## Short answer
 
-TODO
+<span class="warn">The address `&buf[1]` is not a multiple of 4 -> misaligned access</span> (HardFault on M0, penalty on M3/M4), plus a potential strict aliasing violation.
+
+Casting `uint8_t*` to `uint32_t*` promises the compiler an alignment that does not exist.
+
+Guard: `uint32_t v; memcpy(&v, &buf[1], 4);` is safe for any offset and has no undefined behavior.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

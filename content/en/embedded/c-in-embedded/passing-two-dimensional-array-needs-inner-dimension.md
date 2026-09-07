@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0029
 title: "How should a 2D array be passed to a function to access element `[2][3]`?"
-description: "Why a two-dimensional array parameter needs its inner dimension."
+description: "A 2D array parameter must declare the inner dimension so the compiler can compute the row stride for element access."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+For a statically sized array you must specify the **inner dimension size**: `void f(int arr[][4], int rows) { arr[2][3] = 99; }` or equivalently: `void f(int (*arr)[4], int rows) { ... }`
+
+Without the size the compiler does not know the row stride. `arr[i][j]` -> `*(*(arr+i)+j)` -> in memory: `arr + i*4*sizeof(int) + j*sizeof(int)`.
+
+For a dynamic one: pass as `int *` and compute the offset manually.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

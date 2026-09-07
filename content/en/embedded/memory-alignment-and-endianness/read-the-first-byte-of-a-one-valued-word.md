@@ -1,7 +1,7 @@
 ---
 id: emb-align-0016
 title: "How do you detect endianness at runtime?"
-description: "How do you detect endianness at runtime?"
+description: "Write one into a union and read back the first byte to detect endianness at runtime"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ return u.byte == 1;
 
 ## Short answer
 
-TODO
+**If the first byte (at the lowest address) == 1 -> little-endian.**
+
+All fields of a union share the same memory. After writing `word = 1`, read the lowest byte: on LE it is `0x01`, on BE – `0x00`.
+
+Rule: for a target MCU the endianness is usually known at compile time; a runtime check is only needed in portable libraries and tests.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

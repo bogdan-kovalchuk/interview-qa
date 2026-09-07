@@ -1,7 +1,7 @@
 ---
 id: emb-build-0021
 title: "How can CMake describe dependencies, targets, interface include directories, and cross-platform build variants?"
-description: "English translation pending."
+description: "In CMake every library or application is a target with its own sources, definitions, include dirs, and link dependencies; INTERFACE vs PRIVATE controls header visibility."
 track: embedded
 section: toolchain-and-build
 level: senior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-TODO
+In CMake, every library/application must be a **target** with its own sources, compile definitions, include dirs, and link dependencies. `target_include_directories(... INTERFACE)` publishes headers to consumers, while `PRIVATE` keeps them local. Cross-build variants are set via a toolchain file, presets, target-specific options, and separate targets for the MCU, host tests, and utilities.[^dou-embedded-interview]
 
 ## Detailed explanation
 

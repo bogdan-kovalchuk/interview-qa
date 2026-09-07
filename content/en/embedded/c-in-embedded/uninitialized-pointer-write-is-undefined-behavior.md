@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0003
 title: "Trap: what happens?"
-description: "Why writing through an uninitialized pointer is undefined behavior."
+description: "An uninitialized pointer is a wild pointer holding a garbage address, so writing through it is undefined behavior that can corrupt memory or trigger a HardFault on Cortex-M; always initialize pointers."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -40,7 +40,11 @@ int *p;
 
 ## Short answer
 
-TODO
+`p` is a <span class="warn">wild pointer</span>: an uninitialized pointer holds a garbage address (a random value from the stack).
+
+Writing `*p = 5` -> undefined behavior: it may overwrite a random memory region, another variable, or cause a <span class="warn">HardFault</span> on Cortex-M (if the address is outside RAM).
+
+Protection: always initialize pointers: `int *p = NULL;` or immediately `int *p = &x;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

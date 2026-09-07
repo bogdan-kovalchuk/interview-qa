@@ -1,7 +1,7 @@
 ---
 id: emb-cemb-0025
 title: "What are common uses of `extern`?"
-description: "`extern` declares a name defined in another translation unit; in C++, `extern \"C\"` disables name mangling for C API compatibility."
+description: "extern declares a name defined in another translation unit; in C++, extern \"C\" disables name mangling for C API compatibility."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+`extern` declares a name that is defined in another translation unit: in a header you write `extern int counter;`, and in one `.c` file there must be a definition `int counter;`. This allows separating declaration and definition without duplicating the global variable.
+
+`extern` is also used for functions, although for ordinary functions external linkage is the default. In C++ there is a special case `extern "C"` – it disables C++ name mangling so that C++ code can link with a C API or a dynamic library.[^dou-embedded-interview]
 
 ## Detailed explanation
 

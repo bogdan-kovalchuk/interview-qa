@@ -1,15 +1,15 @@
 ---
 id: emb-align-0011
 title: "What are little-endian and big-endian for the value `0x12345678`?"
-description: "What are little-endian and big-endian for the value `0x12345678`?"
+description: "Byte order of a multi-byte value in memory determines whether the least or most significant byte comes first"
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+**Byte order of a multi-byte value in memory.**
+
+```text
+Адреса:  00   01   02   03
+LE:      78   56   34   12  (little-endian, LSB перший)
+BE:      12   34   56   78  (big-endian, MSB перший)
+```
+
+LSB (least significant byte) is the lowest byte, MSB (most significant byte) is the highest byte. Little-endian: the lowest byte at the lowest address (ARM default, x86, RISC-V). Big-endian: the highest byte first (PowerPC, 68k, network).
+
+Rule: endianness affects only multi-byte types; a `uint8_t` array is the same everywhere.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

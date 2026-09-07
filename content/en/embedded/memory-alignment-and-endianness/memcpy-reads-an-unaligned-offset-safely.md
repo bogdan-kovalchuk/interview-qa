@@ -1,7 +1,7 @@
 ---
 id: emb-align-0023
 title: "How do you safely read a `uint32_t` from offset 3 in a `uint8_t` buffer (for example from DMA)?"
-description: "How do you safely read a `uint32_t` from offset 3 in a `uint8_t` buffer (for example from DMA)?"
+description: "Use memcpy, not a cast to (uint32t)&buf[3], to avoid misaligned access."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ memcpy(&value, &buf[3], sizeof value);
 
 ## Short answer
 
-TODO
+**Via `memcpy`, not a cast to `(uint32_t*)&buf[3]`.**
+
+The address `&buf[3]` is almost certainly unaligned -> a direct cast and dereference will cause a HardFault on M0 or a penalty on M3/M4. The compiler turns `memcpy` into safe (possibly byte-wise) load/store operations.
+
+Guard: for any unaligned multi-byte access, use `memcpy` into a local aligned variable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

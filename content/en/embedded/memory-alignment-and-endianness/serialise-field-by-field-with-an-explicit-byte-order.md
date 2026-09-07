@@ -1,7 +1,7 @@
 ---
 id: emb-align-0021
 title: "How do you serialise a struct into a byte buffer correctly?"
-description: "How do you serialise a struct into a byte buffer correctly?"
+description: "Field by field, with explicit byte order and fixed offsets."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 3
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ buf[6] = r->id;
 
 ## Short answer
 
-TODO
+**Field by field, with explicit byte order and fixed offsets.**
+
+Each multi-byte field is first converted (`htonl`/`htons`), then placed at a known offset via `memcpy`. A single-byte `id` needs no swap.
+
+Rule: `memcpy` here also guards against unaligned traps, even if `buf` is not aligned.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

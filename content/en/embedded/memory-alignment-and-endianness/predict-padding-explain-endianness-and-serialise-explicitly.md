@@ -1,15 +1,15 @@
 ---
 id: emb-align-0043
 title: "What should a candidate demonstrate on alignment and endianness questions?"
-description: "What should a candidate demonstrate on alignment and endianness questions?"
+description: "Predict padding and reorder fields, explain endianness, use htonl/ntohl correctly, serialize field by field, and understand the cost of packed and misaligned access."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Predict padding and reorder fields, explain endianness, and use `htonl`/`ntohl` correctly.**
+
+A strong answer also covers: field-by-field serialization instead of raw `struct`, understanding the cost of `packed`, and the risk of HardFault on M0 / penalty on M3/M4 for misaligned access.
+
+Rule: talk about explicit wire format and explicit byte order – this is a marker of embedded systems experience.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-cppfound-0006
 title: "Trap: why does sizeof(arr) in a function return 4 or 8 instead of the array size?"
-description: "Why an array parameter is treated as a pointer inside a function."
+description: "An array parameter decays to a pointer inside a function, so sizeof returns the pointer size rather than the array size; pass the length explicitly to avoid silent truncation."
 track: embedded
 section: c-in-embedded
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+When an array is passed to a function, it <span class="warn">decays to a pointer</span>: `void f(int arr[])` ≡ `void f(int *arr)`.
+
+`sizeof(arr)` inside the function = `sizeof(int*)` = 4 or 8 (pointer size), not the array size.
+
+Real case: changed `int16_t buffer[256]` to `int16_t *buffer` but kept `sizeof(buffer)/sizeof(buffer[0])` -> processed only 2 elements instead of 256.
+
+Solution: pass the size explicitly: `void f(int *arr, size_t n)`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
