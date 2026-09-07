@@ -41,11 +41,11 @@ p[5] = '\0';
 
 ## Short answer
 
-<span class="warn">Buffer overflow.</span> `malloc(5)` – 5 байт. `"hello"` = `{'h','e','l','l','o','\0'}` – 6 байт включно з null-terminator.
+<span class="warn">Buffer overflow.</span> `malloc(5)` – 5 байт, а `"hello"` = `{'h','e','l','l','o','\0'}` – 6 байт включно з null-terminator.
 
-`strcpy(p, "hello")` вже переповнює буфер: копіює 6 байт у 5-байтний буфер. `p[5] = '\0'` – шостий запис за межами.
+`strcpy(p, "hello")` вже переповнює буфер (6 байт у 5-байтний), і `p[5] = '\0'` – шостий запис за межами.
 
-Правильно: `malloc(strlen("hello") + 1)` = `malloc(6)`. Або `strncpy(p, "hello", 5); p[4]='\0';` – обрізати якщо треба.[^embeddedinterviewlab]
+Правильно: `malloc(strlen("hello") + 1)` = `malloc(6)`, або `strncpy(p, "hello", 5); p[4]='\0';` – обрізати якщо треба.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

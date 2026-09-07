@@ -33,11 +33,9 @@ sources:
 
 ## Short answer
 
-`malloc(size)` - виділяє `size` байт, <span class="warn">НЕ ініціалізує</span> (garbage).
+`malloc(size)` виділяє `size` байт і <span class="warn">НЕ ініціалізує</span> (garbage), тоді як `calloc(n, size)` виділяє `n × size` байт і **заповнює нулями**, додатково перевіряючи переповнення добутку.
 
-`calloc(n, size)` - виділяє `n × size` байт, **заповнює нулями**. Додатково перевіряє переповнення добутку `n × size`.
-
-Обидва повертають `NULL` при помилці. У embedded: надавай перевагу static allocation. Якщо вже heap - `calloc` безпечніший для структур де потрібна нульова ініціалізація.[^embeddedinterviewlab]
+Обидва повертають `NULL` при помилці. У embedded надавай перевагу static allocation; якщо вже heap - `calloc` безпечніший для структур де потрібна нульова ініціалізація.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

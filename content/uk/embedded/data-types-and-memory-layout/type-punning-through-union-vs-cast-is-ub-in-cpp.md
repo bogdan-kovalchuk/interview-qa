@@ -33,14 +33,9 @@ sources:
 
 ## Short answer
 
-**Type punning** - читання об'єкта одного типу через pointer/reference іншого типу.
+**Type punning** - читання об'єкта одного типу через pointer/reference іншого типу. У **C** через `union` - поширений і підтримуваний прийом, але результат залежить від представлення типів у пам'яті; через cast pointer (`int x = 1; float *fp = (float*)&x; *fp;`) - <span class="warn">UB (strict aliasing violation)</span>.
 
-У **C**: через `union` - поширений і підтримуваний прийом, але результат залежить від представлення типів у пам'яті.
-Через cast pointer: `int x = 1; float *fp = (float*)&x; *fp;` - <span class="warn">UB (strict aliasing violation)</span>.
-
-У **C++**: лише `memcpy` або `std::bit_cast` (C++20) - безпечний type punning. `reinterpret_cast` + dereference -> UB.
-
-Компілятор оптимізує код припускаючи aliasing не відбувається.[^embeddedinterviewlab]
+У **C++** лише `memcpy` або `std::bit_cast` (C++20) дають безпечний type punning, тоді як `reinterpret_cast` + dereference -> UB. Компілятор оптимізує код припускаючи aliasing не відбувається.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">Бо padding bytes можуть відрізнятися, навіть якщо всі поля рівні.</span>
-
-Padding не є логічною частиною стану структури. Він може містити старі stack bytes або різні значення після різних шляхів ініціалізації. `memcmp` порівнює raw bytes, тому може повернути "не рівні" для структур з однаковими member values.
+<span class="warn">Бо padding bytes можуть відрізнятися, навіть якщо всі поля рівні.</span> Padding не є логічною частиною стану структури і може містити старі stack bytes або різні значення після різних шляхів ініціалізації, тож `memcmp` (який порівнює raw bytes) може повернути "не рівні" для структур з однаковими member values.
 
 Захист: порівнюй поля явно або нормалізуй serialization format. Для security-sensitive output не витікай padding bytes назовні.[^embeddedinterviewlab]
 

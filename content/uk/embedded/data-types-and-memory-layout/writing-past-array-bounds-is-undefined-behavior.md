@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Out-of-bounds доступ - undefined behavior.</span> Валідні індекси: `0..9`. `arr[10]` - за межами масиву.
+<span class="warn">Out-of-bounds доступ - undefined behavior.</span> Валідні індекси: `0..9`, тож `arr[10]` - за межами масиву.
 
-На практиці: може перезаписати іншу локальну змінну на стеку (наприклад, адресу повернення), що спричиняє corruption, crash або security vulnerability.
+На практиці може перезаписати іншу локальну змінну на стеку (наприклад, адресу повернення), що спричиняє corruption, crash або security vulnerability, а компілятор не перевіряє меж.
 
-Компілятор не перевіряє межі. Захист: `-fsanitize=address` при розробці, `static_assert` + явні перевірки.[^embeddedinterviewlab]
+Захист: `-fsanitize=address` при розробці, `static_assert` + явні перевірки.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

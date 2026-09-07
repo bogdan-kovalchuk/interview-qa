@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">Ні. `volatile` не гарантує atomicity.</span>
-
-Він лише змушує компілятор виконати доступ до пам'яті. Наприклад, `volatile uint32_t` на 8-bit MCU може читатися кількома інструкціями; ISR може спрацювати між байтами і побачити частково оновлене значення. Навіть на Cortex-M операція `counter++` є read-modify-write, а не одна неподільна дія.
+<span class="warn">Ні. `volatile` не гарантує atomicity.</span> Він лише змушує компілятор виконати доступ до пам'яті: наприклад, `volatile uint32_t` на 8-bit MCU може читатися кількома інструкціями, і ISR може спрацювати між байтами і побачити частково оновлене значення; навіть на Cortex-M `counter++` є read-modify-write, а не одна неподільна дія.
 
 Захист: для shared state використовуй atomic operations, critical section, вимкнення interrupts на короткий час або спеціальні CMSIS/RTOS primitives.[^embeddedinterviewlab]
 

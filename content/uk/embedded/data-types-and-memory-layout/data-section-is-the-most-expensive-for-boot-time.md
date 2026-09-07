@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-**.data** - найдорожча. Startup code мусить скопіювати весь `.data` з Flash (повільна, wait states) у RAM (швидка). Велика `.data` -> повільніший boot.
-
-`.bss` - дешевша: тільки заповнення нулями у RAM.
-
-`.rodata` і `.text` - нічого копіювати.
+**.data** - найдорожча: startup code мусить скопіювати весь `.data` з Flash (повільна, wait states) у RAM (швидка), тож велика `.data` -> повільніший boot. `.bss` - дешевша (тільки заповнення нулями у RAM), а `.rodata` і `.text` - нічого копіювати.
 
 Оптимізація: замінюй ініціалізовані глобальні на `const` -> `.rodata` у Flash, без RAM копіювання.[^embeddedinterviewlab]
 
