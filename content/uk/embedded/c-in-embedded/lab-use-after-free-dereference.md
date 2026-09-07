@@ -45,7 +45,7 @@ printf("%d", p[0]);
 
 `p[0]` після `free`: може повернути 0 (heap manager записав туди metadata), старе значення, або crash. У security контексті: джерело use-after-free exploits.
 
-Захист: `free(p); p = NULL;`. Потім `if(p != NULL)` перед доступом.[^embeddedinterviewlab]
+Захист: `free(p); p = NULL;`, потім `if(p != NULL)` перед доступом.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

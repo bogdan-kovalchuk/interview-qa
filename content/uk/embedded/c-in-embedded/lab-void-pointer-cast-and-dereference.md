@@ -43,11 +43,11 @@ printf("%d", *(int*)p);
 
 `42`.
 
-`void *p = &x` – дозволено у C (implicit conversion). `p` зберігає адресу `x`, але тип "erased".
+`void *p = &x` – дозволено у C (implicit conversion), `p` зберігає адресу `x`, але тип "erased".
 
 `*(int*)p` – cast до `int*`, потім розіменування. Коректно оскільки `p` вказує на справжній `int`.
 
-Якби cast до неправильного типу: `*(float*)p` -> UB (strict aliasing). Правило: cast `void*` завжди до того типу, з якого він був отриманий.[^embeddedinterviewlab]
+Якби cast до неправильного типу: `*(float*)p` -> UB (strict aliasing), тож правило: cast `void*` завжди до того типу, з якого він був отриманий.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -37,7 +37,7 @@ sources:
 
 `sizeof(char*)` -> **4**. Розмір вказівника = розрядність платформи;
 
-Важливо: `sizeof("hello")` не decay-ується до вказівника (sizeof – одне з трьох виключень array decay). Тому отримуємо розмір масиву.[^embeddedinterviewlab]
+Важливо: `sizeof("hello")` не decay-ується до вказівника (sizeof – одне з трьох виключень array decay), тому отримуємо розмір масиву.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

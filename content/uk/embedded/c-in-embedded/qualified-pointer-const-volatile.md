@@ -35,7 +35,7 @@ sources:
 
 Qualifier – частина типу вказівника, що вказує на властивості даних або самого вказівника.
 
-`const int *p` – qualifier на дані: не можна змінити `*p`. Можна дати менш qualified вказівник: `int *p` -> `const int *q = p` (додавання const – OK). Зворотне -> warning/error.
+`const int *p` – qualifier на дані: не можна змінити `*p`. Можна дати менш qualified вказівник: `int *p` -> `const int *q = p` (додавання const – OK), зворотне -> warning/error.
 
 `volatile uint32_t *reg` – кожен доступ реально виконується (для registers).
 

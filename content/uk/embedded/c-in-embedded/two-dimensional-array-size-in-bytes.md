@@ -44,7 +44,7 @@ printf("%zu", sizeof(arr));
 
 `arr` – 2D масив: 3 рядки × 4 стовпці × `sizeof(int) = 4` байти = 48B.
 
-`sizeof(arr[0])` = `sizeof(int[4])` = 16B (один рядок). `sizeof(arr[0][0])` = `sizeof(int)` = 4B.
+`sizeof(arr[0])` = `sizeof(int[4])` = 16B (один рядок), `sizeof(arr[0][0])` = `sizeof(int)` = 4B.
 
 Кількість рядків: `sizeof(arr)/sizeof(arr[0]) = 48/16 = 3`. Цей трюк працює лише у тому ж scope де оголошений масив.[^embeddedinterviewlab]
 
