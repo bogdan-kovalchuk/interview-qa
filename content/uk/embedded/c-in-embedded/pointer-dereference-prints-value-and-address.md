@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0002
-title: "Що виведе?<br><pre class=\"code-block\"><code>int x = 42;<br>int *p = &amp;x;<br>printf(\"%d %p\", *p, (void*)p);</code></pre>"
+title: "Що виведе?"
 description: "How dereferencing and pointer values differ in a C example."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,22 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int x = 42;
+int *p = &x;
+printf("%d %p", *p, (void*)p);
+```
 
 ## Short answer
 
-<code>*p</code> -> <code>42</code> (розіменування – читає значення <code>x</code>).<br><code>p</code> -> адреса змінної <code>x</code> (наприклад, <code>0x2000FFE0</code> на стеку Cortex-M).<br><br>Важливо: <code>p</code> і <code>x</code> – різні об'єкти. <code>p</code> зберігає адресу, <code>x</code> – значення. Зміна <code>*p = 100</code> змінює <code>x</code>. Зміна <code>p = &amp;y</code> не змінює <code>x</code>.[^embeddedinterviewlab]
+`*p` -> `42` (розіменування – читає значення `x`). `p` -> адреса змінної `x` (наприклад, `0x2000FFE0` на стеку Cortex-M).
+
+Важливо: `p` і `x` – різні об'єкти. `p` зберігає адресу, `x` – значення. Зміна `*p = 100` змінює `x`. Зміна `p = &y` не змінює `x`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

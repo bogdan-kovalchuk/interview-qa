@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+char buf[4]="abc";
+buf[4]='\0';
+```
 
 ## Short answer
 

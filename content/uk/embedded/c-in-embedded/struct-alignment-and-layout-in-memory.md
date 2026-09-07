@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Alignment</span> змушує поля структури починатися з адрес, кратних вимогам їхніх типів або ABI. Компілятор може вставляти padding між полями й у кінці структури, тому фактичний layout не завжди дорівнює сумі розмірів полів.[^dou-embedded-interview] Для DMA, MMIO mirror-структур і binary protocol це критично: layout треба фіксувати явно або серіалізувати вручну.
+**Alignment** змушує поля структури починатися з адрес, кратних вимогам їхніх типів або ABI. Компілятор може вставляти padding між полями й у кінці структури, тому фактичний layout не завжди дорівнює сумі розмірів полів.[^dou-embedded-interview] Для DMA, MMIO mirror-структур і binary protocol це критично: layout треба фіксувати явно або серіалізувати вручну.
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0027
-title: "What does this print?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> a=<span class=\"code-num\">5</span>, b=<span class=\"code-num\">10</span>;<br><span class=\"code-type\">int</span> *p=&amp;a, *q=&amp;b;<br>*p=*q;<br><span class=\"code-fn\">printf</span>(\"%d %d\",a,b);</code></pre>"
+title: "What does this print?"
 description: "Why dereferencing pointers copies the pointed-to value."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int a=5, b=10;
+int *p=&a, *q=&b;
+*p=*q;
+printf("%d %d",a,b);
+```
 
 ## Short answer
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>volatile</code> каже компілятору, що значення може змінитися поза звичайним контролем поточного коду, тому кожне читання/запис треба реально виконувати, а не кешувати в регістрі чи прибирати оптимізацією.<br><br>Типові випадки: memory-mapped регістри периферії (<code>volatile uint32_t *reg</code>), змінні, які змінює ISR або signal handler, hardware status flags, прості debug/benchmark випадки. Важливо: <code>volatile</code> <span class="warn">не робить операції атомарними</span>, не гарантує ordering/synchronization і не замінює <code>mutex</code>, critical section або <code>std::atomic</code>.[^dou-embedded-interview]
+`volatile` каже компілятору, що значення може змінитися поза звичайним контролем поточного коду, тому кожне читання/запис треба реально виконувати, а не кешувати в регістрі чи прибирати оптимізацією.
+
+Типові випадки: memory-mapped регістри периферії (`volatile uint32_t *reg`), змінні, які змінює ISR або signal handler, hardware status flags, прості debug/benchmark випадки. Важливо: `volatile` <span class="warn">не робить операції атомарними</span>, не гарантує ordering/synchronization і не замінює `mutex`, critical section або `std::atomic`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

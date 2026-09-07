@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? testing-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу testing-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Host tests</span> покривають чисту логіку: state machines, parsers, protocol framing, boundary cases, mocks для HAL/MMIO.<br><span class="key">Target tests</span> перевіряють те, що залежить від заліза: clocks, drivers, DMA, ISR latency, buses, power states і real timing.<br>HIL або board tests мають ловити інтеграційні дефекти, які unit tests на PC не бачать.[^dou-embedded-interview]
+**Host tests** покривають чисту логіку: state machines, parsers, protocol framing, boundary cases, mocks для HAL/MMIO. **Target tests** перевіряють те, що залежить від заліза: clocks, drivers, DMA, ISR latency, buses, power states і real timing. HIL або board tests мають ловити інтеграційні дефекти, які unit tests на PC не бачать.[^dou-embedded-interview]
 
 ## Detailed explanation
 

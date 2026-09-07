@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,19 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Wild pointer</span> – неініціалізований вказівник із garbage-значенням (випадкова адреса зі стека).<br><br>Порівняння:<br>• <span class="key">NULL pointer</span>: явно невалідна адреса 0, можна перевірити;<br>• <span class="key">Dangling pointer</span>: вказував на валідний об'єкт, який знищено;<br>• <span class="key">Wild pointer</span>: ніколи не вказував на валідний об'єкт.<br><br>Всі три -> UB при розіменуванні. Wild pointer найнебезпечніший: його адреса ненульова і випадкова – перевірку <code>if(p != NULL)</code> проходить.[^embeddedinterviewlab]
+**Wild pointer** – неініціалізований вказівник із garbage-значенням (випадкова адреса зі стека).
+
+Порівняння:
+- **NULL pointer**: явно невалідна адреса 0, можна перевірити;
+- **Dangling pointer**: вказував на валідний об'єкт, який знищено;
+- **Wild pointer**: ніколи не вказував на валідний об'єкт.
+
+Всі три -> UB при розіменуванні. Wild pointer найнебезпечніший: його адреса ненульова і випадкова – перевірку `if(p != NULL)` проходить.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

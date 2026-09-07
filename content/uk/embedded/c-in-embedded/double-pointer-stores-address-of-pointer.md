@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0021
-title: "Що таке double pointer (<code>int **pp</code>) і навіщо він потрібен?"
+title: "Що таке double pointer (`int **pp`) і навіщо він потрібен?"
 description: "What a double pointer stores and why functions use it."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,19 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Double pointer</span> – вказівник, що зберігає адресу іншого вказівника.<br><br>Навіщо:<br>1. <span class="key">Зміна pointer caller-а</span>: <code>void alloc(int **pp){ *pp = malloc(n); }</code> – без <code>**</code> caller не побачить нову адресу;<br>2. <span class="key">2D масиви через масиви вказівників</span>;<br>3. Просування parse-cursor: <code>void parse(char **p){ (*p)++; }</code>;<br><br>Читання типу: <code>int **pp</code> – "вказівник на вказівник на int"; <code>*pp</code> -> вказівник, <code>**pp</code> -> значення int.[^embeddedinterviewlab]
+**Double pointer** – вказівник, що зберігає адресу іншого вказівника.
+
+Навіщо:
+1. **Зміна pointer caller-а**: `void alloc(int **pp){ *pp = malloc(n); }` – без `**` caller не побачить нову адресу;
+2. **2D масиви через масиви вказівників**;
+3. Просування parse-cursor: `void parse(char **p){ (*p)++; }`;
+
+Читання типу: `int **pp` – "вказівник на вказівник на int"; `*pp` -> вказівник, `**pp` -> значення int.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

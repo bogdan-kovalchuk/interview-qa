@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу rtos; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-RTOS scheduler вибирає ready task з найвищим priority або за policy для однакового priority.<br><span class="key">Task state</span> описує ready/running/blocked/suspended, <span class="key">tick</span> дає системний time base, а <span class="key">context switch</span> зберігає registers поточної task і відновлює іншу.<br>Preemption дозволяє вищому priority task витіснити нижчий.[^dou-embedded-interview]
+RTOS scheduler вибирає ready task з найвищим priority або за policy для однакового priority. **Task state** описує ready/running/blocked/suspended, **tick** дає системний time base, а **context switch** зберігає registers поточної task і відновлює іншу. Preemption дозволяє вищому priority task витіснити нижчий.[^dou-embedded-interview]
 
 ## Detailed explanation
 

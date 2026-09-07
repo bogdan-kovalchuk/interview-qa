@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0086
-title: "Trap: does this loop run forever?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">256</span>];<br><span class=\"code-type\">int</span> *p=arr;<br><span class=\"code-kw\">for</span>(<span class=\"code-type\">uint8_t</span> i=<span class=\"code-num\">0</span>;<br>i&lt;<span class=\"code-num\">256</span>;<br>i++) *p++=i;</code></pre>"
+title: "Trap: does this loop run forever?"
 description: "Why an 8-bit loop counter cannot reach the terminating value 256."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,16 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[256];
+int *p=arr;
+for(uint8_t i=0;
+i<256;
+i++) *p++=i;
+```
 
 ## Short answer
 

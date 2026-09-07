@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Timer clock ділиться через <code>prescaler</code>, після чого <code>counter</code> рахує ticks. <code>auto-reload</code> задає період overflow/update event, а <code>compare</code> генерує подію при збігу counter з каналом. Interrupt або DMA trigger виникає на update/compare/capture, якщо відповідні flags і NVIC enabled.[^dou-embedded-interview]
+Timer clock ділиться через `prescaler`, після чого `counter` рахує ticks. `auto-reload` задає період overflow/update event, а `compare` генерує подію при збігу counter з каналом. Interrupt або DMA trigger виникає на update/compare/capture, якщо відповідні flags і NVIC enabled.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Тримай abstraction тонкою: inline functions, static dispatch, templates у C++, function tables тільки там, де потрібна runtime заміна.<br><span class="key">HAL boundary</span> має приховувати register details, але не маскувати timing, blocking behavior, DMA ownership або interrupt context.<br><span class="warn">Надто товстий HAL робить driver непередбачуваним і важким для debug на MCU.</span>[^dou-embedded-interview]
+Тримай abstraction тонкою: inline functions, static dispatch, templates у C++, function tables тільки там, де потрібна runtime заміна. **HAL boundary** має приховувати register details, але не маскувати timing, blocking behavior, DMA ownership або interrupt context. <span class="warn">Надто товстий HAL робить driver непередбачуваним і важким для debug на MCU.</span>[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

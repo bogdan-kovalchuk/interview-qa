@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Embedded Wi-Fi проходить scan/auth/association з AP, потім отримує IP через DHCP або static config.<br>TLS додає CPU/RAM cost, certificates, entropy і довгі handshakes, що важливо для small MCU.<br>Power save modes зменшують споживання, але додають latency, buffering у AP і складніші reconnect/error paths.[^dou-embedded-interview]
+Embedded Wi-Fi проходить scan/auth/association з AP, потім отримує IP через DHCP або static config. TLS додає CPU/RAM cost, certificates, entropy і довгі handshakes, що важливо для small MCU. Power save modes зменшують споживання, але додають latency, buffering у AP і складніші reconnect/error paths.[^dou-embedded-interview]
 
 ## Detailed explanation
 

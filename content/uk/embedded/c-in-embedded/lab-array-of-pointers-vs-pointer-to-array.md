@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0065
-title: "Яка різниця між <code>int *arr[5]</code> і <code>int (*arr)[5]</code> у пам'яті?"
+title: "Яка різниця між `int *arr[5]` і `int (*arr)[5]` у пам'яті?"
 description: "How an array of pointers differs from a pointer to an array."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>int *arr[5]</code> – масив із 5 вказівників. Розмір: <code>5 × sizeof(int*) = 20 байт</code>. Кожен з 5 елементів – адреса якогось int. Можуть вказувати у різні місця пам'яті.<br><br><code>int (*arr)[5]</code> – один вказівник на масив із 5 int. Розмір <code>arr</code> = <code>sizeof(int*) = 4</code> байти; <code>arr+1</code> -> зміщення на <code>5 × sizeof(int) = 20</code> байт;<br><br>Читай: дужки навколо <code>*arr</code> – "вказівник на".[^embeddedinterviewlab]
+`int *arr[5]` – масив із 5 вказівників. Розмір: `5 × sizeof(int*) = 20 байт`. Кожен з 5 елементів – адреса якогось int. Можуть вказувати у різні місця пам'яті.
+
+`int (*arr)[5]` – один вказівник на масив із 5 int. Розмір `arr` = `sizeof(int*) = 4` байти; `arr+1` -> зміщення на `5 × sizeof(int) = 20` байт;
+
+Читай: дужки навколо `*arr` – "вказівник на".[^embeddedinterviewlab]
 
 ## Detailed explanation
 

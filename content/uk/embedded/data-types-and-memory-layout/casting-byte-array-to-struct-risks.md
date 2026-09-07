@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Пряме приведення <code>uint8_t*</code> до <code>struct*</code> ризикує порушити <span class="warn">alignment</span>, strict aliasing і очікуваний layout з padding. Також frame може мати інший endianness або packed формат, ніж ABI компілятора. Безпечніше читати поля через <code>memcpy</code> у локальні типи, перевіряти довжину й явно конвертувати byte order.[^dou-embedded-interview]
+Пряме приведення `uint8_t*` до `struct*` ризикує порушити <span class="warn">alignment</span>, strict aliasing і очікуваний layout з padding. Також frame може мати інший endianness або packed формат, ніж ABI компілятора. Безпечніше читати поля через `memcpy` у локальні типи, перевіряти довжину й явно конвертувати byte order.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">NULL pointer</span> – гарантовано невалідна адреса (null pointer constant). У C визначений як <code>0</code> або <code>(void*)0</code>. У C++ – <code>nullptr</code>.<br><br>Розіменування NULL -> <span class="warn">undefined behavior</span>. На Cortex-M: адреса <code>0x00000000</code> – початок Flash (Vector Table). Запис туди -> HardFault або пошкодження Vector Table;<br><br>Захист: завжди перевіряй перед розіменуванням: <code>if(p != NULL) *p = val;</code>; Ініціалізуй: <code>int *p = NULL;</code>[^embeddedinterviewlab]
+**NULL pointer** – гарантовано невалідна адреса (null pointer constant). У C визначений як `0` або `(void*)0`. У C++ – `nullptr`.
+
+Розіменування NULL -> <span class="warn">undefined behavior</span>. На Cortex-M: адреса `0x00000000` – початок Flash (Vector Table). Запис туди -> HardFault або пошкодження Vector Table;
+
+Захист: завжди перевіряй перед розіменуванням: `if(p != NULL) *p = val;`; Ініціалізуй: `int *p = NULL;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

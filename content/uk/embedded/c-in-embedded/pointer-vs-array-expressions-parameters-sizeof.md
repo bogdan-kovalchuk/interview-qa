@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Масив – це об'єкт із N елементів; у більшості виразів він decay-иться до pointer на перший елемент. У параметрі функції <code>int a[]</code> фактично є <code>int *a</code>, тому довжина не передається автоматично. <code>sizeof array</code> у тій самій scope дає весь розмір масиву, а <code>sizeof pointer</code> – лише розмір адреси.[^dou-embedded-interview]
+Масив – це об'єкт із N елементів; у більшості виразів він decay-иться до pointer на перший елемент. У параметрі функції `int a[]` фактично є `int *a`, тому довжина не передається автоматично. `sizeof array` у тій самій scope дає весь розмір масиву, а `sizeof pointer` – лише розмір адреси.[^dou-embedded-interview]
 
 ## Detailed explanation
 

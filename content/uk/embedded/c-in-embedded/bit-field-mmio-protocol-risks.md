@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Bit-field</span> – поле struct із заданою кількістю бітів, наприклад <code>unsigned mode:3</code>. Його порядок бітів, allocation unit, padding і навіть signedness деяких форм залежать від implementation. <span class="warn">Для MMIO і wire protocols це небезпечно</span>: краще використовувати masks/shifts над <code>uint32_t</code>.[^dou-embedded-interview]
+**Bit-field** – поле struct із заданою кількістю бітів, наприклад `unsigned mode:3`. Його порядок бітів, allocation unit, padding і навіть signedness деяких форм залежать від implementation. <span class="warn">Для MMIO і wire protocols це небезпечно</span>: краще використовувати masks/shifts над `uint32_t`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

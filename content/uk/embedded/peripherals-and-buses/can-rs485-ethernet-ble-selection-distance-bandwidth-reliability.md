@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Вибір роблять від вимог: distance, data rate, determinism, topology, noise immunity, power, cost і certification.<br><span class="key">CAN</span> добрий для robust multi-node control, <span class="key">RS485</span> - для довгих industrial links, <span class="key">Ethernet</span> - для bandwidth/IP integration, <span class="key">BLE</span> - для low-power wireless/mobile access.<br>Також враховуй existing ecosystem, diagnostics і firmware update path.[^dou-embedded-interview]
+Вибір роблять від вимог: distance, data rate, determinism, topology, noise immunity, power, cost і certification. **CAN** добрий для robust multi-node control, **RS485** - для довгих industrial links, **Ethernet** - для bandwidth/IP integration, **BLE** - для low-power wireless/mobile access. Також враховуй existing ecosystem, diagnostics і firmware update path.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0006
-title: "Trap: чому <code>sizeof(arr)</code> у функції повертає 4 або 8, а не розмір масиву?"
+title: "Trap: чому `sizeof(arr)` у функції повертає 4 або 8, а не розмір масиву?"
 description: "Why an array parameter is treated as a pointer inside a function."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-При передачі масиву у функцію він <span class="warn">decay-ується до вказівника</span>: <code>void f(int arr[])</code> ≡ <code>void f(int *arr)</code>.<br><br><code>sizeof(arr)</code> всередині функції = <code>sizeof(int*)</code> = 4 або 8 (розмір вказівника), а не розмір масиву.<br><br>Реальний кейс: змінили <code>int16_t buffer[256]</code> на <code>int16_t *buffer</code>, але залишили <code>sizeof(buffer)/sizeof(buffer[0])</code> -> обробляли лише 2 елементи замість 256.<br><br>Рішення: передавай розмір явно: <code>void f(int *arr, size_t n)</code>.[^embeddedinterviewlab]
+При передачі масиву у функцію він <span class="warn">decay-ується до вказівника</span>: `void f(int arr[])` ≡ `void f(int *arr)`.
+
+`sizeof(arr)` всередині функції = `sizeof(int*)` = 4 або 8 (розмір вказівника), а не розмір масиву.
+
+Реальний кейс: змінили `int16_t buffer[256]` на `int16_t *buffer`, але залишили `sizeof(buffer)/sizeof(buffer[0])` -> обробляли лише 2 елементи замість 256.
+
+Рішення: передавай розмір явно: `void f(int *arr, size_t n)`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0026
-title: "Чим відрізняється <code>const int *p</code> від <code>int * const p</code>?"
+title: "Чим відрізняється `const int *p` від `int * const p`?"
 description: "How const applies to pointed-to data and to the pointer itself."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,20 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>const int *p</code> (або <code>int const *p</code>) – <span class="key">вказівник на константний int</span>:<br>• <code>*p = 5</code> – заборонено (дані захищені);<br>• <code>p = &amp;y</code> – дозволено (адресу можна змінити).<br><br><code>int * const p</code> – <span class="key">константний вказівник на int</span>:<br>• <code>*p = 5</code> – дозволено;<br>• <code>p = &amp;y</code> – заборонено (адреса фіксована).<br><br><code>const int * const p</code> – і дані, і адреса незмінні. Правило: читай справа наліво.[^embeddedinterviewlab]
+`const int *p` (або `int const *p`) – **вказівник на константний int**:
+- `*p = 5` – заборонено (дані захищені);
+- `p = &y` – дозволено (адресу можна змінити).
+
+`int * const p` – **константний вказівник на int**:
+- `*p = 5` – дозволено;
+- `p = &y` – заборонено (адреса фіксована).
+
+`const int * const p` – і дані, і адреса незмінні. Правило: читай справа наліво.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

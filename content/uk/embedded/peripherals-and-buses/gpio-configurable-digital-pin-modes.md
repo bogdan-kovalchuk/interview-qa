@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,17 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">General Purpose Input/Output</span> – універсальний цифровий пін мікроконтролера, що конфігурується програмно.<br><br>Режими: <code>Input</code> (з pull-up / pull-down / floating); <code>Output Push-Pull</code> – керує HIGH/LOW; <code>Output Open-Drain</code> – керує лише LOW, HIGH через зовнішній резистор; <code>Alternate Function</code> – пін підключається до UART/SPI/I2C/Timer.<br><br>Управління через регістри: <code>MODER</code>, <code>ODR</code>, <code>IDR</code>, <code>BSRR</code> (STM32). Атомарний запис: <code>BSRR</code> встановлює або скидає біт за один цикл без ризику race condition.[^dou-embedded-interview]
+**General Purpose Input/Output** – універсальний цифровий пін мікроконтролера, що конфігурується програмно.
+
+Режими: `Input` (з pull-up / pull-down / floating); `Output Push-Pull` – керує HIGH/LOW; `Output Open-Drain` – керує лише LOW, HIGH через зовнішній резистор; `Alternate Function` – пін підключається до UART/SPI/I2C/Timer.
+
+Управління через регістри: `MODER`, `ODR`, `IDR`, `BSRR` (STM32). Атомарний запис: `BSRR` встановлює або скидає біт за один цикл без ризику race condition.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

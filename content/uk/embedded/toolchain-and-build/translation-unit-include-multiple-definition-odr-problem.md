@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Translation unit</span> – результат preprocessing одного <code>.c/.cpp</code> файлу разом з усіма included headers. Якщо header містить non-static object/function definition, вона потрапить у кожну translation unit і linker побачить multiple definitions. У C++ це також може порушити ODR; у headers лишають declarations, <code>inline</code>/<code>constexpr</code> або templates за правилами мови.[^dou-embedded-interview]
+**Translation unit** – результат preprocessing одного `.c/.cpp` файлу разом з усіма included headers. Якщо header містить non-static object/function definition, вона потрапить у кожну translation unit і linker побачить multiple definitions. У C++ це також може порушити ODR; у headers лишають declarations, `inline`/`constexpr` або templates за правилами мови.[^dou-embedded-interview]
 
 ## Detailed explanation
 

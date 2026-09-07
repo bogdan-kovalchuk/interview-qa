@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Socket</span> – file descriptor для endpoint-у network або local IPC. Embedded-пристрій потребує socket API, коли говорить TCP/UDP, Unix domain IPC, Bluetooth sockets або має daemon/client архітектуру. Для простого sensor-to-MCU без OS socket не потрібен; там буде UART/SPI/I2C або lightweight network stack API.[^dou-embedded-interview]
+**Socket** – file descriptor для endpoint-у network або local IPC. Embedded-пристрій потребує socket API, коли говорить TCP/UDP, Unix domain IPC, Bluetooth sockets або має daemon/client архітектуру. Для простого sensor-to-MCU без OS socket не потрібен; там буде UART/SPI/I2C або lightweight network stack API.[^dou-embedded-interview]
 
 ## Detailed explanation
 

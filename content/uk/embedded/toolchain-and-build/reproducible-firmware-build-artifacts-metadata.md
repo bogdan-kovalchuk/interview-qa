@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Зафіксуй toolchain version, build container або package hash, CMake presets/options і dependency versions.<br>У artifacts зберігай <code>.elf</code>, <code>.hex</code>/<code>.bin</code>, <code>.map</code>, symbol/version info, compiler flags і commit hash.<br><span class="key">Version metadata</span> у firmware має дозволяти точно відтворити binary, який стоїть на пристрої.[^dou-embedded-interview]
+Зафіксуй toolchain version, build container або package hash, CMake presets/options і dependency versions. У artifacts зберігай `.elf`, `.hex`/`.bin`, `.map`, symbol/version info, compiler flags і commit hash. **Version metadata** у firmware має дозволяти точно відтворити binary, який стоїть на пристрої.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

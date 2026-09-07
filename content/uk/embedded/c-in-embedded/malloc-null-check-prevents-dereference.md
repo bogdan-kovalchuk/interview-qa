@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0084
-title: "Навіщо завжди перевіряти повернення <code>malloc</code> на NULL?"
+title: "Навіщо завжди перевіряти повернення `malloc` на NULL?"
 description: "Why failed allocation must be handled before dereferencing the result."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,20 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>malloc</code> повертає <span class="key">NULL</span> при помилці виділення (нема пам'яті, heap fragmentation). Якщо не перевірити і розіменувати NULL -> <span class="warn">HardFault на MCU</span>.<br><br><code>int *p = malloc(n * sizeof(int));<br>if(p == NULL) { error_handler(); return; }<br>// Тепер безпечно використовувати</code><br><br>У embedded: malloc може провалитися навіть при малих запитах через fragmentation. Safety-critical стандарти забороняють malloc взагалі – але якщо використовуєш, перевірка обов'язкова.[^embeddedinterviewlab]
+`malloc` повертає **NULL** при помилці виділення (нема пам'яті, heap fragmentation). Якщо не перевірити і розіменувати NULL -> <span class="warn">HardFault на MCU</span>.
+
+```c
+int *p = malloc(n * sizeof(int));
+if(p == NULL) { error_handler(); return; }
+// Тепер безпечно використовувати
+```
+
+У embedded: malloc може провалитися навіть при малих запитах через fragmentation. Safety-critical стандарти забороняють malloc взагалі – але якщо використовуєш, перевірка обов'язкова.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

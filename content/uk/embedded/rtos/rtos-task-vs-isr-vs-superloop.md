@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу rtos; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">RTOS task</span> має власний stack, priority і scheduler-managed state.<br>Interrupt handler виконується асинхронно в interrupt context, має бути коротким і не поводиться як звичайна task.<br>Bare-metal superloop - один головний цикл без scheduler-а; concurrency там зазвичай будується на flags, ISR і state machines.[^dou-embedded-interview]
+**RTOS task** має власний stack, priority і scheduler-managed state. Interrupt handler виконується асинхронно в interrupt context, має бути коротким і не поводиться як звичайна task. Bare-metal superloop - один головний цикл без scheduler-а; concurrency там зазвичай будується на flags, ISR і state machines.[^dou-embedded-interview]
 
 ## Detailed explanation
 

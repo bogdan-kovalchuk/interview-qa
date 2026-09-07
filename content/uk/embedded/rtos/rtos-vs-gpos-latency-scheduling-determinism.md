@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу rtos; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">RTOS</span> дає bounded interrupt/task latency, priority-based scheduling і primitives для deterministic embedded tasks. General-purpose OS оптимізує throughput, fairness і багатокористувацькі можливості, тому latency може бути менш передбачуваною. RTOS не гарантує «швидко завжди»; вона дає контрольовані worst-case умови, якщо код і пріоритети спроєктовані правильно.[^dou-embedded-interview]
+**RTOS** дає bounded interrupt/task latency, priority-based scheduling і primitives для deterministic embedded tasks. General-purpose OS оптимізує throughput, fairness і багатокористувацькі можливості, тому latency може бути менш передбачуваною. RTOS не гарантує «швидко завжди»; вона дає контрольовані worst-case умови, якщо код і пріоритети спроєктовані правильно.[^dou-embedded-interview]
 
 ## Detailed explanation
 

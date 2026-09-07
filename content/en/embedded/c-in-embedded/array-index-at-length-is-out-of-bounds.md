@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0030
-title: "Trap: what is wrong?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">5</span>];<br>arr[<span class=\"code-num\">5</span>] = <span class=\"code-num\">0</span>;</code></pre>"
+title: "Trap: what is wrong?"
 description: "Why an index equal to the array length is out of bounds."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[5];
+arr[5] = 0;
+```
 
 ## Short answer
 

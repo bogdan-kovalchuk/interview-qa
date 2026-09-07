@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Cross-compilation – build на host-машині для іншого CPU/OS/ABI target. Типові помилки: зібрали під host, змішали wrong sysroot, soft/hard-float ABI, endian або libc, а потім отримали <code>Exec format error</code> чи runtime crash. Перевіряти треба <code>file</code>, <code>readelf -h</code>, target triplet і toolchain flags.[^dou-embedded-interview]
+Cross-compilation – build на host-машині для іншого CPU/OS/ABI target. Типові помилки: зібрали під host, змішали wrong sysroot, soft/hard-float ABI, endian або libc, а потім отримали `Exec format error` чи runtime crash. Перевіряти треба `file`, `readelf -h`, target triplet і toolchain flags.[^dou-embedded-interview]
 
 ## Detailed explanation
 

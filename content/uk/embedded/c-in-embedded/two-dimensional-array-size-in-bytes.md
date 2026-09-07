@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0024
-title: "Що виведе?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">3</span>][<span class=\"code-num\">4</span>];<br><span class=\"code-fn\">printf</span>(\"%zu\", <span class=\"code-kw\">sizeof</span>(arr));</code></pre>"
+title: "Що виведе?"
 description: "How sizeof reports the size of a two-dimensional array."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,25 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[3][4];
+printf("%zu", sizeof(arr));
+```
 
 ## Short answer
 
-<span class="key">48</span> байт.<br><br><code>arr</code> – 2D масив: 3 рядки × 4 стовпці × <code>sizeof(int) = 4</code> байти = 48B.<br><br><code>sizeof(arr[0])</code> = <code>sizeof(int[4])</code> = 16B (один рядок).<br><code>sizeof(arr[0][0])</code> = <code>sizeof(int)</code> = 4B.<br><br>Кількість рядків: <code>sizeof(arr)/sizeof(arr[0]) = 48/16 = 3</code>. Цей трюк працює лише у тому ж scope де оголошений масив.[^embeddedinterviewlab]
+**48** байт.
+
+`arr` – 2D масив: 3 рядки × 4 стовпці × `sizeof(int) = 4` байти = 48B.
+
+`sizeof(arr[0])` = `sizeof(int[4])` = 16B (один рядок). `sizeof(arr[0][0])` = `sizeof(int)` = 4B.
+
+Кількість рядків: `sizeof(arr)/sizeof(arr[0]) = 48/16 = 3`. Цей трюк працює лише у тому ж scope де оголошений масив.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

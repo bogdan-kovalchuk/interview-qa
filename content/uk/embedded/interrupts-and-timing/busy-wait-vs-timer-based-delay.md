@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Delay може бути busy loop, CPU cycle counter, SysTick, hardware timer або RTOS sleep.<br><span class="key">Timer-based delay</span> краще зберігає CPU time, дозволяє sleep/power saving і не ламається від зміни clock чи optimization.<br><span class="warn">Busy-wait блокує main loop/task і погано масштабується для ISR-driven або RTOS firmware.</span>[^dou-embedded-interview]
+Delay може бути busy loop, CPU cycle counter, SysTick, hardware timer або RTOS sleep. **Timer-based delay** краще зберігає CPU time, дозволяє sleep/power saving і не ламається від зміни clock чи optimization. <span class="warn">Busy-wait блокує main loop/task і погано масштабується для ISR-driven або RTOS firmware.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

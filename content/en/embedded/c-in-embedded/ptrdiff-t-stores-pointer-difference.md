@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0033
-title: "What is <code>ptrdiff_t</code> and why is it needed?"
+title: "What is `ptrdiff_t` and why is it needed?"
 description: "The signed type used for differences between pointers."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

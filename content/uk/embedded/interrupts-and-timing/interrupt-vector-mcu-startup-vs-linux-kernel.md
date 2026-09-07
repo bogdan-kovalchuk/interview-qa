@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-На MCU <span class="key">interrupt vector table</span> зазвичай лежить за фіксованою адресою і містить initial stack pointer та addresses handlers.<br>Startup code задає weak default handlers, а firmware замінює потрібні ISR.<br>У Linux hardware interrupt routing прихований за architecture/kernel IRQ subsystem: driver реєструє handler через kernel API, а не редагує startup vector table напряму.[^dou-embedded-interview]
+На MCU **interrupt vector table** зазвичай лежить за фіксованою адресою і містить initial stack pointer та addresses handlers. Startup code задає weak default handlers, а firmware замінює потрібні ISR. У Linux hardware interrupt routing прихований за architecture/kernel IRQ subsystem: driver реєструє handler через kernel API, а не редагує startup vector table напряму.[^dou-embedded-interview]
 
 ## Detailed explanation
 

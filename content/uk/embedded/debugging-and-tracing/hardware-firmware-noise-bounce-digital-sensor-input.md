@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "current"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? debugging-and-tracing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу debugging-and-tracing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Hardware: pull-up/pull-down правильного номіналу, RC filter, Schmitt trigger, shielding/grounding, series resistor або opto/isolator за потреби.<br>Firmware: debounce timer, majority vote, state machine з stable time, interrupt masking на debounce window.<br><span class="warn">Не маскуй firmware-фільтром проблему wiring/grounding, якщо noise може пошкодити input або викликати safety event.</span>[^dou-embedded-interview]
+Hardware: pull-up/pull-down правильного номіналу, RC filter, Schmitt trigger, shielding/grounding, series resistor або opto/isolator за потреби. Firmware: debounce timer, majority vote, state machine з stable time, interrupt masking на debounce window. <span class="warn">Не маскуй firmware-фільтром проблему wiring/grounding, якщо noise може пошкодити input або викликати safety event.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

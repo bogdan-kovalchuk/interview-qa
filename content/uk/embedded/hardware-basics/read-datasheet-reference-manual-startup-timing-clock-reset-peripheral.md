@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? hardware-basics; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу hardware-basics; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Починай з reset/clock/power chapters, boot modes, electrical characteristics і errata.<br>Для peripheral звіряй enable sequence, clock domain, reset state, register access rules, timing diagrams, DMA/IRQ limitations і required delays.<br><span class="warn">Не покладайся лише на HAL examples; reference manual і errata часто пояснюють приховані startup constraints.</span>[^dou-embedded-interview]
+Починай з reset/clock/power chapters, boot modes, electrical characteristics і errata. Для peripheral звіряй enable sequence, clock domain, reset state, register access rules, timing diagrams, DMA/IRQ limitations і required delays. <span class="warn">Не покладайся лише на HAL examples; reference manual і errata часто пояснюють приховані startup constraints.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

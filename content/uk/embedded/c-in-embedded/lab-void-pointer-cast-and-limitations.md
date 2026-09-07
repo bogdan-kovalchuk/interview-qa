@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0069
-title: "Навіщо потрібен cast при роботі з <code>void*</code> і які обмеження?"
+title: "Навіщо потрібен cast при роботі з `void*` і які обмеження?"
 description: "C and C++ conversion rules and limitations of void pointers."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,21 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-В <span class="key">C</span>: присвоєння <code>void*</code> до <code>T*</code> (і навпаки) не потребує explicit cast – автоматичне перетворення. <code>int *p = malloc(n);</code> – коректно у C.<br><br>В <span class="key">C++</span>: <span class="warn">обов'язковий explicit cast</span>: <code>int *p = (int*)malloc(n);</code>.<br><br>Обмеження void*:<br>• Не можна розіменувати без cast;<br>• Не можна pointer arithmetic (стандарт C);<br>• Не зберігає type-safety;<br><br>Перед розіменуванням: <code>*(int*)vp = 42;</code>. Це правило зберігає правильний тип доступу.[^embeddedinterviewlab]
+В **C**: присвоєння `void*` до `T*` (і навпаки) не потребує explicit cast – автоматичне перетворення. `int *p = malloc(n);` – коректно у C.
+
+В **C++**: <span class="warn">обов'язковий explicit cast</span>: `int *p = (int*)malloc(n);`.
+
+Обмеження void*:
+- Не можна розіменувати без cast;
+- Не можна pointer arithmetic (стандарт C);
+- Не зберігає type-safety;
+
+Перед розіменуванням: `*(int*)vp = 42;`. Це правило зберігає правильний тип доступу.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

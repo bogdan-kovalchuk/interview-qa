@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">One-past-the-end</span> – вказівник на елемент одразу після масиву: <code>int *end = arr + N</code>. За стандартом C – легальний.<br><br>Дозволено:<br>• <span class="key">Формувати</span> (адреса коректна);<br>• <span class="key">Порівнювати</span>: <code>p != end</code>, <code>p &lt;= end</code>;<br>• <span class="key">Віднімати</span> від іншого вказівника у масиві.<br><br>Заборонено:<br>• <span class="warn">Розіменовувати</span>: <code>*end</code> -> UB;<br>• <span class="warn">Збільшувати далі</span>: <code>end+1</code> -> UB.<br><br>Стандартний ідіом: <code>for(int *p=arr; p!=arr+N; p++)</code>[^embeddedinterviewlab]
+**One-past-the-end** – вказівник на елемент одразу після масиву: `int *end = arr + N`. За стандартом C – легальний.
+
+Дозволено:
+- **Формувати** (адреса коректна);
+- **Порівнювати**: `p != end`, `p <= end`;
+- **Віднімати** від іншого вказівника у масиві.
+
+Заборонено:
+- <span class="warn">Розіменовувати</span>: `*end` -> UB;
+- <span class="warn">Збільшувати далі</span>: `end+1` -> UB.
+
+Стандартний ідіом: `for(int *p=arr; p!=arr+N; p++)`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0093
-title: "What is printed?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">4</span>]={<span class=\"code-num\">10</span>,<span class=\"code-num\">20</span>,<span class=\"code-num\">30</span>,<span class=\"code-num\">40</span>};<br><span class=\"code-fn\">printf</span>(\"%d %d\",*(arr+<span class=\"code-num\">3</span>), arr[<span class=\"code-num\">3</span>]);</code></pre>"
+title: "What is printed?"
 description: "Why array subscripting and pointer arithmetic are equivalent in C."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[4]={10,20,30,40};
+printf("%d %d",*(arr+3), arr[3]);
+```
 
 ## Short answer
 

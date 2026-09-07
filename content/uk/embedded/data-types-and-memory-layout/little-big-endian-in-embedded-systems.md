@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Endianness</span> визначає порядок байтів багатобайтового числа в пам'яті: little-endian кладе молодший байт за нижчою адресою, big-endian – старший. В embedded це видно у binary protocols, peripheral FIFOs, network byte order, flash images і debug memory view. Порядок бітів у SPI/I2C кадрі – окрема властивість і не дорівнює endianness CPU.[^dou-embedded-interview]
+**Endianness** визначає порядок байтів багатобайтового числа в пам'яті: little-endian кладе молодший байт за нижчою адресою, big-endian – старший. В embedded це видно у binary protocols, peripheral FIFOs, network byte order, flash images і debug memory view. Порядок бітів у SPI/I2C кадрі – окрема властивість і не дорівнює endianness CPU.[^dou-embedded-interview]
 
 ## Detailed explanation
 

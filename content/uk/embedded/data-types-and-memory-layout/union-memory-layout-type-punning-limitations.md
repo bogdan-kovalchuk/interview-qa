@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-У <span class="key">union</span> всі members починаються з одного offset, а розмір і alignment визначаються найбільшим member. Запис в один member перезаписує ті самі байти, які можуть читатися через інший member, але правила доступу залежать від C/C++ стандарту, effective type і compiler behavior. <span class="warn">Для переносимої інтерпретації байтів у firmware краще використовувати <code>memcpy</code></span>, а не покладатися на union type punning.[^dou-embedded-interview]
+У **union** всі members починаються з одного offset, а розмір і alignment визначаються найбільшим member. Запис в один member перезаписує ті самі байти, які можуть читатися через інший member, але правила доступу залежать від C/C++ стандарту, effective type і compiler behavior. <span class="warn">Для переносимої інтерпретації байтів у firmware краще використовувати `memcpy`</span>, а не покладатися на union type punning.[^dou-embedded-interview]
 
 ## Detailed explanation
 

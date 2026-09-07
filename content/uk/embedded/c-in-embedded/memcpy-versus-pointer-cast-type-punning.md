@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0089
-title: "Яка різниця між <code>memcpy</code> і pointer cast для копіювання між типами?"
+title: "Яка різниця між `memcpy` і pointer cast для копіювання між типами?"
 description: "Why memcpy avoids aliasing and alignment problems during type punning."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Pointer cast + dereference</span>: <code>uint32_t x = *(uint32_t*)bytes;</code> – потенційний UB (strict aliasing, misalignment). Компілятор може оптимізувати "неправильно".<br><br><span class="key">memcpy</span>: <code>uint32_t x; memcpy(&amp;x, bytes, 4);</code> – завжди коректно: не порушує aliasing, компілятор оптимізує до одного LDR якщо вирівняно.<br><br>Правило: для type punning використовуй <code>memcpy</code> (або <code>union</code> у C). Pointer cast безпечний лише для <code>char*</code>/<code>unsigned char*</code>.[^embeddedinterviewlab]
+**Pointer cast + dereference**: `uint32_t x = *(uint32_t*)bytes;` – потенційний UB (strict aliasing, misalignment). Компілятор може оптимізувати "неправильно".
+
+**memcpy**: `uint32_t x; memcpy(&x, bytes, 4);` – завжди коректно: не порушує aliasing, компілятор оптимізує до одного LDR якщо вирівняно.
+
+Правило: для type punning використовуй `memcpy` (або `union` у C). Pointer cast безпечний лише для `char*`/`unsigned char*`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

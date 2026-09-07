@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-У BLE device рекламується з <span class="key">advertising interval</span>, після connection працює з negotiated connection interval, latency і supervision timeout.<br><span class="key">GATT</span> описує services/characteristics для даних і команд.<br>Power budget сильно залежить від radio wakeups, payload size, connection parameters, sleep states і того, чи firmware вчасно повертає MCU у low power.[^dou-embedded-interview]
+У BLE device рекламується з **advertising interval**, після connection працює з negotiated connection interval, latency і supervision timeout. **GATT** описує services/characteristics для даних і команд. Power budget сильно залежить від radio wakeups, payload size, connection parameters, sleep states і того, чи firmware вчасно повертає MCU у low power.[^dou-embedded-interview]
 
 ## Detailed explanation
 

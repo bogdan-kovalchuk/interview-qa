@@ -8,8 +8,8 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>volatile</code> лише каже компілятору не прибирати й не кешувати конкретні accesses. Воно <span class="warn">не робить операцію атомарною</span>, не ставить memory barrier між cores/interrupts і не захищає інваріанти структури даних. Для shared state між task/ISR потрібні atomic operations, interrupt lock, mutex або RTOS primitive залежно від контексту.[^dou-embedded-interview]
+`volatile` лише каже компілятору не прибирати й не кешувати конкретні accesses. Воно <span class="warn">не робить операцію атомарною</span>, не ставить memory barrier між cores/interrupts і не захищає інваріанти структури даних. Для shared state між task/ISR потрібні atomic operations, interrupt lock, mutex або RTOS primitive залежно від контексту.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-I2C master формує <code>START</code>, передає 7/10-bit address плюс R/W bit, а receiver відповідає ACK або NACK. <code>STOP</code> завершує transaction; repeated START дозволяє змінити напрям без відпускання bus. Arbitration потрібен для multi-master, а clock stretching дозволяє slave утримати SCL low, якщо йому треба більше часу.[^dou-embedded-interview]
+I2C master формує `START`, передає 7/10-bit address плюс R/W bit, а receiver відповідає ACK або NACK. `STOP` завершує transaction; repeated START дозволяє змінити напрям без відпускання bus. Arbitration потрібен для multi-master, а clock stretching дозволяє slave утримати SCL low, якщо йому треба більше часу.[^dou-embedded-interview]
 
 ## Detailed explanation
 

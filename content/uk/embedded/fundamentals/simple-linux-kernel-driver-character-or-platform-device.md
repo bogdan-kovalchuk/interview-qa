@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Для character device визначають file operations: <code>open</code>, <code>read</code>, <code>write</code>, <code>ioctl</code>, плюс registration і lifetime cleanup.<br>Для platform driver реалізують <code>probe</code>/<code>remove</code>, беруть resources з devicetree, маплять MMIO, реєструють IRQ і exposed interface.<br><span class="warn">У kernel driver не можна мислити як у user space: інші allocation rules, locking, sleep context і error handling.</span>[^dou-embedded-interview]
+Для character device визначають file operations: `open`, `read`, `write`, `ioctl`, плюс registration і lifetime cleanup. Для platform driver реалізують `probe`/`remove`, беруть resources з devicetree, маплять MMIO, реєструють IRQ і exposed interface. <span class="warn">У kernel driver не можна мислити як у user space: інші allocation rules, locking, sleep context і error handling.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

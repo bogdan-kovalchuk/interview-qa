@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0096
-title: "Trap: what is wrong?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> **pp;<br>*pp = <span class=\"code-fn\">malloc</span>(<span class=\"code-num\">10</span>*<span class=\"code-kw\">sizeof</span>(<span class=\"code-type\">int</span>));</code></pre>"
+title: "Trap: what is wrong?"
 description: "Why dereferencing an uninitialized double pointer is undefined behavior."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int **pp;
+*pp = malloc(10*sizeof(int));
+```
 
 ## Short answer
 

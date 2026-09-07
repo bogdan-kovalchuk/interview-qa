@@ -8,8 +8,8 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-1. Апаратура читає Vector Table: SP &larr; значення за адресою `0x00000000`, PC &larr; Reset Handler за адресою `0x00000004`.
+1. Апаратура читає Vector Table: SP <- значення за адресою `0x00000000`, PC <- Reset Handler за адресою `0x00000004`.
 2. Startup code копіює `.data` з Flash (LMA) у RAM (VMA);
 3. Обнуляє `.bss`;
 4. Виклик глобальних C++ конструкторів (якщо є);

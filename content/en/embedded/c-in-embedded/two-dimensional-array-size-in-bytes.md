@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0024
-title: "What does this print?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">3</span>][<span class=\"code-num\">4</span>];<br><span class=\"code-fn\">printf</span>(\"%zu\", <span class=\"code-kw\">sizeof</span>(arr));</code></pre>"
+title: "What does this print?"
 description: "How sizeof reports the size of a two-dimensional array."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,13 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[3][4];
+printf("%zu", sizeof(arr));
+```
 
 ## Short answer
 

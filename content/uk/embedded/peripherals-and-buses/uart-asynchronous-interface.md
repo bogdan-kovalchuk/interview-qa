@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Universal Asynchronous Receiver-Transmitter</span> – асинхронний послідовний інтерфейс. Два дроти: <code>TX</code> (передача) і <code>RX</code> (прийом). Немає спільного тактового сигналу – обидва пристрої заздалегідь домовляються про <span class="key">baud rate</span> (напр. 115200 бод).[^dou-embedded-interview]
+**Universal Asynchronous Receiver-Transmitter** – асинхронний послідовний інтерфейс. Два дроти: `TX` (передача) і `RX` (прийом). Немає спільного тактового сигналу – обидва пристрої заздалегідь домовляються про **baud rate** (напр. 115200 бод).[^dou-embedded-interview]
 
 Кадр: START bit -> data bits -> parity (опційно) -> STOP bit(s); Типово використовують 8 data bits, але hardware/configuration можуть підтримувати 5–9; UART описує framing даних; електричні рівні можуть бути TTL/CMOS, RS-232, RS-485 тощо.
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0029
-title: "How should a 2D array be passed to a function to access element <code>[2][3]</code>?"
+title: "How should a 2D array be passed to a function to access element `[2][3]`?"
 description: "Why a two-dimensional array parameter needs its inner dimension."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

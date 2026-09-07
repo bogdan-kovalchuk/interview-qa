@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0039
-title: "What does <code>memcpy(dst, src, sizeof(src))</code> do when <code>src</code> is an array parameter?"
+title: "What does `memcpy(dst, src, sizeof(src))` do when `src` is an array parameter?"
 description: "Why sizeof on an array parameter copies only pointer-sized data."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

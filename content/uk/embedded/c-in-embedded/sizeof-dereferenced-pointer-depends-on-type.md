@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0018
-title: "Що виведе?<br><pre class=\"code-block\"><code>uint32_t *p=(uint32_t*)0x2000;<br>uint8_t *q=(uint8_t*)p;<br>printf(\"%zu %zu\", sizeof(*p), sizeof(*q));</code></pre>"
+title: "Що виведе?"
 description: "Why sizeof a dereferenced pointer depends on its pointer type."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,24 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+uint32_t *p=(uint32_t*)0x2000;
+uint8_t *q=(uint8_t*)p;
+printf("%zu %zu", sizeof(*p), sizeof(*q));
+```
 
 ## Short answer
 
-<code>sizeof(*p)</code> -> <span class="key">4</span>. Розіменування <code>uint32_t*</code> дає об'єкт типу <code>uint32_t</code> – 4 байти.<br><br><code>sizeof(*q)</code> -> <span class="key">1</span>. Розіменування <code>uint8_t*</code> дає <code>uint8_t</code> – 1 байт.<br><br>Важливо: <code>sizeof</code> операнда-розіменування визначається типом вказівника, а не адресою. Обидва вказівники вказують на ту саму адресу <code>0x2000</code>, але sizeof повертає різні значення.[^embeddedinterviewlab]
+`sizeof(*p)` -> **4**. Розіменування `uint32_t*` дає об'єкт типу `uint32_t` – 4 байти.
+
+`sizeof(*q)` -> **1**. Розіменування `uint8_t*` дає `uint8_t` – 1 байт.
+
+Важливо: `sizeof` операнда-розіменування визначається типом вказівника, а не адресою. Обидва вказівники вказують на ту саму адресу `0x2000`, але sizeof повертає різні значення.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

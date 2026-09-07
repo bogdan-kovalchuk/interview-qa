@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,21 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-При передачі масиву у функцію він <span class="key">автоматично перетворюється</span> на вказівник на перший елемент (decay).<br><br><code>int arr[8];</code><br><code>f(arr)</code> -> <code>f(int *)</code> – функція отримує вказівник.<br><br>Наслідки:<br>• <code>sizeof(arr)</code> всередині функції = <code>sizeof(int*)</code>, не 32;<br>• Нема copy – функція отримує доступ до оригінального масиву;<br>• Нема range checking.<br><br>Рішення: <code>f(int arr[], size_t n)</code> або у C++: <code>template&lt;size_t N&gt; f(int (&amp;arr)[N])</code>.[^embeddedinterviewlab]
+При передачі масиву у функцію він **автоматично перетворюється** на вказівник на перший елемент (decay).
+
+`int arr[8];` `f(arr)` -> `f(int *)` – функція отримує вказівник.
+
+Наслідки:
+- `sizeof(arr)` всередині функції = `sizeof(int*)`, не 32;
+- Нема copy – функція отримує доступ до оригінального масиву;
+- Нема range checking.
+
+Рішення: `f(int arr[], size_t n)` або у C++: `template<size_t N> f(int (&arr)[N])`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

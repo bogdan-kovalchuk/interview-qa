@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Vector table містить initial SP і addresses handlers; NVIC enable-ить IRQ, виставляє pending state і вибирає найвищий priority. При вході в ISR Cortex-M автоматично stacking-ить частину registers, переходить у handler mode і може робити nested interrupts. Return from ISR через спеціальне <code>EXC_RETURN</code> відновлює context; у RTOS це також точка для context switch.[^dou-embedded-interview]
+Vector table містить initial SP і addresses handlers; NVIC enable-ить IRQ, виставляє pending state і вибирає найвищий priority. При вході в ISR Cortex-M автоматично stacking-ить частину registers, переходить у handler mode і може робити nested interrupts. Return from ISR через спеціальне `EXC_RETURN` відновлює context; у RTOS це також точка для context switch.[^dou-embedded-interview]
 
 ## Detailed explanation
 

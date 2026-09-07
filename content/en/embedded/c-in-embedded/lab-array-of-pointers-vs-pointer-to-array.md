@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0065
-title: "What is the memory difference between <code>int *arr[5]</code> and <code>int (*arr)[5]</code>?"
+title: "What is the memory difference between `int *arr[5]` and `int (*arr)[5]`?"
 description: "How an array of pointers differs from a pointer to an array."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

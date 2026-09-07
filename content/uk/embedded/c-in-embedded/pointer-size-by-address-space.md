@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Залежить від архітектури процесора: <span class="key">16-bit</span> -> 2 байти, <span class="key">32-bit</span> -> 4 байти, <span class="key">64-bit</span> -> 8 байтів. Тип вказівника не має значення: <code>char *</code>, <code>int *</code>, <code>struct Foo *</code> – всі займають однакову кількість байтів. В Embedded (ARM Cortex-M) – завжди 4 байти. Перевірити: <code>sizeof(void *)</code>.[^dou-embedded-interview]
+Залежить від архітектури процесора: **16-bit** -> 2 байти, **32-bit** -> 4 байти, **64-bit** -> 8 байтів. Тип вказівника не має значення: `char *`, `int *`, `struct Foo *` – всі займають однакову кількість байтів. В Embedded (ARM Cortex-M) – завжди 4 байти. Перевірити: `sizeof(void *)`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-У Linux є <span class="key">character</span>, <span class="key">block</span>, <span class="key">network</span>, platform, bus-specific devices тощо.<br>Device model представляє їх через <code>struct device</code>, bus, driver, class і sysfs nodes.<br>Для embedded важливі platform devices, devicetree/ACPI опис hardware і binding driver до compatible/resource data.[^dou-embedded-interview]
+У Linux є **character**, **block**, **network**, platform, bus-specific devices тощо. Device model представляє їх через `struct device`, bus, driver, class і sysfs nodes. Для embedded важливі platform devices, devicetree/ACPI опис hardware і binding driver до compatible/resource data.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

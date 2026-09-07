@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0053
-title: "Що поверне <code>sizeof(\"hello\")</code> vs <code>sizeof(char*)</code> на 32-bit?"
+title: "Що поверне `sizeof(\"hello\")` vs `sizeof(char*)` на 32-bit?"
 description: "How sizeof treats a string literal and a pointer."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>sizeof("hello")</code> -> <span class="key">6</span>. Рядковий літерал – масив: <code>{'h','e','l','l','o','\0'}</code>. <code>sizeof</code> рядкового літерала повертає розмір масиву включно з null-terminator.<br><br><code>sizeof(char*)</code> -> <span class="key">4</span>. Розмір вказівника = розрядність платформи;<br><br>Важливо: <code>sizeof("hello")</code> не decay-ується до вказівника (sizeof – одне з трьох виключень array decay). Тому отримуємо розмір масиву.[^embeddedinterviewlab]
+`sizeof("hello")` -> **6**. Рядковий літерал – масив: `{'h','e','l','l','o','\0'}`. `sizeof` рядкового літерала повертає розмір масиву включно з null-terminator.
+
+`sizeof(char*)` -> **4**. Розмір вказівника = розрядність платформи;
+
+Важливо: `sizeof("hello")` не decay-ується до вказівника (sizeof – одне з трьох виключень array decay). Тому отримуємо розмір масиву.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

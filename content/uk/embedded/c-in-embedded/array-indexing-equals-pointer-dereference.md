@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0013
-title: "Розберіть?<br><pre class=\"code-block\"><code>int arr[3] = {1,2,3};<br>printf(\"%d %d\", arr[2], *(arr+2));</code></pre>"
+title: "Розберіть?"
 description: "Why array indexing and pointer dereferencing are equivalent."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[3] = {1,2,3};
+printf("%d %d", arr[2], *(arr+2));
+```
 
 ## Short answer
 
-Обидва вирази виводять <span class="key">3</span> і є повністю еквівалентними за стандартом C.<br><br><code>arr[2]</code> -> стандарт визначає як <code>*(arr+2)</code>: до адреси <code>arr</code> додається <code>2 * sizeof(int) = 8</code> байт, потім розіменовується.<br><br>Тому навіть <code>2[arr]</code> -> <code>*(2+arr)</code> -> 3 – теж коректно (через комутативність додавання, хоча й нечитабельно).[^embeddedinterviewlab]
+Обидва вирази виводять **3** і є повністю еквівалентними за стандартом C.
+
+`arr[2]` -> стандарт визначає як `*(arr+2)`: до адреси `arr` додається `2 * sizeof(int) = 8` байт, потім розіменовується.
+
+Тому навіть `2[arr]` -> `*(2+arr)` -> 3 – теж коректно (через комутативність додавання, хоча й нечитабельно).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

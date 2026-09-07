@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-TCP починається з <span class="key">three-way handshake</span>, потім гарантує ordered byte stream через ACK, retransmission, windowing і congestion control.<br>На embedded важливі RAM buffers, timeout/reconnect logic, partial writes/reads і backpressure від network stack.<br><span class="warn">Keepalive не замінює application-level heartbeat, якщо треба швидко виявляти завислий peer.</span>[^dou-embedded-interview]
+TCP починається з **three-way handshake**, потім гарантує ordered byte stream через ACK, retransmission, windowing і congestion control. На embedded важливі RAM buffers, timeout/reconnect logic, partial writes/reads і backpressure від network stack. <span class="warn">Keepalive не замінює application-level heartbeat, якщо треба швидко виявляти завислий peer.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

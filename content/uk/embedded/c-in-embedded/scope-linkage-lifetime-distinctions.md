@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Scope</span> – де ім'я видиме в source code. <span class="key">Linkage</span> – чи одне й те саме ім'я може посилатися на той самий object/function між scopes або translation units. <span class="key">Lifetime/storage duration</span> – коли існує сам об'єкт у пам'яті; наприклад, block-scope <code>static</code> має локальну видимість, але живе весь runtime.[^dou-embedded-interview]
+**Scope** – де ім'я видиме в source code. **Linkage** – чи одне й те саме ім'я може посилатися на той самий object/function між scopes або translation units. **Lifetime/storage duration** – коли існує сам об'єкт у пам'яті; наприклад, block-scope `static` має локальну видимість, але живе весь runtime.[^dou-embedded-interview]
 
 ## Detailed explanation
 

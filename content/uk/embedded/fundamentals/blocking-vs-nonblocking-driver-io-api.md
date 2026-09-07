@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Blocking call засинає або чекає, поки data/resource стане доступним, наприклад <code>read</code> з порожнього device queue. Non-blocking call одразу повертає <code>EAGAIN</code>/<code>EWOULDBLOCK</code>, якщо операцію не можна виконати. У драйверах це впливає на wait queues, poll/select/epoll support, timeout-и й те, чи можна викликати API з конкретного context.[^dou-embedded-interview]
+Blocking call засинає або чекає, поки data/resource стане доступним, наприклад `read` з порожнього device queue. Non-blocking call одразу повертає `EAGAIN`/`EWOULDBLOCK`, якщо операцію не можна виконати. У драйверах це впливає на wait queues, poll/select/epoll support, timeout-и й те, чи можна викликати API з конкретного context.[^dou-embedded-interview]
 
 ## Detailed explanation
 

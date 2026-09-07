@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? peripherals-and-buses; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу peripherals-and-buses; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Serial Peripheral Interface</span> – синхронний послідовний інтерфейс. Чотири лінії: <code>SCK</code> (clock), <code>MOSI</code> (Master Out Slave In), <code>MISO</code> (Master In Slave Out), <code>CS/SS</code> (Chip Select, активний LOW).<br><br>Архітектура master-slave. Повний дуплекс. Висока швидкість (десятки MHz); Окремий CS для кожного slave; Немає адресації – вибір пристрою через CS; Немає ACK; Типово: Flash-пам'ять, АЦП, дисплеї, SD-карти.[^dou-embedded-interview]
+**Serial Peripheral Interface** – синхронний послідовний інтерфейс. Чотири лінії: `SCK` (clock), `MOSI` (Master Out Slave In), `MISO` (Master In Slave Out), `CS/SS` (Chip Select, активний LOW).
+
+Архітектура master-slave. Повний дуплекс. Висока швидкість (десятки MHz); Окремий CS для кожного slave; Немає адресації – вибір пристрою через CS; Немає ACK; Типово: Flash-пам'ять, АЦП, дисплеї, SD-карти.[^dou-embedded-interview]
 
 ## Detailed explanation
 

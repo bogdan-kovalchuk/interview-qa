@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0031
-title: "How are <code>arr[i]</code> and <code>*(arr+i)</code> related in standard C?"
+title: "How are `arr[i]` and `*(arr+i)` related in standard C?"
 description: "Why array subscripting is defined through pointer arithmetic."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

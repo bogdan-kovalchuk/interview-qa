@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Використовують <span class="key">volatile/atomic flags</span>, lock-free ring buffers, critical sections, RTOS queues/semaphores або direct task notification.<br>Shared multi-byte state захищають interrupt disable, mutex у task context або atomic operations, залежно від платформи.<br><span class="warn">Сам по собі <code>volatile</code> не робить операцію atomic і не вирішує race condition.</span>[^dou-embedded-interview]
+Використовують **volatile/atomic flags**, lock-free ring buffers, critical sections, RTOS queues/semaphores або direct task notification. Shared multi-byte state захищають interrupt disable, mutex у task context або atomic operations, залежно від платформи. <span class="warn">Сам по собі `volatile` не робить операцію atomic і не вирішує race condition.</span>[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

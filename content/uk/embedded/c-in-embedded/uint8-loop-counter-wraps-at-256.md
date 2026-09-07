@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0086
-title: "Trap: нескінченний цикл?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">256</span>];<br><span class=\"code-type\">int</span> *p=arr;<br><span class=\"code-kw\">for</span>(<span class=\"code-type\">uint8_t</span> i=<span class=\"code-num\">0</span>;<br>i&lt;<span class=\"code-num\">256</span>;<br>i++) *p++=i;</code></pre>"
+title: "Trap: нескінченний цикл?"
 description: "Why an 8-bit loop counter cannot reach the terminating value 256."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[256];
+int *p=arr;
+for(uint8_t i=0;
+i<256;
+i++) *p++=i;
+```
 
 ## Short answer
 
-<span class="warn">Так, нескінченний цикл!</span> <code>uint8_t i</code> – беззнаковий 8-bit. При <code>i=255</code> -> <code>i++</code> -> wrap до 0 -> умова <code>0 &lt; 256</code> -> true. Цикл ніколи не завершується.<br><br>Виправлення: <code>for(int i=0; i&lt;256; i++)</code> або <code>for(size_t i=0; i&lt;256; i++)</code>.<br><br>GCC з <code>-Wtype-limits</code>: попередить якщо умова завжди true; Типова помилка при роботі з буферами розміром 256.[^embeddedinterviewlab]
+<span class="warn">Так, нескінченний цикл!</span> `uint8_t i` – беззнаковий 8-bit. При `i=255` -> `i++` -> wrap до 0 -> умова `0 < 256` -> true. Цикл ніколи не завершується.
+
+Виправлення: `for(int i=0; i<256; i++)` або `for(size_t i=0; i<256; i++)`.
+
+GCC з `-Wtype-limits`: попередить якщо умова завжди true; Типова помилка при роботі з буферами розміром 256.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

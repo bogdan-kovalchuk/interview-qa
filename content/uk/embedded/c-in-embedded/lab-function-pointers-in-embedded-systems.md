@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,20 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Function pointer</span> – вказівник що зберігає адресу функції у .text (Flash).<br><br>Синтаксис: <code>void (*fp)(uint8_t) = &amp;send_byte;</code>.<br><br>Застосування у embedded:<br>• <span class="key">HAL callbacks</span>: <code>HAL_UART_RegisterCallback(huart, id, fp)</code>;<br>• <span class="key">RTOS task</span>: <code>xTaskCreate(task_fn, ...)</code>;<br>• <span class="key">Bootloader</span>: <code>void (*jump)(void) = (void(*)(void))app_addr; jump();</code>;<br>• <span class="key">State machine</span>: таблиця функцій-обробників станів. Це типові embedded-випадки використання.[^embeddedinterviewlab]
+**Function pointer** – вказівник що зберігає адресу функції у .text (Flash).
+
+Синтаксис: `void (*fp)(uint8_t) = &send_byte;`.
+
+Застосування у embedded:
+- **HAL callbacks**: `HAL_UART_RegisterCallback(huart, id, fp)`;
+- **RTOS task**: `xTaskCreate(task_fn, ...)`;
+- **Bootloader**: `void (*jump)(void) = (void(*)(void))app_addr; jump();`;
+- **State machine**: таблиця функцій-обробників станів. Це типові embedded-випадки використання.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

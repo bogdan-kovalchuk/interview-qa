@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0043
-title: "Яке значення повертає <code>&amp;arr</code> і як відрізняється від <code>arr</code> якщо <code>int arr[8]</code>?"
+title: "Яке значення повертає `&arr` і як відрізняється від `arr` якщо `int arr[8]`?"
 description: "Why <code>arr</code> and <code>&amp;arr</code> share an address but have different pointer types."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Обидва вирази дають <span class="key">однакову числову адресу</span> (адресу першого елемента масиву), але мають різні <span class="key">типи</span>:<br><br><code>arr</code> -> decay до <code>int*</code>. <code>arr+1</code> -> +4 байти (один int).<br><code>&amp;arr</code> -> <code>int(*)[8]</code> (вказівник на масив). <code>&amp;arr+1</code> -> +32 байти (один масив).<br><br>Практично: <code>&amp;arr</code> використовується для передачі у функцію що очікує <code>int(*)[8]</code> – зберігає розмір масиву у типі.[^embeddedinterviewlab]
+Обидва вирази дають **однакову числову адресу** (адресу першого елемента масиву), але мають різні **типи**:
+
+`arr` -> decay до `int*`. `arr+1` -> +4 байти (один int). `&arr` -> `int(*)[8]` (вказівник на масив). `&arr+1` -> +32 байти (один масив).
+
+Практично: `&arr` використовується для передачі у функцію що очікує `int(*)[8]` – зберігає розмір масиву у типі.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

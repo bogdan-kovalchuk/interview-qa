@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0058
-title: "Яку адресу матиме <code>p+1</code> якщо <code>p</code> вказує на <code>uint32_t</code> за адресою <code>0x2000</code>?"
+title: "Яку адресу матиме `p+1` якщо `p` вказує на `uint32_t` за адресою `0x2000`?"
 description: "How pointer arithmetic scales by the pointed-to type."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>p+1 = 0x2004</code>.<br><br>Pointer arithmetic для <code>uint32_t*</code>: крок = <code>sizeof(uint32_t) = 4</code> байти. <code>0x2000 + 1*4 = 0x2004</code>.<br><br>Загальна формула: <code>p + n</code> -> адреса = <code>(uintptr_t)p + n * sizeof(*p)</code>.<br><br>Регістровий bank: якщо <code>volatile uint32_t *reg = (volatile uint32_t*)0x40020000;</code> -> <code>reg+1</code> -> регістр за адресою <code>0x40020004</code>.[^embeddedinterviewlab]
+`p+1 = 0x2004`.
+
+Pointer arithmetic для `uint32_t*`: крок = `sizeof(uint32_t) = 4` байти. `0x2000 + 1*4 = 0x2004`.
+
+Загальна формула: `p + n` -> адреса = `(uintptr_t)p + n * sizeof(*p)`.
+
+Регістровий bank: якщо `volatile uint32_t *reg = (volatile uint32_t*)0x40020000;` -> `reg+1` -> регістр за адресою `0x40020004`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

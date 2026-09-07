@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0080
-title: "Що виведе?<br><pre class=\"code-block\"><code>int x=42;<br>void *p=&amp;x;<br>printf(\"%d\", *(int*)p);</code></pre>"
+title: "Що виведе?"
 description: "How a void pointer is cast back before dereferencing the original object."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int x=42;
+void *p=&x;
+printf("%d", *(int*)p);
+```
 
 ## Short answer
 
-<code>42</code>.<br><br><code>void *p = &amp;x</code> – дозволено у C (implicit conversion). <code>p</code> зберігає адресу <code>x</code>, але тип "erased".<br><br><code>*(int*)p</code> – cast до <code>int*</code>, потім розіменування. Коректно оскільки <code>p</code> вказує на справжній <code>int</code>.<br><br>Якби cast до неправильного типу: <code>*(float*)p</code> -> UB (strict aliasing). Правило: cast <code>void*</code> завжди до того типу, з якого він був отриманий.[^embeddedinterviewlab]
+`42`.
+
+`void *p = &x` – дозволено у C (implicit conversion). `p` зберігає адресу `x`, але тип "erased".
+
+`*(int*)p` – cast до `int*`, потім розіменування. Коректно оскільки `p` вказує на справжній `int`.
+
+Якби cast до неправильного типу: `*(float*)p` -> UB (strict aliasing). Правило: cast `void*` завжди до того типу, з якого він був отриманий.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

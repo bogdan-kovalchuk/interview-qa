@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">One-past-the-end pointer</span> – вказівник на елемент одразу після останнього у масиві: <code>arr + N</code> для масиву з N елементів.<br><br>За стандартом C: формувати <span class="key">дозволено</span>, але <span class="warn">розіменовувати – UB</span>.<br><br>Використання: стандартний ідіом кінця: <code>int *end = arr + N; for(int *p=arr; p!=end; p++)</code>.<br><br>Вказівники далі (arr+N+1 і т.д.) – UB вже при формуванні. Тому: <span class="warn">тільки один елемент "після кінця"</span>.[^embeddedinterviewlab]
+**One-past-the-end pointer** – вказівник на елемент одразу після останнього у масиві: `arr + N` для масиву з N елементів.
+
+За стандартом C: формувати **дозволено**, але <span class="warn">розіменовувати – UB</span>.
+
+Використання: стандартний ідіом кінця: `int *end = arr + N; for(int *p=arr; p!=end; p++)`.
+
+Вказівники далі (arr+N+1 і т.д.) – UB вже при формуванні. Тому: <span class="warn">тільки один елемент "після кінця"</span>.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

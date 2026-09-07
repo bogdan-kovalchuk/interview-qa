@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Масив залишається масивом і <span class="key">не decay-ується</span> у трьох випадках:<br><br>1. <code>sizeof(arr)</code> – повертає загальний розмір масиву у байтах, не розмір вказівника;<br>2. <code>&amp;arr</code> – повертає вказівник на масив <code>int(*)[N]</code>, не <code>int*</code>;<br>3. Ініціалізація рядковим літералом: <code>char arr[] = "hi"</code> – копіює символи у масив.<br><br>Пам'ятай ці три виключення – вони часто зустрічаються на інтерв'ю.[^embeddedinterviewlab]
+Масив залишається масивом і **не decay-ується** у трьох випадках:
+
+1. `sizeof(arr)` – повертає загальний розмір масиву у байтах, не розмір вказівника;
+2. `&arr` – повертає вказівник на масив `int(*)[N]`, не `int*`;
+3. Ініціалізація рядковим літералом: `char arr[] = "hi"` – копіює символи у масив.
+
+Пам'ятай ці три виключення – вони часто зустрічаються на інтерв'ю.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

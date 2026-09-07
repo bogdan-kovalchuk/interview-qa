@@ -8,8 +8,8 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,26 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>int find_max(const int *arr, size_t n) {<br>&nbsp;&nbsp;if(arr == NULL || n == 0) return INT_MIN;<br>&nbsp;&nbsp;const int *p = arr;<br>&nbsp;&nbsp;const int *end = arr + n;<br>&nbsp;&nbsp;int max = *p++;<br>&nbsp;&nbsp;while(p != end) {<br>&nbsp;&nbsp;&nbsp;&nbsp;if(*p &gt; max) max = *p;<br>&nbsp;&nbsp;&nbsp;&nbsp;p++;<br>&nbsp;&nbsp;}<br>&nbsp;&nbsp;return max;<br>}</code><br><br>Ключові моменти: <code>const int*</code> – читання без зміни, <code>size_t n</code> – розмір явно, <code>arr + n</code> – one-past-the-end як sentinel. <code>INT_MIN</code> потребує <code>&lt;limits.h&gt;</code>; у real API краще повертати status окремо від значення.[^embeddedinterviewlab]
+```c
+int find_max(const int *arr, size_t n) {
+    if(arr == NULL || n == 0) return INT_MIN;
+    const int *p = arr;
+    const int *end = arr + n;
+    int max = *p++;
+    while(p != end) {
+        if(*p > max) max = *p;
+        p++;
+    }
+    return max;
+}
+```
+
+Ключові моменти: `const int*` – читання без зміни, `size_t n` – розмір явно, `arr + n` – one-past-the-end як sentinel. `INT_MIN` потребує `<limits.h>`; у real API краще повертати status окремо від значення.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

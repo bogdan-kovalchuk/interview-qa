@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "2.47"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу memory-and-linker; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>malloc</code> бере блок із heap, веде metadata й шукає вільний chunk достатнього розміру; <code>free</code> повертає блок allocator-у. На MCU heap малий, allocator може бути недетермінований за часом і створювати fragmentation. <span class="warn">У long-running firmware це ризик failure у runtime</span>, тому часто використовують static buffers, pools або arena allocator.[^dou-embedded-interview]
+`malloc` бере блок із heap, веде metadata й шукає вільний chunk достатнього розміру; `free` повертає блок allocator-у. На MCU heap малий, allocator може бути недетермінований за часом і створювати fragmentation. <span class="warn">У long-running firmware це ризик failure у runtime</span>, тому часто використовують static buffers, pools або arena allocator.[^dou-embedded-interview]
 
 ## Detailed explanation
 

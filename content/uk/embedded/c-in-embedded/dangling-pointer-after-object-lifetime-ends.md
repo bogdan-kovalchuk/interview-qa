@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,17 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Dangling pointer</span> – вказівник, що вказує на <span class="warn">вже звільнену або знищену</span> пам'ять.<br><br>Причини:<br>1; Повернення адреси локальної змінної: <code>int* f(){ int x=5; return &amp;x; }</code> – x знищена при поверненні;<br>2; Після <code>free(ptr)</code> без обнулення: <code>free(ptr); *ptr = 1;</code> – UB;<br>3. Вказівник на об'єкт, термін дії якого закінчився.<br><br>Небезпека: пам'ять <span class="warn">виглядає валідною</span> до її перевикористання. Баги надзвичайно важко відтворити.[^embeddedinterviewlab]
+**Dangling pointer** – вказівник, що вказує на <span class="warn">вже звільнену або знищену</span> пам'ять.
+
+Причини: 1; Повернення адреси локальної змінної: `int* f(){ int x=5; return &x; }` – x знищена при поверненні; 2; Після `free(ptr)` без обнулення: `free(ptr); *ptr = 1;` – UB;
+3. Вказівник на об'єкт, термін дії якого закінчився.
+
+Небезпека: пам'ять <span class="warn">виглядає валідною</span> до її перевикористання. Баги надзвичайно важко відтворити.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

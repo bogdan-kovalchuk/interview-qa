@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0083
-title: "Яка адреса <code>arr</code>, <code>&amp;arr</code>, <code>arr+1</code>, <code>&amp;arr+1</code> якщо <code>int arr[4]</code> за адресою <code>0x1000</code>?"
+title: "Яка адреса `arr`, `&arr`, `arr+1`, `&arr+1` якщо `int arr[4]` за адресою `0x1000`?"
 description: "How array and pointer types produce different address increments."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>arr</code> -> <code>0x1000</code> (decay до <code>int*</code>, вказує на arr[0]).<br><code>&amp;arr</code> -> <code>0x1000</code> (вказує на весь масив, тип <code>int(*)[4]</code>). Та сама адреса, різний тип!<br><br><code>arr+1</code> -> <code>0x1004</code> (крок = <code>sizeof(int) = 4</code>).<br><code>&amp;arr+1</code> -> <code>0x1010</code> (крок = <code>sizeof(int[4]) = 16</code>).<br><br>Ось де різниця типів проявляється: однакова початкова адреса, різний крок.[^embeddedinterviewlab]
+`arr` -> `0x1000` (decay до `int*`, вказує на arr[0]). `&arr` -> `0x1000` (вказує на весь масив, тип `int(*)[4]`). Та сама адреса, різний тип!
+
+`arr+1` -> `0x1004` (крок = `sizeof(int) = 4`). `&arr+1` -> `0x1010` (крок = `sizeof(int[4]) = 16`).
+
+Ось де різниця типів проявляється: однакова початкова адреса, різний крок.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

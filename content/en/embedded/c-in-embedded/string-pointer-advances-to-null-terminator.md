@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0037
-title: "What does this print?<br><pre class=\"code-block\"><code><span class=\"code-type\">char</span> str[] = \"hello\";<br><span class=\"code-type\">char</span> *p = str;<br><span class=\"code-kw\">while</span>(*p) p++;<br><span class=\"code-fn\">printf</span>(\"%td\", p-str);</code></pre>"
+title: "What does this print?"
 description: "How pointer iteration reaches the string null terminator."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+char str[] = "hello";
+char *p = str;
+while(*p) p++;
+printf("%td", p-str);
+```
 
 ## Short answer
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,14 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "2.47"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? memory-and-linker; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу memory-and-linker; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Змінна може мати різне місце зберігання залежно від storage duration і linker script. Локальні автоматичні змінні зазвичай лежать на <span class="key">stack</span>, динамічні об'єкти з <code>malloc</code> – у <span class="key">heap</span>, глобальні та <code>static</code> – у статичній пам'яті.[^dou-embedded-interview]
+Змінна може мати різне місце зберігання залежно від storage duration і linker script. Локальні автоматичні змінні зазвичай лежать на **stack**, динамічні об'єкти з `malloc` – у **heap**, глобальні та `static` – у статичній пам'яті.[^dou-embedded-interview]
 
-Типові секції: <code>.data</code> – ініціалізовані глобальні/static змінні, копіюються з Flash у RAM; <code>.bss</code> – нульові або неініціалізовані global/static, зануляються startup-кодом; <code>.rodata</code> – константи; <code>.text</code> – машинний код. Компілятор також може тимчасово тримати значення в регістрах.
+Типові секції: `.data` – ініціалізовані глобальні/static змінні, копіюються з Flash у RAM; `.bss` – нульові або неініціалізовані global/static, зануляються startup-кодом; `.rodata` – константи; `.text` – машинний код. Компілятор також може тимчасово тримати значення в регістрах.
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0058
-title: "What address will <code>p+1</code> have if <code>p</code> points to a <code>uint32_t</code> at address <code>0x2000</code>?"
+title: "What address will `p+1` have if `p` points to a `uint32_t` at address `0x2000`?"
 description: "How pointer arithmetic scales by the pointed-to type."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

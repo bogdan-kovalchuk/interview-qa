@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Buildroot</span> простіший для генерації rootfs/toolchain/images з fixed configuration.<br><span class="key">Yocto</span> складніший, але гнучкий для продуктів з layers, recipes, package management і довгим lifecycle.<br><span class="key">OpenWrt</span> орієнтований на мережеві пристрої, а vendor BSP часто дає швидкий старт, але може мати застарілий kernel і patches.[^dou-embedded-interview]
+**Buildroot** простіший для генерації rootfs/toolchain/images з fixed configuration. **Yocto** складніший, але гнучкий для продуктів з layers, recipes, package management і довгим lifecycle. **OpenWrt** орієнтований на мережеві пристрої, а vendor BSP часто дає швидкий старт, але може мати застарілий kernel і patches.[^dou-embedded-interview]
 
 ## Detailed explanation
 

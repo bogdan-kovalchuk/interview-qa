@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0090
-title: "Find the bug: will the outer pointer move?<br><pre class=\"code-block\"><code><span class=\"code-type\">void</span> advance(<span class=\"code-type\">char</span> *p, <span class=\"code-type\">int</span> n){<br>  p += n;<br>}</code></pre>"
+title: "Find the bug: will the outer pointer move?"
 description: "Why changing a pointer parameter does not change the caller's pointer."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,14 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+void advance(char *p, int n){
+  p += n;
+}
+```
 
 ## Short answer
 

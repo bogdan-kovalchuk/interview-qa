@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Toolchain file</span> задає CMake, що build іде не для host, а для target: <code>CMAKE_SYSTEM_NAME</code>, compilers, archiver, objcopy, sysroot і flags. <code>sysroot</code> дає headers/libraries target-системи, а target flags задають ABI, FPU, CPU core, linker script тощо. Без цього CMake може непомітно знайти host-бібліотеки й зібрати несумісний binary.[^dou-embedded-interview]
+**Toolchain file** задає CMake, що build іде не для host, а для target: `CMAKE_SYSTEM_NAME`, compilers, archiver, objcopy, sysroot і flags. `sysroot` дає headers/libraries target-системи, а target flags задають ABI, FPU, CPU core, linker script тощо. Без цього CMake може непомітно знайти host-бібліотеки й зібрати несумісний binary.[^dou-embedded-interview]
 
 ## Detailed explanation
 

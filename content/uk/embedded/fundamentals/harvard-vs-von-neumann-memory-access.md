@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-У <span class="key">von Neumann</span> code і data ділять один address space/bus. У <span class="key">Harvard</span> instruction і data memories/buses розділені, тому Flash і RAM можуть мати різні правила доступу. На деяких MCU читання constants із program memory потребує спеціальних instructions/API, а self-programming Flash має обмеження по erase/write і timing.[^dou-embedded-interview]
+У **von Neumann** code і data ділять один address space/bus. У **Harvard** instruction і data memories/buses розділені, тому Flash і RAM можуть мати різні правила доступу. На деяких MCU читання constants із program memory потребує спеціальних instructions/API, а self-programming Flash має обмеження по erase/write і timing.[^dou-embedded-interview]
 
 ## Detailed explanation
 

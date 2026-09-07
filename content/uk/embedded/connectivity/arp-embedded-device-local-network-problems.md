@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">ARP</span> зіставляє IPv4 address з MAC address у локальному Ethernet/Wi-Fi сегменті.<br>Embedded device стикається з ARP при першому connect до gateway/peer, IP conflict, stale ARP cache, link flap або sleep/wake сценаріях.<br>Симптоми: ping не проходить у LAN, перший packet губиться, після зміни IP/MAC потрібен gratuitous ARP.[^dou-embedded-interview]
+**ARP** зіставляє IPv4 address з MAC address у локальному Ethernet/Wi-Fi сегменті. Embedded device стикається з ARP при першому connect до gateway/peer, IP conflict, stale ARP cache, link flap або sleep/wake сценаріях. Симптоми: ping не проходить у LAN, перший packet губиться, після зміни IP/MAC потрібен gratuitous ARP.[^dou-embedded-interview]
 
 ## Detailed explanation
 

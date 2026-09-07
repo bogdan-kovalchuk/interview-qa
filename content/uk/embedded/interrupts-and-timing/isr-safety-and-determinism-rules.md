@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">ISR</span> - це interrupt service routine, код який виконується у відповідь на hardware/software interrupt.<br>Вона має бути короткою, deterministic, не blocking, без heap і довгих locks, з мінімальним shared state.<br>Типовий патерн: clear interrupt flag, забрати/покласти мінімальні дані, notify task або main loop.[^dou-embedded-interview]
+**ISR** - це interrupt service routine, код який виконується у відповідь на hardware/software interrupt. Вона має бути короткою, deterministic, не blocking, без heap і довгих locks, з мінімальним shared state. Типовий патерн: clear interrupt flag, забрати/покласти мінімальні дані, notify task або main loop.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">MMU</span> транслює virtual addresses у physical addresses і забезпечує page permissions/isolation. Більшість bare-metal MCU не має MMU: код працює в одному address space, без process isolation і demand paging. Embedded Linux зазвичай потребує MMU для processes, virtual memory, mmap і захисту kernel/user space.[^dou-embedded-interview]
+**MMU** транслює virtual addresses у physical addresses і забезпечує page permissions/isolation. Більшість bare-metal MCU не має MMU: код працює в одному address space, без process isolation і demand paging. Embedded Linux зазвичай потребує MMU для processes, virtual memory, mmap і захисту kernel/user space.[^dou-embedded-interview]
 
 ## Detailed explanation
 

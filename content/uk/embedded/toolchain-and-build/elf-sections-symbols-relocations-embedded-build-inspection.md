@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? toolchain-and-build; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">ELF</span> – object/executable формат із headers, sections, symbols, relocations і debug info. В embedded дивляться entry point, section sizes/addresses, symbol table, vector table placement і чи <code>.data/.bss</code> потрапили в правильну RAM. Корисні команди: <code>readelf -S</code>, <code>readelf -s</code>, <code>objdump -d</code>, <code>size</code>.[^dou-embedded-interview]
+**ELF** – object/executable формат із headers, sections, symbols, relocations і debug info. В embedded дивляться entry point, section sizes/addresses, symbol table, vector table placement і чи `.data/.bss` потрапили в правильну RAM. Корисні команди: `readelf -S`, `readelf -s`, `objdump -d`, `size`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

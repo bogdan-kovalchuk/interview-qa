@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? data-types-and-memory-layout; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Cache coherency</span> означає узгодженість даних між CPU caches, DMA і peripheral views of memory.<br><span class="key">Memory barrier</span> задає порядок memory operations, щоб CPU/compiler не переставили critical accesses.<br><span class="warn">Для DMA часто потрібні cache clean/invalidate і barriers, інакше device або CPU бачить stale data.</span>[^dou-embedded-interview]
+**Cache coherency** означає узгодженість даних між CPU caches, DMA і peripheral views of memory. **Memory barrier** задає порядок memory operations, щоб CPU/compiler не переставили critical accesses. <span class="warn">Для DMA часто потрібні cache clean/invalidate і barriers, інакше device або CPU бачить stale data.</span>[^dou-embedded-interview]
 
 ## Detailed explanation
 

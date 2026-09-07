@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0095
-title: "What is printed?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> x=<span class=\"code-num\">5</span>;<br><span class=\"code-kw\">const</span> <span class=\"code-type\">int</span> *p=&amp;x;<br>x=<span class=\"code-num\">10</span>;<br><span class=\"code-fn\">printf</span>(\"%d\",*p);</code></pre>"
+title: "What is printed?"
 description: "Why a pointer to const cannot write while still observing direct changes to a non-const object."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int x=5;
+const int *p=&x;
+x=10;
+printf("%d",*p);
+```
 
 ## Short answer
 

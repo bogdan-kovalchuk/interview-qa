@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,17 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>void</code> означає «відсутність типу». Три використання:<br><br>1. <span class="key">Функція без повернення</span>: <code>void init(void);</code><br>2. <span class="key">Функція без параметрів</span>: <code>int get(void);</code> – у C <code>int f()</code> і <code>int f(void)</code> різняться!<br>3; <span class="key">Узагальнений вказівник</span>: <code>void *ptr</code> – вказівник на будь-який object type; його не можна напряму розіменувати або робити над ним стандартну pointer arithmetic;<br><br>У C <code>void *</code> неявно конвертується в object pointer, але перед доступом треба мати конкретний тип: <code>int *p = ptr;</code>; У C++ таке перетворення потребує явного cast.[^dou-embedded-interview]
+`void` означає «відсутність типу». Три використання:
+
+1. **Функція без повернення**: `void init(void);`
+2. **Функція без параметрів**: `int get(void);` – у C `int f()` і `int f(void)` різняться! 3; **Узагальнений вказівник**: `void *ptr` – вказівник на будь-який object type; його не можна напряму розіменувати або робити над ним стандартну pointer arithmetic;
+
+У C `void *` неявно конвертується в object pointer, але перед доступом треба мати конкретний тип: `int *p = ptr;`; У C++ таке перетворення потребує явного cast.[^dou-embedded-interview]
 
 ## Detailed explanation
 

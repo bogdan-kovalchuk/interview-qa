@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0071
-title: "Trap: UB?<br><pre class=\"code-block\"><code>int arr[3]={1,2,3};<br>int *p=arr;<br>p--;<br>printf(\"%d\",*p);</code></pre>"
+title: "Trap: UB?"
 description: "Why decrementing a pointer at the beginning of an array is undefined."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,25 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[3]={1,2,3};
+int *p=arr;
+p--;
+printf("%d",*p);
+```
 
 ## Short answer
 
-<span class="warn">Так, UB.</span> <code>p = arr</code> -> вказівник на <code>arr[0]</code>. <code>p--</code> -> <code>arr-1</code>, що знаходиться <span class="warn">поза масивом</span>.<br><br>Допустимі вказівники для <code>arr[3]</code>: <code>arr</code> (=arr+0) до <code>arr+3</code> (one-past-the-end). <code>arr-1</code> – UB вже при формуванні, не тільки при розіменуванні.<br><br>Компілятор може припустити що UB не відбувається -> непередбачувані оптимізації; Отже, arr-1 формувати не можна.[^embeddedinterviewlab]
+<span class="warn">Так, UB.</span> `p = arr` -> вказівник на `arr[0]`. `p--` -> `arr-1`, що знаходиться <span class="warn">поза масивом</span>.
+
+Допустимі вказівники для `arr[3]`: `arr` (=arr+0) до `arr+3` (one-past-the-end). `arr-1` – UB вже при формуванні, не тільки при розіменуванні.
+
+Компілятор може припустити що UB не відбувається -> непередбачувані оптимізації; Отже, arr-1 формувати не можна.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

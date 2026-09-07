@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0098
-title: "Що зробить?<br><pre class=\"code-block\"><code><span class=\"code-type\">uint32_t</span> reg=*((<span class=\"code-kw\">volatile</span> <span class=\"code-type\">uint32_t</span>*)<span class=\"code-num\">0x40020010</span>);<br>reg|=(<span class=\"code-num\">1</span>&lt;&lt;<span class=\"code-num\">5</span>);<br>*((<span class=\"code-kw\">volatile</span> <span class=\"code-type\">uint32_t</span>*)<span class=\"code-num\">0x40020010</span>)=reg;</code></pre>"
+title: "Що зробить?"
 description: "What a volatile read-modify-write sequence does and why it can race with an ISR."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,25 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+uint32_t reg=*((volatile uint32_t*)0x40020010);
+reg|=(1<<5);
+*((volatile uint32_t*)0x40020010)=reg;
+```
 
 ## Short answer
 
-Read-Modify-Write (RMW) операція над hardware register:<br>1. <span class="key">Read</span>: читає поточне значення регістру з адреси <code>0x40020010</code>;<br>2. <span class="key">Modify</span>: встановлює біт 5 (<code>|= (1&lt;&lt;5)</code>), не змінюючи інші біти;<br>3. <span class="key">Write</span>: записує назад у регістр.<br><br><span class="warn">Ризик</span>: між read і write інший потік або ISR може змінити регістр -> race condition; Для атомарного RMW: STM32 BSRR (GPIO), або disable IRQ навколо RMW.[^embeddedinterviewlab]
+Read-Modify-Write (RMW) операція над hardware register:
+1. **Read**: читає поточне значення регістру з адреси `0x40020010`;
+2. **Modify**: встановлює біт 5 (`|= (1<<5)`), не змінюючи інші біти;
+3. **Write**: записує назад у регістр.
+
+<span class="warn">Ризик</span>: між read і write інший потік або ISR може змінити регістр -> race condition; Для атомарного RMW: STM32 BSRR (GPIO), або disable IRQ навколо RMW.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

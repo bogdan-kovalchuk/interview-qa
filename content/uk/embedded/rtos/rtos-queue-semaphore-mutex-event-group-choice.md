@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? rtos; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу rtos; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Queue</span> передає дані між ISR/tasks або tasks, <span class="key">semaphore</span> сигналізує подію чи рахує ресурси.<br><span class="key">Mutex</span> захищає shared resource і бажано має priority inheritance.<br><span class="key">Event group</span> зручний для набору flags, коли task чекає одну або кілька умов.[^dou-embedded-interview]
+**Queue** передає дані між ISR/tasks або tasks, **semaphore** сигналізує подію чи рахує ресурси. **Mutex** захищає shared resource і бажано має priority inheritance. **Event group** зручний для набору flags, коли task чекає одну або кілька умов.[^dou-embedded-interview]
 
 ## Detailed explanation
 

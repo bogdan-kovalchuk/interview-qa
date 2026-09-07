@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,19 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">VLA</span> (C99) – масив з розміром визначеним під час виконання: <code>void f(int n) { int arr[n]; }</code>.<br><br>Небезпеки у embedded:<br>1. <span class="warn">Stack overflow</span>: розмір не відомий на compile-time -> не можна гарантувати достатньо стека;<br>2. Нема compile-time <code>sizeof</code> – важко аналізувати stack usage;<br>3. MISRA C:2012 та C11 – VLA опціональний (removed from mandatory);<br>4; Clang/GCC: <code>-Wvla</code> для попереджень;<br><br>Замість VLA: static масив максимального розміру + runtime перевірка розміру.[^embeddedinterviewlab]
+**VLA** (C99) – масив з розміром визначеним під час виконання: `void f(int n) { int arr[n]; }`.
+
+Небезпеки у embedded:
+1. <span class="warn">Stack overflow</span>: розмір не відомий на compile-time -> не можна гарантувати достатньо стека;
+2. Нема compile-time `sizeof` – важко аналізувати stack usage;
+3. MISRA C:2012 та C11 – VLA опціональний (removed from mandatory); 4; Clang/GCC: `-Wvla` для попереджень;
+
+Замість VLA: static масив максимального розміру + runtime перевірка розміру.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

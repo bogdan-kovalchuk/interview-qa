@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0022
-title: "Яку адресу матиме <code>p</code> після: <code>uint16_t arr[4]; uint16_t *p = arr; p += 2;</code>?"
+title: "Яку адресу матиме `p` після: `uint16_t arr[4]; uint16_t *p = arr; p += 2;`?"
 description: "How typed pointer arithmetic determines the resulting address."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Якщо <code>arr</code> за адресою <code>0x2000</code> -> <code>p = 0x2000 + 2 * sizeof(uint16_t) = 0x2000 + 4 = 0x2004</code>.<br><br>Крок pointer arithmetic для <code>uint16_t*</code> = 2 байти. <code>p += 2</code> -> зсув на 2 елементи × 2 байти = 4 байти.<br><br>Тепер <code>p</code> вказує на <code>arr[2]</code>. Зважай: кроки завжди у "елементах типу", не у байтах.[^embeddedinterviewlab]
+Якщо `arr` за адресою `0x2000` -> `p = 0x2000 + 2 * sizeof(uint16_t) = 0x2000 + 4 = 0x2004`.
+
+Крок pointer arithmetic для `uint16_t*` = 2 байти. `p += 2` -> зсув на 2 елементи × 2 байти = 4 байти.
+
+Тепер `p` вказує на `arr[2]`. Зважай: кроки завжди у "елементах типу", не у байтах.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

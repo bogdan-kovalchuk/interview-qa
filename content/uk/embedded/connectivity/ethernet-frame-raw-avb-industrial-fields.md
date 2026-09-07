@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? connectivity; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу connectivity; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Ethernet frame</span> містить destination/source MAC, EtherType або length, payload і FCS; VLAN tag може додати priority/VID.<br>Для raw Ethernet важливі MAC filtering, MTU, padding і EtherType.<br>Для AVB/industrial Ethernet критичні timestamping, priority/QoS, deterministic latency і взаємодія MAC/PHY/driver.[^dou-embedded-interview]
+**Ethernet frame** містить destination/source MAC, EtherType або length, payload і FCS; VLAN tag може додати priority/VID. Для raw Ethernet важливі MAC filtering, MTU, padding і EtherType. Для AVB/industrial Ethernet критичні timestamping, priority/QoS, deterministic latency і взаємодія MAC/PHY/driver.[^dou-embedded-interview]
 
 ## Detailed explanation
 

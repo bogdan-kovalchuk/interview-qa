@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "6.2.0"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? interrupts-and-timing; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу interrupts-and-timing; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-У <span class="key">PWM</span> timer рахує період і порівнює counter з duty value, керуючи output pin.<br><span class="key">Input capture</span> зберігає counter на edge для вимірювання часу, а <span class="key">output compare</span> генерує подію/зміну pin при match.<br><span class="key">One-pulse</span> запускає одноразовий імпульс заданої тривалості після trigger.[^dou-embedded-interview]
+У **PWM** timer рахує період і порівнює counter з duty value, керуючи output pin. **Input capture** зберігає counter на edge для вимірювання часу, а **output compare** генерує подію/зміну pin при match. **One-pulse** запускає одноразовий імпульс заданої тривалості після trigger.[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

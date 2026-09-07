@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0043
-title: "What value does <code>&amp;arr</code> return, and how does it differ from <code>arr</code> when <code>int arr[8]</code>?"
+title: "What value does `&arr` return, and how does it differ from `arr` when `int arr[8]`?"
 description: "Why <code>arr</code> and <code>&amp;arr</code> share an address but have different pointer types."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:

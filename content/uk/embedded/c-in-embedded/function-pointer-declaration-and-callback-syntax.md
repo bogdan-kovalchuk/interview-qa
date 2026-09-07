@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<span class="key">Function pointer</span> – вказівник на функцію: зберігає адресу коду функції для виклику через нього.<br><br>Синтаксис: <code>return_type (*name)(param_types);</code><br>Приклад: <code>void (*isr)(void) = &amp;my_handler;</code><br><br>Виклик: <code>(*isr)();</code> або просто <code>isr();</code> (обидва коректні).<br><br>Застосування у embedded: ISR dispatch tables, state machine transitions, RTOS task functions, callback API (<code>HAL_UART_RegisterCallback</code>).[^embeddedinterviewlab]
+**Function pointer** – вказівник на функцію: зберігає адресу коду функції для виклику через нього.
+
+Синтаксис: `return_type (*name)(param_types);` Приклад: `void (*isr)(void) = &my_handler;`
+
+Виклик: `(*isr)();` або просто `isr();` (обидва коректні).
+
+Застосування у embedded: ISR dispatch tables, state machine transitions, RTOS task functions, callback API (`HAL_UART_RegisterCallback`).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

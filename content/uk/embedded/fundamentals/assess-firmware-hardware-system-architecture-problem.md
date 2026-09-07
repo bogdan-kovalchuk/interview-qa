@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Спочатку визнач симптом, constraint і failure mode: timing, noise margin, resource limit, protocol mismatch чи requirement gap.<br>Firmware доречний для sequencing, filtering, diagnostics і policy; hardware - для signal integrity, protection, analog limits і deterministic safety cutoff.<br><span class="key">System architecture</span> потрібна, коли проблема виникає з невірного розподілу відповідальності між blocks або неможливих requirements.[^dou-embedded-interview]
+Спочатку визнач симптом, constraint і failure mode: timing, noise margin, resource limit, protocol mismatch чи requirement gap. Firmware доречний для sequencing, filtering, diagnostics і policy; hardware - для signal integrity, protection, analog limits і deterministic safety cutoff. **System architecture** потрібна, коли проблема виникає з невірного розподілу відповідальності між blocks або неможливих requirements.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,14 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>&amp;</code> AND – скидання біта: <code>reg &amp;= ~(1&lt;&lt;n)</code><br><code>|</code> OR – встановлення біта: <code>reg |= (1&lt;&lt;n)</code><br><code>^</code> XOR – інвертування: <code>reg ^= (1&lt;&lt;n)</code><br><code>~</code> NOT – побітова інверсія<br><code>&lt;&lt;</code> зсув вліво: <code>x &lt;&lt; 3</code> = x × 8<br><code>&gt;&gt;</code> зсув вправо: <code>x &gt;&gt; 1</code> = x / 2.<br><br>Типові патерни в Embedded:<br>Перевірити біт: <code>if (reg &amp; (1&lt;&lt;n))</code><br>Встановити: <code>reg |= (1&lt;&lt;n)</code><br>Скинути: <code>reg &amp;= ~(1&lt;&lt;n)</code><br>Перемкнути: <code>reg ^= (1&lt;&lt;n)</code>.[^dou-embedded-interview]
+`&` AND – скидання біта: `reg &= ~(1<<n)` `|` OR – встановлення біта: `reg |= (1<<n)` `^` XOR – інвертування: `reg ^= (1<<n)` `~` NOT – побітова інверсія `<<` зсув вліво: `x << 3` = x × 8 `>>` зсув вправо: `x >> 1` = x / 2.
+
+Типові патерни в Embedded: Перевірити біт: `if (reg & (1<<n))` Встановити: `reg |= (1<<n)` Скинути: `reg &= ~(1<<n)` Перемкнути: `reg ^= (1<<n)`.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? fundamentals; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу fundamentals; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Питай через scenario: device не отримує IP, MQTT reconnect штормить, TCP buffer переповнений, Ethernet DMA бачить stale packet або ARP cache застарів.<br>Кандидат має пояснити, що перевірить на firmware, driver, PHY/MAC, network stack і wire level.<br><span class="key">Добре питання</span> вимагає diagnosis, trade-offs і constraints MCU/Linux target, а не перелік OSI layers.[^dou-embedded-interview]
+Питай через scenario: device не отримує IP, MQTT reconnect штормить, TCP buffer переповнений, Ethernet DMA бачить stale packet або ARP cache застарів. Кандидат має пояснити, що перевірить на firmware, driver, PHY/MAC, network stack і wire level. **Добре питання** вимагає diagnosis, trade-offs і constraints MCU/Linux target, а не перелік OSI layers.[^dou-embedded-interview]
 
 ## Detailed explanation
 

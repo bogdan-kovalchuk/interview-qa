@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0010
-title: "Що поверне <code>sizeof(arr)</code> vs <code>sizeof(p)</code> якщо <code>int arr[8]; int *p = arr;</code>?"
+title: "Що поверне `sizeof(arr)` vs `sizeof(p)` якщо `int arr[8]; int *p = arr;`?"
 description: "Why sizeof an array differs from sizeof a pointer."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,16 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>sizeof(arr)</code> -> <span class="key">32</span> (8 елементів × 4 байти = 32B). <code>sizeof</code> на справжньому масиві повертає загальний розмір у байтах.<br><br><code>sizeof(p)</code> -> <span class="key">4</span> (або 8 на 64-bit). Вказівник зберігає лише адресу – його розмір = розрядність архітектури.<br><br>Ключова відмінність: масив і вказівник мають однаковий тип елементів, але <code>sizeof</code> дає зовсім різні результати.[^embeddedinterviewlab]
+`sizeof(arr)` -> **32** (8 елементів × 4 байти = 32B). `sizeof` на справжньому масиві повертає загальний розмір у байтах.
+
+`sizeof(p)` -> **4** (або 8 на 64-bit). Вказівник зберігає лише адресу – його розмір = розрядність архітектури.
+
+Ключова відмінність: масив і вказівник мають однаковий тип елементів, але `sizeof` дає зовсім різні результати.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

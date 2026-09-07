@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0015
-title: "Що таке <code>int (*p)[8]</code> і чим відрізняється від <code>int *p</code>?"
+title: "Що таке `int (*p)[8]` і чим відрізняється від `int *p`?"
 description: "How a pointer to an array differs from a pointer to an int."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>int *p</code> – вказівник на <code>int</code>. <code>p+1</code> -> +4 байти (один <code>int</code>).<br><br><code>int (*p)[8]</code> – <span class="key">вказівник на масив</span> з 8 <code>int</code>. <code>p+1</code> -> +32 байти (один масив із 8 елементів).<br><br>Використання: при роботі з 2D масивами: <code>int arr[3][8]; int (*p)[8] = arr;</code>. <code>p[1]</code> -> другий рядок; <code>p[1][3]</code> -> <code>arr[1][3]</code>;<br><br>Правило читання: <code>(*p)</code> -> "вказівник на" (дужки важливі через пріоритет операторів).[^embeddedinterviewlab]
+`int *p` – вказівник на `int`. `p+1` -> +4 байти (один `int`).
+
+`int (*p)[8]` – **вказівник на масив** з 8 `int`. `p+1` -> +32 байти (один масив із 8 елементів).
+
+Використання: при роботі з 2D масивами: `int arr[3][8]; int (*p)[8] = arr;`. `p[1]` -> другий рядок; `p[1][3]` -> `arr[1][3]`;
+
+Правило читання: `(*p)` -> "вказівник на" (дужки важливі через пріоритет операторів).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

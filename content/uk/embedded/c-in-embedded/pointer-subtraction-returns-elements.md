@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0091
-title: "Trap: що виведе?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">5</span>];<br><span class=\"code-type\">int</span> *p=arr+<span class=\"code-num\">3</span>;<br><span class=\"code-type\">int</span> *q=arr+<span class=\"code-num\">1</span>;<br><span class=\"code-fn\">printf</span>(\"%td\", p-q);</code></pre>"
+title: "Trap: що виведе?"
 description: "Why subtracting pointers returns an element distance rather than a byte count."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,25 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+int arr[5];
+int *p=arr+3;
+int *q=arr+1;
+printf("%td", p-q);
+```
 
 ## Short answer
 
-<code>2</code>. Це не trap, але перевіряє розуміння pointer subtraction.<br><br>Справжній trap: люди очікують <span class="warn">байтову різницю</span> (8 байт), але отримують <span class="key">кількість елементів</span> (2). <code>p - q</code> = <code>(arr+3) - (arr+1) = 2</code>.<br><br>Байтова різниця: <code>2 * sizeof(int) = 8</code>. Але <code>ptrdiff_t</code> повертає елементи; Якщо потрібна байтова різниця: <code>(char*)p - (char*)q</code> або <code>(uintptr_t)p - (uintptr_t)q</code>.[^embeddedinterviewlab]
+`2`. Це не trap, але перевіряє розуміння pointer subtraction.
+
+Справжній trap: люди очікують <span class="warn">байтову різницю</span> (8 байт), але отримують **кількість елементів** (2). `p - q` = `(arr+3) - (arr+1) = 2`.
+
+Байтова різниця: `2 * sizeof(int) = 8`. Але `ptrdiff_t` повертає елементи; Якщо потрібна байтова різниця: `(char*)p - (char*)q` або `(uintptr_t)p - (uintptr_t)q`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

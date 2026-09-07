@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0025
-title: "Trap: легально у стандартному C?<br><pre class=\"code-block\"><code><span class=\"code-type\">void</span> *p = <span class=\"code-fn\">malloc</span>(<span class=\"code-num\">10</span>);<br>p++;</code></pre>"
+title: "Trap: легально у стандартному C?"
 description: "Why arithmetic on void pointers is not standard C."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+void *p = malloc(10);
+p++;
+```
 
 ## Short answer
 
-<span class="warn">НІ, це невалідний стандартний C</span> (constraint violation). Стандарт забороняє pointer arithmetic на <code>void*</code> – розмір елемента невідомий (sizeof(void) не визначений), тому компілятор має видати діагностику.<br><br>GCC дозволяє як extension: трактує <code>sizeof(void) = 1</code>, тому <code>p++</code> -> +1 байт. З <code>-pedantic-errors</code>: помилка.<br><br>Правильно: перед arithmetic – cast до конкретного типу: <code>uint8_t *bp = (uint8_t*)p; bp++;</code>[^embeddedinterviewlab]
+<span class="warn">НІ, це невалідний стандартний C</span> (constraint violation). Стандарт забороняє pointer arithmetic на `void*` – розмір елемента невідомий (sizeof(void) не визначений), тому компілятор має видати діагностику.
+
+GCC дозволяє як extension: трактує `sizeof(void) = 1`, тому `p++` -> +1 байт. З `-pedantic-errors`: помилка.
+
+Правильно: перед arithmetic – cast до конкретного типу: `uint8_t *bp = (uint8_t*)p; bp++;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,14 +28,19 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
 Забороняє компілятору кешувати значення змінної в регістрі або прибирати доступ як "зайвий" – при кожному зверненні виконується реальне читання/запис.[^dou-embedded-interview]
 
-Використовується коли значення може змінитися поза звичайним потоком виконання:<br>• <span class="key">Регістри периферії</span>: <code>volatile uint32_t *GPIOA = (uint32_t *)0x40020000;</code><br>• <span class="key">Змінна, яку змінює ISR</span>: <code>volatile bool flag = false;</code><br>• <span class="key">Signal handler</span> або hardware status flag.<br><br>Для потоків сам по собі <code>volatile</code> <span class="warn">не є синхронізацією</span>: не гарантує atomicity, ordering або mutual exclusion. Для цього потрібні <code>mutex</code>, critical section або atomics.
+Використовується коли значення може змінитися поза звичайним потоком виконання:
+- **Регістри периферії**: `volatile uint32_t *GPIOA = (uint32_t *)0x40020000;`
+- **Змінна, яку змінює ISR**: `volatile bool flag = false;`
+- **Signal handler** або hardware status flag.
+
+Для потоків сам по собі `volatile` <span class="warn">не є синхронізацією</span>: не гарантує atomicity, ordering або mutual exclusion. Для цього потрібні `mutex`, critical section або atomics.
 
 ## Detailed explanation
 

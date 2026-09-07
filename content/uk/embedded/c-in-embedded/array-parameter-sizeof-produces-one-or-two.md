@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0016
-title: "Trap: <code>void f(int arr[]) { int n = sizeof(arr)/sizeof(arr[0]); }</code> – яке значення <code>n</code>?"
+title: "Trap: `void f(int arr[]) { int n = sizeof(arr)/sizeof(arr[0]); }` – яке значення `n`?"
 description: "Why the array-length idiom fails for an array parameter."
 track: embedded
 section: c-in-embedded
@@ -8,8 +8,8 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-<code>n = 1</code> (на 32-bit) або <code>n = 2</code> (на 64-bit).<br><br>У параметрі функції <code>int arr[]</code> ≡ <code>int *arr</code> – decay до вказівника. <code>sizeof(arr) = sizeof(int*) = 4</code> (або 8). <code>sizeof(arr[0]) = sizeof(int) = 4</code>. Тому <code>4/4 = 1</code>;<br><br><span class="warn">Не 8, не 256, не розмір масиву</span> – лише 1 або 2;<br><br>Завжди передавай розмір явно: <code>void f(int *arr, size_t n)</code>; Захист: <code>_Static_assert</code> у caller.[^embeddedinterviewlab]
+`n = 1` (на 32-bit) або `n = 2` (на 64-bit).
+
+У параметрі функції `int arr[]` ≡ `int *arr` – decay до вказівника. `sizeof(arr) = sizeof(int*) = 4` (або 8). `sizeof(arr[0]) = sizeof(int) = 4`. Тому `4/4 = 1`;
+
+<span class="warn">Не 8, не 256, не розмір масиву</span> – лише 1 або 2;
+
+Завжди передавай розмір явно: `void f(int *arr, size_t n)`; Захист: `_Static_assert` у caller.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

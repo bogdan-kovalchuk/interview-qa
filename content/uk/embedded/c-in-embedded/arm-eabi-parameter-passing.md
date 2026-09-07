@@ -8,8 +8,8 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,12 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-За ARM EABI/AAPCS перші прості integer/pointer аргументи зазвичай передаються в <code>r0-r3</code>, результат – у <code>r0</code> або <code>r0:r1</code>. Додаткові аргументи та частина великих aggregate objects ідуть через stack з потрібним alignment. Registers <code>r4-r11</code> є callee-saved, а <code>r0-r3,r12,lr</code> caller-saved у звичайному calling convention.[^dou-embedded-interview]
+За ARM EABI/AAPCS перші прості integer/pointer аргументи зазвичай передаються в `r0-r3`, результат – у `r0` або `r0:r1`. Додаткові аргументи та частина великих aggregate objects ідуть через stack з потрібним alignment. Registers `r4-r11` є callee-saved, а `r0-r3,r12,lr` caller-saved у звичайному calling convention.[^dou-embedded-interview]
 
 ## Detailed explanation
 

@@ -8,8 +8,8 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,13 @@ sources:
     accessed: 2026-09-06
     kind: official
     version: "latest"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? testing-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу testing-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Винеси доступ до регістрів/HAL за тонкий interface або fake register block, а бізнес-логіку тестуй на host.<br>У тесті перевіряй, які bits записані, у якій послідовності, як обробляються flags, timeout і помилки.<br><span class="warn">Не тестуй реальний MMIO pointer на host напряму; заміни <code>volatile</code> register access контрольованим fake/shim шаром.</span>[^dou-embedded-interview]
+Винеси доступ до регістрів/HAL за тонкий interface або fake register block, а бізнес-логіку тестуй на host. У тесті перевіряй, які bits записані, у якій послідовності, як обробляються flags, timeout і помилки. <span class="warn">Не тестуй реальний MMIO pointer на host напряму; заміни `volatile` register access контрольованим fake/shim шаром.</span>[^dou-embedded-interview]
+
 ## Detailed explanation
 
 TODO

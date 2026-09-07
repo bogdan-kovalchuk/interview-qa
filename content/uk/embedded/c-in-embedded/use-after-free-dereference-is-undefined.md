@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0046
-title: "Trap: що не так?<br><pre class=\"code-block\"><code>free(ptr);<br>if(*ptr == 0)</code></pre>"
+title: "Trap: що не так?"
 description: "Why dereferencing a pointer after free is undefined behavior."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -28,12 +28,23 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
+
+## Question code
+
+```c
+free(ptr);
+if(*ptr == 0)
+```
 
 ## Short answer
 
-<span class="warn">Use-after-free – undefined behavior.</span> Після <code>free(ptr)</code> блок пам'яті повертається heap manager-у і може бути одразу перевикористаний.<br><br>Читання <code>*ptr</code> -> UB: може повернути 0, старе значення або нове значення від іншого malloc. У реальному коді – джерело security vulnerabilities (type confusion, heap exploitation).<br><br>Правило: після <code>free</code> завжди: <code>ptr = NULL;</code>; <code>if(ptr != NULL &amp;&amp; *ptr == 0)</code> – тоді безпечно.[^embeddedinterviewlab]
+<span class="warn">Use-after-free – undefined behavior.</span> Після `free(ptr)` блок пам'яті повертається heap manager-у і може бути одразу перевикористаний.
+
+Читання `*ptr` -> UB: може повернути 0, старе значення або нове значення від іншого malloc. У реальному коді – джерело security vulnerabilities (type confusion, heap exploitation).
+
+Правило: після `free` завжди: `ptr = NULL;`; `if(ptr != NULL && *ptr == 0)` – тоді безпечно.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

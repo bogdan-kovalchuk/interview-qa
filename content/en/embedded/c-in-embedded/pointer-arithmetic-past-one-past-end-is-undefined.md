@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0040
-title: "Trap: UB?<br><pre class=\"code-block\"><code><span class=\"code-type\">int</span> arr[<span class=\"code-num\">4</span>]={<span class=\"code-num\">0</span>};<br><span class=\"code-type\">int</span> *p=arr;<br>p+=<span class=\"code-num\">5</span>;<br>*p=<span class=\"code-num\">1</span>;</code></pre>"
+title: "Trap: UB?"
 description: "Why pointer arithmetic beyond one-past-the-end is undefined behavior."
 track: embedded
 section: c-in-embedded
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -30,6 +30,15 @@ sources:
     version: "N1570"
     applicability: "Authoritative section-level reference for c in embedded concepts; details of specific devices and toolchains can differ."
 ---
+
+## Question code
+
+```c
+int arr[4]={0};
+int *p=arr;
+p+=5;
+*p=1;
+```
 
 ## Short answer
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   en: 1
 anki:
@@ -28,12 +28,18 @@ sources:
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "??????????? ??????? ????? ?????? ??? ?????? ???? c-in-embedded; ?????? ?????????? ????????? ?? ???????????? ?????? ????????????."
+    applicability: "Авторитетне джерело рівня секції для понять розділу c-in-embedded; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
-Рядок у C – масив символів де останній елемент = <span class="key">'\0' (null-terminator)</span>, байт зі значенням 0.<br><br>"hello" -> <code>['h','e','l','l','o','\0']</code> – 6 байт у пам'яті.<br><br>Null-terminator сигналізує стандартним функціям (<code>strlen</code>, <code>strcpy</code>, <code>printf %s</code>) де рядок закінчується. Без '\0' – читання виходить за межі -> UB.<br><br>Рядкові літерали автоматично мають '\0'. При ручному заповненні: <code>buf[n] = '\0';</code> обов'язково.[^embeddedinterviewlab]
+Рядок у C – масив символів де останній елемент = **'\0' (null-terminator)**, байт зі значенням 0.
+
+"hello" -> `['h','e','l','l','o','\0']` – 6 байт у пам'яті.
+
+Null-terminator сигналізує стандартним функціям (`strlen`, `strcpy`, `printf %s`) де рядок закінчується. Без '\0' – читання виходить за межі -> UB.
+
+Рядкові літерали автоматично мають '\0'. При ручному заповненні: `buf[n] = '\0';` обов'язково.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
