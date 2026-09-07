@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0029
 title: "Trap: what is wrong with this context pointer?"
-description: "Trap: what is wrong with this context pointer?"
+description: "&app becomes a dangling pointer after returning from init."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ void init(void) {
 
 ## Short answer
 
-TODO
+<span class="warn">`&app` becomes a dangling pointer after returning from `init`.</span>
+
+If the timer callback fires later, it receives the address of a stack object that no longer exists. On an MCU this can look like random state corruption, a HardFault or a flaky bug.
+
+Protection: make `app` static or global, store it in caller-owned storage, or unregister the callback before the object's lifetime ends.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

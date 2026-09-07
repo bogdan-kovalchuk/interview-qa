@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Cortex-M0/M0+ <span class="warn">does not support misaligned memory access</span>: any access to a 2/4-byte type at an unaligned address -> <span class="warn">HardFault</span>.
+
+`__attribute__((packed))` removes padding – fields may land at odd addresses. Accessing a `uint32_t` at offset 1 -> HardFault.
+
+M3/M4 support misaligned access (but slower). Fix: for serial/network buffers, serialize/deserialize via `memcpy` into an aligned buffer.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

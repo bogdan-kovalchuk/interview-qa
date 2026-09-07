@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0002
 title: "How do you read the declaration `void (*handler)(int)`?"
-description: "How do you read the declaration `void (*handler)(int)`?"
+description: "handler is a pointer to a function that takes int and returns void."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`handler` is a pointer to a function that takes `int` and returns `void`.**
+
+The parentheses around `*handler` are critical: they say the pointer belongs to the name `handler`, not to the return type. Without the parentheses it would be a different declaration.
+
+Reading rule: start from the name. `handler` is pointer to function taking `int` returning `void`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

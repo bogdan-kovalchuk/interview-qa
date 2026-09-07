@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0031
 title: "Trap: why must `void *context` be cast back to the right type?"
-description: "Trap: why must `void *context` be cast back to the right type?"
+description: "An incorrect cast of the context pointer gives undefined behavior when accessing the object."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">An incorrect cast of the context pointer gives undefined behavior when accessing the object.</span>
+
+`void *` carries no runtime type information. If the callback expects `struct Uart *` but the driver passed `struct Spi *`, the compiler will not protect you. Field accesses then interpret the wrong layout as the wrong type.
+
+Protection: make the registration API typed where possible; add magic or version fields for debugging; do not reuse one callback signature for incompatible context objects without a wrapper.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

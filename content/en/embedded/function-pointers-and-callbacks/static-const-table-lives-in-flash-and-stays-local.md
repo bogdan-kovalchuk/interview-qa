@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0022
 title: "Why should a function pointer table be `static const`?"
-description: "Why should a function pointer table be `static const`?"
+description: "static const makes the table file-local and read-only so it can reside in Flash or .rodata."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**`static const`** makes the table file-local and read-only, so it can reside in Flash/`.rodata`.
+
+For an MCU this saves RAM and protects the mapping from accidental runtime overwrite. If the table never needs to change after build time, a mutable global array is an unnecessary risk.
+
+Example: `static const cmd_handler_t handlers[] = { cmd_ping, cmd_reset };`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

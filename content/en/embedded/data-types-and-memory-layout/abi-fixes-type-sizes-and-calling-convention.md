@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,17 @@ sources:
 
 ## Short answer
 
-TODO
+**ABI** (Application Binary Interface) – rules for interaction between compiled modules: type sizes, calling convention, struct alignment, register usage.
+
+ARM AAPCS (Cortex-M):
+- `int` = 32 bits
+- `long` = 32 bits (not 64!)
+- `long long` = 64 bits
+- `float` = 32 bits
+- `double` = 64 bits
+- `pointer` = 32 bits
+
+ABI is the reason `sizeof(int)` on Cortex-M equals 4. Changing the ABI (cross-compile) breaks binary compatibility.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0009
 title: "Trap: what happens when a null function pointer is called?"
-description: "Trap: what happens when a null function pointer is called?"
+description: "Calling a null function pointer is undefined behavior."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -40,7 +40,11 @@ cb();
 
 ## Short answer
 
-TODO
+<span class="warn">Undefined behavior.</span>
+
+On Cortex-M this is often an attempt to jump to address 0 or another invalid address, which may end in a HardFault. But the C standard guarantees no specific outcome: it is simply an incorrect call.
+
+Defense: before an optional callback always check `if (cb != NULL) { cb(); }`, or register a default no-op callback.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

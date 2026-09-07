@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0008
 title: "Do you need the `&` operator when assigning a function to a function pointer?"
-description: "Do you need the `&` operator when assigning a function to a function pointer?"
+description: "Usually no, because the function designator decays to a function pointer automatically."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Usually no.**
+
+`cb = foo;` and `cb = &foo;` have the same effect for a regular function: the function designator decays to a pointer to function. Likewise, when calling `cb()` you don't need to write `(*cb)()` explicitly, although that is also valid.
+
+Rule: in production C the short style `cb = foo;` and `cb(arg);` is more common.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

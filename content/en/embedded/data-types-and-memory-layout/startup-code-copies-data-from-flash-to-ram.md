@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0038
 title: "What does startup code do with the `.data` section before calling `main()`?"
-description: "Startup code copies the initial `.data` values from Flash (LMA) into RAM (VMA) before `main()` runs."
+description: "Startup code copies the initial .data values from Flash (LMA) into RAM (VMA) before main() runs."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+Startup code copies the initial `.data` values from Flash (LMA - Load Memory Address) to RAM (VMA - Virtual Memory Address).
+
+Example: `uint32_t x = 42;` -> in Flash the bytes are `{0x2A,0x00,0x00,0x00}`, startup code copies them into RAM. Then `x` in RAM = 42.
+
+Implementation (startup.s): `memcpy(&_sdata, &_sidata, &_edata - &_sdata);`. Then: `memset(&_sbss, 0, &_ebss - &_sbss);`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

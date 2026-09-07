@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0073
 title: "How do you detect a platform's endianness at runtime using a union?"
-description: "Writing a known value into `union.word` and reading `bytes[0]` reveals whether the platform is little- or big-endian."
+description: "Writing a known value into union.word and reading bytes[0] reveals whether the platform is little- or big-endian."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+`union { uint32_t word; uint8_t bytes[4]; } u;
+u.word = 0x01020304;
+if(u.bytes[0] == 0x04) { /* little-endian */ }`
+
+Little-endian: `bytes[0] = 0x04` (LSB first). Cortex-M is little-endian by default.
+
+Via pointer: `uint32_t x = 1; if(*(char*)&x == 1)` -> little-endian.
+
+For networking: `htonl()`/`ntohl()` convert between host and network byte order (big-endian).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

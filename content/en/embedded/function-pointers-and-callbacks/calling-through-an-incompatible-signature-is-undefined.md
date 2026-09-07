@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0016
 title: "Trap: what is wrong with calling a callback through an incompatible signature?"
-description: "Trap: what is wrong with calling a callback through an incompatible signature?"
+description: "Calling through a function pointer of an incompatible type is undefined behavior."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -41,7 +41,11 @@ cb();
 
 ## Short answer
 
-TODO
+<span class="warn">Calling through a function pointer of an incompatible type is undefined behavior.</span>
+
+Even if the function address is physically correct, the calling convention expects different arguments, return value, or register usage. On an embedded ABI this can corrupt the stack/registers or pass garbage values.
+
+Defense: do not fix the `-Wincompatible-pointer-types` warning with a cast. Write an adapter function with the correct signature.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

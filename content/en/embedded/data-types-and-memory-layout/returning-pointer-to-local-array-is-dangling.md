@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0080
 title: "Find the bug: `char* get_name(void) { char buf[32] = \"test\"; return buf; }`"
-description: "`buf` is destroyed on return, so the function returns a dangling pointer into invalid stack memory."
+description: "buf is destroyed on return, so the function returns a dangling pointer into invalid stack memory."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,16 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Returning a pointer to a local array -> undefined behavior.</span> `buf[32]` is on the stack, destroyed after return.
+
+The caller gets a dangling pointer – a pointer to already invalid memory. Reading it -> garbage or crash.
+
+Solutions:
+1. `static char buf[32];` (but not reentrant);
+2. Pass the buffer as a parameter: `void get_name(char *buf, size_t len);`
+3. `malloc` + document that the caller must `free`.
+
+GCC: `warning: function returns address of local variable`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

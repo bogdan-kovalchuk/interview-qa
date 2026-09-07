@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0011
 title: "Trap: what is wrong with this callback storage?"
-description: "Trap: what is wrong with this callback storage?"
+description: "The callback may be unregistered or NULL, causing undefined behavior."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -43,7 +43,11 @@ void uart_isr(void) {
 
 ## Short answer
 
-TODO
+<span class="warn">The callback may be unregistered or `NULL`.</span>
+
+If the ISR calls `rx_cb` before registration, it is undefined behavior and on an MCU very likely a HardFault. In interrupt context this is even worse: the fault can occur asynchronously and is hard to reproduce.
+
+Defense: initialize the callback with a no-op function or check `if (rx_cb != NULL)`. Perform registration before enabling the interrupt.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

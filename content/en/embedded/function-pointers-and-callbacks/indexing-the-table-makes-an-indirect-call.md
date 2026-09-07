@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0019
 title: "What does this dispatch table print?"
-description: "What does this dispatch table print?"
+description: "The dispatch table prints 42 because ops[1] points to dbl."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -42,7 +42,11 @@ printf("%d", ops[1](21));
 
 ## Short answer
 
-TODO
+Prints `42`.
+
+`ops[1]` is a pointer to `dbl`. The call `ops[1](21)` performs an indirect call and returns `21 * 2`.
+
+Rule: an array of function pointers must contain functions with the same compatible signature. For different signatures, wrappers or variant dispatch are needed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

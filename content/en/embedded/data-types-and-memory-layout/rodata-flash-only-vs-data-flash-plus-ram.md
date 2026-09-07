@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0072
 title: "What is the resource difference between `.rodata` in Flash and `.data` in RAM?"
-description: "`.rodata` is read straight from Flash at no RAM cost, while `.data` pays for both Flash and RAM."
+description: ".rodata is read straight from Flash at no RAM cost, while .data pays for both Flash and RAM."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**.rodata** – Flash only: the CPU reads constants directly from there (with wait states), no RAM is spent.
+
+**.data** – both Flash and RAM: values in Flash (LMA) + a copy in RAM (VMA). That is, <span class="warn">double cost</span>: Flash for initialization values + RAM for runtime.
+
+Practice on an MCU with 20KB RAM: a large lookup table -> `const` -> `.rodata` -> Flash only. Saving RAM is critical.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

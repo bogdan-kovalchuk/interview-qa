@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0024
 title: "How do you declare an ISR handler type with no arguments and no return value?"
-description: "How do you declare an ISR handler type with no arguments and no return value?"
+description: "Typedef a pointer to a void function taking void, then use it as the vector table entry type."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+Typically:
+
+`typedef void (*isr_handler_t)(void);`
+
+After that the vector table can contain `isr_handler_t` entries. On Cortex-M the real vector table often has a special layout because the first entry is the initial stack pointer, not a function pointer.
+
+Rule: do not mix data pointers and function pointers without understanding the startup ABI; the vector table is usually described by separate linker/startup constructs.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

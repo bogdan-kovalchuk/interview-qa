@@ -1,15 +1,15 @@
 ---
 id: emb-fnptr-0025
 title: "Trap: why can you not cast any address to a function pointer and call it?"
-description: "Trap: why can you not cast any address to a function pointer and call it?"
+description: "The address may not be a valid entry point for a function with the required ABI signature."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-07
+content_revision: 2
 reconciled_with:
   uk: 1
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">The address may not be a valid entry address for a function with the required ABI signature.</span>
+
+On Cortex-M function addresses carry Thumb-state bit semantics; calling a wrong address can cause a HardFault. The address may also point to data memory, padding, a bootloader table or a function with a different calling convention.
+
+Protection: call only valid function entry points with the correct signature. For a bootloader jump use the documented sequence: deinit, set MSP, set VTOR, jump to Reset_Handler.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

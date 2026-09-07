@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+A typical Cortex-M stack: **1–8 KB** depending on the MCU and linker script.
+
+Cause #1: <span class="warn">large local arrays</span>. For example, `uint8_t buf[2048]` takes 50% of a 4KB stack! Real case: an automotive sensor crashed after 47 minutes because of a 2KB buffer on a 4KB stack with deep ISR nesting.
+
+Fix: move to `static` / global, `-fstack-usage` for analysis, MPU guard region.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

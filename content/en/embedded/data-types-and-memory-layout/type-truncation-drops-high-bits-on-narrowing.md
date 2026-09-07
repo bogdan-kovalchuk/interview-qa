@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0039
 title: "What is type truncation, and when does it happen?"
-description: "Type truncation drops the high bits when a wider type is assigned to a narrower one, e.g. `int` into `uint8_t`."
+description: "Type truncation drops the high bits when a wider type is assigned to a narrower one, e.g. int into uint8t."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+**Type truncation** is dropping the high bits when a wider type is assigned to a narrower one.
+
+Example: `int x = 300; uint8_t y = x;` -> `300 = 0x012C`, drop `0x01`, leaving `0x2C = 44`.
+
+It occurs on assignment, on function return, and when passing a smaller-type argument. Implicit truncation often produces no warning without `-Wall -Wconversion`. Always check the range before narrowing.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

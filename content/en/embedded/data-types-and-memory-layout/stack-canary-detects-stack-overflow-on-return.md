@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+A stack canary is a **magic value** (often random or `0xDEADBEEF`) written between the stack frame and critical data (the return address) on function entry.
+
+On exit: if the canary changed -> a stack overflow occurred -> `__stack_chk_fail()` is called.
+
+GCC: `-fstack-protector-strong`. In bare-metal: fill the stack with a pattern in startup, check in the watchdog/idle task via `arm_cmse_nonsecure_caller()` or manually.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

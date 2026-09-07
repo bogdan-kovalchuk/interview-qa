@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Out-of-bounds access is undefined behavior.</span> Valid indices are `0..9`, so `arr[10]` is past the end of the array.
+
+In practice it may overwrite another local variable on the stack (for example, the return address), causing corruption, a crash, or a security vulnerability, and the compiler does not check bounds.
+
+Mitigation: `-fsanitize=address` during development, `static_assert` plus explicit checks.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

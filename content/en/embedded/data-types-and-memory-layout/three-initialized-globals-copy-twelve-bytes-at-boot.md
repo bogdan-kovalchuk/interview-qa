@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0085
 title: "How many bytes does startup code copy for these globals? `int a=1; int b=2; int c=3;`"
-description: "All three are initialized globals in `.data`, so startup code copies 12 bytes (3 * `sizeof(int)`) from Flash to RAM."
+description: "All three are initialized globals in .data, so startup code copies 12 bytes (3 sizeof(int)) from Flash to RAM."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,13 @@ sources:
 
 ## Short answer
 
-TODO
+**12 bytes** (3 × `sizeof(int)` = 3 × 4).
+
+All three are initialized globals -> `.data`. Startup code copies the entire `.data` block from Flash to RAM in one memcpy-like loop.
+
+Initial values in Flash (little-endian): `{0x01,0x00,0x00,0x00, 0x02,0x00,0x00,0x00, 0x03,0x00,0x00,0x00}` -> copied to RAM.
+
+If `int a=0; int b=0; int c=0;` -> the compiler may place them in `.bss` (0B Flash).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

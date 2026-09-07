@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 2
+content_revision: 3
 reconciled_with:
   uk: 2
 anki:
@@ -41,7 +41,9 @@ reg|=(1<<5);
 
 ## Short answer
 
-TODO
+A Read-Modify-Write (RMW) operation on a hardware register: **Read** reads the current register value from address `0x40020010`, **Modify** sets bit 5 (`|= (1<<5)`) without changing other bits, **Write** writes back to the register.
+
+<span class="warn">Risk</span>: between read and write another thread or ISR may change the register -> race condition, so for atomic RMW use STM32 BSRR (GPIO) or disable IRQ around the RMW.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

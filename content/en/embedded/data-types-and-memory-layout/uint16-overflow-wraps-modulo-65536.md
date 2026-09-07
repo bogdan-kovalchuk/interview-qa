@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,11 @@ sources:
 
 ## Short answer
 
-TODO
+`x = 4464`: `uint16_t` has the range `0..65535`, and `60000 + 10000 = 70000` goes out of range.
+
+Unsigned overflow is **defined by the standard** as modular arithmetic: `70000 mod 65536 = 4464` – this is NOT undefined behavior (unlike signed overflow).
+
+But if `70000` was expected, it is a bug from the wrong type choice; use `uint32_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

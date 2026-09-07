@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0091
 title: "Trap: what happens under the C standard? `int x = INT_MAX; x++;`"
-description: "Overflowing a signed `int` past `INT_MAX` is undefined behavior, not a guaranteed wrap to `INT_MIN`."
+description: "Overflowing a signed int past INTMAX is undefined behavior, not a guaranteed wrap to INTMIN."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,15 @@ sources:
 
 ## Short answer
 
-TODO
+<span class="warn">Signed integer overflow -> undefined behavior</span> (C §6.5).
+
+The compiler may:
+1. Wrap around to `INT_MIN` (typical on x86/ARM two's complement);
+2. Optimize code in unexpected ways (e.g., remove conditional guard code);
+3. Produce an infinite loop in certain patterns.
+
+For defined wraparound: `uint32_t x = UINT32_MAX; x++;` -> `0`.
+Check: `if(x < INT_MAX) x++;`[^embeddedinterviewlab]
 
 ## Detailed explanation
 

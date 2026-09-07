@@ -1,7 +1,7 @@
 ---
 id: emb-dtypes-0015
 title: "What do `sizeof(\"hello\")` and `strlen(\"hello\")` print?"
-description: "`sizeof` counts the null terminator and gives 6; `strlen` counts characters without it and gives 5."
+description: "sizeof counts the null terminator and gives 6; strlen counts characters without it and gives 5."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-09-07
-content_revision: 1
+content_revision: 2
 reconciled_with:
   uk: 2
 anki:
@@ -33,7 +33,9 @@ sources:
 
 ## Short answer
 
-TODO
+`sizeof("hello")` -> **6**: the string literal is an array `{'h','e','l','l','o','\0'}` (6 bytes), and `sizeof` counts the null terminator at compile time. `strlen("hello")` -> **5**: a runtime function counts characters up to (not including) `'\0'`.
+
+Common mistake: allocating `malloc(strlen(s))` without +1 for `'\0'` -> buffer overflow.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
