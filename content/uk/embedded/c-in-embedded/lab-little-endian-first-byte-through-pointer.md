@@ -37,7 +37,7 @@ sources:
 
 Cast `(uint8_t*)(&val)` – вказівник на перший байт `val` у пам'яті. На little-endian: LSB знаходиться за найменшою адресою -> `0x78`.
 
-Розкладка у пам'яті: `[78][56][34][12]`. Наступний байт: `*((uint8_t*)(&val) + 1) = 0x56`;
+Розкладка у пам'яті: `[78][56][34][12]`. Наступний байт: `*((uint8_t*)(&val) + 1) = 0x56`.
 
 Доступ через byte pointer дозволений для character types (`unsigned char*`); На практиці `uint8_t` зазвичай є typedef до `unsigned char`.[^embeddedinterviewlab]
 

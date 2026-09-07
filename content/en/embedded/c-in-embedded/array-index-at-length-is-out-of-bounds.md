@@ -44,7 +44,7 @@ arr[5] = 0;
 
 In memory `arr[5]` sits right after the array: it may be another local variable, a return address, a saved LR.
 
-Consequences: silent data corruption or a crash on function return (corrupted return address);
+Consequences: silent data corruption or a crash on function return (corrupted return address).
 
 Protection: `-fsanitize=address`, explicit index checks, `static_assert(i < ARRAY_SIZE)`.[^embeddedinterviewlab]
 

@@ -36,9 +36,10 @@ sources:
 `void` means "absence of type". Three uses:
 
 1. **Function with no return**: `void init(void);`
-2. **Function with no parameters**: `int get(void);` – in C, `int f()` and `int f(void)` differ! 3; **Generic pointer**: `void *ptr` – a pointer to any object type; it cannot be directly dereferenced or used in standard pointer arithmetic;
+2. **Function with no parameters**: `int get(void);` – in C, `int f()` and `int f(void)` differ!
+3. **Generic pointer**: `void *ptr` – a pointer to any object type; it cannot be directly dereferenced or used in standard pointer arithmetic.
 
-In C, `void *` implicitly converts to an object pointer, but before access you need a concrete type: `int *p = ptr;`; in C++ such a conversion requires an explicit cast.[^dou-embedded-interview]
+In C, `void *` implicitly converts to an object pointer, but before access you need a concrete type: `int *p = ptr;`. In C++ such a conversion requires an explicit cast.[^dou-embedded-interview]
 
 ## Detailed explanation
 

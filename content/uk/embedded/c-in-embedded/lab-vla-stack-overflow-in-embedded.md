@@ -36,9 +36,11 @@ sources:
 **VLA** (C99) – масив з розміром визначеним під час виконання: `void f(int n) { int arr[n]; }`.
 
 Небезпеки у embedded:
+
 1. <span class="warn">Stack overflow</span>: розмір не відомий на compile-time -> не можна гарантувати достатньо стека;
 2. Нема compile-time `sizeof` – важко аналізувати stack usage;
-3. MISRA C:2012 та C11 – VLA опціональний (removed from mandatory); 4; Clang/GCC: `-Wvla` для попереджень;
+3. MISRA C:2012 та C11 – VLA опціональний (removed from mandatory);
+4. Clang/GCC: `-Wvla` для попереджень.
 
 Замість VLA: static масив максимального розміру + runtime перевірка розміру.[^embeddedinterviewlab]
 

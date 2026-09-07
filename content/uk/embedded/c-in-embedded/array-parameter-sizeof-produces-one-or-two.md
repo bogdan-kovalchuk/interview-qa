@@ -35,9 +35,9 @@ sources:
 
 `n = 1` (на 32-bit) або `n = 2` (на 64-bit).
 
-У параметрі функції `int arr[]` ≡ `int *arr` – decay до вказівника. `sizeof(arr) = sizeof(int*) = 4` (або 8). `sizeof(arr[0]) = sizeof(int) = 4`. Тому `4/4 = 1`;
+У параметрі функції `int arr[]` ≡ `int *arr` – decay до вказівника. `sizeof(arr) = sizeof(int*) = 4` (або 8). `sizeof(arr[0]) = sizeof(int) = 4`. Тому `4/4 = 1`.
 
-<span class="warn">Не 8, не 256, не розмір масиву</span> – лише 1 або 2;
+<span class="warn">Не 8, не 256, не розмір масиву</span> – лише 1 або 2.
 
 Завжди передавай розмір явно: `void f(int *arr, size_t n)`; Захист: `_Static_assert` у caller.[^embeddedinterviewlab]
 

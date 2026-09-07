@@ -38,7 +38,7 @@ sources:
 Навіщо:
 1. **Зміна pointer caller-а**: `void alloc(int **pp){ *pp = malloc(n); }` – без `**` caller не побачить нову адресу;
 2. **2D масиви через масиви вказівників**;
-3. Просування parse-cursor: `void parse(char **p){ (*p)++; }`;
+3. Просування parse-cursor: `void parse(char **p){ (*p)++; }`.
 
 Читання типу: `int **pp` – "вказівник на вказівник на int"; `*pp` -> вказівник, `**pp` -> значення int.[^embeddedinterviewlab]
 

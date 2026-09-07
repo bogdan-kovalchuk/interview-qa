@@ -35,7 +35,7 @@ sources:
 
 У C рядковий літерал `"hello"` має тип **`char[6]`**, але зберігається у read-only області, зазвичай `.rodata`. Модифікація такого масиву має <span class="warn">undefined behavior</span>. У C++ тип рядкового літерала - `const char[6]`.
 
-Практично правильно: `const char *p = "hello";` - тип не дозволяє випадково написати `p[0] = 'H'`. У C присвоєння `char *p = "hello";` історично дозволене, але GCC з `-Wwrite-strings` попередить про нього;
+Практично правильно: `const char *p = "hello";` - тип не дозволяє випадково написати `p[0] = 'H'`. У C присвоєння `char *p = "hello";` історично дозволене, але GCC з `-Wwrite-strings` попередить про нього.
 
 Ця різниця критична: `char*` приховує read-only nature від системи типів.[^embeddedinterviewlab]
 
