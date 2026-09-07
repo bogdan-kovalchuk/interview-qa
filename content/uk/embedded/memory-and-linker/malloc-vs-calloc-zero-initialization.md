@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-`malloc(size)` – виділяє `size` байтів, <span class="warn">не ініціалізує</span> їх.[^dou-embedded-interview] Один аргумент.
-
-`calloc(n, size)` – виділяє `n * size` байтів і **ініціалізує їх нулями**. Два аргументи; хороша реалізація також перевіряє overflow множення `n * size`.
+`malloc(size)` – виділяє `size` байтів і <span class="warn">не ініціалізує</span> їх[^dou-embedded-interview] (один аргумент), тоді як `calloc(n, size)` – виділяє `n * size` байтів і **ініціалізує їх нулями** (два аргументи; хороша реалізація також перевіряє overflow множення).
 
 Приклад: `int *a = malloc(10 * sizeof(int));` – початкові значення невизначені; `int *b = calloc(10, sizeof(int));` – всі елементи = 0. Обидва повертають `NULL` при помилці.
 

@@ -33,13 +33,11 @@ sources:
 
 ## Short answer
 
-`x = 4464`.
+`x = 4464`: `uint16_t` має діапазон `0..65535`, а `60000 + 10000 = 70000` виходить за межі.
 
-`uint16_t` має діапазон `0..65535`. `60000 + 10000 = 70000` - виходить за межі.
+Unsigned overflow **визначений стандартом** як modular arithmetic: `70000 mod 65536 = 4464` – це НЕ undefined behavior (на відміну від signed overflow).
 
-Unsigned overflow **визначений стандартом** як modular arithmetic: `70000 mod 65536 = 4464`. Це НЕ undefined behavior (на відміну від signed overflow).
-
-Але якщо очікувалось `70000` - баг від неправильного вибору типу; Використовуй `uint32_t`.[^embeddedinterviewlab]
+Але якщо очікувалось `70000` - баг від неправильного вибору типу; використовуй `uint32_t`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

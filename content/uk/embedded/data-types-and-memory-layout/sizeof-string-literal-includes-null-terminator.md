@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-`sizeof("hello")` -> **6**. Рядковий літерал - масив `{'h','e','l','l','o','\0'}`, 6 байтів. `sizeof` - compile-time, рахує null-terminator.
-
-`strlen("hello")` -> **5**. Рахує символи до (не включаючи) `'\0'` - runtime функція.
+`sizeof("hello")` -> **6**: рядковий літерал - масив `{'h','e','l','l','o','\0'}` (6 байтів), а `sizeof` compile-time рахує null-terminator. `strlen("hello")` -> **5**: runtime функція рахує символи до (не включаючи) `'\0'`.
 
 Типова помилка: виділити `malloc(strlen(s))` без +1 для `'\0'` -> buffer overflow.[^embeddedinterviewlab]
 

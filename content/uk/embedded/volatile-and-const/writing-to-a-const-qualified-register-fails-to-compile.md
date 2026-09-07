@@ -44,9 +44,9 @@ volatile const uint32_t * const STATUS =
 
 <span class="warn">Ні. Це має бути помилка компіляції</span>, бо `*STATUS` має const-qualified type.
 
-`volatile` не скасовує `const`. Воно лише каже, що читання не можна кешувати або прибирати. `const` каже, що через цей lvalue firmware не має права записувати дані.
+`volatile` не скасовує `const`: воно лише каже, що читання не можна кешувати або прибирати, тоді як `const` каже, що через цей lvalue firmware не має права записувати дані.
 
-Захист: read-only регістри описуй як `volatile const`. Якщо vendor header дозволяє запис у read-only register, це слабкий контракт типів.[^embeddedinterviewlab]
+Захист: read-only регістри описуй як `volatile const`; якщо vendor header дозволяє запис у read-only register, це слабкий контракт типів.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -41,12 +41,9 @@ reg|=(1<<5);
 
 ## Short answer
 
-Read-Modify-Write (RMW) операція над hardware register:
-1. **Read**: читає поточне значення регістру з адреси `0x40020010`;
-2. **Modify**: встановлює біт 5 (`|= (1<<5)`), не змінюючи інші біти;
-3. **Write**: записує назад у регістр.
+Read-Modify-Write (RMW) операція над hardware register: **Read** читає поточне значення регістру з адреси `0x40020010`, **Modify** встановлює біт 5 (`|= (1<<5)`) не змінюючи інші біти, **Write** записує назад у регістр.
 
-<span class="warn">Ризик</span>: між read і write інший потік або ISR може змінити регістр -> race condition; Для атомарного RMW: STM32 BSRR (GPIO), або disable IRQ навколо RMW.[^embeddedinterviewlab]
+<span class="warn">Ризик</span>: між read і write інший потік або ISR може змінити регістр -> race condition, тож для атомарного RMW використовуй STM32 BSRR (GPIO) або disable IRQ навколо RMW.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

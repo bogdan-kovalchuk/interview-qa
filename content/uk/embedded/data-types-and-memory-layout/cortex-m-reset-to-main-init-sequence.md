@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-1. Апаратура читає Vector Table: SP <- значення за адресою `0x00000000`, PC <- Reset Handler за адресою `0x00000004`.
-2. Startup code копіює `.data` з Flash (LMA) у RAM (VMA);
-3. Обнуляє `.bss`;
-4. Виклик глобальних C++ конструкторів (якщо є);
-5. Виклик `main()`.
+Апаратура читає Vector Table: SP <- значення за адресою `0x00000000`, PC <- Reset Handler за адресою `0x00000004`. Startup code копіює `.data` з Flash (LMA) у RAM (VMA), обнуляє `.bss`, викликає глобальні C++ конструктори (якщо є) і нарешті `main()`.
 
 Локальні змінні в `main()` - на стеку, <span class="warn">не ініціалізуються</span>.[^embeddedinterviewlab]
 

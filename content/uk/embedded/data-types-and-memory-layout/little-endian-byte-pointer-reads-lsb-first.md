@@ -33,14 +33,9 @@ sources:
 
 ## Short answer
 
-`EF`.
+`EF`: на little-endian (Cortex-M) LSB зберігається за найменшою адресою, тож `0xDEADBEEF` у пам'яті - `[EF][BE][AD][DE]` і `p[0]` = `0xEF` (LSB), `p[1] = 0xBE`, `p[2] = 0xAD`, `p[3] = 0xDE` (MSB).
 
-На little-endian (Cortex-M) LSB зберігається за найменшою адресою. `0xDEADBEEF` у пам'яті: `[EF][BE][AD][DE]`.
-
-`p[0]` = перший байт за адресою `&x` = `0xEF` (LSB).
-`p[1] = 0xBE`, `p[2] = 0xAD`, `p[3] = 0xDE` (MSB).
-
-Доступ через byte pointer дозволений для character types (`unsigned char*`). На практиці `uint8_t` зазвичай є typedef до `unsigned char`.[^embeddedinterviewlab]
+Доступ через byte pointer дозволений для character types (`unsigned char*`), а `uint8_t` зазвичай є typedef до `unsigned char`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
