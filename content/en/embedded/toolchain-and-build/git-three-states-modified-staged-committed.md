@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -22,13 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
-  - source_id: gcc-overall-options
-    title: "GCC manual: Options Controlling the Kind of Output"
-    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
+  - source_id: git-scm-doc
+    title: "Git documentation"
+    url: "https://git-scm.com/doc"
+    accessed: 2026-09-08
     kind: official
-    version: "latest"
-    applicability: "Authoritative section-level reference for toolchain and build concepts; details of specific devices and toolchains can differ."
+    version: "current"
+    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
 ---
 
 ## Short answer
@@ -43,7 +43,27 @@ Typical cycle: edit a file, then `git add file`, then `git commit -m "message"`.
 
 ## Detailed explanation
 
-TODO
+In Git, every file passes through three states corresponding to three areas of the repository:[^git-scm-doc]
+
+**Working directory** is your local copy of files where you edit code. When you change a file, it enters the **modified** state – the changes exist, but Git does not yet know about them for the next commit.
+
+**Staging area** (index) is the intermediate area where you add changes with the `git add` command. A file in the **staged** state means you have prepared these changes for the next commit. The staging area allows you to select exactly which changes go into the commit, rather than committing everything at once.
+
+**Git repository** (local repository) is the Git database where commits are stored. When you run `git commit`, staged changes move to the **committed** state – they become part of the repository history.
+
+Typical workflow cycle:
+
+```bash
+$ vim file.c
+
+$ git status
+
+$ git add file.c
+
+$ git commit -m "Add feature X"
+```
+
+Git stores each commit as a snapshot of the file state. When you commit, Git creates a new commit object that references the snapshot and the previous commit, forming a linear history. The staging area is a key Git feature that distinguishes it from other VCS – it gives precise control over what goes into each commit.
 
 ## Sources
 

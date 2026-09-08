@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -22,13 +22,13 @@ sources:
     kind: community
     version: null
     applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
-  - source_id: gcc-overall-options
-    title: "GCC manual: Options Controlling the Kind of Output"
-    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
+  - source_id: git-scm-doc
+    title: "Git documentation"
+    url: "https://git-scm.com/doc"
+    accessed: 2026-09-08
     kind: official
-    version: "latest"
-    applicability: "Authoritative section-level reference for toolchain and build concepts; details of specific devices and toolchains can differ."
+    version: "current"
+    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
 ---
 
 ## Short answer
@@ -41,7 +41,45 @@ Usage: clean up a local feature branch before a pull request, combine small fixu
 
 ## Detailed explanation
 
-TODO
+**Interactive rebase** (`git rebase -i`) is a mode for editing commit history that lets you change, combine, rename, or drop commits in a local branch before sharing it with others.[^git-scm-doc]
+
+When you run `git rebase -i HEAD~N` (where N is the number of commits), Git opens a text editor with a list of commits and available actions:
+
+```
+pick abc1234 Add initial implementation
+pick def5678 Fix typo in comment
+pick ghi9012 Add missing error handling
+```
+
+**Available actions:**
+- `pick` – keep the commit unchanged
+- `reword` – change the commit message
+- `squash` – combine with the previous commit (both messages)
+- `fixup` – combine with the previous commit (only changes, message is discarded)
+- `edit` – stop to edit files and amend the commit
+- `drop` – remove the commit
+- You can also reorder commits by rearranging the lines
+
+**Typical usage:**
+
+```bash
+$ git rebase -i HEAD~5
+
+$ git commit --fixup=abc1234
+$ git rebase -i --autosquash abc1234~1
+```
+
+Interactive rebase is useful for:
+- Combining small commits into logical changes (squash/fixup)
+- Fixing commit messages (reword)
+- Removing temporary or experimental commits (drop)
+- Reordering commits for better history readability
+
+**Important:** interactive rebase rewrites history by changing commit hashes. This is safe only for local commits that have not been pushed to a remote. If you have already pushed commits, rebase will create conflicts for other developers working with that branch.
+
+If you need to update the remote after rebase, use `git push --force-with-lease` (a safer option than `--force` because it checks that the remote branch has not changed).
+
+To undo a rebase, you can use `git reflog` to find the previous HEAD and `git reset --hard HEAD@{N}` to roll back.
 
 ## Sources
 
