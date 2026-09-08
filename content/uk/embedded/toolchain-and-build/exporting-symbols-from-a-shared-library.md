@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  en: 2
+  en: 4
 anki:
   export: true
 sources:
@@ -39,7 +39,26 @@ sources:
 
 ## Detailed explanation
 
-TODO
+У Linux/Unix shared library (`.so`) експортує символи через dynamic symbol table. Коли компілятор будує `.so`, він додає всі non-static global символи в таблицю експорту за замовчуванням. Для C API достатньо оголосити функцію без `static` ключового слова, скомпілювати з `-fPIC` (position-independent code) і злінкувати з `-shared`.[^gcc-overall-options]
+
+Для контролю видимості використовують `__attribute__((visibility("default")))` для явного експорту або `__attribute__((visibility("hidden")))` для приховування символів. Linker version script (`.map` файл) дозволяє точно контролювати, які символи експортуються:
+
+```
+LIBMYLIB_1.0 {
+    global:
+        my_public_function;
+        my_other_function;
+    local:
+        *;
+};
+```
+
+У Windows DLL механізм інший. `__declspec(dllexport)` при збірці бібліотеки додає символ до export table. `__declspec(dllimport)` на стороні користувача каже компілятору, що функція знаходиться в DLL і потрібно використовувати indirect call через import address table (IAT). Альтернатива – `.def` файл з `EXPORTS` секцією, який не потребує модифікації вихідного коду.
+
+Для C++ API додають `extern "C"` для запобігання name mangling і забезпечення стабільного ABI. Без цього C++ compiler mangling names (додає тип інформації до імені функції), що ускладнює бінарну сумісність між компіляторами.
+
+У embedded Linux зазвичай використовують shared libraries для зменшення розміру firmware (кілька програм можуть використовувати одну бібліотеку) і для оновлення бібліотек без перекомпіляції всього додатку. У bare-metal MCU зазвичай використовують static linking, бо немає OS для завантаження shared libraries у runtime.
+
 
 ## Sources
 
