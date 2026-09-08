@@ -222,7 +222,7 @@
 }
 
 /* The landing page mirrors the reference hierarchy without making question
-   section headings larger on the 2508 generated question pages. */
+   section headings larger on the 2522 generated question pages. */
 main:has(.iqa-home-title) .sl-markdown-content h2 {
 	font-size: calc(1.5rem * var(--iqa-type-scale));
 	font-weight: 700;
@@ -260,7 +260,7 @@ main:has(.iqa-home-title) .sl-markdown-content h3 {
  * coloured by its `stylesheets/extra.css`.
  *
  * The `h2` rules need no page hook: a `h2` inside `.sl-markdown-content` occurs
- * on 2508 built pages and every one of them is a question page - the track and
+ * on 2522 built pages and every one of them is a question page - the track and
  * section indexes are a title and a link list, nothing else. Counted, not
  * assumed.
  *
