@@ -6,11 +6,10 @@ project, language, question type and body-section field. Everything here is deri
 from ``tools/iqa/model.py`` and ``tools/iqa/lifecycle.py``; there is no second notion
 of "done" - ``completeness`` and the lifecycle decision are read, never recomputed.
 
-``/{lang}/status/`` on the site renders ``dist/export/progress.json`` (mirrored into
-``site/src/data/`` by ``site/scripts/build.mjs``, the same way ``tools/iqa/mirror.py``
-mirrors ``content/`` - the site never reads ``content/`` or ``dist/export/`` directly,
-only its own generated copy). ``dist/export/progress.csv`` is for opening in a
-spreadsheet, per meta/site.md.
+``/{lang}/status/`` on the site renders ``dist/export/progress.json`` into localized
+Markdown inside the generated docs mirror. The site therefore reads only its own
+generated content, never ``content/`` or ``dist/export/`` directly.
+``dist/export/progress.csv`` is for opening in a spreadsheet, per meta/site.md.
 """
 
 from __future__ import annotations

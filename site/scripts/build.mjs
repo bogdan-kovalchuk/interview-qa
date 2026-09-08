@@ -56,6 +56,8 @@ const mirrorCode = await run(
     path.join(siteRoot, 'src', 'content', 'docs'),
     '--base',
     '/interview-qa',
+    '--progress',
+    path.join(repoRoot, 'dist', 'export', 'progress.json'),
   ],
   { cwd: repoRoot },
 );

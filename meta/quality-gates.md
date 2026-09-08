@@ -67,6 +67,8 @@
 | Ворота | Що перевіряє |
 |---|---|
 | `build` | сайт збирається без помилок для обох локалей |
+| `progress-current` | `progress.json` і corpus мають однакову кількість питань; застарілий звіт не рендериться |
+| `status-pages` | `/en/status/` і `/uk/status/` згенеровані та досяжні з локалізованого sidebar |
 | `permalink-coverage` | для кожного опублікованого питання є `/q/{id}/` кожною мовою |
 | `internal-links` | немає битих внутрішніх посилань – на **production-збірці** з `base=/interview-qa` |
 | `production-base` | усі `href` у зібраному HTML коректні під base path |

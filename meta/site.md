@@ -6,10 +6,11 @@ Astro Starlight, дві локалі, GitHub Pages за стандартною �
 ## Потік даних
 
 ```
-content/{lang}/**            авторський Markdown, генератор-агностичний
-      ↓ tools/iqa/mirror.py  дзеркало у site/src/content/docs/  (у .gitignore)
-      ↓ astro build          production-збірка з base=/interview-qa
-      ↓ dist/export/         questions.json, progress.*, вхід для Anki
+content/{lang}/**              авторський Markdown, генератор-агностичний
+      ↓ tools/iqa export+report
+dist/export/                   questions.json для Anki, progress.{json,csv}
+      ↓ tools/iqa/mirror.py    питання й status у site/src/content/docs/  (у .gitignore)
+      ↓ astro build            production-збірка з base=/interview-qa
 ```
 
 **`content/` читає рівно один компонент – `tools/`.** Сайт споживає згенероване дзеркало, а не
@@ -107,7 +108,7 @@ Pagefind (у Starlight з коробки) читає `lang` з `<html>` і бу�
 |---|---|
 | `dist/export/progress.csv` | відкрити, відсортувати, спланувати |
 | `dist/export/progress.json` | вхід для сайту |
-| `/{lang}/status/` | сторінка з фільтрами за треком, секцією, мовою, повнотою, програмою |
+| `/{lang}/status/` | локалізовані агрегати за мовою, треком, секцією і типом питання |
 | `python -m iqa report --todo` | взяти наступну задачу |
 
 Один рядок = одне питання. Колонки: ідентичність (`id`, `track`, `section`, `slug`, `status`,
@@ -116,9 +117,10 @@ Pagefind (у Starlight з коробки) читає `lang` з `<html>` і бу�
 не-`community`, резолвність `qid:`, `card_{lang}` зі значенням `ships` або `blocked:<причина>`,
 членство в програмах, GUID, `updated`.
 
-Та сама таблиця згортається на трьох рівнях: секція → трек → проєкт, і окремо по програмах, мовах
-і типах секцій. Останній розріз найкорисніший – він показує **системні** дірки, коли цілий клас
-роботи не зроблено ніде.
+JSON згортає ті самі дані за секцією, треком, мовою, типом питання і полем тіла. `/status/` показує
+чотири перші практичні розрізи компактними таблицями; повний рядковий набір лишається у JSON/CSV.
+Розріз за полем тіла потрібний для машинного аналізу системних дірок, коли цілий клас роботи не
+зроблено ніде.
 
 ### Покриття цілей, а не лише секцій
 
@@ -168,10 +170,9 @@ python -m iqa build
 `generated from frontmatter`, англійські заголовки на `/uk/`, відсутній корінь, `robots.txt`,
 sitemap і `hreflang`.
 
-З кроку 6 зроблено: `dist/export/progress.{json,csv}` і `python -m iqa report --todo`
-(`tools/iqa/report.py`); **навігація з дерева таксономії та індекси треків і секцій**. Лишається:
-сторінка `/status/`, яка рендерить уже наявний `progress.json`, Pagefind обома мовами і scale
-spike (`meta/plan.md` крок 6).
+Крок 6 завершено: `progress.{json,csv}`, `python -m iqa report --todo`, навігація з дерева
+таксономії, індекси треків і секцій, локалізований `/status/`, двомовний Pagefind і відтворюваний
+scale spike на 5000 сторінок. Вимір і команда записані в `meta/plan.md`.
 
 ## Навігація і оформлення
 

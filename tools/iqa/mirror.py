@@ -403,12 +403,130 @@ def _index_page(title: str, links: list[str], empty_notice: str) -> str:
     )
 
 
+COMPLETENESS_ORDER = ("complete", "partial", "stub", "empty")
+
+
+def _markdown_table(headers: list[str], rows: list[list[str]]) -> str:
+    def cell(value: str) -> str:
+        return str(value).replace("|", "\\|").replace("\n", " ")
+
+    return "\n".join(
+        [
+            "| " + " | ".join(cell(value) for value in headers) + " |",
+            "|" + "|".join("---" for _ in headers) + "|",
+            *("| " + " | ".join(cell(value) for value in row) + " |" for row in rows),
+        ]
+    )
+
+
+def _status_rows(
+    entries: list[tuple[str, dict[str, int]]],
+    vocabulary: dict[str, Any],
+    language: Language,
+) -> str:
+    headers = [
+        site_label(vocabulary, "column_group", language),
+        site_label(vocabulary, "aggregate_total", language),
+        *(completeness_label(vocabulary, key, language) for key in COMPLETENESS_ORDER),
+        site_label(vocabulary, "column_coverage", language),
+    ]
+    rows: list[list[str]] = []
+    for label, counts in entries:
+        total = sum(int(counts.get(key, 0)) for key in COMPLETENESS_ORDER)
+        complete = int(counts.get("complete", 0))
+        coverage = f"{(complete / total * 100):.1f}%" if total else "0.0%"
+        rows.append(
+            [
+                label,
+                str(total),
+                *(str(int(counts.get(key, 0))) for key in COMPLETENESS_ORDER),
+                coverage,
+            ]
+        )
+    return _markdown_table(headers, rows)
+
+
+def _status_page(
+    report: dict[str, Any],
+    vocabulary: dict[str, Any],
+    language: Language,
+    taxonomy: list[tuple[str, list[str]]],
+) -> str:
+    aggregates = report.get("aggregates")
+    if not isinstance(aggregates, dict):
+        raise ValueError("progress report has no aggregates mapping")
+
+    by_language = aggregates.get("by_language") or {}
+    language_rows = [
+        (code, by_language.get(code) or {})
+        for code in (Language.EN.value, Language.UK.value)
+    ]
+
+    by_track = aggregates.get("by_track") or {}
+    track_rows = [
+        (
+            _nav_label(vocabulary, "track_labels", track, language),
+            ((by_track.get(track) or {}).get("languages") or {}).get(language.value) or {},
+        )
+        for track, _sections in taxonomy
+        if track in by_track
+    ]
+
+    by_section = aggregates.get("by_section") or {}
+    section_rows: list[tuple[str, dict[str, int]]] = []
+    for track, sections in taxonomy:
+        if track not in by_track:
+            continue
+        track_label = _nav_label(vocabulary, "track_labels", track, language)
+        for section in sections:
+            key = f"{track}/{section}"
+            if key not in by_section:
+                continue
+            section_label_text = _nav_label(vocabulary, "section_labels_nav", key, language)
+            counts = (by_section[key].get("languages") or {}).get(language.value) or {}
+            section_rows.append((f"{track_label} / {section_label_text}", counts))
+
+    by_type = aggregates.get("by_type") or {}
+    type_rows = [
+        (
+            question_type,
+            ((bucket.get("languages") or {}).get(language.value) or {}),
+        )
+        for question_type, bucket in sorted(by_type.items())
+    ]
+
+    title = site_label(vocabulary, "status_page_title", language)
+    description = site_label(vocabulary, "status_page_description", language)
+    sections = [
+        (site_label(vocabulary, "aggregate_by_language", language), language_rows),
+        (site_label(vocabulary, "aggregate_by_track", language), track_rows),
+        (site_label(vocabulary, "aggregate_by_section", language), section_rows),
+        (site_label(vocabulary, "aggregate_by_type", language), type_rows),
+    ]
+    return "\n\n".join(
+        [
+            "\n".join(
+                [
+                    "---",
+                    f"title: {json.dumps(title, ensure_ascii=False)}",
+                    f"description: {json.dumps(description, ensure_ascii=False)}",
+                    "---",
+                ]
+            ),
+            description,
+            *(f"## {heading}\n\n{_status_rows(rows, vocabulary, language)}" for heading, rows in sections),
+        ]
+    ) + "\n"
+
+
 def navigation_pages(
     output_root: Path,
     pages: list[MirroredPage],
     base: str,
     vocabulary: dict[str, Any],
     taxonomy: list[tuple[str, list[str]]],
+    *,
+    include_status: bool = False,
 ) -> list[list[NavigationPage]]:
     """Return complete, locale-isolated reading orders for footer pagination."""
     languages = sorted({page.language for page in pages})
@@ -426,6 +544,14 @@ def navigation_pages(
                 site_label(vocabulary, "home_title", lang),
             )
         ]
+        if include_status:
+            order.append(
+                NavigationPage(
+                    output_root / language / "status.md",
+                    f"{base}/{language}/status/",
+                    site_label(vocabulary, "status_page_title", lang),
+                )
+            )
         for track, sections in taxonomy:
             populated = [
                 section for section in sections if by_key.get((language, track, section))
@@ -507,6 +633,7 @@ def write_navigation(
     base: str,
     vocabulary: dict[str, Any],
     taxonomy: list[tuple[str, list[str]]],
+    progress_report: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Write the home, track and section index pages; return the sidebar tree.
 
@@ -616,6 +743,17 @@ def write_navigation(
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(home, encoding="utf-8", newline="\n")
 
+        if progress_report is not None:
+            status = output_root / language / "status.md"
+            status.write_text(
+                _status_page(progress_report, vocabulary, lang, taxonomy),
+                encoding="utf-8",
+                newline="\n",
+            )
+
+    if progress_report is not None:
+        sidebar.insert(0, {"slug": "status"})
+
     return sidebar
 
 
@@ -627,6 +765,7 @@ def generate(
     preview: bool = False,
     root: Path | None = None,
     sidebar_out: Path | None = None,
+    progress: Path | None = None,
 ) -> int:
     working_directory = Path.cwd().resolve()
     source = source.resolve()
@@ -649,6 +788,20 @@ def generate(
 
     parsed = [parse_question_file(path, content_root=source) for path in source_files]
     known_ids = {question.frontmatter.id for question in parsed}
+
+    progress_report: dict[str, Any] | None = None
+    if progress is not None:
+        progress = progress.resolve()
+        if not progress.is_file():
+            raise ValueError(f"progress report does not exist: {progress}")
+        progress_report = json.loads(progress.read_text(encoding="utf-8"))
+        reported_total = (
+            ((progress_report.get("aggregates") or {}).get("totals") or {}).get("total")
+        )
+        if reported_total != len(known_ids):
+            raise ValueError(
+                f"progress report is stale: reports {reported_total!r} questions, mirror has {len(known_ids)}"
+            )
 
     per_language_ids: set[tuple[str, str]] = set()
     for question in parsed:
@@ -675,8 +828,19 @@ def generate(
             if result is not None:
                 mirrored.append(result)
         taxonomy = ordered_tracks_and_sections(root / "meta" / "taxonomy.md")
-        sidebar = write_navigation(temporary, mirrored, base, vocabulary, taxonomy)
-        add_pagination(navigation_pages(temporary, mirrored, base, vocabulary, taxonomy))
+        sidebar = write_navigation(
+            temporary, mirrored, base, vocabulary, taxonomy, progress_report
+        )
+        add_pagination(
+            navigation_pages(
+                temporary,
+                mirrored,
+                base,
+                vocabulary,
+                taxonomy,
+                include_status=progress_report is not None,
+            )
+        )
         if output.exists():
             remove_tree(output)
         swap_tree(temporary, output)
@@ -716,6 +880,12 @@ def main() -> int:
         action="store_true",
         help="include draft/review questions, per the lifecycle table's preview column",
     )
+    parser.add_argument(
+        "--progress",
+        type=Path,
+        default=None,
+        help="progress.json to render as localized status pages",
+    )
     args = parser.parse_args()
 
     try:
@@ -729,6 +899,7 @@ def main() -> int:
             preview=args.preview,
             root=args.root,
             sidebar_out=sidebar_out,
+            progress=args.progress,
         )
     except (OSError, ValueError) as error:
         parser.error(str(error))

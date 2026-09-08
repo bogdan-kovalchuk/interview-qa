@@ -1,12 +1,13 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import shutil
 
 import pytest
 import yaml
 
-from iqa import mirror
+from iqa import mirror, report
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -138,6 +139,61 @@ def test_pagination_follows_home_taxonomy_section_and_questions(tmp_path: Path) 
     assert first["prev"]["link"] == "/interview-qa/en/python/concurrency-and-gil/"
     assert last["prev"]["link"].startswith("/interview-qa/en/q/")
     assert "next" not in last
+
+
+def test_progress_report_generates_localized_status_page_and_navigation(tmp_path: Path) -> None:
+    content = _make_content_tree(tmp_path, ["published"])
+    out = tmp_path / "out"
+    progress_path = tmp_path / "progress.json"
+    progress_path.write_text(
+        report.report_json(report.build_report(content)), encoding="utf-8"
+    )
+    sidebar_path = tmp_path / "sidebar.json"
+
+    mirror.generate(
+        content,
+        out,
+        "/interview-qa",
+        preview=False,
+        root=ROOT,
+        sidebar_out=sidebar_path,
+        progress=progress_path,
+    )
+
+    status = (out / "en" / "status.md").read_text(encoding="utf-8")
+    assert "## By language" in status
+    assert "## By track" in status
+    assert "## By section" in status
+    assert "## By question type" in status
+    assert "| en | 1 |" in status
+    assert "Python / Concurrency and GIL" in status
+
+    sidebar = json.loads(sidebar_path.read_text(encoding="utf-8"))
+    assert sidebar[0] == {"slug": "status"}
+
+    home = _frontmatter(out / "en" / "index.md")
+    status_frontmatter = _frontmatter(out / "en" / "status.md")
+    assert home["next"]["link"] == "/interview-qa/en/status/"
+    assert status_frontmatter["prev"]["link"] == "/interview-qa/en/"
+    assert status_frontmatter["next"]["link"] == "/interview-qa/en/python/"
+
+
+def test_stale_progress_report_is_rejected(tmp_path: Path) -> None:
+    content = _make_content_tree(tmp_path, ["published"])
+    progress_path = tmp_path / "progress.json"
+    progress_path.write_text(
+        '{"aggregates":{"totals":{"total":99}}}', encoding="utf-8"
+    )
+
+    with pytest.raises(ValueError, match="progress report is stale"):
+        mirror.generate(
+            content,
+            tmp_path / "out",
+            "/interview-qa",
+            preview=False,
+            root=ROOT,
+            progress=progress_path,
+        )
 
 
 def test_withdrawn_renders_tombstone_not_full_body(tmp_path: Path) -> None:

@@ -161,8 +161,8 @@ site_labels:
   home_repository:          {en: Repository, uk: Репозиторій}
   home_contents:            {en: Table of contents, uk: Зміст}
   status_page_title:       {en: Progress,          uk: Прогрес}
-  status_page_description: {en: "Generated progress report: one row per question.",
-                             uk: "Згенерований звіт прогресу: один рядок на питання."}
+  status_page_description: {en: "Generated coverage report from the question corpus.",
+                             uk: "Згенерований звіт покриття корпусу питань."}
   filter_track:             {en: Track,              uk: Трек}
   filter_section:           {en: Section,            uk: Секція}
   filter_language:          {en: Language,           uk: Мова}
@@ -178,6 +178,8 @@ site_labels:
   column_sources:                   {en: Sources,            uk: Джерела}
   column_updated:                    {en: Updated,            uk: Оновлено}
   column_card:                        {en: Card,               uk: Картка}
+  column_group:                       {en: Group,              uk: Група}
+  column_coverage:                    {en: Coverage,           uk: Покриття}
   aggregate_by_track:                  {en: "By track",         uk: "За треком"}
   aggregate_by_section:                 {en: "By section",       uk: "За секцією"}
   aggregate_by_language:                 {en: "By language",     uk: "За мовою"}
