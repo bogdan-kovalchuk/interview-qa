@@ -1,17 +1,17 @@
 ---
 id: emb-patterns-0029
 title: "Коли обирати enum+switch, а коли function-pointer table для FSM?"
-description: "enum+switch – мало станів (<~8), важлива простота дебагу і warning на пропущені case."
+description: "enum+switch – приблизно до восьми станів, важлива простота дебагу і warning на пропущені case."
 track: embedded
 section: common-code-patterns
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-**enum+switch** – мало станів (<~8), важлива простота дебагу і warning на пропущені case.
+**enum+switch** – приблизно до восьми станів, важлива простота дебагу і warning на пропущені case.
 
 Function-pointer table – багато станів, потрібна O(1) диспетчеризація і додавання станів без зміни наявного коду (таблиця у Flash).
 
