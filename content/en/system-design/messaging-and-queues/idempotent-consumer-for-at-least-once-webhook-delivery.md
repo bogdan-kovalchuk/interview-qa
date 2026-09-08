@@ -8,10 +8,10 @@ level: senior
 type: system-design
 tags: [idempotency, at-least-once, webhooks, exactly-once, deduplication]
 status: published
-updated: 2026-09-04
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 see_also: [db-orm-0001]
 applies_to:
   - product: PostgreSQL
@@ -24,7 +24,7 @@ sources:
   - source_id: stripe-webhooks-best-practices
     title: "Stripe documentation: receive Stripe events in your webhook endpoint"
     url: https://docs.stripe.com/webhooks
-    accessed: 2026-09-03
+    accessed: 2026-09-08
     kind: official
     version: null
     applicability: "Delivery guarantees, retry behaviour, event identifiers and signature verification for Stripe webhooks; other providers differ in detail."
@@ -45,8 +45,8 @@ with retries for up to three days, and an availability target of 99.9% for the r
 ## Short answer
 
 **Treat delivery as at-least-once and make the effect idempotent, rather than trying to make delivery
-exactly-once.** The provider retries until it gets a 2xx, so the same event will arrive more than once
-and sometimes out of order.[^stripe-webhooks-best-practices] Verify the signature, then key
+exactly-once.** Stripe can automatically retry live-mode delivery for up to three days and does not
+guarantee event order.[^stripe-webhooks-best-practices] Verify the signature, then key
 everything on the provider event id under a unique constraint: whichever transaction applies the
 business effect must commit that event's marker with it, so a retry finds the marker and does
 nothing.[^postgresql-17-insert-on-conflict] Acknowledge fast and do the slow work asynchronously
@@ -177,8 +177,9 @@ consumer is willing to depend on it.
 - **Worker dies mid-effect.** The transaction rolls back, the outbox row stays claimable, and the
   retry reapplies the effect once. No compensating logic is needed.
 - **Out-of-order arrival.** A `payment.failed` arrives after a `payment.succeeded` for the same
-  object. State is derived from the payload and a version or timestamp on it, so a stale event is
-  applied as a no-op rather than as a regression.
+  object. Do not impose a total order using Stripe's event timestamp. Compare a reliable
+  domain-monotonic version when the object exposes one; otherwise retrieve current provider state
+  and reconcile the transition, as Stripe recommends for missing or out-of-order objects.[^stripe-webhooks-best-practices]
 - **Signature key rotation.** Verification fails for legitimate events during a rotation window.
   Mitigation: accept both the current and previous secret while rotating, and alert on verification
   failures instead of dropping them silently.
@@ -200,7 +201,8 @@ consumer is willing to depend on it.
   together.
 - Separates fast acknowledgement from slow processing, and keeps the event id as the idempotency key
   across that boundary.
-- Treats out-of-order arrival as normal and derives state from the payload, not from arrival sequence.
+- Treats out-of-order arrival as normal and uses a domain ordering key or current provider state,
+  not arrival sequence or the event timestamp alone.
 - Verifies the signature on the raw body before parsing.
 
 ### Red flags
