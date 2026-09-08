@@ -9,7 +9,7 @@ import yaml
 
 from corpus import FILES, QUESTIONS
 from iqa.__main__ import main
-from iqa.validate import _sentence_count, validate_repository
+from iqa.validate import _sentence_count, _word_count, validate_repository
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -84,6 +84,15 @@ def test_sentence_count_is_not_fooled_by_operators_that_look_like_tags() -> None
     seven counted as one."""
     answer = "Set bit 5 with `|= (1<<5)`. Then write it back -> done. Third sentence."
     assert _sentence_count(answer) == 3
+
+
+def test_word_count_ignores_html_markup_but_keeps_its_text() -> None:
+    plain = "One highlighted phrase and `one inline term`."
+    marked = '<span class="warn">One highlighted phrase</span> and `one inline term`.'
+
+    assert _word_count(plain) == _word_count(marked) == 7
+    assert _word_count("Set `1<<5`, then write it back -> done.") == 8
+    assert _word_count("Use `vector<int>` here.") == 4
 
 
 def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
