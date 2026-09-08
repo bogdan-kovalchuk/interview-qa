@@ -1,7 +1,7 @@
 ---
 id: cs-algo-0003
 title: "Як мемоїзація або bottom-up dynamic programming змінює complexity recursive solution з overlapping subproblems?"
-description: "Мемоїзація або bottom-up DP зводить рекурсію з експоненційним часом і overlapping subproblems до поліноміального часу, розв'язуючи кожен унікальний subproblem лише один раз."
+description: "Мемоїзація або bottom-up DP усуває повторне обчислення overlapping subproblems, але не гарантує поліноміального часу, якщо простір станів експоненційний."
 track: cs
 section: algorithms
 level: senior
@@ -15,23 +15,16 @@ reconciled_with:
 anki:
   export: true
 sources:
+  - source_id: clrs-4e
+    title: "Introduction to Algorithms, fourth edition"
+    url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+    accessed: 2026-09-08
+    kind: book
+    version: "4th edition"
+    applicability: "Розділ 14 підтверджує принципи memoization, bottom-up dynamic programming і аналіз складності за простором станів."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-heapq
-    title: "Python 3.14: Library/heapq"
-    url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-bisect
-    title: "Python 3.14: Library/bisect"
-    url: https://docs.python.org/3.14/library/bisect.html
     accessed: 2026-09-04
     kind: official
     version: "3.14"
@@ -47,7 +40,11 @@ sources:
 
 ## Short answer
 
-**Мемоїзація або bottom-up DP зводить рекурсію з експоненційним часом і overlapping subproblems до поліноміального часу, розв'язуючи кожен унікальний subproblem лише один раз.**[^py314-library-collections] Наприклад, наївний рекурсивний Fibonacci має складність O(2^n), але з таблицею memo кожен з n subproblems обчислюється один раз – це дає O(n) часу і O(n) пам'яті. Компроміс – додаткова пам'ять під кеш замість повторних обчислень.
+**Memoization або bottom-up DP усуває повторне обчислення overlapping subproblems, розв'язуючи
+кожен досяжний стан один раз.**[^clrs-4e] Отриманий час приблизно дорівнює кількості досяжних
+станів, помноженій на вартість переходу, тому він поліноміальний лише тоді, коли простір станів і
+робота переходу поліноміальні. Для Fibonacci це змінює експоненційну рекурсію на O(n) часу й O(n)
+пам'яті memo table.
 
 ## Detailed explanation
 
@@ -56,12 +53,12 @@ sources:
 усього n + 1, але дерево викликів має розмір O(2^n), бо кожен стан fib(k) перераховується стільки
 разів, скільки існує шляхів рекурсії, що до нього ведуть.
 
-Мемоїзація ламає це дерево назад у граф: перед обчисленням стану перевіряють таблицю, і якщо стан
+Мемоїзація згортає це дерево назад у граф: перед обчисленням стану перевіряють таблицю, і якщо стан
 уже є – повертають готове значення замість повторного спуску. Коли стан описується кількома
 параметрами, його зводять до hashable ключа – кортежу або, для читабельності,
 namedtuple.[^py314-library-collections] Кожен унікальний стан тоді обчислюється рівно один раз, і
-сумарний час стає O(кількість станів × вартість переходу без урахування рекурсивних викликів) –
-O(n) для Fibonacci замість O(2^n).
+сумарний час стає O(кількість досяжних станів × вартість переходу без урахування рекурсивних
+викликів) – O(n) для Fibonacci замість O(2^n).[^clrs-4e]
 
 Bottom-up DP дає той самий результат іншим шляхом: замість рекурсії "згори" будують таблицю
 "знизу", у порядку, що гарантує – коли обчислюється стан k, усі стани, від яких він залежить, уже
@@ -77,9 +74,9 @@ Bottom-up DP дає той самий результат іншим шляхом
   уникає рекурсії, і якщо стан залежить лише від сталої кількості попередніх (як у Fibonacci – від
   двох), таблицю можна звести до змінних сталого розміру – O(1) пам'яті замість O(n).
 
-Отже обидва підходи прибирають експоненційне дублювання роботи, перетворюючи задачу з O(2^n) на
-O(кількість унікальних станів); компроміс між ними – рекурсія з лінивим обчисленням проти ітерації
-з можливістю стиснути пам'ять.
+Обидва підходи усувають повторне обчислення того самого стану, але не гарантують поліноміального
+алгоритму: задача все одно може мати експоненційно багато різних досяжних станів. Компроміс між
+ними – рекурсія з demand-driven evaluation проти ітерації з можливістю стиснути пам'ять.
 
 ## Evaluation guide
 
