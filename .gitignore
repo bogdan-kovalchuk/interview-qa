@@ -16,13 +16,18 @@ __pycache__/
 # meta/quality-gates.md tells you to run pytest with an explicit --basetemp; this is where
 # that lands when the writable directory you pick is inside the repository
 .pytest-basetemp/
+.pytest-basetemp-*/
 .venv/
 *.egg-info/
+
+# local review runs are temporary; accepted findings live in meta/review-backlog.md
+/.audit-run-*/
 
 # editors
 .idea/
 .vscode/
-.qwen/
+/.qwen/agents/
+/.qwen/orchestration/
 
 # local agent instructions are maintained and transferred by the owner
 /AGENTS.md
