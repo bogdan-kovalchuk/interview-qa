@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  en: 2
+  en: 4
 anki:
   export: true
 sources:
@@ -39,7 +39,26 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Розробка бібліотеки або програми зазвичай проходить через кілька етапів, кожен з яких має свої цілі та артефакти.[^gcc-overall-options]
+
+**Вимоги (Requirements)** – визначення, що повинна робити бібліотека/програма. Для бібліотеки це включає: які функції експортувати, які типи даних підтримувати, які помилки повертати, які залежності використовувати. Важливо визначити public API – інтерфейс, який будуть використовувати клієнти.
+
+**Дизайн API (API Design)** – проектування інтерфейсу. Для C бібліотеки це header files з деклараціями функцій, типами, константами. Для C++ – класи, методи, шаблони. Важливо враховувати ABI стабільність (чи можна оновлювати бібліотеку без перекомпіляції клієнтів), backward compatibility, error handling strategy (повернення кодів помилок, errno, exceptions).
+
+**Реалізація (Implementation)** – написання коду. Модульна структура: кожен модуль відповідає за одну функціональність. Unit tests для кожної функції. Code review для перевірки якості.
+
+**Тести (Testing)** – unit tests (перевірка окремих функцій), integration tests (перевірка взаємодії модулів), system tests (перевірка всієї системи). Для embedded додаються hardware-in-the-loop tests, stress tests, memory leak detection.
+
+**Інтеграція (Integration)** – підключення бібліотеки до основної програми. Для static library – лінкування. Для shared library – налаштування runtime path. Для embedded – перевірка розміру firmware, часу виконання, використання пам'яті.
+
+**Документація (Documentation)** – опис API, приклади використання, обмеження, known issues. Для C бібліотек зазвичай використовують Doxygen. Важливо документувати thread safety, reentrancy, error codes.
+
+**Реліз (Release)** – версіонування (semver: major.minor.patch), changelog, tagged release в VCS. Для embedded – прошивка на target hardware, validation testing.
+
+**Підтримка (Maintenance)** – bug fixes, security patches, нові функції. Важливо підтримувати backward compatibility в межах major версії.
+
+Для embedded особливо важливо: перевірки memory usage (stack, heap, flash), execution time (worst-case execution time – WCET), interrupt safety (чи можна викликати з interrupt context), power consumption (для battery-powered devices).
+
 
 ## Sources
 

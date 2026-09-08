@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -39,7 +39,26 @@ In Windows DLLs, `__declspec(dllexport)` is typically used when building the lib
 
 ## Detailed explanation
 
-TODO
+In Linux/Unix, a shared library (`.so`) exports symbols through the dynamic symbol table. When the compiler builds a `.so`, it adds all non-static global symbols to the export table by default. For a C API it is enough to declare the function without the `static` keyword, compile with `-fPIC` (position-independent code), and link with `-shared`.[^gcc-overall-options]
+
+For visibility control, `__attribute__((visibility("default")))` explicitly exports or `__attribute__((visibility("hidden")))` hides symbols. A linker version script (`.map` file) allows precise control over which symbols are exported:
+
+```
+LIBMYLIB_1.0 {
+    global:
+        my_public_function;
+        my_other_function;
+    local:
+        *;
+};
+```
+
+In Windows DLLs the mechanism is different. `__declspec(dllexport)` when building the library adds the symbol to the export table. `__declspec(dllimport)` on the consumer side tells the compiler that the function is in a DLL and needs to use an indirect call through the import address table (IAT). An alternative is a `.def` file with an `EXPORTS` section, which does not require source code modification.
+
+For C++ APIs, `extern "C"` is added to prevent name mangling and ensure a stable ABI. Without it, the C++ compiler mangles names (adds type information to the function name), which complicates binary compatibility between compilers.
+
+In embedded Linux, shared libraries are typically used to reduce firmware size (multiple programs can use one library) and to update libraries without recompiling the entire application. In bare-metal MCUs, static linking is usually used because there is no OS to load shared libraries at runtime.
+
 
 ## Sources
 
