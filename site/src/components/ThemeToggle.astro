@@ -1,0 +1,32 @@
+---
+const label = Astro.locals.t('themeSelect.accessibleLabel');
+---
+
+<starlight-theme-toggle>
+	<button type="button" aria-label={label} title={label}>
+		<svg class="theme-icon moon" aria-hidden="true" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M20.7 15.4A8.3 8.3 0 0 1 8.6 3.3 9 9 0 1 0 20.7 15.4Z"/>
+		</svg>
+		<svg class="theme-icon sun" aria-hidden="true" viewBox="0 0 24 24">
+			<path fill="currentColor" d="M12 7.5A4.5 4.5 0 1 0 12 16.5 4.5 4.5 0 0 0 12 7.5Zm0-5.5h1v3h-1V2Zm0 17h1v3h-1v-3ZM2 12h3v1H2v-1Zm17 0h3v1h-3v-1ZM4.2 4.9l.7-.7L7 6.3l-.7.7-2.1-2.1Zm12.7 12.7.7-.7 2.1 2.1-.7.7-2.1-2.1ZM4.2 19l2.1-2.1.7.7-2.1 2.1-.7-.7ZM16.9 6.3 19 4.2l.7.7L17.6 7l-.7-.7Z"/>
+		</svg>
+	</button>
+</starlight-theme-toggle>
+
+<script>
+	const storageKey = 'starlight-theme';
+
+	class InterviewThemeToggle extends HTMLElement {
+		constructor() {
+			super();
+			this.querySelector('button')?.addEventListener('click', () => {
+				const root = document.documentElement;
+				const nextTheme = root.dataset.theme === 'light' ? 'dark' : 'light';
+				root.dataset.theme = nextTheme;
+				localStorage.setItem(storageKey, nextTheme);
+			});
+		}
+	}
+
+	customElements.define('starlight-theme-toggle', InterviewThemeToggle);
+</script>
