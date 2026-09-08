@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -37,11 +37,60 @@ First, preprocessing expands `#include`, `#define`, and conditional compilation.
 
 ## Detailed explanation
 
-TODO
+A C file goes through several stages before becoming an executable or firmware image.[^gcc-overall-options]
+
+**1. Preprocessing** (`cpp` or `gcc -E`):
+- Expands `#include` – inserts header file contents
+- Expands `#define` – replaces macros with their values
+- Processes `#ifdef`/`#ifndef`/`#endif` – conditional compilation
+- Removes comments
+- Result: `.c` file with all includes expanded
+
+**2. Compilation** (`cc1` or `gcc -S`):
+- Parses C code and builds an AST (Abstract Syntax Tree)
+- Performs optimization (if `-O1`, `-O2`, `-O3` is specified)
+- Generates assembly code or LLVM IR
+- Result: `.s` file (assembly) or `.ll` (IR)
+
+**3. Assembly** (`as` or `gcc -c`):
+- Converts assembly code to machine code
+- Creates an object file with symbols and relocation entries
+- Result: `.o` file (object file)
+
+**4. Linking** (`ld` or `gcc`):
+- Combines all object files and libraries
+- Resolves symbol references (external symbols)
+- Places sections (.text, .data, .bss) according to the linker script
+- Generates an executable or firmware image
+- Result: `.elf` file (executable) or `.axf` (ARM)
+
+**5. Post-build** (for firmware):
+- `objcopy -O ihex firmware.elf firmware.hex` – Intel HEX format
+- `objcopy -O binary firmware.elf firmware.bin` – Raw binary
+- `objdump -h firmware.elf` – Section sizes
+- `size firmware.elf` – Text/data/bss sizes
+- Map file generation (`-Wl,-Map=firmware.map`)
+
+Each stage can be run separately for debugging or analysis.
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+- Knows the main stages: preprocessing, compilation, assembly, linking
+- Understands what each stage does
+- Can name the tools for each stage (cpp, cc1, as, ld)
+- Knows about post-build steps for firmware (objcopy, map file)
+
+### Red flags
+- Confuses compilation with linking
+- Does not know that preprocessing is a separate stage
+- Does not understand the difference between an object file and an executable
+- Does not know how to get .hex/.bin from .elf
+
+### Level-up follow-up
+- How to view intermediate files (preprocessed, assembly)?
+- What are relocation entries and why are they needed?
+- How does the linker script affect section placement?
 
 ## Sources
 

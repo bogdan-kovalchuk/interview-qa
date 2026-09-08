@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  en: 2
+  en: 4
 anki:
   export: true
 sources:
@@ -37,11 +37,89 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`make` – це build automation tool, який читає `Makefile` і виконує команди для побудови target-ів.[^gcc-overall-options]
+
+**Структура Makefile**:
+```makefile
+# target: dependencies
+# \trecipe (command)
+firmware.elf: main.o utils.o
+\tarm-none-eabi-gcc -T linker.ld -o firmware.elf main.o utils.o
+
+main.o: main.c main.h
+\tarm-none-eabi-gcc -c -mcpu=cortex-m4 main.c -o main.o
+
+utils.o: utils.c utils.h
+\tarm-none-eabi-gcc -c -mcpu=cortex-m4 utils.c -o utils.o
+```
+
+**Як працює make**:
+1. Читає target (наприклад, `firmware.elf`)
+2. Перевіряє dependencies (`main.o`, `utils.o`)
+3. Для кожної dependency рекурсивно перевіряє її dependencies
+4. Порівнює timestamps: якщо source новіший за object, виконує recipe
+5. Виконує recipe (команди з `\t` на початку)
+
+**Variables у Makefile**:
+```makefile
+CC = arm-none-eabi-gcc
+CFLAGS = -mcpu=cortex-m4 -mthumb -O2
+LDFLAGS = -T linker.ld
+SRCS = main.c utils.c
+OBJS = $(SRCS:.c=.o)
+
+firmware.elf: $(OBJS)
+\t$(CC) $(LDFLAGS) -o $@ $^
+
+%.o: %.c
+\t$(CC) $(CFLAGS) -c $< -o $@
+```
+
+**Pattern rules** (`%.o: %.c`) дозволяють задати правило для всіх `.c` файлів.
+
+**Phony targets** (не файли, а дії):
+```makefile
+.PHONY: clean flash debug
+
+clean:
+\trm -f *.o firmware.elf firmware.hex
+
+flash: firmware.hex
+\tst-flash write firmware.hex 0x8000000
+
+debug: firmware.elf
+\tarm-none-eabi-gdb firmware.elf
+```
+
+**Включення інших Makefile**:
+```makefile
+include common.mk
+include $(wildcard modules/*.mk)
+```
+
+**Автоматичні dependencies** (генерується з `-MMD -MP`):
+```makefile
+-include $(OBJS:.o=.d)
+```
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+- Розуміє структуру Makefile (target, dependencies, recipe)
+- Знає, як make визначає, що потрібно переробити
+- Може пояснити variables і pattern rules
+- Розуміє phony targets і їх використання
+
+### Red flags
+- Не знає різниці між target і dependency
+- Не розуміє, як make порівнює timestamps
+- Не може написати простий Makefile
+- Не знає, що таке phony targets
+
+### Level-up follow-up
+- Як автоматично генерувати dependencies для header files?
+- Як організувати multi-directory проект з Makefile?
+- Як інтегрувати CMake з Makefile?
 
 ## Sources
 
