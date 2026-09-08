@@ -63,7 +63,7 @@ sources:
 
 **POSIX network byte order є big-endian: найстарший octet передається першим.**
 
-POSIX (Portable Operating System Interface) дає конвертери host vs network: 
+POSIX (Portable Operating System Interface) дає конвертери host vs network:
 
 ```c
 uint32_t net = htonl(host);

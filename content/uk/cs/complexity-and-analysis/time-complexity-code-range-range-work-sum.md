@@ -1,6 +1,6 @@
 ---
 id: cs-cmplx-0002
-title: "Яка time complexity коду `for i in range(n):   for j in range(i): work()` і яка сума її пояснює?"
+title: "Яка time complexity коду `for i in range(n): for j in range(i): work()` і яка сума її пояснює?"
 description: "Часова складність – O(n²), що пояснюється трикутною сумою 0 + 1 + 2 + ... + (n-1) = n(n-1)/2."
 track: cs
 section: complexity-and-analysis
