@@ -106,6 +106,14 @@ class MirroredPage(NamedTuple):
     completeness: str
 
 
+class NavigationPage(NamedTuple):
+    """One generated page in the per-language reading order."""
+
+    source_path: Path
+    href: str
+    label: str
+
+
 INLINE_CODE_RE = re.compile(r"`([^`\r\n]+)`")
 
 
@@ -395,6 +403,104 @@ def _index_page(title: str, links: list[str], empty_notice: str) -> str:
     )
 
 
+def navigation_pages(
+    output_root: Path,
+    pages: list[MirroredPage],
+    base: str,
+    vocabulary: dict[str, Any],
+    taxonomy: list[tuple[str, list[str]]],
+) -> list[list[NavigationPage]]:
+    """Return complete, locale-isolated reading orders for footer pagination."""
+    languages = sorted({page.language for page in pages})
+    by_key: dict[tuple[str, str, str], list[MirroredPage]] = {}
+    for page in pages:
+        by_key.setdefault((page.language, page.track, page.section), []).append(page)
+
+    orders: list[list[NavigationPage]] = []
+    for language in languages:
+        lang = Language(language)
+        order = [
+            NavigationPage(
+                output_root / language / "index.md",
+                f"{base}/{language}/",
+                site_label(vocabulary, "home_title", lang),
+            )
+        ]
+        for track, sections in taxonomy:
+            populated = [
+                section for section in sections if by_key.get((language, track, section))
+            ]
+            if not populated:
+                continue
+            order.append(
+                NavigationPage(
+                    output_root / language / track / "index.md",
+                    f"{base}/{language}/{track}/",
+                    _nav_label(vocabulary, "track_labels", track, lang),
+                )
+            )
+            for section in populated:
+                section_label_text = _nav_label(
+                    vocabulary, "section_labels_nav", f"{track}/{section}", lang
+                )
+                order.append(
+                    NavigationPage(
+                        output_root / language / track / section / "index.md",
+                        f"{base}/{language}/{track}/{section}/",
+                        section_label_text,
+                    )
+                )
+                for page in sorted(
+                    by_key[(language, track, section)], key=lambda item: item.title
+                ):
+                    order.append(
+                        NavigationPage(
+                            output_root / f"{page.route_slug}.md",
+                            f"{base}/{page.route_slug}/",
+                            title_text(page.title),
+                        )
+                    )
+        orders.append(order)
+    return orders
+
+
+def add_pagination(orders: list[list[NavigationPage]]) -> None:
+    """Write explicit prev/next links because question pages stay out of the sidebar."""
+    for order in orders:
+        for index, page in enumerate(order):
+            previous = order[index - 1] if index else None
+            following = order[index + 1] if index + 1 < len(order) else None
+            lines: list[str] = []
+            if previous:
+                lines.extend(
+                    [
+                        "prev:",
+                        f"  label: {json.dumps(previous.label, ensure_ascii=False)}",
+                        f"  link: {json.dumps(previous.href, ensure_ascii=False)}",
+                    ]
+                )
+            if following:
+                lines.extend(
+                    [
+                        "next:",
+                        f"  label: {json.dumps(following.label, ensure_ascii=False)}",
+                        f"  link: {json.dumps(following.href, ensure_ascii=False)}",
+                    ]
+                )
+            text = page.source_path.read_text(encoding="utf-8")
+            frontmatter_end = text.find("\n---\n", 4)
+            if frontmatter_end < 0:
+                raise ValueError(f"generated page has no closing frontmatter: {page.source_path}")
+            insertion = "\n".join(lines)
+            if insertion:
+                insertion = "\n" + insertion
+            page.source_path.write_text(
+                text[:frontmatter_end] + insertion + text[frontmatter_end:],
+                encoding="utf-8",
+                newline="\n",
+            )
+
+
 def write_navigation(
     output_root: Path,
     pages: list[MirroredPage],
@@ -490,9 +596,17 @@ def write_navigation(
                 f"title: {json.dumps(site_label(vocabulary, 'home_title', lang), ensure_ascii=False)}",
                 "description: "
                 f"{json.dumps(site_label(vocabulary, 'home_description', lang), ensure_ascii=False)}",
-                "sidebar:",
-                "  hidden: true",
+                "home_page: true",
                 "---",
+                "",
+                f"## {site_label(vocabulary, 'home_heading', lang)}",
+                "",
+                site_label(vocabulary, "home_description", lang),
+                "",
+                f"{site_label(vocabulary, 'home_repository', lang)}: "
+                "[GitHub](https://github.com/bogdan-kovalchuk/interview-qa)",
+                "",
+                f"### {site_label(vocabulary, 'home_contents', lang)}",
                 "",
                 *(track_links or [site_label(vocabulary, "index_no_questions", lang)]),
                 "",
@@ -562,6 +676,7 @@ def generate(
                 mirrored.append(result)
         taxonomy = ordered_tracks_and_sections(root / "meta" / "taxonomy.md")
         sidebar = write_navigation(temporary, mirrored, base, vocabulary, taxonomy)
+        add_pagination(navigation_pages(temporary, mirrored, base, vocabulary, taxonomy))
         if output.exists():
             remove_tree(output)
         swap_tree(temporary, output)
