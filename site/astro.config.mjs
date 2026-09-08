@@ -29,7 +29,11 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     starlight({
-      title: 'Interview QA',
+      title: 'Interview Questions and Answers',
+      logo: {
+        src: './src/assets/book.svg',
+        alt: 'Interview Questions and Answers',
+      },
       defaultLocale: 'en',
       locales: {
         en: { label: 'English', lang: 'en' },
@@ -41,6 +45,8 @@ export default defineConfig({
         // Renders inline code in a question title as `<code>` instead of
         // printing the backticks; see the component for why.
         PageTitle: './src/components/PageTitle.astro',
+        SocialIcons: './src/components/RepositoryLink.astro',
+        ThemeSelect: './src/components/ThemeToggle.astro',
       },
       // Roboto and Roboto Mono are the reference site's fonts. They are taken
       // from npm rather than the Google Fonts stylesheet the reference links,

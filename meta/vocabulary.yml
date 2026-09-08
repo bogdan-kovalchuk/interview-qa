@@ -148,9 +148,13 @@ completeness_labels:
 # і `type` самі лишаються англійськими кодами закритого словника (quality-gates.md
 # facets-vocabulary) - тут перекладаються тільки підписи навколо них, не значення.
 site_labels:
-  home_title:               {en: Interview questions, uk: Питання для співбесід}
+  home_title:               {en: Introduction, uk: Вступ}
+  home_heading:             {en: Interview Questions and Answers,
+                              uk: Питання та відповіді для співбесід}
   home_description:         {en: "Bilingual technical interview questions.",
                               uk: "Двомовні питання для технічних співбесід."}
+  home_repository:          {en: Repository, uk: Репозиторій}
+  home_contents:            {en: Table of contents, uk: Зміст}
   status_page_title:       {en: Progress,          uk: Прогрес}
   status_page_description: {en: "Generated progress report: one row per question.",
                              uk: "Згенерований звіт прогресу: один рядок на питання."}

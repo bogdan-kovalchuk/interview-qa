@@ -122,6 +122,7 @@
 	--sl-sidebar-width: 15rem;
 	--sl-nav-height: 3rem;
 	--sl-content-width: 45rem;
+	--iqa-shell-width: 75rem;
 }
 
 @media (min-width: 100em) {
@@ -209,6 +210,33 @@
 	margin-top: 2.5em;
 	font-weight: 700;
 	color: aquamarine;
+}
+
+/* Index titles keep Material's restrained page-heading treatment. */
+#_top:not(.iqa-question-title) {
+	font-size: calc(2rem * var(--iqa-type-scale));
+	font-weight: 300;
+	letter-spacing: -0.01em;
+	line-height: 1.5;
+	color: var(--md-default-fg-light);
+}
+
+/* The landing page mirrors the reference hierarchy without making question
+   section headings larger on the 2508 generated question pages. */
+main:has(.iqa-home-title) .sl-markdown-content h2 {
+	font-size: calc(1.5rem * var(--iqa-type-scale));
+	font-weight: 700;
+	color: var(--md-default-fg);
+}
+
+main:has(.iqa-home-title) .sl-markdown-content h3 {
+	font-size: calc(1.25rem * var(--iqa-type-scale));
+	font-weight: 400;
+	color: deepskyblue;
+}
+
+:root[data-theme='light'] main:has(.iqa-home-title) .sl-markdown-content h3 {
+	color: #0277bd;
 }
 
 :root[data-theme='light'] .sl-markdown-content h3 {
@@ -423,6 +451,127 @@ main .content-panel + .content-panel {
 	padding-top: 0;
 }
 
+/* ------------------------------------------------------------- top bar */
+
+header.header {
+	border-bottom: 0;
+	box-shadow: 0 0 0.2rem #0000001a, 0 0.2rem 0.4rem #0003;
+}
+
+header.header .site-title {
+	font-size: calc(1rem * var(--iqa-type-scale));
+	font-weight: 700;
+	color: #fff;
+}
+
+header.header .site-title img {
+	height: 1.55rem;
+	color: #fff;
+}
+
+header.header site-search button[data-open-modal] {
+	height: 2rem;
+	max-width: 18rem;
+	border: 0;
+	border-radius: 0.1rem;
+	background-color: #0003;
+	color: #ffffffe6;
+}
+
+header.header site-search button[data-open-modal]:hover {
+	background-color: #00000042;
+	color: #fff;
+}
+
+header.header .right-group,
+header.header .social-icons {
+	gap: 0.75rem;
+}
+
+header.header .social-icons::after {
+	display: none;
+}
+
+.iqa-repository-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	color: #fff;
+	font-size: calc(0.75rem * var(--iqa-type-scale));
+	font-weight: 500;
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.iqa-repository-link:hover {
+	opacity: 0.8;
+}
+
+.iqa-repository-link svg {
+	width: 1.15rem;
+	height: 1.15rem;
+}
+
+starlight-theme-toggle button {
+	display: grid;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: #fff;
+	cursor: pointer;
+}
+
+starlight-theme-toggle button:hover {
+	background-color: #ffffff1f;
+}
+
+starlight-theme-toggle .theme-icon {
+	width: 1.05rem;
+	height: 1.05rem;
+}
+
+:root[data-theme='dark'] starlight-theme-toggle .moon,
+:root[data-theme='light'] starlight-theme-toggle .sun {
+	display: none;
+}
+
+header.header starlight-lang-select {
+	font-size: calc(0.75rem * var(--iqa-type-scale));
+	color: #fff;
+}
+
+/* Material centres one fixed-width shell rather than pinning the navigation
+   to the viewport edge. The same shell controls header, sidebar, body and TOC. */
+@media (min-width: 50rem) {
+	header.header {
+		padding-inline: 0;
+	}
+
+	header.header > .header {
+		grid-template-columns: minmax(16rem, 1fr) minmax(12rem, 18rem) auto;
+		width: min(100%, var(--iqa-shell-width));
+		margin-inline: auto;
+		padding-inline: 0.8rem;
+	}
+
+	#starlight__sidebar.sidebar-pane {
+		inset-inline-start: max(0px, calc((100vw - var(--iqa-shell-width)) / 2));
+	}
+
+	.main-frame {
+		width: min(100%, var(--iqa-shell-width));
+		margin-inline: auto;
+	}
+
+	#starlight__sidebar .sidebar-content {
+		padding-top: 2.5rem;
+	}
+}
+
 /* ---------------------------------------------------------- sidebar */
 
 /* Material's navigation is quieter than Starlight's: 14px, regular weight,
@@ -475,5 +624,9 @@ main .content-panel + .content-panel {
 
 	.pagination-links a {
 		padding: 0.5rem;
+	}
+
+	.iqa-repository-link span {
+		display: none;
 	}
 }
