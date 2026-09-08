@@ -105,8 +105,7 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
 
 
 def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, vocabulary: dict) -> None:
-    # 808 real questions: the original 401 plus 407 embedded questions imported
-    # in meta/plan.md step 7a. Of the original set, 13 keep type `coding` with
+    # The 13 coding questions inherited from the original corpus keep
     # `anki.export: false`
     # (their Task/Solution/Tests were never authored - see the M4 report) and
     # so must not ship a card even though their Ukrainian Short answer reads
