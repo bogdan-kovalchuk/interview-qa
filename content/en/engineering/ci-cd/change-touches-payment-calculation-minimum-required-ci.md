@@ -8,69 +8,27 @@ level: middle
 type: practical
 tags: []
 status: published
-updated: 2026-09-05
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
-  - source_id: git-git-merge
-    title: "Git docs: Git Merge"
-    url: https://git-scm.com/docs/git-merge
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Git documentation."
-  - source_id: git-git-rebase
-    title: "Git docs: Git Rebase"
-    url: https://git-scm.com/docs/git-rebase
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Git documentation."
-  - source_id: git-git-revert
-    title: "Git docs: Git Revert"
-    url: https://git-scm.com/docs/git-revert
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Git documentation."
-  - source_id: git-git-reset
-    title: "Git docs: Git Reset"
-    url: https://git-scm.com/docs/git-reset
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Git documentation."
-  - source_id: git-git-reflog
-    title: "Git docs: Git Reflog"
-    url: https://git-scm.com/docs/git-reflog
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Git documentation."
   - source_id: github-continuous-integration
     title: "GitHub Docs: Continuous Integration"
     url: https://docs.github.com/en/actions/get-started/continuous-integration
-    accessed: 2026-09-04
+    accessed: 2026-09-08
     kind: official
     version: null
-    applicability: "Official GitHub documentation."
-  - source_id: gcloud-deployment-strategies
-    title: "Google Cloud docs: Deployment Strategies"
-    url: https://docs.cloud.google.com/deploy/docs/deployment-strategies
-    accessed: 2026-09-04
+    applicability: "Explains CI checks and automated pull-request feedback; it does not prescribe one universal set of checks."
+  - source_id: py314-decimal
+    title: "Python 3.14 documentation: decimal"
+    url: https://docs.python.org/3.14/library/decimal.html
+    accessed: 2026-09-08
     kind: official
-    version: null
-    applicability: "Official Google Cloud documentation."
-  - source_id: google-standard
-    title: "Google Engineering Practices: Standard"
-    url: https://google.github.io/eng-practices/review/reviewer/standard.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Google Engineering Practices material."
+    version: "3.14"
+    applicability: "Defines exact decimal arithmetic, explicit rounding modes, and quantize for monetary calculations in the Python example."
   - source_id: predecessor-answer
     title: "tavor118/pj_python_interview_questions_and_answers (community)"
     url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/development/ci_cd.md#L3-L60
@@ -82,46 +40,52 @@ sources:
 
 ## Short answer
 
-**For payment calculation, the minimum CI gate is unit tests for boundary values and currency
-formats, integration tests against a real or emulated database, and static checks (linter + type
-checker).**[^git-git-merge] An error in the calculation carries a high failure risk (financial
-loss, incorrect transactions), so skipping any of the three levels is not acceptable. Unit tests
-cover the formulas and edge cases, integration tests cover the interaction with the database and
-external services, and static checks catch type errors and unused variables before the tests even
-run. Merging is allowed only after the full pipeline is green.
+**There is no architecture-independent minimum checklist: make the checks that cover this change's
+actual failure boundaries required before merge.** Always test money rules, boundary values and the
+named rounding mode deterministically. Add database or provider integration tests only when the
+change crosses those boundaries, and run the project's relevant type, lint and security checks.
+CI makes those selected checks visible and enforceable on the pull request.[^github-continuous-integration]
 
 ## Detailed explanation
 
 A CI gate is a set of automated checks that must pass before a change is allowed to merge into the
 main branch.[^github-continuous-integration]
 
-The minimum required set depends on failure risk: the more expensive the error, the wider the
-coverage required before merge. For payment calculation, the cost of a defect is money (a wrong
-amount, a double charge, a lost cent from rounding), so none of the three check levels can be
-skipped.
+The required set follows the failure model, not the label "payment". Start with the changed path:
+the arithmetic and rounding rule, storage representation, serialization, database transaction, or
+provider contract. A pure calculation change may need exhaustive unit and property tests but no
+live service. A schema or repository change needs a representative database test. A gateway-client
+change needs a contract or sandbox test at that boundary. Static analysis is included when the
+project has configured it to catch a relevant class of defect; it supplements executable tests but
+does not replace them.
 
-Unit tests exercise the calculation formula itself – boundary values (zero, negative amounts, the
-maximum), rounding, and handling different currencies and locales. Integration tests check that
-the calculation interacts correctly with a real or emulated database and external services (for
-example, a payment gateway) – this is where bugs like the wrong column type for money get caught.
-Static checks (linter, type checker) catch a class of errors that do not depend on the logic –
-a wrong argument type, an unused variable – and do it before the tests even run, so it is cheaper
-and faster.
+Money tests should use exact decimal values and name the rounding rule. Python's `decimal` module
+represents decimal inputs exactly and exposes explicit rounding modes.[^py314-decimal] Cover zero,
+negative values if the domain permits them, maximum supported values, currency precision, and ties
+on both sides of an even digit. Keep storage and provider tests focused on the assumptions the
+change actually touches.
 
 An example of a unit test for a boundary value in payment calculation:
 
 ```python
-def test_rounds_half_cent_down():
-    assert calculate_total(cents=1005, tax_rate=0.0725) == 1078  # not 1079
+def test_rounds_half_cent_with_half_even():
+    assert calculate_total_cents(
+        subtotal_cents=90,
+        tax_rate="0.05",
+        rounding="ROUND_HALF_EVEN",
+    ) == 94
 ```
 
+Here the tax is exactly 4.5 cents and `ROUND_HALF_EVEN` rounds it to 4, so the total is 94 cents.
+The interface is illustrative; the production test should call the actual domain API.
+
 **Common mistakes with the CI gate for payment code:**
-- treating static checks as a formality and not blocking merge on them, even though they catch
-  type errors in money calculations;
-- covering only the "happy path" with unit tests, skipping boundary values (zero, rounding,
-  negative amounts);
-- testing the calculation in isolation from the database, missing that the real column stores the
-  amount as a `float` instead of a `decimal`.
+- treating a generic linter, type checker, database, or sandbox test as mandatory without connecting
+  it to a failure the change can cause;
+- covering only the happy path and omitting exact half-unit, limit, sign, and currency-precision
+  boundaries;
+- testing only the formula when the changed behavior also depends on storage or provider semantics;
+- calling every available check "required", which lengthens feedback without increasing confidence.
 
 ## Environment
 

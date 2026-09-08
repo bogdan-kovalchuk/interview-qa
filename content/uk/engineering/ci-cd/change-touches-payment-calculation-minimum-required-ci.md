@@ -1,76 +1,34 @@
 ---
 id: eng-cicd-0001
 title: "Зміна торкається payment calculation: який мінімальний required CI gate з unit, integration та static checks слід обрати за failure risks?"
-description: "Для payment calculation мінімальний CI gate – unit-тести на граничні значення та формати валют, інтеграційні тести з реальною БД або її емуляцією, і статичні перевірки (linter + type checker)."
+description: "Обов'язковий CI gate визначають реальні failure boundaries зміни, а не універсальний список перевірок."
 track: engineering
 section: ci-cd
 level: middle
 type: practical
 tags: []
 status: published
-updated: 2026-09-05
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
-  - source_id: git-git-merge
-    title: "Git docs: Git Merge"
-    url: https://git-scm.com/docs/git-merge
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Git."
-  - source_id: git-git-rebase
-    title: "Git docs: Git Rebase"
-    url: https://git-scm.com/docs/git-rebase
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Git."
-  - source_id: git-git-revert
-    title: "Git docs: Git Revert"
-    url: https://git-scm.com/docs/git-revert
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Git."
-  - source_id: git-git-reset
-    title: "Git docs: Git Reset"
-    url: https://git-scm.com/docs/git-reset
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Git."
-  - source_id: git-git-reflog
-    title: "Git docs: Git Reflog"
-    url: https://git-scm.com/docs/git-reflog
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Git."
   - source_id: github-continuous-integration
     title: "GitHub Docs: Continuous Integration"
     url: https://docs.github.com/en/actions/get-started/continuous-integration
-    accessed: 2026-09-04
+    accessed: 2026-09-08
     kind: official
     version: null
-    applicability: "Офіційна документація GitHub."
-  - source_id: gcloud-deployment-strategies
-    title: "Google Cloud docs: Deployment Strategies"
-    url: https://docs.cloud.google.com/deploy/docs/deployment-strategies
-    accessed: 2026-09-04
+    applicability: "Пояснює CI checks та автоматизований feedback у pull request; не приписує одного універсального набору перевірок."
+  - source_id: py314-decimal
+    title: "Python 3.14 documentation: decimal"
+    url: https://docs.python.org/3.14/library/decimal.html
+    accessed: 2026-09-08
     kind: official
-    version: null
-    applicability: "Офіційна документація Google Cloud."
-  - source_id: google-standard
-    title: "Google Engineering Practices: Standard"
-    url: https://google.github.io/eng-practices/review/reviewer/standard.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний матеріал Google Engineering Practices."
+    version: "3.14"
+    applicability: "Визначає точну decimal-арифметику, явні режими округлення та quantize для грошового прикладу на Python."
   - source_id: predecessor-answer
     title: "tavor118/pj_python_interview_questions_and_answers (community)"
     url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/development/ci_cd.md#L3-L60
@@ -82,39 +40,51 @@ sources:
 
 ## Short answer
 
-**Для payment calculation мінімальний CI gate – unit-тести на граничні значення та формати валют, інтеграційні тести з реальною БД або її емуляцією, і статичні перевірки (linter + type checker).**[^git-git-merge] Помилка в обчисленнях має високий failure risk (фінансові збитки, некоректні транзакції), тому пропускати будь-який рівень перевірок неприпустимо. Unit-тести покривають формули та edge cases, інтеграційні – взаємодію з БД та зовнішніми сервісами, а static checks ловлять помилки типів і невикористані змінні до запуску тестів. Merge дозволено лише після повного «зеленого» pipeline.
+**Універсального мінімального checklist немає: зроби обов'язковими перед merge перевірки, що
+покривають реальні failure boundaries цієї зміни.** Завжди детерміновано тестуй грошові правила,
+граничні значення та названий режим округлення. Додавай integration-тести БД або провайдера лише
+тоді, коли зміна перетинає ці межі, і запускай релевантні для проєкту type, lint та security checks.
+CI робить вибрані перевірки видимими й обов'язковими для pull request.[^github-continuous-integration]
 
 ## Detailed explanation
 
 CI gate – це набір автоматизованих перевірок, які мають пройти успішно, перш ніж зміну дозволено
 змержити в основну гілку.[^github-continuous-integration]
 
-Мінімальний обов'язковий набір залежить від failure risk: чим дорожча помилка, тим ширше покриття
-потрібне до merge. Для payment calculation ціна дефекту – гроші (неправильна сума, подвійне
-списання, втрачена копійка через округлення), тому жоден із трьох рівнів перевірок не можна
-пропускати.
+Обов'язковий набір випливає з failure model, а не з ярлика «payment». Почни зі зміненого шляху:
+арифметики та правила округлення, представлення в storage, serialization, database transaction або
+контракту провайдера. Для зміни чистого обчислення можуть бути потрібні вичерпні unit- та
+property-тести, але не live service. Зміна schema чи repository потребує тесту з репрезентативною
+БД. Зміна gateway client потребує contract- або sandbox-тесту на цій межі. Static analysis входить
+у gate, коли проєкт налаштував його ловити релевантний клас дефектів; він доповнює executable tests,
+але не замінює їх.
 
-Unit-тести перевіряють саму формулу обчислення – граничні значення (нуль, від'ємні суми, максимум),
-округлення, роботу з різними валютами і locale. Integration-тести перевіряють, що обчислення
-коректно взаємодіє з реальною чи емульованою БД і зовнішніми сервісами (наприклад, payment
-gateway) – саме тут ловляться помилки на кшталт неправильного типу колонки для money. Static checks
-(linter, type checker) ловлять клас помилок, які не залежать від логіки – неправильний тип
-аргументу, невикористану змінну, – і роблять це до запуску тестів, тобто дешевше і швидше.
+Money-тести мають використовувати точні decimal-значення й називати правило округлення. Модуль
+Python `decimal` точно представляє десяткові inputs і надає явні rounding modes.[^py314-decimal]
+Перевіряй нуль, від'ємні значення, якщо domain їх допускає, максимальні підтримувані значення,
+точність валюти й ties по обидва боки парної цифри. Тести storage і провайдера фокусуй лише на
+припущеннях, яких справді торкається зміна.
 
 Приклад unit-тесту на граничне значення для payment calculation:
 
 ```python
-def test_rounds_half_cent_down():
-    assert calculate_total(cents=1005, tax_rate=0.0725) == 1078  # not 1079
+def test_rounds_half_cent_with_half_even():
+    assert calculate_total_cents(
+        subtotal_cents=90,
+        tax_rate="0.05",
+        rounding="ROUND_HALF_EVEN",
+    ) == 94
 ```
 
+Тут податок становить точно 4.5 цента, а `ROUND_HALF_EVEN` округлює його до 4, тому підсумок дорівнює
+94 центам. Інтерфейс ілюстративний; production-тест має викликати фактичний domain API.
+
 **Типові помилки з CI gate для payment-коду:**
-- вважати статичні перевірки формальністю і не блокувати merge через них, хоча вони ловлять помилки
-  типів у грошових розрахунках;
-- покривати unit-тестами лише «щасливий шлях», пропускаючи граничні значення (нуль, округлення,
-  від'ємні суми);
-- тестувати обчислення ізольовано від БД, не помічаючи, що реальна колонка зберігає суму як
-  `float` замість `decimal`.
+- вважати generic linter, type checker, database або sandbox test обов'язковим, не пов'язавши його
+  з failure, яку може спричинити зміна;
+- покривати лише happy path і пропускати точні half-unit, limit, sign та currency-precision boundaries;
+- тестувати лише формулу, коли змінена поведінка також залежить від storage або provider semantics;
+- називати required кожну доступну перевірку, подовжуючи feedback без збільшення впевненості.
 
 ## Environment
 
