@@ -8,10 +8,10 @@ level: senior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  en: 2
+  en: 4
 anki:
   export: true
 sources:
@@ -37,11 +37,42 @@ sources:
 
 ## Detailed explanation
 
-TODO
+OTA update – це доставка та встановлення нового firmware на пристрій через мережу (Wi-Fi, cellular, Ethernet) без фізичного доступу. Основні ризики та їх mitigation:
+
+**Power loss під час install.** Якщо firmware записується в той самий flash, де працює поточна версія, втрата живлення призведе до bricking. Рішення: dual-bank або A/B схема з atomic install – новий image записується в окремий банк, і лише після успішного запису та verification відбувається переключення. Якщо power loss станеться під час запису, старий image залишається valid.
+
+**Signature verification.** Image може бути пошкоджений під час передачі або підроблений. Рішення: cryptographic hash (SHA-256) для integrity check та asymmetric signature (ECDSA, Ed25519) для authenticity. Bootloader перевіряє signature перед виконанням нового image.[^mcuboot-design]
+
+**Anti-rollback policy.** Зловмисник може спробувати відкотити пристрій на стару версію з відомими вразливостями. Рішення: monotonic version counter у secure storage (eFuse, secure flash), і bootloader відмовляється запускати image з меншим version number.
+
+**Version compatibility.** Новий firmware може бути несумісний з config, protocol або hardware abstraction layer. Рішення: version metadata у image manifest, migration scripts для config, та staged rollout для виявлення проблем на малий відсоток пристроїв перед масовим deployment.
+
+**Recovery після power loss.** Навіть з dual-bank, потрібен механізм визначення, який банк boot-ити. Рішення: boot counter та watchdog timer. Якщо новий image не проходить health check протягом N boot attempts, bootloader автоматично перемикається на попередній valid image.[^mcuboot-design]
+
+Update package зазвичай включає: image binary, version metadata, target device identifier, dependencies (якщо є), changelog, та cryptographic signature. Deployment платформа повинна підтримувати: device authentication, staged rollout (canary deployment), audit log, та fleet-wide rollback.
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+
+- Розуміє, що power loss під час install – це основний ризик, і dual-bank/A/B є стандартним рішенням
+- Згадує signature verification як обов'язкову для security
+- Розуміє anti-rollback policy та її зв'язок з security vulnerabilities
+- Згадує staged rollout як спосіб мінімізації ризику version incompatibility
+- Розуміє, що recovery механізм (boot counter, watchdog) потрібен навіть з dual-bank
+
+### Red flags
+
+- Вважає, що OTA не потребує rollback механізму
+- Не згадує signature verification або вважає її опціональною
+- Плутає integrity check (hash) з authenticity check (signature)
+- Не розуміє різниці між dual-bank та A/B схемами
+- Вважає, що power loss не є проблемою для OTA
+
+### Level-up follow-up
+
+- Як реалізувати anti-rollback policy, і чому вона може бути controversial?
+- Як забезпечити secure key storage на пристрої з обмеженим hardware security module?
 
 ## Sources
 
