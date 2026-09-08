@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  en: 2
+  en: 4
 anki:
   export: true
 sources:
@@ -41,7 +41,17 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Bootloader виконує роль проміжного шару між увімкненням пристрою та запуском основної програми. Після reset апаратний блок MCU завантажує з vector table початковий stack pointer (SP) та адресу reset handler, потім переходить на reset handler – точку входу bootloader.
+
+Bootloader виконує мінімальну ініціалізацію: налаштовує необхідні clock та GPIO. Далі перевіряє цілісність образу application – обчислює контрольну суму (CRC-32, SHA-256) або верифікує криптографічний підпис (RSA-2048, ECDSA-P256 у MCUboot). Якщо валідація не пройдена, bootloader переходить у режим відновлення (failsafe): очікує новий firmware через резервний канал (UART, USB).
+
+Якщо образ валідний, bootloader перевіряє, чи потрібно запускати service mode. Тригери: натискання кнопки, прапорець у RTC-регістрі, команда від іншого MCU. Якщо тригера немає – передає керування application.
+
+Якщо новий firmware отримано (через UART, USB, CAN, BLE тощо), bootloader записує його у secondary slot flash-пам'яті. За стратегії swap – міняє місцями primary і secondary слоти; за стратегією overwrite – перезаписує primary. При наступному завантаженні bootloader перевіряє новий образ і, якщо він валідний, запускає його.[^mcuboot-design]
+
+Перед передачею керування bootloader налаштовує векторну таблицю application (записує адресу vector table application у VTOR – Vector Table Offset Register на ARM Cortex-M) та скидає периферію у безпечний стан.
+
+MCUboot – канонічний приклад: два слоти образів, підтримка стратегій overwrite / swap / direct-XIP, криптографічна верифікація. Простіші bootloader можуть не мати підпису чи swap-логіки, але базові обов'язки (перевірка образу, вибір слота, передача керування) залишаються незмінними.
 
 ## Sources
 

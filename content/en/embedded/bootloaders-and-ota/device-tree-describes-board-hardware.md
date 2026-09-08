@@ -1,17 +1,17 @@
 ---
 id: emb-boot-0001
 title: "What is a device tree?"
-description: "A device tree is a data structure that describes board hardware separately from kernel code, allowing one Linux kernel image to support different boards."
+description: "A device tree is a data structure that describes board hardware separately from kernel code; the bootloader loads the compiled .dtb into memory and passes its address to the Linux kernel, allowing one kernel image to support different boards."
 track: embedded
 section: bootloaders-and-ota
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -29,6 +29,13 @@ sources:
     kind: official
     version: "current"
     applicability: "Authoritative section-level reference for bootloaders and ota concepts; details of specific devices and toolchains can differ."
+  - source_id: devicetree-spec
+    title: "Devicetree Specification v0.4"
+    url: https://github.com/devicetree-org/devicetree-specification/releases/tag/v0.4
+    accessed: 2026-09-08
+    kind: official
+    version: "0.4"
+    applicability: "Official Devicetree specification; defines the data format and the bootloader-to-kernel interface."
 ---
 
 ## Short answer
@@ -41,7 +48,13 @@ Example node: describes UART1 – base register address, interrupt number, clock
 
 ## Detailed explanation
 
-TODO
+A Device Tree is a hierarchical data structure that describes hardware as nodes and properties. Each node represents a device or a group of devices; properties hold parameters (register addresses, interrupt numbers, clock rates, `compatible` strings). The root node contains system-wide information (memory size, machine type); child nodes describe peripherals (UART, SPI, I2C, GPIO controllers, etc.).
+
+A `.dts` file (human-readable text) is compiled by the `dtc` (Device Tree Compiler) utility into a binary `.dtb`. The bootloader (e.g. U-Boot) loads the `.dtb` into memory and passes its address to the kernel through a CPU register (r2 on 32-bit ARM, or via ATAGS/EFI on other architectures).
+
+During initialization the kernel parses the tree: it reads root node properties (`#address-cells`, `#size-cells`, `memory`) to determine memory size and machine type, then walks the device nodes. For each node the kernel matches the `compatible` property against drivers registered in the subsystem (platform bus, I2C bus, SPI bus, etc.) and binds the matching driver. The driver then reads configuration data from the node: `reg` (register address and size), `interrupts` (number and type), `clock-frequency`, `status` ("okay" / "disabled"), etc.[^devicetree-spec]
+
+This approach decouples the hardware description from kernel code: a single kernel image can run on different boards; only the `.dtb` changes. It eliminated the need for board-specific `machine_desc` structures and separate kernel builds per board.
 
 ## Sources
 
