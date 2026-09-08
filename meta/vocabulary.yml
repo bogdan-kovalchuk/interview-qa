@@ -134,6 +134,11 @@ section_labels_nav:
   databases/relational-model:           {en: Relational model,              uk: Реляційна модель}
   engineering/ci-cd:                    {en: "CI/CD",                       uk: "CI/CD"}
   engineering/code-quality:             {en: Code quality,                  uk: Якість коду}
+  python/strings-and-text:              {en: Strings and text,              uk: Рядки і текст}
+  python/typing-and-annotations:        {en: Typing and annotations,        uk: Типізація і анотації}
+  python/packaging-and-environments:    {en: Packaging and environments,    uk: Пакування і середовища}
+  python/frameworks:                    {en: Frameworks,                    uk: Фреймворки}
+  embedded/linux-embedded:              {en: Linux embedded,                uk: Linux у вбудованих системах}
 
 # Стан completeness (tools/iqa/lifecycle.py), як видиме слово: бейдж у сайдбарі,
 # індексах треку/секції і на /status/. Значення самого поля лишаються англійськими
@@ -194,6 +199,7 @@ frameworks:
   django:     {title: Django,     track: python}
   sqlalchemy: {title: SQLAlchemy, track: python}
   fastapi:    {title: FastAPI,    track: python}
+  pydantic:   {title: Pydantic,   track: python}
 
 # Префікс секції для схеми ID. Належить секції, а не питанню; фіксується один раз.
 section_prefixes:
@@ -261,6 +267,11 @@ section_prefixes:
   databases/relational-model:           relmod
   engineering/ci-cd:                    cicd
   engineering/code-quality:             codeq
+  python/strings-and-text:              strtxt
+  python/typing-and-annotations:        typing
+  python/packaging-and-environments:    pkgenv
+  python/frameworks:                    framew
+  embedded/linux-embedded:              linemb
 
 # Історичні префікси вже виданих ID. Нові ID беруть префікс лише з
 # `section_prefixes`; alias існує тому, що виданий ID не можна перейменувати.
