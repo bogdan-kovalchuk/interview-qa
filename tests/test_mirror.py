@@ -4,6 +4,7 @@ from pathlib import Path
 import shutil
 
 import pytest
+import yaml
 
 from iqa import mirror
 
@@ -36,6 +37,10 @@ def _question_stems(out: Path) -> set[str]:
     locale directory", which stopped meaning the same thing.
     """
     return {path.stem for path in out.rglob("*.md") if "q" in path.relative_to(out).parts}
+
+
+def _frontmatter(path: Path) -> dict:
+    return yaml.safe_load(path.read_text(encoding="utf-8").split("---", 2)[1])
 
 
 def test_title_inline_code_is_stripped_for_text_and_rendered_for_the_heading() -> None:
@@ -107,6 +112,32 @@ def test_preview_includes_draft_and_review(tmp_path: Path) -> None:
     mirrored_ids = _question_stems(out)
     assert mirrored_ids == {"draft-fixture", "review-fixture", "published-fixture", "withdrawn-fixture"}
     assert count == 4
+
+
+def test_pagination_follows_home_taxonomy_section_and_questions(tmp_path: Path) -> None:
+    content = _make_content_tree(tmp_path, ["published", "withdrawn"])
+    out = tmp_path / "out"
+    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+
+    home = _frontmatter(out / "en" / "index.md")
+    track = _frontmatter(out / "en" / "python" / "index.md")
+    section = _frontmatter(out / "en" / "python" / "concurrency-and-gil" / "index.md")
+    questions = sorted(
+        ((_frontmatter(path), path) for path in (out / "en" / "q").rglob("*.md")),
+        key=lambda item: item[0]["title"],
+    )
+
+    assert "prev" not in home
+    assert home["next"]["link"] == "/interview-qa/en/python/"
+    assert track["prev"]["link"] == "/interview-qa/en/"
+    assert track["next"]["link"] == "/interview-qa/en/python/concurrency-and-gil/"
+    assert section["prev"]["link"] == "/interview-qa/en/python/"
+    assert section["next"]["link"].startswith("/interview-qa/en/q/")
+
+    first, last = questions[0][0], questions[-1][0]
+    assert first["prev"]["link"] == "/interview-qa/en/python/concurrency-and-gil/"
+    assert last["prev"]["link"].startswith("/interview-qa/en/q/")
+    assert "next" not in last
 
 
 def test_withdrawn_renders_tombstone_not_full_body(tmp_path: Path) -> None:
