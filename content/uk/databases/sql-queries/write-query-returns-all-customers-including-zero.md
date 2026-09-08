@@ -15,48 +15,13 @@ reconciled_with:
 anki:
   export: true
 sources:
-  - source_id: postgres-indexes
-    title: "PostgreSQL docs: Indexes"
-    url: https://www.postgresql.org/docs/current/indexes.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація PostgreSQL."
-  - source_id: postgres-transaction-iso
-    title: "PostgreSQL docs: Transaction Iso"
-    url: https://www.postgresql.org/docs/current/transaction-iso.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація PostgreSQL."
-  - source_id: postgres-using-explain
-    title: "PostgreSQL docs: Using Explain"
-    url: https://www.postgresql.org/docs/current/using-explain.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація PostgreSQL."
-  - source_id: postgres-ddl-constraints
-    title: "PostgreSQL docs: DDL Constraints"
-    url: https://www.postgresql.org/docs/current/ddl-constraints.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація PostgreSQL."
-  - source_id: postgres-indexes-ordering
-    title: "PostgreSQL docs: Indexes Ordering"
-    url: https://www.postgresql.org/docs/current/indexes-ordering.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація PostgreSQL."
   - source_id: postgres-queries-table-expressions
-    title: "PostgreSQL docs: Queries Table Expressions"
-    url: https://www.postgresql.org/docs/current/queries-table-expressions.html
-    accessed: 2026-09-04
+    title: "PostgreSQL 17: Table Expressions"
+    url: https://www.postgresql.org/docs/17/queries-table-expressions.html#QUERIES-FROM
+    accessed: 2026-09-08
     kind: official
-    version: null
-    applicability: "Офіційна документація PostgreSQL."
+    version: "17"
+    applicability: "Визначає outer joins, ON conditions і null-extended rows у PostgreSQL 17."
   - source_id: predecessor-answer
     title: "tavor118/pj_python_interview_questions_and_answers (community)"
     url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/infrastructure/sql.md#L154-L245
@@ -68,7 +33,11 @@ sources:
 
 ## Short answer
 
-**Використовуйте `LEFT JOIN` від таблиці customers до orders, а фільтр по оплачених замовленнях (наприклад, `status = 'paid'`) розміщуйте в умові `ON`, а не в `WHERE`.**[^postgres-indexes] Умова в `ON` визначає, які рядки правої таблиці з'єднуються; якщо збігу немає, customers все одно повертається з `NULL` для orders. Якщо ж той самий фільтр помістити в `WHERE`, рядки з `NULL` (customers без paid orders) будуть відфільтровані, що фактично перетворить `LEFT JOIN` на `INNER JOIN`.
+**Використовуйте `LEFT JOIN` від `customers` до `orders`, розмістіть `o.status = 'paid'` в `ON` і
+агрегуйте через `COUNT(o.id)`.**[^postgres-queries-table-expressions] Predicate в `ON` обмежує
+matching paid orders, але зберігає кожного customer як null-extended row. Тоді `COUNT(o.id)` дає
+нуль; `COUNT(*)` помилково порахував би такий row як один. Перенесення status predicate у `WHERE`
+видаляє customers без paid order.
 
 ## Detailed explanation
 
@@ -89,24 +58,26 @@ sources:
 Різниця між правильним і помилковим розміщенням фільтра:
 
 ```sql
--- correct: filter lives in ON, customers without paid orders still appear
-SELECT c.id, c.name, o.id AS order_id
+-- correct: one row per customer, including a zero paid-order count
+SELECT c.id, c.name, COUNT(o.id) AS paid_order_count
 FROM customers c
-LEFT JOIN orders o ON o.customer_id = c.id AND o.status = 'paid';
+LEFT JOIN orders o ON o.customer_id = c.id AND o.status = 'paid'
+GROUP BY c.id, c.name;
 
 -- wrong: filter in WHERE drops customers with no matching paid order
-SELECT c.id, c.name, o.id AS order_id
+SELECT c.id, c.name, COUNT(o.id) AS paid_order_count
 FROM customers c
 LEFT JOIN orders o ON o.customer_id = c.id
-WHERE o.status = 'paid';
+WHERE o.status = 'paid'
+GROUP BY c.id, c.name;
 ```
 
 **Типові помилки з розміщенням предиката:**
 - переносити всі умови фільтрації у `WHERE` за звичкою, не враховуючи, що це вимагає `JOIN`;
 - перевіряти запит лише на даних, де кожен customer має хоча б одне замовлення, і не помічати, що
   zero-order рядки зникають;
-- забувати, що умова `IS NULL` на колонці правої таблиці в `WHERE` – єдиний коректний спосіб
-  фільтрувати «рядки без збігу» після `LEFT JOIN`.
+- забувати, що `IS NULL` для non-nullable key правої таблиці в `WHERE` – один зі способів
+  відфільтрувати «rows без збігу» після `LEFT JOIN`.
 
 ## Environment
 

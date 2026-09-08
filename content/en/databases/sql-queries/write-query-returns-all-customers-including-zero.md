@@ -15,48 +15,13 @@ reconciled_with:
 anki:
   export: true
 sources:
-  - source_id: postgres-indexes
-    title: "PostgreSQL docs: Indexes"
-    url: https://www.postgresql.org/docs/current/indexes.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official PostgreSQL documentation."
-  - source_id: postgres-transaction-iso
-    title: "PostgreSQL docs: Transaction Iso"
-    url: https://www.postgresql.org/docs/current/transaction-iso.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official PostgreSQL documentation."
-  - source_id: postgres-using-explain
-    title: "PostgreSQL docs: Using Explain"
-    url: https://www.postgresql.org/docs/current/using-explain.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official PostgreSQL documentation."
-  - source_id: postgres-ddl-constraints
-    title: "PostgreSQL docs: DDL Constraints"
-    url: https://www.postgresql.org/docs/current/ddl-constraints.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official PostgreSQL documentation."
-  - source_id: postgres-indexes-ordering
-    title: "PostgreSQL docs: Indexes Ordering"
-    url: https://www.postgresql.org/docs/current/indexes-ordering.html
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official PostgreSQL documentation."
   - source_id: postgres-queries-table-expressions
-    title: "PostgreSQL docs: Queries Table Expressions"
-    url: https://www.postgresql.org/docs/current/queries-table-expressions.html
-    accessed: 2026-09-04
+    title: "PostgreSQL 17: Table Expressions"
+    url: https://www.postgresql.org/docs/17/queries-table-expressions.html#QUERIES-FROM
+    accessed: 2026-09-08
     kind: official
-    version: null
-    applicability: "Official PostgreSQL documentation."
+    version: "17"
+    applicability: "Defines outer joins, ON conditions, and null-extended rows in PostgreSQL 17."
   - source_id: predecessor-answer
     title: "tavor118/pj_python_interview_questions_and_answers (community)"
     url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/infrastructure/sql.md#L154-L245
@@ -68,12 +33,11 @@ sources:
 
 ## Short answer
 
-**Use a `LEFT JOIN` from the customers table to orders, and put the filter for paid orders (for
-example, `status = 'paid'`) in the `ON` condition, not in `WHERE`.**[^postgres-indexes] The
-condition in `ON` decides which rows of the right table get joined; when there is no match, the
-customer row is still returned with `NULL` for orders. If the same filter is put in `WHERE`
-instead, rows with `NULL` (customers with no paid orders) get filtered out, which effectively
-turns the `LEFT JOIN` into an `INNER JOIN`.
+**Use a `LEFT JOIN` from `customers` to `orders`, put `o.status = 'paid'` in `ON`, and aggregate
+with `COUNT(o.id)`.**[^postgres-queries-table-expressions] The `ON` predicate limits matching paid
+orders while preserving every customer as a null-extended row. `COUNT(o.id)` then returns zero for
+that row; `COUNT(*)` would incorrectly count it as one. Moving the status predicate to `WHERE`
+removes customers without a paid order.
 
 ## Detailed explanation
 
@@ -94,16 +58,18 @@ customer rows with no paid orders will have `NULL` in that column, and `NULL = '
 The difference between correct and incorrect placement of the filter:
 
 ```sql
--- correct: filter lives in ON, customers without paid orders still appear
-SELECT c.id, c.name, o.id AS order_id
+-- correct: one row per customer, including a zero paid-order count
+SELECT c.id, c.name, COUNT(o.id) AS paid_order_count
 FROM customers c
-LEFT JOIN orders o ON o.customer_id = c.id AND o.status = 'paid';
+LEFT JOIN orders o ON o.customer_id = c.id AND o.status = 'paid'
+GROUP BY c.id, c.name;
 
 -- wrong: filter in WHERE drops customers with no matching paid order
-SELECT c.id, c.name, o.id AS order_id
+SELECT c.id, c.name, COUNT(o.id) AS paid_order_count
 FROM customers c
 LEFT JOIN orders o ON o.customer_id = c.id
-WHERE o.status = 'paid';
+WHERE o.status = 'paid'
+GROUP BY c.id, c.name;
 ```
 
 **Common mistakes with predicate placement:**
@@ -111,7 +77,7 @@ WHERE o.status = 'paid';
   to a `JOIN`;
 - testing the query only on data where every customer already has at least one order, and missing
   that zero-order rows disappear;
-- forgetting that `IS NULL` on a right-table column in `WHERE` is the correct way to filter for
+- forgetting that `IS NULL` on a non-nullable right-table key in `WHERE` is one way to filter for
   "rows with no match" after a `LEFT JOIN`.
 
 ## Environment
