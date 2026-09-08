@@ -1,17 +1,17 @@
 ---
 id: cpp-ptrref-0001
 title: "unique_ptr or shared_ptr: how do you choose between them?"
-description: "Exclusive ownership is the default; shared ownership buys a control block and atomic counters."
+description: "Exclusive ownership is the default; shared ownership adds shared-lifetime bookkeeping."
 track: cpp
 section: pointers-and-references
 level: middle
 type: comparison
 tags: [smart-pointers, ownership, raii, lifetime]
 status: published
-updated: 2026-09-04
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 applies_to:
   - product: ISO C++
     version: "C++20"
@@ -31,24 +31,24 @@ sources:
     accessed: 2026-09-03
     kind: community
     version: "C++20"
-    applicability: "Move-only semantics, deleter storage and size guarantees through C++20."
+    applicability: "Move-only semantics, deleter storage, and common implementation characteristics through C++20; object size is not guaranteed."
   - source_id: cppreference-shared-ptr
     title: "cppreference: std::shared_ptr"
     url: https://en.cppreference.com/w/cpp/memory/shared_ptr
     accessed: 2026-09-03
     kind: community
     version: "C++20"
-    applicability: "Control block, thread safety of the reference count and make_shared allocation behaviour through C++20."
+    applicability: "Shared ownership, control-block implementations, thread-safety rules, and common make_shared allocation behaviour through C++20."
 ---
 
 ## Short answer
 
-**Use `unique_ptr` unless the lifetime genuinely has several independent owners.** `unique_ptr` is
-move-only and, with a stateless deleter, costs the same as a raw pointer.[^cppreference-unique-ptr]
-`shared_ptr` adds a control block with atomic strong and weak counts, so every copy and destruction is
-an atomic operation and the object dies at an unpredictable point.[^cppreference-shared-ptr] Shared
-ownership also admits reference cycles, which `weak_ptr` exists to break. Reaching for `shared_ptr`
-first is usually a sign that ownership was never decided.
+**Use `unique_ptr` unless the lifetime genuinely has several independent owners.** It is move-only
+and stores a pointer together with its deleter; the standard does not guarantee raw-pointer size or
+zero runtime cost.[^cpp-draft-smartptr] `shared_ptr` shares ownership through bookkeeping commonly
+held in a control block. Copies may require synchronization, while the pointee itself gets no thread
+safety. The object is destroyed when the last owner releases it; ownership cycles require
+`weak_ptr`.[^cppreference-shared-ptr]
 
 ## Detailed explanation
 
@@ -56,18 +56,19 @@ Both types express ownership, and the difference is how many owners there may be
 
 `unique_ptr` states that exactly one owner exists at a time. It cannot be copied, only moved, and that
 restriction is what makes the ownership readable in the signature: a function taking `unique_ptr<T>`
-by value takes ownership, and one taking `T*` or `T&` borrows. With the default deleter the object is
-the size of one pointer on every implementation in common use, and destruction is a direct `delete`, so there is nothing to pay for at run
-time.[^cppreference-unique-ptr] A stateful deleter, such as a captured lambda or a function pointer,
-is stored inside and does add size.
+by value takes ownership, and one taking `T*` or `T&` borrows. With the default deleter it is
+typically represented as one pointer, and destruction invokes the stored deleter directly. Neither
+layout nor zero overhead is a C++ guarantee.[^cpp-draft-smartptr] A stateful deleter, such as a
+captured lambda or a function pointer, is stored as part of the smart pointer and can add size or
+invocation cost.
 
 `shared_ptr` states that ownership is shared and the last owner cleans up. That requires a control
-block holding the strong count, the weak count and the deleter. The counts are updated atomically,
-which makes copying a `shared_ptr` safe from several threads but not free, and the pointee itself
-receives no protection whatsoever: two threads writing to the same object through two `shared_ptr`
-copies is still a data race.[^cppreference-shared-ptr] `make_shared` allocates the control block and
-the object together, which saves one allocation but keeps the object's storage alive as long as any
-`weak_ptr` exists.
+block that implementations commonly use for ownership counts and the deleter. Those counts commonly
+use atomic operations. The standard guarantees that different `shared_ptr` objects sharing ownership
+can be used concurrently without a data race on the ownership machinery, but the pointee itself gets
+no protection: two threads writing to it can still race.[^cpp-draft-smartptr] Implementations commonly
+let `make_shared` allocate the control block and object together; that can save an allocation but can
+keep the combined storage alive while a `weak_ptr` remains.[^cppreference-shared-ptr]
 
 ```cpp
 struct Node {
@@ -77,9 +78,9 @@ struct Node {
 };
 ```
 
-The costly mistake is not the atomic increment; it is losing the answer to "who deletes this, and
-when". A graph of `shared_ptr` owners deletes objects at whichever thread happens to drop the last
-reference, at a point no one wrote down, and a cycle deletes nothing at all.
+The costly mistake is not one counter update; it is losing the answer to "who deletes this, and
+when". A graph of `shared_ptr` owners destroys an object when and where the last owner releases it,
+which may be a different thread from the creator. An ownership cycle releases nothing at all.
 
 ## Comparison
 
@@ -87,9 +88,9 @@ reference, at a point no one wrote down, and a cycle deletes nothing at all.
 |---|---|---|
 | Owners | exactly one | any number |
 | Copyable | no, move-only | yes |
-| Size, default deleter | one pointer in practice | two pointers in practice |
-| Extra allocation | none | control block, merged by `make_shared` |
-| Cost of copy | pointer move | atomic increment |
+| Typical representation | often one pointer | often two pointers plus a control block |
+| Extra allocation | none required by ownership | control block; often combined by `make_shared` |
+| Cost of copy | move pointer and deleter | shared-ownership bookkeeping, often synchronized |
 | Destruction point | deterministic, at scope exit | wherever the last owner releases |
 | Cycles | impossible | possible, broken by `weak_ptr` |
 | Thread safety | none needed | the count only, never the object |
@@ -97,8 +98,8 @@ reference, at a point no one wrote down, and a cycle deletes nothing at all.
 ## When to choose which
 
 Choose `unique_ptr` for a member that a class owns, for a factory return value, for pimpl, and for any
-transfer of ownership across an API boundary. It is the default because it documents the lifetime and
-costs nothing.
+transfer of ownership across an API boundary. It is the default because it documents the lifetime
+and avoids shared-ownership bookkeeping.
 
 Choose `shared_ptr` when the number of owners genuinely is not known at compile time: a cache handed
 to several subsystems, a node in a graph that outlives the traversal that found it, an object captured
@@ -114,9 +115,10 @@ by testing expiry, since the object can die between the two calls.
 ### Expected signals
 
 - Names exclusive versus shared ownership as the deciding question, not performance.
-- Knows `unique_ptr` is move-only and, with the default deleter, has no space or time overhead over a
-  raw pointer.
-- Knows the control block is atomic, and that this protects the count and not the object.
+- Knows `unique_ptr` is move-only and distinguishes common zero-overhead implementations from a
+  standard guarantee.
+- Knows shared ownership needs bookkeeping, commonly with atomic counters, and that it does not
+  protect the pointee.
 - Brings up cycles and `weak_ptr` without being prompted.
 
 ### Red flags

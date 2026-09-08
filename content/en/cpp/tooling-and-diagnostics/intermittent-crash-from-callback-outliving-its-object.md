@@ -1,6 +1,6 @@
 ---
 id: cpp-tooling-0001
-title: "A worker crashes once every few thousand requests: how do you find the use-after-free?"
+title: "A worker crashes intermittently under concurrent load: how do you find the use-after-free?"
 description: "An asynchronous callback captured a reference that outlived the object; a sanitizer turns the crash into a stack trace."
 track: cpp
 section: tooling-and-diagnostics
@@ -8,14 +8,16 @@ level: senior
 type: debugging
 tags: [use-after-free, sanitizers, lifetime, asynchronous, undefined-behavior]
 status: published
-updated: 2026-09-04
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 see_also: [cpp-ptrref-0001]
 applies_to:
   - product: ISO C++
     version: "C++20"
+  - product: Clang AddressSanitizer
+    version: null
 anki:
   export: true
 sources:
@@ -25,14 +27,14 @@ sources:
     accessed: 2026-09-03
     kind: official
     version: null
-    applicability: "Flags, report format and quarantine behaviour of AddressSanitizer as documented by Clang; GCC implements the same interface."
-  - source_id: cppreference-object-lifetime
-    title: "cppreference: Lifetime"
-    url: https://en.cppreference.com/w/cpp/language/lifetime
-    accessed: 2026-09-03
+    applicability: "Clang AddressSanitizer build flags, detected bug classes, and diagnostic reports; allocator internals are not claimed."
+  - source_id: cpp-draft-basic-life
+    title: "C++ working draft: object lifetime ([basic.life])"
+    url: https://eel.is/c++draft/basic.life
+    accessed: 2026-09-08
     kind: spec
     version: "C++20"
-    applicability: "When the lifetime of an object ends and what access after that point means, through C++20."
+    applicability: "Defines when object lifetime begins and ends and the restrictions on using storage outside that lifetime."
 ---
 
 ## Short answer
@@ -40,9 +42,9 @@ sources:
 **Stop reproducing the crash and start detecting the access instead: rebuild the service with
 AddressSanitizer and run the ordinary load.** The sanitizer reports the freed allocation, the stack
 that freed it and the stack that touched it afterwards, which turns an intermittent crash into one
-readable report.[^clang-address-sanitizer] The pattern behind almost all of these is an asynchronous
-callback holding a reference to an object whose owner returned; access after the lifetime ends is
-undefined, so a crash is the lucky outcome.[^cppreference-object-lifetime]
+readable report.[^clang-address-sanitizer] A common hypothesis for this symptom is an asynchronous
+callback holding a reference to an object whose owner returned. Using an object outside its lifetime
+violates the language rules; a crash is only one possible manifestation.[^cpp-draft-basic-life]
 
 ## Detailed explanation
 
@@ -51,21 +53,22 @@ appears only when two operations interleave in a particular order, so the first 
 again under a debugger, mostly reproduces the ordering that works.
 
 Reasoning about which pointer is stale is also the slow path. The efficient move is to make the
-program detect the bad access itself. AddressSanitizer replaces the allocator, marks freed memory as
-poisoned, keeps it in quarantine instead of handing it straight back, and reports the allocation, the
-deallocation and the offending access with all three stacks.[^clang-address-sanitizer] That converts a
-crash whose stack points at innocent code into a report that names the guilty pair directly.
+program detect the bad access itself. AddressSanitizer instruments memory accesses and detects
+use-after-free, reporting the offending access and relevant allocation/deallocation context when
+available.[^clang-address-sanitizer] That can convert a crash whose stack points at innocent code into
+a report that connects the access to the object's lifetime.
 
 The reason a use-after-free is so rarely a clean crash is that freed memory usually remains mapped.
 Reading it returns whatever the allocator has put there since, so the program continues with a
 plausible-looking value and fails somewhere else entirely. Nothing in the language promises otherwise:
 once the lifetime has ended, any access is undefined behaviour, and "it worked in staging" is a
-statement about the allocator, not about correctness.[^cppreference-object-lifetime]
+statement about one execution, not about correctness.[^cpp-draft-basic-life]
 
 ## Symptom
 
-A request-handling service crashes roughly once every few thousand requests, only under concurrent
-load, and never in a single-threaded test. The stack trace differs from crash to crash and usually
+A hypothetical request-handling service crashes intermittently, only under concurrent load, and not
+in a single-threaded test. Treat the observations below as supplied case evidence, not measurements
+from this repository. The stack trace differs from crash to crash and usually
 points into standard library code such as `std::string` destruction rather than into service code.
 Some occurrences produce garbled log output instead of a crash.
 
@@ -80,11 +83,11 @@ Some occurrences produce garbled log output instead of a crash.
 
 ## Reproduction
 
-Build the service with `-fsanitize=address -fno-omit-frame-pointer -g -O1` and run the load generator
-at sixteen concurrent connections against an endpoint that returns a session-derived body. The report
-appears within a few hundred requests, well before the unsanitised build would have
-crashed.[^clang-address-sanitizer] The minimal form is a session destroyed by its owner while a pool
-task still holds a reference to it:
+Build the actual service with `-fsanitize=address -fno-omit-frame-pointer -g -O1` and run a
+representative concurrent workload.[^clang-address-sanitizer] Do not promise a fixed request count:
+the time to detection depends on scheduling and the workload. The following snippet only illustrates
+the suspected lifetime relationship; `ThreadPool`, `Session`, their owners, and the load driver are
+intentionally omitted, so it is not a standalone reproducer:
 
 ```cpp
 void submit(ThreadPool& pool, Session& session) {
@@ -105,7 +108,8 @@ distinguishes them, because it reports the allocation that was freed.
 
 ## Diagnosis
 
-AddressSanitizer reports `heap-use-after-free`, an eight-byte read inside `Session::write_response`.
+In this worked scenario, AddressSanitizer reports `heap-use-after-free`, an eight-byte read inside
+`Session::write_response`.
 The three stacks settle it: the allocation stack is the request accept path, the free stack is the
 handler returning and destroying the session, and the access stack is the pool worker running the
 posted lambda.[^clang-address-sanitizer] Hypothesis 2 is confirmed and the others are ruled out.
@@ -155,6 +159,7 @@ task: that removes the crash and removes the point of the thread pool with it.
 - Explains why the crash location is misleading: the corruption and the symptom are separated in time.
 - Identifies capture by reference in an asynchronous callback as the lifetime bug, not the thread pool.
 - Proposes a fix that changes ownership rather than one that changes timing.
+- Distinguishes supplied scenario evidence from a measured, self-contained reproducer.
 
 ### Red flags
 
