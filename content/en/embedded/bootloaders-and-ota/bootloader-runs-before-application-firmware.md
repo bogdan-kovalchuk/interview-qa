@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -41,7 +41,17 @@ In MCUs the bootloader usually resides in a separate Flash region and transfers 
 
 ## Detailed explanation
 
-TODO
+The bootloader acts as the intermediary between power-on and application startup. After reset, the MCU hardware loads the initial stack pointer (SP) and reset handler address from the vector table, then jumps to the reset handler – the bootloader's entry point.
+
+The bootloader performs minimal initialization: sets up essential clocks and GPIO. It then verifies the application image integrity – computing a checksum (CRC-32, SHA-256) or verifying a cryptographic signature (RSA-2048, ECDSA-P256 in MCUboot). If verification fails, the bootloader enters a failsafe mode: it waits for a new firmware image over a backup channel (UART, USB).
+
+If the image is valid, the bootloader checks whether to enter service mode. Triggers include: a button press, a flag in an RTC register, a command from another MCU. If no trigger is present, it transfers control to the application.
+
+If new firmware has been received (over UART, USB, CAN, BLE, etc.), the bootloader writes it to the secondary slot in flash. Under the swap strategy it swaps the primary and secondary slots; under overwrite it replaces the primary image. On the next boot the bootloader verifies the new image and, if valid, runs it.[^mcuboot-design]
+
+Before transferring control, the bootloader configures the application's vector table (writes the application vector table address into VTOR – the Vector Table Offset Register on ARM Cortex-M) and resets peripherals to a safe state.
+
+MCUboot is the canonical example: two image slots, support for overwrite / swap / direct-XIP strategies, and cryptographic verification. Simpler bootloaders may lack signature checks or swap logic, but the core duties (image verification, slot selection, control transfer) remain the same.
 
 ## Sources
 

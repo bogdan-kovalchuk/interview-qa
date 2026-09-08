@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -29,6 +29,13 @@ sources:
     kind: official
     version: "current"
     applicability: "Authoritative section-level reference for bootloaders and ota concepts; details of specific devices and toolchains can differ."
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
+    accessed: 2026-09-08
+    kind: official
+    version: "E"
+    applicability: "ARMv7-M architecture; reset behavior, vector table, and exception model."
 ---
 
 ## Short answer
@@ -42,11 +49,23 @@ After power-on or reset (ARM Cortex-M):[^dou-embedded-interview]
 - Initializes clocking (PLL, clock tree)
 - Calls `main()`.
 
-The program is stored in **Flash (non-volatile)**, executed from there or copied to RAM (XIP or execute-in-place).
+The program is stored in **Flash (non-volatile)**. Execution can happen directly from Flash (XIP – execute-in-place) or, for performance-critical code, the code is copied to RAM.
 
 ## Detailed explanation
 
-TODO
+On ARM Cortex-M, after power-on or hardware reset, the processor performs a sequence defined by the ARMv7-M architecture:
+
+1. **Vector table read.** The hardware reads the first two 32-bit words from the Flash base address (typically `0x00000000`, or `0x08000000` with aliasing). The word at `0x00000000` is the initial Main Stack Pointer (MSP) value; the word at `0x00000004` is the Reset Handler address.
+
+2. **Reset Handler execution.** This is the first instruction the CPU executes. It is usually the `Reset_Handler` function in the startup file (`startup_stm32f4xx.s`, `startup_nrf52.s`, etc.).
+
+3. **Startup code (crt0).** The Reset Handler calls the system initialization function (`SystemInit`), which sets up basic clocking. It then copies the `.data` section (initialized global variables) from Flash to RAM at addresses defined by the linker script. It fills the `.bss` section (uninitialized global variables) with zeros. For C++, it invokes global object constructors (`__libc_init_array`).
+
+4. **Call to `main()`.** After the startup code completes, control passes to `main()`.
+
+The program is stored in Flash (non-volatile memory). Execution can happen directly from Flash (XIP – execute-in-place) or, for performance-critical code and low-latency ISRs, the code is copied to RAM.
+
+The vector table contains up to 240 exception/interrupt vectors (for ARMv7-M); besides SP and Reset Handler, it includes addresses for NMI_Handler, HardFault_Handler, MemManage_Handler, etc.[^armv7m-arm]
 
 ## Sources
 
