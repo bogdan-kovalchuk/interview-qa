@@ -1,6 +1,6 @@
 ---
 id: cpp-tooling-0001
-title: "Воркер падає раз на кілька тисяч запитів: як знайти use-after-free?"
+title: "Воркер періодично падає під конкурентним навантаженням: як знайти use-after-free?"
 description: "Асинхронний callback захопив посилання, яке пережило об'єкт; sanitizer перетворює падіння на стек викликів."
 track: cpp
 section: tooling-and-diagnostics
@@ -8,14 +8,16 @@ level: senior
 type: debugging
 tags: [use-after-free, sanitizers, lifetime, asynchronous, undefined-behavior]
 status: published
-updated: 2026-09-04
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  en: 2
+  en: 3
 see_also: [cpp-ptrref-0001]
 applies_to:
   - product: ISO C++
     version: "C++20"
+  - product: Clang AddressSanitizer
+    version: null
 anki:
   export: true
 sources:
@@ -25,14 +27,14 @@ sources:
     accessed: 2026-09-03
     kind: official
     version: null
-    applicability: "Прапорці, формат звіту і поведінка quarantine в AddressSanitizer за документацією Clang; GCC реалізує той самий інтерфейс."
-  - source_id: cppreference-object-lifetime
-    title: "cppreference: Lifetime"
-    url: https://en.cppreference.com/w/cpp/language/lifetime
-    accessed: 2026-09-03
+    applicability: "Build flags Clang AddressSanitizer, класи виявлених помилок і diagnostic reports; внутрішню будову allocator не заявлено."
+  - source_id: cpp-draft-basic-life
+    title: "C++ working draft: object lifetime ([basic.life])"
+    url: https://eel.is/c++draft/basic.life
+    accessed: 2026-09-08
     kind: spec
     version: "C++20"
-    applicability: "Коли завершується час життя об'єкта і що означає доступ після цієї точки, включно з C++20."
+    applicability: "Визначає початок і завершення часу життя об'єкта та обмеження використання storage поза ним."
 ---
 
 ## Short answer
@@ -40,9 +42,9 @@ sources:
 **Припини відтворювати падіння і почни детектувати сам доступ: перезбери сервіс з AddressSanitizer
 і дай звичайне навантаження.** Sanitizer повідомляє звільнену алокацію, стек, який її звільнив,
 і стек, який після цього її торкнувся, і тим перетворює плаваюче падіння на один читабельний
-звіт.[^clang-address-sanitizer] За майже всіма такими випадками стоїть асинхронний callback, що тримає
-посилання на об'єкт, власник якого вже повернувся; доступ після завершення часу життя не визначений,
-тож падіння – щасливий результат.[^cppreference-object-lifetime]
+звіт.[^clang-address-sanitizer] Поширена гіпотеза для такого симптому – асинхронний callback, що
+тримає посилання на об'єкт, власник якого вже повернувся. Використання об'єкта поза його часом життя
+порушує правила мови; падіння є лише одним із можливих проявів.[^cpp-draft-basic-life]
 
 ## Detailed explanation
 
@@ -51,21 +53,22 @@ sources:
 запустити ще раз під debugger – переважно відтворює той порядок, який працює.
 
 Міркувати про те, який саме вказівник протух, теж повільний шлях. Ефективний хід – змусити програму
-самостійно виявити хибний доступ. AddressSanitizer підміняє алокатор, позначає звільнену пам'ять як
-poisoned, тримає її в quarantine замість негайно віддати назад і повідомляє алокацію, звільнення
-й порушний доступ разом із трьома стеками.[^clang-address-sanitizer] Це перетворює падіння, чий стек
-вказує на невинний код, на звіт, що прямо називає винну пару.
+самостійно виявити хибний доступ. AddressSanitizer інструментує memory accesses, виявляє
+use-after-free і за можливості показує порушний доступ та пов'язаний контекст allocation/free.
+Це може перетворити падіння, чий стек вказує на невинний код, на звіт, що пов'язує доступ із часом
+життя об'єкта.[^clang-address-sanitizer]
 
 Use-after-free так рідко дає чисте падіння тому, що звільнена пам'ять зазвичай лишається відображеною.
 Читання повертає те, що алокатор устиг туди покласти, тож програма продовжує з правдоподібним
 значенням і ламається зовсім в іншому місці. Мова нічого іншого й не обіцяє: щойно час життя
 завершився, будь-який доступ є undefined behaviour, а «на staging працювало» – це твердження про
-алокатор, а не про коректність.[^cppreference-object-lifetime]
+одне виконання, а не про коректність.[^cpp-draft-basic-life]
 
 ## Symptom
 
-Сервіс обробки запитів падає приблизно раз на кілька тисяч запитів, лише під конкурентним
-навантаженням і ніколи в однопотоковому тесті. Стек викликів різний від падіння до падіння і зазвичай
+Гіпотетичний сервіс обробки запитів періодично падає лише під конкурентним навантаженням і не падає
+в однопотоковому тесті. Вважай observations нижче заданими умовами кейсу, а не вимірюваннями цього
+репозиторію. Стек викликів різний від падіння до падіння і зазвичай
 вказує в код стандартної бібліотеки, наприклад у знищення `std::string`, а не в код сервісу. Частина
 випадків замість падіння дає покришений вивід у лозі.
 
@@ -80,11 +83,11 @@ Use-after-free так рідко дає чисте падіння тому, що
 
 ## Reproduction
 
-Зібрати сервіс із `-fsanitize=address -fno-omit-frame-pointer -g -O1` і дати генератору навантаження
-шістнадцять одночасних з'єднань на ендпоінт, що повертає тіло, похідне від сесії. Звіт з'являється
-в межах кількох сотень запитів, задовго до того, як упала б збірка без
-sanitizer.[^clang-address-sanitizer] Мінімальна форма – сесія, знищена своїм власником, поки задача
-в пулі ще тримає на неї посилання:
+Збери фактичний сервіс із `-fsanitize=address -fno-omit-frame-pointer -g -O1` і запусти
+репрезентативне конкурентне навантаження.[^clang-address-sanitizer] Не обіцяй фіксованої кількості
+запитів: час до виявлення залежить від scheduling і workload. Наступний snippet лише ілюструє
+підозрюваний lifetime relationship; `ThreadPool`, `Session`, їхніх owners і load driver навмисно
+пропущено, тому це не standalone reproducer:
 
 ```cpp
 void submit(ThreadPool& pool, Session& session) {
@@ -105,7 +108,7 @@ void submit(ThreadPool& pool, Session& session) {
 
 ## Diagnosis
 
-AddressSanitizer повідомляє `heap-use-after-free`: восьмибайтове читання всередині
+У цьому worked scenario AddressSanitizer повідомляє `heap-use-after-free`: восьмибайтове читання всередині
 `Session::write_response`. Три стеки вирішують справу: стек алокації – це шлях прийняття запиту, стек
 звільнення – повернення обробника, який знищує сесію, а стек доступу – воркер пулу, що виконує
 надіслану лямбду.[^clang-address-sanitizer] Гіпотеза 2 підтверджена, решта відкинуті. Перевиділення
@@ -155,6 +158,7 @@ void submit(ThreadPool& pool, std::shared_ptr<Session> session) {
 - Визначає помилкою часу життя саме захоплення за посиланням в асинхронному callback, а не пул
   потоків.
 - Пропонує виправлення, яке змінює володіння, а не таймінг.
+- Відрізняє задані умови scenario від виміряного self-contained reproducer.
 
 ### Red flags
 
