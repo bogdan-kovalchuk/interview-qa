@@ -1263,3 +1263,10 @@ emb-cppstl-0032,2026-09-06,published,embedded/cpp-embedded-constraints-and-stl/v
 emb-cppstl-0033,2026-09-06,published,embedded/cpp-embedded-constraints-and-stl/optimise-for-size-and-strip-the-cpp-runtime-features.md
 emb-cppstl-0034,2026-09-06,published,embedded/cpp-embedded-constraints-and-stl/the-bounds-check-stays-only-the-throw-is-replaced.md
 emb-cppstl-0035,2026-09-06,published,embedded/cpp-embedded-constraints-and-stl/know-the-flags-the-safe-subset-and-the-c-boundary.md
+py-strtxt-0001,2026-09-08,published,python/strings-and-text/str-vs-bytes-encoding-difference.md
+py-typing-0001,2026-09-08,published,python/typing-and-annotations/list-vs-typing-list-generic-syntax.md
+py-pkgenv-0001,2026-09-08,published,python/packaging-and-environments/requirements-txt-vs-pyproject-toml-dependencies.md
+py-framew-0001,2026-09-08,published,python/frameworks/pydantic-runtime-validation-vs-static-type-checking.md
+emb-ptrarr-0001,2026-09-08,published,embedded/pointers-and-arrays/array-name-vs-pointer-behavior-differences.md
+emb-power-0001,2026-09-08,published,embedded/power-management/battery-powered-systems-power-management-techniques.md
+emb-linemb-0001,2026-09-08,published,embedded/linux-embedded/kernel-module-vs-user-space-driver-differences.md

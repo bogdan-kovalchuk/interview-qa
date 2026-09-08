@@ -12,12 +12,12 @@ Update these four numbers when the corpus grows, and the whole suite follows.
 """
 
 # Every Markdown file under content/, both languages.
-FILES = 2508
+FILES = 2522
 
 # Questions, counted once rather than once per language.
-QUESTIONS = 1254
+QUESTIONS = 1261
 
 # Cards that ship in each package: a question ships when its Short answer is
 # written in that language and `anki.export` is not false (meta/anki.md).
-UK_CARDS = 1241
-EN_CARDS = 998
+UK_CARDS = 1248
+EN_CARDS = 1005
