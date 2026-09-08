@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-**enum+switch** – few states (<~8), debug simplicity matters, and warnings on missing cases.
+**enum+switch** – about eight states or fewer, debug simplicity matters, and warnings on missing cases.
 
 Function-pointer table – many states, O(1) dispatch is needed, and states are added without changing existing code (table in Flash).
 

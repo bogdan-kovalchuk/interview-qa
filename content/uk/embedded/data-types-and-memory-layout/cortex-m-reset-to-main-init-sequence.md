@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-Апаратура читає Vector Table: SP <- значення за адресою `0x00000000`, PC <- Reset Handler за адресою `0x00000004`. Startup code копіює `.data` з Flash (LMA) у RAM (VMA), обнуляє `.bss`, викликає глобальні C++ конструктори (якщо є) і нарешті `main()`.
+Апаратура читає Vector Table: SP отримує значення за адресою `0x00000000`, а PC – адресу Reset Handler з `0x00000004`. Startup code копіює `.data` з Flash (LMA) у RAM (VMA), обнуляє `.bss`, викликає глобальні C++ конструктори (якщо є) і нарешті `main()`.
 
 Локальні змінні в `main()` - на стеку, <span class="warn">не ініціалізуються</span>.[^embeddedinterviewlab]
 

@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-The hardware reads the Vector Table: SP <- value at address `0x00000000`, PC <- Reset Handler at address `0x00000004`. Startup code copies `.data` from Flash (LMA) to RAM (VMA), zeroes `.bss`, calls global C++ constructors (if any), and finally `main()`.
+The hardware reads the Vector Table: SP receives the value at address `0x00000000`, while PC receives the Reset Handler address from `0x00000004`. Startup code copies `.data` from Flash (LMA) to RAM (VMA), zeroes `.bss`, calls global C++ constructors (if any), and finally `main()`.
 
 Local variables in `main()` live on the stack and are <span class="warn">not initialized</span>.[^embeddedinterviewlab]
 
