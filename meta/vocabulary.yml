@@ -258,6 +258,11 @@ section_prefixes:
   engineering/ci-cd:                    cicd
   engineering/code-quality:             codeq
 
+# Історичні префікси вже виданих ID. Нові ID беруть префікс лише з
+# `section_prefixes`; alias існує тому, що виданий ID не можна перейменувати.
+section_prefix_aliases:
+  embedded/c-in-embedded: [cppfound]
+
 # Термінологія перекладу. Ворота lang-glossary звіряють вжиті форми з цим списком.
 glossary:
   - {en: event loop,          uk: event loop,          note: лишається англійською; «цикл подій» не вживається}

@@ -42,6 +42,7 @@ CITATION_RE = re.compile(r"\[\^([a-z0-9]+(?:-[a-z0-9]+)*)\]")
 QID_RE = re.compile(r"(?<![a-z0-9-])qid:([a-z0-9][a-z0-9-]*)", re.IGNORECASE)
 CODE_BLOCK_RE = re.compile(r"(?ms)^```[^\r\n]*\r?\n.*?^```[ \t]*(?=\r?$)")
 INLINE_CODE_RE = re.compile(r"`[^`\r\n]+`")
+HTML_TAG_RE = re.compile(r"</?(?:br|code|span)\b[^>]*>", re.IGNORECASE)
 READY_URL_RE = re.compile(r"https?://|(?<![\w])/(?:en|uk)/q/", re.IGNORECASE)
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]\r\n]+\]\([^)\r\n]+\)")
 MARKDOWN_LINK_TARGET_RE = re.compile(
@@ -348,6 +349,19 @@ def _facets_gate(record: FileRecord, vocabulary: dict[str, Any], report: Validat
                 f"section `{section_path}` has no immutable ID prefix",
                 path=record.label,
             )
+        else:
+            issued_prefix = question.frontmatter.id.rsplit("-", 1)[0].rsplit("-", 1)[-1]
+            allowed_prefixes = {
+                str(vocabulary["section_prefixes"][section_path]),
+                *map(str, (vocabulary.get("section_prefix_aliases") or {}).get(section_path, [])),
+            }
+            if issued_prefix not in allowed_prefixes:
+                report.add(
+                    "id-immutable",
+                    f"question ID uses prefix `{issued_prefix}`; "
+                    f"expected one of {sorted(allowed_prefixes)}",
+                    path=record.label,
+                )
 
 
 def _vocabulary_contract_gate(vocabulary: dict[str, Any], report: ValidationReport) -> None:
@@ -376,6 +390,28 @@ def _vocabulary_contract_gate(vocabulary: dict[str, Any], report: ValidationRepo
                 f"section prefix for `{section_path}` must be 3 to 8 lowercase letters",
                 path="meta/vocabulary.yml",
             )
+    known_sections = set(vocabulary.get("section_prefixes") or {})
+    for section_path, aliases in (vocabulary.get("section_prefix_aliases") or {}).items():
+        if section_path not in known_sections:
+            report.add(
+                "facets-vocabulary",
+                f"section prefix aliases reference unknown section `{section_path}`",
+                path="meta/vocabulary.yml",
+            )
+        if not isinstance(aliases, list) or not aliases:
+            report.add(
+                "facets-vocabulary",
+                f"section prefix aliases for `{section_path}` must be a non-empty list",
+                path="meta/vocabulary.yml",
+            )
+            continue
+        for prefix in aliases:
+            if not re.fullmatch(r"[a-z]{3,8}", str(prefix)):
+                report.add(
+                    "facets-vocabulary",
+                    f"section prefix alias for `{section_path}` must be 3 to 8 lowercase letters",
+                    path="meta/vocabulary.yml",
+                )
 
 
 def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
@@ -513,6 +549,12 @@ def _without_any_code(text: str) -> str:
     return INLINE_CODE_RE.sub("", _without_code(text))
 
 
+def _without_html_tags(text: str) -> str:
+    """Remove real HTML tags without treating C/C++ operators as markup."""
+    text = re.sub(r"<br\s*/?>", " ", text, flags=re.IGNORECASE)
+    return HTML_TAG_RE.sub("", text)
+
+
 def _sentence_count(text: str) -> int:
     cleaned = _without_code(text)
     cleaned = CITATION_RE.sub("", cleaned)
@@ -528,12 +570,11 @@ def _sentence_count(text: str) -> int:
     # Preserve a word boundary where legacy/imported answers use HTML line
     # breaks. Removing the tag directly would join `sentence.<br>Next` into
     # `sentence.Next` and undercount otherwise valid prose.
-    cleaned = re.sub(r"<br\s*/?>", " ", cleaned, flags=re.IGNORECASE)
     # Only a real tag. `<[^>]+>` also matches from the `<` of a shift operator to
     # the `>` of an arrow further along - `1<<5` ... `->` - and silently deletes
     # every sentence in between, which is how an answer of seven sentences came
     # to count as one.
-    cleaned = re.sub(r"</?[a-zA-Z][^>]*>", "", cleaned)
+    cleaned = _without_html_tags(cleaned)
     cleaned = re.sub(r"[*_`]", "", cleaned)
     cleaned = re.sub(r"(?m)^\s*(?:[-+*]|\d+[.)])\s+", "", cleaned)
     cleaned = " ".join(cleaned.split())
@@ -543,6 +584,12 @@ def _sentence_count(text: str) -> int:
         r"[.!?](?:[\"')\]]+)?(?=\s+(?:[A-ZА-ЯІЇЄҐ0-9*_<\[])|$)", cleaned
     )
     return len(boundaries)
+
+
+def _word_count(text: str) -> int:
+    cleaned = CITATION_RE.sub("", _without_code(text))
+    cleaned = _without_html_tags(cleaned)
+    return len(re.findall(r"(?u)\b[\w'+-]+\b", cleaned))
 
 
 def _short_answer_gate(record: FileRecord, report: ValidationReport) -> None:
@@ -584,11 +631,11 @@ def _short_answer_gate(record: FileRecord, report: ValidationReport) -> None:
         report.add(
             "short-answer-limits", ".warn must not be nested in bold key text", path=record.label
         )
-    words = re.findall(r"(?u)\b[\w'+-]+\b", CITATION_RE.sub("", _without_code(short.content)))
-    if len(words) > 90:
+    word_count = _word_count(short.content)
+    if word_count > 90:
         report.add(
             "short-answer-limits",
-            f"Short answer has {len(words)} words; more than 90 is a warning",
+            f"Short answer has {word_count} words; more than 90 is a warning",
             path=record.label,
             severity="warning",
         )

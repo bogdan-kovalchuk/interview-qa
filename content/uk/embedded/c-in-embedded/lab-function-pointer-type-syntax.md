@@ -37,7 +37,7 @@ sources:
 
 Читання: `fp` – вказівник (`*fp`), що є функцією (`(*fp)(int)`), що повертає void.
 
-Для зручності – `typedef`: 
+Для зручності – `typedef`:
 
 ```c
 typedef void (*callback_t)(int);
