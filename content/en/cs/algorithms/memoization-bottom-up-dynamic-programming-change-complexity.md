@@ -15,23 +15,16 @@ reconciled_with:
 anki:
   export: true
 sources:
+  - source_id: clrs-4e
+    title: "Introduction to Algorithms, fourth edition"
+    url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+    accessed: 2026-09-08
+    kind: book
+    version: "4th edition"
+    applicability: "Chapter 14 supports memoization, bottom-up dynamic programming, and state-based complexity analysis."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-heapq
-    title: "Python 3.14: Library/heapq"
-    url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-bisect
-    title: "Python 3.14: Library/bisect"
-    url: https://docs.python.org/3.14/library/bisect.html
     accessed: 2026-09-04
     kind: official
     version: "3.14"
@@ -47,11 +40,11 @@ sources:
 
 ## Short answer
 
-**Memoization or bottom-up dynamic programming reduces a recursion with exponential time and
-overlapping subproblems to polynomial time, by solving each unique subproblem only
-once.**[^py314-library-collections] For example, naive recursive Fibonacci has O(2^n) complexity,
-but with a memo table each of the n subproblems is computed once – giving O(n) time and O(n)
-memory. The trade-off is extra memory for the cache instead of repeated computation.
+**Memoization or bottom-up dynamic programming avoids recomputing overlapping subproblems by
+solving each reachable state once.**[^clrs-4e] The resulting time is approximately the number of
+reachable states times the transition cost, so it is polynomial only when that state space and
+transition work are polynomial. For Fibonacci, this changes exponential recursion to O(n) time
+and O(n) memo storage.
 
 ## Detailed explanation
 
@@ -64,8 +57,8 @@ Memoization folds that tree back into a graph: before computing a state, the cod
 and if the state is already there, it returns the stored value instead of descending again. When
 a state is described by several parameters, it is reduced to a hashable key – a tuple or, for
 readability, a namedtuple.[^py314-library-collections] Each unique state is then computed exactly
-once, and the total time becomes O(number of states × cost of a transition excluding recursive
-calls) – O(n) for Fibonacci instead of O(2^n).
+once, and the total time becomes O(number of reachable states × transition cost excluding
+recursive calls) – O(n) for Fibonacci instead of O(2^n).[^clrs-4e]
 
 Bottom-up DP reaches the same result a different way: instead of recursing top-down, it builds the
 table bottom-up, in an order that guarantees that when state k is computed, every state it depends
@@ -82,9 +75,10 @@ get computed and what the overhead structure costs:
   Fibonacci depends on two), the table can be collapsed to fixed-size variables – O(1) memory
   instead of O(n).
 
-So both approaches remove the exponential duplication of work, turning the problem from O(2^n)
-into O(number of unique states); the trade-off between them is recursion with lazy evaluation
-versus iteration with the option to compress memory.
+Both approaches remove duplicated evaluation of the same state, but they do not guarantee a
+polynomial algorithm: a problem can still have exponentially many distinct reachable states. The
+trade-off between them is recursion with demand-driven evaluation versus iteration with the option
+to compress memory.
 
 ## Evaluation guide
 

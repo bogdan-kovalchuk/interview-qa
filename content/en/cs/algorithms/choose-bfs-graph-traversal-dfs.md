@@ -15,23 +15,16 @@ reconciled_with:
 anki:
   export: true
 sources:
+  - source_id: clrs-4e
+    title: "Introduction to Algorithms, fourth edition"
+    url: https://mitpress.mit.edu/9780262046305/introduction-to-algorithms/
+    accessed: 2026-09-08
+    kind: book
+    version: "4th edition"
+    applicability: "Chapters 20-22 support BFS/DFS complexity, shortest paths in unweighted graphs, and DFS applications."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-heapq
-    title: "Python 3.14: Library/heapq"
-    url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-bisect
-    title: "Python 3.14: Library/bisect"
-    url: https://docs.python.org/3.14/library/bisect.html
     accessed: 2026-09-04
     kind: official
     version: "3.14"
@@ -48,16 +41,18 @@ sources:
 ## Short answer
 
 **BFS traverses a graph level by level through a queue and finds the shortest path in unweighted
-graphs; DFS goes deep through a stack and uses less memory on wide graphs.**[^py314-library-collections]
+graphs; DFS goes deep through a stack and can keep a smaller frontier on wide, shallow
+graphs.**[^clrs-4e]
 Choose BFS when you need the shortest path or a level-by-level traversal. Choose DFS for
-topological sorting, cycle detection, or when the target is deep and the graph is wide – DFS
-memory is O(depth) versus O(width) for BFS.
+topological sorting or depth-oriented exploration. For graph traversal, both algorithms can also
+need an O(V) visited set; only their queue or stack frontier has the familiar O(width) versus
+O(depth) contrast.
 
 ## Detailed explanation
 
-Both algorithms visit every reachable vertex exactly once, so the asymptotic cost is the same:
-O(V + E) on an adjacency list. The difference is the order of the visit, and that order is exactly
-what determines which property of the path you get.
+With a visited set, both algorithms process every reachable vertex and edge a constant number of
+times, so the asymptotic cost is O(V + E) on an adjacency list.[^clrs-4e] The difference is the
+visit order, and that order determines which path properties are available.
 
 BFS keeps a FIFO queue: a vertex leaves the queue in the same order it entered, so the graph
 unfolds in "waves" by distance from the start. That is why the first path found to any vertex is
@@ -67,20 +62,20 @@ pop from the front.[^py314-library-collections] The wave structure of BFS also g
 BFS "for free" – distances from several start vertices at once.
 
 DFS instead commits to one branch all the way down and only backtracks at a dead end, using an
-explicit stack or the call stack. DFS memory is bounded by recursion depth, i.e. O(depth): on a
-wide, shallow graph that is far cheaper than the BFS frontier, which can hold O(width) vertices at
-once. On a graph that is essentially one long chain, though, DFS depth approaches O(V) and the
-memory advantage disappears.
+explicit stack or the call stack. Its active path can be O(depth), while a BFS queue can grow to
+O(width). This comparison excludes the visited set required for a general graph, which can be O(V)
+for either traversal. An iterative DFS can also hold multiple pending neighbors, so O(depth) is not
+a universal total-memory bound for every implementation.
 
 DFS traversal order – post-order in particular – underlies topological sorting and strongly
-connected component algorithms, and a back edge found during DFS directly reveals a cycle. BFS
-does not give you that property directly.
+connected component algorithms.[^clrs-4e] In a directed graph, a back edge found by DFS reveals a
+cycle; in an undirected graph, the edge to the parent must be excluded from that test.
 
 So:
 
 - if you need the shortest distance by edge count or a level-by-level traversal, use BFS;
-- if you need a topological order, cycle detection, or the graph is wide with shallow depth, use
-  DFS, because its memory scales with depth, not width.
+- if you need a topological order or depth-oriented exploration, use DFS; on a wide, shallow graph
+  its active frontier can be smaller than BFS's, but count the visited set separately.
 
 ## Comparison
 
