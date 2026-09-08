@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-09-08
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 4
 anki:
   export: true
 sources:
@@ -37,11 +37,50 @@ CMake first configures the build graph: it reads `CMakeLists.txt`, the toolchain
 
 ## Detailed explanation
 
-TODO
+In a cross-compilation project, CMake works in two stages: configure and build. During configure, CMake reads `CMakeLists.txt`, the toolchain file, and generates the build system (Ninja or Makefiles). During build, the build tool invokes the cross-compiler, assembler, linker, and post-build utilities.[^gcc-overall-options]
+
+**Toolchain file** is a CMake script that defines the target platform:
+```cmake
+set(CMAKE_SYSTEM_NAME Generic)  # or Linux, bare-metal
+set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+set(CMAKE_CXX_COMPILER arm-none-eabi-g++)
+set(CMAKE_ASM_COMPILER arm-none-eabi-gcc)
+set(CMAKE_OBJCOPY arm-none-eabi-objcopy)
+```
+
+CMake distinguishes **host tools** (which run on the PC during build) from **target binaries** (which will execute on the MCU). For example, a code generator might be a host tool that generates code for the target.
+
+**Configure step**:
+```bash
+cmake -B build -G Ninja \
+  -DCMAKE_TOOLCHAIN_FILE=arm-toolchain.cmake \
+  -DCMAKE_BUILD_TYPE=Release
+```
+
+**Build step**:
+```bash
+cmake --build build --target firmware.elf
+```
+
+CMake automatically adds target flags from the toolchain file to every compile command. The linker script is set via `target_link_options()` or `CMAKE_EXE_LINKER_FLAGS`. Post-build steps (objcopy to .hex/.bin) are added via `add_custom_command()`.
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+- Understands the difference between host tools and target binaries
+- Knows that the toolchain file specifies the cross-compiler and target flags
+- Can explain the configure and build stages
+- Understands the role of sysroot and linker script
+
+### Red flags
+- Confuses host compiler with cross-compiler
+- Does not know what a toolchain file is
+- Does not understand why you cannot just change the compiler to a cross-compiler without a toolchain file
+
+### Level-up follow-up
+- How does CMake handle find_package() in cross-compilation?
+- How to set different optimization levels for different targets?
+- How to integrate a code generator as a host tool?
 
 ## Sources
 
