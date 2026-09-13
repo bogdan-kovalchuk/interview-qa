@@ -99,9 +99,10 @@ def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\n")
-        writer.writerow(("id", "created", "status", "current_path"))
+        writer.writerow(("id", "created", "status", "current_path", "reason"))
         for qid, status, current_path in rows:
-            writer.writerow((qid, "2026-09-04", status, current_path))
+            reason = "test fixture: retired ids carry their reason here" if status == "retired" else ""
+            writer.writerow((qid, "2026-09-04", status, current_path, reason))
 
 
 def _make_repository(tmp_path: Path, scenario_path: Path) -> tuple[Path, dict]:
@@ -340,3 +341,24 @@ def test_real_content_passes_all_blocking_content_gates() -> None:
 
 def test_module_cli_validate_command_exists() -> None:
     assert main(["validate", "--root", str(ROOT)]) == 0
+
+
+def test_a_retired_registry_row_must_carry_a_reason(tmp_path: Path) -> None:
+    """meta/questions.md section 8: a rejected question leaves no file behind, so
+    the registry row is the only place its reason can live. An empty `reason`
+    turns a deliberate retirement into an indistinguishable gap in the id
+    sequence, which is exactly what the column exists to prevent."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    repository = _base_repository(tmp_path, en_text=en_base, uk_text=uk_base)
+    registry = repository / "meta" / "id-registry.csv"
+
+    with registry.open("a", encoding="utf-8", newline="") as handle:
+        csv.writer(handle, lineterminator="\n").writerow(
+            ("py-gil-9001", "2026-09-04", "retired", "", "")
+        )
+
+    report = validate_repository(repository)
+    assert [item.message for item in report.errors if item.gate == "id-immutable"] == [
+        "retired `py-gil-9001` has no `reason`"
+    ]
