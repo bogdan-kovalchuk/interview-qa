@@ -114,6 +114,7 @@ class RegistryEntry:
     id: str
     status: str
     current_path: str
+    reason: str
 
 
 def _load_registry(path: Path, report: ValidationReport) -> dict[str, RegistryEntry]:
@@ -121,7 +122,7 @@ def _load_registry(path: Path, report: ValidationReport) -> dict[str, RegistryEn
     try:
         with path.open(encoding="utf-8", newline="") as handle:
             reader = csv.DictReader(handle)
-            required = {"id", "created", "status", "current_path"}
+            required = {"id", "created", "status", "current_path", "reason"}
             if set(reader.fieldnames or ()) != required:
                 report.add(
                     "id-immutable",
@@ -136,11 +137,23 @@ def _load_registry(path: Path, report: ValidationReport) -> dict[str, RegistryEn
                         "id-unique", f"duplicate registry id `{qid}`", path=path.as_posix()
                     )
                     continue
-                entries[qid] = RegistryEntry(
+                entry = RegistryEntry(
                     id=qid,
                     status=row["status"].strip(),
                     current_path=row["current_path"].strip().replace("\\", "/"),
+                    reason=(row["reason"] or "").strip(),
                 )
+                # meta/questions.md section 8: a rejected question leaves no file
+                # behind, so the registry row is the only place the reason can
+                # live. An empty one turns a deliberate retirement into an
+                # indistinguishable gap in the id sequence.
+                if entry.status == "retired" and not entry.reason:
+                    report.add(
+                        "id-immutable",
+                        f"retired `{qid}` has no `reason`",
+                        path=path.as_posix(),
+                    )
+                entries[qid] = entry
     except (OSError, csv.Error) as error:
         report.add("id-immutable", f"cannot read registry: {error}", path=path.as_posix())
     return entries
