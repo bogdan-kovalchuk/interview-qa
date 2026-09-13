@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 1
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-**`packed` reduces padding within a type, and `aligned(N)` sets the minimum alignment of the object or type itself.**
+**`packed` reduces padding within a type, and `aligned(N)` sets the minimum alignment of the object or type.**
 
-This can be useful for wire headers or DMA (direct memory access) descriptors, where the layout must be compact but the starting address must be aligned for the hardware. At the same time, for MMIO (memory-mapped I/O) register blocks <span class="warn">you should not automatically apply `packed`</span>: registers usually have natural 32-bit offsets, and gaps are better described with reserved fields.
+That helps for wire headers or DMA (direct memory access) descriptors, where the layout must be compact but the start address must suit the hardware. For MMIO (memory-mapped I/O) register blocks <span class="warn">do not apply `packed` automatically</span>: registers sit at natural 32-bit offsets, and gaps are better described with reserved fields.
 
-Rule: `packed` controls the layout, `aligned` controls the base address; for register maps check the access width and `offsetof` rather than just packing the structure.[^embeddedinterviewlab]
-
+Rule: `packed` controls layout, `aligned` the base address; for register maps check access width and `offsetof`.[^embeddedinterviewlab]
 ## Detailed explanation
 
 TODO

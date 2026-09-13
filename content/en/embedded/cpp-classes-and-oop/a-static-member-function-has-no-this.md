@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 1
@@ -35,10 +35,9 @@ sources:
 
 **A static member function has no `this`** – it is not bound to an instance.
 
-Therefore it can be called as `Class::func()` and cannot access non-static members. In practice it is often used as a callback thunk for a C API (application programming interface), because its type resembles an ordinary function pointer; for strict C linkage a separate `extern "C"` wrapper function is sometimes needed.
+So it is called as `Class::func()` and cannot touch non-static members. It is often used as a callback thunk for a C API (application programming interface), since its type resembles a plain function pointer; strict C linkage sometimes needs a separate `extern "C"` wrapper.
 
-Rule: a static member function is a convenient bridge between a C++ class and a C API, but check the signature and linkage requirements of the particular callback API.[^embeddedinterviewlab]
-
+Rule: it is a convenient bridge between a C++ class and a C API, but check the signature and linkage the particular callback API requires.[^embeddedinterviewlab]
 ## Detailed explanation
 
 TODO

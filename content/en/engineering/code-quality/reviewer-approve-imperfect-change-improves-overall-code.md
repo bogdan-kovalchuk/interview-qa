@@ -8,7 +8,7 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -75,8 +75,7 @@ sources:
 
 ## Short answer
 
-**A reviewer should approve a change when it unambiguously improves the overall health of the codebase, even if it is not perfect; and refuse it when it degrades code health, adds unwanted functionality or creates critical technical debt.**[^git-git-merge] Minor remarks (style, educational suggestions) are worth prefixing with "Nit:" and should not block the merge. Style guide violations, incorrect design or inconsistency with the codebase, on the other hand, do require rework. The balance: do not hold up progress over trifles, but do not accumulate debt that later forces the change to be rewritten either.
-
+**A reviewer should approve a change when it unambiguously improves the overall health of the codebase, even if it is not perfect, and refuse it when it degrades code health, adds unwanted functionality or creates critical technical debt.**[^git-git-merge] Minor remarks (style, educational suggestions) are worth prefixing with "Nit:" and should not block the merge. Style guide violations, wrong design or inconsistency with the codebase do require rework. The balance: do not hold up progress over trifles, nor accumulate debt that forces a rewrite later.
 ## Detailed explanation
 
 The code review standard this answer rests on says that a reviewer should approve a change once it

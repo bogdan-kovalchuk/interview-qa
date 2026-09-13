@@ -8,7 +8,7 @@ level: middle
 type: practical
 tags: [sys-getrefcount]
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -72,13 +72,11 @@ sources:
 ## Short answer
 
 **In a free-threaded build certain objects (code constants, interned strings) become immortal –
-their refcount never changes and is set to a very large sentinel value, so `sys.getrefcount()`
-returns exactly that, not a real count of references.**[^py314-library-dis] Immortalization removes
-atomic refcount contention between threads: since the object will never be deallocated, there is no
-need to update the counter. The documentation explicitly states that for immortal objects the
-returned value does not reflect the actual number of references and should not be used for anything
-except checking for 0 or 1.
-
+their refcount never changes and is set to a very large sentinel, so `sys.getrefcount()` returns
+exactly that, not a real count.**[^py314-library-dis] Immortalization removes atomic refcount
+contention between threads: the object is never deallocated, so the counter need not be updated.
+The documentation states that for immortal objects the returned value does not reflect the actual
+number of references and should be used only to check for 0 or 1.
 ## Detailed explanation
 
 Immortalization is a CPython mechanism that marks specific objects as ones that will never be

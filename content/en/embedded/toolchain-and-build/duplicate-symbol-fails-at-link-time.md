@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-08
+updated: 2026-09-13
 content_revision: 4
 reconciled_with:
   uk: 4
@@ -33,10 +33,9 @@ sources:
 
 ## Short answer
 
-If you define a non-`static` function with the same name in two `.c`/`.cpp` files, compilation of each translation unit may succeed because each is compiled separately.[^dou-embedded-interview]
+Define a non-`static` function with the same name in two `.c`/`.cpp` files and each translation unit may still compile, because each is compiled separately.[^dou-embedded-interview]
 
-The error will usually occur at the **linking** stage: the linker will see two global symbols with the same name and emit a multiple definition / duplicate symbol error. If you make the functions `static`, each will have internal linkage and there will be no conflict between files. In C++, overloading is only possible if the signatures differ; the same signature still violates the ODR.
-
+The error usually appears at **link** time: the linker sees two global symbols with one name and reports multiple definition / duplicate symbol. Making the functions `static` gives each internal linkage, so there is no conflict between files. In C++, overloading works only if the signatures differ; the same signature still violates the ODR.
 ## Detailed explanation
 
 When the compiler processes a `.c` or `.cpp` file, it creates an object file (`.o` or `.obj`) with symbols. Each non-`static` function or global variable becomes a global symbol in the object file. During compilation of each file separately, the compiler does not know about other translation units, so it cannot check for name conflicts.[^gcc-overall-options]

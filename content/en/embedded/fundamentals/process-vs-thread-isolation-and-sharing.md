@@ -8,7 +8,7 @@ level: junior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-**Process** is a separate running program with its own address space, OS resources, file descriptor table, and at least one thread.[^dou-embedded-interview] Processes are isolated: a fault in one process usually does not corrupt the memory of another.
+**Process** is a separate running program with its own address space, OS resources, file descriptor table and at least one thread.[^dou-embedded-interview] Processes are isolated: a fault in one usually does not corrupt another's memory.
 
-**Thread** is a unit of execution within a process. Threads of the same process share memory, heap, globals, and file descriptors, but each has its own stack, registers, and instruction pointer.
+**Thread** is a unit of execution inside a process; threads share memory, heap, globals and descriptors, but each has its own stack, registers and instruction pointer.
 
-Consequence: processes are more safely isolated but costlier to create and require IPC; threads are lighter and exchange data faster but need synchronization (`mutex`, `semaphore`, `atomic`) because of race condition risk.
-
+Consequence: processes isolate more safely but cost more to create and need IPC; threads are lighter and share data faster, yet need synchronization (`mutex`, `semaphore`, `atomic`) against race conditions.
 ## Detailed explanation
 
 TODO

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 1
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-**`volatile`** means that the value of an object can change outside the visible flow of the program: by hardware, an ISR, DMA, or another asynchronous mechanism.
+**`volatile`** means an object's value can change outside the visible flow of the program: by hardware, an ISR, DMA or another asynchronous mechanism.
 
-The compiler must perform an actual memory access for every read or write of such an object, rather than keeping the value only in a CPU register. For Cortex-M this is critical for memory-mapped registers: reading an address can return peripheral state, and writing can trigger a hardware action.
+The compiler must then perform a real memory access on every read and write instead of keeping the value in a CPU register. On Cortex-M that is critical for memory-mapped registers: a read can return peripheral state and a write can trigger a hardware action.
 
-Rule: `volatile` is not applied for reliability, only when the object can genuinely change outside the control of ordinary C code.[^embeddedinterviewlab]
-
+Rule: `volatile` is not applied for reliability, only where the object genuinely changes outside ordinary C code.[^embeddedinterviewlab]
 ## Detailed explanation
 
 TODO

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-Const-correctness is part of the type that the compiler checks during access validation.[^dou-embedded-interview] If an object or parameter is declared `const`, writing through that path is prohibited: `void f(const int *p)` can read `*p` but not modify it.
+Const-correctness is part of the type, and the compiler checks it on access.[^dou-embedded-interview] A `const` object or parameter forbids writing through that path: `void f(const int *p)` may read `*p`, not modify it.
 
-In C++ `const` is also used for methods: `int get() const` means the method does not change the logical state of the object. You can remove const through a cast, but if the original object was truly const, writing leads to undefined behavior. Good practice: put `const` on input data that the function does not modify.
+C++ also applies `const` to methods: `int get() const` means the method does not change the object's logical state. A cast can remove const, but writing to a truly const object is undefined behavior. Put `const` on input the function does not modify.
 
 ## Detailed explanation
 

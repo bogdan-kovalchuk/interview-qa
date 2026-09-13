@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-08
+updated: 2026-09-13
 content_revision: 4
 reconciled_with:
   uk: 4
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-`git rebase -i` is a mode for editing commit history before a chosen base.[^dou-embedded-interview] It opens a list of commits where you can change the action for each one.
+`git rebase -i` edits commit history before a chosen base.[^dou-embedded-interview] It opens a list of commits where you set an action for each one.
 
-Typical actions: `pick` – keep the commit; `reword` – change the message; `squash`/`fixup` – combine commits; `edit` – stop to amend the commit; `drop` – remove the commit; you can also reorder commits.
+Actions: `pick` – keep the commit; `reword` – change the message; `squash`/`fixup` – combine commits; `edit` – stop to amend; `drop` – remove; commits can also be reordered.
 
-Usage: clean up a local feature branch before a pull request, combine small fixup commits, fix a commit message. Important: this <span class="warn">rewrites history</span>, so be careful with commits that have already been pushed and are used by others.
-
+Use it to clean up a local feature branch before a pull request, combine fixup commits or fix a message. It <span class="warn">rewrites history</span>, so be careful with commits already pushed and used by others.
 ## Detailed explanation
 
 **Interactive rebase** (`git rebase -i`) is a mode for editing commit history that lets you change, combine, rename, or drop commits in a local branch before sharing it with others.[^git-scm-doc]

@@ -8,7 +8,7 @@ level: middle
 type: pitfall
 tags: [lru-cache]
 status: published
-updated: 2026-09-04
+updated: 2026-09-13
 content_revision: 1
 reconciled_with:
   en: 1
@@ -75,7 +75,7 @@ sources:
 
 ## Short answer
 
-**`lru_cache` зберігає результат виключно за комбінацією аргументів, тому для non-pure function повертає застаріле або некоректне значення, а side effects на cache hit взагалі пропускаються.**[^py314-library-profile] Декоратор припускає, що функція є детермінованою: однакові аргументи -> однаковий результат. Якщо результат залежить від `time.time()`, `random`, глобального мутабельного стану або зовнішнього I/O, кешований return value більше не відповідає поточному виклику. Функції з side effects (запис у файл, логування, мутація аргументів) при повторному виклику з тими самими аргументами взагалі не виконуються – тіло функції пропускається, і side effect зникає.
+**`lru_cache` зберігає результат виключно за комбінацією аргументів, тому для non-pure function повертає застаріле значення, а side effects на cache hit пропускаються.**[^py314-library-profile] Декоратор припускає детермінованість: однакові аргументи -> однаковий результат. Якщо результат залежить від `time.time()`, `random`, глобального мутабельного стану або зовнішнього I/O, кешоване значення більше не відповідає виклику. Функції з side effects (запис у файл, логування, мутація аргументів) на повторному виклику взагалі не виконуються – тіло пропускається разом із side effect.
 
 ```python
 from functools import lru_cache
@@ -90,8 +90,7 @@ time.sleep(0.1)
 print(fetch_now() == first)  # True - stale cached value
 ```
 
-<span class="warn">Попередження:</span> `lru_cache` також зберігає strong references на аргументи й return values доки вони не будуть evicted, що може подовжити життя великих об'єктів.
-
+<span class="warn">Попередження:</span> `lru_cache` також тримає strong references на аргументи й return values до evict, що може подовжити життя великих об'єктів.
 ## Detailed explanation
 
 TODO

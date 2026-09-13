@@ -8,7 +8,7 @@ level: senior
 type: mechanism
 tags: [async-def]
 status: published
-updated: 2026-09-04
+updated: 2026-09-13
 content_revision: 1
 reconciled_with:
   en: 1
@@ -47,8 +47,7 @@ sources:
 
 ## Short answer
 
-**Wrapper має бути оголошений через `async def` і використовувати `await` для виклику оригінальної корутини – це зберігає awaitability та природне поширення exceptions.**[^py314-glossary-term-decorator] Якщо wrapper написати як звичайну `def`, виклик decorated функції поверне обгортку з не-awaited coroutine object замість реального результату, а `inspect.iscoroutinefunction()` для такої функції покаже `False`. Для підтримки синхронних і асинхронних функцій одним декоратором перевіряють тип через `inspect.iscoroutinefunction()` і диспатчать на `async def wrapper` або `def wrapper` відповідно, застосовуючи `@functools.wraps(func)` для збереження метаданих. Exceptions з оригінальної корутини поширюються через `await` природним чином – caller отримає той самий тип exception без додаткового оброблення.
-
+**Wrapper має бути оголошений через `async def` і викликати оригінальну корутину через `await` – це зберігає awaitability та природне поширення exceptions.**[^py314-glossary-term-decorator] Якщо wrapper написати як звичайну `def`, виклик decorated функції поверне не-awaited coroutine object замість реального результату, а `inspect.iscoroutinefunction()` для такої функції покаже `False`. Щоб один декоратор підтримував синхронні й асинхронні функції, тип перевіряють через `inspect.iscoroutinefunction()` і диспатчать на `async def wrapper` або `def wrapper`, застосовуючи `@functools.wraps(func)` для збереження метаданих. Exceptions поширюються через `await` природно: caller отримає той самий тип exception.
 ## Detailed explanation
 
 TODO

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 1
@@ -35,10 +35,9 @@ sources:
 
 **Because `head` and `tail` are modified in one context (ISR) and read in another (main).**
 
-Without `volatile` the compiler can cache the index in a register and miss the update from the other side, breaking the full/empty logic. The data buffer itself is often not made `volatile` if the order “write byte -> publish `head`” is maintained; volatile is needed specifically for shared control state.
+Without `volatile` the compiler can cache the index in a register and miss the other side's update, breaking the full/empty logic. The buffer itself is often not `volatile` if the order “write byte -> publish `head`” holds; volatile is needed for the shared control state.
 
-Rule: indexes/flags shared between ISR (interrupt service routine) and main are `volatile`; but `volatile` does not provide atomicity, it only prevents caching/optimization of access.[^embeddedinterviewlab]
-
+Rule: indexes and flags shared between ISR (interrupt service routine) and main are `volatile`, but `volatile` gives no atomicity - it only prevents caching of the access.[^embeddedinterviewlab]
 ## Detailed explanation
 
 TODO

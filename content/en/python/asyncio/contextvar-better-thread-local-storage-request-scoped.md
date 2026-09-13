@@ -8,7 +8,7 @@ level: middle
 type: comparison
 tags: [contextvar]
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -48,13 +48,11 @@ sources:
 ## Short answer
 
 **`ContextVar` isolates a value by logical context (Task), not by physical thread, so several
-Tasks in the same thread do not "leak" into each other.**[^py314-library-asyncio-task]
-`threading.local()` ties state to an OS thread; in asyncio, many Tasks run on a single thread and
-would see the same thread-local value. `asyncio.create_task()` automatically copies the current
-`Context` into the new Task, so each Task has its own `ContextVar` values (for example, request_id,
-tenant). Changing a `ContextVar` in one Task does not affect other Tasks, even if they run on the
-same thread.
-
+Tasks in one thread do not "leak" into each other.**[^py314-library-asyncio-task]
+`threading.local()` ties state to an OS thread, and in asyncio many Tasks share one thread, so they
+would see the same value. `asyncio.create_task()` copies the current `Context` into the new Task,
+giving each its own `ContextVar` values (for example, request_id, tenant). Changing one in a Task
+does not affect other Tasks on the same thread.
 ## Detailed explanation
 
 Technically, `Context` is an immutable map: `ContextVar.set()` does not mutate the existing

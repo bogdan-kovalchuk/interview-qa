@@ -8,7 +8,7 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -40,8 +40,7 @@ sources:
 
 ## Short answer
 
-**`def` and `class` are executable statements: they create the function or class object and bind the name at run time, not at compile time.**[^py314-reference-executionmodel] They can therefore be placed inside `if`/`else`, loops and nested scopes - only the branch that actually runs defines anything. A repeated `def` or `class` with the same name in the same scope simply rebinds the name to a new object. And because a module body executes top to bottom on import, any module-level code (I/O, network calls, print) becomes an import-time side effect, which complicates testing and reuse.
-
+**`def` and `class` are executable statements: they create the function or class object and bind the name at run time, not at compile time.**[^py314-reference-executionmodel] They can therefore sit inside `if`/`else`, loops and nested scopes - only the branch that actually runs defines anything. A repeated `def` or `class` with the same name in one scope simply rebinds the name. And because a module body executes top to bottom on import, module-level code (I/O, network calls, print) becomes an import-time side effect that complicates testing and reuse.
 ## Detailed explanation
 
 `def` and `class` declare nothing at compile time - they are statements that execute when control

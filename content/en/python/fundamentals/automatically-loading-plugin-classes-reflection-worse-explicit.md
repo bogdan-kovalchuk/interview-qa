@@ -8,7 +8,7 @@ level: senior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -47,8 +47,7 @@ sources:
 
 ## Short answer
 
-**Automatic loading through reflection makes the set of active plugin classes implicit, fragile under renaming, and without an allowlist.**[^py314-reference-executionmodel] Reflection scanning (dynamically importing a package's modules, finding subclasses via `__subclasses__()` or `getattr`) depends on naming conventions and import order, and can pick up classes nobody intended - test doubles, deprecated aliases or third-party types. An explicit registry (a dict or a list) gives a controlled allowlist, reduces import-time side effects and is easy to test, because the active set of classes is visible in the code instead of hiding behind a runtime scan.
-
+**Automatic loading through reflection makes the set of active plugin classes implicit, fragile under renaming, and without an allowlist.**[^py314-reference-executionmodel] Reflection scanning (importing a package's modules, finding subclasses via `__subclasses__()` or `getattr`) depends on naming conventions and import order, and can pick up classes nobody intended - test doubles, deprecated aliases or third-party types. An explicit registry gives a controlled allowlist, reduces import-time side effects and is easy to test, because the active set of classes is visible in the code.
 ## Detailed explanation
 
 Reflection-based loading of plugin classes means finding the implementations at run time:

@@ -8,7 +8,7 @@ level: middle
 type: comparison
 tags: [threading-local]
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -61,16 +61,13 @@ sources:
 
 ## Short answer
 
-**`threading.local()` is better when you need automatic isolation of data between threads and
-automatic cleanup when a thread finishes; a shared dictionary keyed by `threading.get_ident()` is
-better when you need explicitness and full control over the structure.**[^py314-library-threading]
-Advantages of `threading.local()`: no lock is needed for the storage itself, data is removed
-automatically when the thread finishes, and attribute access is more convenient.
-<span class="warn">Danger of implicit state:</span> values look like ordinary attributes but are
-invisible across threads – this makes debugging harder and can cause bugs if a value from `local` is
-passed to another thread. A shared dict needs a lock for updates and manual removal of dead threads'
-entries, otherwise it leaks memory.
-
+**`threading.local()` is better when you want automatic per-thread isolation and cleanup when a
+thread finishes; a dict keyed by `threading.get_ident()` is better when you want explicitness and
+full control over the structure.**[^py314-library-threading] `threading.local()` needs no lock
+for the storage itself, drops data when the thread ends, and reads as attribute access.
+<span class="warn">Danger of implicit state:</span> those values are invisible across threads,
+which complicates debugging and breaks if one is passed elsewhere. A shared dict needs a lock and
+manual cleanup of dead threads' entries, or it leaks.
 ## Detailed explanation
 
 `threading.local()` is a class that gives each thread its own, isolated copy of its attributes:

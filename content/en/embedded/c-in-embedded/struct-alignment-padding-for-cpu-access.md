@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,10 +33,9 @@ sources:
 
 ## Short answer
 
-**Alignment** means that struct fields are placed at addresses that are multiples of their alignment requirements.[^dou-embedded-interview] For example, `uint32_t` often requires an address that is a multiple of 4. The compiler inserts unused padding bytes so that access is fast and correct for the CPU.
+**Alignment** places struct fields at addresses that are multiples of their alignment requirement.[^dou-embedded-interview] `uint32_t`, for example, often needs an address that is a multiple of 4, so the compiler inserts padding bytes to keep access fast and correct for the CPU.
 
-This matters in embedded: misaligned access on some MCUs is slow or triggers a fault, and register or protocol layout may require exact offsets. Size can be reduced by reordering fields from largest to smallest, but for a binary protocol or hardware registers it is better to serialize data explicitly or verify the layout with `static_assert` and `offsetof`.
-
+This matters in embedded: misaligned access on some MCUs is slow or faults, and register or protocol layouts may require exact offsets. Reordering fields from largest to smallest shrinks the size, but for a binary protocol or hardware registers, serialize explicitly or verify the layout with `static_assert` and `offsetof`.
 ## Detailed explanation
 
 TODO
