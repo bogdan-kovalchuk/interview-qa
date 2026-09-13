@@ -62,6 +62,17 @@
 `anki-guid-stability` і повторний імпорт – два найважливіші тести в проєкті. Помилка тут
 виявляється не в CI, а у втраченому прогресі, і виправити її вже неможливо.
 
+**Що з цієї таблиці справді запускається.** П'ять воріт – `anki-guid-stability`,
+`anki-identity-stable`, `anki-notetype-stable`, `anki-no-silent-removal`,
+`anki-edit-preserves-progress` – є дифами проти release manifest
+`anki/releases/<version>.json`, якого ще не існує: перший пише крок 4, чекпоінт 4 у
+`meta/plan.md`, як базову лінію, і до нього немає з чим порівнювати. Жоден скрипт у репозиторії
+цього дифу не рахує. Реально в релізному пайплайні працюють `anki-tsv-format`,
+`anki-reference-url` (через `python -m iqa build`) і набір `tests/test_anki_build.py`: формула
+GUID збігається з еталонною, шаблони note type не розбирають QID, кожен пілот дає картку, поля
+пишуться за іменами. Рядки вище – контракт, який треба дотиснути, а не звіт про наявні перевірки;
+див. коментар у `.github/workflows/release.yml`.
+
 ## Сайт і збірка – блокуючі
 
 | Ворота | Що перевіряє |
@@ -91,12 +102,17 @@
 | `source-present` | ≥1 джерело, не лише `community` | автоматичне |
 | `claim-linked` | наявність `source_id` на нетривіальних твердженнях, **за таблицею типів** у `questions.md` §6 | блокує лише наявність; доречність – звіт авторові, не ворота |
 | `source-applicability` | у джерела є версія, дата доступу і межі застосовності | автоматичне |
-| `example-executed` | приклад компілюється або виконується в оголошеному `execution`: `toolchain` як runner, `flags` обов'язкові | автоматичне |
+| `example-executed` | **сьогодні перевіряє лише, що оголошений `execution.toolchain.name` існує в `PATH`** (`cpython` – через `sys.executable`); нічого не компілює і не виконує | автоматичне, часткове |
 | `review-invalidated` | змістовна правка тіла скидає позначку пройденого рев'ю | автоматичне |
 
 `claim-linked` читає таблицю типів, а не застосовує одне правило до всіх дев'яти: для `coding`
 розв'язання доводить `execution` і `Tests`, а не цитата; для `behavioral` джерела документують
 компетенцію, а не правильність відповіді.
+
+Назва `example-executed` описує ворота, якими вони мають стати, а не те, що працює зараз.
+Реального runner'а немає: `_execution_gate` у `tools/iqa/validate.py` робить `shutil.which` і
+падає лише тоді, коли оголошеного тулчейну немає в системі. Твердження «приклад виконано» ці
+ворота не доводять – доки runner не написано, це перевірка середовища, а не прикладу.
 
 ## Звітні
 
@@ -115,7 +131,7 @@ CI написаний і реально блокує: три workflow у `.githu
 тепер реальна перевірка**, `tools/iqa/pinned_actions.py`, викликається як
 `python -m iqa check-pinned-actions`, тест `tests/test_pinned_actions.py` з негативним кейсом на
 `@v4`). Жоден із трьох файлів нічого не реалізує заново: усі викликають `tools/iqa/`,
-`tools/verify_build.py` і `anki/build.py`, які вже працювали до цього кроку.
+`tools/iqa/verify_build.py` і `tools/iqa/anki.py`, які вже працювали до цього кроку.
 
 | Тригер | Workflow | Що виконується |
 |---|---|---|
@@ -174,7 +190,7 @@ pip install pip-tools
 pip-compile --extra test --generate-hashes -o requirements/python-lock.txt pyproject.toml
 ```
 
-Під час цього кроку виявилось, що `genanki` – реальна залежність (`anki/build.py`,
+Під час цього кроку виявилось, що `genanki` – реальна залежність (`tools/iqa/anki.py`,
 `tests/test_anki_build.py`), яка не була в `pyproject.toml`. Додано до `[project] dependencies`;
 без цього лок і `pip install --no-deps -e .` не покривали б пакет, який тести й реліз реально
 імпортують.
