@@ -8,7 +8,7 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-**Tentative definition** – a declaration of a global variable without an initializer and without `extern`: `int x;` at file scope.
+**Tentative definition** – a global declared without an initializer and without `extern`: `int x;` at file scope.
 
-Per the C rules: if there is no other definition in the same translation unit, it automatically becomes a zero-initialized definition -> placed in **.bss** or a common section depending on the compiler/flags. If the same translation unit has `int x = 5;`, the tentative definition merges with that definition. If `int x;` is placed in a header and included in multiple `.c` files, modern GCC with `-fno-common` will give a multiple definition error; for an external variable in a header, use `extern int x;`.
+If no other definition exists in that translation unit it becomes a zero-initialized definition -> **.bss** or a common section, depending on compiler and flags; with `int x = 5;` present, the two merge. In a header included by several `.c` files, modern GCC with `-fno-common` reports a multiple definition error; declare external variables as `extern int x;`.
 
 <span class="warn">C++ has no tentative definitions</span> – every declaration is either `extern` or a definition (ODR).[^embeddedinterviewlab]
-
 ## Detailed explanation
 
 TODO

@@ -8,7 +8,7 @@ level: middle
 type: comparison
 tags: [list, set, dict, deque]
 status: published
-updated: 2026-09-04
+updated: 2026-09-13
 content_revision: 1
 reconciled_with:
   en: 1
@@ -75,8 +75,7 @@ sources:
 
 ## Short answer
 
-**Кожен контейнер оптимізований під певний набір операцій, і неправильний вибір перетворює O(1) на O(n) на гарячих шляхах.**[^py314-library-profile] `list` дає O(1) для індексації й append, але O(n) для пошуку та вставки в середину; `set`/`dict` дають O(1) для перевірки належності та видалення в середньому, але O(n) у гіршому випадку; `deque` дає O(1) append/pop з обох кінців; heap (`heapq`) дає O(log n) push/pop і O(1) для min/max. <span class="warn">Якщо dominant operation – membership test, `list` замість `set` дає O(n) замість O(1).</span>
-
+**Кожен контейнер оптимізований під певний набір операцій, і неправильний вибір перетворює O(1) на O(n) на гарячих шляхах.**[^py314-library-profile] `list` дає O(1) для індексації й append, але O(n) для пошуку та вставки в середину; `set`/`dict` – O(1) для перевірки належності та видалення в середньому і O(n) у гіршому випадку; `deque` – O(1) append/pop з обох кінців; heap (`heapq`) – O(log n) push/pop і O(1) для min/max. <span class="warn">Якщо dominant operation – membership test, `list` замість `set` дає O(n) замість O(1).</span>
 ## Detailed explanation
 
 TODO

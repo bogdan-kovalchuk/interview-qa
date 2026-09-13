@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-`inline` is a hint and a linkage/ODR rule for a function that can be defined in a header.[^dou-embedded-interview] The optimizer may substitute the function body at the call site to eliminate call overhead, but is **not required** to do so.
+`inline` is a hint plus a linkage/ODR rule for a function that may be defined in a header.[^dou-embedded-interview] The optimizer may substitute the body at the call site to remove call overhead, but is **not required** to.
 
-In C/C++ the semantics differ slightly, but the practical idea is the same: small functions, often helpers or getters, can be made `static inline` in headers. For large functions `inline` usually does not help. It is important not to confuse: the real inlining decision is made by the compiler, while the keyword also affects the permissibility of multiple definitions across translation units.
+C and C++ differ slightly, yet the practical idea is the same: small helpers or getters can be `static inline` in headers, and on large functions `inline` usually does not help. The compiler makes the real inlining decision; the keyword separately governs multiple definitions across translation units.
 
 ## Detailed explanation
 

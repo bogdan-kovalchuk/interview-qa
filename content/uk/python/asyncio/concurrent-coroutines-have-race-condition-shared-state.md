@@ -8,7 +8,7 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   en: 2
@@ -47,8 +47,7 @@ sources:
 
 ## Short answer
 
-**Тому що `await` є точкою добровільної поступки: event loop може перемкнути виконання на іншу Task, і та побачить проміжний стан shared resource.**[^py314-library-asyncio-task] У CPython event loop kooperативно планує задачі: поки Task не виконає `await`, жодна інша Task у тому самому thread не працює. Але як тільки coroutine робить `await` (наприклад, на I/O чи `asyncio.sleep`), loop передає керування іншій Task, яка може змінити спільний словник, лічильник чи список до того, як перша Task продовжить роботу. Рішення – використовувати `asyncio.Lock` навколо критичних секцій або проектувати код так, щоб між `await`-точками стан залишався консистентним.
-
+**Тому що `await` є точкою добровільної поступки: event loop може перемкнути виконання на іншу Task, і та побачить проміжний стан shared resource.**[^py314-library-asyncio-task] Event loop планує кооперативно: поки Task не виконає `await`, жодна інша Task у тому самому thread не працює. Але як тільки coroutine робить `await` (наприклад, на I/O чи `asyncio.sleep`), loop передає керування іншій Task, яка може змінити спільний словник, лічильник чи список до того, як перша продовжить роботу. Рішення – `asyncio.Lock` навколо критичних секцій або код, у якому стан консистентний між `await`-точками.
 ## Detailed explanation
 
 Ключова відмінність від race condition між OS threads: тут перемикання може статися лише в точці

@@ -8,7 +8,7 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -82,15 +82,13 @@ sources:
 
 ## Short answer
 
-**Rolling – gradual instance updates with no downtime, a simple but slow rollback; blue-green –
-two full environments with an instant rollback via a traffic switch; canary – the smallest blast
-radius through progressively growing the share of traffic sent to the new version.**
-[^git-git-merge] Rolling fits ordinary releases where simplicity and zero downtime are what
-matter. Blue-green fits cases where rollback speed is critical (a load-balancer switch in seconds)
-and there are resources for a fully duplicated environment. Canary fits risky changes (for example,
-payment logic), where the new version must first be checked against a small slice of users before
-the traffic is grown further.
-
+**Rolling – gradual instance updates with no downtime, simple but slow rollback; blue-green –
+two full environments with instant rollback via a traffic switch; canary – the smallest blast
+radius, growing the share of traffic sent to the new version.**[^git-git-merge] Rolling fits
+ordinary releases where simplicity and zero downtime matter. Blue-green fits when rollback speed is
+critical (a load-balancer switch in seconds) and a fully duplicated environment is affordable.
+Canary fits risky changes such as payment logic, where the new version is checked on a small slice
+of users first.
 ## Detailed explanation
 
 A deployment strategy determines how a new version of a service replaces the old one in

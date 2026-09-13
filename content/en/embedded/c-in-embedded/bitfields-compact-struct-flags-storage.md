@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-**Bitfields** are struct fields with an explicitly specified number of bits: `struct Flags { unsigned ready:1; unsigned mode:3; };`.[^dou-embedded-interview] They are convenient for compact storage of flags or describing parts of a register or status word.
+**Bitfields** are struct fields with an explicit bit width: `struct Flags { unsigned ready:1; unsigned mode:3; };`.[^dou-embedded-interview] They compactly store flags or describe parts of a register or status word.
 
-Limitations: you cannot take the address of a bitfield, and the bit packing order, signedness, and padding are often implementation-defined, so the layout can differ between compilers and ABIs. For hardware registers and protocols it is often more reliable to use masks and shifts on `uint32_t`, and bitfields only when the layout is controlled and verified.
+Limitations: a bitfield has no address, and packing order, signedness and padding are often implementation-defined, so the layout differs between compilers and ABIs. For hardware registers and protocols, masks and shifts on `uint32_t` are usually more reliable; use bitfields only where the layout is controlled and verified.
 
 ## Detailed explanation
 

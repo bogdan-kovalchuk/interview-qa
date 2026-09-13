@@ -8,7 +8,7 @@ level: middle
 type: comparison
 tags: [git-revert, git-reset]
 status: published
-updated: 2026-09-04
+updated: 2026-09-13
 content_revision: 1
 reconciled_with:
   en: 1
@@ -75,8 +75,7 @@ sources:
 
 ## Short answer
 
-**`git revert` – для скасування комітів у shared history (створює новий commit із протилежними змінами); `git reset` допустимий лише для ще не push-нутих комітів; `git reflog` зберігає всі попередні позиції `HEAD` і дозволяє знайти SHA втраченого коміту.**[^git-git-merge] Revert не переписує існуючу історію, тому безпечний для push. Reset переміщує вказівник гілки назад – `--hard` додатково очищає index і working tree. Якщо reset видалив потрібний коміт з гілки, `git reflog` показує, де був `HEAD` раніше (наприклад, `HEAD@{2}`), і коміт можна відновити через `git reset` або `git cherry-pick` на цей SHA, поки reflog не протерміновано (типово 30–90 днів).
-
+**`git revert` – для скасування комітів у shared history (створює новий commit із протилежними змінами); `git reset` допустимий лише для ще не push-нутих комітів; `git reflog` зберігає попередні позиції `HEAD` і дозволяє знайти SHA втраченого коміту.**[^git-git-merge] Revert не переписує історію, тому безпечний для push, а reset переміщує вказівник гілки назад – `--hard` додатково очищає index і working tree. Якщо reset видалив потрібний коміт, `git reflog` показує, де був `HEAD` раніше (`HEAD@{2}`), і коміт відновлюється через `git reset` чи `git cherry-pick` на цей SHA, поки reflog не протерміновано (типово 30–90 днів).
 ## Detailed explanation
 
 TODO

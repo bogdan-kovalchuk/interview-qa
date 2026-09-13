@@ -8,7 +8,7 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 1
@@ -44,10 +44,9 @@ uint32_t bits = x.u;
 
 <span class="warn">The trap is not in C syntax but in the portability of the result and the difference between C and C++.</span>
 
-In C99/C11, reading a different union member to inspect object representation is a standard-described type punning pattern; this is not the same as a pointer-cast strict aliasing violation. But the value of `bits` still depends on the representation of `float` and on endianness. In C++, reading an inactive union member is usually undefined behavior.
+In C99/C11, reading a different union member to inspect object representation is a standard-described type punning pattern, not a pointer-cast strict aliasing violation. But the value of `bits` still depends on the representation of `float` and on endianness, and in C++ reading an inactive union member is usually undefined behavior.
 
-Defense: for a portable bit copy, use `memcpy(&bits, &x.f, sizeof bits)`, and in C++20 use `std::bit_cast`.[^embeddedinterviewlab]
-
+Defense: for a portable bit copy use `memcpy(&bits, &x.f, sizeof bits)`, and in C++20 `std::bit_cast`.[^embeddedinterviewlab]
 ## Detailed explanation
 
 TODO

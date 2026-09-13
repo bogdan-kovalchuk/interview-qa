@@ -8,7 +8,7 @@ level: senior
 type: comparison
 tags: [asyncio-lock, event, condition, semaphore]
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -48,13 +48,11 @@ sources:
 ## Short answer
 
 **`Lock` is mutual exclusion; `Event` is a "something happened" signal to many Tasks; `Condition`
-waits for a state change while holding a lock; `Semaphore` limits how many callers can access a
-resource concurrently.**[^py314-library-asyncio-task] `Lock` fits when one Task is modifying a
-shared resource. `Event` fits when one Task must tell others it is ready, and `set()` stays in
-effect until `clear()`. `Condition` fits when a Task waits for a condition and needs exclusive
-access right after waking – the classic producer/consumer case. `Semaphore(N)` caps N concurrent
-users of a resource, such as a connection pool or an API throttle.
-
+waits for a state change while holding a lock; `Semaphore` limits how many callers reach a resource
+concurrently.**[^py314-library-asyncio-task] `Lock` fits one Task modifying a shared resource.
+`Event` fits one Task telling others it is ready, and `set()` holds until `clear()`. `Condition`
+fits a Task that waits for a condition and needs exclusive access on waking – the classic
+producer/consumer case. `Semaphore(N)` caps N concurrent users, such as a connection pool.
 ## Detailed explanation
 
 All four primitives are built on `Future` and are not thread-safe – they are meant for

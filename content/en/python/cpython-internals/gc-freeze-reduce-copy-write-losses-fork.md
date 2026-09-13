@@ -8,7 +8,7 @@ level: senior
 type: practical
 tags: [gc-freeze, fork]
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -71,14 +71,13 @@ sources:
 
 ## Short answer
 
-**`gc.freeze()` moves all objects currently tracked by the GC into the permanent generation, where
-later collections ignore them – this prevents modifying the `gc_refs` field of long-lived objects in
-the child after `fork()`, reducing copy-on-write.**[^py314-library-dis] Recommended workflow: (1)
-`gc.disable()` at the start of the parent; (2) `gc.freeze()` right before `fork()`; (3)
-`gc.enable()` at the start of the child. Conditions: the frozen objects must be genuinely long-lived
-and immutable; the child must not modify these objects, or CoW happens anyway. The pattern is
-effective for pre-fork web workers (gunicorn, uwsgi).
-
+**`gc.freeze()` moves objects currently tracked by the GC into the permanent generation, which
+later collections ignore – so the child does not modify the `gc_refs` field of long-lived objects
+after `fork()`, reducing copy-on-write.**[^py314-library-dis] Recommended workflow: (1)
+`gc.disable()` in the parent; (2) `gc.freeze()` right before `fork()`; (3) `gc.enable()` in the
+child. Conditions: the frozen objects must be genuinely long-lived and immutable, and the child
+must not modify them, or CoW happens anyway. The pattern suits pre-fork web workers (gunicorn,
+uwsgi).
 ## Detailed explanation
 
 `gc.freeze()` takes every object the cyclic collector currently tracks and moves it into the

@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,10 +33,9 @@ sources:
 
 ## Short answer
 
-`const` sets read-only semantics for the compiler: the object cannot be modified through the const-qualified name after initialization: `const int x = 5;`. This is not a guarantee that the data will physically reside in Flash or ROM; placement depends on the toolchain, linker script, and platform.
+`const` sets read-only semantics for the compiler: after initialization the object cannot be modified through the const-qualified name, as in `const int x = 5;`. It does not guarantee the data sits in Flash or ROM; placement depends on toolchain, linker script and platform.
 
-With pointers it is important to read right to left: `const int *p` – pointer to constant data; `int * const p` – the pointer itself is constant; `const int * const p` – both data and address are constant. `const` does not mean compile-time constant in all cases and can be removed by a cast, but writing to a truly const object gives undefined behavior.[^dou-embedded-interview]
-
+Read pointers right to left: `const int *p` – pointer to constant data; `int * const p` – constant pointer; `const int * const p` – both. `const` is not always a compile-time constant and a cast can remove it, but writing to a truly const object is undefined behavior.[^dou-embedded-interview]
 ## Detailed explanation
 
 TODO

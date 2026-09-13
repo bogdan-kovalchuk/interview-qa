@@ -8,7 +8,7 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -47,14 +47,12 @@ sources:
 
 ## Short answer
 
-**Because `await` is a voluntary yield point: the event loop can switch execution to another Task,
-and that Task will see an intermediate state of the shared resource.**[^py314-library-asyncio-task]
-In CPython the event loop cooperatively schedules tasks: until a Task executes an `await`, no other
-Task in that same thread runs. But as soon as a coroutine does an `await` (for example, on I/O or
-`asyncio.sleep`), the loop hands control to another Task, which can change a shared dict, counter,
-or list before the first Task resumes. The fix is to use `asyncio.Lock` around critical sections, or
-design the code so that state stays consistent between `await` points.
-
+**Because `await` is a voluntary yield point: the event loop can switch to another Task, and that
+Task sees an intermediate state of the shared resource.**[^py314-library-asyncio-task] The loop
+schedules cooperatively: until a Task reaches an `await`, no other Task in that thread runs. But
+once a coroutine awaits - on I/O or `asyncio.sleep` - the loop hands control to another Task, which
+can change a shared dict, counter or list before the first resumes. Fix it with `asyncio.Lock`
+around critical sections, or keep state consistent between `await` points.
 ## Detailed explanation
 
 The key difference from a race condition between OS threads: here a switch can only happen at an

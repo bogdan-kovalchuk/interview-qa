@@ -8,7 +8,7 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -80,11 +80,10 @@ sources:
 
 **Pymalloc returns an arena to the OS only once it becomes fully empty, and fragmentation of
 surviving objects across arenas usually prevents that.**[^py314-library-dis] Even if thousands of
-objects are freed via refcounting or `gc.collect()`, their blocks remain in pools inside arenas. As
-long as at least one live object remains in an arena, it will not be unmapped. In addition, the
-system allocator (malloc/free), used for large objects (>512 bytes), may also not return memory to
-the OS right away. So RSS shrinks only once entire arenas become empty.
-
+objects are freed by refcounting or `gc.collect()`, their blocks stay in pools inside arenas, and a
+single live object keeps its arena mapped. The system allocator (malloc/free), used for large
+objects (>512 bytes), may also not return memory to the OS right away. So RSS shrinks only once
+entire arenas become empty.
 ## Detailed explanation
 
 Pymalloc – CPython's allocator for small objects (up to 512 bytes) – requests memory from the OS in

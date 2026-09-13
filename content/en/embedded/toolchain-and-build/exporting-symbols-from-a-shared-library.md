@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-08
+updated: 2026-09-13
 content_revision: 4
 reconciled_with:
   uk: 4
@@ -33,10 +33,9 @@ sources:
 
 ## Short answer
 
-In Linux/Unix, functions from a shared library are typically exported as symbols in a `.so`.[^dou-embedded-interview] For a C API it is enough to not make the function `static`, compile with `-fPIC`, and link with `-shared`; visibility can be controlled via `__attribute__((visibility("default")))` and a linker version script.
+In Linux/Unix, functions of a shared library are exported as symbols in a `.so`.[^dou-embedded-interview] For a C API it is enough not to make the function `static`, compile with `-fPIC` and link with `-shared`; visibility is controlled via `__attribute__((visibility("default")))` and a linker version script.
 
-In Windows DLLs, `__declspec(dllexport)` is typically used when building the library and `__declspec(dllimport)` on the consumer side, or a `.def` file. For C++ APIs, `extern "C"` is often added for stable C symbols, or C++ is exported with the ABI of a specific compiler in mind.
-
+Windows DLLs use `__declspec(dllexport)` when building and `__declspec(dllimport)` on the consumer side, or a `.def` file. C++ APIs often add `extern "C"` for stable C symbols, or export C++ with a specific compiler ABI in mind.
 ## Detailed explanation
 
 In Linux/Unix, a shared library (`.so`) exports symbols through the dynamic symbol table. When the compiler builds a `.so`, it adds all non-static global symbols to the export table by default. For a C API it is enough to declare the function without the `static` keyword, compile with `-fPIC` (position-independent code), and link with `-shared`.[^gcc-overall-options]

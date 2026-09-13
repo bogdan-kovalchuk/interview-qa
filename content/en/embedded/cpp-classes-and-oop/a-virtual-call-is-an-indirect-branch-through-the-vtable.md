@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 1
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-**A virtual call is an indirect branch through the vptr/vtable, so the call target is not visible directly from the instruction.**
+**A virtual call is an indirect branch through the vptr/vtable, so the target is not visible from the instruction.**
 
-On simple Cortex-M cores this is an extra pointer read and an indirect branch; on more complex cores it can also hurt branch prediction. The main problem for safety/real-time is that proving worst-case execution time and the call graph becomes harder.
+That costs an extra pointer read and an indirect branch on simple Cortex-M cores, and can also hurt branch prediction on complex ones. For safety and real-time, the problem is that proving worst-case execution time and the call graph gets harder.
 
-Rule: AUTOSAR (Automotive Open System Architecture) C++14 and MISRA C++ (Motor Industry Software Reliability Association C++) restrict virtual dispatch in time-critical paths; in hot paths CRTP or templates are often chosen instead.[^embeddedinterviewlab]
-
+Rule: AUTOSAR (Automotive Open System Architecture) C++14 and MISRA C++ (Motor Industry Software Reliability Association C++) restrict virtual dispatch in time-critical paths; hot paths use CRTP or templates instead.[^embeddedinterviewlab]
 ## Detailed explanation
 
 TODO

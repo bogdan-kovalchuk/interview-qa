@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-**Spinlock** is a synchronization primitive where a thread that cannot acquire the lock **spins in a loop**, continuously checking availability, instead of going to sleep.[^dou-embedded-interview]
+**Spinlock** is a synchronization primitive where a thread that cannot acquire the lock **spins in a loop**, checking availability instead of sleeping.[^dou-embedded-interview]
 
-Advantage: low latency when the wait is very short. In kernel space, spinlocks are used where sleep is forbidden; depending on the lock type and context, they may disable preemption or IRQs. In user space, a spinlock is just a busy waiting primitive.
+Advantage: low latency when the wait is very short. In kernel space spinlocks are used where sleeping is forbidden and, depending on lock type and context, may disable preemption or IRQs; in user space a spinlock is just busy waiting.
 
-Rule: <span class="warn">you must not sleep while holding a spinlock</span>; if the critical section is long or the code may block, prefer a mutex.
-
+Rule: <span class="warn">you must not sleep while holding a spinlock</span>; for a long critical section or code that may block, prefer a mutex.
 ## Detailed explanation
 
 TODO

@@ -8,7 +8,7 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-05
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -51,10 +51,9 @@ sources:
 full, and `Semaphore(limit)` caps concurrent operations – together they stop a service from piling
 up unbounded pending work.**[^py314-library-asyncio-task] A producer calling `await
 queue.put(item)` waits until a consumer frees a slot via `get()` – natural backpressure.
-`Semaphore` adds to this by limiting concurrent outbound calls, e.g. HTTP requests to a database:
-once its counter is exhausted, new Tasks wait on `acquire()`. Without these, a fast producer or a
-burst of requests can exhaust memory or overload downstream.
-
+`Semaphore` limits concurrent outbound calls, such as HTTP requests to a database: once its counter
+is exhausted, new Tasks wait on `acquire()`. Without these, a burst can exhaust memory or overload
+downstream.
 ## Detailed explanation
 
 `asyncio.Queue` implements backpressure not through some special mechanism but through a plain

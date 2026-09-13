@@ -8,7 +8,7 @@ level: junior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,15 +33,14 @@ sources:
 
 ## Short answer
 
-RS-232 is an **electrical signal standard**, while UART is the data-framing block/protocol, so they are not the same thing: UART describes the frame, baud rate, start/stop/parity bits, whereas RS-232 describes voltage levels and the physical interface.
+RS-232 is an **electrical signal standard** and UART is the data-framing block, so they are not the same: UART describes the frame, baud rate and start/stop/parity bits, RS-232 the voltage levels and physical interface.
 
 Differences from TTL UART:
 
 - **Voltage levels**: logic 1 = −3 to −15 V, logic 0 = +3 to +15 V (inverted!), vs TTL 0/3.3–5 V;
 - distance: up to ~15 m (TTL ~1 m);
-- connector: DB-9 with `RTS`/`CTS` lines for flow-control;
-- connecting an MCU to RS-232 requires a level converter, e.g. `MAX232`.[^dou-embedded-interview]
-
+- connector: DB-9 with `RTS`/`CTS` for flow-control;
+- an MCU needs a level converter, e.g. `MAX232`.[^dou-embedded-interview]
 ## Detailed explanation
 
 TODO

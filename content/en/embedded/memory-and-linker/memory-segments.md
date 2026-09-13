@@ -8,7 +8,7 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -35,13 +35,12 @@ sources:
 
 Typical memory layout of a C program:[^dou-embedded-interview]
 
-- **.text** – machine code of functions. Read-only, and on MCUs it is often stored in Flash.
-- **.rodata** – read-only data, such as string literals and some constants.
-- **.data** – global and static variables with non-zero initialization. Copied from Flash to RAM at startup.
-- **.bss** – global and static variables with no initialization or `= 0`. Filled with zeros by startup code;
-- **Stack** – local variables, arguments, return addresses;
-- **Heap** – dynamic memory (`malloc`). On most architectures the stack grows downward and the heap grows upward, but this is platform/ABI dependent, not a rule of the C standard.
-
+- **.text** – machine code. Read-only, and on MCUs usually in Flash.
+- **.rodata** – read-only data: string literals and some constants.
+- **.data** – globals and statics with non-zero initialization, copied from Flash to RAM at startup.
+- **.bss** – globals and statics with no initialization or `= 0`, zeroed by startup code;
+- **Stack** – locals, arguments, return addresses;
+- **Heap** – dynamic memory (`malloc`). On most architectures the stack grows down and the heap up, but that is platform/ABI dependent, not a rule of the C standard.
 ## Detailed explanation
 
 TODO

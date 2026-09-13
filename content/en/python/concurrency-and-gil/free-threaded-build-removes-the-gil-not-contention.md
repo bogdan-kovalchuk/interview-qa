@@ -8,7 +8,7 @@ level: middle
 type: mechanism
 tags: [gil, free-threading, threads, scaling]
 status: published
-updated: 2026-09-03
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 3
@@ -55,11 +55,10 @@ sources:
 
 **The GIL was one bottleneck, not the only one.** Removing it lets CPython bytecode run on several
 cores at once, but the runtime replaces it with per-object locking and a more elaborate reference
-counting scheme, and that machinery is not free.[^pep-703] Code that was already I/O bound gained
-nothing, code that shares mutable state now pays for finer-grained synchronisation, and every C
-extension has to opt in before it may run without the GIL.[^py314-free-threading-extensions] The
-speed-up is real for CPU-bound work over mostly independent data, and close to zero elsewhere.
-
+counting scheme, and that machinery is not free.[^pep-703] Code that was already I/O bound gains
+nothing, code sharing mutable state now pays for finer-grained synchronisation, and every C
+extension must opt in before it may run without the GIL.[^py314-free-threading-extensions] The
+speed-up is real for CPU-bound work over independent data, and near zero elsewhere.
 ## Detailed explanation
 
 The free-threaded build ships as a separate interpreter configuration. It was experimental in 3.13 and

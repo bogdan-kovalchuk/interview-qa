@@ -8,7 +8,7 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
+updated: 2026-09-13
 content_revision: 2
 reconciled_with:
   uk: 2
@@ -33,10 +33,9 @@ sources:
 
 ## Short answer
 
-During a function call, the compiler follows the **calling convention** of the specific ABI.[^dou-embedded-interview] Arguments are passed in registers or on the stack, the return address is saved, control transfers to the function code, and the function creates its own **stack frame** for local variables and saved registers.
+A call follows the **calling convention** of the ABI.[^dou-embedded-interview] Arguments go in registers or on the stack, the return address is saved, control transfers to the function, and it builds its own **stack frame** for locals and saved registers.
 
-After execution, the result is returned usually in a register or through a hidden pointer for large structs. The needed registers and the stack pointer are then restored, and a return is performed to the call address. Details differ between x86-64, ARM Cortex-M, AAPCS, and others, but the idea is the same: an agreed contract between caller and callee.
-
+The result returns usually in a register, or through a hidden pointer for large structs; saved registers and the stack pointer are then restored and control returns to the call address. Details differ across x86-64, ARM Cortex-M and AAPCS, but the idea is one contract between caller and callee.
 ## Detailed explanation
 
 TODO

@@ -8,7 +8,7 @@ level: junior
 type: comparison
 tags: []
 status: published
-updated: 2026-09-08
+updated: 2026-09-13
 content_revision: 4
 reconciled_with:
   uk: 4
@@ -40,12 +40,11 @@ sources:
 
 ## Short answer
 
-`git merge` combines two branches while preserving their history; if the histories have diverged, Git creates a merge commit.[^dou-embedded-interview] Plus: it honestly shows when and where branches were merged; minus: the history can become branched.
+`git merge` combines two branches while preserving their history, creating a merge commit when they diverged.[^dou-embedded-interview] Plus: it honestly shows when and where branches joined; minus: the history becomes branched.
 
-`git rebase` moves the current branch's commits on top of another base, as if work had started from a newer commit. Plus: a linear and cleaner history; minus: rebase rewrites commit hashes.
+`git rebase` moves the current branch's commits onto another base, as if work had started from a newer commit. Plus: linear, cleaner history; minus: it rewrites commit hashes.
 
-A practical rule: **merge** is safe for shared/published branches; **rebase** is convenient for a local feature branch before merging, but you should not rebase someone else's published history without agreement.
-
+Rule: **merge** is safe for shared branches; **rebase** suits a local feature branch before merging, but do not rebase someone else's published history without agreement.
 ## Detailed explanation
 
 `git merge` and `git rebase` are two ways to integrate changes from one branch into another, but they work differently and produce different history shapes.[^git-scm-doc]
