@@ -14,7 +14,7 @@
 # `anki/releases/<previous-version>.json` - a release manifest that
 # does not exist yet. meta/plan.md step 4, checkpoint 4, is what writes the FIRST
 # one, as a baseline; there is nothing to diff against before that. No script
-# in this repository computes that diff (tools/iqa and anki/build.py
+# in this repository computes that diff (tools/iqa, including iqa/anki.py,
 # do not implement it), and this workflow does not invent one - that would be
 # exactly the "documentation describes aspiration as fact" defect AGENTS.md
 # calls out. What this workflow DOES run, because it already exists and is
@@ -93,7 +93,7 @@ jobs:
       - name: Build the .apkg
         run: |
           mkdir -p anki/dist
-          python anki/build.py \
+          python -m iqa deck \
             --out "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg"
 
       - name: Checksum the release artifact (release-checksums gate)

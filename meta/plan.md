@@ -13,7 +13,7 @@
 | Крок | Що з нього лишилось у репозиторії |
 |---|---|
 | 1. Модель і валідатор | `tools/iqa/model.py`, `lifecycle.py`, `validate.py`, `meta/`, негативна фікстура на кожну ворота |
-| 2. Вертикальний зріз | `export.py`, полагоджене дзеркало, єдиний шлях збірки, переписаний `verify_build.py`, `anki/build.py` |
+| 2. Вертикальний зріз | `export.py`, полагоджене дзеркало, єдиний шлях збірки, переписаний `verify_build.py`, `tools/iqa/anki.py` |
 | 3. CI | три workflow, ворота `pinned-actions`, `requirements/python-lock.txt` з хешами |
 | 4. Міграція | 392 картки в `content/`, числа й наслідки – `meta/measurements.md` |
 
@@ -114,7 +114,7 @@ ID. Три нові питання embedded, додані 2026-09-08 для по
 `concept`, `mechanism`, `comparison`, `pitfall`: рівно один fenced block, жодного тексту довкола,
 ніколи `TODO`. `Front` картки = `title` + цей блок. Пройшло весь ланцюг – `model.py` (послідовності,
 `OPTIONAL_SECTIONS`, `expected_sections`, і поза `completeness`), `validate.py`, `export.py`
-(`card.question_code`), `anki/build.py` (`render_front`), `meta/vocabulary.yml`, контракт §4 і два
+(`card.question_code`), `tools/iqa/anki.py` (`render_front`), `meta/vocabulary.yml`, контракт §4 і два
 тести. Винесено 131 блок із lab446 (з голови відповіді) і 42 з перших 407 (з `title`, де вони лежали
 сирим `<pre>` і друкувалися екранованими тегами); 5 блоків, які імпорт був змушений злити в один,
 розділено назад на форму джерела.

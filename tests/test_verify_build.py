@@ -1,21 +1,15 @@
 from __future__ import annotations
 
-import importlib.util
 from pathlib import Path
 import shutil
-import sys
 
 import pytest
+
+from iqa import verify_build
 
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = Path(__file__).parent / "fixtures"
-
-_SPEC = importlib.util.spec_from_file_location("verify_build", ROOT / "tools" / "verify_build.py")
-verify_build = importlib.util.module_from_spec(_SPEC)
-assert _SPEC.loader is not None
-sys.modules["verify_build"] = verify_build
-_SPEC.loader.exec_module(verify_build)
 
 
 SITE_HOST = "bogdan-kovalchuk.github.io"
@@ -185,12 +179,7 @@ def test_section_heading_leaks_excludes_identical_pairs() -> None:
 
 
 def _run_capture(repo: Path, capsys: pytest.CaptureFixture[str]) -> tuple[int, str]:
-    argv_backup = sys.argv
-    try:
-        sys.argv = ["verify_build.py", "--root", str(repo), "--site-host", SITE_HOST]
-        exit_code = verify_build.main()
-    finally:
-        sys.argv = argv_backup
+    exit_code = verify_build.main(["--root", str(repo), "--site-host", SITE_HOST])
     return exit_code, capsys.readouterr().out
 
 

@@ -80,7 +80,7 @@ Starlight показує сторінку `defaultLocale` з видимим но
 
 Без цього поділу та сама назва виглядала **відформатованою у списку секції** (там вона проходить
 через Markdown як текст посилання) і **сирою на власній сторінці**. Anki цієї проблеми не мав ніколи:
-`anki/build.py` рендерить `title` через `render_inline`, і у зібраній колоді 229 з 388
+`tools/iqa/anki.py` рендерить `title` через `render_inline`, і у зібраній колоді 229 з 388
 фронтів містять `<code>` і жоден – backtick.
 
 **Багаторядкового коду в `title` не буває.** Обидві форми заголовка – це або текст, або текст з
@@ -157,7 +157,7 @@ python -m iqa build
   1/4 validate   ворота контенту
   2/4 export     dist/export/questions.json + progress.{json,csv}
   3/4 npm run build   регенерує дзеркало, потім astro build
-  4/4 verify     tools/verify_build.py
+  4/4 verify     tools/iqa/verify_build.py
 ```
 
 `site/scripts/build.mjs` сам перегенеровує дзеркало і **відмовляється** запускати `astro build`,

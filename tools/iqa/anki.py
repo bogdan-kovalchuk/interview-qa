@@ -1,7 +1,10 @@
 """Build the real Interview QA `.apkg` package from `dist/export/questions.json`.
 
-Reads only `dist/export/questions.json` (never `content/` - only `tools/` reads
-that, per AGENTS.md) and the frozen note type in `anki/notetype/`.
+Reads only `dist/export/questions.json` (never `content/`: the exporter is the
+one reader of authored files, and the deck is built from its output) and the
+frozen note type in `anki/notetype/`. Run it as `python -m iqa.anki` or
+`python -m iqa deck`; `anki/` keeps only data - the note type, fonts and the
+built packages.
 
 Invariants this file must never violate (meta/anki.md, meta/decisions.md #7-8):
 
@@ -32,10 +35,10 @@ from typing import Any
 import genanki
 import yaml
 
-from iqa.guid import GUID_NAMESPACE, guid_for
-from iqa.taxonomy import ordered_tracks_and_sections
+from .guid import GUID_NAMESPACE, guid_for
+from .taxonomy import ordered_tracks_and_sections
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 NOTETYPE = ROOT / "anki" / "notetype"
 FONTS = ROOT / "anki" / "fonts"
 FINGERPRINT = json.loads((NOTETYPE / "fingerprint.json").read_text(encoding="utf-8"))
@@ -388,6 +391,12 @@ def build_package(
     track: str | None = None,
     taxonomy_path: Path | None = None,
 ) -> int:
+    if not questions_path.exists():
+        raise SystemExit(
+            f"export not found: {questions_path}\n"
+            "This builder reads only the export, never `content/`. "
+            "Run `python -m iqa export` first."
+        )
     payload = json.loads(questions_path.read_text(encoding="utf-8"))
     vocabulary = yaml.safe_load(vocabulary_path.read_text(encoding="utf-8")) or {}
     order = section_order(taxonomy_path or ROOT / "meta" / "taxonomy.md")
@@ -411,7 +420,7 @@ def build_package(
     return len(notes)
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--questions", type=Path, default=ROOT / "dist" / "export" / "questions.json")
     parser.add_argument("--vocabulary", type=Path, default=ROOT / "meta" / "vocabulary.yml")
@@ -433,7 +442,7 @@ def main() -> int:
         default=None,
         help="output .apkg; defaults to the Full Library name for the chosen language",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     scope = "Full Library" if args.track is None else args.track.replace("-", " ").title()
     out = args.out or (

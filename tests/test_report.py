@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-import sys
 
 import pytest
 
@@ -22,8 +21,7 @@ def _write_question(directory: Path, text: str, filename: str) -> None:
 
 
 def test_guid_formula_matches_the_anki_builder() -> None:
-    sys.path.insert(0, str(ROOT / "anki"))
-    import build as anki_build  # noqa: E402
+    from iqa import anki as anki_build
 
     for qid in ("py-asyncio-0007", "cpp-mem-0001", "bhv-team-0001"):
         assert report.guid_for(qid) == anki_build.guid_for(qid)
