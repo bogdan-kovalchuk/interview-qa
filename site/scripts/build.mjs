@@ -7,7 +7,7 @@
 // stale `astro build` used to be able to ship yesterday's mirror. Content
 // validation (`python -m iqa validate`) is a separate, cheaper, faster-failing
 // step and runs before this script as part of the single `iqa build` pipeline
-// (tools/iqa/build.py), which also runs `tools/verify_build.py` after this
+// (tools/iqa/build.py), which also runs `tools/iqa/verify_build.py` after this
 // script succeeds - so the full path is validate -> mirror -> astro build ->
 // verify, with exactly one command to invoke it.
 import { spawn } from 'node:child_process';
@@ -19,6 +19,13 @@ const siteRoot = fileURLToPath(new URL('../', import.meta.url));
 const repoRoot = fileURLToPath(new URL('../../', import.meta.url));
 const astroCli = fileURLToPath(new URL('../node_modules/astro/astro.js', import.meta.url));
 const metricsFile = path.join(siteRoot, '.build-metrics.json');
+
+// Which interpreter runs `iqa.mirror`. A bare `python` is wrong whenever the
+// tools are installed somewhere this shell's PATH does not point at first: a
+// venv that npm did not inherit, or a system where the binary is `python3`.
+// `tools/iqa/build.py` exports IQA_PYTHON=sys.executable, so the pipeline
+// always mirrors with the same interpreter that validated and exported.
+const python = process.env.IQA_PYTHON || process.env.PYTHON || 'python';
 
 function run(command, args, options) {
   return new Promise((resolve) => {
@@ -44,7 +51,7 @@ const started = performance.now();
 
 console.log('== 1/2: regenerate the production mirror ==');
 const mirrorCode = await run(
-  'python',
+  python,
   [
     '-m',
     'iqa.mirror',
