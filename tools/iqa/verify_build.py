@@ -9,7 +9,8 @@ the page set a correct production build must contain, and asserts the emitted
 set matches it exactly - nothing missing, nothing left over from a previous run.
 
 Run this after ``npm run build`` (``site/scripts/build.mjs``) - or invoke the
-whole pipeline with ``python -m iqa build``, which runs this last.
+whole pipeline with ``python -m iqa build``, which runs this last by calling
+``main()`` directly, in-process.
 """
 
 from __future__ import annotations
@@ -24,10 +25,8 @@ import re
 import sys
 from urllib.parse import unquote, urlsplit
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-
-from iqa.export import canonical_path, group_by_id, read_all_questions, resolver_path
-from iqa.lifecycle import PageMode, lifecycle_for
+from .export import canonical_path, group_by_id, read_all_questions, resolver_path
+from .lifecycle import PageMode, lifecycle_for
 
 
 SOURCE_COMMENT = "generated from frontmatter"
@@ -174,7 +173,7 @@ def section_heading_leaks(vocabulary_path: Path) -> dict[str, str]:
     return leaks
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
     # Diagnostics can quote Ukrainian heading text; a Windows console defaults to
     # a codepage that cannot encode it, which must not crash the check itself.
     for stream in (sys.stdout, sys.stderr):
@@ -188,7 +187,7 @@ def main() -> int:
     parser.add_argument("--site-host", default="bogdan-kovalchuk.github.io")
     parser.add_argument("--locales", nargs="+", default=["en", "uk"])
     parser.add_argument("--metrics", type=Path, default=None)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     root = args.root.resolve()
     dist = (args.dist if args.dist is not None else root / "site" / "dist").resolve()

@@ -1,7 +1,7 @@
 """Export the canonical machine-readable view of every question.
 
 This is the single place that turns ``content/`` into data other tools consume:
-the deck builder (``anki/build.py``) and, later, the progress report.
+the deck builder (``tools/iqa/anki.py``) and, later, the progress report.
 Nothing downstream re-parses Markdown; everything downstream reads this file.
 
 Per ``meta/decisions.md`` sections 5-6, cross-references (``see_also``,
@@ -25,7 +25,7 @@ from .model import Language, Question, QuestionType, SectionName, parse_question
 def read_all_questions(content_root: Path) -> list[Question]:
     """Parse every question file under ``content_root`` through the canonical model.
 
-    Shared with ``tools/verify_build.py`` so the expected page set it checks
+    Shared with ``tools/iqa/verify_build.py`` so the expected page set it checks
     against is computed the same way the export and the mirror compute theirs -
     one parse of the model, not a second Markdown reader.
     """

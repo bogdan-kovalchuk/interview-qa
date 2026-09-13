@@ -1,14 +1,11 @@
 from __future__ import annotations
 
 from pathlib import Path
-import sys
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "anki"))
-
-import build as anki_build  # noqa: E402  (path insertion must happen first)
 from corpus import EN_CARDS, UK_CARDS
+from iqa import anki as anki_build
 from iqa.export import build_export
 
 

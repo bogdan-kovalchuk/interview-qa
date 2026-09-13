@@ -7,7 +7,7 @@ made every content import edit seven assertions in four files, which is the
 "two live descriptions of one behaviour" AGENTS.md warns about.
 
 Update these four numbers when the corpus grows, and the whole suite follows.
-`python -m iqa validate` prints FILES and QUESTIONS; `python anki/build.py
+`python -m iqa validate` prints FILES and QUESTIONS; `python -m iqa deck
 --language {uk,en}` prints the card counts.
 """
 

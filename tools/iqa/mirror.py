@@ -4,9 +4,9 @@ This is the one place that turns authored ``content/`` into what the site render
 Per ``meta/site.md`` and ``meta/questions.md``, it is responsible for everything the
 site is not allowed to see for itself:
 
-- materialising citation tokens ``[^source_id]`` into real Markdown footnote
-  definitions built from ``sources`` in frontmatter, so no raw ``[^...]`` token
-  reaches the HTML;
+- materialising citation tokens ``[^source_id]`` into superscript links into the
+  rendered ``Sources`` list, so no raw ``[^...]`` token reaches the HTML; see
+  ``replace_citations`` for why these are not Markdown footnote definitions;
 - rendering the ``Sources`` section from frontmatter, replacing the
   ``<!-- generated from frontmatter -->`` placeholder;
 - substituting the visible section (and subsection) headings for the page's own

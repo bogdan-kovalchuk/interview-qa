@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+import sys
 
 from . import build as build_module
+from .anki import main as anki_main
 from .export import write_export
 from .model import export_question_schema
 from .pinned_actions import main as pinned_actions_main
@@ -50,6 +52,12 @@ def _parser() -> argparse.ArgumentParser:
         help="print the next incomplete (question, language) pairs instead of writing files",
     )
 
+    subcommands.add_parser(
+        "deck",
+        help="build the .apkg from dist/export/questions.json (see `python -m iqa.anki -h`)",
+        add_help=False,
+    )
+
     pinned_actions = subcommands.add_parser(
         "check-pinned-actions",
         help="fail if any `uses:` in .github/workflows/ is not a 40-hex commit SHA",
@@ -61,6 +69,13 @@ def _parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
+    argv = list(argv) if argv is not None else sys.argv[1:]
+    # `deck` forwards everything after it straight to the deck builder's own
+    # parser, so `iqa deck --language en --track python` keeps working without
+    # restating those flags here.
+    if argv and argv[0] == "deck":
+        return anki_main(argv[1:])
+
     args = _parser().parse_args(argv)
     if args.command == "check-pinned-actions":
         return pinned_actions_main(["--workflows", str(args.workflows)])
