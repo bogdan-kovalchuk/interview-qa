@@ -82,7 +82,7 @@ frontmatter – ревізії (`content_revision`, `reconciled_with`, `updated`
 переліків. Бриф з повними правилами – у робочій теці сесії, зразок стилю –
 `python/decorators/order-decorators-outer-inner-written-above-same.md`.
 
-Закриті повністю: `python/fundamentals` (12), `python/syntax-and-control-flow` (14), `python/objects-and-types` (22), `python/collections` (5), `python/comprehensions-and-functional` (12), `python/concurrency-and-gil` (21), `python/context-managers` (10) та `python/cpython-internals` (20).
+Закриті повністю: `python/fundamentals` (12), `python/syntax-and-control-flow` (14), `python/objects-and-types` (22), `python/collections` (24), `python/comprehensions-and-functional` (12), `python/concurrency-and-gil` (23), `python/asyncio` (24), `python/context-managers` (10) та `python/cpython-internals` (20).
 
 Решта 206 питань й далі мають `Detailed explanation: TODO` обома мовами. Інші секції за типом
 (`Comparison`, `When to choose which`, `Symptom`, `Why it happens`, `How to avoid`, `Evaluation
@@ -151,7 +151,7 @@ ID. Три нові питання embedded, додані 2026-09-08 для по
 
 Англійська колода виросла з 145 до 998 карток, і вперше з'явилась
 `Interview QA (EN) - Embedded.apkg`. Після додавання семи двомовних карток для порожніх секцій
-англійський Full Library містить 1005 карток.
+англійський Full Library містить 1055 карток.
 
 ## 8. Цілі співбесіди
 
@@ -192,7 +192,7 @@ Anki.
 - **46 попереджень** про `Short answer` понад 90 слів. Лічильник приведено до контракту: code block,
   citation-токени й HTML-теги не рахуються, але видимий текст усередині `<span>` рахується.
   Скорочувати зміст лише заради м'якої межі не потрібно.
-- **`bump_revisions.py` не зводить половини, написані в різних проходах.** Скрипт піднімає
+- **`bump_revisions.py` (робочий скрипт сесії, не в репозиторії) не зводить половини, написані в різних проходах.** Скрипт піднімає
   `reconciled_with` лише коли обидва мовні файли змінилися в одному проході; якщо українську
   написали вчора, а англійську сьогодні, обидві ревізії стають однаковими, але маркери лишаються
   старими, і `lang-reconciliation` лається з обох боків. Ловиться валідатором, лікується руками.
