@@ -1,6 +1,6 @@
 # Backlog review карток
 
-Стан на 2026-09-08. Це єдиний постійний список незавершеного review письмових пар EN/UK.
+Стан на 2026-09-21. Це єдиний постійний список незавершеного review письмових пар EN/UK.
 Тимчасові звіти з `.audit-run-*` після перенесення сюди не є джерелом істини й видаляються.
 
 Review пари вважається завершеним, коли перевірено обидві мови, фактичні твердження, точність і
@@ -10,26 +10,27 @@ Review пари вважається завершеним, коли переві
 
 ## Зведення
 
-Письмовий `Detailed explanation` мають 185 пар. Стан review:
+Письмовий `Detailed explanation` мають 235 пар. Стан review:
 
 | Обсяг | Пар | Стан |
 |---|---:|---|
-| Python | 120 | Людський review ще не виконано |
+| Python | 170 | Людський review ще не виконано |
 | Embedded | 40 | Review виконано, усі 40 мають незакриті зауваження |
 | Інші треки | 25 | 9 виправлено, 1 без зауважень, 15 мають незакриті зауваження |
 
 ## Python: review ще не виконано
 
-Потрібно послідовно перевірити всі 120 письмових пар у таких секціях:
+Потрібно послідовно перевірити всі 170 письмових пар у таких секціях:
 
 - `python/asyncio` - 24;
-- `python/collections` - 22;
-- `python/comprehensions-and-functional` - 5;
-- `python/concurrency-and-gil` - 20;
-- `python/context-managers` - 2;
-- `python/cpython-internals` - 16;
-- `python/decorators` - 4;
+- `python/collections` - 24;
+- `python/comprehensions-and-functional` - 12;
+- `python/concurrency-and-gil` - 23;
+- `python/context-managers` - 10;
+- `python/cpython-internals` - 20;
+- `python/decorators` - 8;
 - `python/fundamentals` - 12;
+- `python/objects-and-types` - 22;
 - `python/practical-coding` - 1;
 - `python/syntax-and-control-flow` - 14.
 
