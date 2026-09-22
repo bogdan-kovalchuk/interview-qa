@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-27
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -58,7 +58,47 @@ sources:
 
 ## Detailed explanation
 
-TODO
+У моделі даних Python властивості hashability (гешованість) та immutability (незмінність) вирішують різні задачі й не є взаємозамінними.[^py314-reference-datamodel] Об'єкт вважається hashable, якщо він має метод `__hash__`, що повертає ціле число, яке залишається незмінним протягом усього його життєвого циклу, реалізує порівняння через `__eq__` і задовольняє умову: якщо `a == b`, то `hash(a) == hash(b)`. Immutability ж стосується лише стану: об'єкт є незмінним, якщо його значення та посилання на вкладені елементи не можна змінити після ініціалізації (`int`, `str`, `tuple`, `frozenset`).
+
+Ці властивості не збігаються з трьох основних причин. По-перше, незмінний контейнер може містити мутабельні елементи. Наприклад, `tuple` є структурно незмінним, але кортеж `(1, [2, 3])` є unhashable: функція `hash()` рекурсивно обчислює геші вмісту, і при спробі гешувати вкладений список виникає помилка `TypeError: unhashable type: 'list'`. Для гешованості кортежу обов'язковою є гешованість кожного його елемента.
+
+По-друге, мутабельний об'єкт може бути hashable. Екземпляри звичайних користувацьких класів, які не перевизначають `__eq__`, успадковують гешування та перевірку рівності за ідентичністю (`id()`) від `object`. Стан такого екземпляра можна вільно модифікувати, але його геш базується на адресі об'єкта і ніколи не змінюється. По-третє, клас із незмінними полями автоматично стає unhashable (`__hash__ = None`), щойно в ньому визначається метод `__eq__` без явного `__hash__`.
+
+Приклади, що демонструють різницю між hashability та immutability:
+
+```python
+# 1. An immutable container holding a mutable object is unhashable
+t = (1, 2, [3, 4])
+try:
+    hash(t)
+except TypeError as error:
+    print(error)  # unhashable type: 'list'
+
+# 2. A mutable object can be hashable via object identity
+class MutableNode:
+    def __init__(self, value: int):
+        self.value = value
+
+node = MutableNode(10)
+print(isinstance(hash(node), int))  # True
+node.value = 99                     # Mutated state, but identity hash is unchanged
+print(isinstance(hash(node), int))  # True
+
+# 3. Defining __eq__ without __hash__ disables hashing
+class Point:
+    def __init__(self, x: int):
+        self.x = x
+
+    def __eq__(self, other):
+        return isinstance(other, Point) and self.x == other.x
+
+print(Point.__hash__ is None)  # True (Python sets __hash__ = None)
+```
+
+**Ключові відмінності та практичні висновки:**
+- незмінність контейнера не гарантує гешованості: `tuple` або `frozenset` є hashable лише тоді, коли всі їхні елементи є hashable;
+- мутабельність не виключає гешованості за замовчуванням: класи без `__eq__` гешуються за ідентичністю незалежно від змін їхнього стану;
+- явний контракт при value-based рівності: для використання власних класів як ключів словника слід або використовувати незмінні поля й реалізувати узгоджений `__hash__`, або використовувати `dataclass(frozen=True)`.
 
 ## Comparison
 

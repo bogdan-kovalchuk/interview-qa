@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [str, bytes]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-09-27
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -58,7 +58,40 @@ sources:
 
 ## Detailed explanation
 
-TODO
+`str` представляє людиночитний текст як незмінну послідовність абстрактних Unicode code points (символів), тоді як `bytes` представляє сирі двійкові дані як незмінну послідовність цілих чисел у діапазоні 0–255.[^py314-reference-datamodel]
+
+У Python 3 текстові та двійкові дані повністю розділені на рівні типів. Об'єкт `str` не має фіксованого представлення у байтах, доступного з Python-коду: він абстрагує деталі збереження в пам'яті (внутрішньо CPython використовує гнучке представлення згідно з PEP 393). На противагу цьому, `bytes` оперує фізичними октетами, призначеними для передачі мережею або запису на диск. Оскільки абстрактні символи та двійкові послідовності семантично несумісні, Python забороняє будь-яке неявне приведення між ними: конкатенація `str` з `bytes` або операції порівняння порядку викликають `TypeError` (а перевірка рівності `str == bytes` завжди повертає `False`).[^py314-library-stdtypes]
+
+Архітектурний підхід для обробки цих відмінностей відомий як «Unicode sandwich». На зовнішніх межах програми (файлові операції, мережеві сокети, бази даних, CLI) отримані сирі `bytes` негайно декодуються у `str` із явним зазначенням кодування (зазвичай UTF-8). Уся внутрішня бізнес-логіка оперує виключно текстом `str` без прив'язки до байтових деталей. На виході з програми текстові дані знову явно кодуються у `bytes` для передачі зовнішнім споживачам.
+
+Приклад явного перетворення на межі програми та несумісності типів:
+
+```python
+# Raw binary data received from external source (network or disk)
+raw_bytes = b"Hello, world!"
+
+# Decode at input boundary into Unicode text
+text = raw_bytes.decode("utf-8")
+print(text)  # Hello, world!
+print(type(text), len(text))  # <class 'str'> 13
+
+# Direct operations between str and bytes are forbidden
+try:
+    _ = text + b"!"
+except TypeError as err:
+    print(type(err).__name__)  # TypeError
+
+# Multi-byte characters show the difference between character count and byte length
+euro = "\u20ac"  # Euro symbol: '€'
+euro_bytes = euro.encode("utf-8")
+print(len(euro), len(euro_bytes))  # 1 3
+```
+
+**Типові помилки при роботі зі `str` та `bytes`:**
+- виконання decode або encode всередині бізнес-логіки замість межі програми, що розмиває відповідальність і призводить до дублювання перетворень;
+- припущення, що `len(s)` для `str` дорівнює розміру даних у байтах, що ламає роботу з протоколами, де потрібен заголовок `Content-Length`;
+- ігнорування параметра кодування (виклик `.encode()` або `.decode()` без аргументу), через що поведінка залежить від системної локалі замість стандартизованого UTF-8;
+- спроба відкрити бінарний файл у текстовому режимі без вказання `mode='rb'`, що призводить до спотворення переносів рядків (`\r\n` на Windows) або винятків `UnicodeDecodeError`.
 
 ## Comparison
 
