@@ -43,13 +43,6 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Official Python 3.14 documentation."
-  - source_id: predecessor-answer
-    title: "tavor118/pj_python_interview_questions_and_answers (community)"
-    url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/python/class_and_object.md#L322-L347
-    accessed: 2026-09-04
-    kind: community
-    version: null
-    applicability: "Community source used to discover the topic; the answer text is independently written and does not copy this source."
 ---
 
 ## Short answer

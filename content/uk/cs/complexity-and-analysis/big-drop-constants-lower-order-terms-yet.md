@@ -22,13 +22,6 @@ sources:
     kind: book
     version: "4th edition"
     applicability: "Розділ 3 підтверджує asymptotic notation і відкидання сталих множників та доданків нижчого порядку."
-  - source_id: predecessor-answer
-    title: "tavor118/pj_python_interview_questions_and_answers (community)"
-    url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/computer_science/algorithmes.md#L156-L161
-    accessed: 2026-09-04
-    kind: community
-    version: null
-    applicability: "Джерело виявлення теми з попередньої (community) бази питань; текст відповіді написаний окремо і не копіює це джерело."
 ---
 
 ## Short answer

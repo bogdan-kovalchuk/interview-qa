@@ -32,13 +32,6 @@ sources:
     kind: official
     version: "17"
     applicability: "Визначає immediate і deferred timing перевірки constraints у PostgreSQL 17."
-  - source_id: predecessor-answer
-    title: "tavor118/pj_python_interview_questions_and_answers (community)"
-    url: https://github.com/tavor118/pj_python_interview_questions_and_answers/blob/02d57a7a9f34fd386eb8aa5c0094fe3f3c3ba141/docs/infrastructure/sql.md#L65-L85
-    accessed: 2026-09-04
-    kind: community
-    version: null
-    applicability: "Джерело виявлення теми з попередньої (community) бази питань; текст відповіді написаний окремо і не копіює це джерело."
 ---
 
 ## Short answer
