@@ -47,7 +47,7 @@ measured on real collections, not assumed – see `meta/measurements.md`.
 |---|---|
 | `content/` | the questions, in both languages |
 | `meta/` | the specification, decisions and measurements (Ukrainian) |
-| `anki/` | note type, fonts, deck builder, measurement harness |
+| `anki/` | note type, fonts, measurement harness (the deck builder is `tools/iqa/anki.py`) |
 | `site/` | Astro Starlight – the only Node part |
 | `tools/` | the Python pipeline |
 | `tests/` | automated quality gates and regression tests |
