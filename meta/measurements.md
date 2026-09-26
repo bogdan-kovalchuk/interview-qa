@@ -4,12 +4,12 @@
 документація й вимірювання розходяться, тому правило просте: **не переказуй документацію Anki –
 міряй**. Harness лежить у `anki/spike/` і запускається повторно.
 
-Повні протоколи з таблицями по кожній картці лишились у git, у коміті `24ddee6`:
+Повні протоколи з таблицями по кожній картці лишились у git, у коміті `ac6bbf8`:
 
 ```
-git show 24ddee6:meta/migration/anki-compatibility-report.md
-git show 24ddee6:meta/migration/anki-tag-refresh.md
-git show 24ddee6:meta/migration/predecessor-baseline.md
+git show ac6bbf8:meta/migration/anki-compatibility-report.md
+git show ac6bbf8:meta/migration/anki-tag-refresh.md
+git show ac6bbf8:meta/migration/predecessor-baseline.md
 ```
 
 Тут – результати й те, з чого вони випливають.
@@ -44,7 +44,7 @@ Anki GUI не запускався. Бібліотека відкривала л
 | 11 | Видалена картка не повертається, прогрес не скидається | **підтверджено** | ручна перевірка на живій колекції власника |
 
 Рядки 10–11 – історичні результати ручних прогонів. Їхні `.apkg`-артефакти прибрані з активного
-дерева і за потреби відновлюються з коміту `bdf2d31`; font-check повторно збирається командою
+дерева і за потреби відновлюються з коміту `4d7e6da`; font-check повторно збирається командою
 `python anki/spike/build_font_check.py` у проігнорований `anki/dist/`.
 
 ### 9. Найважливіший результат: тиха структурна корупція
