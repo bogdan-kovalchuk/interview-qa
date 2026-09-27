@@ -255,6 +255,10 @@ embedded/
   electronics-course-introduction/     розділ 2: компоненти, закон Ома, джерела, діоди, BJT, MOSFET, інструменти
   electronics-course-circuit-analysis/ розділ 3: KCL/KVL, змішані кола, подільники напруги, SPICE
   electronics-course-ee101/            розділ 4: перемикачі, RC/RL, фазори, фільтри, живлення, каскади, логіка, 555
+  electronics-course-digital-logic/    розділ 5: булева алгебра, системи числення, часові діаграми, TTL
+  electronics-course-digital-integration/ розділ 6: SSI/MSI/LSI, комбінаційні й послідовні мікросхеми 74xx
+  electronics-course-pcb-design/       розділ 7: основи PCB, CircuitMaker, розбір плат
+  electronics-course-circuitmaker-projects/ розділ 8: схеми, розводка й Gerber у CircuitMaker
   linux-embedded/               P2: Yocto, buildroot, device tree, драйвери
 ```
 
