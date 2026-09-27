@@ -17,8 +17,8 @@
 | 3. CI | три workflow, ворота `pinned-actions`, `requirements/python-lock.txt` з хешами |
 | 4. Міграція | 392 картки в `content/`, числа й наслідки – `meta/measurements.md` |
 
-Поточний стан: **1261 питання обома мовами, 1248 українських карток і 1005 англійських**,
-`python -m iqa build` проходить наскрізь, 110 тестів зелені.
+Поточний стан: **1261 питання обома мовами, 1248 українських карток і 1055 англійських**,
+`python -m iqa build` проходить наскрізь, 111 тестів зелені.
 
 ---
 
@@ -67,7 +67,7 @@ resolver веде на канонічну сторінку, і на ній є у
 
 **Вихід:** сайтом можна користуватися без прямих посилань, і видно, чого бракує.
 
-## 7. Розгорнуті пояснення – **у роботі, 136 з 392**
+## 7. Розгорнуті пояснення – **у роботі, 186 з 392**
 
 Робота, а не інфраструктура. Порядок дає `python -m iqa report --todo`, а не алфавіт.
 
@@ -82,9 +82,9 @@ frontmatter – ревізії (`content_revision`, `reconciled_with`, `updated`
 переліків. Бриф з повними правилами – у робочій теці сесії, зразок стилю –
 `python/decorators/order-decorators-outer-inner-written-above-same.md`.
 
-Закриті повністю: `python/fundamentals` (12) і `python/syntax-and-control-flow` (14).
+Закриті повністю: `python/fundamentals` (12), `python/syntax-and-control-flow` (14), `python/objects-and-types` (22), `python/collections` (5), `python/comprehensions-and-functional` (12), `python/concurrency-and-gil` (21), `python/context-managers` (10) та `python/cpython-internals` (20).
 
-Решта 256 питань й далі мають `Detailed explanation: TODO` обома мовами. Інші секції за типом
+Решта 206 питань й далі мають `Detailed explanation: TODO` обома мовами. Інші секції за типом
 (`Comparison`, `When to choose which`, `Symptom`, `Why it happens`, `How to avoid`, `Evaluation
 guide`) не чіпали свідомо: написані питання перейшли з `stub` у `partial`, а не в `complete`.
 
