@@ -87,7 +87,7 @@ guid = base91(sha256("iqa:v1:" + question_id).digest()[:8])
 
 | Пакет | Мова | Простір GUID | Корінь дерева колод | Карток на 2026-09-27 |
 |---|---|---|---|---|
-| `Interview QA - Full Library.apkg` | `uk` | `iqa:v1:{id}` | `Interview QA::` | 1863 |
+| `Interview QA - Full Library.apkg` | `uk` | `iqa:v1:{id}` | `Interview QA::` | 2076 |
 | `Interview QA (EN) - Full Library.apkg` | `en` | `iqa:v1:en:{id}` | `Interview QA (EN)::` | 1055 |
 
 `python -m iqa deck --language {uk,en} [--track <track>]`; без прапорців – українська і

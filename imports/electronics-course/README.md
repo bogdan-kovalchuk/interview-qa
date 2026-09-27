@@ -10,13 +10,17 @@ This folder is evidence, not a build input. Nothing in `tools/iqa/` reads it.
 
 ## Where the cards live now
 
-Course sections 2-4 are 615 questions in `content/{uk,en}/embedded/`:
+Course sections 2–8 are 828 questions in `content/{uk,en}/embedded/`:
 
 | Course section | Section in this repository | ID prefix | Questions |
 |---|---|---|---|
 | 2 Introduction to Electronics | `embedded/electronics-course-introduction` | `emb-elintro` | 310 |
 | 3 Advanced Circuit Analysis | `embedded/electronics-course-circuit-analysis` | `emb-elcirc` | 46 |
-| 4 Electrical Engineering 101 | `embedded/electronics-course-ee101` | `emb-elee` | 259 |
+| 4 Electrical Engineering 101 | `embedded/electronics-course-ee101` | `emb-elee` | 263 |
+| 5 Digital Logic Systems | `embedded/electronics-course-digital-logic` | `emb-eldig` | 38 |
+| 6 Digital Integration | `embedded/electronics-course-digital-integration` | `emb-elinteg` | 73 |
+| 7 PCB Design with CircuitMaker | `embedded/electronics-course-pcb-design` | `emb-elpcb` | 25 |
+| 8 CircuitMaker Projects | `embedded/electronics-course-circuitmaker-projects` | `emb-elcmproj` | 73 |
 
 `question-mapping.csv` maps every course card id (`electronics-sNN-NNNN`) to its question id and
 path. Each question names the course and the lecture in its `udemy-electronics-course` source.

@@ -17,7 +17,7 @@
 | 3. CI | три workflow, ворота `pinned-actions`, `requirements/python-lock.txt` з хешами |
 | 4. Міграція | 392 картки в `content/`, числа й наслідки – `meta/measurements.md` |
 
-Поточний стан: **1876 питань обома мовами, 1863 українські картки і 1055 англійських**,
+Поточний стан: **2089 питань обома мовами, 2076 українських карток і 1055 англійських**,
 `python -m iqa build` проходить наскрізь, 111 тестів зелені.
 
 ---
@@ -153,17 +153,19 @@ ID. Три нові питання embedded, додані 2026-09-08 для по
 `Interview QA (EN) - Embedded.apkg`. Після додавання семи двомовних карток для порожніх секцій
 англійський Full Library містить 1055 карток.
 
-## 7c. Картки курсу електроніки – **перенесено 2026-09-27, 615 питань**
+## 7c. Картки курсу електроніки – **перенесено й доповнено 2026-09-27, 828 питань (розділи 2–8)**
 
-Власні картки власника до курсу Udemy *Crash Course Electronics and PCB Design* (розділи 2–4 курсу)
-перенесені з навчального репозиторію курсу як є: 310 питань у `embedded/electronics-course-introduction`,
-46 у `embedded/electronics-course-circuit-analysis` і 259 у `embedded/electronics-course-ee101`. Українська
-`Short answer` – це Back картки; змінено лише форму (перелік – `imports/electronics-course/README.md`).
+Власні картки власника до курсу Udemy *Crash Course Electronics and PCB Design* (розділи 2–8 курсу)
+перенесені та доповнені: 310 питань у `embedded/electronics-course-introduction` (розділ 2),
+46 у `embedded/electronics-course-circuit-analysis` (розділ 3), 263 у `embedded/electronics-course-ee101` (розділ 4),
+38 у `embedded/electronics-course-digital-logic` (розділ 5), 73 у `embedded/electronics-course-digital-integration` (розділ 6),
+25 у `embedded/electronics-course-pcb-design` (розділ 7) і 73 у `embedded/electronics-course-circuitmaker-projects` (розділ 8).
+Українська `Short answer` – це Back картки; змінено лише форму (перелік – `imports/electronics-course/README.md`).
 Англійські файли мають перекладений `title` і `TODO` решту, тож англійських карток із цих секцій ще
 немає. Шість карток розділу 1 курсу – про сам курс, а не про електроніку, – питаннями не стали.
 Вихідні TSV, пайплайн генерації й звіти курсу лежать в `imports/electronics-course/` як доказ.
 
-**Вихід:** 615 українських карток у Full Library; наступне – англійські `Short answer` і
+**Вихід:** 828 українських карток у Full Library (загалом 2076 карток); наступне – англійські `Short answer` і
 `Detailed explanation` для цих секцій, коли власник вирішить.
 
 ## 8. Цілі співбесіди

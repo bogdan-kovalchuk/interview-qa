@@ -387,10 +387,12 @@ Token дозволений у `Short answer`, не рахується слово
   `emb-memlink-0006`, який тепер називає обидва джерела.
 
 Третя власна колода – картки власника до курсу Udemy *Crash Course Electronics and PCB Design*
-(Andre LaMothe), розділи 2–4 курсу: 615 питань у секціях `embedded/electronics-course-introduction`,
-`embedded/electronics-course-circuit-analysis` і `embedded/electronics-course-ee101`. Режим той самий:
+(Andre LaMothe), розділи 2–8 курсу: 828 питань у секціях `embedded/electronics-course-introduction`,
+`embedded/electronics-course-circuit-analysis`, `embedded/electronics-course-ee101`,
+`embedded/electronics-course-digital-logic`, `embedded/electronics-course-digital-integration`,
+`embedded/electronics-course-pcb-design` і `embedded/electronics-course-circuitmaker-projects`. Режим той самий:
 українська `Short answer` зберігає текст картки, змінено лише форму – розмітку, заборонені символи і
-межу 2–5 речень у 33 відповідях (перелік – `imports/electronics-course/README.md`). Походження
+межу 2–5 речень (перелік – `imports/electronics-course/README.md`). Походження
 називає джерело `udemy-electronics-course` (`kind: community`) з номером лекції в `applicability`, а
 авторитетне джерело рівня секції – відповідний том підручника All About Circuits (`kind: book`).
 Англійські файли цих секцій поки мають лише перекладений `title`, тож англійських карток із них немає.
