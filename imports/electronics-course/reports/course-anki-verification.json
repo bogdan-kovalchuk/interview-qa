@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "packages": [
+    {
+      "file": "Section_1.apkg",
+      "notes": 6,
+      "model_id": "2026092701"
+    },
+    {
+      "file": "Section_2.apkg",
+      "notes": 310,
+      "model_id": "2026092701"
+    },
+    {
+      "file": "Section_3.apkg",
+      "notes": 46,
+      "model_id": "2026092701"
+    },
+    {
+      "file": "Section_4.apkg",
+      "notes": 259,
+      "model_id": "2026092701"
+    },
+    {
+      "file": "Electronics_Sections_1-4.apkg",
+      "notes": 621,
+      "model_id": "2026092701"
+    }
+  ],
+  "lectures_covered": 80,
+  "notes": 621,
+  "guid_count": 621
+}

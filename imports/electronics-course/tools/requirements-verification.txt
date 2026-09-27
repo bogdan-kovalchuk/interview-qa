@@ -1,0 +1,4 @@
+-r ../pipeline/requirements.txt
+pytest>=8
+anki>=25
+pywin32>=306; sys_platform == "win32"

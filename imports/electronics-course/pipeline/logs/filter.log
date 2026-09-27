@@ -1,0 +1,6 @@
+2026-08-06 06:08:53,199 - INFO - Loading facts from: C:\Users\bogdan\Documents\Projects\learning\Course Electronics and PCB Design\AI_lectures\pipeline\output\facts\S02_facts.json
+2026-08-06 06:08:53,200 - INFO - Total facts: 29
+2026-08-06 06:08:53,200 - INFO - Lecture 2: 15 → 13 facts
+2026-08-06 06:08:53,200 - INFO - Lecture 3: 14 → 13 facts
+2026-08-06 06:08:53,200 - INFO - Filtered: 29 → 26 facts
+2026-08-06 06:08:53,200 - INFO - Saved to: C:\Users\bogdan\Documents\Projects\learning\Course Electronics and PCB Design\AI_lectures\pipeline\output\facts\S02_facts_filtered.json

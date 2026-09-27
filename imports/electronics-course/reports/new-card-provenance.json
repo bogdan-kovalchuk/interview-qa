@@ -1,0 +1,1347 @@
+[
+  {
+    "lecture": 1,
+    "question": "Навіщо зберігати структуру папок після розпакування навчальних матеріалів курсу?",
+    "source": "lectures\\Section 1 - The Starting Line\\01. Setup, Installation and Getting Things Ready to Roll.docx"
+  },
+  {
+    "lecture": 1,
+    "question": "Що означає принцип Just-in-Time у вивченні інструментів електроніки?",
+    "source": "lectures\\Section 1 - The Starting Line\\01. Setup, Installation and Getting Things Ready to Roll.docx"
+  },
+  {
+    "lecture": 1,
+    "question": "Для чого використовувати план курсу Master Outline під час навчання?",
+    "source": "lectures\\Section 1 - The Starting Line\\01. Setup, Installation and Getting Things Ready to Roll.docx"
+  },
+  {
+    "lecture": 1,
+    "question": "Чим список компонентів курсу корисніший за купівлю деталей навмання?",
+    "source": "lectures\\Section 1 - The Starting Line\\01. Setup, Installation and Getting Things Ready to Roll.docx"
+  },
+  {
+    "lecture": 1,
+    "question": "Навіщо під час курсу поєднувати відеолекцію з довідковою книгою?",
+    "source": "lectures\\Section 1 - The Starting Line\\01. Setup, Installation and Getting Things Ready to Roll.docx"
+  },
+  {
+    "lecture": 1,
+    "question": "Навіщо початківцю макетна плата breadboard і перемички?",
+    "source": "lectures\\Section 1 - The Starting Line\\01. Setup, Installation and Getting Things Ready to Roll.docx"
+  },
+  {
+    "lecture": 2,
+    "question": "Що означає спіральне навчання в курсі електроніки?",
+    "source": "lectures\\Section 2 - Introduction to Electronics\\02. Course Overview.docx"
+  },
+  {
+    "lecture": 2,
+    "question": "Чому перегляду відео недостатньо для засвоєння схемотехніки?",
+    "source": "lectures\\Section 2 - Introduction to Electronics\\02. Course Overview.docx"
+  },
+  {
+    "lecture": 2,
+    "question": "Який шлях проходить проєкт друкованої плати від електричної ідеї до замовлення виробництва?",
+    "source": "lectures\\Section 2 - Introduction to Electronics\\02. Course Overview.docx"
+  },
+  {
+    "lecture": 2,
+    "question": "Навіщо в навчальній електроніці використовують просту схему з блимаючим LED?",
+    "source": "lectures\\Section 2 - Introduction to Electronics\\02. Course Overview.docx"
+  },
+  {
+    "lecture": 32,
+    "question": "Які теми охоплює розділ 4 курсу (Electrical Engineering 101)?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\32. Game Plan for Section 4.0.docx"
+  },
+  {
+    "lecture": 32,
+    "question": "Який підхід до математики пропонує розділ 4?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\32. Game Plan for Section 4.0.docx"
+  },
+  {
+    "lecture": 32,
+    "question": "Які знання з розділу 2 потрібні перед розділом 4?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\32. Game Plan for Section 4.0.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Що означають полюси (poles) і напрямки (throws) механічного перемикача?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Що означають SPST, SPDT, DPST і DPDT та скільки контактів має кожен?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Чим momentary-кнопка відрізняється від latching-перемикача і що означають NO та NC?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Що таке тремтіння контактів (contact bounce) і чому воно шкодить цифровим схемам?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Як мультиметром знайти спільний контакт (COM) перемикача SPDT?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Навіщо в схемі з двигуном постійного струму використовують перемикач DPDT?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 33,
+    "question": "Які основні паспортні параметри механічного перемикача?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\33. All About Mechanical Switches.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Що таке потенціометр і яку роль виконує wiper?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Як потенціометр працює як дільник напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Чим лінійний потенціометр (B-taper) відрізняється від логарифмічного (A-taper)?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Чому для регулювання гучності використовують логарифмічний потенціометр?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Як перетворити потенціометр на реостат?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Чому навантаження змінює вихідну напругу потенціометра-дільника і яке практичне правило?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 34,
+    "question": "Які типи потенціометрів бувають і де їх застосовують?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\34. Fun and Games with POTentiometers.docx"
+  },
+  {
+    "lecture": 35,
+    "question": "Як конденсатор поводиться в колі постійного і змінного струму?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\35. Capacitors and AC Coupling.docx"
+  },
+  {
+    "lecture": 35,
+    "question": "Від чого залежить реактивний опір конденсатора <span class=\"formula\">\\(X_C\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\35. Capacitors and AC Coupling.docx"
+  },
+  {
+    "lecture": 35,
+    "question": "Які основні співвідношення описують конденсатор?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\35. Capacitors and AC Coupling.docx"
+  },
+  {
+    "lecture": 35,
+    "question": "Що таке AC-зв’язок (coupling capacitor) і де його використовують?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\35. Capacitors and AC Coupling.docx"
+  },
+  {
+    "lecture": 35,
+    "question": "Як вибрати ємність розділового конденсатора для аудіосигналу (20 Гц–20 кГц) при R = 10 кОм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\35. Capacitors and AC Coupling.docx"
+  },
+  {
+    "lecture": 35,
+    "question": "Чим відрізняються керамічні, електролітичні, танталові та плівкові конденсатори?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\35. Capacitors and AC Coupling.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Як обчислити загальну ємність паралельних конденсаторів і чому вона зростає?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Як обчислити загальну ємність послідовних конденсаторів?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Чому послідовне з’єднання 10 мкФ і 1 мкФ дає приблизно 0,91 мкФ, а не близько 11 мкФ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Який конденсатор отримує більшу напругу при послідовному з’єднанні?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Яку максимальну напругу можна подати на паралельну групу конденсаторів 10 В і 25 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Навіщо паралельно кожному з послідовних конденсаторів ставлять балансуючі резистори?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 36,
+    "question": "Навіщо у фільтрі живлення ставлять керамічний конденсатор 100 нФ паралельно великому електролітичному?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\36. Working with Series and Parallel Capacitor Networks.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "Як змінюється напруга на конденсаторі під час заряджання в RC-колі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "Що таке постійна часу τ RC-кола?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "До якої частки напруги джерела заряджається конденсатор за 1τ, 2τ, 3τ і 5τ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "Як змінюється напруга на конденсаторі під час розряджання через резистор?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "Чому струм заряджання RC-кола максимальний на початку і спадає до нуля?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "Яка частка енергії джерела розсіюється на резисторі при заряджанні конденсатора через R від сталої напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 37,
+    "question": "Де застосовують RC-кола?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\37. Getting to Know RC Circuits.docx"
+  },
+  {
+    "lecture": 38,
+    "question": "Яка основна властивість індуктора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\38. Exploring the Dark Side with Inductors.docx"
+  },
+  {
+    "lecture": 38,
+    "question": "Як індуктор поводиться в DC-колі в момент увімкнення і в усталеному режимі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\38. Exploring the Dark Side with Inductors.docx"
+  },
+  {
+    "lecture": 38,
+    "question": "Від чого залежить реактивний опір індуктора <span class=\"formula\">\\(X_L\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\38. Exploring the Dark Side with Inductors.docx"
+  },
+  {
+    "lecture": 38,
+    "question": "Як наростає струм у RL-колі після подачі напруги і яка його постійна часу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\38. Exploring the Dark Side with Inductors.docx"
+  },
+  {
+    "lecture": 38,
+    "question": "Чим відрізняється реальний індуктор від ідеального?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\38. Exploring the Dark Side with Inductors.docx"
+  },
+  {
+    "lecture": 38,
+    "question": "Які типи індукторів за сердечником і де їх застосовують?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\38. Exploring the Dark Side with Inductors.docx"
+  },
+  {
+    "lecture": 39,
+    "question": "Як вивести закон наростання струму в послідовному RL-колі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\39. RC Circuit Review, Simulation with Matlab and Finally RL Derivations.docx"
+  },
+  {
+    "lecture": 39,
+    "question": "Як правильно записати показник експоненти і постійну часу RL-кола?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\39. RC Circuit Review, Simulation with Matlab and Finally RL Derivations.docx"
+  },
+  {
+    "lecture": 39,
+    "question": "Як обчислити частоту зрізу простих RC- і RL-фільтрів?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\39. RC Circuit Review, Simulation with Matlab and Finally RL Derivations.docx"
+  },
+  {
+    "lecture": 39,
+    "question": "Чим RC-коло відрізняється від RL-кола в усталеному DC-режимі та за фазою?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\39. RC Circuit Review, Simulation with Matlab and Finally RL Derivations.docx"
+  },
+  {
+    "lecture": 39,
+    "question": "Які інструменти використовують для перевірки розрахунків RC/RL-кіл?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\39. RC Circuit Review, Simulation with Matlab and Finally RL Derivations.docx"
+  },
+  {
+    "lecture": 40,
+    "question": "Що означає мнемоніка ELI?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\40. Understanding I and V in RC and RL Circuits with E.L.I. and I.C.E.docx"
+  },
+  {
+    "lecture": 40,
+    "question": "Що означає мнемоніка ICE?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\40. Understanding I and V in RC and RL Circuits with E.L.I. and I.C.E.docx"
+  },
+  {
+    "lecture": 40,
+    "question": "Чому в індукторі напруга випереджає струм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\40. Understanding I and V in RC and RL Circuits with E.L.I. and I.C.E.docx"
+  },
+  {
+    "lecture": 40,
+    "question": "Чому в конденсаторі струм випереджає напругу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\40. Understanding I and V in RC and RL Circuits with E.L.I. and I.C.E.docx"
+  },
+  {
+    "lecture": 40,
+    "question": "Як фазовий зсув між напругою і струмом впливає на потужність?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\40. Understanding I and V in RC and RL Circuits with E.L.I. and I.C.E.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Навіщо переходити від часової області до частотної при аналізі AC-кіл?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Що таке фазор?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Як перейти між полярною і прямокутною формами комплексного числа?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Що таке комплексний імпеданс Z?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Який імпеданс мають ідеальні індуктор і конденсатор?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Як застосовують закон Ома і правила з’єднань у AC-колах?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Що означає знак кута імпедансу φ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 41,
+    "question": "Як поводяться <span class=\"formula\">\\(X_C\\)</span> і <span class=\"formula\">\\(X_L\\)</span> на DC і на дуже високих частотах?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\41. Fire all Phasors - Reactance and the Math Behind Phasor Representations.docx"
+  },
+  {
+    "lecture": 42,
+    "question": "Як відкладають R, L і C на комплексній площині імпедансу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\42. Easing into Complex Impedance with PhasorReactance Diagrams.docx"
+  },
+  {
+    "lecture": 42,
+    "question": "Як знайти імпеданс послідовного RLC-кола на заданій частоті?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\42. Easing into Complex Impedance with PhasorReactance Diagrams.docx"
+  },
+  {
+    "lecture": 42,
+    "question": "Послідовне RC-коло: R = 100 Ом, <span class=\"formula\">\\(X_C\\)</span> = 75 Ом, джерело 10 В RMS. Чому напруги на R і C (8 В і 6 В) не дають у сумі 14 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\42. Easing into Complex Impedance with PhasorReactance Diagrams.docx"
+  },
+  {
+    "lecture": 42,
+    "question": "Що означає від’ємний кут імпедансу кола?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\42. Easing into Complex Impedance with PhasorReactance Diagrams.docx"
+  },
+  {
+    "lecture": 42,
+    "question": "Коли можна використовувати фазорні формули і які значення зручні для потужності?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\42. Easing into Complex Impedance with PhasorReactance Diagrams.docx"
+  },
+  {
+    "lecture": 43,
+    "question": "Що таке уявна одиниця j і що насправді означає комплексне число a + jb в електроніці?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\43. Imaginary Number Primer and Complex Phasors.docx"
+  },
+  {
+    "lecture": 43,
+    "question": "У якій формі зручніше додавати, а в якій множити й ділити комплексні числа?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\43. Imaginary Number Primer and Complex Phasors.docx"
+  },
+  {
+    "lecture": 43,
+    "question": "Знайдіть струм, якщо <span class=\"formula\">\\(Z\\)</span> = 3 + j4 Ом, а джерело 10∠0° В RMS.",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\43. Imaginary Number Primer and Complex Phasors.docx"
+  },
+  {
+    "lecture": 43,
+    "question": "Чому для кута комплексного числа краще atan2, ніж звичайний arctan(b/a)?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\43. Imaginary Number Primer and Complex Phasors.docx"
+  },
+  {
+    "lecture": 43,
+    "question": "Які домовленості треба зберігати в одній фазорній задачі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\43. Imaginary Number Primer and Complex Phasors.docx"
+  },
+  {
+    "lecture": 44,
+    "question": "Яка послідовність фазорного аналізу послідовного RC-кола?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\44. Putting Complex Impedance to Work with RC Analysis, Simulation, and Bench Model.docx"
+  },
+  {
+    "lecture": 44,
+    "question": "Яка передавальна функція RC-кола з виходом на конденсаторі і чому це ФНЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\44. Putting Complex Impedance to Work with RC Analysis, Simulation, and Bench Model.docx"
+  },
+  {
+    "lecture": 44,
+    "question": "RC-коло: R = 1 кОм, C = 100 нФ, f ≈ 1591,5 Гц, вхід 1 В RMS. Які струм і напруги на R та C?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\44. Putting Complex Impedance to Work with RC Analysis, Simulation, and Bench Model.docx"
+  },
+  {
+    "lecture": 44,
+    "question": "Як виміряти фазовий зсув між двома синусоїдами на осцилографі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\44. Putting Complex Impedance to Work with RC Analysis, Simulation, and Bench Model.docx"
+  },
+  {
+    "lecture": 44,
+    "question": "Як пов’язані RMS, пікова і розмахова (peak-to-peak) амплітуди синусоїди?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\44. Putting Complex Impedance to Work with RC Analysis, Simulation, and Bench Model.docx"
+  },
+  {
+    "lecture": 44,
+    "question": "Що перевірити, якщо виміряна RC-схема не збігається з розрахунком?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\44. Putting Complex Impedance to Work with RC Analysis, Simulation, and Bench Model.docx"
+  },
+  {
+    "lecture": 45,
+    "question": "Як обчислити імпеданс і струм послідовного RL-кола?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\45. Phasor Analysis of an RL Voltage Divider Circuit.docx"
+  },
+  {
+    "lecture": 45,
+    "question": "RL-коло: R = 200 Ом, L = 2,2 мГн, f = 100 Гц, вхід 7 В RMS. Чому напруга на котушці лише близько 48 мВ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\45. Phasor Analysis of an RL Voltage Divider Circuit.docx"
+  },
+  {
+    "lecture": 45,
+    "question": "Якщо частоту в RL-колі збільшити в 10 разів, чи зростуть струм і напруги так само в 10 разів?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\45. Phasor Analysis of an RL Voltage Divider Circuit.docx"
+  },
+  {
+    "lecture": 45,
+    "question": "Чому модель котушки лише з jωL може не збігтися з вимірами і що показує мультиметр на котушці?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\45. Phasor Analysis of an RL Voltage Divider Circuit.docx"
+  },
+  {
+    "lecture": 46,
+    "question": "Як одне послідовне RL-коло може бути і ФНЧ, і ФВЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\46. Using RL Circuits and Impedance Analysis to Illustrate Low and High Pass Filters.docx"
+  },
+  {
+    "lecture": 46,
+    "question": "Які передавальні функції та частота зрізу RL-кола з виходом на R і на L?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\46. Using RL Circuits and Impedance Analysis to Illustrate Low and High Pass Filters.docx"
+  },
+  {
+    "lecture": 46,
+    "question": "На частоті зрізу RL-кола обидва виходи мають по 0,707 входу. Чому це не суперечить тому, що вони разом утворюють вхід?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\46. Using RL Circuits and Impedance Analysis to Illustrate Low and High Pass Filters.docx"
+  },
+  {
+    "lecture": 46,
+    "question": "Чому на звичайному осцилографі не можна під’єднати заземлювальні затискачі двох пробників до різних вузлів схеми?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\46. Using RL Circuits and Impedance Analysis to Illustrate Low and High Pass Filters.docx"
+  },
+  {
+    "lecture": 46,
+    "question": "Які частоти зручно вибрати для перевірки RL-фільтра в симуляторі та на макеті?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\46. Using RL Circuits and Impedance Analysis to Illustrate Low and High Pass Filters.docx"
+  },
+  {
+    "lecture": 47,
+    "question": "Чим нагрівання резистора відрізняється від поведінки ідеального конденсатора в AC-колі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\47. Bonus Round - Plugging AC Line Voltage in an RC Circuit.docx"
+  },
+  {
+    "lecture": 47,
+    "question": "Ізольоване джерело 6 В RMS, R = 1 кОм, <span class=\"formula\">\\(X_C\\)</span> = 1 кОм. Які струм, потужність резистора і напруга на C?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\47. Bonus Round - Plugging AC Line Voltage in an RC Circuit.docx"
+  },
+  {
+    "lecture": 47,
+    "question": "Як зміниться нагрівання резистора в RC-колі, якщо подвоїти напругу джерела при тих самих R, C і частоті?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\47. Bonus Round - Plugging AC Line Voltage in an RC Circuit.docx"
+  },
+  {
+    "lecture": 47,
+    "question": "Які правила безпеки випливають з демонстрації RC-кола від мережевої напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\47. Bonus Round - Plugging AC Line Voltage in an RC Circuit.docx"
+  },
+  {
+    "lecture": 48,
+    "question": "Які модуль і фаза передавальної функції RC-ФНЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\48. Frequency Domain Analysis of a Low Pass Filter.docx"
+  },
+  {
+    "lecture": 48,
+    "question": "Які передавання і фаза RC-ФНЧ на <span class=\"formula\">\\(0{,}1f_c\\)</span>, <span class=\"formula\">\\(f_c\\)</span> і <span class=\"formula\">\\(10f_c\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\48. Frequency Domain Analysis of a Low Pass Filter.docx"
+  },
+  {
+    "lecture": 48,
+    "question": "Чи зникає сигнал вище частоти зрізу ФНЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\48. Frequency Domain Analysis of a Low Pass Filter.docx"
+  },
+  {
+    "lecture": 48,
+    "question": "Як спроєктувати RC-ФНЧ на 1 кГц з R = 1 кОм і що робити після вибору стандартного номіналу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\48. Frequency Domain Analysis of a Low Pass Filter.docx"
+  },
+  {
+    "lecture": 48,
+    "question": "Чому прямокутний сигнал після RC-ФНЧ має округлені фронти?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\48. Frequency Domain Analysis of a Low Pass Filter.docx"
+  },
+  {
+    "lecture": 48,
+    "question": "Що змінює навантаження, підключене до виходу RC-ФНЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\48. Frequency Domain Analysis of a Low Pass Filter.docx"
+  },
+  {
+    "lecture": 49,
+    "question": "Як обчислити підсилення в децибелах за потужністю і за напругою?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\49. What's Up with Decibels and all this dB, dBm, and dBv Stuff.docx"
+  },
+  {
+    "lecture": 49,
+    "question": "Коли децибели за напругою (20 log) збігаються з децибелами за потужністю?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\49. What's Up with Decibels and all this dB, dBm, and dBv Stuff.docx"
+  },
+  {
+    "lecture": 49,
+    "question": "Що означають dBm і dBV?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\49. What's Up with Decibels and all this dB, dBm, and dBv Stuff.docx"
+  },
+  {
+    "lecture": 49,
+    "question": "Каскад послаблює напругу вдвічі, наступний підсилює в 10 разів. Яке загальне підсилення в dB?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\49. What's Up with Decibels and all this dB, dBm, and dBv Stuff.docx"
+  },
+  {
+    "lecture": 49,
+    "question": "Чому −3 дБ за напругою – це не половина амплітуди?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\49. What's Up with Decibels and all this dB, dBm, and dBv Stuff.docx"
+  },
+  {
+    "lecture": 49,
+    "question": "Що децибели не показують про підсилювач і які позначення потребують обережності?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\49. What's Up with Decibels and all this dB, dBm, and dBv Stuff.docx"
+  },
+  {
+    "lecture": 50,
+    "question": "Яка частота зрізу RC-ФНЧ з 1 кОм і 100 нФ і які виходи очікувати при 1 В RMS на 160 Гц, 1,59 кГц і 15,9 кГц?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\50. Hands on with Low Pass Filters and Frequency Response.docx"
+  },
+  {
+    "lecture": 50,
+    "question": "Як виміряти АЧХ RC-ФНЧ на макеті?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\50. Hands on with Low Pass Filters and Frequency Response.docx"
+  },
+  {
+    "lecture": 50,
+    "question": "Чому вихідний опір генератора впливає на вимірювання RC-фільтра?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\50. Hands on with Low Pass Filters and Frequency Response.docx"
+  },
+  {
+    "lecture": 50,
+    "question": "Як зміниться частота зрізу RC-ФНЧ, якщо замінити 100 нФ на 1 мкФ при R = 1 кОм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\50. Hands on with Low Pass Filters and Frequency Response.docx"
+  },
+  {
+    "lecture": 50,
+    "question": "Що спотворює вимірювання фільтра на високих частотах?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\50. Hands on with Low Pass Filters and Frequency Response.docx"
+  },
+  {
+    "lecture": 51,
+    "question": "Як побудований RC-фільтр високих частот і де його використовують?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\51. Going to the Bench with High Pass Filters.docx"
+  },
+  {
+    "lecture": 51,
+    "question": "Яка передавальна функція RC-ФВЧ і фаза на частоті зрізу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\51. Going to the Bench with High Pass Filters.docx"
+  },
+  {
+    "lecture": 51,
+    "question": "RC-ФВЧ: R = 10 кОм, C = 100 нФ, вхід 1 В RMS. Яка частота зрізу і виходи на 15,9 Гц, 159 Гц і 1,59 кГц?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\51. Going to the Bench with High Pass Filters.docx"
+  },
+  {
+    "lecture": 51,
+    "question": "Що відбувається з прямокутним сигналом після RC-ФВЧ з малою сталою часу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\51. Going to the Bench with High Pass Filters.docx"
+  },
+  {
+    "lecture": 51,
+    "question": "Як навантаження <span class=\"formula\">\\(R_L\\)</span> впливає на частоту зрізу RC-ФВЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\51. Going to the Bench with High Pass Filters.docx"
+  },
+  {
+    "lecture": 51,
+    "question": "Чи захищає розділовий конденсатор від усіх перехідних процесів і чи можна просто перемножити H фільтрів у каскаді?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\51. Going to the Bench with High Pass Filters.docx"
+  },
+  {
+    "lecture": 52,
+    "question": "Як побудований RL-фільтр низьких частот?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\52. The Dreaded Inductor - Round 1 Low Pass Filters.docx"
+  },
+  {
+    "lecture": 52,
+    "question": "Яка передавальна функція і частота зрізу RL-ФНЧ?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\52. The Dreaded Inductor - Round 1 Low Pass Filters.docx"
+  },
+  {
+    "lecture": 52,
+    "question": "Чому для простих низькочастотних фільтрів частіше обирають RC, а не RL?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\52. The Dreaded Inductor - Round 1 Low Pass Filters.docx"
+  },
+  {
+    "lecture": 52,
+    "question": "Чому реальний RL-ФНЧ послаблює сигнал навіть на DC?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\52. The Dreaded Inductor - Round 1 Low Pass Filters.docx"
+  },
+  {
+    "lecture": 53,
+    "question": "Як побудований RL-фільтр високих частот?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\53. The Dreaded Inductor - Round 2 High Pass Filters.docx"
+  },
+  {
+    "lecture": 53,
+    "question": "RL-ФВЧ: R = 1 кОм, L = 2,2 мГн. Яка частота зрізу і передавання на <span class=\"formula\">\\(0{,}1f_c\\)</span>, <span class=\"formula\">\\(f_c\\)</span> і <span class=\"formula\">\\(10f_c\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\53. The Dreaded Inductor - Round 2 High Pass Filters.docx"
+  },
+  {
+    "lecture": 53,
+    "question": "Чому вихід RL-ФВЧ (напруга на котушці) має додатну фазу відносно джерела?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\53. The Dreaded Inductor - Round 2 High Pass Filters.docx"
+  },
+  {
+    "lecture": 53,
+    "question": "Чому реальний RL-ФВЧ дає ненульовий вихід на DC і не пропускає «будь-які» високі частоти?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\53. The Dreaded Inductor - Round 2 High Pass Filters.docx"
+  },
+  {
+    "lecture": 53,
+    "question": "Як зміна R впливає на частоту зрізу RC- і RL-фільтрів?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\53. The Dreaded Inductor - Round 2 High Pass Filters.docx"
+  },
+  {
+    "lecture": 54,
+    "question": "Як практично перевірити RL-ФНЧ і ФВЧ на макеті?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\54. Building the LowHigh Pass Filters.docx"
+  },
+  {
+    "lecture": 54,
+    "question": "Чому важливо перевірити номінал котушки перед розрахунком RL-фільтра?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\54. Building the LowHigh Pass Filters.docx"
+  },
+  {
+    "lecture": 54,
+    "question": "Чому вимірювання RL-фільтра на мегагерцах може не збігатися з ідеальною моделлю?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\54. Building the LowHigh Pass Filters.docx"
+  },
+  {
+    "lecture": 54,
+    "question": "Які причини розбіжностей між розрахунком і вимірюванням RL-фільтра?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\54. Building the LowHigh Pass Filters.docx"
+  },
+  {
+    "lecture": 55,
+    "question": "Чи є 0,7 В точним порогом кремнієвого діода?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\55. Diodes Reviewed and Starter Applications.docx"
+  },
+  {
+    "lecture": 55,
+    "question": "Чим однопівперіодний випрямляч відрізняється від мостового?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\55. Diodes Reviewed and Starter Applications.docx"
+  },
+  {
+    "lecture": 55,
+    "question": "До якої напруги зарядиться конденсатор після діодного моста від джерела 6 В RMS?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\55. Diodes Reviewed and Starter Applications.docx"
+  },
+  {
+    "lecture": 55,
+    "question": "Як оцінити пульсації після мостового випрямляча з конденсатором?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\55. Diodes Reviewed and Starter Applications.docx"
+  },
+  {
+    "lecture": 55,
+    "question": "Скільки падінь <span class=\"formula\">\\(V_F\\)</span> віднімають для звичайного чотиридіодного моста?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\55. Diodes Reviewed and Starter Applications.docx"
+  },
+  {
+    "lecture": 56,
+    "question": "Чим стабілітрон відрізняється від діода Шотткі за принципом і застосуванням?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\56. Understanding Zener and Schottky Diodes plus Simple Voltage Regulators.docx"
+  },
+  {
+    "lecture": 56,
+    "question": "Як працює паралельний стабілізатор на стабілітроні?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\56. Understanding Zener and Schottky Diodes plus Simple Voltage Regulators.docx"
+  },
+  {
+    "lecture": 56,
+    "question": "Стабілізатор: <span class=\"formula\">\\(V_{in}\\)</span> = 9 В, <span class=\"formula\">\\(V_Z\\)</span> ≈ 5,1 В, R = 390 Ом. Які струми та потужності?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\56. Understanding Zener and Schottky Diodes plus Simple Voltage Regulators.docx"
+  },
+  {
+    "lecture": 56,
+    "question": "Які два крайні режими треба перевірити для стабілітронного стабілізатора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\56. Understanding Zener and Schottky Diodes plus Simple Voltage Regulators.docx"
+  },
+  {
+    "lecture": 57,
+    "question": "Який максимум вихідної напруги дадуть однопівперіодний і мостовий випрямлячі від синуса 5 В peak?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\57. Half Wave and Full Wave Diode Experiments on the Bench.docx"
+  },
+  {
+    "lecture": 57,
+    "question": "Чому дуже малий сигнал погано проходить через діодний міст?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\57. Half Wave and Full Wave Diode Experiments on the Bench.docx"
+  },
+  {
+    "lecture": 57,
+    "question": "Як змінюються пульсації при зменшенні опору навантаження випрямляча з конденсатором?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\57. Half Wave and Full Wave Diode Experiments on the Bench.docx"
+  },
+  {
+    "lecture": 57,
+    "question": "Чому піковий струм діодів випрямляча значно більший за середній струм навантаження?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\57. Half Wave and Full Wave Diode Experiments on the Bench.docx"
+  },
+  {
+    "lecture": 57,
+    "question": "Чому при дослідженні діодного моста небезпечно довільно під’єднувати землі осцилографа?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\57. Half Wave and Full Wave Diode Experiments on the Bench.docx"
+  },
+  {
+    "lecture": 58,
+    "question": "Що таке line regulation і load regulation?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\58. Diode Experiments on the Bench - Part II.docx"
+  },
+  {
+    "lecture": 58,
+    "question": "Стабілітронний стабілізатор 9 В / 5,1 В / 390 Ом: скільки струму лишається стабілітрону при навантаженні 10 кОм і 1 кОм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\58. Diode Experiments on the Bench - Part II.docx"
+  },
+  {
+    "lecture": 58,
+    "question": "Чому той самий стабілізатор (9 В, 5,1 В, 390 Ом) не дає 5,1 В на навантаженні 100 Ом?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\58. Diode Experiments on the Bench - Part II.docx"
+  },
+  {
+    "lecture": 58,
+    "question": "Що таке динамічний опір стабілітрона <span class=\"formula\">\\(r_Z\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\58. Diode Experiments on the Bench - Part II.docx"
+  },
+  {
+    "lecture": 58,
+    "question": "Коли замість стабілітрона з резистором краще використати інтегральний стабілізатор?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\58. Diode Experiments on the Bench - Part II.docx"
+  },
+  {
+    "lecture": 59,
+    "question": "Як побудований діодний елемент AND?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\59. Schottky Diode Experiments and Logic Gate Implementation.docx"
+  },
+  {
+    "lecture": 59,
+    "question": "Як побудований діодний елемент OR і яка його особливість?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\59. Schottky Diode Experiments and Logic Gate Implementation.docx"
+  },
+  {
+    "lecture": 59,
+    "question": "Діодний AND: <span class=\"formula\">\\(V_{CC}\\)</span> = 5 В, підтягування 10 кОм, вхід 0 В, <span class=\"formula\">\\(V_F\\)</span> ≈ 0,3 В (Шотткі). Які рівень виходу і струм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\59. Schottky Diode Experiments and Logic Gate Implementation.docx"
+  },
+  {
+    "lecture": 59,
+    "question": "Чому діодна логіка непридатна для довгих ланцюжків і навіщо в ній діоди Шотткі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\59. Schottky Diode Experiments and Logic Gate Implementation.docx"
+  },
+  {
+    "lecture": 59,
+    "question": "Навіщо в діодній схемі bleeder-резистор паралельно конденсатору?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\59. Schottky Diode Experiments and Logic Gate Implementation.docx"
+  },
+  {
+    "lecture": 60,
+    "question": "З яких функціональних блоків складається типове лінійне джерело живлення від AC?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\60. Introduction to Voltage Regulators and Power Supply Design.docx"
+  },
+  {
+    "lecture": 60,
+    "question": "Чим фільтрація відрізняється від стабілізації напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\60. Introduction to Voltage Regulators and Power Supply Design.docx"
+  },
+  {
+    "lecture": 60,
+    "question": "Чим відрізняються лінійний стабілізатор, LDO, імпульсний перетворювач і зарядова помпа?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\60. Introduction to Voltage Regulators and Power Supply Design.docx"
+  },
+  {
+    "lecture": 60,
+    "question": "Які втрати і ККД лінійного стабілізатора 9 В → 5 В при 100 мА і при 500 мА?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\60. Introduction to Voltage Regulators and Power Supply Design.docx"
+  },
+  {
+    "lecture": 60,
+    "question": "Чи робить LDO лінійне перетворення ефективним, наприклад 12 В → 3,3 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\60. Introduction to Voltage Regulators and Power Supply Design.docx"
+  },
+  {
+    "lecture": 60,
+    "question": "Яку вхідну напругу стабілізатора порівнюють із dropout, якщо на вході є пульсації?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\60. Introduction to Voltage Regulators and Power Supply Design.docx"
+  },
+  {
+    "lecture": 61,
+    "question": "З чого починати проєктування джерела живлення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\61. Power Supply Primer.docx"
+  },
+  {
+    "lecture": 61,
+    "question": "Чому не можна розраховувати схему на значення з розділу absolute maximum ratings?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\61. Power Supply Primer.docx"
+  },
+  {
+    "lecture": 61,
+    "question": "Як оцінити температуру кристала стабілізатора 12 В → 5 В при 0,2 А, якщо <span class=\"formula\">\\(\\theta_{JA}\\)</span> = 60 °C/Вт, <span class=\"formula\">\\(T_a\\)</span> = 25 °C?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\61. Power Supply Primer.docx"
+  },
+  {
+    "lecture": 61,
+    "question": "Як обчислити тепловий опір стабілізатора з радіатором?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\61. Power Supply Primer.docx"
+  },
+  {
+    "lecture": 61,
+    "question": "Який струм проходить через перший стабілізатор у каскаді 9 → 5 → 3,3 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\61. Power Supply Primer.docx"
+  },
+  {
+    "lecture": 61,
+    "question": "Чи відтворює SMD-мікросхема на перехіднику DIP теплові умови реальної плати?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\61. Power Supply Primer.docx"
+  },
+  {
+    "lecture": 62,
+    "question": "Як правильно підключити лінійний стабілізатор 7805?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\62. Building a 5V Power Supply...LM7805 Style.docx"
+  },
+  {
+    "lecture": 62,
+    "question": "7805 живиться від 9 В і навантажений резистором 100 Ом. Які струм і потужності?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\62. Building a 5V Power Supply...LM7805 Style.docx"
+  },
+  {
+    "lecture": 62,
+    "question": "Чому 7805 не дає 5 В при вхідній напрузі рівно 5 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\62. Building a 5V Power Supply...LM7805 Style.docx"
+  },
+  {
+    "lecture": 62,
+    "question": "Чому вихід стабілізатора треба перевіряти осцилографом, а не лише мультиметром?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\62. Building a 5V Power Supply...LM7805 Style.docx"
+  },
+  {
+    "lecture": 62,
+    "question": "Як перевіряти зібране джерело 5 В на 7805?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\62. Building a 5V Power Supply...LM7805 Style.docx"
+  },
+  {
+    "lecture": 63,
+    "question": "Що перевірити, додаючи стабілізатор 3,3 В, який живиться від шини 5 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\63. Adding 3.3V to our Power Supply Design.docx"
+  },
+  {
+    "lecture": 63,
+    "question": "Шина 3,3 В споживає 100 мА від шини 5 В, окреме навантаження 5 В – 50 мА, вхід 9 В. Які втрати на обох стабілізаторах?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\63. Adding 3.3V to our Power Supply Design.docx"
+  },
+  {
+    "lecture": 63,
+    "question": "Чому для деяких LDO важливий ESR вихідного конденсатора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\63. Adding 3.3V to our Power Supply Design.docx"
+  },
+  {
+    "lecture": 63,
+    "question": "Чи можна подати логічний сигнал 5 В на вхід мікросхеми, що живиться від 3,3 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\63. Adding 3.3V to our Power Supply Design.docx"
+  },
+  {
+    "lecture": 64,
+    "question": "Що означає offline-живлення і що робить мережевий трансформатор?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\64. Taking our Power Supply Offline with  a Transformer.docx"
+  },
+  {
+    "lecture": 64,
+    "question": "Які основні співвідношення ідеального трансформатора і що означає його номінал у VA?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\64. Taking our Power Supply Offline with  a Transformer.docx"
+  },
+  {
+    "lecture": 64,
+    "question": "Трансформатор має вихід «9 В AC». Яку напругу покаже заряджений конденсатор після моста?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\64. Taking our Power Supply Offline with  a Transformer.docx"
+  },
+  {
+    "lecture": 64,
+    "question": "Чи можна брати з випрямляча з великим конденсатором постійний струм, рівний номінальному RMS-струму вторинної обмотки?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\64. Taking our Power Supply Offline with  a Transformer.docx"
+  },
+  {
+    "lecture": 64,
+    "question": "Що треба враховувати, з’єднуючи дві вторинні обмотки трансформатора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\64. Taking our Power Supply Offline with  a Transformer.docx"
+  },
+  {
+    "lecture": 64,
+    "question": "Яке джерело AC безпечно використовувати для самостійних вправ з джерелом живлення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\64. Taking our Power Supply Offline with  a Transformer.docx"
+  },
+  {
+    "lecture": 65,
+    "question": "Як з’єднуються діодний міст, конденсатор і стабілізатор у навчальному джерелі живлення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\65. Wiring up the Transformer to our Power Supply.docx"
+  },
+  {
+    "lecture": 65,
+    "question": "Джерело 9 В RMS 50 Гц, міст, C = 1000 мкФ, навантаження 0,1 А. Які пульсації і дно напруги на C?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\65. Wiring up the Transformer to our Power Supply.docx"
+  },
+  {
+    "lecture": 65,
+    "question": "У якій послідовності перевіряють зібране джерело живлення з трансформатором?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\65. Wiring up the Transformer to our Power Supply.docx"
+  },
+  {
+    "lecture": 65,
+    "question": "Чому не можна переставляти контакти діодного моста навмання?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\65. Wiring up the Transformer to our Power Supply.docx"
+  },
+  {
+    "lecture": 66,
+    "question": "Які три різні проблеми завад у живленні розглядаються і чому один великий конденсатор не вирішує всі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\66. Get the Noise Out! Introduction to Power Supply Filtering.docx"
+  },
+  {
+    "lecture": 66,
+    "question": "Яка ємність потрібна, щоб імпульс навантаження 100 мА тривалістю 1 мс спричинив просідання не більше 0,1 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\66. Get the Noise Out! Introduction to Power Supply Filtering.docx"
+  },
+  {
+    "lecture": 66,
+    "question": "Чому великий електролітичний конденсатор не завжди усуває швидкі завади?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\66. Get the Noise Out! Introduction to Power Supply Filtering.docx"
+  },
+  {
+    "lecture": 66,
+    "question": "Які заходи на макеті зменшують завади від двигуна в живленні?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\66. Get the Noise Out! Introduction to Power Supply Filtering.docx"
+  },
+  {
+    "lecture": 66,
+    "question": "Що перевірити, якщо виміряний шум змінюється, коли рухаєте пробник?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\66. Get the Noise Out! Introduction to Power Supply Filtering.docx"
+  },
+  {
+    "lecture": 67,
+    "question": "Як позначаються виводи біполярного транзистора і як тече струм у NPN?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\67. Circling Back to Transistors...A 15 Minute Refresher Course.docx"
+  },
+  {
+    "lecture": 67,
+    "question": "Які три основні режими роботи BJT і де їх використовують?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\67. Circling Back to Transistors...A 15 Minute Refresher Course.docx"
+  },
+  {
+    "lecture": 67,
+    "question": "Які основні співвідношення струмів BJT і чому <span class=\"formula\">\\(I_C=\\beta I_B\\)</span> не завжди виконується?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\67. Circling Back to Transistors...A 15 Minute Refresher Course.docx"
+  },
+  {
+    "lecture": 67,
+    "question": "Чому не можна проєктувати транзисторну схему під одне типове значення β?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\67. Circling Back to Transistors...A 15 Minute Refresher Course.docx"
+  },
+  {
+    "lecture": 67,
+    "question": "Звідки береться енергія підсиленого сигналу в транзисторному підсилювачі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\67. Circling Back to Transistors...A 15 Minute Refresher Course.docx"
+  },
+  {
+    "lecture": 67,
+    "question": "Для чого корисна модель транзистора «два діоди» і де її межа?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\67. Circling Back to Transistors...A 15 Minute Refresher Course.docx"
+  },
+  {
+    "lecture": 68,
+    "question": "Як емітерний резистор стабілізує колекторний струм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\68. Introduction to Transistor Amplifier Circuits and Models.docx"
+  },
+  {
+    "lecture": 68,
+    "question": "<span class=\"formula\">\\(V_B\\)</span> = 1,7 В, <span class=\"formula\">\\(R_E\\)</span> = 1 кОм, β = 100, навантаження 1 кОм від +5 В до колектора. Які струм і напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\68. Introduction to Transistor Amplifier Circuits and Models.docx"
+  },
+  {
+    "lecture": 68,
+    "question": "Чому в тій самій схемі (<span class=\"formula\">\\(V_B\\)</span> = 1,7 В, <span class=\"formula\">\\(R_E\\)</span> = 1 кОм, +5 В) навантаження 4,7 кОм порушує стабілізацію струму?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\68. Introduction to Transistor Amplifier Circuits and Models.docx"
+  },
+  {
+    "lecture": 68,
+    "question": "Що перевірити після обчислення колекторного струму транзистора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\68. Introduction to Transistor Amplifier Circuits and Models.docx"
+  },
+  {
+    "lecture": 68,
+    "question": "Чи створює один великий резистор від живлення до бази стабільну напругу бази?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\68. Introduction to Transistor Amplifier Circuits and Models.docx"
+  },
+  {
+    "lecture": 69,
+    "question": "Що таке зміщення (bias) транзистора і навіщо воно потрібне?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\69. Transistor Biasing, Current Amplifiers and Voltage Regulation.docx"
+  },
+  {
+    "lecture": 69,
+    "question": "Як врахувати навантаження подільника зміщення базою транзистора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\69. Transistor Biasing, Current Amplifiers and Voltage Regulation.docx"
+  },
+  {
+    "lecture": 69,
+    "question": "<span class=\"formula\">\\(V_{CC}\\)</span> = 5 В, подільник 33 кОм / 22 кОм, <span class=\"formula\">\\(R_E\\)</span> = 1 кОм, β = 100. Які <span class=\"formula\">\\(V_B\\)</span> і <span class=\"formula\">\\(I_E\\)</span> з урахуванням струму бази?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\69. Transistor Biasing, Current Amplifiers and Voltage Regulation.docx"
+  },
+  {
+    "lecture": 69,
+    "question": "Що таке емітерний повторювач (спільний колектор) і для чого він потрібен?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\69. Transistor Biasing, Current Amplifiers and Voltage Regulation.docx"
+  },
+  {
+    "lecture": 69,
+    "question": "Яку вихідну напругу дасть послідовний стабілізатор зі стабілітроном 5,6 В на базі емітерного повторювача?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\69. Transistor Biasing, Current Amplifiers and Voltage Regulation.docx"
+  },
+  {
+    "lecture": 70,
+    "question": "Що таке диференційний емітерний опір <span class=\"formula\">\\(r_e\\)</span> і як його оцінити?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\70. Small Signal Transistor Amplifiers.docx"
+  },
+  {
+    "lecture": 70,
+    "question": "Яке підсилення за напругою емітерного повторювача при <span class=\"formula\">\\(I_E\\)</span> = 1 мА і <span class=\"formula\">\\(R_{E,ac}\\)</span> = 1 кОм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\70. Small Signal Transistor Amplifiers.docx"
+  },
+  {
+    "lecture": 70,
+    "question": "Як оцінити вхідний опір емітерного повторювача з урахуванням подільника зміщення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\70. Small Signal Transistor Amplifiers.docx"
+  },
+  {
+    "lecture": 70,
+    "question": "Навіщо потрібен підсилювач з <span class=\"formula\">\\(A_v&lt;1\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\70. Small Signal Transistor Amplifiers.docx"
+  },
+  {
+    "lecture": 70,
+    "question": "Який опір визначає зріз розділового конденсатора між двома каскадами?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\70. Small Signal Transistor Amplifiers.docx"
+  },
+  {
+    "lecture": 71,
+    "question": "Чому каскад зі спільним емітером інвертує сигнал?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\71. Common Emitter Amplifier Design.docx"
+  },
+  {
+    "lecture": 71,
+    "question": "Яке наближене підсилення каскаду зі спільним емітером з нешунтованим <span class=\"formula\">\\(R_E\\)</span> і коли воно придатне?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\71. Common Emitter Amplifier Design.docx"
+  },
+  {
+    "lecture": 71,
+    "question": "Каскад CE: <span class=\"formula\">\\(V_{CC}\\)</span> = 10 В, <span class=\"formula\">\\(I_E\\)</span> ≈ 1 мА, <span class=\"formula\">\\(R_E\\)</span> = 1 кОм, <span class=\"formula\">\\(R_C\\)</span> = 4,7 кОм. Які робоча точка і підсилення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\71. Common Emitter Amplifier Design.docx"
+  },
+  {
+    "lecture": 71,
+    "question": "Подільник 47 кОм / 10 кОм від 10 В дає 1,75 В. Чи буде база транзистора точно на 1,75 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\71. Common Emitter Amplifier Design.docx"
+  },
+  {
+    "lecture": 71,
+    "question": "Чому перед поданням сигналу на підсилювач треба виміряти DC-напруги, і що робити при обрізанні синуса?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\71. Common Emitter Amplifier Design.docx"
+  },
+  {
+    "lecture": 72,
+    "question": "Що таке AC-земля в малосигнальному аналізі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\72. Hard Core Analysis of the Common Emitter Amplifier.docx"
+  },
+  {
+    "lecture": 72,
+    "question": "Які малосигнальні параметри BJT при <span class=\"formula\">\\(I_C\\)</span> ≈ 1 мА і β = 100?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\72. Hard Core Analysis of the Common Emitter Amplifier.docx"
+  },
+  {
+    "lecture": 72,
+    "question": "Каскад CE: <span class=\"formula\">\\(R_C\\)</span> = 4,7 кОм, <span class=\"formula\">\\(R_E\\)</span> = 1 кОм, <span class=\"formula\">\\(R_{load}\\)</span> = 10 кОм, β = 100, <span class=\"formula\">\\(r_\\pi\\)</span> ≈ 2,6 кОм. Яке підсилення з навантаженням і без нього?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\72. Hard Core Analysis of the Common Emitter Amplifier.docx"
+  },
+  {
+    "lecture": 72,
+    "question": "Чому в AC-моделі каскаду навантаження стоїть паралельно <span class=\"formula\">\\(R_C\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\72. Hard Core Analysis of the Common Emitter Amplifier.docx"
+  },
+  {
+    "lecture": 72,
+    "question": "Чому виміряне підсилення від генератора може бути меншим за розраховане від бази?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\72. Hard Core Analysis of the Common Emitter Amplifier.docx"
+  },
+  {
+    "lecture": 73,
+    "question": "Як побудований транзисторний ключ двигуна в нижньому плечі (low-side)?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\73. Transistor Motor Driver Bench Experiment and Noise Reduction.docx"
+  },
+  {
+    "lecture": 73,
+    "question": "Навіщо зворотний (flyback) діод паралельно двигуну і як його підключити?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\73. Transistor Motor Driver Bench Experiment and Noise Reduction.docx"
+  },
+  {
+    "lecture": 73,
+    "question": "Як розрахувати базовий резистор для ключа двигуна 100 мА з примусовим коефіцієнтом 10 при керуванні 5 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\73. Transistor Motor Driver Bench Experiment and Noise Reduction.docx"
+  },
+  {
+    "lecture": 73,
+    "question": "Чому для ключа не використовують типове β активного режиму і який струм двигуна важливий для вибору компонентів?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\73. Transistor Motor Driver Bench Experiment and Noise Reduction.docx"
+  },
+  {
+    "lecture": 73,
+    "question": "Чи достатньо одного зворотного діода для двонапрямного H-моста і чи усуває він усі завади двигуна?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\73. Transistor Motor Driver Bench Experiment and Noise Reduction.docx"
+  },
+  {
+    "lecture": 74,
+    "question": "Чим джерело (стабілізатор) струму відрізняється від джерела напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\74. Current and Voltage Regulation Experiments.docx"
+  },
+  {
+    "lecture": 74,
+    "question": "Стік струму: <span class=\"formula\">\\(V_B\\)</span> = 1,7 В, <span class=\"formula\">\\(R_E\\)</span> = 100 Ом, навантаження 220 Ом між +9 В і колектором. Які струм і напруги?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\74. Current and Voltage Regulation Experiments.docx"
+  },
+  {
+    "lecture": 74,
+    "question": "Чому той самий стік струму 10 мА від 9 В не працює з навантаженням 1 кОм?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\74. Current and Voltage Regulation Experiments.docx"
+  },
+  {
+    "lecture": 74,
+    "question": "Стабілізатор напруги зі стабілітроном 5,6 В на базі, навантаження 50 мА, β ≈ 100, вхід 9 В. Які вихід, струм бази і потужність транзистора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\74. Current and Voltage Regulation Experiments.docx"
+  },
+  {
+    "lecture": 74,
+    "question": "Як правильно вимірювати струм амперметром і чому небезпечне інше підключення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\74. Current and Voltage Regulation Experiments.docx"
+  },
+  {
+    "lecture": 75,
+    "question": "Яку роль у практичному аудіопідсилювачі зі спільним емітером виконують вхідний і вихідний конденсатори та нешунтований <span class=\"formula\">\\(R_E\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\75. Building a Practical Audio Voltage Amplifier.docx"
+  },
+  {
+    "lecture": 75,
+    "question": "Аудіокаскад: <span class=\"formula\">\\(R_C\\)</span> = 4,7 кОм, <span class=\"formula\">\\(R_E\\)</span> = 1 кОм, <span class=\"formula\">\\(I_E\\)</span> ≈ 1 мА, навантаження 10 кОм. Яке підсилення і вихід для 20 мВ peak на базі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\75. Building a Practical Audio Voltage Amplifier.docx"
+  },
+  {
+    "lecture": 75,
+    "question": "Як розрахувати нижню частоту зрізу розділового конденсатора аудіокаскаду?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\75. Building a Practical Audio Voltage Amplifier.docx"
+  },
+  {
+    "lecture": 75,
+    "question": "Як налагоджувати зібраний транзисторний аудіопідсилювач?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\75. Building a Practical Audio Voltage Amplifier.docx"
+  },
+  {
+    "lecture": 75,
+    "question": "Чи може підсилювач напруги з кілоомними резисторами напряму живити динамік 8 Ом?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\75. Building a Practical Audio Voltage Amplifier.docx"
+  },
+  {
+    "lecture": 76,
+    "question": "Що насправді означають логічні 0 і 1 у цифровій схемі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\76. Crossing the Threshold from Analog to Digital Electronics.docx"
+  },
+  {
+    "lecture": 76,
+    "question": "Що означають <span class=\"formula\">\\(V_{IL}\\)</span>, <span class=\"formula\">\\(V_{IH}\\)</span>, <span class=\"formula\">\\(V_{OL}\\)</span> і <span class=\"formula\">\\(V_{OH}\\)</span>?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\76. Crossing the Threshold from Analog to Digital Electronics.docx"
+  },
+  {
+    "lecture": 76,
+    "question": "Як обчислити запаси завадостійкості логічного сполучення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\76. Crossing the Threshold from Analog to Digital Electronics.docx"
+  },
+  {
+    "lecture": 76,
+    "question": "Як працює інвертор на одному NPN-транзисторі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\76. Crossing the Threshold from Analog to Digital Electronics.docx"
+  },
+  {
+    "lecture": 76,
+    "question": "Як із транзисторних ключів отримати NAND, NOR, AND і OR?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\76. Crossing the Threshold from Analog to Digital Electronics.docx"
+  },
+  {
+    "lecture": 76,
+    "question": "Чи відтворюють прості резисторно-транзисторні вентилі промислову TTL?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\76. Crossing the Threshold from Analog to Digital Electronics.docx"
+  },
+  {
+    "lecture": 77,
+    "question": "Яка таблиця істинності двовходових AND, NAND, OR і NOR?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\77. Retro TTL Build! - Inverter, AND, NAND, OR, NOR.docx"
+  },
+  {
+    "lecture": 77,
+    "question": "Скільки комбінацій входів треба перевірити у двовходовому вентилі і що записувати?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\77. Retro TTL Build! - Inverter, AND, NAND, OR, NOR.docx"
+  },
+  {
+    "lecture": 77,
+    "question": "Чому логічний нуль транзисторного NAND на двох послідовних ключах не дорівнює 0 В?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\77. Retro TTL Build! - Inverter, AND, NAND, OR, NOR.docx"
+  },
+  {
+    "lecture": 77,
+    "question": "Чому підключення наступного вентиля або LED може змінити високий рівень виходу транзисторного вентиля?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\77. Retro TTL Build! - Inverter, AND, NAND, OR, NOR.docx"
+  },
+  {
+    "lecture": 78,
+    "question": "Які параметри характеризують тактовий сигнал?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\78. Temporal Manipulation and Clock Oscillators.docx"
+  },
+  {
+    "lecture": 78,
+    "question": "Генератор 10 МГц з допуском ±50 ppm і коефіцієнтом заповнення 50%. Які період, тривалість станів і похибка частоти?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\78. Temporal Manipulation and Clock Oscillators.docx"
+  },
+  {
+    "lecture": 78,
+    "question": "Чим кварцовий резонатор відрізняється від готового генераторного модуля (oscillator)?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\78. Temporal Manipulation and Clock Oscillators.docx"
+  },
+  {
+    "lecture": 78,
+    "question": "Чим jitter відрізняється від похибки частоти генератора?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\78. Temporal Manipulation and Clock Oscillators.docx"
+  },
+  {
+    "lecture": 78,
+    "question": "Звідки на осцилограмі тактового сигналу можуть з’явитися overshoot і ringing, яких немає в схемі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\78. Temporal Manipulation and Clock Oscillators.docx"
+  },
+  {
+    "lecture": 79,
+    "question": "Які умови потрібні для виникнення і підтримання коливань у генераторі?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\79. Timing Circuit Theory and Building Clocks with XTALs and Oscillators.docx"
+  },
+  {
+    "lecture": 79,
+    "question": "З чого складається кварцовий генератор Пірса?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\79. Timing Circuit Theory and Building Clocks with XTALs and Oscillators.docx"
+  },
+  {
+    "lecture": 79,
+    "question": "Кварц має паспортну <span class=\"formula\">\\(C_L\\)</span> = 18 пФ, паразитна ємність ≈ 3 пФ. Які однакові конденсатори <span class=\"formula\">\\(C_1=C_2\\)</span> потрібні?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\79. Timing Circuit Theory and Building Clocks with XTALs and Oscillators.docx"
+  },
+  {
+    "lecture": 79,
+    "question": "Які одиниці ємності типові для навантажувальних конденсаторів кварцу?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\79. Timing Circuit Theory and Building Clocks with XTALs and Oscillators.docx"
+  },
+  {
+    "lecture": 79,
+    "question": "Чому генерація кварцового генератора може зникнути після підключення пробника?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\79. Timing Circuit Theory and Building Clocks with XTALs and Oscillators.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Як працюють компаратори і вивід DISCH таймера 555?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Яке призначення виводів таймера 555 у корпусі DIP-8?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Як побудований астабільний режим 555?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Які формули часу і частоти астабільного 555?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Астабільний 555: <span class=\"formula\">\\(R_A\\)</span> = 10 кОм, <span class=\"formula\">\\(R_B\\)</span> = 47 кОм, C = 1 мкФ. Які <span class=\"formula\">\\(t_{HIGH}\\)</span>, <span class=\"formula\">\\(t_{LOW}\\)</span>, частота і коефіцієнт заповнення?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Яку частку періоду описує формула <span class=\"formula\">\\(\\frac{R_B}{R_A+2R_B}\\)</span> для 555 і чи можна зробити <span class=\"formula\">\\(R_A\\)</span> = 0?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  },
+  {
+    "lecture": 80,
+    "question": "Чим моностабільний режим 555 відрізняється від астабільного?",
+    "source": "lectures\\Section 4 - Electrical Engineering 101 - And Here Comes the Crash Course Part...Buckle Up!\\80. It's all about the 555 Baby!.docx"
+  }
+]

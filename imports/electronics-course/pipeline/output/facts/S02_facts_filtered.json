@@ -1,0 +1,288 @@
+[
+  {
+    "type": "concept",
+    "content": "Strong electronics fundamentals are essential, similar to understanding computer architecture in software.",
+    "detail": "Without a solid foundation, you cannot design efficient circuits or troubleshoot effectively, just as poor architecture knowledge leads to bloated software.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Hands-on interaction with components builds intuition that theory alone cannot provide.",
+    "detail": "Physically working with components gives you a frame of reference for size, power consumption, cost, and sourcing that reading cannot replicate.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The course teaches CAD-based schematic capture and PCB layout using Circuit Maker.",
+    "detail": "Circuit Maker is the specific CAD tool used for designing circuit boards that can be sent for manufacturing.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Schematic capture and layout are the two key CAD skills needed to have circuit boards manufactured.",
+    "detail": "Schematic capture defines the circuit connections; layout defines the physical board arrangement for fabrication.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "'The Art of Electronics' is a highly recommended comprehensive reference covering all of electronics from beginning to end.",
+    "detail": "It is valued for having minimal math while covering the full breadth of electronic topics.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "'The Art of Electronics' is suitable even for those with an electrical engineering degree as a lifelong reference.",
+    "detail": "The instructor considers it a must-read for anyone seriously interested in electronics.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The course uses a non-linear teaching approach, jumping between subjects to build connections.",
+    "detail": "Relating concepts across topics improves retention and understanding, avoiding the 'tunnel vision' problem where isolated facts are quickly forgotten.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The course targets students with a software background transitioning into electronics.",
+    "detail": "The curriculum is designed to leverage existing programming knowledge while building electronics fundamentals from the ground up.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The course covers theory depth sufficient for understanding origins without going excessively deep.",
+    "detail": "The goal is enough depth to understand where concepts come from and enable further self-directed research when needed.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The course covers beginner-level electronics fundamentals including building and designing circuits.",
+    "detail": "Students will learn to design, manufacture, and test real circuits from scratch.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A blinking LED circuit serves as the 'hello world' of electronics — the foundational first project.",
+    "detail": "This simple project demonstrates the full workflow from design to manufactured, working hardware.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The instructor uses software-to-hardware analogies to help software engineers understand physical electronics concepts.",
+    "detail": "This approach bridges virtual/abstract programming concepts with real-world physical circuit behavior.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The course lectures are based on the instructor's book 'Black Art of Video Game Console Design'.",
+    "detail": "Students do not need to own this book; it serves as the instructor's lecture notes foundation.",
+    "importance": "nice-to-know",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 2,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Electronics simplifies electromagnetic field theory into manageable models for circuit design.",
+    "detail": "Instead of using Maxwell's equations and atomic physics, simplified models allow practical design with tolerable error.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Simplified models in electronics make assumptions that produce tolerable error for practical work.",
+    "detail": "This is why engineers don't need to solve differential equations for every circuit they design.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "All digital systems are fundamentally based on analog electronics.",
+    "detail": "Digital is a simplified model of analog behavior where we treat signals as extreme cases (on/off) and ignore fast transitions.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Analog electronics deals with smoothly varying, continuous signals that can take on any value within a range.",
+    "detail": "For example, a signal can be any value between 0V and 10V, not just discrete steps.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Digital electronics deals with discrete signals that take on specific, separate values.",
+    "detail": "This contrasts with analog's continuous range of possible values.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Resistors resist current flow and drop voltage.",
+    "detail": "Fundamental passive component used in virtually every electronic circuit.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Capacitors store electrical charge; inductors store electromagnetic energy.",
+    "detail": "Capacitors and inductors are complementary/opposite components that work together in many circuit applications.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Diodes are semiconductor devices that allow current to flow in only one direction.",
+    "detail": "The first semiconductor device introduced; foundational for rectification and signal control.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Transistors function as amplifiers and switches; FETs (field effect transistors) are a major transistor type.",
+    "detail": "Transistors are semiconductor devices and the building blocks of modern digital and analog circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Learning to hook up a circuit without understanding fundamentals makes knowledge unscaleable.",
+    "detail": "Without fundamentals, you can't adapt a circuit for different power levels or create variations.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Electrical signals are typically graphed as a function of time, with time on the horizontal axis and voltage or current on the vertical axis.",
+    "detail": "This standard graphing convention is used throughout electronics analysis.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A square wave is characteristic of digital signals, while sine, triangle, sawtooth, and audio waves represent analog signals.",
+    "detail": "Square waves transition almost instantaneously between voltage levels (e.g., 0V and 1V), modeling digital on/off states.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Digital electronics emerged as a simplification of analog design, which is inherently more complicated.",
+    "detail": "Early electronic systems (1940s-1960s) were built entirely from analog components like resistors, capacitors, diodes, and transistors.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  }
+]

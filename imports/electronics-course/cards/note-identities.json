@@ -1,0 +1,4349 @@
+[
+  {
+    "id": "id::electronics-s01-0001",
+    "guid": "kJW-U_/#R0",
+    "section": 1,
+    "source": "Section_1_anki_cards.txt",
+    "content_sha256": "34ebd095f7ae99df83a21894d0097e2c01870b2f1f8d5adc7903ad360e09cd98"
+  },
+  {
+    "id": "id::electronics-s01-0002",
+    "guid": "Dow>B0:JRx",
+    "section": 1,
+    "source": "Section_1_anki_cards.txt",
+    "content_sha256": "976d60b1c6cf50565eb32224a9dcaac8e955a0ddb0afae32905c61ac93a24f71"
+  },
+  {
+    "id": "id::electronics-s01-0003",
+    "guid": "Q5$Z;zSS:a",
+    "section": 1,
+    "source": "Section_1_anki_cards.txt",
+    "content_sha256": "068b8944970d130d6c66bf4b1be4708f1f3b09eec77d458f0e1e4d031600d48d"
+  },
+  {
+    "id": "id::electronics-s01-0004",
+    "guid": "hey/%3Eu,",
+    "section": 1,
+    "source": "Section_1_anki_cards.txt",
+    "content_sha256": "e69b6944f7d85c40bb9e3cb9b19ce1d4783be96a9b105881b8f00d9bdfdd2cb5"
+  },
+  {
+    "id": "id::electronics-s01-0005",
+    "guid": "k9et)#uu9I",
+    "section": 1,
+    "source": "Section_1_anki_cards.txt",
+    "content_sha256": "6be5fa439af15fda75fc6e67c0b1db0a8e085b0ba47630baad1d3d28fef96a0b"
+  },
+  {
+    "id": "id::electronics-s01-0006",
+    "guid": "BQ64s7pw<,",
+    "section": 1,
+    "source": "Section_1_anki_cards.txt",
+    "content_sha256": "d0f688e0847d1dfd64d3cbed1e16ee6e14a16428930d8fe0bf46e3cfdf31c5cd"
+  },
+  {
+    "id": "id::electronics-s02-0001",
+    "guid": "mVQRegy2Sa",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b44448d92ff2d5a31531232f6f34609e745ee5b15822df544aa1578031738041"
+  },
+  {
+    "id": "id::electronics-s02-0002",
+    "guid": "t&=k6!6^8G",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4800dcb596853b2f08fd78b9fa4e1787ba8197feaf92f1db573ee38f6929f5b3"
+  },
+  {
+    "id": "id::electronics-s02-0003",
+    "guid": "B3Im+7w1t^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a25ab3a735afcfd02ad173523110d00c80493dc8fe816f321354dd908e0a21ac"
+  },
+  {
+    "id": "id::electronics-s02-0004",
+    "guid": "Deh~+hy%1y",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "44c4d08671e4f65c9bf43b45f566993b798e1309cac051f5d5adb8669b781826"
+  },
+  {
+    "id": "id::electronics-s02-0005",
+    "guid": "n_^08Zx/8V",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "18702862467049693b44b7fd8a5896fde0f39a7f14cf9337517c44224c645415"
+  },
+  {
+    "id": "id::electronics-s02-0006",
+    "guid": "ph71x%?!&6",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "bdb62e9496323679ccfc2189479ff5ad8c58b9e60ae43aecc8dfb5b86e73576d"
+  },
+  {
+    "id": "id::electronics-s02-0007",
+    "guid": "q#!nuy)6*7",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a1ca157850c030d0b2f593876eda0bdb748bc49116f3c727669d1a22f9bfff12"
+  },
+  {
+    "id": "id::electronics-s02-0008",
+    "guid": "j1rzMK?(2)",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "90eaf5dcf10d9a4a56f081e9152fb6ab2ec5bffb3a18168c6054fe620e68b2a2"
+  },
+  {
+    "id": "id::electronics-s02-0009",
+    "guid": "nqn~a$/;$5",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f51dea3e0958849988a5fbcdb117d126e3c8d590e2fcd1cd1a59bab71f0a599e"
+  },
+  {
+    "id": "id::electronics-s02-0010",
+    "guid": "r{g[Hs4R!u",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "88276a6d4595b59f004c03ceaad16ee05d81da73e49e89b0dee2a619fdef6065"
+  },
+  {
+    "id": "id::electronics-s02-0011",
+    "guid": "xFaA7/2x4:",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e4da21e057c0c26f6f9a9ef9353fd0456ae03054f6d9edb5967803d7a06ba254"
+  },
+  {
+    "id": "id::electronics-s02-0012",
+    "guid": "hQjrYC6o#!",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4d1bd70ef837848456bf86427314161c5cee2b45e16467dd8ade383eb9f0d192"
+  },
+  {
+    "id": "id::electronics-s02-0013",
+    "guid": "jn~RTV7EoR",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1c2f3bc8d1191211cf0499edf61cbfdf80d0a929202ce8f98a5b8ce2ed687284"
+  },
+  {
+    "id": "id::electronics-s02-0014",
+    "guid": "Nn#X5q:A`;",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "25bdd743172cab06c5498cd55f0eae877539755a219895b42d6ed91dc59ca6be"
+  },
+  {
+    "id": "id::electronics-s02-0015",
+    "guid": "zb3GS2Pix1",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c80615d74b1bf0ae982353db37898503f02343188ba2c53986f7c6eb718280c4"
+  },
+  {
+    "id": "id::electronics-s02-0016",
+    "guid": "lRh[P8n|Iw",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "530b7b5b4f4c951ae03019af0cd31c645e4d73107f75b267e7fc6910c42c2396"
+  },
+  {
+    "id": "id::electronics-s02-0017",
+    "guid": "p<@Gc&Z#OO",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "83e08aae59221e7f4c8b2247ee806397b1c675a8169454c44dd57d8e7bf18ac1"
+  },
+  {
+    "id": "id::electronics-s02-0018",
+    "guid": "JvWlZPLyl?",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4246bc1891824c6df7afcb4de54e9d5bd4b3b2b8461d1992a3cf2128119315f8"
+  },
+  {
+    "id": "id::electronics-s02-0019",
+    "guid": "qgO,}0&_D^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "cdab1d0cbd20a3ddda44cabfd991f900d58a50e93bbc20bd26d77f0e6050a765"
+  },
+  {
+    "id": "id::electronics-s02-0020",
+    "guid": "nYJV^uWpB4",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "81c1852bcb4d1a6c7ee2dc800c3142fa2801c1040cb1aa1196a35de244a0a802"
+  },
+  {
+    "id": "id::electronics-s02-0021",
+    "guid": "Cfg-i3%l:V",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6445cdbae9ad89ca275ecbbaba8a1c2e72b18a4335f5553a85ca38ea731efdfe"
+  },
+  {
+    "id": "id::electronics-s02-0022",
+    "guid": "KS44X[ZoCz",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b05c30edf0a28f1d1f3291d52bccbfb354d5fb65a15e945c1bee09ab3d3d17b9"
+  },
+  {
+    "id": "id::electronics-s02-0023",
+    "guid": "iz7`Ln3Qw#",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "094d398bcf878815d1c95f464318d72eaf44390b4161cb22a8acac5148a95864"
+  },
+  {
+    "id": "id::electronics-s02-0024",
+    "guid": "j).D%/S1.|",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ddf1eb1358688d60b4b5d630325faa0b06edaefcce970ce13596a8dbe0a0f217"
+  },
+  {
+    "id": "id::electronics-s02-0025",
+    "guid": "Ey/BJSksya",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a4e1d39c9e7e3311617deda7d6bcf2c8b52365cc2bfd10139b0f068c967716e9"
+  },
+  {
+    "id": "id::electronics-s02-0026",
+    "guid": "H-t0U7$T[f",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "642f5f2e24e2c6371ade72589079efe1dc340a2fa69eca10b3d5bb15c59c3c3f"
+  },
+  {
+    "id": "id::electronics-s02-0027",
+    "guid": "E@Fc3WHUys",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "55ea4c17e9b2192f64fc8b845896731e4b77cf31077c13ba0aadf037aae8d0e1"
+  },
+  {
+    "id": "id::electronics-s02-0028",
+    "guid": "G`/@.Ke-mK",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "43cce9a4fe6c94db6742ea5a1ab930dbd852adaa82b6820fa387a1d94a5aa416"
+  },
+  {
+    "id": "id::electronics-s02-0029",
+    "guid": "vWa*=mGm+8",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "bc991c9f433a590eb210cc2bea36de8071108929bd40772a2f9b7a4bdfaf6a00"
+  },
+  {
+    "id": "id::electronics-s02-0030",
+    "guid": "zZ7:i`?Enc",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "15efbed449d60b7d1878c5aee0c45d2770fff773922e73f42f918d677dbb8a9d"
+  },
+  {
+    "id": "id::electronics-s02-0031",
+    "guid": "K)[+G%Aihn",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "64e607eb806652fdc9efd07fbc7eb69fdbb860e0a3e8eb8e4eabaf0e7f8f10d1"
+  },
+  {
+    "id": "id::electronics-s02-0032",
+    "guid": "k33{ui[}x%",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c8a33cf84edc8302efadb8fc4dd657c0fcf23a46e2589ac54d93c1947671e6d2"
+  },
+  {
+    "id": "id::electronics-s02-0033",
+    "guid": "v9%X^zaw>{",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6e3d09efc29ede7a174158fd16d4c60c716ee38cf74ac7acc48aa94997c290bf"
+  },
+  {
+    "id": "id::electronics-s02-0034",
+    "guid": "K<+.tO@sqh",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b950535368601031899a06f97d4b6a6caa66aa8b683b73ad39bcefa1fe1494a4"
+  },
+  {
+    "id": "id::electronics-s02-0035",
+    "guid": "lklEBsprlY",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "47beae4400d152ff0589666d390be66379b07966459bed661905bee34cea3de3"
+  },
+  {
+    "id": "id::electronics-s02-0036",
+    "guid": "Dika(z1zG5",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "df879c3ac2adcdad19d3add0fd51fec38e99da42f7e1d909d212d58171ee649e"
+  },
+  {
+    "id": "id::electronics-s02-0037",
+    "guid": "F=1%o$R/Vs",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4606d6139d54e5433445c07c84fbebc565719bb912aed5e3b2435ef9800e26ca"
+  },
+  {
+    "id": "id::electronics-s02-0038",
+    "guid": "xH^?{tpw^n",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2eee20210dbd08ee9babcaeb2e836f66ba23ec29a7a4dad3ca8535c3bd15d33b"
+  },
+  {
+    "id": "id::electronics-s02-0039",
+    "guid": "wHiBF431VG",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4006b372174dfbc08f79196bdf2350e89eb886cb93ccf406c834baa235da7dd4"
+  },
+  {
+    "id": "id::electronics-s02-0040",
+    "guid": "v,G,AZbB16",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "dfe4f7bdfd17ab2ae8894e34ee07933acea62d9e0d056c29d74cac5c2dd644a7"
+  },
+  {
+    "id": "id::electronics-s02-0041",
+    "guid": "e(ub.~].HF",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "9c28c44334d8a8d3fe8908fd5e4f158e3939502d7621a9fd68d87c8ffd9d213f"
+  },
+  {
+    "id": "id::electronics-s02-0042",
+    "guid": "QfxBO>N6rE",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "9ed0732adf3684e43836aa536520e8a396b6c35abaf69613593747e08ca291d9"
+  },
+  {
+    "id": "id::electronics-s02-0043",
+    "guid": "NBwq!q#w-p",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "979b7558d458dd48d644d6a15b70fb42cf81a5e3b7c193203de2334e33d7bc4e"
+  },
+  {
+    "id": "id::electronics-s02-0044",
+    "guid": "LOw2cf4CU2",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e39c4423a9dd5544e8d813f6b53985f4c9f1f2e6609af62d3902c62f89cdcb9a"
+  },
+  {
+    "id": "id::electronics-s02-0045",
+    "guid": "hIv5gzKhx^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4242647204e2f546c9744474c9a394d358c9c39093888bab6e10e1dc26c637e6"
+  },
+  {
+    "id": "id::electronics-s02-0046",
+    "guid": "oq{y@%*vx0",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c6147284dda19d2caed3f2b85f42b3dbd2858de66bf79da8af04d6026e8a8936"
+  },
+  {
+    "id": "id::electronics-s02-0047",
+    "guid": "y0K>Un4?@6",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "bcac40b9d83089cc67e7739e15c110bae5af5b20f7dbf2ae08ed012d18091e98"
+  },
+  {
+    "id": "id::electronics-s02-0048",
+    "guid": "jq=B0U6BQ5",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8460820dcffbb5ada329cef03190a93bd500c4c81bde1d155e7fd743714cde53"
+  },
+  {
+    "id": "id::electronics-s02-0049",
+    "guid": ")kh_7AN&K",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f889b960096bf6300877505974e11a009fdc23a9fb2c23ef9288461f5d8e9ee9"
+  },
+  {
+    "id": "id::electronics-s02-0050",
+    "guid": "A1R3XHruua",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e03deec6391614e7f291068ea0b702ae8cb0a294fbdda87653bd8f263c0a9b54"
+  },
+  {
+    "id": "id::electronics-s02-0051",
+    "guid": "N)U`cax9*I",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3357cac112fbcd9e21cf11ba469822a84848b11f95924001923f05d382c92d99"
+  },
+  {
+    "id": "id::electronics-s02-0052",
+    "guid": "`VN2[QQCq",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0f4a2cfc13e8bc04e70d65194256d0149491af678376b0225a93b3d349a003ee"
+  },
+  {
+    "id": "id::electronics-s02-0053",
+    "guid": "Mdp]Vy=a<e",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "cf7f18c4f8aba60c9b981bdf7db742f81d0a57a9e878b30a5575bcf8bdfb65ed"
+  },
+  {
+    "id": "id::electronics-s02-0054",
+    "guid": "K]E~<}fX]*",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3afc11ff832999ac91ea958b38d1ade6b710f89566a25e4e95682df0648a3f45"
+  },
+  {
+    "id": "id::electronics-s02-0055",
+    "guid": "j/qw^$~m./",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e0782bc56217cb48c5baeffb8d07ce9f882dd6d331cb62feddc0b60d84cf5082"
+  },
+  {
+    "id": "id::electronics-s02-0056",
+    "guid": "yg*s<b6DkB",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d776e6ff23dacded9c0ec25f797477b68712d1775e8a290a7b479824025af88a"
+  },
+  {
+    "id": "id::electronics-s02-0057",
+    "guid": "j=RH7QLBfQ",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b044c21167faacb65a286f78fc1b63fb9185f8e549102710c5dcf56649c66a2c"
+  },
+  {
+    "id": "id::electronics-s02-0058",
+    "guid": "i$y:YOmMiK",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6e61e3a4fb9363dad7ff1916d90acb0757d01bbe55ca1adceeb05b94c6b45f8c"
+  },
+  {
+    "id": "id::electronics-s02-0059",
+    "guid": "mwuAQ,DluZ",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aca50c421dcbcdfd4fb01611d61c03b797d517a126c0af88341437e4bcd056fc"
+  },
+  {
+    "id": "id::electronics-s02-0060",
+    "guid": "l^{WkTc=}k",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a1bf37c40a13e68bc7bed07e9ab43770ef3d9c83348ec5916e9a4d8dbff9de61"
+  },
+  {
+    "id": "id::electronics-s02-0061",
+    "guid": "IGBou^VCvk",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6771f7477ccaf559a27630fee251181d28b55246426845ea2e2f549982e050ba"
+  },
+  {
+    "id": "id::electronics-s02-0062",
+    "guid": "OK1{;F$LQJ",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7a7774e872a3edfdff83911617823a6d10cdb2e0967743eca033f29670cfe1bd"
+  },
+  {
+    "id": "id::electronics-s02-0063",
+    "guid": "C~mD6,i`{d",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "83338b14570da0709fd79d5d76ae4edcff7cfd20190bdc61fe92e9d6a8decfcc"
+  },
+  {
+    "id": "id::electronics-s02-0064",
+    "guid": "B,3iEn>Uv$",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "eb940aeffea90c91e9d32fdcbb14186f486c4a7f3e949f4c0453b69eeba24afb"
+  },
+  {
+    "id": "id::electronics-s02-0065",
+    "guid": "mZ=Mk2Rwa^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "87f0eb4bfcbceab100cd4a6bc2e088f8b71b9b8a07c3e110199fca994680f11f"
+  },
+  {
+    "id": "id::electronics-s02-0066",
+    "guid": "5odZA1Kw_",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0862d9ac0ce6e697265bdb2a27e67de4f7b0940d26953bc791d874a95cd5307e"
+  },
+  {
+    "id": "id::electronics-s02-0067",
+    "guid": "fzYF#wnw53",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "dd1bcead064536f2cf03df8bef8ed315a2bb5fcc08e1b1ad4e458dcddb5777fa"
+  },
+  {
+    "id": "id::electronics-s02-0068",
+    "guid": "j*DjA4:$qn",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "beecfe6e0c845fc21b621fd8bdcf4c4e942daec579bfd6fbdbfc9faed04a9144"
+  },
+  {
+    "id": "id::electronics-s02-0069",
+    "guid": "BvA:uQO8I=",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "87c00271a5345aa9a8c86462d5b93907b1e12fac6a7a9b129ffb128e2e0f23c9"
+  },
+  {
+    "id": "id::electronics-s02-0070",
+    "guid": "svH7hnSfH=",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6fdd31cf870181037663ff26798d845cddd5ec1c54b96fe04e9e51741ff3cef5"
+  },
+  {
+    "id": "id::electronics-s02-0071",
+    "guid": "CgXCxY]cqF",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "dde153ab95380107e484eebcd13b6174ddd042a1d9af0f90bbd51d10424c02f4"
+  },
+  {
+    "id": "id::electronics-s02-0072",
+    "guid": "pvFO{_EFo^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aa96a13fdd795162f0c03000e3c652922335d68a7a2b941c5892fd6ade386bcb"
+  },
+  {
+    "id": "id::electronics-s02-0073",
+    "guid": "u/*NU^BG%F",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "dfea546a3cffbdf78ba6ddcd9f2696da5ffa6d2e5e336c464e1b564aa60377aa"
+  },
+  {
+    "id": "id::electronics-s02-0074",
+    "guid": "f@3x]s$PZ%",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3c77bb0ce018dfcdfdc92f66e415d0d79ab39d9ea2cf273f49dd8e2be83d03c8"
+  },
+  {
+    "id": "id::electronics-s02-0075",
+    "guid": "E.A1&4_O5s",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "26e69f06b3642996a96e3862835a73c49dcf6b31ffe51f4d2cb84eac9289e021"
+  },
+  {
+    "id": "id::electronics-s02-0076",
+    "guid": "s?8Td3woD%",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a89a54420b292118a25c510772d5ea7a86e27415f58903467ae0e743585fb599"
+  },
+  {
+    "id": "id::electronics-s02-0077",
+    "guid": "b;1/SlHA0g",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "04e993e18c443b021f79f5c811e23c9d061f61cb84c72581f6a5d68e951cb31f"
+  },
+  {
+    "id": "id::electronics-s02-0078",
+    "guid": "Jrae9cQF$=",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "137a7974b36cffe291256bf6aecc6df777d6060d199959eab549ea71a5611f9a"
+  },
+  {
+    "id": "id::electronics-s02-0079",
+    "guid": "L(?,]/H)j3",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8863d121665ca1b2adff048cbef9895e81150049ae6486e287df174273c27bf1"
+  },
+  {
+    "id": "id::electronics-s02-0080",
+    "guid": "ws=Rxkv$s|",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5238b6221d1f4fb094d114695e7634c3f22a10557fe2115cab8d313c0da4f31e"
+  },
+  {
+    "id": "id::electronics-s02-0081",
+    "guid": "NV7!;rNg(*",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "26e92f1b95e57293f657276ee7da37876ec44d21267fca85c6d85ca2d810ade6"
+  },
+  {
+    "id": "id::electronics-s02-0082",
+    "guid": "Bk#&doP8UQ",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "143d425dafef00f24716000600f490c6d3cbc26115ac0c16c641709f07464ea9"
+  },
+  {
+    "id": "id::electronics-s02-0083",
+    "guid": "jjjBY$KAkB",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "991de61d13c3c54afa7faeeef47bb187d421b8ed07c69cf1066007e22d3ff1d8"
+  },
+  {
+    "id": "id::electronics-s02-0084",
+    "guid": "EL5aQUB,wn",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "130b71e2ca169cc8457e4783a06a230fb21aea46072140f265ea691b02df3408"
+  },
+  {
+    "id": "id::electronics-s02-0085",
+    "guid": "MGBGc6g$n@",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "70ac41d09921ccc4ac6b0aac55b0c7f8c6432145980a9137cad3ec2b10d72381"
+  },
+  {
+    "id": "id::electronics-s02-0086",
+    "guid": "qk^.5)LV4^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "597e96fdc329ddba26159268004eb453dee41e9751bb72958634cf409c77b0e5"
+  },
+  {
+    "id": "id::electronics-s02-0087",
+    "guid": "x<c@]38us%",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b3956cd68c6b88b18fbf6b7051234bc892080a7b6ed3953ccf87927b971d79a5"
+  },
+  {
+    "id": "id::electronics-s02-0088",
+    "guid": "lldE_VDFE|",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "afce20a4a2b45b8b05a6841bce3dca8bf2066ef78964fe4a489559624236e684"
+  },
+  {
+    "id": "id::electronics-s02-0089",
+    "guid": "PtwDh/MPcV",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "048013c7adb21e122548822ac8d0d254b057332ac5d70df3639ee7ea1b5f9f45"
+  },
+  {
+    "id": "id::electronics-s02-0090",
+    "guid": "N5;VZCXTP`",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "294242c14b1f54dd3b90aec1e3a63e8bc6b002332cad1e1d853922e976837368"
+  },
+  {
+    "id": "id::electronics-s02-0091",
+    "guid": "ssJc_ezulr",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e246f0d9c528b62a16b8133d752224dbf94410019ab3a7a5bffd2f2cf03e892f"
+  },
+  {
+    "id": "id::electronics-s02-0092",
+    "guid": "gt3V(U~j~t",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4a2e72ffaa2bee07f967ebd7430fcef6856c587895f7268e592899798fac143d"
+  },
+  {
+    "id": "id::electronics-s02-0093",
+    "guid": "l&Hk*p*0P3",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "91661082ed3a40e454faa621d69f7b285c18a0b59ac0ec2fca8a0f6f1a3df767"
+  },
+  {
+    "id": "id::electronics-s02-0094",
+    "guid": "c)V6dA+RHP",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f5eec26101821f7b7b2af4c737050f3cb443f23fb50ffc11de9bc97aaf8e4b20"
+  },
+  {
+    "id": "id::electronics-s02-0095",
+    "guid": "ERCHQO0B$x",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "788cb9ba230c8838ec718a5471efda55dfa4ca79102541d77cc91c5fb3bab592"
+  },
+  {
+    "id": "id::electronics-s02-0096",
+    "guid": "OY;.@DLQQB",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b754cbf750ac631222f2dd76af67d45e3b1c045d0aeeb3e047451edad0621944"
+  },
+  {
+    "id": "id::electronics-s02-0097",
+    "guid": "zJ=K3[H#1S",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "bd7e408be0287861677ab5691380478298c44a51380cfeb8b905dbd6c7597ffa"
+  },
+  {
+    "id": "id::electronics-s02-0098",
+    "guid": "d}LzMGK+X[",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "38fc88bfc5032935f54d18d37a63cb08613bee556de8f0ffc03064c4d2213c0c"
+  },
+  {
+    "id": "id::electronics-s02-0099",
+    "guid": "vDgFTU-jkV",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "587352e401b391d78d7630e9478ff2368b329d7538a9e1e01b143373c8ef7c92"
+  },
+  {
+    "id": "id::electronics-s02-0100",
+    "guid": "c[W):&aj%b",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "58e9226f499baaa52a783cbbe92403cd3f2bebae67c05933f390c18e20f6be77"
+  },
+  {
+    "id": "id::electronics-s02-0101",
+    "guid": "P=~eg7:_AS",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5ae07e884795f1ae030b6bc3fca73e74b73f54185bb158f3aeeda8e23ada99ad"
+  },
+  {
+    "id": "id::electronics-s02-0102",
+    "guid": "kgzU0MZ7n]",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8bd876289870991274c71dbd27eb8faeff92b4e55ec31ae7b7934be859a5b9dc"
+  },
+  {
+    "id": "id::electronics-s02-0103",
+    "guid": "Mvz%||{B3S",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "fb9c02c2787624918c4ee65bb2a05b41786554b9b5e9defeae1ff1e04141f993"
+  },
+  {
+    "id": "id::electronics-s02-0104",
+    "guid": "hA}Dq#}82w",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "33d958f35d3bde02959630e496b57330e98bf0152557cf993155f234532ddea5"
+  },
+  {
+    "id": "id::electronics-s02-0105",
+    "guid": "ERy|eY.Vvu",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "fb3300d347f118b01c2109b6c0b62beb85fb8ce7d4f2106b380ff9cbce31814e"
+  },
+  {
+    "id": "id::electronics-s02-0106",
+    "guid": "e!TG*}sCAj",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "54e0f229213018a6ac18caa473dea7a5e801d0f65a553025cf55146d79fd3d7d"
+  },
+  {
+    "id": "id::electronics-s02-0107",
+    "guid": "wg8>g):M4x",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c3d224c30d23a34fbbe61cbc19e1d695131168332c9bfe8ff79a7e93eb253db9"
+  },
+  {
+    "id": "id::electronics-s02-0108",
+    "guid": "b:BJKiP^_~",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "cd0bb368d559ccfc25cf4f61bc949c7bad862c414f26ff7766216ece54cc39d4"
+  },
+  {
+    "id": "id::electronics-s02-0109",
+    "guid": "g:LhI*jmV^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "763d2a9844df986cf40df8a7c7faf3eb7a945cf5e87bbdcad3872036c0e17ae3"
+  },
+  {
+    "id": "id::electronics-s02-0110",
+    "guid": "zWHH?PCZK",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f05eb4fc193195a10227750a24ac6e55a2b18b49434214386e4853a0f7f4963f"
+  },
+  {
+    "id": "id::electronics-s02-0111",
+    "guid": "j-juc}^y).",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "62b2c8d94d6de249f568da689328ea36cb216d503555fbe7a7ee963db66264b2"
+  },
+  {
+    "id": "id::electronics-s02-0112",
+    "guid": "FVka*:hC#j",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "9ca51a4618455551c870c8b4065dc9eab04a7a16f61abcf428b26c2651398362"
+  },
+  {
+    "id": "id::electronics-s02-0113",
+    "guid": "F:pI3~:m}g",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "19b9369b77789538e08b600f200e9aa2099cd86fdd46312ae59f939aafa37ae9"
+  },
+  {
+    "id": "id::electronics-s02-0114",
+    "guid": "zfxE}q7m.w",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b02140df40547ce8b84dde373616d08584f228ca379b27b2af454ecf97965bc2"
+  },
+  {
+    "id": "id::electronics-s02-0115",
+    "guid": "x+}JVY1QCK",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "531269771baa1ea774af99ab324c79d50eb99b50f8f4d7dabec2e951d3947f32"
+  },
+  {
+    "id": "id::electronics-s02-0116",
+    "guid": "u!]mTcVCEm",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "dd808e46e85b508268df5475dae24bedde0cf00dae9b77bfccdcbd1713b43711"
+  },
+  {
+    "id": "id::electronics-s02-0117",
+    "guid": "Cnh8(IJ%t2",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b00f84580e42c0a667a074777e997f2f0d2d1507006f813415758f7c04a7bd7d"
+  },
+  {
+    "id": "id::electronics-s02-0118",
+    "guid": "p_JpYm6-|K",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b3769c75d1ff713218e54b343b909400c411a0f088c3e2b8f3cce4ef00b94dae"
+  },
+  {
+    "id": "id::electronics-s02-0119",
+    "guid": "ulYa_@>;5F",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aed826ea30fe1ad25e2c02b587bca10db265e04e1f14e59118524a0b74e7c8e4"
+  },
+  {
+    "id": "id::electronics-s02-0120",
+    "guid": "l4IagOw?li",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "322e3496bce491bd105b64684580a152d9910c6f09a1848eb2a735c0712bbece"
+  },
+  {
+    "id": "id::electronics-s02-0121",
+    "guid": "G@;)L2e?{S",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b17223432231cec97e3301739d46222ebc8d573d6d3275c945836f36729c4e01"
+  },
+  {
+    "id": "id::electronics-s02-0122",
+    "guid": "jT$H4x<Wu-",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "41f02c5843997d36eb08042f07af130d637d0db2676fe9d775f97ddc5c32b4eb"
+  },
+  {
+    "id": "id::electronics-s02-0123",
+    "guid": "B&Ku.q^0nE",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0b152d04e6788791f03df156f0ea4f82368e52a95b724e70f87f5dd3836f67cb"
+  },
+  {
+    "id": "id::electronics-s02-0124",
+    "guid": "cxCU$8~dtT",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e57aa1a7674b9bc17df2cd4f1f7d1b79381a9ac9babe9348acb842c6e5402a19"
+  },
+  {
+    "id": "id::electronics-s02-0125",
+    "guid": "ghB<A9XN#v",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d79603b88ba0585bd89a7cbee3ccbb6189395b31c5a5d0d7087a6782724f0433"
+  },
+  {
+    "id": "id::electronics-s02-0126",
+    "guid": "h4y^#b(81t",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5470fc8f858c167fa359c4dfa426f21da8db5e9cff73f085451d0b0252e47e63"
+  },
+  {
+    "id": "id::electronics-s02-0127",
+    "guid": "F;`1l;HtrD",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6e568bccce2399d00a81d703577614ad872d87fac873a09394fb3901711c6e4a"
+  },
+  {
+    "id": "id::electronics-s02-0128",
+    "guid": "e/@CDHG2v2",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "870b916b224ddd810eaecdbe034c99e3a91ce8c76cad8fd8de7e419cf96136b3"
+  },
+  {
+    "id": "id::electronics-s02-0129",
+    "guid": "N91^Cn!-tg",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e26d5262e52e2ab719d768baa67d3e094e30ad8f28e4bcefdfbb061726069538"
+  },
+  {
+    "id": "id::electronics-s02-0130",
+    "guid": "A@WqBd4Umh",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aa852077bcedfe4a04de00d5958c51d9d304c98dea5b21601dd61aab1cfc3222"
+  },
+  {
+    "id": "id::electronics-s02-0131",
+    "guid": "B!l%:f@V}H",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4eef0af5b8f08236d0a13cf73f17da41eff4894cd60bef6b736ede2917717eba"
+  },
+  {
+    "id": "id::electronics-s02-0132",
+    "guid": "L7}q#EfvyF",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "24888234ccadc6abfd7f5e5a5721773f4f9eb4d3506584cee03e840328a230da"
+  },
+  {
+    "id": "id::electronics-s02-0133",
+    "guid": "yNP~SYscK+",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c23585ae76b21e513948e055d885f9180d14f98229e6ddf974c9647c1cd5e165"
+  },
+  {
+    "id": "id::electronics-s02-0134",
+    "guid": "PXRSW!)-=l",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "52709ccb10b8e6c54a32465514281844e46220ddf76ac2ecb3a5a528e3020942"
+  },
+  {
+    "id": "id::electronics-s02-0135",
+    "guid": "FaTI|$Y.jn",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b1ceb437d46d8b318f41fcf897269b2f5deba1e6672fd27a9d452e44948fac59"
+  },
+  {
+    "id": "id::electronics-s02-0136",
+    "guid": "Q>c1_1Riki",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7341960d8326346f341e48ee1bd0ee1748286ee816cbbcd9b9fc9ff9b2c4d195"
+  },
+  {
+    "id": "id::electronics-s02-0137",
+    "guid": "C(HKcYSp[@",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ac939ee1fb38174fedb2958bf90f7c90b6dd451f1a0a858a523cf889c3b1250f"
+  },
+  {
+    "id": "id::electronics-s02-0138",
+    "guid": "q`9Volb*vM",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2d64b625ee4b832130de63b0feefc0ba04ace7a70ed48546fe897b654c28ed86"
+  },
+  {
+    "id": "id::electronics-s02-0139",
+    "guid": "ADAt2ynLl-",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "afd3b7afac4d83b17327da697a156f945f370d2fca77df3c4a5b24147ebbd40f"
+  },
+  {
+    "id": "id::electronics-s02-0140",
+    "guid": "bu;t/<_:6$",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d7bd98d83819b719ea10f0f3fe1c298ec55c50f3817f9d4a206bb36ad3aadc55"
+  },
+  {
+    "id": "id::electronics-s02-0141",
+    "guid": "CsU.ubua:v",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "cfec6c32e1ed24a2e772bd7bf22a29704a7259884752d92860b5d72cc1a25c71"
+  },
+  {
+    "id": "id::electronics-s02-0142",
+    "guid": "f}UnDUi-KR",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e83461ca9f2580854d0eb20cbb525d52d2aabf3fbfebdda14fb3da6e61ff2c24"
+  },
+  {
+    "id": "id::electronics-s02-0143",
+    "guid": "hOI-IMjj(&",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "66631e534ca42292337eb80efc82781c9021e9753957dc31e01a36ed15a6c378"
+  },
+  {
+    "id": "id::electronics-s02-0144",
+    "guid": "NR?_=pV(=m",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8a0c86b931e00a591127bd14a52208b1d915435730e6c59cb444b83c81e71802"
+  },
+  {
+    "id": "id::electronics-s02-0145",
+    "guid": "Ol.S!~ibX(",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f108cfa1cf785846d7901666a5918d66b4c1f60549c97799b01355be8768e18e"
+  },
+  {
+    "id": "id::electronics-s02-0146",
+    "guid": "shxA6GQgz~",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0b5f8bc63eafd5e7ff20eea7cd734b1f4ab2af5b88a2e9a67f9999598a8de435"
+  },
+  {
+    "id": "id::electronics-s02-0147",
+    "guid": "HR[7;N(GH@",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e0b1d09903c0e2c08a2615fe307a63d6167485821a2a283d830ad2bba056e40c"
+  },
+  {
+    "id": "id::electronics-s02-0148",
+    "guid": "opYKZIylg+",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8b23366f9e15952f4701fbb30716fbe5b85344555e0d61d8b21f2516998b582a"
+  },
+  {
+    "id": "id::electronics-s02-0149",
+    "guid": "qf[Q1s>cD%",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1afc16325fd547e3cf858e23b3d4bf6cab7e19ca715b514c2cee5847ad8f93c3"
+  },
+  {
+    "id": "id::electronics-s02-0150",
+    "guid": "Cl^lU/)`ip",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5eb77c7fa43a3ae0c6cd3a6470c905d55f66fd136599fd5321dc4bce9ac7b45c"
+  },
+  {
+    "id": "id::electronics-s02-0151",
+    "guid": "L>~#@Pfaf7",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e21e559a580af6b3132813bf6db442d314fd472b6a0934bad3699e95fc260db8"
+  },
+  {
+    "id": "id::electronics-s02-0152",
+    "guid": "oq`&U|WooZ",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c6473f62015fa683cbc8a92cb525a66291997cc4d75888cab513217cb25ebd2a"
+  },
+  {
+    "id": "id::electronics-s02-0153",
+    "guid": "kgk4rbX^BY",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2eb1cae6e4abc636215c3a3eecb6b91d336dc8a55edab11fda966f0229270964"
+  },
+  {
+    "id": "id::electronics-s02-0154",
+    "guid": "PMsewV0Z!p",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2f30564e53360fdd927f74a979362753d375ccd782e2e3fd665f042ee14272b8"
+  },
+  {
+    "id": "id::electronics-s02-0155",
+    "guid": "ojG<Iu/+Nk",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b5f2e63724d6cf8e2d14d8819e286cb18c690ce69ffe72c905f998b1bb88c1b2"
+  },
+  {
+    "id": "id::electronics-s02-0156",
+    "guid": "K<KrJ,TRjm",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4014b4d9a99a3a0adf9c93b59613241f07b51119a9bc734c6595565f16fe729e"
+  },
+  {
+    "id": "id::electronics-s02-0157",
+    "guid": "CW5,4UHsL:",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4c3a61080c14ec0dbdc111cbc05feb56c462ab207b5614f7c95561a598256163"
+  },
+  {
+    "id": "id::electronics-s02-0158",
+    "guid": "x-dUH@##G{",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4ada1e0dcce00d6a2232fba4d585d93e92acd2a5f4d1ec17c19ff792015e99d3"
+  },
+  {
+    "id": "id::electronics-s02-0159",
+    "guid": "O3LN~d*yt>",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e85fa4f16aa5a2103c2ea3d2ce97bc27bedd7ffb1afe62e4a06bfa6852c986fa"
+  },
+  {
+    "id": "id::electronics-s02-0160",
+    "guid": "I@LHS)(]mV",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "56489ec5f3ddb6f6e27bf75ccf5b7217c7622d97b3dd6f5fedc2b865643b1ac3"
+  },
+  {
+    "id": "id::electronics-s02-0161",
+    "guid": "K<LI!k/+2u",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b9695bd0015138e5bce40bc139a739d23947fcde8ad6e3af220fa5d44789bf18"
+  },
+  {
+    "id": "id::electronics-s02-0162",
+    "guid": "Hj6+PM_Kc`",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3a1a08f2003b8130a8e6d0bf825829a7582e3915682a82495f216c9043b7115d"
+  },
+  {
+    "id": "id::electronics-s02-0163",
+    "guid": "m>xEFr12G3",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "605599f14a0d0ebc429077500259a83424ab2dd6054250cb789e6647bcbbab61"
+  },
+  {
+    "id": "id::electronics-s02-0164",
+    "guid": "C_@bEJ7,W5",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "193a20851d07f15e41b69bb5ebbae867209a7f898591a0976cf9c922fbe48605"
+  },
+  {
+    "id": "id::electronics-s02-0165",
+    "guid": "s5mcP-G6]g",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "afcb848908f0c589d33fc3ac85aa3138fd99fa3d7ef6d0b3e1ac337adca39757"
+  },
+  {
+    "id": "id::electronics-s02-0166",
+    "guid": "NeEvforW1w",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "78007236628fc2cf9ba7a25c3a6bef0f762394711e4139856134d39efcb6fb8c"
+  },
+  {
+    "id": "id::electronics-s02-0167",
+    "guid": "Ev<Zg/9R+H",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "fbb27dda7fb4e86b734eeb27bac314ef77d729ac6953573ba928d393b3e10459"
+  },
+  {
+    "id": "id::electronics-s02-0168",
+    "guid": "NMmC*b&dx",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "9a1dca4fa8a320870f5ec9fdfae650e8ff4cc101623e6994701f036fb7099b18"
+  },
+  {
+    "id": "id::electronics-s02-0169",
+    "guid": "hFG3ps{mzr",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "04b254d72d7a54d595046280b6620b7f15f5b5075d86bfd14631e538177edd1b"
+  },
+  {
+    "id": "id::electronics-s02-0170",
+    "guid": "Ob?!DXC{UG",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2a910bea1f56045c58f312a8dcff9ebc2266a4a337fec9c6efbfbcadcba5561b"
+  },
+  {
+    "id": "id::electronics-s02-0171",
+    "guid": "A.<PwyQQ-`",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "903a9aacdda3c0569d3d00159d5db0610805e6a607c673a419ada4f40d3e1561"
+  },
+  {
+    "id": "id::electronics-s02-0172",
+    "guid": "EME^$Te0+.",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6b28bd85bcba8228c9ec23782a56f262720eff6a0a6d2748c6420a62b76c16cb"
+  },
+  {
+    "id": "id::electronics-s02-0173",
+    "guid": "nl(OSjW;$c",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "be39f02af356ab877a46359d5f7f9bf366ea97cd1a1d593ec5389b418838f44a"
+  },
+  {
+    "id": "id::electronics-s02-0174",
+    "guid": "j2{N#owP<_",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "fb468d3b921d8be8e6ebb695d4cd40128126a5087f6261aa893400d05b01e3f3"
+  },
+  {
+    "id": "id::electronics-s02-0175",
+    "guid": "ANfgGAa3m&",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "9070a47e4449954598abd58b5f9b9391493445de654afdc14edf89cfbd815dda"
+  },
+  {
+    "id": "id::electronics-s02-0176",
+    "guid": "u2K3>&Oy{m",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "9d21897dfa173f42598d502fed9121ef40818fc0c6dd9e5a3b9dd73a0bfafad3"
+  },
+  {
+    "id": "id::electronics-s02-0177",
+    "guid": "xWF5:,ho`4",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "cf65edf8aa3901611d5eafba3dc5802b4a343fd669391314145c5522c745b4e0"
+  },
+  {
+    "id": "id::electronics-s02-0178",
+    "guid": "PswGitwxUx",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "33bc595ee594a36017df8d0006e26a0a2d2eff328f3ffd31903207d311d05298"
+  },
+  {
+    "id": "id::electronics-s02-0179",
+    "guid": "G$`B5Y&mUz",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7af03f9ce4a7fb25321ff03072f9e19af573a4f05b8d308ce28b02b85856b18d"
+  },
+  {
+    "id": "id::electronics-s02-0180",
+    "guid": "sW>.9v}9T|",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "824a3d834a08953dbfe75298e1360f3b76e7dc038c846c4085482b11e63a4061"
+  },
+  {
+    "id": "id::electronics-s02-0181",
+    "guid": "c!KbYK&i0g",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0f8b99d99f65b30840116f2c8c98a0aeff0ddef37e82eabdd038bb1240276079"
+  },
+  {
+    "id": "id::electronics-s02-0182",
+    "guid": "O9MsM7l.2`",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2e350e4825e13813f85fa790b53508d6ce8b6fc80d0120c62e35b48d30ef71a9"
+  },
+  {
+    "id": "id::electronics-s02-0183",
+    "guid": "u+RgV=Gyn2",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "01ca00dbdce14bf00b336bb5880a8815bbe40fd0140789b03d57c2270965e767"
+  },
+  {
+    "id": "id::electronics-s02-0184",
+    "guid": "ADPRCC`DVN",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3d31fbd99c09d10e404129ddf9d7462f1108aa7cfbc61f357c6100004177b35a"
+  },
+  {
+    "id": "id::electronics-s02-0185",
+    "guid": "J?HCE;MH<*",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "84e56dce60f788a0fb1531abd77c12d6cbef20f310d1154b48462e1bc1e2dc68"
+  },
+  {
+    "id": "id::electronics-s02-0186",
+    "guid": "g+;c7!2j=a",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "abceb1502f4a0854d43277840fe1835d7291433b3dbff1fc31b5166f71dc329d"
+  },
+  {
+    "id": "id::electronics-s02-0187",
+    "guid": "h{T@`$WFfj",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "44c32b598de4562e4099c25668a120ffa37abcc971e18b8e4823e070504e3f9e"
+  },
+  {
+    "id": "id::electronics-s02-0188",
+    "guid": "dKtT:LjqP9",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "940ef1578475fab6c6af24d2234c965a7b9fbcaceea9929676d0717059053605"
+  },
+  {
+    "id": "id::electronics-s02-0189",
+    "guid": "Jo@{4g2B(d",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7772fdb4f8fa1c0e5f86a68dc007d98e41fb320a13c128cf7a46f9bc48c0e8ad"
+  },
+  {
+    "id": "id::electronics-s02-0190",
+    "guid": "ArdV1!?rQ*",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8b224990b986d43614cc68f9ef991157c5e81b5d22b57cfb994598717b0b8477"
+  },
+  {
+    "id": "id::electronics-s02-0191",
+    "guid": "wn?[5vf<+6",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "83d01bd6f7c58c982e49b3b763b126ac48e3c769fa272d0ba676e3dd28424aed"
+  },
+  {
+    "id": "id::electronics-s02-0192",
+    "guid": "b+,q`I+*3-",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a5ebb2bb6c6bd4198803c1f2081dae734be57f5e799cea8083b379202e13485f"
+  },
+  {
+    "id": "id::electronics-s02-0193",
+    "guid": "d6}Z*D)E;1",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "617e561921e3530f75921b7b9ec5c9466802dee4856bb722d32663bb946d6b7b"
+  },
+  {
+    "id": "id::electronics-s02-0194",
+    "guid": "c}V0p:h;)`",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ca4dfae9e297badf2ec4e396e0a830ca5eb399260dbe08a16218df7de6280ca9"
+  },
+  {
+    "id": "id::electronics-s02-0195",
+    "guid": "B%n#s||dVr",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1f3069b7bd3b35ad832b15c829e4d79dddb43f428a14c412c9ef01b9bddecba0"
+  },
+  {
+    "id": "id::electronics-s02-0196",
+    "guid": "qtzx]CXr%#",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "149634a666ab025c9f0e5cceacb4675fc98781c5e7cb63e8de76a62bc6c67d75"
+  },
+  {
+    "id": "id::electronics-s02-0197",
+    "guid": "I>d|u0$@bC",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7e28469a497e3f7cc94965b397d4a22fffab39f3cf9b2ed1bb65755694a63088"
+  },
+  {
+    "id": "id::electronics-s02-0198",
+    "guid": "l:Vz-o#~<z",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ad0d2b92a8eb1650400725e05ba68e3f93178c0fd9fba26211ddbd099cf0d5df"
+  },
+  {
+    "id": "id::electronics-s02-0199",
+    "guid": "hNUr%.9Y]v",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3cf8e3835f098e743154d706fe3be45b7564ee8e38718dc8a7a2f9a95e24dcf2"
+  },
+  {
+    "id": "id::electronics-s02-0200",
+    "guid": "dr$4l03J.I",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1b004563863e5ff8439fe612e834bbd9b228700148bcc72af75c8cca4d308640"
+  },
+  {
+    "id": "id::electronics-s02-0201",
+    "guid": "Kn+a9P9?fY",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6c6bcb22173961d7055694edcd01affcefde3fe9988bf1fbdc916f47df70b562"
+  },
+  {
+    "id": "id::electronics-s02-0202",
+    "guid": "g&MCCH/gp5",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d66c91bf39dd255e35bd86d46b2c67cb90e76224e3c46db2e4c37a53ca8aba41"
+  },
+  {
+    "id": "id::electronics-s02-0203",
+    "guid": "lYm!0tuA!7",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "552f64a8ae171575affc91f0713e052ce829e3be2679bcc3c49b3a9f4c86d5fe"
+  },
+  {
+    "id": "id::electronics-s02-0204",
+    "guid": "C@zmi4:Pq9",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "92487b7a119286d57ba92859b45bc9e443b60af6f592a453423bf58222825f50"
+  },
+  {
+    "id": "id::electronics-s02-0205",
+    "guid": "zkN7%&=ZO~",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5b72d51dcaea1f7b639640195094d69a3c187f05beb20b4a678951a0d2433ed1"
+  },
+  {
+    "id": "id::electronics-s02-0206",
+    "guid": "MfwXJZr`uV",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1bf1d1844ef5594e6c77a62da0373d740e58c191b1fa7d0061ac3d29fdcacc11"
+  },
+  {
+    "id": "id::electronics-s02-0207",
+    "guid": "n&s&Ea/(Z:",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "475ec0a7f96389c0570d9868231ec5d041dcf1f315d0e72f0b6d0769707dc12e"
+  },
+  {
+    "id": "id::electronics-s02-0208",
+    "guid": "Df-m]K73Bd",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "edf43b796a29a8982063a707452689db6d973fb3d39496e7cc86a7ddd1b2a123"
+  },
+  {
+    "id": "id::electronics-s02-0209",
+    "guid": "bB!M`tX=qT",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "bb601c7e09f95db87e8bde1bd99815ffcf52745b507b7348a45ebde1e8a880ee"
+  },
+  {
+    "id": "id::electronics-s02-0210",
+    "guid": "ka|LZjTF;W",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2e3362d320232ed465f02dbaf49ea9d173b42253bbe2b96c28863d1798a61e1a"
+  },
+  {
+    "id": "id::electronics-s02-0211",
+    "guid": "lt>$1x`[I9",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "708e5fe5e108898e37d79207f9b559c6af582df38c55b1d5ba221696e0d16df5"
+  },
+  {
+    "id": "id::electronics-s02-0212",
+    "guid": "A^[va9z}Wt",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d53a523dd549f102993050c89e54262e32f36d5101edd31cdfbf762912c4ccc5"
+  },
+  {
+    "id": "id::electronics-s02-0213",
+    "guid": "B4dkBzcgo8",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d4d9b9a37f919c3574d50c54c7368d145fb78428b35baa48218f355fbbd7a22b"
+  },
+  {
+    "id": "id::electronics-s02-0214",
+    "guid": "tAfrH**Rtq",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7ebc65a1d7eb3cf3515d3c3763eaa3d40ab32100fbbf533f67149ee8c914efe2"
+  },
+  {
+    "id": "id::electronics-s02-0215",
+    "guid": "g6w~BMW)$J",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "88397e3229e5072772e95b7a98ef2c16ef4d0c40a2372ca8e0fd5cfeca2af06e"
+  },
+  {
+    "id": "id::electronics-s02-0216",
+    "guid": "f2Q#`@3f#a",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b0c4c2fc3a825c4e1523e2c00cd813d52ce83d8a593377102a1885d6791191f0"
+  },
+  {
+    "id": "id::electronics-s02-0217",
+    "guid": "X5;PM?)+H",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c866afc9c4bc12f576052c1c91eec83b47b266696707c5df2dbff3ce2bbc8f44"
+  },
+  {
+    "id": "id::electronics-s02-0218",
+    "guid": "SH]x69ECo",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7662c017787c6b8e7e37702a8128b4f39afe30baad17195516ea324f8b14a6ec"
+  },
+  {
+    "id": "id::electronics-s02-0219",
+    "guid": "Fl==*n0c[6",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6e18771c1a192155fd348871fc487a1d379f3026769624b84ccb93ad6392ca2d"
+  },
+  {
+    "id": "id::electronics-s02-0220",
+    "guid": "L`=H.W(.H9",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "104988b9067472cbd396a01b5b1be578010bacae45f63621151f8c322be3b8a2"
+  },
+  {
+    "id": "id::electronics-s02-0221",
+    "guid": "pt{E|2##q2",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2c3e20df8161dd47a5c4f246c8d45c9f3b809c01cc0bc8b68ff93bf3c3ac64e0"
+  },
+  {
+    "id": "id::electronics-s02-0222",
+    "guid": "OP>@-Dns&K",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0e32ab56b89b826d82111a78bbf5f2a5af2c0219b09615f0f3512004fd420a87"
+  },
+  {
+    "id": "id::electronics-s02-0223",
+    "guid": "uJCFc;E)$R",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "da660f0db3812fff59afad65262f15f1b3155a90f3e7a43adfb5bb907383033c"
+  },
+  {
+    "id": "id::electronics-s02-0224",
+    "guid": "i|4A$A#K%~",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c776761c2a7b82acf1d2e7366f26ddc9797117360f38ad8a8300cff9ba195923"
+  },
+  {
+    "id": "id::electronics-s02-0225",
+    "guid": "oe)7V).!<!",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e6c120c0ea859a9514802b7dc6873ece90c9c34188ac6b0c33f7e3d5a9a00693"
+  },
+  {
+    "id": "id::electronics-s02-0226",
+    "guid": "rA?I)mi13l",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "60f9aad6656abc55718efc166b262b07ccbdf862a3b09e77ba8922e1ebba2450"
+  },
+  {
+    "id": "id::electronics-s02-0227",
+    "guid": "eC]1Xs_{Dy",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "707c5307cfd81624fde37adf5ae844225359959f2fcb660d2d793d4ea3e939b6"
+  },
+  {
+    "id": "id::electronics-s02-0228",
+    "guid": "N2{3?8}ErW",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2d9e8639a2bbdf0f870ccb6992b1f05b2a385336ba1df7b804ea2814ed37630d"
+  },
+  {
+    "id": "id::electronics-s02-0229",
+    "guid": "cx0os=dY1/",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e4aec1040bdd96aedf9d0337c04bfd594b6c50c5c7c33dc1c4d830f3b6629804"
+  },
+  {
+    "id": "id::electronics-s02-0230",
+    "guid": "AZgRB=g5cy",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6ac91f4f9c9344784553fb6ec965c5f19c49a427ee05b2696f3c83022b182231"
+  },
+  {
+    "id": "id::electronics-s02-0231",
+    "guid": "Kc/Vl]LlO/",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7903df4d0ab81a70d83ddc137313490baae291add378fdaf40a129e2323f0dca"
+  },
+  {
+    "id": "id::electronics-s02-0232",
+    "guid": "y0@ToZ_w!q",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f403bcbd8876bddf66864a9b2734d2c5901efc3f2efb76a0526370b2ede1b8e9"
+  },
+  {
+    "id": "id::electronics-s02-0233",
+    "guid": "sK(SIpmA-g",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e31542f6468d0e5f1d9ce2ffd11f8ee0d81017dd6d5968ab5b0c14da0cc811a6"
+  },
+  {
+    "id": "id::electronics-s02-0234",
+    "guid": "ifWfxtN71&",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c169af57c9893fa7a2c4acfb25dd478ca5b2cf8786c2fc7c17f1b0bf23079de9"
+  },
+  {
+    "id": "id::electronics-s02-0235",
+    "guid": "cgVZk0.m{~",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f4423f224c3ed4c7630d938faea28cc015a2f16e316c77266190ba4e1e44b13b"
+  },
+  {
+    "id": "id::electronics-s02-0236",
+    "guid": "lVj*,M(>qn",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "59d8825a643821bfadb32920266bcee9ab0680f0b525d7dfe09fd92c3a6df894"
+  },
+  {
+    "id": "id::electronics-s02-0237",
+    "guid": "rFiia>@<&5",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "96edbb60b81a4d1406f74c05813bf4787aa0ac17648d7a9b3343803098869e41"
+  },
+  {
+    "id": "id::electronics-s02-0238",
+    "guid": "kS$ZX/@.ja",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ccc688c19f8f4446237a9f20ba69b010d6dafc3a153af44ac152acc2e06e4b4f"
+  },
+  {
+    "id": "id::electronics-s02-0239",
+    "guid": "fB!1.7W.2&",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "46f7cd932e084c6e74fe3098cb5c2e24036f599fc8c5c3c5cf7a65e789cc89c8"
+  },
+  {
+    "id": "id::electronics-s02-0240",
+    "guid": "hK4F5@P~k.",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5a97de9e1cddd82d7cc9f2c5b55ba8eea8986ac4b4f9d6f1c0ba5a2ef5e30ecb"
+  },
+  {
+    "id": "id::electronics-s02-0241",
+    "guid": "ixvr*c8{G|",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "772d4e9e8182d136d14ad600d6ce17fe6aa2b2f599447139b743f30feb623e36"
+  },
+  {
+    "id": "id::electronics-s02-0242",
+    "guid": "stLvl[X=pa",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f3717b1b1d77be491da167496335f8ee2c4127b2b95c230b38e556c91d8a767c"
+  },
+  {
+    "id": "id::electronics-s02-0243",
+    "guid": "LNIW`i}diB",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "530c75741de90ef02ee47058c85e7edf09d84d9e33fc6c9cf2227a1a97f8364d"
+  },
+  {
+    "id": "id::electronics-s02-0244",
+    "guid": "zmcKRy(4|q",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aad1ff0a0daf1c0e688318015bdd64efa093e26cb55bd18e72e7f4e7fed78815"
+  },
+  {
+    "id": "id::electronics-s02-0245",
+    "guid": "j06UXlv+Vt",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "459d3513f6482f6656ba4e7d636fea9c039a96d08299ff889ca563a862c0065b"
+  },
+  {
+    "id": "id::electronics-s02-0246",
+    "guid": "M#H@#}Gr{.",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4eff175174c7d5e6b91ed7cbfb8a5a17425cc39f84e1237259a083892ee48465"
+  },
+  {
+    "id": "id::electronics-s02-0247",
+    "guid": "E,cpO+8:Mm",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aa8c0dc57b5bc1c7053eb2002d1da0a99014c8bcd8fe7385fed16f476a34c8d5"
+  },
+  {
+    "id": "id::electronics-s02-0248",
+    "guid": "PXE_<)I3P0",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d1ae1ea447f0e2cf31bdc6ec8ec728ef75c4fd32d1f9c69ce27c78ec5ad736f0"
+  },
+  {
+    "id": "id::electronics-s02-0249",
+    "guid": "nPo?p2y[]C",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ac99e147a1cd77b8583dad1e60405cdb2edba4f635626911ed5be025afcced42"
+  },
+  {
+    "id": "id::electronics-s02-0250",
+    "guid": "nELD.tNB;J",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "7f514a97ec1af0e89a7e2bc2e2731a229c6d48bde563772a3cd9ead966de2bfc"
+  },
+  {
+    "id": "id::electronics-s02-0251",
+    "guid": "nI+w.$MOq^",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e483ff3e35c805f83ff30dec9888efcddcd4e7c3fbb1256aad5270f194cf51db"
+  },
+  {
+    "id": "id::electronics-s02-0252",
+    "guid": "Hd]=m)vuRu",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "65351f6ba6c225a33645e3276bbd58e8642f9241795c7aa9fb390f8f3efe8ab2"
+  },
+  {
+    "id": "id::electronics-s02-0253",
+    "guid": "kY/Z=C&?f,",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1085545096c0f3ab5d94de83afb3de1242036c6f5a9a2a08f0e6c948d1a33f58"
+  },
+  {
+    "id": "id::electronics-s02-0254",
+    "guid": "k8rQp~#>gq",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "94e968394acbd5202715f5cf8ac42bfc3860a1142817bb3d77b57a4f470afa0d"
+  },
+  {
+    "id": "id::electronics-s02-0255",
+    "guid": "QlyHV>J%OJ",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d74ee5df554befd3ee75197207841132b350b004977029ebaa30e8a23f7d974b"
+  },
+  {
+    "id": "id::electronics-s02-0256",
+    "guid": "IxEn35y<y.",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "c709e2a542a2090883315e141f6ca5f24d18ddd0be20fbace87eae1e3b46b06d"
+  },
+  {
+    "id": "id::electronics-s02-0257",
+    "guid": "P=??m=sAd4",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "03654614016af711833c50ebae773944783a8ef813faa6b11dadde59f12ec724"
+  },
+  {
+    "id": "id::electronics-s02-0258",
+    "guid": "r}>5$u{4=;",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "920980b2fdad8133ee20c047bc3e1e5ac8380833ec18ec80b11b76f638dab1e1"
+  },
+  {
+    "id": "id::electronics-s02-0259",
+    "guid": "OFpebcZywE",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2bee6ad9c09fab63aa1279d3547769a89edf21c51b97c1af0b5c358b1160e585"
+  },
+  {
+    "id": "id::electronics-s02-0260",
+    "guid": "fB^(^WN*IM",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a025f4e661e4d1846850c3e902ef2a5702bffd984996a12568624d8e56dbc90e"
+  },
+  {
+    "id": "id::electronics-s02-0261",
+    "guid": "zf9TeVI-{=",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d0ad8e0dfdfbb158a3c8f5cd455766952bc0628b3a715c865006bb337b80a03a"
+  },
+  {
+    "id": "id::electronics-s02-0262",
+    "guid": "C-5_IA*w_m",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6b81c450ab67fc97e1d534fa79628b636a88f665a9509bb6af56b5c5c95b26fc"
+  },
+  {
+    "id": "id::electronics-s02-0263",
+    "guid": "INED3V5)4a",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6c714eb6978e07a2533f62c1d1c6d3f40aeda891dd6de9c9087a66554bfa3553"
+  },
+  {
+    "id": "id::electronics-s02-0264",
+    "guid": "k9u-Z8wZjh",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "79fcfb146aaa6972af3011a3f5121c58d88cf5f9cfa25d625f63a3f62f5f06e3"
+  },
+  {
+    "id": "id::electronics-s02-0265",
+    "guid": "n9mDY!p&01",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "05c971aa78814d6c53f97eea0203d533738dba113395e86f9b6ca1008a20015b"
+  },
+  {
+    "id": "id::electronics-s02-0266",
+    "guid": "kWGTi/`,-E",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "ba184c589e5cdaf3d58eec14c131ab3cbae0765e4ee30ea3419ecf4e17b221c0"
+  },
+  {
+    "id": "id::electronics-s02-0267",
+    "guid": "fmm`J~Svux",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "68823a49d2114c3aeb08cc98ec59ad08603a4bae2b8cab2c6591432ee63e3153"
+  },
+  {
+    "id": "id::electronics-s02-0268",
+    "guid": "Nw)<LJ(MQ_",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "609712345e356e3ca054b434701d4490a3a50001207fff1436f5d10911920a79"
+  },
+  {
+    "id": "id::electronics-s02-0269",
+    "guid": "bj33mGRVqc",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "33e7eee70f9e331c4ff5a0f806b370f556d7a30873ba19c2d08c2a64dd2ab5a8"
+  },
+  {
+    "id": "id::electronics-s02-0270",
+    "guid": "m?BT2K-?kc",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "aa6f6968970719b89a4d686ccb3746840acc9c33ee6093844014d441c3d6ffcf"
+  },
+  {
+    "id": "id::electronics-s02-0271",
+    "guid": "BY,t^ID[go",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f4323262d9d5ce4b0579b0967340d5c81e5e4f60a1c64e29f7f50ad1f4ea341d"
+  },
+  {
+    "id": "id::electronics-s02-0272",
+    "guid": "DY;LjN&pr)",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "6708a4fe1f46667408f0016139aa6db9229daf8310be081ffbd63a2743b65803"
+  },
+  {
+    "id": "id::electronics-s02-0273",
+    "guid": "PzL5MqZm(_",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "799e68bfa323c60f05c53111d8e66539f1e39861427e8104ae21021d5e6e55e9"
+  },
+  {
+    "id": "id::electronics-s02-0274",
+    "guid": "v2VN3T<*1j",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "fc3ad6f1ba74c854f46169ff40d8eedfbddf22875ab45830e6c7d3735c7868b3"
+  },
+  {
+    "id": "id::electronics-s02-0275",
+    "guid": "n1&r=EN/-r",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "63575f317aaa3c4eb8394d05f60bfd4f6b1df09594e77e8ff3ceee78efbda018"
+  },
+  {
+    "id": "id::electronics-s02-0276",
+    "guid": "L632h.uaJ)",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d051ec5493700429b2005e06eed8b99f96e8f798826d657facad1dec2e121120"
+  },
+  {
+    "id": "id::electronics-s02-0277",
+    "guid": "kH,IXh*]G~",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "13b8de4027347fa368ad97137e1249a1d2cbfc12f19a8d45f7c9225c0758f1e8"
+  },
+  {
+    "id": "id::electronics-s02-0278",
+    "guid": "qSuNCW1e1`",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "fc89b247275a8b964c9c39bd4866eb3328c7cb7bb789e33c95d300c708315f20"
+  },
+  {
+    "id": "id::electronics-s02-0279",
+    "guid": "m_%B:39Dc(",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "f8946f18b684954f2b0b124fabf7e198f5b6f6e994cefdd3cd72913eb6ea10a8"
+  },
+  {
+    "id": "id::electronics-s02-0280",
+    "guid": "$3dU2)p,C",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "bacc42b88331f5154c9d9e888c7fd23af100b859d64a15b08e01d4a4e089b5ad"
+  },
+  {
+    "id": "id::electronics-s02-0281",
+    "guid": "M=HXw!V5KP",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "201ff9dc42c3c143b8cfc0bcdedae60e3ccfef3f25cb54e64a6ee5c3a99cd81e"
+  },
+  {
+    "id": "id::electronics-s02-0282",
+    "guid": "Lg}gE(k3J<",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "8c8c7471c9e3b05cc261df58b4f27ee769c0a16dff864f000d6278b7776f061f"
+  },
+  {
+    "id": "id::electronics-s02-0283",
+    "guid": "snIoE1/K#Z",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4867fb3e3bde65b5004f8d965eb6501eada796e356044abf1f407fa5594cb2c2"
+  },
+  {
+    "id": "id::electronics-s02-0284",
+    "guid": "NOAZ]`Yz5:",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "1bfa3411cd119cdafc79ffe185f52647652112f25a2bf0252b3e358f388b8aed"
+  },
+  {
+    "id": "id::electronics-s02-0285",
+    "guid": "E(b^@T.[gy",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "291f1ad724516e3a8d75e078ced499856694c04f89770d96a23080bc08afcf6b"
+  },
+  {
+    "id": "id::electronics-s02-0286",
+    "guid": "Cj%i)lsE*T",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2d792b57f3156d19eca008ad879ae2628611d80b0126d07f3d0b97404301098c"
+  },
+  {
+    "id": "id::electronics-s02-0287",
+    "guid": "qp1S]h2iKs",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0f691eeb8b98600f937cb6c7a4398e8faf3878f78cfd008c87ae6c940c51764f"
+  },
+  {
+    "id": "id::electronics-s02-0288",
+    "guid": "qAFmOFa7,=",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "db3881d566f742775e8fa0f9ce076bfbfe06ac3c74d4973acba585a97cec9309"
+  },
+  {
+    "id": "id::electronics-s02-0289",
+    "guid": "lrzlGj>Oja",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "a172fca294eaad289220cf2ed4a89bf4f0a12e2567256527cbb249964997b5be"
+  },
+  {
+    "id": "id::electronics-s02-0290",
+    "guid": "PXA~4UPkZs",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "3f093cf1e03b7c2303a7119217e23b3d0ebdb719a82b730f5edbbf45e728eb45"
+  },
+  {
+    "id": "id::electronics-s02-0291",
+    "guid": "cv?dTYPukN",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "26c4f9c988585cf21f26364a7c56bf48a375d111bc7582e856180c191dae9cd7"
+  },
+  {
+    "id": "id::electronics-s02-0292",
+    "guid": "t-uB>Pa!Lg",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "22de6c2660bcc9031042506c7115c0c0e6a5573c93c7c067fed96b991d0ae169"
+  },
+  {
+    "id": "id::electronics-s02-0293",
+    "guid": "N]_rF/@?V+",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "b0fb0e86b31398cf5b2b0d879c2451655f83ef63b657237ea5d2d27cd418ae32"
+  },
+  {
+    "id": "id::electronics-s02-0294",
+    "guid": "i_A65MPohi",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "508f885b7c448898467d69271f02f74428d069fce791b4aa9a8f0daff37246fb"
+  },
+  {
+    "id": "id::electronics-s02-0295",
+    "guid": "yXqz~|^jDH",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e07724cb5796ace653575eed8914a31c78ad5ecad5c8590dd8ae4d05cce2d23e"
+  },
+  {
+    "id": "id::electronics-s02-0296",
+    "guid": "ph,rJVRbu2",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "e99abb8a7029b41a0b3c9d260c4b73246b53f955423162b89611248d2ef7cacc"
+  },
+  {
+    "id": "id::electronics-s02-0297",
+    "guid": "s!TCE7nO7b",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "327d784e2f0ee50eceff67661bb9419b5cb72c9e8a91bbebbc36172d7ec838cc"
+  },
+  {
+    "id": "id::electronics-s02-0298",
+    "guid": "jR7(}NPn]=",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "5be650990abb9bf2796cf0f974d5c39e59f4e3be2bad9521ed54b034c3180332"
+  },
+  {
+    "id": "id::electronics-s02-0299",
+    "guid": "QY5V%gHM1m",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "99d74cf6240c8d15ddb50e02bdcce861e9b5a692d11635805ce2f9b11c0ac363"
+  },
+  {
+    "id": "id::electronics-s02-0300",
+    "guid": "sIKPANQ6ty",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4c721043b933a1d73956f39ac8faa93e69ee9359c72e87f05c478238e6a30966"
+  },
+  {
+    "id": "id::electronics-s02-0301",
+    "guid": "j@I)YnZk!N",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "63a0505cfb34608cea205208f675c3044a358c37727a98fec97f4226bb972fe9"
+  },
+  {
+    "id": "id::electronics-s02-0302",
+    "guid": "os7_p*i:;z",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2180342008706236cd03e8632b4e024ce127a4d0821f70cffb4ee056a2a1fba3"
+  },
+  {
+    "id": "id::electronics-s02-0303",
+    "guid": "puh<[_<[{j",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "da8b8b74aa4b4143a957cbe9e69790acdc20a1c7b58ece958e93fd67bc557474"
+  },
+  {
+    "id": "id::electronics-s02-0304",
+    "guid": "b2Ci.Mw`[7",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "04df1f8492be32a6678716eadf1f2a3434b3e51099b9c0de8ed7b2102f7818e9"
+  },
+  {
+    "id": "id::electronics-s02-0305",
+    "guid": "iuA9v)MwQ+",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "529b26194f4f08e9a010324b4f5a02a99c97897c2eb22804858b89f40581dd86"
+  },
+  {
+    "id": "id::electronics-s02-0306",
+    "guid": "wGZQ[]:sz/",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "0847a07a3fe15c2469004726c8fcb62a8fa6a1c9bbff89306c49cb05807c001e"
+  },
+  {
+    "id": "id::electronics-s02-0307",
+    "guid": "c7bAb=#dxw",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "d17f29fd1f692d9636301d4c19dbf5d5545bd5a158d1c83211d51289b9c1369a"
+  },
+  {
+    "id": "id::electronics-s02-0308",
+    "guid": "Gs%%vj}z/m",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "728cb4b2c33718e355b5294d87a5b5f1f369d663940a49955393e97866764393"
+  },
+  {
+    "id": "id::electronics-s02-0309",
+    "guid": "k*@OT[6[eM",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "2e053125ed5d6f38255d2dbe5e94b4e5aeb74367b07b79f12c14bf663534cf62"
+  },
+  {
+    "id": "id::electronics-s02-0310",
+    "guid": "et%$YtH)5(",
+    "section": 2,
+    "source": "Section_2_anki_cards.txt",
+    "content_sha256": "4caa6b3baa9abfe58e3634b10051ea1d687551a16edc3a2df5b18947e2a9c215"
+  },
+  {
+    "id": "id::electronics-s03-0001",
+    "guid": "m7Wo5T6rm9",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "79e4a0de398b09f6960d7c553fd9fd16122e9abe107411e3bee9e0f170a376ec"
+  },
+  {
+    "id": "id::electronics-s03-0002",
+    "guid": "u:HvK%%A57",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "40750e24416ce856dcdc09bc81a385af97e883c83f45934b606d7a967c175d41"
+  },
+  {
+    "id": "id::electronics-s03-0003",
+    "guid": "qjChL{j8Js",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "f9a637598457c3d82a3c99569f429878dbc4826f29fe85a04b1c82dfbfcc9503"
+  },
+  {
+    "id": "id::electronics-s03-0004",
+    "guid": "yBVd=*N5:a",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "3e425129fbcc80c881af6a525394212069f48582ef132a6c895cbcd2870f54ab"
+  },
+  {
+    "id": "id::electronics-s03-0005",
+    "guid": "b|<gAf#9|m",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "4c5ef100566b0c8e5f685c8ba2a090670988d9aa9db05be3389e1583fcfc0b97"
+  },
+  {
+    "id": "id::electronics-s03-0006",
+    "guid": "mg;n#<ou.`",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "0707a1cd25f3922f1fb8693b8f79f5e02f670adc60265348f83fb96f7b9969d9"
+  },
+  {
+    "id": "id::electronics-s03-0007",
+    "guid": "i3BUf5`,/2",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "229be9d5c973a70ecdc6b2546028ac63711ed3c5785cf20b3e771f19e55c1dea"
+  },
+  {
+    "id": "id::electronics-s03-0008",
+    "guid": "DtUyR{fU=.",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "1b6fba26cc9f23e79bc575c350a6ca87e8445bc01358f876acabef7bed205338"
+  },
+  {
+    "id": "id::electronics-s03-0009",
+    "guid": "x}uA5(Z({8",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "4c3227a9619948170d5e7b6f418201ed2bbc9262be1361432bf18bcc314e8a51"
+  },
+  {
+    "id": "id::electronics-s03-0010",
+    "guid": "j>fs;|W)[J",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "98add251b27ea63edc63756fe30c00342f4aceb0e60fef617971d35dd21f900d"
+  },
+  {
+    "id": "id::electronics-s03-0011",
+    "guid": "sW>^H0iPeu",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "900fcc6e2d37bd14dcf658c956597cc0ed6a89b5aab71e1013b905fbfcb6c1b2"
+  },
+  {
+    "id": "id::electronics-s03-0012",
+    "guid": "v[3$r/Ws.>",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "88501bdae60d0ed5dc52879908850fd420a8e2458eedd8235be3aefaf923aa82"
+  },
+  {
+    "id": "id::electronics-s03-0013",
+    "guid": "h.Ov%BT~rP",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "69dac2961417ad7fc52450826af0720675cd3c3d2581435b6f569739d377ca25"
+  },
+  {
+    "id": "id::electronics-s03-0014",
+    "guid": "Fd#uolIhY@",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "3e9b9f0aad4de8a603f632eba0f12434546089bce2d6ad68f00f51a487d11b54"
+  },
+  {
+    "id": "id::electronics-s03-0015",
+    "guid": "JyB=~O1D^A",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "fa561a3a435a9e8d53326dea73a5fa19640c34e084d689aa0cbfd05af5d063ad"
+  },
+  {
+    "id": "id::electronics-s03-0016",
+    "guid": "odgyXr0V?B",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "55aa34247b8bf1de81ce1dc42bb01dbcf2ebdd7b360ea2780854573a5a1f8879"
+  },
+  {
+    "id": "id::electronics-s03-0017",
+    "guid": "cn_~3-(3^)",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "b0e728096b7e882ee751794344d70229a970b173eb707791d4bc26e7d9465cd9"
+  },
+  {
+    "id": "id::electronics-s03-0018",
+    "guid": "FKz&=|]cT/",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "ad62ef009559891ff9261ac3c1e27006579037c02254a96bb2ba05e4ae77035b"
+  },
+  {
+    "id": "id::electronics-s03-0019",
+    "guid": "zpkg{@&]C(",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "539833632b65844f55f501ec9b4e4636c282e57de806b9df5ec1fa71c82f194c"
+  },
+  {
+    "id": "id::electronics-s03-0020",
+    "guid": "h]:gC=H#/p",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "fe52513506056a0404e4c6b471d1b43d0d3865e438249258b4d8c0857b4f97de"
+  },
+  {
+    "id": "id::electronics-s03-0021",
+    "guid": "C8f80+UT%l",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "5c0434867dfd537af25877694e406fa9093f34a80cf12678a21de8500a772f89"
+  },
+  {
+    "id": "id::electronics-s03-0022",
+    "guid": "z4<UGf4e[W",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "4a8b70c9f74f297a6164a4e99fb78aa8971c51f979a127745a1770f5a260ef27"
+  },
+  {
+    "id": "id::electronics-s03-0023",
+    "guid": "kMmENvq((L",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "73546b634ebbee80fa2b7daa3902d956f6027056f128bc40581aa5ffe5df5f3c"
+  },
+  {
+    "id": "id::electronics-s03-0024",
+    "guid": "uTz{~+/Y{U",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "a29ca3408f9116f8f0b40371c3961b832652691eb7da5535094d2470258e907d"
+  },
+  {
+    "id": "id::electronics-s03-0025",
+    "guid": "g(GDr5H!X}",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "317543b5c4b71280ff4c711a3bc72bb060b3ed81e70b4c73a794e23a691954fb"
+  },
+  {
+    "id": "id::electronics-s03-0026",
+    "guid": "gKdcc7Og#J",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "b9e126bb8acfd36cf3e39fd2a8afd6eb7dd1792148c6d4ff28dc294f35ee3da8"
+  },
+  {
+    "id": "id::electronics-s03-0027",
+    "guid": "D~2o!(z,>U",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "fb7723f06c9548d90e94c4185346a2e47c7365d1e34ecc09079c04b7cd4cea70"
+  },
+  {
+    "id": "id::electronics-s03-0028",
+    "guid": "QWK#jMF&=U",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "9365dc9138ff68a8155c22caaf9350152245b5acb1ad3ce9f579318237137e82"
+  },
+  {
+    "id": "id::electronics-s03-0029",
+    "guid": "MAZ:BRE!$a",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "c9b551fc2fa3252b79fa4130a55ddb139a2d694b05bb0d4feb1ec499ebc2b14f"
+  },
+  {
+    "id": "id::electronics-s03-0030",
+    "guid": "erJWlVNr?k",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "aa8c4958b838d1f3bbc84eb3081b82a68082a246365b244e6adca3a5cc8c79ed"
+  },
+  {
+    "id": "id::electronics-s03-0031",
+    "guid": "Ach!/zg3<E",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "9bee8c53bdd0d81416c374dd0742b471810cfb0d353335b1e5a3f98be026d34a"
+  },
+  {
+    "id": "id::electronics-s03-0032",
+    "guid": "PAZmiZz{kE",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "d568e05992df9dca9abeffd0ec15506dd5a47682dc361395f8f4be0fc01624a0"
+  },
+  {
+    "id": "id::electronics-s03-0033",
+    "guid": "bCS9kFrs?`",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "fb425c64cdac4325a80255b06a6ad0dc527b944617e900c18825c2a4493cde67"
+  },
+  {
+    "id": "id::electronics-s03-0034",
+    "guid": "EO:H`NW7sa",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "fc382b4020ff484587e80789367fbf6f16b495332aa15ded05d2962ce79948a1"
+  },
+  {
+    "id": "id::electronics-s03-0035",
+    "guid": "LD#cYXdbp(",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "e4b94b7318c09c9436bb6575fa010e4186ee8b122cb5518381be4cc39691720d"
+  },
+  {
+    "id": "id::electronics-s03-0036",
+    "guid": "tF%)hNifM",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "9e9664eaf46bd8afe19c0695445cfd859750126ef90f4b00e5421883bce98517"
+  },
+  {
+    "id": "id::electronics-s03-0037",
+    "guid": "CsYS6#i)#1",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "82aed8e456bd74690a325fad463900388d265a50d139bdec284f75eb94ccdaae"
+  },
+  {
+    "id": "id::electronics-s03-0038",
+    "guid": "oiW]LZR%6d",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "e698e496b819af6cc10db2c324041d44ac4c5ae9e074305265b8f8e5df1b781a"
+  },
+  {
+    "id": "id::electronics-s03-0039",
+    "guid": "y61~`6r&cg",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "27e890e3255dd942f04787939588107de62584cc011df118d95b0542ea8a6321"
+  },
+  {
+    "id": "id::electronics-s03-0040",
+    "guid": "u+mC{12t!)",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "6ad590fe2a1de61e183401bb1f85f13200754d82f19e63175ef5c7b2dbd0a308"
+  },
+  {
+    "id": "id::electronics-s03-0041",
+    "guid": "mI~Chg62u]",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "a1e48ec7586acb014373c0c21331002ab7589e3b45727f3bd2b6a6de70b6f7ac"
+  },
+  {
+    "id": "id::electronics-s03-0042",
+    "guid": "iBEaUR;HJF",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "70d476d1b11ca914a62bebc766f8f33b7a34d85df168d5761e9c42b4e70289ce"
+  },
+  {
+    "id": "id::electronics-s03-0043",
+    "guid": "MxysI%>O&v",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "9d47b00997c4a619cc62b1d6a3944c52b3cac409349a3b12bdd4dafc8086300b"
+  },
+  {
+    "id": "id::electronics-s03-0044",
+    "guid": "h#@Qt)HleY",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "3dedbf698e27570e3f4ca9567b661a2c15af789b279dec8a8937efbc01e0b12c"
+  },
+  {
+    "id": "id::electronics-s03-0045",
+    "guid": "r+Oz]A~M!{",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "5087bce4f63d0d5f9ece33f8410c930e2f319119a7c5f80dd199ff5826d49b38"
+  },
+  {
+    "id": "id::electronics-s03-0046",
+    "guid": "b(y4WW^N@*",
+    "section": 3,
+    "source": "Section_3_anki_cards.txt",
+    "content_sha256": "1e2d56ba3ad1be8c146d1e6ad6af861bb24ffb97482dbfd3a88deea5010b5f9f"
+  },
+  {
+    "id": "id::electronics-s04-0001",
+    "guid": "cSdA%<bN@M",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b54decc5c1684d046dda6194cb378d4d08f0238a326d512ab7768c9783c05f78"
+  },
+  {
+    "id": "id::electronics-s04-0002",
+    "guid": "b7.AT+=[SP",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "56ea21e014ffd23a9f0481aad497f41516f6c129111a186233a0b0e4a2fcb376"
+  },
+  {
+    "id": "id::electronics-s04-0003",
+    "guid": "KM(PM#d|or",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "91fc2e45e87dabc956235f3d24bbf6d3500f229fc3028fb9b76027660e2f9aff"
+  },
+  {
+    "id": "id::electronics-s04-0004",
+    "guid": "Da4w,^>lTA",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b84368119269f8d9a174b5a18381563016677d7a07d0d81dd9cb6953d118ada7"
+  },
+  {
+    "id": "id::electronics-s04-0005",
+    "guid": "E@URYq+;H,",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a06bb40d7d7f34a5a648099821b601ab1c5d74c43e2254944da16b4af4a60725"
+  },
+  {
+    "id": "id::electronics-s04-0006",
+    "guid": "lsIB%aB4yq",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b794ff22f4041c3a063cf52b37119f6a68cb6c616dc277cb7c2b9002b87faa91"
+  },
+  {
+    "id": "id::electronics-s04-0007",
+    "guid": "humm5[4#9x",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "771fb6504118fedda6ecf974759906bb97ed669e41178f50718ce649aab2dd50"
+  },
+  {
+    "id": "id::electronics-s04-0008",
+    "guid": "o%ekj;fh$o",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "1c9497357143a4eab9d3f6fd90b78510a854c556e087e5931f34e02cb5865243"
+  },
+  {
+    "id": "id::electronics-s04-0009",
+    "guid": "Ooj>5{x!}3",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "422b4937f65a674b522cedee95fd6f0117ce455a37be97e0d103c664123dcb13"
+  },
+  {
+    "id": "id::electronics-s04-0010",
+    "guid": "wQLc@o+hN:",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "232d905cf71200b2be140daf75bf65e94fb84e2b3013bdf4ff394653210a8c9c"
+  },
+  {
+    "id": "id::electronics-s04-0011",
+    "guid": "KI4dIUf<@j",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ce2114edfb7d257ce68d8848efd3040220f8a89f4305cc0975056de9a69bec70"
+  },
+  {
+    "id": "id::electronics-s04-0012",
+    "guid": "fT@2Ul^t3k",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f9f691037a4e1e3a8cb4478741647deb30006577025c2744e948f1a609be6d01"
+  },
+  {
+    "id": "id::electronics-s04-0013",
+    "guid": "Dp^O*auB.@",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c7d2889ab25f5afcc7765ed276d0fc198a40a35cfe9639a4e90b03f6b250b3ef"
+  },
+  {
+    "id": "id::electronics-s04-0014",
+    "guid": "IVlLVaIsvG",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "272d1a675e0c41701e1973d098adc408c7810f0af156f5602879ac45bed0ed46"
+  },
+  {
+    "id": "id::electronics-s04-0015",
+    "guid": "k{HlK~ke)c",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cc7ec10bbde73e28ad525477d1a28129fef4a16b14b41840c3f403651f0eb6d1"
+  },
+  {
+    "id": "id::electronics-s04-0016",
+    "guid": "b=pfdizZG&",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "606fea20765f841dd2f8efca7507b25b20691c4dc5af51ea98fd77cf755aa694"
+  },
+  {
+    "id": "id::electronics-s04-0017",
+    "guid": "Qiv(Sds8R/",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "08814b3adb48ee7bc060a961c7c59188825f5bf60150ac299500362db4eeeb5b"
+  },
+  {
+    "id": "id::electronics-s04-0018",
+    "guid": "rj!1+CToJf",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e60b73913815a8d4a1f127b565945db10439d132cee6c29588ce54867c7c1782"
+  },
+  {
+    "id": "id::electronics-s04-0019",
+    "guid": "u/S|GmSJgS",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "431316c254acb58f5e0e2a52640c9daa30f8c93aebbe992a7d768852a8dc486e"
+  },
+  {
+    "id": "id::electronics-s04-0020",
+    "guid": "IyU,4~1cJH",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "bae872572232fe7d07d54b26474f3cbfe13b7ca7879ab6fc009e84c0251d6ece"
+  },
+  {
+    "id": "id::electronics-s04-0021",
+    "guid": "N_P{P(Nt&U",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "44397cf9e4dffaa7d29bcd1a77222194347b67d486e7d977cca25afc2d1eae7b"
+  },
+  {
+    "id": "id::electronics-s04-0022",
+    "guid": "OXtq#$oS=(",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8e05cb4395b8436e83b577d79eb345007918f94e0a02437c6ef0081aab10d264"
+  },
+  {
+    "id": "id::electronics-s04-0023",
+    "guid": "pdVvqDbGsW",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2fd9d7cb76da703c1ed6d2f9415ec88a3e84073182404efbcb4de6404da1a522"
+  },
+  {
+    "id": "id::electronics-s04-0024",
+    "guid": "OAR4Rw5t.W",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "189af4a08c964a3004124510f9830ff1ea95db17ffdd2a737ccc7ad9b6c06ea4"
+  },
+  {
+    "id": "id::electronics-s04-0025",
+    "guid": "Ob9;Y;Z5zR",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "3eb3b4da95632af8f7b6c8c1497d49c43e3134c8e039eeb5c2c26004856a77ef"
+  },
+  {
+    "id": "id::electronics-s04-0026",
+    "guid": "p0A$?zw}lJ",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6a0b9a14d7d2e8553b4a6b3b69c88598b8d578282f42c17e26193a55bf5ade78"
+  },
+  {
+    "id": "id::electronics-s04-0027",
+    "guid": "wqrm4*jDvH",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6606471f5462e758c550905542eb0c6ebc656b9698e89309b622fa9a54d82d64"
+  },
+  {
+    "id": "id::electronics-s04-0028",
+    "guid": "ogaiJdk#}a",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "07b39e868d72f766f5f2c5da2eab4cb65d31970b829f60cfb063185f8154131c"
+  },
+  {
+    "id": "id::electronics-s04-0029",
+    "guid": "dc(vL.XZnb",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "14f4629d7d655b2ec4c481d41b78dec946c96bf5ed63ff0523aad34e5009b87c"
+  },
+  {
+    "id": "id::electronics-s04-0030",
+    "guid": "b#XE7jRSJP",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "fc0a7dbe41e2ae0c4a05a2abe4620792782ad3f622784ef798b11ce02b7d2e80"
+  },
+  {
+    "id": "id::electronics-s04-0031",
+    "guid": "f(6.Q-gbn!",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "100c0ecd9cf6b6d2813825a919b2579f397decb500f96685b2f0f83c5809473e"
+  },
+  {
+    "id": "id::electronics-s04-0032",
+    "guid": "b*#z=5<9:^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d51ee5b47155558f89e5193aa2ab37e574e4248fde89edc8a020e20ff72a19e4"
+  },
+  {
+    "id": "id::electronics-s04-0033",
+    "guid": "Rij&M5+}8O",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "18a728c12da76d554a4846d3f764b784732fe1189facd2ca1f110d9aeadfea2b"
+  },
+  {
+    "id": "id::electronics-s04-0034",
+    "guid": "LsMj^sE5!N",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4b094edd88f9e164e8d352a359ca71bdffb0ca47624a18f5af6c8491a9fc8210"
+  },
+  {
+    "id": "id::electronics-s04-0035",
+    "guid": "lq_=BI5.o/",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "90f1f823f93460d363bfdbe9cbe8d9feb8af0b92b66ebddd9fd6495e29eeb9e7"
+  },
+  {
+    "id": "id::electronics-s04-0036",
+    "guid": "LZO}fFfW<^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d1c7dc8060e93d507c84f3cf487d99f6331264450d700df2bd41298148df26fe"
+  },
+  {
+    "id": "id::electronics-s04-0037",
+    "guid": "wV<bj[8/ya",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f9cd57cdbfde1ad828d970cfa871f2f98f7a8081d774d282c7152be258ad4798"
+  },
+  {
+    "id": "id::electronics-s04-0038",
+    "guid": "pY&T4L$t~!",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cb026a4332a65d609e141bb3bf7a2f6d98f37c62917e1cbc82958d2d958640e1"
+  },
+  {
+    "id": "id::electronics-s04-0039",
+    "guid": "kKDG!^f{#U",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8032d883e9daa220c0defc5c1b17655042fdc7e964d9018089c76a5e78e98574"
+  },
+  {
+    "id": "id::electronics-s04-0040",
+    "guid": "NAF-OX(W``",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a1e97eb13ef3df61fcba73dbc12f2297ed384264c2b044f06b8962b960d8caec"
+  },
+  {
+    "id": "id::electronics-s04-0041",
+    "guid": "`ah{&w|,w",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2ed55c92e449ee95e6703ba1769ec03f3d1fd1e10710f7aaa034f50d08ad0f77"
+  },
+  {
+    "id": "id::electronics-s04-0042",
+    "guid": "lF8NabW3y|",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "21b55faa013c81f224698af9bee1e43f4df1ae127f916001d4a18b6d3db7ccbe"
+  },
+  {
+    "id": "id::electronics-s04-0043",
+    "guid": "pn/2lFI_=~",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "47a61a41d7d0a6b9e7801742c91a8d5c40a12e30a33b1cc373712afdaa800390"
+  },
+  {
+    "id": "id::electronics-s04-0044",
+    "guid": "m}Rs@CD(<q",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f03dd537f763e00f65be21804093855240e0f6116f0d3ea9c75e9e0fdde604e1"
+  },
+  {
+    "id": "id::electronics-s04-0045",
+    "guid": "D6H37cp|lO",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d4d02061a923ab2e2e65e6ac9b0015ad7308caa717a75502a331dded7b6e609b"
+  },
+  {
+    "id": "id::electronics-s04-0046",
+    "guid": "x$0j3z+c|x",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "29509e3586c4cd512e470930decb7106da3a7206fb67e1ca99fd825e0874d2ca"
+  },
+  {
+    "id": "id::electronics-s04-0047",
+    "guid": "d/);e*x[`",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c2a9077989ac2148d45187b1eda3ca9b3261f16957e3f11275f59c2684c4458e"
+  },
+  {
+    "id": "id::electronics-s04-0048",
+    "guid": "lwR]miHi50",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ded67d6e3920dae8428d3326c4ac74cb4c5ab1798713a345e1db694cf30ba6c2"
+  },
+  {
+    "id": "id::electronics-s04-0049",
+    "guid": "gloM3KfX}k",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f1156dd0976d94f2876a24b300250e2fa5b64e67ab701d3f27274449f2f3def3"
+  },
+  {
+    "id": "id::electronics-s04-0050",
+    "guid": "v3D,<)l66r",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7d0370ea483c4a6b8d59aad13619f1f0fe5e8a5cfaf3fd3b893bd038bbcae8c9"
+  },
+  {
+    "id": "id::electronics-s04-0051",
+    "guid": "JGVA{H0&/}",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8c7cb55b8135739e2824a8f2295e3a2158d7113f9d43d751dbd19b39f239476e"
+  },
+  {
+    "id": "id::electronics-s04-0052",
+    "guid": "xK68eM25v%",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a84975c270eb4d08456dfca827a389438c24542e89dc2835c082c2cba94db310"
+  },
+  {
+    "id": "id::electronics-s04-0053",
+    "guid": "C/XSDrPVkO",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cf5cddbf502b7791cec75eef67545d2d3f4406599a3205f882a88362209e34a3"
+  },
+  {
+    "id": "id::electronics-s04-0054",
+    "guid": "A[uUPW&oH_",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "da17e364b11bace2e4a8eaa889e9715eb47b52684c96cbecff57c0c42cd5e3d3"
+  },
+  {
+    "id": "id::electronics-s04-0055",
+    "guid": "D&-_h}Uo-B",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "932d0f8dd1b803e3677654df6cc91c2182890188ae13b4bc5f003f10c941de33"
+  },
+  {
+    "id": "id::electronics-s04-0056",
+    "guid": "i(Sq*!(6-m",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "04fa1c8787b479e684fd0d828d96cdcce5776fa4681d88f1d37a8943f699d215"
+  },
+  {
+    "id": "id::electronics-s04-0057",
+    "guid": "K.,pZMoS5u",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "0b3dd7242f05a91263e7b3517f9e01142b3eb0ca3391f1ddd618ab3ecca85440"
+  },
+  {
+    "id": "id::electronics-s04-0058",
+    "guid": "J]~NO~Bbp{",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d2e3a6e812da2749220888f81d501870d23ad6ae68c83916758609db76f20c91"
+  },
+  {
+    "id": "id::electronics-s04-0059",
+    "guid": "O`)gF@a4#f",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "230986bac4ae6bdb7a5e085bfd1052d37668e303961847558992137a5761e046"
+  },
+  {
+    "id": "id::electronics-s04-0060",
+    "guid": "xAV,,]eL?B",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e3f46d36ca16dc8bde3125b4b3dbd96f3015fc12f98b79f812ac0038f437860d"
+  },
+  {
+    "id": "id::electronics-s04-0061",
+    "guid": "g8p:<vLO<R",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5b9245b2a6ec2f3514ca92c9fadda55a91b377d6e915482782b127979f7c6d32"
+  },
+  {
+    "id": "id::electronics-s04-0062",
+    "guid": "y1@ilJZ0Y5",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "10abf812dc43f44472695a418cda747ac152735ea2b18a74fa4638b8428856b1"
+  },
+  {
+    "id": "id::electronics-s04-0063",
+    "guid": "P:_NQ1>P5G",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c12708ac8ef946e468144b23076064eb3df1c44fec2cc06862958647b67d1fed"
+  },
+  {
+    "id": "id::electronics-s04-0064",
+    "guid": "zsrYQBR.ST",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "9d6513bdd512a6e3f54e119357dd5d5ce97b47d57adf153f1c8880ce6a75d534"
+  },
+  {
+    "id": "id::electronics-s04-0065",
+    "guid": "Q>.cZ-b/<e",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c7d231e4e22254979fd8811ad8b37473ba93d425a807a8aeabd8271d124fbfbf"
+  },
+  {
+    "id": "id::electronics-s04-0066",
+    "guid": "xg;JYu?*#/",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a16eab37bcd98c6ba9f159ae4c8aadeabf5209b938cbe5ef9c0807c79033210b"
+  },
+  {
+    "id": "id::electronics-s04-0067",
+    "guid": "BuMvR8H8r",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "9e18ba55bba470cc9d9d60b4d1cbd1dc5efe4221427b297735c1bd618d830880"
+  },
+  {
+    "id": "id::electronics-s04-0068",
+    "guid": "BpX*gN;.P!",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b4821b438bfdf21db119177e6cbbf15eb81f892d9bef8b8ad66ab87bee2095c0"
+  },
+  {
+    "id": "id::electronics-s04-0069",
+    "guid": "prk7dho+0",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "69226bac53aa799601abcac0205de493e5b367a08bae760133cbb58a10c4d433"
+  },
+  {
+    "id": "id::electronics-s04-0070",
+    "guid": "FAmYNo?2tD",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "913b13f21e43891400d15074480bf0f3c6ff200e945ddb05540cb1007e814230"
+  },
+  {
+    "id": "id::electronics-s04-0071",
+    "guid": "v(r&t?x`ar",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "fa11fa55a4c35cf3b1eab9b1c2e0df62163977d66e2c138e5835bbefb49321aa"
+  },
+  {
+    "id": "id::electronics-s04-0072",
+    "guid": "D~(}$WxwU}",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "09f4297d027f9389cb1507dd2e169abb86389f123389232242a9a5b952f90c99"
+  },
+  {
+    "id": "id::electronics-s04-0073",
+    "guid": "sX|{>fT>iR",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2fb360672ca4c484958494df30542fd81025fd2b4422dc6b2186e5f4cba2588a"
+  },
+  {
+    "id": "id::electronics-s04-0074",
+    "guid": "q:jXI+w?{k",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "37ec28603952a6f9e9231185915283036d9c5342581b53cb397055d89592770d"
+  },
+  {
+    "id": "id::electronics-s04-0075",
+    "guid": "tmOJf[>79l",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "dc39320291b0cf518d37e7e13474d879820a31100687b88c8aa29e2afdb8f7eb"
+  },
+  {
+    "id": "id::electronics-s04-0076",
+    "guid": "bi;0+Lx`b`",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8bb49fe56db24b00a6c192a6560c8e15449059979b385415785d872c211c884d"
+  },
+  {
+    "id": "id::electronics-s04-0077",
+    "guid": "HobtG:X!06",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8142b7a260746eab67b3f550b52e9ce388f593a379fdc16bc231729ec27d46b6"
+  },
+  {
+    "id": "id::electronics-s04-0078",
+    "guid": "FH&b963>En",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f62f95b8efd275c7ada619a105ed57d1b58bd6108456e87b4a7d67a8571b289a"
+  },
+  {
+    "id": "id::electronics-s04-0079",
+    "guid": "p)2#%gKphF",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "37be6ed169090a32cecbd0af06bb39be267038bad05856e5155b9ba2e765c849"
+  },
+  {
+    "id": "id::electronics-s04-0080",
+    "guid": "v16P/=RzQf",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "07dda24428dbde266ab24ccd2b0603544f7b688416176c63da0f1430cfa5cbf7"
+  },
+  {
+    "id": "id::electronics-s04-0081",
+    "guid": "l/XU)K{-jH",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "331c84abfd89fafa04a8dfd296f0d7ab907481dcbb01f6590c0898deac266a4d"
+  },
+  {
+    "id": "id::electronics-s04-0082",
+    "guid": "hV_d~PL/{7",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7c7da0f8802e623b39112a2716727f732a6427fb942251096ee10a9fac72e229"
+  },
+  {
+    "id": "id::electronics-s04-0083",
+    "guid": "Kp3]8c/W;?",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cb574dc059987ad45556bc8f0575b40a90b69541a5e4374385589c3ebb8acf14"
+  },
+  {
+    "id": "id::electronics-s04-0084",
+    "guid": "zK#YT5h}|8",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ebce9b451b304a2f69669496f565d596246cac958b206c210133a080e41f8ec2"
+  },
+  {
+    "id": "id::electronics-s04-0085",
+    "guid": "zRNF|*::KB",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "39818179c91f3b46263e2c1a06ea658efaa0629adb84876a477e7a3dff4fa51b"
+  },
+  {
+    "id": "id::electronics-s04-0086",
+    "guid": "kDHJ5rlw$M",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c0ca29d1b2f6646c19f12326ececc7789d5ce66664eefda1195dbf0b2be96029"
+  },
+  {
+    "id": "id::electronics-s04-0087",
+    "guid": "z+(7.u)D8F",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "eb35417fd114ef38f893312d35584ac10b7b3b26ce734fd4d0befacea1fabac9"
+  },
+  {
+    "id": "id::electronics-s04-0088",
+    "guid": "kX~vQF.}Iq",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "09b39c1e5c4d6eb9ec7d04cc5fbac394bf5d8d2cb13892f11b0550de8bcef606"
+  },
+  {
+    "id": "id::electronics-s04-0089",
+    "guid": "c5sah]NP4o",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2b70b5fa18f692512e440154b459404f335274f4ec015706d8a762ff7732fbeb"
+  },
+  {
+    "id": "id::electronics-s04-0090",
+    "guid": "z1={T>iG3#",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d9d3eeac802e8ecfa8568acb0fa90abfcb1f7004cd2fe23e1ddfae5cdae39210"
+  },
+  {
+    "id": "id::electronics-s04-0091",
+    "guid": "K,KvK[a%5[",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "839f7453a723fe79d00595b7bd3703c81381432d1dd140df7fb2a85fca54dda4"
+  },
+  {
+    "id": "id::electronics-s04-0092",
+    "guid": "Q4V#:fFXBZ",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "84407e46f2eb9fd798c59c8989373daf9a5dec7146213a69f043f86588893212"
+  },
+  {
+    "id": "id::electronics-s04-0093",
+    "guid": "ih+w[Xjkj$",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c55c928e1a7d103dc3a2193bd781b0cd8a5c2e04726da854595c890687873818"
+  },
+  {
+    "id": "id::electronics-s04-0094",
+    "guid": "c0`eTG%pf;",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "827a42e5659121995275fb202add89bf37ea417b78370433a02377c999383407"
+  },
+  {
+    "id": "id::electronics-s04-0095",
+    "guid": "Q!.]VoW}%j",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4b5f7723f4e572d1475a525e9c7777482f491b4f3f3577f5a048514728f9e788"
+  },
+  {
+    "id": "id::electronics-s04-0096",
+    "guid": "NY+Z:a+r3+",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e6a6f4f3bc6077a1f386bd4fa8e7cd5d928c6bb4dbb91efb1c26532668ef1d69"
+  },
+  {
+    "id": "id::electronics-s04-0097",
+    "guid": "sK;LMLe;iH",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cfc151b9f7e58fba218456ef3917b97598fc2f801e19bb0c759cf15ddab5942f"
+  },
+  {
+    "id": "id::electronics-s04-0098",
+    "guid": "D_KL_)Hm4$",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "98734eec1092e45672e1ca62a4cf44288419feb07d170172248c466eb80f8dc7"
+  },
+  {
+    "id": "id::electronics-s04-0099",
+    "guid": "KB5n<y.MbD",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8651c232e9358d34d2dd95d30da83439d761ebd6f7afeb42ea9ab7259862c1dd"
+  },
+  {
+    "id": "id::electronics-s04-0100",
+    "guid": "C2h}ub$dw-",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ab6d22dfdd1421638231a0a7e0e63830615aab9926de117b96ef94771b5f3b87"
+  },
+  {
+    "id": "id::electronics-s04-0101",
+    "guid": "OuSB_L[kwi",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "05a9fc53d325419d110d362dd61b1ba0e9361c02bcca132cae6dc0f9c2aa22bd"
+  },
+  {
+    "id": "id::electronics-s04-0102",
+    "guid": "BjIKB7RQz^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f6a87f98c294f40efa6e94a927bc67a61f29f36f65d50257579df8ad649a5b79"
+  },
+  {
+    "id": "id::electronics-s04-0103",
+    "guid": "FGawb({kx+",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5d8125e56e2117d12bab1d99d9c5c2e383a01aa77effcc355664e6748723bb17"
+  },
+  {
+    "id": "id::electronics-s04-0104",
+    "guid": "b_v=e;6=kt",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f2fa74119b54d6ba0c251476bcb78f8d3b6c3b7177b0bc5b975caaeeab2b7d33"
+  },
+  {
+    "id": "id::electronics-s04-0105",
+    "guid": "j]BlU}<Z-U",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f3f912199e470a34cb8bc67cee6750aaaba4719965fcce058b34cffd6a4997ee"
+  },
+  {
+    "id": "id::electronics-s04-0106",
+    "guid": "L|_(03$Hl[",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6596ced8aa308a25c5d1ccc35c749cf0cb1b488c34649f72b49d30dd119c1af0"
+  },
+  {
+    "id": "id::electronics-s04-0107",
+    "guid": "faOj>~3KEb",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7854b84fba999db3c09444b9bc3dc9c52548e92f8583bc0cce4a252124593438"
+  },
+  {
+    "id": "id::electronics-s04-0108",
+    "guid": "P:>299=Gy@",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6fd9380cdea291da40a7e23a0f859cc02df285db1a77fcfc756e7dcc8da8b0f3"
+  },
+  {
+    "id": "id::electronics-s04-0109",
+    "guid": "OI})*JG)NM",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f924dbd0e3bb65bdf94e95352b03ca9c4db684b42771627ca5ef18d1b2505476"
+  },
+  {
+    "id": "id::electronics-s04-0110",
+    "guid": "A%bS,ujc[O",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d53c6497e194af5fe9f2f2533446497417fffcaf193769bf0ca0905bb684b2f2"
+  },
+  {
+    "id": "id::electronics-s04-0111",
+    "guid": "B{2d(l`OEs",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "26765be07181f19a6601a783316bab198a805284e5a50f76ab0558c4ce656384"
+  },
+  {
+    "id": "id::electronics-s04-0112",
+    "guid": "i2L]HvAdXl",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4ff56e4519b98db899144e1c32c7d8de78859ace28384ec774d667867b567a5f"
+  },
+  {
+    "id": "id::electronics-s04-0113",
+    "guid": "H:($!($H[#",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c46cecc4dcdc886145d641c2bf91df70de20e8ca4cc7385041c91116513d00e3"
+  },
+  {
+    "id": "id::electronics-s04-0114",
+    "guid": "FeZ`@k2)m5",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "26ddba7db35bafc4da9b8fb0a8e9fa6b9e9dc9e5cfcec5e4d00d8641d25e86ac"
+  },
+  {
+    "id": "id::electronics-s04-0115",
+    "guid": "kYJ2ODB3#X",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "027af684e741f3c14f066deb4f482dbadd67cd71370d4d9e05022b789dff6d9b"
+  },
+  {
+    "id": "id::electronics-s04-0116",
+    "guid": "cJ$+Nul!1(",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c9a9c465b90ab42db845fb48877f6f7d95bb72cc30d863e619f1d58c8e0120d1"
+  },
+  {
+    "id": "id::electronics-s04-0117",
+    "guid": "mp?sFeVgqp",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5dadb67f9c225b1f57544445fd8383eb9044377ff2505e9763f383405e932251"
+  },
+  {
+    "id": "id::electronics-s04-0118",
+    "guid": "AM^uC{6p(H",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "840da69d1d18cd3e708990526fd38c353ddbd45dec3954c6c3677cfafb9ea57b"
+  },
+  {
+    "id": "id::electronics-s04-0119",
+    "guid": "q@MUN!{I{{",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7d4a9062eb7e012222ecfce479c4437bddeb859ff188e37d896dbbfc8491d943"
+  },
+  {
+    "id": "id::electronics-s04-0120",
+    "guid": "c`tV!j8z~#",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "21735d1ffc850a4b314d75d14eb77d4124729cfd5124ec734e0e800f9153a228"
+  },
+  {
+    "id": "id::electronics-s04-0121",
+    "guid": "nMU}bL%sA:",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "aac77140ff4005b2d8b0fb052f8b4f62425f094d1d24a559f33ae1454b269972"
+  },
+  {
+    "id": "id::electronics-s04-0122",
+    "guid": "qtZM[s[iBf",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2574e853077741ee66a7c6ce1aeeb076207d8de948cda9fdaa59d8d3dcc7ad31"
+  },
+  {
+    "id": "id::electronics-s04-0123",
+    "guid": "elGbz7kvxX",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7f4206b53521735b59cc4da9e30f92080a34ba4ef1300f228f0df35d36347305"
+  },
+  {
+    "id": "id::electronics-s04-0124",
+    "guid": "g&CEpNS{+Y",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e50a9ec8054901db2eb436efed1380c26bf864f9296f4565dae0afdce6c03593"
+  },
+  {
+    "id": "id::electronics-s04-0125",
+    "guid": "xE~}M~`}!>",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4614d5efea75619490a88bcc9a91e48b882f76898779f9447ab4ed41643fc377"
+  },
+  {
+    "id": "id::electronics-s04-0126",
+    "guid": "tEmfFp:0@Y",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "947518d9877339a0dec4f07d9c317e0cb575d57ca54c0ab7c8b9936aa49fbb91"
+  },
+  {
+    "id": "id::electronics-s04-0127",
+    "guid": "P4p*,5oYA(",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "39094620aa94d110c8ab5bfa200a018d99f6658af74ef6f34a9c3c4bfa589e40"
+  },
+  {
+    "id": "id::electronics-s04-0128",
+    "guid": "MzROUa_}Rq",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d225feac79f5285edc95abb2209eb438f5c419ca8620a5e39b7944510a3fcbfb"
+  },
+  {
+    "id": "id::electronics-s04-0129",
+    "guid": "f`tCIUq=f5",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "04a2e529e6737abe48344ff67d72368eff330a0f9a3b6fd9caf7c1bcfc5d61e3"
+  },
+  {
+    "id": "id::electronics-s04-0130",
+    "guid": "yWgIU)~^)9",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "810468ba94fb4c0832447604249d13593b636cd05ddb413c5abfa1a735f0fcba"
+  },
+  {
+    "id": "id::electronics-s04-0131",
+    "guid": "jT&gc@&tp=",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "fe6c776262e1b36dfd24f2aaf6e7de95ea7f48c559760b49918e037cc4546a86"
+  },
+  {
+    "id": "id::electronics-s04-0132",
+    "guid": "bFWPPII(eF",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "87ac648a6e31842532939c63d92b1612bd05c2e0bf04b04d9e7869451a6a4967"
+  },
+  {
+    "id": "id::electronics-s04-0133",
+    "guid": "l_hY@S2x8L",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f82739e26618e4d3792917fe498b8e07db937ff315310c82dd5575847d27a99b"
+  },
+  {
+    "id": "id::electronics-s04-0134",
+    "guid": "sIAgv%c3e7",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "bc2cf8462d29692f210d11a94b34670eab5f03da49bc6abd729aa6d268dbb38f"
+  },
+  {
+    "id": "id::electronics-s04-0135",
+    "guid": "qIQi?P7i!`",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "da1129274d986a01be76a7f5c7313385e55e491b8524169fb7e5ce58658fe5fe"
+  },
+  {
+    "id": "id::electronics-s04-0136",
+    "guid": "sH,1V15`fz",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e33125df10b90ca830cf4fb3dd5739cd40157e23bff8781ea890d35bc7cf1b7c"
+  },
+  {
+    "id": "id::electronics-s04-0137",
+    "guid": "jf@@@g_oH2",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7de3d2739b1e92660fb83fd6588e597c5111741320b066163166a0f47e50c0bb"
+  },
+  {
+    "id": "id::electronics-s04-0138",
+    "guid": "fD5-UKGD(R",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d0bb631f62182d86be142f1e05274cfc0cb96d1f3897b0d5cb4ff23d9a884afb"
+  },
+  {
+    "id": "id::electronics-s04-0139",
+    "guid": "Kh)7-f#-M<",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "3ec093942dac2b3f55e456e8a225b38032954fba8547cdaf30dbcd302a72f21f"
+  },
+  {
+    "id": "id::electronics-s04-0140",
+    "guid": "B+[SQxHsad",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e95c919c19d17ba817f90b4bb9ffb60f4f6d55cd876cd1194558d1c9055119f7"
+  },
+  {
+    "id": "id::electronics-s04-0141",
+    "guid": "PG[v.gV7,a",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7af0c0061926b221c902a09f62f21ef0fa75d1a9b9f4ec9a4e4d7380f55bcbc9"
+  },
+  {
+    "id": "id::electronics-s04-0142",
+    "guid": "gI$E$7L;U*",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "52e782936ef063fd6353431ba8c7a737b4a0f674f3ab7d2e769d5388f58d26d9"
+  },
+  {
+    "id": "id::electronics-s04-0143",
+    "guid": "EAYJv&yUg&",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "68389daaf4e889244a612156ac723d70f2f43d83e19e98124fbcf4136c66bc75"
+  },
+  {
+    "id": "id::electronics-s04-0144",
+    "guid": "kc}lq`J[N:",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ae295c49fedd2d9898001b8b78eed5934664f3d3c48d6e3dcd6f926cd957e663"
+  },
+  {
+    "id": "id::electronics-s04-0145",
+    "guid": "T7-B7`y`K",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "378706f3eaff441bbe24ccc3c1ea9a3b8f616db13f4a52fcafc6df47ec6cfe86"
+  },
+  {
+    "id": "id::electronics-s04-0146",
+    "guid": "jpX6r|^r?O",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b11d56df6b764a9f4eb114ffa3836e3674efc9c18ee155ecd322bb22a35446bb"
+  },
+  {
+    "id": "id::electronics-s04-0147",
+    "guid": "vcw#Q9bDVF",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "891cde36e35f2f8ce3d3f9f3fb590f22ba23cc3a464e7febb831ea3713fe511f"
+  },
+  {
+    "id": "id::electronics-s04-0148",
+    "guid": "wM;aL1p&gb",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "9a7595c50ad9f058be2d28a790fd3496eb472a70782028dcc33e6d1d40d54ea3"
+  },
+  {
+    "id": "id::electronics-s04-0149",
+    "guid": "Zp6v7fjfS",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5c20a3424f30d6089900fc31637bb89402a5101ac6e79b2dacaa4c9f6441b422"
+  },
+  {
+    "id": "id::electronics-s04-0150",
+    "guid": "nN26.-u=~a",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6ecaae440b93bb45dcb90da8e94b05b73aa6506f5ed7915b2e9a6507228fc6ed"
+  },
+  {
+    "id": "id::electronics-s04-0151",
+    "guid": "sY9{19BgR@",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "23d3390bde92aa52cd30a7c5a21f25e238d4152d720cd0d8a3dc5aed7790ee77"
+  },
+  {
+    "id": "id::electronics-s04-0152",
+    "guid": "qWcACX%gOI",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "3cd1dee507b1d3c3e1887a4755eb341f4585b71851ab32e0ee0bcc02a31600a8"
+  },
+  {
+    "id": "id::electronics-s04-0153",
+    "guid": "u0wr~f!&Ea",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "65a8803d16c91243c9b057301f676023aade709627a5e1fbe9c78137937fb57b"
+  },
+  {
+    "id": "id::electronics-s04-0154",
+    "guid": "AGrIn_?#Kt",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f0f76903d46ab34e5dd30214f96e2f3ca1799ed55b70d20dd37f6f8849ce498a"
+  },
+  {
+    "id": "id::electronics-s04-0155",
+    "guid": "K+11uH>HhA",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ad60c6e881189feb0feff29b7c0a78abe82be603b01ec16c7e10835ee6f81cb8"
+  },
+  {
+    "id": "id::electronics-s04-0156",
+    "guid": "I[%>_[1}n(",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "444ee8bc3ac9077b2d49c10fe72b5f65bc04651ba3c8b1ecef1b83acd4cba8e8"
+  },
+  {
+    "id": "id::electronics-s04-0157",
+    "guid": "l+aNEbTxWp",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b5325c37c85d989a8bfa158afaf0798fe5b722aebf109fe60238ee18db956638"
+  },
+  {
+    "id": "id::electronics-s04-0158",
+    "guid": "w_]/~d_Ts^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b4da262bf0e9945c027f33d2a925cd762eb825ec9b93534a4b703504ff19d4d1"
+  },
+  {
+    "id": "id::electronics-s04-0159",
+    "guid": "f$6spe}*`8",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c7e6b9f16654ba77d346f0acdb900e9b776293fdcabe46081fd6d53903ced3b0"
+  },
+  {
+    "id": "id::electronics-s04-0160",
+    "guid": "mcC(@a&U0(",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "dfa78a2e2f5d0bfb1255a74f8323bf8dd051851a53fc866c73522081351b05ff"
+  },
+  {
+    "id": "id::electronics-s04-0161",
+    "guid": "J;>7D@lIdh",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "038d4247b0877cfc062f40d91346a8f6d9cef38b32c041666f4514dc10df7e33"
+  },
+  {
+    "id": "id::electronics-s04-0162",
+    "guid": "P;lLo.$AN0",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "0d460367785336843ee5c179e04be163a69f5e47a33c0f62df068ef574e0a44f"
+  },
+  {
+    "id": "id::electronics-s04-0163",
+    "guid": "vMDu^OE>rU",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5cb80ab526b4a773205b653c09c0ea656fd85ba26d694df4f0f8b03cd4b18166"
+  },
+  {
+    "id": "id::electronics-s04-0164",
+    "guid": "Ht}=q8v~eX",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "803c55f3dc9ca523b2264123540d5252501f7d9e16385a02a5211190f79af153"
+  },
+  {
+    "id": "id::electronics-s04-0165",
+    "guid": "QW=Mui(]1.",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "b77104cfc221430854af1a97963862f7ce2cc995dfbe269525382414577415ac"
+  },
+  {
+    "id": "id::electronics-s04-0166",
+    "guid": "DK0s0/`)/2",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "693dfa0a675b91103f7b324098af5e9a3cfc2ed10aa3ae0ed6a377b353b5e29c"
+  },
+  {
+    "id": "id::electronics-s04-0167",
+    "guid": "j5kkd}XHL?",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6b5c264a55cee1d47d59909d07b14805646ec7fae14dccdc82c50d8ac261e699"
+  },
+  {
+    "id": "id::electronics-s04-0168",
+    "guid": "p>$}UHJQ}[",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cbbb5ab753a8b7734b71e30ad76fa9119a69a1c5b3c34bc5cd6a6bb34d2a98ef"
+  },
+  {
+    "id": "id::electronics-s04-0169",
+    "guid": "FO-Ph[`Jr)",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4f1a020551dba93df43ac743c756518c07e4d49dbcd47df10bff49ecb854fe72"
+  },
+  {
+    "id": "id::electronics-s04-0170",
+    "guid": "sVr,BR+6e^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4e086a83ab9bd122d29f65c73ae2bf8a20b1c2f15d8e8111f9ede21bde1ddce2"
+  },
+  {
+    "id": "id::electronics-s04-0171",
+    "guid": "gE0@EUdHJP",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "06b231590b8239d8dbefca47b5f645eeb4c2d9b4ca786fc41402a28cb7ab9188"
+  },
+  {
+    "id": "id::electronics-s04-0172",
+    "guid": "xt/0MoBfBR",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "dba3c6d03002151600f9c8ac2ae81ea590696950d2702b55101147005cbd7cbb"
+  },
+  {
+    "id": "id::electronics-s04-0173",
+    "guid": "gx9OoiC@tC",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "da60942783e2b34c4682257b98f367f9edffbf7f83da1ef12d88a271403c80cc"
+  },
+  {
+    "id": "id::electronics-s04-0174",
+    "guid": "uGE{(>#9qw",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f5348621277f8cf1decd901bc4e8dd20de8ddcebffa54789e3d2d62dbc4c58c5"
+  },
+  {
+    "id": "id::electronics-s04-0175",
+    "guid": "w-zWq.U-[~",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8ea59f693274917ebee4abeb1e59dbd7182f5d975f12b72ea55541995c6b5280"
+  },
+  {
+    "id": "id::electronics-s04-0176",
+    "guid": "F`9G8[%9pq",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "edce328cebe0a6f03ae72bf7be6849b070ff6f250ec13f140c319879d4f9d89e"
+  },
+  {
+    "id": "id::electronics-s04-0177",
+    "guid": "d;`KvVPDv[",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6bfa1ffabc0508a6408db82d936b02c12950b32abf90a69299e6ffbe6987a33e"
+  },
+  {
+    "id": "id::electronics-s04-0178",
+    "guid": "n+3ao2~kcX",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a02c8d8a2cd41b63690e8bb53ed58cb44465f00c39818fff1fcb3137d1c74c8e"
+  },
+  {
+    "id": "id::electronics-s04-0179",
+    "guid": "h+{Hs_/Ml:",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "74f9c3557c32e4fd7e9575ee40c9cf8f251b72ac716460b95393b38e96304742"
+  },
+  {
+    "id": "id::electronics-s04-0180",
+    "guid": "tOYt,vi|{D",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "00600f2f915b3e2f952e273a71090db99d508197f97fa338813f1bf877c03ed0"
+  },
+  {
+    "id": "id::electronics-s04-0181",
+    "guid": "E57mbC@8K~",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "cd68b5e73ddea34718cb76175140825a45ead69e56cb5f7fac2fb74b3dda7c31"
+  },
+  {
+    "id": "id::electronics-s04-0182",
+    "guid": "M*Am,`=tF!",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d24f0f742ec4d64e008eb72003c1148880dcd78fa9a2dafd355e291c8c51db21"
+  },
+  {
+    "id": "id::electronics-s04-0183",
+    "guid": "DUPVOzWW:8",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "0681576d16086768fbf607d6b33fdc85eaabb9dd707cbdceb78297b8f48b2820"
+  },
+  {
+    "id": "id::electronics-s04-0184",
+    "guid": "cIN-Z%M1`{",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "0963b347e5d2bb22af250793fc907babcf741bcde969173a7c2d8c20df4478dc"
+  },
+  {
+    "id": "id::electronics-s04-0185",
+    "guid": "xEjt{{k#]~",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "de21b9ca689360d13fbdbe89a9abf2b869af4eb94b2994c2905461192afc42c0"
+  },
+  {
+    "id": "id::electronics-s04-0186",
+    "guid": "D<MX{se[&g",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "45f904d1d7f161cd125e6d03159536b5c43475548f3b372dd43036926720a81f"
+  },
+  {
+    "id": "id::electronics-s04-0187",
+    "guid": "iJ],+<SJ)h",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c88dd667d80a38c98933d4ecd426987f3c34a41d1d659120bd9796293e88d9f6"
+  },
+  {
+    "id": "id::electronics-s04-0188",
+    "guid": "HllSiCV?R5",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4072ff006a5b6edb057fcc130fa59e6ee03989d04097bd1d0a0437704345199b"
+  },
+  {
+    "id": "id::electronics-s04-0189",
+    "guid": "G+|KbOkyOz",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "bc858563f8ea72626806a386ace17182c1c1ce367daf445aa3cadc6401587d12"
+  },
+  {
+    "id": "id::electronics-s04-0190",
+    "guid": "yHfXluW`Fv",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "94d7ff54d5d6920de34b0bbd85c1e06fc46244845447022f1c89dd5ddbfa40c0"
+  },
+  {
+    "id": "id::electronics-s04-0191",
+    "guid": "O{b~t4XxN.",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e36686d4b34c5b1c3ed36629975034df0cfa7493c3b9e5cc960341dc2b91863b"
+  },
+  {
+    "id": "id::electronics-s04-0192",
+    "guid": "iqN>pl5qr%",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d92a9b4ff9343d8b6d14c54233213d3e993b29a502c2b13723ce13a0f36fa6c1"
+  },
+  {
+    "id": "id::electronics-s04-0193",
+    "guid": "hq/0emw7[+",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "42253ab5767d9034b135c4d13f0a7ac9433e7cd56782efb6aaa4c312721dd710"
+  },
+  {
+    "id": "id::electronics-s04-0194",
+    "guid": "cp}l4yyNCE",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "d2b1ec02e7a26526a715562fb95ea33f10f4dee28ac65b13231fe823f0e6d9ca"
+  },
+  {
+    "id": "id::electronics-s04-0195",
+    "guid": "vDT]bvTyq2",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f29e5e0ab8e3b400ad8dcfadfb23a0e45c8d80c7786f071c9d60e9cf62e2c717"
+  },
+  {
+    "id": "id::electronics-s04-0196",
+    "guid": "JO|UdHY?Zp",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "441683f6ccdb0c92f093e9b2c46f56da1818efd61fa58f86bd1a31d09298eac0"
+  },
+  {
+    "id": "id::electronics-s04-0197",
+    "guid": "lL2b,McmbU",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8d7787b53fcf82723c8d8e5f05d1a4c2843d187bc0f5218e826b7c11e31a71e5"
+  },
+  {
+    "id": "id::electronics-s04-0198",
+    "guid": "nk7_#*Z<qU",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e685d61913b73a7fbf64d47f10abf47d269ac07bfc87d85b264960f7f240b165"
+  },
+  {
+    "id": "id::electronics-s04-0199",
+    "guid": "RcAR!ES&+v",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "34cf8c993bab3cb82620986e581704f2bfa6034a217a740e812e1583119add74"
+  },
+  {
+    "id": "id::electronics-s04-0200",
+    "guid": "N{R>Q8y78-",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "fbb7e8cc836d52a7a9d024b5174efeac3a730d71957529e538c71dbdc496b554"
+  },
+  {
+    "id": "id::electronics-s04-0201",
+    "guid": "oy;i_7)zw@",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c79e3767daedf646bdb44d4ae561560dfc2b32ebc73e88dd5d00448147be5757"
+  },
+  {
+    "id": "id::electronics-s04-0202",
+    "guid": "cpe<dUAtpU",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5423289fafba3c133e2aea83c4c699ce3186ec142e10e37d5f6283b7b0471c7e"
+  },
+  {
+    "id": "id::electronics-s04-0203",
+    "guid": "DOJQoy^,gy",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "1d669ace75eca590e77b26165d6a2659251daae2d1b4b45d1372f2132cc5f37b"
+  },
+  {
+    "id": "id::electronics-s04-0204",
+    "guid": "vX#%IVnQu&",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a0cb8789da1759a462af5e8c414044b6ed61df2265013bbfdd346afc3a7870fe"
+  },
+  {
+    "id": "id::electronics-s04-0205",
+    "guid": "u$pBN].T%.",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4db9a26128d2104d43d05ee708cc71699e3c30825fbdddc14c17a4e823802dc4"
+  },
+  {
+    "id": "id::electronics-s04-0206",
+    "guid": "hIM{d|`T>Q",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e8dc1ad8f20d4c039042c013719287f2e71ce7b3f3e452d8ec05cbd5f3b6331d"
+  },
+  {
+    "id": "id::electronics-s04-0207",
+    "guid": "qU4#vGmVRD",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "9b00346d0b4548bcbce87ac089d8d2f261f512b72e35698138048e98ef61c2d5"
+  },
+  {
+    "id": "id::electronics-s04-0208",
+    "guid": "E_YPq^#4,)",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6cd09afeb3805533c4d78e9620f807297998467974d2825f1030d42b943f5cf9"
+  },
+  {
+    "id": "id::electronics-s04-0209",
+    "guid": "9A%+Tk9^0",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c22dcd0428e770f422bee11896424931111d0d53c37b39c41b49164428e4fc66"
+  },
+  {
+    "id": "id::electronics-s04-0210",
+    "guid": "E;/%O;j6q3",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f59c53bc0a29320fed2be1c35e004185f2ed150c48fabfdd6b77b7ea344ae3bf"
+  },
+  {
+    "id": "id::electronics-s04-0211",
+    "guid": "JZ7?J=VepS",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "dba8bb600fd56b03751297b5be9ec9564d70a60ae0f5f596dfb44d13d473f291"
+  },
+  {
+    "id": "id::electronics-s04-0212",
+    "guid": "sf[U``Z[p^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "937b5737947ac0752ecba5a64894bb1dbb22364d4fb659689b77b77bc90440ed"
+  },
+  {
+    "id": "id::electronics-s04-0213",
+    "guid": "CAuyDkfY>M",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c1aecce61245db1089dc2e16948c2fa259b2e93e03a0871bdbe1399b763df64c"
+  },
+  {
+    "id": "id::electronics-s04-0214",
+    "guid": "wp5+L{{K-?",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6bedd198038e13d670fbdb3c387525244f0d0d784d995a982c190bb3b3abbe54"
+  },
+  {
+    "id": "id::electronics-s04-0215",
+    "guid": "I03orm`LLY",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e6ce64f82e69f9a343319537542166c2d17cfd21ffa17db1cc41fae6e65add14"
+  },
+  {
+    "id": "id::electronics-s04-0216",
+    "guid": "NHFg0%miB-",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ecae74eadd350d49361af22b56fd5f194daf6074b80dfeb61bde663590bd451e"
+  },
+  {
+    "id": "id::electronics-s04-0217",
+    "guid": "QB*htJoLTv",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "af7896e7a6da98853c61bc64de04281264a6965026f4f501ce30c2a86a5984a6"
+  },
+  {
+    "id": "id::electronics-s04-0218",
+    "guid": "FKhI*G*J{C",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "54e117c31fc7af9ebaba4cd24250a28dfb225bebc9993bf4b70964cf6fa8f463"
+  },
+  {
+    "id": "id::electronics-s04-0219",
+    "guid": "rB|zKg6p:V",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f11eebcc06ba5d89fb8a1c4bc45491b87ffcb59ae228d1dbfb81297db028810d"
+  },
+  {
+    "id": "id::electronics-s04-0220",
+    "guid": "uPjVR4pm<1",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "40955718737615602129cd34eb7d37db98a5eb9c17af53f099b8067d9ed1a6d6"
+  },
+  {
+    "id": "id::electronics-s04-0221",
+    "guid": "taZ)E7n!<0",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c07ef36a53b5ccf97a237052185021f3359b143cc97c531d90b528baf23d51d4"
+  },
+  {
+    "id": "id::electronics-s04-0222",
+    "guid": "oHDl@%d-rR",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "265de61dfac9689e2e040452da15751ec68fdc230fe2deb4fd7153a62f83c9a1"
+  },
+  {
+    "id": "id::electronics-s04-0223",
+    "guid": "FQi2a{$<`]",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "e16d5f99b4d089d87f8d07b113bd442ff2579006b5561bdf1491f3ace3f6c509"
+  },
+  {
+    "id": "id::electronics-s04-0224",
+    "guid": "weZCU2on{=",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "0193d762f695a2bc7b351a5c0814a27c83ea5a2db8770f6bc8cea6cddeeb84f2"
+  },
+  {
+    "id": "id::electronics-s04-0225",
+    "guid": "oiV^<y^XR^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6b250a6956a195066a96b3e600aca7ff189a1c70f4e7c40f3927843fee26af35"
+  },
+  {
+    "id": "id::electronics-s04-0226",
+    "guid": "hHUt>W@RjQ",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2b608fbaa956f7d1bae6a56e72cf11f056777e8fe42e5b42d5ec86b5966f1f6e"
+  },
+  {
+    "id": "id::electronics-s04-0227",
+    "guid": "w{%h#ln)Ib",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8a766ea07886edf90ce3e4690570b2a39597cb83dda5c179a789720180e31245"
+  },
+  {
+    "id": "id::electronics-s04-0228",
+    "guid": "eoJ]>3~TC0",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "1e10b804c554baa2c881d80a2714fbfacac06bbd7b2afe878ee5768bed8f2dfd"
+  },
+  {
+    "id": "id::electronics-s04-0229",
+    "guid": "d~;*>C)]aJ",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "0508038c3988525941ea45873af5d80da2e97e6f8549f9769e970e948c7142ef"
+  },
+  {
+    "id": "id::electronics-s04-0230",
+    "guid": "P,`V$qBJJj",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "7fe8894c6acd83d68cc39e43c88da432c8ec8bf63097ef3cdd9a3e25a0acd38e"
+  },
+  {
+    "id": "id::electronics-s04-0231",
+    "guid": "fb#IRgdp.l",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "ae6959313886103a211fb8c20ec536940a0eee68f412dfbc8d5c8e697f33b825"
+  },
+  {
+    "id": "id::electronics-s04-0232",
+    "guid": "gOZQFY6)7",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "aeadf0b0030ce4385805ce92e957924b46c852790064a2b1936bcc31e74a8254"
+  },
+  {
+    "id": "id::electronics-s04-0233",
+    "guid": "b+19UWKv`8",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "2bb9fd875c7489bf34bc876b83e32fbe7037ccee0f76e339ac795ba8d052454c"
+  },
+  {
+    "id": "id::electronics-s04-0234",
+    "guid": "ilkD,.BJuH",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a9861084251eb05d6d7720009afffb81d9bb6669e1d1847e8b1687a35497c004"
+  },
+  {
+    "id": "id::electronics-s04-0235",
+    "guid": "gf]1E#*yGE",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "03f44a994890d7f67583ceaac1bf137f5eb39aa84b9add5a39680cd5ac5e6e6a"
+  },
+  {
+    "id": "id::electronics-s04-0236",
+    "guid": "Ht!(L&<yFf",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "5e46fb0680222fdea4410a75bd55e900d3e539273c67a25d5ab47487dd87500b"
+  },
+  {
+    "id": "id::electronics-s04-0237",
+    "guid": "N2X)E%$:k(",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "c9114e481c396e4b14229bd1c649b59503d8b8150071bcdd5af71376d043a216"
+  },
+  {
+    "id": "id::electronics-s04-0238",
+    "guid": "uP,F,XpPKy",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "53597dbf2a33dd26167884161d1af4d079fc2a6fb851e1055ad8d1c70037f31e"
+  },
+  {
+    "id": "id::electronics-s04-0239",
+    "guid": "e/{>a)I*2J",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "fea22de608602ea552ccd2919288b7a7106547cf0c4b78ba4e1ba5a71aaa7bd5"
+  },
+  {
+    "id": "id::electronics-s04-0240",
+    "guid": "o:PVE_[D>;",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "fbe33ee0aab0e8c083efc62411998f1b7b09ab8dfded17e708460467fdd99ec6"
+  },
+  {
+    "id": "id::electronics-s04-0241",
+    "guid": "tn!mXE~W%&",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "a54205e7ccdbbd3057373fd367cc5a7f7f977a004b203bd216576018ce6e07d7"
+  },
+  {
+    "id": "id::electronics-s04-0242",
+    "guid": "vUg<]JJLoc",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "08f7cf8a0cce4b7c7884a899edbc549e34a4c1e4d002f11ede7e8247e671a39d"
+  },
+  {
+    "id": "id::electronics-s04-0243",
+    "guid": "xWSbZQ+`gR",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "3ce73a7b2c8ccd8065c4b515b6eccea1f4dadee47ac11184cc684ac48ee9f166"
+  },
+  {
+    "id": "id::electronics-s04-0244",
+    "guid": "AI470Dz;+-",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "90f53f9b17aa2b07c2e9e150934192f28ed053c0b3b6cf04befe8af42d905354"
+  },
+  {
+    "id": "id::electronics-s04-0245",
+    "guid": "JwxYS48m^S",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "1871131055128dcdeed4b200f1dd2a91ba8c32cf984bc9fe68bc3a8a7aeace8e"
+  },
+  {
+    "id": "id::electronics-s04-0246",
+    "guid": "b2m8@(b;hX",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "877850b01315e4dc4ec150d5cec2e32863247978b97be539517ad26820b17f3c"
+  },
+  {
+    "id": "id::electronics-s04-0247",
+    "guid": "Jud1V<&%U^",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "6b41973846ed452b342e0e9907863ca349fec53ab91cf51f39bad2e6704f808f"
+  },
+  {
+    "id": "id::electronics-s04-0248",
+    "guid": "qjf0oPE(6!",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "880806317659f96110ab642eebcbae4f6b8c7590d99b40a9e396e31bfd930da2"
+  },
+  {
+    "id": "id::electronics-s04-0249",
+    "guid": "z|}T6CnF~/",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "4ae25a4a82b5727c5fc51114790993d372d799b4d3ed3fb22d61c8d45ba1ae7c"
+  },
+  {
+    "id": "id::electronics-s04-0250",
+    "guid": "E1<@.]s-z7",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "81bf4088624c76d5ec6027b99e4d3b27fd01a8f6f61ed3d8389d2e7bf85b85d8"
+  },
+  {
+    "id": "id::electronics-s04-0251",
+    "guid": "h{0$MGa&)f",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "8cdefd3c6261fbefce400249dfd8ecdc7cbec2fe9dcabf85f7a7c826187e7db4"
+  },
+  {
+    "id": "id::electronics-s04-0252",
+    "guid": "Ow$)[=I1z3",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "69a8df042e4943d68016dcbbb067963c846491d38ce9412349d0858d4de75eaf"
+  },
+  {
+    "id": "id::electronics-s04-0253",
+    "guid": "K_EM#|3TyN",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "9a22164062787bac80bc31fb79d321f3d740e10343ba1dbecdf4079bde50d75d"
+  },
+  {
+    "id": "id::electronics-s04-0254",
+    "guid": "j0xJ[vRl/3",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "66b25a0c3d71a254ee36b144c5d257e120b6b639916f6148133f91edc3218bca"
+  },
+  {
+    "id": "id::electronics-s04-0255",
+    "guid": "A|Q|%r{e9*",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "22c440a6a71611ed00890542e4154b01027e38227142785087a75b09824bdce1"
+  },
+  {
+    "id": "id::electronics-s04-0256",
+    "guid": "I6_t^P:don",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "344d24155896d43cbd9dbef63bcc50ea449b24d12d4aa18f39d7274eec858b70"
+  },
+  {
+    "id": "id::electronics-s04-0257",
+    "guid": "xTxq-[P5@u",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "3bc69f17119d8b9ba3b64e543071e41518668242572c8eaf3cb3ce5c2a220403"
+  },
+  {
+    "id": "id::electronics-s04-0258",
+    "guid": "gxM}X$IJj5",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f4a67a6429be71a03fb6417a525fdc4ad3c5ad771cb88ddf276e65d213bfa61e"
+  },
+  {
+    "id": "id::electronics-s04-0259",
+    "guid": "L%N75k7<Lb",
+    "section": 4,
+    "source": "Section_4_anki_cards.txt",
+    "content_sha256": "f1691cab90c03811b94bca6e9b2d073c8d454981534ae1f1b947b4d91c49378b"
+  }
+]

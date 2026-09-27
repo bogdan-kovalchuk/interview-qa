@@ -1,0 +1,2169 @@
+[
+  {
+    "type": "definition",
+    "content": "Electronics is the study of electrons in action, specifically their properties and behavior in electrical circuits.",
+    "detail": "The word 'electronics' is derived from 'electron,' the subatomic particle with negative charge.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Electronics uses simplified models rather than full electromagnetic field theory (Maxwell's equations) to design circuits.",
+    "detail": "Simplified models allow engineers to make assumptions under certain conditions so that performance error remains tolerable and practical design is achievable.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Analog electronics deals with smoothly varying, continuous signals that can take on any value within a range (e.g., 0 to 10 volts).",
+    "detail": "Unlike digital signals, analog signals are not restricted to discrete levels and can assume any magnitude between two points.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Electrical signals are typically graphed as a function of time, with time on the horizontal axis and voltage or current magnitude on the vertical axis.",
+    "detail": "This standard representation allows engineers to visualize how signal magnitude changes over time in both analog and digital circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A square wave is a digital signal that transitions almost instantaneously between two voltage levels (e.g., 0V and 1V).",
+    "detail": "The rapid transitions represent binary states (on/off), making square waves fundamental to digital system operation.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Digital systems are models built on analog electronics that treat signals as extreme cases (fully on or fully off).",
+    "detail": "Understanding that digital is a simplification of analog helps explain real-world non-idealities like rise/fall times and noise margins.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A resistor resists current flow and drops voltage across its terminals.",
+    "detail": "Resistors are fundamental passive components used for current limiting, voltage division, and biasing in circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A capacitor stores electrical charge, while an inductor stores electromagnetic energy; they behave as complementary/opposite components.",
+    "detail": "Capacitors oppose voltage changes and inductors oppose current changes, making them essential for filtering, energy storage, and frequency-dependent behavior.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A diode is a semiconductor device that allows current to flow in only one direction.",
+    "detail": "Diodes are used for rectification, protection, signal clamping, and voltage regulation in electronic circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Resistors use a color code system (colored bands) to indicate their resistance value.",
+    "detail": "Each color corresponds to a specific digit or multiplier, allowing identification of resistance without labels.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Through-hole components have leads that are inserted through holes in a printed circuit board (PCB) and soldered on the opposite side.",
+    "detail": "The leads pass through drilled holes in the PCB, distinguishing them from surface-mount components that sit on the board surface.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Larger physical resistor size indicates a higher power (wattage) rating.",
+    "detail": "A larger resistor body can dissipate more heat, allowing it to handle more power without damage (e.g., 1/4W vs 1/2W vs 5W).",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Repeatedly bending resistor leads back and forth will cause them to break due to metal fatigue.",
+    "detail": "The leads are made of thin wire that weakens with cyclic bending, so leads should be bent carefully and minimally.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Power resistors are used in circuits that generate high current, such as power supplies.",
+    "detail": "These applications require resistors with higher wattage ratings to safely dissipate the greater amounts of heat produced.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A digital multimeter (DMM) can measure voltage, current, resistance, and often additional properties like capacitance, frequency, temperature, and diode continuity.",
+    "detail": "A multimeter is the primary diagnostic tool for verifying component values and troubleshooting circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "An auto-ranging multimeter automatically scans through different measurement ranges to lock onto the correct scale before displaying the precise value.",
+    "detail": "Auto-ranging eliminates the need to manually select measurement ranges, reducing user error and speeding up measurements.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "When measuring resistance with a multimeter, the meter injects a known current through the component and senses the resulting voltage drop to calculate resistance.",
+    "detail": "This is an application of Ohm's law (R = V/I) performed internally by the multimeter to determine resistance values.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "trap",
+    "content": "When measuring resistance, touching both component leads with your fingers introduces your body's resistance (approximately 100-200 kΩ) in parallel, which can affect readings for high-value resistors.",
+    "detail": "For resistors much smaller than body resistance the error is negligible, but for high-value resistors the parallel body resistance causes a lower-than-actual reading.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Resistors are measured in ohms (Ω), which represents their impedance to current flow in a circuit.",
+    "detail": "Understanding resistance units and their scales (ohms, kilohms, megohms) is fundamental to reading both color codes and multimeter displays.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Ceramic capacitors are non-polarized components that can be inserted into a circuit in either direction.",
+    "detail": "Non-polarized components simplify PCB layout and assembly since orientation does not need to be tracked.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Ceramic capacitor values are often marked with a 3-digit code where the first two digits are the significant figures and the third digit is a multiplier, typically measured in picofarads.",
+    "detail": "For example, '101' means 10 × 10¹ = 100 pF; different vendors may use varying encoding schemes so verification with a meter is recommended.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Ceramic capacitors are the most widely used capacitor type, having largely replaced electrolytic capacitors in common usage.",
+    "detail": "Their small size, non-polarized nature, and reliability make them the default choice in modern circuit design.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A larger physical ceramic capacitor typically indicates a higher voltage rating compared to a smaller one of the same capacitance value.",
+    "detail": "Physical size correlates with the dielectric thickness and material, which determines the maximum voltage the capacitor can withstand.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Electrolytic capacitors are a distinct capacitor type with leads extending from the bottom, separate from ceramic capacitors.",
+    "detail": "Electrolytic capacitors have different electrical characteristics and construction compared to ceramic capacitors, making them suitable for different applications.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Electrolytic capacitors are polarized and must be installed with correct plus/minus orientation in a circuit.",
+    "detail": "Reverse polarity can cause the capacitor to explode, fail to function, or cause other damage to the circuit.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Radial capacitors have both leads extending from the same side (radially) of the component body.",
+    "detail": "This lead configuration allows the capacitor to sit flat on a PCB with leads passing through holes on the same side.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Capacitors are rated by both capacitance value (in microfarads) and maximum voltage they can withstand.",
+    "detail": "Capacitors of similar physical size can trade off capacitance for voltage rating, so both specs must be checked for a given application.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Tantalum capacitors are polarized, resin-dipped components commonly used in power supply input and output filtering.",
+    "detail": "They offer good electrical properties for power supply applications but have been increasingly replaced by lower-cost ceramic capacitors.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "High-voltage capacitors (e.g., 250V) are used in applications like AC-DC power supplies where high voltage tolerance is required.",
+    "detail": "Selecting a capacitor with adequate voltage rating is essential for safe operation in high-voltage circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Some tantalum capacitors have no markings indicating their value, requiring a capacitance meter to identify them.",
+    "detail": "Unmarked capacitors cannot be identified visually, so measuring with a capacitance meter or placing them in a known circuit is the only way to determine their value.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Polarized capacitors such as tantalum and electrolytic types must be measured with correct lead polarity.",
+    "detail": "Connecting a polarized capacitor in reverse can damage the component or give incorrect readings on a capacitance meter.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Capacitors have manufacturing tolerances (commonly 5%, 10%, or 20%) that cause measured values to differ from nominal values.",
+    "detail": "A capacitor labeled 1µF may measure 1.1µF and still be within its specified tolerance range, so exact readings are not expected.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "definition",
+    "content": "An inductor is a passive component consisting of a coil of wire that stores energy in a magnetic field.",
+    "detail": "Inductors oppose changes in current and are fundamental components in filters, power supplies, and RF circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "When measuring capacitance, body contact with both leads can introduce stray capacitance from the human body and affect readings.",
+    "detail": "Holding both leads simultaneously adds parallel capacitance through the body, so one lead should be held while only touching the other briefly.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "X2 capacitors are designed for AC circuits and can withstand high AC voltages.",
+    "detail": "They typically have small capacitance values (e.g., 0.47 µF) but high voltage ratings (e.g., 250V AC), making them suitable for AC line applications.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A precision low-value resistor (e.g., 0.01 Ω) is used for current sensing in circuits.",
+    "detail": "The small resistance has negligible effect on the circuit but generates a measurable voltage drop proportional to current, which can be read by an ADC to compute current flow.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "All inductors are fundamentally coils of wire, and wrapping them around a magnetic core (iron or ferrite) increases their inductance.",
+    "detail": "The magnetic core material increases flux linkage, making the inductor more effective than an air-core coil.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Inductance is proportional to the number of turns, core material properties, turn diameter, and wire thickness.",
+    "detail": "More turns and higher-permeability core materials increase inductance, while wire thickness determines the maximum current the inductor can handle.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A choke is another term for an inductor, commonly specified by inductance value and tolerance (e.g., 60 µH ±20%).",
+    "detail": "The term 'choke' is often used in power supply and filtering contexts to describe inductors that block high-frequency AC while passing DC.",
+    "importance": "nice-to-know",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Magnet wire used in inductors has a thin enamel coating (thousandths of an inch) instead of thick insulation to allow tight winding.",
+    "detail": "The thin coating prevents shorting between adjacent turns while maximizing the number of coils in a given volume.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Inductor color code follows a digit-digit-multiplier format where the first two digits are significant figures and the third digit is the power of ten multiplier in microhenries.",
+    "detail": "For example, a code reading 2-2-1 means 22 × 10¹ = 220 µH, similar to resistor color coding conventions.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Ferrite beads are used in circuits to block high-frequency noise by exploiting the frequency-dependent properties of inductors.",
+    "detail": "Inductors impede high-frequency signals more than low-frequency signals, making ferrite beads effective EMI suppression components.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Adding a ferrite core around a single wire increases its inductance through enhanced flux linkage.",
+    "detail": "The ferrite material concentrates the magnetic field, making even a single wire passing through it behave as a stronger inductor.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Surface mount inductors and other SMD components are mounted directly onto the PCB surface rather than inserted through drilled holes.",
+    "detail": "SMD components are significantly smaller than through-hole equivalents, enabling higher component density on circuit boards.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Surface mount component sizes are designated by numbers representing dimensions in millimeters (e.g., 0805, 0603, 0402, 0201).",
+    "detail": "The numeric code directly indicates the physical footprint size, which determines compatibility with PCB pads and assembly methods.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Surface mount components at 0402 size and below are generally too small to handle manually without magnification and specialized tools.",
+    "detail": "At these sizes, human dexterity and eyesight become limiting factors, requiring tweezers, microscopes, and precision soldering equipment.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Smaller surface mount components often have no printed markings indicating their value, making identification impossible if packaging is lost.",
+    "detail": "Without markings, the only way to determine component value is through measurement with a multimeter, so proper labeling and storage are essential.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Static electricity and other small-scale physical effects can cause surface mount components to stick to skin, clothing, or carpet and become lost.",
+    "detail": "At tiny scales, electrostatic forces dominate over gravity, so components can jump onto unintended surfaces and disappear during handling.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Measuring tiny surface mount components requires a multimeter with sharp, fine-tipped probes to make reliable contact with small solder pads.",
+    "detail": "Standard probe tips may be too large to contact both terminals simultaneously on small packages like 0402 or 0201, leading to inaccurate or impossible readings.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Surface mount resistors have tolerance ratings (e.g., 5%) that define acceptable deviation from nominal value.",
+    "detail": "A 4.7kΩ resistor reading 4.68kΩ is within 5% tolerance, confirming it is functioning correctly.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 10
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Surface mount components are categorized by standardized package sizes such as 0603.",
+    "detail": "The 0603 package is a very small surface mount footprint commonly used for capacitors and resistors in compact circuit designs.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 10
+    }
+  },
+  {
+    "type": "concept",
+    "content": "0.01 µF (10 nF) capacitors are commonly used in electronic circuits.",
+    "detail": "This value is a standard decoupling or bypass capacitor value frequently found in circuit designs.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 10
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Through-hole PCB designs are often preferred over surface mount for beginner-level electronics work.",
+    "detail": "Through-hole components are larger and easier to handle and solder, avoiding the difficulty of working with tiny surface mount packages.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 10
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Surface mount components can be temporarily held in place by finger moisture due to their small size and light weight.",
+    "detail": "This physical property is relevant when handling and placing tiny SMD components like 0603 packages during prototyping.",
+    "importance": "nice-to-know",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 10
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A transistor is an amplifier with three leads: collector, base, and emitter.",
+    "detail": "The lead arrangement varies by manufacturer, so you must consult the datasheet to determine correct pinout.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 11
+    }
+  },
+  {
+    "type": "concept",
+    "content": "An NPN transistor is a type of bipolar junction transistor where the naming convention (NPN vs PNP) indicates the semiconductor layer arrangement.",
+    "detail": "The NPN/PNP designation determines how the transistor is biased and how current flows through it in a circuit.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 11
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A diode is a semiconductor device that allows current to flow in only one direction.",
+    "detail": "This unidirectional property makes diodes essential for rectification, protection, and signal demodulation in circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 11
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Conventional current flows from the anode to the cathode of a diode, and the cathode is identified by a stripe (usually white or black) on the diode body.",
+    "detail": "Correctly identifying the cathode stripe is essential for proper diode orientation; reverse installation can damage the circuit.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 11
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Diode part numbers (e.g., 1N4001) specify properties such as maximum current rating and voltage tolerance depending on the manufacturer.",
+    "detail": "Selecting the correct diode part number ensures the component can handle the circuit's voltage and current requirements without failure.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 11
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Component leads (e.g., resistors) are designed to be bent only once before insertion into a circuit board.",
+    "detail": "Repeated bending work-hardens the metal leads, making them brittle and prone to breaking or damaging the board.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 12
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A modular breadboard contains internal metal clips that create electrical connections within columns.",
+    "detail": "These clips grip inserted component leads or wires, allowing current to flow between all holes in a given column.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 12
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Breadboard connection points require blunt-ended leads to make proper mechanical and electrical contact with internal clips.",
+    "detail": "Sharp or deformed leads may fail to engage the clips properly, resulting in unreliable or open connections.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 12
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Forcing oversized or unprepared leads into a breadboard can permanently damage the internal clips.",
+    "detail": "Stretched or deformed clips lose their spring tension, resulting in poor contact and unreliable connections for future use.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 12
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Component leads should be chamfered (filed or sanded) before insertion into a breadboard to prevent damage.",
+    "detail": "Chamfering removes burrs and tapers the lead end, allowing smooth insertion without spreading or damaging the internal clips.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 3,
+      "chunk_index": 12
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Digital electronics is a two-state system where signals are either on or off, unlike analog electronics which uses continuous signal ranges.",
+    "detail": "This binary abstraction allows complex information processing using only two discrete voltage levels instead of infinite analog values.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "In a standard 5V digital logic system, a digital 0 is represented by 0 volts and a digital 1 is represented by 5 volts.",
+    "detail": "These voltage thresholds define the logic levels that digital circuits interpret as binary states, forming the basis of all digital signal processing.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Common digital logic voltage levels include 5V, 3.3V, and 1.8V systems, each mapping 0V to logic 0 and the system voltage to logic 1.",
+    "detail": "Different voltage standards exist for different applications, with lower voltages (3.3V, 1.8V) common in modern low-power and high-speed digital designs.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Digital systems are built using analog components such as switches and amplifiers to process information as ones and zeros.",
+    "detail": "Understanding that digital logic is physically implemented with analog building blocks is essential for troubleshooting and designing real digital circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Digital signals such as square waves can be periodic (repeating patterns like 10101010) or non-periodic (irregular sequences).",
+    "detail": "Periodic digital signals are characterized by their frequency and duty cycle, which are key parameters in digital communication and clock design.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Analog-to-digital converters (ADCs) convert continuous analog signals into discrete digital values for processing.",
+    "detail": "This is the fundamental interface between the real analog world and digital processing systems.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Digital systems are never 100% accurate; they are always approximations of the analog domain.",
+    "detail": "Sampling, compression, and playback each introduce quantization and processing errors that must be evaluated against acceptable tolerances.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "The SI (International System of Units) defines base electrical units: time in seconds, charge in coulombs, force in newtons, and mass in kilograms.",
+    "detail": "Using consistent SI units prevents calculation errors and ensures compatibility across all electronic engineering work.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Mass (kilograms) and weight (newtons) are distinct quantities; weight is a force equal to mass times acceleration (N = kg·m/s²).",
+    "detail": "Confusing mass with weight leads to incorrect force and mechanical calculations in electromechanical system design.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Even traditionally analog devices like power supplies incorporate digital components for control functions.",
+    "detail": "Modern circuit design increasingly blends analog and digital domains, requiring engineers to understand both.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One Coulomb of charge equals approximately 6.24 × 10¹⁸ electrons.",
+    "detail": "This establishes the fundamental relationship between macroscopic charge units and individual electron count used in all electronics calculations.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One Ampere equals one Coulomb per second (6.24 × 10¹⁸ electrons passing a point per second).",
+    "detail": "Current is defined as the rate of charge flow, linking the abstract unit of Amperes to actual electron movement in circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One Volt equals one Joule per Coulomb of charge.",
+    "detail": "Voltage represents the energy per unit charge between two points, which is why it can be thought of as electrical pressure driving electron flow.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One Watt equals one Joule per second, representing energy expended per unit time.",
+    "detail": "Power quantifies the rate of energy consumption or delivery in a circuit, connecting voltage, current, and energy usage.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One Joule equals one Newton-meter, representing the work done by a one Newton force applied over one meter of distance.",
+    "detail": "This mechanical energy definition underpins electrical energy calculations, showing how electrical work relates to fundamental physical units.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One watt equals one joule per second, representing the rate of energy expended per unit time.",
+    "detail": "This definition connects power to energy and time, forming the basis for power calculations in circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "definition",
+    "content": "SI prefixes scale electrical values: milli (10⁻³), micro (10⁻⁶), nano (10⁻⁹), pico (10⁻¹²), femto (10⁻¹⁵), atto (10⁻¹⁸) for small values and kilo (10³), mega (10⁶), giga (10⁹), tera (10¹²), peta (10¹⁵), exa (10¹⁸) for large values.",
+    "detail": "Electrical engineering routinely deals with values spanning many orders of magnitude, making prefix fluency essential for reading schematics and datasheets.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Scientific notation expresses values as a mantissa times ten raised to an exponent, normalizing numbers for easier manipulation.",
+    "detail": "This representation allows engineers to quickly convert between raw numbers and standard SI prefixes for circuit calculations.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "To convert a value to use a standard SI prefix, shift the decimal point and adjust the exponent accordingly to maintain the same overall value.",
+    "detail": "For example, 3.0 × 10⁴ can be rewritten as 30 × 10³ (30 kilo) by moving the decimal one place right and reducing the exponent by one.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "definition",
+    "content": "The metric prefix 'kilo' (k) represents a factor of 10³ (1000).",
+    "detail": "This allows expressing large values like 30,000 watts compactly as 30 kW, which is standard practice in electronics documentation.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "definition",
+    "content": "The metric prefix 'mega' (M) represents a factor of 10⁶ (1,000,000).",
+    "detail": "Used for expressing very large values such as megawatts (MW) or megohms (MΩ) in circuit specifications.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "formula",
+    "content": "When multiplying numbers with the same base, add the exponents: 10ˣ × 10ʸ = 10ˣ⁺ʸ.",
+    "detail": "This rule is fundamental for manipulating scientific notation during unit conversions and impedance calculations.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "To convert a value to a larger metric prefix, divide the mantissa by the corresponding power of 10 and add that power to the exponent.",
+    "detail": "For example, converting 3.0 × 10⁴ W to megawatts requires dividing by 100 and changing the exponent to 10⁶, yielding 0.03 MW.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Normalized scientific notation requires the mantissa (coefficient) to be a number greater than or equal to 1 and less than 10.",
+    "detail": "This standardization ensures consistent representation of values, making it easier to compare magnitudes at a glance in engineering work.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Scientific notation normalization involves adjusting the decimal point and compensating by changing the exponent of 10.",
+    "detail": "Moving the decimal two places left requires multiplying the exponent by 100 (adding 2 to the exponent), e.g., 153.1259 × 10⁴ becomes 1.531259 × 10⁶.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "definition",
+    "content": "The prefix 'milli' (m) represents 10⁻³ and 'micro' (µ) represents 10⁻⁶ in SI unit notation.",
+    "detail": "Converting between prefixes requires scaling the numerical value: 5.0 mA = 5000 µA because you multiply by 1000 when going from milli to micro.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Anti-static foam is slightly conductive and has measurable resistance, allowing static charges to safely dissipate.",
+    "detail": "The foam's conductivity provides a path for charge to flow away from components and hands, preventing ESD damage to sensitive ICs.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A DIP (Dual Inline Package) is an IC package with two parallel rows of pins, such as a 14-pin DIP with 7 pins on each side.",
+    "detail": "Pin pitch (distance between pins) is a standardized specification that determines compatibility with breadboards and PCB footprints.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "definition",
+    "content": "The 74HC04 is a CMOS IC containing six independent digital inverters, with each inverter using two pins (input and output) plus power pins.",
+    "detail": "The 74HC prefix indicates High-speed CMOS logic family, which is a fundamental digital IC used for signal inversion in digital circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "definition",
+    "content": "CMOS stands for Complementary Metal Oxide Semiconductor, a type of integrated circuit technology.",
+    "detail": "CMOS chips are widely used in digital electronics due to their low power consumption and high noise immunity.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "In DIP (Dual In-line Package) chips, pin 1 is identified by a notch or indentation, and pins are numbered counterclockwise starting from the bottom-left.",
+    "detail": "Correct pin identification is essential for proper chip orientation on breadboards and to avoid damaging components with reversed power connections.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "In typical DIP chips, the bottom-left pin is ground and the top-right pin is VCC (power supply).",
+    "detail": "Knowing standard power pin placement helps quickly identify supply connections when prototyping with through-hole ICs on breadboards.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Microcontroller pins are often multiplexed, meaning a single pin can serve multiple functions such as GPIO, I2C, or SPI depending on configuration.",
+    "detail": "Pin multiplexing allows flexible peripheral assignment but requires careful configuration to avoid function conflicts in circuit design.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "TTL (Transistor-Transistor Logic) chips like the 74LS08 are robust and tolerant of overvoltage, making them suitable for prototyping and learning.",
+    "detail": "Their durability makes TTL logic families practical for breadboard experimentation where wiring mistakes are common.",
+    "importance": "nice-to-know",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 6
+    }
+  },
+  {
+    "type": "concept",
+    "content": "On a solderless breadboard, all holes within a single column (row) are electrically connected.",
+    "detail": "Components inserted into the same column share the same electrical node, enabling circuit connections without soldering.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Breadboard power rails are typically color-coded: red for positive voltage and blue (or black) for ground/negative.",
+    "detail": "Consistent use of color-coded rails prevents accidental reverse polarity connections and makes circuit troubleshooting easier.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "An EPROM (Erasable Programmable Read-Only Memory) is erased by exposing its quartz window to ultraviolet light.",
+    "detail": "High-energy UV photons deplete the charge stored in each memory cell, resetting the chip to its unprogrammed state.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "trap",
+    "content": "The quartz window on an EPROM must be covered with opaque tape after programming to prevent accidental erasure from ambient UV light.",
+    "detail": "Uncovered EPROMs can lose their stored data over time when exposed to sunlight or fluorescent lighting containing UV radiation.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Large ICs with many pins must be carefully aligned and fully seated into the breadboard, ensuring every pin makes contact.",
+    "detail": "Using fingers alone risks bending pins; a flat tool can gently lever the chip into place to ensure all pins bite into the breadboard contacts.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 7
+    }
+  },
+  {
+    "type": "concept",
+    "content": "IC pins can become trapezoidal (bent at angles) and must be squared up before insertion into a breadboard or socket.",
+    "detail": "Bent pins prevent proper electrical contact and can damage the socket or chip if forced.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Standard DIP IC packages have two common row-to-row pitch widths: 0.3 inches and 0.6 inches (measured between pin rows).",
+    "detail": "Knowing the pitch determines which breadboard width is needed and how many prototyping rows remain available on each side.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Narrow breadboards leave only two rows of holes on each side of a DIP IC, limiting prototyping space for connections.",
+    "detail": "Wider breadboards provide more rows per side, which is necessary when working with larger IC packages.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Ball Grid Array (BGA) is a surface-mount IC package type where connections are made via an array of solder balls underneath the chip.",
+    "detail": "BGA packages are extremely compact (e.g., 2x2mm) and require specialized adapter boards to convert to DIP-style pins for prototyping.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Surface-mount components (LEDs, transistors, ICs) must be soldered directly onto PCBs and cannot be used in breadboards without adapters.",
+    "detail": "Surface-mount technology enables high integration density but requires soldering equipment and techniques unlike through-hole components.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 8
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Integrated circuits (ICs) use tiny contact points (balls) underneath the chip package for electrical connections.",
+    "detail": "These contact points are many times smaller than a pen tip and must mate precisely with corresponding pads on a circuit board or socket.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "concept",
+    "content": "IC packages can have dozens of individual contact points (e.g., 20-25 pins) that must all align correctly for proper connection.",
+    "detail": "Each contact corresponds to a specific pin function (power, ground, signal, etc.) and misalignment causes circuit failure.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Solderless breadboards are used for prototyping circuits with ICs and other through-hole components.",
+    "detail": "They allow temporary circuit assembly without soldering, enabling rapid testing and modification of designs.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 4,
+      "chunk_index": 9
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Silver is a better electrical conductor than copper and gold.",
+    "detail": "Despite silver having the highest conductivity, copper is more commonly used due to cost, and gold is chosen for its resistance to rust and tarnish rather than its conductivity.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Gold is used in electronics primarily because it does not rust or tarnish, not because it is the best conductor.",
+    "detail": "Gold's conductivity is actually less than that of copper and silver, but its corrosion resistance makes it valuable for reliable electrical contacts.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Aluminum is used as a conductor in house wiring because it is a cheaper alternative to copper.",
+    "detail": "Aluminum alloys provide adequate conductivity at a significantly lower cost than copper, making them practical for large-scale wiring applications.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Carbon is used in resistor construction because it is a poor conductor.",
+    "detail": "Carbon's high resistivity makes it suitable for creating resistors that limit current flow in circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Semiconductors are the basis for diodes, transistors, and field-effect transistors used in all digital and analog electronics.",
+    "detail": "Understanding semiconductor properties is foundational to understanding how modern electronic components function.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Current is the movement of electrons from atom to atom through a conductor.",
+    "detail": "Understanding that current is electron flow is fundamental to analyzing any electronic circuit.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Voltage (potential field) is the force that pushes electrons through a conductor, creating current.",
+    "detail": "Voltage is the driving force in circuits; without a potential difference, no current flows.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A conductor has loosely bound valence electrons in its outer shell that can move easily between atoms or be ejected from orbit.",
+    "detail": "This explains why materials like copper allow current to flow freely, forming the basis of wiring and interconnects.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "An insulator has tightly bound outer electrons, often paired or with a full valence shell, preventing electron movement.",
+    "detail": "Insulators are essential for containing current flow to desired paths and preventing short circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Protons do not move in circuits; positive charge (holes) represents a lack of electrons, not actual proton movement.",
+    "detail": "This misconception leads to confusion about semiconductor behavior and current direction conventions.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "In an electric field, electrons (negatively charged) move toward the positive pole, while holes (absence of electrons) appear to move in the opposite direction toward the negative pole.",
+    "detail": "Understanding both electron current and hole current is essential for analyzing semiconductor behavior and device operation.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Silicon's outer shell has two unpaired electrons with the same spin (up spin) in its electronic configuration, making it a key semiconductor material.",
+    "detail": "Knowing silicon's valence electron structure explains how doping with other elements modifies its conductivity properties.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Current flow in a conductor occurs when an electric field excites outer-shell electrons, causing them to jump between atoms in the direction of the field.",
+    "detail": "This atomic-level view of conduction explains why materials with loosely bound outer electrons (like copper) are good conductors.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "An electron shell can only hold a fixed number of electrons (e.g., the S shell holds a maximum of 2 electrons), and electrons fill shells in a defined order (1s, 2s, 2p, etc.).",
+    "detail": "Shell filling order determines an element's electronic configuration and its electrical properties as conductor, semiconductor, or insulator.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Hole current is the apparent movement of empty electron states in the opposite direction of electron flow, analogous to gaps moving backward in traffic.",
+    "detail": "Hole current is a fundamental concept in semiconductor physics and is critical for understanding P-type material behavior and BJT/PN junction operation.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Conventional current assumes positive charge carriers (holes) moving in the opposite direction of actual electron flow.",
+    "detail": "Most colleges and circuit analysis use conventional current as the standard sign convention, so direction of current arrows and polarity of voltage drops must be consistent with this convention.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Electron current refers to the actual physical movement of electrons, while conventional current refers to the movement of holes (absence of electrons).",
+    "detail": "When analyzing actual particle behavior or charge, you must think in terms of electrons; when performing circuit analysis, you use conventional current (holes).",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Silicon is a semiconductor with four valence electrons, making it a poor conductor and poor insulator in its pure form.",
+    "detail": "Silicon's intermediate conductivity can be modified through doping to create useful electronic components like diodes and transistors.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Doping silicon with boron (3 valence electrons, trivalent) creates a P-type semiconductor with excess holes.",
+    "detail": "Boron atoms in the silicon crystal lattice create a deficiency of electrons, producing holes that act as positive charge carriers.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Doping silicon with phosphorus (5 valence electrons, pentavalent) creates an N-type semiconductor with excess free electrons.",
+    "detail": "Phosphorus atoms contribute an extra electron to the crystal lattice, providing free negative charge carriers for conduction.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Adding phosphorus atoms to a silicon crystal lattice creates an N-type semiconductor by introducing extra electrons.",
+    "detail": "Phosphorus has five valence electrons compared to silicon's four, so each phosphorus atom contributes one free electron, making the bulk material net negatively charged.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Adding boron atoms to a silicon crystal lattice creates a P-type semiconductor by introducing electron deficiencies (holes).",
+    "detail": "Boron has three valence electrons compared to silicon's four, creating a net positive charge relative to the surrounding silicon lattice.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Semiconductor doping is performed by heating phosphorus or boron gas at high temperature so it diffuses into pure silicon.",
+    "detail": "The concentration and depth of diffusion are controlled by adjusting gas pressure and temperature, allowing precise tuning of semiconductor properties.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Doping is the process of intentionally introducing impurity atoms (such as phosphorus or boron) into a pure semiconductor crystal to alter its electrical properties.",
+    "detail": "This controlled addition of impurities determines whether the semiconductor behaves as N-type or P-type and sets its conductivity level.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 5,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Electric current is defined as the amount of charge (Q) passing a point per unit of time, mathematically expressed as I = dQ/dt.",
+    "detail": "This fundamental definition links charge movement to the measurable quantity of current in any conductor.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "One ampere (1 A) is defined as one Coulomb of charge passing a point in one second (1 A = 1 C/s).",
+    "detail": "This establishes the SI unit relationship between charge and current for all circuit calculations.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A Coulomb represents a specific large number of electrons, serving as the standard unit of electric charge.",
+    "detail": "Understanding charge quantification is essential for calculating current flow in circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Conventional current direction is defined as the flow of positive charge (holes), which is opposite to the actual direction of electron flow.",
+    "detail": "This convention is used universally in circuit analysis and schematic diagrams, so understanding the distinction prevents confusion when analyzing circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A current as small as 0.1 A (one-tenth of an ampere) can be lethal to a human.",
+    "detail": "This highlights the practical safety significance of even relatively small current values in circuit design and handling.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Conventional current flows from positive to negative, opposite to actual electron flow.",
+    "detail": "This convention is used universally in circuit analysis and schematic diagrams, so all current directions and signs are based on positive charge movement.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A negative current value with a reversed reference arrow is equivalent to a positive current value with the original arrow direction.",
+    "detail": "For example, +5A flowing right equals -5A flowing left; this sign consistency is essential for correct circuit analysis using KVL and KCL.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "In circuit analysis, it is preferable to assign current arrow directions from plus to minus to yield positive current values.",
+    "detail": "Positive values reduce sign errors during analysis and make it easier to verify results intuitively.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A single gate in a modern microprocessor may draw as little as 1 nanoamp to 1 picoamp of current.",
+    "detail": "This illustrates the extremely small current scales in digital ICs, which is critical for understanding power consumption and thermal design in processors.",
+    "importance": "nice-to-know",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Standard small LEDs typically operate at 10-20 milliamps, while high-power flashlight LEDs can draw hundreds of milliamps or more.",
+    "detail": "Knowing typical LED current requirements is essential for selecting appropriate current-limiting resistors and power supply sizing in circuit design.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "TTL logic gates can typically source or sink 5 to 20 milliamps of output current per gate.",
+    "detail": "This limited current capability means TTL gates cannot directly drive high-current loads like motors or relays without additional driver circuitry.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Quiescent current is the current a digital IC draws when it is idle and not actively switching or driving loads.",
+    "detail": "Quiescent current is typically in the hundreds of microamps or less, and is significantly lower for CMOS technology compared to TTL.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "formula",
+    "content": "Electrical power is calculated as P = V × I (power equals voltage times current).",
+    "detail": "This fundamental relationship allows you to determine current draw from known power and voltage ratings, e.g., a 1000W supply at 120V draws approximately 8.3A.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Standard US AC wall outlets are rated for 10 to 20 amps at 120 volts RMS.",
+    "detail": "This limits the maximum power available from a single outlet to approximately 1200-2400 watts, which is why high-power devices like hairdryers (~1500W) approach the outlet's current limit.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "CMOS logic gates consume significantly less quiescent current than TTL gates.",
+    "detail": "This makes CMOS the preferred technology for battery-powered and low-power applications where minimizing idle current draw is essential.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Voltage is defined as the potential energy per unit charge.",
+    "detail": "This fundamental definition links the concept of voltage to the work done moving charge through an electric field, forming the basis for understanding circuit behavior.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Placing a charge in an electric field results in a force being exerted on that charge.",
+    "detail": "This force is the mechanism by which voltage drives current flow in circuits, as the electric field pushes charges through conductors.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A capacitor consists of two parallel plates with opposite charges separated by a dielectric (space, air, or other material), creating an electric field between them.",
+    "detail": "Understanding the parallel plate model is essential for analyzing capacitance, energy storage, and electric field behavior in circuits.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Moving a charge between two points in an electric field changes its potential energy, and this change in potential energy per unit charge is voltage.",
+    "detail": "This explains why voltage is measured between two points (not at a single point) and why it represents the energy available to drive current.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Voltage (ΔV) is defined as the change in potential energy per unit charge.",
+    "detail": "This fundamental definition connects the concepts of energy and charge to establish voltage as a measurable electrical quantity.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "formula",
+    "content": "One volt equals one joule per one coulomb (1 V = 1 J / 1 C).",
+    "detail": "This unit relationship allows engineers to calculate voltage when energy and charge values are known.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "One joule of energy is required to move one coulomb of charge through a potential difference of one volt.",
+    "detail": "This relationship quantifies the energy cost of moving charge, which is essential for power and energy calculations in circuits.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Voltage can be modeled as an electrical pressure that drives charge through space.",
+    "detail": "This analogy helps in understanding how voltage acts as the motivating force in a circuit, similar to how pressure drives fluid flow.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 6,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Batteries generate voltage through a chemical reaction between dissimilar metals or chemicals.",
+    "detail": "Understanding the electrochemical basis of batteries helps in selecting the right battery chemistry for specific applications.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Primary cells are non-rechargeable batteries, while secondary cells are rechargeable batteries.",
+    "detail": "This distinction determines whether a battery can be reused or must be replaced after discharge.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Batteries have internal resistance that causes voltage to drop when a load is applied.",
+    "detail": "The internal resistance acts as a series resistor inside the battery, reducing the terminal voltage under load compared to the unloaded (open-circuit) voltage.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Battery capacity measured in milliamp-hours (mAh) indicates how much current a battery can supply over time (e.g., 2400 mAh means 2400 mA for one hour).",
+    "detail": "This rating provides a practical estimate of battery runtime but actual capacity varies with discharge rate and conditions.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "definition",
+    "content": "The positive terminal of a battery is called the anode and the negative terminal is called the cathode.",
+    "detail": "Correct terminal identification is essential for proper circuit connection and to avoid damage to components.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Battery capacity in milliamp-hours (mAh) only describes current over time and does not account for voltage, which can drop significantly during discharge.",
+    "detail": "Watt-hours is a more accurate measure of stored energy because it incorporates both voltage and current, unlike mAh alone.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Nickel-metal hydride (NiMH) AA cells have a nominal voltage of 1.2V, which is lower than the 1.5V of alkaline primary cells.",
+    "detail": "Some devices designed for 1.5V alkaline cells may not function correctly with 1.2V NiMH rechargeables due to the lower voltage.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The energy storage capacity of a battery is directly proportional to its physical volume and determined by its chemistry.",
+    "detail": "A AAA NiMH cell stores less energy than an AA NiMH cell (e.g., 800 mAh vs 2800 mAh) because of its smaller volume despite identical chemistry and voltage.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A 9V battery uses snap connectors where the larger contact is negative and the smaller contact is positive.",
+    "detail": "Correctly identifying polarity on 9V batteries is essential to avoid damaging circuits when connecting power.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "A quadruple-A (AAAA) battery is designated as E96 or LR61 and has a different diameter and length than a standard AAA cell.",
+    "detail": "Knowing alternate battery designations helps identify correct replacements when standard naming conventions are not used.",
+    "importance": "nice-to-know",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A 9V alkaline battery contains six 1.5V cells connected in series internally.",
+    "detail": "Series connection adds voltages: 6 × 1.5V = 9V, demonstrating how series cells sum their individual voltages.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "An A27 battery provides 12V but can deliver very little current.",
+    "detail": "This illustrates that voltage and current capability are independent battery characteristics; high voltage does not imply high current capacity.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "trap",
+    "content": "A battery showing correct open-circuit voltage may still be depleted and unable to supply current under load.",
+    "detail": "Internal resistance increases as a battery depletes, causing voltage to collapse under load even though no-load voltage reads normally.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Nickel-metal hydride (NiMH) rechargeable batteries have a nominal voltage of 1.2V, lower than the 1.5V of standard alkaline cells.",
+    "detail": "This voltage difference matters when substituting NiMH cells for alkaline in circuits designed around 1.5V per cell.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A multimeter measuring DC voltage uses the common and voltage input jacks; current measurement requires moving the red lead to a dedicated current jack.",
+    "detail": "Using the wrong jack for current measurement can damage the meter or blow its internal fuse.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 2
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Reversing multimeter probes on a DC voltage source displays a negative sign but does not damage the meter.",
+    "detail": "The meter simply reads the voltage with inverted polarity, showing the same magnitude with a negative sign.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A real battery is modeled as an ideal voltage source in series with an internal resistance (RB).",
+    "detail": "This internal resistance causes voltage drop under load and explains why batteries read lower voltage when supplying current.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "To measure current, the multimeter must be placed in series within the circuit, not in parallel.",
+    "detail": "Current measurement requires the meter to become part of the current path so all measured current flows through it.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A fully depleted battery can read near zero volts (e.g., 44 millivolts on a 9V battery) when measured with a multimeter.",
+    "detail": "Open-circuit voltage measurement reveals battery state of charge; a dead battery cannot maintain its rated voltage.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 3
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A real battery can be modeled as an ideal voltage source in series with an internal resistance.",
+    "detail": "This internal resistance causes voltage to drop when current is drawn, reducing the terminal voltage below the source voltage.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "When measuring voltage with a voltmeter, very little current flows through the meter, so minimal voltage drops across the battery's internal resistance.",
+    "detail": "This is why an unloaded voltmeter reading shows nearly the full source voltage of the battery.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "When a battery supplies high current, the voltage drop across its internal resistance increases, reducing the measured terminal voltage.",
+    "detail": "For example, a 1.5V battery with 1 ohm internal resistance delivering 1A will show only 0.5V at the terminals.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "To measure current, an ammeter must be placed in series with the circuit, unlike a voltmeter which is placed in parallel.",
+    "detail": "The ammeter becomes part of the current path so all circuit current flows through it for measurement.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Connecting a meter in amp mode across a voltage source without a load resistor creates a near-short circuit, limited only by the battery's internal resistance and conductor resistance.",
+    "detail": "This can cause dangerously high current flow since there is no external resistance to limit it.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 4
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A battery's internal impedance causes a voltage drop proportional to the current drawn from it.",
+    "detail": "This means the terminal voltage of a real battery decreases under load, modeled as an ideal voltage source in series with an internal resistance.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "trap",
+    "content": "When measuring current, start with the highest current range (amps) on the multimeter before switching to lower ranges.",
+    "detail": "Attempting to measure a high current on a milliamp range will show out-of-range and could damage the meter; the red probe must also be moved to the dedicated amp socket.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A battery's internal resistance increases with temperature during high-current discharge, causing current to drop over time.",
+    "detail": "As current flows through the internal impedance, power dissipation heats the battery, raising its internal resistance and reducing available current.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Batteries can supply very high currents for short durations but cannot sustain them continuously.",
+    "detail": "Small batteries like AAA cells can momentarily deliver several amps, but sustained high-current draw causes rapid voltage drop and potential damage.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A battery's short-circuit current capability varies significantly with battery size and chemistry.",
+    "detail": "Larger cells (e.g., D-cell) can sustain higher short-circuit currents longer than smaller cells (e.g., AAA) due to lower internal impedance and greater thermal mass.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 7,
+      "chunk_index": 5
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Connecting batteries in series adds their voltages together while keeping the same current capacity.",
+    "detail": "Four 1.5V cells in series produce 6V total, as each cell adds its voltage like sequential pressure stages.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "Connecting batteries in parallel keeps the same voltage but increases the available current capacity.",
+    "detail": "Four 1.5V cells in parallel still output 1.5V, but the load current is distributed across all four cells.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A 9V battery contains six 1.5V cells connected in series internally.",
+    "detail": "The six small AAAA-sized cells sum to 9V (6 × 1.5V), demonstrating the series voltage addition principle in a common form factor.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Batteries in parallel do not share current equally due to slight differences in discharge level and internal resistance.",
+    "detail": "Even identical batteries have different internal impedances, causing uneven current distribution (e.g., one supplies 100mA while another supplies 80mA).",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "concept",
+    "content": "The real-world model of a battery is an ideal voltage source in series with an internal resistance.",
+    "detail": "When batteries are placed in parallel, their internal resistances also appear in parallel, affecting how current is distributed among cells.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 0
+    }
+  },
+  {
+    "type": "trap",
+    "content": "When connecting voltage sources in series, polarities must alternate consistently (minus-plus, minus-plus) so voltages add constructively.",
+    "detail": "Reversing polarity of one source in a series string causes voltages to subtract rather than add, potentially creating unintended voltage levels or short-circuit conditions.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "trap",
+    "content": "When connecting voltage sources in parallel, all positive terminals must connect together and all negative terminals must connect together.",
+    "detail": "Mismatched polarities in parallel connections create a direct short circuit through the internal resistances of the sources, causing high current flow and potential damage.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "concept",
+    "content": "A real battery can be modeled as an ideal voltage source in series with an internal resistance.",
+    "detail": "This internal resistance limits current delivery and causes voltage drop under load, which is critical for understanding real-world circuit behavior versus idealized analysis.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "definition",
+    "content": "Ground is a reference point in a circuit, typically defined as zero volts, used as a common return path for current.",
+    "detail": "Establishing a ground reference allows consistent voltage measurements throughout a circuit and serves as the baseline for all node voltage calculations.",
+    "importance": "important",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 1
+    }
+  },
+  {
+    "type": "trap",
+    "content": "Connecting two batteries in parallel with opposite polarities creates a series loop through their internal resistances, causing large circulating current.",
+    "detail": "Even small internal resistances result in very high currents when batteries are connected with opposing polarities, leading to overheating, damage, or fire hazard.",
+    "importance": "critical",
+    "source": {
+      "section_id": "S02",
+      "lecture_num": 8,
+      "chunk_index": 1
+    }
+  }
+]
