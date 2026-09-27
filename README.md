@@ -16,7 +16,7 @@ programs. A fix made once is a fix everywhere.
 > is not rendered on the page at all: on 224 of the pages that existed at the time it produced four
 > or more identical "not written yet" notices, so the gaps are reported as data instead.
 >
-> **Current state:** 1261 questions in both languages, 1248 shipping as Ukrainian flashcards and
+> **Current state:** 1876 questions in both languages, 1863 shipping as Ukrainian flashcards and
 > 1055 as English ones, and the site is live at the link above. Every question has a Ukrainian short
 > answer and 1055 have an English one; 235 also carry a written detailed explanation in both
 > languages, 49 of them complete. For the rest, the detailed explanation is still `TODO`. The
@@ -51,6 +51,7 @@ measured on real collections, not assumed – see `meta/measurements.md`.
 | `site/` | Astro Starlight – the only Node part |
 | `tools/` | the Python pipeline |
 | `tests/` | automated quality gates and regression tests |
+| `imports/` | source material of imported decks, kept as evidence; not a build input |
 | `requirements/` | reproducible Python dependency lock |
 | `meta/plan.md` | what happens next |
 
@@ -69,5 +70,8 @@ they are used in two different ways. The Python material uses them only to find 
 asking; its wording is written for this project. The `embedded/` track is different: 853 of its
 questions were imported from the owner's own two decks, their Ukrainian short answers keep the
 source's wording, normalised rather than rewritten, and their English short answers are translations
-of that same wording rather than independently written text. Every such question names its origin in
-`sources`, and `meta/questions.md` records which is which.
+of that same wording rather than independently written text. Another 615 are the owner's flashcards for
+the Udemy course *Crash Course Electronics and PCB Design* (course sections 2-4, the
+`embedded/electronics-course-*` sections), moved as is; their English files so far carry only a
+translated title. Every such question names its origin in `sources`, and `meta/questions.md` records
+which is which.
