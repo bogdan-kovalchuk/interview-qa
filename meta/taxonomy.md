@@ -250,6 +250,11 @@ embedded/
   safety-and-standards/         MISRA C/C++, IEC 61508, ISO 26262, DO-178C, AUTOSAR
   connectivity/                 BLE, Wi-Fi, LoRa, MQTT, Modbus
   hardware-basics/              для прошивників: рівні, підтяжки, живлення, осцилограма
+  # Картки курсу Udemy «Crash Course Electronics and PCB Design» (Andre LaMothe),
+  # розділи 2-4 курсу, перенесені з колоди курсу як є (meta/questions.md §6).
+  electronics-course-introduction/     розділ 2: компоненти, закон Ома, джерела, діоди, BJT, MOSFET, інструменти
+  electronics-course-circuit-analysis/ розділ 3: KCL/KVL, змішані кола, подільники напруги, SPICE
+  electronics-course-ee101/            розділ 4: перемикачі, RC/RL, фазори, фільтри, живлення, каскади, логіка, 555
   linux-embedded/               P2: Yocto, buildroot, device tree, драйвери
 ```
 

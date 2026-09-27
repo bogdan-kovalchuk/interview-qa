@@ -95,6 +95,9 @@ section_labels_nav:
   embedded/safety-and-standards:  {en: "Safety and standards", uk: "Безпека і стандарти"}
   embedded/connectivity:          {en: "Connectivity", uk: "Зв'язок"}
   embedded/hardware-basics:       {en: "Hardware basics", uk: "Основи апаратури"}
+  embedded/electronics-course-introduction:     {en: "Electronics course: introduction to electronics", uk: "Курс електроніки: вступ до електроніки"}
+  embedded/electronics-course-circuit-analysis: {en: "Electronics course: circuit analysis", uk: "Курс електроніки: аналіз кіл"}
+  embedded/electronics-course-ee101:            {en: "Electronics course: electrical engineering 101", uk: "Курс електроніки: Electrical Engineering 101"}
   python/concurrency-and-gil:         {en: Concurrency and GIL,      uk: Конкурентність і GIL}
   python/practical-coding:            {en: Practical coding,         uk: Практичні задачі}
   cpp/pointers-and-references:        {en: Pointers and references,  uk: Вказівники й посилання}
@@ -232,6 +235,9 @@ section_prefixes:
   embedded/safety-and-standards:  safety
   embedded/connectivity:          conn
   embedded/hardware-basics:       hwbasic
+  embedded/electronics-course-introduction:     elintro
+  embedded/electronics-course-circuit-analysis: elcirc
+  embedded/electronics-course-ee101:            elee
   cs/complexity-and-analysis:       cmplx
   python/concurrency-and-gil:       gil
   python/practical-coding:          prac
