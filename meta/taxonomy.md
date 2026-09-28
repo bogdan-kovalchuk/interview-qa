@@ -25,6 +25,7 @@ content/{en,uk}/
   engineering/                 P0   git, тести, CI/CD, code review, SDLC
   system-design/               P1
   embedded/                    P1   доменний трек
+  electronics/                 P1   доменний трек (схемотехніка, компоненти, PCB)
   data-science/                P1   доменний трек
   machine-learning/            P2   доменний трек
   data-engineering/            P2   доменний трек
@@ -48,7 +49,7 @@ Starlight дозволяє описати групи навігації неза
 ```
 Languages          → python, cpp
 Foundations        → cs, systems, databases
-Specializations    → embedded, data-science, machine-learning,
+Specializations    → embedded, electronics, data-science, machine-learning,
                      data-engineering, backend, devops, qa-automation
 Engineering        → engineering, system-design
 Interview          → behavioral, start-here
@@ -260,6 +261,24 @@ embedded/
   electronics-course-pcb-design/       розділ 7: основи PCB, CircuitMaker, розбір плат
   electronics-course-circuitmaker-projects/ розділ 8: схеми, розводка й Gerber у CircuitMaker
   linux-embedded/               P2: Yocto, buildroot, device tree, драйвери
+```
+
+---
+
+## 8a. `electronics/` – P1
+
+Картки курсу Udemy «Crash Course Electronics and PCB Design» (Andre LaMothe),
+розділи 2–8 курсу (meta/questions.md §6).
+
+```
+electronics/
+  introduction/                 розділ 2: компоненти, закон Ома, джерела, діоди, BJT, MOSFET, інструменти
+  circuit-analysis/             розділ 3: KCL/KVL, змішані кола, подільники напруги, SPICE
+  ee101/                        розділ 4: перемикачі, RC/RL, фазори, фільтри, живлення, каскади, логіка, 555
+  digital-logic/                розділ 5: булева алгебра, системи числення, часові діаграми, TTL
+  digital-integration/          розділ 6: SSI/MSI/LSI, комбінаційні й послідовні мікросхеми 74xx
+  pcb-design/                   розділ 7: основи PCB, CircuitMaker, розбір плат
+  circuitmaker-projects/        розділ 8: схеми, розводка й Gerber у CircuitMaker
 ```
 
 ---

@@ -217,7 +217,7 @@
           "type": "array"
         },
         "id": {
-          "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-[a-z0-9]{3,8}-[0-9]{4}$",
+          "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa|elec)-[a-z0-9]{3,8}-[0-9]{4}$",
           "title": "Id",
           "type": "string"
         },
@@ -227,7 +227,7 @@
         "prerequisites": {
           "default": [],
           "items": {
-            "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-[a-z0-9]{3,8}-[0-9]{4}$",
+            "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa|elec)-[a-z0-9]{3,8}-[0-9]{4}$",
             "type": "string"
           },
           "title": "Prerequisites",
@@ -252,7 +252,7 @@
         "see_also": {
           "default": [],
           "items": {
-            "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-[a-z0-9]{3,8}-[0-9]{4}$",
+            "pattern": "^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa|elec)-[a-z0-9]{3,8}-[0-9]{4}$",
             "type": "string"
           },
           "title": "See Also",

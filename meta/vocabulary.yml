@@ -59,6 +59,7 @@ card_labels:
 # дев'ятьма пілотами; решта додається разом із секціями, коли вони наповнюються.
 track_labels:
   embedded:      {en: Embedded,        uk: Вбудовані системи}
+  electronics:   {en: Electronics,     uk: Електроніка}
   python:        {en: Python,          uk: Python}
   cpp:           {en: "C/C++",         uk: "C/C++"}
   cs:            {en: Computer science, uk: Computer science}
@@ -102,6 +103,13 @@ section_labels_nav:
   embedded/electronics-course-digital-integration: {en: "Electronics course: digital integration", uk: "Курс електроніки: цифрові інтегральні схеми"}
   embedded/electronics-course-pcb-design:       {en: "Electronics course: PCB design", uk: "Курс електроніки: проєктування PCB"}
   embedded/electronics-course-circuitmaker-projects: {en: "Electronics course: CircuitMaker projects", uk: "Курс електроніки: проєкти в CircuitMaker"}
+  electronics/introduction:          {en: "Introduction to electronics", uk: "Вступ до електроніки"}
+  electronics/circuit-analysis:      {en: "Circuit analysis",             uk: "Аналіз кіл"}
+  electronics/ee101:                 {en: "Electrical engineering 101",   uk: "Electrical Engineering 101"}
+  electronics/digital-logic:         {en: "Digital logic",                uk: "Цифрова логіка"}
+  electronics/digital-integration:   {en: "Digital integration",          uk: "Цифрові інтегральні схеми"}
+  electronics/pcb-design:            {en: "PCB design",                   uk: "Проєктування PCB"}
+  electronics/circuitmaker-projects: {en: "CircuitMaker projects",        uk: "Проєкти в CircuitMaker"}
   python/concurrency-and-gil:         {en: Concurrency and GIL,      uk: Конкурентність і GIL}
   python/practical-coding:            {en: Practical coding,         uk: Практичні задачі}
   cpp/pointers-and-references:        {en: Pointers and references,  uk: Вказівники й посилання}
@@ -246,6 +254,13 @@ section_prefixes:
   embedded/electronics-course-digital-integration: elinteg
   embedded/electronics-course-pcb-design:       elpcb
   embedded/electronics-course-circuitmaker-projects: elcmproj
+  electronics/introduction:          elintro
+  electronics/circuit-analysis:      elcirc
+  electronics/ee101:                 elee
+  electronics/digital-logic:         eldig
+  electronics/digital-integration:   elinteg
+  electronics/pcb-design:            elpcb
+  electronics/circuitmaker-projects: elcmproj
   cs/complexity-and-analysis:       cmplx
   python/concurrency-and-gil:       gil
   python/practical-coding:          prac

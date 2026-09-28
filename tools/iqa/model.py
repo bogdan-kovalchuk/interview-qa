@@ -22,7 +22,7 @@ import yaml
 KEBAB_CASE = r"^[a-z0-9]+(?:-[a-z0-9]+)*$"
 SECTION_PATH = r"^[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$"
 QUESTION_ID = (
-    r"^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa)-"
+    r"^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa|elec)-"
     r"[a-z0-9]{3,8}-[0-9]{4}$"
 )
 

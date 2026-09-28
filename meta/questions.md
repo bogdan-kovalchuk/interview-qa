@@ -58,7 +58,7 @@ content/en/cpp/frameworks/qt/signal-slot-connection-types.md      # третій
 ### Схема ID
 
 Префікси треків фіксовані: `py`, `cpp`, `cs`, `sys`, `db`, `eng`, `sd`, `bhv`, `emb`, `ds`, `ml`,
-`de`, `be`, `ops`, `qa`.
+`de`, `be`, `ops`, `qa`, `elec`.
 
 Префікс секції – скорочення її назви до 3–8 літер, зафіксоване один раз у `meta/vocabulary.yml`
 (префікс належить секції, а не питанню).
