@@ -96,13 +96,6 @@ section_labels_nav:
   embedded/safety-and-standards:  {en: "Safety and standards", uk: "Безпека і стандарти"}
   embedded/connectivity:          {en: "Connectivity", uk: "Зв'язок"}
   embedded/hardware-basics:       {en: "Hardware basics", uk: "Основи апаратури"}
-  embedded/electronics-course-introduction:     {en: "Electronics course: introduction to electronics", uk: "Курс електроніки: вступ до електроніки"}
-  embedded/electronics-course-circuit-analysis: {en: "Electronics course: circuit analysis", uk: "Курс електроніки: аналіз кіл"}
-  embedded/electronics-course-ee101:            {en: "Electronics course: electrical engineering 101", uk: "Курс електроніки: Electrical Engineering 101"}
-  embedded/electronics-course-digital-logic:    {en: "Electronics course: digital logic", uk: "Курс електроніки: цифрова логіка"}
-  embedded/electronics-course-digital-integration: {en: "Electronics course: digital integration", uk: "Курс електроніки: цифрові інтегральні схеми"}
-  embedded/electronics-course-pcb-design:       {en: "Electronics course: PCB design", uk: "Курс електроніки: проєктування PCB"}
-  embedded/electronics-course-circuitmaker-projects: {en: "Electronics course: CircuitMaker projects", uk: "Курс електроніки: проєкти в CircuitMaker"}
   electronics/introduction:          {en: "Introduction to electronics", uk: "Вступ до електроніки"}
   electronics/circuit-analysis:      {en: "Circuit analysis",             uk: "Аналіз кіл"}
   electronics/ee101:                 {en: "Electrical engineering 101",   uk: "Electrical Engineering 101"}
@@ -247,13 +240,6 @@ section_prefixes:
   embedded/safety-and-standards:  safety
   embedded/connectivity:          conn
   embedded/hardware-basics:       hwbasic
-  embedded/electronics-course-introduction:     elintro
-  embedded/electronics-course-circuit-analysis: elcirc
-  embedded/electronics-course-ee101:            elee
-  embedded/electronics-course-digital-logic:    eldig
-  embedded/electronics-course-digital-integration: elinteg
-  embedded/electronics-course-pcb-design:       elpcb
-  embedded/electronics-course-circuitmaker-projects: elcmproj
   electronics/introduction:          elintro
   electronics/circuit-analysis:      elcirc
   electronics/ee101:                 elee
