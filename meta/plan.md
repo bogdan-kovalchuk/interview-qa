@@ -156,10 +156,10 @@ ID. Три нові питання embedded, додані 2026-09-08 для по
 ## 7c. Картки курсу електроніки – **перенесено й доповнено 2026-09-27, 828 питань (розділи 2–8)**
 
 Власні картки власника до курсу Udemy *Crash Course Electronics and PCB Design* (розділи 2–8 курсу)
-перенесені та доповнені: 310 питань у `embedded/electronics-course-introduction` (розділ 2),
-46 у `embedded/electronics-course-circuit-analysis` (розділ 3), 263 у `embedded/electronics-course-ee101` (розділ 4),
-38 у `embedded/electronics-course-digital-logic` (розділ 5), 73 у `embedded/electronics-course-digital-integration` (розділ 6),
-25 у `embedded/electronics-course-pcb-design` (розділ 7) і 73 у `embedded/electronics-course-circuitmaker-projects` (розділ 8).
+перенесені в окремий трек `electronics` та доповнені: 310 питань у `electronics/introduction` (розділ 2),
+46 у `electronics/circuit-analysis` (розділ 3), 263 у `electronics/ee101` (розділ 4),
+38 у `electronics/digital-logic` (розділ 5), 73 у `electronics/digital-integration` (розділ 6),
+25 у `electronics/pcb-design` (розділ 7) і 73 у `electronics/circuitmaker-projects` (розділ 8).
 Українська `Short answer` – це Back картки; змінено лише форму (перелік – `imports/electronics-course/README.md`).
 Англійські файли мають перекладений `title` і `TODO` решту, тож англійських карток із цих секцій ще
 немає. Шість карток розділу 1 курсу – про сам курс, а не про електроніку, – питаннями не стали.
