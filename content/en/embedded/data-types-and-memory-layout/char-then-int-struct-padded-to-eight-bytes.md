@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0010
-title: "What size does this have on a 32-bit Cortex-M? `struct { char c; int x; };`"
-description: "The compiler inserts padding before the int, so struct { char; int; } takes 8 bytes, not 5."
+title: "Under AAPCS32, what size does `struct { char c; int x; }` have?"
+description: "Under AAPCS32, padding before the 4-byte int makes this structure occupy 8 bytes."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,18 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: aapcs32-layout
+    title: "Procedure Call Standard for the Arm Architecture (AAPCS32)"
+    url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
+    accessed: 2026-10-04
+    kind: spec
+    version: "current"
+    applicability: "Type sizes and alignment of composites under AAPCS32; the struct result applies only to this ABI and without packing overrides."
 ---
 
 ## Short answer
 
-**8 bytes** (not 5!).
-
-Layout: `char c` @ offset 0 (1B) -> <span class="warn">3 bytes of padding</span> -> `int x` @ offset 4 (4B). Trailing padding = 0.
-
-Padding is inserted so that `int` sits at an address divisible by 4 (alignment requirement). Check: `offsetof(s, x) == 4`; always use `sizeof()` and `offsetof()` to analyze layout.[^embeddedinterviewlab]
+Under AAPCS32, `struct { char c; int x; }` is expected to occupy 8 bytes: `c` has offset 0, `x` offset 4, and there are 0 bytes of trailing padding. This follows from a 1-byte `char`, a 4-byte `int` aligned to 4 bytes, and struct alignment matching its strictest member; this is a target ABI result, not a general C language guarantee. Check the actual layout with `sizeof` and `offsetof`.[^aapcs32-layout]
 
 ## Detailed explanation
 

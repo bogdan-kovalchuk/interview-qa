@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Signed integer overflow -> undefined behavior</span> per the C standard (§6.5).
+In `x++`, integer promotions convert `int8_t` to `int`, so `127 + 1` does not overflow `int`; converting 128 back to `int8_t` has an implementation-defined result or signal, rather than undefined behavior.[^iso-c-n1570]
 
-In practice (two's complement, most compilers): `127 + 1 = -128` (wrap). But the standard does not guarantee this behavior – the compiler may optimize code assuming overflow never occurs.
+Common implementations yield `-128`, but this is not portable wraparound; by contrast, signed arithmetic that overflows its own type has undefined behavior.[^iso-c-n1570]
 
-For defined wraparound: use `uint8_t`. For checking: `if(x < INT8_MAX) x++;`[^embeddedinterviewlab]
+Use `uint8_t` for modulo wraparound, and check `x < INT8_MAX` before incrementing when the value must stay in signed range.[^iso-c-n1570]
 
 ## Detailed explanation
 

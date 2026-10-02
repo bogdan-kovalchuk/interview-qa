@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0023
 title: "What memory layout does this have? `union { uint32_t word; uint8_t bytes[4]; };`"
-description: "All union members overlay the same memory, sized to the largest member."
+description: "Union members overlap; exact size can include padding, and byte order depends on the target."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,12 +33,7 @@ sources:
 
 ## Short answer
 
-All fields occupy **the same memory region**. Size = `max(sizeof(uint32_t), sizeof(uint8_t[4])) = 4` bytes.
-
-On little-endian (Cortex-M): if `word = 0x12345678`, then:
-`bytes[0] = 0x78` (LSB), `bytes[1] = 0x56`, `bytes[2] = 0x34`, `bytes[3] = 0x12` (MSB).
-
-Uses: endianness detection, byte-level serialization, IEEE 754 bit inspection.[^embeddedinterviewlab]
+Union members overlap the same storage, and the union is large enough for its largest member, with implementation-defined layout and possible padding. On a platform where `uint32_t` is four bytes, this example needs at least four bytes. Reading the bytes after writing `word` exposes a platform representation: byte order is not specified by the union or by C, so the shown sequence applies only to a little-endian target.[^iso-c-n1570][^embeddedinterviewlab]
 
 ## Detailed explanation
 

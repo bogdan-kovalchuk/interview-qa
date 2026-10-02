@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-`x = 4464`: `uint16_t` has the range `0..65535`, and `60000 + 10000 = 70000` goes out of range.
+After `x += 10000`, `x` is `4464`: `uint16_t` ranges from `0..65535`, and conversion back reduces 70000 modulo 65536.[^iso-c-n1570]
 
-Unsigned overflow is **defined by the standard** as modular arithmetic: `70000 mod 65536 = 4464` – this is NOT undefined behavior (unlike signed overflow).
+Unsigned arithmetic is modular, but the path depends on integer promotions: with 32-bit `int`, addition produces 70000 and assignment reduces it; with 16-bit `int`, operands may promote to `unsigned int` and wrap during addition. Either way this yields 4464, not undefined behavior.[^iso-c-n1570]
 
 But if `70000` was expected, it is a bug from the wrong type choice; use `uint32_t`.[^embeddedinterviewlab]
 

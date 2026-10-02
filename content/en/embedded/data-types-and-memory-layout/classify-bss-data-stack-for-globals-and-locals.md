@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +33,13 @@ sources:
 
 ## Short answer
 
-`int g1;` -> **.bss** (zeroed at boot, value 0, takes no Flash).
+`int g1;` has static storage duration and is typically placed in **.bss**, with value zero before execution.
 
-`int g2 = 5;` -> **.data** (value 5 in Flash, copied to RAM at startup).
+`int g2 = 5;` is typically in **.data** RAM; startup code loads its initial value, often from Flash.
 
-`int l = 3;` in a function -> **stack** (local, initialized by an instruction on function call, not zeroed automatically, but there is an explicit initializer here).
+`int l = 3;` has automatic storage duration; a typical implementation stores it on the **stack**, though the compiler may keep it in a register or optimize it away.
 
-Function `f()` -> `.text` (Flash).[^embeddedinterviewlab]
+Machine code for `f()` is typically in `.text`, often mapped to Flash. C does not specify these sections or physical locations.[^iso-c-n1570]
 
 ## Detailed explanation
 

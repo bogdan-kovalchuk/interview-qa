@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-`sizeof("hello")` -> **6**: the string literal is an array `{'h','e','l','l','o','\0'}` (6 bytes), and `sizeof` counts the null terminator at compile time. `strlen("hello")` -> **5**: a runtime function counts characters up to (not including) `'\0'`.
-
-Common mistake: allocating `malloc(strlen(s))` without +1 for `'\0'` -> buffer overflow.[^embeddedinterviewlab]
+`sizeof("hello")` gives **6** because the string literal is an array of five characters followed by a terminating `\0`. `strlen("hello")` gives **5** because it counts bytes up to, but not including, the first `\0`. Space for a copy of a C string must include the terminator.[^iso-c-n1570]
 
 ## Detailed explanation
 

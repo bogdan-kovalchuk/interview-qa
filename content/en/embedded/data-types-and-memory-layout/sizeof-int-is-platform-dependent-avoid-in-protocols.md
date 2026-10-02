@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0026
 title: "Why can't you rely on `sizeof(int)` in network/serial protocols?"
-description: "sizeof(int) is platform-dependent, so protocols must use fixed-width types like uint16t instead."
+description: "The width of int depends on the C implementation and ABI, so protocols need an explicitly serialized, fixed-width format."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,9 @@ sources:
 
 ## Short answer
 
-`sizeof(int)` depends on the platform and ABI: 2 bytes on MSP430/8051, 4 bytes on Cortex-M/x86.
+`int` width depends on the C implementation and ABI, so its raw bytes do not define a portable message format.[^iso-c-n1570] Use `uint16_t` only when appropriate and available, then serialize it in a defined byte order; the type does not specify wire order.
 
-If device A sends an `int` as 2 bytes and device B reads it as 4 bytes -> the packet is misinterpreted.
-
-**Solution**: always use `uint16_t`, `int32_t`, etc. Also check endianness between devices and document byte order in the protocol.[^embeddedinterviewlab]
+If one side sends two bytes and the other reads four, fields shift or are misread. Define the format in the protocol, independent of either device's `int` width.[^iso-c-n1570]
 
 ## Detailed explanation
 

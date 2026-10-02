@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Plain local** – on the stack, lifetime = function call duration, not initialized automatically.
+**Plain local** has automatic storage duration: it exists during its block, has an indeterminate value without initialization, and need not be stored on a stack.[^iso-c-n1570]
 
-**Static local** – in `.bss`/`.data` (static memory), lifetime = entire program lifetime, initialized once (to zero or the given value). Retains its value between calls.
+**Static local** has static storage duration: it exists for the program's execution and is zero-initialized if no explicit initializer is provided. It retains its value between entries to the block; `.bss` and `.data` are typical implementation sections, not language requirements.[^iso-c-n1570]
 
-<span class="warn">Downside: the function is not reentrant</span> – not thread-safe without synchronization.[^embeddedinterviewlab]
+Shared mutable `static` state can break reentrancy or cause a data race, but the keyword alone does not make a function unsafe for threads.[^iso-c-n1570]
 
 ## Detailed explanation
 

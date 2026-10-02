@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0009
 title: "Навіщо використовують `stdint.h` типи замість стандартних `int`, `short`, `long`?"
-description: "stdint.h типи гарантують точний розмір незалежно від платформи, на відміну від int/short/long."
+description: "Типи uintN_t з stdint.h мають точну ширину, якщо реалізація їх надає; розмір int/short/long визначає реалізація."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  en: 3
+  en: 4
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,15 +33,17 @@ sources:
 
 ## Short answer
 
-Розміри `int`, `short`, `long` залежать від платформи та ABI: `int` - 2 байти на MSP430, 4 байти на Cortex-M.
-
-`<stdint.h>` гарантує точний розмір: `uint8_t` - завжди 8 біт, `uint32_t` - завжди 32 біти.
-
-У embedded: register maps, протоколи, struct layout - **завжди fixed-width типи**. "For anything stored in a struct, sent over a protocol, or written to a register - use fixed-width types."[^embeddedinterviewlab]
+Типи `int`, `short` і `long` мають розміри та діапазони, визначені реалізацією C, тому їх не слід вважати однаковими між ABI. Типи `uintN_t` з `<stdint.h>`, якщо реалізація їх надає, мають рівно N бітів без padding bits; ці exact-width typedef-и необов’язкові, якщо реалізація не має відповідного типу. Для протоколів і бітових полів вибирайте тип за потрібною шириною та перевіряйте представлення й byte order окремо.[^iso-c-n1570]
 
 ## Detailed explanation
 
-TODO
+Стандарт C задає мінімальні діапазони для `short`, `int` і `long`, але не вимагає, щоб їхні розміри були однаковими на різних платформах. Конкретні розмір і signedness деяких типів залежать від реалізації та її ABI, тому формат двійкового протоколу не варто визначати через звичайний `int`.[^iso-c-n1570]
+
+`<stdint.h>` містить кілька родин типів. Якщо потрібна точна ширина, `uint32_t` позначає беззнаковий тип рівно на 32 біти без padding bits. Але exact-width typedef-и необов’язкові: реалізація не мусить визначати `uint32_t`, якщо не має відповідного типу. `uint_least32_t` гарантує щонайменше 32 біти й доступніший як вимога, тоді як `uint_fast32_t` оптимізований для швидкості й може бути ширшим.[^iso-c-n1570]
+
+Для регістра, що задає саме 32-бітне значення, використовуйте `uint32_t`, якщо його надає цільова реалізація, або тип із документації платформи. Для протоколу також визначте порядок байтів і серіалізуйте поля явно: fixed-width тип сам по собі не визначає byte order, padding структури чи формат передавання.[^iso-c-n1570]
+
+**Типова помилка:** трактувати `uint32_t` як гарантовано наявний і вважати, що ним автоматично зафіксовано весь wire format. Перевіряйте типи, які надає target, і не надсилайте у мережу сирі байти struct без окремої специфікації layout.
 
 ## Sources
 

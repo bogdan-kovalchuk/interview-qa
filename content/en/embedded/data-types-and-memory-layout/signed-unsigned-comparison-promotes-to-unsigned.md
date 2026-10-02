@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">Integer promotion rule</span>: when mixing signed and unsigned in one expression, the signed value converts to unsigned.
-
-`-1` (int) -> `UINT_MAX` (4,294,967,295) when converted to `unsigned int`. Therefore `UINT_MAX < 1` -> `false`.
-
-Protection: enable `-Wsign-compare`, compare identical types.[^embeddedinterviewlab]
+This is not an integer promotion: for `int x = -1` and `unsigned int y = 1`, the usual arithmetic conversions convert both operands to `unsigned int` because the types have the same rank. Converting `-1` yields `UINT_MAX`, so `x < y` is false; the numeric value of `UINT_MAX` depends on the width of `unsigned int`.[^iso-c-n1570]
 
 ## Detailed explanation
 

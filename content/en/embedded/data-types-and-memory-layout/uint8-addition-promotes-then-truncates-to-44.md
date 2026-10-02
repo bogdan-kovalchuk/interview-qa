@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-`result = 44`.
-
-Before addition, `a` and `b` are **promoted to `int`**: `200 + 100 = 300` (as `int`). On assignment to `uint8_t` -> truncation: `300 % 256 = 44`.
-
-This is a combination of integer promotion and type truncation. If overflow was expected, the code is correct; if 300 was expected, it is a bug.[^embeddedinterviewlab]
+When `uint8_t` is available, it represents values 0–255, so both operands are promoted to `int`, which can represent that range. Their sum is 300; conversion to `uint8_t` produces the value modulo 256, which is 44.[^iso-c-n1570]
 
 ## Detailed explanation
 
