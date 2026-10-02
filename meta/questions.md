@@ -390,12 +390,16 @@ Token дозволений у `Short answer`, не рахується слово
 (Andre LaMothe), розділи 2–8 курсу: 828 питань у секціях `electronics/introduction`,
 `electronics/circuit-analysis`, `electronics/ee101`,
 `electronics/digital-logic`, `electronics/digital-integration`,
-`electronics/pcb-design` і `electronics/circuitmaker-projects`. Режим той самий:
-українська `Short answer` зберігає текст картки, змінено лише форму – розмітку, заборонені символи і
+`electronics/pcb-design` і `electronics/circuitmaker-projects`. На момент імпорту режим був той самий:
+українська `Short answer` зберігала текст картки, було змінено лише форму – розмітку, заборонені символи і
 межу 2–5 речень (перелік – `imports/electronics-course/README.md`). Походження
 називає джерело `udemy-electronics-course` (`kind: community`) з номером лекції в `applicability`, а
 авторитетне джерело рівня секції – відповідний том підручника All About Circuits (`kind: book`).
-Англійські файли цих секцій поки мають лише перекладений `title`, тож англійських карток із них немає.
+2026-10-04 для `emb-elintro-0001`–`emb-elintro-0020` написано `Short answer` та
+`Detailed explanation` обома мовами й виправлено шість неточностей первинних відповідей за
+конкретними технічними джерелами. Ці 20 питань уже мають англійські картки; решта 808
+англійських файлів зберігають лише перекладений `title`. Оригінальні TSV залишено незмінними
+як історичне походження; course source не доводить твердження дописаних пояснень.
 
 ## 7. Обмеження `Short answer`
 

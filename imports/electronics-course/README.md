@@ -25,7 +25,7 @@ Course sections 2–8 are 828 questions in `content/{uk,en}/electronics/`:
 `question-mapping.csv` maps every course card id (`electronics-sNN-NNNN`) to its question id and
 path. Each question names the course and the lecture in its `udemy-electronics-course` source.
 
-The Ukrainian `Short answer` is the card's Back as it was. Only the form changed:
+At initial import, the Ukrainian `Short answer` retained the card's Back. Only the form changed:
 
 - `<code>` and `<strong>` became Markdown, `<strong class="warn">` became `<span class="warn">`;
   `<span class="formula">` with MathJax is kept, so formulas render on the Anki card;
@@ -34,8 +34,12 @@ The Ukrainian `Short answer` is the card's Back as it was. Only the form changed
   such as «також» or «якщо»; no claim was added or removed;
 - a citation token for the course source was appended.
 
-The English files carry a translated title and `TODO` everywhere else, so no English card ships
-until an English `Short answer` is written.
+On 2026-10-04, `emb-elintro-0001` through `emb-elintro-0020` were revised against specific
+technical references and received complete short answers and detailed explanations in EN/UK.
+Six inherited factual/procedural inaccuracies were corrected. Original TSV cards remain unchanged
+as provenance. These 20 questions now ship English cards; the other 808 English files retain a
+translated title and `TODO` bodies. The course source identifies provenance, not proof of the
+revised technical claims.
 
 ## Not moved into `content/`
 

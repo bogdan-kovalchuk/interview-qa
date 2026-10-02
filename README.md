@@ -17,9 +17,9 @@ programs. A fix made once is a fix everywhere.
 > or more identical "not written yet" notices, so the gaps are reported as data instead.
 >
 > **Current state:** 2089 questions in both languages, 2089 shipping as Ukrainian flashcards and
-> 1068 as English ones, and the site is live at the link above. Every question has a Ukrainian short
-> answer and 1068 have an English one; 248 also carry a written detailed explanation in both
-> languages, 62 of them complete. For the rest, the detailed explanation is still `TODO`. The
+> 1088 as English ones, and the site is live at the link above. Every question has a Ukrainian short
+> answer and 1088 have an English one; 268 also carry a written detailed explanation in both
+> languages, 82 of them complete. For the rest, the detailed explanation is still `TODO`. The
 > localized `/status/` page reports those gaps by language, track, section, and question type from
 > `dist/export/progress.json`.
 
@@ -72,6 +72,7 @@ questions were imported from the owner's own two decks, their Ukrainian short an
 source's wording, normalised rather than rewritten, and their English short answers are translations
 of that same wording rather than independently written text. Another 828 are the owner's flashcards for
 the Udemy course *Crash Course Electronics and PCB Design* (course sections 2–8, the
-`embedded/electronics-course-*` sections), moved as is; their English files so far carry only a
-translated title. Every such question names its origin in `sources`, and `meta/questions.md` records
+`electronics/` track), initially moved as is. The first 20 introduction questions now have
+independently revised answers and detailed explanations in both languages; the other 808 English
+files carry only translated titles. Every such question names its origin in `sources`, and `meta/questions.md` records
 which is which.
