@@ -23,6 +23,9 @@ programs. A fix made once is a fix everywhere.
 > localized `/status/` page reports those gaps by language, track, section, and question type from
 > `dist/export/progress.json`.
 
+The [coverage snapshot](meta/status.md) lists every track's Ukrainian and English cards,
+detailed explanations, complete questions and remaining gaps, with the latest verification scope.
+
 ## How it works
 
 ```
