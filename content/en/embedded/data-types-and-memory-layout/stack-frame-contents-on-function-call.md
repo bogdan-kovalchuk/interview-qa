@@ -8,20 +8,34 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
+  - source_id: arm-aapcs32
+    title: "Procedure Call Standard for the Arm Architecture (AAPCS32)"
+    url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
+    accessed: 2026-10-04
+    kind: spec
+    version: "AAPCS32"
+    applicability: "Describes stack and alignment rules for the Arm 32-bit ABI; it does not prescribe a universal frame."
+  - source_id: armv7m
+    title: "Armv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
+    accessed: 2026-10-04
+    kind: official
+    version: "Armv7-M"
+    applicability: "Armv7-M exceptions; it does not cover all Cortex-M generations identically."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +47,7 @@ sources:
 
 ## Short answer
 
-Stack frame contains:
-1. **Saved registers** (callee-saved per ABI: r4–r11 on ARM);
-2. **Return address** (LR, or pushed onto the stack);
-3. **Local variables** of the function;
-4. Padding for alignment (Cortex-M: 8-byte aligned).
-
-On an exception (ISR): hardware automatically pushes xPSR, PC, LR, R12, R3–R0. Therefore deep ISR nesting -> large stack.[^embeddedinterviewlab]
+Stack frame contents depend on the ABI, compiler, and optimization: it may contain saved registers, a return address, local data, and padding, but there is no universal fixed list. On Cortex-M, exception entry automatically stacks a basic frame containing R0–R3, R12, LR, PC, and xPSR; cores with an FPU can use an extended frame and lazy stacking.[^armv7m]
 
 ## Detailed explanation
 

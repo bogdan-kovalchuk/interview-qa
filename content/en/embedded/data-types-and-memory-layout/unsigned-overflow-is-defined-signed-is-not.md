@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +33,7 @@ sources:
 
 ## Short answer
 
-Unsigned overflow is **defined by the standard** as modular arithmetic modulo `2^N`:
-- `uint8_t: 255 + 1 = 0`
-- `uint16_t: 65535 + 1 = 0`
-
-Signed overflow is <span class="warn">undefined behavior</span>: the standard guarantees nothing. The compiler may optimize code assuming signed overflow does not occur.
-
-Rule: for arithmetic where wraparound is possible, use unsigned types.[^embeddedinterviewlab]
+Arithmetic in an unsigned type is defined modulo `2^N`, where `N` is that type's width; signed overflow is instead <span class="warn">undefined behavior</span> in C. However, `uint8_t` and often `uint16_t` operands are promoted to `int` first, so the addition `255 + 1` can produce `256`, with zero appearing when the result is converted back to `uint8_t`.[^iso-c-n1570]
 
 ## Detailed explanation
 

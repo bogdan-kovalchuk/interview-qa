@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,9 @@ sources:
 
 ## Short answer
 
-`int sum;` is a local variable <span class="warn">without an initializer</span>, it contains garbage. The first operation `sum += arr[0]` -> <span class="warn">undefined behavior</span> (reading an uninitialized variable).
+An uninitialized automatic local `int sum;` has an indeterminate value. For an ordinary automatic object in C, reading that uninitialized value is undefined behavior; it is not necessarily “stack garbage.”[^iso-c-n1570]
 
-In practice: `sum` starts with a random value from the stack -> the result is wrong, but the code may sometimes "work".
-
-Fix: `int sum = 0;`. GCC with `-Wall`: `warning: 'sum' is used uninitialized`.[^embeddedinterviewlab]
+Initialize the accumulator explicitly, for example `int sum = 0;`, before adding elements.[^iso-c-n1570]
 
 ## Detailed explanation
 

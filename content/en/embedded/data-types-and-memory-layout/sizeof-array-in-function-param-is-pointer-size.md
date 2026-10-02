@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-When passing an array to a function: `void f(int arr[]) { int n = sizeof(arr)/sizeof(arr[0]); }`
-
-Here `arr` is not an array but a <span class="warn">pointer</span> to the first element (`int*`). `sizeof(arr) = sizeof(int*) = 4 or 8`. The result is wrong.
-
-Correct: pass the size explicitly or use `sizeof` only for arrays in the same scope where they are declared. In C++: `std::array` or `std::span`.[^embeddedinterviewlab]
+In a function parameter, `int arr[]` is adjusted to `int *arr`, so `sizeof(arr)` gives the pointer size, not the array size; its exact value is implementation-dependent.[^iso-c-n1570] Dividing by `sizeof(arr[0])` does not recover the element count. Pass the length separately or use a container that retains it, such as `std::array` or `std::span` in C++.[^iso-c-n1570]
 
 ## Detailed explanation
 

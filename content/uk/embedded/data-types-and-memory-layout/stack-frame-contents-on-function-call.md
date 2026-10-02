@@ -8,20 +8,34 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
+  - source_id: arm-aapcs32
+    title: "Procedure Call Standard for the Arm Architecture (AAPCS32)"
+    url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
+    accessed: 2026-10-04
+    kind: spec
+    version: "AAPCS32"
+    applicability: "Описує стек і правила вирівнювання для Arm 32-bit ABI; не задає універсальний frame."
+  - source_id: armv7m
+    title: "Armv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
+    accessed: 2026-10-04
+    kind: official
+    version: "Armv7-M"
+    applicability: "Винятки Armv7-M; не охоплює однаково всі Cortex-M покоління."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Джерело питання і відповіді; відповідь не перевірена незалежно."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,17 +47,19 @@ sources:
 
 ## Short answer
 
-Stack frame містить:
-1. **Збережені регістри** (callee-saved per ABI: r4–r11 на ARM);
-2. **Адреса повернення** (LR, або push на stack);
-3. **Локальні змінні** функції;
-4. Padding для вирівнювання (Cortex-M: 8-byte aligned).
-
-При exception (ISR): апаратура автоматично пушить xPSR, PC, LR, R12, R3–R0. Тому глибока вкладеність ISR -> великий stack.[^embeddedinterviewlab]
+Склад stack frame залежить від ABI, компілятора й оптимізації: він може містити збережені регістри, адресу повернення, локальні дані та padding, але не має фіксованого універсального переліку. На Cortex-M під час exception апаратура зберігає базовий frame з R0–R3, R12, LR, PC та xPSR; ядра з FPU можуть використовувати розширений frame і lazy stacking.[^armv7m]
 
 ## Detailed explanation
 
-TODO
+Stack frame – це частина стекової пам’яті, яку функція використовує під час виконання. Це не універсальний перелік полів: ABI визначає правила виклику, збереження регістрів і вирівнювання, а компілятор разом з оптимізатором визначає фактичний пролог та розміщення даних.[^arm-aapcs32]
+
+У frame можуть потрапити локальні об’єкти, аргументи, що не помістилися в регістри, spill-и тимчасових значень, збережені callee-saved регістри та місце для вирівнювання. Проте локальна змінна може весь час жити в регістрі або зникнути після оптимізації. Leaf function може не зберігати адресу повернення у стеку, якщо вона лишається в LR. Тому різні рівні оптимізації дають різні stack frames для того самого коду.
+
+За AAPCS32 SP має бути вирівняний на 8 байтів на межі публічного виклику. Це обмеження ABI, а не правило про однаковий розмір кожного frame.[^arm-aapcs32]
+
+Під час exception на Cortex-M апаратно зберігається базовий набір регістрів на активному стеку. Вкладені exception збільшують його використання, але оцінка також має врахувати локальні дані ISR, викликані функції та, на відповідних ядрах, збереження floating-point контексту.[^armv7m]
+
+**Типова помилка:** рахувати стек як фіксовану суму адреси повернення і всіх оголошених локальних змінних. Для оцінки перевіряйте ABI, прапорці оптимізації, звіти stack usage та найглибший шлях викликів. Для прикладу, якщо функція викликає іншу, її активні дані залишаються потрібними, доки вкладений виклик не повернеться; рекурсія повторює це споживання для кожного рівня. Резерв стека тому визначають за максимальною глибиною одночасно активних викликів, а не загальною кількістю функцій у програмі.
 
 ## Evaluation guide
 

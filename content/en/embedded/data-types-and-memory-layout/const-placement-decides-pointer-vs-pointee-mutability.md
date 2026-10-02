@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +33,13 @@ sources:
 
 ## Short answer
 
-`const uint32_t *p` - pointer to **constant uint32_t**: you cannot change `*p`, but you can change `p` (point to a different location).
+`const uint32_t *p` is a pointer to a `uint32_t` that cannot be changed through `*p`, but `p` itself can be redirected.
 
-`uint32_t * const p` - **constant pointer**: the address is fixed, but `*p` can be changed.
+`uint32_t * const p` is a pointer with a fixed address, but the value of `*p` can be changed.
 
-`const uint32_t * const p` - both the data and the address are immutable.
+`const uint32_t * const p` prevents changing either the address or the data through that expression.[^iso-c-n1570]
 
-Rule: read right to left. For registers: `volatile uint32_t * const REG = (volatile uint32_t*)0x40020000U;`[^embeddedinterviewlab]
+Reading the declaration helps identify which level `const` qualifies. For a register pointer, `volatile uint32_t * const REG` fixes the address while `volatile` qualifies accesses to the register.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,20 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: strtok-r-manpages
+    title: "strtok_r(3) Linux man-pages"
+    url: https://manpages.debian.org/testing/manpages-dev/strtok_r.3.en.html
+    accessed: 2026-10-04
+    kind: official
+    version: "POSIX.1-2008"
+    applicability: "Describes the reentrant POSIX strtok_r function and saveptr argument; does not guarantee availability in ISO C or every embedded libc."
 ---
 
 ## Short answer
 
-**Reentrant function** can be safely called concurrently from multiple threads or recursively.
+**A reentrant function** can be called again before an earlier call finishes if each call has independent state or shared state is properly protected. A `static` local is shared across calls, but its presence alone does not make a function unsafe; conflicting access to mutable state is the issue.[^iso-c-n1570]
 
-A `static` local is one copy for the entire function (in `.data`/`.bss`), not on the stack: if an ISR interrupts the function and calls it again, both contexts will modify the same variable -> <span class="warn">race condition</span>.
-
-Classic example: `strtok()` is not reentrant (static buffer). Use `strtok_r()`. In bare-metal: if a function is called from both ISR and main loop, avoid static locals.[^embeddedinterviewlab]
+If an ISR reenters the function, both invocations may use the same static value. `strtok()` retains state between calls; POSIX `strtok_r()` takes a separate `saveptr`.[^iso-c-n1570][^strtok-r-manpages]
 
 ## Detailed explanation
 

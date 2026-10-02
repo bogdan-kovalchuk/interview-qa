@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0050
 title: "What does this do? `__attribute__((section(\".ccmram\"))) uint32_t fast_buf[256];`"
-description: "The section attribute places the array in .ccmram, a zero-wait-state RAM for time-critical buffers."
+description: "The section attribute asks the compiler to put the array in .ccmram; the linker script determines its placement."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,18 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: gcc-common-attributes
+    title: "GCC: Common Attributes"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
+    accessed: 2026-10-04
+    kind: official
+    version: null
+    applicability: "Explains that the section attribute assigns a variable to an object-file section; physical placement and support depend on the linker and platform."
 ---
 
 ## Short answer
 
-Places the array in the **.ccmram** section (Core Coupled Memory RAM) on STM32 F4/F7 – a dedicated RAM connected directly to the CPU without a bus matrix.
-
-Provides **zero-wait-state** access: ideal for time-critical buffers, lookup tables, ISR stacks.
-
-Required: 1. Define the section in the linker script (`MEMORY { CCMRAM ... }`); 2. Initialize in startup code; Not available to DMA on some MCUs – check the reference manual.[^embeddedinterviewlab]
+GCC's `section(".ccmram")` attribute asks the compiler to put a global array in the named `.ccmram` input section; by itself it assigns no RAM address and guarantees neither speed nor DMA compatibility. The linker script must map that section to available memory, and startup code must handle its initialization correctly.[^gcc-common-attributes]
 
 ## Detailed explanation
 

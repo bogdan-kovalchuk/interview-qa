@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,18 +29,24 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: gcc-stack-usage
+    title: "GCC: Developer Options"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html
+    accessed: 2026-10-04
+    kind: official
+    version: null
+    applicability: "Describes .su format, qualifier meanings, and limits of GCC -fstack-usage reports; it does not define the program's total stack budget."
 ---
 
 ## Short answer
 
-The **-fstack-usage** flag: GCC generates `.su` files alongside `.o`.
+The `-fstack-usage` option makes GCC emit a `.su` report estimating stack usage per function.[^gcc-stack-usage]
 
-Line format in `.su`: `file.c:10:5:foo 2048 static`
-Fields (space-separated): [1] `file:line:col:func`, [2] bytes, [3] type.
+Each `.su` entry has four tab-separated fields: source location and function name, mangled name, byte count, and qualifiers such as `static`, `dynamic`, or `bounded`.[^gcc-stack-usage]
 
-Analyzing the largest stack frames: `cat *.su | sort -k2 -rn | head -20`
+The report describes an individual function, not the total maximum for a call path or task stack.[^gcc-stack-usage]
 
-Also: `-Wstack-usage=N` - warning if a function uses >N bytes. Always check functions called from ISR.[^embeddedinterviewlab]
+GCC also provides `-Wstack-usage=N` threshold warnings, but that threshold does not prove the full call path fits the available stack.[^gcc-stack-usage]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,14 +33,9 @@ sources:
 
 ## Short answer
 
-<span class="warn">Double free -> undefined behavior.</span> Consequences:
-1. Corrupt heap metadata -> crash at the next `malloc`/`free`;
-2. <span class="warn">Security exploit</span>: heap-based buffer overflow, use-after-free;
-3. Silent data corruption.
+**Double free** has undefined behavior: the C standard does not define its consequences. An implementation may terminate or corrupt allocator state, but a particular failure or exploit is not guaranteed.[^iso-c-n1570]
 
-Protection: always after `free`: `ptr = NULL;`. `free(NULL)` is a safe no-op.
-
-In RTOS/embedded: heap corruption often manifests far from the error location.[^embeddedinterviewlab]
+After `free(ptr)`, the saved pointer value is invalid for another deallocation; `free(NULL)` is allowed and does nothing. Setting `ptr = NULL` helps only for that particular pointer and does not fix its copies.[^iso-c-n1570]
 
 ## Detailed explanation
 

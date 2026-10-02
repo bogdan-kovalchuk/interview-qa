@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,14 +33,14 @@ sources:
 
 ## Short answer
 
-`offsetof(type, member)` returns the field's offset from the start of the struct in bytes. Defined in `<stddef.h>`.
+`offsetof(type, member)` from `<stddef.h>` returns the byte offset of an ordinary structure member from the start; it cannot be applied to a bit-field.[^iso-c-n1570]
 
 Usage:
-1. Compile-time layout check: `static_assert(offsetof(CanFrame, crc) == 6, "Wrong layout");`
+1. Layout check: `static_assert(offsetof(CanFrame, crc) == 6, "Wrong layout");` (if that is genuinely required by a particular ABI/protocol).
 2. Serialization/deserialization;
 3. **container_of** macro (Linux kernel) - obtain a struct* from a member*.
 
-Critical for binary protocol and hardware register mapping.[^embeddedinterviewlab]
+The value depends on the implementation's layout; the macro itself does not define a protocol layout.[^iso-c-n1570]
 
 ## Detailed explanation
 

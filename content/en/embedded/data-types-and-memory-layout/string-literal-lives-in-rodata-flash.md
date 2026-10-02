@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0035
 title: "Where does the string literal `\"Hello, World!\"` live in an embedded program's memory?"
-description: "The compiler places string literals in .rodata in Flash, so they cost no RAM."
+description: "String literals often use a read-only section mapped to Flash, but placement depends on the toolchain and linker script."
 track: embedded
 section: data-types-and-memory-layout
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-In the **.rodata** section in Flash. The compiler places string literals in a read-only section – they take no RAM.
+In a typical embedded build, a string literal often resides in a read-only section such as `.rodata` mapped to Flash, but this depends on the toolchain and linker script rather than being guaranteed by C.
 
 The same string is used only once (deduplication is compiler-dependent).
 
-<span class="warn">Exception</span>: `char arr[] = "hello";` – the compiler initializes the array with the string's values, and the array (local/static) is placed on the stack / in `.data` respectively.[^embeddedinterviewlab]
+<span class="warn">Separate object</span>: `char arr[] = "hello";` creates a modifiable array containing a copy of the characters; an automatic local array is usually on the stack, while a static array is in writable static storage. Check the target build's map file.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Yes**, but there is a subtlety: a `static` local without an initializer ≡ `static int x = 0;` – zero on the first call (zeroed in `.bss` at boot).
+**Yes.** A block-scope `static int x;` has static storage duration and is implicitly initialized to zero before program execution; this does not happen on every function call.[^iso-c-n1570]
 
-`static int x = 5;` -> initialized to 5 once. Subsequent changes persist between calls.
+`static int x = 5;` is initialized to 5 once, and subsequent changes persist between calls.
 
-A <span class="warn">regular</span> `int x;` is NOT initialized (garbage). The mistake is assuming `int x;` = 0 on the first call.[^embeddedinterviewlab]
+A <span class="warn">regular</span> uninitialized local `int x;` has an indeterminate value; do not assume it is zero.[^iso-c-n1570]
 
 ## Detailed explanation
 
