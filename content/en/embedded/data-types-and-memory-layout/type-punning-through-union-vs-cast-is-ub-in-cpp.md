@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-**Type punning** – reading an object of one type through a pointer/reference of another type. In **C**, via `union` – a common and supported technique, but the result depends on the memory representation of the types; via pointer cast (`int x = 1; float *fp = (float*)&x; *fp;`) – <span class="warn">UB (strict aliasing violation)</span>.
-
-In **C++**, only `memcpy` or `std::bit_cast` (C++20) gives safe type punning, whereas `reinterpret_cast` + dereference -> UB. The compiler optimizes code assuming aliasing does not occur.[^embeddedinterviewlab]
+**Type punning** means interpreting an object’s bytes as another type. In C, reading a different `union` member has an implementation-defined result; accessing the same storage through an incompatible pointer can violate effective-type rules. In C++, reading an inactive `union` member is generally not a permitted conversion technique; for trivially copyable types use `memcpy` or C++20 `std::bit_cast`, and ensure the target representation is valid.[^iso-c-n1570]
 
 ## Detailed explanation
 

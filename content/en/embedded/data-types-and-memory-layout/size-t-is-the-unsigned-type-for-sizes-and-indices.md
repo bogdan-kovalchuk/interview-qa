@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,15 +33,7 @@ sources:
 
 ## Short answer
 
-**size_t** – an unsigned type large enough to represent the size of any object in memory (on 32-bit = `uint32_t`, on 64-bit = `uint64_t`); defined in `<stddef.h>`.
-
-Advantages:
-
-- cannot be negative (logical for a size);
-- correct size for the platform;
-- avoids sign-comparison warnings.
-
-`sizeof`, `strlen`, `malloc` use and return `size_t`, whereas `int` can be 16-bit (insufficient for large objects).[^embeddedinterviewlab]
+**`size_t`** is an implementation-defined unsigned integer type large enough to represent the size of any object supported by the implementation; it is not necessarily `uint32_t` or `uint64_t`. `sizeof` produces `size_t`, as do `strlen` and `malloc` in their standard library declarations. Use a matching type for lengths and indices, while remembering that unsigned values cannot be negative and comparisons with `int` can trigger conversions.[^iso-c-n1570]
 
 ## Detailed explanation
 

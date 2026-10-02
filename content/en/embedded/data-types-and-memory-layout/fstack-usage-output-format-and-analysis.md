@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,14 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
+  - source_id: gcc-stack-usage
+    title: "GCC: Developer Options, -fstack-usage"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html
+    accessed: 2026-10-04
+    kind: official
+    version: "current"
+    applicability: "Defines .su record fields and static, dynamic, bounded qualifiers; per-function figures are not the maximum for a complete call chain."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,14 +40,9 @@ sources:
 
 ## Short answer
 
-`-fstack-usage` makes GCC generate a `.su` file for each `.o`.
+GCC `-fstack-usage` writes per-function use to a `.su` file named from `auxname`.[^gcc-stack-usage] Each tab-separated record gives function and source location, mangled name, bytes, and qualifier: `static` is fixed, `dynamic` is variable, and `dynamic,bounded` has a known upper bound.[^gcc-stack-usage]
 
-Format: `source.c:line:col:function bytes type`
-Where type: `static` (fixed), `dynamic` (VLA/alloca), `dynamic,bounded`.
-
-Analysis command: `grep -h "" *.su | sort -k2 -rn | head -20`
-
-Complement: `-Wstack-usage=256` - warning for functions >256B. Critical for bare-metal RTOS where each task's stack is defined in the linker script.[^embeddedinterviewlab]
+Without `bounded`, the byte count is not a maximum. Use the call graph because the largest frame is not the nested-call peak; include interrupts, recursion, RTOS tasks, and libraries. `-Wstack-usage=256` is a warning threshold, not proof of sufficient stack.[^gcc-stack-usage]
 
 ## Detailed explanation
 

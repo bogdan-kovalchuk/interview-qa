@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">NO!</span>
-
-`int x;` – on the stack, <span class="warn">contains garbage</span> (undefined value, a new slot each call).
-
-`static int x;` – in `.bss`, guaranteed = 0 on the first call (zeroed at boot). On subsequent calls – retains the value from the previous call.
-
-Mistake: assuming `int x;` = 0 on the first call. The compiler does not add initialization automatically.[^embeddedinterviewlab]
+No. `int x;` has automatic storage duration and an uninitialized value; reading it before assignment is invalid. `static int x;` has static storage duration and is zero-initialized before the first function entry; after assignment, its value persists between calls. Placement in a stack or `.bss` is a common implementation detail, not a language guarantee.[^iso-c-n1570]
 
 ## Detailed explanation
 

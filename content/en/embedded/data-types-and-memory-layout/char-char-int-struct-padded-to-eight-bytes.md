@@ -1,27 +1,34 @@
 ---
 id: emb-dtypes-0070
-title: "What does this return on 32-bit? `sizeof(struct { char a; char b; int c; })`"
-description: "The compiler adds 2 bytes of padding before the int, so struct { char; char; int; } takes 8 bytes."
+title: "What does `sizeof(struct { char a; char b; int c; })` return on a typical 32-bit ABI with 4-byte int alignment?"
+description: "Under the stated ABI, two padding bytes align int and the struct size is eight bytes."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
+  - source_id: gnu-c-struct-layout
+    title: "GNU C Introduction and Reference Manual: Structure Layout"
+    url: https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Structure-Layout.html
+    accessed: 2026-10-04
+    kind: book
+    version: "current"
+    applicability: "Illustrates common struct alignment and padding; exact layout depends on the implementation and ABI."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +40,9 @@ sources:
 
 ## Short answer
 
-**8 bytes**.
+Under the stated ABI, the result is **8 bytes**: `a` and `b` have offsets 0 and 1, two padding bytes align `c` at offset 4, and there is no trailing padding.[^gnu-c-struct-layout] Reordering to `char`, `int`, `char` gives 12 bytes on the same typical ABI because padding appears before and after `int`.[^gnu-c-struct-layout]
 
-Layout: `a`@0 (1B) + `b`@1 (1B) + <span class="warn">2B padding</span> + `c`@4 (4B). Trailing padding = 0.
-
-If the fields were in a different order: `struct { char a; int c; char b; }` -> 12 bytes (3B padding after `a`, 3B trailing).
-
-Rule: arrange fields from largest alignment to smallest for minimum sizeof.[^embeddedinterviewlab]
+C does not guarantee this layout on every system: size and alignment depend on ABI, packing options, and attributes. Ordering fields by decreasing alignment often reduces padding, but verify offsets and `sizeof` with the target compiler.[^iso-c-n1570][^gnu-c-struct-layout]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,12 +33,11 @@ sources:
 
 ## Short answer
 
-Ordering from largest alignment to smallest **minimizes internal padding**.
+Ordering fields by decreasing alignment often reduces struct padding, but exact size depends on the compiler ABI and target.[^iso-c-n1570]
 
-Bad order: `struct { char a; int b; char c; }` -> 12B (3B + 3B padding).
-Good order: `struct { int b; char a; char c; }` -> 8B (no internal padding).
+With an ABI where `char` has size and alignment 1 and `int` has size and alignment 4, the first order occupies 12 bytes and the second 8.
 
-Rule: first `uint64_t`/`double` (align 8), then `uint32_t`/`float` (align 4), then `uint16_t` (align 2), finally `uint8_t`/`char` (align 1). Verify with `sizeof()`.[^embeddedinterviewlab]
+Do not assume these alignment values on every MCU; verify the layout and `sizeof()` for the target ABI.[^iso-c-n1570]
 
 ## Detailed explanation
 

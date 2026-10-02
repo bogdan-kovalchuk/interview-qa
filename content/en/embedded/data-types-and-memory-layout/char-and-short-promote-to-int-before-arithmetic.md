@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-**Integer promotion** (C §6.3.1.1): before most arithmetic operations, `char`, `signed char`, `unsigned char`, `short`, `unsigned short` are automatically promoted to `int` (or `unsigned int`).
-
-Unexpected result: `uint8_t a = 200; uint8_t b = ~a;` – `a` -> `int(200)`, NOT -> `int(0xFFFFFF37 = -201)`, truncated to `uint8_t: 55`.
-
-Always understand promotion before the operation.[^embeddedinterviewlab]
+**Integer promotion** converts narrow integer operands before operations for which the standard requires promotions: a value becomes `int` if it can represent every value of the original type, and otherwise `unsigned int`.[^iso-c-n1570] Thus `uint8_t`, when that optional typedef is available, commonly promotes to `int`, but the result of bitwise `~` has type `int`, not `uint8_t`. Converting the result back to `uint8_t` narrows it; do not rely on a particular representation of negative `int` in a portable example.[^iso-c-n1570]
 
 ## Detailed explanation
 

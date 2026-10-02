@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,15 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Out-of-bounds write on the heap -> undefined behavior.</span>
+<span class="warn">A write outside the array has undefined behavior.</span> `p[10]` is not an element of an array of ten `int` values.[^iso-c-n1570]
 
-`malloc(10*sizeof(int))` allocates memory for `p[0]..p[9]`. `p[10]` is out of bounds, overwriting heap metadata or an adjacent block.
+`malloc(10 * sizeof(int))` requests space for ten elements, indexed 0 through 9. The C standard does not define what physically follows that object: the write may corrupt other data or fault, but heap metadata corruption is not guaranteed.[^iso-c-n1570]
 
-Consequences:
-1. Heap metadata corruption -> crash on the next `malloc`/`free`;
-2. Silent data corruption (manifests later).
-
-Protection: `-fsanitize=address` during development, Valgrind on Linux, heap guard regions.[^embeddedinterviewlab]
+During development, use available tools such as AddressSanitizer or guard regions to detect the error; their availability depends on the platform and runtime.[^iso-c-n1570]
 
 ## Detailed explanation
 

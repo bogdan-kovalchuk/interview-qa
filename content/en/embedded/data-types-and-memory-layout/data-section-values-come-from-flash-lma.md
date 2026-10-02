@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,18 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: gnu-ld-lma
+    title: "GNU ld manual: Output Section LMA"
+    url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
+    accessed: 2026-10-04
+    kind: official
+    version: "current"
+    applicability: "Explains VMA/LMA and shows startup copying of initialized data from a ROM image to RAM; linker scripts define the actual symbol names."
 ---
 
 ## Short answer
 
-`.data` holds **initialized global and static variables** with non-zero values.
+In a typical bare-metal configuration, `.data` contains data that needs initial values in RAM; a linker script can give it an LMA in Flash and a VMA in RAM.[^gnu-ld-lma]
 
-In the `.elf`: initial values are in Flash (LMA). At boot, startup code performs:
-`memcpy(&_sdata, &_sidata, &_edata - &_sdata);`
-where `_sidata` is the start of data in Flash, `_sdata`/`_edata` are the boundaries in RAM.
+When LMA and VMA differ, startup code copies bytes from the image at the LMA into the RAM range at the VMA; the boundary symbols depend on the linker script.
 
-Then: `memset(&_sbss, 0, &_ebss - &_sbss);`
-Then `main()`. Controlled by the linker script.[^embeddedinterviewlab]
+Startup code commonly zeroes `.bss` afterward and then calls `main()`. The details depend on the runtime and linker script.[^gnu-ld-lma]
 
 ## Detailed explanation
 

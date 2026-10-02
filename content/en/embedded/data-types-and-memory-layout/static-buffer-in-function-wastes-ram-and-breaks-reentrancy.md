@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0076
 title: "Trap in embedded: what are the risks? `static uint8_t buffer[4096];`"
-description: "A static buffer inside a function lives in .bss forever, permanently costs RAM, and breaks reentrancy."
+description: "A local static buffer has program-long lifetime and shared state, so its size and access from multiple contexts must be considered."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,15 +33,7 @@ sources:
 
 ## Short answer
 
-`static` in a function -> buffer in `.bss` (RAM, zeroed at boot). 4096B can be a critical portion of RAM (20% of 20KB!).
-
-Risks:
-1. <span class="warn">Function is not reentrant</span> – ISR and main loop share the buffer;
-2. Occupies RAM all the time (even when unused);
-3. If in multiple functions – RAM is quickly exhausted;
-4. Static analysis does not always detect the overlap.
-
-Alternative: one global buffer + mutex, or a memory pool.[^embeddedinterviewlab]
+A local variable declared `static` has static storage duration: its storage lasts for the whole program execution and it is initialized once; placement in `.bss` depends on the toolchain and linker script.[^iso-c-n1570] The buffer is not inherently non-reentrant, but concurrent calls or an ISR and main loop accessing the same state can conflict. A 4096-byte buffer is 20% only when the RAM budget is 20 KiB.[^iso-c-n1570]
 
 ## Detailed explanation
 

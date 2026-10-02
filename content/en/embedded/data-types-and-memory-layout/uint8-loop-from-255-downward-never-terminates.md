@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0071
 title: "Trap: infinite loop? `uint8_t i; for(i = 255; i >= 0; i--)`"
-description: "uint8t can never be negative, so i = 0 is always true and the loop never terminates."
+description: "A `uint8_t` counter returns to 255 after decrementing zero, so the loop does not terminate."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Yes, an infinite loop!</span> Just like `i >= 0` for unsigned: `uint8_t` can never be negative.
+<span class="warn">The loop does not terminate.</span> After integer promotion, the comparison is performed as `int`, but after decrementing zero the value is stored back in `uint8_t` as 255.[^iso-c-n1570]
 
-When `i = 0` -> `i--` -> `i = 255` (wraparound) -> `255 >= 0` -> true. The loop never terminates.
+When `i == 0`, `i--` computes `-1` as an `int`; assigning it back to `uint8_t` yields 255, so the next condition is true.[^iso-c-n1570]
 
-Fix: `for(int i = 255; i >= 0; i--)`; GCC with `-Wtype-limits` will warn about unsigned comparison against zero.[^embeddedinterviewlab]
+For an inclusive countdown from 255 to 0, use a signed type that can hold both bounds, such as `int`, or stop an unsigned counter before decrementing zero.[^iso-c-n1570]
 
 ## Detailed explanation
 

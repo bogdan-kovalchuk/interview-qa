@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0072
 title: "What is the resource difference between `.rodata` in Flash and `.data` in RAM?"
-description: ".rodata is read straight from Flash at no RAM cost, while .data pays for both Flash and RAM."
+description: "The linker script determines whether constants reside in Flash, while initialized data is often copied from Flash to RAM."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: gnu-ld
+    title: "The GNU linker: Linker Scripts"
+    url: https://sourceware.org/binutils/docs/ld.pdf
+    accessed: 2026-10-04
+    kind: official
+    version: "current"
+    applicability: "Describes VMA, LMA, and copying initialized sections in GNU ld linker-script examples; other linkers and memory maps may differ."
 ---
 
 ## Short answer
 
-**.rodata** – Flash only: the CPU reads constants directly from there (with wait states), no RAM is spent.
+**`.rodata`** is often placed in Flash by the linker script; the section name alone does not guarantee it. If the CPU reads it directly, the table needs no RAM copy.[^gnu-ld]
 
-**.data** – both Flash and RAM: values in Flash (LMA) + a copy in RAM (VMA). That is, <span class="warn">double cost</span>: Flash for initialization values + RAM for runtime.
+For initialized `.data`, startup code often copies initial bytes from Flash (LMA) to RAM (VMA), using space in both memories; the linker script and startup code define this.[^gnu-ld]
 
-Practice on an MCU with 20KB RAM: a large lookup table -> `const` -> `.rodata` -> Flash only. Saving RAM is critical.[^embeddedinterviewlab]
+`const` does not guarantee Flash placement; check the linker map and MCU capabilities.[^gnu-ld]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,9 +33,7 @@ sources:
 
 ## Short answer
 
-`EF`: on little-endian (Cortex-M) the LSB is stored at the lowest address, so `0xDEADBEEF` in memory is `[EF][BE][AD][DE]` and `p[0]` = `0xEF` (LSB), `p[1] = 0xBE`, `p[2] = 0xAD`, `p[3] = 0xDE` (MSB).
-
-Access through a byte pointer is allowed for character types (`unsigned char*`), and `uint8_t` is typically a typedef for `unsigned char`.[^embeddedinterviewlab]
+On a little-endian system, `0xDEADBEEF` is stored least-significant byte first, so `p[0]` is `0xEF`. This depends on the target’s byte order. C permits inspecting an object representation through `unsigned char*`; `uint8_t` is optional, and if present should not be assumed to be a character type without checking.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0080
 title: "Find the bug: `char* get_name(void) { char buf[32] = \"test\"; return buf; }`"
-description: "buf is destroyed on return, so the function returns a dangling pointer into invalid stack memory."
+description: "When the function ends, the local array reaches the end of its lifetime, so the returned pointer cannot be used safely."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,16 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">Returning a pointer to a local array -> undefined behavior.</span> `buf[32]` is on the stack, destroyed after return.
-
-The caller gets a dangling pointer – a pointer to already invalid memory. Reading it -> garbage or crash.
-
-Solutions:
-1. `static char buf[32];` (but not reentrant);
-2. Pass the buffer as a parameter: `void get_name(char *buf, size_t len);`
-3. `malloc` + document that the caller must `free`.
-
-GCC: `warning: function returns address of local variable`.[^embeddedinterviewlab]
+When the block ends, a local array with automatic storage duration reaches the end of its lifetime, and C makes a pointer value to such an object indeterminate.[^iso-c-n1570] A function therefore cannot safely return a pointer for the caller to use to access `buf`; “stack” describes a common implementation, not a requirement of the standard.[^iso-c-n1570] Pass in a caller-owned buffer, return static storage with an explicit sharing model, or allocate memory with documented ownership.
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,17 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: gnu-ld-lma
+    title: "GNU ld manual: Output Section LMA"
+    url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
+    accessed: 2026-10-04
+    kind: official
+    version: "current"
+    applicability: "Explains LMA/VMA and startup copying of initialized data; the linker script determines which bytes belong to the section."
 ---
 
 ## Short answer
 
-**12 bytes** (3 × `sizeof(int)` = 3 × 4).
+The exact count depends on the ABI and `.data` contents; with 32-bit `int` and only these three objects, their values occupy 12 bytes.[^iso-c-n1570] [^gnu-ld-lma]
 
-All three are initialized globals -> `.data`. Startup code copies the entire `.data` block from Flash to RAM in one memcpy-like loop.
+In a typical bare-metal layout, values are copied from an LMA in Flash to a VMA in RAM, but startup code copies the linker-script-defined `.data` range, which need not consist of only these variables or exactly 12 bytes.[^gnu-ld-lma]
 
-Initial values in Flash (little-endian): `{0x01,0x00,0x00,0x00, 0x02,0x00,0x00,0x00, 0x03,0x00,0x00,0x00}` -> copied to RAM.
-
-If `int a=0; int b=0; int c=0;` -> the compiler may place them in `.bss` (0B Flash).[^embeddedinterviewlab]
+Zero-initialized objects are often placed in `.bss`, but this is a toolchain convention, not a C guarantee.[^gnu-ld-lma]
 
 ## Detailed explanation
 
