@@ -19,5 +19,5 @@ QUESTIONS = 2089
 
 # Cards that ship in each package: a question ships when its Short answer is
 # written in that language and `anki.export` is not false (meta/anki.md).
-UK_CARDS = 2076
-EN_CARDS = 1055
+UK_CARDS = 2089
+EN_CARDS = 1068

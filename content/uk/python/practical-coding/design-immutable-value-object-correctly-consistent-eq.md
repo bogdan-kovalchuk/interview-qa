@@ -1,127 +1,127 @@
 ---
 id: py-prac-0021
 title: "Спроєктуйте immutable value object з коректно узгодженими `__eq__` та `__hash__`, придатний для `dict` key."
-description: "__slots__ запобігає створенню __dict__, __setattr__ raise AttributeError для immutability, __eq__ порівнює поля, __hash__ повертає hash(tuple_of_fields) – гарантує a == b -> hash(a) == hash(b)."
+description: "Використовуйте frozen dataclass зі slots та перевіреними integer fields."
 track: python
 section: practical-coding
 level: senior
 type: coding
 tags: [eq, hash, dict]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  en: 1
+  en: 3
 execution:
   language: python
   standard: null
   toolchain:
     name: cpython
-    version: "3.14.7"
+    version: "3.13.15"
   flags: []
 anki:
-  export: false
+  export: true
 sources:
-  - source_id: py314-tutorial
-    title: "Python 3.14: Tutorial"
-    url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-reference
-    title: "Python 3.14: Reference"
-    url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-threading
-    title: "Python 3.14: Library/threading"
-    url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-time-time-monotonic
-    title: "Python 3.14: Library/time"
-    url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+- source_id: py313-dataclasses
+  title: 'Python 3.13: Frozen dataclasses and hash generation'
+  url: https://docs.python.org/3.13/library/dataclasses.html
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
+- source_id: py313-model
+  title: 'Python 3.13: Data model: hashing and context managers'
+  url: https://docs.python.org/3.13/reference/datamodel.html
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
 ---
 
 ## Task
 
-TODO
+Реалізуйте immutable через public API value object Point з integer fields x та y, узгодженими equality і hashing та використанням як dict key.
 
 ## Constraints
 
-TODO
+- Fields – built-in ints, крім bool.
+- Звичайні assignment та deletion мають відхилятися; equality порівнює той самий class і обидва fields.
+- Навмисний обхід через object.__setattr__ поза public API contract; frozen не є security boundary.
 
 ## Short answer
 
-**`__slots__` запобігає створенню `__dict__`, `__setattr__` raise `AttributeError` для immutability, `__eq__` порівнює поля, `__hash__` повертає `hash(tuple_of_fields)` – гарантує `a == b` -> `hash(a) == hash(b)`.** <span class="warn">Якщо `__eq__` перевизначено без `__hash__`, Python автоматично встановлює `__hash__ = None` – об'єкт стане unhashable.</span>
-
-```python
-class Point:
-    __slots__ = ('_x', '_y')
-
-    def __init__(self, x, y):
-        object.__setattr__(self, '_x', x)
-        object.__setattr__(self, '_y', y)
-
-    @property
-    def x(self):
-        return self._x
-
-    def __eq__(self, other):
-        if not isinstance(other, Point):
-            return NotImplemented
-        return self._x == other._x and self._y == other._y
-
-    def __hash__(self):
-        return hash((self._x, self._y))
-
-    def __setattr__(self, name, value):
-        raise AttributeError("Point is immutable")
-
-p1 = Point(1, 2)
-p2 = Point(1, 2)
-p1 == p2  # True
-hash(p1) == hash(p2)  # True
-d = {p1: "a"}
-d[p2]  # "a"
-```
+**Використовуйте frozen dataclass зі slots та перевіреними integer fields.** Він генерує equality та hashing із тих самих fields. Frozen блокує звичайні assignment і deletion, але не запобігає навмисній low-level mutation.
 
 ## Detailed explanation
 
-TODO
+За eq та frozen dataclass генерує hash, узгоджений із field equality. Integer fields уникають nested mutable state; type annotations не перевіряють constructor arguments, тому це робить __post_init__. Slots прибирає звичайний instance dictionary, але саме собою не забезпечує immutability. [^py313-dataclasses] [^py313-model]
 
 ## Examples
 
-TODO
+```python
+assert {Point(1, 2): "value"}[Point(1, 2)] == "value"
+```
 
 ## Solution
 
-TODO
+```python
+from dataclasses import dataclass
+
+@dataclass(frozen=True, slots=True)
+class Point:
+    x: int
+    y: int
+
+    def __post_init__(self):
+        if type(self.x) is not int or type(self.y) is not int:
+            raise TypeError("coordinates must be integers")
+```
 
 ## Complexity
 
-TODO
+Зберігаються два field references. Equality та hashing залежать від bit lengths integer fields; лише fixed-width integer model робить їх O(1). Dict operations мають expected constant time за числом entries, плюс key hashing та equality costs. [^py313-dataclasses] [^py313-model]
 
 ## Edge cases
 
-TODO
+Перевірте equal keys, нерівні coordinates, unrelated types, invalid coordinates, assignment, deletion та відсутність __dict__.
 
 ## Tests
 
-TODO
+Виконайте після блока Solution із встановленим pytest.
+
+```python
+import pytest
+
+from dataclasses import FrozenInstanceError
+a, b = Point(1, 2), Point(1, 2)
+assert a == b and hash(a) == hash(b)
+assert {a: "found"}[b] == "found"
+assert a != Point(2, 1) and a != (1, 2)
+assert a.__eq__((1, 2)) is NotImplemented
+assert not hasattr(a, "__dict__")
+with pytest.raises(FrozenInstanceError):
+    a.x = 3
+with pytest.raises(FrozenInstanceError):
+    del a.y
+assert a == b
+for invalid in (True, [], 1.0):
+    with pytest.raises(TypeError):
+        Point(invalid, 2)
+```
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+
+Поясніть equality/hash invariant без обіцянки collision freedom або absolute immutability.
+
+### Red flags
+
+Implementation пропускає зазначений boundary case або complexity claim не враховує allocated data.
+
+### Level-up follow-up
+
+Що зміниться, коли field mutable або subclass додає equality state?
 
 ## Sources
 

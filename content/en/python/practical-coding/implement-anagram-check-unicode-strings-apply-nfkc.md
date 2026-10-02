@@ -1,96 +1,126 @@
 ---
 id: py-prac-0013
 title: "Implement an anagram check for Unicode strings: apply NFKC and `casefold()`, ignore whitespace, and take other code points into account."
-description: "Implement an anagram check for Unicode strings: apply NFKC and `casefold()`, ignore whitespace, and take other code points into account."
+description: "Build a Counter of non-whitespace characters after NFKC and casefold."
 track: python
 section: practical-coding
 level: middle
 type: coding
 tags: [casefold]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 3
 execution:
   language: python
   standard: null
   toolchain:
     name: cpython
-    version: "3.14.7"
+    version: "3.13.15"
   flags: []
 anki:
-  export: false
+  export: true
 sources:
-  - source_id: py314-tutorial
-    title: "Python 3.14: Tutorial"
-    url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-reference
-    title: "Python 3.14: Reference"
-    url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-threading
-    title: "Python 3.14: Library/threading"
-    url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-time-time-monotonic
-    title: "Python 3.14: Library/time"
-    url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
+- source_id: py313-unicode
+  title: 'Python 3.13: Unicode normalization'
+  url: https://docs.python.org/3.13/library/unicodedata.html#unicodedata.normalize
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
+- source_id: py313-types
+  title: 'Python 3.13: Built-in types'
+  url: https://docs.python.org/3.13/library/stdtypes.html
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
+- source_id: py313-counter
+  title: 'Python 3.13: Counter and most_common ordering'
+  url: https://docs.python.org/3.13/library/collections.html#collections.Counter
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
 ---
 
 ## Task
 
-TODO
+Implement `is_anagram(s1, s2)`: apply NFKC, then casefold, ignore whitespace and compare multiplicities of all remaining code points.
 
 ## Constraints
 
-TODO
+- Both inputs are str.
+- Punctuation and accents count; only whitespace is ignored.
+- Compare code points rather than grapheme clusters.
+- Do not apply additional normalization after casefold.
 
 ## Short answer
 
-TODO
+**Build a Counter of non-whitespace characters after NFKC and casefold.** Equality of Counters checks both characters and multiplicities. Unlike sorting, counting avoids ordering the whole character sequence.
 
 ## Detailed explanation
 
-TODO
+Normalization can compose canonically equivalent sequences and replace compatibility forms. Casefold can expand one character into several; counting must therefore happen after both transformations. Punctuation remains significant. [^py313-unicode] [^py313-types] [^py313-counter]
 
 ## Examples
 
-TODO
+```python
+assert is_anagram("Dormitory", "Dirty room")
+```
 
 ## Solution
 
-TODO
+```python
+import unicodedata
+from collections import Counter
+
+def is_anagram(s1, s2):
+    def counts(text):
+        text = unicodedata.normalize("NFKC", text).casefold()
+        return Counter(ch for ch in text if not ch.isspace())
+    return counts(s1) == counts(s2)
+```
 
 ## Complexity
 
-TODO
+Counting and comparison use expected O(m+n) operations for transformed lengths m and n. Storage includes the transformed strings and distinct-character counters; transformation costs are additional. [^py313-unicode] [^py313-types] [^py313-counter]
 
 ## Edge cases
 
-TODO
+Test canonical equivalence, fullwidth letters, casefold expansion, Unicode whitespace, unequal multiplicities and punctuation.
 
 ## Tests
 
-TODO
+Run after the Solution block with pytest installed.
+
+```python
+import pytest
+
+assert is_anagram("Listen", "Silent")
+assert is_anagram("é", "é")
+assert is_anagram("Ａ b", "ba")
+assert is_anagram("Straße", "strasse")
+assert is_anagram("a b", "ba")
+assert is_anagram("", " 	")
+assert not is_anagram("aab", "abb")
+assert not is_anagram("ab!", "ba")
+```
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+
+Do not replace the Counter with a set, which loses multiplicity. Ignore whitespace only.
+
+### Red flags
+
+The implementation misses a stated boundary case or its complexity claim omits allocated data.
+
+### Level-up follow-up
+
+How would a grapheme-based anagram definition differ?
 
 ## Sources
 

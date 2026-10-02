@@ -1,122 +1,137 @@
 ---
 id: py-prac-0017
 title: "Реалізуйте decorator для вимірювання elapsed time, який зберігає metadata, return value та exception behavior wrapped callable."
-description: "functools.wraps копіює metadata (__name__, __doc__, __wrapped__), time.perf_counter() для high-resolution elapsed time, return value передається через return result, exception propagation гарантується відсутністю..."
+description: "Використовуйте wraps, читайте perf_counter перед викликом і записуйте різницю у finally."
 track: python
 section: practical-coding
 level: middle
 type: coding
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  en: 1
+  en: 3
 execution:
   language: python
   standard: null
   toolchain:
     name: cpython
-    version: "3.14.7"
+    version: "3.13.15"
   flags: []
 anki:
-  export: false
+  export: true
 sources:
-  - source_id: py314-tutorial
-    title: "Python 3.14: Tutorial"
-    url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-reference
-    title: "Python 3.14: Reference"
-    url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-threading
-    title: "Python 3.14: Library/threading"
-    url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-time-time-monotonic
-    title: "Python 3.14: Library/time"
-    url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+- source_id: py313-functools
+  title: 'Python 3.13: Wrapper metadata'
+  url: https://docs.python.org/3.13/library/functools.html#functools.wraps
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
+- source_id: py313-time
+  title: 'Python 3.13: Performance counter'
+  url: https://docs.python.org/3.13/library/time.html#time.perf_counter
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
+- source_id: py313-compound
+  title: 'Python 3.13: Compound statements: with and finally'
+  url: https://docs.python.org/3.13/reference/compound_stmts.html
+  accessed: '2026-10-04'
+  kind: official
+  version: '3.13'
+  applicability: API semantics and language guarantees used by this solution.
 ---
 
 ## Task
 
-TODO
+Реалізуйте `timed(func, *, clock=perf_counter)` для synchronous calls, зберігши metadata, return values та exceptions. Зберігайте останню elapsed duration на wrapper.
 
 ## Constraints
 
-TODO
+- Injected clock повертає monotonic numeric readings і не має піднімати exceptions.
+- Вимірюйте successful та failing calls. last_elapsed – None до виклику і є shared diagnostic state, а не thread-local metric; async functions поза scope.
 
 ## Short answer
 
-**`functools.wraps` копіює metadata (`__name__`, `__doc__`, `__wrapped__`), `time.perf_counter()` для high-resolution elapsed time, return value передається через `return result`, exception propagation гарантується відсутністю `try/except` що ловить помилки.** Тут <span class="warn">`time.time()` має нижчу точність та чутливий до system clock changes; `time.perf_counter()` є monotonic та має найвищу доступну точність.</span>
-
-```python
-import time
-import functools
-
-def timed(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        start = time.perf_counter()
-        try:
-            result = func(*args, **kwargs)
-            return result
-        finally:
-            elapsed = time.perf_counter() - start
-            wrapper.last_elapsed = elapsed
-    wrapper.last_elapsed = None
-    return wrapper
-
-@timed
-def slow_add(a, b):
-    time.sleep(0.01)
-    return a + b
-
-slow_add(1, 2)  # 3
-slow_add.__name__  # 'slow_add'
-```
+**Використовуйте `wraps`, читайте `perf_counter` перед викликом і записуйте різницю у finally.** Повертайте wrapped result безпосередньо. Finally також записує failed calls, дозволяючи їхнім exceptions поширюватися.
 
 ## Detailed explanation
 
-TODO
+Лише різниці clock readings представляють durations. Finally виконується і для return, і для exception paths; він не має return або raise, що приховають початковий результат. Injected non-failing clock робить tests deterministic. [^py313-functools] [^py313-time] [^py313-compound]
 
 ## Examples
 
-TODO
+```python
+assert timed(lambda x: x + 1)(2) == 3
+```
 
 ## Solution
 
-TODO
+```python
+from functools import wraps
+from time import perf_counter
+
+def timed(func, *, clock=perf_counter):
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        start = clock()
+        try:
+            return func(*args, **kwargs)
+        finally:
+            wrapper.last_elapsed = clock() - start
+    wrapper.last_elapsed = None
+    return wrapper
+```
 
 ## Complexity
 
-TODO
+O(1) роботи й пам’яті wrapper на виклик, без вартості wrapped function та clock. Overlapping calls поділяють last_elapsed, тому цей attribute не є recorder з коректною attribution для concurrency. [^py313-functools] [^py313-time] [^py313-compound]
 
 ## Edge cases
 
-TODO
+Перевірте metadata, keyword arguments, result identity, точні fake-clock durations та exception identity.
 
 ## Tests
 
-TODO
+Виконайте після блока Solution із встановленим pytest.
+
+```python
+import pytest
+
+ticks = iter([10.0, 10.25, 20.0, 20.75])
+result = object()
+def operation(*, fail=False):
+    """A timed operation."""
+    if fail:
+        raise failure
+    return result
+failure = ValueError("failed")
+wrapped = timed(operation, clock=lambda: next(ticks))
+assert wrapped.last_elapsed is None
+assert wrapped() is result and wrapped.last_elapsed == 0.25
+assert wrapped.__name__ == operation.__name__
+assert wrapped.__doc__ == operation.__doc__ and wrapped.__wrapped__ is operation
+with pytest.raises(ValueError) as caught:
+    wrapped(fail=True)
+assert caught.value is failure and wrapped.last_elapsed == 0.75
+```
 
 ## Evaluation guide
 
-TODO
+### Expected signals
+
+Використовуйте injected clock замість sleep-based timing assertions. Поясніть synchronous та concurrency limits.
+
+### Red flags
+
+Implementation пропускає зазначений boundary case або complexity claim не враховує allocated data.
+
+### Level-up follow-up
+
+Як записувати durations concurrent calls незалежно?
 
 ## Sources
 

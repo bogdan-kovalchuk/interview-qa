@@ -16,10 +16,10 @@ programs. A fix made once is a fix everywhere.
 > is not rendered on the page at all: on 224 of the pages that existed at the time it produced four
 > or more identical "not written yet" notices, so the gaps are reported as data instead.
 >
-> **Current state:** 2089 questions in both languages, 2076 shipping as Ukrainian flashcards and
-> 1055 as English ones, and the site is live at the link above. Every question has a Ukrainian short
-> answer and 1055 have an English one; 235 also carry a written detailed explanation in both
-> languages, 49 of them complete. For the rest, the detailed explanation is still `TODO`. The
+> **Current state:** 2089 questions in both languages, 2089 shipping as Ukrainian flashcards and
+> 1068 as English ones, and the site is live at the link above. Every question has a Ukrainian short
+> answer and 1068 have an English one; 248 also carry a written detailed explanation in both
+> languages, 62 of them complete. For the rest, the detailed explanation is still `TODO`. The
 > localized `/status/` page reports those gaps by language, track, section, and question type from
 > `dist/export/progress.json`.
 
