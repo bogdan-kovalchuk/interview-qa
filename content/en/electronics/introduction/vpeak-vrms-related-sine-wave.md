@@ -1,17 +1,17 @@
 ---
 id: emb-elintro-0084
-title: "How are <span class=\"formula\">\\(V_{peak}\\)</span>, <span class=\"formula\">\\(V_{pp}\\)</span> and <span class=\"formula\">\\(V_{rms}\\)</span> related for a sine wave?"
-description: "How are \\(V_{peak}\\), \\(V_{pp}\\) and \\(V_{rms}\\) related for a sine wave?"
+title: "How are `V_peak`, `V_pp`, and `V_rms` related for a sine wave?"
+description: "Relationship between peak, peak-to-peak, and RMS voltage for a pure sine wave."
 track: electronics
 section: introduction
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 9 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 9 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
@@ -36,7 +36,15 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
+  - source_id: aac-ac-magnitude
+    title: "All About Circuits: Measurements of AC Magnitude"
+    url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-1/measurements-ac-magnitude/
+    accessed: 2026-10-04
+    kind: book
+    version: null
+    applicability: "Defines RMS, peak, and peak-to-peak amplitudes; fixed ratios apply to a pure sine wave."
 ---
+
 
 ## Short answer
 
