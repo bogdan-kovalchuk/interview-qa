@@ -1,17 +1,17 @@
 ---
 id: emb-elintro-0218
-title: "Why drive <span class=\"formula\">\\(I_B\\)</span> 5–10 times higher than the minimum required (overdrive)?"
-description: "Why drive \\(I_B\\) 5–10 times higher than the minimum required (overdrive)?"
+title: "Why drive `I_B` 5–10 times higher than the minimum calculated value (overdrive)?"
+description: "Why drive IB 5–10 times higher than the minimum calculated value?"
 track: electronics
 section: introduction
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 20 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 20 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
