@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -45,7 +45,7 @@ uint32_t *p = (uint32_t *)&cfg;
 
 On an MCU, `cfg` may reside in Flash/`.rodata`, and a write through `p` can cause a BusFault/HardFault or simply leave the data unchanged. Even if the address is in RAM, the optimizer may assume that `cfg` does not change.
 
-Protection: do not cast away `const` for writing. If the data must change, it must not be `const`.[^embeddedinterviewlab]
+Protection: do not cast away `const` for writing. If the data must change, it must not be `const`.[^iso-c-n1570]
 
 ## Detailed explanation
 

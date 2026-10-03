@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -46,7 +46,7 @@ p = &y;
 
 `const int *p` means pointer to const int. Const applies to the data pointed to by `p`, not to the pointer itself. So the pointer can be changed, but writing through it is forbidden.
 
-Rule: if `const` is to the left of `*`, the pointed-to data is protected.[^embeddedinterviewlab]
+Rule: if `const` is to the left of `*`, the pointed-to data is protected.[^iso-c-n1570]
 
 ## Detailed explanation
 

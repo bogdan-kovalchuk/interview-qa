@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 **Because each field of the struct overlay represents a hardware register, not an ordinary RAM field.**
 
-When code writes `GPIOA->ODR` or reads `GPIOA->IDR`, this is a bus transaction to a peripheral address. The compiler must not cache a field value, merge writes, or remove reads.
+When code accesses a field declared volatile, the implementation must preserve the corresponding volatile access under the C rules. However, the exact definition of an access is implementation-defined; `volatile` alone does not guarantee atomicity, bus transaction width, or the required ordering of hardware operations.[^iso-c-n1570]
 
-Rule: in a CMSIS-style register overlay, volatile must be placed on the register fields or on the access type so that every field access is a volatile access.[^embeddedinterviewlab]
+Rule: qualify memory-mapped register accesses as `volatile`, and check the address, field layout, access width, and side effects against the MCU documentation.[^iso-c-n1570]
 
 ## Detailed explanation
 

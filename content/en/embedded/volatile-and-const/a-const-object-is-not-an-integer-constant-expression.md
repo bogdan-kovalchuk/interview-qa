@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">In C, `const` means a read-only object through that identifier, but not always an integer constant expression.</span>
+<span class="warn">In C, `const` restricts modification through that identifier, but the object’s value does not become an integer constant expression.</span>[^iso-c-n1570]
 
-For example, a file-scope `const int n = 10;` in C cannot be used everywhere as the size of a static array where a compile-time constant expression is required. In C++, the rules differ. For C embedded code, `enum`, `#define`, or linker symbols are often used for compile-time constants.
+For example, `const int n = 10;` is not an integer constant expression in C and cannot serve as the size of an ordinary file-scope array where one is required. C++ rules differ. In C, an integer constant, `enum`, or `#define` is commonly used for a fixed size.
 
-Protection: do not confuse object immutability with a preprocessor or translation-time constant.[^embeddedinterviewlab]
+Protection: do not confuse restricted writes through `const` with the language requirement for an integer constant expression.[^iso-c-n1570]
 
 ## Detailed explanation
 
