@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 Through a `callback + context pointer` pair.
 
-Example: `timer_start(timer, on_timeout, &app);` – the driver stores `on_timeout` and `&app`. When the timer fires, it calls `on_timeout(&app)`. The callback casts `void *` back to `struct App *`.
+Example: `timer_start(timer, on_timeout, &app);` – the driver stores the function pointer and the address of the state object. When the timer fires, it passes the saved context to the callback; the callback converts `void *` back to `struct App *` and accesses the object through the correct type. C allows an object pointer to be converted to `void *` and back while preserving the original value.[^iso-c-n1570]
 
-Rule: a callback must not guess a global instance; a context pointer makes the dependency explicit.[^embeddedinterviewlab]
+Rule: a callback must not guess a global instance; a context pointer makes the dependency explicit.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-nested-functions
+    title: "GCC documentation: Nested Functions"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Nested-Functions.html
+    accessed: 2026-10-04
+    kind: official
+    version: "current"
+    applicability: "Documents GNU C as an extension, trampolines, and address lifetime limits; it does not describe ISO C."
 ---
 
 ## Short answer
 
-<span class="warn">No. Standard C has no nested functions.</span>
+<span class="warn">No. ISO C does not define nested functions; GCC provides them as a GNU C extension.</span> [^iso-c-n1570] [^gcc-nested-functions]
 
-GCC supports nested functions as an extension, but they may use stack trampolines and are poorly suited for portable embedded code, MPU/NX memory and static analysis. Such a callback can break with a different compiler or security settings.
+GCC implements taking a nested function's address with trampolines; the address also becomes unsafe after the containing function exits.[^gcc-nested-functions]
 
-Protection: use a file-scope static function plus `void *context`, or in C++ a non-capturing lambda or static member wrapper.[^embeddedinterviewlab]
+Protection: use a file-scope `static` function and `void *context`; this keeps the callback independent of a GNU extension.[^iso-c-n1570]
 
 ## Detailed explanation
 

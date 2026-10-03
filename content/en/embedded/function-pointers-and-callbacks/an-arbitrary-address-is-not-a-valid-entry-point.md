@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">The address may not be a valid entry address for a function with the required ABI signature.</span>
+<span class="warn">Converting an arbitrary integer to a function pointer does not make the address a valid function.</span>
 
-On Cortex-M function addresses carry Thumb-state bit semantics; calling a wrong address can cause a HardFault. The address may also point to data memory, padding, a bootloader table or a function with a different calling convention.
+In C, converting an integer to a pointer has an implementation-defined result: the address may be misaligned, may not point to an object or function of the referenced type, or may be a trap representation. Calling through a function pointer with an incompatible type also has undefined behaviour.[^iso-c-n1570]
 
-Protection: call only valid function entry points with the correct signature. For a bootloader jump use the documented sequence: deinit, set MSP, set VTOR, jump to Reset_Handler.[^embeddedinterviewlab]
+Protection: call only a known entry point with a compatible signature and the platform ABI rules; use the MCU's documented procedure when transferring to another image.[^embeddedinterviewlab] [^iso-c-n1570]
 
 ## Detailed explanation
 

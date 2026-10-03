@@ -1,17 +1,17 @@
 ---
 id: emb-fnptr-0031
 title: "Trap: why must `void *context` be cast back to the right type?"
-description: "An incorrect cast of the context pointer gives undefined behavior when accessing the object."
+description: "A cast from void * does not check the type; incorrect object access may cause undefined behaviour."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">An incorrect cast of the context pointer gives undefined behavior when accessing the object.</span>
+<span class="warn">A cast from `void *` does not check the type; undefined behaviour occurs if the result is used to access the object incorrectly.</span>
 
-`void *` carries no runtime type information. If the callback expects `struct Uart *` but the driver passed `struct Spi *`, the compiler will not protect you. Field accesses then interpret the wrong layout as the wrong type.
+`void *` carries no runtime type information. If a callback expects `struct Uart *` but receives a pointer to `struct Spi`, dereferencing it as `struct Uart` may violate alignment or typed-object access rules.[^iso-c-n1570]
 
-Protection: make the registration API typed where possible; add magic or version fields for debugging; do not reuse one callback signature for incompatible context objects without a wrapper.[^embeddedinterviewlab]
+Protection: use a typed registration API where possible; verify the object type; use a wrapper for incompatible contexts.[^iso-c-n1570]
 
 ## Detailed explanation
 
