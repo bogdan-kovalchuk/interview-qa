@@ -1,17 +1,17 @@
 ---
 id: emb-elintro-0167
-title: "Calculate the current: V=9V, R=330Ω, Si diode (<span class=\"formula\">\\(V_f\\)</span>=0.7V)."
-description: "Calculate the current: V=9V, R=330Ω, Si diode (\\(V_f\\)=0.7V)."
+title: "Calculate the current: V = 9 V, R = 330 Ω, Si diode (`V_f` = 0.7 V)?"
+description: "Calculate the current for a 9 V supply, 330 Ω resistor, and diode `V_f` of 0.7 V."
 track: electronics
 section: introduction
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 16 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 16 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
