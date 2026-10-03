@@ -1,17 +1,17 @@
 ---
 id: emb-dtypes-0093
-title: "Where is `extern const uint8_t image_data[]` stored when defined in a linker script?"
-description: "The array lives in Flash, and the linker script assigns its address via a dedicated section symbol."
+title: "How does a linker script assign an address to `extern const uint8_t image_data[]`?"
+description: "A linker script can place an input data section and export a symbol that C code treats as the array address."
 track: embedded
 section: data-types-and-memory-layout
 level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,16 +29,25 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: gnu-ld-symbols
+    title: "GNU ld: Source Code Reference"
+    url: https://sourceware.org/binutils/docs/ld/Source-Code-Reference.html
+    accessed: 2026-10-04
+    kind: official
+    version: "2.47"
+    applicability: "Explains that a linker-script-defined symbol is an address without a separate object and how C refers to it; specific to GNU ld."
+  - source_id: gnu-ld-sections
+    title: "GNU ld: SECTIONS Command"
+    url: https://sourceware.org/binutils/docs/ld/SECTIONS.html
+    accessed: 2026-10-04
+    kind: official
+    version: "2.47"
+    applicability: "Describes input/output section mapping and output-section placement in GNU ld; the script specifies the concrete memory map."
 ---
 
 ## Short answer
 
-In Flash, in the `.rodata` section or a special section defined in the linker script.
-
-`extern const` without an initializer in C code is only a declaration. The linker script defines the symbol `image_data` with an address in Flash:
-`image_data = LOADADDR(.flash_resources);`
-
-Typical use: binary resources (images, certificates, tables) embedded into firmware via `KEEP(*(.flash_data))` or `objcopy -I binary`.[^embeddedinterviewlab]
+The declaration `extern const uint8_t image_data[];` does not define the array; the linker resolves the symbol in the linked image. Its physical address and section depend on the linker script and target, so it is not necessarily Flash or `.rodata`. In GNU `ld`, a script-defined symbol is an address without a separate object, so code commonly declares it as an array and reads from that address.[^gnu-ld-symbols]
 
 ## Detailed explanation
 

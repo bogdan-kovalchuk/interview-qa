@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">Implementation-defined behavior</span> per the C standard (§7.22.3): the implementation may return either `NULL` or a unique non-null pointer.
-
-In both cases `*p` -> undefined behavior; glibc returns a non-null unique pointer, while an embedded heap may return `NULL`.
-
-Practical rule: <span class="warn">never call `malloc(0)`</span> – it is pointless and the behavior is non-portable. Always check `size > 0` before allocation.[^embeddedinterviewlab]
+Under C11, `malloc(0)` has implementation-defined behavior: the implementation documents whether it returns `NULL` or a pointer that cannot be used to access an object.[^iso-c-n1570] Handle zero size explicitly and define what an empty buffer means; this does not by itself forbid passing a non-null result to `free`. Follow the documented contract of the target embedded allocator.
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-ptrarr-0001
-title: "What is the difference between an array name and a pointer in C, and when do they behave differently?"
+title: "What is the difference between an array's name and a pointer in C, and when do they behave differently?"
 description: "An array is a fixed-size object, while a pointer is a separate object that stores an address; array expressions convert to pointers in most, but not all, contexts."
 track: embedded
 section: pointers-and-arrays
@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-08
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:

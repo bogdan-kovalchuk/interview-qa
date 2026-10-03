@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -43,11 +43,11 @@ struct S {
 
 ## Short answer
 
-Typically `sizeof(struct S) == 8` on an ABI where `uint32_t` has alignment 4.
+On an ABI where `uint32_t` has 4-byte alignment and `uint8_t` has 1-byte alignment, `sizeof(struct S) == 8`.
 
-`b` occupies offset 0..3, `a` at offset 4, `c` at offset 5, then 2 bytes of tail padding so that the struct size is a multiple of 4. This is less than the 12 bytes of the `uint8_t, uint32_t, uint8_t` variant.
+`b` has offset 0, `a` has offset 4, and `c` has offset 5, followed by 2 bytes of tail padding. Under the same assumptions, the `uint8_t, uint32_t, uint8_t` variant is 12 bytes.
 
-Embedded takeaway: in an array of 1000 elements, such reordering saves approximately 4 KB.[^embeddedinterviewlab]
+In an array of 1000 elements under these assumptions, the difference is 4000 bytes (about 3.91 KiB).[^iso-c-n1570]
 
 ## Detailed explanation
 

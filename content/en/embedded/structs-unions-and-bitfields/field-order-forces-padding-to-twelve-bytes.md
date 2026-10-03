@@ -1,17 +1,17 @@
 ---
 id: emb-structs-0003
-title: "What is the typical size on a 32-bit ABI?"
-description: "Typically sizeof(struct S) equals 12."
+title: "What is the typical size of `struct S` when `uint32_t` has 4-byte alignment?"
+description: "On an ABI where uint32_t has 4-byte alignment, sizeof(struct S) is typically 12 bytes."
 track: embedded
 section: structs-unions-and-bitfields
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -43,11 +43,11 @@ struct S {
 
 ## Short answer
 
-Typically `sizeof(struct S) == 12`.
+On a common ABI where `uint8_t` has size and alignment 1 byte and `uint32_t` has size and alignment 4 bytes, `sizeof(struct S) == 12`.[^iso-c-n1570]
 
-Layout: `a` occupies offset 0, then 3 bytes of padding, `b` at offset 4, `c` at offset 8, then 3 bytes of tail padding. Tail padding is needed so that the next element in an array `struct S arr[]` again has `b` at a 4-byte aligned offset.
+Under those assumptions, `a` is at offset 0, `b` at offset 4, and `c` at offset 8, with tail padding after `c`. C does not guarantee these offsets or this size for every 32-bit ABI.[^iso-c-n1570]
 
-Rule: field order affects the RAM/Flash footprint. For arrays of structs, padding is multiplied by the number of elements.[^embeddedinterviewlab]
+Field order affects the RAM/Flash footprint. For arrays of structs, padding repeats in every element.[^iso-c-n1570]
 
 ## Detailed explanation
 

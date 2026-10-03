@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,13 +33,7 @@ sources:
 
 ## Short answer
 
-`x = 3`.
-
-Converting `double -> int` in C happens through **truncation** (discarding the fractional part, NOT rounding): `3.7 -> 3`, `-3.7 -> -3` (toward zero).
-
-For rounding: `round(3.7) = 4`, `floor(3.7) = 3`, `ceil(3.7) = 4`.
-
-Important in DSP and control systems: `int duty = (int)(percentage * 100.0f);` can introduce systematic error due to truncation.[^embeddedinterviewlab]
+`x` has the value `3`: converting a finite `double` to `int` discards the fractional part toward zero rather than rounding. For example, `-3.7` becomes `-3`. If the integral part is outside the range of `int`, the behavior is undefined.[^iso-c-n1570]
 
 ## Detailed explanation
 

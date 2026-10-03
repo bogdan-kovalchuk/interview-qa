@@ -8,10 +8,10 @@ level: middle
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`struct` stores all fields sequentially with possible padding, so its size is roughly the sum of fields plus alignment. `union` shares one block of memory among members, so its size equals the largest member with the required alignment. A struct suits state records or register maps; a union suits mutually exclusive data variants, but not safe wire-format parsing.[^dou-embedded-interview]
+`struct` contains all fields as separate members with implementation-defined padding; `union` gives its members shared storage. Thus `sizeof(struct)` need not equal a simple sum of field sizes, and `sizeof(union)` need not equal exactly its largest field because of padding. Both types have implementation-defined alignment.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,29 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
+  - source_id: cpp-union
+    title: 'C++ working draft: Unions'
+    url: https://eel.is/c++draft/class.union.general
+    accessed: 2026-10-04
+    kind: spec
+    version: current working draft
+    applicability: 'C++ active union member rules; the common initial sequence exception is separate and does not cover ordinary float-to-integer reinterpretation.'
+  - source_id: cpp-bit-cast
+    title: 'C++ working draft: bit_cast'
+    url: https://eel.is/c++draft/bit.cast
+    accessed: 2026-10-04
+    kind: spec
+    version: current working draft
+    applicability: 'C++20 std::bit_cast requirements: equal size and trivially copyable types; the resulting representation depends on the source types and implementation.'
 ---
 
 ## Short answer
 
-In **C**: this is common union type punning. It is not a strict aliasing violation, but the resulting value depends on IEEE 754 representation, endianness, and the implementation; for maximally portable code, prefer `memcpy(&r, &pun.f, sizeof r)`.
+In **C**, reading another union member reinterprets the corresponding bytes; the result is not a portable numeric conversion, and a trap representation cannot safely be read as a value.[^iso-c-n1570]
 
-In **C++**: formally, it is <span class="warn">undefined behavior</span> (active member rule: the active member is `f`, reading `u` is UB). GCC/Clang support it as an extension, but the standard does not guarantee it.
+In **C++**, reading inactive member `u` after writing `f` has <span class="warn">undefined behavior</span> in this case; the common initial sequence exception does not apply.[^cpp-union]
 
-Safe alternative for C++ (C++20): `std::bit_cast<uint32_t>(1.0f)`.[^embeddedinterviewlab]
+Use `memcpy` to copy a representation in C; in C++20, `std::bit_cast` is available when the types have equal size and are trivially copyable.[^cpp-bit-cast]
 
 ## Detailed explanation
 

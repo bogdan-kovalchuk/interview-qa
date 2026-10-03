@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-The compiler may <span class="warn">eliminate the write as a dead store</span> (dead store elimination): `*ptr` is never read later in the program flow, so the compiler considers the write redundant.
+The compiler may optimize the write as an ordinary memory access because an external device is not part of C’s abstract machine.[^iso-c-n1570]
 
-Without `volatile`, there is <span class="warn">no guarantee</span> that the bytes actually reach the GPIO.
+Without `volatile`, there is no guarantee that the intended write is preserved as a hardware access.
 
-Correct approach: `volatile uint32_t * const GPIOA_ODR = (volatile uint32_t*)0x40020014U;` – every write/read is actually performed.[^embeddedinterviewlab]
+For a memory-mapped register, use a pointer to a `volatile` type, such as `volatile uint32_t *reg`; this requires the relevant accesses under C’s rules, but does not by itself guarantee the correct address, atomicity, or required ordering.[^iso-c-n1570]
 
 ## Detailed explanation
 

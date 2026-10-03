@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Because a struct may contain padding bytes and an ABI-dependent layout.</span>
+<span class="warn">Because struct layout and padding are implementation-dependent.</span>
 
-Padding bytes can have indeterminate values, byte order depends on endianness, and offsets can differ between compilers, packing options, and target ABIs. What works between two identical Cortex-M builds can break when the compiler or protocol peer changes.
+Padding bytes can have indeterminate values; byte order for multibyte numbers and field offsets also depend on the platform and ABI. Writing a raw struct does not define a portable packet format.
 
-Defense: serialize fields explicitly into a buffer, specify the endian format, and check the packet length. For a fixed binary layout, use static assertions and controlled packing.[^embeddedinterviewlab]
+Serialize fields explicitly into a buffer, specify byte order, and check the packet length. A `static_assert` can check the layout of one build, but does not make the format portable by itself.[^iso-c-n1570]
 
 ## Detailed explanation
 

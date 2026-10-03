@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Arrange fields from largest alignment to smallest**.
+**Group fields by alignment, often from larger to smaller**.
 
-For example, instead of `uint8_t, uint32_t, uint8_t`, prefer `uint32_t, uint8_t, uint8_t`. This does not change semantics as long as the struct is not an external ABI or wire-format contract, but it can significantly reduce the size of an array of structs.
+For example, placing `uint32_t` before two `uint8_t` fields is often more space-efficient than `uint8_t, uint32_t, uint8_t`. Exact padding and size depend on the ABI; field order also changes offsets and can therefore break an ABI or data format.
 
-Rule: for internal data structures, optimize field order; for protocol or register layouts, the order must match the specification, even if there is padding.[^embeddedinterviewlab]
+For internal structures, choose an order that accounts for alignment when compatible with how the structure is used. A protocol or register map follows its specification, not a memory optimization.[^iso-c-n1570]
 
 ## Detailed explanation
 

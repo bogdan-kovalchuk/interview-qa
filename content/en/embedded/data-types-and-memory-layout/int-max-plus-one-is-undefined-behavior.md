@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Origin of the question and answer; the answer is not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,15 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">Signed integer overflow -> undefined behavior</span> (C §6.5).
-
-The compiler may:
-1. Wrap around to `INT_MIN` (typical on x86/ARM two's complement);
-2. Optimize code in unexpected ways (e.g., remove conditional guard code);
-3. Produce an infinite loop in certain patterns.
-
-For defined wraparound: `uint32_t x = UINT32_MAX; x++;` -> `0`.
-Check: `if(x < INT_MAX) x++;`[^embeddedinterviewlab]
+**Signed integer overflow in C** during an operation has undefined behavior: the standard guarantees neither a transition to `INT_MIN` nor any other result. Check the limit before incrementing; comparing a value after overflow does not repair the operation. Unsigned arithmetic is computed modulo `MAX + 1`, so `uint32_t` wraps if that type is available.[^iso-c-n1570]
 
 ## Detailed explanation
 
