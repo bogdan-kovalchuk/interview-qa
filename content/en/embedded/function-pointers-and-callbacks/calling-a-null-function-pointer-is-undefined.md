@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -42,9 +42,9 @@ cb();
 
 <span class="warn">Undefined behavior.</span>
 
-On Cortex-M this is often an attempt to jump to address 0 or another invalid address, which may end in a HardFault. But the C standard guarantees no specific outcome: it is simply an incorrect call.
+The C standard specifies no outcome for this call: it is undefined behavior, and the concrete response depends on the implementation and platform.[^iso-c-n1570]
 
-Defense: before an optional callback always check `if (cb != NULL) { cb(); }`, or register a default no-op callback.[^embeddedinterviewlab]
+Defense: check `cb != NULL` before an optional call, or give the API a guaranteed no-op callback.
 
 ## Detailed explanation
 

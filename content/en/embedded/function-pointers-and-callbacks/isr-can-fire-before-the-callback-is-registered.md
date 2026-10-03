@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -45,9 +45,9 @@ void uart_isr(void) {
 
 <span class="warn">The callback may be unregistered or `NULL`.</span>
 
-If the ISR calls `rx_cb` before registration, it is undefined behavior and on an MCU very likely a HardFault. In interrupt context this is even worse: the fault can occur asynchronously and is hard to reproduce.
+If the ISR calls a null or otherwise invalid `rx_cb`, the call has undefined behaviour under C; the standard does not specify whether an MCU raises a HardFault, hangs, or has some other consequence. The defect can be difficult to reproduce when the interrupt arrives only in a narrow timing window.
 
-Defense: initialize the callback with a no-op function or check `if (rx_cb != NULL)`. Perform registration before enabling the interrupt.[^embeddedinterviewlab]
+Defense: install a no-op or check `if (rx_cb != NULL)`, and register the callback before enabling the relevant interrupt. Follow the platform's rules for ordering and synchronization.[^iso-c-n1570]
 
 ## Detailed explanation
 

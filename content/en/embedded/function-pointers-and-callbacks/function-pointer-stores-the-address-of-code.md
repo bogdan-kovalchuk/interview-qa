@@ -1,17 +1,17 @@
 ---
 id: emb-fnptr-0001
 title: "What is a function pointer in C?"
-description: "A function pointer stores the address of a function executable code with a specific signature."
+description: "A function pointer can be used to call a function of a compatible type indirectly."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**A function pointer** stores the address of a function's executable code with a specific signature.
+**A function pointer** designates a function of a particular type for indirect calls. The function type specifies its return type and parameters; C does not require an ordinary numeric code address.[^iso-c-n1570]
 
-Unlike an object pointer, it does not point at data in RAM/Flash like a regular object; it is used for an indirect call: the code decides which function to call at runtime. In embedded, this is the foundation of callbacks, interrupt vector tables, driver HAL interfaces, state machines, and command dispatch tables.
+Unlike an object pointer, a function pointer has a pointer-to-function type, not a pointer-to-object type. Code can select a function and call it through the pointer; its representation is implementation-defined.[^iso-c-n1570]
 
-Rule: the function pointer type must exactly match the return type and parameter types of the function called through it.[^embeddedinterviewlab]
+Rule: the function type must be compatible with the call; similar declarations alone do not prove this.[^iso-c-n1570]
 
 ## Detailed explanation
 

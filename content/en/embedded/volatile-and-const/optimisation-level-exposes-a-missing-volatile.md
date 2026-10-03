@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Because a debug build typically uses `-O0`, while a release build enables optimizations.</span>
+<span class="warn">A debug/release difference can expose missing `volatile`, but the configuration name alone proves nothing.</span>
 
-At `-O0`, the compiler often performs every read literally, so a missing `volatile` can go unnoticed. At `-O2`, it caches values, removes redundant reads and writes, and exposes the false assumption that hardware memory behaves like ordinary RAM.
+Different optimization flags can change generated code, and a register access without `volatile` may not be reread as the program expects. However, `-O0` does not guarantee the required ordering, and `-O2` does not necessarily cache every value; behaviour depends on the code and compiler.[^iso-c-n1570]
 
-Protection: if peripheral polling or a sensor read returns stale data only in release, check register pointer types and volatile qualifiers first.[^embeddedinterviewlab]
+If peripheral polling returns stale data, check register pointer types and MCU access requirements; `volatile` is needed for applicable memory-mapped registers, but does not solve every concurrency or ordering problem.[^iso-c-n1570]
 
 ## Detailed explanation
 

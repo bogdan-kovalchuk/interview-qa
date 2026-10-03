@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -41,11 +41,10 @@ printf("%d", op(41));
 
 ## Short answer
 
-Prints `42`.
+Prints `42` if the snippet is surrounded by the required declarations and `printf` is available.
 
-The function name `add1` in most expressions is implicitly converted to a pointer to function. Therefore `op = add1` is equivalent to `op = &add1`. The call `op(41)` performs an indirect call through the function address.
+In this assignment, the function name `add1` is converted to a pointer to function, so `op = add1` is equivalent to `op = &add1`. The call `op(41)` calls the function through the pointer; in C, both `op(41)` and `(*op)(41)` are permitted forms.[^iso-c-n1570]
 
-Rule: for a function pointer you can write both `op(41)` and `(*op)(41)`; the first form is more readable.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Without a cast you cannot; with a cast you can hide a design error.</span>
+<span class="warn">Without a compiler diagnostic this is not allowed; a cast does not make writes legal for an actually const object.</span>
 
-A function with a `uint8_t *` parameter has the right to write to the buffer, so passing a `const uint8_t *` violates that contract. If the buffer lives in Flash/`.rodata`, an accidental write can end in a fault or undefined behavior.
+A `const uint8_t *` argument passed where `uint8_t *` is required violates C's type constraint and requires a diagnostic. Casting away the qualifier and writing has undefined behaviour if the original object was actually defined `const`; otherwise the write may be permitted, but the API hides intent.[^iso-c-n1570]
 
-Defense: separate the API: input buffer as `const uint8_t *`, output buffer as `uint8_t *`. Do not strip qualifiers with a cast for convenience.[^embeddedinterviewlab]
+Separate the API: input buffer as `const uint8_t *`, output buffer as `uint8_t *`. Do not strip the qualifier without checking whether the original object is modifiable.[^iso-c-n1570]
 
 ## Detailed explanation
 

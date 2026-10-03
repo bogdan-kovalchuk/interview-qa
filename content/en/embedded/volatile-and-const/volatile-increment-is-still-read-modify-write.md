@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">`counter++` is a read-modify-write, not an atomic operation.</span>
+<span class="warn">`counter++` reads, computes, and writes; `volatile` does not make that sequence atomic.</span>[^iso-c-n1570]
 
-The compiler performs a volatile read, adds 1 in a CPU register, then a volatile write. If an ISR also modifies `counter` between the read and the write, one update can be lost. `volatile` only guarantees that the read and write will not be removed.
+The expression `counter++` must read the value, compute a new one, and write it. If an interrupt can occur between these steps and modify the same counter, an update can be lost. The exact access rules for an ISR-shared object depend on the implementation and platform.[^iso-c-n1570]
 
-Defense: update the shared counter in a critical section, or use an atomic operation if the platform and toolchain support it.[^embeddedinterviewlab]
+Defense: use a critical section that covers both contexts, or an atomic operation supported by the platform.[^iso-c-n1570]
 
 ## Detailed explanation
 

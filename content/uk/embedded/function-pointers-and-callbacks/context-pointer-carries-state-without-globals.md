@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,15 +33,31 @@ sources:
 
 ## Short answer
 
-**`context` передає стан користувача callback-а без глобальних змінних.**
+**`context` дає callback-у доступ до стану конкретного екземпляра.**
 
-Функція callback сама по собі не несе captured state, як lambda з capture у C++. Тому driver зберігає пару: function pointer + context pointer. Коли подія стається, driver викликає `cb(context)`, а callback приводить context до свого типу.
+C function pointer і data pointer – різні типи; `void *` тут переносить адресу об’єкта, наприклад структури стану, а не адресу callback-функції.[^iso-c-n1570]
 
-Правило: callback без context швидко змушує використовувати globals; callback із context масштабується на кілька інстансів UART/SPI/timer.[^embeddedinterviewlab]
+Driver зберігає callback разом із цим data pointer і передає його при виклику. Той самий код callback-а тоді може обслуговувати кілька незалежних пристроїв без окремих глобальних змінних.
 
 ## Detailed explanation
 
-TODO
+Параметр `void *context` у callback API дає callback-у доступ до стану того об’єкта або операції, для яких сталася подія. Сам function pointer і data pointer виконують різні ролі: перший визначає код для виклику, а другий переносить адресу даних, які callback має обробити. У C `void *` є універсальним покажчиком на об’єкт, з якого можна перетворитися назад на сумісний object pointer; це не загальний контейнер для function pointer-ів.[^iso-c-n1570]
+
+API зазвичай зберігає обидва значення в об’єкті driver-а. Коли, наприклад, надходить байт UART, driver викликає callback і передає збережений `context`. Реалізація callback-а знає справжній тип даних, приводить покажчик до нього й оновлює відповідний стан. Це розділяє загальний механізм driver-а та специфічну логіку застосунку.
+
+Такий підхід корисний, коли один callback-код працює з кількома UART-ами чи таймерами: кожна реєстрація має власну структуру стану, тому обробники не перезаписують спільну глобальну змінну. Контракт API має також визначати, чи може callback бути відсутнім, де саме його викликають, чи дозволено з нього блокуватися та як довго мають жити дані `context`. Це вимоги до конкретного API, а не гарантії, які задає мова C.
+
+Приклад:
+
+```c
+struct RxState { unsigned count; };
+void on_byte(void *context, uint8_t byte) {
+    struct RxState *state = context;
+    state->count += byte != 0;
+}
+```
+
+Тут `context` має вказувати на живий об’єкт `struct RxState` протягом усіх викликів; передавання покажчика на локальну змінну після завершення її lifetime зробило б його непридатним. Тип і lifetime слід погодити між кодом, що реєструє callback, та driver-ом.
 
 ## Sources
 

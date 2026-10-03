@@ -1,6 +1,6 @@
 ---
 id: emb-volconst-0052
-title: "What does `volatile` mean in multi-threaded C/C++: is it a replacement for a mutex or an atomic?"
+title: "What does `volatile` mean for shared data in C: is it a replacement for a mutex or an atomic?"
 description: "No, volatile does not replace a mutex, an atomic, or RTOS synchronization."
 track: embedded
 section: volatile-and-const
@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 <span class="warn">No. `volatile` does not replace a mutex, an atomic, or RTOS synchronization.</span>
 
-It describes observable memory access, but provides no inter-thread synchronization, memory ordering, or race-free increments. In an embedded RTOS, tasks that share variables need atomic primitives, a mutex, a queue, a semaphore, or a critical section.
+In C, `volatile` applies to accesses to volatile-qualified objects, but does not itself create a synchronizes-with relation between threads. C11 provides atomic operations for shared data between threads; an RTOS may also define its own synchronization mechanisms.[^iso-c-n1570]
 
-Rule: `volatile` for hardware/ISR/DMA visibility; synchronization primitives for concurrency correctness.[^embeddedinterviewlab]
+Rule: use `volatile` when required by implementation rules for externally changed objects, and synchronization primitives for thread synchronization.[^iso-c-n1570]
 
 ## Detailed explanation
 

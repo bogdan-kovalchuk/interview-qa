@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 <span class="warn">Excessive `volatile` degrades optimization and can mask an incorrect synchronization model.</span>
 
-The compiler is forced to go to memory more often, not keep values in registers, and limit reordering. This increases code size, execution time, and power consumption. At the same time it does not fix race conditions, atomicity, or ordering for non-volatile data.
+For volatile-qualified objects, the compiler must account for volatile accesses under its implementation's rules, which can limit some optimizations. The cost depends on the compiler and target; volatile does not define general ordering for non-volatile data and does not fix race conditions or atomicity problems.
 
-Rule: use `volatile` as a precise contract for hardware/ISR/DMA observable state, not as a general anti-optimization incantation.[^embeddedinterviewlab]
+Rule: use `volatile` as a precise contract for hardware/ISR/DMA observable state, not as a general anti-optimization incantation.[^iso-c-n1570]
 
 ## Detailed explanation
 

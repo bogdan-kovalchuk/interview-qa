@@ -1,17 +1,17 @@
 ---
 id: emb-fnptr-0004
 title: "What does this typedef mean?"
-description: "timercbt is a pointer-to-function type that takes a void context pointer and returns void."
+description: "timer_cb_t is a pointer-to-function type that takes a void * and returns void."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -43,7 +43,7 @@ typedef void (*timer_cb_t)(void *ctx);
 
 After this you can write `timer_cb_t cb;`, `void timer_start(timer_cb_t cb, void *ctx);`. Such a typedef dramatically reduces noise in driver APIs and makes the callback contract visible.
 
-Embedded rule: declare the callback type once in a header rather than duplicating raw function pointer syntax in every function.[^embeddedinterviewlab]
+Declare the callback type once in a header; its declaration must describe a compatible function signature.[^iso-c-n1570]
 
 ## Detailed explanation
 

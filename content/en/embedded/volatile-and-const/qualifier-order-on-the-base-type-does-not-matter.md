@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Yes, for the pointed-to base type the order of `const` and `volatile` does not change the meaning.**
+**Yes, `const volatile uint32_t *` and `volatile const uint32_t *` have the same type.**
 
 Both types mean pointer to const volatile `uint32_t`. The data behind the pointer cannot be written through this lvalue, but reads must be volatile. The important thing is not to confuse this with `const volatile uint32_t * const`, where the extra `const` after `*` protects the pointer itself.
 
-Rule: the order of cv-qualifiers at one type level does not matter; what matters is which level of the pointer chain they apply to.[^embeddedinterviewlab]
+Rule: the order of cv-qualifiers at one type level does not change their meaning; what matters is which level of the pointer chain they apply to.[^iso-c-n1570]
 
 ## Detailed explanation
 
