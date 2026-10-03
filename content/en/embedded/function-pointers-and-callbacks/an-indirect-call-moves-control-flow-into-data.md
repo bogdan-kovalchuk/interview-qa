@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: c11-function-pointers
+    title: "ISO/IEC 9899:2011 Committee Draft N1570, 6.3.2.3"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+    accessed: 2026-10-04
+    kind: spec
+    version: "N1570"
+    applicability: "Describes C call and pointer rules; dispatch-table corruption risk depends on the architecture and platform protections."
 ---
 
 ## Short answer
 
 <span class="warn">It moves the control-flow decision into data.</span>
 
-If a function pointer is overwritten through memory corruption, an out-of-bounds access or a stack bug, the program can jump into unexpected code. For safety and security this is a serious risk, especially when the tables are mutable in RAM.
+If a function pointer is corrupted by memory corruption, an out-of-bounds access or a stack bug, an indirect call may target a function other than the expected one. The impact depends on the architecture, memory and system protections.[^c11-function-pointers]
 
-Defence: make dispatch tables `const` in Flash, check indices, do not accept function addresses from external input, enable MPU or stack protection where available.[^embeddedinterviewlab]
+Defence: keep immutable tables in read-only memory, validate indices and input values, and use MPU or stack protection when the platform supports them.[^c11-function-pointers]
 
 ## Detailed explanation
 

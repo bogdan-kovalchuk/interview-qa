@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -44,9 +44,9 @@ sources:
 
 **An include guard prevents a header from being included more than once** in the same translation unit.
 
-Without it, a double `#include` causes <span class="warn">redefinition</span> of types, `struct`s and prototypes. On the first pass `SENSOR_H` is not yet defined -> the content is processed and the guard is defined; on subsequent passes the content is skipped.
+Without it, repeated inclusion can repeat a type or object definition and cause a diagnostic; compatible repeated function declarations are allowed by themselves. On the first pass `SENSOR_H` is defined, and later passes skip the conditional block.
 
-Rule: every header needs a guard with a unique name, or `#pragma once`.[^embeddedinterviewlab]
+Use a guard name specific enough to the project to avoid macro collisions.[^iso-c-n1570]
 
 ## Detailed explanation
 

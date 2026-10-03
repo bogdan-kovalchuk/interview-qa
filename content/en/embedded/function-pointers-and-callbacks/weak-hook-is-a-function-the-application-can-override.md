@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-weak-attribute
+    title: "GCC: Common Function Attributes – weak"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
+    accessed: 2026-10-04
+    kind: official
+    version: "GCC current documentation"
+    applicability: "Describes GNU weak attribute and override support on supported ELF/a.out toolchains; this is a compiler extension, not an ISO C guarantee."
 ---
 
 ## Short answer
 
-**A weak hook** is a weak function that the application can override with a strong implementation.
+**A weak hook** is a function with a weak symbol that an application can override with a strong implementation on a toolchain supporting that linker semantics.[^gcc-weak-attribute]
 
-Startup files often have `void SysTick_Handler(void) __attribute__((weak));` or weak default handlers. If user code defines a function with the same name, the linker picks the user implementation.
+On supported ELF or a.out targets, a GCC declaration with `__attribute__((weak))` emits a weak symbol; a strong definition of the same symbol can override it at link time.[^gcc-weak-attribute]
 
-Rule: weak hooks are simple for startup and board support, but for runtime multiple instances explicit callback registration is better.[^embeddedinterviewlab]
+This is a GNU/toolchain-specific mechanism, not an ISO C property. It is convenient for startup defaults; runtime multiple instances usually need explicit callback registration with context.
 
 ## Detailed explanation
 

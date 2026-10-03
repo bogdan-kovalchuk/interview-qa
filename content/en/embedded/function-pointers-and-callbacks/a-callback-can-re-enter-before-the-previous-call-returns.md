@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: freertos-isr-api
+    title: "Mastering the FreeRTOS Real Time Kernel: Using the FreeRTOS API from an ISR"
+    url: https://www.freertos.org/media/2018/161204_Mastering_the_FreeRTOS_Real_Time_Kernel-A_Hands-On_Tutorial_Guide.pdf
+    accessed: 2026-10-04
+    kind: official
+    version: "V10.0.0 tutorial"
+    applicability: "Explains ISR restrictions and ISR/task API differences in FreeRTOS; re-entry depends on system design and interrupt configuration."
 ---
 
 ## Short answer
 
-<span class="warn">A callback can be called again before the previous invocation has finished.</span>
+<span class="warn">A callback can be called again before the previous invocation has finished.</span>[^freertos-isr-api]
 
-For example, a UART RX interrupt can arrive while the previous byte is still being handled, or a callback can call an API that synchronously triggers a new callback. If the callback uses a static local buffer without protection, state can be corrupted.
+This can happen if a nested interrupt permits another call before the first ISR returns, or if the callback synchronously calls an API that invokes it again. If both invocations modify the same static buffer, their data can overwrite each other.
 
-Defence: document reentrancy, minimise shared mutable state, use queues or critical sections, or forbid nested callbacks by design.[^embeddedinterviewlab]
+To prevent this, document reentrancy, isolate each invocation's state or explicitly serialize events; if nested calls are unsupported, forbid them in the contract and implementation.
 
 ## Detailed explanation
 

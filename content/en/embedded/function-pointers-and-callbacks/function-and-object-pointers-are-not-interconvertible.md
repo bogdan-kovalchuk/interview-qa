@@ -1,17 +1,17 @@
 ---
 id: emb-fnptr-0049
-title: "Trap: why should function pointers and `void *` not be mixed?"
-description: "C does not guarantee portable conversion between a function pointer and the object pointer void ."
+title: "Trap: why should you not store a function pointer in `void *`?"
+description: "ISO C guarantees conversion between void * and object pointers, but defines no equivalent rule for function pointers."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 <span class="warn">C does not guarantee portable conversion between a function pointer and the object pointer `void *`.</span>
 
-On some platforms, code and data have different address spaces or different pointer sizes. POSIX has its own requirements for `dlsym`, but this is not a general ISO C rule and not an embedded guarantee.
+Representations and sizes of pointer categories are implementation-dependent; ISO C defines conversion between `void *` and object pointers, but specifies no equivalent general rule for function pointers. POSIX has separate requirements for `dlsym`, but that is not a general ISO C rule or an embedded guarantee.[^iso-c-n1570]
 
-Defence: keep function pointers in function pointer types and data pointers in `void *`. Do not put a callback address into a generic data pointer field.[^embeddedinterviewlab]
+Defence: keep function pointers in function pointer types and data pointers in `void *`. Do not put a callback address into a generic data pointer field.[^iso-c-n1570]
 
 ## Detailed explanation
 

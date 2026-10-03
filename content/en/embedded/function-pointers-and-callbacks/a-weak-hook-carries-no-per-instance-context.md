@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-weak-attribute
+    title: "GCC: Common Function Attributes – weak"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
+    accessed: 2026-10-04
+    kind: official
+    version: "GCC current documentation"
+    applicability: "Describes GNU weak attribute and override support on supported ELF/a.out toolchains; this is a compiler extension, not an ISO C guarantee."
 ---
 
 ## Short answer
 
-<span class="warn">A weak function has one global name and carries no per-instance context.</span>
+<span class="warn">A weak hook does not carry per-instance context by itself.</span>[^gcc-weak-attribute]
 
-If there are two UARTs or two timers, one weak hook does not know which object the event belongs to unless this is passed separately. Also, a weak override is hidden at the linker level, which complicates testing and dependency tracking.
+If there are two UARTs or two timers, a function with one global name does not identify which instance owns the event. A weak override is also selected at link time rather than registered separately for each device.[^gcc-weak-attribute]
 
-Defence: for reusable drivers use explicit registration `cb + ctx`; keep weak hooks for startup defaults or board-level extension points.[^embeddedinterviewlab]
+For reusable drivers, pass the callback and context separately; reserve weak hooks for global startup defaults or board-level extension points.
 
 ## Detailed explanation
 
