@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 **Because the union itself does not remember which member is currently active or logically valid.**
 
-Typical pattern: `enum kind` alongside `union payload`. Without a discriminator, code can read a temperature payload as a pressure payload or interpret a pointer as an integer. This is a logical error even where binary access is formally possible.
+Typical pattern: an `enum kind` alongside a `union payload`. The union itself stores no separate tag and does not tell the program which variant to handle; the active member follows from language rules and the program's operations.[^iso-c-n1570]
 
-Rule: for variant data, a struct must contain a tag plus a union, and all switches on the tag must handle every variant.[^embeddedinterviewlab]
+For variant data, store a tag alongside the union and check it before reading the corresponding member.[^iso-c-n1570]
 
 ## Detailed explanation
 

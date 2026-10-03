@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Bit-field** lets you declare a struct field with a specified number of bits, for example `unsigned mode : 3;`.
+**Bit-field** is a struct or union member with an explicitly specified width in bits, for example `unsigned int mode : 3;`.[^iso-c-n1570]
 
-The compiler packs such fields into a storage unit of the underlying type, but the exact bit order, the signedness of certain types, and crossing storage units are implementation-defined. This is convenient for compact flags but risky for hardware register layouts and wire formats.
+The implementation places bit-fields in storage units; bit order and fields crossing unit boundaries are implementation-defined. Permitted types are limited by the standard or implementation. This suits compact flags but can be risky for hardware registers and wire formats.[^iso-c-n1570]
 
-Rule: bit-fields suit internal flags; for hardware or protocol layouts, they should be used only with a full understanding of the compiler ABI.[^embeddedinterviewlab]
+For hardware or protocol layouts, rely on bit-fields only when the format and the specific compiler ABI are documented and verified.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-13
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -44,9 +44,9 @@ uint32_t bits = x.u;
 
 <span class="warn">The trap is not in C syntax but in the portability of the result and the difference between C and C++.</span>
 
-In C99/C11, reading a different union member to inspect object representation is a standard-described type punning pattern, not a pointer-cast strict aliasing violation. But the value of `bits` still depends on the representation of `float` and on endianness, and in C++ reading an inactive union member is usually undefined behavior.
+In C, a union's representation may be inspected through another member, but the resulting value can be implementation-defined or a trap representation. In C++, reading an inactive union member is generally not permitted, apart from narrow common-initial-sequence exceptions.
 
-Defense: for a portable bit copy use `memcpy(&bits, &x.f, sizeof bits)`, and in C++20 `std::bit_cast`.[^embeddedinterviewlab]
+Use `memcpy` to copy bytes without violating aliasing rules; C++20 also provides `std::bit_cast`. Neither guarantees the same numeric result on platforms with different type representations.[^iso-c-n1570]
 ## Detailed explanation
 
 TODO

@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -46,7 +46,7 @@ struct Node {
 
 The compiler cannot complete the layout: to know the size of `Node`, it needs the size of `next`, which is again `Node`. The allowed variant is a pointer: `struct Node *next;`.
 
-Defence: for recursive data structures use a pointer or an index into a pool, not a nested object of the same type.[^embeddedinterviewlab]
+Defence: for recursive data structures use a pointer or an index into a pool, not a nested object of the same type.[^iso-c-n1570]
 
 ## Detailed explanation
 

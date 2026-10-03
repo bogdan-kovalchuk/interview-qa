@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -43,11 +43,11 @@ union U {
 
 ## Short answer
 
-Typically `sizeof(union U) == 4` if `uint32_t` has size 4 and the largest alignment does not increase the size beyond 4.
+Typically `sizeof(union U) == 4` if `uint32_t` has size 4 and the union's alignment does not add trailing padding beyond 4 bytes.[^iso-c-n1570]
 
-All fields start at offset 0. `b` uses the first byte of storage, `h` the first 2 bytes, `w` all 4 bytes. The actual interpretation of the bytes depends on endianness and access rules.
+All members start at the same address, but which bytes of a numeric value are observed depends on endianness. The implementation providing `uint32_t` determines its availability and alignment.
 
-Rule: union size is determined by the largest member, not the sum of members.[^embeddedinterviewlab]
+The union must be large enough for its largest member; its size is not the sum of member sizes.[^iso-c-n1570]
 
 ## Detailed explanation
 

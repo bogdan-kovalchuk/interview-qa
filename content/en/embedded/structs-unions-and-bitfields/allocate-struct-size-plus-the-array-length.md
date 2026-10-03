@@ -1,6 +1,6 @@
 ---
 id: emb-structs-0033
-title: "How do you allocate memory for a flexible array member correctly?"
+title: "How do you correctly allocate memory for a flexible array member?"
 description: "Allocate sizeof(struct Packet) plus len bytes to cover the header and the flexible array."
 track: embedded
 section: structs-unions-and-bitfields
@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -44,9 +44,9 @@ struct Packet {
 
 You need to allocate `sizeof(struct Packet) + len` bytes.
 
-For example: `struct Packet *p = malloc(sizeof *p + len);`. Then `p->len = len`, and the payload sits in `p->data[0..len-1]`. `sizeof *p` does not include the flexible array.
+For example: `struct Packet *p = malloc(sizeof *p + len);`. Then `p->len = len`, and the payload sits in `p->data[0..len-1]`; `sizeof *p` does not include the flexible array.
 
-Embedded rule: in bare-metal without a heap, this layout is often used in a statically allocated byte buffer with placement/offset discipline.[^embeddedinterviewlab]
+Check for `size_t` overflow while adding the size, and check the result of `malloc` for `NULL`. Without a heap, a static byte buffer of the required size can be reserved.[^iso-c-n1570]
 
 ## Detailed explanation
 

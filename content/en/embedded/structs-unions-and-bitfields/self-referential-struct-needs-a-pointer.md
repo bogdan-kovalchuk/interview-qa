@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -37,7 +37,7 @@ A **self-referential struct** contains a pointer to an object of its own type, f
 
 `struct Node { int value; struct Node *next; };` is valid because `next` has pointer size. But `struct Node next;` inside `Node` itself is impossible: it would require an infinite struct size.
 
-Embedded use case: intrusive lists for RTOS queues, driver registries, free lists and memory pools.[^embeddedinterviewlab]
+In embedded code, this structure can be a node in an intrusive list for an RTOS queue or memory pool; node lifetimes and links must be managed separately.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -44,11 +44,11 @@ union Payload p;
 
 ## Short answer
 
-<span class="warn">There is no tag indicating which field is valid.</span>
+<span class="warn">A `union` does not store a tag indicating which member is currently intended.</span>
 
-A union saves memory but loses information about the active variant. If the receiver does not know the payload type from a header or enum, it can misinterpret the same bytes.
+A `union` lets different variants share storage, but it does not store a discriminator. If the receiver does not know the payload type from a header or enum, reading another member is not a reliable way to identify the payload type or value.[^iso-c-n1570]
 
-Defense: use `struct Message { enum Type type; union Payload payload; };` or obtain the discriminator from the protocol header and check it before access.[^embeddedinterviewlab]
+Defense: store the discriminator separately, for example in `struct Message { enum Type type; union Payload payload; };`, and check it before accessing the corresponding member.[^iso-c-n1570]
 
 ## Detailed explanation
 
