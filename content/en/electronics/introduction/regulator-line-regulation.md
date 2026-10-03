@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 18 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 18 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
@@ -36,6 +36,20 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
+  - source_id: ti-regulator-regulation
+    title: "TI: Identify the Most Accurate Linear Voltage Regulator"
+    url: https://www.ti.com/document-viewer/lit/html/SSZTCA7/GUID-C15E9A5E-C4B2-4C77-98A3-C375536EE8EF
+    accessed: 2026-10-04
+    kind: official
+    version: null
+    applicability: "Definition and measurement of line regulation; it does not give a universal percentage for a simple Zener circuit."
+  - source_id: aac-zener-regulator
+    title: "All About Circuits: What Are Zener Diodes?"
+    url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-3/zener-diodes/
+    accessed: 2026-10-04
+    kind: book
+    version: null
+    applicability: "Regulation limit from available current in a Zener circuit."
 ---
 
 ## Short answer

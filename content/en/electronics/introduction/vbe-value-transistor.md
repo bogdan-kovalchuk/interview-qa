@@ -1,17 +1,17 @@
 ---
 id: emb-elintro-0200
-title: "What is <span class=\"formula\">\\(V_{BE}\\)</span> and what is its value for a Si transistor?"
-description: "What is \\(V_{BE}\\) and what is its value for a Si transistor?"
+title: "What is `V_BE` and what is its value for a Si transistor?"
+description: "What is V_BE and what is its value for a Si transistor?"
 track: electronics
 section: introduction
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 19 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 19 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/

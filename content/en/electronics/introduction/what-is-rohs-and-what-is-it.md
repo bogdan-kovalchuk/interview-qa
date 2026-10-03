@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 17 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 17 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
@@ -36,6 +36,13 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
+  - source_id: eu-rohs-directive
+    title: "Directive 2011/65/EU on the restriction of the use of certain hazardous substances in electrical and electronic equipment"
+    url: https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX:32011L0065
+    accessed: 2026-10-04
+    kind: spec
+    version: "2011/65/EU, as amended"
+    applicability: "Legal basis for EU RoHS restrictions, covered equipment categories, homogeneous material concentration limits and exemptions; check the current consolidated text and applicability to the product."
 ---
 
 ## Short answer
