@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Походження питання й відповіді: картка до лекції 12 курсу на Udemy, перенесена з колоди курсу як є; відповідь не перевірена незалежно від матеріалів курсу."
+    applicability: "Походження питання: лекція 12, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
@@ -36,15 +36,28 @@ sources:
     kind: book
     version: null
     applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
+  - source_id: kingbright-wp154a4
+    title: "Kingbright WP154A4SEJ3VBDZGC/CA datasheet"
+    url: https://www.kingbrightusa.com/images/catalog/SPEC/WP154A4SEJ3VBDZGC-CA.pdf
+    accessed: 2026-10-04
+    kind: official
+    version: null
+    applicability: "Datasheet LED Kingbright WP154A4SEJ3VBDZGC/CA: V_R = 5 V, температурний коефіцієнт V_F −2.0 mV/°C (Hyper Red) за I_F = 20 mA."
 ---
 
 ## Short answer
 
-Зі зростанням температури <span class="formula">\(V_f\)</span> зазвичай зменшується. Це означає, що при фіксованій напрузі струм може зрости, тому для стабільної яскравості потрібен резистор або драйвер струму.[^udemy-electronics-course]
+Із нагріванням `V_f` багатьох LED зменшується; для червоного Kingbright WP154A4SEJ3VBDZGC/CA вказано коефіцієнт −2.0 mV/°C за `I_F = 20 mA`.[^kingbright-wp154a4] У колі з джерелом напруги та резистором це може збільшити струм, тоді як constant-current driver підтримує заданий струм у межах робочого діапазону.[^kingbright-wp154a4]
 
 ## Detailed explanation
 
-TODO
+Пряма напруга `V_f` залежить від температури переходу, і для багатьох LED вона зменшується при нагріванні. Знак і величина коефіцієнта залежать від типу компонента та робочого струму, тому числове значення слід брати з datasheet, а не переносити з одного LED на всі інші.[^aac-semiconductors]
+
+У простому колі з джерелом напруги й послідовним резистором струм приблизно задається різницею напруг живлення та `V_f`, поділеною на опір. Якщо `V_f` падає, на резисторі лишається більша напруга, і струм зростає. Це може створювати позитивний зворотний зв’язок через нагрівання, але його сила залежить від резистора, тепловідведення та режиму; thermal runaway не є неминучим у кожному колі.[^aac-semiconductors]
+
+Для конкретного прикладу datasheet Kingbright WP154A4SEJ3VBDZGC/CA наводить коефіцієнт `−2.0 mV/°C` для червоного варіанта при `I_F = 20 mA`. Зміна температури переходу на 10 °C відповідає приблизно `−20 mV` зміни `V_f` за умов datasheet; це не можна без перевірки застосовувати до інших кольорів, струмів чи деталей.[^kingbright-wp154a4]
+
+Регульований за струмом драйвер компенсує зміну `V_f`, поки має достатній запас вихідної напруги. Він не скасовує зниження допустимого струму при високій температурі: потрібне теплове проєктування та дотримання обмежень виробника.[^aac-semiconductors]
 
 ## Sources
 
