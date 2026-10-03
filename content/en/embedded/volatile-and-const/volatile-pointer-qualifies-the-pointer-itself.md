@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 **`p` is a volatile pointer to a plain `uint32_t`**.
 
-Here volatile applies to the pointer variable itself, not to the data at the address. The compiler must reload the address stored in `p`, but the `*p` access is not a volatile access to hardware data.
+Here volatile applies to the pointer variable itself, not to the data at the address. Access to `p` is volatile, but `*p` designates an ordinary `uint32_t`, not volatile hardware data.[^iso-c-n1570]
 
-Embedded takeaway: for registers you almost always need `volatile uint32_t *p`, not `uint32_t * volatile p`.[^embeddedinterviewlab]
+For volatile data at the address, use `volatile uint32_t *p`; for both properties, use `volatile uint32_t * volatile p`.[^iso-c-n1570]
 
 ## Detailed explanation
 

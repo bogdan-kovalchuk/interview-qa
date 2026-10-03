@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">If you send or write raw bytes of a struct, padding may contain old data from the stack/RAM.</span>
+<span class="warn">Sending or writing raw struct bytes can expose data the program did not intend to transmit through padding.</span>
 
 For example, `send(fd, &msg, sizeof msg)` may include padding bytes between fields. These bytes are not initialized by individual field assignments and may contain fragments of previous variables.
 
-Mitigation: zero-initialize the struct before populating it, serialize fields explicitly, and do not export raw struct layout as a security boundary.[^embeddedinterviewlab]
+Mitigation: zero-initialize the struct before populating it, serialize fields explicitly, and do not export raw struct layout as a security boundary.[^iso-c-n1570]
 
 ## Detailed explanation
 

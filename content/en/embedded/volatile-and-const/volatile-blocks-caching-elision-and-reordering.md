@@ -1,17 +1,17 @@
 ---
 id: emb-volconst-0002
-title: "Which three optimisations does `volatile` usually block?"
-description: "volatile blocks caching the value in a register, eliminating redundant accesses, and reordering relative to other volatile accesses."
+title: "How does `volatile` affect accesses optimised by the compiler?"
+description: "volatile makes accesses to the qualified object observable under the implementation's rules, but is not a general ordering barrier."
 track: embedded
 section: volatile-and-const
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,22 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-volatile
+    title: "GCC documentation: When is a Volatile Object Accessed?"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html
+    accessed: 2026-10-04
+    kind: official
+    version: "current"
+    applicability: "GCC volatile-access behavior and the lack of a memory-barrier guarantee; other compilers can differ."
 ---
 
 ## Short answer
 
-**`volatile` blocks caching the value in a register, eliminating redundant accesses, and reordering relative to other volatile accesses.**
+**`volatile` requires volatile accesses to be handled according to the C implementation's rules, so a compiler usually cannot cache them as ordinary values or remove them.**
 
-Without it, the compiler might read a flag once, remove the first of two writes to a hardware register, or reorder accesses so the peripheral sees the wrong sequence. In embedded this is not just a micro-optimisation: every read or write of a register address can have a side effect.
+Without it, a compiler may reuse an ordinary object's previous value or remove an unobservable store. `volatile` does not order ordinary accesses relative to volatile ones, nor does it prohibit every reordering.[^iso-c-n1570] [^gcc-volatile]
 
-Rule: if an access has a hardware side effect or the value can change asynchronously, the object type must be volatile-qualified.[^embeddedinterviewlab]
+Rule: for precise ordering of peripheral operations, consult the compiler documentation and use the required compiler or hardware barrier.[^gcc-volatile]
 
 ## Detailed explanation
 

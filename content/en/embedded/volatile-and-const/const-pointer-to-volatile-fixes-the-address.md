@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,7 +35,7 @@ sources:
 
 **`reg` is a const pointer to volatile `uint32_t`**.
 
-The pointer address cannot be changed: `reg = other` is a compile error. But the data at that address is volatile: every `*reg` is read or written for real. This is the canonical type for a fixed writable hardware register.
+The pointer address cannot be changed: `reg = other` violates a language constraint and requires a diagnostic. The data at that address has type `volatile uint32_t`, so accesses to it follow the volatile rules of the implementation. This is a typical type for a fixed address of a writable hardware register.[^iso-c-n1570]
 
 Embedded use case: the address of a GPIO output register is constant, while the register contents can change by hardware or by firmware writes.[^embeddedinterviewlab]
 

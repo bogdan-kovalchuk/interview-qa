@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -40,11 +40,11 @@ struct Header *h = (struct Header *)buf;
 
 ## Short answer
 
-<span class="warn">`buf` has alignment for `uint8_t`, not necessarily for `struct Header`.</span>
+<span class="warn">The address of `buf` is not guaranteed to meet the alignment of `struct Header`.</span> Converting a misaligned pointer to a pointer to a more strictly aligned type already has undefined behavior in C; dereferencing it is unsafe as well.[^iso-c-n1570]
 
-If `Header` contains `uint32_t`, the pointer `h` may be misaligned. Dereferencing such a pointer can be undefined behavior or a fault. In addition, strict aliasing and effective type rules may also be a problem.
+An array of `uint8_t` does not become a `struct Header` through a cast; reading through `h` may violate effective type rules.
 
-Mitigation: parse the bytes explicitly or copy into an aligned local `struct Header h; memcpy(&h, buf, sizeof h);` if the binary layout is controlled.[^embeddedinterviewlab]
+It is safer to parse the bytes explicitly or copy them into a real local `struct Header` with `memcpy`, after checking the length, fields, endianness, and protocol binary layout.[^iso-c-n1570]
 
 ## Detailed explanation
 

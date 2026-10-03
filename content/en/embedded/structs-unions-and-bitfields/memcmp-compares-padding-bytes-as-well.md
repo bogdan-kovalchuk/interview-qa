@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-<span class="warn">Because padding bytes may differ even when all fields are equal.</span> Padding is not a logical part of the struct state and may contain old stack bytes or different values after different initialization paths, so `memcmp` (which compares raw bytes) may return "not equal" for structs with identical member values.
+<span class="warn">Because padding bytes may differ even when all fields are equal.</span> Padding is not part of member values, and the C standard allows it to take unspecified values when a struct value is stored. `memcmp` compares raw bytes, so it may find different representations in structs whose fields have equal values.
 
-Defence: compare fields explicitly or normalize the serialization format. For security-sensitive output do not leak padding bytes externally.[^embeddedinterviewlab]
+Defence: compare fields explicitly or normalize the serialization format. Do not expose padding bytes in security-sensitive output.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**An anonymous struct/union** allows accessing nested members without naming the intermediate object, provided the standard/compiler supports it in the relevant mode.
+**An anonymous struct/union** lets code access its members without naming an intermediate object; in C11 this is a standard rule for an unnamed member whose type is an anonymous `struct` or `union`.[^iso-c-n1570]
 
-In embedded headers this is often used for register views: one register can be seen as a raw `uint32_t` or as a set of fields. This is convenient but may be compiler-specific in older C modes.
+Embedded headers can use this for register views, though support depends on the compiler mode.
 
-Rule: check whether anonymous union/struct are allowed by the standard and the project coding standard; for portable public headers, err on the side of caution.[^embeddedinterviewlab]
+Check the language mode and compiler documentation: older modes or extensions can differ. In a public header, all translation units must also see a consistent declaration so that layout and available names agree.[^iso-c-n1570]
 
 ## Detailed explanation
 

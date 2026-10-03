@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**C allows inspecting the common initial part of structs in a union under certain conditions**, when the structs share compatible initial members.
+**C permits reading the common initial sequence of struct members in a `union` under the standard's conditions**, when its current member is one of those structs.[^iso-c-n1570]
 
-This pattern is used for tagged variants, where the first field is a tag/type shared by all variants. But this is a subtle part of the standard, and it is easy to port incorrectly to C++ or break with a layout change.
+This rule is specific to C; do not carry it over to C++ without checking that language's standard separately. Corresponding initial members must be compatible, and corresponding bit-fields must also have the same width.[^iso-c-n1570]
 
-Rule: for simplicity and portability, it is often better to place the tag outside the union than to rely on the common initial sequence.[^embeddedinterviewlab]
+Keeping the tag outside the union is often simpler: it remains available regardless of the active variant and avoids relying on this narrow rule.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**`volatile const`** describes an object the program must not modify, but whose value can change without the program's involvement.
+**`volatile const`** describes an object the program must not modify through this lvalue, but whose value may change without the program's involvement.[^iso-c-n1570]
 
-Typical example: a read-only status register. Firmware only reads; hardware updates the status bits. Without `volatile`, the compiler may reuse an old value; without `const`, the programmer may accidentally write to the read-only register.
+Typical example: a read-only status register. Firmware only reads; hardware may update the status bits. `volatile` qualifies accesses according to the implementation's rules, while `const` prohibits writes through this type.[^iso-c-n1570]
 
-Embedded rule: for hardware read-only registers, use a pointer to `volatile const` data.[^embeddedinterviewlab]
+Embedded rule: for hardware read-only registers, use a pointer to `volatile const` data when that matches the MCU documentation.[^iso-c-n1570]
 
 ## Detailed explanation
 

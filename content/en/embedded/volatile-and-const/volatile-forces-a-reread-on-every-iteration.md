@@ -1,17 +1,17 @@
 ---
 id: emb-volconst-0006
 title: "What changes once `volatile` is added?"
-description: "The compiler must re-read rxdone from memory on every iteration, letting the main loop see changes made by the ISR or DMA."
+description: "volatile preserves access semantics for rx_done, but does not provide atomicity or DMA coherency."
 track: embedded
 section: volatile-and-const
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -41,11 +41,11 @@ while (rx_done == 0) { }
 
 ## Short answer
 
-The compiler must re-read `rx_done` from memory on every iteration.
+Each evaluation of volatile `rx_done` is an access under the abstract-machine rules; the C implementation defines what counts as such an access.[^iso-c-n1570]
 
-This allows the main loop to see the change made by the ISR or DMA completion callback. Without `volatile`, the optimiser may decide the value is stable because there is no write to `rx_done` in the loop body.
+This can let the main loop observe ISR changes in a supported toolchain; DMA also needs platform-specific memory and cache coordination. Without `volatile`, the compiler may reuse a value because the loop does not write `rx_done`.[^iso-c-n1570]
 
-Embedded rule: for a simple ISR flag of type `uint8_t`, `volatile` is often sufficient for visibility, but not for more complex read-modify-write scenarios.[^embeddedinterviewlab]
+For a simple `uint8_t` flag, it may suffice for separate accesses on a particular implementation, but `volatile` does not ensure atomicity or safe read-modify-write operations.[^iso-c-n1570]
 
 ## Detailed explanation
 
