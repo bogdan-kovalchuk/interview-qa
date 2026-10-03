@@ -1,17 +1,17 @@
 ---
 id: emb-elintro-0260
-title: "What is a practical checklist for choosing a MOSFET for a load?"
-description: "What is a practical checklist for choosing a MOSFET for a load?"
+title: "What is a practical MOSFET selection checklist for a load?"
+description: "Which datasheet parameters should be checked when selecting a MOSFET for a load?"
 track: electronics
 section: introduction
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 23 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 23 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
@@ -29,6 +29,20 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: DC circuits, Ohm's law, Kirchhoff's laws, sources and measurement; specific component values and circuits of the course can differ."
+  - source_id: ti-mosfet-selection
+    title: "Texas Instruments: MOSFET Selection Guide for BQ2575x Family"
+    url: https://www.ti.com/lit/an/sluaax9/sluaax9.pdf
+    accessed: 2026-10-04
+    kind: official
+    version: "SLUAAX9, June 2025"
+    applicability: "Explains MOSFET loss, QG, and thermal parameters in the BQ2575x context; the circuit defines which checks apply."
+  - source_id: infineon-mosfet-layout
+    title: "Infineon: Designing with power MOSFETs"
+    url: https://www.infineon.com/assets/row/public/documents/24/42/infineon-designing-with-power-mosfets-applicationnotes-en.pdf?fileId=8ac78c8c7ddc01d7017e6c619a490f47
+    accessed: 2026-10-04
+    kind: official
+    version: "V1.1, 2022-02-10"
+    applicability: "Covers power MOSFET thermal design and body diode; ratings depend on the component and mounting."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
