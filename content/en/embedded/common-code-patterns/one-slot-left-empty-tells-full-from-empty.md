@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Empty: `head == tail`. Full: `(head + 1) & MASK == tail`** (one slot is always left empty).
+**Empty: `head == tail`. Full: `((head + 1) & MASK) == tail`** (one slot is always left empty).
 
-This avoids a shared `count` variable that creates a read-modify-write race between the ISR (interrupt service routine) and main.
+This avoids a shared `count` that both the ISR (interrupt service routine) and main update.
 
-Rule: one slot is sacrificed, but true lock-free safety is gained without critical sections.[^embeddedinterviewlab]
+The cost is one less usable entry. This removes the shared `count` update, but does not by itself prove lock-free or race-free operation: atomicity and access ordering must be correct for the particular MCU and compiler.[^iso-c-n1570]
 
 ## Detailed explanation
 

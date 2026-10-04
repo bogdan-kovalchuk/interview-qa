@@ -1,17 +1,17 @@
 ---
 id: emb-patterns-0005
-title: "Trap: why must an FSM dispatcher take `state_t *state` rather than `state_t state`?"
-description: "In C arguments are passed by value, so a local copy of state loses the transition on return."
+title: "Trap: how can an FSM dispatcher preserve a state transition after it returns?"
+description: "In C a parameter receives a copy of the value; pass an address or return a new value to change the caller's state."
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">In C, arguments are passed by value</span> – modifying a local copy of `state` is lost on return, and the state transition is gone. FSM here stands for finite state machine.
+<span class="warn">A C function parameter receives its own argument value</span> – changing local `state` does not change the caller's variable. FSM means finite state machine.[^iso-c-n1570]
 
 ```c
 // баг: правиться лише копія
@@ -42,9 +42,9 @@ void process(state_t state, ...);
 void process(state_t *state, ...);
 ```
 
-Especially easy to forget with `enum`, since it behaves like a plain int.
+Using an `enum` does not change the argument-passing rule.
 
-Mitigation: to let a function modify a variable that outlives the call, pass a pointer.[^embeddedinterviewlab]
+To let the dispatcher modify the caller's state, pass its address and write through the pointer; check for `NULL` when the function contract permits it.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -1,17 +1,17 @@
 ---
 id: emb-patterns-0018
 title: "What does the return-code error handling pattern look like?"
-description: "The function returns errt and passes data through an output pointer"
+description: "The function returns err_t and passes data through an output pointer."
 track: embedded
 section: common-code-patterns
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -45,9 +45,9 @@ err_t sensor_read(uint8_t a, uint16_t *out);
 
 **The function returns `err_t` and passes data through an output pointer.**
 
-`ERR_OK = 0` is always zero, so `if (result) { /* error */ }` is readable. Each error branch returns a specific code.
+When the API defines `ERR_OK = 0`, `if (result) { /* error */ }` tests for a non-zero result. Each error branch can return a specific code.[^iso-c-n1570]
 
-Rule: return codes are the default pattern because they force the caller to check the result.[^embeddedinterviewlab]
+Return codes make status explicit, but the caller must still check the result.[^iso-c-n1570]
 
 ## Detailed explanation
 

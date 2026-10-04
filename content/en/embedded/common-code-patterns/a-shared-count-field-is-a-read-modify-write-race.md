@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">ISR (interrupt service routine) increments `count`, main decrements – this is a read-modify-write on a shared variable.</span>
+<span class="warn">The ISR (interrupt service routine) increments `count` while main decrements it; these operations can conflict.</span>
 
-`count++` is not atomic (read, modify, write); if the ISR preempts main between these steps, an update is lost -> off-by-one and corrupted buffer state.
+`count++` and `count--` are read, compute, and write sequences, not guaranteed atomic operations; an interrupt can occur between those steps and overwrite an update.
 
-Mitigation: either a critical section/atomic, or drop `count` entirely – determine full/empty from `head`/`tail` alone.[^embeddedinterviewlab]
+The result is incorrect capacity accounting: the buffer may appear full or empty incorrectly. Use a critical section, a suitable atomic mechanism, or a design without a shared `count`.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-13
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Because `head` and `tail` are modified in one context (ISR) and read in another (main).**
+**On many MCUs, `volatile` is used for indexes modified by an ISR and read by main, but it is not a portable synchronization guarantee.**
 
-Without `volatile` the compiler can cache the index in a register and miss the other side's update, breaking the full/empty logic. The buffer itself is often not `volatile` if the order “write byte -> publish `head`” holds; volatile is needed for the shared control state.
+Without an appropriate mechanism, the compiler may reuse an earlier index value. `volatile` requires accesses to volatile objects under the implementation's rules, but does not by itself guarantee atomicity or cross-context ordering for the data buffer.
 
-Rule: indexes and flags shared between ISR (interrupt service routine) and main are `volatile`, but `volatile` gives no atomicity - it only prevents caching of the access.[^embeddedinterviewlab]
+Check the compiler and MCU documentation for ISR behavior, index atomicity, and barriers; use a supported atomic mechanism or critical section when stronger synchronization is needed.[^iso-c-n1570]
 ## Detailed explanation
 
 TODO

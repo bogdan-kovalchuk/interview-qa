@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">`1 << 31` is undefined behavior</span>: the literal `1` has type signed `int`, and shifting into the sign bit overflows it.
+<span class="warn">`1 << 31` is undefined behavior</span>: the literal `1` has type signed `int`, and the result is not representable as `int` on a platform with 32-bit `int`.[^iso-c-n1570]
 
-`1U << 31` is defined only if `unsigned int` is wider than 31 bits. On a 16-bit `unsigned int` it is also incorrect because the shift count is too large.
+`1U << 31` is valid only if the left operand's type after integer promotions has at least 32 bits; otherwise the shift count is too large.[^iso-c-n1570]
 
-Defense: for 32-bit masks write `UINT32_C(1) << n`; for register-width masks pick a literal of the appropriate width.[^embeddedinterviewlab]
+For 32-bit masks, use `UINT32_C(1) << n` and ensure `n < 32`; for other widths, choose an unsigned type of suitable width and check its limits.[^iso-c-n1570]
 
 ## Detailed explanation
 

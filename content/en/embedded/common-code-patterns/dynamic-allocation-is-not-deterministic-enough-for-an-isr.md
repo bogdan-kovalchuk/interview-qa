@@ -1,17 +1,17 @@
 ---
 id: emb-patterns-0030
-title: "Trap: why can `malloc` not be used for a ring buffer?"
-description: "Dynamic memory is non-deterministic and fragments, unacceptable for real-time and ISR contexts"
+title: "Why can `malloc` be unsuitable for a ring buffer used in an ISR?"
+description: "Runtime allocation can have variable latency; an ISR commonly uses a buffer allocated in advance."
 track: embedded
 section: common-code-patterns
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">Dynamic memory is non-deterministic and fragments</span> – unacceptable for a real-time or ISR context.
+<span class="warn">`malloc` can have variable latency, so its suitability in an ISR depends on the allocator and platform contract.</span>
 
-A ring buffer often lives for the entire system lifetime and is used from interrupts, where `malloc` is forbidden (non-reentrant, may block). The size is known in advance.
+C does not impose a universal ban on calling `malloc` from an ISR. In a system with a hard timing budget, preallocate the buffer unless the allocator guarantees bounded latency and safe use in that context.[^iso-c-n1570]
 
-Defense: always use static allocation of a fixed power-of-two size.[^embeddedinterviewlab]
+A power-of-two size is needed only to optimize index wrapping with a mask, not for every ring buffer.
 
 ## Detailed explanation
 

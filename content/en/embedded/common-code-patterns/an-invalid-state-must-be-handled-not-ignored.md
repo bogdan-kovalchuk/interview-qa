@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**An invalid state or unexpected event must be handled explicitly, not silently ignored.**
+**An unexpected state or event should be handled explicitly, not silently skipped.**
 
-Memory corruption, a bug or external input can produce a state outside the `enum`; without a `default` handler this leads to undefined behavior or out-of-bounds access in the table.
+Corrupted data or external input can produce a value outside the valid state set. A missing `default` is not itself necessarily undefined behavior, but indexing a table without checking bounds can cause an out-of-bounds access.[^iso-c-n1570]
 
-Rule: always have a default branch/handler and a bounds check on the state index.[^embeddedinterviewlab]
+Add a `default`/error handler and check bounds before accessing the transition table.[^iso-c-n1570]
 
 ## Detailed explanation
 
