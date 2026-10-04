@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -43,7 +43,7 @@ Returns the number of elements in an array at compile time.
 
 <span class="warn">Trap</span>: if you pass a pointer (including a function parameter array that decays to a pointer), `sizeof(a)` gives the pointer size, and the result is wrong.
 
-Protection: apply only to real arrays in the same scope; GCC/Clang have a trick with `__builtin_types_compatible_p` that gives a compile error on a pointer; in C++ – `std::size`/template.[^embeddedinterviewlab]
+Protection: apply only to real arrays in the same scope; GCC/Clang have a trick with `__builtin_types_compatible_p` that gives a compile error on a pointer; in C++ – `std::size`/template.[^iso-c-n1570]
 
 ## Detailed explanation
 

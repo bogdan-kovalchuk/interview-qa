@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-In C99+, a function declared as just `inline` (without `static`/`extern`) provides only an inline definition; it <span class="warn">does not create an external symbol</span>.
+In C99+, a definition of a function with external linkage declared simply `inline` is an inline definition, not an external definition; by itself, it does not guarantee an external symbol for the linker.[^iso-c-n1570]
 
-If the compiler decides at some point not to inline and makes a regular call, the linker will not find an external definition -> `undefined reference`.
+If a call needs an external definition but no translation unit provides one, the linker may report a missing symbol. The compiler is not required to inline the call.[^iso-c-n1570]
 
-Protection: in a header write `static inline` – each translation unit (TU) gets its own definition, and no linkage problem arises. (In C++ the semantics of `inline` are different and safer.)[^embeddedinterviewlab]
+For a function defined in a header separately in each translation unit, a common choice is `static inline`, which gives it internal linkage in each translation unit.[^iso-c-n1570]
 
 ## Detailed explanation
 

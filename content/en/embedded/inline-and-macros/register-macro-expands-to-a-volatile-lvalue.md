@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -40,11 +40,11 @@ sources:
 
 ## Short answer
 
-**The macro expands into lvalue access to a fixed address**, so you can write `GPIOA_ODR = 0xFF;` and `x = GPIOA_ODR;`.
+**The macro can expand into lvalue access to a memory-mapped register address**, making the expression usable for reads and writes when the address and type match the MCU.
 
-`volatile` prevents the compiler from caching or eliminating the access; the cast converts a numeric address to a typed pointer; the outer `*` dereferences it. The `U` suffix makes the literal unsigned.
+`volatile` requires observable volatile accesses to be preserved according to the C implementation; the cast converts the numeric address to a pointer, and `*` forms an lvalue. The `U` suffix makes the literal unsigned.
 
-Rule: this is one of the cases where a macro is justified – such an address constant is not conveniently expressed as a function.[^embeddedinterviewlab]
+Rule: verify that the address, access width, and MCU requirements match the device documentation; C itself does not guarantee that an address is mapped to a register.[^iso-c-n1570]
 
 ## Detailed explanation
 

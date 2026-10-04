@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,6 +29,13 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-variadic-macros
+    title: "GCC: Variadic Macros"
+    url: https://gcc.gnu.org/onlinedocs/gcc-8.1.0/cpp/Variadic-Macros.html
+    accessed: 2026-10-04
+    kind: official
+    version: "GCC 8.1"
+    applicability: "Explains __VA_ARGS__ substitution, the comma problem with an empty argument, and the GNU ##__VA_ARGS__ extension; this is not a portable replacement for C standard rules."
 ---
 
 ## Question code
@@ -44,7 +51,7 @@ sources:
 
 This allows building wrappers around `printf`-like functions, adding prefixes (timestamp, log level) and forwarding the remaining arguments.
 
-Rule: to handle "zero arguments" correctly, use `##__VA_ARGS__` (GNU) or `__VA_OPT__` (C23/C++20).[^embeddedinterviewlab]
+In standard C, `__VA_OPT__` is available in C23; `##__VA_ARGS__` to remove the comma is a GNU extension, not a portable C rule.[^gcc-variadic-macros]
 
 ## Detailed explanation
 

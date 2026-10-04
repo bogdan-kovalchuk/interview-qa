@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,6 +29,13 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-warning-options-unused
+    title: "GCC: Warning Options – unused diagnostics"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
+    accessed: 2026-10-04
+    kind: official
+    version: current
+    applicability: "Documents GCC behavior for -Wunused-value and an example suppressing a warning by casting an expression to void; diagnostics depend on compiler and flags."
 ---
 
 ## Question code
@@ -39,11 +46,11 @@ sources:
 
 ## Short answer
 
-**Suppresses the 'unused parameter/variable' warning**, explicitly showing the intent that the value is deliberately unused.
+**Casting an expression to `void` explicitly discards its value**; GCC documents this for `-Wunused-value` and unused locals, while diagnostics depend on compiler and flags.[^gcc-warning-options-unused]
 
-Typical in callback signatures where some parameters are not needed: `void cb(void *ctx) { UNUSED(ctx); ... }`. A cast to `void` generates no code.
+The `UNUSED(x)` macro in the code snippet applies that cast to a parameter, for example `UNUSED(ctx)` in a callback. The expression `x` is still evaluated: casting to `void` does not remove its side effects.[^gcc-warning-options-unused]
 
-Rule: an explicit `UNUSED(x)` is better than globally disabling `-Wunused` – the warning remains useful elsewhere.[^embeddedinterviewlab]
+This does not silence every parameter warning; GCC documents the `unused` attribute for `-Wunused-parameter`. Suppress locally only when the non-use is intentional.[^gcc-warning-options-unused]
 
 ## Detailed explanation
 

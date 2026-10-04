@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,20 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: gcc-always-inline
+    title: "GCC: Common Function Attributes – always_inline"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html
+    accessed: 2026-10-04
+    kind: official
+    version: current
+    applicability: "GNU C always_inline function attribute behavior; not a C standard guarantee or a guarantee for other compilers."
 ---
 
 ## Short answer
 
-**Forces the compiler to inline a function** even when its heuristics would choose a regular call (usually used together with `inline`).
+**For a direct call GCC requires inlining**, diagnosing a failure if it cannot do so; an indirect call has no equivalent guarantee. This is a GNU extension, not a C standard requirement.[^gcc-always-inline]
 
-In embedded this is needed for tiny register-access wrappers, latency-critical sections, or when a call in a hot path/ISR (interrupt service routine) is unacceptable. The opposite is `__attribute__((noinline))`.
-
-Rule: `inline` is a hint the compiler can ignore; `always_inline` is a directive. Do not overuse: code bloat hurts I-cache and flash.[^embeddedinterviewlab]
+In embedded code it is sometimes used for a measured critical path, but size and speed must be checked on the target; the opposite GCC extension is `__attribute__((noinline))`. The C keyword `inline` alone also does not require body substitution.[^iso-c-n1570] [^gcc-always-inline]
 
 ## Detailed explanation
 
