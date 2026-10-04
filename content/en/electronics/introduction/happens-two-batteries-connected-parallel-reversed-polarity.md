@@ -9,19 +9,33 @@ type: concept
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
-  - source_id: analog-reverse
-    title: "Reverse-Current Circuitry Protection"
-    url: https://www.analog.com/en/resources/design-notes/reversecurrent-circuitry-protection.html
+  - source_id: openstax-emf
+    title: "OpenStax University Physics Volume 2, 10.1 Electromotive Force"
+    url: https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force
+    accessed: 2026-10-04
+    kind: book
+    version: null
+    applicability: "Emf and internal resistance: the internal resistance is in series with the load; terminal voltage V = emf - I*r."
+  - source_id: openstax-kirchhoff
+    title: "OpenStax University Physics Volume 2, 10.3 Kirchhoff's Rules"
+    url: https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules
+    accessed: 2026-10-04
+    kind: book
+    version: null
+    applicability: "Kirchhoff loop rule: the algebraic sum of potential changes around a closed loop is zero."
+  - source_id: ti-slva139
+    title: "Texas Instruments SLVA139: Reverse Current/Battery Protection Circuits"
+    url: https://www.ti.com/lit/an/slva139/slva139.pdf
     accessed: 2026-10-04
     kind: official
-    version: null
-    applicability: "Battery reversal consequences and protection approaches; it does not specify a universal current for arbitrary paired 9 V batteries."
+    version: "SLVA139"
+    applicability: "Mechanical reverse-polarity safeguards (special connectors, distinct 9-V battery terminals) and electronic protection with a series diode or MOSFET."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
