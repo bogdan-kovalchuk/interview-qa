@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-04
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 33 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 33 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
@@ -36,6 +36,20 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
+  - source_id: mit-dc-motor-switching
+    title: "MIT SeaPerch: Circuits using DPDT and SPDT switches to reverse the spin direction of DC motors"
+    url: https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/5/2141/files/2025/05/SeaPerchII_SciTechNotes_5.pdf
+    accessed: 2026-10-04
+    kind: book
+    version: "Science/Tech Note 5, revised 2025-04-30"
+    applicability: "Shows a cross-wired DPDT arrangement for reversing polarity to a reversible DC motor in the SeaPerch example; it does not establish ratings or suitability for other motors and switches."
+  - source_id: aratas-switch-basics
+    title: "ARATAS (formerly Omron): What is an Electrical Switch?"
+    url: https://www.aratas.com/sg-en/products/basic-knowledge/switches/basics
+    accessed: 2026-10-04
+    kind: official
+    version: null
+    applicability: "Switch contact-form basics and the need to select a switch for its load; the specific rating and terminal layout come from the model documentation."
 ---
 
 ## Short answer
