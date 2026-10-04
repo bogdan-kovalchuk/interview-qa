@@ -19,7 +19,9 @@ programs. A fix made once is a fix everywhere.
 > **Current state:** 2089 questions in both languages, 2089 shipping as Ukrainian flashcards and
 > 1088 as English ones, and the site is live at the link above. Every question has a Ukrainian short
 > answer and 1088 have an English one; 268 also carry a written detailed explanation in both
-> languages, 82 of them complete. For the rest, the detailed explanation is still `TODO`. The
+> languages, 82 of them complete. A further 845 embedded and electronics questions have a checked
+> Ukrainian answer with a Ukrainian detailed explanation, so 1113 Ukrainian files carry one. For the
+> rest, the detailed explanation is still `TODO`. The
 > localized `/status/` page reports those gaps by language, track, section, and question type from
 > `dist/export/progress.json`.
 
@@ -71,11 +73,13 @@ hosting.
 Community sources are treated as all-rights-reserved, since they carry no licence of their own, and
 they are used in two different ways. The Python material uses them only to find questions worth
 asking; its wording is written for this project. The `embedded/` track is different: 853 of its
-questions were imported from the owner's own two decks, their Ukrainian short answers keep the
-source's wording, normalised rather than rewritten, and their English short answers are translations
-of that same wording rather than independently written text. Another 828 are the owner's flashcards for
-the Udemy course *Crash Course Electronics and PCB Design* (course sections 2–8, the
+questions were imported from the owner's own two decks; at import their Ukrainian short answers kept
+the source's wording, normalised rather than rewritten, and their English short answers are
+translations of that same wording. Since then 390 of them have been checked against technical
+sources and corrected where wrong, together with their English answers. Another 828 are the owner's
+flashcards for the Udemy course *Crash Course Electronics and PCB Design* (course sections 2–8, the
 `electronics/` track), initially moved as is. The first 20 introduction questions now have
-independently revised answers and detailed explanations in both languages; the other 808 English
-files carry only translated titles. Every such question names its origin in `sources`, and `meta/questions.md` records
+independently revised answers and detailed explanations in both languages, and 455 more have checked
+Ukrainian answers with Ukrainian explanations; the other 808 English files carry only translated
+titles. Every such question names its origin in `sources`, and `meta/questions.md` records
 which is which.

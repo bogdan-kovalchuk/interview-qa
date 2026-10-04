@@ -38,7 +38,9 @@ On 2026-10-04, `emb-elintro-0001` through `emb-elintro-0020` were revised agains
 technical references and received complete short answers and detailed explanations in EN/UK.
 Six inherited factual/procedural inaccuracies were corrected. Original TSV cards remain unchanged
 as provenance. These 20 questions now ship English cards; the other 808 English files retain a
-translated title and `TODO` bodies. The course source identifies provenance, not proof of the
+translated title and `TODO` bodies. On the same day a further 455 questions had their Ukrainian
+short answers checked and corrected against technical sources and received a Ukrainian detailed
+explanation (`meta/plan.md` step 7d). The course source identifies provenance, not proof of the
 revised technical claims.
 
 ## Not moved into `content/`
