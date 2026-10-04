@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,15 +29,29 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: posix-htonl
+    title: "The Open Group Base Specifications: htonl, htons, ntohl, ntohs"
+    url: https://pubs.opengroup.org/onlinepubs/000095399/functions/htonl.html
+    accessed: 2026-10-04
+    kind: spec
+    version: "Issue 6"
+    applicability: "Defines conversions of 16- and 32-bit values between host and network byte order; it does not define arbitrary serialization formats."
+  - source_id: arm-cortex-m-faults
+    title: "Arm: Debugging Embedded Systems Part 2: Fault handling and diagnosis"
+    url: https://developer.arm.com/community/arm-community-blogs/b/embedded-and-microcontrollers-blog/posts/debugging-embedded-systems-part-2-fault-handling-and-diagnosis
+    accessed: 2026-10-04
+    kind: official
+    version: null
+    applicability: "Describes fault types and configurable unaligned-access faults on Cortex-M3/M4 and HardFault-only reporting on Cortex-M0; it is not a complete architecture manual."
 ---
 
 ## Short answer
 
-**Predict padding and reorder fields, explain endianness, and use `htonl`/`ntohl` correctly.**
+**Predict possible padding, explain endianness, and serialize fields in a defined format.**
 
-A strong answer also covers: field-by-field serialization instead of raw `struct`, understanding the cost of `packed`, and the risk of HardFault on M0 / penalty on M3/M4 for misaligned access.
+A structure's member layout and padding depend on the ABI; `htonl`/`ntohl` convert 32-bit values to and from network byte order, not arbitrary wire formats.[^iso-c-n1570] [^posix-htonl]
 
-Rule: talk about explicit wire format and explicit byte order – this is a marker of embedded systems experience.[^embeddedinterviewlab]
+Serialize fields explicitly: sizes, byte order, and padding values belong to the protocol, not to an accidental `struct` image.[^iso-c-n1570]
 
 ## Detailed explanation
 

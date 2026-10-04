@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 **Inline removes call overhead but duplicates the function body at every call site.**
 
-For tiny functions this often reduces code (the call is more expensive than the body). For larger or frequently called ones, it <span class="warn">bloats flash and pressures the I-cache</span>, sometimes slowing the system down.
+Inlining can remove call overhead, but the optimizer decides whether to do it; repeating a body often increases code, while final size and speed depend on the compiler and target.
 
-Rule: `inline` small helpers; keep large functions as regular ones and trust the optimizer. On limited flash, weigh `-Os` against the actual map file.[^embeddedinterviewlab]
+Rule: do not treat `inline` as a guarantee of speed or smaller code; inspect image size and measure on the target.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">The standard defines neither the bit order within a storage unit nor the storage unit itself; this is implementation-defined.</span>
+<span class="warn">C leaves bitfield allocation order within a storage unit and some packing rules to the implementation.</span>
 
-On LE and BE (and between different compilers), fields may be packed from opposite ends, so the same bitfield struct will produce different bits on the wire.
+Different ABIs and compilers can lay out fields differently, so the same struct does not define a portable byte representation for a protocol.
 
-Guard: for protocols and registers, do not rely on bitfields in a wire format; use explicit masks and shifts over `uint32_t`.[^embeddedinterviewlab]
+For protocols and registers, define the wire format explicitly and parse the integer value with masks and shifts.[^iso-c-n1570]
 
 ## Detailed explanation
 

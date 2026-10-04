@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">After roughly ~8 states</span> the nested `switch` grows large and becomes hard to read and maintain.
+<span class="warn">When there are many transitions</span> nested `switch` statements can grow large and become hard to read and maintain.
 
 Each new state requires editing a large `switch`, increasing the risk of missing a transition or case.
 
-Mitigation: for a large number of states, switch to a function-pointer table – adding a state does not touch existing code.[^embeddedinterviewlab]
+Mitigation: review the transition structure; a function-pointer table may help, but it still needs an entry when a state is added.[^iso-c-n1570]
 
 ## Detailed explanation
 

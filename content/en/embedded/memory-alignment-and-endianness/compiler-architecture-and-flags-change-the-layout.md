@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -35,9 +35,9 @@ sources:
 
 <span class="warn">Padding and alignment depend on the compiler, architecture, and build options.</span>
 
-The same code on M4 and PowerPC will produce different field offsets, and opposite endianness also reverses the bytes. So "the same .h file" ≠ "the same byte format".
+The same code on M4 and PowerPC may have different field offsets, while endianness determines the byte order of multi-byte values. So "the same .h file" ≠ "the same byte format".
 
-Defense: never assume two compilers have compatible layouts; define an explicit wire format and serialize field by field.[^embeddedinterviewlab]
+Defense: do not assume two compilers have compatible layouts without checking; define an explicit wire format and serialize field by field.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -1,17 +1,17 @@
 ---
 id: emb-align-0028
 title: "Trap: why is `sizeof(struct)` not the sum of its field sizes?"
-description: "Because of internal padding for field alignment and trailing padding to match the largest alignment."
+description: "Padding may appear between fields and at the end of a struct; exact layout depends on the ABI."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,9 +33,9 @@ sources:
 
 ## Short answer
 
-<span class="warn">Because of padding</span>, both internal (to align fields) and trailing (to make the size a multiple of the largest alignment).
+<span class="warn">Because of padding</span> between fields to meet their alignment and at the end to preserve struct alignment in arrays. Exact layout depends on the ABI and implementation.
 
-Example: `{uint8_t; uint32_t; uint16_t;}` = 1 + 3 pad + 4 + 2 + 2 pad = 12, not 7.
+For an ABI with alignments of 1, 4, and 2 bytes, `{uint8_t; uint32_t; uint16_t;}` uses 1 + 3 padding + 4 + 2 + 2 trailing padding = 12 bytes, not 7.[^iso-c-n1570]
 
 Guard: for layout analysis always use `sizeof` and `offsetof`; do not sum fields in your head.[^embeddedinterviewlab]
 

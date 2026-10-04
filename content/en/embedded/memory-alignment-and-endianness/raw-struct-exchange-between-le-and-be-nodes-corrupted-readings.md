@@ -1,17 +1,17 @@
 ---
 id: emb-align-0024
-title: "Trap: a real \"every second sensor\" bug. What happened?"
-description: "Raw memcpy structs between LE and BE MCUs had different padding, shifting fields by two bytes."
+title: "Pitfall: why can exchanging raw C structs between LE and BE nodes corrupt data?"
+description: "Padding, type sizes, and endianness can differ; a C struct is not a portable wire format."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-<span class="warn">An M4 gateway (LE, little-endian) and a PowerPC node (BE, big-endian) were exchanging raw `memcpy` structs.</span>
+<span class="warn">Exchanging raw C structs between LE and BE nodes does not define a portable data format.</span>
 
-The `uint8_t sensor_id` field had different padding (3 bytes on M4, 1 byte on PowerPC), which shifted the next `uint32_t` by 2 bytes. Odd IDs "happened to work"; even IDs produced garbage (~14000 degrees C).
+The byte order of numeric fields, padding, alignment, and even type sizes can depend on the implementation. The field offset and bytes on the wire cannot be inferred from the names M4 and PowerPC alone.
 
-Guard: explicit wire format plus field-by-field serialization with `htonl`/`htons`. Never assume two compilers produce the same layout.[^embeddedinterviewlab]
+Guard: define a wire format and serialize each field explicitly; specify its width and byte order.[^iso-c-n1570]
 
 ## Detailed explanation
 

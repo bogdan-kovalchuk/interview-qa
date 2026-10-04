@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -29,6 +29,13 @@ sources:
     kind: spec
     version: "N1570"
     applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+  - source_id: cpp-draft-class-union
+    title: "C++ Working Draft: Unions"
+    url: https://eel.is/c%2B%2Bdraft/class.union
+    accessed: 2026-10-04
+    kind: spec
+    version: null
+    applicability: "Describes active union members in C++; this rule should not be applied to C."
 ---
 
 ## Question code
@@ -41,11 +48,11 @@ x.f = 1.5f;
 
 ## Short answer
 
-**Viewing the same bytes as a different type.** In C, union punning is a common technique, but the value read from a different member depends on type representation and implementation; in C++, reading the inactive member is usually undefined behavior, so prefer `memcpy` or `std::bit_cast`.
+**Viewing the same bytes as a different type.** In C, reading another union member interprets the stored representation as that member's type, but the result can be implementation-dependent; in C++, this read for these types generally has undefined behavior, so prefer `memcpy` or `std::bit_cast`.
 
 The result depends on endianness and representation (for example IEEE 754), so for local inspection it can be useful but not for portable serialization.
 
-Rule: for the wire do not use union layout; serialize explicitly with a known byte order.[^embeddedinterviewlab]
+Rule: for the wire do not use union layout; serialize explicitly with a known byte order.[^iso-c-n1570]
 
 ## Detailed explanation
 

@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,7 @@ sources:
 
 ## Short answer
 
-**`memcpy` has no alignment requirement** for source or destination and does not violate strict aliasing.
-
-The compiler optimizes a fixed-size `memcpy` into efficient load/store operations (and on M0 into safe byte-wise accesses), so you get both correctness and speed.
-
-Rule: for unaligned reads and writes of multi-byte values, `memcpy` is the standard portable tool.[^embeddedinterviewlab]
+`memcpy` copies bytes without reading a value through a misaligned typed pointer or violating strict aliasing.[^iso-c-n1570] The destination must hold `n` bytes, and later reading it as `T` requires a properly aligned `T` object; copying does not convert byte order.[^iso-c-n1570] Optimization depends on the compiler and target, so C guarantees neither particular instructions nor a speed advantage.[^iso-c-n1570]
 
 ## Detailed explanation
 

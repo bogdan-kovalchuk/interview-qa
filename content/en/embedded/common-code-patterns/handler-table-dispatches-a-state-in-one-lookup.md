@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -45,9 +45,9 @@ handlers[*state](evt);
 
 ## Short answer
 
-**Array of pointers to handlers, indexed by state; dispatch is a single lookup, O(1).**
+**An array of handler pointers can select a function by state index in one lookup.**
 
-Advantages: a new state is a new function plus a table row, with no changes to existing code. The `static const` table sits in Flash (`.rodata`).
+Advantages: a separate function per state isolates the logic. An initialized `static const` table is usually placed in a read-only section, but the physical segment depends on the toolchain and linker script.[^iso-c-n1570]
 
 Rule: scalable for many states, but harder to read in a debugger.[^embeddedinterviewlab]
 

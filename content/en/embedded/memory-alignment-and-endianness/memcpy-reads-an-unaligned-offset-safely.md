@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -42,9 +42,9 @@ memcpy(&value, &buf[3], sizeof value);
 
 **Via `memcpy`, not a cast to `(uint32_t*)&buf[3]`.**
 
-The address `&buf[3]` is almost certainly unaligned -> a direct cast and dereference will cause a HardFault on M0 or a penalty on M3/M4. The compiler turns `memcpy` into safe (possibly byte-wise) load/store operations.
+`&buf[3]` cannot safely be dereferenced as a `uint32_t*`: the address may not meet the type's alignment requirement, and support for unaligned accesses depends on the core and instruction. `memcpy` copies bytes into a separate, properly aligned object; it does not define the byte order in the buffer.
 
-Guard: for any unaligned multi-byte access, use `memcpy` into a local aligned variable.[^embeddedinterviewlab]
+Guard: check the buffer length, copy into a local variable, and decode endianness separately for a wire format.[^iso-c-n1570]
 
 ## Detailed explanation
 

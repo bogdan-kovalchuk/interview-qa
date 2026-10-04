@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -33,11 +33,11 @@ sources:
 
 ## Short answer
 
-**Arithmetic shifts and masks produce the same result regardless of endianness and compiler.**
+**Shifts and masks on the same unsigned value extract the same logical bits.**
 
-`(reg >> 4) & 0x7` always extracts the same logical bits of the value, whereas union overlays and bitfields depend on the platform's byte and bit order.
+For `uint32_t reg`, `(reg >> 4) & 0x7` extracts bits 4–6 of the numeric value itself; the result does not depend on how its bytes are laid out in memory.
 
-Rule: for register decode and protocol parsing, work with the value through shift and mask, not with its byte layout in memory.[^embeddedinterviewlab]
+First decode bytes according to the format, then use shifts and masks; C leaves bitfield allocation and packing to the implementation.[^iso-c-n1570]
 
 ## Detailed explanation
 

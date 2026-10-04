@@ -1,17 +1,17 @@
 ---
 id: emb-align-0035
 title: "What does this code print on a little-endian machine?"
-description: "44, because on little-endian the least significant byte sits at the lowest address."
+description: "On little-endian the least significant byte 0x44 is at the lowest address, so the code prints 44; on big-endian, 11."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -36,16 +36,12 @@ sources:
 ```c
 uint32_t w = 0x11223344;
 uint8_t *p = (uint8_t*)&w;
-printf("%02X", p[0]);
+printf("%02X", (unsigned)p[0]);
 ```
 
 ## Short answer
 
-**`44`**.
-
-On little-endian the least significant byte sits at the lowest address, so `p[0]` is the LSB `0x44`. On big-endian it would print `11`.
-
-Rule: accessing individual bytes through `uint8_t*` is the typical way to "see" endianness; the result depends on the platform.[^embeddedinterviewlab]
+On little-endian the code prints `44`: the least significant byte `0x44` sits at the lowest address, so `p[0]` reads it. On big-endian it would print `11`; inspecting an object's bytes through `uint8_t*` is allowed because it is a character type.[^iso-c-n1570]
 
 ## Detailed explanation
 

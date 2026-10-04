@@ -1,17 +1,17 @@
 ---
 id: emb-align-0031
 title: "Trap: why is `*(uint32_t*)&buf[1]` dangerous?"
-description: "The address is not aligned to 4 bytes, causing misaligned access and a potential strict aliasing violation."
+description: "An unaligned pointer conversion can cause undefined behaviour; the hardware response depends on the platform."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
@@ -40,11 +40,11 @@ uint32_t v = *(uint32_t*)&buf[1];
 
 ## Short answer
 
-<span class="warn">The address `&buf[1]` is not a multiple of 4 -> misaligned access</span> (HardFault on M0, penalty on M3/M4), plus a potential strict aliasing violation.
+<span class="warn">The offset pointer may not meet `uint32_t` alignment, so converting or accessing through it can cause undefined behaviour; the hardware effect depends on the architecture and configuration.</span> Reading byte objects as `uint32_t` can also violate effective-type rules.[^iso-c-n1570]
 
-Casting `uint8_t*` to `uint32_t*` promises the compiler an alignment that does not exist.
+Converting `uint8_t*` to `uint32_t*` does not align the address or turn the byte object into a `uint32_t` object.[^iso-c-n1570]
 
-Guard: `uint32_t v; memcpy(&v, &buf[1], 4);` is safe for any offset and has no undefined behavior.[^embeddedinterviewlab]
+To avoid an unaligned typed load, use `memcpy(&v, &buf[1], sizeof v);` when at least `sizeof v` source bytes remain. This does not define the protocol's byte order; decode bytes explicitly when needed.[^iso-c-n1570]
 
 ## Detailed explanation
 
