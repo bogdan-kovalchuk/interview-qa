@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0009
 title: "Trap: що станеться при виклику null function pointer?"
-description: "Виклик null function pointer у C має undefined behaviour; стандарт не визначає наслідку, а симптом залежить від платформи."
+description: "Виклик null function pointer у C має undefined behavior; стандарт не визначає наслідку, а симптом залежить від платформи."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -40,15 +40,15 @@ cb();
 
 ## Short answer
 
-<span class="warn">Undefined behaviour.</span>
+<span class="warn">Undefined behavior.</span>
 
-Стандарт C не визначає результат такого виклику: це `undefined behaviour`, а конкретна реакція залежить від реалізації та платформи.[^iso-c-n1570]
+Стандарт C не визначає результат такого виклику: це `undefined behavior`, а конкретна реакція залежить від реалізації та платформи.[^iso-c-n1570]
 
 Захист: перевіряй `cb != NULL` перед необов’язковим викликом або задай API гарантований no-op callback.
 
 ## Detailed explanation
 
-Викликати null function pointer не можна: у C це `undefined behaviour`, отже стандарт не вимагає конкретного результату.[^iso-c-n1570] Програма може аварійно завершитися, зависнути, здаватися працездатною або поводитися інакше; жоден із цих проявів не є гарантованим. Зокрема, не можна виводити точну адресу переходу чи тип exception лише з правил мови.
+Викликати null function pointer не можна: у C це `undefined behavior`, отже стандарт не вимагає конкретного результату.[^iso-c-n1570] Програма може аварійно завершитися, зависнути, здаватися працездатною або поводитися інакше; жоден із цих проявів не є гарантованим. Зокрема, не можна виводити точну адресу переходу чи тип exception лише з правил мови.
 
 Проблема часто з’являється в optional callback API: покажчик ініціалізовано як null, реєстрацію не виконано або її скасовано, але шлях обробки події все одно безумовно викликає `cb()`. На MCU наслідок визначають компілятор, ABI, карта пам’яті та ядро. Можлива апаратна fault, але стандарт C цього не обіцяє й не задає поведінку Cortex-M.
 

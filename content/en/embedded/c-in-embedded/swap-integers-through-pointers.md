@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 4
+updated: 2026-10-04
+content_revision: 5
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -43,7 +43,7 @@ void swap(int *a, int *b) {
 
 Call: `int x=5, y=10; swap(&x, &y);` -> `x=10, y=5`.
 
-Without tmp via XOR: `*a^=*b; *b^=*a; *a^=*b;` – but <span class="warn">undefined behavior if `a == b`</span> (aliasing the same object). Always pass addresses (via `&` at the caller), not values.[^embeddedinterviewlab]
+Without tmp via XOR: `*a^=*b; *b^=*a; *a^=*b;` – but <span class="warn">if `a == b`, the value becomes zero</span> (both pointers alias one object and `x ^ x == 0`). Always pass addresses (via `&` at the caller), not values.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

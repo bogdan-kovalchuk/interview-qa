@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0031
 title: "Trap: why must `void *context` be cast back to the right type?"
-description: "A cast from void * does not check the type; incorrect object access may cause undefined behaviour."
+description: "A cast from void * does not check the type; incorrect object access may cause undefined behavior."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,9 +9,9 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-<span class="warn">A cast from `void *` does not check the type; undefined behaviour occurs if the result is used to access the object incorrectly.</span>
+<span class="warn">A cast from `void *` does not check the type; undefined behavior occurs if the result is used to access the object incorrectly.</span>
 
 `void *` carries no runtime type information. If a callback expects `struct Uart *` but receives a pointer to `struct Spi`, dereferencing it as `struct Uart` may violate alignment or typed-object access rules.[^iso-c-n1570]
 

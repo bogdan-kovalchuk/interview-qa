@@ -1,7 +1,7 @@
 ---
 id: emb-align-0031
 title: "Trap: чому `*(uint32_t*)&buf[1]` небезпечно?"
-description: "Невирівняне перетворення pointer може мати undefined behaviour; реакція апаратури залежить від платформи."
+description: "Невирівняне перетворення pointer може мати undefined behavior; реакція апаратури залежить від платформи."
 track: embedded
 section: memory-alignment-and-endianness
 level: junior
@@ -9,9 +9,9 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
-  en: 4
+  en: 5
 anki:
   export: true
 sources:
@@ -40,7 +40,7 @@ uint32_t v = *(uint32_t*)&buf[1];
 
 ## Short answer
 
-<span class="warn">Зсунутий pointer може не мати alignment для `uint32_t`, тому перетворення або доступ через нього може мати undefined behaviour; наслідок на апаратурі залежить від архітектури й конфігурації.</span> Також читання байтів як `uint32_t` може порушити правила effective type.[^iso-c-n1570]
+<span class="warn">Зсунутий pointer може не мати alignment для `uint32_t`, тому перетворення або доступ через нього може мати undefined behavior; наслідок на апаратурі залежить від архітектури й конфігурації.</span> Також читання байтів як `uint32_t` може порушити правила effective type.[^iso-c-n1570]
 
 Перетворення `uint8_t*` -> `uint32_t*` не вирівнює адресу й не робить байтовий об’єкт об’єктом типу `uint32_t`.[^iso-c-n1570]
 
@@ -48,7 +48,7 @@ uint32_t v = *(uint32_t*)&buf[1];
 
 ## Detailed explanation
 
-`&buf[1]` вказує на другий байт масиву. Якщо його адреса не відповідає alignment для `uint32_t`, cast на `uint32_t*` не виправляє адресу. За правилами C перетворення pointer, результат якого не вирівняний належно для типу призначення, має undefined behaviour; подальше читання також мусить відповідати правилам доступу до об’єктів та effective type.[^iso-c-n1570]
+`&buf[1]` вказує на другий байт масиву. Якщо його адреса не відповідає alignment для `uint32_t`, cast на `uint32_t*` не виправляє адресу. За правилами C перетворення pointer, результат якого не вирівняний належно для типу призначення, має undefined behavior; подальше читання також мусить відповідати правилам доступу до об’єктів та effective type.[^iso-c-n1570]
 
 На MCU можливі різні прояви: процесор може виконати unaligned access, розбити його на кілька операцій, сповільнити його або згенерувати fault. Це залежить від архітектури, інструкції та конфігурації, тому твердження «завжди HardFault» або «завжди лише штраф» некоректне без зазначення платформи.[^iso-c-n1570]
 

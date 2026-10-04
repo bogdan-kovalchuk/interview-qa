@@ -8,8 +8,8 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -42,7 +42,7 @@ printf("%d",*p);
 
 ## Short answer
 
-<span class="warn">Так, UB.</span> `p = arr` -> вказівник на `arr[0]`. `p--` -> `arr-1`, що знаходиться <span class="warn">поза масивом</span>.
+<span class="warn">Так, undefined behavior (UB).</span> `p = arr` -> вказівник на `arr[0]`. `p--` -> `arr-1`, що знаходиться <span class="warn">поза масивом</span>.
 
 Допустимі вказівники для `arr[3]`: `arr` (=arr+0) до `arr+3` (one-past-the-end). `arr-1` – UB вже при формуванні, не тільки при розіменуванні.
 

@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -37,7 +37,7 @@ sources:
 
 Strict aliasing rule (C99 §6.5): компілятор може вважати, що вказівники різних типів не alias-ують (окрім `char*`/`unsigned char*`). Це дозволяє більш агресивну оптимізацію.
 
-Порушення: `int x; float *fp = (float*)&x; *fp = 1.0f;` -> UB.
+Порушення: `int x; float *fp = (float*)&x; *fp = 1.0f;` -> undefined behavior (UB).
 
 Захист: `memcpy` для type punning, `char*` для byte access, `restrict` для явної гарантії no-aliasing.[^embeddedinterviewlab]
 

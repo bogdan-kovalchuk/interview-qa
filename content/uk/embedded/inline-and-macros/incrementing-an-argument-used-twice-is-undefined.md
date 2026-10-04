@@ -9,7 +9,7 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
   en: 4
 anki:
@@ -41,7 +41,7 @@ int b = SQR(a++);
 
 ## Short answer
 
-<span class="warn">Стандарт C не визначає результат цього виразу: це undefined behaviour.</span>
+<span class="warn">Стандарт C не визначає результат цього виразу: це undefined behavior.</span>
 
 Макрос підставляє аргумент у два місця: `((a++) * (a++))`. Дужки рятують від precedence, але не від double evaluation. Два інкременти одного scalar object у межах одного виразу не впорядковані між собою, тому стандарт C не визначає ні результат множення, ні фінальне значення `a`.
 

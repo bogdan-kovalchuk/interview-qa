@@ -9,9 +9,9 @@ type: concept
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -35,7 +35,7 @@ sources:
 
 **Mechanism, contract and risks.**
 
-Mechanism: a function pointer with a concrete signature. Contract: who registers, who calls, when, with which context pointer and lifetime. Risks: null pointer, incompatible call signature (undefined behaviour in C), ISR context, dangling context, reentrancy, blocking calls and dispatch index validation.[^iso-c-n1570]
+Mechanism: a function pointer with a concrete signature. Contract: who registers, who calls, when, with which context pointer and lifetime. Risks: null pointer, incompatible call signature (undefined behavior in C), ISR context, dangling context, reentrancy, blocking calls and dispatch index validation.[^iso-c-n1570]
 
 Rule: a strong embedded answer does not stop at the syntax of `void (*cb)(void)`; it explains runtime ownership and execution context.[^embeddedinterviewlab]
 

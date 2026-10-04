@@ -301,7 +301,7 @@ glossary:
   - {en: GIL,                 uk: GIL,                 note: абревіатура без розкриття й без транслітерації}
   - {en: move semantics,      uk: move semantics,      note: лишається англійською}
   - {en: control block,       uk: control block,       note: термін shared_ptr; лишається англійською}
-  - {en: undefined behaviour, uk: undefined behaviour, note: британське написання; не «невизначена поведінка»}
+  - {en: undefined behavior, uk: undefined behavior, note: американське написання; не «невизначена поведінка»}
   - {en: round trip,          uk: round trip,          note: лишається англійською}
   - {en: reflog,              uk: reflog,              note: назва механізму git; не перекладається і не відмінюється}
   - {en: at-least-once,       uk: at-least-once,       note: назва гарантії доставки}

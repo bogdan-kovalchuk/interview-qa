@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0033
 title: "Trap: what is wrong with this `qsort` comparator?"
-description: "Subtraction can overflow int, which is undefined behaviour for signed overflow."
+description: "Subtraction can overflow int, which is undefined behavior for signed overflow."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,9 +9,9 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -41,9 +41,9 @@ int cmp(const void *a, const void *b) {
 
 ## Short answer
 
-<span class="warn">Subtracting two `int` values can overflow the result; signed overflow is undefined behaviour in C.</span>
+<span class="warn">Subtracting two `int` values can overflow the result; signed overflow is undefined behavior in C.</span>
 
-If one element is `INT_MIN` and the other is `INT_MAX`, the mathematical difference is not representable in `int`; the C standard defines signed overflow as undefined behaviour. The comparator must return ordering, not necessarily an arithmetic difference.[^iso-c-n1570]
+If one element is `INT_MIN` and the other is `INT_MAX`, the mathematical difference is not representable in `int`; the C standard defines signed overflow as undefined behavior. The comparator must return ordering, not necessarily an arithmetic difference.[^iso-c-n1570]
 
 Protection: use `return (x > y) - (x < y);` after reading `x` and `y`.[^iso-c-n1570]
 

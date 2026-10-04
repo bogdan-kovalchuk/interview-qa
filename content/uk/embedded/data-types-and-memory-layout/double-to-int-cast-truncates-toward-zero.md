@@ -9,7 +9,7 @@ type: mechanism
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
   en: 3
 anki:
@@ -33,7 +33,7 @@ sources:
 
 ## Short answer
 
-`x` матиме значення `3`: перетворення скінченного `double` на `int` відкидає дробову частину в напрямку до нуля, а не округлює. Наприклад, `-3.7` стає `-3`. Якщо ціла частина виходить за діапазон `int`, результат має undefined behaviour.[^iso-c-n1570]
+`x` матиме значення `3`: перетворення скінченного `double` на `int` відкидає дробову частину в напрямку до нуля, а не округлює. Наприклад, `-3.7` стає `-3`. Якщо ціла частина виходить за діапазон `int`, результат має undefined behavior.[^iso-c-n1570]
 
 ## Detailed explanation
 

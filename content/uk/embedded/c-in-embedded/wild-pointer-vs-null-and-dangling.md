@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -40,7 +40,7 @@ sources:
 - **Dangling pointer**: вказував на валідний об'єкт, який знищено;
 - **Wild pointer**: ніколи не вказував на валідний об'єкт.
 
-Всі три -> UB при розіменуванні. Wild pointer найнебезпечніший: його адреса ненульова і випадкова – перевірку `if(p != NULL)` проходить.[^embeddedinterviewlab]
+Всі три -> undefined behavior (UB) при розіменуванні. Wild pointer найнебезпечніший: його адреса ненульова і випадкова – перевірку `if(p != NULL)` проходить.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

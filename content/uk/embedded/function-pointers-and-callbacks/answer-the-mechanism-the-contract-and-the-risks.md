@@ -9,9 +9,9 @@ type: concept
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
-  en: 3
+  en: 4
 anki:
   export: true
 sources:
@@ -35,7 +35,7 @@ sources:
 
 **Механізм, контракт і ризики.**
 
-Механізм: function pointer з конкретною сигнатурою. Контракт: хто реєструє, хто викликає, коли, з яким context pointer і lifetime. Ризики: null pointer, несумісна сигнатура виклику (undefined behaviour у C), ISR context, dangling context, reentrancy, blocking calls і валідація dispatch index.[^iso-c-n1570]
+Механізм: function pointer з конкретною сигнатурою. Контракт: хто реєструє, хто викликає, коли, з яким context pointer і lifetime. Ризики: null pointer, несумісна сигнатура виклику (undefined behavior у C), ISR context, dangling context, reentrancy, blocking calls і валідація dispatch index.[^iso-c-n1570]
 
 Правило: сильна embedded-відповідь не зупиняється на синтаксисі `void (*cb)(void)`; вона пояснює runtime ownership і execution context.[^embeddedinterviewlab]
 
@@ -43,7 +43,7 @@ sources:
 
 Callback – це функція, яку один компонент передає іншому для виклику у визначений момент; зазвичай передається function pointer з потрібною сигнатурою.[^iso-c-n1570]
 
-Сигнатура задає тип результату й параметрів, тому обидві сторони мають домовитися про однаковий контракт. Наприклад, producer може викликати `void (*)(int, void *)`, передаючи подію та context pointer. Сам context дає змогу одному handler працювати з різними екземплярами стану. У C виклик функції через несумісний тип function pointer має undefined behaviour, тому cast не виправляє невідповідність сигнатури.[^iso-c-n1570]
+Сигнатура задає тип результату й параметрів, тому обидві сторони мають домовитися про однаковий контракт. Наприклад, producer може викликати `void (*)(int, void *)`, передаючи подію та context pointer. Сам context дає змогу одному handler працювати з різними екземплярами стану. У C виклик функції через несумісний тип function pointer має undefined behavior, тому cast не виправляє невідповідність сигнатури.[^iso-c-n1570]
 
 Контракт охоплює більше, ніж тип. Треба знати, хто реєструє і скасовує callback, чи може його викликати interrupt handler, на якому пріоритеті й чи дозволені blocking calls. Також визначають lifetime context: вказівник на локальну змінну стає dangling після виходу з функції, яка її створила. Якщо callback може викликатися повторно або з кількох контекстів, потрібно окремо визначити правила reentrancy і синхронізації.
 

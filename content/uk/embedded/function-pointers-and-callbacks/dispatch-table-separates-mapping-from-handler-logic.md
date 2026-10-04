@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -54,7 +54,7 @@ typedef void (*handler_t)(void);
 static handler_t handlers[] = { handle_ping, handle_reset };
 ```
 
-Перед викликом індекс усе одно перевіряють на межі масиву, а оброблювані вхідні дані – на валідність. Інакше компактна диспетчеризація перетворюється на шлях до undefined behaviour або небажаного handler виклику.[^iso-c-n1570]
+Перед викликом індекс усе одно перевіряють на межі масиву, а оброблювані вхідні дані – на валідність. Інакше компактна диспетчеризація перетворюється на шлях до undefined behavior або небажаного handler виклику.[^iso-c-n1570]
 
 **Типові помилки:**
 

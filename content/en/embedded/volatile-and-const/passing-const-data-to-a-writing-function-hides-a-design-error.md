@@ -9,9 +9,9 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -35,7 +35,7 @@ sources:
 
 <span class="warn">Without a compiler diagnostic this is not allowed; a cast does not make writes legal for an actually const object.</span>
 
-A `const uint8_t *` argument passed where `uint8_t *` is required violates C's type constraint and requires a diagnostic. Casting away the qualifier and writing has undefined behaviour if the original object was actually defined `const`; otherwise the write may be permitted, but the API hides intent.[^iso-c-n1570]
+A `const uint8_t *` argument passed where `uint8_t *` is required violates C's type constraint and requires a diagnostic. Casting away the qualifier and writing has undefined behavior if the original object was actually defined `const`; otherwise the write may be permitted, but the API hides intent.[^iso-c-n1570]
 
 Separate the API: input buffer as `const uint8_t *`, output buffer as `uint8_t *`. Do not strip the qualifier without checking whether the original object is modifiable.[^iso-c-n1570]
 

@@ -9,7 +9,7 @@ type: concept
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 2
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -43,7 +43,7 @@ sources:
 
 `static const` для об’єкта на рівні файлу в C поєднує internal linkage зі змогою читати об’єкт, але не змінювати його через це ім’я. `static` тут стосується видимості імені між translation units, а `const` є кваліфікатором типу, а не гарантією фізичного захисту пам’яті.[^iso-c-n1570]
 
-Internal linkage залишає таблицю приватною деталлю реалізації: інші `.c` файли не можуть звернутися до цього імені через звичайне зовнішнє оголошення. `const` забороняє зміну через const-qualified lvalue; спроба змінити об’єкт, визначений як const, через приведений неконстантний pointer має undefined behaviour.[^iso-c-n1570]
+Internal linkage залишає таблицю приватною деталлю реалізації: інші `.c` файли не можуть звернутися до цього імені через звичайне зовнішнє оголошення. `const` забороняє зміну через const-qualified lvalue; спроба змінити об’єкт, визначений як const, через приведений неконстантний pointer має undefined behavior.[^iso-c-n1570]
 
 Куди потраплять байти, вирішують реалізація, linker script та архітектура. Compiler або linker часто кладуть таблицю в read-only section на кшталт `.rodata`, але стандарт C не гарантує ані назви секції, ані Flash. Для embedded-проєкту перевір linker map, якщо розміщення важливе.[^iso-c-n1570]
 

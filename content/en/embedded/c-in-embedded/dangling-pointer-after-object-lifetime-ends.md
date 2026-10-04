@@ -11,7 +11,7 @@ status: published
 updated: 2026-09-07
 content_revision: 2
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:

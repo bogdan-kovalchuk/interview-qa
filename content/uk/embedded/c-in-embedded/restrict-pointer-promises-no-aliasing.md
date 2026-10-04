@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -37,7 +37,7 @@ sources:
 
 Приклад: `void add(int * restrict dst, const int * restrict src, int n)`.
 
-Дає компілятору дозвіл на агресивну оптимізацію (векторизація, підкачка у регістри). Важливо для DSP, crypto, memcpy-like функцій. Якщо aliasing все ж є – UB.[^embeddedinterviewlab]
+Дає компілятору дозвіл на агресивну оптимізацію (векторизація, підкачка у регістри). Важливо для DSP, crypto, memcpy-like функцій. Якщо aliasing все ж є – undefined behavior (UB).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

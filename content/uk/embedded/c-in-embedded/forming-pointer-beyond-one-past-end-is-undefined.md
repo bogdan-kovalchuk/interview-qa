@@ -8,8 +8,8 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 4
 anki:
@@ -41,7 +41,7 @@ int *q=arr+5;
 
 ## Short answer
 
-<span class="warn">Так, UB вже при формуванні `arr+5`</span>.
+<span class="warn">Так, undefined behavior (UB) вже при формуванні `arr+5`</span>.
 
 Для масиву `arr[4]` (4 елементи) допустимі вказівники: `arr` до `arr+4` включно (one-past-the-end). `arr+5` виходить за one-past-the-end -> <span class="warn">UB навіть без розіменування</span>.
 

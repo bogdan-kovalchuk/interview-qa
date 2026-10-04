@@ -8,10 +8,10 @@ level: senior
 type: debugging
 tags: [use-after-free, sanitizers, lifetime, asynchronous, undefined-behavior]
 status: published
-updated: 2026-09-08
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  en: 3
+  en: 4
 see_also: [cpp-ptrref-0001]
 applies_to:
   - product: ISO C++
@@ -61,7 +61,7 @@ use-after-free і за можливості показує порушний до
 Use-after-free так рідко дає чисте падіння тому, що звільнена пам'ять зазвичай лишається відображеною.
 Читання повертає те, що алокатор устиг туди покласти, тож програма продовжує з правдоподібним
 значенням і ламається зовсім в іншому місці. Мова нічого іншого й не обіцяє: щойно час життя
-завершився, будь-який доступ є undefined behaviour, а «на staging працювало» – це твердження про
+завершився, будь-який доступ є undefined behavior, а «на staging працювало» – це твердження про
 одне виконання, а не про коректність.[^cpp-draft-basic-life]
 
 ## Symptom
@@ -164,7 +164,7 @@ void submit(ThreadPool& pool, std::shared_ptr<Session> session) {
 
 - Додає sleep, повтор або лок і вважає проблему вирішеною, щойно частота падінь упала.
 - Робить висновок «пошкодження пам'яті, мабуть алокатор» і на цьому спиняється.
-- Каже, що undefined behaviour прийнятний, бо на практиці значення полів виглядають правильними.
+- Каже, що undefined behavior прийнятний, бо на практиці значення полів виглядають правильними.
 
 ### Level-up follow-up
 

@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
-  en: 4
+  en: 5
 anki:
   export: true
 sources:
@@ -43,7 +43,7 @@ void swap(int *a, int *b) {
 
 Виклик: `int x=5, y=10; swap(&x, &y);` -> `x=10, y=5`.
 
-Без tmp через XOR: `*a^=*b; *b^=*a; *a^=*b;` – але <span class="warn">UB якщо `a == b`</span> (aliasing той самий об'єкт). Передавай завжди адреси (через `&` у caller), не значення.[^embeddedinterviewlab]
+Без tmp через XOR: `*a^=*b; *b^=*a; *a^=*b;` – але <span class="warn">якщо `a == b`, значення обнулиться</span> (обидва вказівники на один об’єкт, а `x ^ x == 0`). Передавай завжди адреси (через `&` у caller), не значення.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

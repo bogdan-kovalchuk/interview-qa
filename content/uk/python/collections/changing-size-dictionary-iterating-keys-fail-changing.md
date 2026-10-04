@@ -8,8 +8,8 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-05
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 2
 anki:
@@ -49,7 +49,7 @@ sources:
 поточним значенням при кожному виклику `__next__`. Якщо лічильники розходяться, CPython одразу
 піднімає `RuntimeError`, не чекаючи, поки цикл дійде до пошкодженого стану.[^py314-library-stdtypes]
 Це захисний механізм реалізації, а не гарантія мови: специфікація Python лише каже, що зміна
-розміру словника під час ітерації – undefined behaviour, і те, що CPython ловить це надійно, –
+розміру словника під час ітерації – undefined behavior, і те, що CPython ловить це надійно, –
 деталь конкретного інтерпретатора.
 
 Зміна значення наявного ключа проходить повз цю перевірку, бо оновлення value не додає й не

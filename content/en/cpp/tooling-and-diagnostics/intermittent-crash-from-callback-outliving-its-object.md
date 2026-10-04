@@ -8,10 +8,10 @@ level: senior
 type: debugging
 tags: [use-after-free, sanitizers, lifetime, asynchronous, undefined-behavior]
 status: published
-updated: 2026-09-08
-content_revision: 3
+updated: 2026-10-04
+content_revision: 4
 reconciled_with:
-  uk: 3
+  uk: 4
 see_also: [cpp-ptrref-0001]
 applies_to:
   - product: ISO C++
@@ -61,7 +61,7 @@ a report that connects the access to the object's lifetime.
 The reason a use-after-free is so rarely a clean crash is that freed memory usually remains mapped.
 Reading it returns whatever the allocator has put there since, so the program continues with a
 plausible-looking value and fails somewhere else entirely. Nothing in the language promises otherwise:
-once the lifetime has ended, any access is undefined behaviour, and "it worked in staging" is a
+once the lifetime has ended, any access is undefined behavior, and "it worked in staging" is a
 statement about one execution, not about correctness.[^cpp-draft-basic-life]
 
 ## Symptom
@@ -165,7 +165,7 @@ task: that removes the crash and removes the point of the thread pool with it.
 
 - Adds a sleep, a retry or a lock and calls the problem fixed once the crash rate drops.
 - Concludes "memory corruption, probably the allocator" and stops there.
-- Says undefined behaviour is acceptable because the field values look correct in practice.
+- Says undefined behavior is acceptable because the field values look correct in practice.
 
 ### Level-up follow-up
 

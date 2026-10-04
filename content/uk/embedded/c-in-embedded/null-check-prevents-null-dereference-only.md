@@ -8,8 +8,8 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -35,7 +35,7 @@ sources:
 
 **Перший – безпечний**. `if(p)` ≡ `if(p != NULL)` – перевірка перед розіменуванням. Якщо `p == NULL` -> умова false, `*p` не виконується.
 
-<span class="warn">Другий – UB</span>: `*p = 5` при `p == NULL` -> HardFault на Cortex-M.
+<span class="warn">Другий – undefined behavior (UB)</span>: `*p = 5` при `p == NULL` -> HardFault на Cortex-M.
 
 Але: перевірка NULL не захищає від dangling pointer або wild pointer – вони ненульові, але невалідні; NULL-check – необхідна, але недостатня умова безпеки.[^embeddedinterviewlab]
 

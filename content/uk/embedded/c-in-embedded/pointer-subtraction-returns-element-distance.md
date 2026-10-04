@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 3
 anki:
@@ -37,7 +37,7 @@ sources:
 
 `int *p = arr+4; int *q = arr+1; p - q = 3` (три `int`-елементи).
 
-Умова: обидва вказівники мають вказувати на **один масив** (або one-past-the-end). Відняття вказівників що вказують на різні масиви/об'єкти -> <span class="warn">UB</span>.
+Умова: обидва вказівники мають вказувати на **один масив** (або one-past-the-end). Відняття вказівників що вказують на різні масиви/об'єкти -> <span class="warn">undefined behavior (UB)</span>.
 
 Застосування: `strlen`-подібний підрахунок, offset між елементами буфера.[^embeddedinterviewlab]
 

@@ -1,7 +1,7 @@
 ---
 id: emb-fnptr-0020
 title: "Trap: what is wrong with a dispatch table without an index check?"
-description: "An index outside the dispatch table causes undefined behaviour; the result depends on the implementation and platform."
+description: "An index outside the dispatch table causes undefined behavior; the result depends on the implementation and platform."
 track: embedded
 section: function-pointers-and-callbacks
 level: junior
@@ -9,9 +9,9 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -42,7 +42,7 @@ table[opcode]();
 
 ## Short answer
 
-<span class="warn">If `opcode >= 4`, subscripting is outside the array and the program has undefined behaviour; the call target is not necessarily random.</span>
+<span class="warn">If `opcode >= 4`, subscripting is outside the array and the program has undefined behavior; the call target is not necessarily random.</span>
 
 On Cortex-M the result could be a HardFault, an incorrect branch, or another failure, but the C standard guarantees no particular outcome.
 

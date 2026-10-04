@@ -9,9 +9,9 @@ type: pitfall
 tags: []
 status: published
 updated: 2026-10-04
-content_revision: 3
+content_revision: 4
 reconciled_with:
-  uk: 2
+  uk: 3
 anki:
   export: true
 sources:
@@ -35,7 +35,7 @@ sources:
 
 <span class="warn">Converting an arbitrary integer to a function pointer does not make the address a valid function.</span>
 
-In C, converting an integer to a pointer has an implementation-defined result: the address may be misaligned, may not point to an object or function of the referenced type, or may be a trap representation. Calling through a function pointer with an incompatible type also has undefined behaviour.[^iso-c-n1570]
+In C, converting an integer to a pointer has an implementation-defined result: the address may be misaligned, may not point to an object or function of the referenced type, or may be a trap representation. Calling through a function pointer with an incompatible type also has undefined behavior.[^iso-c-n1570]
 
 Protection: call only a known entry point with a compatible signature and the platform ABI rules; use the MCU's documented procedure when transferring to another image.[^embeddedinterviewlab] [^iso-c-n1570]
 

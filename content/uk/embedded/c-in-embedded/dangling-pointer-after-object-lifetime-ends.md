@@ -8,8 +8,8 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-04
+content_revision: 3
 reconciled_with:
   en: 2
 anki:
@@ -38,7 +38,7 @@ sources:
 Причини:
 
 1. Повернення адреси локальної змінної: `int* f(){ int x=5; return &x; }` – x знищена при поверненні;
-2. Після `free(ptr)` без обнулення: `free(ptr); *ptr = 1;` – UB;
+2. Після `free(ptr)` без обнулення: `free(ptr); *ptr = 1;` – undefined behavior (UB);
 3. Вказівник на об'єкт, термін дії якого закінчився.
 
 Небезпека: пам'ять <span class="warn">виглядає валідною</span> до її перевикористання. Баги надзвичайно важко відтворити.[^embeddedinterviewlab]
