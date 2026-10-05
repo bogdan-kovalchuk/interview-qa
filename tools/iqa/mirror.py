@@ -577,7 +577,7 @@ def navigation_pages(
                     )
                 )
                 for page in sorted(
-                    by_key[(language, track, section)], key=lambda item: item.title
+                    by_key[(language, track, section)], key=lambda item: item.question_id
                 ):
                     order.append(
                         NavigationPage(
@@ -643,9 +643,10 @@ def write_navigation(
     `{lang}/q/{id}/{slug}`, so the menu read `q` -> `cs-algo-0001` -> title.
 
     The shape here is the taxonomy instead: track, then section, then the
-    questions listed on the section's own page. Order is `meta/taxonomy.md`'s
-    document order, never alphabetical, because that file is where the intended
-    reading order is declared.
+    questions listed on the section's own page. Order of tracks and sections is
+    `meta/taxonomy.md`'s document order, never alphabetical, because that file
+    is where the intended reading order is declared. Questions within each
+    section are ordered by question ID, matching Anki deck card progression.
     """
     languages = sorted({page.language for page in pages})
     by_key: dict[tuple[str, str, str], list[MirroredPage]] = {}
@@ -685,7 +686,7 @@ def write_navigation(
             section_links: list[str] = []
             for section in live_sections:
                 entries = sorted(
-                    by_key.get((language, track, section), ()), key=lambda page: page.title
+                    by_key.get((language, track, section), ()), key=lambda page: page.question_id
                 )
                 if not entries:
                     continue

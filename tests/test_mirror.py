@@ -125,7 +125,7 @@ def test_pagination_follows_home_taxonomy_section_and_questions(tmp_path: Path) 
     section = _frontmatter(out / "en" / "python" / "concurrency-and-gil" / "index.md")
     questions = sorted(
         ((_frontmatter(path), path) for path in (out / "en" / "q").rglob("*.md")),
-        key=lambda item: item[0]["title"],
+        key=lambda item: item[0]["question_id"],
     )
 
     assert "prev" not in home
@@ -139,6 +139,51 @@ def test_pagination_follows_home_taxonomy_section_and_questions(tmp_path: Path) 
     assert first["prev"]["link"] == "/interview-qa/en/python/concurrency-and-gil/"
     assert last["prev"]["link"].startswith("/interview-qa/en/q/")
     assert "next" not in last
+
+
+def test_section_index_and_pagination_sorted_by_question_id_not_alphabetical_title(
+    tmp_path: Path,
+) -> None:
+    content = tmp_path / "content"
+    section_dir = content / "en" / "python" / "concurrency-and-gil"
+    section_dir.mkdir(parents=True)
+
+    base_fixture = (FIXTURES / "statuses" / "published.md").read_text(encoding="utf-8")
+
+    # Question 1: lower QID (py-gil-0001), but alphabetically last title ("Zebra title")
+    q1 = base_fixture.replace("id: py-gil-9202", "id: py-gil-0001").replace(
+        'title: "Published status fixture"', 'title: "Zebra title"'
+    )
+    (section_dir / "zebra-slug.md").write_text(q1, encoding="utf-8")
+
+    # Question 2: higher QID (py-gil-0002), but alphabetically first title ("Alpha title")
+    q2 = base_fixture.replace("id: py-gil-9202", "id: py-gil-0002").replace(
+        'title: "Published status fixture"', 'title: "Alpha title"'
+    )
+    (section_dir / "alpha-slug.md").write_text(q2, encoding="utf-8")
+
+    out = tmp_path / "out"
+    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+
+    # Section index must list questions by QID (Zebra 0001 first, Alpha 0002 second)
+    section_index = (
+        out / "en" / "python" / "concurrency-and-gil" / "index.md"
+    ).read_text(encoding="utf-8")
+    zebra_pos = section_index.find("Zebra title")
+    alpha_pos = section_index.find("Alpha title")
+    assert zebra_pos != -1 and alpha_pos != -1
+    assert zebra_pos < alpha_pos, "Section index must be sorted by QID, not alphabetical title"
+
+    # Pagination must also follow QID order: section -> Zebra (0001) -> Alpha (0002)
+    zebra_page = next((out / "en" / "q" / "py-gil-0001").glob("*.md"))
+    alpha_page = next((out / "en" / "q" / "py-gil-0002").glob("*.md"))
+    zebra_fm = _frontmatter(zebra_page)
+    alpha_fm = _frontmatter(alpha_page)
+
+    assert zebra_fm["prev"]["link"] == "/interview-qa/en/python/concurrency-and-gil/"
+    assert zebra_fm["next"]["link"] == f"/interview-qa/en/q/py-gil-0002/{alpha_page.stem}/"
+    assert alpha_fm["prev"]["link"] == f"/interview-qa/en/q/py-gil-0001/{zebra_page.stem}/"
+    assert "next" not in alpha_fm
 
 
 def test_progress_report_generates_localized_status_page_and_navigation(tmp_path: Path) -> None:
