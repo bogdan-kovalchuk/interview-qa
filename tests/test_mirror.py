@@ -215,6 +215,7 @@ def test_progress_report_generates_localized_status_page_and_navigation(tmp_path
 
     sidebar = json.loads(sidebar_path.read_text(encoding="utf-8"))
     assert sidebar[0] == {"slug": "status"}
+    assert sidebar[1]["items"] == [{"slug": "python/concurrency-and-gil"}]
 
     home = _frontmatter(out / "en" / "index.md")
     status_frontmatter = _frontmatter(out / "en" / "status.md")

@@ -654,6 +654,7 @@ def write_navigation(
         by_key.setdefault((page.language, page.track, page.section), []).append(page)
 
     sidebar: list[dict[str, Any]] = []
+    live_tracks: list[str] = []
     for track, sections in taxonomy:
         live_sections = [
             section
@@ -662,8 +663,9 @@ def write_navigation(
         ]
         if not live_sections:
             continue
+        live_tracks.append(track)
 
-        items: list[dict[str, Any]] = [{"slug": track}]
+        items: list[dict[str, Any]] = []
         for section in live_sections:
             items.append({"slug": f"{track}/{section}"})
         sidebar.append(
@@ -714,9 +716,9 @@ def write_navigation(
     for language in languages:
         lang = Language(language)
         track_links = [
-            f"- [{_nav_label(vocabulary, 'track_labels', group['items'][0]['slug'], lang)}]"
-            f"({base}/{language}/{group['items'][0]['slug']}/)"
-            for group in sidebar
+            f"- [{_nav_label(vocabulary, 'track_labels', track, lang)}]"
+            f"({base}/{language}/{track}/)"
+            for track in live_tracks
         ]
         home = "\n".join(
             [
