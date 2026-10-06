@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 2
+updated: 2026-10-06
+content_revision: 3
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,14 +21,21 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Source question and answer; answer not independently verified."
+    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-06; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
     accessed: 2026-09-06
     kind: spec
     version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
+    applicability: "Supports modular unsigned arithmetic (6.2.5, paragraph 9), integer promotions (6.3.1.1) and the rules for volatile objects (6.7.3, paragraph 7); says nothing about specific timers or toolchains."
+  - source_id: holzmann-power-of-ten
+    title: "The Power of Ten – Rules for Developing Safety Critical Code (G. J. Holzmann, NASA/JPL)"
+    url: https://spinroot.com/gerard/pdf/P10.pdf
+    accessed: 2026-10-06
+    kind: official
+    version: null
+    applicability: "Paper by a NASA/JPL author, hosted on his site: rule 2 requires a fixed upper bound for every loop, rule 7 requires checking return values and parameter validity. It is a guideline for safety-critical C, not a requirement for every project."
 ---
 
 ## Question code
@@ -42,11 +49,9 @@ while (!(REG->SR & FLAG)) {
 
 ## Short answer
 
-**Remember the start; on every iteration check the tick difference against the limit.**
+**Record the start tick and compare the difference `tick() - start` with the limit on every iteration.**
 
-Subtracting unsigned ticks survives counter wraparound correctly. This prevents an infinite hang if the hardware never sets the flag.
-
-Rule: never busy-wait on a hardware flag without a timeout – always timeout plus an error return.[^embeddedinterviewlab]
+Unsigned subtraction gives the correct elapsed time even after the counter wraps, provided `tick()` returns the same unsigned type as `start` and the wait is shorter than the counter period.[^iso-c-n1570] This keeps the loop from hanging forever if the hardware never sets the flag: after the timeout, return an error instead of waiting.[^holzmann-power-of-ten]
 
 ## Detailed explanation
 
