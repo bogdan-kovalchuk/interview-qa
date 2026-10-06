@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-06
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 55 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 55 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-06; the course is not proof of these claims."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
@@ -36,6 +36,20 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
+  - source_id: libretexts-fiore-rectification
+    title: "Fiore: Semiconductor Devices, 3.2 Rectification (Engineering LibreTexts)"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
+    accessed: 2026-10-06
+    kind: book
+    version: null
+    applicability: "Half-wave, center-tapped full-wave and bridge rectifiers: which diodes conduct in each half-cycle, the two-diode drop of a bridge, the smoothing capacitor and charging current pulses. The textbook uses a typical 0.7 V per diode; it does not replace the datasheet of a specific diode."
+  - source_id: vishay-1n4001
+    title: "Vishay: 1N4001 to 1N4007 general purpose plastic rectifier datasheet"
+    url: https://www.vishay.com/docs/88503/1n4001.pdf
+    accessed: 2026-10-06
+    kind: official
+    version: "Revision 29-Apr-2020"
+    applicability: "Maximum V_F of 1.1 V at 1 A (25 °C); I_R up to 5 µA at 25 °C and up to 50 µA at 125 °C at rated reverse voltage; V_RRM from 50 to 1000 V depending on the type. It applies to this series of rectifier diodes."
 ---
 
 ## Short answer
