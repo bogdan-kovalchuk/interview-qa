@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [islice]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -57,22 +57,56 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: owasp-regular-expression-denial-of-service-redos
-    title: "OWASP: Regular Expression Denial of Service REDOS"
-    url: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
-    accessed: 2026-09-04
+  - source_id: py314-library-itertools-islice
+    title: "Python 3.14: Library/itertools, islice"
+    url: https://docs.python.org/3.14/library/itertools.html#itertools.islice
+    accessed: 2026-10-13
     kind: official
-    version: null
-    applicability: "Матеріал спільноти OWASP з безпеки застосунків."
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: itertools.islice (зріз для iterable; без від’ємних start, stop і step; пропуск елементів до start і між кроками)."
 ---
 
 ## Short answer
 
-**`islice()` дозволяє брати перші N елементів або діапазон з будь-якого iterable без перетворення його на список.**[^py314-library-collections] Працює як slice-синтаксис для списків, але для ітераторів: `islice(gen, 5)` дає перші 5, `islice(gen, 2, 10, 2)` – діапазон з кроком. Не підтримує від'ємні індекси, бо не може обійти iterable з кінця.
+**`islice()` дозволяє брати перші N елементів або діапазон з будь-якого iterable без перетворення його на список.**[^py314-library-itertools-islice] Працює як зріз для списків, але для ітераторів: `islice(gen, 5)` дає перші 5 елементів, а `islice(gen, 2, 10, 2)` – елементи з позиціями 2, 4, 6 і 8. Від’ємні значення `start`, `stop` і `step` не підтримуються.[^py314-library-itertools-islice]
 
 ## Detailed explanation
 
-TODO
+`islice()` – це зріз для iterable. Його сигнатура `islice(iterable, stop)` або `islice(iterable, start, stop[, step])`. За документацією, він працює як зріз послідовності, але не приймає від’ємні значення `start`, `stop` і `step`.[^py314-library-itertools-islice] Він не потребує ні довжини, ні індексації: `islice` бере елементи з вхідного iterable один за одним, тож generator, файл або нескінченний iterable обробляються однаково.
+
+Лінивість видно на нескінченному iterable: `count()` ніколи не вичерпується, але `islice` зупиняється на `stop`:
+
+```python
+from itertools import count, islice
+
+print(list(islice(count(10, 5), 4)))         # [10, 15, 20, 25]: count() is infinite
+print(list(islice('ABCDEFG', 2, 4)))         # ['C', 'D']
+print(list(islice('ABCDEFG', 2, None)))      # ['C', 'D', 'E', 'F', 'G']
+print(list(islice('ABCDEFG', 0, None, 2)))   # ['A', 'C', 'E', 'G']
+```
+
+Елементи до `start` пропускаються, а між кроками `step` елементи теж читаються з вхідного iterable.[^py314-library-itertools-islice] Для generator це означає, що пропущені елементи створюються. Приклад друкує кожен елемент, щоб було видно, які саме створюються:
+
+```python
+from itertools import islice
+
+def numbers():
+    for i in range(6):
+        print(f'produce {i}')
+        yield i
+
+gen = numbers()
+print(list(islice(gen, 3)))  # produce 0, 1, 2 are printed, then [0, 1, 2]
+print(next(gen))             # produce 3 is printed, then 3
+print(list(islice(numbers(), 2, 6, 2)))  # produce 0 to 5 are all printed, then [2, 4]
+```
+
+У CPython `islice` не запитує елемент понад `stop`: після `islice(gen, 3)` генератор стоїть перед четвертим елементом, і `next(gen)` створює його. Документація цього не описує, тож це спостережувана поведінка CPython, а не гарантія мови, і на неї не варто спиратися в коді.
+
+**Типові помилки:**
+- очікувати від `islice(it, -1)` останній елемент: від’ємні значення не підтримуються, і виклик дає `ValueError`;
+- вважати, що `islice` не чіпає вхідний ітератор: він просуває його, і наступний `next()` продовжує з позиції, на якій зупинився `islice`;
+- вважати, що елементи, пропущені через `start` або `step`, не обчислюються: для generator вони створюються.
 
 ## Evaluation guide
 

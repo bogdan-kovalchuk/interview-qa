@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [collections-chainmap]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -57,22 +57,64 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Official Python 3.14 documentation."
-  - source_id: owasp-regular-expression-denial-of-service-redos
-    title: "OWASP: Regular Expression Denial of Service REDOS"
-    url: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
-    accessed: 2026-09-04
+  - source_id: py314-library-collections-chainmap
+    title: "Python 3.14: Library/collections (ChainMap)"
+    url: https://docs.python.org/3.14/library/collections.html#collections.ChainMap
+    accessed: 2026-10-13
     kind: official
-    version: null
-    applicability: "OWASP application-security community material."
+    version: "3.14"
+    applicability: "Official Python 3.14 documentation: ChainMap searches the mappings successively, incorporates them by reference, and writes, updates, and deletions affect only the first mapping."
+  - source_id: py314-library-collections-chainmap-maps
+    title: "Python 3.14: Library/collections (ChainMap.maps)"
+    url: https://docs.python.org/3.14/library/collections.html#collections.ChainMap.maps
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Official Python 3.14 documentation: the maps attribute is a list of mappings ordered from first-searched to last-searched."
 ---
 
 ## Short answer
 
-TODO
+**`ChainMap` searches the mappings successively from first to last and creates no merged dict, so changes in the lower layers are visible without a repeated merge.**[^py314-library-collections-chainmap] The search order follows the order of the arguments: in `ChainMap(cli, env, defaults)`, the CLI mapping is checked first.[^py314-library-collections-chainmap-maps] Writes, updates, and deletions affect only the first mapping.[^py314-library-collections-chainmap] It is useful for layered config where the layers are updated independently, because no repeated merge is needed after each change.
 
 ## Detailed explanation
 
-TODO
+An eager merge (`{**defaults, **env, **cli}`, or a loop with `update()`) copies the keys into a new dict at the moment of merging. After that, the result is a snapshot: a later change to `defaults` or `env` does not reach it. `ChainMap`, by contrast, keeps references to the original mappings and looks values up in them on every access, so updates to a layer are visible at once.[^py314-library-collections-chainmap]
+
+An example: the CLI has the highest priority, then env, then defaults. The comments show what the `ChainMap` sees and what stays a snapshot.
+
+```python
+from collections import ChainMap
+
+defaults = {"host": "localhost", "port": 8000, "debug": False}
+env = {"port": 9000}
+cli = {"debug": True}
+
+config = ChainMap(cli, env, defaults)  # first mapping has the highest priority
+print(config["port"])                  # 9000, found in env
+env["host"] = "example.org"
+print(config["host"])                  # example.org, the change is visible at once
+
+merged = {**defaults, **env, **cli}    # eager merge: a snapshot
+defaults["timeout"] = 30
+print(config["timeout"])               # 30, the lower layer change is visible
+print(merged.get("timeout"))           # None, the snapshot does not see it
+
+config["port"] = 7000                  # writes go to the first mapping (cli)
+print(cli)                             # {'debug': True, 'port': 7000}
+print(env["port"])                     # 9000, env is unchanged
+print(isinstance(config, dict))        # False
+print(ChainMap(defaults, env, cli)["debug"])  # False: defaults now come first
+```
+
+A write goes to the first mapping: `config["port"] = 7000` changes `cli`, and `env` keeps 9000, so the lower layer is not overwritten.[^py314-library-collections-chainmap] Deletion works the same way: `del` of a key that is not in the first mapping raises `KeyError`, even if the key exists in a lower layer.
+
+The limits of the approach: a `ChainMap` is not a `dict` (`isinstance(config, dict)` is `False`), so `json.dumps(config)` does not work, and a snapshot is taken with `dict(config)`. A lookup checks every mapping when the key is missing, so this cost is negligible for a few layers. The order of the arguments defines the priority: `ChainMap(defaults, env, cli)` gives `defaults` precedence, and `config["debug"]` becomes `False`.
+
+**Common mistakes:**
+- putting `defaults` first in the arguments: they then override the CLI and env values;
+- expecting a write to `config` to change the layer where the key is defined: only the first mapping changes;
+- assuming `ChainMap` keeps a snapshot of the configuration from the moment it was created, when changes in lower layers are visible at once.
 
 ## Comparison
 

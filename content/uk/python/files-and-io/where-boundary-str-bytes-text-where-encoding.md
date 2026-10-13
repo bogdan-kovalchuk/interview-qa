@@ -8,10 +8,10 @@ level: middle
 type: mechanism
 tags: [str, bytes]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -75,7 +75,34 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Межа проходить між текстовим і бінарним шарами стека `io`. Text I/O приймає й повертає `str`, а binary I/O працює з bytes-подібними об’єктами та повертає `bytes`.[^py314-library-io] Кодування й декодування робить текстовий шар: `open()` у текстовому режимі повертає `TextIOWrapper`, який при записі перетворює `str` на байти вибраним кодуванням, а при читанні – байти назад на `str`. Саме тому бінарний потік не приймає `str`, а текстовий не віддає `bytes`.
+
+Нижче та сама межа в коді: рядок явно переводиться в байти і назад, після чого два стандартні модулі показують, який тип очікує кожен шар.
+
+```python
+import json
+import pickle
+
+data = "Привіт".encode("utf-8")
+print(data)                          # b'\xd0\x9f\xd1\x80...' (12 bytes for 6 characters)
+print(data.decode("utf-8"))          # Привіт
+print(len("Привіт"), len(data))      # 6 12
+
+with open("data.json", "w", encoding="utf-8") as f:
+    json.dump({"name": "Привіт"}, f, ensure_ascii=False)   # json writes str: text file
+
+with open("data.pkl", "wb") as f:
+    pickle.dump({"name": "Привіт"}, f)                     # pickle writes bytes: binary file
+```
+
+`json.dump()` потребує текстового файлу, бо модуль завжди створює `str`, тож `fp.write()` має приймати `str`.[^py314-library-json] `pickle.dump()` навпаки пише в бінарний файл, тобто в потік байтів.[^py314-library-pickle] `Path.write_text()` приймає `encoding` і `newline` (`newline` з Python 3.10), як і `open()`; `Path.read_text()` приймає `encoding` і `errors`, а параметр `newline` з’явився лише в 3.13, тож у 3.12 і раніше для нього треба `open()`.[^py314-library-pathlib] Правило для `encoding` одне для всіх трьох випадків.
+
+Помилка тут тиха. Текст, декодований не тим кодуванням, не викликає винятку, якщо байти для цього кодування допустимі, а просто стає іншим текстом: UTF-8 байти від `"Привіт"`, декодовані як `cp1251`, дають рядок з іншими літерами. Кодування треба знати з контракту файлу, а не вгадувати за байтами.
+
+**Типові помилки:**
+- порівнювати результат `read()` з файлу, відкритого в binary mode, зі `str` (`b'...' != '...'`);
+- очікувати, що текстовий `open()` повертає `bytes`, і декодувати вже прочитаний `str`;
+- вгадувати кодування файлу замість того, щоб задати його явно.
 
 ## Evaluation guide
 

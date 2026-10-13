@@ -1,17 +1,17 @@
 ---
 id: py-fileio-0012
 title: "Чому JSON round trip не зберігає автоматично всі Python types та object identities?"
-description: "JSON визначає лише сім type-ів (object, array, string, number, true, false, null), тому більшість Python-типів при серіалізації втрачаються або перетворюються."
+description: "JSON підтримує лише обмежений набір типів: tuple стає list, ключі стають рядками, а для set і custom класів потрібен default."
 track: python
 section: files-and-io
 level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -64,15 +64,77 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
+  - source_id: py314-library-json-encoder-table
+    title: "Python 3.14: Library/json (JSONEncoder)"
+    url: https://docs.python.org/3.14/library/json.html#json.JSONEncoder
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: перелік типів, які JSONEncoder серіалізує за замовчуванням, і правило для ключів, які не є str, int, float, bool або None."
+  - source_id: py314-library-json-encoder-default
+    title: "Python 3.14: Library/json (Encoders and Decoders)"
+    url: https://docs.python.org/3.14/library/json.html#py-to-json-table
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: TypeError для непідтримуваних типів без default і перевірка циклічних посилань (check_circular)."
+  - source_id: py314-library-json-decoder-table
+    title: "Python 3.14: Library/json (JSONDecoder)"
+    url: https://docs.python.org/3.14/library/json.html#json.JSONDecoder
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: таблиця декодування, за якою JSON array стає list."
+  - source_id: py314-library-json-dump
+    title: "Python 3.14: Library/json (dump)"
+    url: https://docs.python.org/3.14/library/json.html#json.dump
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: при серіалізації всі ключі dict перетворюються на рядки JSON."
 ---
 
 ## Short answer
 
-**JSON визначає лише сім type-ів (object, array, string, number, true, false, null), тому більшість Python-типів при серіалізації втрачаються або перетворюються.**[^py314-library-io] Ключі dict стають `str` (навіть якщо були `int` або `tuple`), `tuple` перетворюється на `list`, `set` і custom класи взагалі не підтримуються без `default`. Object identity (`is`) не зберігається, бо JSON не має концепції посилань – кожен декодований об'єкт є новою інстанцією, а циклічні структури викликають `RecursionError` ще на кодуванні.
+**JSON має обмежений набір типів, тому round trip через `json.dumps` і `json.loads` не відтворює Python-типи та object identity.**[^py314-library-json-encoder-table] Tuple повертається як list.[^py314-library-json-decoder-table] Ключі `int`, `float`, `bool` і `None` стають рядками JSON-форми: число 1 стає `"1"`, `True` – `"true"`, `None` – `"null"`.[^py314-library-json-dump] `set` і custom класи без `default` викликають `TypeError`.[^py314-library-json-encoder-default] У CPython спільні посилання стають окремими копіями, а циклічні структури `json.dumps` відхиляє з `ValueError`.
 
 ## Detailed explanation
 
-TODO
+Модуль `json` відображає Python-значення в JSON за фіксованою таблицею: `dict` стає object, `list` і `tuple` стають array, `str` – string, `int` і `float` – number, а `True`, `False` і `None` – true, false і null.[^py314-library-json-encoder-table] Значення поза цією таблицею не мають подання: без `default` енкодер викликає `TypeError`.[^py314-library-json-encoder-default] Тому `json.loads(json.dumps(x))` повертає найближче JSON-подання `x`, а не сам `x`.
+
+Перетворення не симетричне. Tuple записується як array, а читається назад як `list`, тому `(1, 2) == [1, 2]` дає `False`, і після round trip рівність порушена.[^py314-library-json-decoder-table] Ключі dict можуть бути `str`, `int`, `float`, `bool` або `None`, але в JSON усі ключі є рядками, тому `{1: "x"}` повертається як `{'1': 'x'}`, а `{True: 1, None: 2}` як `{'true': 1, 'null': 2}`.[^py314-library-json-dump] Ключ-tuple відхиляється вже під час кодування з `TypeError`, бо такого типу ключа в JSON немає.[^py314-library-json-encoder-table]
+
+Object identity теж не переноситься. Серіалізатор записує спільний список у кожному місці, де він є, а декодер створює окремий `list` для кожного входження. У CPython `restored["a"] is restored["b"]` після round trip дає `False`, а в початковому словнику той самий вираз дає `True`. Циклічні структури відхиляються: при типовому `check_circular=True` кодер перевіряє контейнери на цикли, щоб уникнути нескінченної рекурсії, а з `check_circular=False` очікується `RecursionError`.[^py314-library-json-encoder-default]
+
+Приклад показує ці розбіжності; вивід однаковий на CPython 3.13 і 3.14.
+
+```python
+import json
+
+print(json.loads(json.dumps((1, 2))))  # [1, 2], tuple comes back as list
+print(json.loads(json.dumps({1: "x"})))  # {'1': 'x'}, int key becomes str
+
+shared = [1, 2]
+restored = json.loads(json.dumps({"a": shared, "b": shared}))
+print(restored["a"] is restored["b"])  # False, one shared list became two
+
+try:
+    json.dumps({(2, 3): "tuple key"})
+except TypeError as error:
+    print(error)  # keys must be str, int, float, bool or None, not tuple
+
+cyclic = []
+cyclic.append(cyclic)
+try:
+    json.dumps(cyclic)
+except ValueError as error:
+    print(error)  # Circular reference detected
+```
+
+**Типові помилки:**
+- очікувати, що `json.loads(json.dumps(x)) == x` для будь-якого `x`: tuple стає list, і рівність порушується;
+- використовувати `default=str` для всіх невідомих типів: значення повернеться рядком, і початковий тип уже не відновиться;
+- покладатися на identity спільних об’єктів після декодування: кожне входження стає окремим об’єктом.
 
 ## Symptom
 

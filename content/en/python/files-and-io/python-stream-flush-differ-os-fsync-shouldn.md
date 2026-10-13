@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [flush, os-fsync]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -64,15 +64,42 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Official Python 3.14 documentation."
+  - source_id: linux-man-fsync
+    title: "Linux man-pages: fsync(2)"
+    url: https://man7.org/linux/man-pages/man2/fsync.2.html
+    accessed: 2026-10-13
+    kind: official
+    version: null
+    applicability: "Linux man-pages page fsync(2): fsync() on a file does not guarantee the directory entry; an fsync() on the directory descriptor is needed. Linux-specific; not the POSIX standard and not Windows."
 ---
 
 ## Short answer
 
-TODO
+**`flush()` passes buffered bytes into the raw stream, which means to the OS, while `os.fsync(fd)` asks the OS to force the file's data to disk.**[^py314-library-io][^py314-library-os-os-fsync] Neither is a universal hardware-durability guarantee: what happens below the OS, for example in a device cache, is outside Python's control, and the Python documentation does not promise it.[^py314-library-os-os-fsync] The documented sequence for a file object is `f.flush()` followed by `os.fsync(f.fileno())`.[^py314-library-os-os-fsync]
 
 ## Detailed explanation
 
-TODO
+In CPython, a text file has several buffering layers. `TextIOWrapper` may hold encoded bytes in its own queue and pass them to the `BufferedWriter` later. `BufferedWriter.flush()` forces the bytes out of the buffer into the raw stream,[^py314-library-io] which means they are handed to the OS. So `flush()` is needed, but it only gets the data to the OS; writing it to disk is a separate call.
+
+`os.fsync()` is documented as forcing the file's data to be written to disk: on Unix it calls the native `fsync()`, and on Windows the `_commit()` function. For a file object, the documentation shows the sequence `f.flush()` followed by `os.fsync(f.fileno())`, to ensure that all internal buffers of the file are written to disk.[^py314-library-os-os-fsync] Example:
+
+```python
+import os
+
+with open("journal.log", "a", encoding="utf-8") as f:
+    f.write("record 1\n")
+    f.flush()              # Python buffer -> OS
+    os.fsync(f.fileno())   # request that the OS writes the file's data to disk
+```
+
+The limit of the guarantee is that `os.fsync()` is described as a request to the OS. The Python documentation does not describe the behaviour of a device's cache, a controller or a file system, and those layers are not controlled by Python. So after a successful call, you can say that Python asked the OS to write the data to disk; saying that the data is "guaranteed to be saved", without qualifying the hardware and file system, is wrong.
+
+To replace a file, people often combine writing a temporary file, `flush()`, `os.fsync()` and `os.replace()`. The documentation says that `os.replace()` is atomic on POSIX if it succeeds; it may fail when the source and destination are on different file systems.[^py314-library-os-os-replace] Atomic replacement means a reader sees either the old or the new contents of the file, but by itself it does not make the write durable. On Linux, an `fsync()` on the file does not guarantee that the directory entry containing it has reached disk, so a durable replacement also needs an `fsync()` on a descriptor for the directory.[^linux-man-fsync]
+
+**Common mistakes:**
+- assuming that `flush()` writes the data to disk;
+- calling `os.fsync(f.fileno())` without a preceding `f.flush()`: fsync does not guarantee to write the data still held in Python's buffer;
+- describing `os.fsync()` as a guarantee that data survives a power failure, without qualifying the platform and hardware.
 
 ## Comparison
 
