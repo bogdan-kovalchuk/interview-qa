@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Origin of this question and answer: a flashcard for lecture 71 of the Udemy course, moved from the course deck as is; the answer is not independently verified against the course material."
+    applicability: "Question origin: lecture 71 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-13; the course is not proof of these claims."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
@@ -36,6 +36,34 @@ sources:
     kind: book
     version: null
     applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
+  - source_id: fiore-ac-model-bjt
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.2 Simplified AC Model of the BJT"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Section 7.2: simplified small-signal BJT model; I_C = I_S*exp(38.6*V_BE) at 300 K; r'_e ≈ 26 mV / I_C; the common-emitter stage inverts phase, the common-collector stage does not; model for low to mid-band frequencies."
+  - source_id: fiore-common-emitter-amplifier
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.3 Common Emitter Amplifier"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Section 7.3: A_v = -r_C/(r'_e + r_E), with the minus sign as the 180 degree inversion in the midband; Z_in(base) = β(r'_e + r_E); Z_out ≈ R_C; an unbypassed (swamping) R_E lowers gain and distortion and raises input impedance; the numerical examples apply only to those circuits."
+  - source_id: fiore-bjt-dc-load-line
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.6 DC Load Lines"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Section 4.6: for DC, V_CE = V_CC − I_C*R_C, so the collector voltage falls as I_C rises."
+  - source_id: fiore-ac-circuit-analysis
+    title: "James M. Fiore: AC Electrical Circuit Analysis, A Practical Approach (sections 1.5 and 10.3)"
+    url: https://www2.mvcc.edu/users/faculty/jfiore/Circuits2/ACElectricalCircuitAnalysis.pdf
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Section 10.3 (Bode plots): RC network with the output taken across R and a series C; f_c = 1/(2*pi*R*C), with the gain at the break 3 dB below midband; the lower break comes from coupling and stray capacitances; below f_c the lead network response falls at 6 dB per octave."
 ---
 
 ## Short answer
