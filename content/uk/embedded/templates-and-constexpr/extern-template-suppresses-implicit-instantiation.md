@@ -1,17 +1,17 @@
 ---
 id: emb-tmplcx-0016
 title: "Що робить `extern template`?"
-description: "Забороняє неявну інстанціацію шаблону в кожному translation unit."
+description: "Дозволяє іншим translation units не інстанціювати не-inline члени шаблону; визначення дає одна явна інстанціація."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
@@ -29,6 +29,20 @@ sources:
     kind: spec
     version: "N4861"
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
+  - source_id: cpp-draft-temp-explicit
+    title: "C++ working draft: Explicit instantiation ([temp.explicit])"
+    url: https://eel.is/c++draft/temp.explicit
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Каже, що для entity з явною декларацією інстанціації, яку використано так, що інакше була б неявна інстанціація, у програмі має бути явна інстанціація-визначення; явна інстанціація класу інстанціює його прямі не-шаблонні члени. Не описує, як компілятор уникає копій."
+  - source_id: cpp-draft-temp-inst
+    title: "C++ working draft: Implicit instantiation ([temp.inst])"
+    url: https://eel.is/c++draft/temp.inst
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Каже, що специфікація шаблону функції чи member-функції інстанціюється, коли її визначення потрібне; неявна інстанціація класового шаблону інстанціює лише оголошення членів. Про розмір коду не йдеться."
 ---
 
 ## Question code
@@ -39,15 +53,54 @@ extern template class Buffer<uint8_t>;
 
 ## Short answer
 
-**Забороняє неявну інстанціацію шаблону в кожному translation unit.**
-
-Інстанціація відбувається явно в одному `.cpp`, а решта TU лише посилаються на неї – це прибирає дублювання однакового коду по об'єктних файлах.
-
-Правило: `extern template` + одна явна інстанціація = одна копія коду замість багатьох.[^embeddedinterviewlab]
+**Дозволяє компілятору не інстанціювати члени шаблону в цьому translation unit.**[^cpp-draft-temp-explicit] Визначення має існувати десь у програмі як явна інстанціація-визначення, інакше програма некоректна.[^cpp-draft-temp-explicit] Правило: `extern template` у заголовку і одна явна інстанціація в одному `.cpp` дозволяють уникнути копій у кожному TU для не-inline членів.
 
 ## Detailed explanation
 
-TODO
+Якщо визначення членів видно в заголовку, компілятор інстанціює їх у кожному translation unit, який їх викликає, і може випустити власну копію в кожному `.o`-файлі. Саме таке повторення і намагається прибрати `extern template`.[^cpp-draft-temp-inst]
+
+Нижче ілюстративний поділ на заголовок і `.cpp`; він компілюється з `g++ -std=c++17`, а `main.cpp` тут не наведено:
+
+```cpp
+// buffer.h (illustrative)
+#include <cstddef>
+#include <cstdint>
+
+template <typename T>
+class Buffer {
+public:
+    void push(T value);            // defined in buffer.cpp
+    T pop();
+private:
+    T data_[64];
+    std::size_t n_ = 0;
+};
+
+extern template class Buffer<std::uint8_t>;   // other TUs do not instantiate uint8_t members
+
+// buffer.cpp (illustrative)
+#include "buffer.h"
+
+template <typename T>
+void Buffer<T>::push(T value) { data_[n_ % 64] = value; ++n_; }
+
+template <typename T>
+T Buffer<T>::pop() { --n_; return data_[n_ % 64]; }
+
+template class Buffer<std::uint8_t>;   // the one explicit instantiation definition
+```
+
+У `nm -C` видно: `main.o`, що викликає `push`, має `U` (undefined), а визначення лежить у `buffer.o`. Для випадку, коли визначення членів стоять у заголовку, перевірено на GCC з `-O0`: без `extern template` кожен TU, що викликає `push`, створює власну слабку копію (`W`), а з ним лише посилається на символ (`U`).
+
+Легко пропустити дві умови. По-перше, явна інстанціація-визначення має бути в програмі: без неї виклик лишається без визначення, і лінкер зазвичай повідомляє `undefined reference`. Стандарт вважає таку програму некоректною, без обов’язкової діагностики.[^cpp-draft-temp-explicit] По-друге, явна інстанціація класу інстанціює його прямі не-шаблонні члени, тож якщо якийсь член не компілюється для `T`, помилка з’явиться навіть без його виклику.[^cpp-draft-temp-explicit]
+
+Межа: правило явної декларації стосується і inline-функцій, але декларація не робить inline-функцію «оголошеною» спеціалізацією, тож компілятор може інстанціювати її для inline-підстановки в кожному TU.[^cpp-draft-temp-inst] Тому економія від `extern template` найпередбачуваніша для не-inline членів. Для inline-членів, зокрема визначених у тілі класу, розмір прошивки залежить від компілятора і лінкера.
+
+**Типові помилки:**
+
+- Поставити `extern template` у заголовку без явної інстанціації-визначення в `.cpp`: з’являється помилка лінкера.
+- Очікувати, що `extern template` прибере копії inline-членів у прошивці.
+- Явно інстанціювати клас для типу, з яким один із не-шаблонних членів не компілюється.
 
 ## Sources
 
