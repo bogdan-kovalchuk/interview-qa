@@ -1,17 +1,17 @@
 ---
 id: emb-raii-0032
 title: "Чому `unique_ptr` вважають дефолтним smart pointer для embedded?"
-description: "Zero overhead (як raw pointer), ексклюзивне володіння, явна передача через move, підтримка custom deleter під HAL."
+description: "Доступ як у raw pointer, ексклюзивне володіння, явна передача через move, підтримка custom deleter під HAL."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
@@ -29,19 +29,77 @@ sources:
     kind: spec
     version: "N4861"
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
+  - source_id: cpp-draft-unique-ptr-single
+    title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
+    url: https://eel.is/c++draft/unique.ptr.single
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Визначає, що деструктор викликає deleter для ненульового вказівника; operator* і operator-> повертають *get() з precondition get() != nullptr; move-конструктор дає джерелу get() == nullptr. Описує стандартний тип, а не конкретну платформу."
+  - source_id: cpp-draft-unique-ptr-dltr-dflt
+    title: "C++ working draft: default_delete ([unique.ptr.dltr.dflt])"
+    url: https://eel.is/c++draft/unique.ptr.dltr.dflt
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "default_delete викликає delete для свого аргумента; у його синопсисі немає даних-членів. Розмір unique_ptr у конкретних реалізаціях цей розділ не визначає."
+  - source_id: cppcg-r21
+    title: "C++ Core Guidelines: R.21 – Prefer unique_ptr over shared_ptr unless you need to share ownership"
+    url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r21-prefer-unique_ptr-over-shared_ptr-unless-you-need-to-share-ownership
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Настанова: використовувати unique_ptr, якщо не потрібне спільне володіння; unique_ptr простіший і передбачуваніший, бо не веде лічильника посилань. Не є вимірюванням вартості на конкретній платформі."
+  - source_id: cpp-draft-util-smartptr-shared-create
+    title: "C++ working draft: shared_ptr creation ([util.smartptr.shared.create])"
+    url: https://eel.is/c++draft/util.smartptr.shared.create
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Примітка: реалізація може виділяти більше sizeof(T) для службових структур, як-от лічильники посилань; make_shared should виконувати не більше однієї алокації. Це не гарантія для всіх реалізацій."
 ---
 
 ## Short answer
 
-**Zero overhead (як raw pointer), ексклюзивне володіння, явна передача через move, підтримка custom deleter під HAL.**
+**Доступ як у raw pointer, ексклюзивне володіння, явна передача через move, підтримка custom deleter під HAL.**
 
-Він покриває переважну більшість сценаріїв володіння без витрат `shared_ptr` (control block, atomics, heap).
+`unique_ptr` з default deleter зберігає вказівник і `default_delete` без даних-членів, тож у типових реалізаціях його розмір дорівнює розміру raw pointer, а `*` і `->` розіменовують той самий вказівник.[^cpp-draft-unique-ptr-dltr-dflt][^cpp-draft-unique-ptr-single] Для більшості сценаріїв володіння цього достатньо: на відміну від `shared_ptr`, він не веде лічильника посилань.[^cppcg-r21]
 
-Правило: починай з `unique_ptr`; переходь на `shared_ptr` лише коли справді потрібне спільне володіння.[^embeddedinterviewlab]
+Правило: починай з `unique_ptr`; переходь на `shared_ptr` лише тоді, коли справді потрібне спільне володіння.[^embeddedinterviewlab]
 
 ## Detailed explanation
 
-TODO
+`unique_ptr<T, D>` зберігає вказівник і deleter `D`. Копіювання вимкнено, тож володіння переходить лише переміщенням, а джерело після переміщення має `get() == nullptr`. Деструктор, якщо вказівник ненульовий, викликає deleter для нього; default deleter `default_delete<T>` виконує `delete`.[^cpp-draft-unique-ptr-single][^cpp-draft-unique-ptr-dltr-dflt] Отже, це RAII-обгортка навколо тієї самої пари «виділити / звільнити», що й `new` і `delete`.
+
+Накладні витрати зосереджені в розмірі об’єкта. Default deleter не має даних, тому в libstdc++ з GCC 13 розмір `unique_ptr<T>` дорівнює розміру вказівника. Це варто перевірити `static_assert` і на своєму тулчейні. Deleter зі станом, наприклад вказівник на функцію або лямбда із захопленням, зберігається в об’єкті й збільшує його розмір. Тому deleter для HAL-ресурсу краще робити порожнім функтором, як у прикладі нижче.
+
+```cpp
+#include <memory>
+
+struct SpiHandle;
+SpiHandle* hal_spi_open(int bus);   // illustrative HAL API
+void hal_spi_close(SpiHandle* h);
+
+struct SpiCloser {
+  void operator()(SpiHandle* h) const { hal_spi_close(h); }
+};
+
+using SpiPtr = std::unique_ptr<SpiHandle, SpiCloser>;
+static_assert(sizeof(SpiPtr) == sizeof(SpiHandle*));
+
+void transfer(int bus) {
+  SpiPtr spi(hal_spi_open(bus));  // closed automatically on every exit
+  // ...
+}
+```
+
+`unique_ptr` сам нічого не виділяє: він приймає вже отриманий вказівник і віддає його deleter-у. Якщо heap заборонено, `new` не викликають; тоді deleter повертає блок у статичний пул або викликає HAL-функцію, а явна передача володіння через move лишається.[^cpp-draft-unique-ptr-single] `shared_ptr` неявно веде лічильник посилань,[^cppcg-r21] а службові структури для нього можуть вимагати пам’яті понад `sizeof(T)`; стандарт радить (should) робити `make_shared` не більше ніж однією алокацією.[^cpp-draft-util-smartptr-shared-create] Ця вартість зайва, якщо власник один.
+
+**Типові помилки:**
+
+- Вважати, що deleter з станом не збільшує розміру: вказівник на функцію або захоплювальна лямбда зберігаються в `unique_ptr`.
+- Розіменовувати джерело після того, як його переміщено (move-конструктором чи присвоєнням): його `get()` дорівнює `nullptr`, а `operator*` має precondition `get() != nullptr`, тож таке розіменування є undefined behavior.[^cpp-draft-unique-ptr-single]
+- Брати `shared_ptr` «на всяк випадок»: це додає лічильник і спільне володіння, яких немає в задачі.
 
 ## Sources
 
