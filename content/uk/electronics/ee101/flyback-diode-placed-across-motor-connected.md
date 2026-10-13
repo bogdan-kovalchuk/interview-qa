@@ -8,10 +8,10 @@ level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Походження питання й відповіді: картка до лекції 73 курсу на Udemy, перенесена з колоди курсу як є; відповідь не перевірена незалежно від матеріалів курсу."
+    applicability: "Походження питання: лекція 73, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
@@ -36,15 +36,43 @@ sources:
     kind: book
     version: null
     applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
+  - source_id: fiore-bjt-switching
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.7 BJT Switching and Driver Applications"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.7:_BJT_Switching_and_Driver_Applications"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Розділ 4.7.1: насичувальний перемикач – транзистор замикає коло між джерелом, навантаженням і землею; для насичення відношення струму насичення до струму бази має бути значно меншим за β; пряме керування двигуном постійного струму; діод на обмотці двигуна (snubbing diode) при вимиканні транзистора не дає викиду напруги пошкодити транзистор. Числа прикладів стосуються лише цих схем."
+  - source_id: fiore-ac-circuit-analysis
+    title: "James M. Fiore: AC Electrical Circuit Analysis, A Practical Approach (sections 1.5 and 10.3)"
+    url: https://www2.mvcc.edu/users/faculty/jfiore/Circuits2/ACElectricalCircuitAnalysis.pdf
+    accessed: 2026-10-13
+    kind: book
+    version: "1.1.2, 22 April 2021"
+    applicability: "Рівняння ідеальних елементів: i = C*dv/dt для конденсатора (напруга змінюється зі швидкістю i/C) і v = L*di/dt для котушки (зміна струму дає напругу). Опору та паразитних параметрів ідеальних елементів документ не моделює."
+  - source_id: libretexts-fiore-diode-models
+    title: "Fiore: Semiconductor Devices, 2.4 Diode Circuit Models (Engineering LibreTexts)"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/02:_PN_Junctions_and_Diodes/2.4:_Diode_Circuit_Models"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Моделі діода: «колінна» напруга 0,7 В для кремнію як поведінкове наближення, опір R_bulk, динамічний опір ≈ 26 мВ / I. Це спрощені моделі, а не точні значення для конкретного приладу."
 ---
 
 ## Short answer
 
-Двигун – індуктивне навантаження: після вимкнення транзистора його струм не може миттєво зникнути, і виникає викид напруги. Діод катодом до плюса живлення, анодом до колектора дає шлях цьому струму; в нормальній роботі він закритий.[^udemy-electronics-course]
+Двигун – індуктивне навантаження: після вимкнення транзистора його струм не може миттєво зникнути, і виникає викид напруги. Діод катодом до плюса живлення, анодом до колектора дає шлях цьому струму; в нормальній роботі він закритий.[^fiore-bjt-switching]
 
 ## Detailed explanation
 
-TODO
+**Звідки викид.** Для котушки `v = L*di/dt`: що швидша зміна струму, то більша напруга.[^fiore-ac-circuit-analysis] Струм обмотки двигуна не може миттєво зникнути, тож після вимкнення транзистора обмотка створює напругу зворотної полярності, яка з’являється між колектором і емітером.[^fiore-bjt-switching] Умовний приклад: обмотка з `L = 10 мГн` несе `I = 1 А`, і струм спадає до нуля за `10 мкс`. Тоді `v = 0,01*1/(10*10^-6) = 1000 В`, що в десятки разів перевищує напругу живлення 12 В. Такий викид може пошкодити транзистор.[^fiore-bjt-switching]
+
+**Куди ставити діод.** Діод ставлять паралельно двигуну: катод до плюса живлення, анод до колектора. Під час роботи транзистор відкритий, колектор майже на землі, тож катод на +12 В, а анод майже на землі: діод зворотно зміщений і не проводить.[^fiore-bjt-switching] Коли транзистор вимикається, колектор піднімається, і щойно його напруга перевищує `V_CC` приблизно на 0,7 В, діод відкривається.[^libretexts-fiore-diode-models] Далі струм обмотки тече через діод, а колектор обмежується приблизно рівнем `V_CC + 0,7 В` за моделлю з колінною напругою.
+
+**Типові помилки:**
+
+- Перевернути діод (анод на плюсі, катод на колекторі): при відкритому транзисторі він проводить від `+V` через транзистор на землю, і виникає коротке замикання.
+- Вважати, що діод впливає на нормальну роботу: за нормальної роботи він зворотно зміщений і струму через себе не пропускає.[^fiore-bjt-switching]
 
 ## Sources
 

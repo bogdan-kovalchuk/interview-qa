@@ -8,10 +8,10 @@ level: junior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-27
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-27
     kind: community
     version: null
-    applicability: "Походження питання й відповіді: картка до лекції 72 курсу на Udemy, перенесена з колоди курсу як є; відповідь не перевірена незалежно від матеріалів курсу."
+    applicability: "Походження питання: лекція 72, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
@@ -36,15 +36,46 @@ sources:
     kind: book
     version: null
     applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
+  - source_id: fiore-common-emitter-amplifier
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.3 Common Emitter Amplifier"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Розділ 7.3: A_v = -r_C/(r'_e + r_E), r_C = R_C || R_L за змінним струмом; конденсатори зв’язку коротко замкнені, шина V_CC – AC-земля, шунтований R_E робить емітер AC-землею; Z_in = R_B || Z_in(base), Z_in(base) = β(r'_e + r_E); дільник Z_in/(Z_in + R_джерела) з прикладу 3; r'_C порядку 100 кОм, Z_out ≈ R_C; 7.3.4: блокувальні конденсатори наближають шину до AC-землі. Числа прикладів стосуються лише цих схем."
+  - source_id: fiore-bjt-ac-model
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.2 Simplified AC Model of the BJT"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Розділ 7.2: i_C = β·i_B; динамічний опір r'_e = 26 мВ / I_C без об’ємного опору; модель без ємностей переходу, для низьких і середніх частот; схема зі спільним емітером інвертує фазу."
+  - source_id: fiore-bjt-collector-curves
+    title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.3 BJT Collector Curves"
+    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.3:_BJT_Collector_Curves"
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Розділ 4.3: три зони колекторних характеристик – насичення (ліворуч, V_CE(sat) кілька десятих вольта), майже постійний струм для лінійних підсилювачів посередині і пробій праворуч; насичення використовують у перемикальних застосуваннях. Розділ 4.3.1: I_C зростає зі зростанням V_CE; продовження ділянки постійного струму дає напругу Ерлі V_A. Загальна картина, не для конкретного транзистора."
 ---
 
 ## Short answer
 
-Вихідний опір генератора утворює подільник із вхідним опором каскаду, тому до бази доходить менший сигнал. Формула також не враховує ефект Ерлі і високочастотні ємності.[^udemy-electronics-course]
+Вихідний опір генератора утворює подільник із вхідним опором каскаду, тому до бази доходить менший сигнал: `A_v(gen) = A_v(base)*Z_in/(Z_in + R_gen)`.[^fiore-common-emitter-amplifier] Формула для бази також не враховує ефект Ерлі і високочастотні ємності, тож навіть без дільника вона може відрізнятися від виміряного.[^fiore-bjt-collector-curves][^fiore-bjt-ac-model]
 
 ## Detailed explanation
 
-TODO
+**Два різні підсилення.** Розрахункове підсилення `A_v(base) = v_out/v_b` відносить вихід до напруги на базі. Вимірюють же `A_v(gen) = v_out/v_g`, де `v_g` – напруга генератора з внутрішнім опором `R_gen`. Вхідний опір каскаду `Z_in = R_B || β(r'_e + r_E)` разом із `R_gen` утворює дільник:[^fiore-common-emitter-amplifier] `v_b = v_g*Z_in/(Z_in + R_gen)`. Отже `A_v(gen) = A_v(base)*Z_in/(Z_in + R_gen)`, і при ненульовому `R_gen` модуль виміряного підсилення менший за розрахований від бази.
+
+**Приклад.** Припустімо, для ілюстрації, що `R_gen = 1 кОм` і `Z_in = 5 кОм`. Дільник дає `5/(5 + 1) ≈ 0,833`. Для каскаду з попереднього питання без навантаження `A_v(base) ≈ -4,54` (див. `qid:emb-elee-0215`), тож `A_v(gen) ≈ -3,78`, тобто на 17 % менше. Вхідний опір зростає з β і з `R_E`, якщо `R_E` не зашунтовано,[^fiore-common-emitter-amplifier] тож більший `R_E` послаблює цей ефект.
+
+**Чому формула від бази неточна.** Розрахунок від бази з `r_C = R_C || R_load` опускає скінченний вихідний опір транзистора `r'_C`, який за Fiore має порядок 100 кОм.[^fiore-common-emitter-amplifier] Для `R_C = 4,7 кОм` паралель з `r'_C` дає 4,49 кОм, тобто модуль підсилення менший приблизно на 4,5 %. Це наслідок ефекту Ерлі: колекторний струм трохи зростає зі `V_CE`, а продовження ділянки постійного струму перетинає вісь у точці, що визначає напругу Ерлі `V_A`.[^fiore-bjt-collector-curves] Крім того, модель малого сигналу в Fiore не містить ємностей переходів і призначена для низьких і середніх частот, тож на високих частотах розрахунок від бази теж неточний.[^fiore-bjt-ac-model]
+
+**Типові помилки:**
+
+- Вважати, що генератор віддає всю свою напругу на вхід каскаду: з `R_gen` і `Z_in` завжди є дільник.
+- Вважати опір генератора 1 кОм «малим»: при вхідному опорі 5 кОм він забирає майже 17 % сигналу.
+- Порівнювати виміряне підсилення з розрахунком від бази, не перераховуючи його через `Z_in` і `R_gen`.
 
 ## Symptom
 
