@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: [raise-from-none]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -40,11 +40,38 @@ sources:
 
 ## Short answer
 
-**`raise NewError(...) from None` встановлює `__cause__ = None` і `__suppress_context__ = True`, тому traceback приховує implicit `__context__`.**[^py314-tutorial-errors] Оригінальний exception залишається доступним через атрибут `__context__`, але не відображається. Виправдано, коли внутрішній exception є деталлю реалізації і не несе корисної інформації для користувача бібліотеки – наприклад, при трансформації низькорівневого exception у зрозумілий API-level exception.
+**`raise NewError(...) from None` встановлює `__cause__ = None` і `__suppress_context__ = True`, тому traceback не показує implicit `__context__`.**[^py314-library-exceptions] Оригінальний exception лишається в `__context__` для діагностики, але стандартний traceback його не виводить. Це доречно, коли внутрішній exception є деталлю реалізації, наприклад при перекладі `KeyError` на `AttributeError` у API бібліотеки, і користувачеві він нічого не дає.
 
 ## Detailed explanation
 
-TODO
+Коли `raise` стоїть усередині обробки іншого exception, Python за замовчуванням записує оброблений exception у `__context__` нового, і стандартний traceback показує обидва. Явний `from` замінює цю поведінку: `raise NewError(...) from exc` показує `exc` як причину. `from None` – крайній варіант: він задає `__cause__ = None` і ставить `__suppress_context__ = True`, тож показ `__context__` вимикається.[^py314-library-exceptions] Документація називає це заміною старого exception новим для показу, а старий лишається в `__context__` для налагодження.[^py314-library-exceptions]
+
+Приклад: `get_field` перекладає `KeyError` на власний `NotFound`. Якщо виняток не перехоплено, traceback показує лише `NotFound`; атрибути видно, коли виняток перехоплено:
+
+```python
+class NotFound(Exception):
+    pass
+
+def get_field(record, name):
+    try:
+        return record[name]
+    except KeyError:
+        raise NotFound(f"no field {name!r}") from None  # hides the KeyError in the traceback
+
+try:
+    get_field({}, "name")
+except NotFound as err:
+    print(repr(err.__cause__))       # None
+    print(err.__suppress_context__)  # True
+    print(repr(err.__context__))     # KeyError('name'), still available
+```
+
+Ціна така: з traceback зникає первинна причина – ключ, якого не знайшли, і рядок, де це сталося. Якщо `KeyError` є помилкою в коді, а не очікуваною деталлю, `from None` ускладнює діагностику, бо `__context__` доводиться діставати вручну. Доречний він у вузькому випадку: внутрішній exception є деталлю реалізації, його тип не допоможе викликачу виправити виклик, а новий exception повністю описує помилку. Якщо первинну причину треба показати, краще `from exc`: тоді traceback містить обидва exception.[^py314-library-exceptions]
+
+**Типові помилки:**
+- ставити `from None` за замовчуванням, щоб traceback виглядав чистішим, і втрачати причину багу;
+- вважати, що `from None` видаляє `__context__`: атрибут лишається, змінюється лише показ;
+- обирати `from None`, коли викликачу потрібна причина для діагностики: `from exc` показує обидва exception.
 
 ## Environment
 

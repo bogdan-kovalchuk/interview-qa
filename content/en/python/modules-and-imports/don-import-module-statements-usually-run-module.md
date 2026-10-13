@@ -8,10 +8,10 @@ level: middle
 type: comparison
 tags: [import-module]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -36,15 +36,73 @@ sources:
     kind: official
     version: null
     applicability: "Official Python Packaging User Guide."
+  - source_id: py314-reference-import-module-cache
+    title: "Python 3.14: Reference/import, The module cache"
+    url: https://docs.python.org/3.14/reference/import.html#the-module-cache
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Section “The module cache” of the official Python 3.14 documentation: after the first import the module is in sys.modules, and a later import of the same name returns it from the cache; reload() reruns the code in the same object."
+  - source_id: py314-reference-import-loading
+    title: "Python 3.14: Reference/import, Loading"
+    url: https://docs.python.org/3.14/reference/import.html#loading
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Section “Loading” of the official Python 3.14 documentation: if loading a module raises an exception, that module is removed from sys.modules, while modules already loaded remain."
+  - source_id: py314-reference-simple-stmts-import
+    title: "Python 3.14: Reference/simple statements, The import statement"
+    url: https://docs.python.org/3.14/reference/simple_stmts.html#the-import-statement
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Section “The import statement” of the official Python 3.14 documentation: an import of a module binds its name (or the name after as) to the module object; the from form stores a reference to the attribute’s value."
 ---
 
 ## Short answer
 
-TODO
+**Top-level code runs during the first import, while the module stays in `sys.modules`; later `import` statements for the same name return the same module object.**[^py314-reference-import-module-cache] Each import statement binds its own names in the importer's namespace: `import math` binds `math` to the module object, while `from math import pi` binds `pi` to the value it had at import time.[^py314-reference-simple-stmts-import] So a later change to the module's attribute does not change a name bound with `from`.
 
 ## Detailed explanation
 
-TODO
+The first `import` finds the module, creates the module object and runs its top-level code. While the entry stays in `sys.modules`, later imports of the same name find it in the cache and run nothing.[^py314-reference-import-module-cache] So an implicit import runs the code only once, under two conditions: the cache entry has not been removed, and the earlier import did not fail with an exception. After a failure the module is removed from `sys.modules`, and the next import runs the file again.[^py314-reference-import-loading] Calling `importlib.reload()` explicitly runs the module code again while keeping the same module object; it is not an import statement.[^py314-reference-import-module-cache]
+
+The second part of the question is about binding. Each import statement binds a name in the local namespace of the importer, and the form decides which name:[^py314-reference-simple-stmts-import]
+
+- `import m` binds `m` to the module object;
+- `import m as x` binds `x` to the same module object;
+- `from m import name` binds `name` to the value of the attribute `m.name` at import time.
+
+The example shows that two names refer to one object, but a `from` binding does not follow the module attribute:
+
+```python
+import sys
+import tempfile
+from pathlib import Path
+
+# A throwaway module on disk, so the example can run as-is.
+folder = Path(tempfile.mkdtemp())
+(folder / 'settings_demo.py').write_text("print('executing settings_demo')\nvalue = 1\n")
+sys.path.insert(0, str(folder))
+
+import settings_demo as a        # prints: executing settings_demo
+import settings_demo as b        # cache hit: nothing printed
+from settings_demo import value  # binds the local name to the int 1
+
+print(a is b)                    # True: one module object, two local names
+print(a.value, value)            # 1 1
+a.value = 2                      # rebind the attribute on the module object
+print(a.value, value)            # 2 1: the from-import kept the old value
+```
+
+`a is b` gives `True`: there is one module and two names. Changing `a.value` changes the attribute of the module object, but `value` stays `1`, because the `from` statement kept a reference to the value, not to the attribute.
+
+Different names do not mean different objects. If `value` were a list, `a.value.append(2)` would also be visible through `value`, because it is the same list.
+
+**Common mistakes:**
+- expecting a repeated `import` to run the module's top-level code again;
+- assuming `from m import name` follows later changes to `m.name`;
+- assuming `import m as a` and `import m as b` create two copies of the module.
 
 ## Comparison
 
