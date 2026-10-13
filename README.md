@@ -17,11 +17,11 @@ programs. A fix made once is a fix everywhere.
 > or more identical "not written yet" notices, so the gaps are reported as data instead.
 >
 > **Current state:** 2089 questions in both languages, 2089 shipping as Ukrainian flashcards and
-> 1088 as English ones, and the site is live at the link above. Every question has a Ukrainian short
-> answer and 1088 have an English one; 268 also carry a written detailed explanation in both
-> languages, 82 of them complete. A further 965 embedded and electronics questions have a checked
-> Ukrainian answer with a Ukrainian detailed explanation, so 1233 Ukrainian files carry one. For the
-> rest, the detailed explanation is still `TODO`. The
+> 1278 as English ones, and the site is live at the link above. Every question has a Ukrainian short
+> answer and 1278 have an English one; 462 also carry a written detailed explanation in both
+> languages, among them all 377 Python questions. A further 1045 embedded and electronics questions
+> have a checked Ukrainian answer with a Ukrainian detailed explanation, so 1507 Ukrainian files
+> carry one. For the rest, the detailed explanation is still `TODO`. The
 > localized `/status/` page reports those gaps by language, track, section, and question type from
 > `dist/export/progress.json`.
 
