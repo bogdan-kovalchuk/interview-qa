@@ -1,5 +1,6 @@
-# Deck release: on a `deck-v*` tag, build the `.apkg` and attach it to a
-# GitHub Release.
+# Deck release: on a `deck-v*` tag, build the `.apkg` packages and attach them
+# to a GitHub Release: the Full Library and the python, embedded and
+# electronics decks, each in Ukrainian and in English.
 #
 # Builds from the TAGGED COMMIT, not from `main`: `actions/checkout` defaults
 # to `github.ref`, which for a tag push is the tag itself. A release must be
@@ -90,25 +91,33 @@ jobs:
           echo "tag=${tag}" >> "$GITHUB_OUTPUT"
           echo "version=${version}" >> "$GITHUB_OUTPUT"
 
-      - name: Build the .apkg
+      - name: Build the .apkg packages
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
         run: |
           mkdir -p anki/dist
-          python -m iqa deck \
-            --out "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg"
+          for language in uk en; do
+            if [ "$language" = uk ]; then root="Interview QA"; else root="Interview QA (EN)"; fi
+            python -m iqa deck --language "$language" \
+              --out "anki/dist/${root} - Full Library-${VERSION}.apkg"
+            for track in python embedded electronics; do
+              scope="$(echo "$track" | sed 's/./\U&/')"
+              python -m iqa deck --language "$language" --track "$track" \
+                --out "anki/dist/${root} - ${scope}-${VERSION}.apkg"
+            done
+          done
+          ls -l anki/dist
 
-      - name: Checksum the release artifact (release-checksums gate)
+      - name: Checksum the release artifacts (release-checksums gate)
         working-directory: anki/dist
         run: |
-          sha256sum "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
-            > "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256"
-          cat "Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256"
+          for deck in *.apkg; do sha256sum "$deck" > "$deck.sha256"; done
+          cat *.sha256
 
       - name: Create the GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ steps.version.outputs.tag }}" \
-            "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg" \
-            "anki/dist/Interview QA - Full Library-${{ steps.version.outputs.version }}.apkg.sha256" \
-            --title "Interview QA deck ${{ steps.version.outputs.version }}" \
+          gh release create "${{ steps.version.outputs.tag }}" anki/dist/*.apkg anki/dist/*.sha256 \
+            --title "Interview QA decks ${{ steps.version.outputs.version }}" \
             --generate-notes

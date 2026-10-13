@@ -161,9 +161,10 @@ on:
 `main`. Реліз мусить відтворюватись з незмінної точки: якби збірка йшла з `main`, два запуски
 одного тега могли б дати різну колоду, якщо `main` встиг змінитися між ними.
 
-`.apkg` називається `Interview QA - Full Library-<version>.apkg`, де `<version>` – хвіст тега
-після `deck-` (тег `deck-v2026.09.1` дає файл `...-v2026.09.1.apkg`), у форматі версії з
-`meta/anki.md`. Поруч – `<...>.apkg.sha256` (`release-checksums`).
+Реліз містить вісім `.apkg`: `Interview QA - Full Library-<version>.apkg` і пакети треків
+Python, Embedded, Electronics, кожен українською та англійською (`Interview QA (EN) - …`), де
+`<version>` – хвіст тега після `deck-` (тег `deck-v2026.10.1` дає файл `...-v2026.10.1.apkg`),
+у форматі версії з `meta/anki.md`. Поруч із кожним – `<...>.apkg.sha256` (`release-checksums`).
 
 **Ворота Anki, які реально виконуються, і які ні:** `anki-guid-stability`, `anki-identity-stable`,
 `anki-notetype-stable`, `anki-no-silent-removal`, `anki-edit-preserves-progress` – це діфи проти
