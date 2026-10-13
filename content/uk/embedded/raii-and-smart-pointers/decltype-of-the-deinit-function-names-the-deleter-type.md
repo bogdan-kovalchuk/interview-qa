@@ -8,10 +8,10 @@ level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
@@ -29,6 +29,20 @@ sources:
     kind: spec
     version: "N4861"
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
+  - source_id: cpp-draft-unique-ptr-single
+    title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
+    url: https://eel.is/c++draft/unique.ptr.single
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Визначає, що unique_ptr зберігає вказівник і deleter, а його деструктор викликає deleter лише для ненульового вказівника; release() повертає вказівник і обнуляє його без виклику deleter-а. Розміру об’єкта не задає."
+  - source_id: cpp-draft-intro-object
+    title: "C++ working draft: Object model ([intro.object])"
+    url: https://eel.is/c++draft/intro.object
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Каже, що нульовий розмір має base-підоб’єкт standard-layout класу без нестатичних даних, а в інших випадках обставини нульового розміру визначає реалізація. Конкретних значень sizeof не задає."
 ---
 
 ## Question code
@@ -43,13 +57,33 @@ std::unique_ptr<HAL_Type, decltype(&HAL_DeInit)>
 
 **Тип deleter'а – `decltype(&HAL_DeInit)`, передаємо саму функцію.**
 
-При знищенні `res` викличеться `HAL_DeInit(&hal_obj)`. Function pointer deleter читабельний, але `unique_ptr` зазвичай зберігає і object pointer, і deleter pointer, тобто може бути більшим за raw pointer.
+При знищенні `res`, якщо вказівник не `nullptr`, викличеться `HAL_DeInit(&hal_obj)`. Function pointer deleter читабельний, але `unique_ptr` зберігає і вказівник на об’єкт, і вказівник на функцію, тож займає щонайменше два вказівники.[^cpp-draft-unique-ptr-single]
 
-Правило: function pointer deleter простий; stateless lambda/empty functor зазвичай кращі, якщо критичний `sizeof(unique_ptr)`.[^embeddedinterviewlab]
+Правило: function pointer deleter простий; stateless lambda або empty functor можуть не додавати байтів, тож їх варто брати, якщо критичний `sizeof(unique_ptr)`.[^cpp-draft-intro-object]
 
 ## Detailed explanation
 
-TODO
+`decltype(&HAL_DeInit)` дає тип вказівника на функцію з тією самою сигнатурою, що й `HAL_DeInit`. Тут deleter – звичайний вказівник на функцію, а не клас. Конструктор `res(&hal_obj, &HAL_DeInit)` зберігає і вказівник на `hal_obj`, і вказівник на функцію.[^cpp-draft-unique-ptr-single] Деструктор робить еквівалент `if (get()) get_deleter()(get())`, тож при виході зі scope `HAL_DeInit(&hal_obj)` викликається один раз, якщо вказівник не `nullptr`.
+
+```cpp
+// Illustrative: HAL_Type and HAL_DeInit come from the vendor HAL.
+void use_once(HAL_Type& hal_obj) {
+    std::unique_ptr<HAL_Type, decltype(&HAL_DeInit)> res(&hal_obj, &HAL_DeInit);
+    // ... use res.get() ...
+}   // HAL_DeInit(&hal_obj) runs here; its return value is discarded
+```
+
+Значення, яке повертає `HAL_DeInit`, деструктор нікуди не записує, тож статус завершення губиться. Якщо статус потрібен, деініціалізацію треба викликати явно з перевіркою результату, а вказівник відпустити через `release()`, щоб деструктор не викликав deleter удруге.[^cpp-draft-unique-ptr-single]
+
+Через це `unique_ptr` з function pointer deleter більший за сирий вказівник. Порівняйте з обгорткою-лямбдою без захоплення: `auto deinit = [](HAL_Type* h) { HAL_DeInit(h); };`. На практиці (GCC, Clang) closure-тип такої лямбди порожній і standard-layout, хоча стандарт дозволяє реалізації змінити його розмір і standard-layout-ність, тож перевіряй `sizeof`. Якщо так, її можна зберігати як порожню базу, і `unique_ptr<HAL_Type, decltype(deinit)>` може не займати зайвих байтів.[^cpp-draft-intro-object] Точний розмір залежить від реалізації, тому його варто перевірити через `sizeof` на цільовому тулчейні.
+
+Function pointer deleter підходить, коли функція деініціалізації фіксована і не потребує контексту. Якщо потрібні додаткові аргументи, наприклад інший дескриптор, їх доведеться захопити лямбдою, і обгортка стане stateful з більшим розміром; тоді вибір між читабельністю і `sizeof` вирішується вже в дизайні.
+
+**Типові помилки:**
+
+- Очікувати, що `unique_ptr` з function pointer має розмір сирого вказівника.
+- Очікувати, що статус від `HAL_DeInit` дійде до коду: деструктор його відкидає.
+- Вважати, що `res` з `nullptr` викличе `HAL_DeInit`: при нульовому вказівнику deleter не викликається.[^cpp-draft-unique-ptr-single]
 
 ## Sources
 

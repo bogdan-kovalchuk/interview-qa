@@ -1,17 +1,17 @@
 ---
 id: emb-raii-0020
-title: "Чим RAII кращий за ручний init/deinit (таблиця відмінностей)?"
-description: "RAII дає гарантію очищення, безпечний early return, один dtor замість повторів, автоматичний порядок знищення і нульовий runtime після inlining."
+title: "Чим RAII кращий за ручний init/deinit (список відмінностей)?"
+description: "RAII гарантує виклик dtor при виході зі scope, безпечний early return, один dtor замість повторів і автоматичний порядок знищення."
 track: embedded
 section: raii-and-smart-pointers
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
@@ -29,21 +29,54 @@ sources:
     kind: spec
     version: "N4861"
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
+  - source_id: cpp-draft-stmt-jump
+    title: "C++ working draft: Jump statements, general ([stmt.jump.general])"
+    url: https://eel.is/c++draft/stmt.jump.general
+    accessed: 2026-10-13
+    kind: spec
+    version: "working draft"
+    applicability: "Пункт 2, примітка 1: при виході зі scope будь-яким способом автоматичні об’єкти знищуються у зворотному порядку конструювання; при std::exit чи std::abort вони можуть не знищуватися. Не описує порівняння з ручним кодом і runtime-витрати."
+  - source_id: cpp-draft-support-start-term
+    title: "C++ working draft: Start and termination ([support.start.term])"
+    url: https://eel.is/c++draft/support.start.term
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Каже, що std::exit не знищує automatic-об’єкти, а std::abort і _Exit завершують програму без виконання деструкторів для automatic і static об’єктів. Не описує inlining."
+  - source_id: cppcg-cp20
+    title: "C++ Core Guidelines: CP.20 – Use RAII, never plain lock()/unlock()"
+    url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#cp20-use-raii-never-plain-lockunlock
+    accessed: 2026-10-13
+    kind: book
+    version: null
+    applicability: "Настанова: замість ручних lock() і unlock() використовувати RAII-обгортку, бо unlock() легко забути, пропустити через return чи exception. Про переривання чи bare-metal не каже."
 ---
 
 ## Short answer
 
-- **Гарантія очищення:** компілятор кличе dtor vs програміст мусить пам'ятати;
+- **Гарантія очищення:** при виході зі scope компілятор викликає dtor, а вручну це мусить пам’ятати програміст;
 - **Error-шлях:** early return безпечний vs кожен вихід – шанс на баг;
 - **Дублювання:** dtor написаний раз vs повтор на кожному виході;
-- **Порядок:** автоматичне reverse-знищення vs ручні виклики у зворотному порядку;
-- **Runtime:** часто нульовий після inlining, але це треба перевіряти на release-прапорцях.
+- **Порядок:** автоматичне знищення у зворотному порядку vs ручні виклики, які треба записати самому;
+- **Runtime:** у GCC з `-O2` зазвичай той самий виклик unlock, що й у ручному коді; порожній dtor не дає інструкцій, але перевіряй asm.
 
-Правило: RAII не додає можливостей – він прибирає цілий клас людських помилок.[^embeddedinterviewlab]
+Правило: RAII не додає нових можливостей, він прибирає помилки забутого очищення на виходах зі scope.[^cpp-draft-stmt-jump]
 
 ## Detailed explanation
 
-TODO
+Ручний init/deinit вимагає, щоб cleanup повторювався на кожному виході з функції. Кожен новий `return` або `break` – це новий шанс його пропустити, як у прикладі з C у питанні. Для mutex це прямий шлях до deadlock. RAII переносить cleanup у dtor: стандарт гарантує, що при виході зі scope будь-яким способом, зокрема через `return`, автоматичні об’єкти знищуються.[^cpp-draft-stmt-jump] Настанова CP.20 пояснює те саме: unlock легко забути, пропустити через return чи exception.[^cppcg-cp20]
+
+Порядок: якщо функція володіє кількома ресурсами, ручний cleanup має відтворювати зворотний порядок створення. RAII робить це автоматично, бо автоматичні об’єкти знищуються у зворотному порядку конструювання.[^cpp-draft-stmt-jump]
+
+Межі: автоматичні об’єкти не знищуються, коли програма завершується через `std::exit`, а `std::abort` не виконує жодних деструкторів.[^cpp-draft-support-start-term] Тому RAII не замінює очищення при аварійному завершенні.
+
+Про runtime. Порожній dtor без побічних ефектів не створює коду: у перевірці GCC з `-O2` він зник повністю. Dtor, що викликає unlock, після inlining дає той самий виклик unlock, що й ручний код, на кожному шляху виходу. Точні інструкції залежать від компілятора та прапорців, тому їх варто перевіряти в асемблері цільової збірки.
+
+**Типові помилки:**
+
+- Вважати, що RAII завжди дає нульовий runtime: dtor з unlock все одно виконує unlock, і його вартість – це вартість самого unlock.
+- Очікувати, що dtor спрацює після `exit()` або `abort()`: автоматичні об’єкти в цих випадках не знищуються.
+- Викликати `unlock()` вручну разом із guard-ом: подвійне звільнення.
 
 ## Sources
 
