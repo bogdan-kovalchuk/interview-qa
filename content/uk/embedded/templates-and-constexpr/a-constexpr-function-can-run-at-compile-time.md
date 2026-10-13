@@ -1,17 +1,17 @@
 ---
 id: emb-tmplcx-0005
 title: "Що таке constexpr-функція?"
-description: "Функція, що може обчислюватися на етапі компіляції, коли входи константні, і в runtime – інакше."
+description: "Функція, яку можна викликати в константному виразі; там вона обчислюється під час компіляції."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: concept
 tags: []
 status: published
-updated: 2026-09-06
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
@@ -29,19 +29,56 @@ sources:
     kind: spec
     version: "N4861"
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
+  - source_id: cpp-draft-dcl-constexpr
+    title: "C++ working draft: The constexpr specifier ([dcl.constexpr])"
+    url: https://eel.is/c++draft/dcl.constexpr
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Визначає, що виклик constexpr-функції дає той самий результат, що й виклик еквівалентної не-constexpr функції, але може бути константним виразом; вимагає, щоб constexpr-змінна була constant-initializable. Не описує, де розміщується результат."
+  - source_id: cpp-draft-basic-start-static
+    title: "C++ working draft: Static initialization ([basic.start.static])"
+    url: https://eel.is/c++draft/basic.start.static
+    accessed: 2026-10-13
+    kind: spec
+    version: "working draft"
+    applicability: "Визначає константну ініціалізацію змінних зі static storage: вона не є динамічною ініціалізацією і не потребує коду, що виконується під час запуску. Не описує сегмент пам’яті на цільовій платформі."
 ---
 
 ## Short answer
 
-**Функція, що може обчислюватися на етапі компіляції, коли входи константні, і в runtime – інакше.**
+**Функція, яку можна викликати в константному виразі; у такому контексті вона обчислюється під час компіляції, в інших місцях – як звичайний виклик.**
 
-Це дозволяє zero-runtime-cost lookup-таблиці, конфігураційні значення й обчислення: результат може лягти у Flash/`.rodata` як готова константа, якщо об'єкт має відповідне статичне зберігання.
+Виклик constexpr-функції дає той самий результат, що й виклик звичайної функції, але може стояти в константному виразі.[^cpp-draft-dcl-constexpr] Constexpr-змінна мусить бути constant-initializable, тож вона не потребує динамічної ініціалізації під час запуску.[^cpp-draft-basic-start-static]
 
-Правило: `constexpr` переносить обчислення з runtime у build time там, де результат справді потрібен як constant expression.[^embeddedinterviewlab]
+Правило: `constexpr` не гарантує обчислення під час компіляції для кожного виклику; потрібен константний контекст, наприклад `static_assert`.
 
 ## Detailed explanation
 
-TODO
+`constexpr` перед функцією дозволяє використати її в constant expression, тобто там, де компілятор має отримати значення під час компіляції: розмір масиву, аргумент шаблону, ініціалізатор constexpr-змінної або `static_assert`. За стандартом виклик constexpr-функції дає той самий результат, що й виклик еквівалентної не-constexpr функції в тому самому контексті; відмінності – зокрема те, що виклик може бути константним виразом, а copy elision у константному виразі не виконується.[^cpp-draft-dcl-constexpr]
+
+Аргументи, відомі тільки під час роботи, роблять виклик звичайним викликом у runtime. Тому `constexpr` не означає «завжди обчислюється компілятором». Щоб переконатися, що значення справді обчислене під час збирання, використовують `static_assert` або constexpr-змінну: якщо аргумент не константа, збирання зупиняється з помилкою. Ілюстративний приклад:
+
+```cpp
+#include <cstdint>
+
+constexpr std::uint32_t square(std::uint32_t x) { return x * x; }
+
+constexpr std::uint32_t kLimit = square(16);     // compile-time: constant expression
+static_assert(kLimit == 256, "computed at compile time");
+
+std::uint32_t runtime_value(std::uint32_t x) {
+  return square(x);                              // ordinary call at run time
+}
+```
+
+Для таблиць це важливо: constexpr-змінна з static storage має бути constant-initializable, тож її значення формується під час збирання, а не в коді запуску.[^cpp-draft-dcl-constexpr][^cpp-draft-basic-start-static] Де саме розмістити таке значення (у read-only даних чи в RAM), вирішують компілятор і скрипт лінкера цільової плати.
+
+**Типові помилки:**
+
+- Вважати, що кожен виклик constexpr-функції виконується під час компіляції: з аргументом, відомим лише під час роботи, це звичайний виклик.
+- Очікувати від `constexpr` прискорення runtime-коду: ключове слово описує можливість константного обчислення, а не гарантію швидкості.
+- Не перевіряти результат через `static_assert` чи constexpr-змінну: без них незрозуміло, чи обчислення справді відбулося під час компіляції.
 
 ## Sources
 

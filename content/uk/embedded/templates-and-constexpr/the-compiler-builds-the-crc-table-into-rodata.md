@@ -1,17 +1,17 @@
 ---
 id: emb-tmplcx-0006
 title: "Як згенерувати CRC-32 (cyclic redundancy check) таблицю на етапі компіляції?"
-description: "Уся таблиця на 1 КБ обчислюється компілятором і зазвичай кладеться у Flash .rodata."
+description: "Таблиця з 256 записів uint32_t (1 КБ) будується через constexpr, а не в циклі при старті."
 track: embedded
 section: templates-and-constexpr
 level: junior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-07
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 2
+  en: 3
 anki:
   export: true
 sources:
@@ -21,7 +21,7 @@ sources:
     accessed: 2026-09-06
     kind: community
     version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
+    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
@@ -29,6 +29,20 @@ sources:
     kind: spec
     version: "N4861"
     applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
+  - source_id: cpp-draft-dcl-constexpr
+    title: "C++ working draft: The constexpr specifier ([dcl.constexpr])"
+    url: https://eel.is/c++draft/dcl.constexpr
+    accessed: 2026-10-13
+    kind: spec
+    version: "C++ working draft"
+    applicability: "Визначає, що виклик constexpr-функції дає той самий результат, що й виклик еквівалентної не-constexpr функції, але може бути константним виразом; вимагає, щоб constexpr-змінна була constant-initializable. Не описує, де розміщується результат."
+  - source_id: cpp-draft-basic-start-static
+    title: "C++ working draft: Static initialization ([basic.start.static])"
+    url: https://eel.is/c++draft/basic.start.static
+    accessed: 2026-10-13
+    kind: spec
+    version: "working draft"
+    applicability: "Визначає константну ініціалізацію змінних зі static storage: вона не є динамічною ініціалізацією і не потребує коду, що виконується під час запуску. Не описує сегмент пам’яті на цільовій платформі."
 ---
 
 ## Question code
@@ -45,15 +59,47 @@ constexpr auto crc_table = make_crc_table();
 
 ## Short answer
 
-**Уся таблиця на 1 КБ обчислюється компілятором і зазвичай кладеться у Flash `.rodata`.**
+**Таблиця CRC-32 на 256 записів `uint32_t` (1 КБ) обчислюється компілятором, якщо функція для одного байта і функція побудови таблиці є `constexpr`.**
 
-Це замінює ручні (помилкові) таблиці й startup-цикли, що марнують boot time. У runtime таблиця вже готова.
+Constexpr-змінна мусить бути constant-initializable,[^cpp-draft-dcl-constexpr] тож таблиця ініціалізується константно, і жоден цикл при старті її не заповнює.[^cpp-draft-basic-start-static]
 
-Правило: великі незмінні таблиці (CRC, gamma/lookup tables) генеруй через `constexpr`, а не рахуй при старті.[^embeddedinterviewlab]
+Правило: великі незмінні таблиці (наприклад, CRC) генеруй через `constexpr`, а не рахуй при старті.
 
 ## Detailed explanation
 
-TODO
+Таблиця CRC-32 має 256 записів: для кожного байта `i` функція вісім разів зсуває значення на один біт і, якщо молодший біт був одиницею, виконує XOR із поліномом, записаним у коді. Щоб уся таблиця обчислювалась під час збирання, `crc32_for_byte` і `make_crc_table` мають бути `constexpr`. Тоді `constexpr auto crc_table = make_crc_table();` є константним ініціалізатором, і компілятор мусить обчислити його під час збирання.[^cpp-draft-dcl-constexpr]
+
+Ілюстративний приклад, який компілюється як C++17:
+
+```cpp
+#include <array>
+#include <cstdint>
+
+constexpr std::uint32_t crc32_for_byte(std::uint32_t r) {
+  for (int j = 0; j < 8; ++j)
+    r = (r & 1u) ? (r >> 1) ^ 0xEDB88320u : (r >> 1);
+  return r;
+}
+
+constexpr std::array<std::uint32_t, 256> make_crc_table() {
+  std::array<std::uint32_t, 256> t{};
+  for (std::uint32_t i = 0; i < 256; ++i)
+    t[i] = crc32_for_byte(i);
+  return t;
+}
+
+constexpr auto crc_table = make_crc_table();
+static_assert(crc_table[1] == 0x77073096u, "table built at compile time");
+static_assert(sizeof(crc_table) == 1024, "256 x 4 bytes");
+```
+
+`static_assert` на `crc_table[1]` перевіряє значення під час збирання; другий фіксує розмір 1024 байти. Якщо `make_crc_table` викличе не-constexpr функцію, збирання зупиниться з помилкою. Сама змінна `crc_table` має static storage duration і constant initialization, тож для неї немає динамічної ініціалізації під час запуску.[^cpp-draft-basic-start-static] Розміщення в пам’яті (read-only дані чи RAM) визначають компілятор і скрипт лінкера цільової плати, а не сам `constexpr`.
+
+**Типові помилки:**
+
+- Оголосити таблицю звичайною змінною і заповнювати її в `main` або `init()`: тоді цикл виконується при кожному запуску.
+- Викликати в `make_crc_table` функцію, яка не є `constexpr` (наприклад, з I/O): збирання зупиниться з помилкою.
+- Вважати, що `constexpr` сам кладе таблицю у Flash: місце в пам’яті задають ціль і скрипт лінкера.
 
 ## Sources
 
