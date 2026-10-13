@@ -8,6 +8,12 @@
 # moved to by the time the job ran, two runs of the same tag could produce
 # different decks. Push the tag at the exact commit you want released.
 #
+# Or run it manually (`workflow_dispatch`) with a version such as
+# `v2026.10.1`: it builds the commit the run was started on and
+# `gh release create --target` creates the `deck-<version>` tag on that same
+# commit, so the tag still marks exactly what was built. This is the path for
+# environments that may push branches but not tags.
+#
 # ANKI GATES - WHAT ACTUALLY RUNS, AND WHAT DOES NOT (YET):
 # meta/quality-gates.md lists eight blocking Anki gates. Several of them
 # (`anki-guid-stability`, `anki-identity-stable`, `anki-notetype-stable`,
@@ -33,6 +39,11 @@ on:
   push:
     tags:
       - "deck-v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Deck version, e.g. v2026.10.1 (the release tag becomes deck-<version>)"
+        required: true
 
 concurrency:
   group: deck-release-${{ github.ref }}
@@ -83,10 +94,12 @@ jobs:
       - name: Full production build path (produces dist/export/questions.json)
         run: python -m iqa build
 
-      - name: Derive the deck version from the tag
+      - name: Derive the deck version from the tag or the manual input
         id: version
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
         run: |
-          tag="${GITHUB_REF_NAME}"
+          if [ -n "${INPUT_VERSION}" ]; then tag="deck-${INPUT_VERSION}"; else tag="${GITHUB_REF_NAME}"; fi
           version="${tag#deck-}"
           echo "tag=${tag}" >> "$GITHUB_OUTPUT"
           echo "version=${version}" >> "$GITHUB_OUTPUT"
@@ -119,5 +132,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "${{ steps.version.outputs.tag }}" anki/dist/*.apkg anki/dist/*.sha256 \
+            --target "${GITHUB_SHA}" \
             --title "Interview QA decks ${{ steps.version.outputs.version }}" \
             --generate-notes
