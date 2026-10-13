@@ -1,78 +1,88 @@
 ---
 id: py-perf-0006
 title: "How does choosing between `list`, `set`, `dict`, `deque`, and a heap depend on the workload's dominant operations?"
-description: "How does choosing between `list`, `set`, `dict`, `deque`, and a heap depend on the workload's dominant operations?"
+description: "The right container depends on the dominant operation: deque is O(1) at both ends, heapq keeps the minimum at heap[0], and a list checks membership by scanning."
 track: python
 section: performance
 level: middle
 type: comparison
 tags: [list, set, dict, deque]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
-  - source_id: py314-library-profile
-    title: "Python 3.14: Library/profile"
-    url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
+  - source_id: py314-library-collections-deque
+    title: "Python 3.14: Library/collections, deque"
+    url: https://docs.python.org/3.14/library/collections.html#collections.deque
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-timeit
-    title: "Python 3.14: Library/timeit"
-    url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
+    applicability: "Python 3.14 collections.deque documentation: appends and pops at either end cost approximately the same O(1); list has O(n) memory-movement cost for pop(0) and insert(0, v)."
+  - source_id: py314-library-heapq
+    title: "Python 3.14: Library/heapq"
+    url: https://docs.python.org/3.14/library/heapq.html
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
+    applicability: "Python 3.14 heapq documentation: the smallest item is available as heap[0] without removing it (heappop description)."
+  - source_id: cpython-heapq-source
+    title: "CPython Lib/heapq.py: heap queue implementation"
+    url: https://github.com/python/cpython/blob/3.14/Lib/heapq.py
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-concurrent-futures
-    title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
+    applicability: "CPython 3.14 implementation of heapq: heappush sifts an element up towards the root, heappop sifts an element down to a leaf and back up, nlargest keeps a heap of size n. This describes CPython, not a language guarantee."
+  - source_id: py314-reference-expressions-membership-test-operations
+    title: "Python 3.14: Reference/expressions, membership test operations"
+    url: https://docs.python.org/3.14/reference/expressions.html#membership-test-operations
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-faq-programming-performance
-    title: "Python 3.14: Faq/programming"
-    url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-functools-functools-lru-cache
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
+    applicability: "Python 3.14 language reference, membership tests: for list, tuple, set, frozenset, dict and collections.deque, x in y is equivalent to any(x is e or x == e for e in y). Does not describe complexity."
 ---
 
 ## Short answer
 
-TODO
+**The choice depends on the dominant operation: `deque` gives approximately the same O(1) cost at either end, while `list` costs O(n) for `pop(0)` and `insert(0, v)`.**[^py314-library-collections-deque] `x in list` checks the items one by one.[^py314-reference-expressions-membership-test-operations] `set` and `dict` look items up by hash, on average in O(1), an average-case property that the Python documentation does not state for them. `heapq` keeps the smallest item at `heap[0]`.[^py314-library-heapq] Removal and insertion take O(log n) in CPython.[^cpython-heapq-source]
 
 ## Detailed explanation
 
-TODO
+Containers are chosen not by overall speed, but by which operations the workload repeats most often. For a `list`, the language defines `x in y` as equivalent to `any(x is e or x == e for e in y)`, which means scanning the items.[^py314-reference-expressions-membership-test-operations] A membership test on a large `list` inside a hot loop therefore costs linear time on every call.
+
+`deque` is built for queues: adding and removing at either end cost approximately the same O(1), while `list.pop(0)` and `insert(0, v)` have to shift all the items.[^py314-library-collections-deque] Below is an example of choosing a container for a queue, for membership tests and for the minimum; the `#` comments show the result and the trap:
+
+```python
+from collections import deque
+import heapq
+
+jobs = [3, 1, 2]
+queue = deque(jobs)
+print(queue.popleft(), queue)      # 3 deque([1, 2]): O(1) at the left end
+jobs.pop(0)                        # list: removing the head shifts every item, O(n)
+
+allowed_list = ['alice', 'bob', 'carol']
+allowed_set = set(allowed_list)
+print('carol' in allowed_list)    # True, found by scanning items one by one
+print('carol' in allowed_set)     # True, found by hashing
+
+heap = [5, 1, 4]
+heapq.heapify(heap)
+print(heap[0])                     # 1: the smallest item, without removing it
+print(heapq.heappop(heap), heap)   # 1 [4, 5]: removal is logarithmic
+```
+
+`set` and `dict` find an element by its hash, and on average this takes a constant number of steps rather than a scan. This is the average-case behaviour of a hash table, not a guarantee for every input, and the Python documentation does not state this complexity for set and dict. `heapq` gives the smallest item through `heap[0]`.[^py314-library-heapq] Removal and insertion take O(log n) because the CPython loops follow a path from the root to a leaf or back, that is, the height of the tree.[^cpython-heapq-source] But a heap is ordered only along paths from the root, so a specific value can be found only by scanning.
+
+The choice changes with the dominant operation. If membership tests dominate, use a `set` or `dict`; if the ends of a queue matter, use a `deque`; if the minimum matters, use `heapq`. For small collections the difference may be negligible, so check the decision with realistic sizes.
+
+**Common mistakes:**
+- `x in list` in a hot loop instead of a `set` when membership tests are needed;
+- `list.pop(0)` as a queue instead of `deque.popleft()`;
+- expecting fast lookup of an arbitrary element from `heapq`: only the minimum is available through `heap[0]`.
 
 ## Comparison
 

@@ -8,46 +8,32 @@ level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
-  - source_id: py314-tutorial
-    title: "Python 3.14: Tutorial"
-    url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
+  - source_id: py314-library-copy
+    title: "Python 3.14: Library/copy"
+    url: https://docs.python.org/3.14/library/copy.html
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-reference
-    title: "Python 3.14: Reference"
-    url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
+    applicability: "Офіційна документація Python 3.14: deepcopy зберігає memo dictionary вже скопійованих об’єктів поточного проходу; рекурсивні структури можуть спричинити рекурсивний цикл; класи можуть перевизначити копіювання через __deepcopy__. Не описує, як саме memo індексується."
+  - source_id: py314-library-functions-id
+    title: "Python 3.14: Library/functions, id"
+    url: https://docs.python.org/3.14/library/functions.html#id
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-threading
-    title: "Python 3.14: Library/threading"
-    url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-time-time-monotonic
-    title: "Python 3.14: Library/time"
-    url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+    applicability: "Офіційна документація Python 3.14: id() унікальний і сталий, поки об’єкт живий; об’єкти з неперекривними життями можуть мати однаковий id(). Не описує memo-словники."
 ---
 
 ## Short answer
 
-**Використати memo-dict, ключований за `id()` оригінального вузла: перед рекурсивним копіюванням перевіряти, чи вузол вже скопійований, і повертати існуючу копію.**[^py314-tutorial]
+**Використати memo-dict, ключований за `id()` оригінального вузла: перед рекурсивним копіюванням перевіряти, чи вузол вже скопійований, і повертати існуючу копію.**[^py314-library-copy]
 
 ```python
 def deep_copy_graph(root):
@@ -71,11 +57,39 @@ def deep_copy_graph(root):
     return _copy(root)
 ```
 
-Memo гарантує: shared subtree копіюється один раз (ідентичність зберігається в копії), а cycle не викликає нескінченну рекурсію, бо `memo[nid]` заповнюється до рекурсивного спуску.
+`id()` унікальний і сталий, поки об’єкт живий, а оригінальний граф живий під час копіювання, тож ключі не збігаються для різних вузлів.[^py314-library-functions-id] Код копіює лише `list` і `dict`; інші об’єкти, наприклад `tuple`, повертаються як є і лишаються спільними з оригіналом.
 
 ## Detailed explanation
 
-TODO
+Копіювання графа має дві вимоги: спільний вузол має скопіюватися один раз, а цикл не має призвести до нескінченної рекурсії. Наївна рекурсія не виконує жодної з них. Вона створює окрему копію для кожного посилання, а структура, що містить сама себе, викликає рекурсію без кінця. Модуль `copy` прямо описує цю проблему: рекурсивні об’єкти можуть спричинити рекурсивний цикл, а `deepcopy()` її уникає, зберігаючи memo dictionary вже скопійованих об’єктів поточного проходу.[^py314-library-copy]
+
+Наївний варіант без memo на циклі падає:
+
+```python
+def naive_copy(node):
+    if isinstance(node, list):
+        return [naive_copy(item) for item in node]
+    return node
+
+
+cycle = [1]
+cycle.append(cycle)
+try:
+    naive_copy(cycle)
+except RecursionError as error:
+    print(type(error).__name__)  # RecursionError: nothing stops the recursion
+```
+
+Порядок у memo-коді важливий. `memo[nid]` записується до рекурсивного спуску: порожній `new_list` кладеться в memo і лише потім заповнюється через `extend`. Коли спуск доходить назад до того самого вузла, функція повертає вже існуючу, ще неповну копію і не починає нову рекурсію. Для `dict` порядок той самий: спочатку `new_dict` записується в memo, потім копіюються ключі й значення. Якщо записати memo після спуску, цикл знову дає `RecursionError`.
+
+Ключ береться з `id(node)`, а не з вмісту. `id()` унікальний для живих об’єктів, тому два різні списки з однаковими значеннями, наприклад `[1]` і `[1]`, не зливаються в одну копію.[^py314-library-functions-id]
+
+Межі цього коду: він копіює лише `list` і `dict`. Інші типи повертаються без змін, тож після `deep_copy_graph({"t": t})["t"] is t` для `t = ("x", ["inner"])` отримуємо `True`: tuple і список всередині нього лишаються спільними з оригіналом. Це випливає з самого коду, який повертає без змін усе, крім `list` і `dict`. Для `copy.deepcopy` та сама перевірка (`copy.deepcopy(t) is t`) дає `False`; документація цього прямо не каже, тож це спостереження на 3.13 і 3.14. Щоб закрити прогалину, треба обробити всі типи-контейнери або дати класам власний `__deepcopy__`: модуль `copy` дозволяє користувацьким класам перевизначати копіювання.[^py314-library-copy]
+
+**Типові помилки:**
+- записувати memo після рекурсивного спуску: на циклі виникає `RecursionError`;
+- використовувати ключ за вмістом, наприклад `repr(node)`, замість `id()`: різні, але рівні списки зливаються в одну копію;
+- вважати, що `tuple` або власні об’єкти копіюються разом із контейнерами: вони лишаються спільними з оригіналом.
 
 ## Environment
 

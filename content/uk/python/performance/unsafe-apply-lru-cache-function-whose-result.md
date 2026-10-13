@@ -1,74 +1,32 @@
 ---
 id: py-perf-0021
 title: "Чому `lru_cache` небезпечно застосовувати до function, result якої залежить від current time, randomness, external mutable state чи side effects?"
-description: "lru_cache зберігає результат виключно за комбінацією аргументів, тому для non-pure function повертає застаріле або некоректне значення, а side effects на cache hit взагалі пропускаються."
+description: "lru_cache повертає збережене значення лише для повторного виклику з тими самими аргументами, поки запис у кеші; для non-pure function це застаріле значення, а side effects на cache hit пропускаються."
 track: python
 section: performance
 level: middle
 type: pitfall
 tags: [lru-cache]
 status: published
-updated: 2026-09-13
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
-  - source_id: py314-library-profile
-    title: "Python 3.14: Library/profile"
-    url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-timeit
-    title: "Python 3.14: Library/timeit"
-    url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-concurrent-futures
-    title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-faq-programming-performance
-    title: "Python 3.14: Faq/programming"
-    url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
     accessed: 2026-09-04
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+    applicability: "Офіційна документація Python 3.14, розділ lru_cache: ключ кешу – аргументи виклику, які мають бути hashable; повторний виклик з тими самими аргументами повертає кеш без нових викликів; кешувати функції з side effects і impure функції не має сенсу; maxsize=None вимикає виселення."
 ---
 
 ## Short answer
 
-**`lru_cache` зберігає результат виключно за комбінацією аргументів, тому для non-pure function повертає застаріле значення, а side effects на cache hit пропускаються.**[^py314-library-profile] Декоратор припускає детермінованість: однакові аргументи -> однаковий результат. Якщо результат залежить від `time.time()`, `random`, глобального мутабельного стану або зовнішнього I/O, кешоване значення більше не відповідає виклику. Функції з side effects (запис у файл, логування, мутація аргументів) на повторному виклику взагалі не виконуються – тіло пропускається разом із side effect.
+**`lru_cache` повертає збережений результат лише для повторного виклику з тими самими аргументами, поки запис є в кеші, тому для функції, яка залежить від часу, випадковості чи зовнішнього стану, він дає застаріле значення, а side effects на cache hit пропускаються.**[^py314-library-functools-functools-lru-cache] Документація прямо каже, що не має сенсу кешувати функції з side effects і impure функції, як `time()` чи `random()`.[^py314-library-functools-functools-lru-cache]
 
 ```python
 from functools import lru_cache
@@ -83,10 +41,54 @@ time.sleep(0.1)
 print(fetch_now() == first)  # True - stale cached value
 ```
 
-<span class="warn">Попередження:</span> `lru_cache` також тримає strong references на аргументи й return values до evict, що може подовжити життя великих об'єктів.
+<span class="warn">Попередження:</span> кеш тримає посилання на аргументи й результати, доки вони не виселені; з `maxsize=None` він може рости без обмеження.[^py314-library-functools-functools-lru-cache]
+
 ## Detailed explanation
 
-TODO
+`lru_cache` обгортає функцію і зберігає її результати у словнику, ключем якого є аргументи виклику. Тому аргументи мають бути hashable.[^py314-library-functools-functools-lru-cache] Коли той самий набір аргументів приходить удруге, поки його запис є в кеші, декоратор повертає збережене значення без нового виклику функції.[^py314-library-functools-functools-lru-cache] Саме це робить кеш корисним для дорогих обчислень і небезпечним для всього, що залежить від стану поза аргументами.
+
+Декоратор не бачить нічого, крім аргументів. Якщо результат залежить від `time.time()`, `random`, глобального словника, файлу чи бази даних, кеш віддає значення, яке вже не відповідає стану. Документація прямо каже, що не має сенсу кешувати функції з side effects, функції, які мають створювати окремі mutable-об’єкти на кожному виклику (наприклад, генератори й async-функції), та impure функції, як `time()` чи `random()`.[^py314-library-functools-functools-lru-cache]
+
+Side effects на cache hit не відбуваються, бо тіло функції не виконується. У прикладі другий виклик не додає запис до `calls`:
+
+```python
+from functools import lru_cache
+
+calls = []
+
+@lru_cache(maxsize=None)
+def save(name):
+    calls.append(name)   # side effect: runs only on a cache miss
+    return len(calls)
+
+print(save("a"), save("a"))  # 1 1 : second call is a cache hit, body skipped
+print(calls)  # ['a']
+```
+
+Збережене значення може бути mutable. Той самий об’єкт повертається кожному виклику з тими самими аргументами, тому зміна, зроблена через одне посилання, видна через усі інші:
+
+```python
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def new_bucket(name):
+    return []  # a new list on each call without the cache
+
+
+first = new_bucket("a")
+first.append("x")
+second = new_bucket("a")  # cache hit: the same list object is returned
+print(second)  # ['x']
+print(first is second)  # True
+```
+
+Кеш тримає посилання на аргументи й результати, доки записи не виселено або кеш не очищено. З `maxsize=None` LRU-виселення вимикається, і кеш може рости без обмеження.[^py314-library-functools-functools-lru-cache] Безпечний випадок – чиста функція з hashable аргументами, чий результат дорогий і не залежить від стану поза аргументами. Якщо потрібна свіжість, кеш очищують викликом `cache_clear()`,[^py314-library-functools-functools-lru-cache] або функцію взагалі не кешують.
+
+**Типові помилки:**
+- кешувати функцію, яка читає `time.time()`, `random` або файл, і вважати, що повторний виклик перевіряє стан знову;
+- очікувати, що логування чи лічильник усередині кешованої функції спрацьовують на кожен виклик;
+- повертати з кешованої функції mutable-об’єкт і змінювати його в місці виклику.
 
 ## Symptom
 

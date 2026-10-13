@@ -8,10 +8,10 @@ level: senior
 type: practical
 tags: [cprofile]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
@@ -32,20 +32,6 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-concurrent-futures
-    title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
@@ -53,29 +39,75 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-functools-functools-lru-cache
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
+  - source_id: py314-library-profile-introduction
+    title: "Python 3.14: Library/profile (Introduction to the profilers)"
+    url: https://docs.python.org/3.14/library/profile.html#introduction-to-the-profilers
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
-    accessed: 2026-09-04
+    applicability: "Офіційна документація Python 3.14: накладні витрати профілювальника припадають на код Python, а не на C-рівневі функції; профілювальники призначені для профілю виконання, а не для бенчмаркінгу, і для точніших результатів там згадується timeit."
+  - source_id: py314-library-profile-limitations
+    title: "Python 3.14: Library/profile (Limitations)"
+    url: https://docs.python.org/3.14/library/profile.html#limitations
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+    applicability: "Офіційна документація Python 3.14: затримка між подією і зчитуванням годинника накопичується у функцій, які викликаються багато разів або викликають багато функцій."
+  - source_id: py314-library-timeit-cli
+    title: "Python 3.14: Library/timeit (Command-Line Interface)"
+    url: https://docs.python.org/3.14/library/timeit.html#timeit-command-line-interface
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: вимірювання можуть залежати від інших програм на машині, тому рекомендується повторити заміри і взяти найкращий час; за замовчуванням 5 повторів."
 ---
 
 ## Short answer
 
-**Запустити той самий workload двічі – під `cProfile` і без нього на детермінованих вхідних даних – і порівняти загальний час та відносні частки функцій.**[^py314-library-profile] Якщо профільований прогін значно повільніший за контрольний, instrumentation overhead суттєвий. Функції з великою кількістю дрібних викликів страждають від overhead найбільше, тому їхній `tottime` може бути завищений. Крім того, `cProfile` вимірює лише Python-рівень, тому C-функції виглядають безкоштовними – це зсуває відносні пропорції. <span class="warn">Для точного бенчмаркінгу використовуйте `timeit`, а профілювальник – лише для якісного пошуку гарячих точок.</span>
+**Запустити той самий workload двічі – під `cProfile` і без нього на детермінованих вхідних даних – і порівняти загальний час та відносні частки функцій.** Якщо профільований прогін значно повільніший за контрольний, накладні витрати суттєві. Вони припадають на Python-код, тож C-реалізація на профілі виглядає швидшою, ніж є.[^py314-library-profile-introduction] Функції з великою кількістю викликів накопичують похибку, тому їхній `tottime` може бути завищений.[^py314-library-profile-limitations] <span class="warn">Для точного часу використовуйте `timeit`, а профілювальник – лише для пошуку гарячих точок.</span>[^py314-library-profile-introduction]
 
 ## Detailed explanation
 
-TODO
+Порівняння має відповісти на два різні питання: скільки часу з’їдає сам профілювальник і чи справді функція є вузьким місцем. Для цього потрібні два прогони того самого workload: контрольний без профілювальника і профільований під `cProfile`. Версія Python, машина, код і вхідні дані мають бути однакові, а вхід детермінований: фіксований seed або фіксовані дані.
+
+Контрольний прогін беріть повторами. Документація `timeit` пояснює, що на вимірювання можуть впливати інші програми на машині, тому варто повторити заміри кілька разів і взяти найкращий час. Командний рядок `timeit` робить це за замовчуванням із 5 повторами.[^py314-library-timeit-cli]
+
+Приклад міряє контрольний час без профілювальника, потім той самий виклик під `cProfile`. Через `pstats` видно, скільки подій профілювальник зафіксував для `leaf`:
+
+```python
+import cProfile
+import pstats
+import timeit
+
+def leaf(x):
+    return x * 2
+
+def workload():
+    return sum(leaf(i) for i in range(10_000))
+
+# Control run: no profiler, best of 5 repeats, seconds per workload call.
+control = min(timeit.repeat(workload, number=20, repeat=5)) / 20
+
+# Profiled run: the same workload with the same input.
+profiler = cProfile.Profile()
+profiler.runcall(workload)
+stats = pstats.Stats(profiler)
+profiled = stats.total_tt         # seconds, including profiler overhead
+
+for (filename, lineno, funcname), (cc, nc, tt, ct, callers) in stats.stats.items():
+    if funcname == "leaf":
+        print(nc)                 # 10000 recorded calls, each with profiler work
+print(control > 0 and profiled > 0)   # True
+```
+
+Різниця між `profiled` і `control` – це накладні витрати, зокрема робота, яку профілювальник виконує між подіями. Їх не можна просто відняти від результатів окремих функцій, бо вони розподілені нерівномірно. Документація пояснює, що накладні витрати припадають на код Python, а не на C-рівневі функції, тому C-реалізація на профілі виглядає швидшою, ніж є.[^py314-library-profile-introduction] Похибка також накопичується у функцій, які викликаються багато разів, тож дрібна функція з великою кількістю викликів може отримати завищений `tottime`.[^py314-library-profile-limitations]
+
+Щоб відрізнити накладні витрати від справжнього вузького місця, перевіряйте зміну на контрольному прогоні, а не на профілі. Якщо функція справді домінує, її оптимізація скорочує контрольний час приблизно на її частку в ньому. Якщо функція виглядає важкою лише в профілі, а контрольний час не змінюється, профіль завищував її частку в реальному часі.
+
+**Типові помилки:**
+- вважати функцію гарячою точкою лише за `tottime` профілю, без контрольного прогону;
+- порівнювати профільований прогін з контрольним на різних вхідних даних або в різних процесах;
+- брати один контрольний замір замість повторів.
 
 ## Environment
 

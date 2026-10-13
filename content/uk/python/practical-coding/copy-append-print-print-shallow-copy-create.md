@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: [a-1-b-a-copy-b-0-append-2-print-a]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -29,29 +29,55 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-threading
-    title: "Python 3.14: Library/threading"
-    url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
+  - source_id: py314-library-copy
+    title: "Python 3.14: Library/copy"
+    url: https://docs.python.org/3.14/library/copy.html
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-time-time-monotonic
-    title: "Python 3.14: Library/time"
-    url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+    applicability: "Офіційна документація Python 3.14, модуль copy: присвоєння не копіює об’єкт; list.copy() і copy.copy() створюють shallow copy, яка вставляє посилання на елементи оригіналу; copy.deepcopy() копіює вкладені об’єкти рекурсивно."
 ---
 
 ## Short answer
 
-**Надрукує `[[1, 2]]` – `a` теж бачить зміну.**[^py314-tutorial] Метод `list.copy()` створює shallow copy: новий зовнішній список, але вкладені об'єкти копіюються лише за посиланням. Тому `b[0]` і `a[0]` – це той самий об'єкт `list`, і `append(2)` через `b` мутує його спільно. <span class="warn">Для глибокого копіювання потрібний `copy.deepcopy()`.</span>
+**Надрукує `[[1, 2]]` – `a` теж бачить зміну.** `list.copy()` створює shallow copy: новий зовнішній список, який містить ті самі елементи, тобто вкладений список копіюється лише за посиланням.[^py314-library-copy] Тому `b[0]` і `a[0]` – це один і той самий `list`, і `append(2)` через `b` змінює його для обох. <span class="warn">Для копії, яка не ділить вкладені об’єкти, використовують `copy.deepcopy()`.[^py314-library-copy]</span>
 
 ## Detailed explanation
 
-TODO
+Присвоєння `b = a` не копіює список: воно лише додає ще одне ім’я для того самого об’єкта.[^py314-library-copy] Метод `a.copy()` створює інший зовнішній список, але не копіює його елементи. Це і є shallow copy: новий контейнер, у якому посилання на елементи вказують на ті самі об’єкти, що й в оригіналі.[^py314-library-copy]
+
+Рядок `b[0] is a[0]` показує спільний об’єкт. Мутація через `b[0]` видна через `a`, бо змінюється сам внутрішній список, а не посилання в зовнішньому:
+
+```python
+a = [[1]]
+b = a.copy()
+print(b[0] is a[0])  # True: both lists share the same inner object
+b[0].append(2)
+print(a)  # [[1, 2]]
+b.append(3)
+print(a)  # [[1, 2]]: the outer list is independent
+```
+
+Аліасинг тут має один рівень. Додавання елемента до зовнішнього `b` не змінює `a`, бо зовнішні списки різні. Тому баг легко пропустити: тест, який змінює лише верхній рівень, пройде, а зміна вкладеного елемента зламає оригінал.
+
+Якщо вкладені об’єкти мають бути незалежними, використовують `copy.deepcopy()`. Він рекурсивно копіює вкладені об’єкти й зберігає memo-словник уже скопійованих, тому зациклені структури не призводять до нескінченного рекурсивного обходу.[^py314-library-copy] Приклад:
+
+```python
+import copy
+
+a = [[1]]
+c = copy.deepcopy(a)
+c[0].append(2)
+print(a)  # [[1]]
+print(c)  # [[1, 2]]
+```
+
+Глибока копія теж не завжди правильна: вона може скопіювати й дані, які мали лишитися спільними між копіями.[^py314-library-copy]
+
+**Типові помилки:**
+- вважати, що `list.copy()` робить повну копію вкладених структур;
+- змінити вкладений елемент однієї копії і очікувати, що інша не зміниться;
+- використовувати `copy.deepcopy()` завжди, навіть коли дані мали бути спільними.
 
 ## Symptom
 

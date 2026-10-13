@@ -1,17 +1,17 @@
 ---
 id: py-perf-0017
 title: "Новий variant обробки даних лише на 2% швидший у representative benchmark, але суттєво складніший: як обґрунтувати вибір за latency budget і maintenance cost?"
-description: "Якщо 2% покращення не наближає систему до latency budget і не змінює масштабної здатності, складніший variant не вартий adoption – maintenance cost перевищує benefit."
+description: "Якщо 2% покращення не наближає систему до latency budget і не змінює масштабної здатності, складніший variant зазвичай не варто впроваджувати."
 track: python
 section: performance
 level: middle
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -29,37 +29,9 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-concurrent-futures
-    title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-functools-functools-lru-cache
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
     accessed: 2026-09-04
     kind: official
     version: "3.14"
@@ -68,11 +40,23 @@ sources:
 
 ## Short answer
 
-**Якщо 2% покращення не наближає систему до latency budget і не змінює масштабної здатності, складніший variant не вартий adoption – maintenance cost перевищує benefit.**[^py314-library-profile] Критерії прийняття: (1) чи наближає optimization до SLO/latency target, (2) чи змінюється max throughput на рівні, що відкладає необхідність масштабування, (3) чи зростає складність читання/тестування/налагодження. <span class="warn">Без чіткого latency budget «2% швидше» – це optimization без business justification, яка додає defect risk без вимірного виграшу.</span> Профілювання через `timeit` та `profile` має показувати, де саме досягнуто покращення, щоб оцінити його стійкість на різних даних.
+**Якщо 2% покращення не наближає систему до latency budget і не змінює масштабної здатності, складніший variant зазвичай не варто впроваджувати.** Критерії: (1) чи наближає зміна до SLO або latency target, (2) чи змінюється max throughput настільки, щоб відкласти масштабування, (3) чи зростає складність читання, тестування та налагодження. Документація FAQ радить мати гарне покриття тестами перед складними оптимізаціями, бо вони можуть приховувати регресії.[^py314-faq-programming-performance] Перед рішенням переконайтеся, що 2% перевищує розкид повторних вимірювань: `timeit` радить брати найкращий час із кількох повторів.[^py314-library-timeit]
 
 ## Detailed explanation
 
-TODO
+Відсоток сам по собі нічого не вирішує. 2% мають значення, лише якщо вони змінюють щось, що важить для системи. Latency budget – це допустима затримка для запиту або кроку обробки. Якщо система вже вкладається в бюджет, прискорення на 2% не змінює її відповідності цілі. Тож спершу записують бюджет і поточний запас, а вже потім порівнюють варіанти.
+
+Відрізнити 2% від шуму допомагає повторне вимірювання, а не одна прогонка. Документація timeit пояснює, що на результат впливають інші програми на тій самій машині, тому варто повторити вимірювання і взяти найкращий час.[^py314-library-timeit] Модулі профілювання не призначені для бенчмарків: вони дають профіль виконання програми, а для достатньо точних часів існує timeit.[^py314-library-profile] Профайлер, отже, показує, де з’явився виграш, а timeit дає числа, які можна порівнювати.
+
+Maintenance cost – це конкретна робота: кожна додаткова гілка, спеціальний випадок або інваріант треба зрозуміти під час рев’ю, протестувати при кожній зміні та пояснити колезі. Документація FAQ радить мати покриття тестами перед складними оптимізаціями, які можуть приховувати регресії.[^py314-faq-programming-performance] Тому 2% виграшу, куплені неясним кодом, можуть бути гіршим рішенням, ніж відсутність змін.
+
+Приклад: обробка займає 40 мс за бюджету 50 мс. Варіант дає 2%, тобто `40 * 0.98 = 39.2` мс. Бюджет уже виконано, тож складніший код нічого не виправляє. Якщо ж обробка займає 52 мс, то `52 * 0.98 = 50.96` мс: бюджет усе ще порушено на 0.96 мс, і 2% проблеми не закривають. Відсоток має сенс лише разом із бюджетом.
+
+**Типові помилки:**
+- вважати 2% виграшем без повторних вимірювань і без порівняння з бюджетом;
+- порівнювати варіанти за профайлером, а не за timeit;
+- не записувати latency budget, тож «швидше» стає самоціллю;
+- не враховувати maintenance cost, якщо тести й рев’ю не покривають складний варіант.
 
 ## Environment
 

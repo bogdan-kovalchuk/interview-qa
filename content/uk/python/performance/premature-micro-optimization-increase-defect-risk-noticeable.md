@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -25,20 +25,6 @@ sources:
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-concurrent-futures
-    title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
     accessed: 2026-09-04
     kind: official
     version: "3.14"
@@ -57,22 +43,42 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
 
-**Micro-optimization змінює робочий код на складніший до того, як профайлінг підтвердив, що саме ця ділянка є bottleneck – і часто не впливає на user-visible latency.**[^py314-library-profile] Наприклад, заміна `list.sort()` на hand-written алгоритм, кеширование там, де немає повторних викликів, або передчасний перехід на C extension – все це додає surface area для багів, ускладнює testing і code review, але не змінює end-to-end час, якщо bottleneck знаходиться в іншому місці (I/O, мережа, SQL). <span class="warn">Спочатку `profile` -> знайти hot spot -> потім оптимізувати саме його; інакше effort витрачено на код, який не визначає user experience.</span>
+**Micro-optimization змінює код до того, як профайлінг показав, що саме ця ділянка є bottleneck.**[^py314-faq-programming-performance] Часто така зміна не змінює user-visible latency: кеш для функції, аргументи якої не повторюються, ніколи не дає попадання, але додає пам’ять і код; ручна реалізація замість стандартної або передчасний C extension додають місця для помилок і ускладнюють testing. <span class="warn">Спочатку профайлінг, потім hot spot, потім оптимізація саме його; інакше зусилля піде на код, який не визначає user experience.</span>
 
 ## Detailed explanation
 
-TODO
+Micro-optimization – це локальна зміна, яка прискорює дрібну ділянку: інший спосіб обчислити те саме, ручна реалізація замість стандартної функції, кеш, C-розширення. Пастка в тому, що таку зміну роблять наосліп. FAQ радить спершу знайти hot spots у програмі і прямо каже, що швидший алгоритм дає значно більший виграш, ніж micro-optimization-трюки, розкидані по коду.[^py314-faq-programming-performance] Інструмент для пошуку hot spots – `profile`: його внутрішня статистика часу допомагає знайти hot loops, які варто оптимізувати.[^py314-library-profile]
+
+Defect risk зростає разом зі складністю: у складнішому коді більше гілок і крайніх випадків, які треба тестувати, а без тестів оптимізація легко ламає поведінку, яку ніхто не перевіряє. Тому покриття тестами йде перед складною оптимізацією.[^py314-faq-programming-performance]
+
+Приклад – кеш без повторних аргументів. `lru_cache(maxsize=None)` вимикає обмеження розміру, і кеш може рости без межі.[^py314-library-functools-functools-lru-cache] У коді нижче кожен аргумент новий, тож кеш не дає жодного попадання, а лише накопичує записи:
+
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=None)  # unbounded: every new argument adds an entry
+def parse_id(raw):
+    return int(raw)
+
+for i in range(5):
+    parse_id(str(i))         # every argument is new, so the cache never hits
+print(parse_id.cache_info())
+# CacheInfo(hits=0, misses=5, maxsize=None, currsize=5)
+```
+
+Код коректний, але для цих викликів кеш не дав користі: лишилися пам’ять і зайвий рядок декоратора.
+
+Навіть справді швидша ділянка не змінює end-to-end час, якщо bottleneck в іншому місці: в I/O, мережі чи SQL. Тому спершу профайлінг, потім оптимізація саме hot spot. Інакше зусилля піде на код, який не визначає user experience, а ризик регресій лишиться.
+
+**Типові помилки:**
+- оптимізувати функцію, бо вона «здається повільною», без профайлінгу;
+- додавати кеш, не перевіривши, чи будуть повторні аргументи;
+- переписувати код заради мікровиграшу без тестів на поведінку;
+- вважати, що швидша локальна ділянка автоматично дає швидший запит.
 
 ## Symptom
 

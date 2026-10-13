@@ -1,20 +1,27 @@
 ---
 id: py-perf-0016
 title: "Коли перенесення hot loop у vectorized або native implementation виправдовує boundary-crossing та data-conversion cost?"
-description: "Перенесення виправдане, коли обчислювальна щільність (compute per element) висока, а об'єм даних достатній, щоб перекрити cost переходу Python vs native та конвертації даних."
+description: "Перенесення виправдане, коли обчислювальна щільність (compute per element) висока, а об’єм даних достатній, щоб перекрити cost переходу Python vs native та конвертації даних."
 track: python
 section: performance
 level: senior
 type: practical
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
+  - source_id: py314-library-array
+    title: "Python 3.14: Library/array"
+    url: https://docs.python.org/3.14/library/array.html#module-array
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Опис модуля array: тип, що компактно зберігає масив базових значень одного типу. Не описує вартість конвертації з list."
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
@@ -29,37 +36,9 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-concurrent-futures
-    title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-functools-functools-lru-cache
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
     accessed: 2026-09-04
     kind: official
     version: "3.14"
@@ -68,11 +47,33 @@ sources:
 
 ## Short answer
 
-**Перенесення виправдане, коли обчислювальна щільність (compute per element) висока, а об'єм даних достатній, щоб перекрити cost переходу Python vs native та конвертації даних.**[^py314-library-profile] Типовий поріг – від тисяч елементів на ітерацію для NumPy-векторизації або ще більше для ctypes/pybind11 викликів, де serialization аргументів і результатів додає overhead. Якщо ж hot loop виконує мало роботи на елемент (наприклад, простий арифметичний вираз на 10 елементах), boundary-crossing cost з'їсть весь виграш. Профайлінг `cProfile`/`timeit` на репрезентативних даних – єдиний спосіб перевірити, чи є перехід виправданим.
+**Перенесення hot loop у vectorized або native implementation виправдане, коли, серед інших умов, робота на кожен елемент висока і даних достатньо, щоб перекрити фіксовану вартість переходу з Python та конвертацію даних.** Спершу треба знайти hot spot, і для цього призначений модуль profile.[^py314-faq-programming-performance] Поріг залежить від коду, даних і машини, тому його вимірюють на репрезентативних розмірах: якщо на елемент припадає мало роботи або дані щоразу конвертуються туди й назад, boundary-crossing та data-conversion cost можуть з’їсти весь виграш.
 
 ## Detailed explanation
 
-TODO
+Перенесення циклу в native-код (векторизована бібліотека або C-розширення) має сенс, коли сам цикл є вузьким місцем. FAQ радить знаходити hot spots до будь-якої оптимізації, і для цього призначений модуль profile.[^py314-faq-programming-performance] У profile `tottime` – це час, проведений у самій функції без викликів підфункцій, тож він показує, де зосереджена робота.[^py314-library-profile] Якщо ж цикл займає малу частку часу, перенесення не змінить загальний час, навіть коли сам цикл став значно швидшим.
+
+Вартість переходу складається з фіксованої вартості виклику з Python, конвертації аргументів і результатів та самої роботи. Вигода з’являється, коли робота на елемент велика відносно перших двох. Примітиви, написані на C, зазвичай швидші за власний Python-код: FAQ каже, що стандартна бібліотека ймовірно (але не гарантовано) швидша за альтернативу, яку ви напишете самі, і що це особливо справджується для C-примітивів.[^py314-faq-programming-performance]
+
+Конвертація часто є прихованою вартістю. Модуль `array` описує себе як тип, що компактно зберігає масив базових значень,[^py314-library-array] тож масив, створений зі списку Python-об’єктів, означає копіювання кожного значення:
+
+```python
+from array import array
+
+values = [float(i) for i in range(1_000_000)]  # 1,000,000 Python float objects
+packed = array('d', values)                    # one O(n) conversion into C doubles
+print(packed[:3])                              # array('d', [0.0, 1.0, 2.0])
+```
+
+Якщо такий масив створювати на кожному виклику, конвертація повторюватиметься. При простій арифметиці на елемент вона може зрівнятися з роботою або перевищити її, тож дані краще тримати в native-формі між викликами.
+
+Порівнювати варіанти треба через `timeit` на тих самих даних і розмірах, що в роботі. Документація радить повторювати вимірювання і брати найкращий результат, бо інші програми на машині впливають на час.[^py314-library-timeit] Не варто порівнювати Python-цикл під cProfile із C-функцією: профайлер додає накладні витрати для Python-коду, але не для C-функцій, тож C-код у такому порівнянні виглядає швидшим, ніж є насправді.[^py314-library-profile]
+
+**Типові помилки:**
+- переносити цикл без профайлінгу, коли hot spot насправді в іншому місці;
+- міряти на малих даних, де перехід займає більшість часу, і переносити висновок на великі дані;
+- конвертувати дані туди й назад на кожному кроці;
+- порівнювати час під профайлером із часом C-функції.
 
 ## Environment
 

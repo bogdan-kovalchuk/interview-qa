@@ -1,78 +1,62 @@
 ---
 id: py-perf-0013
 title: "Як task batching та `chunksize` можуть зменшити serialization і scheduling overhead у process pool, але погіршити load balancing?"
-description: "chunksize у ProcessPoolExecutor.map() об'єднує елементи iterable у більші task-и, що зменшує кількість pickle-серіалізацій і IPC-викликів."
+description: "chunksize у ProcessPoolExecutor.map() групує елементи iterable у chunk-и, які надсилаються як окремі задачі: менше накладних витрат на планування, але гірше балансування навантаження."
 track: python
 section: performance
 level: middle
 type: comparison
 tags: [chunksize]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
-  - source_id: py314-library-profile
-    title: "Python 3.14: Library/profile"
-    url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-timeit
-    title: "Python 3.14: Library/timeit"
-    url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-tracemalloc
-    title: "Python 3.14: Library/tracemalloc"
-    url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
-    url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
+    url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.Executor.map
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-faq-programming-performance
-    title: "Python 3.14: Faq/programming"
-    url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-functools-functools-lru-cache
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-stdtypes-common-sequence-operations
-    title: "Python 3.14: Library/stdtypes"
-    url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
+    applicability: "Офіційна документація Python 3.14: map() розбиває iterable на chunk-и, які надсилаються в пул як окремі задачі; для дуже довгих iterable великий chunksize може суттєво покращити продуктивність; у ThreadPoolExecutor chunksize не має ефекту; buffersize з 3.14 обмежує кількість задач без отриманого результату."
 ---
 
 ## Short answer
 
-**`chunksize` у `ProcessPoolExecutor.map()` об'єднує елементи iterable у більші task-и, що зменшує кількість pickle-серіалізацій і IPC-викликів.**[^py314-library-profile] За `chunksize=1` кожен елемент окремо серіалізується та планується – це забезпечує рівномірне завантаження workers, але має високий per-task overhead. Збільшення `chunksize` різко знижує overhead для довгих iterable, проте якщо час виконання елементів відрізняється, деякі workers завершують свої chunk-и швидко й простоюють, поки інші ще обробляють великий chunk. <span class="warn">`chunksize` не впливає на `ThreadPoolExecutor.map()` – там він ігнорується.</span>
+**`chunksize` у `ProcessPoolExecutor.map()` групує елементи iterable у chunk-и, які надсилаються в пул як окремі задачі.**[^py314-library-concurrent-futures] Для дуже довгих iterable великий `chunksize` може суттєво покращити продуктивність[^py314-library-concurrent-futures], бо задач стає менше. За `chunksize=1` (значення за замовчуванням) кожен елемент є окремою задачею: балансування краще, але накладні витрати платяться за кожну задачу. <span class="warn">`chunksize` не впливає на `ThreadPoolExecutor.map()` – там він ігнорується.</span>[^py314-library-concurrent-futures]
 
 ## Detailed explanation
 
-TODO
+`ProcessPoolExecutor` передає кожну задачу в інший процес: функцію й аргументи треба серіалізувати, а результат повернути назад. Фіксовані витрати (повідомлення між процесами, планування) платяться за задачу, а не за елемент. Документація описує механізм: `Executor.map()` розбиває iterable на chunk-и, які надсилаються в пул як окремі задачі, а приблизний розмір chunk-а задає `chunksize`.[^py314-library-concurrent-futures]
+Розмір chunk-а змінює кількість задач:
+
+```python
+from concurrent.futures import ProcessPoolExecutor
+
+
+def square(x):
+    return x * x
+
+
+if __name__ == '__main__':
+    with ProcessPoolExecutor(max_workers=4) as pool:
+        # chunksize=1 (default): 10 000 items -> 10 000 separate tasks
+        list(pool.map(square, range(10_000)))
+        # chunksize=500: 10 000 items -> 20 tasks of up to 500 items each
+        list(pool.map(square, range(10_000), chunksize=500))
+```
+
+Вибір розміру – компроміс. Великий chunk зменшує кількість задач, але робить одиницю роботи грубішою. Нехай є 1000 елементів, 4 workers і `chunksize=250`: вийде 4 chunk-и, по одному на worker. Якщо всі повільні елементи потрапили в перший chunk, один worker працює довго, а три інші простоюють після завершення своїх chunk-ів. З `chunksize=1` ті самі 1000 задач розбирають вільні workers, тож балансування краще, але накладні витрати платяться 1000 разів.
+
+Виграш залежить від співвідношення вартості елемента до фіксованих витрат. Якщо елемент коштує значно більше за пересилання, `chunksize` майже не змінює картини; якщо тривалість елементів сильно різниться, великий chunk шкодить. Універсального числа немає, тож значення вимірюють на реальних даних. У `ThreadPoolExecutor` chunksize ігнорується. З 3.14 `map()` має параметр `buffersize`, який обмежує кількість задач без отриманого результату; це не спосіб групувати задачі, а обмеження їхньої кількості в черзі.[^py314-library-concurrent-futures]
+
+**Типові помилки:**
+- шукати параметр `chunksize` у `submit()`: його там немає, батчі формують вручну;
+- ставити великий `chunksize` для нерівномірних задач і отримувати простої наприкінці;
+- міряти на короткому iterable, де переважають запуск пулу й старт процесів.
 
 ## Comparison
 
