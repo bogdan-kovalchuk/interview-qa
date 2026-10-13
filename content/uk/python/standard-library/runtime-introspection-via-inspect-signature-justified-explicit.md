@@ -1,37 +1,23 @@
 ---
 id: py-stdlib-0017
 title: "Коли runtime introspection через `inspect.signature()` виправдана, а коли explicit protocol зменшує coupling до implementation details?"
-description: "inspect.signature() виправдана у generic-фреймворках (DI-контейнери, декоратори, wrapper-и), які мають адаптуватися до довільних callable без заздалегідь відомого інтерфейсу."
+description: "inspect.signature() виправдана в generic-інструментах (DI-контейнери, decorators, wrapper-и), які приймають callable без заздалегідь відомого інтерфейсу; для відомого компонента краще explicit Protocol."
 track: python
 section: standard-library
 level: senior
 type: comparison
 tags: [inspect-signature]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 applies_to:
   - product: "CPython"
     version: null
 anki:
   export: true
 sources:
-  - source_id: py314-library-collections
-    title: "Python 3.14: Library/collections"
-    url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-itertools
-    title: "Python 3.14: Library/itertools"
-    url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
@@ -39,43 +25,74 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-pathlib
-    title: "Python 3.14: Library/pathlib"
-    url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
+  - source_id: py314-library-inspect-inspect-signature
+    title: "Python 3.14: Library/inspect"
+    url: https://docs.python.org/3.14/library/inspect.html#inspect.signature
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-datetime
-    title: "Python 3.14: Library/datetime"
-    url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
+    applicability: "Офіційна документація Python 3.14: inspect.signature() повертає Signature, піднімає ValueError, коли сигнатуру отримати не можна, і йде за __wrapped__ за замовчуванням (follow_wrapped)."
+  - source_id: py314-library-typing-protocol
+    title: "Python 3.14: Library/typing (typing.Protocol)"
+    url: https://docs.python.org/3.14/library/typing.html#typing.Protocol
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: py314-library-re
-    title: "Python 3.14: Library/re"
-    url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
-  - source_id: owasp-regular-expression-denial-of-service-redos
-    title: "OWASP: Regular Expression Denial of Service REDOS"
-    url: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Матеріал спільноти OWASP з безпеки застосунків."
+    applicability: "Офіційна документація Python 3.14: клас Protocol для structural subtyping, який застосовують static type checkers. Не описує runtime-перевірку сигнатур."
 ---
 
 ## Short answer
 
-**`inspect.signature()` виправдана у generic-фреймворках (DI-контейнери, декоратори, wrapper-и), які мають адаптуватися до довільних callable без заздалегідь відомого інтерфейсу.**[^py314-library-collections] Якщо ж компоненту потрібна лише певна поведінка (наприклад, метод `.read()`), explicit `Protocol` або ABC дає статичну перевірку типів і не прив'язує код до конкретної сигнатури. Introspection також залежить від CPython-деталей (наприклад, `__wrapped__`) і може не працювати з C-extension.
+**`inspect.signature()` виправдана в generic-інструментах (DI-контейнери, decorators, wrapper-и), які мають приймати довільні callable без заздалегідь відомого інтерфейсу.**[^py314-library-inspect-inspect-signature] Якщо компоненту потрібна лише певна поведінка, explicit `Protocol` описує її в коді, а type checker перевіряє реалізації, тож залежність іде від контракту, а не від імен параметрів конкретного класу.[^py314-library-typing-protocol] `signature()` читає сигнатуру, яку оголосила реалізація, і піднімає `ValueError`, коли сигнатуру отримати не можна.[^py314-library-inspect-inspect-signature]
 
 ## Detailed explanation
 
-TODO
+`inspect.signature(callable)` повертає об’єкт `Signature` з іменами параметрів, їхніми значеннями за замовчуванням і анотаціями.[^py314-library-inspect-inspect-signature] Це інтроспекція під час виконання: код дізнається сигнатуру, коли програма вже працює. Такий підхід доречний там, де код не знає callable заздалегідь. DI-контейнер, наприклад, збирає аргументи конструктора за іменами.
+
+Ціна такого рішення – залежність від реалізації. Контейнер нижче зіставляє ключі реєстру з іменами параметрів. Якщо перейменовано обов’язковий параметр, виклик падає з `TypeError` лише під час виконання. Якщо ж перейменовано параметр зі значенням за замовчуванням, помилки немає: контейнер мовчки передає значення за замовчуванням, і результат хибний (`('db', 8080)` замість `('db', 5432)`). Жодна статична перевірка цього не бачить, бо реєстр – звичайний `dict`.
+
+```python
+import inspect
+
+class Server:
+    def __init__(self, host: str, port: int = 8080):
+        self.address = (host, port)
+
+def build(factory, registry):
+    # Runtime introspection: the container reads parameter names.
+    params = inspect.signature(factory).parameters
+    kwargs = {name: registry[name] for name in params if name in registry}
+    return factory(**kwargs)
+
+print(build(Server, {"host": "db", "port": 5432}).address)  # ('db', 5432)
+
+class RenamedHost:  # required parameter renamed: the call fails
+    def __init__(self, hostname: str, port: int = 8080):
+        self.address = (hostname, port)
+
+try:
+    build(RenamedHost, {"host": "db", "port": 5432})
+except TypeError as error:
+    print(error)  # RenamedHost.__init__() missing 1 required positional argument: 'hostname'
+
+class RenamedPort:  # defaulted parameter renamed: no error, the default is used silently
+    def __init__(self, host: str, portnum: int = 8080):
+        self.address = (host, portnum)
+
+print(build(RenamedPort, {"host": "db", "port": 5432}).address)  # ('db', 8080)
+```
+
+Explicit protocol зменшує цю залежність. Споживач описує поведінку, яка йому потрібна, а `typing.Protocol` дозволяє type checker перевірити, що клас їй відповідає, без явного успадкування.[^py314-library-typing-protocol] Реалізація може змінювати внутрішні деталі, а споживач не читає її сигнатуру під час виконання. Для коду застосунку, де інтерфейс відомий заздалегідь, це зазвичай кращий кордон.
+
+Інтроспекція має власні межі. `signature()` піднімає `ValueError`, коли сигнатуру отримати не можна, і `TypeError`, коли тип об’єкта не підтримується.[^py314-library-inspect-inspect-signature] За спостереженням у CPython 3.13 і 3.14, `inspect.signature(dict)` і `inspect.signature(int)` дають `ValueError`: для цих builtin-типів сигнатури немає. За замовчуванням функція йде за атрибутом `__wrapped__`, який додає `functools.wraps`,[^py314-library-functools] тому wrapper показує сигнатуру оригіналу. Якщо передати `follow_wrapped=False`, видно сигнатуру самого wrapper, тобто `(*args, **kwargs)`.[^py314-library-inspect-inspect-signature]
+
+Практичне правило: використовуйте introspection на межі, де тип справді невідомий, і обробляйте її помилки. Там, де інтерфейс відомий заздалегідь, явний Protocol або звичайний параметр з анотацією робить залежність видимою і перевіреною до запуску.
+
+**Типові помилки:**
+- вважати, що `signature()` описує контракт, а не поточний стан коду: перейменування параметра змінює результат без попередження;
+- використовувати `signature()` там, де інтерфейс відомий заздалегідь, і отримувати зайву залежність від імен параметрів;
+- не обробляти `ValueError` і `TypeError` у контейнері, який приймає довільні callable;
+- обгорнути функцію без `functools.wraps` і через це сховати її справжню сигнатуру від introspection.
 
 ## Comparison
 

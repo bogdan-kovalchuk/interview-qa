@@ -8,10 +8,10 @@ level: senior
 type: pitfall
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -50,15 +50,70 @@ sources:
     kind: official
     version: null
     applicability: "Official mutmut (mutation testing) documentation."
+  - source_id: pytest-how-to-fixtures-scopes
+    title: "pytest documentation: How-to guides, Fixtures, Fixture scopes"
+    url: https://docs.pytest.org/en/stable/how-to/fixtures.html#fixture-scopes
+    accessed: 2026-10-13
+    kind: official
+    version: null
+    applicability: "Official pytest documentation: fixture scope values and when a fixture is destroyed."
+  - source_id: pytest-how-to-fixtures-yield
+    title: "pytest documentation: How-to guides, Fixtures, yield fixtures"
+    url: https://docs.pytest.org/en/stable/how-to/fixtures.html#yield-fixtures-recommended
+    accessed: 2026-10-13
+    kind: official
+    version: null
+    applicability: "Official pytest documentation: code after yield in a fixture runs as teardown."
 ---
 
 ## Short answer
 
-TODO
+**A fixture with `scope="module"` or `scope="session"` creates one instance for the whole module or session, so a mutable value (dict, list, DB connection) changed by one test is seen by the later tests in that scope.**[^pytest-how-to-fixtures-scopes]
+
+```python
+import pytest
+
+@pytest.fixture(scope="module")
+def shared_cache():
+    return {}  # one dict shared by every test in the module
+
+def test_a(shared_cache):
+    shared_cache["key"] = "value"
+
+def test_b(shared_cache):
+    assert "key" not in shared_cache  # AssertionError if test_a ran first
+```
+
+Such tests become order-dependent: run alone or in another order, they behave differently. For mutable state, use the `function` scope or reset the state after each test.
 
 ## Detailed explanation
 
-TODO
+A fixture is a function whose result pytest caches for a given scope. The default scope is `function`, so the fixture is created again for each test. The `module` and `session` scopes mean one instance for the whole module or the whole session: pytest creates it when a test first requests it and destroys it during the teardown after the last test in that scope.[^pytest-how-to-fixtures-scopes] Sharing is the effect of a wider scope: every test in the scope receives the same object, not a copy.
+
+Sharing only causes harm when the object can change. A number, a string, a `frozenset`, or a `tuple` whose elements are immutable is safe to share, but a `dict`, a `list`, a `tuple` holding a list, or a database connection is not: a test that adds a key or a row hands the changed state to the tests that run after it. Example: `test_b` passes when run alone but fails when `test_a` ran before it.
+
+```python
+import pytest
+
+@pytest.fixture(scope="module")
+def shared_cache():
+    return {}  # one dict shared by every test in the module
+
+def test_a(shared_cache):
+    shared_cache["key"] = "value"
+
+def test_b(shared_cache):
+    assert "key" not in shared_cache  # AssertionError if test_a ran first
+```
+
+This is an order-dependent test. Its result depends not on its own code but on what other tests did to the same object earlier. The bug appears only when the tests run together in a particular order, so a single run of `test_b` looks green.
+
+The fix depends on what is stored. If the fixture is cheap to build, make it `function`-scoped so that each test gets its own dict. If creation is expensive (a database, a network connection), keep the wide scope for the resource and roll the state back after each test: for example, a function-scoped fixture opens a transaction and rolls it back at the end of the test. Code after `yield` runs in the teardown, when the fixture is destroyed.[^pytest-how-to-fixtures-yield] For `scope="module"` that happens once, after the module's last test, so it does not reset the state between the tests of the module; for a `function`-scoped fixture, destruction happens after every test.[^pytest-how-to-fixtures-scopes]
+
+**Common mistakes:**
+- assuming that `scope="module"` isolates tests: it isolates modules from each other, not the tests inside one module;
+- calling the failure "flaky" and re-running the test instead of looking for the shared mutable state;
+- widening the `scope` "for speed" without checking whether the tests write to the fixture's value.
 
 ## Symptom
 

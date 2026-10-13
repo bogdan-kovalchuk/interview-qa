@@ -8,71 +8,65 @@ level: middle
 type: comparison
 tags: [os, pathlib]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
-  - source_id: py314-library-collections
-    title: "Python 3.14: Library/collections"
-    url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
+  - source_id: py314-library-os-open
+    title: "Python 3.14: Library/os"
+    url: https://docs.python.org/3.14/library/os.html#os.open
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-itertools
-    title: "Python 3.14: Library/itertools"
-    url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
+    applicability: "Official Python 3.14 documentation, os.open: returns the file descriptor of the opened file; opening flags."
+  - source_id: py314-library-os-scandir
+    title: "Python 3.14: Library/os"
+    url: https://docs.python.org/3.14/library/os.html#os.scandir
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-functools
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
+    applicability: "Official Python 3.14 documentation, os.scandir: the function accepts a path-like object."
+  - source_id: py314-library-os-fspath
+    title: "Python 3.14: Library/os"
+    url: https://docs.python.org/3.14/library/os.html#os.fspath
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-pathlib
-    title: "Python 3.14: Library/pathlib"
-    url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-datetime
-    title: "Python 3.14: Library/datetime"
-    url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-re
-    title: "Python 3.14: Library/re"
-    url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: owasp-regular-expression-denial-of-service-redos
-    title: "OWASP: Regular Expression Denial of Service REDOS"
-    url: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "OWASP application-security community material."
+    applicability: "Official Python 3.14 documentation, os.fspath: returns str or bytes; for a path-like object it calls __fspath__()."
 ---
 
 ## Short answer
 
-TODO
+**`pathlib` is more convenient for manipulating paths and building new ones, while `os` is still needed for low-level operations on file descriptors, such as `os.open()` and `os.fstat()`.**[^py314-library-os-open] `os.scandir()` accepts path-like objects, so a `Path` can be passed to it without conversion.[^py314-library-os-scandir] When an API requires a str, use `os.fspath(path)`, which returns a string.[^py314-library-os-fspath]
 
 ## Detailed explanation
 
-TODO
+Both modules work with the same files, so the choice depends on what you are doing. `pathlib` models a path as an object: a `Path` has methods for building, checking, and reading, and the code reads as a statement of intent. `os` is closer to the system calls: `os.open()` returns an integer file descriptor, and `os.fstat()` reads the metadata of that descriptor.[^py314-library-os-open] `Path` has neither `fstat()` nor `fileno()`, so `os` remains necessary for such operations.
+
+The example combines both approaches: `os.open()` accepts a `Path`, while `os.environ` needs a string:
+
+```python
+import os
+from pathlib import Path
+
+script = Path(__file__)
+fd = os.open(script, os.O_RDONLY)        # os.open accepts a Path and returns an int descriptor
+print(os.fstat(fd).st_size > 0)          # True; pathlib has no fstat()
+os.close(fd)
+os.environ["SCRIPT"] = os.fspath(script) # env values must be str; a bare Path raises TypeError
+```
+
+Moving between the two is mostly straightforward. `os.scandir()` accepts a path-like object, so a `Path` can be passed directly.[^py314-library-os-scandir] In the other direction, an explicit step is needed where an API expects a str: `os.fspath()` returns a string for a path-like object, and returns an existing str or bytes unchanged.[^py314-library-os-fspath] Without that step, assigning a `Path` to `os.environ` raises `TypeError: str expected, not PosixPath`, because environment variable values must be str.
+
+In practice, `pathlib` is a sensible default, since it reads better and offers `glob()`, `rglob()`, and `suffix`. `os` is appropriate when you need a file descriptor or a low-level call that `pathlib` does not provide.[^py314-library-os-open]
+
+**Common mistakes:**
+- passing a `Path` where a str is expected, such as `os.environ`, without `os.fspath()`;
+- assuming `pathlib` replaces all of `os`: `Path` has no file-descriptor-level operations such as `os.open()` or `os.fstat()`;
+- mixing a `Path` and a string in one expression: `Path("report") + ".txt"` raises `TypeError`; use `with_name()` to change the name.
 
 ## Comparison
 

@@ -8,71 +8,75 @@ level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
-  - source_id: py314-library-collections
-    title: "Python 3.14: Library/collections"
-    url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
+  - source_id: py314-library-logger-hierarchy
+    title: "Python 3.14: Library/logging, Logger Objects"
+    url: https://docs.python.org/3.14/library/logging.html#logger-objects
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-itertools
-    title: "Python 3.14: Library/itertools"
-    url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
+    applicability: "Official Python 3.14 documentation: getLogger with the same name returns the same Logger; dotted names form an ancestor hierarchy, and root is the ancestor of all loggers."
+  - source_id: py314-library-logging-logger-propagate
+    title: "Python 3.14: Library/logging, Logger.propagate"
+    url: https://docs.python.org/3.14/library/logging.html#logging.Logger.propagate
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-functools
-    title: "Python 3.14: Library/functools"
-    url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
+    applicability: "Official Python 3.14 documentation: records are passed to the handlers of ancestor loggers when propagate is true; the levels and filters of the ancestors are not considered for this."
+  - source_id: py314-library-logging-basicconfig
+    title: "Python 3.14: Library/logging, basicConfig"
+    url: https://docs.python.org/3.14/library/logging.html#logging.basicConfig
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-pathlib
-    title: "Python 3.14: Library/pathlib"
-    url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
+    applicability: "Official Python 3.14 documentation: basicConfig does nothing if the root logger already has handlers, unless force=True is given."
+  - source_id: py314-howto-logging-library
+    title: "Python 3.14: Howto/logging, Configuring Logging for a Library"
+    url: https://docs.python.org/3.14/howto/logging.html#configuring-logging-for-a-library
+    accessed: 2026-10-13
     kind: official
     version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-datetime
-    title: "Python 3.14: Library/datetime"
-    url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: py314-library-re
-    title: "Python 3.14: Library/re"
-    url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
-  - source_id: owasp-regular-expression-denial-of-service-redos
-    title: "OWASP: Regular Expression Denial of Service REDOS"
-    url: https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "OWASP application-security community material."
+    applicability: "Official Python 3.14 documentation (logging HOWTO): a library should not add handlers other than a NullHandler on its top-level logger, and should not log to the root logger."
 ---
 
 ## Short answer
 
-TODO
+**`logging.getLogger(__name__)` returns a logger inside the package hierarchy: `mylib.parser` is a descendant of `mylib`, and every logger is a descendant of root.**[^py314-library-logger-hierarchy] Records are passed to the handlers of ancestor loggers, whose levels and filters are ignored for this.[^py314-library-logging-logger-propagate] So a `basicConfig()` call or a root handler added at import time changes the output of every record that reaches root.[^py314-library-logging-basicconfig] A library only creates log events: the HOWTO advises a `NullHandler` only on the top-level logger (for example `mylib`) and no other handlers.[^py314-howto-logging-library]
 
 ## Detailed explanation
 
-TODO
+A logger name is a dotted hierarchy. `mylib` is an ancestor of `mylib.parser`, and root is an ancestor of every logger, so a record created in `mylib.parser` travels up the chain.[^py314-library-logger-hierarchy] The handlers of that logger process the record first, and then the handlers of its ancestors receive it, as long as `propagate` is true. The levels and filters of the ancestors are not checked along the way.[^py314-library-logging-logger-propagate] That is why a library's record reaches the application's handlers even when the library knows nothing about them.
+
+Why root must not be configured at import: `basicConfig()` adds a handler to root and sets the level of the root logger, so the library makes the output decision instead of the application. If the library calls it first, a later call from the application changes nothing, because root already has handlers, unless `force=True` is passed.[^py314-library-logging-basicconfig]
+
+An example, run on CPython 3.13 and 3.14:
+
+```python
+import logging
+
+# Library side: a named logger, and a NullHandler on the package logger. No basicConfig().
+log = logging.getLogger("mylib.parser")
+logging.getLogger("mylib").addHandler(logging.NullHandler())
+
+log.warning("bad line")                               # no output: the NullHandler on "mylib" handles the record
+
+# Application side: the only place that decides where and how logs are shown.
+logging.basicConfig(level=logging.INFO, format="%(name)s %(levelname)s %(message)s")
+log.warning("bad line")                               # mylib.parser WARNING bad line
+```
+
+The first `warning` call is silent, because the `NullHandler` on `mylib` handles the record and prints nothing. After `basicConfig()`, the application decides the format and the level, and the same record comes out in its format. The library controls only its own loggers, not the output of the process.[^py314-howto-logging-library]
+
+**Common mistakes:**
+- calling `basicConfig()` in a library module: the application's later call becomes a no-op, so it cannot set the format.[^py314-library-logging-basicconfig]
+- adding handlers to library loggers other than a `NullHandler` on the top-level logger: the HOWTO forbids this[^py314-howto-logging-library], and when the application configures root, each record is printed twice, because `propagate` passes it on.[^py314-library-logging-logger-propagate]
+- logging to the root logger from library code: the application can then not set the level or handlers for that library separately.[^py314-howto-logging-library]
 
 ## Comparison
 

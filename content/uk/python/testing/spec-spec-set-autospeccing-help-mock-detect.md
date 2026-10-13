@@ -1,17 +1,17 @@
 ---
 id: py-testing-0012
 title: "Як `spec`, `spec_set` та autospeccing допомагають mock виявляти drift від real interface?"
-description: "spec обмежує доступ лише атрибутами реального об'єкта, spec_set додатково забороняє встановлювати неіснуючі атрибути, а autospeccing рекурсивно копіює інтерфейс і сигнатури."
+description: "spec обмежує доступ лише атрибутами реального об’єкта, spec_set додатково забороняє встановлювати неіснуючі атрибути, а autospeccing рекурсивно копіює інтерфейс і сигнатури."
 track: python
 section: testing
 level: middle
 type: mechanism
 tags: [spec, spec-set]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -50,15 +50,67 @@ sources:
     kind: official
     version: null
     applicability: "Офіційна документація mutmut (mutation testing)."
+  - source_id: py314-library-unittest-mock-mock-class
+    title: "Python 3.14: Library/unittest.mock, Mock class"
+    url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: параметри spec і spec_set класу Mock; список імен береться з dir() об’єкта, а його сигнатура використовується для зіставлення викликів."
+  - source_id: py314-library-unittest-mock-autospeccing
+    title: "Python 3.14: Library/unittest.mock, Autospeccing"
+    url: https://docs.python.org/3.14/library/unittest.mock.html#autospeccing
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: autospeccing копіює інтерфейс і сигнатури; виклик з неправильними аргументами дає TypeError."
 ---
 
 ## Short answer
 
-**`spec` обмежує доступ лише атрибутами реального об'єкта, `spec_set` додатково забороняє встановлювати неіснуючі атрибути, а autospeccing рекурсивно копіює інтерфейс і сигнатури.**[^py314-library-unittest] Завдяки цьому звернення до видаленого/перейменованого методу чи виклик із неправильною кількістю аргументів підніме `AttributeError` / `TypeError` у тесті, а не пройде непомічено.
+**`spec` дає доступ лише до атрибутів реального об’єкта, `spec_set` забороняє також записувати неіснуючі атрибути.**[^py314-library-unittest-mock-mock-class] Autospeccing рекурсивно копіює інтерфейс і сигнатури.[^py314-library-unittest-mock-autospeccing] Читання неіснуючого атрибута в mock зі `spec` або `spec_set` підніме `AttributeError`. `TypeError` на неправильні аргументи дає лише autospeccing (`create_autospec` або `patch(..., autospec=True)`), тож дрейф інтерфейсу видно в тесті.[^py314-library-unittest-mock-autospeccing]
 
 ## Detailed explanation
 
-TODO
+Звичайний `Mock()` приймає будь-який атрибут і будь-які аргументи: він створює атрибут при першому зверненні. Тому тест, який звертається до старого імені методу на mock, пройде, навіть коли реальний клас уже перейменовано. Документація описує саме цю проблему: тести з mock-об’єктами можуть проходити, поки код уже зламаний.[^py314-library-unittest-mock-autospeccing]
+
+Параметр `spec` задає, які імена існують. Mock береться зі списку `dir()` об’єкта (класу, екземпляра або функції), і читання атрибута поза цим списком дає `AttributeError`. Запис при цьому не обмежений: `spec` дозволяє присвоїти будь-який атрибут, а `spec_set` забороняє й запис.[^py314-library-unittest-mock-mock-class]
+
+Приклад: читання й запис на mock зі `spec`, `spec_set` і autospec.
+
+```python
+from unittest import mock
+
+class Repo:
+    def save(self, item):
+        return item
+
+spec_mock = mock.Mock(spec=Repo)
+spec_mock.delete = 1            # allowed: spec restricts reads, not writes
+try:
+    spec_mock.remove            # Repo has no 'remove'
+except AttributeError as e:
+    print(e)                    # Mock object has no attribute 'remove'
+
+spec_set_mock = mock.Mock(spec_set=Repo)
+try:
+    spec_set_mock.delete = 1    # spec_set also blocks writes
+except AttributeError as e:
+    print(e)                    # Mock object has no attribute 'delete'
+
+autospec_mock = mock.create_autospec(Repo, instance=True)
+try:
+    autospec_mock.save()        # the copied signature requires 'item'
+except TypeError as e:
+    print(e)                    # missing a required argument: 'item'
+```
+
+`create_autospec` (і `patch(..., autospec=True)`) копіює інтерфейс рекурсивно: методи отримують сигнатуру оригіналу, тому неправильна кількість аргументів дає `TypeError`.[^py314-library-unittest-mock-autospeccing] Звичайний `spec` цього не робить: він не відхиляє виклик з неправильними аргументами, а сигнатуру використовує, щоб зіставляти виклики.[^py314-library-unittest-mock-mock-class] Перевірка сигнатури – окремий механізм, і його треба вмикати свідомо.
+
+**Типові помилки:**
+- `Mock()` без spec у тестах, де важлива відповідність реальному API: такий тест не помітить перейменування;
+- `spec=Repo` для атрибута, який створюється в `__init__` (`self.conn = ...`): клас його не містить, тож читання дає `AttributeError`, хоча на екземплярі атрибут є (перевірено на 3.13 і 3.14); тоді беріть `spec` від екземпляра, якщо його створення безпечне;
+- вважати, що звичайний `spec` перевіряє сигнатури викликів: `TypeError` дає лише autospeccing.
 
 ## Evaluation guide
 
