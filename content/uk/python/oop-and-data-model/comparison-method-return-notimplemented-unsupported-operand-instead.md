@@ -1,17 +1,17 @@
 ---
 id: py-oop-0023
 title: "Чому comparison method має повертати `NotImplemented` для непідтримуваного operand замість негайного `False` або exception?"
-description: "NotImplemented дозволяє інтерпретатору спробувати reflected operation на іншому operandі, що підтримує cooperative comparison між різними типами."
+description: "Якщо comparison method повертає NotImplemented, інтерпретатор пробує reflected method другого operand; якщо й той відмовляється, == і != порівнюють ідентичність, а порядкові оператори дають TypeError."
 track: python
 section: oop-and-data-model
 level: senior
 type: mechanism
 tags: [notimplemented]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -43,15 +43,69 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
+  - source_id: py314-reference-datamodel-object-eq
+    title: "Python 3.14: Reference/datamodel"
+    url: https://docs.python.org/3.14/reference/datamodel.html#object.__eq__
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: rich comparison methods, reflected method другого operand, fallback == і != до is і is not, і значення за замовчуванням object."
+  - source_id: py314-reference-datamodel-notimplemented
+    title: "Python 3.14: Reference/datamodel"
+    url: https://docs.python.org/3.14/reference/datamodel.html#notimplemented
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: NotImplemented і його поведінка в булевому контексті (застаріло з 3.9, TypeError з 3.14)."
+  - source_id: py314-reference-expressions-value-comparisons
+    title: "Python 3.14: Reference/expressions"
+    url: https://docs.python.org/3.14/reference/expressions.html#value-comparisons
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: value comparisons, зокрема відсутність стандартного порядкового оператора, спроба якого дає TypeError."
 ---
 
 ## Short answer
 
-**`NotImplemented` дозволяє інтерпретатору спробувати reflected operation на іншому operandі, що підтримує cooperative comparison між різними типами.**[^py314-reference-datamodel] Якщо обидва operands повертають `NotImplemented`, для `==` та `!=` відбувається fallback до `is` та `is not`, а для інших операторів (`<`, `>` тощо) виникає `TypeError`. Повернення `False` або exception негайно блокує можливість іншого типу обробити операцію.
+**Comparison method повертає `NotImplemented`, коли не підтримує другий operand, і тоді інтерпретатор пробує reflected method другого operand.**[^py314-reference-datamodel-object-eq] Якщо й він повертає `NotImplemented`, `==` і `!=` порівнюють ідентичність через `is` і `is not`.[^py314-reference-datamodel-object-eq] Порядкові оператори в такому випадку викликають `TypeError` (у CPython). Повернення `False` замість `NotImplemented` закриває шлях для другого operand.[^py314-reference-datamodel-object-eq]
 
 ## Detailed explanation
 
-TODO
+Для `a == b` зазвичай спершу викликається `type(a).__eq__(a, b)`. Якщо типи різні і тип правого operand є прямим або непрямим підкласом типу лівого, спершу викликається reflected method правого operand. `__eq__` є власним reflection, тому другий виклик – це `type(b).__eq__(b, a)`.[^py314-reference-datamodel-object-eq] Якщо жоден метод не повертає значення, відмінне від `NotImplemented`, `==` і `!=` переходять до `is` і `is not`.[^py314-reference-datamodel-object-eq]
+
+Важлива відмінність – у значенні `False`. Це остаточна відповідь, і другий метод не викликається. `NotImplemented` означає «цей тип не знає про такий operand», і рішення переходить до іншого боку. Приклад показує обидві поведінки:
+
+```python
+class Strict:
+    def __eq__(self, other):
+        return False                  # final answer: the reflected method is never tried
+
+class Lenient:
+    def __eq__(self, other):
+        return NotImplemented         # "not mine": the other operand decides
+
+class Accepting:
+    def __eq__(self, other):
+        return True
+
+print(Strict() == Accepting())        # False: Strict answered first
+print(Lenient() == Accepting())       # True: Accepting.__eq__ is tried next
+print(Lenient() == 1)                 # False: both sides gave NotImplemented, so == uses is
+```
+
+`Strict` відповідає одразу, тож `Accepting` ніхто не питає. `Lenient` повертає `NotImplemented`, і рішення передається `Accepting.__eq__`. Третій рядок показує fallback: якщо обидва operand відмовились, `==` порівнює ідентичність.
+
+Виняток у `__eq__` гірший: `a == b` з будь-яким «чужим» об’єктом (також `in`, `list.index`) падає, і reflected method другого operand не отримує шансу.
+
+Для порядкових операторів fallback до ідентичності немає. Документація каже, що стандартного порядкового оператора немає і спроба його використати дає `TypeError`.[^py314-reference-expressions-value-comparisons] У CPython, якщо обидва operand повертають `NotImplemented` для `<`, повідомлення містить назви обох типів, наприклад `'<' not supported between instances of 'A' and 'int'`.
+
+`NotImplemented` не можна використовувати в булевому контексті. До Python 3.14 це було застаріло (DeprecationWarning з 3.9), а в 3.14 `bool(NotImplemented)` викликає `TypeError`.[^py314-reference-datamodel-notimplemented] Тому `if self.__eq__(other):` у 3.14 падає з `TypeError`, якщо метод повернув `NotImplemented`.
+
+**Типові помилки:**
+- повертати `None` або `False` замість `NotImplemented` для непідтримуваного типу: `__eq__`, що повертає `None`, дає `None` як результат `==`, а `False` закриває другий operand;
+- очікувати від `==` з непідтримуваним типом `TypeError`: `==` дає `False`, а `TypeError` виникає для порядкових операторів;
+- писати `if self.__eq__(other):` або `bool(NotImplemented)`: у 3.9–3.13 це DeprecationWarning, а в 3.14 – `TypeError`.
 
 ## Evaluation guide
 

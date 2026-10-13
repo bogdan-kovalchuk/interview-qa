@@ -1,17 +1,17 @@
 ---
 id: py-itergen-0001
 title: "How does an iterable differ from an iterator, and what methods make up their respective protocols?"
-description: "How does an iterable differ from an iterator, and what methods make up their respective protocols?"
+description: "An iterable provides an iterator, usually through __iter__(); an iterator keeps state, returns items through __next__(), and is itself iterable."
 track: python
 section: iterators-and-generators
 level: middle
 type: comparison
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  uk: 1
+  uk: 2
 anki:
   export: true
 sources:
@@ -36,15 +36,68 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Official Python 3.14 documentation."
+  - source_id: py314-reference-datamodel-object-getitem
+    title: "Python 3.14: Reference/datamodel"
+    url: https://docs.python.org/3.14/reference/datamodel.html#object.__getitem__
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Official Python 3.14 documentation: the sequence iteration protocol expects an IndexError for an illegal index as the end of the sequence."
+  - source_id: py314-glossary-term-iterable
+    title: "Python 3.14: Glossary"
+    url: https://docs.python.org/3.14/glossary.html#term-iterable
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Official Python 3.14 documentation: the definition of iterable, including objects with __getitem__() that implement sequence semantics."
+  - source_id: py314-glossary-term-iterator
+    title: "Python 3.14: Glossary"
+    url: https://docs.python.org/3.14/glossary.html#term-iterator
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Official Python 3.14 documentation: the definition of iterator; every iterator is also iterable because its __iter__() returns the iterator itself."
+  - source_id: py314-library-functions-iter
+    title: "Python 3.14: Library/functions"
+    url: https://docs.python.org/3.14/library/functions.html#iter
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Official Python 3.14 documentation: the requirements on the iter() argument, either the iteration protocol (__iter__()) or the sequence protocol (__getitem__() with integer arguments starting at 0)."
 ---
 
 ## Short answer
 
-TODO
+**An iterable is an object from which an iterator can be obtained, usually through `__iter__()`.**[^py314-glossary-term-iterable] An iterator keeps state and returns items one at a time through `__next__()`; when the items run out, it raises `StopIteration`.[^py314-glossary-term-iterator] Every iterator is also iterable, because its `__iter__()` returns the iterator itself.[^py314-glossary-term-iterator] Not every iterable is an iterator: `list`, `tuple` and `str` have `__iter__()` but no `__next__()`.
 
 ## Detailed explanation
 
-TODO
+An iterable and an iterator are two different concepts that are easy to confuse, because every iterator is also an iterable. An iterable is an object that can hand out its elements one at a time. It includes all sequences (for example `list`, `str` and `tuple`) and any class that defines `__iter__()` or a `__getitem__()` that behaves like a sequence.[^py314-glossary-term-iterable] For an iterable, the key ability is to create an iterator. The built-in `iter()` accepts an object that supports the iteration protocol (`__iter__()`) or the sequence protocol (`__getitem__()` with integer arguments starting at 0).[^py314-library-functions-iter]
+
+An iterator is an object with state: it remembers which element it stopped at. Its protocol has two methods. `__iter__()` returns the iterator itself, which lets it be used in `for` and `in` just like a container. `__next__()` returns the next element, and when there are no more, it raises `StopIteration`.[^py314-library-stdtypes-iterator-types] The following example shows both roles on a `list`:
+
+```python
+nums = [1, 2, 3]
+print(hasattr(nums, '__next__'))     # False: a list is iterable, not an iterator
+it = iter(nums)                      # calls nums.__iter__() and returns a new iterator
+print(type(it).__name__)             # list_iterator
+print(hasattr(it, '__next__'))       # True
+print(iter(it) is it)                # True: an iterator's __iter__() returns itself
+print(next(it), next(it), next(it))  # 1 2 3
+try:
+    next(it)
+except StopIteration:
+    print('StopIteration')           # the iterator is exhausted
+```
+
+After `__next__()` raises `StopIteration`, every later call must raise it again.[^py314-library-stdtypes-iterator-types] An iterator does not restart. To go over the same data again, you need a new iterator, which `iter()` creates from the iterable.
+
+Not every iterable has `__iter__()`. A class that has only `__getitem__()` also works with `iter()`, through the sequence protocol. For such a class, the iterator calls `__getitem__(0)`, `__getitem__(1)` and so on.[^py314-library-functions-iter] In CPython it stops when `__getitem__()` raises `IndexError`.[^py314-reference-datamodel-object-getitem] Having only `__iter__()` does not make an object an iterator: an iterator also needs `__next__()`, and its `__iter__()` must return the object itself.
+
+**Common mistakes:**
+- treating iterable and iterator as synonyms and calling `next()` on a list: `next([1, 2])` raises `TypeError: 'list' object is not an iterator`;
+- looking for `__next__()` on a `list`, `tuple` or `str`: these are iterables, not iterators;
+- assuming an iterator can be looped over twice: once exhausted, it does not start again.
 
 ## Comparison
 

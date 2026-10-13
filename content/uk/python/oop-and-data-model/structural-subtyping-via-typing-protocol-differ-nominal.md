@@ -1,17 +1,17 @@
 ---
 id: py-oop-0026
 title: "Чим structural subtyping через `typing.Protocol` відрізняється від nominal inheritance через ABC?"
-description: "Protocol використовує structural subtyping – клас задовольняє його, якщо має потрібні методи, без явного успадкування; ABC вимагає nominal inheritance – клас має явно успадкувати від ABC."
+description: "Protocol перевіряє структуру: клас підходить, якщо має потрібні методи, без успадкування; ABC визначає належність явно через успадкування, register() або __subclasshook__."
 track: python
 section: oop-and-data-model
 level: middle
 type: comparison
 tags: [typing-protocol]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -43,15 +43,84 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
+  - source_id: py314-library-typing-nominal-vs-structural-subtyping
+    title: "Python 3.14: Library/typing (Nominal vs structural subtyping)"
+    url: https://docs.python.org/3.14/library/typing.html#nominal-vs-structural-subtyping
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: означення nominal і structural subtyping для static type checkers. Не описує runtime-поведінку isinstance."
+  - source_id: py314-library-typing-protocol
+    title: "Python 3.14: Library/typing (typing.Protocol)"
+    url: https://docs.python.org/3.14/library/typing.html#typing.Protocol
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: клас Protocol і вимога @runtime_checkable для isinstance та issubclass."
+  - source_id: py314-library-typing-runtime-checkable
+    title: "Python 3.14: Library/typing (typing.runtime_checkable)"
+    url: https://docs.python.org/3.14/library/typing.html#typing.runtime_checkable
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: @runtime_checkable перевіряє лише наявність атрибутів, не сигнатури й типи; isinstance з таким протоколом може бути повільним."
+  - source_id: py314-library-abc-abcmeta-register
+    title: "Python 3.14: Library/abc (ABCMeta.register)"
+    url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.register
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: register() робить клас virtual subclass ABC; ABC не з’являється в MRO, його методи не викликаються через super()."
+  - source_id: py314-library-abc-abcmeta-subclasshook
+    title: "Python 3.14: Library/abc (ABCMeta.__subclasshook__)"
+    url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.__subclasshook__
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: __subclasshook__ як спосіб вирішити, чи вважати клас підкласом ABC, без register()."
 ---
 
 ## Short answer
 
-**`Protocol` використовує structural subtyping – клас задовольняє його, якщо має потрібні методи, без явного успадкування; ABC вимагає nominal inheritance – клас має явно успадкувати від ABC.**[^py314-reference-datamodel] `Protocol` призначений переважно для static type checkers; runtime перевірки працюють лише з `@runtime_checkable` і перевіряють лише наявність атрибутів, не типи. ABC підтримує `isinstance`/`issubclass` нативно.
+**`Protocol` використовує structural subtyping: клас відповідає йому, якщо має методи з сумісними сигнатурами, без явного успадкування.**[^py314-library-typing-nominal-vs-structural-subtyping] `isinstance` приймає `Protocol` лише з `@runtime_checkable`[^py314-library-typing-protocol] і тоді перевіряє лише наявність атрибутів, а не їхні типи.[^py314-library-typing-runtime-checkable] ABC за замовчуванням nominal: належність задає сам ABC через явне успадкування або `register()`.[^py314-library-abc-abcmeta-register] Але ABC з `__subclasshook__`, наприклад `collections.abc.Iterable`, під час виконання перевіряють структуру.[^py314-library-abc-abcmeta-subclasshook]
 
 ## Detailed explanation
 
-TODO
+Різниця в тому, хто визначає належність класу до типу. Для ABC за замовчуванням належність оголошує сам ABC: клас має явно успадкувати його або бути зареєстрованим. Structural subtyping, на якому побудовано `Protocol`, не вимагає жодного зв’язку між класами: static type checker перевіряє, чи клас має методи з сумісними сигнатурами, і самому класу нічого оголошувати не треба.[^py314-library-typing-nominal-vs-structural-subtyping]
+
+Під час виконання поведінка інша. `isinstance()` приймає `Protocol` лише тоді, коли його позначено `@runtime_checkable`; без декоратора така перевірка дає `TypeError`.[^py314-library-typing-protocol] Декоратор робить перевірку грубою: вона бачить лише наявність атрибутів і методів, а їхні сигнатури ігнорує.[^py314-library-typing-runtime-checkable] Наступний приклад показує, що клас з іншою сигнатурою `close` все одно проходить перевірку:
+
+```python
+from typing import Protocol, runtime_checkable
+
+
+@runtime_checkable
+class Closable(Protocol):
+    def close(self) -> None: ...
+
+
+class LogFile:  # no base class: only the method matters
+    def close(self) -> None:
+        pass
+
+
+class Socket:
+    def close(self, force: bool) -> None:  # different signature
+        pass
+
+
+print(isinstance(LogFile(), Closable))  # True
+print(isinstance(Socket(), Closable))   # True: the runtime check ignores signatures
+```
+
+Реєстрація через `register()` працює інакше: клас записується як virtual subclass ABC, без перевірки структури. Після цього `isinstance()` і `issubclass()` вважають його підкласом, але ABC не з’являється в MRO цього класу, а його методи не викликаються навіть через `super()`.[^py314-library-abc-abcmeta-register] Метод `__subclasshook__` дає ще один спосіб: ABC сам вирішує, чи вважати клас підкласом, наприклад за наявністю методу в `__dict__` класу.[^py314-library-abc-abcmeta-subclasshook]
+
+На практиці `Protocol` зручний, коли описуємо очікувану поведінку чужих об’єктів і достатньо статичної перевірки. ABC доречний, коли спільна реалізація живе в базовому класі або коли належність має бути явною, як у плагінах, що реєструються.
+
+**Типові помилки:**
+- вважати, що `isinstance()` з `@runtime_checkable` Protocol перевіряє сигнатури або типи, а не лише наявність атрибутів;
+- вважати, що `register()` додає ABC до MRO або переносить його методи в клас;
+- викликати `isinstance()` з `Protocol`, який не позначено `@runtime_checkable`: це `TypeError`.
 
 ## Comparison
 
