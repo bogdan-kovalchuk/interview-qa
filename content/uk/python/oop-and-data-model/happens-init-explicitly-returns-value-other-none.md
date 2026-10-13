@@ -8,10 +8,10 @@ level: middle
 type: pitfall
 tags: [init]
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -43,15 +43,50 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
+  - source_id: py314-reference-datamodel-object-init
+    title: "Python 3.14: Reference/datamodel"
+    url: https://docs.python.org/3.14/reference/datamodel.html#object.__init__
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: розділ object.__init__ моделі даних."
 ---
 
 ## Short answer
 
-**Python підніме `TypeError: __init__() should return None, not '...'`.**[^py314-reference-datamodel] Інтерпретатор перевіряє return value `__init__` після кожного виклику; повернення будь-якого об'єкта, відмінного від `None`, вважається помилкою, оскільки `__init__` призначений лише для ініціалізації вже створеного instance, а не для його створення.
+**Python підніме `TypeError: __init__() should return None, not '...'`.**[^py314-reference-datamodel-object-init] Під час виклику класу інтерпретатор перевіряє, що повернув `__init__`: будь-яке значення, відмінне від `None` (зокрема `0` чи `False`), є помилкою, бо `__new__` і `__init__` разом створюють об’єкт, а `__init__` лише налаштовує вже створений instance.[^py314-reference-datamodel-object-init]
 
 ## Detailed explanation
 
-TODO
+Виклик класу, наприклад `Point(1, 2)`, створює об’єкт через `__new__`, передає його в `__init__` для налаштування і повертає цей об’єкт. Значення, яке повернув би `__init__`, не стає результатом виклику класу. Замість нього Python вимагає `None` і піднімає `TypeError`, якщо отримав щось інше.[^py314-reference-datamodel-object-init]
+
+Приклад показує обидві поведінки: повернення `0` дає помилку, а `return None` – ні.
+
+```python
+class Bad:
+    def __init__(self):
+        return 0            # any value other than None
+
+try:
+    Bad()
+except TypeError as e:
+    print(e)                # __init__() should return None, not 'int'
+
+class Good:
+    def __init__(self):
+        return None         # same as a bare return or no return at all
+
+print(type(Good()).__name__)  # Good
+```
+
+Перевірка стосується саме виклику класу. Якщо викликати `__init__` напряму для вже створеного об’єкта, це звичайна функція, і `obj.__init__()` поверне `0` без винятку. Тож правило про `None` діє тоді, коли інтерпретатор створює instance через виклик класу.[^py314-reference-datamodel-object-init]
+
+Якщо `__init__` має сигналізувати про помилку, правильний спосіб – підняти виняток, наприклад `raise ValueError(...)`. Виняток зупиняє створення об’єкта і передає повідомлення назовні, тоді як повернене значення при виклику класу призводить лише до `TypeError`.
+
+**Типові помилки:**
+- закінчити `__init__` рядком `return self`, що дає `TypeError` під час виклику класу;
+- повертати `False` або код помилки з `__init__` замість `raise`;
+- очікувати, що `Cls()` поверне значення, яке повернув `__init__`.
 
 ## Symptom
 

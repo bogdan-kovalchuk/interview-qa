@@ -8,10 +8,10 @@ level: senior
 type: mechanism
 tags: []
 status: published
-updated: 2026-09-04
-content_revision: 1
+updated: 2026-10-13
+content_revision: 2
 reconciled_with:
-  en: 1
+  en: 2
 anki:
   export: true
 sources:
@@ -43,15 +43,72 @@ sources:
     kind: official
     version: "3.14"
     applicability: "Офіційна документація Python 3.14."
+  - source_id: py314-reference-datamodel-invoking-descriptors
+    title: "Python 3.14: Reference/datamodel"
+    url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: розділ Invoking Descriptors моделі даних."
+  - source_id: py314-reference-datamodel-object-getattr
+    title: "Python 3.14: Reference/datamodel"
+    url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattr__
+    accessed: 2026-10-13
+    kind: official
+    version: "3.14"
+    applicability: "Офіційна документація Python 3.14: розділ object.__getattr__ моделі даних."
 ---
 
 ## Short answer
 
-**Порядок: data descriptor -> instance `__dict__` -> non-data descriptor / class attribute -> `__getattr__`.**[^py314-reference-datamodel] Data descriptor (який визначає `__set__` або `__delete__`) завжди перемагає instance `__dict__`. Non-data descriptor (лише `__get__`) поступається запису в instance `__dict__`. Якщо нічого не знайдено і визначено `__getattr__`, викликається він; інакше – `AttributeError`.
+**Порядок: data descriptor -> instance `__dict__` -> non-data descriptor або class attribute -> `__getattr__`.**[^py314-reference-datamodel-invoking-descriptors] Data descriptor, який визначає `__get__` разом із `__set__` та/або `__delete__`, перемагає instance `__dict__`, а non-data descriptor (лише `__get__`) поступається запису в instance `__dict__`. Якщо за стандартного `object.__getattribute__` нічого не знайдено і визначено `__getattr__`, викликається він; інакше – `AttributeError`.[^py314-reference-datamodel-object-getattr]
 
 ## Detailed explanation
 
-TODO
+Для `a.x` Python спершу шукає `x` у класі (у `type(a)` і його базах за MRO) і перевіряє, чи це data descriptor (`__get__` разом із `__set__` та/або `__delete__`). Data descriptor, знайдений у класі, перемагає навіть запис із тим самим іменем в `a.__dict__`: його `__get__` викликається одразу.[^py314-reference-datamodel-invoking-descriptors] Саме так працює `property`, що є data descriptor, тому екземпляр не може перевизначити його поведінку.[^py314-reference-datamodel-invoking-descriptors] `property` без `setter` не дає записати атрибут навіть через `self.x = ...`.
+
+Якщо data descriptor у класі немає, перевіряється `a.__dict__`. Запис в екземплярі перемагає non-data descriptor і звичайний атрибут класу. Саме тому методи, які є non-data descriptors, можна перевизначити для окремого екземпляра.[^py314-reference-datamodel-invoking-descriptors] Без запису в `__dict__` повертається non-data descriptor (через `__get__`) або атрибут класу.
+
+Приклад охоплює всі ці випадки; кожен `print` показує, який спрацював:
+
+```python
+class DataDesc:
+    def __get__(self, obj, objtype=None):
+        return "data descriptor"
+
+    def __set__(self, obj, value):
+        pass
+
+class NonDataDesc:
+    def __get__(self, obj, objtype=None):
+        return "non-data descriptor"
+
+class C:
+    d = DataDesc()
+    n = NonDataDesc()
+    k = "class attribute"
+
+    def __getattr__(self, name):
+        return f"__getattr__({name!r})"
+
+c = C()
+c.__dict__["d"] = "instance dict"
+c.__dict__["n"] = "instance dict"
+c.__dict__["k"] = "instance dict"
+print(c.d)        # data descriptor: wins over the instance dict
+print(c.n)        # instance dict: wins over a non-data descriptor
+print(c.k)        # instance dict: wins over a plain class attribute
+del c.__dict__["n"]
+print(c.n)        # non-data descriptor, now that the dict entry is gone
+print(c.missing)  # __getattr__('missing'): the normal lookup found nothing
+```
+
+`__getattr__` стоїть наприкінці ланцюжка і викликається лише тоді, коли звичайний пошук завершився `AttributeError`, тож існуючі атрибути він не перекриває.[^py314-reference-datamodel-object-getattr]
+
+**Типові помилки:**
+- вважати, що запис в `obj.__dict__` завжди перекриває атрибут класу: для `property` це не так, і `self.x = 5` у класі з `property` без setter дає `AttributeError: property 'x' of 'Q' object has no setter`;
+- очікувати, що `__getattr__` викликається для кожного доступу; він спрацьовує лише тоді, коли звичайний пошук нічого не знайшов;
+- забувати, що порядок описано для стандартного `object.__getattribute__`: перевизначений `__getattribute__` змінює цей шлях (див. qid:py-oop-0005).
 
 ## Evaluation guide
 
