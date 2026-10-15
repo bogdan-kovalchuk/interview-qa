@@ -1,72 +1,19 @@
-# Закриті словники проєкту: усе, що валідатор звіряє, і всі видимі назви структур.
+# Словники проєкту: видимі назви секцій, треків і сторінок, префікси ID і глосарій.
 #
-# Заголовки секцій у content/ завжди англійські – це ідентифікатори (questions.md §4).
+# Заголовки `##` у content/ завжди англійські – це ідентифікатори (questions.md §4).
 # Тут вони отримують видимі назви, які рендерить сайт.
 
 section_labels:
   Question code:     {en: Question code,     uk: Код питання}
   Short answer:      {en: Short answer,      uk: Коротка відповідь}
   Detailed explanation: {en: Detailed explanation, uk: Розгорнуте пояснення}
-  Comparison:        {en: Comparison,        uk: Порівняння}
-  When to choose which: {en: When to choose which, uk: Коли що обирати}
-  Symptom:           {en: Symptom,           uk: Симптом}
-  Why it happens:    {en: Why it happens,    uk: Чому це стається}
-  How to avoid:      {en: How to avoid,      uk: Як цього уникнути}
-  Task:              {en: Task,              uk: Задача}
-  Constraints:       {en: Constraints,       uk: Обмеження}
-  Examples:          {en: Examples,          uk: Приклади}
-  Solution:          {en: Solution,          uk: Розв'язання}
-  Complexity:        {en: Complexity,        uk: Складність}
-  Edge cases:        {en: Edge cases,        uk: Крайні випадки}
-  Tests:             {en: Tests,             uk: Тести}
-  Observations:      {en: Observations,      uk: Спостереження}
-  Reproduction:      {en: Reproduction,      uk: Відтворення}
-  Hypotheses:        {en: Hypotheses,        uk: Гіпотези}
-  Diagnosis:         {en: Diagnosis,         uk: Діагноз}
-  Fix:               {en: Fix,               uk: Виправлення}
-  Prevention:        {en: Prevention,        uk: Запобігання}
-  Scale prompt:      {en: Scale prompt,      uk: Вихідний масштаб}
-  Requirements:      {en: Requirements,      uk: Вимоги}
-  Scale assumptions: {en: Scale assumptions, uk: Припущення про масштаб}
-  Architecture:      {en: Architecture,      uk: Архітектура}
-  Alternatives:      {en: Alternatives,      uk: Альтернативи}
-  Trade-offs:        {en: Trade-offs,        uk: Компроміси}
-  Failure modes:     {en: Failure modes,     uk: Режими відмови}
-  Competency assessed: {en: Competency assessed, uk: Що оцінюється}
-  STAR outline or illustrative example:
-    {en: STAR outline or illustrative example, uk: Каркас STAR або показовий приклад}
-  Follow-up prompts: {en: Follow-up prompts, uk: Додаткові питання}
-  Environment:       {en: Environment,       uk: Середовище}
-  Deliverable:       {en: Deliverable,       uk: Результат}
-  Acceptance criteria: {en: Acceptance criteria, uk: Критерії приймання}
-  Evaluation guide:  {en: Evaluation guide,  uk: Для інтерв'юера}
-  Follow-up:         {en: Follow-up,         uk: Додаткове питання}
   Sources:           {en: Sources,           uk: Джерела}
 
-# Три підблоки Evaluation guide.
-subsection_labels:
-  Expected signals:   {en: Expected signals,   uk: Очікувані сигнали}
-  Red flags:          {en: Red flags,          uk: Червоні прапорці}
-  Level-up follow-up: {en: Level-up follow-up, uk: Питання на підвищення рівня}
-
-# Видима мітка над Back для типів, де Short answer має особливу семантику.
-card_labels:
-  Solution outline:     {en: Solution outline,     uk: Кістяк розв'язання}
-  Architecture summary: {en: Architecture summary, uk: Кістяк архітектури}
-  Answer framework:     {en: Answer framework,     uk: Каркас відповіді}
-
-# Видимі назви треків і секцій для навігації. Поки заповнено лише те, що вживається
-# дев'ятьма пілотами; решта додається разом із секціями, коли вони наповнюються.
+# Видимі назви треків і секцій для навігації.
 track_labels:
   embedded:      {en: Embedded,        uk: Вбудовані системи}
   electronics:   {en: Electronics,     uk: Електроніка}
   python:        {en: Python,          uk: Python}
-  cpp:           {en: "C/C++",         uk: "C/C++"}
-  cs:            {en: Computer science, uk: Computer science}
-  databases:     {en: Databases,       uk: Бази даних}
-  engineering:   {en: Engineering,     uk: Інженерні практики}
-  system-design: {en: System design,   uk: Проєктування систем}
-  behavioral:    {en: Behavioral,      uk: Поведінкові}
 
 section_labels_nav:
   embedded/data-types-and-memory-layout: {en: "Data types and memory layout", uk: "Типи даних і розкладка пам'яті"}
@@ -105,17 +52,6 @@ section_labels_nav:
   electronics/circuitmaker-projects: {en: "CircuitMaker projects",        uk: "Проєкти в CircuitMaker"}
   python/concurrency-and-gil:         {en: Concurrency and GIL,      uk: Конкурентність і GIL}
   python/practical-coding:            {en: Practical coding,         uk: Практичні задачі}
-  cpp/pointers-and-references:        {en: Pointers and references,  uk: Вказівники й посилання}
-  cpp/tooling-and-diagnostics:        {en: Tooling and diagnostics,  uk: Інструменти й діагностика}
-  cs/complexity-and-analysis:         {en: Complexity and analysis,  uk: Складність і аналіз}
-  databases/orm-and-persistence:      {en: ORM and persistence,      uk: ORM і збереження}
-  engineering/version-control:        {en: Version control,          uk: Контроль версій}
-  system-design/messaging-and-queues: {en: Messaging and queues,     uk: Черги й повідомлення}
-  behavioral/teamwork-and-conflict:   {en: Teamwork and conflict,    uk: Командна робота й конфлікт}
-  # Додано міграцією M4 (meta/plan.md крок 4): 26 секцій, наповнені 392 картками
-  # з predecessor-колоди. python/* - пряме перенесення 20 тем Anki-репозиторію
-  # 1:1 із meta/taxonomy.md; cs/, databases/, engineering/ - теми 21-23,
-  # перенесені за meta/migration/tag-mapping.md.
   python/fundamentals:                  {en: Fundamentals,                  uk: Основи}
   python/syntax-and-control-flow:       {en: Syntax and control flow,       uk: Синтаксис і потік керування}
   python/objects-and-types:             {en: Objects and types,             uk: Об'єкти і типи}
@@ -134,32 +70,13 @@ section_labels_nav:
   python/standard-library:              {en: Standard library,              uk: Стандартна бібліотека}
   python/testing:                       {en: Testing,                       uk: Тестування}
   python/performance:                   {en: Performance,                   uk: Продуктивність}
-  cs/algorithms:                        {en: Algorithms,                    uk: Алгоритми}
-  cs/data-structures:                   {en: Data structures,               uk: Структури даних}
-  databases/indexing-and-query-plans:   {en: Indexing and query plans,      uk: Індексація та плани запитів}
-  databases/sql-queries:                {en: SQL queries,                   uk: SQL-запити}
-  databases/transactions-and-isolation: {en: Transactions and isolation,    uk: Транзакції та ізоляція}
-  databases/relational-model:           {en: Relational model,              uk: Реляційна модель}
-  engineering/ci-cd:                    {en: "CI/CD",                       uk: "CI/CD"}
-  engineering/code-quality:             {en: Code quality,                  uk: Якість коду}
   python/strings-and-text:              {en: Strings and text,              uk: Рядки і текст}
   python/typing-and-annotations:        {en: Typing and annotations,        uk: Типізація і анотації}
   python/packaging-and-environments:    {en: Packaging and environments,    uk: Пакування і середовища}
   python/frameworks:                    {en: Frameworks,                    uk: Фреймворки}
   embedded/linux-embedded:              {en: Linux embedded,                uk: Linux у вбудованих системах}
 
-# Стан completeness (tools/iqa/lifecycle.py), як видиме слово: бейдж у сайдбарі,
-# індексах треку/секції і на /status/. Значення самого поля лишаються англійськими
-# кодами (empty/stub/partial/complete) - це ключі цієї таблиці, не текст на сторінці.
-completeness_labels:
-  empty:    {en: Not started, uk: Не розпочато}
-  stub:     {en: Short answer only, uk: Лише коротка відповідь}
-  partial:  {en: Partial,     uk: Частково}
-  complete: {en: Complete,    uk: Завершено}
-
-# Видимі підписи навколо індексів треку/секції і /status/ (meta/plan.md крок 6). `level`
-# і `type` самі лишаються англійськими кодами закритого словника (quality-gates.md
-# facets-vocabulary) - тут перекладаються тільки підписи навколо них, не значення.
+# Видимі підписи головної сторінки та індексів треку/секції.
 site_labels:
   home_title:               {en: Introduction, uk: Вступ}
   home_heading:             {en: Interview Questions and Answers,
@@ -168,48 +85,8 @@ site_labels:
                               uk: "Двомовні питання для технічних співбесід."}
   home_repository:          {en: Repository, uk: Репозиторій}
   home_contents:            {en: Table of contents, uk: Зміст}
-  status_page_title:       {en: Progress,          uk: Прогрес}
-  status_page_description: {en: "Generated coverage report from the question corpus.",
-                             uk: "Згенерований звіт покриття корпусу питань."}
-  filter_track:             {en: Track,              uk: Трек}
-  filter_section:           {en: Section,            uk: Секція}
-  filter_language:          {en: Language,           uk: Мова}
-  filter_completeness:      {en: Completeness,       uk: Повнота}
-  filter_all:                {en: All,                uk: Усі}
-  column_id:                 {en: ID,                 uk: ID}
-  column_title:               {en: Title,              uk: Назва}
-  column_track:                {en: Track,              uk: Трек}
-  column_section:               {en: Section,            uk: Секція}
-  column_level:                  {en: Level,              uk: Рівень}
-  column_type:                    {en: Type,               uk: Тип}
-  column_status:                   {en: Status,             uk: Статус}
-  column_sources:                   {en: Sources,            uk: Джерела}
-  column_updated:                    {en: Updated,            uk: Оновлено}
-  column_card:                        {en: Card,               uk: Картка}
-  column_group:                       {en: Group,              uk: Група}
-  column_coverage:                    {en: Coverage,           uk: Покриття}
-  aggregate_by_track:                  {en: "By track",         uk: "За треком"}
-  aggregate_by_section:                 {en: "By section",       uk: "За секцією"}
-  aggregate_by_language:                 {en: "By language",     uk: "За мовою"}
-  aggregate_by_type:                      {en: "By question type", uk: "За типом питання"}
-  aggregate_by_section_field:              {en: "By body section (systemic gaps)",
-                                             uk: "За розділом тіла (системні прогалини)"}
-  aggregate_by_program:                     {en: "By program",   uk: "За програмою"}
-  aggregate_no_programs:                     {en: "No programs are defined yet (meta/plan.md step 9).",
-                                               uk: "Програм ще не визначено (meta/plan.md крок 9)."}
-  aggregate_total:                            {en: Total,        uk: Разом}
-  section_field_written:                       {en: written,     uk: написано}
-  breadcrumb_all_tracks:                        {en: "All tracks", uk: "Усі треки"}
-  index_no_questions:                            {en: "No published questions yet.",
-                                                    uk: "Опублікованих питань ще немає."}
-
-# Значення фасета `frameworks`. Фреймворк додається тоді, коли з'являється перше питання,
-# що його називає, а не наперед.
-frameworks:
-  django:     {title: Django,     track: python}
-  sqlalchemy: {title: SQLAlchemy, track: python}
-  fastapi:    {title: FastAPI,    track: python}
-  pydantic:   {title: Pydantic,   track: python}
+  index_no_questions:       {en: "No questions yet.",
+                              uk: "Питань ще немає."}
 
 # Префікс секції для схеми ID. Належить секції, а не питанню; фіксується один раз.
 section_prefixes:
@@ -247,17 +124,8 @@ section_prefixes:
   electronics/digital-integration:   elinteg
   electronics/pcb-design:            elpcb
   electronics/circuitmaker-projects: elcmproj
-  cs/complexity-and-analysis:       cmplx
   python/concurrency-and-gil:       gil
   python/practical-coding:          prac
-  cpp/pointers-and-references:      ptrref
-  cpp/tooling-and-diagnostics:      tooling
-  databases/orm-and-persistence:    orm
-  system-design/messaging-and-queues: msgq
-  behavioral/teamwork-and-conflict: team
-  engineering/version-control:      vcs
-  # M4 migration additions - one prefix per section, issued once and frozen
-  # (meta/questions.md SS2: "belongs to the section, not the question").
   python/fundamentals:                  fund
   python/syntax-and-control-flow:       syntax
   python/objects-and-types:             objtypes
@@ -276,14 +144,6 @@ section_prefixes:
   python/standard-library:              stdlib
   python/testing:                       testing
   python/performance:                   perf
-  cs/algorithms:                        algo
-  cs/data-structures:                   dstruct
-  databases/indexing-and-query-plans:   idxplan
-  databases/sql-queries:                sqlq
-  databases/transactions-and-isolation: txiso
-  databases/relational-model:           relmod
-  engineering/ci-cd:                    cicd
-  engineering/code-quality:             codeq
   python/strings-and-text:              strtxt
   python/typing-and-annotations:        typing
   python/packaging-and-environments:    pkgenv
@@ -304,7 +164,4 @@ glossary:
   - {en: undefined behavior, uk: undefined behavior, note: американське написання; не «невизначена поведінка»}
   - {en: round trip,          uk: round trip,          note: лишається англійською}
   - {en: reflog,              uk: reflog,              note: назва механізму git; не перекладається і не відмінюється}
-  - {en: at-least-once,       uk: at-least-once,       note: назва гарантії доставки}
-  - {en: lazy loading,        uk: lazy loading,        note: «ліниве завантаження» не вживається}
-  - {en: retry storm,         uk: retry storm,         note: лишається англійською}
   - {en: inheritance,         uk: успадкування,        note: завжди цей варіант}

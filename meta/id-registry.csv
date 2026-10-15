@@ -1,13 +1,13 @@
 id,created,status,current_path,reason
-cs-cmplx-0001,2026-09-03,published,cs/complexity-and-analysis/amortized-cost-averages-a-worst-case-sequence.md,
+cs-cmplx-0001,2026-09-03,retired,cs/complexity-and-analysis/amortized-cost-averages-a-worst-case-sequence.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 py-gil-0001,2026-09-03,published,python/concurrency-and-gil/free-threaded-build-removes-the-gil-not-contention.md,
-cpp-ptrref-0001,2026-09-03,published,cpp/pointers-and-references/unique-ptr-vs-shared-ptr-ownership-and-cost.md,
-db-orm-0001,2026-09-03,published,databases/orm-and-persistence/n-plus-one-queries-from-lazy-relation-access.md,
+cpp-ptrref-0001,2026-09-03,retired,cpp/pointers-and-references/unique-ptr-vs-shared-ptr-ownership-and-cost.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-orm-0001,2026-09-03,retired,databases/orm-and-persistence/n-plus-one-queries-from-lazy-relation-access.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 py-prac-0001,2026-09-03,published,python/practical-coding/merge-overlapping-intervals-by-sorting-and-sweeping.md,
-cpp-tooling-0001,2026-09-03,published,cpp/tooling-and-diagnostics/intermittent-crash-from-callback-outliving-its-object.md,
-sd-msgq-0001,2026-09-03,published,system-design/messaging-and-queues/idempotent-consumer-for-at-least-once-webhook-delivery.md,
-bhv-team-0001,2026-09-03,published,behavioral/teamwork-and-conflict/technical-disagreement-resolved-without-authority.md,
-eng-vcs-0001,2026-09-03,published,engineering/version-control/recover-commits-discarded-by-a-hard-reset.md,
+cpp-tooling-0001,2026-09-03,retired,cpp/tooling-and-diagnostics/intermittent-crash-from-callback-outliving-its-object.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+sd-msgq-0001,2026-09-03,retired,system-design/messaging-and-queues/idempotent-consumer-for-at-least-once-webhook-delivery.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+bhv-team-0001,2026-09-03,retired,behavioral/teamwork-and-conflict/technical-disagreement-resolved-without-authority.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-vcs-0001,2026-09-03,retired,engineering/version-control/recover-commits-discarded-by-a-hard-reset.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 py-fund-0001,2026-09-04,published,python/fundamentals/stages-python-module-go-source-code-executing.md,
 py-fund-0002,2026-09-04,published,python/fundamentals/splitting-languages-just-compiled-interpreted-incorrectly-describe.md,
 py-fund-0003,2026-09-04,published,python/fundamentals/problem-cached-pyc-file-solve-presence-mean.md,
@@ -379,27 +379,27 @@ py-prac-0022,2026-09-04,published,python/practical-coding/prime-checks-divisors-
 py-prac-0023,2026-09-04,published,python/practical-coding/write-tests-sum-api-returns-indices-first.md,
 py-prac-0024,2026-09-04,published,python/practical-coding/write-tests-maximum-overlapping-intervals-function-intervals.md,
 py-prac-0025,2026-09-04,published,python/practical-coding/write-boundary-round-trip-tests-rle-decoder.md,
-cs-cmplx-0002,2026-09-04,published,cs/complexity-and-analysis/time-complexity-code-range-range-work-sum.md,
-cs-cmplx-0003,2026-09-04,published,cs/complexity-and-analysis/big-drop-constants-lower-order-terms-yet.md,
-cs-dstruct-0001,2026-09-04,published,cs/data-structures/stream-jobs-choose-hash-table-lookup-id.md,
-cs-dstruct-0002,2026-09-04,published,cs/data-structures/deque-better-list-queue-sliding-window-algorithm.md,
-cs-algo-0001,2026-09-04,published,cs/algorithms/preconditions-binary-search-need-inserting-sorted-list.md,
-cs-algo-0002,2026-09-04,published,cs/algorithms/choose-bfs-graph-traversal-dfs.md,
-cs-algo-0003,2026-09-04,published,cs/algorithms/memoization-bottom-up-dynamic-programming-change-complexity.md,
-db-idxplan-0001,2026-09-04,published,databases/indexing-and-query-plans/index-speed-up-read-query-increase-storage.md,
-db-sqlq-0001,2026-09-04,published,databases/sql-queries/write-query-returns-all-customers-including-zero.md,
-db-txiso-0001,2026-09-04,published,databases/transactions-and-isolation/failure-debit-credit-transaction-leave-partial-transfer.md,
-db-txiso-0002,2026-09-04,published,databases/transactions-and-isolation/isolation-level-affect-concurrent-anomalies-stronger-isolation.md,
-db-relmod-0001,2026-09-04,published,databases/relational-model/primary-key-foreign-key-unique-check-constraints.md,
-db-sqlq-0002,2026-09-04,published,databases/sql-queries/parameterized-sql-query-protect-against-injection-string.md,
-db-idxplan-0002,2026-09-04,published,databases/indexing-and-query-plans/keyset-pagination-unique-tie-breaker-order-better.md,
-eng-vcs-0002,2026-09-04,published,engineering/version-control/merge-commit-differ-rebase-history-shape-commit.md,
-eng-vcs-0003,2026-09-04,published,engineering/version-control/rebasing-local-unpublished-branch-appropriate-dangerously-rewrite.md,
-eng-vcs-0004,2026-09-04,published,engineering/version-control/choose-git-revert-undoing-something-shared-history.md,
-eng-cicd-0001,2026-09-04,published,engineering/ci-cd/change-touches-payment-calculation-minimum-required-ci.md,
-eng-cicd-0002,2026-09-04,published,engineering/ci-cd/choose-rolling-blue-green-canary-deployment-based.md,
-eng-cicd-0003,2026-09-04,published,engineering/ci-cd/running-ci-pull-request-shorten-feedback-loop.md,
-eng-codeq-0001,2026-09-04,published,engineering/code-quality/reviewer-approve-imperfect-change-improves-overall-code.md,
+cs-cmplx-0002,2026-09-04,retired,cs/complexity-and-analysis/time-complexity-code-range-range-work-sum.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+cs-cmplx-0003,2026-09-04,retired,cs/complexity-and-analysis/big-drop-constants-lower-order-terms-yet.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+cs-dstruct-0001,2026-09-04,retired,cs/data-structures/stream-jobs-choose-hash-table-lookup-id.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+cs-dstruct-0002,2026-09-04,retired,cs/data-structures/deque-better-list-queue-sliding-window-algorithm.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+cs-algo-0001,2026-09-04,retired,cs/algorithms/preconditions-binary-search-need-inserting-sorted-list.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+cs-algo-0002,2026-09-04,retired,cs/algorithms/choose-bfs-graph-traversal-dfs.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+cs-algo-0003,2026-09-04,retired,cs/algorithms/memoization-bottom-up-dynamic-programming-change-complexity.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-idxplan-0001,2026-09-04,retired,databases/indexing-and-query-plans/index-speed-up-read-query-increase-storage.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-sqlq-0001,2026-09-04,retired,databases/sql-queries/write-query-returns-all-customers-including-zero.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-txiso-0001,2026-09-04,retired,databases/transactions-and-isolation/failure-debit-credit-transaction-leave-partial-transfer.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-txiso-0002,2026-09-04,retired,databases/transactions-and-isolation/isolation-level-affect-concurrent-anomalies-stronger-isolation.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-relmod-0001,2026-09-04,retired,databases/relational-model/primary-key-foreign-key-unique-check-constraints.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-sqlq-0002,2026-09-04,retired,databases/sql-queries/parameterized-sql-query-protect-against-injection-string.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+db-idxplan-0002,2026-09-04,retired,databases/indexing-and-query-plans/keyset-pagination-unique-tie-breaker-order-better.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-vcs-0002,2026-09-04,retired,engineering/version-control/merge-commit-differ-rebase-history-shape-commit.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-vcs-0003,2026-09-04,retired,engineering/version-control/rebasing-local-unpublished-branch-appropriate-dangerously-rewrite.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-vcs-0004,2026-09-04,retired,engineering/version-control/choose-git-revert-undoing-something-shared-history.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-cicd-0001,2026-09-04,retired,engineering/ci-cd/change-touches-payment-calculation-minimum-required-ci.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-cicd-0002,2026-09-04,retired,engineering/ci-cd/choose-rolling-blue-green-canary-deployment-based.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-cicd-0003,2026-09-04,retired,engineering/ci-cd/running-ci-pull-request-shorten-feedback-loop.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
+eng-codeq-0001,2026-09-04,retired,engineering/code-quality/reviewer-approve-imperfect-change-improves-overall-code.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 emb-boot-0001,2026-09-06,published,embedded/bootloaders-and-ota/device-tree-describes-board-hardware.md,
 emb-boot-0002,2026-09-06,published,embedded/bootloaders-and-ota/bootloader-runs-before-application-firmware.md,
 emb-boot-0003,2026-09-06,published,embedded/bootloaders-and-ota/mcu-boot-sequence-vector-table-to-main.md,
