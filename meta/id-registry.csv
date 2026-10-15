@@ -3,7 +3,7 @@ cs-cmplx-0001,2026-09-03,retired,cs/complexity-and-analysis/amortized-cost-avera
 py-gil-0001,2026-09-03,published,python/concurrency-and-gil/free-threaded-build-removes-the-gil-not-contention.md,
 cpp-ptrref-0001,2026-09-03,retired,cpp/pointers-and-references/unique-ptr-vs-shared-ptr-ownership-and-cost.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 db-orm-0001,2026-09-03,retired,databases/orm-and-persistence/n-plus-one-queries-from-lazy-relation-access.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
-py-prac-0001,2026-09-03,published,python/practical-coding/merge-overlapping-intervals-by-sorting-and-sweeping.md,
+py-prac-0001,2026-09-03,retired,python/practical-coding/merge-overlapping-intervals-by-sorting-and-sweeping.md,coding task removed on 2026-10-27; coding practice moves to a separate site
 cpp-tooling-0001,2026-09-03,retired,cpp/tooling-and-diagnostics/intermittent-crash-from-callback-outliving-its-object.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 sd-msgq-0001,2026-09-03,retired,system-design/messaging-and-queues/idempotent-consumer-for-at-least-once-webhook-delivery.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
 bhv-team-0001,2026-09-03,retired,behavioral/teamwork-and-conflict/technical-disagreement-resolved-without-authority.md,"track removed on 2026-10-27; only python, embedded and electronics remain"
@@ -359,22 +359,22 @@ py-prac-0002,2026-09-04,published,python/practical-coding/events-enabled-false-e
 py-prac-0003,2026-09-04,published,python/practical-coding/copy-append-print-print-shallow-copy-create.md,
 py-prac-0004,2026-09-04,published,python/practical-coding/python-14-match-case-pass-print-print.md,
 py-prac-0005,2026-09-04,published,python/practical-coding/class-key-defines-eq-based-value-define.md,
-py-prac-0006,2026-09-04,published,python/practical-coding/implement-fizzbuzz-integers-ordered-rules-fizz-buzz.md,
-py-prac-0007,2026-09-04,published,python/practical-coding/implement-palindrome-check-apply-unicode-nfkc-casefold.md,
-py-prac-0008,2026-09-04,published,python/practical-coding/implement-sum-integers-arbitrarily-nested-list-reject.md,
+py-prac-0006,2026-09-04,retired,python/practical-coding/implement-fizzbuzz-integers-ordered-rules-fizz-buzz.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0007,2026-09-04,retired,python/practical-coding/implement-palindrome-check-apply-unicode-nfkc-casefold.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0008,2026-09-04,retired,python/practical-coding/implement-sum-integers-arbitrarily-nested-list-reject.md,coding task removed on 2026-10-27; coding practice moves to a separate site
 py-prac-0009,2026-09-04,published,python/practical-coding/design-copy-operation-tree-shared-subtrees-possible.md,
-py-prac-0010,2026-09-04,published,python/practical-coding/implement-retry-decorator-tuple-transient-exception-types.md,
+py-prac-0010,2026-09-04,retired,python/practical-coding/implement-retry-decorator-tuple-transient-exception-types.md,coding task removed on 2026-10-27; coding practice moves to a separate site
 py-prac-0011,2026-09-04,published,python/practical-coding/descriptor-set-self-obj-value-self-value.md,
-py-prac-0012,2026-09-04,published,python/practical-coding/implement-top-words-ascii-text-token-matches.md,
-py-prac-0013,2026-09-04,published,python/practical-coding/implement-anagram-check-unicode-strings-apply-nfkc.md,
-py-prac-0014,2026-09-04,published,python/practical-coding/implement-streaming-rle-encoder-lazily-yields-character.md,
-py-prac-0015,2026-09-04,published,python/practical-coding/move-numeric-zeros-end-list-place-preserving.md,
-py-prac-0016,2026-09-04,published,python/practical-coding/implement-fibonacci-first-second-returns-new-lazy.md,
-py-prac-0017,2026-09-04,published,python/practical-coding/implement-decorator-measuring-elapsed-time-preserves-wrapped.md,
+py-prac-0012,2026-09-04,retired,python/practical-coding/implement-top-words-ascii-text-token-matches.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0013,2026-09-04,retired,python/practical-coding/implement-anagram-check-unicode-strings-apply-nfkc.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0014,2026-09-04,retired,python/practical-coding/implement-streaming-rle-encoder-lazily-yields-character.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0015,2026-09-04,retired,python/practical-coding/move-numeric-zeros-end-list-place-preserving.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0016,2026-09-04,retired,python/practical-coding/implement-fibonacci-first-second-returns-new-lazy.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0017,2026-09-04,retired,python/practical-coding/implement-decorator-measuring-elapsed-time-preserves-wrapped.md,coding task removed on 2026-10-27; coding practice moves to a separate site
 py-prac-0018,2026-09-04,published,python/practical-coding/design-thread-safe-rate-limit-decorator-injected.md,
-py-prac-0019,2026-09-04,published,python/practical-coding/implement-context-manager-transaction-like-resource-commits.md,
-py-prac-0020,2026-09-04,published,python/practical-coding/implement-validation-descriptor-stores-values-separately-instance.md,
-py-prac-0021,2026-09-04,published,python/practical-coding/design-immutable-value-object-correctly-consistent-eq.md,
+py-prac-0019,2026-09-04,retired,python/practical-coding/implement-context-manager-transaction-like-resource-commits.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0020,2026-09-04,retired,python/practical-coding/implement-validation-descriptor-stores-values-separately-instance.md,coding task removed on 2026-10-27; coding practice moves to a separate site
+py-prac-0021,2026-09-04,retired,python/practical-coding/design-immutable-value-object-correctly-consistent-eq.md,coding task removed on 2026-10-27; coding practice moves to a separate site
 py-prac-0022,2026-09-04,published,python/practical-coding/prime-checks-divisors-up-int-sqrt-write.md,
 py-prac-0023,2026-09-04,published,python/practical-coding/write-tests-sum-api-returns-indices-first.md,
 py-prac-0024,2026-09-04,published,python/practical-coding/write-tests-maximum-overlapping-intervals-function-intervals.md,
