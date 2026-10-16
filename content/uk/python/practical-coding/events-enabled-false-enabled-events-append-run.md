@@ -1,41 +1,18 @@
 ---
 id: py-prac-0002
 title: "Що надрукує `events = []; enabled = False; enabled and events.append(\"run\"); print(events)` і чому side effect не відбувся?"
-description: "Надрукує [] – метод append не викликається."
 track: python
 section: practical-coding
-level: middle
-type: mechanism
-tags: [events-enabled-false-enabled-and-events-append-run-print-events]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial
     title: "Python 3.14: Tutorial"
     url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference
     title: "Python 3.14: Reference"
     url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#boolean-operations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Boolean operations: and обчислює лівий операнд першим, а правий – лише тоді, коли лівий не визначив результат; повертається значення операнда, а не bool."
 ---
 
 ## Short answer
@@ -66,11 +43,3 @@ enabled and log("run")  # called: run
 - вважати, що правий операнд `and` обчислюється завжди і `append` хоча б викликається;
 - сприймати `and` як функцію, яка завжди повертає `True` або `False`;
 - ставити побічні ефекти в `and` або `or` замість `if`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

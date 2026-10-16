@@ -1,48 +1,21 @@
 ---
 id: py-funcs-0019
 title: "Why can an object captured by a closure stay alive after the enclosing function has finished, and how does that affect memory retention?"
-description: "Why can an object captured by a closure stay alive after the enclosing function has finished, and how does that affect memory retention?"
 track: python
 section: functions-and-scope
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#user-defined-functions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section User-defined functions: __closure__ is a tuple of cell objects for the function's free variables."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Resolution of names: a name used in a block but not defined there is a free variable."
   - source_id: py314-reference-executionmodel-dynamic-features
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#dynamic-features
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Interaction with dynamic features: name resolution of free variables occurs at runtime, not at compile time."
   - source_id: py314-reference-datamodel-object-del
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__del__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section object.__del__: an object is finalized when its reference count reaches zero; reference cycles can prevent that."
 ---
 
 ## Short answer
@@ -74,11 +47,3 @@ The trap is trying to free memory with `del big` in the enclosing function. If t
 - assuming that a closure freezes the value of a variable at creation time, rather than the variable itself;
 - using `del` in the enclosing function while the closure still reads the variable: instead of freeing memory, it raises `NameError`;
 - expecting the GC to free a captured object while the closure is alive: as long as a reference to it exists through the cell, it is not freed.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

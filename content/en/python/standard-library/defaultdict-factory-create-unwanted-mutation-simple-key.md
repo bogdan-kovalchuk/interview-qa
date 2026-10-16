@@ -1,69 +1,30 @@
 ---
 id: py-stdlib-0003
 title: "When can a `defaultdict` factory create an unwanted mutation from a simple key read?"
-description: "When can a `defaultdict` factory create an unwanted mutation from a simple key read?"
 track: python
 section: standard-library
-level: senior
-type: pitfall
-tags: [defaultdict]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections-defaultdict
     title: "Python 3.14: Library/collections, defaultdict.__missing__"
     url: https://docs.python.org/3.14/library/collections.html#collections.defaultdict.__missing__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: defaultdict.__missing__ (calling default_factory and inserting the value; KeyError when the factory is None; get() and in do not call __missing__)."
 ---
 
 ## Short answer
@@ -110,23 +71,3 @@ A practical rule: use the factory where insertion is the intent, for example `gr
 - assuming that `if d[key]:` only tests the value and changes nothing;
 - reading `d[key]` inside a loop over the same `d` and getting a `RuntimeError` or extra keys in the result;
 - assuming that `get()` creates the key through `default_factory`: it returns `None` (or the default you pass) and does not call the factory.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

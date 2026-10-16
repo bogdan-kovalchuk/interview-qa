@@ -1,72 +1,30 @@
 ---
 id: py-cpyint-0007
 title: "Why does `sys.getrefcount(obj)` usually show at least one temporary reference more than expected?"
-description: "Why does `sys.getrefcount(obj)` usually show at least one temporary reference more than expected?"
 track: python
 section: cpython-internals
-level: senior
-type: pitfall
-tags: [sys-getrefcount-obj]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-dis
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-traceback-objects
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#traceback-objects
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -110,23 +68,3 @@ print(f"Immortal: {sys.getrefcount(None)}")
 - forgetting the +1 offset during memory leak analysis: an object held by a single variable produces a refcount of 2, which indicates normal single ownership;
 - attempting to diagnose immortal objects: reference counts for `0`, `""`, or `None` are fixed sentinel values and never reflect allocation counts;
 - overlooking hidden frame references: exception tracebacks, global scopes, and closures quietly retain references that keep objects alive unexpectedly.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

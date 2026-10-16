@@ -1,55 +1,21 @@
 ---
 id: py-funcs-0016
 title: "Why do all the functions created as `[lambda: i for i in range(3)]` return the same value once the comprehension has finished?"
-description: "Why do all the functions created as `[lambda: i for i in range(3)]` return the same value once the comprehension has finished?"
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: [lambda-i-for-i-in-range-3]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-why-do-lambdas-defined-in-a-loop-with
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, FAQ: lambdas created in a loop read the variable when they are called, not when they are defined."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Function definitions: default parameter values are evaluated once, when the function definition is executed."
   - source_id: py314-reference-expressions-lambda
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambda
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section lambda: a lambda behaves like a function defined with def and uses the same parameter-list syntax."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dictionaries
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Displays for lists, sets and dictionaries: a comprehension runs in its own implicitly nested scope, so names bound in it do not leak into the enclosing scope."
 ---
 
 ## Short answer
@@ -84,23 +50,3 @@ This technique has a limit: a default is an ordinary parameter, so a call that p
 - assuming that `[lambda: i for i in range(3)]` yields 0, 1, 2 because the value is supposedly fixed on each iteration;
 - adding a default to a lambda that `map` or a callback calls with arguments, and not noticing that the argument replaces the default;
 - looking for `i` after the comprehension: the name does not stay in the enclosing scope, so `print(i)` raises `NameError`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

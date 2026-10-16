@@ -1,34 +1,15 @@
 ---
 id: py-stdlib-0012
 title: "Why is `zoneinfo.ZoneInfo` better than a fixed UTC offset for civil time with daylight-saving transitions?"
-description: "Why is `zoneinfo.ZoneInfo` better than a fixed UTC offset for civil time with daylight-saving transitions?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [zoneinfo-zoneinfo]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-zoneinfo
     title: "Python 3.14: Library/zoneinfo"
     url: https://docs.python.org/3.14/library/zoneinfo.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: ZoneInfo with the IANA database, datetime arithmetic across DST, fold, and data sources (system data or the tzdata package)."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: timezone has a fixed offset from UTC; adding a timedelta to an aware datetime keeps tzinfo without time zone adjustment; subtraction of datetimes with the same tzinfo ignores tzinfo."
 ---
 
 ## Short answer
@@ -71,19 +52,3 @@ Data availability is a separate requirement: without system time zone data and t
 - assuming that `timedelta(hours=N)` on ZoneInfo time always covers N real hours: an offset change between the two moments alters the real difference;
 - computing a duration with `-` for datetimes that share one tzinfo and getting a wall-clock difference;
 - storing an offset such as `-05:00` instead of the zone name `America/New_York`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

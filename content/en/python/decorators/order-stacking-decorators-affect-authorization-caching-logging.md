@@ -1,41 +1,18 @@
 ---
 id: py-decor-0009
 title: "How does the order of stacking decorators affect authorization, caching, and logging, if any wrapper may choose not to call the next one?"
-description: "How does the order of stacking decorators affect authorization, caching, and logging, if any wrapper may choose not to call the next one?"
 track: python
 section: decorators
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -100,23 +77,3 @@ def handler(request):
   rejected attempts need an audit trail too;
 - any change to this order is a deliberate decision about which requests each layer sees, not
   cosmetics.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

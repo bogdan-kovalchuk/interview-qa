@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0013
 title: "When is `heapq` preferable to a full sort for top-k or a priority queue?"
-description: "When is `heapq` preferable to a full sort for top-k or a priority queue?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [heapq]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-heapq
     title: "Python 3.14: Library/heapq"
     url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: heap[0] is the smallest item; nlargest and nsmallest are equivalent to sorted()[:n] and perform best for small n; for n==1, min() and max() are more efficient; a counter is recommended for a priority queue with equal priorities."
   - source_id: cpython-heapq-source
     title: "CPython Lib/heapq.py: heap queue implementation"
     url: https://github.com/python/cpython/blob/3.14/Lib/heapq.py
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "CPython 3.14 implementation of heapq: heappush sifts an element up towards the root, heappop sifts an element down to a leaf and back up, nlargest keeps a heap of size n. This describes CPython, not a language guarantee."
   - source_id: cpython-listsort-notes
     title: "CPython Objects/listsort.txt: implementation notes for list.sort"
     url: https://github.com/python/cpython/blob/3.14/Objects/listsort.txt
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "CPython notes on list.sort: lg(n!) is the information-theoretic limit for comparison sorting on average. This describes the implementation, not a language guarantee."
 ---
 
 ## Short answer
@@ -90,19 +67,3 @@ The first block returns the three largest values, and `heap[0]` is the smallest 
 - assuming that `for x in heap` gives a sorted order: only `heap[0]` is guaranteed to be the smallest;
 - using `nlargest` for a large k, where `sorted()` is more efficient according to the documentation;
 - putting tuples with equal priorities and non-comparable objects into a heap without a counter.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

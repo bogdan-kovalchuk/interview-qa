@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0020
 title: "Чи змінює type annotation фактичний runtime type об’єкта або автоматично забороняє присвоєння значення іншого типу?"
-description: "Ні, type annotation не змінює runtime type об'єкта і не забороняє присвоєння значення іншого типу – Python runtime ігнорує анотації при виконанні."
 track: python
 section: objects-and-types
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -85,23 +58,3 @@ print(hints)  # {'a': <class 'int'>, 'b': <class 'int'>, 'return': <class 'int'>
 - відчуття захищеності без CI: написання type hints без обов'язкового запуску статичного аналізатора (`mypy`, `pyright`) у CI/CD не захищає код у продакшні від помилок типів;
 - валідація зовнішніх даних: використання стандартних анотацій для автоматичної перевірки вхідних JSON або HTTP-запитів без валідаційних бібліотек (Pydantic, attrs) залишає систему вразливою;
 - відсутність локальних анотацій: анотації локальних змінних усередині тіла функції не зберігаються в `__annotations__` після компіляції.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

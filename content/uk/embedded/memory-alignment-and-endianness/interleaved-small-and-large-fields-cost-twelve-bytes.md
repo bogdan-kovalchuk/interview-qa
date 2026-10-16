@@ -1,48 +1,21 @@
 ---
 id: emb-align-0004
 title: "Яким буде `sizeof`, якщо uint32 має чотирибайтове вирівнювання?"
-description: "Зазвичай 12 байт: три байти internal і три байти trailing padding."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Додаткові відомості про структури"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додаткові приклади того, як порядок полів змінює padding і розмір структури."
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додатковий український маршрут вивчення C++; не є нормативним джерелом object layout."
 ---
 
 ## Question code
@@ -107,7 +80,3 @@ _Static_assert(sizeof(good_t) == 8, "unexpected good_t layout");
 ```
 
 Не перевпорядковуй поля public ABI, wire format, persistent binary format або hardware register map лише заради економії місця.
-
-## Sources
-
-<!-- generated from frontmatter -->

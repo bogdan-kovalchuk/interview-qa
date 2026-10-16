@@ -1,62 +1,27 @@
 ---
 id: py-excpt-0016
 title: "Як залогувати exception із traceback, не дублюючи його бездумно на кожному рівні call stack?"
-description: "Логувати exception із traceback треба один раз – там, де його остаточно обробили і не перекидають далі, – через logger.exception() або logger.error(..., exc_info=True)."
 track: python
 section: exceptions
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-logging-logger-exception
     title: "Python 3.14: Library/logging"
     url: https://docs.python.org/3.14/library/logging.html#logging.Logger.exception
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: exception() додає інформацію про exception і викликається з обробника exception."
   - source_id: py314-library-logging-logger-debug
     title: "Python 3.14: Library/logging"
     url: https://docs.python.org/3.14/library/logging.html#logging.Logger.debug
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: параметр exc_info; якщо він істинний і exception не передано явно, береться поточний exception з sys.exc_info()."
   - source_id: py314-reference-simple-stmts-raise
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#raise
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: raise ... from записує вихідний exception у __cause__; непійманий exception друкується разом із причиною."
 ---
 
 ## Short answer
@@ -104,23 +69,3 @@ main()
 - викликати `logger.exception()` у кожному `except` на шляху викликів: один збій з’являється в логах кілька разів;
 - логувати exception і піднімати його далі голим `raise`, а вище знову логувати: та сама історія з дублікатами;
 - писати `logger.error(str(exc))` без `exc_info`: текст повідомлення є, але traceback втрачено.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

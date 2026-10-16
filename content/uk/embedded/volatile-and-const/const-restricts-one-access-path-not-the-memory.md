@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0049
 title: "Чому `const` не є \"гарантією фізичної незмінності\" об’єкта?"
-description: "const обмежує записи через конкретний typed access, але не доводить, що фізична пам’ять ніколи не зміниться."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,7 +29,3 @@ sources:
 **Приклад:** параметр `const uint8_t *data` каже функції, що вона не змінюватиме байти через `data`; це не означає, що початковий буфер глобально immutable. Натомість `const volatile uint32_t *status` не дозволяє функції записати через цей вказівник і позначає кожен доступ як volatile. Чи потрібен саме цей тип, визначає інтерфейс пристрою.[^iso-c-n1570]
 
 **Типова помилка:** плутати обмеження API з дозволами апаратури. Використовуй `const` у параметрах для функцій-читачів і `volatile` для об’єктів зі спеціальною зовнішньою семантикою доступу. Коли потрібен реальний захист, застосовуй апаратні механізми пам’яті, а не покладайся на qualifier C.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

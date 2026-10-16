@@ -1,55 +1,21 @@
 ---
 id: py-objtypes-0016
 title: "Як numeric equality між `1`, `1.0` і `True` впливає на їх використання як keys одного словника?"
-description: "1, 1.0 і True мають однаковий hash і порівнюються як рівні (1 == 1.0 == True), тому в dict вони займають одну й ту ж комірку – перемагає останнє присвоєння."
 track: python
 section: objects-and-types
-level: senior
-type: pitfall
-tags: [1-0]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -99,23 +65,3 @@ print(unique_items)  # {True}
 - неочевидний тип збереженого ключа: `dict` оновлює значення, але залишає перший доданий ключ, тому ітерація по `keys()` може повертати `int` замість очікуваного `bool`;
 - колапс у `set`: використання `set` для дедуплікації змішаних колекцій непомітно відкидає елементи, які розробник вважав різними сутностями;
 - захисний підхід: якщо тип ключа має значення, використовують складений ключ `(type(k), k)` або окремі словники для кожного типу.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

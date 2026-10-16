@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0095
 title: "Чому прямокутний сигнал після RC-ФНЧ має округлені фронти?"
-description: "Чому прямокутний сигнал після RC-ФНЧ має округлені фронти?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 48, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-low-pass-filters
     title: "All About Circuits: Low-pass Filters"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/low-pass-filters/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує частотну залежність RC-ФНЧ і послаблення високочастотних складових; не задає параметри конкретного сигналу чи компонента."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 - Вважати, що фільтр просто «зрізає» кути без зміни решти сигналу; кожна гармоніка послаблюється відповідно до частотної характеристики.
 - Називати `f_c` жорсткою межею. Це частота переходу, на якій для стандартного RC-ФНЧ амплітуда дорівнює приблизно 70.7% від низькочастотного рівня.[^aac-low-pass-filters]
 - Забувати про навантаження: реальний опір на виході може змінити і передачу в смузі пропускання, і частоту зрізу.
-
-## Sources
-
-<!-- generated from frontmatter -->

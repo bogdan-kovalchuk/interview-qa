@@ -1,55 +1,21 @@
 ---
 id: py-excpt-0005
 title: "У Python 3.14 що станеться з pending `return` з `try`, якщо `finally` теж виконає `return`, і чому compiler тепер видає `SyntaxWarning` для такого control flow?"
-description: "return з finally завжди переважає: функція повертає значення з finally, а pending return з try губиться."
 track: python
 section: exceptions
-level: middle
-type: pitfall
-tags: [syntaxwarning]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pep-0765-finally-control-flow
     title: "PEP 765: Disallow return/break/continue that exit a finally block"
     url: https://peps.python.org/pep-0765/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Специфікація PEP 765: мова дозволяє SyntaxWarning або SyntaxError для return, break і continue, що виходять із finally; попередження очікується під час компіляції, а не для вже скомпільованого коду."
 ---
 
 ## Short answer
@@ -88,23 +54,3 @@ print(bar())                      # 42
 - вважати, що `return` у `try` спрацює, якщо `finally` теж містить `return`;
 - очікувати, що виняток із `try` буде піднятий після `finally` з `return`, `break` або `continue`;
 - ігнорувати `SyntaxWarning`, бо код уже працює: попередження видно під час компіляції, а не під час виконання скомпільованого коду.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

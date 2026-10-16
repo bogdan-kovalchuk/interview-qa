@@ -1,44 +1,18 @@
 ---
 id: py-fund-0006
 title: "How do you tell a language guarantee of Python apart from an implementation detail, using memory management or bytecode as an example?"
-description: "How do you tell a language guarantee of Python apart from an implementation detail, using memory management or bytecode as an example?"
 track: python
 section: fundamentals
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -90,23 +64,3 @@ object with no references disappears immediately thanks to reference counting.
 
 The simplest sanity check: is PyPy entitled to do this differently and still be Python? If so, you
 are leaning on an implementation detail.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

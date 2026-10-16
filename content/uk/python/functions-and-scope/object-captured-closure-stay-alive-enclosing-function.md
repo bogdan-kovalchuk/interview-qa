@@ -1,48 +1,21 @@
 ---
 id: py-funcs-0019
 title: "Чому об’єкт, захоплений closure, може залишатися живим після завершення зовнішньої функції, і як це впливає на утримання пам’яті?"
-description: "Closure тримає cell-об’єкти з атрибута `__closure__`, тож захоплені ними об’єкти лишаються живими, доки існує сама closure."
 track: python
 section: functions-and-scope
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#user-defined-functions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ User-defined functions: __closure__ є кортежем cell-об’єктів для вільних змінних функції."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Resolution of names: ім’я, яке використано в блоці, але не визначено там, є free variable."
   - source_id: py314-reference-executionmodel-dynamic-features
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#dynamic-features
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Interaction with dynamic features: розв’язання імен вільних змінних відбувається під час виконання, а не під час компіляції."
   - source_id: py314-reference-datamodel-object-del
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__del__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ object.__del__: об’єкт фіналізується, коли його reference count стає нулем; циклічні посилання можуть цьому завадити."
 ---
 
 ## Short answer
@@ -74,11 +47,3 @@ Closure захоплює саму змінну, а не значення на м
 - вважати, що closure фіксує значення змінної на момент створення, а не саму змінну;
 - використати `del` у зовнішній функції, коли closure ще читає змінну: замість звільнення пам’яті виходить `NameError`;
 - очікувати, що GC звільнить захоплений об’єкт, поки closure жива: доки на нього є посилання через cell, він не звільняється.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

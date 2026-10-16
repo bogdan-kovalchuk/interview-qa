@@ -1,58 +1,24 @@
 ---
 id: py-gil-0012
 title: "When is `ThreadPoolExecutor` an appropriate choice for an I/O-bound workload?"
-description: "When is `ThreadPoolExecutor` an appropriate choice for an I/O-bound workload?"
 track: python
 section: concurrency-and-gil
-level: middle
-type: practical
-tags: [threadpoolexecutor]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -106,23 +72,3 @@ a separate process and data serialization for each call.
 - the computation is CPU-bound – then `ProcessPoolExecutor` or a free-threaded build is needed;
 - there are very many tasks and they mostly wait on the network – then `asyncio` scales better than
   threads with their fixed number of workers.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

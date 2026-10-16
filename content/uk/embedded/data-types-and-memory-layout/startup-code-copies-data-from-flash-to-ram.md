@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0038
 title: "Що зробить startup code з секцією `.data` перед викликом `main()`?"
-description: "У типовому GNU toolchain startup code копіює початкові значення .data з Flash (LMA) у RAM (VMA) перед запуском main()."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: gnu-ld-lma-vma
     title: "GNU ld documentation: Output Section LMA"
     url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
-    accessed: 2026-10-04
-    kind: official
-    version: "2.47"
-    applicability: "Визначає LMA й VMA та описує GNU ld приклад, де секцію завантажують у ROM, а виконують із RAM; не задає обов’язкової startup-послідовності для всіх MCU."
 ---
 
 ## Short answer
@@ -64,11 +41,3 @@ for (unsigned char *src = &_sidata, *dst = &_sdata; dst < &_edata; )
 Цей приклад ілюструє копіювання байтів, а не переносимий код для будь-якої системи: порівняння та символи мають відповідати linker script і адресному простору конкретної цілі. Ініціалізовані дані не обов’язково копіюються з Flash у всіх системах – частина MCU може виконувати код або читати константи безпосередньо з невольатильного сховища.[^iso-c-n1570]
 
 **Типова помилка:** вважати, що C сам задає LMA/VMA чи назви startup-символів. Це домовленість toolchain та платформи; перевіряйте linker map і реалізацію startup code.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

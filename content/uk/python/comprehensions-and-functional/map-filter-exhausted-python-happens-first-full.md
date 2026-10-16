@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0006
 title: "Чому `map()` і `filter()` у Python 3 можна вичерпати та що станеться після першого повного обходу?"
-description: "map() і filter() у Python 3 повертають iterator, а не список, тому після першого повного обходу вони вичерпуються."
 track: python
 section: comprehensions-and-functional
-level: middle
-type: mechanism
-tags: [map, filter]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -79,11 +52,3 @@ print(second_pass)
 - очікування поведінки Python 2, де `map()` і `filter()` повертали матеріалізований `list`;
 - спроба викликати `len()` або отримати доступ за індексом `it[0]`, що призводить до `TypeError`, оскільки ітератори не підтримують sequence protocol;
 - передчасна матеріалізація через `list()` великих або нескінченних потоків даних, що нівелює переваги потокової обробки.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

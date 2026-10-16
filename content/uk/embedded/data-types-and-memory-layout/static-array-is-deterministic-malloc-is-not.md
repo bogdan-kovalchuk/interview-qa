@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0092
 title: "Яка різниця між `malloc` і статичним масивом для буфера у embedded?"
-description: "Статичний масив має наперед відомий розмір; malloc виділяє пам’ять під час виконання й може завершитися невдачею."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,11 +25,3 @@ sources:
 У ISR не варто викликати довільну heap-функцію, якщо документація конкретного allocator-а не гарантує безпечність для переривань і прийнятну затримку. Виклик може захоплювати внутрішній lock, змінювати спільний стан або виконувати пошук змінної тривалості; це властивості реалізації, а не універсальна заборона стандарту. Статичний буфер або заздалегідь виділений пул зазвичай простіше перевірити на обмеження часу та пам’яті.
 
 **Приклад вибору:** для UART RX буфера фіксованого розміру статичне сховище робить споживання SRAM видимим під час компонування. Якщо ж розмір залежить від конфігурації, виділіть ресурс до запуску real-time задач і перевірте результат, або використайте пул фіксованих блоків. Розмір буфера все одно треба обґрунтувати максимальною чергою даних; спосіб виділення сам по собі не запобігає переповненню буфера чи гонці між ISR і кодом задачі.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

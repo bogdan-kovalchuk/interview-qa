@@ -1,48 +1,21 @@
 ---
 id: py-pkgenv-0001
 title: "У чому різниця між requirements.txt і pyproject.toml для управління залежностями Python-проєкту?"
-description: "pyproject.toml містить стандартизовані метадані проєкту та build system; requirements.txt зазвичай задає для pip вхідні дані інсталяції середовища, тому ці файли можуть використовуватися разом."
 track: python
 section: packaging-and-environments
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: pep621
     title: "PEP 621: Storing project metadata in pyproject.toml"
     url: https://peps.python.org/pep-0621/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "PEP, що стандартизував pyproject.toml для метаданих проєкту."
   - source_id: packaging-guide
     title: "Python Packaging User Guide: Writing pyproject.toml"
     url: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "Офіційна документація з пакування Python."
   - source_id: pip-requirements-format
     title: "pip documentation: Requirements File Format"
     url: https://pip.pypa.io/en/stable/reference/requirements-file-format/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "Офіційна специфікація pip про синтаксис і призначення requirements files."
   - source_id: packaging-install-requires-vs-requirements
     title: "Python Packaging User Guide: install_requires vs requirements files"
     url: https://packaging.python.org/en/latest/discussions/install-requires-vs-requirements/#install-requires-vs-requirements-files
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна сторінка PyPA: install_requires описує абстрактні залежності, які pip аналізує під час встановлення; requirements files – список аргументів pip, часто з точними версіями, який читається лише командою pip install -r."
 ---
 
 ## Short answer
@@ -80,19 +53,3 @@ httpx==0.28.1
 - ставити точні версії в `[project].dependencies`, через що споживачі бібліотеки не можуть оновити залежність;
 - вважати, що `requirements.txt` є частиною метаданих збірки: інсталятор проєкту його не читає;
 - вважати, що ім’я файла має значення: pip приймає будь-яку назву в `-r`, бо `requirements.txt` є лише звичним іменем.[^pip-requirements-format]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

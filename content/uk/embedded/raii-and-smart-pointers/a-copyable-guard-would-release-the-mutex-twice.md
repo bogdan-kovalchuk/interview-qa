@@ -1,62 +1,27 @@
 ---
 id: emb-raii-0004
 title: "Trap: чому lock guard має забороняти копіювання (`= delete`)?"
-description: "Копія guard-а дала б двох власників одного mutex і два `osMutexRelease`: перший деструктор знімає lock, поки інша копія ще вважає його своїм."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cmsis-rtos2-mutex
     title: "CMSIS-RTOS2: Mutex Management"
     url: https://arm-software.github.io/CMSIS_6/latest/RTOS2/group__CMSIS__RTOS__MutexMgmt.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Описує mutex API CMSIS-RTOS2: osMutexRelease повертає osErrorResource, якщо mutex не було взято або потік не власник; рекурсивний mutex (osMutexRecursive) потрібно звільнити стільки разів, скільки його взято. Конкретна RTOS-реалізація поза специфікацією може поводитися інакше."
   - source_id: cpp-draft-class-copy-ctor
     title: "C++ working draft: Copy/move constructors ([class.copy.ctor])"
     url: https://eel.is/c++draft/class.copy.ctor
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що без user-declared copy constructor він неявно оголошується (для класу з user-declared деструктором це deprecated), що неявний move constructor оголошується лише коли, серед інших умов, немає user-declared copy constructor і деструктора, і що неявно визначений move constructor виконує memberwise move. Не стосується оптимізацій."
   - source_id: cpp-draft-class-copy-assign
     title: "C++ working draft: Copy/move assignment operator ([class.copy.assign])"
     url: https://eel.is/c++draft/class.copy.assign
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Пункт 2: якщо в класі немає user-declared copy assignment operator, він неявно оголошується; тому видалення самого лише copy constructor присвоєння не забороняє. Деталі deprecated для цього оператора не розглядаються."
   - source_id: cpp-draft-dcl-fct-def-delete
     title: "C++ working draft: Deleted definitions ([dcl.fct.def.delete])"
     url: https://eel.is/c++draft/dcl.fct.def.delete
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Пункт 2: конструкція, що позначає видалену функцію (виклик, вказівник на неї), ill-formed; приклад 3 показує move-only клас із видаленими copy constructor і copy assignment та defaulted move-операціями. Про поведінку RTOS нічого не каже."
 ---
 
 ## Question code
@@ -99,19 +64,3 @@ void work(osMutexId_t m) {
 - Видалити лише copy constructor і забути copy assignment: присвоєння лишається неявно згенерованим, і `a = b` знову дає двох власників.[^cpp-draft-class-copy-assign]
 - Зробити guard move-only через `= default` на move constructor: він виконує memberwise move,[^cpp-draft-class-copy-ctor] а для вказівника чи `bool` це просто копіювання значення, тож джерело лишається власником і release знову виконується двічі.
 - Не помітити, що guard передано у функцію за значенням: це теж копія.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

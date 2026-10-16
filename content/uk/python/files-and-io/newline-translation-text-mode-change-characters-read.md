@@ -1,83 +1,36 @@
 ---
 id: py-fileio-0003
 title: "Як newline translation в text mode може змінити прочитані або записані characters на різних platforms?"
-description: "У text mode з newline=None (типово) при читанні всі варіанти \\r\\n, \\r та \\n трансляються в \\n, а при записі \\n замінюється на os.linesep – на Windows це \\r\\n."
 track: python
 section: files-and-io
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-linesep
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.linesep
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: значення os.linesep на платформах і застереження щодо text mode."
   - source_id: py314-library-csv
     title: "Python 3.14: Library/csv"
     url: https://docs.python.org/3.14/library/csv.html#csv.writer
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: модуль csv просить відкривати файлові об’єкти з newline=''."
 ---
 
 ## Short answer
@@ -117,23 +70,3 @@ print(open("lines.txt", "rb").read())                     # b'a\r\nb\r\n' on eve
 - порівнювати хеші або розміри текстових файлів, записаних на різних ОС;
 - читати файл із типовим `newline`, коли треба зберегти кінці рядків як є;
 - відкривати CSV без `newline=""`: зайвий `\r` при записі на платформах із `\r\n` і неправильний розбір полів із переносами рядків.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

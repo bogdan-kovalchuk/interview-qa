@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0009
 title: "Чому присвоєння `items = []` усередині функції не змінює список викликача, а `items.append(value)` може його змінити?"
-description: "items = [] створює нове локальне зв’язування імені, тоді як items.append(value) змінює той самий об’єкт, на який посилаються і локальний параметр, і змінна викликача."
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [items, items-append-value]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-how-do-i-write-a-function-with-output
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-why-did-changing-list-y-also-change-list-x
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-did-changing-list-y-also-change-list-x
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: зміна змінюваного об’єкта видна через усі імена, що на нього посилаються; присвоєння імені лише переприв’язує це ім’я."
   - source_id: py314-reference-simple-stmts-augmented-assignment
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#augmented-assignment-statements
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розширене присвоєння (+=) виконується на місці, коли це можливо, і змінює старий об’єкт замість створення нового."
 ---
 
 ## Short answer
@@ -71,19 +48,3 @@ print(data)                    # ['old', 'new']: the same list object was change
 - очікувати, що присвоєння `items = ...` усередині функції змінить список викликача;
 - писати `items += [value]` і не враховувати, що для списку це зміна на місці, яку бачить викликач;
 - змінювати аргумент без згадки про це в назві чи документації функції, через що викликач не очікує побічного ефекту.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

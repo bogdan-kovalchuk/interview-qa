@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0002
 title: "Що означає truthy return value з `__exit__` і чому випадкове `return True` небезпечне?"
-description: "Truthy return з __exit__ пригнічує exception – вона не поширюється далі за межі with."
 track: python
 section: context-managers
-level: middle
-type: pitfall
-tags: [exit, return-true]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -92,23 +69,3 @@ print("Execution continued safely")
 - відсутність перевірки `exc_type` перед пригніченням – перевіряти тип слід через `issubclass(exc_type, ExpectedException)` або `isinstance(exc_val, ExpectedException)`;
 - випадкове пригнічення системних винятків (`KeyboardInterrupt`, `SystemExit`, `CancelledError`), які ніколи не повинні зупинятися звичайним менеджером контексту;
 - явне повернення `False` або просто опущення `return` (повертається `None`), якщо менеджер займається лише звільненням ресурсів без обробки винятків.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

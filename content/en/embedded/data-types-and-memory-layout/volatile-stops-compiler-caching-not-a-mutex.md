@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0082
 title: "What is `volatile`, and how does it interact with compiler optimization?"
-description: "volatile forbids caching or eliding accesses to a variable, but gives no atomicity or ordering across threads."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  uk: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of the question and the original answer (owner's deck). The short answer and the Ukrainian explanation were checked against cited technical sources on 2026-10-04; this source is not proof of the claims."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for data types and memory layout concepts; details of specific devices and toolchains can differ."
   - source_id: gcc-volatiles
     title: "GCC documentation: Volatiles"
     url: https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Describes GCC volatile access rules, including limits on ordering ordinary memory; it is not a substitute for thread synchronization."
 ---
 
 ## Short answer
@@ -49,11 +26,3 @@ Without volatile accesses, the compiler may optimize repeated reads or writes of
 ## Detailed explanation
 
 TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

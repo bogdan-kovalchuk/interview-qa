@@ -1,97 +1,42 @@
 ---
 id: py-fileio-0009
 title: "Чим `pathlib.Path` полегшує побудову та обхід шляхів порівняно з ручною конкатенацією strings?"
-description: "pathlib.Path надає об’єктно-орієнтований API: оператор / для join, методи iterdir(), glob(), rglob(), властивості .suffix, .stem, .parent."
 track: python
 section: files-and-io
-level: middle
-type: comparison
-tags: [pathlib-path]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib-path
     title: "Python 3.14: Library/pathlib (Path)"
     url: https://docs.python.org/3.14/library/pathlib.html#pathlib.Path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: Path створює конкретний шлях для поточної ОС, тобто PosixPath або WindowsPath."
   - source_id: py314-library-pathlib-pure-paths
     title: "Python 3.14: Library/pathlib (Pure paths)"
     url: https://docs.python.org/3.14/library/pathlib.html#pure-paths
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: шляхи незмінні й хешовані; чисті класи виконують операції над шляхами без звернень до ОС і можна створювати для будь-якої ОС."
   - source_id: py314-library-pathlib-purepath-joinpath
     title: "Python 3.14: Library/pathlib (PurePath.joinpath)"
     url: https://docs.python.org/3.14/library/pathlib.html#pathlib.PurePath.joinpath
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: якщо сегмент є абсолютним шляхом, усі попередні сегменти ігноруються."
   - source_id: py314-library-pathlib-path-rglob
     title: "Python 3.14: Library/pathlib (Path.rglob)"
     url: https://docs.python.org/3.14/library/pathlib.html#pathlib.Path.rglob
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: rglob() виконує пошук за шаблоном рекурсивно, у всіх підкаталогах."
 ---
 
 ## Short answer
@@ -138,19 +83,3 @@ for p in sorted(root.rglob('*.*')):   # recursive search, yields Path objects
 - складати шлях через `+`: `Path('a') + 'b'` дає `TypeError`, бо `Path` не підтримує конкатенацію з рядком;
 - вважати, що створення `Path(...)` перевіряє наявність файлу чи каталогу;
 - вважати, що абсолютний правий операнд просто дописується до лівого.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

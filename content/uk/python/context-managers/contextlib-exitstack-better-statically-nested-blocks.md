@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0006
 title: "Коли `contextlib.ExitStack` кращий за статично вкладені `with` blocks?"
-description: "ExitStack потрібен, коли кількість ресурсів або cleanup-дій визначається динамічно під час виконання."
 track: python
 section: context-managers
-level: middle
-type: comparison
-tags: [contextlib-exitstack]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -85,19 +62,3 @@ with NamedTemporaryFile("w+", delete=False) as f1, NamedTemporaryFile(
 - атомарне захоплення ресурсів: у разі збою на середині циклу всі раніше відкриті дескриптори закриваються коректно;
 - довільні callbacks: метод `callback()` позбавляє потреби писати класи-обгортки для простих функцій закриття (`close`, `release`, `disconnect`);
 - передача відповідальності: метод `pop_all()` дозволяє успішно перенести стек закриття в довгоживучий об'єкт, якщо всі ресурси ініціалізувалися без помилок.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

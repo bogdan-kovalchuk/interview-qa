@@ -1,58 +1,24 @@
 ---
 id: py-perf-0020
 title: "Чому зростання RSS не доводить Python object leak і які додаткові вимірювання потрібні?"
-description: "Зростання RSS саме по собі не доводить leak: RSS включає pymalloc arenas, фрагментацію та пам’ять C-розширень."
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, модуль tracemalloc: відстежує більшість блоків, виділених Python (не всю пам’ять процесу); порівняння двох знімків для пошуку leak."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html#the-pymalloc-allocator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ pymalloc: дрібні об’єкти до 512 байт, арени фіксованого розміру (1 MiB на 64-bit); більші алокації йдуть до PyMem_RawMalloc. Не описує, коли арени повертаються ОС."
   - source_id: cpython-obmalloc-arena-release
     title: "CPython Objects/obmalloc.c: arena release"
     url: https://github.com/python/cpython/blob/v3.14.6/Objects/obmalloc.c#L2431
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14.6"
-    applicability: "Вихідний код CPython 3.14.6, Objects/obmalloc.c, рядок 2431 (if (nf == ao->ntotalpools && ao->nextarena != NULL)): арена звільняється системі, коли всі її pools вільні і вона не остання в списку. Деталь реалізації CPython, а не гарантія мови."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html#gc.is_tracked
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, gc.get_objects і gc.is_tracked: повертаються лише об’єкти, які відстежує збирач; атомарні типи як правило не відстежуються. Не описує пам’ять процесу."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html#sys.getallocatedblocks
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, sys.getallocatedblocks: кількість блоків, виділених інтерпретатором; значення може змінюватися між викликами через внутрішні кеші, тому може знадобитися gc.collect() і _clear_internal_caches(). Не є мірою RSS."
 ---
 
 ## Short answer
@@ -96,23 +62,3 @@ print(top.traceback[0].lineno)  # 8: the cache[i] = ... line keeps the blocks al
 - вважати зростання RSS доказом leak без знімків і без повторення навантаження;
 - читати одне значення `sys.getallocatedblocks()` без `gc.collect()` і без порівняння з попередніми вимірюваннями;
 - шукати leak рядків або байтів через `gc.get_objects()`, де вони як правило не з’являються.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

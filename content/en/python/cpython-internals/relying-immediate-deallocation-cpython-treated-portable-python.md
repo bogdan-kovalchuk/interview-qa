@@ -1,72 +1,30 @@
 ---
 id: py-cpyint-0008
 title: "Why can't relying on immediate deallocation in CPython be treated as a portable Python language guarantee?"
-description: "Why can't relying on immediate deallocation in CPython be treated as a portable Python language guarantee?"
 track: python
 section: cpython-internals
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-dis
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-traceback-objects
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#traceback-objects
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -106,23 +64,3 @@ leak, tasks holding a lock longer than needed) on PyPy or in future CPython vari
 - relying on the order in which `__del__` is called to release interdependent resources;
 - testing only on CPython and treating destructor behaviour as part of the language rather than an
   implementation detail.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0009
 title: "How does a shallow copy differ from a deep copy for a container with nested mutable objects?"
-description: "How does a shallow copy differ from a deep copy for a container with nested mutable objects?"
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -88,19 +61,3 @@ print(original[0])                # [1, 2, 99] - untouched by mutation in deep
 - invoking `copy.deepcopy()` unconditionally across large collections, resulting in substantial CPU overhead and excessive memory allocation;
 - attempting to deep-copy objects that encapsulate external system resources (such as file descriptors, open sockets, or threading locks), triggering copy failures or invalid states;
 - leveraging list or dictionary comprehensions for targeted, shallow-depth copies when only specific levels of a data structure need to be duplicated.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

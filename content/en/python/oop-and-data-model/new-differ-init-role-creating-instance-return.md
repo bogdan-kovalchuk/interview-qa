@@ -1,62 +1,27 @@
 ---
 id: py-oop-0001
 title: "How does `__new__` differ from `__init__` in its role in creating an instance and in its return value?"
-description: "How does `__new__` differ from `__init__` in its role in creating an instance and in its return value?"
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [new, init]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-new
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__new__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the object.__new__ section of the data model."
   - source_id: py314-reference-datamodel-object-init
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__init__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the object.__init__ section of the data model."
 ---
 
 ## Short answer
@@ -89,19 +54,3 @@ The rule for `__init__` is different: it must not return anything except `None`.
 - assuming `__init__` creates the object, so a `return self` at its end looks like a way to return the result;
 - forgetting `return` in `__new__`: `super().__new__(cls)` without a `return` gives `None`, and `__init__` is not called;
 - expecting `__init__` to run every time, even when `__new__` returned an object of another type.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

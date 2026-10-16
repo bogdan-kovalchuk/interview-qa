@@ -1,62 +1,27 @@
 ---
 id: emb-cppoop-0020
 title: "Що таке CRTP і яку проблему він вирішує?"
-description: "Curiously Recurring Template Pattern – поліморфізм на етапі компіляції через static_cast до похідного типу."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-expr-static-cast
     title: "C++ working draft: Static cast ([expr.static.cast])"
     url: https://eel.is/c++draft/expr.static.cast
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що static_cast вказівника на base у вказівник на похідний клас коректний, лише якщо цей base справді є підоб’єктом об’єкта похідного типу; інакше undefined behavior. Компілятор цього не перевіряє."
   - source_id: cpp-draft-temp-inst
     title: "C++ working draft: Implicit instantiation ([temp.inst])"
     url: https://eel.is/c++draft/temp.inst
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що неявна інстанціація специфікації класового шаблону інстанціює оголошення, але не визначення member-функцій, а специфікація member-функції інстанціюється, коли її визначення потрібне. Про розмір коду не йдеться."
   - source_id: itanium-cxx-abi
     title: "Itanium C++ ABI"
     url: https://itanium-cxx-abi.github.io/cxx-abi/abi.html
-    accessed: 2026-10-06
-    kind: spec
-    version: null
-    applicability: "Визначає dynamic class (з virtual-функціями чи virtual-базами) як клас, що потребує virtual table pointer; отже клас без них його не потребує. Це ABI, а не стандарт мови: інші ABI можуть відрізнятися в деталях."
   - source_id: gcc-optimize-options
     title: "GCC 16.1.0: Optimize Options"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
-    accessed: 2026-10-06
-    kind: official
-    version: "16.1.0"
-    applicability: "Документує, що без оптимізації GCC не розгортає функції inline (-fno-inline за замовчуванням), а -finline-small-functions вмикається на -O2, -O3 і -Os; конкретні рішення евристик залежать від коду."
 ---
 
 ## Question code
@@ -108,11 +73,7 @@ std::int16_t poll(Temp& t) { return t.read(); }       // прямий викли
 
 **Типові помилки:**
 
-- Вважати CRTP безкоштовним за визначенням: на `-O0` GCC не інлайнить функції, тож виклик лишається call,[^gcc-optimize-options] а код base-методів дублюється для кожного похідного типу (див. `qid:emb-cppoop-0022`).
+- Вважати CRTP безкоштовним за визначенням: на `-O0` GCC не інлайнить функції, тож виклик лишається call,[^gcc-optimize-options] а код base-методів дублюється для кожного похідного типу (див. qid:emb-cppoop-0022).
 - Успадкувати від `SensorBase<Інший>`: `static_cast` на неправильний тип – undefined behavior.[^cpp-draft-expr-static-cast]
-- Очікувати runtime-поліморфізм: `SensorBase<Temp>` і `SensorBase<Pressure>` – різні класи без спільного base, їх не покласти в один масив; для цього потрібен virtual (див. `qid:emb-cppoop-0019`).
+- Очікувати runtime-поліморфізм: `SensorBase<Temp>` і `SensorBase<Pressure>` – різні класи без спільного base, їх не покласти в один масив; для цього потрібен virtual (див. qid:emb-cppoop-0019).
 - Зробити `read_impl` приватним без `friend`: база не зможе його викликати.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,37 +1,15 @@
 ---
 id: py-prac-0005
 title: "The class `Key` defines `__eq__` based on `value` but does not define `__hash__`: what happens with `{Key(1): \"x\"}`, and how do you fix the contract for an immutable key?"
-description: "A TypeError (unhashable) is raised, because a class with `__eq__` and no `__hash__` gets `__hash__ = None`."
 track: python
 section: practical-coding
-level: senior
-type: pitfall
-tags: [key, eq, value, hash, key-1-x]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-object-hash
     title: "Python 3.14: Reference/datamodel, object.__hash__"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__hash__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, object.__hash__: the requirement that objects equal under __eq__ have the same hash; the implicit __hash__ = None when __eq__ is overridden without __hash__; the advice not to define __hash__ for a mutable class with __eq__. Does not describe the text of TypeError messages."
   - source_id: py314-library-dataclasses-dataclass
     title: "Python 3.14: Library/dataclasses, dataclass"
     url: https://docs.python.org/3.14/library/dataclasses.html#dataclasses.dataclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, dataclass: with eq and frozen both enabled the decorator generates __hash__; an explicitly defined __hash__ is not changed. Does not describe classes that are not dataclasses."
 ---
 
 ## Short answer
@@ -81,23 +59,3 @@ Do not define `__hash__` for a mutable class. The object sits in the dict's buck
 - defining `__eq__` and forgetting `__hash__`, then getting a `TypeError` on the first `dict` or `set`;
 - defining `__hash__` for a mutable class, then changing a field that the hash uses;
 - hashing fields that are not part of `__eq__`: equal objects then have different hashes.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

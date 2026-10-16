@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0003
 title: "Як правильно сигналізувати завершення custom iterator і чому повернення sentinel value з `__next__` не є еквівалентом?"
-description: "Коректний спосіб – підняти StopIteration з __next__(); повернення sentinel value не завершує ітерацію."
 track: python
 section: iterators-and-generators
-level: middle
-type: pitfall
-tags: [next]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-for
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-for-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: цикл for виконує suite для кожного елемента, який віддає iterator, і завершується, коли iterator вичерпано."
   - source_id: py314-library-functions-iter
     title: "Python 3.14: Library/functions"
     url: https://docs.python.org/3.14/library/functions.html#iter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: двоаргументна форма iter(callable, sentinel), яка завершує ітерацію, коли callable повертає значення, що дорівнює sentinel."
   - source_id: pep-479
     title: "PEP 479: Change StopIteration handling inside generators"
     url: https://peps.python.org/pep-0479/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "PEP 479: StopIteration, що виходить із тіла generator, замінюється на RuntimeError."
 ---
 
 ## Short answer
@@ -125,23 +90,3 @@ for x in iter(lambda: next(values), None):
 - повертати `None` або порожній рядок з `__next__()` як ознаку кінця: цикл не зупиняється;
 - піднімати `StopIteration` всередині generator function замість `return`: виходить `RuntimeError`;
 - вважати, що після першого `StopIteration` можна знову викликати `__next__()` і отримати елементи: виняток повторюється.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

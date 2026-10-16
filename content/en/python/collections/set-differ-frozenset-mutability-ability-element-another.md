@@ -1,41 +1,18 @@
 ---
 id: py-coll-0014
 title: "How does `set` differ from `frozenset` in mutability and in the ability to be an element of another set?"
-description: "How does `set` differ from `frozenset` in mutability and in the ability to be an element of another set?"
 track: python
 section: collections
-level: middle
-type: comparison
-tags: [set, frozenset]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ the subset/superset comparisons – but each of them returns a new `frozenset` r
 the existing one.[^py314-library-collections] The in-place mutating methods (`add`, `remove`,
 `discard`, `update`, `pop`, `clear`) simply do not exist on `frozenset` – consistent with
 immutability being a guarantee of the type, not a recommendation.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

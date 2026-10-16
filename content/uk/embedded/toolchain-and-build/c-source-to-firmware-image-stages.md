@@ -1,34 +1,15 @@
 ---
 id: emb-build-0011
 title: "Які етапи проходить C-файл від preprocessing до executable або firmware image?"
-description: "C-файл проходить preprocessing, compilation, assembly, linking і, для firmware, перетворення у цільовий image."
 track: embedded
 section: toolchain-and-build
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
-    kind: official
-    version: "latest"
-    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -73,25 +54,22 @@ C-файл проходить кілька етапів перед тим, як 
 
 Кожен етап можна виконати окремо для debugging або аналізу.
 
-## Evaluation guide
+### Очікувані сигнали
 
-### Expected signals
 - Знає основні етапи: preprocessing, compilation, assembly, linking
 - Розуміє, що робить кожен етап
 - Може назвати інструменти для кожного етапу (cpp, cc1, as, ld)
 - Знає про post-build кроки для firmware (objcopy, map file)
 
-### Red flags
+### Червоні прапорці
+
 - Плутає compilation з linking
 - Не знає, що preprocessing – окремий етап
 - Не розуміє різницю між object file і executable
 - Не знає, як отримати .hex/.bin з .elf
 
-### Level-up follow-up
+### Питання на підвищення рівня
+
 - Як подивитися проміжні файли (preprocessed, assembly)?
 - Що таке relocation entries і навіщо вони потрібні?
 - Як linker script впливає на розміщення sections?
-
-## Sources
-
-<!-- generated from frontmatter -->

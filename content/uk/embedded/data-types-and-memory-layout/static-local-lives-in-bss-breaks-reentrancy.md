@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0013
 title: "Де зберігається `static` локальна змінна і як довго вона живе?"
-description: "Локальна змінна зі static має static storage duration і зберігає значення між викликами функції."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -52,11 +33,3 @@ sources:
 Не плутайте збереження між викликами з гарантією атомарного доступу: `static` визначає тривалість життя, але не синхронізує читання й запис. Якщо стан спільний між потоками, потрібні атоміки або блокування, сумісні з середовищем; якщо доступ іде з ISR, механізм має бути придатним для переривань і конкретного MCU.[^iso-c-n1570]
 
 **Як уникнути проблеми:** залишайте локальний стан автоматичним, якщо його не потрібно зберігати між викликами. Коли спільний стан потрібен, визначте всі контексти доступу та застосуйте відповідний для MCU механізм синхронізації або критичну секцію.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

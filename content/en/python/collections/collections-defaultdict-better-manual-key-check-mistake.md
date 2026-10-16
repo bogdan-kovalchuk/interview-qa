@@ -1,41 +1,18 @@
 ---
 id: py-coll-0009
 title: "When is `collections.defaultdict` better than a manual key check, and what mistake can a wrong default factory hide?"
-description: "When is `collections.defaultdict` better than a manual key check, and what mistake can a wrong default factory hide?"
 track: python
 section: collections
-level: middle
-type: comparison
-tags: [collections-defaultdict]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -69,19 +46,3 @@ because a list is not callable.
 
 The mechanism is closely tied to `__missing__` on plain dictionaries qid:py-coll-0012 –
 `defaultdict` is, in essence, the simplest example of using it.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

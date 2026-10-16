@@ -1,62 +1,27 @@
 ---
 id: py-testing-0013
 title: "Як over-mocking implementation details робить test suite крихкою під час behavior-preserving refactoring?"
-description: "Якщо тест перевіряє кількість і порядок викликів внутрішніх mock-об’єктів замість результату, рефакторинг, що змінює ці виклики, ламає тест."
 track: python
 section: testing
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: py314-library-unittest-mock-assert-has-calls
     title: "Python 3.14: Library/unittest.mock, Mock.assert_has_calls"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock.assert_has_calls
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: assert_has_calls перевіряє список mock_calls; порядок важливий, якщо any_order не увімкнено."
 ---
 
 ## Short answer
@@ -114,23 +79,3 @@ Mock доречний, коли сам виклик є результатом: �
 - перевіряти кожен внутрішній виклик, хоча тест мав би перевіряти результат;
 - вважати, що більше mock робить тест ізольованішим: ізоляція потрібна від зовнішнього світу, а не від власного коду, який тест і так виконує;
 - підганяти очікування тесту під нову послідовність викликів, після чого тест більше нічого не перевіряє.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

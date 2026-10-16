@@ -1,48 +1,21 @@
 ---
 id: py-perf-0014
 title: "Чому більше workers може погіршити throughput через contention, context switching та downstream saturation?"
-description: "Workers понад точку насичення конкурують за спільні ресурси (GIL у звичайній збірці CPython, I/O-дескриптори, downstream-сервіс), додають context switches і не підвищують throughput."
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-parallelism
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-parallelism
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: у збірках з GIL лише один thread виконує bytecode в певний момент, тож багатоядерність зазвичай дають процеси або native extensions, що звільняють GIL."
   - source_id: py314-howto-free-threading
     title: "Python 3.14: Howto/free-threading"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: починаючи з 3.13 CPython має збірку free threading, у якій GIL вимкнено."
   - source_id: py314-library-concurrent-futures-threadpoolexecutor
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: max_workers за замовчуванням з 3.13 – min(32, (os.process_cpu_count() or 1) + 4), до 3.13 – min(32, os.cpu_count() + 4); документація описує значення за замовчуванням, а не оптимальну кількість workers."
   - source_id: py314-library-concurrent-futures-processpoolexecutor
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: max_workers за замовчуванням – os.process_cpu_count() (з 3.13); документація описує значення за замовчуванням, а не оптимальну кількість workers."
 ---
 
 ## Short answer
@@ -95,23 +68,3 @@ if __name__ == '__main__':
 - ставити кількість workers вище ліміту downstream (пул з’єднань, rate limit) замість того, щоб обмежувати саме ресурс;
 - вважати default `max_workers` оптимальним;
 - міряти лише throughput без latency і помилок.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

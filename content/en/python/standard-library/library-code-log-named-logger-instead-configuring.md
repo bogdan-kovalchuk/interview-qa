@@ -1,48 +1,21 @@
 ---
 id: py-stdlib-0015
 title: "Why should library code log through a named logger instead of configuring the root logger on import?"
-description: "Why should library code log through a named logger instead of configuring the root logger on import?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-logger-hierarchy
     title: "Python 3.14: Library/logging, Logger Objects"
     url: https://docs.python.org/3.14/library/logging.html#logger-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: getLogger with the same name returns the same Logger; dotted names form an ancestor hierarchy, and root is the ancestor of all loggers."
   - source_id: py314-library-logging-logger-propagate
     title: "Python 3.14: Library/logging, Logger.propagate"
     url: https://docs.python.org/3.14/library/logging.html#logging.Logger.propagate
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: records are passed to the handlers of ancestor loggers when propagate is true; the levels and filters of the ancestors are not considered for this."
   - source_id: py314-library-logging-basicconfig
     title: "Python 3.14: Library/logging, basicConfig"
     url: https://docs.python.org/3.14/library/logging.html#logging.basicConfig
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: basicConfig does nothing if the root logger already has handlers, unless force=True is given."
   - source_id: py314-howto-logging-library
     title: "Python 3.14: Howto/logging, Configuring Logging for a Library"
     url: https://docs.python.org/3.14/howto/logging.html#configuring-logging-for-a-library
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation (logging HOWTO): a library should not add handlers other than a NullHandler on its top-level logger, and should not log to the root logger."
 ---
 
 ## Short answer
@@ -77,19 +50,3 @@ The first `warning` call is silent, because the `NullHandler` on `mylib` handles
 - calling `basicConfig()` in a library module: the application's later call becomes a no-op, so it cannot set the format.[^py314-library-logging-basicconfig]
 - adding handlers to library loggers other than a `NullHandler` on the top-level logger: the HOWTO forbids this[^py314-howto-logging-library], and when the application configures root, each record is printed twice, because `propagate` passes it on.[^py314-library-logging-logger-propagate]
 - logging to the root logger from library code: the application can then not set the level or handlers for that library separately.[^py314-howto-logging-library]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0009
 title: "Навіщо в схемі з двигуном постійного струму використовують перемикач DPDT?"
-description: "Навіщо в схемі з двигуном постійного струму використовують перемикач DPDT?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 33, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: mit-dc-motor-switching
     title: "MIT SeaPerch: Circuits using DPDT and SPDT switches to reverse the spin direction of DC motors"
     url: https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/5/2141/files/2025/05/SeaPerchII_SciTechNotes_5.pdf
-    accessed: 2026-10-04
-    kind: book
-    version: "Science/Tech Note 5, revised 2025-04-30"
-    applicability: "Показує схему DPDT з перехресно з’єднаними throw для зміни полярності на reversible DC motor у SeaPerch; не задає номінали чи придатність для інших двигунів і перемикачів."
   - source_id: aratas-switch-basics
     title: "ARATAS (formerly Omron): What is an Electrical Switch?"
     url: https://www.aratas.com/sg-en/products/basic-knowledge/switches/basics
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Основи контактних схем і вимога добирати перемикач відповідно до навантаження; конкретні рейтинг і компонування визначає документація моделі."
 ---
 
 ## Short answer
@@ -67,7 +36,3 @@ DPDT означає Double Pole, Double Throw: це два перемикачі 
 Приклад: із джерелом 12 V у першому положенні клема M1 може бути під’єднана до +12 V, а M2 до 0 V; після перекидання M1 отримує 0 V, а M2 – +12 V. Отже, напруга `V_M1-M2` змінює знак. Це лише ілюстративна топологія: конкретна схема та номінали мають відповідати перемикачу й двигуну.[^mit-dc-motor-switching]
 
 **Типові помилки:** вважати, що DPDT будь-якого розміру витримає струм запуску мотора або що його клеми мають типовий порядок. Вибирайте деталь із рейтингом, що відповідає навантаженню, і перевіряйте її pinout; допустимість комутації визначається документацією конкретного виробу.[^aratas-switch-basics]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,18 @@
 ---
 id: py-coll-0005
 title: "Як tuple, що містить mutable element, поводиться під час спроби `t[0] += value`, і чому mutation може статися до `TypeError`?"
-description: "+= для mutable елемента всередині tuple спочатку виконує in-place mutation, а потім намагається присвоїти результат назад у tuple – присвоєння викликає TypeError, але мутація вже відбулася."
 track: python
 section: collections
-level: senior
-type: pitfall
-tags: [t-0-value, typeerror]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -89,23 +59,3 @@ print(t[1])  # [3, 4]
 - збереження змінюваних структур (`list`, `dict`) всередині `tuple`, що порушує гарантію незмінності кортежу та робить його негешованим;
 - плутанина між методом мутації `lst.extend(...)`, який не чіпає слот кортежу, та оператором `+=`, який обов'язково намагається записати результат назад;
 - перехоплення `TypeError` навколо `+=` як способу «безпечної» мутації, що є грубим антипатерном і заплутує контроль потоку виконання.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

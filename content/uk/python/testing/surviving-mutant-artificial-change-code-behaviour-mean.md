@@ -1,69 +1,30 @@
 ---
 id: py-testing-0019
 title: "Що означає surviving mutant після штучної зміни behavior коду і як це виявляє слабкі assertions чи missing cases?"
-description: "Surviving mutant – штучна зміна коду (мутант), після якої жоден тест не впав; це сигнал про можливу прогалину в тестах, а не доказ її наявності."
 track: python
 section: testing
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: mutmut-docs-workflow
     title: "mutmut documentation: Workflow"
     url: https://mutmut.readthedocs.io/en/latest/#workflow
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut, розділ Workflow: mutmut run, mutmut browse і написання тесту, який має вбити мутанта. Не визначає термін surviving mutant."
   - source_id: mutmut-docs-type-checker
     title: "mutmut documentation: Filter generated mutants with type checker"
     url: https://mutmut.readthedocs.io/en/latest/#filter-generated-mutants-with-type-checker
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut, розділ про фільтрацію мутантів: якщо тести не виявляють зміну, яку type checker міг би відхилити (наприклад, x: str = 'foo' на None), значення не перевірено належно. Не визначає термін surviving mutant."
 ---
 
 ## Short answer
@@ -110,11 +71,3 @@ print(survives(stronger_test, is_adult_mutant))  # False: the mutant is killed
 - вважати 100% покриття рядків доказом, що тести перевіряють поведінку;
 - додавати тести, які лише викликають код, без перевірки результату чи граничних значень;
 - писати тест на кожного survivor, не перевіривши, чи він еквівалентний оригіналу.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

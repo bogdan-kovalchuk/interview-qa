@@ -1,41 +1,18 @@
 ---
 id: py-itergen-0007
 title: "Why can a generator pipeline reduce peak memory but not necessarily total execution time?"
-description: "Stages pass items one at a time, so the pipeline builds no intermediate lists and lowers peak memory, but does not guarantee less total time."
 track: python
 section: iterators-and-generators
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -82,23 +59,3 @@ Time is a separate question. A pipeline does not reduce the amount of work: ever
 - assuming a generator pipeline is always faster because it builds no lists;
 - forgetting that a source which is already a list keeps all its items in memory;
 - collecting the result with `list(...)` and expecting a low peak memory.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

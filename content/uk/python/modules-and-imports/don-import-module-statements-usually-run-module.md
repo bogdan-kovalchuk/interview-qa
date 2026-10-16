@@ -1,62 +1,27 @@
 ---
 id: py-modimp-0003
 title: "Чому два `import module` зазвичай не виконують top-level code модуля двічі, але можуть створити різні local bindings?"
-description: "Top-level code виконується під час першого імпорту, поки модуль лишається в sys.modules; наступні import повертають той самий module object, але кожен import-statement зв’язує власні імена."
 track: python
 section: modules-and-imports
-level: middle
-type: comparison
-tags: [import-module]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The module cache» офіційної документації Python 3.14: після першого імпорту модуль лежить у sys.modules, і наступний import того самого імені повертає його з кешу; importlib.reload() повторно виконує код у тому самому object."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «Loading» офіційної документації Python 3.14: якщо завантаження модуля завершилося винятком, цей модуль видаляється з sys.modules, а вже завантажені модулі лишаються."
   - source_id: py314-reference-simple-stmts-import
     title: "Python 3.14: Reference/simple statements, The import statement"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-import-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The import statement» офіційної документації Python 3.14: import модуля зв’язує його ім’я (або ім’я після as) з module object; форма from ... import зв’язує посилання на значення атрибута."
 ---
 
 ## Short answer
@@ -103,19 +68,3 @@ print(a.value, value)            # 2 1: the from-import kept the old value
 - очікувати, що повторний `import` знову виконає top-level код модуля;
 - вважати, що `from m import name` стежить за змінами `m.name`;
 - вважати, що `import m as a` і `import m as b` створюють дві копії модуля.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

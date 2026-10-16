@@ -1,48 +1,21 @@
 ---
 id: emb-align-0037
 title: "Навіщо під час розробки вмикати `UNALIGN_TRP` на M3/M4?"
-description: "Щоб деякі підтримувані процесором misaligned accesses завершувалися UsageFault під час налагодження."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: arm-cortex-m3-trm
     title: "Arm Cortex-M3 Technical Reference Manual"
     url: https://documentation-service.arm.com/static/6036810d5319e554d4ba108e
-    accessed: 2026-10-04
-    kind: official
-    version: "DDI 0337E"
-    applicability: "Описує підтримку unaligned доступів і біт UNALIGN_TRP у Cortex-M3; конкретні інструкції мають різні правила."
   - source_id: arm-cortex-m4-guide
     title: "Cortex-M4 Devices Generic User Guide"
     url: https://documentation-service.arm.com/static/5f2ac76d60a93e65927bbdc5
-    accessed: 2026-10-04
-    kind: official
-    version: "DUI 0553B"
-    applicability: "Описує перелік unaligned load/store інструкцій Cortex-M4 та рекомендацію застосовувати UNALIGN_TRP; це не універсальна гарантія для всіх доступів."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ M3/M4 підтримують unaligned доступи лише для части
 **Приклад:**
 
 Якщо debugger зупинився на UsageFault після ввімкнення `UNALIGN_TRP`, перевір адресу операнда, ширину доступу й згенеровану інструкцію. Для байтового формату краще читати через `unsigned char` або копіювати в належно вирівняний об’єкт, а не вимикати trap і покладатися на поведінку одного ядра. Таке виправлення усуває причину й зберігає переносимість між MCU.[^arm-cortex-m4-guide] [^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

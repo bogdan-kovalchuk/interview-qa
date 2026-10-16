@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0010
 title: "What properties make a custom exception hierarchy a stable part of a library API?"
-description: "What properties make a custom exception hierarchy a stable part of a library API?"
 track: python
 section: exceptions
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -75,23 +52,3 @@ except QueryError as err:
 - having no library base class: callers must list every class to catch the library's errors;
 - moving an existing class to another branch of the hierarchy: callers' `except` blocks change behaviour although the library code is still correct;
 - parsing `str(err)` to find the cause: the message text is usually not regarded as part of the API.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

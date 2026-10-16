@@ -1,41 +1,18 @@
 ---
 id: py-async-0017
 title: "Чому cleanup після `CancelledError` має зазвичай завершуватися re-raise, а не поглинанням cancellation?"
-description: "Якщо CancelledError перехопити й не re-raise, task здається завершеною нормально – outer code (TaskGroup, gather) не дізнається про скасування, що порушує structured concurrency."
 track: python
 section: asyncio
-level: senior
-type: pitfall
-tags: [cancellederror]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -67,23 +44,3 @@ raise` еквівалентний, але легше зламати випадк
 задач як звичайний результат у списку замість того, щоб підняти його, тож викликач мусить сам
 перевірити кожен елемент результату на `isinstance(r, BaseException)`, інакше скасована задача
 буде непомітно проігнорована.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,54 +1,21 @@
 ---
 id: py-gil-0001
 title: "Чому free-threaded build не робить швидшою будь-яку програму на Python?"
-description: "Прибирання GIL прибирає одне глобальне блокування, а не координацію, потрібну спільному змінюваному стану."
 track: python
 section: concurrency-and-gil
-level: middle
-type: mechanism
-tags: [gil, free-threading, threads, scaling]
-status: published
-updated: 2026-09-04
-content_revision: 3
-reconciled_with:
-  en: 2
-see_also: [cs-cmplx-0001]
-applies_to:
-  - product: CPython free-threaded build
-    version: "3.14"
-  - product: CPython with GIL
-    version: "3.14"
-anki:
-  export: true
 sources:
   - source_id: py314-free-threading-howto
     title: "Python support for free threading"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-03
-    kind: official
-    version: "3.14"
-    applicability: "Free-threaded збірка CPython; інших реалізацій не описує."
   - source_id: py314-free-threading-extensions
     title: "C API extension support for free threading"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-03
-    kind: official
-    version: "3.14"
-    applicability: "Вимоги до C extension модулів, які працюють у free-threaded збірці."
   - source_id: pep-779
     title: "PEP 779: Criteria for supported status for free-threaded Python"
     url: https://peps.python.org/pep-0779/
-    accessed: 2026-09-03
-    kind: spec
-    version: null
-    applicability: "Статус підтримки free-threaded збірки починаючи з CPython 3.14."
   - source_id: pep-703
     title: "PEP 703: Making the Global Interpreter Lock Optional in CPython"
     url: https://peps.python.org/pep-0703/
-    accessed: 2026-09-03
-    kind: spec
-    version: null
-    applicability: "Обґрунтування дизайну і механізми рантайму, які заміняють GIL."
 ---
 
 ## Short answer
@@ -96,9 +63,7 @@ Free-threaded build постачається як окрема конфігур�
 непозначена залежність тихо повертає програму до старої моделі виконання, і помітити це можна лише
 вимірюванням.
 
-## Evaluation guide
-
-### Expected signals
+### Очікувані сигнали
 
 - Називає, що саме прийшло на заміну GIL, а не каже, що лок просто видалили: per-object локи плюс
   biased або deferred reference counting.
@@ -108,13 +73,13 @@ Free-threaded build постачається як окрема конфігур�
 - Згадує, що C extensions мусять заявити підтримку і що непозначене extension може ввімкнути GIL
   назад у рантаймі.
 
-### Red flags
+### Червоні прапорці
 
 - «GIL прибрали, тож потоки тепер такі самі швидкі, як процеси» без жодної згадки про конкуренцію.
 - Вважає, що 3.14 прибрала GIL з інтерпретатора за замовчуванням.
 - Пропонує потоки для навантаження, обмеженого диском або мережею, і чекає прискорення.
 
-### Level-up follow-up
+### Питання на підвищення рівня
 
 Спитати, як кандидат обирав би між free-threaded збіркою, `multiprocessing` і `asyncio` для
 конкретного сервісу і що виміряв би перед рішенням. Senior-відповідь починається з профілю, а не
@@ -122,7 +87,3 @@ Free-threaded build постачається як окрема конфігур�
 
 Далі спитати, що станеться з програмою, яка покладається на атомарність оновлення словника завдяки
 GIL, коли її запустити на free-threaded збірці.
-
-## Sources
-
-<!-- generated from frontmatter -->

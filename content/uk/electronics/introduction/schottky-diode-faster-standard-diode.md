@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0165
 title: "Чому Шотткі-діод швидший за стандартний Si-діод?"
-description: "Чому Шотткі-діод швидший за стандартний Si-діод?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: st-an4789
     title: "STMicroelectronics AN4789: Monolithic Schottky diode in ST F7 LV MOSFET technology"
     url: https://www.st.com/resource/en/application_note/an4789-monolithic-schottky-diode-in-st-f7-lv-mosfet-technology-improving-application-performance-stmicroelectronics.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "Rev 1"
-    applicability: "Пояснює малий накопичений заряд Schottky та швидше перемикання на прикладі конкретної технології; параметри окремих діодів і паразитні ефекти залежать від компонента та схеми."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 16, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ Schottky-діод формує бар’єр на контакті металу 
 - Казати, що reverse recovery у будь-якого Schottky абсолютно нульовий, не перевіривши datasheet та паразитну ємність.
 - Вважати, що швидкість автоматично означає найкращий вибір: слід також порівняти максимальну зворотну напругу, струм витоку, пряме падіння й теплові межі.
 - Плутати механізм меншого накопиченого заряду з твердженням, що схема не матиме перехідних піків.[^st-an4789]
-
-## Sources
-
-<!-- generated from frontmatter -->

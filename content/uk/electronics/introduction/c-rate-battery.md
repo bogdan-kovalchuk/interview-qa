@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0064
 title: "Що таке C-rate для акумулятора?"
-description: "Що таке C-rate для акумулятора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: ti-crate
     title: "Battery Gauging Fundamentals"
     url: https://www.ti.com/lit/pdf/slyp812
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Визначення C-rate, приклад перерахунку ємності в струм і застереження щодо фактичного часу розряду."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 7, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -73,7 +46,3 @@ sources:
 - Вважати `1C` універсальним рекомендованим струмом або гарантією однієї години роботи. Це лише масштабування номіналу; доступна ємність залежить від умов тесту та застосування.[^ti-crate]
 
 Якщо паспорт задає струм у C-rate, помножте його на ємність у Ah, щоб отримати ампери, а потім звірте значення з окремими обмеженнями для заряду й розряду. Наприклад, для `2 Ah` і дозволених `0.5C` струм становить `1 A`; використовувати його можна лише за інших умов, заданих виробником.
-
-## Sources
-
-<!-- generated from frontmatter -->

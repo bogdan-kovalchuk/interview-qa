@@ -1,48 +1,21 @@
 ---
 id: py-funcs-0010
 title: "Why is the model \"Python passes arguments by reference\" inaccurate, and which model correctly explains both rebinding and mutation of a parameter?"
-description: "The correct model is pass by assignment: the parameter receives a reference to the same object, but it is not an alias of the caller's variable."
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-how-do-i-write-a-function-with-output
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-why-did-changing-list-y-also-change-li
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-did-changing-list-y-also-change-list-x
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "FAQ section: `y = x` does not copy the list but gives a second name to the same object, so a mutation is visible through both names. Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts-assignment-statements
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#assignment-statements
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Assignment statements section: a name that is not declared global or nonlocal is bound to the object in the current local namespace. Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts-augmented-assignment
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#augmented-assignment-statements
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Augmented assignment section: where possible the operation is performed in place, so the old object is modified instead of a new one being created. Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -79,11 +52,3 @@ The limit of the model is in what "the same object" means. Mutable objects (`lis
 - thinking that assigning to a parameter changes the caller's list: `x = []` inside the function does not touch it;
 - thinking that `x += ...` is always only a rebinding;
 - concluding from "Python passes by reference" that assigning to a parameter can replace the caller's object.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

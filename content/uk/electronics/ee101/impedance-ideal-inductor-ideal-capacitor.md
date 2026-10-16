@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0058
 title: "Який імпеданс мають ідеальні індуктор і конденсатор?"
-description: "Який імпеданс мають ідеальні індуктор і конденсатор?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 41, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ideal-lc-impedance
     title: "All About Circuits: Series R, L, and C"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-5/series-r-l-and-c/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Знаки уявних частин і частотні формули імпедансу ідеальних L та C в синусоїдальному усталеному режимі."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Забувати мінус у `Z_C` і приписувати конденсатору індуктивний фазовий знак.
 - Плутати реактивність `X_C` як додатну величину з уявною частиною імпедансу `-j*X_C`.
 - Вважати ідеальні формули точною моделлю реальної деталі на будь-якій частоті.[^aac-ideal-lc-impedance]
-
-## Sources
-
-<!-- generated from frontmatter -->

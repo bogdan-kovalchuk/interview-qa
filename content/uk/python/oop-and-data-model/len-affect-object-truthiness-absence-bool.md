@@ -1,69 +1,30 @@
 ---
 id: py-oop-0022
 title: "Як `__len__` може впливати на truthiness об’єкта за відсутності `__bool__`?"
-description: "Якщо __bool__ не визначено, Python викликає __len__: нульовий результат дає false, ненульовий – true."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [len, bool]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-bool
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__bool__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: object.__bool__, truth value testing, перехід до __len__ і правило для класів без обох методів."
   - source_id: py314-reference-datamodel-object-len
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__len__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: object.__len__, нульова довжина як false у булевому контексті без __bool__ і вимога до значення не менше 0."
   - source_id: py314-reference-datamodel-special-method-lookup
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#special-method-lookup
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Special method lookup моделі даних."
 ---
 
 ## Short answer
@@ -109,11 +70,3 @@ print(bool(ticket))              # True: special methods are looked up on the ty
 - думати, що `__len__` впливає лише на `len()`, а не на `if obj:` і `bool()`;
 - повертати 0 з `__len__` для «порожнього» стану, не врахувавши, що тоді об’єкт стає false в усіх булевих контекстах;
 - визначати `__bool__` і `__len__` з несумісною логікою, через що `bool()` і `len()` дають суперечливі відповіді.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

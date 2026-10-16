@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0025
 title: "Як обчислити загальну ємність послідовних конденсаторів?"
-description: "Як обчислити загальну ємність послідовних конденсаторів?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 36, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-capacitors-series-parallel
     title: "All About Circuits textbook: Series and Parallel Capacitors"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-13/series-and-parallel-capacitors/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує правила послідовного й паралельного з’єднання та еквівалентної ємності; не задає допуски конкретних компонентів."
 ---
 
 ## Short answer
@@ -66,7 +39,3 @@ C_total = 220/32 мкФ = 6.875 мкФ ≈ 6.88 мкФ
 ```
 
 **Типова помилка:** механічно додати значення, як для паралельного з’єднання. Перевірка результату проста: відповідь має бути меншою за 10 мкФ, інакше переплутано конфігурацію або формулу.
-
-## Sources
-
-<!-- generated from frontmatter -->

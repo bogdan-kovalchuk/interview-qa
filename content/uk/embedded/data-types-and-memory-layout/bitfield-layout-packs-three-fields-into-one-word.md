@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0088
 title: "Як виглядає у пам'яті? `struct { uint32_t flags:1; uint32_t mode:3; uint32_t value:28; }`"
-description: "Три бітові поля пакуються в один uint32_t, але порядок пакування бітів implementation-defined."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -46,11 +27,3 @@ sources:
 У цій схемі поле `value` має 28 бітів і може кодувати значення від нуля до `0x0FFFFFFF`, якщо трактувати його як unsigned. Маска до зсуву відсікає старші біти вхідного значення, які інакше могли б потрапити в сусідні поля. Перед використанням результату також перевіряють, що сам регістр і ширина операнда відповідають специфікації пристрою.
 
 **Типова помилка:** вважати, що бітові поля є переносним способом описати memory-mapped register. Вони зручні для локальних структур, коли ABI відомий, але не замінюють явно заданий wire format або регістрові маски.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

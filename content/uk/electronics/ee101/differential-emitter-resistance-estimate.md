@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0203
 title: "Що таке диференційний емітерний опір `r_e` і як його оцінити?"
-description: "Що таке диференційний емітерний опір `r_e` і як його оцінити?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 70, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-bjt-ac-model
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.2 Simplified AC Model of the BJT"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.2: експоненційна модель переходу (q/kT ≈ 38,6 при 300 K, тобто V_T ≈ 25,9 мВ); динамічний опір r'_e = 26 мВ / I_C без об’ємного опору; залежить від температури; малосигнальна модель для низьких і середніх частот."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT
   - source_id: fiore-bjt-basics
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.2 The Bipolar Junction Transistor"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.2: I_E = I_C + I_B, I_C = β·I_B; при значно більшому I_C, ніж I_B, I_E ≈ I_C; V_BE ≈ 0,7 В для кремнію. Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor
 ---
 
 ## Short answer
@@ -68,7 +37,3 @@ sources:
 - Брати відношення `V_BE` / `I_E` (статичний опір: 0,7 В / 1 мА = 700 Ом) замість нахилу: динамічний опір у тій самій точці приблизно в 27 разів менший.[^fiore-bjt-ac-model]
 - Вважати, що `r_e` – окремий резистор, який можна виміряти омметром у схемі: омметр дає статичний опір, а не малосигнальний.
 - Ігнорувати об’ємний опір і температуру, коли потрібна точність.
-
-## Sources
-
-<!-- generated from frontmatter -->

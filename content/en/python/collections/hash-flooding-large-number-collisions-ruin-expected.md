@@ -1,44 +1,18 @@
 ---
 id: py-coll-0024
 title: "Why can hash flooding or a large number of collisions ruin the expected O(1) lookup, and why doesn't that change the dictionary's logical contract?"
-description: "Why can hash flooding or a large number of collisions ruin the expected O(1) lookup, and why doesn't that change the dictionary's logical contract?"
 track: python
 section: collections
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -75,11 +49,3 @@ Crucially, none of these scenarios break correctness: `__eq__` is called against
 in the probe sequence until an exact match or an empty slot is found, so the requested key (or
 its absence) is always determined correctly. Only performance degrades, while the logical
 contract – "keys equal by `__eq__` and `__hash__` are found" – stays intact.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0021
 title: "Why can concurrent coroutines have a race condition on shared state even within a single OS thread?"
-description: "Why can concurrent coroutines have a race condition on shared state even within a single OS thread?"
 track: python
 section: asyncio
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -46,6 +23,7 @@ schedules cooperatively: until a Task reaches an `await`, no other Task in that 
 once a coroutine awaits - on I/O or `asyncio.sleep` - the loop hands control to another Task, which
 can change a shared dict, counter or list before the first resumes. Fix it with `asyncio.Lock`
 around critical sections, or keep state consistent between `await` points.
+
 ## Detailed explanation
 
 The key difference from a race condition between OS threads: here a switch can only happen at an
@@ -75,23 +53,3 @@ The most reliable way to avoid the problem is to keep the critical section that 
 check and the state change free of any `await` inside it; if an `await` is unavoidable (for
 example, I/O is needed to write), the section has to be wrapped in an `asyncio.Lock`, so other
 Tasks wait for it to be released instead of running through the same block in parallel.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

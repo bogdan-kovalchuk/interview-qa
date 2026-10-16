@@ -1,55 +1,24 @@
 ---
 id: emb-dtypes-0066
 title: "Trap: `double` у embedded без FPU - у чому небезпека?"
-description: "Без апаратної підтримки потрібної точності операції double компілятор може згенерувати виклики software floating-point routines; вартість залежить від MCU, компілятора й операції."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: gcc-arm-options
     title: "GCC: ARM Options"
     url: https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Пояснює генерацію коду й сумісність ABI для ARM режимів soft, softfp і hard; не визначає кількість тактів для конкретного MCU."
   - source_id: arm-cortex-m4
     title: "Arm Cortex-M4 Processor Technical Reference Manual"
     url: https://documentation-service.arm.com/static/5fce431be167456a35b36ade
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує single-precision регістри та операції FPU Cortex-M4; наявність FPU залежить від реалізації Cortex-M4."
   - source_id: arm-cortex-m7
     title: "Arm Cortex-M7 Processor Technical Reference Manual"
     url: https://documentation-service.arm.com/static/5e906b038259fe2368e2a7bb
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує optional double-precision операції у конфігураціях FPU Cortex-M7; перевіряй конкретну реалізацію."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -73,23 +42,3 @@ Software floating-point реалізація означає, що потрібн
 - Встановити hard-float прапорці лише для частини залежностей; ABI має узгоджуватися в усіх об’єктних файлах.[^gcc-arm-options]
 
 Для часових обмежень фіксуй compiler version, flags і частоту MCU разом із вимірюванням, щоб порівнювати збірки на однакових умовах. Окремо перевір підтримку бібліотеки runtime.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

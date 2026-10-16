@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0158
 title: "Чому не можна розраховувати схему на значення з розділу absolute maximum ratings?"
-description: "Чому не можна розраховувати схему на значення з розділу absolute maximum ratings?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 61, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-tps752q1-datasheet
     title: "Texas Instruments TPS752-Q1 datasheet"
     url: https://www.ti.com/lit/ds/symlink/tps752-q1.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Datasheet конкретного LDO: примітка до absolute maximum ratings (це stress ratings, перевищення може спричинити пошкодження, функціонування поза recommended operating conditions не гарантоване, тривала робота біля меж може вплинути на надійність), значення V_I (absolute maximum від -0.3 до 6 V, recommended 2.7–5.5 V) і те, що електричні характеристики задано для recommended operating junction temperature range. Значення стосуються лише TPS752-Q1."
 ---
 
 ## Short answer
@@ -64,19 +37,3 @@ sources:
 - Читати absolute maximum як допустимий робочий режим або як номінал, до якого можна наближатися.
 - Вважати, що відсутність пошкодження в межах абсолютних максимумів означає виконання параметрів із таблиці електричних характеристик.
 - Не враховувати допуск живлення, пульсації й перехідні процеси під час порівняння з максимумом.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

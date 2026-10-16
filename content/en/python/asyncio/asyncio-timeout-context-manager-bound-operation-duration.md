@@ -1,41 +1,18 @@
 ---
 id: py-async-0016
 title: "How does the `asyncio.timeout()` context manager bound an operation's duration, and what exception does the caller see from outside?"
-description: "How does the `asyncio.timeout()` context manager bound an operation's duration, and what exception does the caller see from outside?"
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: [asyncio-timeout]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -71,11 +48,3 @@ fires, without leaving the block or creating a new context manager – useful wh
 depends on an intermediate result (for example, extending the wait after receiving the first bytes
 of a response). The `cm.expired()` method lets you check after the fact whether it was this specific
 timeout that caused the block to exit.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

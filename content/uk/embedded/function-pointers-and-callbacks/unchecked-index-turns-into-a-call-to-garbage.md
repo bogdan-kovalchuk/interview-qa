@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0020
 title: "Trap: що не так із dispatch table без перевірки індексу?"
-description: "Індекс поза межами dispatch table спричиняє undefined behavior; результат залежить від реалізації та платформи."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело для правил C про індексацію масиву, межі масиву та поведінку поза межами; конкретний наслідок залежить від платформи."
 ---
 
 ## Question code
@@ -71,19 +52,3 @@ if (opcode < 4u && table[opcode] != NULL) {
 - Спершу читати `table[opcode]`, а вже потім перевіряти індекс.
 - Вважати, що не-null перевірка захищає від out-of-bounds access.
 - Називати конкретний апаратний fault гарантованим наслідком undefined behavior.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-coll-0016
 title: "Why can an incorrect `__eq__` on custom objects lead to unexpected results for set membership?"
-description: "Why can an incorrect `__eq__` on custom objects lead to unexpected results for set membership?"
 track: python
 section: collections
-level: senior
-type: pitfall
-tags: [eq]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -74,23 +51,3 @@ The practical takeaway is to use only fields that stay unchanged for as long as 
 in a collection for `__hash__` (ideally a frozen `dataclass` or `NamedTuple`, where `__eq__` and
 `__hash__` are generated consistently and automatically), and never to rely on comparisons
 against objects of other types without an explicit, symmetric check.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: emb-elee-0077
 title: "Що перевірити, якщо виміряна RC-схема не збігається з розрахунком?"
-description: "Що перевірити, якщо виміряна RC-схема не збігається з розрахунком?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 44, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +30,3 @@ sources:
 Приклад: якщо розрахунок зроблено для `R = 10 kΩ` і `C = 100 nF`, то `τ = 1 ms`; фактична ємність `80 nF` дає `0.8 ms` ще до врахування допуску резистора. Така різниця не обов’язково означає помилку формули. Виміряйте компоненти окремо, перевірте сигнал без навантаження й порівняйте вузлові напруги по черзі.[^aac-alternating-current]
 
 **Типова помилка:** одразу підбирати номінали, щоб «підганяти» результат, не перевіривши одиниці, конфігурацію щупа, частоту й реальні параметри. Фіксуйте умови вимірювання; тоді можна відрізнити помилку монтажу від нормального впливу допуску та навантаження.[^aac-alternating-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

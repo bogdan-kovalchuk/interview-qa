@@ -1,41 +1,18 @@
 ---
 id: py-async-0005
 title: "Що робить asyncio Task або callback ready після I/O, timer чи suspension point і яких fairness та exact-order guarantees application code не має припускати?"
-description: "Event loop виконує готові callback у порядку FIFO для call_soon, але порядок timer-callbackів з однаковим часом є невизначеним, а строгих fairness-гарантій між Tasks немає."
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,11 +42,3 @@ Task – це просто callback, підвішений на подію, а н
 припускати ні "round-robin по Tasks", ні "перший запланований timer виконається першим при рівних
 часах" – єдина тверда гарантія: callbacks, поставлені через `call_soon`, виконуються в порядку
 виклику `call_soon`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

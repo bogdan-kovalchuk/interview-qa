@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0098
 title: "Що відбудеться: `uint32_t *ptr = (uint32_t*)0x40020000; *ptr = 0xFF;` без `volatile`?"
-description: "Без volatile компілятор може видалити запис як dead store, бо ніхто далі не читає *ptr."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,11 +31,3 @@ sources:
 При роботі з регістром важливо знати, чи це read/write, write-one-to-clear або регістр із побічними ефектами читання. Наприклад, read-modify-write для регістру статусу може випадково очистити прапорці; правильний доступ визначає reference manual, а не сам `volatile`. Так само qualifier має бути на типі, на який вказує pointer: `volatile uint32_t *reg` означає volatile-доступ через `reg`.
 
 **Типова помилка:** сприймати `volatile` як універсальне виправлення concurrency або апаратної синхронізації. Використовуй його для спеціальних доступів, перевіряй семантику регістру та окремо застосовуй atomic/barrier/API платформи, коли потрібні атомарність чи порядок.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

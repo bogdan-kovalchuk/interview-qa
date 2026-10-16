@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0002
 title: "Що таке вузол (node) у схемі і чому він важливий?"
-description: "Що таке вузол (node) у схемі і чому він важливий?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 27, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-kcl-node
     title: "All About Circuits: Kirchhoff's Current Law (KCL)"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-6/kirchhoffs-current-law-kcl/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує визначення вузла як місця з’єднання гілок і застосування KCL; ідеальні схеми тут не описують паразитні опори провідників."
 ---
 
 ## Short answer
@@ -57,7 +34,3 @@ sources:
 - Вважати кожен кут або відрізок дроту окремим вузлом, хоча між ними немає компонента.
 - Ототожнювати схематичне GND із захисним заземленням без інформації про реальне з’єднання.
 - Записувати струм, який входить, і струм, який виходить, з однаковим знаком, не дотримуючись домовленості.
-
-## Sources
-
-<!-- generated from frontmatter -->

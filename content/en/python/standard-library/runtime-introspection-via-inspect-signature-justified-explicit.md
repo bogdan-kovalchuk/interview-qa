@@ -1,44 +1,18 @@
 ---
 id: py-stdlib-0017
 title: "When is runtime introspection via `inspect.signature()` justified, and when does an explicit protocol reduce coupling to implementation details?"
-description: "When is runtime introspection via `inspect.signature()` justified, and when does an explicit protocol reduce coupling to implementation details?"
 track: python
 section: standard-library
-level: senior
-type: comparison
-tags: [inspect-signature]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-inspect-inspect-signature
     title: "Python 3.14: Library/inspect"
     url: https://docs.python.org/3.14/library/inspect.html#inspect.signature
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: inspect.signature() returns a Signature, raises ValueError when no signature can be provided, and follows __wrapped__ by default (follow_wrapped)."
   - source_id: py314-library-typing-protocol
     title: "Python 3.14: Library/typing (typing.Protocol)"
     url: https://docs.python.org/3.14/library/typing.html#typing.Protocol
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the Protocol class for structural subtyping, applied by static type checkers. Does not describe run-time checks of signatures."
 ---
 
 ## Short answer
@@ -93,19 +67,3 @@ The working rule: use introspection at a boundary where the type is truly unknow
 - using `signature()` where the interface is known in advance, which adds a dependency on parameter names for no benefit;
 - not handling `ValueError` and `TypeError` in a container that accepts arbitrary callables;
 - wrapping a function without `functools.wraps`, which hides its real signature from introspection.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

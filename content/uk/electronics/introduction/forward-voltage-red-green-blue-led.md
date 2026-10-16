@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0114
 title: "Яка пряма напруга `V_f` у червоного, зеленого й синього `LED`?"
-description: "Яка пряма напруга V_f у червоного, зеленого й синього LED?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 12, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: digikey-rgb-led-forward-voltage
     title: "DigiKey: RGB LEDs Provide Multicolor Display Solutions"
     url: https://www.digikey.com/en/articles/how-to-drive-multicolor-leds
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Наводить типові прямі напруги RGB-світлодіода Adafruit 2739 за конкретного струму; значення не є універсальними для всіх кольорів і моделей."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 - Вважати наведені для кольору діапазони точними гарантованими межами.
 - Ігнорувати тестовий струм, за якого виробник виміряв `V_f`.
 - Вважати, що всі зелені LED мають однакову пряму напругу.
-
-## Sources
-
-<!-- generated from frontmatter -->

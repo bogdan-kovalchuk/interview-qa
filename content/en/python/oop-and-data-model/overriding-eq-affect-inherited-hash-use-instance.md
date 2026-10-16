@@ -1,62 +1,27 @@
 ---
 id: py-oop-0024
 title: "How does overriding `__eq__` affect the inherited `__hash__` and the use of an instance in a set or dict?"
-description: "How does overriding `__eq__` affect the inherited `__hash__` and the use of an instance in a set or dict?"
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: [eq, hash]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-hash
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__hash__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: object.__hash__, the requirement that equal objects have equal hashes, the implicit __hash__ = None, and explicitly keeping a parent's __hash__."
   - source_id: py314-library-dataclasses-dataclass
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html#dataclasses.dataclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the rules for generating __hash__ in a dataclass depending on the eq and frozen parameters."
 ---
 
 ## Short answer
@@ -106,11 +71,3 @@ The same mechanism applies to dataclasses: if the class does not define `__hash_
 - overriding `__eq__` in a subclass and expecting the parent's hash to keep working without an explicit decision;
 - copying `__hash__ = Base.__hash__` into a class with different equality, which breaks the rule shown in the example;
 - hashing a mutable object by fields that change after it has been added to a `set` or `dict`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

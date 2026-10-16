@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0085
 title: "Скільки байт скопіює startup code для (глобальні)? `int a=1; int b=2; int c=3;`"
-description: "Усі три - ініціалізовані глобальні у .data, тож startup code копіює 12 байт (3 * sizeof(int)) з Flash у RAM."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: gnu-ld-lma
     title: "GNU ld manual: Output Section LMA"
     url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Пояснює LMA/VMA і приклад startup-копіювання ініціалізованих даних; сам linker script визначає набір байтів секції."
 ---
 
 ## Short answer
@@ -57,11 +34,3 @@ sources:
 Для конкретного target подивись `sizeof(int)` у компіляторі, таблицю секцій ELF через `objdump -h` і символи меж через `nm`. Якщо `.data` займає 12 байтів, саме стільки байтів зазвичай копіюється для всієї секції, але не обов’язково вони належать лише трьом оголошеним змінним. Висновок про 12 байтів потребує явних умов щодо ABI, оптимізації та складу секції.[^gnu-ld-lma]
 
 Ініціалізатор у вихідному коді також не обіцяє конкретне байтове представлення. Порядок байтів, ширина `int` і можливе вирівнювання визначаються реалізацією; наведену послідовність байтів не можна переносити на big-endian або іншу ABI-конфігурацію. Питання про фактичну копію найкраще розв’язувати за артефактами саме тієї збірки, яку прошивають на пристрій.[^iso-c-n1570] [^gnu-ld-lma]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

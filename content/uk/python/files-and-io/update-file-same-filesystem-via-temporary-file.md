@@ -1,83 +1,36 @@
 ---
 id: py-fileio-0007
 title: "Як в межах однієї filesystem оновити файл через temporary file та `os.replace()`, щоб reader не побачив partial content?"
-description: "Записати нові дані у тимчасовий файл у тому самому каталозі, потім викликати os.replace(tmp_path, target_path): на POSIX це атомарна заміна, тож читач бачить стару або нову версію."
 track: python
 section: files-and-io
-level: middle
-type: practical
-tags: [os-replace]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile-mkstemp
     title: "Python 3.14: Library/tempfile (mkstemp)"
     url: https://docs.python.org/3.14/library/tempfile.html#tempfile.mkstemp
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: mkstemp() створює файл, доступний для читання й запису лише користувачеві, що його створив; параметр dir задає каталог."
   - source_id: py314-library-functions-open
     title: "Python 3.14: Built-in Functions (open)"
     url: https://docs.python.org/3.14/library/functions.html#open
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: режим 'w' відкриває файл для запису, спочатку обрізаючи його."
 ---
 
 ## Short answer
@@ -119,23 +72,3 @@ def write_atomic(target: Path, data: str) -> None:
 - пропускати `flush()` і `os.fsync()` і вважати, що після перейменування дані вже на диску;
 - не перевіряти права файлу після заміни;
 - вважати атомарність гарантованою на всіх платформах: документація описує її як вимогу POSIX.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

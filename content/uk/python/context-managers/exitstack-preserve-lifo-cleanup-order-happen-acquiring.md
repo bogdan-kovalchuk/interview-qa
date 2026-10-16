@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0007
 title: "Як `ExitStack` зберігає LIFO порядок cleanup і що має статися, якщо acquisition одного з ресурсів не вдалося?"
-description: "ExitStack зберігає список callback у порядку реєстрації та викликає їх у зворотному порядку (LIFO), як вкладені with."
 track: python
 section: context-managers
-level: senior
-type: mechanism
-tags: [exitstack]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -91,11 +68,3 @@ except RuntimeError as err:
 - часткова ініціалізація не залишає витоків: кожен раніше відкритий файловий дескриптор, сокет або lock гарантовано закривається;
 - порядок очищення протилежний порядку відкриття: залежні ресурси закриваються раніше за ресурси, від яких вони залежать;
 - для безпечного перенесення володіння ресурсами поза межі локального блоку слід застосовувати `stack.pop_all()`, а не намагатися вручну маніпулювати внутрішнім списком callbacks.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

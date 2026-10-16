@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0140
 title: "Чому при дослідженні діодного моста небезпечно довільно під’єднувати землі осцилографа?"
-description: "Чому при дослідженні діодного моста небезпечно довільно під’єднувати землі осцилографа?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 57, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: tektronix-abcs-probes
     title: "Tektronix: ABCs of Probes Primer"
     url: https://download.tek.com/document/02_ABCs-of-Probes-Primer.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Пробники заземлені опосередковано через захисний провідник шнура живлення осцилографа; ground lead слід підключати лише до землі; ground lead на будь-якій частині схеми з випрямленою мережною шиною (приклад – привід двигуна) дає коротке замикання на землю; «плавання» осцилографа небезпечне, а диференційні й ізольовані пробники – правильний спосіб floating-вимірювань, причому вимірювання двома каналами з різницею зазвичай найменш бажане. Загальні положення, не конкретні моделі приладів курсу; осцилографи, спеціально розраховані на floating-роботу, мають інші правила."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Схема мостового випрямляча на чотирьох діодах із вторинною обмоткою трансформатора: у кожному півперіоді проводять два діоди (D2 і D3, потім D1 і D4), мінус виходу з’єднано зі спільним вузлом діодів D1 і D3, струм через навантаження тече в один бік. Книга не розглядає вимірювання осцилографом."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
 ---
 
 ## Short answer
@@ -71,19 +40,3 @@ sources:
 - Ставити ground lead двох каналів на різні вузли схеми.
 - Прибирати заземлювальний контакт шнура, щоб «піднести» осцилограф до потенціалу мосту.
 - Вимірювати звичайним осцилографом міст, що живиться напряму від мережі.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

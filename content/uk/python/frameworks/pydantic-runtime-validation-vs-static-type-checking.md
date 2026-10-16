@@ -1,49 +1,21 @@
 ---
 id: py-framew-0001
 title: "Чим runtime validation у Pydantic відрізняється від static type checking?"
-description: "Static type checkers аналізують анотації без виконання програми; Pydantic інтерпретує анотації під час виконання, щоб перевірити або перетворити input на model."
 track: python
 section: frameworks
-level: middle
-type: comparison
-tags: []
-frameworks: [pydantic]
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: py314-library-typing
     title: "Python 3.14: typing - Support for type hints"
     url: https://docs.python.org/3.14/library/typing.html#typing-support-for-type-hints
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: runtime не застосовує анотації функцій і змінних як перевірку типів."
   - source_id: pep-0484
     title: "PEP 484: Type Hints"
     url: https://peps.python.org/pep-0484/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "PEP 484: анотації доступні в runtime через __annotations__, але перевірки типів під час виконання немає; типи перевіряє окремий офлайн checker."
   - source_id: pydantic-models
     title: "Pydantic documentation: Models"
     url: https://pydantic.dev/docs/validation/latest/concepts/models/
-    accessed: 2026-10-13
-    kind: official
-    version: "2"
-    applicability: "Офіційна документація Pydantic: моделі описують поля анотаціями; гарантія типів стосується результату validation, а не вхідних даних; при невдалому parsing піднімається ValidationError."
   - source_id: pydantic-strict-mode
     title: "Pydantic documentation: Strict Mode"
     url: https://pydantic.dev/docs/validation/latest/concepts/strict_mode/
-    accessed: 2026-10-13
-    kind: official
-    version: "2"
-    applicability: "Офіційна документація Pydantic: у v2 за замовчуванням сумісні значення приводяться до типу; strict mode відхиляє помилковий тип замість приведення."
 ---
 
 ## Short answer
@@ -88,19 +60,3 @@ Static checking і Pydantic доповнюють одне одного. Checker 
 - вважати, що `def f(x: int)` перевіряє тип аргумента під час виклику;
 - вважати, що Pydantic-модель перевіряє весь внутрішній код; вона перевіряє дані, що входять у model;
 - очікувати, що `"42"` для поля `int` відхилиться без strict mode; у Pydantic v2 за замовчуванням воно стає `42`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

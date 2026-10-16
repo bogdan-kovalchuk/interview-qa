@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0007
 title: "When does the `else` block of a `for` or `while` loop run, and how does `break` change that behaviour?"
-description: "When does the `else` block of a `for` or `while` loop run, and how does `break` change that behaviour?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [break]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -91,11 +68,3 @@ The name really is unfortunate - the language's own author admitted as much. Rea
 Because the semantics of `for ... else` are unknown to most readers, it is worth either adding a
 short comment or reserving it for cases where the flag alternative really is noticeably
 worse.[^py314-reference-expressions]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

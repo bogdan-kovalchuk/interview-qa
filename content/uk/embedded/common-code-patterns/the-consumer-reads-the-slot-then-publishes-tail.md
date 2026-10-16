@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0009
 title: "Як працює `rb_get` consumer-а в SPSC ring buffer?"
-description: "Consumer читає елемент за tail, а потім оновлює tail, щоб звільнити слот."
 track: embedded
 section: common-code-patterns
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: linux-circular-buffers
     title: "Linux kernel documentation: Circular Buffers"
     url: https://docs.kernel.org/core-api/circular-buffers.html
-    accessed: 2026-10-04
-    kind: official
-    version: current
-    applicability: "Описує порожній стан, читання елемента consumer-ом, звільнення tail після читання та acquire/release порядок; приклад Linux не гарантує переносність на MCU/ISR."
 ---
 
 ## Question code
@@ -72,6 +49,3 @@ Consumer спочатку порівнює опублікований `head` з�
 - Забути перевірити результат функції та спожити вихід, коли буфер порожній.
 
 Отже, `tail` є індексом наступного елемента для читання, а його оновлення завершує читання попереднього слота.[^linux-circular-buffers]
-
-## Sources
-<!-- generated from frontmatter -->

@@ -1,37 +1,15 @@
 ---
 id: py-prac-0005
 title: "Клас `Key` визначає `__eq__` за `value`, але не визначає `__hash__`: що станеться при `{Key(1): \"x\"}` і як виправити contract для immutable key?"
-description: "Піднімається TypeError (unhashable), бо клас з `__eq__` без `__hash__` отримує `__hash__ = None`."
 track: python
 section: practical-coding
-level: senior
-type: pitfall
-tags: [key, eq, value, hash, key-1-x]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-object-hash
     title: "Python 3.14: Reference/datamodel, object.__hash__"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__hash__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, object.__hash__: вимога, щоб рівні за __eq__ об’єкти мали однаковий хеш; неявний __hash__ = None при перевизначенні __eq__ без __hash__; порада не визначати __hash__ для mutable класу з __eq__. Не описує текст повідомлень TypeError."
   - source_id: py314-library-dataclasses-dataclass
     title: "Python 3.14: Library/dataclasses, dataclass"
     url: https://docs.python.org/3.14/library/dataclasses.html#dataclasses.dataclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, dataclass: при одночасно увімкнених eq і frozen декоратор генерує __hash__; явно визначений __hash__ він не змінює. Не описує класи без dataclass."
 ---
 
 ## Short answer
@@ -81,23 +59,3 @@ print(d[Key(1)])  # x
 - визначити `__eq__` і забути `__hash__`, а потім отримати `TypeError` на першому `dict` або `set`;
 - визначити `__hash__` для mutable класу, а потім змінити поле, яке входить у хеш;
 - хешувати поля, яких немає в `__eq__`: рівні об’єкти матимуть різні хеші.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

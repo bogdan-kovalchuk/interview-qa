@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0023
 title: "How do ceramic, electrolytic, tantalum and film capacitors differ?"
-description: "How do ceramic, electrolytic, tantalum and film capacitors differ?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Question origin: lecture 35 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Authoritative section-level reference: AC circuits, reactance, phasors, impedance, filters and transformers; specific component values and circuits of the course can differ."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
   - source_id: aac-practical-capacitors
     title: "All About Circuits: Practical Considerations - Capacitors"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-13/practical-considerations-capacitors/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Polarity, working voltage, leakage and practical differences among common constructions; individual characteristics depend on the component series."
   - source_id: adi-capacitor-selection
     title: "Analog Devices: Capacitor Selection Guidelines for Analog Devices, Inc., LDOs"
     url: https://www.analog.com/en/resources/app-notes/an-1099.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "MLCC size, ESR/ESL and capacitance dependence on dielectric, temperature and DC bias; tantalum/aluminum properties discussed for LDO selection, not universal rankings."
 ---
 
 ## Short answer
@@ -59,7 +28,3 @@ TODO
 ## Detailed explanation
 
 TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

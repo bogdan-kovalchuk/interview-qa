@@ -1,69 +1,30 @@
 ---
 id: py-excpt-0012
 title: "Яку проблему вирішують `ExceptionGroup` та `except*` у concurrent code?"
-description: "ExceptionGroup дозволяє підняти кілька незалежних exception одночасно, а except* – вибірково обробити потрібні типи, не втрачаючи решти."
 track: python
 section: exceptions
-level: middle
-type: mechanism
-tags: [exceptiongroup]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-taskgroup
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#asyncio.TaskGroup
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: TaskGroup збирає помилки задач в ExceptionGroup, а KeyboardInterrupt і SystemExit піднімаються без групи."
   - source_id: py314-library-asyncio-task-gather
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#asyncio.gather
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: при return_exceptions=False (за замовчуванням) першу помилку отримує той, хто чекає gather(); решта до нього не передається."
   - source_id: py314-reference-compound-stmts-except-star
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#except-star
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: семантика except*, розщеплення групи та передача необробленої частини далі."
   - source_id: pep-0654-exception-groups
     title: "PEP 654: Exception Groups and except*"
     url: https://peps.python.org/pep-0654/
-    accessed: 2026-10-13
-    kind: spec
-    version: "3.11"
-    applicability: "PEP 654: ExceptionGroup і except* запропоновано для Python 3.11 (Python-Version: 3.11)."
 ---
 
 ## Short answer
@@ -112,11 +73,3 @@ asyncio.run(main())
 - очікувати, що `except ValueError` спіймає помилку всередині групи: групу обробляють через `except*` або через `except ExceptionGroup`;
 - змішувати `except` і `except*` в одному `try` – це синтаксична помилка;[^py314-reference-compound-stmts-except-star]
 - логувати групу через `str(eg)`: це показує повідомлення групи й кількість вкладених exception (наприклад, `there were problems (2 sub-exceptions)`), але не їхні типи й повідомлення.[^py314-tutorial-errors]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

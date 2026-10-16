@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0162
 title: "Чи відтворює SMD-мікросхема на перехіднику DIP теплові умови реальної плати?"
-description: "Чи відтворює SMD-мікросхема на перехіднику DIP теплові умови реальної плати?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 61, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-spra953
     title: "Texas Instruments SPRA953: Semiconductor and IC Package Thermal Metrics"
     url: https://www.ti.com/lit/pdf/spra953
-    accessed: 2026-10-06
-    kind: official
-    version: "SPRA953D, March 2024"
-    applicability: "R_θJA залежить не лише від корпусу, а й від плати та умов вимірювання (плата діє як радіатор; у JEDEC-вимірюваннях у спокійному повітрі 70–95 % потужності відводить плата, а не корпус); дизайн плати має «сильний» вплив на R_θJA (таблиця 1-1); поняття R_θJA(effective) для пристрою в реальній системі; Ψ_JT як спосіб оцінити T_J за виміряною температурою верху корпусу, який залежить від конструкції плати й потоку повітря. Загальна записка: не дає значень для конкретних плат чи адаптерів."
   - source_id: ti-lm340
     title: "TI: LM340, LM340A, LM7805 family wide VIN 1.5-A fixed voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/lm340.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SNOSBT0L, September 2016"
-    applicability: "Примітка до Absolute Maximum Ratings: для корпусу DDPAK/TO-263 θ_JA можна зменшити збільшенням площі міді, з’єднаної з корпусом: 50 °C/Вт за 0,5 дюйм², 37 за 1 дюйм², 32 за 1,6 дюйма² і більше; розділ 10.3: понад 1 дюйм² покращення мале, мінімум θ_JA для DDPAK на платі – 32 °C/Вт. Значення виміряно на тестовій платі TI для цієї родини; для інших плат і корпусів числа інші."
 ---
 
 ## Short answer
@@ -71,19 +40,3 @@ sources:
 - Робити висновок про нагрів готового виробу за температурою, виміряною на перехіднику DIP.
 - Брати `θ_JA` з datasheet, не перевіривши, на якій платі й за яких умов його виміряно.[^ti-spra953]
 - Вважати, що адаптер гірший чи кращий «взагалі»: напрямок і розмір різниці залежать від того, скільки міді і які шляхи відводу тепла є в кожному з варіантів.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

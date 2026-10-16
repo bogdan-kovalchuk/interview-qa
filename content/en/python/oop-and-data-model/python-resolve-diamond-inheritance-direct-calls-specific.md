@@ -1,55 +1,24 @@
 ---
 id: py-oop-0018
 title: "How does Python resolve diamond inheritance, and why can direct calls to specific parent methods run one link twice?"
-description: "How does Python resolve diamond inheritance, and why can direct calls to specific parent methods run one link twice?"
 track: python
 section: oop-and-data-model
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-builtins-functions-super
     title: "Python 3.14: Built-in Functions/super"
     url: https://docs.python.org/3.14/builtins/functions.html#super
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, super section: search order after type along __mro__, the zero-argument form (type and the first method argument), the warning about nested functions, and the recommendation of the same calling signature in cooperative methods. Does not describe object.__init__ or mixin design."
 ---
 
 ## Short answer
@@ -126,23 +95,3 @@ A class that does not call `super()` ends the chain: the classes after it in the
 - writing `Parent.method(self)` in a class with several bases instead of `super().method()`;
 - assuming that a shared base in a diamond runs once automatically when two parents call it directly;
 - leaving out `super()` in one class of the chain, so the classes after it in the MRO silently do not run.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

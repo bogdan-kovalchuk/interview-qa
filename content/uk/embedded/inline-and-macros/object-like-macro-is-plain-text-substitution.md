@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0002
 title: "Чим object-like макрос відрізняється від звичайної константи?"
-description: "Object-like макрос – це проста текстова заміна: усюди, де зустрінеться BUFFER_SIZE, препроцесор підставить 256."
 track: embedded
 section: inline-and-macros
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -56,7 +37,3 @@ Object-like макрос – це ім’я препроцесора, яке з�
 Приклад: після `#define BUFFER_SIZE 256` оголошення `unsigned char buffer[BUFFER_SIZE];` препроцесор перетворить на масив із межею `256`. Якщо визначити макрос після потрібного використання, попередні рядки не зміняться; якщо ім’я макроса випадково збігається з полем чи локальним ідентифікатором, заміна може зіпсувати й цей код.
 
 **Типова помилка:** вважати макрос глобальною константою мови й очікувати від нього перевірки типу або лексичного scope. Перевіряй точку визначення, усі наступні включені файли та потребу в макросі на етапі препроцесора; інакше використовуй типізоване `const` або `constexpr` відповідно до мови й вимог до constant expression.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

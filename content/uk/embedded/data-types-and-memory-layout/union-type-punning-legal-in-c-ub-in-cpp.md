@@ -1,48 +1,21 @@
 ---
 id: emb-dtypes-0100
 title: "Trap: легально у C чи C++? `union { float f; uint32_t u; } pun; pun.f = 1.0f; uint32_t r = pun.u;`"
-description: "У C це поширений union type punning, а формально у C++ читання неактивного члена union - undefined behavior."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: cpp-union
-    title: 'C++ working draft: Unions'
+    title: "C++ working draft: Unions"
     url: https://eel.is/c++draft/class.union.general
-    accessed: 2026-10-04
-    kind: spec
-    version: current working draft
-    applicability: 'Правила активного члена union у C++; спільна початкова послідовність має окремий виняток, але звичайне reinterpretation float як integer ним не охоплене.'
   - source_id: cpp-bit-cast
-    title: 'C++ working draft: bit_cast'
+    title: "C++ working draft: bit_cast"
     url: https://eel.is/c++draft/bit.cast
-    accessed: 2026-10-04
-    kind: spec
-    version: current working draft
-    applicability: 'Вимоги C++20 до std::bit_cast: однаковий розмір і trivially copyable типи; отримане представлення залежить від вихідних типів і реалізації.'
 ---
 
 ## Short answer
@@ -64,23 +37,3 @@ Union type punning означає запис через один член `union
 Якщо мета – серіалізувати число, кодуй його явно у визначений порядок байтів. Якщо мета – лише переглянути представлення під час діагностики на конкретній платформі, задокументуй це припущення й не видавай код за portable. Компіляторні extensions можуть мати чіткі гарантії, але тоді це контракт компілятора, а не стандартної C++ програми.[^cpp-union]
 
 **Типова помилка:** переносити звичну практику C без змін у C++ або вважати, що compiler extension доводить відповідність стандарту. У C++ застосовуй `std::bit_cast` чи `memcpy` та окремо визначай інтерпретацію байтів.[^cpp-union] [^cpp-bit-cast]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

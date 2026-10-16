@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0022
 title: "Trap: чому signed bit-field на 1 біт майже завжди пастка?"
-description: "1-bit signed field не може представляти значення +1 у two's complement моделі."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -62,19 +43,3 @@ struct F {
 - плутати логічний тип `_Bool` із signed integer bit-field.
 
 Пастка проявляється, коли прапорець після встановлення не дорівнює `1`, і гілка `if (flag == 1)` пропускається. Щоб уникнути цього, обери тип за потрібною семантикою, а значення та ABI перевіряй окремо від ширини поля.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

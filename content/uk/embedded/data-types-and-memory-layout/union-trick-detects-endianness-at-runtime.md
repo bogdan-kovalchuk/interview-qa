@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0073
 title: "Як визначити endianness платформи програмно через union?"
-description: "Записавши відоме значення у union.word і прочитавши bytes[0], можна визначити little- чи big-endian платформу."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,11 +25,3 @@ Endianness описує порядок байтів багатобайтовог
 **Приклад переносної перевірки:** скопіюйте байтове представлення `uint32_t` у масив `unsigned char` функцією `memcpy`, а потім порівняйте перший елемент із `0x04` та `0x01`. Для `0x01020304` перший байт `0x04` означає little-endian, а `0x01` – big-endian. `unsigned char` використовується для доступу до object representation; не замінюйте його довільним типом через cast.[^iso-c-n1570]
 
 Результат стосується конкретного об’єкта й платформи, а не протоколу обміну. Порядок байтів у файлі чи мережевому пакеті задається самим форматом, тому формат слід розбирати за його специфікацією. Також не варто узагальнювати висновок для всіх Cortex-M конфігурацій без документації конкретного ядра та режиму: перевірка має сенс саме там, де програма реально працює. Якщо підтримується лише один target, властивість можна встановити під час збирання; runtime-тест корисний для коду, що має працювати на кількох порядках байтів. Вибір `uint32_t` у прикладі фіксує ширину перевірюваного значення.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

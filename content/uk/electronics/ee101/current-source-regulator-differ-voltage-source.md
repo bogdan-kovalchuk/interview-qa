@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0223
 title: "Чим джерело (стабілізатор) струму відрізняється від джерела напруги?"
-description: "Чим джерело (стабілізатор) струму відрізняється від джерела напруги?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 74, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-source-conversions
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 6.2 Source Conversions"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/06:_Analysis_Theorems_and_Techniques/6.2:_Source_Conversions"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 6.2: ідеальне джерело напруги задає напругу, ідеальне джерело струму – струм, незалежно від навантаження; внутрішній опір практичного джерела обмежує його вихідний струм (джерело напруги) або вихідну напругу (джерело струму). Загальна модель, не конкретний прилад."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/06:_Analysis_Theorems_and_Techniques/6.2:_Source_Conversions
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 - Вважати джерело струму таким, що тримає струм за будь-якої напруги: межа напруги визначає, коли стабілізація зникає.
 - Залишати вихід джерела струму розімкненим: напруга зростає до небезпечних значень.
 - Замикати вихід джерела напруги без розрахунку струму: струм дорівнює E/R, де R – внутрішній опір джерела.
-
-## Sources
-
-<!-- generated from frontmatter -->

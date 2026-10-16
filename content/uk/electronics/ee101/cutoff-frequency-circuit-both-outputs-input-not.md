@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0084
 title: "На частоті зрізу RL-кола обидва виходи мають по 0,707 входу. Чому це не суперечить тому, що вони разом утворюють вхід?"
-description: "На частоті зрізу RL-кола обидва виходи мають по 0,707 входу. Чому це не суперечить тому, що вони разом утворюють вхід?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 46, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-rl
     title: "All About Circuits: Series Resistor-Inductor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-3/series-resistor-inductor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує закон Кірхгофа для фазорів напруг у послідовному RL-колі та різницю між сумою комплексних величин і модулів."
 ---
 
 ## Short answer
@@ -60,19 +33,3 @@ sources:
 Цей результат стосується напруг на двох послідовних елементах і не стверджує, що будь-які два незалежні виходи будь-якого фільтра матимуть таку суму. Реальний опір обмотки додає ще одну складову до моделі, а навантаження може змінити обидва відношення `V_out/V_in`. Для аналізу складнішої схеми потрібно записати всі імпеданси й застосувати закон Кірхгофа до фазорів, а не переносити число 0.707 без перевірки умов.[^aac-series-rl]
 
 **Типова помилка:** додати 0.707 + 0.707 як скаляри й оголосити, що вхідна напруга має бути 1.414 одиниці. Під час відповіді треба назвати фазові кути та показати комплексну суму; для вимірювання осцилографом перевіряють різницю фаз каналів, а не тільки модулі. Також слід уточнити, що обидва виміри зроблено відносно спільного reference та для тієї самої частоти й навантаження.[^aac-series-rl]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

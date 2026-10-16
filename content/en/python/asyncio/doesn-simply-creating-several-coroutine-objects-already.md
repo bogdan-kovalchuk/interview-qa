@@ -1,41 +1,18 @@
 ---
 id: py-async-0003
 title: "Why doesn't simply creating several coroutine objects already run them concurrently?"
-description: "Why doesn't simply creating several coroutine objects already run them concurrently?"
 track: python
 section: asyncio
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -70,23 +47,3 @@ That difference explains the behavior for several coroutines in a row: `await a(
 both are async. But `t1 = create_task(a()); t2 = create_task(b()); await t1; await t2` lets the loop
 switch between `a` and `b` at each of their internal suspension points, so work waiting on I/O in one
 does not block progress in the other.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

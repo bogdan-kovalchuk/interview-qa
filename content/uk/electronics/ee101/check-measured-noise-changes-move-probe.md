@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0186
 title: "Що перевірити, якщо виміряний шум змінюється, коли рухаєте пробник?"
-description: "Що перевірити, якщо виміряний шум змінюється, коли рухаєте пробник?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 66, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: tektronix-abcs-probes
     title: "Tektronix: ABCs of Probes Primer"
     url: https://download.tek.com/document/02_ABCs-of-Probes-Primer.pdf
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Розділ про заземлення пробника: заземлювальний провід працює як одновитковий контур, який ловить завади; зміна шуму при русі проводу вказує на наведення в ньому; коротший провід зменшує наведення й дзвін; петля заземлення між приладами дає шум 50/60 Гц. Загальні правила вимірювань, не конкретна модель осцилографа."
 ---
 
 ## Short answer
@@ -63,19 +36,3 @@ sources:
 - Вважати, що зміна шуму при русі пробника означає проблему схеми: спершу перевіряють сам провід.
 - Подовжувати заземлювальний провід або з’єднувати його з іншою землею: з’являється дзвін, який легко сприйняти за сигнал.[^tektronix-abcs-probes]
 - Порівнювати шум при різних налаштуваннях осцилографа: зміна смуги або масштабу змінює те, що видно.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

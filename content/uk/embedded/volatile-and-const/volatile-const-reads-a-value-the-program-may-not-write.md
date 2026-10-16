@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0014
 title: "Що таке `volatile const` і навіщо воно потрібне?"
-description: "volatile const описує об’єкт, який програма не має права змінювати, але значення якого може змінитися без участі програми."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,7 +37,3 @@ uint32_t current = *status;  // читати можна
 ```
 
 Тут зовнішній pointer фіксований, а `*status` не можна призначити нове значення. Використовуй саме таку декларацію лише якщо reference manual підтверджує ширину доступу, адресу та семантику читання. Деякі регістри очищують прапорці при читанні або вимагають окремих операцій; самі ключові слова C цього не описують. Також звір volatile поведінку з документацією компілятора для цільової архітектури.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

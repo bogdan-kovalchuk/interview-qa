@@ -1,55 +1,24 @@
 ---
 id: emb-elintro-0188
 title: "Що таке load regulation стабілізатора?"
-description: "Що таке load regulation стабілізатора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 18, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-regulator-regulation
     title: "TI: Identify the Most Accurate Linear Voltage Regulator"
     url: https://www.ti.com/document-viewer/lit/html/SSZTCA7/GUID-C15E9A5E-C4B2-4C77-98A3-C375536EE8EF
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Визначення load regulation; конкретні відсотки залежать від регулятора й умов вимірювання."
   - source_id: aac-zener-regulator
     title: "All About Circuits: What Are Zener Diodes?"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-3/zener-diodes/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Механізм і межа стабілізації за струмом навантаження для кола зі стабілітроном."
 ---
 
 ## Short answer
@@ -68,7 +37,3 @@ Load regulation показує, наскільки змінюється `V_out`,
 
 - Вважати 5–10% універсальною характеристикою всіх Зенерівських регуляторів; потрібні межі навантаження і критерій вимірювання.
 - Розраховувати лише максимальний струм навантаження й не перевіряти, що при мінімальному вході стабілітрон зберігає потрібний струм.[^aac-zener-regulator]
-
-## Sources
-
-<!-- generated from frontmatter -->

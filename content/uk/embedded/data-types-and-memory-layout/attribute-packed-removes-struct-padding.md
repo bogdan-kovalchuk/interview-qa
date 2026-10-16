@@ -1,48 +1,21 @@
 ---
 id: emb-dtypes-0025
 title: "Як `__attribute__((packed))` впливає на `struct { char a; int b; char c; };`?"
-description: "__attribute__((packed)) прибирає padding, зменшуючи розмір struct, але може викликати misaligned access."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: gcc-packed
     title: "GCC: Common Type Attributes (packed)"
     url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Описує розміщення членів із packed у GCC; точний layout залежить від target та ABI."
   - source_id: arm-cortex-m0
     title: "Arm Cortex-M0 Devices Generic User Guide"
     url: https://documentation-service.arm.com/static/5ea6ce5e9931941038def8c1%3Ftoken%3D
-    accessed: 2026-10-04
-    kind: official
-    version: "DUI 0497A"
-    applicability: "Cortex-M0 не підтримує невирівняні доступи; це твердження стосується саме цього ядра."
 ---
 
 ## Short answer
@@ -72,11 +45,3 @@ GCC packed (same field sizes): a@0, b@1, c@5, sizeof = 6
 ```
 
 Перевіряйте фактичні offsets та згенерований код, а на цільовому пристрої – вимоги до невирівняних операцій. Застосовуйте packed лише там, де сумісність формату справді цього вимагає, і відокремлюйте декодування байтів від звичайної арифметики над вирівняними об’єктами.[^gcc-packed] [^arm-cortex-m0]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-coll-0020
 title: "Що означає stability сортування Python і як використати її для multi-key sorting без custom comparator?"
-description: "Stability означає, що елементи з однаковим key зберігають початковий відносний порядок; це дозволяє сортувати за кількома keys послідовно, від менш значущого до більш значущого."
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -66,11 +43,3 @@ merge sort, який під час злиття двох відсортован�
 Обмеження підходу: він вимагає стільки проходів, скільки ключів, тобто O(k * n log n) замість
 одного O(n log n) для tuple-key варіанта – прийнятно для невеликої кількості ключів, але не для
 великої.[^py314-library-stdtypes]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

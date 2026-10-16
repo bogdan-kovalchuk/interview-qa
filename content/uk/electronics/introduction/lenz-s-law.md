@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0138
 title: "Що таке закон Ленца?"
-description: "Що таке закон Ленца?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 14, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: openstax-inductance-energy
     title: "OpenStax College Physics 2e: 23.9 Inductance"
     url: https://openstax.org/books/college-physics-2e/pages/23-9-inductance
-    accessed: 2026-10-04
-    kind: book
-    version: "College Physics 2e"
-    applicability: "Пояснює знак мінус у законі Фарадея та те, що induced emf протидіє зміні струму/магнітного потоку."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Приклад: коли вимикач розмикає коло з котушкою, струм прагне зменшитися. Полярність напруги на котушці стає такою, щоб підтримати цей струм; без обмежувального шляху напруга може зрости настільки, що виникне іскра на контактах. Захисний діод у відповідному DC-колі дає струму шлях для спадання.
 
 **Типова помилка:** казати, що індукований струм завжди протилежний причині. Правильно спершу визначити напрям зміни потоку, а вже потім застосувати правило Ленца.
-
-## Sources
-
-<!-- generated from frontmatter -->

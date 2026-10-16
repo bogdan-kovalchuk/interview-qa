@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0131
 title: "Скільки падінь `V_F` віднімають для звичайного чотиридіодного моста?"
-description: "Скільки падінь `V_F` віднімають для звичайного чотиридіодного моста?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 55, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Конденсаторний фільтр і пульсації (розряд між піками, зростання пульсацій зі струмом навантаження, зарядні піки струму), мостовий випрямляч (у кожному півперіоді провідні два діоди, два падіння V_F), простий стабілітронний стабілізатор і втрата регуляції при надто великому струмі навантаження; книга не наводить формули ΔV = I/(f*C) і не задає V_F конкретного діода."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: vishay-1n400x
     title: "Vishay: 1N4001–1N4007 datasheet"
     url: https://www.vishay.com/docs/88503/1n4001.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "29-Apr-2020"
-    applicability: "Максимальне V_F = 1,1 В при I_F = 1 А (T_A = 25 °C) для одного діода серії 1N4001–1N4007; це приклад залежності V_F від струму, а не значення для інших діодів."
 ---
 
 ## Short answer
@@ -72,19 +41,3 @@ sources:
 - Віднімати падіння від діючого (RMS) значення замість пікового: `V_pk = V_rms*sqrt(2)`.
 - Брати 0,7 В для будь-якого діода й струму замість значення з datasheet.
 - Ігнорувати `2*V_F` при низькій вторинній напрузі, де вони становлять велику частку.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

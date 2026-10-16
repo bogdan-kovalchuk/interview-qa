@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0011
 title: "How does a naive `datetime` differ from an aware `datetime`, and why is mixing them dangerous?"
-description: "How does a naive `datetime` differ from an aware `datetime`, and why is mixing them dangerous?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [datetime]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-datetime-determining-aware-or-naive
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html#determining-if-an-object-is-aware-or-naive
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the formal definition of aware and naive datetime objects (tzinfo is not None and utcoffset(d) does not return None)."
   - source_id: py314-library-datetime-aware-and-naive-objects
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html#aware-and-naive-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Aware and naive objects section: a naive object does not say whether it is UTC or local time; an aware object represents a specific moment."
   - source_id: py314-library-datetime-objects
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html#datetime-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, datetime objects section: order comparison and subtraction between naive and aware raise TypeError; naive and aware are never equal; now(tz) and replace()."
 ---
 
 ## Short answer
@@ -67,19 +44,3 @@ It is safer to keep time aware from the start and compare instants in UTC. `date
 - reading `False` from `==` as "different moments": for naive and aware values it only means the types are incompatible;
 - adding `tzinfo=timezone.utc` to a naive value that was local time;
 - storing naive datetimes without a zone marker in a database or an API.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

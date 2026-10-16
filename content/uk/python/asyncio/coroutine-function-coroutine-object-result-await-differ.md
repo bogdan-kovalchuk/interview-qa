@@ -1,41 +1,18 @@
 ---
 id: py-async-0001
 title: "Чим coroutine function, coroutine object та результат `await` відрізняються між собою?"
-description: "Coroutine function – це async def-функція; coroutine object – об'єкт, який повертає виклик такої функції; результат await – значення, яке coroutine повертає після виконання."
 track: python
 section: asyncio
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -63,19 +40,3 @@ sources:
 Task, яка виконується конкурентно з рештою коду, а результат `await` на такому Task – це те саме
 значення `return`, але отримане після того, як Task встигла виконатися паралельно з іншими,
 а не негайно в тому самому кадрі виклику.[^py314-library-asyncio-eventloop]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

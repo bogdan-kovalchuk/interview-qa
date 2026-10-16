@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0009
 title: "Чим shallow copy відрізняється від deep copy для контейнера з вкладеними mutable objects?"
-description: "Shallow copy створює новий зовнішній контейнер, але внутрішні об'єкти залишаються спільними посиланнями; deep copy рекурсивно копіює все до кінця."
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -88,19 +61,3 @@ print(original[0])                # [1, 2, 99] - untouched by mutation in deep
 - викликати `copy.deepcopy()` на великих структурах без потреби, що призводить до помітного падіння швидкодії та надлишкового споживання оперативної пам'яті;
 - намагатися глибоко копіювати об'єкти, що утримують зовнішні ресурси (файлові дескриптори, мережеві сокети, потоки thread), що викликає помилки копіювання або некоректний стан;
 - для часткової ізоляції застосовувати list comprehension або dict comprehension, щоб явно контролювати, які рівні вимагають створення нових об'єктів.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

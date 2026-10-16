@@ -1,69 +1,30 @@
 ---
 id: py-testing-0016
 title: "Коли property-based testing з generated examples і shrinking дає кращий пошук edge cases, ніж лише hand-picked examples?"
-description: "Property-based testing ефективний, коли простір вхідних даних великий, а граничні випадки неочевидні: бібліотека генерує приклади сама і зводить знайдений контрприклад до мінімального."
 track: python
 section: testing
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: hypothesis-api-reference
     title: "Hypothesis 6.169.0: API reference"
     url: https://hypothesis.readthedocs.io/en/latest/reference/api.html
-    accessed: 2026-10-13
-    kind: official
-    version: "6.169.0"
-    applicability: "Офіційна документація Hypothesis 6.169.0: settings.max_examples (за замовчуванням 100), фаза shrink і @example."
   - source_id: hypothesis-tutorial-introduction
     title: "Hypothesis 6.169.0: Introduction to Hypothesis"
     url: https://hypothesis.readthedocs.io/en/latest/tutorial/introduction.html
-    accessed: 2026-10-13
-    kind: official
-    version: "6.169.0"
-    applicability: "Офіційна документація Hypothesis 6.169.0: @given і стратегії; генерація випадкова, тож знахідка ймовірна, але не гарантована."
 ---
 
 ## Short answer
@@ -105,19 +66,3 @@ Property-based testing не замінює приклади з вимог. Ві�
 - вважати, що property-based testing гарантовано знаходить усі edge cases: випадкова генерація дає ймовірність, а не гарантію;
 - писати властивість, яка копіює реалізацію, замість незалежного інваріанта;
 - залишати слабку властивість на кшталт `len(result) >= 0` і вважати, що вона щось перевіряє.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

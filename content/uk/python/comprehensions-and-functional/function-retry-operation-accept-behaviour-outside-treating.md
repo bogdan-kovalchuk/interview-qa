@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0008
 title: "Функція `retry(operation)` має прийняти behavior ззовні: як first-class function дозволяє передати operation без її негайного виклику?"
-description: "У Python функції є об'єктами першого класу: можна передати посилання на функцію (без дужок ()), і retry викличе її всередині, коли потрібно."
 track: python
 section: comprehensions-and-functional
-level: middle
-type: practical
-tags: [retry-operation]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -98,23 +71,3 @@ print(result)
 - випадковий виклик функції під час передачі: `retry(fetch())` замість `retry(fetch)`;
 - втрата аргументів операції: якщо операція потребує параметрів, передавати `functools.partial(fetch, url)` або `lambda: fetch(url)`, а не викликати функцію заздалегідь;
 - поглинання системних винятків: обробляти лише очікувані винятки (наприклад, мережеві чи операційні помилки) замість `except BaseException:`, який перехоплює `KeyboardInterrupt` та `SystemExit`.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

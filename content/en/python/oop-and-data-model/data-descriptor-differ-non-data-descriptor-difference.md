@@ -1,62 +1,27 @@
 ---
 id: py-oop-0009
 title: "How does a data descriptor differ from a non-data descriptor, and how does that difference change precedence during attribute lookup?"
-description: "How does a data descriptor differ from a non-data descriptor, and how does that difference change precedence during attribute lookup?"
 track: python
 section: oop-and-data-model
-level: senior
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a data descriptor defines __set__ or __delete__ and takes precedence over the instance dictionary; a non-data descriptor defines only __get__ and can be overridden by the instance dictionary; @property is a data descriptor. Does not describe user-written descriptor examples."
   - source_id: py314-reference-datamodel-implementing-descriptors
     title: "Python 3.14: Reference/datamodel, Implementing Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#implementing-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the descriptor must be in the owner's class dictionary or in that of a parent class; adding __set__ or __delete__ changes the kind of descriptor to a data descriptor. Does not describe a descriptor stored in an instance dictionary."
 ---
 
 ## Short answer
@@ -112,19 +77,3 @@ print(Greeter().hello())         # method
 - thinking that "data" means "stores data": the name is determined by the presence of `__set__` or `__delete__`;
 - expecting `obj.prop = 42` to always work: for a property without a setter, assignment raises `AttributeError`;
 - storing a descriptor as an instance attribute (`obj.d = Desc()`) instead of in the class: Python will not call it.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

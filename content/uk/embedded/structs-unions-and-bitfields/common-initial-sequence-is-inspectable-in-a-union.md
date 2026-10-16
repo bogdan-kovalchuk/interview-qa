@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0048
 title: "Що таке common initial sequence у union зі struct-ами?"
-description: "У C дозволено інспектувати common initial part структур у union за певних умов, коли структури мають сумісні початкові members."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -58,7 +39,3 @@ union Value { struct Text text; struct Number number; };
 Якщо `Value` містить `number`, дозволено інспектувати `text.kind`, оскільки перший member обох структур має сумісний тип. Читати `text.length` у такому стані не можна вважати безпечним лише через те, що поле стоїть поруч: воно не входить до спільної початкової послідовності.[^iso-c-n1570]
 
 Типова помилка – думати, що `union` дозволяє безумовно читати будь-який інший member, або застосовувати правило до C++ так само, як до C. Якщо варіант має tag, практична альтернатива – зберігати його окремо й перемикатися за tag перед читанням відповідного payload. Так намір зрозумілий, а коректність не залежить від помилково розширеного трактування винятку.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

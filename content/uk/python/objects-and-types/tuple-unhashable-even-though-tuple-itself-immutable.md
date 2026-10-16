@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0007
 title: "Чому tuple може бути unhashable, хоча сам tuple є immutable?"
-description: "Tuple є hashable лише тоді, коли всі його елементи hashable."
 track: python
 section: objects-and-types
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -87,23 +60,3 @@ except TypeError as exc:
 - будувати складені ключі кешу з довільних аргументів функцій `(*args)` без попередньої валідації чи конвертації mutable типів;
 - конвертувати список у кортеж лише на верхньому рівні (`tuple(data)`), забуваючи, що вкладені списки все одно залишають результуючий кортеж unhashable;
 - для вкладених колекцій перетворювати структури на заморожені аналоги: `tuple` для послідовностей та `frozenset` для невпорядкованих наборів.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-fund-0005
 title: "Чому dynamic typing і strong typing не є протилежними характеристиками мови?"
-description: "Dynamic typing описує момент визначення та перевірки type, а strong typing неформально описує суворість правил взаємодії між несумісними types."
 track: python
 section: fundamentals
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -84,19 +61,3 @@ Python, і жоден не суперечить іншому.
 знаходиться пізно (лише коли рядок виконається), але знаходиться голосно – винятком у місці
 операції, а не тихим неправильним значенням, яке спливе через три шари
 викликів.[^py314-faq-general]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

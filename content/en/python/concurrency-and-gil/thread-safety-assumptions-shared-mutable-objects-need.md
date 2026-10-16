@@ -1,58 +1,24 @@
 ---
 id: py-gil-0010
 title: "Which thread-safety assumptions about shared mutable objects need to be revisited when moving to free-threaded CPython?"
-description: "Which thread-safety assumptions about shared mutable objects need to be revisited when moving to free-threaded CPython?"
 track: python
 section: concurrency-and-gil
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython free-threaded build"
-    version: "3.14"
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -108,23 +74,3 @@ needed.[^py314-howto-free-threading-extensions]
 - iterating over shared collections in one thread while another mutates them;
 - accessing `frame.f_locals` from a foreign thread – it can crash the interpreter;
 - C extensions that rely on borrowed references to built-in types.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

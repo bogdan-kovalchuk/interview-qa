@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0058
 title: "Що має містити хороша відповідь на інтерв’ю про callbacks в embedded?"
-description: "Механізм, контракт і ризики."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,7 +31,3 @@ Callback – це функція, яку один компонент перед�
 Приклад: драйвер UART може зберегти callback і context під час ініціалізації, а потім викликати їх при отриманні байта. Власник має забезпечити, що context живий до unregister, а callback не виконує довгу операцію, якщо його викликано з ISR. Чи саме так працює драйвер, задає його API, а не сама мова C.
 
 **Типові помилки:** перевірити лише синтаксис `void (*cb)(void)`, забути null і lifetime, або викликати callback у контексті з жорсткими часовими обмеженнями, хоча він блокується. Перед використанням звіряй сигнатуру, момент виклику, ownership context та обмеження execution context.
-
-## Sources
-
-<!-- generated from frontmatter -->

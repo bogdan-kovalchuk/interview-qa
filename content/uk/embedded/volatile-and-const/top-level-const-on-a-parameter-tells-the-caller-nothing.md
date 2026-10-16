@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0041
 title: "Чому `void f(uint8_t * const p)` не дуже корисне як API-контракт?"
-description: "Бо const тут top-level і стосується лише локальної копії pointer parameter всередині функції."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -60,7 +41,3 @@ void read_only(const uint8_t *p) {
 ```
 
 Типова помилка – сприймати `uint8_t * const` як обіцянку «функція не змінить буфер». Щоб виразити таку обіцянку на рівні інтерфейсу, став `const` перед типом елемента, як у `const uint8_t *p`. Якщо функція має змінювати дані, залишай `uint8_t *p`; локальний top-level `const` можна використовувати для внутрішньої дисципліни реалізації, але не як властивість API, видиму caller-у.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

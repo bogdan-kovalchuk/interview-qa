@@ -1,69 +1,30 @@
 ---
 id: py-excpt-0003
 title: "When can catching `BaseException` break graceful shutdown or cancellation semantics?"
-description: "When can catching `BaseException` break graceful shutdown or cancellation semantics?"
 track: python
 section: exceptions
-level: senior
-type: pitfall
-tags: [baseexception]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: CancelledError directly subclasses BaseException; TaskGroup and asyncio.timeout() may misbehave if a coroutine swallows CancelledError; CancelledError should generally be propagated again after cleanup."
   - source_id: py314-library-asyncio-task-cancel-method
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#asyncio.Task.cancel
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Task.cancel() does not guarantee cancellation if the coroutine suppresses the exception; suppressing cancellation is actively discouraged and requires calling Task.uncancel()."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: generator.close() raises GeneratorExit at the paused yield; if the generator does not catch it, close() returns without error; if the generator yields a value, close() raises RuntimeError."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: if a generator is finalized without being resumed, close() is called, allowing pending finally blocks to run."
 ---
 
 ## Short answer
@@ -118,23 +79,3 @@ If cancellation is suppressed deliberately, `Task.uncancel()` must also be calle
 - writing `except BaseException` instead of `except Exception` when only `Exception` is needed;
 - catching `BaseException` without `raise` in a coroutine that `TaskGroup` or `asyncio.timeout()` must cancel;
 - yielding a value from a `GeneratorExit` handler and expecting `close()` to finish without an error.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

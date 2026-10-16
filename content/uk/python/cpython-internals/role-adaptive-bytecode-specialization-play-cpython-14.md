@@ -1,72 +1,30 @@
 ---
 id: py-cpyint-0004
 title: "Яку роль у CPython 3.14 відіграють adaptive bytecode та specialization під час виконання hot code?"
-description: "Adaptive specialization замінює generic опкоди на спеціалізовані варіанти, оптимізовані під конкретні типи аргументів, використовуючи inline cache entries для зберігання runtime-інформації."
 track: python
 section: cpython-internals
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: "3.14"
-anki:
-  export: true
 sources:
   - source_id: py314-library-dis
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-traceback-objects
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#traceback-objects
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -110,11 +68,3 @@ dis.dis(calculate, adaptive=True)
 - мономорфний код працює суттєво швидше: однорідні типи операндів дозволяють уникнути динамічного пошуку та узагальненого dispatch;
 - поліморфізм призводить до деоптимізації: якщо одна й та сама інструкція регулярно отримує змінні типи, інтерпретатор повертається до generic форми;
 - inline cache збільшує обсяг bytecode у пам'яті: резервування слотів `CACHE` для кожної інструкції розмінює пам'ять на швидкість виконання.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

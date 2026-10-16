@@ -1,60 +1,30 @@
 ---
 id: py-gil-0023
 title: "Коли `threading.local()` кращий за shared dictionary keyed by thread ID, а коли він приховує небажаний implicit state?"
-description: "threading.local() кращий коли потрібна автоматична ізоляція даних між потоками й автоматичний cleanup при завершенні потоку; shared dictionary з ключем threading.get_ident() – коли потрібна явність і повний контроль над..."
 track: python
 section: concurrency-and-gil
-level: middle
-type: comparison
-tags: [threading-local]
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
 
 **`threading.local()` кращий коли потрібна автоматична ізоляція даних між потоками й автоматичний cleanup при завершенні потоку; shared dictionary з ключем `threading.get_ident()` – коли потрібна явність і повний контроль над структурою.**[^py314-library-threading] Переваги `threading.local()`: не потребує lock для самого сховища, дані видаляються автоматично при завершенні потоку, доступ через атрибути зручніший. <span class="warn">Небезпека implicit state:</span> значення виглядають як звичайні атрибути, але невидимі між потоками – це ускладнює debugging і ламається, якщо значення з `local` передати в інший потік. Shared dict потребує lock і ручного видалення записів померлих потоків, інакше – витік пам'яті.
+
 ## Detailed explanation
 
 `threading.local()` – це клас, що дає кожному thread власну, ізольовану копію своїх атрибутів:
@@ -96,19 +66,3 @@ connections[threading.get_ident()] = get_connection()
 Небезпека тут саме в implicit state: значення `threading.local()` виглядають як прості атрибути
 об'єкта, тому легко забути, що вони невидимі з інших потоків, і випадково передати посилання на
 `local_data` в інший thread, очікуючи побачити там ті самі дані.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0236
 title: "Як працює інвертор на одному NPN-транзисторі?"
-description: "Як працює інвертор на одному NPN-транзисторі?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 76, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-bjt-basics
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.2 The Bipolar Junction Transistor"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.2: V_BE ≈ 0,7 В для кремнію у прямому включенні; для малосигнальних приладів β типово 100–200. Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor
   - source_id: fiore-bjt-dc-load-line
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.6 DC Load Lines"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.6: навантажувальна пряма V_CE = V_CC - I_C*R_C, тобто I_C = (V_CC - V_CE)/R_C; для малосигнальних приладів V_CE(sat) порядку десятих вольта (приклад: 0,15 В при 10 мА). Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ sources:
 - Вважати, що вихід опускається до 0 В: насичений транзистор дає лише `V_CE,sat`, що зазвичай десяті частки вольта.[^fiore-bjt-dc-load-line]
 - Брати β як гарантовану константу: типовий діапазон широкий, тому базовий струм рахують із запасом.[^fiore-bjt-basics]
 - Залишати вхід плаваючим: база без визначеного потенціалу дає невизначений вихід.
-
-## Sources
-
-<!-- generated from frontmatter -->

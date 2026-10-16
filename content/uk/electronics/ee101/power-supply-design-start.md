@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0157
 title: "З чого починати проєктування джерела живлення?"
-description: "З чого починати проєктування джерела живлення?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 61, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Ефективність і потужність розсіювання LDO, обмеження P_D(max) = (T_Jmax - T_A)/R_θJA через максимальну junction temperature, стабільний діапазон compensation series resistance вихідного конденсатора. Записка про LDO; імпульсних перетворювачів не стосується."
   - source_id: ti-tps752q1-datasheet
     title: "Texas Instruments TPS752-Q1 datasheet"
     url: https://www.ti.com/lit/ds/symlink/tps752-q1.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Datasheet конкретного LDO як приклад: recommended operating conditions (V_I 2.7–5.5 V, I_O до 2 A), примітка V_I(min) = V_O(max) + V_DO(max load), absolute maximum ratings і таблиця допустимої потужності, що різниться для різних плат і обдуву. Значення стосуються лише TPS752-Q1."
 ---
 
 ## Short answer
@@ -58,7 +27,7 @@ sources:
 
 ## Detailed explanation
 
-Проєктування джерела живлення починають із чисел, бо від них залежать усі наступні вибори. Потрібні вихідна напруга і допуск на неї, робочий та піковий струм навантаження, діапазон вхідної напруги з обома краями та допустимі пульсації. Мінімальна вхідна напруга разом із дном пульсацій визначає, чи виконується умова dropout (див. `qid:emb-elee-0156`), а максимальна – скільки тепла виділиться й чи не наближається вхід до граничних значень (див. `qid:emb-elee-0158`).
+Проєктування джерела живлення починають із чисел, бо від них залежать усі наступні вибори. Потрібні вихідна напруга і допуск на неї, робочий та піковий струм навантаження, діапазон вхідної напруги з обома краями та допустимі пульсації. Мінімальна вхідна напруга разом із дном пульсацій визначає, чи виконується умова dropout (див. qid:emb-elee-0156), а максимальна – скільки тепла виділиться й чи не наближається вхід до граничних значень (див. qid:emb-elee-0158).
 
 Другий крок – оцінити втрати. Для лінійного регулятора вони дорівнюють `P = (V_in - V_out)*I_out`, а ефективність обмежена відношенням `V_out/V_in`.[^ti-slva079] Рахувати слід за найгіршого поєднання: найбільша вхідна напруга й найбільший струм. Якщо тепла забагато, розглядають інший підхід, наприклад імпульсний перетворювач або попередній понижувальний каскад, і тільки після цього обирають конкретну мікросхему.
 
@@ -74,7 +43,3 @@ sources:
 - Перевіряти лише середню чи типову вхідну напругу, не розглядаючи її мінімум і максимум.
 - Орієнтуватися на absolute maximum ratings замість recommended operating conditions.
 - Не рахувати розсіювання для найгіршого режиму й не перевіряти його за температурою навколишнього середовища.
-
-## Sources
-
-<!-- generated from frontmatter -->

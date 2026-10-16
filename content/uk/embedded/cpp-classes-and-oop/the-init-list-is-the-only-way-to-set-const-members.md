@@ -1,83 +1,36 @@
 ---
 id: emb-cppoop-0006
 title: "Навіщо потрібен member initialization list у конструкторі?"
-description: "Ініціалізує бази й члени до входу в тіло конструктора; для const і reference членів зі значенням із параметрів конструктора – єдиний шлях."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-base-init
     title: "C++ working draft: Initializing bases and members ([class.base.init])"
     url: https://eel.is/c++draft/class.base.init
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає порядок ініціалізації (бази, потім члени в порядку оголошення, потім тіло), роль default member initializer і заборону прив’язувати temporary до reference-члена; не оцінює ефективність."
   - source_id: cpp-draft-dcl-type-cv
     title: "C++ working draft: The cv-qualifiers ([dcl.type.cv])"
     url: https://eel.is/c++draft/dcl.type.cv
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що визначення const-об’єкта чи підоб’єкта має мати ініціалізатор або підлягати default-initialization, і що зміна const-підоб’єкта є помилкою."
   - source_id: cpp-draft-dcl-init-ref
     title: "C++ working draft: References ([dcl.init.ref])"
     url: https://eel.is/c++draft/dcl.init.ref
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що reference має бути ініціалізований і не може бути переприв’язаний; для члена класу ініціалізатор у самому оголошенні можна опустити."
   - source_id: cpp-draft-expr-assign
     title: "C++ working draft: Assignment and compound assignment operators ([expr.assign])"
     url: https://eel.is/c++draft/expr.assign
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Вимагає modifiable lvalue як лівий операнд присвоєння; звідси помилка присвоєння const-члену в тілі конструктора."
   - source_id: cppcg-c47-member-init-order
     title: "C++ Core Guidelines: C.47 – Define and initialize data members in the order of member declaration"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c47-define-and-initialize-data-members-in-the-order-of-member-declaration
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Настанова з прикладом помилки через порядок у списку; не є вимогою мови."
   - source_id: cppcg-c49-init-not-assign
     title: "C++ Core Guidelines: C.49 – Prefer initialization to assignment in constructors"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c49-prefer-initialization-to-assignment-in-constructors
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Каже, що ініціалізація може бути елегантнішою й ефективнішою за default-конструювання з наступним присвоєнням і запобігає використанню до встановлення; приклад – клас std::string, для скалярів вигоду не стверджує."
   - source_id: gcc-cpp-dialect-options
     title: "GCC 16.1.0: Options Controlling C++ Dialect (-Wreorder)"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/C_002b_002b-Dialect-Options.html#index-Wreorder
-    accessed: 2026-10-06
-    kind: official
-    version: "16.1.0"
-    applicability: "Документує -Wreorder: попередження, коли порядок mem-initializer не збігається з порядком виконання; увімкнено через -Wall. Специфічно для GCC."
 ---
 
 ## Question code
@@ -119,7 +72,3 @@ GCC попереджає про такий розбіг прапорцем `-Wre
 - Писати список в іншому порядку, ніж оголошено члени, і залежати від порядку: один член використовує інший, ще не ініціалізований.
 - Прив’язувати reference-член у mem-initializer до тимчасового об’єкта: це ill-formed.[^cpp-draft-class-base-init]
 - Вважати, що список завжди швидший: для скалярів різницю дає лише асемблер.
-
-## Sources
-
-<!-- generated from frontmatter -->

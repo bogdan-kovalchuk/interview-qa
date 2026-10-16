@@ -1,44 +1,18 @@
 ---
 id: py-fund-0003
 title: "Яку проблему вирішує кешований файл `.pyc` і чому його наявність не означає компіляцію Python-коду в native machine code?"
-description: ".pyc дозволяє повторно використати скомпільований bytecode незміненого імпортованого модуля й не витрачати час на повторну компіляцію source code."
 track: python
 section: fundamentals
-level: middle
-type: mechanism
-tags: [pyc]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -84,11 +58,3 @@ __pycache__/my_module.cpython-314.pyc
 Практичний висновок для інтерв'ю: `.pyc` – це деталь реалізації CPython, яка економить час import.
 Будувати на його форматі, розташуванні чи самому факті наявності будь-яку логіку застосунку не
 варто.[^py314-reference-datamodel]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

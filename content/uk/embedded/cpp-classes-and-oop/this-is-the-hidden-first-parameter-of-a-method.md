@@ -1,55 +1,24 @@
 ---
 id: emb-cppoop-0003
 title: "Що таке неявний вказівник `this`?"
-description: "Вказівник на об’єкт, для якого викликано нестатичну member-функцію; концептуально прихований перший параметр."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-expr-prim-this
     title: "C++ working draft: This ([expr.prim.this])"
     url: https://eel.is/c++draft/expr.prim.this
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає this як prvalue-вказівник на об’єкт, для якого викликано нестатичну member-функцію, і його cv-кваліфікацію; не описує, як компілятор передає цей вказівник."
   - source_id: cpp-draft-over-match-funcs
     title: "C++ working draft: Candidate functions and argument lists ([over.match.funcs.general])"
     url: https://eel.is/c++draft/over.match.funcs.general
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Описує implicit object parameter як додатковий перший параметр для overload resolution; стандарт прямо каже, що це лише модель опису, а не вимога до реалізації."
   - source_id: cpp-draft-class-virtual
     title: "C++ working draft: Virtual functions ([class.virtual])"
     url: https://eel.is/c++draft/class.virtual
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Підтверджує лише, що virtual-функції підтримують dynamic binding; конкретний механізм (vtable) стандарт не задає."
 ---
 
 ## Short answer
@@ -81,10 +50,6 @@ void gpio_set(const Gpio *self) {
 
 **Типові помилки:**
 
-- Вважати, що `const`-метод робить незмінним усе, на що вказує об’єкт: `this` стає `const X*`, але через вказівник-член, як `odr_`, пишуть далі (див. `qid:emb-cppoop-0005`).
+- Вважати, що `const`-метод робить незмінним усе, на що вказує об’єкт: `this` стає `const X*`, але через вказівник-член, як `odr_`, пишуть далі (див. qid:emb-cppoop-0005).
 - Намагатися використати `this` у `static`-функції чи думати, що його можна змінити.
 - Обіцяти «нульовий оверхед» методу без перевірки: це залежить від компілятора, прапорців оптимізації та `virtual`.
-
-## Sources
-
-<!-- generated from frontmatter -->

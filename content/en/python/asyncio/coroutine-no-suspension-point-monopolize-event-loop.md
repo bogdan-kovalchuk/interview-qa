@@ -1,41 +1,18 @@
 ---
 id: py-async-0006
 title: "Why can a coroutine with no suspension point monopolize the event-loop thread?"
-description: "Why can a coroutine with no suspension point monopolize the event-loop thread?"
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,11 +45,3 @@ back of the ready-callback queue for one turn of the event loop, giving other Ta
 run. For CPU-bound computation this only eases the symptom, not the cause – the real fix there is
 to move the heavy work into `run_in_executor()` or a separate process, so it never occupies the
 event-loop thread at all.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

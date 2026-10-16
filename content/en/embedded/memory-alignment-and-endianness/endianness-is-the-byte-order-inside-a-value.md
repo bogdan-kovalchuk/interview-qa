@@ -1,55 +1,24 @@
 ---
 id: emb-align-0011
 title: "What are little-endian and big-endian for the value `0x12345678`?"
-description: "Byte order of a multi-byte value in memory determines whether the least or most significant byte comes first"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: posix-byte-order
     title: "General Concepts: Data Types"
     url: https://pubs.opengroup.org/onlinepubs/009696699/basedefs/xbd_chap04.html
-    accessed: 2026-09-08
-    kind: spec
-    version: "The Open Group Base Specifications Issue 6"
-    applicability: "Defines network byte order and the host-to-network conversion model."
   - source_id: learncpp-object-sizes
     title: "Object sizes and the sizeof operator"
     url: https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary explanation of bytes, object sizes, and object representation."
   - source_id: acode-cpp-next
     title: "C++ вивчено – що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian learning roadmap; not normative evidence for byte order."
 ---
 
 ## Short answer
@@ -77,7 +46,3 @@ Endianness does not reverse a byte array. If a buffer contains the sequence `{ 0
 External interfaces remove ambiguity by defining an order. POSIX network byte order places the most-significant octet first and supplies conversion functions for 16-bit and 32-bit values.[^posix-byte-order] For file formats, device registers, and non-IP protocols, follow that interface's own specification.
 
 LearnCpp's discussion of object sizes provides useful background on how objects occupy bytes,[^learncpp-object-sizes] while the aCode roadmap is a supplementary path for continuing systems-oriented C and C++ study.[^acode-cpp-next]
-
-## Sources
-
-<!-- generated from frontmatter -->

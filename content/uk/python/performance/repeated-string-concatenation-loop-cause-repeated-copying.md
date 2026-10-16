@@ -1,48 +1,21 @@
 ---
 id: py-perf-0008
 title: "Чому repeated string concatenation у loop може спричиняти repeated copying і коли доречніше accumulated fragments зібрати через `\"\".join(...)`?"
-description: "Str незмінний, тому накопичення фрагментів повторним += у загальному випадку має квадратичну вартість; фрагменти краще зібрати в list і викликати join один раз."
 track: python
 section: performance
-level: middle
-type: comparison
-tags: [join]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Часті питання Python 3.14: накопичення багатьох str конкатенацією у загальному випадку має квадратичну вартість; рекомендовано list і str.join() в кінці; io.StringIO названо іншою ефективною ідіомою."
   - source_id: py314-library-stdtypes-repeated-concatenation
     title: "Python 3.14: Library/stdtypes, repeated concatenation"
     url: https://docs.python.org/3.14/library/stdtypes.html#typesseq-repeated-concatenation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація Python 3.14, типи послідовностей: конкатенація незмінних послідовностей завжди створює новий об’єкт, тож повторна конкатенація має квадратичну вартість за довжиною; лінійні варіанти – str.join або io.StringIO, для bytes – bytes.join, io.BytesIO або bytearray."
   - source_id: cpython-bytecodes-inplace-add-unicode
     title: "CPython 3.14: Python/bytecodes.c"
     url: https://github.com/python/cpython/blob/v3.14.6/Python/bytecodes.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Вихідний код CPython 3.14 (тег v3.14.6), _BINARY_OP_INPLACE_ADD_UNICODE: для x += y зі str рядок розширюється на місці, якщо наступна інструкція – STORE_FAST у ту саму локальну змінну і рядок не має інших посилань. Деталь реалізації, не гарантія мови."
   - source_id: cpython-unicodeobject-joinarray
     title: "CPython 3.14: Objects/unicodeobject.c"
     url: https://github.com/python/cpython/blob/v3.14.6/Objects/unicodeobject.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Вихідний код CPython 3.14 (тег v3.14.6), _PyUnicode_JoinArray: спочатку обчислюється загальна довжина фрагментів, потім результат виділяється один раз. Деталь реалізації CPython."
 ---
 
 ## Short answer
@@ -92,19 +65,3 @@ print(slow > 10 * fast)            # True on CPython 3.13 and 3.14
 - вважати, що оптимізація `+=` в CPython діє завжди, і переносити цикл на атрибут або на змінну з іншими посиланнями;
 - викликати `join` усередині циклу або для кожного фрагмента окремо, що знімає сенс збирання;
 - накопичувати у `list` увесь великий вихід, коли його можна писати потоково.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

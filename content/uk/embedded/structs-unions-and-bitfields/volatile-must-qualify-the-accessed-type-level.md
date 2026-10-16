@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0046
 title: "Чому `volatile` на struct pointer і `volatile` на fields не завжди одне й те саме?"
-description: "Кваліфікатор має застосовуватися до того рівня типу, через який відбувається access."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -58,7 +39,3 @@ uint32_t value = regs->status;
 Останній рядок читає volatile-qualified member через цей pointer. Це не означає, що доступ атомарний, що апаратний регістр підтримує саме такий розмір читання або що `volatile` синхронізує потоки. Для таких властивостей потрібні гарантії ISA, периферійної специфікації та відповідних atomic/critical-section примітивів.[^iso-c-n1570]
 
 Типова помилка – додати `volatile` до pointer-об’єкта й вважати pointee volatile, або зробити cast до звичайного pointer і продовжити читання через нього. Перевіряй тип на стороні об’єкта, до якого звертаєшся, та залишай qualifier у всьому register access API.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0008
 title: "How can a CPU-heavy coroutine or an unbounded ready queue cause starvation even in a cooperative scheduler?"
-description: "How can a CPU-heavy coroutine or an unbounded ready queue cause starvation even in a cooperative scheduler?"
 track: python
 section: asyncio
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -70,23 +47,3 @@ hand.[^py314-library-asyncio-dev] The fix is the same regardless of which shape 
 break the work into chunks with suspension points (`await asyncio.sleep(0)` between loop iterations)
 or move the computation somewhere the loop cannot see it: a `ThreadPoolExecutor` for I/O-like waiting,
 or a `ProcessPoolExecutor` for genuinely CPU-bound work.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

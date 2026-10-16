@@ -1,62 +1,27 @@
 ---
 id: emb-dtypes-0069
 title: "Що таке linker script і яку роль він відіграє у розміщенні секцій?"
-description: "Linker script зіставляє input sections із output sections та memory regions; розміщення залежить від script і target."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: gnu-ld-scripts
     title: "GNU ld: Scripts"
     url: https://sourceware.org/binutils/docs/ld/Scripts.html
-    accessed: 2026-10-04
-    kind: official
-    version: "2.47"
-    applicability: "Описує призначення linker script та команду MEMORY; синтаксис і startup conventions можуть бути toolchain-specific."
   - source_id: gnu-ld-memory
     title: "GNU ld: MEMORY Command"
     url: https://sourceware.org/binutils/docs/ld/MEMORY.html
-    accessed: 2026-10-04
-    kind: official
-    version: "2.47"
-    applicability: "Пояснює опис регіонів пам’яті й обмежень розміщення для GNU ld."
   - source_id: gnu-ld-sections
     title: "GNU ld: SECTIONS Command"
     url: https://sourceware.org/binutils/docs/ld/SECTIONS.html
-    accessed: 2026-10-04
-    kind: official
-    version: "2.47"
-    applicability: "Пояснює зіставлення вхідних і вихідних секцій та їх розміщення."
   - source_id: gnu-ld-lma
     title: "GNU ld: Output Section LMA"
     url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
-    accessed: 2026-10-04
-    kind: official
-    version: "2.47"
-    applicability: "Пояснює різницю load address і runtime address та синтаксис AT/AT>."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -90,11 +55,3 @@ sources:
 Script може визначити символи-маркери меж `.data`, але їх треба оголосити відповідно до startup code, а назви не стандартизовані. Linker map показує адреси, розміри, секції й вільний простір. Якщо `.data` завелика для RAM, linker сигналізує про переповнення замість автоматичного перенесення. Тому після редагування script перевіряють і map, і стартову ініціалізацію.[^gnu-ld-scripts]
 
 Такі символи позначають адреси, за якими startup code копіює байти, а не звичайні змінні. Перевіряй це оголошення разом із кодом ініціалізації та linker map після змін script.[^gnu-ld-scripts]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

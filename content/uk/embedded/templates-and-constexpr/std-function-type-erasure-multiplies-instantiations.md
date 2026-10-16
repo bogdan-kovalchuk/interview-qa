@@ -1,62 +1,27 @@
 ---
 id: emb-tmplcx-0017
 title: "Trap: чому `std::function` може різко роздути Flash?"
-description: "std::function – template-heavy type erasure; різні сигнатури й callable-типи можуть породити багато окремого коду."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-func-wrap-func
     title: "C++ working draft: Class template function ([func.wrap.func])"
     url: https://eel.is/c++draft/func.wrap.func
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Клас function – шаблон обгортки з викличною сигнатурою R(ArgTypes...). Розмір коду й використання Flash цей розділ не визначає."
   - source_id: cpp-draft-func-wrap-func-con
     title: "C++ working draft: Constructors and destructor ([func.wrap.func.con])"
     url: https://eel.is/c++draft/func.wrap.func.con
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Шаблонний конструктор приймає callable F і зберігає його як об’єкт типу decay_t<F>; динамічна пам’ять можлива (може кинути bad_alloc), а для малих callable-об’єктів стандарт рекомендує її уникати. Розмір коду цей розділ не визначає."
   - source_id: cpp-draft-temp-inst
     title: "C++ working draft: Implicit instantiation ([temp.inst])"
     url: https://eel.is/c++draft/temp.inst
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, коли шаблон функції чи класу неявно інстанціюється: коли на нього посилаються в контексті, що вимагає визначення. Не визначає розмір бінарника чи розміщення коду."
   - source_id: gnu-ld-print-map
     title: "GNU ld: Command-line options (-Map, --print-map)"
     url: https://sourceware.org/binutils/docs/ld/Options.html
-    accessed: 2026-10-13
-    kind: official
-    version: "current"
-    applicability: "Описує -Map=mapfile (link map у файл) і --print-map (вивід у stdout); вміст мапи залежить від linker script і тулчейна."
 ---
 
 ## Short answer
@@ -94,19 +59,3 @@ Function pointer з `void* context` не створює окремого тип�
 - Вважати, що `std::function` завжди роздуває Flash: розмір залежить від кількості callable-типів, оптимізацій і тулчейна, його треба виміряти.
 - Не врахувати динамічну пам’ять: `std::function` із великим захопленням на системі без heap може стати джерелом `std::bad_alloc`.
 - Передавати `void* context` без перевірки типу: неправильний `static_cast` компілятор не виявить, і помилка проявиться лише під час виконання.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

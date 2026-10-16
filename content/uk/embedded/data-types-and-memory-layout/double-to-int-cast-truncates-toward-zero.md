@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0095
 title: "Яке значення матиме? `int x = (int)(3.7);`"
-description: "Перетворення double в int відкидає дробову частину до нуля, тому 3.7 стає 3, а не округлюється."
 track: embedded
 section: data-types-and-memory-layout
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 4
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,7 +25,3 @@ sources:
 Це також не те саме, що функції `round`, `floor` і `ceil`: вони задають інші правила роботи з дробовою частиною. Для невід’ємного значення `3.7`, наприклад, усічення дає `3`, округлення до найближчого – `4`, підлога – `3`, а стеля – `4`. Для від’ємних значень різниця помітніша: усічення `-3.7` дає `-3`, тоді як `floor(-3.7)` дає `-4`.[^iso-c-n1570]
 
 **Приклад у control systems:** якщо `percentage` дорівнює `12.9`, вираз `(int)(percentage * 100.0)` дає `1290`, а не результат округлення до найближчого цілого. Повторне усічення на кожному кроці може накопичувати похибку, особливо в fixed-point алгоритмі. Коли потрібне округлення, явно додайте його правило та перевірку меж перед збереженням у вузький тип.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

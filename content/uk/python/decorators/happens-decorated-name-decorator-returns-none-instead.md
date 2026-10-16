@@ -1,48 +1,18 @@
 ---
 id: py-decor-0012
 title: "Що станеться з decorated name, якщо decorator поверне `None` замість callable?"
-description: "Ім’я decorated функції буде зв’язане з None, і будь-який її виклик підніме TypeError: 'NoneType' object is not callable."
 track: python
 section: decorators
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -92,23 +62,3 @@ add(1, 2)             # TypeError: 'NoneType' object is not callable
 - очікувати, що помилка з’явиться під час `def`, а не під час першого виклику;
 - забути `return wrapper` або `return func` у декораторі, який лише реєструє функцію;
 - поставити `return` з відступом усередині `wrapper`, а не в тілі декоратора: тоді декоратор усе одно повертає `None`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

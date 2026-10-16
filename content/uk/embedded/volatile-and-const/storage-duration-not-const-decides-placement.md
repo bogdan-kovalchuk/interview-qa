@@ -1,41 +1,18 @@
 ---
 id: emb-volconst-0027
 title: "Trap: чи завжди локальний `const` масив автоматично лежить у Flash?"
-description: "Ні, не завжди. const забороняє запис через цей identifier, але storage placement залежить від storage duration, ABI, оптимізації та linker script."
 track: embedded
 section: volatile-and-const
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: avr-libc-program-space
     title: "AVR-LibC: Data in Program Space"
     url: https://avrdudes.github.io/avr-libc/avr-libc-user-manual/pgmspace.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Приклад поведінки avr-gcc та AVR linker script: const не визначає фізичне розміщення, а доступ до Flash залежить від архітектури й linker script."
 ---
 
 ## Short answer
@@ -57,19 +34,3 @@ sources:
 Приклад: `void f(void) { const uint16_t lut[256] = { 1, 2 }; }` має автоматичний об’єкт, якщо компілятор не усуне його чи не перетворить використання. Для таблиці, спільної для викликів, `static const uint16_t lut[256] = { 1, 2 };` задає static storage duration і read-only доступ. Однак перевірка map file та документації MCU все одно потрібна, якщо вимога полягає саме у збереженні в Flash.[^iso-c-n1570] [^avr-libc-program-space]
 
 **Типова помилка:** вважати слово `const` наказом linker-у помістити дані у Flash. Визнач storage duration, перевір секції та фактичну адресу у map file, а для конкретного MCU звір спосіб читання program memory з документацією платформи.[^avr-libc-program-space]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

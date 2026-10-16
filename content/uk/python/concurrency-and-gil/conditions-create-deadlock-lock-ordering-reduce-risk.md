@@ -1,55 +1,24 @@
 ---
 id: py-gil-0017
 title: "Які умови створюють deadlock і як lock ordering зменшує ризик?"
-description: "Deadlock виникає, коли два або більше потоків блокуються назавжди, кожен чекаючи ресурс, утримуваний іншим; класична умова – циклічне очікування locks у різному порядку."
 track: python
 section: concurrency-and-gil
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -99,11 +68,3 @@ Lock ordering прибирає можливість циклу: якщо всі 
 - передавати `timeout` в `acquire()` і обробляти відмову замість нескінченного очікування;
 - мінімізувати кількість locks, які потрібно тримати одночасно, звужуючи critical section;
 - де можливо, замінювати кілька дрібних locks одним, що покриває весь пов'язаний стан.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

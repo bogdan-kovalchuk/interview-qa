@@ -1,69 +1,30 @@
 ---
 id: py-modimp-0010
 title: "How does a regular package with `__init__.py` differ from a namespace package?"
-description: "A regular package is a directory with `__init__.py` in one place; a namespace package has no such file and can merge portions from several directories, but a regular package takes precedence."
 track: python
 section: modules-and-imports
-level: middle
-type: comparison
-tags: [init-py]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: pep-0420
     title: "PEP 420: Implicit Namespace Packages"
     url: https://peps.python.org/pep-0420/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Regular and namespace packages, namespace package portions, and the precedence of a regular package during search (Python 3.3+)."
   - source_id: py314-reference-import-regular-packages
     title: "Python 3.14: Reference/import (Regular packages)"
     url: https://docs.python.org/3.14/reference/import.html#regular-packages
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Regular package: a directory with __init__.py, which runs on import."
   - source_id: py314-reference-import-namespace-packages
     title: "Python 3.14: Reference/import (Namespace packages)"
     url: https://docs.python.org/3.14/reference/import.html#namespace-packages
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Namespace package portions, which may lie in different directories, and the dynamic __path__ in Python 3.14."
   - source_id: py314-library-importlib-modulespec-origin
     title: "Python 3.14: Library/importlib (ModuleSpec.origin)"
     url: https://docs.python.org/3.14/library/importlib.html#importlib.machinery.ModuleSpec.origin
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "origin is None for namespace packages, which have no single file to load from."
 ---
 
 ## Short answer
@@ -94,19 +55,3 @@ print(type(shop.__path__).__name__)   # _NamespacePath
 - adding an empty `__init__.py` to one of the portions and unexpectedly losing subpackages that live in other directories;
 - assuming that a namespace package's `__file__` points to a directory: in CPython it is `None`;
 - treating a namespace package's `__path__` as an ordinary list that does not change after import: on the next import within the package its portions are recomputed if the parent package's path or `sys.path` has changed.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

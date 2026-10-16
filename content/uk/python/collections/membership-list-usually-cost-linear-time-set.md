@@ -1,44 +1,18 @@
 ---
 id: py-coll-0022
 title: "Чому membership у list зазвичай має linear cost, а в set або dict очікується average constant-time lookup?"
-description: "Для list оператор in виконує лінійний пошук: порівнює x з кожним елементом через == – O(n)."
 track: python
 section: collections
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -67,19 +41,3 @@ load factor і, відповідно, довжина probe-послідовно�
 – вигідно, коли membership перевіряється неодноразово (`m` перевірок по `set` коштують
 O(n + m) сумарно проти O(n * m) для `list`), але не варте того для одноразової перевірки в
 маленькій колекції, де накладні витрати на побудову й хешування можуть переважити виграш.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

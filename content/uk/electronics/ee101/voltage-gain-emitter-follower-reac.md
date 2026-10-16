@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0204
 title: "Яке підсилення за напругою емітерного повторювача при `I_E` = 1 мА і `R_E,ac` = 1 кОм?"
-description: "Яке підсилення за напругою емітерного повторювача при `I_E` = 1 мА і `R_E,ac` = 1 кОм?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 70, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-common-collector
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.4 Common Collector Amplifier"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.4:_Common_Collector_Amplifier"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.4: емітерний повторювач: A_v = r_E / (r'_e + r_E), синфазний вихід, високий вхідний і низький вихідний опір; приклад з джерелом 1 кОм і навантаженням 500 Ом дає 85 мВ замість 33 мВ без повторювача. Номінали прикладу стосуються лише його кола."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.4:_Common_Collector_Amplifier
   - source_id: fiore-bjt-ac-model
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.2 Simplified AC Model of the BJT"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.2: експоненційна модель переходу (q/kT ≈ 38,6 при 300 K, тобто V_T ≈ 25,9 мВ); динамічний опір r'_e = 26 мВ / I_C без об’ємного опору; залежить від температури; малосигнальна модель для низьких і середніх частот."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT
 ---
 
 ## Short answer
@@ -68,7 +37,3 @@ sources:
 - Брати `R_E` замість `R_E,ac` у навантаженому повторювачі: при паралельному навантаженні 1 кОм `A_v` ≈ 0,95, а не 0,975.
 - Вважати підсилення точно 1: `r_e` > 0, тому `A_v` завжди менше 1.
 - Приймати 0,975 за підсилення всього каскаду з джерелом: джерело і подільник бази дають менше.
-
-## Sources
-
-<!-- generated from frontmatter -->

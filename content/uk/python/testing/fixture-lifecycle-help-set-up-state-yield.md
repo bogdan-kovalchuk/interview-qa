@@ -1,76 +1,33 @@
 ---
 id: py-testing-0007
 title: "Як fixture lifecycle допомагає задати setup, yield resource і teardown після тесту?"
-description: "Fixture виконує код до yield як setup, передає ресурс тесту через значення yield, а код після yield – teardown, який pytest виконує після тесту, навіть якщо той упав."
 track: python
 section: testing
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: pytest-how-to-fixtures-yield
     title: "pytest documentation: How to use fixtures (yield fixtures)"
     url: https://docs.pytest.org/en/stable/how-to/fixtures.html#yield-fixtures-recommended
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest, розділ yield fixtures: код після yield є teardown і виконується, коли тест завершено, у зворотному порядку до фікстур."
   - source_id: pytest-how-to-fixtures-errors
     title: "pytest documentation: Handling errors for yield fixture"
     url: https://docs.pytest.org/en/stable/how-to/fixtures.html#handling-errors-for-yield-fixture
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest, розділ Handling errors for yield fixture: якщо фікстура кидає виняток до yield, її teardown не виконується, а фікстури, що вже піднялися для тесту, pytest знищує."
   - source_id: pytest-how-to-fixtures-scopes
     title: "pytest documentation: Fixture scopes"
     url: https://docs.pytest.org/en/stable/how-to/fixtures.html#fixture-scopes
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest, розділ Fixture scopes: function (за замовчуванням), class, module, package і session визначають, коли фікстура знищується."
 ---
 
 ## Short answer
@@ -123,11 +80,3 @@ Teardown не є абсолютною гарантією: якщо процес 
 - писати cleanup в кінці тіла тесту замість teardown фікстури: при падінні тесту цей код не виконається;
 - ставити `scope="session"` для ресурсу з mutable state, який тести змінюють;
 - вважати, що teardown виконається, якщо setup упав до `yield`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

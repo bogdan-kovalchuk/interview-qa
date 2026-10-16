@@ -1,27 +1,12 @@
 ---
 id: py-perf-0013
 title: "How can task batching and `chunksize` reduce serialization and scheduling overhead in a process pool, while worsening load balancing?"
-description: "How can task batching and `chunksize` reduce serialization and scheduling overhead in a process pool, while worsening load balancing?"
 track: python
 section: performance
-level: middle
-type: comparison
-tags: [chunksize]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.Executor.map
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: map() splits the iterable into chunks that are submitted to the pool as separate tasks; for very long iterables a large chunksize can significantly improve performance; with ThreadPoolExecutor chunksize has no effect; buffersize (since 3.14) limits the number of tasks without a yielded result."
 ---
 
 ## Short answer
@@ -57,19 +42,3 @@ The gain depends on the ratio of the element cost to the fixed costs. If an elem
 - looking for a `chunksize` parameter in `submit()`: it is not there, so batches are built by hand;
 - setting a large `chunksize` for uneven tasks and getting idle workers at the end;
 - measuring on a short iterable, where pool startup and process start dominate.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

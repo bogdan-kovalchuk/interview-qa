@@ -1,41 +1,18 @@
 ---
 id: py-fund-0010
 title: "Коли monkey patching може бути виправданим і які ризики воно створює для локальності змін, тестів та оновлення залежностей?"
-description: "Monkey patching виправданий переважно як короткоживуча, контрольована підміна в тесті або вузький compatibility workaround, коли dependency injection недоступний."
 track: python
 section: fundamentals
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -90,23 +67,3 @@ context manager або декоратора. Патчити треба там, *
 
 Там, де вибір є, dependency injection дає той самий результат явно: залежність передається
 аргументом, видима в сигнатурі й підмінюється без глобального стану.[^py314-reference-executionmodel]
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

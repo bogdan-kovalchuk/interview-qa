@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0134
 title: "Стабілізатор: `V_in` = 9 В, `V_Z` ≈ 5,1 В, R = 390 Ом. Які струми та потужності?"
-description: "Стабілізатор: `V_in` = 9 В, `V_Z` ≈ 5,1 В, R = 390 Ом. Які струми та потужності?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 56, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: nexperia-an90031
     title: "Nexperia AN90031: Zener diodes – physical basics, parameters and application examples"
     url: https://assets.nexperia.com/documents/application-note/AN90031.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. 3.0, 7 June 2023"
-    applicability: "Поведінка стабілітрона в прямому й зворотному напрямках, ефект Зенера до ≈ 5 В і лавинний пробій вище, зміна знака температурного коефіцієнта S_Z біля 6 В, диференційний опір r_dif, струм вимірювання V_Z, вибір R за формулою R1 = (V_IN - V_Z)/(I_Z(min) + I_LOAD(max)) і розсіювані потужності в простому стабілізаторі; дані наведено для серій Nexperia, інші виробники можуть мати інші числа."
   - source_id: nexperia-bzx84
     title: "Nexperia BZX84 series: voltage regulator diodes (datasheet)"
     url: https://assets.nexperia.com/documents/data-sheet/BZX84_SER.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. 7, 1 January 2023"
-    applicability: "Параметри BZX84-C5V1: V_Z = 4,8–5,4 В при 5 мА, максимум r_dif 480 Ом при 1 мА і 60 Ом при 5 мА, P_tot ≤ 250 мВт при T_amb ≤ 25 °C; значення для цієї серії, а не для всіх стабілітронів на 5,1 В."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Конденсаторний фільтр і пульсації (розряд між піками, зростання пульсацій зі струмом навантаження, зарядні піки струму), мостовий випрямляч (у кожному півперіоді провідні два діоди, два падіння V_F), простий стабілітронний стабілізатор і втрата регуляції при надто великому струмі навантаження; книга не наводить формули ΔV = I/(f*C) і не задає V_F конкретного діода."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
 ---
 
 ## Short answer
@@ -79,7 +44,3 @@ sources:
 - Рахувати `P_Z` як `V_in*I` замість `V_Z*I_Z`.
 - Вважати 5,1 В точним значенням і ігнорувати допуск та `r_dif`.
 - Додавати навантаження 5 мА й вважати, що запас стабілітрона достатній.
-
-## Sources
-
-<!-- generated from frontmatter -->

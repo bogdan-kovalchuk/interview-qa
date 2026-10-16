@@ -1,62 +1,27 @@
 ---
 id: py-modimp-0003
 title: "Why don't two `import module` statements usually run the module's top-level code twice, yet they can create different local bindings?"
-description: "Why don't two `import module` statements usually run the module's top-level code twice, yet they can create different local bindings?"
 track: python
 section: modules-and-imports
-level: middle
-type: comparison
-tags: [import-module]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The module cache” of the official Python 3.14 documentation: after the first import the module is in sys.modules, and a later import of the same name returns it from the cache; reload() reruns the code in the same object."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Loading” of the official Python 3.14 documentation: if loading a module raises an exception, that module is removed from sys.modules, while modules already loaded remain."
   - source_id: py314-reference-simple-stmts-import
     title: "Python 3.14: Reference/simple statements, The import statement"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-import-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The import statement” of the official Python 3.14 documentation: an import of a module binds its name (or the name after as) to the module object; the from form stores a reference to the attribute’s value."
 ---
 
 ## Short answer
@@ -103,19 +68,3 @@ Different names do not mean different objects. If `value` were a list, `a.value.
 - expecting a repeated `import` to run the module's top-level code again;
 - assuming `from m import name` follows later changes to `m.name`;
 - assuming `import m as a` and `import m as b` create two copies of the module.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

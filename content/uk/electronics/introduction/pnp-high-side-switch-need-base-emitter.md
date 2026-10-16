@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0220
 title: "Навіщо PNP high-side switch потрібен резистор підтягування бази до емітера?"
-description: "Навіщо PNP high-side switch потрібен резистор підтягування бази до емітера?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 20, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +30,3 @@ sources:
 **Приклад:** якщо емітер під’єднано до `+V`, а керувальний транзистор вимкнений, pull-up повертає базу до `+V`; перехід база–емітер не отримує прямого зміщення. Коли драйвер активується, він стягує базу вниз через обмежувальний шлях, і виникає струм керування. Перевіряйте обидва режими: стан вимкнення за максимального витоку та струм, який драйвер має поглинути у стані ввімкнення.[^aac-semiconductors]
 
 **Типова помилка:** плутати pull-up до емітера з послідовним резистором бази. Перший визначає стан вимкнення, другий обмежує керувальний струм; у практичній схемі можуть бути потрібні обидва. Також перевірте, що напруга емітера не перевищує допустиму напругу база–емітер у зворотному напрямку, навіть якщо перемикач вважається вимкненим.[^aac-semiconductors]
-
-## Sources
-
-<!-- generated from frontmatter -->

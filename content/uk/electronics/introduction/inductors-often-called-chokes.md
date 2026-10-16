@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0148
 title: "Чому індуктори часто називають choke?"
-description: "Чому індуктори часто називають choke?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 14, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-inductor-choke
     title: "All About Circuits: Magnetic Fields and Inductance"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-15/magnetic-fields-and-inductance/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Походження назви choke та типове використання індуктора для послаблення високочастотних AC-сигналів; термін історичний і не обмежує тип компонента."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 **Приклад:** у вихідному фільтрі випрямляча послідовний дросель протидіє пульсації струму, а конденсатор шунтує частину AC-пульсації на землю. Результат залежить від номіналів, частоти пульсацій і навантаження, тому одна котушка не гарантує потрібного ослаблення в будь-якому колі. Реальні обмотки мають опір, а паразитна ємність може спричиняти резонанс; на достатньо високих частотах проста модель ідеальної індуктивності вже непридатна.[^aac-inductor-choke]
 
 У сучасній технічній мові частіше вживають загальне слово «індуктор», а «choke» лишається поширеною назвою компонента, коли йдеться про фільтрацію або придушення певних сигналів. Під час вибору важливо дивитися на призначення й характеристики конкретного компонента, а не робити висновок лише з назви.[^aac-inductor-choke]
-
-## Sources
-
-<!-- generated from frontmatter -->

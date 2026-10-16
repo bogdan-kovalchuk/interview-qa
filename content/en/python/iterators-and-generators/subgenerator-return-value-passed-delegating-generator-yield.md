@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0010
 title: "How is a subgenerator's `return` value passed to the delegating generator through `yield from`?"
-description: "How is a subgenerator's `return` value passed to the delegating generator through `yield from`?"
 track: python
 section: iterators-and-generators
-level: senior
-type: mechanism
-tags: [yield-from]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions-stopiteration
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html#StopIteration
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: StopIteration and its value attribute; a return in a generator sets this value."
 ---
 
 ## Short answer
@@ -83,11 +56,3 @@ The conditions matter. If the subgenerator has no `return`, or returns without a
 - expecting a `return` to become an ordinary value for `next()` or a `for` loop: `return` is visible only as `StopIteration.value` or through `yield from`;
 - assuming that `yield from` without a `return` gives a meaningful result: it is `None`;
 - expecting a `value` from an iterator that is not a generator without an explicit `StopIteration(value)`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

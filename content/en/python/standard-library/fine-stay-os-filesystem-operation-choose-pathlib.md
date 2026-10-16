@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0010
 title: "When is it fine to stay with `os` for a filesystem operation, and when should you choose `pathlib`?"
-description: "When is it fine to stay with `os` for a filesystem operation, and when should you choose `pathlib`?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [os, pathlib]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-os-open
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.open
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, os.open: returns the file descriptor of the opened file; opening flags."
   - source_id: py314-library-os-scandir
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.scandir
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, os.scandir: the function accepts a path-like object."
   - source_id: py314-library-os-fspath
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fspath
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, os.fspath: returns str or bytes; for a path-like object it calls __fspath__()."
 ---
 
 ## Short answer
@@ -67,19 +44,3 @@ In practice, `pathlib` is a sensible default, since it reads better and offers `
 - passing a `Path` where a str is expected, such as `os.environ`, without `os.fspath()`;
 - assuming `pathlib` replaces all of `os`: `Path` has no file-descriptor-level operations such as `os.open()` or `os.fstat()`;
 - mixing a `Path` and a string in one expression: `Path("report") + ".txt"` raises `TypeError`; use `with_name()` to change the name.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: emb-macros-0035
 title: "Trap: як макрос із header впливає на код, що його включає?"
-description: "Після #define макрос замінює токени далі в тій самій translation unit, зокрема в заголовках, включених пізніше; окремо скомпільований файл визначення не успадковує."
 track: embedded
 section: inline-and-macros
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: gcc-cpp-macro-processing
     title: "GCC CPP: Object-like Macros and Undefining and Redefining Macros"
     url: https://gcc.gnu.org/onlinedocs/cpp/Object-like-Macros.html
-    accessed: 2026-10-04
-    kind: official
-    version: current
-    applicability: "Послідовне препроцесування, розгортання макросів і #undef у GNU CPP; описує типовий C preprocessor workflow."
 ---
 
 ## Short answer
@@ -57,19 +34,3 @@ sources:
 Приклад: якщо header визначає `PROJECT_MAX(a, b)`, а потім включає іншу бібліотеку, заміна діє і під час препроцесування цієї бібліотеки в тому самому translation unit. Якщо макрос потрібен лише всередині заголовка, заголовок може скасувати його після внутрішнього використання за допомогою `#undef`, але таке рішення має узгоджуватися з очікуваннями споживачів header.[^gcc-cpp-macro-processing]
 
 **Типова помилка:** називати макрос локальним «для файлу», маючи на увазі лише файл із `#define`. Перевіряй ланцюжок `#include` і порядок включення. Для діагностики переглянь препроцесований вихід або скасуй визначення після останнього потрібного використання.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,51 +1,21 @@
 ---
 id: py-objtypes-0003
 title: "Why can't the result of an identity comparison between two identical literals be used as proof of interning or as a portable Python guarantee?"
-description: "Why can't the result of an identity comparison between two identical literals be used as proof of interning or as a portable Python guarantee?"
 track: python
 section: objects-and-types
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -90,23 +60,3 @@ print(small_a is small_b)  # True: both resolve to the global singleton in CPyth
 - tight coupling to CPython internals: alternative runtimes (such as PyPy or GraalPy) and newer CPython releases employ different constant optimization strategies;
 - latent defects across boundary values: code using `x is 100` passes unit tests with small inputs, but silently fails in production when data exceeds `256`;
 - compiler diagnostics: starting in Python 3.8, the compiler raises a `SyntaxWarning: "is" with a literal. Did you mean "=="?` whenever `is` is used with a literal.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0018
 title: "When does `asyncio.shield()` protect an inner Task but not cancel the caller's own cancellation?"
-description: "When does `asyncio.shield()` protect an inner Task but not cancel the caller's own cancellation?"
 track: python
 section: asyncio
-level: senior
-type: comparison
-tags: [asyncio-shield]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -69,19 +46,3 @@ the inner Task is cancelled directly (`task.cancel()`) or performs self-cancella
 nothing – the `CancelledError` originates inside the Task itself and propagates the normal way,
 because shield only breaks one specific cancellation-delivery chain, not makes the Task
 indestructible altogether.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

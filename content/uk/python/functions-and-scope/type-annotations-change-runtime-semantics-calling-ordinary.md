@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0023
 title: "Чи змінюють type annotations runtime-семантику виклику звичайної Python-функції та чи перевіряє інтерпретатор типи аргументів автоматично?"
-description: "Ні: самі по собі type annotations не змінюють runtime-семантику виклику, і інтерпретатор не перевіряє типи аргументів автоматично."
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-annotations
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#annotations
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -61,23 +42,3 @@ print(add.__annotations__)           # {'a': <class 'int'>, 'b': <class 'int'>, 
 - очікувати, що `a: int` відхилить рядок під час виклику: без type checker помилка з’явиться лише там, де операція впаде сама;
 - вважати, що `-> int` гарантує тип результату: `scale(3, 1.5)` повертає `4.5`;
 - будувати захист від некоректних типів лише на анотаціях: перевірку треба писати явно або брати з бібліотеки.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

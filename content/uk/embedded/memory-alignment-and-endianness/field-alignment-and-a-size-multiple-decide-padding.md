@@ -1,48 +1,21 @@
 ---
 id: emb-align-0003
 title: "Які два правила визначають padding у структурі?"
-description: "1. Кожне поле лежить за адресою, кратною його natural alignment (між полями вставляється padding)."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Додаткові відомості про структури"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додаткові приклади padding, розміру структури та перевпорядкування полів у C++."
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додатковий український маршрут вивчення C++; не є нормативним джерелом object layout."
 ---
 
 ## Short answer
@@ -88,7 +61,3 @@ sizeof(struct) = sum of field sizes + internal padding + trailing padding
 Не серіалізуй і не відображай hardware layout сліпим копіюванням native structure. Padding, alignment полів, representation цілих чисел і byte order є властивостями ABI. Для wire format задай явний формат, використовуй fixed-width поля та окремо кодуй або декодуй кожне з них; для register map дотримуйся layout виробника й перевіряй offset через `_Static_assert` або `static_assert`.
 
 Перевпорядкування полів за спаданням alignment часто зменшує padding, але воно може змінити ABI або binary format, тому безпечне лише тоді, коли layout контролюєш ти.
-
-## Sources
-
-<!-- generated from frontmatter -->

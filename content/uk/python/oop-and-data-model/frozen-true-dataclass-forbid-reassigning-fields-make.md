@@ -1,48 +1,21 @@
 ---
 id: py-oop-0031
 title: "Чому `frozen=True` у `@dataclass` забороняє reassignment полів, але не робить вкладений mutable object незмінним?"
-description: "frozen=True генерує __setattr__ і __delattr__, які raise FrozenInstanceError при спробі переприв’язати поле, але не контролює стан об’єктів, на які ці поля посилаються."
 track: python
 section: oop-and-data-model
-level: middle
-type: pitfall
-tags: [frozen-true, dataclass]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -95,23 +68,3 @@ except TypeError as e:
 - вважати, що `frozen=True` робить увесь стан незмінним, зокрема вкладені `list` і `dict`;
 - передати той самий `list` в інше місце й змінювати його там: зміна буде видна в `c.items`;
 - зробити frozen-клас зі списком у полі ключем `dict` або елементом `set` і отримати `TypeError` під час `hash()`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,27 +1,12 @@
 ---
 id: py-perf-0021
 title: "Why is it unsafe to apply `lru_cache` to a function whose result depends on the current time, randomness, external mutable state, or side effects?"
-description: "lru_cache returns a stored value only for a repeated call with the same arguments while the entry is cached; for an impure function that means stale values, and side effects are skipped on a cache hit."
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: [lru-cache]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, lru_cache section: the cache key is the call arguments, which must be hashable; a repeated call with the same arguments returns the cached result without new calls; caching functions with side effects and impure functions makes no sense; maxsize=None disables eviction."
 ---
 
 ## Short answer
@@ -89,23 +74,3 @@ The cache keeps references to arguments and return values until the entries are 
 - caching a function that reads `time.time()`, `random` or a file, and assuming that a repeated call checks the state again;
 - expecting logging or a counter inside a cached function to run on every call;
 - returning a mutable object from a cached function and then changing it at the call site.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,69 +1,30 @@
 ---
 id: py-oop-0012
 title: "Як reusable validation descriptor має зберігати значення окремо для кожного instance, не створюючи shared state між об’єктами?"
-description: "Descriptor зберігає дані не в собі (бо він один на клас), а в instance.__dict__ під службовим ключем, ім’я якого визначається через __set_name__."
 track: python
 section: oop-and-data-model
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-set-name
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__set_name__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: метод __set_name__ у моделі даних; викликається при створенні класу, а не при пізнішому присвоєнні атрибута."
   - source_id: py314-howto-descriptor-managed-attributes
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#managed-attributes
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Managed attributes; descriptor стоїть у class dictionary, а дані зберігаються в instance dictionary."
   - source_id: py314-howto-descriptor-automatic-name-notification
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#automatic-name-notification
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Automatic name notification; оновлення імен відбувається лише при створенні класу."
 ---
 
 ## Short answer
@@ -116,23 +77,3 @@ except AttributeError:
 - писати значення в `self.value` descriptor-а: одне значення на весь клас;
 - використовувати один і той самий descriptor-об’єкт для кількох атрибутів чи класів;
 - вважати `_name` приватним: до нього можна звернутися напряму, а така назва може збігтися з іншим атрибутом.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

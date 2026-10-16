@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0020
 title: "Does a type annotation change an object's actual runtime type, or automatically forbid assigning a value of a different type?"
-description: "Does a type annotation change an object's actual runtime type, or automatically forbid assigning a value of a different type?"
 track: python
 section: objects-and-types
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -85,23 +58,3 @@ print(hints)  # {'a': <class 'int'>, 'b': <class 'int'>, 'return': <class 'int'>
 - false sense of security without CI: writing type hints without enforcing a static type checker (`mypy`, `pyright`) in CI/CD leaves production code unprotected against type mismatches;
 - validating external inputs: assuming standard annotations validate incoming JSON or HTTP request payloads without dedicated libraries (such as Pydantic or attrs);
 - absence of local annotations in metadata: annotations on local variables inside function bodies are completely discarded after bytecode generation and do not exist in `__annotations__`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

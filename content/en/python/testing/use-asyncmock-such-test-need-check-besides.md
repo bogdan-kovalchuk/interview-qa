@@ -1,55 +1,24 @@
 ---
 id: py-testing-0014
 title: "When should you use `AsyncMock`, and what does such a test need to check besides the call arguments?"
-description: "Use AsyncMock to replace async functions; besides the call arguments, the test must check that the mock was actually awaited."
 track: python
 section: testing
-level: middle
-type: practical
-tags: [asyncmock]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
 ---
 
 ## Short answer
@@ -97,23 +66,3 @@ Beyond the arguments, such a test usually checks three things: that the await ha
 - checking only `assert_called_with`, which passes even without `await`;
 - substituting `MagicMock` for `AsyncMock`: awaiting a `MagicMock` raises a `TypeError` (the message text differs between Python versions);
 - stopping at `assert_awaited()` without arguments and call counts when exact values matter.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

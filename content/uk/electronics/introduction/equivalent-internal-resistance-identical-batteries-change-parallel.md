@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0071
 title: "Як змінюється еквівалентний внутрішній опір однакових батарей при паралельному з'єднанні?"
-description: "Як змінюється еквівалентний внутрішній опір однакових батарей при паралельному з'єднанні?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 8, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -51,7 +28,3 @@ sources:
 Приклад: якщо кожна батарея має модель внутрішнього опору `0.2 Ω`, то паралельна комбінація має `0.1 Ω`. За навантаження `2 A` падіння на цьому еквівалентному опорі дорівнює `0.2 V`; кожна однакова батарея віддає приблизно `1 A`.
 
 **Типова помилка:** вважати, що напруга при паралельному з’єднанні подвоюється. Вона залишається напругою однієї батареї; збільшуються доступна ємність та, за належних умов, струмова здатність банку.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

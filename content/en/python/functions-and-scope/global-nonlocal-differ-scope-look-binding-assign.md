@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0013
 title: "How do `global` and `nonlocal` differ in which scope they look for a binding to assign to?"
-description: "global binds a name in the module's top-level namespace, while nonlocal binds it to the nearest enclosing function scope and never to the module."
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [global, nonlocal]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-simple-stmts-the-global-statement
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-global-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts-the-nonlocal-statement
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-nonlocal-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Resolution of names section: a global statement makes uses of the names in the block refer to the top-level namespace; nonlocal refers to the nearest enclosing function scope. Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -76,19 +53,3 @@ The declarations have limits. A `global` statement must come before any use or a
 - writing `nonlocal x` for a module-level `x`: for the module you need `global`;
 - expecting `global x` in a nested function to change the `x` of the outer function;
 - putting `global x` after a read or assignment of `x` in the same block: this is a `SyntaxError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

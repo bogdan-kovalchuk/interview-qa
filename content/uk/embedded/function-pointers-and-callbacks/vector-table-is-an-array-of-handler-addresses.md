@@ -1,41 +1,18 @@
 ---
 id: emb-fnptr-0023
 title: "Що таке interrupt vector table з точки зору function pointers?"
-description: "Це таблиця адрес handler-функцій, яку CPU використовує при exception/interrupt entry."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: arm-cortex-m-startup
     title: "Arm: Decoding the startup file for Arm Cortex-M4"
-    url: "https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/decoding-the-startup-file-for-arm-cortex-m4"
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Приклад Cortex-M4: vector table містить initial stack pointer і адреси reset/exception handlers; інші ядра та MCU можуть мати відмінності."
+    url: https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/decoding-the-startup-file-for-arm-cortex-m4
 ---
 
 ## Short answer
@@ -59,7 +36,3 @@ Interrupt vector table – це область пам’яті у форматі
 - Називати кожен елемент vector table звичайним function pointer: перший запис Cortex-M є stack pointer.
 - Ігнорувати фіксований порядок vector slots і реалізаційні IRQ MCU.
 - Плутати архітектурну таблицю векторів із прикладною dispatch table, що індексується opcode.[^arm-cortex-m-startup]
-
-## Sources
-
-<!-- generated from frontmatter -->

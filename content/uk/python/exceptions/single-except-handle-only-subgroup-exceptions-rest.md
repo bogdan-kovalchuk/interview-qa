@@ -1,55 +1,24 @@
 ---
 id: py-excpt-0013
 title: "Чому один `except*` може обробити лише підгрупу exceptions, а решта group продовжить propagation?"
-description: "Кожен except* розщеплює групу через split() на збіг і решту; handler отримує лише збіг, а решта переходить до наступних except* і далі вгору."
 track: python
 section: exceptions
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-except-star
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#except-star
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: семантика except*, розщеплення групи, передача необробленої частини далі та заборона змішувати except і except* в одному try."
   - source_id: pep-0654-exception-groups
     title: "PEP 654: Exception Groups and except*"
     url: https://peps.python.org/pep-0654/
-    accessed: 2026-10-13
-    kind: spec
-    version: "3.11"
-    applicability: "PEP 654: ExceptionGroup і except* запропоновано для Python 3.11 (Python-Version: 3.11)."
 ---
 
 ## Short answer
@@ -91,11 +60,3 @@ except* OSError as eg:
 - вважати, що `eg` у `except*` – це один exception: він завжди `ExceptionGroup`, а самі exceptions лежать у `eg.exceptions`;
 - змішувати `except` і `except*` в одному `try`: це синтаксична помилка;[^py314-reference-compound-stmts-except-star]
 - очікувати, що необроблена частина зникне: якщо її не обробить жоден рівень, вона піднімається як група й завершує програму з трасуванням.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

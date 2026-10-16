@@ -1,41 +1,18 @@
 ---
 id: py-fund-0005
 title: "Why are dynamic typing and strong typing not opposite characteristics of a language?"
-description: "Why are dynamic typing and strong typing not opposite characteristics of a language?"
 track: python
 section: fundamentals
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -83,19 +60,3 @@ strong typing. Both are Python, and neither contradicts the other.
 The practical consequence of the "dynamic plus strong" pair is this: a type mismatch in Python is
 found late (only once the line runs) but is found loudly - as an exception at the operation, not as
 a quietly wrong value that surfaces three layers of calls later.[^py314-faq-general]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

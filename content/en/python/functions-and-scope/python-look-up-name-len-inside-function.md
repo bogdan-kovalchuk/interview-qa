@@ -1,27 +1,12 @@
 ---
 id: py-funcs-0014
 title: "How will Python look up the name `len` inside a function if there is no local binding, but the module defines its own `len`?"
-description: "Python looks up a name in local, enclosing, module-global and builtin scopes in that order, so a module-level len is found before the builtin len."
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: [len]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -69,11 +54,3 @@ A nested function takes precedence over the module: if the enclosing function de
 - thinking that the name `len` is bound during `def`: the lookup happens during the call, against the namespace as it is at that time;
 - ignoring the enclosing scope: a `len` in the outer function shadows both the module-level and the builtin one;
 - thinking that `builtins.len` is unavailable once the module redefines `len`: it can still be called explicitly.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

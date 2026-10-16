@@ -1,55 +1,24 @@
 ---
 id: py-gil-0023
 title: "When is `threading.local()` better than a shared dictionary keyed by thread ID, and when does it hide unwanted implicit state?"
-description: "When is `threading.local()` better than a shared dictionary keyed by thread ID, and when does it hide unwanted implicit state?"
 track: python
 section: concurrency-and-gil
-level: middle
-type: comparison
-tags: [threading-local]
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -61,6 +30,7 @@ for the storage itself, drops data when the thread ends, and reads as attribute 
 <span class="warn">Danger of implicit state:</span> those values are invisible across threads,
 which complicates debugging and breaks if one is passed elsewhere. A shared dict needs a lock and
 manual cleanup of dead threads' entries, or it leaks.
+
 ## Detailed explanation
 
 `threading.local()` is a class that gives each thread its own, isolated copy of its attributes:
@@ -102,19 +72,3 @@ connections[threading.get_ident()] = get_connection()
 The danger here is implicit state: `threading.local()` values look like plain object attributes, so
 it is easy to forget that they are invisible across threads, and accidentally pass a reference to
 `local_data` into another thread, expecting to see the same data there.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

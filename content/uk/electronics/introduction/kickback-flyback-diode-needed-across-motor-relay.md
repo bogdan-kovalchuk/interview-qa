@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0231
 title: "Навіщо потрібен kickback/flyback-діод паралельно мотору або реле?"
-description: "Навіщо потрібен kickback/flyback-діод паралельно мотору або реле?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 21, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-inductive-load-clamping
     title: "TI: Switching Inductive Loads with DRV89xx-Q1 Devices"
     url: https://www.ti.com/document-viewer/lit/html/slvaf04
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює викиди напруги під час вимкнення індуктивного навантаження, розсіювання магнітної енергії та компроміс між рівнем clamp і часом спаду струму."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ Flyback-діод захищає транзистор або інший ключ 
 Звичайний діод дає невисокий рівень clamp і зазвичай уповільнює спад струму. Для реле це може затримати відпускання контактів; для моторного приводу потрібне рішення, сумісне з режимом перемикання та швидкістю гальмування. TVS або інший clamp з вищою напругою швидше гасить струм, але ключ має витримувати відповідну напругу. Діод також треба вибрати за піковим струмом котушки, зворотною напругою та тепловим режимом, а не лише за середнім струмом живлення.[^ti-inductive-load-clamping]
 
 **Типова помилка:** встановити діод послідовно з мотором або розвернути його так, що він проводить під час нормальної роботи. Перевірте полярність у вимкненому стані ключа й переконайтеся, що захист не створює короткого замикання джерела.
-
-## Sources
-
-<!-- generated from frontmatter -->

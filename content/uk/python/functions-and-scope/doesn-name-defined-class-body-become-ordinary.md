@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0015
 title: "Чому ім’я, визначене в тілі класу, не стає звичайним enclosing lexical scope для коду методу цього класу?"
-description: "Scope імен, визначених у class block, обмежений самим class block і не поширюється на методи класу."
 track: python
 section: functions-and-scope
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Resolution of names: область видимості імен у class block і виняток для annotation scopes."
   - source_id: py314-reference-executionmodel-lazy-evaluation
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#lazy-evaluation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Lazy evaluation: більшість annotation scopes, включно з анотаціями, обчислюються ліниво."
   - source_id: py314-reference-executionmodel-annotation-scopes
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#annotation-scopes
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Annotation scopes: з 3.14 annotation scopes використовуються також для анотацій (Changed in version 3.14)."
 ---
 
 ## Short answer
@@ -67,11 +44,3 @@ class Config:
 - вважати, що ім’я з тіла класу видно в методах як звичайна змінна; для атрибута потрібен `self.attr` або `ClassName.attr`;
 - не помітити, що глобальна змінна з тим самим іменем тихо підміняє задуманий атрибут класу в методі;
 - переносити виняток для анотацій на звичайний код у тілі методу.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

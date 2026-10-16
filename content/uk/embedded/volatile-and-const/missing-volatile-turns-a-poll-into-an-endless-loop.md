@@ -1,41 +1,18 @@
 ---
 id: emb-volconst-0005
 title: "Що може статися з таким циклом без `volatile`?"
-description: "Компілятор може перетворити цикл на нескінченний, бо в межах видимого коду flag ніколи не змінюється."
 track: embedded
 section: volatile-and-const
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: gcc-volatile
     title: "GCC documentation: When is a Volatile Object Accessed?"
     url: https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Поведінка volatile-доступів і відсутність гарантії memory barrier у GCC; інші компілятори можуть відрізнятися."
 ---
 
 ## Question code
@@ -67,19 +44,3 @@ while (flag == 0) {
 **Приклад:** після завершення таймера ISR встановлює `done = 1`, а main loop чекає `while (!done)`. Якщо `done` оголошений звичайним об’єктом, compiled code може не перечитувати його. Платформно коректний volatile-прапорець дає повторні читання, але не перетворює кілька полів стану на атомарну операцію.
 
 **Типова помилка:** вважати будь-який цикл без `volatile` гарантовано нескінченним або вважати `volatile` повним протоколом синхронізації. Уточни платформний контракт і окремо перевір ширину, atomicity та порядок даних.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

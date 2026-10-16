@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0215
 title: "Каскад CE: `R_C` = 4,7 кОм, `R_E` = 1 кОм, `R_load` = 10 кОм, β = 100, `r_pi` ≈ 2,6 кОм. Яке підсилення з навантаженням і без нього?"
-description: "Каскад CE: `R_C` = 4,7 кОм, `R_E` = 1 кОм, `R_load` = 10 кОм, β = 100, `r_pi` ≈ 2,6 кОм. Яке підсилення з навантаженням і без нього?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 72, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-common-emitter-amplifier
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.3 Common Emitter Amplifier"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Розділ 7.3: A_v = -r_C/(r'_e + r_E), r_C = R_C || R_L за змінним струмом; конденсатори зв’язку коротко замкнені, шина V_CC – AC-земля, шунтований R_E робить емітер AC-землею; Z_in = R_B || Z_in(base), Z_in(base) = β(r'_e + r_E); дільник Z_in/(Z_in + R_джерела) з прикладу 3; r'_C порядку 100 кОм, Z_out ≈ R_C; 7.3.4: блокувальні конденсатори наближають шину до AC-землі. Числа прикладів стосуються лише цих схем."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier
   - source_id: fiore-bjt-ac-model
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.2 Simplified AC Model of the BJT"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Розділ 7.2: i_C = β·i_B; динамічний опір r'_e = 26 мВ / I_C без об’ємного опору; модель без ємностей переходу, для низьких і середніх частот; схема зі спільним емітером інвертує фазу."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT
   - source_id: fiore-bjt-collector-curves
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.3 BJT Collector Curves"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.3:_BJT_Collector_Curves"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Розділ 4.3: три зони колекторних характеристик – насичення (ліворуч, V_CE(sat) кілька десятих вольта), майже постійний струм для лінійних підсилювачів посередині і пробій праворуч; насичення використовують у перемикальних застосуваннях. Розділ 4.3.1: I_C зростає зі зростанням V_CE; продовження ділянки постійного струму дає напругу Ерлі V_A. Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.3:_BJT_Collector_Curves
 ---
 
 ## Short answer
@@ -78,7 +43,3 @@ sources:
 - Брати `R_load` замість `R_C || R_load` для змінного сигналу.
 - Вважати, що `R_E` не впливає на підсилення, забувши про множник `(β+1)` у знаменнику.
 - Забути про знак: каскад зі спільним емітером інвертує фазу, тому `A_v` від’ємне.[^fiore-bjt-ac-model]
-
-## Sources
-
-<!-- generated from frontmatter -->

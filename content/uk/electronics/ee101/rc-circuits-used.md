@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0037
 title: "Де застосовують RC-кола?"
-description: "Де застосовують RC-кола?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 37, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-rc-low-pass
     title: "All About Circuits: What Is a Low Pass Filter?"
     url: https://www.allaboutcircuits.com/technical-articles/low-pass-filter-tutorial-basics-passive-RC-filter/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пасивний RC low-pass та залежність передавання від частоти й номіналів; не встановлює універсальний час debounce."
   - source_id: openstax-rc-circuits
     title: "OpenStax University Physics Volume 2: 10.5 RC Circuits"
     url: https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits
-    accessed: 2026-10-04
-    kind: book
-    version: "University Physics Volume 2"
-    applicability: "Застосування RC-кіл як таймерів, фільтрів і генераторів; конкретні пороги залежать від схеми."
 ---
 
 ## Short answer
@@ -69,7 +38,3 @@ RC-коло поєднує резистор, який обмежує струм,
 Для механічних кнопок RC-фільтр може послабити короткі імпульси брязкоту контактів, якщо його часова реакція підібрана під конкретну кнопку й вхід. Універсального значення на кшталт `10–50 ms` для всіх кнопок немає; надто повільний фронт також може бути неприйнятним для деяких цифрових входів, тож потрібна схема має враховувати вимоги компонента-приймача. Релаксаційний генератор на таймері 555 теж може використовувати RC-часозадавальний вузол, однак форма сигналу й частота залежать від конкретної схеми.[^aac-rc-low-pass]
 
 **Типова помилка:** трактувати RC-коло як готовий «фільтр» із фіксованими властивостями. Спершу визначають топологію, джерело й навантаження, а потім обчислюють її реакцію для потрібного діапазону частот або часу.
-
-## Sources
-
-<!-- generated from frontmatter -->

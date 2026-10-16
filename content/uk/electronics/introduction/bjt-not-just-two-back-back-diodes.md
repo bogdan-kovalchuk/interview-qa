@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0205
 title: "Чому `BJT` не можна замінити двома зустрічно з’єднаними діодами?"
-description: "Чому `BJT` не можна замінити двома зустрічно з’єднаними діодами?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 19, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-bjt-junctions
     title: "Bipolar Junction Transistors, All About Circuits"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/bipolar-junction-transistors/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює тонку базу, рекомбінацію носіїв і відмінність структури BJT від пари окремих діодів."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 **Приклад:** у прямому активному режимі NPN перехід база–емітер інжектує електрони, а зворотно зміщений перехід база–колектор збирає їх. Якщо ж розглядати два самостійні діоди, кожен працює як окремий перехід і такого перенесення носіїв між емітером та колектором немає.[^aac-bjt-junctions]
 
 **Типова помилка:** уявляти BJT як два діоди, що лише випадково мають спільний вивід. Для пояснення підсилення треба згадати спільну тонку базу, малу частку рекомбінації та збір носіїв колектором.
-
-## Sources
-
-<!-- generated from frontmatter -->

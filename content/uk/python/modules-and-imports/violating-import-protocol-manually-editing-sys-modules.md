@@ -1,51 +1,21 @@
 ---
 id: py-modimp-0004
 title: "Як порушення import protocol або ручне редагування `sys.modules` може призвести до двох module objects для одного source file?"
-description: "Два module objects для одного source file виникають, коли той самий файл імпортують під різними повними іменами або видаляють запис із sys.modules і імпортують знову, а старий object ще має посилання."
 track: python
 section: modules-and-imports
-level: senior
-type: pitfall
-tags: [sys-modules]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The module cache» офіційної документації Python 3.14: sys.modules індексується іменем модуля; після видалення ключа і повторного імпорту, коли старий object ще має посилання, два objects не є однаковими."
 ---
 
 ## Short answer
@@ -96,23 +66,3 @@ print(first.REGISTRY is second.REGISTRY)                # False: state is not sh
 - вважати, що однаковий `__file__` означає один module object (ключ кешу – ім’я);
 - додати папку пакета до `sys.path`, щоб «спростити» імпорт, і отримати другу копію модуля зі своїм станом;
 - видалити запис із `sys.modules`, щоб скинути стан, і не помітити, що старі посилання тримають попередній стан.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

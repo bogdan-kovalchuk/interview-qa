@@ -1,34 +1,15 @@
 ---
 id: emb-build-0002
 title: "Name the basic git commands."
-description: "Basic git commands cover the local cycle (init, add, commit, log, diff) and branch synchronization (branch, switch, merge, rebase, pull, push)."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -82,7 +63,3 @@ $ git push origin feature-x
 ```
 
 Git commands work together to manage history and collaboration. Understanding the three states (modified, staged, committed) helps you understand what each command does.
-
-## Sources
-
-<!-- generated from frontmatter -->

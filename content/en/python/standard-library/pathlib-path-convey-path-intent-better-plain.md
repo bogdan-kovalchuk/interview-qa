@@ -1,48 +1,21 @@
 ---
 id: py-stdlib-0009
 title: "Why does `pathlib.Path` convey path intent better than a plain string?"
-description: "Why does `pathlib.Path` convey path intent better than a plain string?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [pathlib-path]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-pathlib-pure-paths
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#pure-paths
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Pure paths section: pure paths do not access the filesystem; path properties (name, suffix, parent)."
   - source_id: py314-library-pathlib-concrete-paths
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#concrete-paths
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Concrete paths section: Path creates a PosixPath or WindowsPath depending on the OS; concrete paths have methods that make system calls."
   - source_id: py314-library-pathlib-operators
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#operators
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Operators section: the slash operator creates child paths."
   - source_id: py314-library-pathlib-general-properties
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#general-properties
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, General properties section: paths are immutable and hashable; comparison follows the case-folding rules of the OS flavour."
 ---
 
 ## Short answer
@@ -75,19 +48,3 @@ Comparison also depends on the OS: `PurePosixPath('foo') == PurePosixPath('FOO')
 - treating a `Path` as a string: `p.endswith(".csv")` raises `AttributeError`, and an API that expects a str needs `str(p)` or `os.fspath(p)`;
 - assuming a `Path` never touches the disk: `exists()`, `is_file()`, and `mkdir()` make system calls, unlike `PurePath`;
 - comparing paths as strings: `PureWindowsPath` ignores case, while `PurePosixPath` does not.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

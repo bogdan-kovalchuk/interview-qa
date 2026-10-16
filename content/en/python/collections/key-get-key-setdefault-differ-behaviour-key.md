@@ -1,41 +1,18 @@
 ---
 id: py-coll-0008
 title: "How do `d[key]`, `d.get(key)`, and `setdefault()` differ in behaviour when the key is missing, and in their possible side effects?"
-description: "How do `d[key]`, `d.get(key)`, and `setdefault()` differ in behaviour when the key is missing, and in their possible side effects?"
 track: python
 section: collections
-level: middle
-type: comparison
-tags: [d-key, d-get-key, setdefault]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -73,19 +50,3 @@ That is exactly why `collections.defaultdict(list)` is usually better than `setd
 exactly when the key is genuinely absent, not on every access. Syntactically both approaches look
 equally compact, but semantically `defaultdict` avoids the unnecessary object creation on the
 "hot" path where the key already exists.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

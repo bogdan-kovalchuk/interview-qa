@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0125
 title: "Чому вимірювання RL-фільтра на мегагерцах може не збігатися з ідеальною моделлю?"
-description: "Чому вимірювання RL-фільтра на мегагерцах може не збігатися з ідеальною моделлю?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 54, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-inductors-primer
     title: "Vishay: Inductors 101 – Primer Instructional Guide"
     url: https://www.vishay.com/docs/49782/49782.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "VMN-SG2139-1203"
-    applicability: "Визначення DCR, SRF і розподіленої ємності котушки: вище SRF переважає ємнісний реактанс, а менша розподілена ємність за тієї самої індуктивності дає вищу SRF. Числових значень для котушки курсу не дає; їх беруть з datasheet конкретної котушки."
 ---
 
 ## Short answer
@@ -64,19 +37,3 @@ sources:
 - Застосовувати формулу `f_c = R/(2*pi*L)` на всіх частотах, не порівнявши робочу частоту з SRF з datasheet котушки.
 - Не враховувати паралельну ємність пробника й монтажу на виході кола з відносно великим R.
 - Сприймати немонотонну характеристику як шум вимірювання, а не як ознаку резонансу чи паразитних елементів.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

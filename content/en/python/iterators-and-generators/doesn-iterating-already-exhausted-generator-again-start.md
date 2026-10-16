@@ -1,55 +1,24 @@
 ---
 id: py-itergen-0013
 title: "Why doesn't iterating an already exhausted generator again start the computation over?"
-description: "Why doesn't iterating an already exhausted generator again start the computation over?"
 track: python
 section: iterators-and-generators
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: generator-iterator methods (__next__, send, throw, close) and their behaviour in a suspended state."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: definition of iterator and exhausted."
 ---
 
 ## Short answer
@@ -84,23 +53,3 @@ The rule concerns one generator object. A container should return a new iterator
 - expecting a second `for` loop over the same generator to traverse all the items again;
 - storing a generator in a variable, passing it to several places, and being surprised by an empty result after the first consumer;
 - confusing an iterable (`list`, `range`), which can be traversed many times, with an iterator (a generator), which can be traversed once.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

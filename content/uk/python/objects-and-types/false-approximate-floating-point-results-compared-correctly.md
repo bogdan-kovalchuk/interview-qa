@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0014
 title: "Чому `0.1 + 0.2 == 0.3` може бути `False` і як коректно порівнювати приблизні floating-point результати?"
-description: "0.1 + 0.2 == 0.3 дає False, тому що float у Python зберігається як IEEE 754 binary64, і десяткові дроби 0.1 та 0.2 не мають точного двійкового представлення."
 track: python
 section: objects-and-types
-level: middle
-type: pitfall
-tags: [0-1-0-2-0-3]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -83,23 +56,3 @@ print(math.isclose(diff, 0.0, abs_tol=1e-9))   # True (abs_tol handles zero boun
 - ігнорування `abs_tol` біля нуля: виклик `math.isclose(val, 0.0)` без явного `abs_tol` завжди повертає `False` для будь-якого ненульового значення;
 - використання `round()` для порівняння: `round(a, 2) == round(b, 2)` менш надійне через граничні ефекти округлення на стику розрядів;
 - фінансові розрахунки: для грошових операцій використовуйте модуль `decimal`, де десяткові дроби зберігаються без похибок двійкового перетворення.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

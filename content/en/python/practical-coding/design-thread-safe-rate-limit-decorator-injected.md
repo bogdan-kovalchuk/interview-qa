@@ -1,55 +1,21 @@
 ---
 id: py-prac-0018
 title: "Design a thread-safe rate-limit decorator with an injected monotonic clock: up to X calls per rolling T seconds, raising an explicit exception on excess."
-description: "threading.Lock protects the timestamps list, the injected clock (default time.monotonic) allows testing, and the rolling window is implemented by removing expired timestamps from the front of the list."
 track: python
 section: practical-coding
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading-lock-objects
     title: "Python 3.14: Library/threading, Lock Objects"
     url: https://docs.python.org/3.14/library/threading.html#lock-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Lock Objects: Lock supports the context management protocol. Does not describe rate limiting or guarantee the order of writes to data structures."
   - source_id: py314-library-time-time-monotonic
     title: "Python 3.14: Library/time"
     url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, time.monotonic(): a monotonic clock that cannot go backwards and is not affected by system clock updates; only the difference between the results of two calls is valid, because the reference point is undefined. Does not describe time.time()."
   - source_id: py314-library-time-time-time
     title: "Python 3.14: Library/time, time.time"
     url: https://docs.python.org/3.14/library/time.html#time.time
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, time.time(): may return a lower value than a previous call if the system clock has been set back. Does not describe monotonic clocks."
   - source_id: py314-library-collections-collections-deque
     title: "Python 3.14: Library/collections, deque"
     url: https://docs.python.org/3.14/library/collections.html#collections.deque
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, deque: appends and pops from either side with approximately the same O(1) performance. Does not describe rate limiting."
 ---
 
 ## Short answer
@@ -101,23 +67,3 @@ In CPython, `list.pop(0)` shifts the remaining elements, so it costs O(n); this 
 - reading the time before the lock: the order of records breaks, as shown above;
 - using `time.time()` for the window: a clock set back delays the removal of records, and a clock set forward removes them too early;
 - calling `func` inside the lock: all threads wait for one long call.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,100 +1,42 @@
 ---
 id: py-fileio-0008
 title: "Як `seek()` і `tell()` використовуються для random access і чому offsets text streams не завжди можна трактувати як character positions?"
-description: "У binary mode seek() і tell() працюють із байтовими зміщеннями; у text mode tell() повертає opaque number, а seek() приймає лише значення з tell() або нульові зміщення."
 track: python
 section: files-and-io
-level: middle
-type: mechanism
-tags: [seek, tell]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-io-iobase-seek
     title: "Python 3.14: Library/io (IOBase.seek)"
     url: https://docs.python.org/3.14/library/io.html#io.IOBase.seek
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: seek() встановлює позицію потоку за байтовим зміщенням відносно whence."
   - source_id: py314-library-io-textiobase-seek
     title: "Python 3.14: Library/io (TextIOBase.seek)"
     url: https://docs.python.org/3.14/library/io.html#io.TextIOBase.seek
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: у text mode зміщення має бути значенням з tell() або нулем, інші значення дають undefined behavior; підтримуються чотири форми виклику."
   - source_id: py314-library-io-textiobase-tell
     title: "Python 3.14: Library/io (TextIOBase.tell)"
     url: https://docs.python.org/3.14/library/io.html#io.TextIOBase.tell
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: tell() повертає opaque number, який зазвичай не є кількістю байтів у базовому сховищі."
   - source_id: ietf-rfc3629
     title: "RFC 3629: UTF-8, a transformation format of ISO 10646"
     url: https://www.rfc-editor.org/rfc/rfc3629#section-3
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "RFC 3629, розділ 3: UTF-8 кодує символи Unicode послідовностями від 1 до 4 октетів; не описує поведінку Python."
 ---
 
 ## Short answer
@@ -152,11 +94,3 @@ with open(path, encoding='utf-8') as f:
 - обчислювати зміщення як номер символу, наприклад `seek(n)` для n-го символу UTF-8 тексту;
 - вважати, що `tell()` у text mode – це кількість байтів або символів, і порівнювати його з довжиною рядка;
 - передавати в `seek()` довільне число, наприклад індекс, знайдений регулярним виразом, замість значення з `tell()`: це undefined behavior.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

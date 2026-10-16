@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0010
 title: "Чим reusable context manager відрізняється від reentrant context manager?"
-description: "Reusable можна використовувати в кількох окремих with blocks, але не можна вкладати всередину самого себе; reentrant можна і повторно використовувати, і вкладати рекурсивно."
 track: python
 section: context-managers
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -106,19 +83,3 @@ except RuntimeError as err:
 - використання менеджера з `@contextlib.contextmanager` як reusable: генератори неможливо перезапустити після завершення, тому кожен `with` потребує нового виклику функції;
 - очікування, що `threading.Lock` поводиться як reentrant: спроба повторно захопити звичайний lock у тому самому потоці викликає deadlock, тоді як `threading.RLock` зберігає ідентифікатор власника та лічильник;
 - змішування reentrancy між потоками: властивість reentrant зазвичай стосується вкладеності в межах одного потоку, а не одночасного паралельного доступу з різних потоків виконання.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

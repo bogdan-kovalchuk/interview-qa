@@ -1,67 +1,33 @@
 ---
 id: emb-elintro-0213
 title: "Як вибрати `R_B`, щоб забезпечити насичення біполярного транзистора?"
-description: "Як вибрати `R_B`, щоб забезпечити насичення біполярного транзистора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: aac-bjt-saturation
     title: "All About Circuits: Transistor Ratings and Packages (BJT)"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/transistor-ratings-packages-bjt/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: Пояснює V_CE(sat), залежність від транзистора й базового струму; не задає параметрів невказаної моделі.
   - source_id: aac-bjt-active-mode
     title: "All About Circuits: Active-mode Operation (BJT)"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/active-mode-operation-bjt/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: Описує активний режим, насичення та межу струму навантаження; приклади навчальні.
   - source_id: aac-bjt-beta-terms
     title: "All About Circuits: What Is BJT Beta? Understanding the Current Gain of a Bipolar Junction Transistor"
     url: https://www.allaboutcircuits.com/technical-articles/all-about-bjt-beta-understanding-terminology/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: Розрізняє beta активного режиму та forced beta зовнішнього кола; універсального значення не задає.
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 20, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
 
 **Потрібний базовий струм визначають із навантаження, а не лише з типового beta.** Оцініть граничний `I_C` з колекторного кола, виберіть консервативний forced beta за документацією транзистора та знайдіть `I_B >= I_C/β_forced`. Потім обчисліть `R_B = (V_in - V_BE)/I_B` з урахуванням допусків живлення й виходу драйвера; стандартне значення округлюйте вниз лише після перевірки струму й потужності.[^aac-bjt-saturation] Універсальне множення на п’ять не гарантує насичення для будь-якого транзистора або температури.[^aac-bjt-beta-terms]
+
 ## Detailed explanation
 
 Щоб забезпечити насичення, розраховують базовий струм для максимального струму навантаження й вибраного forced beta, а потім із цього струму визначають `R_B`.
@@ -77,6 +43,3 @@ sources:
 - Підставляти типовий активний beta, який може змінюватися з умовами й не гарантує насичення.[^aac-bjt-beta-terms]
 - Автоматично множити мінімальний базовий струм на п’ять без перевірки компонента й драйвера.
 - Забувати, що резистор вибирають з урахуванням мінімального доступного `V_in` та граничних напруг переходу.
-## Sources
-
-<!-- generated from frontmatter -->

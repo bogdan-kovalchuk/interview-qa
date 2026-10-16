@@ -1,55 +1,24 @@
 ---
 id: py-itergen-0008
 title: "Як side effects у generator змінюють момент виникнення exceptions порівняно з eager list construction?"
-description: "Тіло generator виконується під час споживання, тому помилка з’являється пізніше, а частина side effects може ніколи не відбутися."
 track: python
 section: iterators-and-generators
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: методи generator-iterator (__next__, send, throw, close) і їхня поведінка після завершення."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: вираз generator; найлівіший iterable обчислюється одразу."
 ---
 
 ## Short answer
@@ -92,11 +61,3 @@ except ZeroDivisionError:
 - очікувати, що помилка з’явиться одразу при створенні generator, а не при першому `next()`;
 - вважати, що side effects усіх елементів відбулися, хоча generator споживано лише частково;
 - покладатися на GC, а не на явний `close()`, для cleanup ресурсів.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

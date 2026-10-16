@@ -1,76 +1,33 @@
 ---
 id: py-testing-0005
 title: "Why does dependency injection often make Python code easier to test deterministically?"
-description: "Why does dependency injection often make Python code easier to test deterministically?"
 track: python
 section: testing
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: py314-library-unittest-mock-patch
     title: "Python 3.14: Library/unittest.mock (patch)"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.patch
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section unittest.mock.patch: temporarily replaces the object a name points to, for the duration of a decorated function or a with block."
   - source_id: py314-tutorial-defining-functions
     title: "Python 3.14: Tutorial/Defining Functions"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#defining-functions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Defining Functions: the arguments of a call are introduced into the function's local symbol table. Does not describe dependency injection."
   - source_id: py314-library-unittest-mock-where-to-patch
     title: "Python 3.14: Library/unittest.mock (where to patch)"
     url: https://docs.python.org/3.14/library/unittest.mock.html#where-to-patch
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section where to patch: a patch works where the code looks the name up; patching it somewhere else has no effect."
 ---
 
 ## Short answer
@@ -108,11 +65,3 @@ DI does not make code deterministic by itself. If `random.random()`, `datetime.n
 - assuming DI makes code deterministic while `datetime.now()` or `random` remain inside;
 - passing a fake whose methods or signature the real object does not have, so the test passes against the wrong interface;
 - converting every function to DI when a single `patch` is simpler.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

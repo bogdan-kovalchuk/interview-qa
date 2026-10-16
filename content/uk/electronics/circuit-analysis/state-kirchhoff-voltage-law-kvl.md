@@ -1,34 +1,15 @@
 ---
 id: emb-elcirc-0017
 title: "Сформулюйте закон напруг Кірхгофа (KVL)."
-description: "Сформулюйте закон напруг Кірхгофа (KVL)."
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,7 +25,3 @@ sources:
 Наприклад, для джерела 12 V і послідовних падінь 4 V та 8 V обхід від мінуса джерела через джерело до плюса, а далі через обидва резистори назад дає `+12 V - 4 V - 8 V = 0`. Це той самий баланс, що й рівність підйому сумі падінь.[^aac-direct-current]
 
 KVL застосовують до замкненого шляху, а не лише до найпростішої послідовної схеми. У задачах із магнітно змінним потоком або розподіленими електромагнітними ефектами просте зосереджене коло може бути недостатньою моделлю; у звичайних схемах постійного струму припущення про ідеальні з’єднання та зосереджені компоненти є стандартним.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

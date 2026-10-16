@@ -1,41 +1,18 @@
 ---
 id: py-async-0022
 title: "Як вибрати між `asyncio.Lock`, `Event`, `Condition` та `Semaphore` для coordination protocol?"
-description: "Lock – взаємне виключення; Event – сигнал «щось сталося» багатьом Task; Condition – очікування зміни стану під захистом lock; Semaphore – обмеження кількості одночасних доступів."
 track: python
 section: asyncio
-level: senior
-type: comparison
-tags: [asyncio-lock, event, condition, semaphore]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -64,19 +41,3 @@ Task у межах одного event loop, а не потоків чи проц
 більше разів, ніж було `acquire()`; це корисно для виявлення баги «зайвого release» під час
 розробки connection pool або rate limiter, коли звичайний `Semaphore` просто мовчки дозволив би
 лічильнику зрости понад початкове значення.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

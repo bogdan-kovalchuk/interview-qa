@@ -1,62 +1,27 @@
 ---
 id: py-oop-0021
 title: "How does `__repr__` differ from `__str__` in intended audience and fallback behaviour?"
-description: "`__repr__` returns the \"official\" string for debugging, and `__str__` the readable \"informal\" form used by str() and print()."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [repr, str]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-repr
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__repr__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: object.__repr__, the purpose of repr() and the fallback to __repr__ for str() when only __repr__ is defined."
   - source_id: py314-reference-datamodel-object-str
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__str__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: object.__str__, its use by str(), print() and the default __format__, and its call to object.__repr__."
 ---
 
 ## Short answer
@@ -97,19 +62,3 @@ In CPython, containers such as lists, tuples and dicts show the `repr` of their 
 - assuming that `print()` uses `__repr__`; it calls `__str__`, and falls back to `__repr__` only when `__str__` is missing;
 - writing only human-friendly text in `__repr__`, so logs lack an unambiguous description of the state;
 - defining only `__str__` and expecting `repr()` to show the object's contents.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,18 @@
 ---
 id: py-decor-0002
 title: "У якому порядку застосовуються два decorators `@outer` і `@inner`, записані над однією функцією?"
-description: "Decorators застосовуються знизу вгору: спочатку @inner, потім @outer, тобто еквівалент func = outer(inner(func))."
 track: python
 section: decorators
-level: middle
-type: mechanism
-tags: [outer, inner]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -117,11 +87,3 @@ hello()  # order: outer:before, inner:before, hello, inner:after, outer:after
   wrapper-коду (при кожному виклику, зовнішній першим);
 - переставляти decorators під час рефакторингу без перевірки, чи не зламало це поведінку, яка
   залежала від того, хто кого обгортає.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

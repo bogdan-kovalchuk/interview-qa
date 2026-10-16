@@ -1,76 +1,33 @@
 ---
 id: py-stdlib-0001
 title: "Коли `collections.ChainMap` кращий за eager merge dictionaries для layered configuration з precedence між command line, environment і defaults?"
-description: "ChainMap шукає ключі послідовно в кожному словнику від першого до останнього, не створюючи нового merged dict, тому зміни в нижніх шарах автоматично відображаються без повторного merge."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [collections-chainmap]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections-chainmap
     title: "Python 3.14: Library/collections (ChainMap)"
     url: https://docs.python.org/3.14/library/collections.html#collections.ChainMap
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: ChainMap шукає ключі послідовно в mappings, посилається на них без копіювання, а записи, оновлення й видалення стосуються лише першого mapping."
   - source_id: py314-library-collections-chainmap-maps
     title: "Python 3.14: Library/collections (ChainMap.maps)"
     url: https://docs.python.org/3.14/library/collections.html#collections.ChainMap.maps
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: атрибут maps – список mappings, упорядкований від першого до останнього при пошуку."
 ---
 
 ## Short answer
@@ -115,19 +72,3 @@ print(ChainMap(defaults, env, cli)["debug"])  # False: defaults now come first
 - ставити `defaults` першим аргументом: тоді вони перекривають CLI і env;
 - очікувати, що запис у `config` змінить шар, у якому ключ визначено: змінюється лише перший mapping;
 - вважати, що `ChainMap` зберігає знімок конфігурації на момент створення, хоча зміни нижніх шарів видно одразу.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

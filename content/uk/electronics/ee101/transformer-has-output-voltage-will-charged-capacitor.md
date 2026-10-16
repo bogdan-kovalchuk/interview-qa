@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0174
 title: "Трансформатор має вихід «9 В AC». Яку напругу покаже заряджений конденсатор після моста?"
-description: "Трансформатор має вихід «9 В AC». Яку напругу покаже заряджений конденсатор після моста?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 64, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Розділ 3.2.3: конденсатор після випрямляча заряджається до піка вторинної обмотки (за малого навантаження вихід «пливе» до піка), пульсації зростають зі струмом навантаження, а номінальний вихід падає; розділ 3.2.4: у мостовому випрямлячі навантаження бачить напругу вторинної обмотки мінус два прямі падіння на діодах, пік дорівнює RMS*sqrt(2) (24 В RMS дає 34 В), конденсатор вибирають на пікову напругу із запасом. Падіння на кремнієвому діоді ≈ 0,7 В – наближення."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: kuphaldt-transformer-regulation
     title: "Tony R. Kuphaldt: Lessons In Electric Circuits, Vol. II (AC), 10.6 Voltage Regulation (LibreTexts)"
     url: https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_II_-_Alternating_Current_(Kuphaldt)/10:_Transformers/10.06:_Voltage_Regulation
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Напруга вторинної обмотки зменшується зі зростанням струму навантаження; у SPICE-прикладі 9,990 В без навантаження і 9,348 В за повного навантаження; для силового трансформатора з резистивним навантаженням добрим вважають регулювання менше 3 %, індуктивне навантаження погіршує. Числа з прикладу не є параметрами реального трансформатора."
   - source_id: vishay-1n400x
     title: "Vishay: 1N4001–1N4007 datasheet"
     url: https://www.vishay.com/docs/88503/1n4001.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "29-Apr-2020"
-    applicability: "Максимальне миттєве пряме падіння VF = 1,1 В за струму 1,0 А (TA = 25 °C) для серії 1N4001–1N4007; для інших діодів і струмів падіння інше."
 ---
 
 ## Short answer
@@ -79,19 +44,3 @@ sources:
 - Забути про два падіння на діодах моста: у мосту їх два, а не одне.[^fiore-rectification]
 - Вибрати конденсатор на напругу, близьку до RMS: його вибирають на пікову напругу, з запасом, а за малого навантаження вихід досягає піка.[^fiore-rectification]
 - Розраховувати на номінальні 9 В без урахування залежності напруги трансформатора від навантаження.[^kuphaldt-transformer-regulation]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

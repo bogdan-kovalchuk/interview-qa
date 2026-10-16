@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0021
 title: "Як швидко перевірити правильність обчислення паралельного опору?"
-description: "Як швидко перевірити правильність обчислення паралельного опору?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-parallel-resistance
     title: "All About Circuits: Parallel Circuits and the Application of Ohm’s Law"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-parallel-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує співвідношення для еквівалентного опору паралельних гілок; конкретні приклади цього питання не залежать від джерела."
 ---
 
 ## Short answer
@@ -55,7 +32,3 @@ sources:
 - Додавати номінали напряму – це правило для послідовного, а не паралельного з’єднання.
 - Плутати суму опорів із сумою провідностей; саме провідність `1/R` додається для паралельних гілок.
 - Застосовувати межу до резисторів, які на схемі не мають спільних обох вузлів.
-
-## Sources
-
-<!-- generated from frontmatter -->

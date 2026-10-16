@@ -21,10 +21,8 @@ EXPECTED_FIXTURE_GATES = {
     "id-unique",
     "id-immutable",
     "sections",
-    "sections-by-level",
     "short-answer-limits",
     "sources",
-    "facets-vocabulary",
     "xref",
     "taxonomy",
     "lang-files-exist",
@@ -32,12 +30,6 @@ EXPECTED_FIXTURE_GATES = {
     "lang-code-identical",
     "lang-links-parity",
     "lang-glossary",
-    "lang-reconciliation",
-    "source-present",
-    "claim-linked",
-    "source-applicability",
-    "example-executed",
-    "no-duplicates",
 }
 
 
@@ -145,12 +137,6 @@ def _make_repository(tmp_path: Path, scenario_path: Path) -> tuple[Path, dict]:
         _write(duplicate_path, texts[language])
     elif mode == "registry-replace":
         rows[0] = ("py-gil-9000", "published", scenario["new"])
-    elif mode == "add-duplicate-question":
-        duplicate_path = "python/concurrency-and-gil/duplicate-negative-fixture-question.md"
-        for language, text in texts.items():
-            duplicate = text.replace("py-gil-9000", "py-gil-9001")
-            _write(tmp_path / "content" / language / duplicate_path, duplicate)
-        rows.append(("py-gil-9001", "published", duplicate_path))
 
     _registry(tmp_path / "meta" / "id-registry.csv", rows)
     return tmp_path, scenario
@@ -285,9 +271,9 @@ def test_inline_code_indexing_a_function_pointer_table_is_not_a_link(tmp_path: P
 def test_question_code_is_an_optional_section_before_the_answer(tmp_path: Path) -> None:
     """`Question code` holds the snippet the question is about.
 
-    It is optional, it sits immediately before `Short answer`, it does not take
-    part in `completeness`, and - because both languages carry it written - its
-    block is compared byte-for-byte by `lang-code-identical` like any other."""
+    It is optional, it sits immediately before `Short answer`, and - because
+    both languages carry it written - its block is compared byte-for-byte by
+    `lang-code-identical` like any other."""
     en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
     uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
     block = "## Question code\n\n```python\nasync def slow() -> None:\n    time.sleep(1)\n```\n\n## Short answer"
@@ -329,10 +315,8 @@ def test_question_code_holds_one_block_and_nothing_else(tmp_path: Path) -> None:
 def test_real_content_passes_all_blocking_content_gates() -> None:
     """The whole real `content/` tree has zero blocking failures.
 
-    The nine original pilots, the 392 questions migrated from the predecessor
-    deck (meta/plan.md step 4) and the embedded import of step 7a. Word-count
-    is a documented soft warning (meta/questions.md SS7), not asserted away
-    here. The sizes live in `tests/corpus.py`."""
+    Word-count is a documented soft warning (meta/questions.md), not asserted
+    away here. The sizes live in `tests/corpus.py`."""
     report = validate_repository(ROOT)
     assert report.files_checked == FILES
     assert report.questions_checked == QUESTIONS
@@ -344,8 +328,8 @@ def test_module_cli_validate_command_exists() -> None:
 
 
 def test_a_retired_registry_row_must_carry_a_reason(tmp_path: Path) -> None:
-    """meta/questions.md section 8: a rejected question leaves no file behind, so
-    the registry row is the only place its reason can live. An empty `reason`
+    """A deleted question leaves no file behind, so the registry row is the
+    only place its reason can live. An empty `reason`
     turns a deliberate retirement into an indistinguishable gap in the id
     sequence, which is exactly what the column exists to prevent."""
     en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
@@ -362,3 +346,75 @@ def test_a_retired_registry_row_must_carry_a_reason(tmp_path: Path) -> None:
     assert [item.message for item in report.errors if item.gate == "id-immutable"] == [
         "retired `py-gil-9001` has no `reason`"
     ]
+
+
+def test_a_question_without_sources_or_citations_is_valid(tmp_path: Path) -> None:
+    """Sources are optional: a question is its title and two answers."""
+    texts = []
+    for name in ("base-en.md", "base-uk.md"):
+        text = (FIXTURES / "valid" / name).read_text(encoding="utf-8")
+        head, body = text.split("sources:", 1)
+        body = body.split("---", 1)[1]
+        texts.append((head + "---" + body).replace("[^python-asyncio-docs]", ""))
+
+    repository = _base_repository(tmp_path, en_text=texts[0], uk_text=texts[1])
+    assert validate_repository(repository).errors == []
+
+
+def test_subsections_are_allowed_only_in_the_explanation(tmp_path: Path) -> None:
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    allowed = _base_repository(
+        tmp_path / "allowed",
+        en_text=en_base + "\n### Red flags\n\n- Says every await creates a thread.\n",
+        uk_text=uk_base + "\n### Червоні прапорці\n\n- Каже, що кожен await створює потік.\n",
+    )
+    assert validate_repository(allowed).errors == []
+
+    tmp_path = tmp_path / "forbidden"
+    nested = "## Short answer\n\n### Inside the short answer\n"
+    repository = _base_repository(
+        tmp_path,
+        en_text=_replace(en_base, "## Short answer\n", nested),
+        uk_text=_replace(uk_base, "## Short answer\n", nested),
+    )
+    messages = [item.message for item in validate_repository(repository).errors]
+    assert "`###` is forbidden in `Short answer`" in messages
+
+
+def test_a_qid_token_inside_inline_code_is_rejected(tmp_path: Path) -> None:
+    """The site would print the resolved path as code instead of a link."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    old = "## Detailed explanation"
+    new = "## Detailed explanation\n\nSee `qid:py-gil-9000`."
+    repository = _base_repository(
+        tmp_path, en_text=_replace(en_base, old, new), uk_text=_replace(uk_base, old, new)
+    )
+    messages = [item.message for item in validate_repository(repository).errors if item.gate == "xref"]
+    # One per language file.
+    assert messages == ["qid token inside inline code: `qid:py-gil-9000`"] * 2
+
+
+def test_a_published_registry_row_without_files_is_rejected(tmp_path: Path) -> None:
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    repository = _base_repository(tmp_path, en_text=en_base, uk_text=uk_base)
+    with (repository / "meta" / "id-registry.csv").open("a", encoding="utf-8", newline="") as handle:
+        csv.writer(handle, lineterminator="\n").writerow(
+            ("py-gil-9001", "2026-09-04", "published", "python/concurrency-and-gil/gone.md", "")
+        )
+    messages = [item.message for item in validate_repository(repository).errors]
+    assert any("`py-gil-9001` is `published`" in message for message in messages), messages
+
+
+def test_subsection_count_must_match_between_written_languages(tmp_path: Path) -> None:
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    repository = _base_repository(
+        tmp_path,
+        en_text=en_base + "\n### Red flags\n\n- Says every await creates a thread.\n",
+        uk_text=uk_base,
+    )
+    gates = {item.gate for item in validate_repository(repository).errors}
+    assert "lang-structure-parity" in gates

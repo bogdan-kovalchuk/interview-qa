@@ -1,41 +1,18 @@
 ---
 id: py-coll-0019
 title: "How does sequence comparison work lexicographically, and what happens at the first pair of elements that do not support ordering?"
-description: "How does sequence comparison work lexicographically, and what happens at the first pair of elements that do not support ordering?"
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -69,11 +46,3 @@ elements, and compares those instead. If at some step the elements do not suppor
 each other (for example `int` and `str`), the `TypeError` is raised exactly at the moment that
 specific pair is compared, not at the start of the call – so the prefix of the sequences made up of
 comparable elements is processed safely.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

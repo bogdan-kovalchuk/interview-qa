@@ -1,27 +1,12 @@
 ---
 id: py-stdlib-0007
 title: "How does `cached_property` differ from `property` in caching, attribute writes, and invalidation?"
-description: "How does `cached_property` differ from `property` in caching, attribute writes, and invalidation?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [cached-property, property]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-cached-property
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.cached_property
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, cached_property section: caching, attribute writes, deleting the attribute to clear the cache, race condition, requirement for a mutable __dict__."
 ---
 
 ## Short answer
@@ -74,19 +59,3 @@ Two limits matter. First, before Python 3.12 `cached_property` had an undocument
 - assigning a value to a cached attribute and forgetting that it may not match what the getter returns;
 - expecting an update after `rows` changes, without deleting the attribute;
 - using `cached_property` in a class that has `__slots__` but no `__dict__`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

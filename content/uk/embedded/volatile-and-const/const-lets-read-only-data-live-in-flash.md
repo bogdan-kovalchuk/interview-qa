@@ -1,41 +1,18 @@
 ---
 id: emb-volconst-0024
 title: "Чому `const` важливий для embedded не лише як захист від запису?"
-description: "const дозволяє розмістити file-scope/static read-only дані у Flash, зазвичай у .rodata."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: gnu-ld-linker-scripts
     title: "GNU ld manual: Linker Scripts"
     url: https://sourceware.org/binutils/docs/ld.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Пояснює, що linker script визначає розміщення секцій у пам’яті та може відображати read-only data в ROM; не гарантує такої поведінки для іншого linker або конфігурації."
 ---
 
 ## Short answer
@@ -55,7 +32,3 @@ sources:
 Ініціалізована змінювана глобальна змінна часто має runtime-адресу в RAM і load image у Flash: startup code копіює початкові байти перед викликом `main`. Read-only таблиця, якщо linker розмістив її в доступній для читання пам’яті програми, може лишатися у Flash і не витрачати SRAM на копію. Проте це залежить від архітектури: деякі MCU не дають звичайного доступу до Flash, або компілятор/скрипт спеціально копіює дані.[^gnu-ld-linker-scripts]
 
 Приклад: LUT із 256 елементів `uint16_t` займає `256 * 2 = 512` байтів за умови, що `uint16_t` визначено і кожен елемент має 2 байти. Якщо вона справді читається напряму з Flash, ці 512 байтів не займають SRAM; перевірте linker map та секційні адреси, а не робіть висновок лише з ключового слова. Типова помилка – вважати, що `const` автоматично означає Flash: воно гарантує обмеження запису через тип, не фізичне розміщення.[^iso-c-n1570] [^gnu-ld-linker-scripts]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-perf-0009
 title: "How can shallow and deep copying increase allocation cost on a hot path?"
-description: "A shallow copy makes a new top-level container and shares nested objects, while a deep copy recursively copies containers, so its allocations grow with the structure on a hot path."
 track: python
 section: performance
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 copy module documentation: assignment does not copy an object; a shallow copy creates a new top-level container that refers to the same nested objects; deepcopy keeps a memo dictionary of objects already copied; list.copy() and slicing make shallow copies; a deep copy may copy data meant to be shared between copies."
   - source_id: cpython-copy-py
     title: "CPython 3.14: Lib/copy.py"
     url: https://github.com/python/cpython/blob/v3.14.6/Lib/copy.py
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Lib/copy.py in CPython 3.14 (tag v3.14.6): deepcopy returns atomic types (str, int, None and others) without copying them, and handles containers recursively through the memo, in Python code. Describes the CPython implementation, not a language guarantee."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 tracemalloc documentation: traces memory blocks allocated by Python; statistics of allocations per file and line; comparison of two snapshots."
 ---
 
 ## Short answer
@@ -81,11 +58,3 @@ A shallow copy is enough when the nested objects are not changed, or when changi
 - assuming that a shallow copy isolates nested lists or dictionaries, and changing them in one copy;
 - calling `deepcopy` on every request for a large structure instead of copying only the changing level;
 - using a deep copy for data that must remain shared between copies.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

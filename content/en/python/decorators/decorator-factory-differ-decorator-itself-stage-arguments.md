@@ -1,41 +1,18 @@
 ---
 id: py-decor-0005
 title: "How does a decorator factory differ from the decorator itself, and at what stage are its arguments processed?"
-description: "How does a decorator factory differ from the decorator itself, and at what stage are its arguments processed?"
 track: python
 section: decorators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -89,19 +66,3 @@ greet("Alice")
 - Forgetting parentheses when invoking a factory (`@repeat` instead of `@repeat()`): passing the target function into the factory as its configuration parameter causes cryptic `TypeError` exceptions.
 - Mutable default arguments in factories: passing default lists or dicts into factory parameters shares mutable state across all functions decorated with that factory.
 - Expecting factory arguments to dynamically re-evaluate per call: because factory parameters are closed over at module import/definition time, updating external variables later will not affect wrapper behavior unless the factory explicitly inspects a mutable reference.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

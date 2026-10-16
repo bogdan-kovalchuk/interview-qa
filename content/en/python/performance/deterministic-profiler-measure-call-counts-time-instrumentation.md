@@ -1,72 +1,30 @@
 ---
 id: py-perf-0001
 title: "How does a deterministic profiler measure call counts and time, and why must its instrumentation overhead be taken into account when interpreting results?"
-description: "A deterministic profiler records call and return events and reports ncalls, tottime (time in the function itself) and cumtime (including subfunctions), but its own overhead inflates the measured times."
 track: python
 section: performance
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-profile-deterministic
     title: "Python 3.14: Library/profile (What Is Deterministic Profiling?)"
     url: https://docs.python.org/3.14/library/profile.html#what-is-deterministic-profiling
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of deterministic profiling (call, return and exception events) and the note on small overhead in typical applications."
   - source_id: py314-library-profile-stats
     title: "Python 3.14: Library/profile (Analysis of the Profile Data)"
     url: https://docs.python.org/3.14/library/profile.html#profile-stats
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the meaning of ncalls, tottime and cumtime in a profile report. Does not describe overhead."
   - source_id: py314-library-profile-limitations
     title: "Python 3.14: Library/profile (Limitations)"
     url: https://docs.python.org/3.14/library/profile.html#limitations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: accuracy limits; the lag between an event and the clock reading accumulates in functions with many calls."
   - source_id: py314-library-profile-introduction
     title: "Python 3.14: Library/profile (Introduction to the profilers)"
     url: https://docs.python.org/3.14/library/profile.html#introduction-to-the-profilers
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: cProfile and profile, their overhead, and their purpose as execution profilers rather than benchmarks."
 ---
 
 ## Short answer
@@ -106,11 +64,3 @@ The choice of tool also matters. `cProfile` is a C extension with reasonable ove
 - taking `tottime` or `cumtime` from a profile as the exact time of a function;
 - confusing `tottime` with `cumtime` and looking for the bottleneck among top-level calls, which cover almost the whole run;
 - ignoring that small functions with many calls are the most distorted by overhead.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

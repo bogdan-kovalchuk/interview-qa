@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0235
 title: "Як обчислити запаси завадостійкості логічного інтерфейсу?"
-description: "Як обчислити запаси завадостійкості логічного інтерфейсу?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 76, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-szza036c
     title: "TI SZZA036C: Understanding and Interpreting Standard-Logic Data Sheets"
     url: https://www.ti.com/lit/an/szza036c/szza036c.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "SZZA036C, revised June 2016"
-    applicability: "Рисунок 50 (Logic Compatibility Between I/Os): High Noise Margin між VOH (min) і VIH (min) та Low Noise Margin між VIL (max) і VOL (max); пояснює, як читати ці параметри в datasheet. Значень конкретних приладів не містить."
   - source_id: ti-hc00
     title: "TI SN74HC00 quadruple NAND gates datasheet"
     url: https://www.ti.com/lit/ds/symlink/sn74hc00.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "SCLS181H"
-    applicability: "Розділи 6.3 і 6.5 (25 °C): VIH і VIL при VCC = 4,5 В; VOH і VOL при IOH і IOL 20 мкА та 4 мА для 74HC00. Лише CMOS-серія, не TTL."
   - source_id: ti-sn74ls00
     title: "TI SDLS025D: SNx400, SNx4LS00, SNx4S00 quadruple 2-input NAND gates datasheet"
     url: https://www.ti.com/lit/ds/symlink/sn74ls00.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "SDLS025D"
-    applicability: "Розділ 6.5 (SNx400, TTL): VOH (min) 2,4 В при VCC (min) і IOH -0,4 мА; VOL (max) 0,4 В при IOL 16 мА. Вхідні рівні TTL: VIH 2 В, VIL 0,8 В. Не стосується CMOS-серій."
 ---
 
 ## Short answer
@@ -78,7 +43,3 @@ sources:
 - Брати типові (TYP) значення замість гарантованих MIN і MAX.
 - Рахувати тільки один запас і вважати елемент стійким, хоча другий може бути меншим.
 - Ігнорувати навантаження: `VOH` і `VOL` задано для конкретних струмів, за інших струмів вони інші.[^ti-hc00]
-
-## Sources
-
-<!-- generated from frontmatter -->

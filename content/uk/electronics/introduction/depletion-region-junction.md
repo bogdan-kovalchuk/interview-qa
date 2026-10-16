@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0162
 title: "Що таке область збіднення P-N переходу?"
-description: "Що таке область збіднення P-N переходу?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: aac-pn-junction
     title: "All About Circuits: The P-N Junction"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-2/the-p-n-junction/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Описує дифузію носіїв, збіднення області переходу, потенціальний бар’єр і пряме та зворотне зміщення; числові напруги є типовими пояснювальними значеннями, а не універсальними порогами."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 16, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -65,7 +38,3 @@ sources:
 - Стверджувати, що зворотне зміщення дає абсолютно нульовий струм: до пробою існує струм витоку.[^aac-pn-junction]
 
 Уявний перетин переходу під прямим зміщенням допомагає зрозуміти, чому область звужується, а під зворотним – чому вона ширшає. Але точні ширина та струм потребують параметрів конкретного матеріалу й діода.[^aac-pn-junction]
-
-## Sources
-
-<!-- generated from frontmatter -->

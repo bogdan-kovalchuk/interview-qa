@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0014
 title: "Що таке `union` у C?"
-description: "union зберігає кілька альтернативних полів в одній і тій самій області пам’яті; розмір union дорівнює розміру найбільшого member-а з урахуванням alignment."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,7 +40,3 @@ union Value {
 Після `value.count = 12;` програма має трактувати `count` як активне значення. Запис `value.ratio = 0.5f;` використовує те саме сховище і замінює його вміст; старе ціле значення більше не зберігається як окрема величина. Межа помилки – вважати, що обидва поля незалежно зберігають свої значення, або що читання другого поля еквівалентне cast-перетворенню.[^iso-c-n1570]
 
 **Типова помилка:** використовувати union як компактний контейнер для кількох одночасних значень. Для незалежних значень потрібен `struct`; для альтернативного значення зазвичай додають окремий тег, який указує, який член слід читати.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

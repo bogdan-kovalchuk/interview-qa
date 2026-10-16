@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0016
 title: "Коли обрати `dataclass` для value-like record, а коли `Enum` для закритого набору symbolic values?"
-description: "dataclass автоматично генерує __init__, __repr__, __eq__ для класів із даними; Enum зв’язує скінченну кількість символічних імен з унікальними константами."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [dataclass, enum]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: @dataclass генерує __init__, __repr__ і __eq__; згенерований __eq__ порівнює поля по черзі для об’єктів одного типу; з 3.13 поля порівнюються окремо."
   - source_id: py314-library-dataclasses-dataclass
     title: "Python 3.14: Library/dataclasses, dataclass"
     url: https://docs.python.org/3.14/library/dataclasses.html#dataclasses.dataclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: правила створення __hash__ для dataclass залежно від параметрів eq і frozen."
   - source_id: py314-library-enum
     title: "Python 3.14: Library/enum"
     url: https://docs.python.org/3.14/library/enum.html#module-enum
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: enum – набір символічних імен, зв’язаних з унікальними значеннями; члени з однаковим значенням стають aliases; @unique забороняє aliases; ітерація дає канонічні члени в порядку оголошення."
 ---
 
 ## Short answer
@@ -89,19 +66,3 @@ except TypeError as error:
 - використати `@dataclass` без `frozen=True` як ключ словника або елемент множини: `__hash__` дорівнює `None`, і це дає `TypeError`.[^py314-library-dataclasses-dataclass]
 - написати `Enum` з двома іменами на одне значення без `@unique`: другий член стає aliasом і не з’являється в ітерації.[^py314-library-enum]
 - порівнювати член `Enum` зі значенням (`Status.OPEN == "open"`) і очікувати `True`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

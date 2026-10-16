@@ -1,55 +1,24 @@
 ---
 id: py-decor-0011
 title: "Як decorator для `async def` має зберегти awaitability та коректне поширення exceptions?"
-description: "Wrapper для async def має бути async def з await, щоб try/except та інший код навколо виклику працювали під час await, а не до нього."
 track: python
 section: decorators
-level: senior
-type: mechanism
-tags: [async-def]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-coroutine-objects
     title: "Python 3.14: Reference/datamodel, Coroutine Objects"
     url: https://docs.python.org/3.14/reference/datamodel.html#coroutine-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Об’єкти корутин є awaitable; виконання керується через __await__(), а виняток, що виник у корутині, передається ітератором далі. Не описує декораторів."
   - source_id: py314-library-inspect-iscoroutinefunction
     title: "Python 3.14: Library/inspect, iscoroutinefunction"
     url: https://docs.python.org/3.14/library/inspect.html#inspect.iscoroutinefunction
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Повертає True для функцій, визначених через async def (і для partial від них, або для sync-функцій, позначених markcoroutinefunction()); звичайна def-функція дає False. Не описує поведінку декораторів."
 ---
 
 ## Short answer
@@ -92,11 +61,3 @@ print(inspect.iscoroutinefunction(fetch))    # True
 - написати wrapper як `def` і вважати, що `try/except` навколо `return func(...)` ловитиме помилки корутини;
 - написати `async def` wrapper і повернути `func(...)` без `await`: caller отримає coroutine object замість результату;
 - пропустити `@functools.wraps(func)`: тоді `__name__` і `__doc__` вказують на wrapper.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

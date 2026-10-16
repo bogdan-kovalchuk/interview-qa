@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0267
 title: "Для чого потрібен логічний пробник?"
-description: "Для чого потрібен логічний пробник?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 24, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: tek-logic-probe
     title: "Tektronix: Logic Probe"
     url: https://www.tek.com/en/products/oscilloscopes/oscilloscope-probes/logic-probe
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Призначення логічного пробника для діагностики станів цифрових сигналів; це не гарантує вимірювання форми хвилі або відповідності будь-якій напрузі логічного рівня."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 - Вважати, що `HIGH` завжди дорівнює певній напрузі на кшталт 5 V: поріг визначає сумісність пробника з логічним сімейством.
 - Використовувати пробник як заміну осцилографу, коли важливі амплітуда, шум, час фронту чи ширина імпульсу.
 - Забути про спільну землю або дозволену вхідну напругу, визначену інструкцією приладу.
-
-## Sources
-
-<!-- generated from frontmatter -->

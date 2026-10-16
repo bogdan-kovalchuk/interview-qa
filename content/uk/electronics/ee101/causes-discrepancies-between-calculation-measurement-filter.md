@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0126
 title: "Які причини розбіжностей між розрахунком і вимірюванням RL-фільтра?"
-description: "Які причини розбіжностей між розрахунком і вимірюванням RL-фільтра?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 54, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-inductors-primer
     title: "Vishay: Inductors 101 – Primer Instructional Guide"
     url: https://www.vishay.com/docs/49782/49782.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "VMN-SG2139-1203"
-    applicability: "Визначення DCR, SRF і розподіленої ємності котушки: DCR – опір обмотки без змінного струму, а вище SRF переважає ємнісний реактанс. Числових значень для котушки курсу не дає; їх беруть з datasheet конкретної котушки."
   - source_id: vishay-ihlp-2525cz-l7
     title: "Vishay Dale: IHLP-2525CZ-L7 inductors datasheet"
     url: https://www.vishay.com/docs/34254/ihlp-2525cz-l7.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Revision 02-Jun-2023"
-    applicability: "Приклад datasheet: допуск індуктивності ± 20 % (при 100 кГц, 0,25 В, 0 А), DCR із допуском ± 5 % і типова SRF задані як параметри. Стосується лише цієї серії силових котушок; для іншої котушки значення беруть з її datasheet."
   - source_id: tektronix-abcs-probes
     title: "Tektronix: ABCs of Probes Primer"
     url: https://download.tek.com/document/02_ABCs-of-Probes-Primer.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Пробник і осцилограф мають обмежену смугу (на межі смуги сигнал спадає на 3 dB; для точних амплітуд радять запас смуги в 3–5 разів), а пробник навантажує джерело, зокрема ємністю наконечника, і цим знижує смугу системи. Загальні положення, не конкретні моделі приладів курсу."
 ---
 
 ## Short answer
@@ -78,7 +43,3 @@ sources:
 - Порівнювати вимір з розрахунком за номінальними L і R, не додавши DCR і вихідний опір генератора.
 - Вважати індуктивність точним числом: допуск ± 20 % зсуває `f_c` приблизно настільки ж.
 - Міряти `-3 дБ` від 0 дБ, коли на низьких частотах передавання вже знижено через послідовний опір.
-
-## Sources
-
-<!-- generated from frontmatter -->

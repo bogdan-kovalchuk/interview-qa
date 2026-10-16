@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0208
 title: "Чому для ключового режиму BJT часто використовують forced beta, а не datasheet hFE?"
-description: "Чому для ключового режиму BJT часто використовують forced beta, а не datasheet hFE?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 19, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: bjt-switch
     title: "TI application report: Maximum Output Power and Thermal Considerations for UCC28720 and UCC28722"
     url: https://www.ti.com/lit/an/slua858/slua858.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "SLUA858"
-    applicability: "Розрізняє hFE за заданих умов і роботу в насиченні; параметри насичення треба перевіряти для конкретного транзистора."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Приклад для ілюстрації, не специфікація компонента: для навантаження `I_C = 50 mA` і вибраного `beta_forced = 10` потрібно щонайменше `I_B = I_C/beta_forced = 5 mA`. Це не доводить, що будь-який транзистор насититься при 5 mA: треба звірити гарантовані `V_CE(sat)` та тестові умови його datasheet.[^bjt-switch]
 
 **Типова помилка:** підставляти типове `hFE` з графіка й очікувати, що ключ гарантовано насититься. Розрахуйте базовий струм для заданого навантаження і перевірте насичення за таблицею виробника.
-
-## Sources
-
-<!-- generated from frontmatter -->

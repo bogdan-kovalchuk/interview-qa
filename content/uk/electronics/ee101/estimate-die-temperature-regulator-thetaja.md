@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0159
 title: "Як оцінити температуру кристала лінійного стабілізатора 12 В -> 5 В при 0,2 А, якщо `theta_JA` = 60 °C/Вт, `T_a` = 25 °C?"
-description: "Як оцінити температуру кристала лінійного стабілізатора 12 В -> 5 В при 0,2 А, якщо `theta_JA` = 60 °C/Вт, `T_a` = 25 °C?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 61, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Потужність розсіювання лінійного регулятора P_D = (V_i - V_o)*I_o, визначення quiescent current I_q = I_i - I_o, обмеження максимальною junction temperature і формула P_D(max) = (T_Jmax - T_A)/R_θJA. Записка про LDO; не стосується імпульсних перетворювачів і не задає θ_JA для конкретного корпусу."
   - source_id: ti-spra953d
     title: "Texas Instruments SPRA953D: Semiconductor and IC Package Thermal Metrics"
     url: https://www.ti.com/lit/an/spra953d/spra953d.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SPRA953D, March 2024"
-    applicability: "Визначення R_θJA на стандартизованій тестовій платі, формула T_J = T_A + R_θJA*Power, застереження, що R_θJA залежить від плати й системи і пряме застосування до реальної плати може дати хибні значення, та поняття R_θJA(effective). Не задає значення θ_JA для конкретного корпусу чи плати."
 ---
 
 ## Short answer
@@ -72,7 +41,3 @@ sources:
 - Брати `T_a = 25 °C` замість найгіршої температури всередині корпусу пристрою.
 - Застосовувати `P = (V_in - V_out)*I_out` до імпульсного перетворювача.
 - Не залишати запас до максимальної `T_j` і не перераховувати за максимальної вхідної напруги й струму.
-
-## Sources
-
-<!-- generated from frontmatter -->

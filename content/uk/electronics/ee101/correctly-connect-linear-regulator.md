@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0163
 title: "Як правильно підключити лінійний стабілізатор 7805?"
-description: "Як правильно підключити лінійний стабілізатор 7805?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 62, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-ua78
     title: "TI: uA7805, uA7808, uA7810, uA7812, uA7815, uA7824 positive-voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/ua78.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVS056P, January 2015"
-    applicability: "Виводи корпусів TO-220 (KC, KCS, KCT): 1 – INPUT, 2 – COMMON (земля), 3 – OUTPUT; типова схема з 0,33 мкФ на вході та 0,1 мкФ на виході, характеристики виміряно з цими конденсаторами; вхідний конденсатор рекомендовано для фільтрації шуму, вихідний – для розв’язки (decoupling) виходу, для стабільності вихідний конденсатор не потрібен; вхідні decoupling-конденсатори слід ставити якомога ближче до мікросхеми; рекомендована V_I для uA7805 – 7–25 В (абсолютний максимум 35 В), dropout 2 В (типово) за 1 А, bias current 4,2 мА (типово) і 8 мА (максимум) за 25 °C, вихідна напруга 4,8–5,2 В за 25 °C. Значення стосуються родини uA78xx від TI, не 7805 інших виробників."
   - source_id: ti-lm340
     title: "TI: LM340, LM340A, LM7805 family wide VIN 1.5-A fixed voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/lm340.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SNOSBT0L, September 2016"
-    applicability: "Виводи TO-220: 1 – INPUT, 2 – GND, 3 – OUTPUT; на першій сторінці: «Tab/Case is Ground or Output»; вихідний конденсатор не потрібен для стабільності, але покращує перехідну характеристику (0,1 мкФ); якщо стабілізатор далі приблизно ніж за шість дюймів від фільтра живлення, потрібен вхідний конденсатор від 0,1 мкФ; характеристики виміряно з 0,22 мкФ на вході й 0,1 мкФ на виході; захисний діод вихід–вхід за великої вихідної ємності (зазвичай не потрібен до 10 мкФ); обрив лише виводу GND. Значення стосуються родини LM340/LM7805, інші виробники можуть радити інше."
 ---
 
 ## Short answer
@@ -70,7 +39,3 @@ sources:
 - Покладатися на великий електроліт далеко від стабілізатора замість конденсаторів біля його виводів.
 - Ставити великий конденсатор на виході без діода «вихід–вхід», ігноруючи межу в datasheet.[^ti-lm340]
 - Дозволяти землі стабілізатора відключатися, поки живлення лишається подане.[^ti-lm340]
-
-## Sources
-
-<!-- generated from frontmatter -->

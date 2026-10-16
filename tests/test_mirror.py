@@ -2,30 +2,55 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import re
 import shutil
 
 import pytest
 import yaml
 
-from iqa import mirror, report
+from iqa import mirror
 
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = Path(__file__).parent / "fixtures"
 
 
-def _make_content_tree(tmp_path: Path, fixture_names: list[str]) -> Path:
-    """A single-language (en) content tree built from tests/fixtures/statuses/*.md.
+QUESTION = """---
+id: py-gil-9202
+title: "Question fixture"
+track: python
+section: concurrency-and-gil
+sources:
+  - source_id: fixture-source
+    title: "Fixture source"
+    url: https://example.com/reference
+---
 
-    Single-language avoids tripping the bilingual `reconciled_with` cross-check in
-    the model - mirror.py does not require both languages to exist, only
-    tools/iqa/validate.py's lang-files-exist gate does.
-    """
+## Short answer
+
+This answer is written.[^fixture-source] It has two sentences.
+
+## Detailed explanation
+
+This explanation is written.[^fixture-source]
+"""
+
+
+def _question(qid: str = "py-gil-9202", *, title: str = "Question fixture", explanation: str | None = None) -> str:
+    text = QUESTION.replace("py-gil-9202", qid).replace('"Question fixture"', f'"{title}"')
+    if explanation is not None:
+        text = text.replace("This explanation is written.[^fixture-source]", explanation)
+    return text
+
+
+def _make_content_tree(tmp_path: Path, files: dict[str, str], language: str = "en") -> Path:
+    """A single-language content tree. The mirror does not require both
+    languages to exist; only the validator's lang-files-exist gate does."""
     content = tmp_path / "content"
-    section_dir = content / "en" / "python" / "concurrency-and-gil"
+    section_dir = content / language / "python" / "concurrency-and-gil"
     section_dir.mkdir(parents=True)
-    for name in fixture_names:
-        shutil.copy(FIXTURES / "statuses" / f"{name}.md", section_dir / f"{name}-fixture.md")
+    for name, text in files.items():
+        (section_dir / f"{name}.md").write_text(text, encoding="utf-8")
     return content
 
 
@@ -75,50 +100,48 @@ def test_title_markup_escapes_everything_it_did_not_generate() -> None:
 def test_unwritten_sections_are_not_rendered_at_all(tmp_path: Path) -> None:
     """A `TODO` section leaves no trace on the page.
 
-    The skeleton keeps every required heading in `content/` because the contract
-    demands it, but rendering them produced up to nine "not written yet" notices
-    on a single page. The gaps are data now - `dist/export/progress.{json,csv}`
-    and `/status/` - rather than noise repeated down every page.
+    The headings stay in `content/` so both languages share one structure, but
+    a "not written yet" notice on the page tells the reader nothing.
     """
-    content = _make_content_tree(tmp_path, ["partial"])
+    content = _make_content_tree(tmp_path, {"partial-fixture": _question(explanation="TODO")})
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     body = next(out.rglob("partial-fixture.md")).read_text(encoding="utf-8").split("---", 2)[2]
     headings = [line[3:].strip() for line in body.splitlines() if line.startswith("## ")]
 
-    # The fixture has Short answer written, Detailed explanation `TODO`, Sources.
     assert "TODO" not in body
     assert headings == ["Short answer", "Sources"]
 
 
-def test_production_excludes_draft_and_review(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["draft", "review", "published", "withdrawn"])
+def test_every_question_gets_a_page(tmp_path: Path) -> None:
+    content = _make_content_tree(
+        tmp_path, {"one-fixture": _question(), "two-fixture": _question("py-gil-9203")}
+    )
     out = tmp_path / "out"
-    count = mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    count = mirror.generate(content, out, "/interview-qa", root=ROOT)
 
-    mirrored_ids = _question_stems(out)
-    assert "draft-fixture" not in mirrored_ids
-    assert "review-fixture" not in mirrored_ids
-    assert "published-fixture" in mirrored_ids
-    assert "withdrawn-fixture" in mirrored_ids
+    assert _question_stems(out) == {"one-fixture", "two-fixture"}
     assert count == 2
 
 
-def test_preview_includes_draft_and_review(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["draft", "review", "published", "withdrawn"])
+def test_a_question_without_sources_has_no_sources_heading(tmp_path: Path) -> None:
+    text = re.sub(r"sources:\n(?:  .*\n)+", "", _question()).replace("[^fixture-source]", "")
+    content = _make_content_tree(tmp_path, {"plain-fixture": text})
     out = tmp_path / "out"
-    count = mirror.generate(content, out, "/interview-qa", preview=True, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
-    mirrored_ids = _question_stems(out)
-    assert mirrored_ids == {"draft-fixture", "review-fixture", "published-fixture", "withdrawn-fixture"}
-    assert count == 4
+    body = next(out.rglob("plain-fixture.md")).read_text(encoding="utf-8").split("---", 2)[2]
+    headings = [line[3:].strip() for line in body.splitlines() if line.startswith("## ")]
+    assert headings == ["Short answer", "Detailed explanation"]
 
 
 def test_pagination_follows_home_taxonomy_section_and_questions(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["published", "withdrawn"])
+    content = _make_content_tree(
+        tmp_path, {"one-fixture": _question(), "two-fixture": _question("py-gil-9203")}
+    )
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     home = _frontmatter(out / "en" / "index.md")
     track = _frontmatter(out / "en" / "python" / "index.md")
@@ -144,26 +167,16 @@ def test_pagination_follows_home_taxonomy_section_and_questions(tmp_path: Path) 
 def test_section_index_and_pagination_sorted_by_question_id_not_alphabetical_title(
     tmp_path: Path,
 ) -> None:
-    content = tmp_path / "content"
-    section_dir = content / "en" / "python" / "concurrency-and-gil"
-    section_dir.mkdir(parents=True)
-
-    base_fixture = (FIXTURES / "statuses" / "published.md").read_text(encoding="utf-8")
-
-    # Question 1: lower QID (py-gil-0001), but alphabetically last title ("Zebra title")
-    q1 = base_fixture.replace("id: py-gil-9202", "id: py-gil-0001").replace(
-        'title: "Published status fixture"', 'title: "Zebra title"'
+    # The lower QID has the alphabetically last title, and the other way round.
+    content = _make_content_tree(
+        tmp_path,
+        {
+            "zebra-slug": _question("py-gil-0001", title="Zebra title"),
+            "alpha-slug": _question("py-gil-0002", title="Alpha title"),
+        },
     )
-    (section_dir / "zebra-slug.md").write_text(q1, encoding="utf-8")
-
-    # Question 2: higher QID (py-gil-0002), but alphabetically first title ("Alpha title")
-    q2 = base_fixture.replace("id: py-gil-9202", "id: py-gil-0002").replace(
-        'title: "Published status fixture"', 'title: "Alpha title"'
-    )
-    (section_dir / "alpha-slug.md").write_text(q2, encoding="utf-8")
-
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     # Section index must list questions by QID (Zebra 0001 first, Alpha 0002 second)
     section_index = (
@@ -186,70 +199,16 @@ def test_section_index_and_pagination_sorted_by_question_id_not_alphabetical_tit
     assert "next" not in alpha_fm
 
 
-def test_progress_report_generates_localized_status_page_and_navigation(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["published"])
+def test_sidebar_lists_the_taxonomy_without_a_status_page(tmp_path: Path) -> None:
+    content = _make_content_tree(tmp_path, {"one-fixture": _question()})
     out = tmp_path / "out"
-    progress_path = tmp_path / "progress.json"
-    progress_path.write_text(
-        report.report_json(report.build_report(content)), encoding="utf-8"
-    )
     sidebar_path = tmp_path / "sidebar.json"
-
-    mirror.generate(
-        content,
-        out,
-        "/interview-qa",
-        preview=False,
-        root=ROOT,
-        sidebar_out=sidebar_path,
-        progress=progress_path,
-    )
-
-    status = (out / "en" / "status.md").read_text(encoding="utf-8")
-    assert "## By language" in status
-    assert "## By track" in status
-    assert "## By section" in status
-    assert "## By question type" in status
-    assert "| en | 1 |" in status
-    assert "Python / Concurrency and GIL" in status
+    mirror.generate(content, out, "/interview-qa", root=ROOT, sidebar_out=sidebar_path)
 
     sidebar = json.loads(sidebar_path.read_text(encoding="utf-8"))
-    assert sidebar[0] == {"slug": "status"}
-    assert sidebar[1]["items"] == [{"slug": "python/concurrency-and-gil"}]
-
-    home = _frontmatter(out / "en" / "index.md")
-    status_frontmatter = _frontmatter(out / "en" / "status.md")
-    assert home["next"]["link"] == "/interview-qa/en/status/"
-    assert status_frontmatter["prev"]["link"] == "/interview-qa/en/"
-    assert status_frontmatter["next"]["link"] == "/interview-qa/en/python/"
-
-
-def test_stale_progress_report_is_rejected(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["published"])
-    progress_path = tmp_path / "progress.json"
-    progress_path.write_text(
-        '{"aggregates":{"totals":{"total":99}}}', encoding="utf-8"
-    )
-
-    with pytest.raises(ValueError, match="progress report is stale"):
-        mirror.generate(
-            content,
-            tmp_path / "out",
-            "/interview-qa",
-            preview=False,
-            root=ROOT,
-            progress=progress_path,
-        )
-
-
-def test_withdrawn_renders_tombstone_not_full_body(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["withdrawn"])
-    out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
-
-    mirrored = next(out.rglob("withdrawn-fixture.md")).read_text(encoding="utf-8")
-    assert "withdrawn" in mirrored.lower() or "вилучено" in mirrored
-    assert "This answer is written" not in mirrored  # the fixture's real body must not leak
+    assert len(sidebar) == 1
+    assert sidebar[0]["items"] == [{"slug": "python/concurrency-and-gil"}]
+    assert not (out / "en" / "status.md").exists()
 
 
 def test_citations_become_links_into_the_sources_list(tmp_path: Path) -> None:
@@ -258,27 +217,25 @@ def test_citations_become_links_into_the_sources_list(tmp_path: Path) -> None:
     token survives. Markdown footnotes are deliberately not used: the renderer
     appends its own footnote block below `Sources`, which put every cited source
     on the page twice."""
-    content = _make_content_tree(tmp_path, ["published"])
+    content = _make_content_tree(tmp_path, {"published-fixture": _question()})
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     mirrored = next(out.rglob("published-fixture.md")).read_text(encoding="utf-8")
     assert '<sup class="iqa-cite"><a href="#source-fixture-source">1</a></sup>' in mirrored
     assert '<li id="source-fixture-source">' in mirrored
     # no raw token and no footnote definition is left for the renderer to expand
-    import re
-
     assert re.search(r"\[\^[a-z0-9-]+\]", mirrored) is None
     assert re.search(r"(?m)^\[\^[a-z0-9-]+\]:", mirrored) is None
 
 
-def test_sources_section_is_rendered_not_the_placeholder_comment(tmp_path: Path) -> None:
-    content = _make_content_tree(tmp_path, ["published"])
+def test_sources_section_is_rendered_from_frontmatter(tmp_path: Path) -> None:
+    content = _make_content_tree(tmp_path, {"published-fixture": _question()})
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     mirrored = next(out.rglob("published-fixture.md")).read_text(encoding="utf-8")
-    assert "generated from frontmatter" not in mirrored
+    assert "## Sources" in mirrored
     assert (
         '<li id="source-fixture-source">'
         '<a href="https://example.com/reference">Fixture source</a></li>' in mirrored
@@ -291,31 +248,20 @@ def test_english_page_shows_english_headings(tmp_path: Path) -> None:
     section_dir.mkdir(parents=True)
     shutil.copy(FIXTURES / "valid" / "base-en.md", section_dir / "base-fixture.md")
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     mirrored = next(out.rglob("base-fixture.md")).read_text(encoding="utf-8")
     assert "## Short answer" in mirrored
     assert "## Detailed explanation" in mirrored
-    assert "## Evaluation guide" in mirrored
-    assert "### Expected signals" in mirrored
-    assert "### Red flags" in mirrored
-    assert "### Level-up follow-up" in mirrored
+    assert "## Sources" in mirrored
 
 
 def test_ukrainian_content_shows_ukrainian_headings(tmp_path: Path) -> None:
-    content = tmp_path / "content"
-    section_dir = content / "uk" / "python" / "concurrency-and-gil"
-    section_dir.mkdir(parents=True)
-    # A Ukrainian-language fixture: same structural (English) headings in the
-    # source, per meta/questions.md section 4 - "headings are identifiers,
-    # not text" - but reconciled_with must point at "en", not "uk", to satisfy
-    # the model's own-language exclusion rule.
-    text = (FIXTURES / "statuses" / "published.md").read_text(encoding="utf-8")
-    text = text.replace("reconciled_with: {uk: 1}", "reconciled_with: {en: 1}")
-    (section_dir / "published-fixture.md").write_text(text, encoding="utf-8")
-
+    # The source headings are English identifiers in every language
+    # (meta/questions.md); the page shows them in its own language.
+    content = _make_content_tree(tmp_path, {"published-fixture": _question()}, language="uk")
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
 
     mirrored = next(out.rglob("published-fixture.md")).read_text(encoding="utf-8")
     assert "## Short answer" not in mirrored
@@ -325,39 +271,45 @@ def test_ukrainian_content_shows_ukrainian_headings(tmp_path: Path) -> None:
 
 
 def test_qid_token_resolves_to_a_resolver_url(tmp_path: Path) -> None:
-    content = tmp_path / "content"
-    section_dir = content / "en" / "python" / "concurrency-and-gil"
-    section_dir.mkdir(parents=True)
-    base_text = (FIXTURES / "statuses" / "published.md").read_text(encoding="utf-8")
-
-    # The linking question keeps id py-gil-9202 (the fixture default) and points
-    # at a second question with a distinct id, py-gil-9299.
-    linking_text = base_text.replace(
-        "This explanation is written.[^fixture-source]",
-        "This explanation is written.[^fixture-source] See also qid:py-gil-9299.",
+    content = _make_content_tree(
+        tmp_path,
+        {
+            "source-fixture": _question(
+                explanation="This explanation is written.[^fixture-source] See also qid:py-gil-9299."
+            ),
+            "target-fixture": _question("py-gil-9299"),
+        },
     )
-    (section_dir / "source-fixture.md").write_text(linking_text, encoding="utf-8")
-    target_text = base_text.replace("id: py-gil-9202", "id: py-gil-9299")
-    (section_dir / "target-fixture.md").write_text(target_text, encoding="utf-8")
-
     out = tmp_path / "out"
-    mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
     mirrored = next(out.rglob("source-fixture.md")).read_text(encoding="utf-8")
-    assert "/interview-qa/en/q/py-gil-9299/" in mirrored
+    # A bare token becomes a link titled with the target question, not a bare path.
+    assert "See also [Question fixture](/interview-qa/en/q/py-gil-9299/)." in mirrored
     assert "qid:" not in mirrored
 
 
-def test_unknown_qid_target_raises(tmp_path: Path) -> None:
-    content = tmp_path / "content"
-    section_dir = content / "en" / "python" / "concurrency-and-gil"
-    section_dir.mkdir(parents=True)
-    base_text = (FIXTURES / "statuses" / "published.md").read_text(encoding="utf-8")
-    text = base_text.replace(
-        "This explanation is written.[^fixture-source]",
-        "This explanation is written.[^fixture-source] See also qid:py-gil-0000.",
+def test_qid_link_target_keeps_its_own_text(tmp_path: Path) -> None:
+    content = _make_content_tree(
+        tmp_path,
+        {
+            "source-fixture": _question(
+                explanation="This explanation is written.[^fixture-source] See [the other one](qid:py-gil-9299)."
+            ),
+            "target-fixture": _question("py-gil-9299"),
+        },
     )
-    (section_dir / "broken-fixture.md").write_text(text, encoding="utf-8")
+    out = tmp_path / "out"
+    mirror.generate(content, out, "/interview-qa", root=ROOT)
+    mirrored = next(out.rglob("source-fixture.md")).read_text(encoding="utf-8")
+    assert "See [the other one](/interview-qa/en/q/py-gil-9299/)." in mirrored
+
+
+def test_unknown_qid_target_raises(tmp_path: Path) -> None:
+    text = _question(
+        explanation="This explanation is written.[^fixture-source] See also qid:py-gil-0000."
+    )
+    content = _make_content_tree(tmp_path, {"broken-fixture": text})
 
     out = tmp_path / "out"
     with pytest.raises(ValueError, match="unknown qid target"):
-        mirror.generate(content, out, "/interview-qa", preview=False, root=ROOT)
+        mirror.generate(content, out, "/interview-qa", root=ROOT)

@@ -1,41 +1,18 @@
 ---
 id: py-decor-0004
 title: "Чого `functools.wraps` не гарантує щодо фактичної call signature wrapper-функції?"
-description: "functools.wraps копіює лише metadata-атрибути (__name__, __doc__, __qualname__, __annotations__, __type_params__) і встановлює __wrapped__, але не змінює реальні параметри wrapper-функції."
 track: python
 section: decorators
-level: senior
-type: mechanism
-tags: [functools-wraps]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -83,11 +60,3 @@ except TypeError as error:
 - Прихована поведінка у фреймворках ін'єкції залежностей (FastAPI, pytest): якщо фреймворк спирається на інспекцію параметрів або кастомний `__code__`, розбіжність між інспектованою та реальною сигнатурами може призвести до некоректної передачі параметрів.
 - Для гарантованої перевірки аргументів до виконання тіла `wrapper` необхідно використовувати `inspect.signature(func).bind(*args, **kwargs)` вручну всередині `wrapper`.
 - Для збереження сигнатури у статичних аналізаторах обов'язково використовувати `ParamSpec` замість покладання виключно на `functools.wraps`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,62 +1,27 @@
 ---
 id: py-oop-0004
 title: "У якому порядку Python шукає атрибут instance за наявності data descriptor, instance dictionary, non-data descriptor і class attribute?"
-description: "Порядок: data descriptor -> instance __dict__ -> non-data descriptor / class attribute -> __getattr__."
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Invoking Descriptors моделі даних."
   - source_id: py314-reference-datamodel-object-getattr
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattr__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ object.__getattr__ моделі даних."
 ---
 
 ## Short answer
@@ -109,11 +74,3 @@ print(c.missing)  # __getattr__('missing'): the normal lookup found nothing
 - вважати, що запис в `obj.__dict__` завжди перекриває атрибут класу: для `property` це не так, і `self.x = 5` у класі з `property` без setter дає `AttributeError: property 'x' of 'Q' object has no setter`;
 - очікувати, що `__getattr__` викликається для кожного доступу; він спрацьовує лише тоді, коли звичайний пошук нічого не знайшов;
 - забувати, що порядок описано для стандартного `object.__getattribute__`: перевизначений `__getattribute__` змінює цей шлях (див. qid:py-oop-0005).
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

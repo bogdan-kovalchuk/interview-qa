@@ -1,48 +1,21 @@
 ---
 id: emb-align-0004
 title: "With four-byte uint32 alignment, what `sizeof` will this have?"
-description: "It is typically 12 bytes: three internal and three trailing padding bytes"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Struct miscellany"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary examples showing how member order changes structure padding and size."
   - source_id: acode-next-cpp
     title: "aCode: End? What next?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian C++ learning roadmap; not a normative source for object layout."
 ---
 
 ## Question code
@@ -107,7 +80,3 @@ _Static_assert(sizeof(good_t) == 8, "unexpected good_t layout");
 ```
 
 Do not reorder members of a public ABI, wire format, persistent binary format, or hardware register map merely to save space.
-
-## Sources
-
-<!-- generated from frontmatter -->

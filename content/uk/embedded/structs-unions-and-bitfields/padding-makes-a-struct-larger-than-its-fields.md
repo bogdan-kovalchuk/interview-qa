@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0002
 title: "Чому розмір структури може бути більшим за суму розмірів її полів?"
-description: "Через padding: компілятор вставляє невикористані байти між полями або в кінці структури, щоб виконати alignment requirements."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,7 +31,3 @@ Padding наприкінці важливий для масиву структу
 **Приклад:** якщо для конкретної цілі структура має розмір 8 байтів, масив із 10 таких структур займає `10 * 8` байтів, а не десятикратну суму лише видимих полів. Перевіряйте `sizeof` та `offsetof` саме для цілі й параметрів збірки; зміна порядку полів чи compiler extension на кшталт packed може змінити layout і створити невирівняні доступи.[^iso-c-n1570]
 
 **Типова помилка:** вважати будь-яку оцінку з однієї платформи гарантією мови C. Розміри, alignment і padding треба підтверджувати для цільового ABI, особливо перед використанням байтів як wire format або постійного storage.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

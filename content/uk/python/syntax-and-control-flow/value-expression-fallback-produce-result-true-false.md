@@ -1,48 +1,18 @@
 ---
 id: py-syntax-0002
 title: "Яке значення матиме вираз `[] or \"fallback\"`, і чому його результат не є `True` або `False`?"
-description: "Результат – 'fallback', тому що [] є falsy і or повертає другий operand."
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [or-fallback]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -87,11 +57,3 @@ bool([] or 'fallback')  # True     - only bool() actually converts
 
 Те саме стосується `and`, лише дзеркально: `[] and 'x'` дає `[]`, бо перший операнд falsy й одразу
 визначає результат.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

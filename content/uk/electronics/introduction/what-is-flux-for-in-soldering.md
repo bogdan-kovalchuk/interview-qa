@@ -1,62 +1,27 @@
 ---
 id: emb-elintro-0284
 title: "Для чого потрібен флюс у пайці?"
-description: "Для чого потрібен флюс у пайці?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: koki-flux-wetting
     title: "KOKI: Powerful Wetting Wave Soldering Flux for General Applications"
     url: https://koki-global.com/product/js-e-15x/
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує конкретний flux для хвильового паяння: видалення оксидів і краще змочування; ефект залежить від складу флюсу та процесу."
   - source_id: kester-cored-solder-wire
     title: "Kester: 275 Flux-Cored Wire"
     url: https://www.kester.com/products/product/275-flux-cored-wire
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує флюсовий дріт Kester 275 для ручного паяння та таблицю варіантів із флюсовою жилою; не стверджує, що кожен дріт припою має таку жилу."
   - source_id: hse-solder-fume-indg248
     title: "Health and Safety Executive: Solder fume and you (INDG248)"
     url: https://www.hse.gov.uk/pubns/indg248.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "INDG248(rev2) 09/15"
-    applicability: "Пояснює ризики диму від каніфольного флюсу та заходи контролю, зокрема витяжку й уникнення потоку диму; не описує склад дроту припою або хімічну дію флюсу."
 ---
 
 ## Short answer
@@ -77,7 +42,3 @@ sources:
 - Приписувати флюсу механічне очищення або передачу тепла замість його ролі в контролі оксидів і змочуванні.
 - Вважати будь-який флюс придатним для електроніки та залишати невідомі активні залишки на платі.
 - Дихати димом: дим каніфольного флюсу може шкодити здоров’ю, тому використовуйте витяжку й тримайте обличчя поза його потоком.[^hse-solder-fume-indg248]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0004
 title: "How does extended iterable unpacking work in the assignment `head, *middle, tail = items`, and what happens if there are not enough elements?"
-description: "How does extended iterable unpacking work in the assignment `head, *middle, tail = items`, and what happens if there are not enough elements?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [head-middle-tail-items]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -94,11 +71,3 @@ a, b, *rest = [1, 2]        # rest = []
 The most common use is taking apart a sequence of known shape without indices: `name, *aliases,
 domain = parts` reads better than three lookups by
 number.[^py314-reference-compound-stmts]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,69 +1,30 @@
 ---
 id: py-testing-0015
 title: "How does replacing the real clock with an injected clock or frozen time make timeout and expiry tests deterministic?"
-description: "Instead of time.sleep() and real waiting, the test controls a clock abstraction, so timeout, TTL and expiry are checked instantly and without flakiness."
 track: python
 section: testing
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: py314-library-time
     title: "Python 3.14: Library/time"
     url: https://docs.python.org/3.14/library/time.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: time.monotonic() and time.time()."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: default parameter values are evaluated when def runs."
 ---
 
 ## Short answer
@@ -129,23 +90,3 @@ Frozen time also works without an injected clock. If the code calls `time.monoto
 - `time.time()` for timeouts and TTLs: setting the system clock back breaks the comparison;
 - `clock=time.monotonic` in a signature combined with a later `patch`: the substitution does not happen and the code uses the real clock;
 - checking only far from the boundary, for example 60 seconds with a 30-second TTL: this misses a `<` versus `<=` mistake.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

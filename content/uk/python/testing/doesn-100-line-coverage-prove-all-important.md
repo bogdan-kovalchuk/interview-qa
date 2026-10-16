@@ -1,62 +1,27 @@
 ---
 id: py-testing-0017
 title: "Чому 100% line coverage не доводить, що всі important behaviors та assertions перевірені?"
-description: "Line coverage показує лише виконані рядки: він не бачить непройденої гілки `if` і тесту без assertions, тому 100% не доводить, що поведінку перевірено."
 track: python
 section: testing
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: coverage-branch
     title: "Coverage.py 7.16.2: Branch coverage measurement"
     url: https://coverage.readthedocs.io/en/latest/branch.html#branch-coverage-measurement
-    accessed: 2026-10-13
-    kind: official
-    version: "7.16.2"
-    applicability: "Офіційна документація coverage.py 7.16.2: statement coverage проти branch coverage, часткові гілки і прапорець --branch."
 ---
 
 ## Short answer
@@ -100,23 +65,3 @@ Coverage сам не знає, яким має бути результат, то
 - вважати 100% line coverage ознакою того, що всі гілки й поведінка перевірені;
 - писати тести без assertions «для покриття»;
 - не помічати, що `if` без `else` потребує тесту з обома значеннями умови.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

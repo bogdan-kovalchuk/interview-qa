@@ -1,97 +1,42 @@
 ---
 id: py-fileio-0012
 title: "Why doesn't a JSON round trip automatically preserve every Python type and object identity?"
-description: "Why doesn't a JSON round trip automatically preserve every Python type and object identity?"
 track: python
 section: files-and-io
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json-encoder-table
     title: "Python 3.14: Library/json (JSONEncoder)"
     url: https://docs.python.org/3.14/library/json.html#json.JSONEncoder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the types JSONEncoder serializes by default, and the rule for keys that are not str, int, float, bool, or None."
   - source_id: py314-library-json-encoder-default
     title: "Python 3.14: Library/json (Encoders and Decoders)"
     url: https://docs.python.org/3.14/library/json.html#py-to-json-table
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: TypeError for unsupported types without default, and the check_circular circular-reference check."
   - source_id: py314-library-json-decoder-table
     title: "Python 3.14: Library/json (JSONDecoder)"
     url: https://docs.python.org/3.14/library/json.html#json.JSONDecoder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the decoding table, by which a JSON array becomes a list."
   - source_id: py314-library-json-dump
     title: "Python 3.14: Library/json (dump)"
     url: https://docs.python.org/3.14/library/json.html#json.dump
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: when serializing, all dict keys are converted to JSON strings."
 ---
 
 ## Short answer
@@ -135,23 +80,3 @@ except ValueError as error:
 - expecting `json.loads(json.dumps(x)) == x` for any `x`: a tuple becomes a list, and equality breaks;
 - using `default=str` for every unknown type: the value comes back as a string, and the original type cannot be restored;
 - relying on the identity of shared objects after decoding: each occurrence becomes a separate object.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

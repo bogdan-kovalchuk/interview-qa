@@ -1,55 +1,24 @@
 ---
 id: py-funcs-0017
 title: "Чому запис `lambda i=i: i` усуває late-binding проблему в циклі, хоча default arguments самі можуть бути джерелом помилок?"
-description: "Default arguments обчислюються один раз – у момент виконання def/lambda, тому i=i зберігає поточне значення i як локальний параметр кожної lambda."
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: [lambda-i-i-i]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-why-do-lambdas-defined-in-a-loop-with
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, FAQ: lambda, створені в циклі, читають змінну під час виклику, а не визначення."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Function definitions: default parameter values обчислюються один раз, під час виконання визначення функції; None як default для мутабельних значень."
   - source_id: py314-reference-expressions-lambda
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambda
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ lambda: lambda поводиться як функція, визначена через def, і має той самий синтаксис параметрів."
   - source_id: py314-faq-programming-why-are-default-values-shared-between
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-are-default-values-shared-between-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, FAQ: default-значення створюються один раз, і зміна мутабельного default впливає на наступні виклики."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#user-defined-functions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ User-defined functions: атрибут __defaults__ містить значення default-параметрів."
 ---
 
 ## Short answer
@@ -86,11 +55,3 @@ print(add(1), add(2))  # [1, 2] [1, 2]: both calls return the same list object
 - вважати, що `i=i` обчислюється під час кожного виклику lambda, а не один раз при її створенні;
 - використовувати мутабельний default (`[]`, `{}`) як порожній стан для накопичення між викликами;
 - передавати функцію з default у `map` або callback, які передають аргументи, і не помітити, що вони замінюють default.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

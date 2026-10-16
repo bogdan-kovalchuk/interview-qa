@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0016
 title: "Коли generator expression кращий за list comprehension, а коли повторне використання або indexing робить list доречнішим?"
-description: "Generator expression кращий для одного проходу по великій або нескінченній послідовності: він обчислює значення на запит і не зберігає всі результати."
 track: python
 section: iterators-and-generators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ generator expressions: результат є generator iterator, а вирази обчислюються ліниво, коли iterator просять віддати значення."
   - source_id: py314-library-stdtypes-generator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#generator-types
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Generator Types: generator object надає методи __iter__() і __next__()."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ generator-iterator methods: методи send(), throw() і close() generator iterator."
 ---
 
 ## Short answer
@@ -87,19 +52,3 @@ print(sum(as_gen), sum(as_gen))        # 14 0: the second pass finds nothing lef
 - брати generator expression для коду, який читає результати двічі: другий прохід порожній;
 - вважати, що generator завжди швидший за list comprehension: він економить пам’ять, а не обов’язково час;
 - передавати generator туди, де очікують `len()` або доступ за індексом, і отримувати `TypeError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

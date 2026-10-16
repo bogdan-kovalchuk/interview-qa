@@ -1,48 +1,21 @@
 ---
 id: py-perf-0011
 title: "Чому arguments для function з `lru_cache` мають бути hashable і що станеться, якщо передати `list` чи `dict`?"
-description: "lru_cache зберігає результати в dict, тому всі positional і keyword arguments мають бути hashable; list і dict відхиляються з TypeError."
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: [lru-cache, list, dict]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: результати зберігаються в dict, тому аргументи мають бути hashable; maxsize=None вимикає LRU."
   - source_id: py314-library-functools-functools-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: functools.cache() еквівалентний lru_cache(maxsize=None), тобто без обмеження розміру."
   - source_id: py314-glossary-term-hashable
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-hashable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення hashable; кортеж hashable лише тоді, коли hashable всі його елементи; екземпляри власних класів hashable за замовчуванням, а їхній hash береться з id()."
   - source_id: py314-reference-datamodel-object-hash
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__hash__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: якщо __hash__ дорівнює None, отримання hash дає TypeError; клас, що визначає __eq__ без __hash__, не може бути елементом hashable-колекцій."
 ---
 
 ## Short answer
@@ -105,23 +78,3 @@ print(read(b))    # 1: same object, same hash, stale cached result
 - вважати, що `functools.cache` приймає аргументи, які `lru_cache` відхиляє: вимога однакова;
 - конвертувати `list` у `tuple`, не перевіривши hashable елементи: `hash(tuple([[1]]))` все одно дає `TypeError`;
 - вважати, що hashable гарантує актуальність результату для змінюваного об’єкта.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,51 +1,21 @@
 ---
 id: py-modimp-0004
 title: "How can violating the import protocol or manually editing `sys.modules` lead to two module objects for the same source file?"
-description: "How can violating the import protocol or manually editing `sys.modules` lead to two module objects for the same source file?"
 track: python
 section: modules-and-imports
-level: senior
-type: pitfall
-tags: [sys-modules]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The module cache” of the official Python 3.14 documentation: sys.modules is keyed by module name; after a key is deleted and the module is imported again, the two module objects are not the same if a reference to the old one is kept."
 ---
 
 ## Short answer
@@ -96,23 +66,3 @@ A duplicate is harmful when the module keeps state, defines classes that are che
 - assuming that identical `__file__` values mean one module object (the cache key is the name);
 - adding a package folder to `sys.path` to "simplify" imports and getting a second copy of the module with its own state;
 - deleting an entry from `sys.modules` to reset state without noticing that old references still hold the previous state.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

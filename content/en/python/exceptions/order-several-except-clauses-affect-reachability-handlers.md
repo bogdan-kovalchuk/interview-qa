@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0002
 title: "How does the order of several `except` clauses affect the reachability of handlers for subclass exceptions?"
-description: "How does the order of several `except` clauses affect the reachability of handlers for subclass exceptions?"
 track: python
 section: exceptions
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -70,11 +47,3 @@ Order matters when one exception can match both clauses. That happens in two cas
 - putting `except Exception` before specific exceptions that need their own handling;
 - expecting the interpreter to warn about an unreachable handler (CPython 3.13 and 3.14 do not);
 - assuming order never matters for unrelated classes; it does when one exception class inherits from both.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

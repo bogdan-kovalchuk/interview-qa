@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0039
 title: "Як індуктор поводиться в DC-колі в момент увімкнення і в усталеному режимі?"
-description: "Як індуктор поводиться в DC-колі в момент увімкнення і в усталеному режимі?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 38, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-inductor-calculus
     title: "All About Circuits: Inductor voltage and current relationship"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-15/inductors-and-calculus/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Перехідний процес струму в індукторі, усталений сталий струм та реакція на зміну струму; ідеальна модель відокремлена від опору обмотки."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 Приклад для ідеального послідовного кола: при `V = 12 V`, `R = 6 Ω` і `L = 30 mH` усталений струм становить `12/6 = 2 A`, а `τ = 0.03/6 = 0.005 s = 5 ms`. Реальний DCR треба включити до повного послідовного опору, тому кінцевий струм буде меншим за `2 A`.[^aac-inductor-calculus]
 
 **Типова помилка:** стверджувати, що індуктор завжди «відкритий» у момент увімкнення. Він лише зберігає попереднє значення струму; як саме змінюватиметься струм після перемикання, визначає решта кола.
-
-## Sources
-
-<!-- generated from frontmatter -->

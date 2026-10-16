@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0127
 title: "Яка різниця між 4-смужковим і 5-смужковим резистором?"
-description: "Яка різниця між 4-смужковим і 5-смужковим резистором?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 13, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-resistor-color-code
     title: "Vishay: Color Code and Standard Resistance Series"
     url: https://www.vishay.com/doc/?20143=
-    accessed: 2026-10-04
-    kind: official
-    version: "Revision 28-Aug-09"
-    applicability: "Структура чотири- та п'ятисмугового коду, значення кольорів і приклади допусків; фактичні допуски залежать від компонента."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 - Вважати, що всі п’ятисмугові резистори мають допуск ±1% або кращий.
 - Застосувати послідовність для чотирьох смуг до п’ятисмугового компонента.
 - Прийняти четверту смугу п’ятисмугового резистора за допуск, хоча це множник.[^vishay-resistor-color-code]
-
-## Sources
-
-<!-- generated from frontmatter -->

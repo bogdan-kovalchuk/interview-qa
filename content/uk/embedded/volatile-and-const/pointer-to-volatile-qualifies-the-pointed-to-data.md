@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0009
 title: "Що означає декларація `volatile uint32_t *p`?"
-description: "p є вказівником на volatile uint32_t."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,7 +37,3 @@ p = another_address; // the pointer itself can be reassigned
 Перше присвоєння ініціалізує вказівник, а читання `*p` звертається до кваліфікованого об’єкта. Саме перепризначення `p` не є volatile-доступом до об’єкта за адресою. Якщо потрібні обидві властивості – volatile-вказівник і volatile-дані – декларація має бути `volatile uint32_t * volatile p`.[^iso-c-n1570]
 
 Не плутайте цю форму з `uint32_t * volatile p`: там кваліфіковане значення самого pointer variable, тоді як тип даних за адресою лишається звичайним. Для hardware register саме кваліфікація pointed-to data зазвичай є потрібною. Розмір і атомарність доступу залишаються питанням конкретної платформи, їх слід перевірити окремо.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

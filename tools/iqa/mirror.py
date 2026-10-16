@@ -9,12 +9,9 @@ site is not allowed to see for itself:
   ``replace_citations`` for why these are not Markdown footnote definitions;
 - rendering the ``Sources`` section from frontmatter, replacing the
   ``<!-- generated from frontmatter -->`` placeholder;
-- substituting the visible section (and subsection) headings for the page's own
-  language from ``meta/vocabulary.yml``, since the headings in ``content/`` are
-  always the English structural identifiers;
-- filtering by ``status`` through ``tools/iqa/lifecycle.py`` - the single
-  implementation of the lifecycle table in ``meta/questions.md`` section 8 - with
-  an explicit ``--preview`` mode that also includes ``draft``/``review``.
+- substituting the visible section headings for the page's own language from
+  ``meta/vocabulary.yml``, since the `##` headings in ``content/`` are always the
+  English structural identifiers.
 
 Uses ``tools/iqa/model.py`` to parse content; nothing here re-parses Markdown with
 ad-hoc regex beyond substituting inline ``qid:`` and citation tokens inside
@@ -37,21 +34,13 @@ from typing import Any, NamedTuple
 
 import yaml
 
-from .lifecycle import PageMode, lifecycle_for
 from .taxonomy import ordered_tracks_and_sections
-from .model import Language, ParsedSection, Question, SectionName, Source, parse_question_file
+from .model import Language, Question, Source, parse_question_file
 
 
 CITATION_RE = re.compile(r"\[\^([a-z0-9]+(?:-[a-z0-9]+)*)\]")
 QID_TOKEN_RE = re.compile(r"qid:([a-z0-9][a-z0-9-]*)", re.IGNORECASE)
-
-TOMBSTONE_TEXT: dict[Language, str] = {
-    Language.EN: (
-        "This question has been withdrawn. The page is kept as a placeholder, not removed as a 404."
-    ),
-    Language.UK: "Це питання вилучено. Сторінка лишається як позначка, а не видається як 404.",
-}
-
+QID_LINK_TARGET_RE = re.compile(r"\]\(qid:([a-z0-9][a-z0-9-]*)\)", re.IGNORECASE)
 
 def load_vocabulary(path: Path) -> dict[str, Any]:
     value = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -71,30 +60,11 @@ def section_label(vocabulary: dict[str, Any], heading: str, language: Language) 
     return _label(vocabulary.get("section_labels") or {}, heading, language, what="section")
 
 
-def subsection_label(vocabulary: dict[str, Any], heading: str, language: Language) -> str:
-    return _label(vocabulary.get("subsection_labels") or {}, heading, language, what="subsection")
-
-
-def completeness_label(vocabulary: dict[str, Any], completeness: str, language: Language) -> str:
-    return _label(vocabulary.get("completeness_labels") or {}, completeness, language, what="completeness")
-
-
-# Sidebar badge variant per completeness (meta/plan.md step 6, item 3: "the reader must be
-# able to see at a glance which entries in an index are thin"). `complete` gets no
-# badge at all - see mirror_question - so it is not listed here.
-COMPLETENESS_BADGE_VARIANT: dict[str, str] = {
-    "empty": "danger",
-    "stub": "caution",
-    "partial": "note",
-}
-
-
 class MirroredPage(NamedTuple):
     """One question page the mirror actually wrote, as the navigation needs it.
 
-    `mirror_question` used to hand back `(language, id, title)`, which was
-    enough for a flat list of links and nothing else. Track, section and
-    completeness are what turn that list into the taxonomy navigation.
+    Track and section are what turn the list of pages into the taxonomy
+    navigation.
     """
 
     language: str
@@ -103,7 +73,6 @@ class MirroredPage(NamedTuple):
     track: str
     section: str
     route_slug: str
-    completeness: str
 
 
 class NavigationPage(NamedTuple):
@@ -146,24 +115,32 @@ def title_markup(title: str) -> str:
     return "".join(parts)
 
 
-def replace_qids(text: str, known_ids: set[str], base: str, language: Language) -> str:
-    def replace(match: re.Match[str]) -> str:
-        target_id = match.group(1)
-        if target_id not in known_ids:
+def replace_qids(text: str, titles: dict[str, str], base: str, language: Language) -> str:
+    """Turn `qid:` tokens into links to the resolver page.
+
+    `[text](qid:id)` keeps its text. A bare `qid:id` in prose becomes a link
+    whose text is the target question's title in this language - rendering
+    only the URL left a plain, unclickable path in the sentence.
+    """
+
+    def url(target_id: str) -> str:
+        if target_id not in titles:
             raise ValueError(f"unknown qid target {target_id}")
         return f"{base}/{language.value}/q/{target_id}/"
 
-    return QID_TOKEN_RE.sub(replace, text)
+    text = QID_LINK_TARGET_RE.sub(lambda match: f"]({url(match.group(1))})", text)
+
+    def bare(match: re.Match[str]) -> str:
+        target_id = match.group(1)
+        href = url(target_id)
+        label = titles[target_id].replace("[", r"\[").replace("]", r"\]")
+        return f"[{label}]({href})"
+
+    return QID_TOKEN_RE.sub(bare, text)
 
 
 def render_sources(sources: tuple[Source, ...]) -> str:
     """One line per source: ``title`` as link text, ``url`` as href.
-
-    ``version``, ``accessed``, ``kind`` and ``applicability`` stay on the page's
-    frontmatter only, per meta/anki.md's "Рендер Sources" - and per site.md's rule
-    that templates carry no bare English/Ukrainian string, only vocabulary keys.
-    Adding those fields here would mean inventing new UI strings with no entry in
-    meta/vocabulary.yml to localise them.
     """
     if not sources:
         return ""
@@ -210,58 +187,26 @@ def is_unwritten(content: str) -> bool:
     return content.strip() == "TODO"
 
 
-def render_section(
-    section: ParsedSection,
-    language: Language,
-    vocabulary: dict[str, Any],
-    known_ids: set[str],
-    base: str,
-    citations: dict[str, int],
-) -> str:
-    heading = section_label(vocabulary, section.heading, language)
-
-    def body(text: str) -> str:
-        return replace_citations(replace_qids(text, known_ids, base, language), citations)
-
-    if section.subsections:
-        parts = [f"## {heading}"]
-        for subsection in section.subsections:
-            sub_heading = subsection_label(vocabulary, subsection.heading, language)
-            parts.append(f"### {sub_heading}\n\n{body(subsection.content)}")
-        return "\n\n".join(parts)
-    return f"## {heading}\n\n{body(section.content)}"
-
-
-def render_body(question: Question, vocabulary: dict[str, Any], known_ids: set[str], base: str) -> str:
+def render_body(question: Question, vocabulary: dict[str, Any], titles: dict[str, str], base: str) -> str:
     citations = {
         source.source_id: number
         for number, source in enumerate(question.frontmatter.sources, 1)
     }
+    language = question.language
     rendered_sections: list[str] = []
     for section in question.body.sections:
-        # An unwritten section is not rendered at all. The skeleton keeps the
-        # heading in `content/` because the contract requires it, but a reader
-        # gains nothing from four identical "not written yet" notices on one page
-        # - 224 of 401 pages carried four or more. The gaps are reported as data,
-        # in `dist/export/progress.{json,csv}` and on `/status/`, not as noise on
-        # every page.
-        if is_unwritten(section.content) and not section.subsections:
+        # An unwritten section is not rendered at all: a reader gains nothing
+        # from a "not written yet" notice. `###` subsections inside the
+        # explanation are authored in the page's own language and pass through.
+        if is_unwritten(section.content):
             continue
-        if section.heading == SectionName.SOURCES.value:
-            heading = section_label(vocabulary, section.heading, question.language)
-            sources_markdown = render_sources(question.frontmatter.sources)
-            rendered_sections.append(f"## {heading}\n\n{sources_markdown}".rstrip())
-        else:
-            rendered_sections.append(
-                render_section(
-                    section, question.language, vocabulary, known_ids, base, citations
-                )
-            )
+        heading = section_label(vocabulary, section.heading, language)
+        text = replace_citations(replace_qids(section.content, titles, base, language), citations)
+        rendered_sections.append(f"## {heading}\n\n{text}")
+    if question.frontmatter.sources:
+        heading = section_label(vocabulary, "Sources", language)
+        rendered_sections.append(f"## {heading}\n\n{render_sources(question.frontmatter.sources)}")
     return "\n\n".join(rendered_sections).strip() + "\n"
-
-
-def render_tombstone(question: Question) -> str:
-    return TOMBSTONE_TEXT[question.language] + "\n"
 
 
 def _frontmatter_yaml(question: Question, computed: dict[str, Any]) -> str:
@@ -274,18 +219,11 @@ def mirror_question(
     question: Question,
     output_root: Path,
     base: str,
-    known_ids: set[str],
+    titles: dict[str, str],
     working_directory: Path,
     source_path: Path,
     vocabulary: dict[str, Any],
-    *,
-    preview: bool,
-) -> tuple[str, str, str] | None:
-    decision = lifecycle_for(question, question.language)
-    page_mode = decision.preview_page if preview else decision.production_page
-    if page_mode is PageMode.ABSENT:
-        return None
-
+) -> MirroredPage:
     language = question.language
     question_id = question.frontmatter.id
     file_slug = question.slug
@@ -296,30 +234,17 @@ def mirror_question(
     except ValueError:
         source_label = source_path.as_posix()
 
-    if page_mode is PageMode.TOMBSTONE:
-        body_markdown = render_tombstone(question)
-    else:
-        body_markdown = render_body(question, vocabulary, known_ids, base)
-
-    completeness = decision.completeness.value
+    body_markdown = render_body(question, vocabulary, titles, base)
     computed: dict[str, Any] = {
         "title": title_text(question.frontmatter.title),
+        "description": title_text(question.frontmatter.title),
         "title_html": title_markup(question.frontmatter.title),
         "slug": route_slug,
         "canonical": canonical,
         "source_path": source_label,
         "question_id": question_id,
         "language": language.value,
-        "completeness": completeness,
     }
-    variant = COMPLETENESS_BADGE_VARIANT.get(completeness)
-    if page_mode is PageMode.PAGE and variant is not None:
-        computed["sidebar"] = {
-            "badge": {
-                "text": completeness_label(vocabulary, completeness, language),
-                "variant": variant,
-            }
-        }
     rendered = f"---\n{_frontmatter_yaml(question, computed)}\n---\n\n{body_markdown}"
 
     destination = output_root / language.value / "q" / question_id / f"{file_slug}.md"
@@ -332,7 +257,6 @@ def mirror_question(
         track=question.frontmatter.track,
         section=question.frontmatter.section,
         route_slug=route_slug,
-        completeness=completeness,
     )
 
 
@@ -403,130 +327,12 @@ def _index_page(title: str, links: list[str], empty_notice: str) -> str:
     )
 
 
-COMPLETENESS_ORDER = ("complete", "partial", "stub", "empty")
-
-
-def _markdown_table(headers: list[str], rows: list[list[str]]) -> str:
-    def cell(value: str) -> str:
-        return str(value).replace("|", "\\|").replace("\n", " ")
-
-    return "\n".join(
-        [
-            "| " + " | ".join(cell(value) for value in headers) + " |",
-            "|" + "|".join("---" for _ in headers) + "|",
-            *("| " + " | ".join(cell(value) for value in row) + " |" for row in rows),
-        ]
-    )
-
-
-def _status_rows(
-    entries: list[tuple[str, dict[str, int]]],
-    vocabulary: dict[str, Any],
-    language: Language,
-) -> str:
-    headers = [
-        site_label(vocabulary, "column_group", language),
-        site_label(vocabulary, "aggregate_total", language),
-        *(completeness_label(vocabulary, key, language) for key in COMPLETENESS_ORDER),
-        site_label(vocabulary, "column_coverage", language),
-    ]
-    rows: list[list[str]] = []
-    for label, counts in entries:
-        total = sum(int(counts.get(key, 0)) for key in COMPLETENESS_ORDER)
-        complete = int(counts.get("complete", 0))
-        coverage = f"{(complete / total * 100):.1f}%" if total else "0.0%"
-        rows.append(
-            [
-                label,
-                str(total),
-                *(str(int(counts.get(key, 0))) for key in COMPLETENESS_ORDER),
-                coverage,
-            ]
-        )
-    return _markdown_table(headers, rows)
-
-
-def _status_page(
-    report: dict[str, Any],
-    vocabulary: dict[str, Any],
-    language: Language,
-    taxonomy: list[tuple[str, list[str]]],
-) -> str:
-    aggregates = report.get("aggregates")
-    if not isinstance(aggregates, dict):
-        raise ValueError("progress report has no aggregates mapping")
-
-    by_language = aggregates.get("by_language") or {}
-    language_rows = [
-        (code, by_language.get(code) or {})
-        for code in (Language.EN.value, Language.UK.value)
-    ]
-
-    by_track = aggregates.get("by_track") or {}
-    track_rows = [
-        (
-            _nav_label(vocabulary, "track_labels", track, language),
-            ((by_track.get(track) or {}).get("languages") or {}).get(language.value) or {},
-        )
-        for track, _sections in taxonomy
-        if track in by_track
-    ]
-
-    by_section = aggregates.get("by_section") or {}
-    section_rows: list[tuple[str, dict[str, int]]] = []
-    for track, sections in taxonomy:
-        if track not in by_track:
-            continue
-        track_label = _nav_label(vocabulary, "track_labels", track, language)
-        for section in sections:
-            key = f"{track}/{section}"
-            if key not in by_section:
-                continue
-            section_label_text = _nav_label(vocabulary, "section_labels_nav", key, language)
-            counts = (by_section[key].get("languages") or {}).get(language.value) or {}
-            section_rows.append((f"{track_label} / {section_label_text}", counts))
-
-    by_type = aggregates.get("by_type") or {}
-    type_rows = [
-        (
-            question_type,
-            ((bucket.get("languages") or {}).get(language.value) or {}),
-        )
-        for question_type, bucket in sorted(by_type.items())
-    ]
-
-    title = site_label(vocabulary, "status_page_title", language)
-    description = site_label(vocabulary, "status_page_description", language)
-    sections = [
-        (site_label(vocabulary, "aggregate_by_language", language), language_rows),
-        (site_label(vocabulary, "aggregate_by_track", language), track_rows),
-        (site_label(vocabulary, "aggregate_by_section", language), section_rows),
-        (site_label(vocabulary, "aggregate_by_type", language), type_rows),
-    ]
-    return "\n\n".join(
-        [
-            "\n".join(
-                [
-                    "---",
-                    f"title: {json.dumps(title, ensure_ascii=False)}",
-                    f"description: {json.dumps(description, ensure_ascii=False)}",
-                    "---",
-                ]
-            ),
-            description,
-            *(f"## {heading}\n\n{_status_rows(rows, vocabulary, language)}" for heading, rows in sections),
-        ]
-    ) + "\n"
-
-
 def navigation_pages(
     output_root: Path,
     pages: list[MirroredPage],
     base: str,
     vocabulary: dict[str, Any],
     taxonomy: list[tuple[str, list[str]]],
-    *,
-    include_status: bool = False,
 ) -> list[list[NavigationPage]]:
     """Return complete, locale-isolated reading orders for footer pagination."""
     languages = sorted({page.language for page in pages})
@@ -544,14 +350,6 @@ def navigation_pages(
                 site_label(vocabulary, "home_title", lang),
             )
         ]
-        if include_status:
-            order.append(
-                NavigationPage(
-                    output_root / language / "status.md",
-                    f"{base}/{language}/status/",
-                    site_label(vocabulary, "status_page_title", lang),
-                )
-            )
         for track, sections in taxonomy:
             populated = [
                 section for section in sections if by_key.get((language, track, section))
@@ -633,14 +431,13 @@ def write_navigation(
     base: str,
     vocabulary: dict[str, Any],
     taxonomy: list[tuple[str, list[str]]],
-    progress_report: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Write the home, track and section index pages; return the sidebar tree.
 
     Replaces the flat "every question as one bullet" locale index. That page was
     the whole of the site's navigation, and Starlight, given no `sidebar` of its
     own, autogenerated a menu from the mirror's directory layout - which is
-    `{lang}/q/{id}/{slug}`, so the menu read `q` -> `cs-algo-0001` -> title.
+    `{lang}/q/{id}/{slug}`, so the menu read `q` -> `py-gil-0001` -> title.
 
     The shape here is the taxonomy instead: track, then section, then the
     questions listed on the section's own page. Order of tracks and sections is
@@ -746,17 +543,6 @@ def write_navigation(
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(home, encoding="utf-8", newline="\n")
 
-        if progress_report is not None:
-            status = output_root / language / "status.md"
-            status.write_text(
-                _status_page(progress_report, vocabulary, lang, taxonomy),
-                encoding="utf-8",
-                newline="\n",
-            )
-
-    if progress_report is not None:
-        sidebar.insert(0, {"slug": "status"})
-
     return sidebar
 
 
@@ -765,10 +551,8 @@ def generate(
     output: Path,
     base: str,
     *,
-    preview: bool = False,
     root: Path | None = None,
     sidebar_out: Path | None = None,
-    progress: Path | None = None,
 ) -> int:
     working_directory = Path.cwd().resolve()
     source = source.resolve()
@@ -791,20 +575,13 @@ def generate(
 
     parsed = [parse_question_file(path, content_root=source) for path in source_files]
     known_ids = {question.frontmatter.id for question in parsed}
-
-    progress_report: dict[str, Any] | None = None
-    if progress is not None:
-        progress = progress.resolve()
-        if not progress.is_file():
-            raise ValueError(f"progress report does not exist: {progress}")
-        progress_report = json.loads(progress.read_text(encoding="utf-8"))
-        reported_total = (
-            ((progress_report.get("aggregates") or {}).get("totals") or {}).get("total")
-        )
-        if reported_total != len(known_ids):
-            raise ValueError(
-                f"progress report is stale: reports {reported_total!r} questions, mirror has {len(known_ids)}"
-            )
+    # `qid:` link text: the target's title in the page's language, or the id
+    # when the target has no file in that language.
+    titles: dict[Language, dict[str, str]] = {
+        language: {qid: qid for qid in known_ids} for language in Language
+    }
+    for question in parsed:
+        titles[question.language][question.frontmatter.id] = question.frontmatter.title
 
     per_language_ids: set[tuple[str, str]] = set()
     for question in parsed:
@@ -818,32 +595,20 @@ def generate(
     try:
         mirrored: list[MirroredPage] = []
         for question, path in zip(parsed, source_files):
-            result = mirror_question(
-                question,
-                temporary,
-                base,
-                known_ids,
-                working_directory,
-                path,
-                vocabulary,
-                preview=preview,
+            mirrored.append(
+                mirror_question(
+                    question,
+                    temporary,
+                    base,
+                    titles[question.language],
+                    working_directory,
+                    path,
+                    vocabulary,
+                )
             )
-            if result is not None:
-                mirrored.append(result)
         taxonomy = ordered_tracks_and_sections(root / "meta" / "taxonomy.md")
-        sidebar = write_navigation(
-            temporary, mirrored, base, vocabulary, taxonomy, progress_report
-        )
-        add_pagination(
-            navigation_pages(
-                temporary,
-                mirrored,
-                base,
-                vocabulary,
-                taxonomy,
-                include_status=progress_report is not None,
-            )
-        )
+        sidebar = write_navigation(temporary, mirrored, base, vocabulary, taxonomy)
+        add_pagination(navigation_pages(temporary, mirrored, base, vocabulary, taxonomy))
         if output.exists():
             remove_tree(output)
         swap_tree(temporary, output)
@@ -878,17 +643,6 @@ def main() -> int:
         help="where to write the generated Starlight sidebar "
         "(default: <root>/site/src/generated/sidebar.json)",
     )
-    parser.add_argument(
-        "--preview",
-        action="store_true",
-        help="include draft/review questions, per the lifecycle table's preview column",
-    )
-    parser.add_argument(
-        "--progress",
-        type=Path,
-        default=None,
-        help="progress.json to render as localized status pages",
-    )
     args = parser.parse_args()
 
     try:
@@ -899,15 +653,12 @@ def main() -> int:
             args.source,
             args.out,
             args.base,
-            preview=args.preview,
             root=args.root,
             sidebar_out=sidebar_out,
-            progress=args.progress,
         )
     except (OSError, ValueError) as error:
         parser.error(str(error))
-    mode = "preview" if args.preview else "production"
-    print(f"Mirrored {count} question pages ({mode}) into {args.out.as_posix()}")
+    print(f"Mirrored {count} question pages into {args.out.as_posix()}")
     return 0
 
 

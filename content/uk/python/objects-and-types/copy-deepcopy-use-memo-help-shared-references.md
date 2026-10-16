@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0010
 title: "Чому `copy.deepcopy()` використовує memo і як це допомагає з shared references або cyclic structures?"
-description: "Memo – це словник {id(оригінал): копія}, який запобігає нескінченній рекурсії для циклічних посилань і уникає дублювання спільних об'єктів."
 track: python
 section: objects-and-types
-level: senior
-type: mechanism
-tags: [copy-deepcopy]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -102,11 +75,3 @@ class Node:
 - у разі реалізації `__deepcopy__` не реєструвати новий об'єкт у `memo` перед рекурсивним копіюванням дочірніх атрибутів, викликаючи переповнення стека на циклічних посиланнях;
 - можливість передати власний словник `memo` у виклик `copy.deepcopy(x, memo=custom_memo)`, наприклад, для заміни певних ресурсів (сокети, підключення до бази) на заглушки або збереження синглтонів;
 - враховувати накладні витрати: `deepcopy` формує словник із тисячами записів, тому для великих дерев даних часто доцільніше реалізовувати спеціалізований метод копіювання без проміжного хешування адрес.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0013
 title: "How does hashability differ from immutability, and why aren't these properties full synonyms?"
-description: "How does hashability differ from immutability, and why aren't these properties full synonyms?"
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -92,19 +65,3 @@ print(Point.__hash__ is None)  # True (Python sets __hash__ = None)
 - container immutability does not guarantee hashability: a `tuple` or `frozenset` is hashable only when every element inside it is hashable;
 - mutability does not preclude hashing by default: classes without `__eq__` remain hashable via object identity regardless of state mutations;
 - explicit contract for value-based equality: using custom objects as dictionary keys requires immutable fields and a matching `__hash__`, or `dataclass(frozen=True)`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

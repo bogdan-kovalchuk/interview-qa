@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0070
 title: "Який результат `sizeof(struct { char a; char b; int c; })` на типовому 32-bit ABI з 4-byte int alignment?"
-description: "За вказаного ABI два байти padding вирівнюють int, а sizeof структури дорівнює 8 байтам."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: gnu-c-struct-layout
     title: "GNU C Introduction and Reference Manual: Structure Layout"
     url: https://www.gnu.org/software/c-intro-and-ref/manual/html_node/Structure-Layout.html
-    accessed: 2026-10-04
-    kind: book
-    version: "current"
-    applicability: "Ілюструє типове вирівнювання й padding у структурах; точний layout залежить від реалізації та ABI."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -62,11 +39,3 @@ _Static_assert(sizeof(struct S) == 8, "unexpected ABI layout");
 У production коді, що серіалізує байти або описує hardware registers, не покладайся на візуальний підрахунок: перевіряй `_Alignof`, `offsetof` і `sizeof` для toolchain та прапорців цілі. Padding bytes не є полями протоколу й можуть мати значення, непридатні для wire format.[^iso-c-n1570]
 
 Після зміни compiler flags або ABI повтори перевірку, бо offsets можуть змінитися. Це особливо важливо, коли структура входить до binary interface між firmware модулями.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

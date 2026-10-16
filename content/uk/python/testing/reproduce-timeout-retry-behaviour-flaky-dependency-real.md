@@ -1,62 +1,27 @@
 ---
 id: py-testing-0006
 title: "Як відтворити timeout та retry behavior без flaky dependence від реального external service?"
-description: "Mock HTTP-клієнта з side_effect імітує послідовність помилок і успіх, а тест перевіряє кількість викликів і результат без реальної мережі та sleep."
 track: python
 section: testing
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: py314-library-unittest-mock-side-effect
     title: "Python 3.14: Library/unittest.mock (Mock.side_effect)"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock.side_effect
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Mock.side_effect: iterable має віддавати значення на кожен виклик; елемент-виняток кидається замість повернення значення."
 ---
 
 ## Short answer
@@ -109,23 +74,3 @@ Iterable у `side_effect` має віддавати значення на кож
 - тестувати retry з реальним `time.sleep`, через що тест чекає секунди;
 - перевіряти лише кількість викликів, без результату й без поведінки після вичерпання спроб;
 - задавати список `side_effect` коротшим за кількість викликів, через що тест падає на `StopIteration`.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

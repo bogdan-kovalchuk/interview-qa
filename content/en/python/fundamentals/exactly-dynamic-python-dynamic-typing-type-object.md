@@ -1,41 +1,18 @@
 ---
 id: py-fund-0004
 title: "What exactly is dynamic about Python's dynamic typing: the type of an object, or the binding of a name to an object?"
-description: "What exactly is dynamic about Python's dynamic typing: the type of an object, or the binding of a name to an object?"
 track: python
 section: fundamentals
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -87,11 +64,3 @@ This also explains why mutation and rebinding are different operations: `a.appen
 
 This is why the annotation `x: int` forbids nothing at run time: it states an intent for an external
 analyser, while the binding machinery stays exactly the same.[^py314-faq-general]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

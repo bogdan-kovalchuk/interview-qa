@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0106
 title: "Навіщо амперметр підключають послідовно, а не паралельно?"
-description: "Навіщо амперметр підключають послідовно, а не паралельно?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 11, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ammeter-usage
     title: "All About Circuits: Intro Lab - How to Use an Ammeter to Measure Current"
     url: https://www.allaboutcircuits.com/textbook/experiments/chpt-2/ammeter-usage/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює послідовне включення амперметра, його малий внутрішній опір і ризик паралельного підключення; конкретна модель приладу може мати інші характеристики."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Перед підключенням перевіряють гніздо щупа, режим і допустимий діапазон конкретного мультиметра. Розривають лише потрібну гілку, вмикають прилад послідовно та починають із більшого діапазону, якщо він вибирається вручну. Для струму всієї схеми амперметр ставлять у спільну ділянку до або після розгалуження; для струму окремої гілки – у саму гілку. Кліщовий амперметр є окремим способом вимірювання: його охоплюють навколо одного провідника, а не підключають щупами в розрив.[^aac-ammeter-usage]
 
 Приклад: якщо в послідовному колі через резистор тече 12 mA, у справному послідовно вставленому амперметрі теж має текти приблизно 12 mA. Якщо той самий прилад помилково поставити паралельно резистору, його малий опір може шунтувати резистор і спричинити аварійний струм. Типова помилка – переносити спосіб підключення вольтметра на режим амперметра: вольтметр підключають паралельно, бо він має великий вхідний опір, тоді як амперметр підключають послідовно.[^aac-ammeter-usage]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0041
 title: "Чому LTspice рекомендують як перший SPICE-симулятор?"
-description: "Чому LTspice рекомендують як перший SPICE-симулятор?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 31, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: analog-ltspice
     title: "Analog Devices: LTspice"
     url: https://www.analog.com/en/resources/design-tools-and-calculators/LTspice-simulator.html
-    accessed: 2026-10-04
-    kind: official
-    version: "26.1.1 page"
-    applicability: "Підтверджує безкоштовне поширення, захоплення схем, перегляд сигналів, приклади, моделі та доступність для Windows і macOS; не доводить універсальної переваги над іншими симуляторами."
 ---
 
 ## Short answer
@@ -54,7 +31,3 @@ LTspice поєднує введення схеми, розрахунок SPICE �
 
 - Вважати, що програма автоматично має точну модель кожної деталі; перевіряйте джерело й параметри моделі.
 - Сприймати гарний графік як підтвердження фізичної конструкції; результат описує задані моделі та умови, а не плату з її паразитними ефектами.
-
-## Sources
-
-<!-- generated from frontmatter -->

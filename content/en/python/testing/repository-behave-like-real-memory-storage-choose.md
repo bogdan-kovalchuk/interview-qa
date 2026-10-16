@@ -1,69 +1,30 @@
 ---
 id: py-testing-0010
 title: "For a repository that must behave like real in-memory storage, when should you choose a Fake, and when a Stub or an interaction-verifying Mock?"
-description: "For a repository that must behave like real in-memory storage, when should you choose a Fake, and when a Stub or an interaction-verifying Mock?"
 track: python
 section: testing
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: py314-library-unittest-mock-quick-guide
     title: "Python 3.14: Library/unittest.mock, Quick Guide"
     url: https://docs.python.org/3.14/library/unittest.mock.html#quick-guide
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Mock and MagicMock store details of how they have been used."
   - source_id: py314-library-unittest-mock-assert-called-with
     title: "Python 3.14: Library/unittest.mock, Mock.assert_called_with"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock.assert_called_with
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: assert_called_with checks that the last call of a mock was made with the given arguments."
 ---
 
 ## Short answer
@@ -117,19 +78,3 @@ To keep a Fake from drifting away from the real storage, run the same contract t
 - a Fake that implements only part of the contract (for example, `find` without a filter), so tests pass on wrong behaviour;
 - a Stub where the test reads back what was saved: it remembers nothing, so the mismatch stays hidden;
 - checking `save` with `assert_called_with` where the stored result matters: such a test breaks on a refactoring that does not change behaviour.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0005
 title: "Why doesn't `y = x` copy a mutable object, and how does a mutation through `y` become visible through `x`?"
-description: "Why doesn't `y = x` copy a mutable object, and how does a mutation through `y` become visible through `x`?"
 track: python
 section: objects-and-types
-level: middle
-type: mechanism
-tags: [y-x]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -82,11 +55,3 @@ print(deep)     # [1, [2, 3]]: completely isolated from mutations
 - creating nested lists via sequence multiplication: `matrix = [[0] * 3] * 3` produces an outer list with three references to the exact same inner list;
 - relying on shallow copies for nested structures: `x[:]` duplicates only the top-level container, leaving nested lists or dictionaries shared;
 - unintended side effects: passing a mutable object to a function permits in-place modifications that alter the caller's state without an explicit return statement.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0101
 title: "Формула загального опору для послідовних резисторів?"
-description: "Формула загального опору для послідовних резисторів?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 11, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-circuits
     title: "All About Circuits: Series Circuits and the Application of Ohm’s Law"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-series-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує правила послідовних кіл; числа залежать від заданих номіналів."
 ---
 
 ## Short answer
@@ -59,7 +32,3 @@ sources:
 - Не застосовуйте суму опорів до паралельного з’єднання: там резистори мають спільні два вузли, а струм розгалужується.
 - Не додавайте номінали, якщо між елементами є відгалуження або інші з’єднання, що створюють додатковий шлях. Спершу визначте топологію кола.
 - Формула описує базову модель; опір проводів, допуски компонентів і нагрів можуть вплинути на виміряний результат.[^aac-series-circuits]
-
-## Sources
-
-<!-- generated from frontmatter -->

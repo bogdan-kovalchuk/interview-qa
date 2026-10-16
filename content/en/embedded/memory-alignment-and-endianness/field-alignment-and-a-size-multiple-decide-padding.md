@@ -1,48 +1,21 @@
 ---
 id: emb-align-0003
 title: "Which two rules determine the padding in a struct?"
-description: "Each field is aligned to its natural alignment and the struct size is a multiple of the largest field alignment"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Struct miscellany"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary examples of structure padding, size, and member reordering in C++."
   - source_id: acode-next-cpp
     title: "aCode: End? What next?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian C++ learning roadmap; not a normative source for object layout."
 ---
 
 ## Short answer
@@ -88,7 +61,3 @@ sizeof(struct) = sum of field sizes + internal padding + trailing padding
 Do not serialize or map a hardware layout by copying a native structure blindly. Padding, member alignment, integer representation, and byte order are ABI properties. Define an explicit wire format, use fixed-width fields, and encode or decode each field; for a register map, follow the vendor layout and verify offsets with `_Static_assert` or `static_assert`.
 
 Reordering members by decreasing alignment often reduces padding, but it can change an ABI or binary format and therefore is only safe when the layout is under your control.
-
-## Sources
-
-<!-- generated from frontmatter -->

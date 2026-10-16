@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0007
 title: "Як побудувати lazy pipeline з `itertools`, щоб не матеріалізувати intermediate collections?"
-description: "Компонувати функції itertools у ланцюжок, де кожна приймає iterator і повертає iterator, пропускаючи дані element-by-element без проміжних списків."
 track: python
 section: comprehensions-and-functional
-level: middle
-type: practical
-tags: [itertools]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -88,23 +61,3 @@ for msg in first_ten:  # nothing is read from disk until this loop runs
 Перевага такого підходу – constant memory: pipeline обробляє по одному елементу за раз, тому розмір
 вхідних даних не обмежений об'ємом RAM, на відміну від ланцюжка list comprehensions, де кожна ланка
 створює власний повний список.[^py314-howto-functional]
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

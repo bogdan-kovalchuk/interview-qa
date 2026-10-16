@@ -1,48 +1,21 @@
 ---
 id: py-perf-0011
 title: "Why must the arguments to a function decorated with `lru_cache` be hashable, and what happens if you pass a `list` or `dict`?"
-description: "Why must the arguments to a function decorated with `lru_cache` be hashable, and what happens if you pass a `list` or `dict`?"
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: [lru-cache, list, dict]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: results are stored in a dict, so the arguments must be hashable; maxsize=None disables the LRU feature."
   - source_id: py314-library-functools-functools-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: functools.cache() returns the same as lru_cache(maxsize=None), that is, a cache without a size limit."
   - source_id: py314-glossary-term-hashable
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-hashable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of hashable; a tuple is hashable only if all its elements are hashable; instances of user-defined classes are hashable by default, with a hash derived from id()."
   - source_id: py314-reference-datamodel-object-hash
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__hash__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: when __hash__ is None, retrieving the hash raises TypeError; a class that defines __eq__ without __hash__ cannot be used as an item in hashable collections."
 ---
 
 ## Short answer
@@ -105,23 +78,3 @@ Workarounds depend on the function. Converting to a `tuple` or `frozenset` works
 - assuming that `functools.cache` accepts arguments that `lru_cache` rejects: the requirement is the same;
 - converting a `list` to a `tuple` without checking that the elements are hashable: `hash(tuple([[1]]))` still raises `TypeError`;
 - assuming that hashable guarantees an up-to-date result for a mutable object.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0005
 title: "Чим assignment expression `:=` відрізняється від звичайного присвоєння і коли його використання погіршує читабельність?"
-description: ":= є виразом: присвоює значення і повертає його, тоді як = є інструкцією (statement) і не має значення."
 track: python
 section: syntax-and-control-flow
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -88,19 +65,3 @@ results = [y for x in data if (y := transform(x)) is not None]
 `x := 5` – синтаксична помилка, бо це вираз, а не присвоєння; для звичайного присвоєння є `=`. Так
 само `:=` не працює з атрибутами й індексами: цілями можуть бути лише прості
 імена.[^py314-reference-expressions]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

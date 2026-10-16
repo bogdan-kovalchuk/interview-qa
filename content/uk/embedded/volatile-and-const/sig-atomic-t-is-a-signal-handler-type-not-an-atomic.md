@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0044
 title: "Trap: чи гарантує `volatile sig_atomic_t` ті самі властивості, що hardware atomic?"
-description: "`volatile sig_atomic_t` має вузьку гарантію C для signal handling, а не є універсальним atomic primitive для MCU ISR."
 track: embedded
 section: volatile-and-const
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -60,19 +41,3 @@ uint32_t snapshot = ticks; // volatile access, але не автоматичн�
 У цьому прикладі не можна оголосити `snapshot` узгодженим лише через `volatile`. Якщо CPU читає `uint32_t` однією неподільною інструкцією і переривання не може перервати доступ посередині, це може бути достатньо для простого читання на цій цілі; але це треба підтвердити документацією процесора, ABI та правилами компілятора. Для ширшого за native access значення можливе torn read, коли ISR оновлює частину байтів між операціями читання. Також окремо перевіряй, чи `++ticks` сам є неподільною операцією: читання, збільшення та запис можуть бути кількома інструкціями.[^iso-c-n1570]
 
 Типова пастка проявляється як рідкісне пошкоджене значення або втрачена подія під навантаженням. Не перенось ім’я `sig_atomic_t` на платформний ISR-код як універсальний рецепт. Визнач, які саме дані спільні, звір атомарну ширину з reference manual та compiler ABI, а коли гарантії немає – захисти коротку критичну ділянку чи застосуй atomic API, який підтримує ця платформа.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

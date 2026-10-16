@@ -1,69 +1,30 @@
 ---
 id: py-excpt-0015
 title: "Коли library має emit warning замість raise exception?"
-description: "Library має emit warning, коли умова не є фатальною і не робить результат некоректним, але користувач має знати про потенційну проблему."
 track: python
 section: exceptions
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-warnings-module
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#module-warnings
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: попередження видають там, де умова зазвичай не виправдовує exception і зупинки програми."
   - source_id: py314-library-warnings-categories
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#warning-categories
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: категорії попереджень; DeprecationWarning за замовчуванням ігнорується, крім випадку, коли її спричинив код у __main__; UserWarning є категорією за замовчуванням для warn(); RuntimeWarning для сумнівної поведінки під час виконання."
   - source_id: py314-library-warnings-warn
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#warnings.warn
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: warn() з stacklevel=2 вказує на викликача, а не на код функції-обгортки."
   - source_id: py314-library-warnings-filter
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#the-warnings-filter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: дія error перетворює відповідні попередження на exception."
 ---
 
 ## Short answer
@@ -118,19 +79,3 @@ except ValueError as exc:
 - піднімати warning там, де далі виконання дасть некоректний результат: користувач побачить текст повідомлення, а дані будуть уже зіпсовані;
 - не передавати `stacklevel=2` з бібліотечного `DeprecationWarning`: повідомлення вказуватиме на рядок у бібліотеці, а така категорія за замовчуванням не показується, тож користувач його не побачить;[^py314-library-warnings-categories]
 - змінювати глобальні фільтри `warnings` у коді бібліотеки: це впливає на весь процес, а не лише на її виклики.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

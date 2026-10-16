@@ -1,69 +1,30 @@
 ---
 id: py-itergen-0001
 title: "How does an iterable differ from an iterator, and what methods make up their respective protocols?"
-description: "An iterable provides an iterator, usually through __iter__(); an iterator keeps state, returns items through __next__(), and is itself iterable."
 track: python
 section: iterators-and-generators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-getitem
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getitem__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the sequence iteration protocol expects an IndexError for an illegal index as the end of the sequence."
   - source_id: py314-glossary-term-iterable
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of iterable, including objects with __getitem__() that implement sequence semantics."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of iterator; every iterator is also iterable because its __iter__() returns the iterator itself."
   - source_id: py314-library-functions-iter
     title: "Python 3.14: Library/functions"
     url: https://docs.python.org/3.14/library/functions.html#iter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the requirements on the iter() argument, either the iteration protocol (__iter__()) or the sequence protocol (__getitem__() with integer arguments starting at 0)."
 ---
 
 ## Short answer
@@ -98,19 +59,3 @@ Not every iterable has `__iter__()`. A class that has only `__getitem__()` also 
 - treating iterable and iterator as synonyms and calling `next()` on a list: `next([1, 2])` raises `TypeError: 'list' object is not an iterator`;
 - looking for `__next__()` on a `list`, `tuple` or `str`: these are iterables, not iterators;
 - assuming an iterator can be looped over twice: once exhausted, it does not start again.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

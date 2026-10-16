@@ -1,41 +1,18 @@
 ---
 id: py-fund-0008
 title: "A plugin receives a callback name as a string: when is it appropriate to use `getattr(plugin, name)`, and when is an explicit registry of allowed callbacks a safer API?"
-description: "A plugin receives a callback name as a string: when is it appropriate to use `getattr(plugin, name)`, and when is an explicit registry of allowed callbacks a safer API?"
 track: python
 section: fundamentals
-level: middle
-type: comparison
-tags: [getattr-plugin-name]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -85,19 +62,3 @@ The last thing that is easy to forget: `getattr` makes the connection invisible 
 search for the method name will not find the call site, and an IDE will not show that the method is
 used at all.[^py314-reference-executionmodel] For an internal API that is an argument against; for a
 plugin API whose implementations other people write, it is an acceptable price for extensibility.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0019
 title: "Коли `asyncio.to_thread()` доречний для blocking function у асинхронній application?"
-description: "to_thread() доречний для I/O-bound blocking функцій (файлові операції, blocking сторонні бібліотеки), щоб не блокувати event loop; для CPU-bound краще ProcessPoolExecutor."
 track: python
 section: asyncio
-level: middle
-type: practical
-tags: [asyncio-to-thread]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,23 +42,3 @@ bytecode-інструкціями достатньо, щоб дати реаль
 головним thread-ом за GIL і навіть додає overhead на перемикання контексту. У цьому випадку
 потрібен окремий процес через `ProcessPoolExecutor`, де кожен worker має власний інтерпретатор і
 власний GIL.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

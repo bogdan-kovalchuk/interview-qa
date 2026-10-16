@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0056
 title: "Що означає `static const` для таблиці всередині C-файлу?"
-description: "static обмежує linkage цим translation unit, а const робить дані read-only через цей identifier."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,7 +31,3 @@ Internal linkage залишає таблицю приватною деталлю
 Приклад: `static const uint16_t gains[] = { 10, 20, 40 };` дає локальне для translation unit ім’я `gains`, а `gains[0] = 5` є недопустимим присвоєнням. Якщо таблиця потрібна іншим файлам, визнач її один раз без `static`, а в заголовку оголоси відповідний `extern` з узгодженим типом.[^iso-c-n1570]
 
 **Типова помилка:** вважати, що ключове слово саме переносить дані у Flash. Воно задає правила мови для linkage і модифікації через тип; фізичний образ пам’яті визначає збірка прошивки. Перевір адресу й секцію в map-файлі.
-
-## Sources
-
-<!-- generated from frontmatter -->

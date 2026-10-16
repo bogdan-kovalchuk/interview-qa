@@ -1,55 +1,24 @@
 ---
 id: emb-elintro-0095
 title: "Що таке коефіцієнт потужності cos(θ) і чому він важливий для енергетики?"
-description: "Що таке коефіцієнт потужності cos(θ) і чому він важливий для енергетики?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 10, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-power-factor
     title: "All About Circuits: Calculating Power Factor"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-11/calculating-power-factor/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Визначає коефіцієнт потужності синусоїдального кола та пояснює вплив реактивної потужності на струм лінії й корекцію."
   - source_id: aac-sinusoidal-real-power
     title: "All About Circuits: Sinusoidal Steady-State Power Calculations"
     url: https://www.allaboutcircuits.com/technical-articles/sinusoidal-steady-state-power-calculations/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує співвідношення між активною потужністю, RMS-значеннями та фазовою різницею для синусоїдальних сигналів."
 ---
 
 ## Short answer
@@ -69,7 +38,3 @@ sources:
 **Типові помилки:**
 - Називати коефіцієнт потужності часткою «корисної» енергії без визначення повної потужності та режиму сигналів.
 - Вважати, що `cos(phi)` повністю описує коефіцієнт потужності за спотвореного струму: для несинусоїдальних сигналів гармоніки також впливають на відношення `P/S`.[^aac-power-factor]
-
-## Sources
-
-<!-- generated from frontmatter -->

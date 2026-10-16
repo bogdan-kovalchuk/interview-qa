@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0045
 title: "Чому peripheral register struct fields оголошують як `volatile`?"
-description: "Бо кожне поле struct overlay представляє hardware register, а не звичайне RAM-поле."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -60,7 +41,3 @@ typedef struct {
 Цей приклад показує лише ідею доступу. Реальна структура повинна точно відповідати register map виробника: порядок, offsets, reserved regions і допустимі ширини запису не можна вивести з C-коду. Деякі регістри очищуються записом одиниці, мають read-to-clear semantics або забороняють read-modify-write; для них звичайне `|=` може бути хибним навіть за наявності `volatile`. Такі правила визначає reference manual MCU.[^iso-c-n1570]
 
 Не покладайся на `volatile` як на загальну memory barrier, mutex чи гарантію атомарності. Воно саме по собі не забезпечує узгодження кількох полів між ISR та main і не гарантує, що bus виконає доступ потрібною периферії шириною. Для цього потрібні вимоги конкретного пристрою, компілятора та архітектури. Типова помилка – оголосити весь struct volatile і вважати, що цим уже забезпечено правильні offsets та безпечні операції; перевіряй обидва аспекти окремо.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

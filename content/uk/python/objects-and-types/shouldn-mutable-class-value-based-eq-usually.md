@@ -1,51 +1,21 @@
 ---
 id: py-objtypes-0012
 title: "Чому mutable class із value-based `__eq__` зазвичай не повинна успадковувати identity-based hash від `object`?"
-description: "Контракт Python вимагає: якщо два об'єкти рівні за __eq__, вони повинні мати однаковий hash; identity-based hash від object використовує унікальний id(), тому рівні за значенням об'єкти потраплять у різні hash-корзини..."
 track: python
 section: objects-and-types
-level: senior
-type: mechanism
-tags: [eq, object]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -95,11 +65,3 @@ print(len(points))            # 2 (duplicate entries in a set)
 - незмінність гешованих полів: якщо об'єкт гешується за значеннями своїх атрибутів, ці атрибути мають бути незмінними (наприклад, через `frozen=True` у dataclass або read-only property);
 - ризик мутації в колекції: зміна поля, від якого залежить геш, після додавання в `dict` або `set`, робить об'єкт «загубленим» у структурі даних без можливості зчитування чи видалення;
 - явний вибір дизайну: якщо сутність є мутабельною, її слід або залишити негешованою (`__hash__ = None`), або спиратися суто на ідентичність і для рівності, і для гешування (`object.__eq__` та `object.__hash__`).
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

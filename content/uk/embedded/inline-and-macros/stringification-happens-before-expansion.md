@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0014
 title: "Trap: чому `STR(__LINE__)` дає `\"__LINE__\"`, а не номер рядка?"
-description: "Оператор # стрінгіфікує текст аргументу до його розгортання, тому потрібен проміжний рівень – two-level stringification idiom."
 track: embedded
 section: inline-and-macros
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -75,19 +56,3 @@ XSTR(COUNT)  /* "25" */
 
 - Вважати, що `#` спершу виконує розгортання, а потім перетворює результат на рядок.
 - Записати `#` у зовнішньому макросі й очікувати, що вкладений виклик змінить цей порядок.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

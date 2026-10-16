@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0007
 title: "Чим implicit exception chaining відрізняється від явного `raise NewError(...) from original`?"
-description: "Implicit chaining автоматично встановлює __context__, коли новий exception виникає під час обробки іншого; явний from встановлює __cause__ і позначає прямий причинний зв’язок."
 track: python
 section: exceptions
-level: middle
-type: comparison
-tags: [raise-newerror-from-original]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -89,19 +66,3 @@ except NewError as err:
 - вважати, що implicit chaining треба вмикати: він спрацьовує сам, якщо `raise` виконується під час обробки іншого exception;
 - вважати, що `from` стирає `__context__`: атрибут лишається, змінюється лише показ у traceback;
 - вважати, що `from` ловить exception: він лише називає причину нового exception, а ловить `except`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

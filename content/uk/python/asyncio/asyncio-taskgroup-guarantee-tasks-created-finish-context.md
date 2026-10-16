@@ -1,41 +1,18 @@
 ---
 id: py-async-0009
 title: "Як `asyncio.TaskGroup` гарантує, що створені в ньому Tasks завершаться до виходу з context manager?"
-description: "TaskGroup – асинхронний context manager, який у __aexit__ неявно очікує завершення всіх Tasks, створених через tg.create_task(), і не вийде з блоку, поки вони не завершаться."
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: [asyncio-taskgroup]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -63,11 +40,3 @@ Tasks у групі та чекає, поки вони теж завершать
 `create_task()` можна викликати лише всередині самого блоку `async with`; спроба додати нову Task
 після початку `__aexit__` (наприклад, з callback-а іншої задачі) підніме `RuntimeError`, бо група
 вже перейшла у стан завершення і більше не приймає нових членів.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

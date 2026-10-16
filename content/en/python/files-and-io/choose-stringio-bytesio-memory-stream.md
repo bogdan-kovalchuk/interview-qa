@@ -1,104 +1,45 @@
 ---
 id: py-fileio-0014
 title: "When should you choose `StringIO`, and when `BytesIO`, for an in-memory stream?"
-description: "When should you choose `StringIO`, and when `BytesIO`, for an in-memory stream?"
 track: python
 section: files-and-io
-level: middle
-type: comparison
-tags: [stringio, bytesio]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-io-stringio
     title: "Python 3.14: Library/io (StringIO)"
     url: https://docs.python.org/3.14/library/io.html#io.StringIO
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: StringIO is a text stream in memory, inherits from TextIOBase, and has a newline parameter."
   - source_id: py314-library-io-bytesio
     title: "Python 3.14: Library/io (BytesIO)"
     url: https://docs.python.org/3.14/library/io.html#io.BytesIO
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: BytesIO is a binary stream in memory, inherits from BufferedIOBase."
   - source_id: py314-library-io-binary-io
     title: "Python 3.14: Library/io (Binary I/O)"
     url: https://docs.python.org/3.14/library/io.html#binary-io
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: binary streams accept bytes-like objects and perform no encoding, decoding, or newline translation."
   - source_id: py314-library-io-bytesio-getbuffer
     title: "Python 3.14: Library/io (BytesIO.getbuffer)"
     url: https://docs.python.org/3.14/library/io.html#io.BytesIO.getbuffer
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: getbuffer() returns a view without copying; while the view exists, the BytesIO cannot be resized or closed."
   - source_id: py314-library-io-textiowrapper
     title: "Python 3.14: Library/io (TextIOWrapper)"
     url: https://docs.python.org/3.14/library/io.html#io.TextIOWrapper
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: TextIOWrapper is a buffered text stream over a binary buffer, with encoding and write_through parameters."
 ---
 
 ## Short answer
@@ -146,19 +87,3 @@ If text must be written to a binary buffer, wrap the `BytesIO` in an `io.TextIOW
 - writing `str` into a `BytesIO`, or bytes into a `StringIO`: both raise `TypeError`;
 - choosing `StringIO` for a binary format (images, packets): it does not accept bytes, so you would have to invent an encoding that the format does not define;
 - encoding text with `.encode()` in one place and decoding it with a different encoding somewhere else.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,62 +1,27 @@
 ---
 id: py-testing-0017
 title: "Why doesn't 100% line coverage prove that all important behaviours and assertions have been checked?"
-description: "Line coverage shows only which lines ran: it does not see an untaken if-branch or a test without assertions, so 100% does not prove the behaviour is checked."
 track: python
 section: testing
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: coverage-branch
     title: "Coverage.py 7.16.2: Branch coverage measurement"
     url: https://coverage.readthedocs.io/en/latest/branch.html#branch-coverage-measurement
-    accessed: 2026-10-13
-    kind: official
-    version: "7.16.2"
-    applicability: "Official coverage.py 7.16.2 documentation: statement coverage versus branch coverage, partial branches and the --branch option."
 ---
 
 ## Short answer
@@ -100,23 +65,3 @@ Coverage does not know what the correct result is, so 100% does not prove correc
 - treating 100% line coverage as proof that all branches and behaviour are checked;
 - writing tests without assertions "for coverage";
 - not noticing that an `if` without `else` needs a test with both values of the condition.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

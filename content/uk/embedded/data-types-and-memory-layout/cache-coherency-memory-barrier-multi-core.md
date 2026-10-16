@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0106
 title: "Що таке cache coherency і memory barrier у multi-core MCU, MPU або Embedded Linux системі?"
-description: "Cache coherency означає узгодженість даних між CPU caches, DMA і peripheral views of memory. Memory barrier задає порядок memory operations, щоб CPU/compiler не переставили critical accesses."
 track: embedded
 section: data-types-and-memory-layout
-level: senior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: linux-memory-barriers
     title: "Linux kernel memory barriers"
     url: https://docs.kernel.org/core-api/wrappers/memory-barriers.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює ordering, coherency та окрему потребу в cache maintenance для DMA у контексті Linux kernel; це не універсальний API для MCU."
 ---
 
 ## Short answer
@@ -58,11 +35,3 @@ Memory barrier розв’язує іншу задачу: він обмежує 
 - Вважати, що будь-який memory barrier очищає D-cache.
 - Припускати, що кожен DMA-пристрій автоматично coherent із CPU.
 - Переносити cache-maintenance послідовність між архітектурами без перевірки API та меж cache line.[^linux-memory-barriers]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0014
 title: "What failure and cancellation semantics of `gather()` must be taken into account so sibling work isn't left unsupervised?"
-description: "What failure and cancellation semantics of `gather()` must be taken into account so sibling work isn't left unsupervised?"
 track: python
 section: asyncio
-level: senior
-type: pitfall
-tags: [gather]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -71,23 +48,3 @@ without explicitly cancelling the rest.
 with no manual code needed. The manual alternative without `TaskGroup` is to keep a list of Tasks,
 wrap `gather()` in `try/except`, and in the `except` clause explicitly call `.cancel()` on every Task
 that has not finished yet.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

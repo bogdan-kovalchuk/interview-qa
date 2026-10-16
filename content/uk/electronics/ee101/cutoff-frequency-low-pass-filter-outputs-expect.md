@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0103
 title: "Яка частота зрізу RC-ФНЧ з 1 kΩ і 100 nF і які виходи очікувати при 1 V RMS на 160 Hz, 1.59 kHz і 15.9 kHz?"
-description: "Яка частота зрізу RC-ФНЧ з 1 kΩ і 100 nF і які виходи очікувати при 1 V RMS на 160 Hz, 1.59 kHz і 15.9 kHz?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 50, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-low-pass
     title: "All About Circuits: Low-pass Filters"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/low-pass-filters/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує частоту зрізу, точку 70,7% і залежність реального результату від навантаження для простого RC-ФНЧ."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 ```
 
 Це розрахунок для номінальних компонентів, ідеального джерела та виходу без навантаження; реальний опір входу наступного каскаду може змінити і підсилення, і частоту зрізу. На частоті зрізу вихід також має фазове відставання 45° в цій схемі. Типова помилка – вважати, що «частота зрізу» повністю припиняє сигнал, хоча спад є плавним, або що значення 0.707 є половиною амплітуди; це близько половини потужності за однакових опорів.[^aac-low-pass]
-
-## Sources
-
-<!-- generated from frontmatter -->

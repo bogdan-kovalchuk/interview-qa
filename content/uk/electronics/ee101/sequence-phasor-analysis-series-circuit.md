@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0072
 title: "Яка послідовність фазорного аналізу послідовного RC-кола?"
-description: "Яка послідовність фазорного аналізу послідовного RC-кола?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 44, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-rc-analysis
     title: "All About Circuits: Series Resistor-Capacitor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-4/series-resistor-capacitor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує обчислення єдиного струму, сумарного комплексного імпедансу та фазорних напруг у послідовному RC-колі."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 **Приклад розрахунку:** для `R = 1 kΩ`, `C = 100 nF`, `f = 1 kHz` і джерела `1 V RMS` реактивний опір становить приблизно `1.592 kΩ`. Сумарний імпеданс – `1000 - j1592 Ω`, його модуль близько `1.880 kΩ`, а струм – приблизно `0.532 mA` з додатною фазою близько 58°. Напруга на резисторі має фазу струму, а напруга конденсатора відстає від нього на 90°; у сумі вони повертають фазор джерела.[^aac-series-rc-analysis]
 
 Модель передбачає лінійні ідеальні елементи та синусоїдальний усталений режим. Паразитний ESR конденсатора, опір джерела й навантаження можуть змінити результат реального кола. Не підміняйте комплексний баланс скалярною сумою модулів: фазова різниця означає, що довжини векторів не складаються арифметично.[^aac-series-rc-analysis]
-
-## Sources
-
-<!-- generated from frontmatter -->

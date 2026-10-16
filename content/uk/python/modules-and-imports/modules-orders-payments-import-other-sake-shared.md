@@ -1,48 +1,21 @@
 ---
 id: py-modimp-0009
 title: "Модулі `orders` і `payments` імпортують один одного заради спільного protocol: який dependency-direction refactoring усуне cycle краще за local import?"
-description: "Винести спільний protocol (або abstract base class) у третій модуль – наприклад, interfaces.py – щоб orders і payments залежали від нього, а не один від одного."
 track: python
 section: modules-and-imports
-level: senior
-type: practical
-tags: [orders, payments]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-library-typing-nominal-vs-structural-subtyping
     title: "Python 3.14: Library/typing (Nominal vs structural subtyping)"
     url: https://docs.python.org/3.14/library/typing.html#nominal-vs-structural-subtyping
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Структурна сумісність протоколів: клас відповідає протоколу без явного успадкування, а перевіряє це статичний type checker."
 ---
 
 ## Short answer
@@ -101,23 +74,3 @@ print(service.place(7, 100))
 - вважати, що local import «виправляє» архітектуру: він лише відкладає імпорт, а залежність лишається;
 - додати в `interfaces.py` конкретні класи `orders` або `payments`: тоді третій модуль знову імпортує обидва, і цикл повертається;
 - брати ABC замість protocol без причини: ABC зазвичай вимагає явного успадкування, тож реалізація мусить імпортувати `interfaces`.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0145
 title: "Коли замість стабілітрона з резистором краще використати інтегральний стабілізатор?"
-description: "Коли замість стабілітрона з резистором краще використати інтегральний стабілізатор?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 58, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: nexperia-an90031
     title: "Nexperia AN90031: Zener diodes – physical basics, parameters and application examples"
     url: https://assets.nexperia.com/documents/application-note/AN90031.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. 3.0, 7 June 2023"
-    applicability: "Динамічний опір стабілітрона r_dif = ΔV_Z/ΔI_Z > 0; розділ 3: простий стабілізатор із резистором R1 для невеликих потужностей, вибір R1 = (V_IN - V_Z)/(I_Z(min) + I_LOAD(max)), максимальна потужність стабілітрона без навантаження P_ZD1 = V_Z*(V_IN - V_Z)/R1; дані наведено для серій Nexperia, інші виробники можуть мати інші числа."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Розділ 3.2.6: стабілітронний стабілізатор із обмежувальним резистором, розподіл струму між стабілітроном і навантаженням, втрата регуляції за надто великого струму навантаження (резистор утворює дільник із навантаженням), максимум розсіювання стабілітрона без навантаження, зауваження про низьку ефективність; книга не наводить даних конкретних інтегральних стабілізаторів."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: ti-lm340
     title: "TI: LM340, LM340A, LM7805 family wide VIN 1.5-A fixed voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/lm340.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SNOSBT0L, September 2016"
-    applicability: "Таблиця LM340A (V_O = 5 В, V_I = 10 В): load regulation до 25 мВ для 5 мА ≤ I_O ≤ 1,5 А (25 °C), quiescent current до 6 мА, dropout 2 В (типово) за 1 А, струм короткого замикання 2,1 А (типово); внутрішнє обмеження струму, thermal shutdown понад 150 °C і формула P_DMAX = (T_JMAX - T_A)/θ_JA. Значення стосуються цієї родини, не всіх інтегральних стабілізаторів."
 ---
 
 ## Short answer
@@ -78,7 +43,3 @@ sources:
 - Розраховувати `R1` лише під типовий струм, а не під максимальний: на піку навантаження стабілітрон вийде з пробою й стабілізація зникне.[^fiore-rectification]
 - Забувати про розсіювання стабілітрона за відключеного навантаження: саме там потужність максимальна.[^nexperia-an90031]
 - Вважати лінійний інтегральний стабілізатор «безвтратним»: він розсіює різницю між входом і виходом і потребує dropout.[^ti-lm340]
-
-## Sources
-
-<!-- generated from frontmatter -->

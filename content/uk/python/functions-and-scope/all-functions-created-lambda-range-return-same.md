@@ -1,55 +1,21 @@
 ---
 id: py-funcs-0016
 title: "Чому всі функції, створені як `[lambda: i for i in range(3)]`, після завершення comprehension повертають те саме значення?"
-description: "Усі lambda захоплюють одну й ту саму змінну i, а не її значення на момент створення; після завершення comprehension вона дорівнює 2, тож кожен виклик повертає 2."
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: [lambda-i-for-i-in-range-3]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-why-do-lambdas-defined-in-a-loop-with
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-do-lambdas-defined-in-a-loop-with-different-values-all-return-the-same-result
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, FAQ: lambda, створені в циклі, читають змінну під час виклику, а не визначення."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Function definitions: default parameter values обчислюються один раз, під час виконання визначення функції."
   - source_id: py314-reference-expressions-lambda
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambda
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ lambda: lambda поводиться як функція, визначена через def, і має той самий синтаксис параметрів."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dictionaries
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Displays for lists, sets and dictionaries: comprehension виконується у власному implicitly nested scope, тому його імена не витікають у зовнішній scope."
 ---
 
 ## Short answer
@@ -84,23 +50,3 @@ print([f() for f in fixed])  # [0, 1, 2]: each lambda has its own parameter i
 - вважати, що `[lambda: i for i in range(3)]` дає 0, 1, 2, бо значення нібито фіксується на кожній ітерації;
 - додати default до lambda, яку `map` або callback викликає з аргументами, і не помітити, що аргумент замінює default;
 - шукати `i` після comprehension: змінна не лишається в зовнішньому scope, тому `print(i)` дає `NameError`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

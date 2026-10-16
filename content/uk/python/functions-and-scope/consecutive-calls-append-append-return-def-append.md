@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0006
 title: "Що повернуть два послідовні виклики `append(1)` і `append(2)` для `def append(x, items=[]): items.append(x); return items`, і чому?"
-description: "append(1) повертає [1], append(2) повертає [1, 2] – обидва виклики працюють з одним і тим самим списком."
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: [append-1, append-2, def-append-x-items-items-append-x-return-items]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-why-are-default-values-shared-between
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-are-default-values-shared-between-objects
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -64,23 +45,3 @@ print(first)                  # [1, 2, 3, 4]: the earlier result changed too
 - вважати, що кожен виклик без `items` отримує новий порожній список;
 - зберегти результат першого виклику і очікувати, що він не зміниться після другого;
 - писати `items=[]` або `items={}` у функції, яка змінює цей аргумент.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

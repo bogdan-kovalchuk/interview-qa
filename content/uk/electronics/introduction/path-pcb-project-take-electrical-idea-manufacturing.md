@@ -1,55 +1,24 @@
 ---
 id: emb-elintro-0309
 title: "Який шлях проходить проєкт друкованої плати від електричної ідеї до замовлення виробництва?"
-description: "Який шлях проходить проєкт друкованої плати від електричної ідеї до замовлення виробництва?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 2, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: sparkfun-eagle-board-layout
     title: "SparkFun Learn: Using EAGLE – Board Layout"
     url: https://learn.sparkfun.com/tutorials/using-eagle-board-layout/all
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Приклад потоку PCB у EAGLE: перенесення схеми в компонування, трасування, формування Gerber і передавання файлів виробнику; перелік файлів та інтерфейс залежать від CAD і фабрики."
   - source_id: altium-drc
     title: "Altium Designer Documentation: Design Rule Check"
     url: https://www.altium.com/documentation/altium-designer/pcb/drc
-    accessed: 2026-10-04
-    kind: official
-    version: "updated 2024-06-07"
-    applicability: "Пояснює перевірки DRC для цілісності схеми плати та порушень заданих правил; DRC не доводить, що дизайн функціонально правильний."
 ---
 
 ## Short answer
@@ -73,7 +42,3 @@ sources:
 - Вважати, що принципова схема автоматично створює готову плату: вона задає електричні зв’язки, а компонування й трасування потребують окремої роботи.
 - Вважати успішний DRC доказом правильної роботи кола: це лише перевірка вибраних правил конструкції.
 - Надіслати фабриці тільки файл проєкту CAD, не перевіривши, які Gerber, drill, stackup чи інші дані потрібні саме їй.[^sparkfun-eagle-board-layout]
-
-## Sources
-
-<!-- generated from frontmatter -->

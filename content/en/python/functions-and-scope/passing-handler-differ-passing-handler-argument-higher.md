@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0020
 title: "How does passing `handler` differ from passing `handler()` as an argument to a higher-order function?"
-description: "How does passing `handler` differ from passing `handler()` as an argument to a higher-order function?"
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [handler]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-objects-values-and-types
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#objects-values-and-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: evaluation order of call arguments."
   - source_id: py314-reference-expressions-lambdas
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambdas
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a lambda creates a function object from a single expression."
 ---
 
 ## Short answer
@@ -78,19 +55,3 @@ If the handler needs arguments, `register(handler(42))` again runs the function 
 - writing `register(handler())` instead of `register(handler)`: registration succeeds without an exception, so the mistake is easy to miss;
 - thinking `handler()` only passes the function along: in fact the function runs right there and then;
 - passing `handler(42)` where a deferred call is needed; use `lambda: handler(42)` instead.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

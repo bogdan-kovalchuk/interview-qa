@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0013
 title: "Як KCL доводить формулу паралельного з’єднання резисторів?"
-description: "Як KCL доводить формулу паралельного з’єднання резисторів?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-parallel-resistors
     title: "All About Circuits: Resistance in Parallel Networks"
     url: https://www.allaboutcircuits.com/technical-articles/resistance-in-parallel-networks
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Однакова напруга паралельних гілок, сума струмів за KCL і формула еквівалентного опору резисторів."
 ---
 
 ## Short answer
@@ -64,7 +41,3 @@ R_eq = 6 V / 9 mA = 0.667 kΩ
 **Типова помилка:**
 
 - Додавати опори паралельних гілок напряму. Складаються провідності `1/R`; сума опорів стосується послідовного з’єднання.[^aac-parallel-resistors]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,62 +1,27 @@
 ---
 id: emb-cppoop-0029
 title: "Чим static member function відрізняється від звичайної?"
-description: "Static member function не має this – не прив’язана до екземпляра."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-static
     title: "C++ working draft: Static members ([class.static])"
     url: https://eel.is/c++draft/class.static
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що static member можна назвати як X::s без об’єкта (або через об’єктний вираз, який обчислюється), що static member function не має this і не може бути const, volatile чи virtual. Не описує, як компілятор викликає таку функцію."
   - source_id: cpp-draft-expr-prim-this
     title: "C++ working draft: This ([expr.prim.this])"
     url: https://eel.is/c++draft/expr.prim.this
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Підтверджує, що this є вказівником на об’єкт, для якого викликано нестатичну member-функцію; не визначає, як саме його передає ABI."
   - source_id: cpp-draft-expr-unary-op
     title: "C++ working draft: Unary operators ([expr.unary.op])"
     url: https://eel.is/c++draft/expr.unary.op
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що & до qualified-id нестатичного члена дає pointer to member, а в решті випадків – звичайний «pointer to T», і що static та нестатична функції дають різні типи (pointer to function проти pointer to member function). Нічого не каже про language linkage."
   - source_id: cpp-draft-dcl-link
     title: "C++ working draft: Linkage specifications ([dcl.link])"
     url: https://eel.is/c++draft/dcl.link
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що типи функцій за замовчуванням мають C++ language linkage і що типи функцій з різним language linkage – різні типи. Не оцінює, як окремі компілятори на практиці приймають або відхиляють таку різницю."
 ---
 
 ## Short answer
@@ -96,7 +61,3 @@ private:
 - Перетворити `void *ctx` на інший тип, ніж той, з якого його отримали: це помилка, зазвичай undefined behavior.
 - Знищити об’єкт, поки callback ще зареєстрований: `ctx` стає висячим вказівником.
 - Покладатися на те, що компілятор прийме static member замість `extern "C"` callback скрізь: стандарт цього не гарантує.[^cpp-draft-dcl-link]
-
-## Sources
-
-<!-- generated from frontmatter -->

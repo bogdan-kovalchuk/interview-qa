@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0036
 title: "Яке значення матиме `next` і чому?"
-description: "next == 0 – wraparound на початок буфера."
 track: embedded
 section: common-code-patterns
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Підтверджує integer promotions (6.3.1.1), побітове AND (6.5.10) і арифметику unsigned за модулем (6.2.5, пункт 9); не описує конкретних пристроїв і тулчейнів."
   - source_id: linux-circular-buffers
     title: "Circular Buffers (The Linux Kernel documentation)"
     url: https://www.kernel.org/doc/html/latest/core-api/circular-buffers.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Підтверджує, що для кільцевого буфера розміру степеня двійки замість модуля (ділення) використовують побітове AND, а індекс загортається виразом `(head + 1) & (size - 1)`; буфер вважають повним, коли `head` на одиницю менший за `tail`. Це документація ядра Linux, не специфікація для MCU."
 ---
 
 ## Question code
@@ -77,7 +54,3 @@ _Static_assert(RB_SIZE != 0u && (RB_SIZE & RB_MASK) == 0u,
 - Брати `RB_SIZE`, який не є степенем двійки (6, 10, 100), і все одно маскувати `SIZE - 1`.
 - Плутати маску з розміром: писати `& RB_SIZE` замість `& (RB_SIZE - 1)`.
 - Забувати, що повний буфер за схемою `next == tail` вміщує `N - 1` елементів.
-
-## Sources
-
-<!-- generated from frontmatter -->

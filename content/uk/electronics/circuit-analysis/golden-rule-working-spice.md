@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0044
 title: "Яке золоте правило роботи з SPICE?"
-description: "Яке золоте правило роботи з SPICE?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 31, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ngspice-manual-models
     title: "ngspice User's Manual: Device Models and Analyses"
     url: https://ngspice.sourceforge.io/docs/ngspice-manual.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "current manual"
-    applicability: "Описує обчислення на основі netlist, моделей і вибраного аналізу; підстави для порівняння з фізичним прототипом є інженерною практикою, а не гарантією симулятора."
 ---
 
 ## Short answer
@@ -54,7 +31,3 @@ sources:
 
 - Вважати, що симулятор перевірив реальні допуски, нагрівання або паразитні зв’язки, хоча їх не задано.
 - Довіряти одному графіку без sanity check за законом Ома, енергетичним балансом і доступними межами компонента.
-
-## Sources
-
-<!-- generated from frontmatter -->

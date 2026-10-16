@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0107
 title: "Що показує лабораторний блок живлення, коли до виходу нічого не підключено?"
-description: "Що показує лабораторний блок живлення, коли до виходу нічого не підключено?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 11, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-open-circuit
     title: "All About Circuits: Resistance"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-1/resistance/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує, що розімкнуте коло не проводить струм; показ дисплея залежить від моделі лабораторного джерела."
 ---
 
 ## Short answer
@@ -56,7 +29,3 @@ sources:
 Тому значення залежить від того, який саме індикатор мається на увазі. Вольтметр відображає встановлену напругу, якщо вихід увімкнений; амперметр показує 0 A або дуже мале значення, зумовлене похибкою чи внутрішніми струмами самого приладу. Якщо вихід вимкнений кнопкою `OUTPUT`, показ напруги може бути нульовим, навіть коли регулятор напруги встановлений вище нуля. Поведінка дисплея, роздільність і те, чи вимірюється струм на виході, залежать від конкретної моделі джерела.[^aac-open-circuit]
 
 Після підключення резистора коло замикається, і струм приблизно визначається законом Ома. Наприклад, для ідеального джерела 5 V та резистора 1 kΩ струм становив би 5 mA; реальний результат також залежить від похибки компонентів, опору проводів і встановленого ліміту струму. Якщо навантаження потребує більше струму, ніж дозволяє ліміт, джерело переходить у режим стабілізації струму й вихідна напруга зменшується. Отже, правильна коротка відповідь про індикатор струму – нуль без навантаження, але це не прогноз для індикатора напруги чи для вимкненого виходу.[^aac-open-circuit]
-
-## Sources
-
-<!-- generated from frontmatter -->

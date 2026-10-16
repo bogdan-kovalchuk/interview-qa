@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0011
 title: "Коли comprehension зазвичай читабельніший за `map()` або `filter()`, а коли callable composition перемагає?"
-description: "Comprehension перемагає, коли потрібно поєднати фільтрацію й трансформацію в одному виразі або коли логіка вимагає inline-умови."
 track: python
 section: comprehensions-and-functional
-level: middle
-type: comparison
-tags: [map, filter]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -82,19 +55,3 @@ print(squares_over_15)
 - обирайте comprehension, якщо операція потребує обчислення виразу, взаємодії з кількома змінними або комбінації фільтрації та мапування в один прохід;
 - уникайте вкладених `map(lambda ..., filter(lambda ...))`, оскільки вони читаються зсередини назовні й ускладнюють супровід коду;
 - використовуйте generator expressions (`(...)`), якщо потрібна лінивість без матеріалізації колекції в пам'яті.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

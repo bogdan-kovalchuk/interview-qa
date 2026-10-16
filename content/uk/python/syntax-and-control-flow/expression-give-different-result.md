@@ -1,48 +1,18 @@
 ---
 id: py-syntax-0013
 title: "Чому вираз `-3 ** 2` дає інший результат, ніж `(-3) ** 2`?"
-description: "-3"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [3-2]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -90,11 +60,3 @@ sources:
 
 Швидка перевірка в голові: якщо мінус стоїть перед основою і не в дужках, він застосується
 **останнім**.[^py314-reference-simple-stmts]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

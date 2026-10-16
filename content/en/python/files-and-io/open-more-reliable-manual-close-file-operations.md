@@ -1,83 +1,36 @@
 ---
 id: py-fileio-0006
 title: "Why is `with open(...)` more reliable than a manual `close()` after file operations?"
-description: "Why is `with open(...)` more reliable than a manual `close()` after file operations?"
 track: python
 section: files-and-io
-level: middle
-type: mechanism
-tags: [with-open, close]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-io-iobase
     title: "Python 3.14: Library/io (IOBase)"
     url: https://docs.python.org/3.14/library/io.html#io.IOBase
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: IOBase as a context manager; the file is closed after the with block, even if an exception occurs."
   - source_id: py314-reference-compound-stmts-with
     title: "Python 3.14: Reference/compound Stmts (with)"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-with-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __exit__ is always called if __enter__ returned without error, whether the block exits with an exception or without one."
 ---
 
 ## Short answer
@@ -125,11 +78,3 @@ The result comes from reference counting in CPython. While the traceback holds t
 - assuming `with` is only needed for writing: it closes the file after reading too;
 - keeping `f` outside the block and using it later, when the file is already closed;
 - assuming `with` makes a write atomic: an exception in the middle of a write leaves partly written data.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

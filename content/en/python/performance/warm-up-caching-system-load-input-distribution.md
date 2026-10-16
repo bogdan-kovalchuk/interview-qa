@@ -1,62 +1,27 @@
 ---
 id: py-perf-0003
 title: "How can warm-up, caching, system load, and input distribution skew a microbenchmark result?"
-description: "Warm-up, caches, background load and unrepresentative inputs can skew a microbenchmark: the first run pays for warm-up, caches return stored results, and synthetic inputs may not match real ones."
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit-repeat
     title: "Python 3.14: Library/timeit (Timer.repeat)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit.Timer.repeat
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: timeit.Timer.repeat and its note that the minimum is the lower bound and that other processes cause higher values. Does not describe caches or warm-up."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Sorting HOWTO (Sort Stability and Complex Sorts)"
     url: https://docs.python.org/3.14/howto/sorting.html#sort-stability-and-complex-sorts
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Timsort, the sorting algorithm used in Python, takes advantage of any ordering already present in the data. Does not state a number of comparisons."
 ---
 
 ## Short answer
@@ -105,23 +70,3 @@ In practice: repeat the measurement and take `min()`, separate warm-up from the 
 - treating one measurement after the import as a stable estimate;
 - comparing a cached variant with an uncached one without accounting for the cache;
 - testing only on inputs that favour the implementation (already sorted or uniform ones).
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

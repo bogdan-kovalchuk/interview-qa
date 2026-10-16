@@ -1,44 +1,18 @@
 ---
 id: py-decor-0010
 title: "Чому state у closure decorator може створити race condition при паралельних викликах обгорнутої функції?"
-description: "Closure зберігає спільний mutable state в enclosing scope, і всі потоки, що викликають декоровану функцію, звертаються до однієї й тієї ж змінної без синхронізації."
 track: python
 section: decorators
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -94,23 +68,3 @@ def handler():
   або передавати явно як аргумент, якщо кожен виклик має власний незалежний стан;
 - у free-threaded build перевіряти це особливо уважно: код, що «випадково працював» під GIL, може
   почати губити оновлення там, де раніше здавався безпечним.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

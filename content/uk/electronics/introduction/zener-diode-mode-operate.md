@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0164
 title: "Що таке діод Зенера і в якому режимі він працює?"
-description: "Що таке діод Зенера і в якому режимі він працює?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: onsemi-zener-handbook
     title: "onsemi: Zener Theory and Design Considerations Handbook"
     url: https://www.onsemi.com/PowerSolutions/document/HBD854-D.PDF
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює зворотну характеристику, робочий струм, ділянку стабілізації та обмеження потужності стабілітронів; точні межі визначаються datasheet конкретного компонента."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 16, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 - Вважати стабілітрон звичайним діодом, який регулює напругу в прямому напрямку.
 - Підключати його до джерела без послідовного обмеження струму.
 - Вважати V_Z абсолютно сталою незалежно від струму й температури.[^onsemi-zener-handbook]
-
-## Sources
-
-<!-- generated from frontmatter -->

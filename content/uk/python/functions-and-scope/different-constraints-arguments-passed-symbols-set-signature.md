@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0001
 title: "Які різні обмеження на спосіб передавання аргументів задають символи `/` і `*` у сигнатурі `def f(a, /, b, *, c): ...`?"
-description: "/ розділяє positional-only та решту параметрів, а * розділяє звичайні та keyword-only параметри."
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [def-f-a-b-c]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-tutorial-controlflow-special-parameters
     title: "Python 3.14: Tutorial/control flow, special parameters"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#special-parameters
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ про positional-only (/) та keyword-only (*) параметри, з прикладами TypeError."
 ---
 
 ## Short answer
@@ -74,19 +51,3 @@ except TypeError:
 - вважати, що параметр між `/` і `*` можна передати лише позиційно або лише за іменем: він приймається обома способами;
 - передавати за іменем параметр ліворуч від `/` і очікувати, що Python знайде його за іменем;
 - додати `*` до наявної сигнатури без перевірки старих викликів, які передавали аргументи позиційно.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

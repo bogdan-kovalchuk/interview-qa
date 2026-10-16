@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0017
 title: "In what scope is a generator expression's outermost iterable evaluated, and when are its remaining clauses evaluated?"
-description: "In what scope is a generator expression's outermost iterable evaluated, and when are its remaining clauses evaluated?"
 track: python
 section: iterators-and-generators
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section generator expressions: the leftmost iterable is evaluated immediately, and the other expressions are evaluated lazily, as in a generator."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dictionaries
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section displays: a comprehension runs in an implicitly nested scope, and names assigned in the target list do not leak into the enclosing scope."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section resolution of names: the scope of names defined in a class block does not extend to comprehensions and generator expressions."
 ---
 
 ## Short answer
@@ -87,11 +52,3 @@ Names from the target list do not leak into the enclosing scope: after a generat
 - assuming that an error in the output expression appears at once, when the generator expression is created;
 - referring in a class body to a class-level name from the output expression and expecting it to be found: the NameError appears during iteration;
 - looking for the target-list variable after a generator expression: it does not leak into the outer scope.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

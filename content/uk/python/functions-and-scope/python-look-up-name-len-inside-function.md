@@ -1,27 +1,12 @@
 ---
 id: py-funcs-0014
 title: "Як Python шукатиме ім’я `len` усередині функції, якщо локального binding немає, але модуль визначив власний `len`?"
-description: "Python шукає ім’я в local scope, потім в enclosing scope, у global namespace модуля і лише потім у builtins, тому модульний `len` знаходиться раніше за вбудований."
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: [len]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -69,11 +54,3 @@ print(outer())                      # enclosing len: the enclosing scope is sear
 - вважати, що ім’я `len` прив’язується під час `def`: пошук відбувається під час виклику, за станом namespace на той момент;
 - не враховувати enclosing scope: `len` у зовнішній функції перекриває і модульний, і вбудований;
 - вважати, що `builtins.len` недоступний, якщо модуль перевизначив `len`: його можна викликати явно.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

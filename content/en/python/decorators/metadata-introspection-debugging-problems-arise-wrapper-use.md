@@ -1,41 +1,18 @@
 ---
 id: py-decor-0003
 title: "What metadata, introspection, and debugging problems arise if a wrapper does not use `functools.wraps`?"
-description: "What metadata, introspection, and debugging problems arise if a wrapper does not use `functools.wraps`?"
 track: python
 section: decorators
-level: middle
-type: pitfall
-tags: [functools-wraps]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -93,23 +70,3 @@ print(greet.__doc__)   # None, not "Greet a person by name."
 - `__annotations__` disappear, so type checkers and IDEs cannot see the original signature;
 - `inspect.signature()` returns `(*args, **kwargs)` instead of the real parameters;
 - tracebacks and logs report `wrapper` as the failure site instead of the original function.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

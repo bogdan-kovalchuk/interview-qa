@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0033
 title: "До якої частки напруги джерела заряджається конденсатор за 1τ, 2τ, 3τ і 5τ?"
-description: "До якої частки напруги джерела заряджається конденсатор за 1τ, 2τ, 3τ і 5τ?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 37, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: gatech-rc-charging-discharging
     title: "Georgia Tech Physics Book: Charging and Discharging a Capacitor"
     url: https://physicsbook.gatech.edu/Charging_and_Discharging_a_Capacitor
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Експоненційний закон заряджання та частки кінцевої напруги за кратних τ в ідеальному RC-колі."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Змішувати частку, яку вже набрала напруга, із часткою, якої ще бракує до кінцевого значення.
 - Вважати `5τ` точним моментом повного заряджання замість домовленого рівня точності.
 - Переносити наведені відсотки на коло з іншою початковою напругою без перерахунку відносно повного перепаду.
-
-## Sources
-
-<!-- generated from frontmatter -->

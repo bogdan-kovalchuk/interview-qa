@@ -1,72 +1,30 @@
 ---
 id: py-cpyint-0007
 title: "Чому `sys.getrefcount(obj)` зазвичай показує щонайменше одне temporary reference понад очікуване?"
-description: "Тому що сам виклик sys.getrefcount(obj) створює тимчасове посилання на obj, яке передається як аргумент функції і враховується в refcount на момент вимірювання."
 track: python
 section: cpython-internals
-level: senior
-type: pitfall
-tags: [sys-getrefcount-obj]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-dis
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-traceback-objects
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#traceback-objects
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -110,23 +68,3 @@ print(f"Immortal: {sys.getrefcount(None)}")
 - забувати про +1 під час аналізу витоків пам'яті: якщо локальна змінна одна, `getrefcount` повертає 2, що є абсолютно нормальним станом;
 - намагатися аналізувати immortal-об'єкти: лічильники для `0`, `""` або `None` є штучними константами і не змінюються при додаванні посилань;
 - ігнорувати замикання (closures) і стек-фрейми: глобальні змінні або змінні у `sys.exc_info()` та `traceback` утримують об'єкти в пам'яті довше, ніж очікує розробник.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

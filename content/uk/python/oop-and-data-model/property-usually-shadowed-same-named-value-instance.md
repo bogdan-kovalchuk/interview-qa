@@ -1,62 +1,27 @@
 ---
 id: py-oop-0007
 title: "Чому property зазвичай не можна затінити однойменним значенням в `instance.__dict__`?"
-description: "property реалізований як data descriptor (визначає __get__, __set__, __delete__), тому за правилами attribute lookup він має пріоритет над instance __dict__."
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: [instance-dict]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: data descriptor визначає __set__ або __delete__ і має пріоритет над словником екземпляра; non-data descriptor (зокрема звичайні методи) словник перекриває; @property реалізовано як data descriptor. Не описує власні приклади descriptor."
   - source_id: py314-howto-descriptor-properties
     title: "Python 3.14: Howto/descriptor, Properties"
     url: https://docs.python.org/3.14/howto/descriptor.html#properties
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: property() будує data descriptor, що викликає функцію під час доступу до атрибута. Не описує поведінку присвоєння без setter."
 ---
 
 ## Short answer
@@ -93,11 +58,3 @@ except AttributeError as e:
 **Типові помилки:**
 - вважати, що запис у `obj.__dict__['x']` змінить результат `obj.x`, якщо для `x` є property;
 - очікувати, що присвоєння до property без setter створить значення в словнику: воно піднімає `AttributeError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

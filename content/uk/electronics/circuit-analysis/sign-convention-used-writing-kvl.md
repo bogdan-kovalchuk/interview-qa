@@ -1,34 +1,15 @@
 ---
 id: emb-elcirc-0018
 title: "Яке правило знаків використовують при записі KVL?"
-description: "Яке правило знаків використовують при записі KVL?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,7 +25,3 @@ sources:
 Приклад: джерело 9 V живить послідовні резистори, на яких виміряно падіння 3 V і 6 V. В обраному напрямку через джерело від мінуса до плюса та через резистори за струмом запис буде `+9 V - 3 V - 6 V = 0`. Зворотний обхід дасть `-9 V + 3 V + 6 V = 0`; обидва записи описують той самий баланс.[^aac-direct-current]
 
 Зміна напряму обходу не змінює фізичну відповідь, якщо всі знаки перевернуті узгоджено. Помилка виникає, коли для частини елементів використовують «підйом мінус падіння», а для інших – протилежну домовленість. Перевірте кожен знак за реальною полярністю на схемі, а не лише за напрямом струму, якщо його ще не визначено.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

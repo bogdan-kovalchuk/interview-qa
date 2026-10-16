@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0002
 title: "What does a truthy return value from `__exit__` mean, and why is an accidental `return True` dangerous?"
-description: "What does a truthy return value from `__exit__` mean, and why is an accidental `return True` dangerous?"
 track: python
 section: context-managers
-level: middle
-type: pitfall
-tags: [exit, return-true]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -92,23 +69,3 @@ To eliminate such subtle bugs, the standard library provides specialized utiliti
 - omitting type inspection before suppressing – always verify `exc_type` via `issubclass(exc_type, ExpectedException)` or `isinstance(exc_val, ExpectedException)`;
 - accidentally swallowing control-flow and system exceptions (`KeyboardInterrupt`, `SystemExit`, `CancelledError`), which should never be suppressed by general-purpose context managers;
 - explicitly returning `False` or omitting `return` entirely (defaulting to `None`) when the context manager's sole responsibility is resource cleanup rather than error handling.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0308
 title: "Чому перегляду відео недостатньо для засвоєння схемотехніки?"
-description: "Чому перегляду відео недостатньо для засвоєння схемотехніки?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 2, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: cmu-retrieval-practice
     title: "Carnegie Mellon University Eberly Center: Retrieval Practice"
     url: https://www.cmu.edu/teaching/resources/instructionalstrategies/activelearningstrategies/retrievalpractice/index.html
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує користь активного пригадування, практичних задач і зворотного зв’язку для навчання; не доводить, що перегляд відео сам по собі неефективний."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 **Типова помилка:**
 
 - Вважати знайомість із прикладом доказом розуміння. Спробуй розв’язати схожу задачу з іншими компонентами або значеннями без відеопідказки, а потім перевір міркування за надійним розв’язком чи вимірюванням.
-
-## Sources
-
-<!-- generated from frontmatter -->

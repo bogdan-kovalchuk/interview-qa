@@ -1,55 +1,24 @@
 ---
 id: emb-raii-0031
 title: "Як move semantics дозволяє повертати RAII-об’єкт із функції?"
-description: "Move ctor переносить власність ресурсу без копіювання й без подвійного звільнення."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-copy-elision
     title: "C++ working draft: Copy elision ([class.copy.elision])"
     url: https://eel.is/c++draft/class.copy.elision
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Дозволяє (але не вимагає) опустити копію чи переміщення при return іменованого локального об’єкта; приклад із класом, у якого copy-конструктор недоступний, показує `return t;` через Thing(Thing&&) або з елізією. Не описує стан джерела після переміщення."
   - source_id: cpp-draft-class-copy-ctor
     title: "C++ working draft: Copy/move constructors ([class.copy.ctor])"
     url: https://eel.is/c++draft/class.copy.ctor
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Move-конструктор має перший параметр X&&; якщо клас оголошує move-конструктор, неявний copy-конструктор стає deleted. Неявний copy-конструктор застарілий (deprecated), коли клас має user-declared destructor. Не описує стан джерела після переміщення."
   - source_id: cpp-draft-unique-ptr-single
     title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
     url: https://eel.is/c++draft/unique.ptr.single
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Move-конструктор unique_ptr дає postcondition get() == nullptr для джерела; copy-конструктор deleted. Описує стандартний тип, а не конкретну платформу."
 ---
 
 ## Short answer
@@ -104,7 +73,3 @@ DmaBuffer make_buffer() {
 - Не обнулити джерело в move-конструкторі (`other.p_ = nullptr`): обидва об’єкти звільнять один handle.
 - Вважати, що елізія гарантована для іменованого локального об’єкта; код має працювати з move-конструктором.
 - Залишити copy-конструктор неявним у класі, що володіє ресурсом, замість явного `= delete`.
-
-## Sources
-
-<!-- generated from frontmatter -->

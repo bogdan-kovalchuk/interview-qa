@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0013
 title: "Коли `heapq` доречніший за повне сортування для top-k або priority queue?"
-description: "heapq дає O(log n) у найгіршому випадку для heappush/heappop, тоді як повне сортування – O(n log n); для top-k при малому k функції nlargest/nsmallest ефективніші за sorted()[:k]."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [heapq]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-heapq
     title: "Python 3.14: Library/heapq"
     url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: heap[0] є найменшим елементом; nlargest і nsmallest еквівалентні sorted()[:n] та найкращі при малих n; при n==1 ефективніші min() і max(); для пріоритетної черги з рівними пріоритетами рекомендовано лічильник."
   - source_id: cpython-heapq-source
     title: "CPython Lib/heapq.py: heap queue implementation"
     url: https://github.com/python/cpython/blob/3.14/Lib/heapq.py
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Реалізація heapq у CPython 3.14: heappush піднімає елемент до кореня, heappop опускає елемент до листка й піднімає назад, nlargest тримає heap розміром n. Це опис CPython, а не гарантія мови."
   - source_id: cpython-listsort-notes
     title: "CPython Objects/listsort.txt: implementation notes for list.sort"
     url: https://github.com/python/cpython/blob/3.14/Objects/listsort.txt
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Нотатки CPython про list.sort: lg(n!) є інформаційною межею для сортування порівняннями в середньому. Це опис реалізації, а не гарантія мови."
 ---
 
 ## Short answer
@@ -91,19 +68,3 @@ except TypeError as error:
 - вважати, що `for x in heap` дає відсортований порядок: гарантовано найменший лише `heap[0]`;
 - брати `nlargest` для великого k, коли `sorted()` за документацією ефективніший;
 - класти в heap кортежі з однаковим пріоритетом і не порівнюваними об’єктами без лічильника.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

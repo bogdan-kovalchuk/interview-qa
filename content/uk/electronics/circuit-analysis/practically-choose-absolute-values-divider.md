@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0035
 title: "Як практично вибрати абсолютні значення R1 і R2 у подільнику?"
-description: "Як практично вибрати абсолютні значення R1 і R2 у подільнику?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 30, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-voltage-divider
     title: "All About Circuits: Voltage Divider Circuits"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-6/voltage-divider-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює співвідношення опорів і падіння напруги в подільнику; вибір опорів за умовами навантаження розглядається окремо."
 ---
 
 ## Short answer
@@ -58,7 +35,3 @@ sources:
 
 - Вибирати номінали лише за відношенням і не перевіряти струм та потужність.
 - Брати надто високі опори для входу з помітним струмом або для вимірювання, через що навантаження змінює поділену напругу.
-
-## Sources
-
-<!-- generated from frontmatter -->

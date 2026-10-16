@@ -1,48 +1,21 @@
 ---
 id: py-stdlib-0009
 title: "Чому `pathlib.Path` краще передає path intent, ніж звичайний string?"
-description: "Path – це об’єктна абстракція шляху, яка розрізняє операції з шляхом і роботу з файловою системою, на відміну від string, де шлях – просто текст."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [pathlib-path]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-pathlib-pure-paths
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#pure-paths
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Pure paths: чисті шляхи не звертаються до файлової системи; властивості шляху (name, suffix, parent)."
   - source_id: py314-library-pathlib-concrete-paths
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#concrete-paths
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Concrete paths: Path створює PosixPath або WindowsPath залежно від ОС; конкретні шляхи мають методи системних викликів."
   - source_id: py314-library-pathlib-operators
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#operators
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Operators: оператор / створює дочірні шляхи."
   - source_id: py314-library-pathlib-general-properties
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html#general-properties
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ General properties: шляхи immutable й hashable; порівняння залежить від правил регістру ОС."
 ---
 
 ## Short answer
@@ -75,19 +48,3 @@ p.endswith(".csv")                             # AttributeError: 'PosixPath' obj
 - вважати `Path` рядком: `p.endswith(".csv")` кидає `AttributeError`, а API, що очікує str, потребує `str(p)` або `os.fspath(p)`;
 - вважати, що `Path` ніколи не звертається до диска: `exists()`, `is_file()` і `mkdir()` роблять системні виклики, на відміну від `PurePath`;
 - порівнювати шляхи як рядки: для `PureWindowsPath` регістр ігнорується, для `PurePosixPath` ні.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

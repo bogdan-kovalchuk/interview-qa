@@ -1,62 +1,27 @@
 ---
 id: emb-raii-0016
 title: "Що таке static RAII singleton і коли запускаються його ctor/dtor?"
-description: "Function-local static: ctor виконується при першому проходженні декларації, dtor викликається при exit, а не при abort."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-stmt-dcl
     title: "C++ working draft: Declaration statement ([stmt.dcl])"
     url: https://eel.is/c++draft/stmt.dcl
-    accessed: 2026-10-13
-    kind: spec
-    version: "working draft"
-    applicability: "Пункт 3: динамічна ініціалізація block-змінної зі static storage duration відбувається при першому проходженні через декларацію; після винятку з конструктора її повторюють, а паралельний вхід чекає завершення. Не описує thread-safe код, який додає компілятор."
   - source_id: cpp-draft-basic-start-term
     title: "C++ working draft: Termination ([basic.start.term])"
     url: https://eel.is/c++draft/basic.start.term
-    accessed: 2026-10-13
-    kind: spec
-    version: "working draft"
-    applicability: "Пункт 1: сконструйовані об’єкти зі static storage duration знищуються як частина виклику std::exit, а повернення з main викликає std::exit. Не каже, чи повертається main у firmware."
   - source_id: cpp-draft-support-start-term
     title: "C++ working draft: Start and termination ([support.start.term])"
     url: https://eel.is/c++draft/support.start.term
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Пункти 3 і 5: _Exit і std::abort завершують програму без виконання деструкторів для об’єктів зі static storage duration. Не описує поведінку після апаратного reset."
   - source_id: gcc-cxx-threadsafe-statics
     title: "GCC: C++ Dialect Options, -fno-threadsafe-statics"
     url: https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html#index-fthreadsafe-statics
-    accessed: 2026-10-13
-    kind: official
-    version: "current"
-    applicability: "Каже, що -fno-threadsafe-statics прибирає додатковий код потокобезпечної ініціалізації local static за C++ ABI і трохи зменшує розмір коду, якщо потокобезпека не потрібна. Точного виграшу в байтах не наводить."
 ---
 
 ## Question code
@@ -92,7 +57,3 @@ Driver& instance() {
 - Очікувати, що деструктор спрацює при `abort()`, `_Exit()` або коли `main` не повертається.
 - Вимикати `-fno-threadsafe-statics` у коді, де ініціалізація може виконуватися з кількох потоків.
 - Вважати static-об’єкт безкоштовним: перевіряй асемблер на guard-виклики.
-
-## Sources
-
-<!-- generated from frontmatter -->

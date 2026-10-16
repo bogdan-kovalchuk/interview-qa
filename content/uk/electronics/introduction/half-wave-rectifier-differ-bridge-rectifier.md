@@ -1,55 +1,24 @@
 ---
 id: emb-elintro-0177
 title: "Чим half-wave rectifier відрізняється від bridge rectifier?"
-description: "Чим half-wave rectifier відрізняється від bridge rectifier?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 17, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-half-wave-lab
     title: "All About Circuits: Si Lab - Half-wave Rectifier"
     url: https://www.allaboutcircuits.com/textbook/experiments/chpt-5/half-wave-rectifier/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Показує пропускання однієї напівхвилі та пульсівну форму виходу; конкретна схема тут навчальна."
   - source_id: aac-bridge-filter-lab
     title: "All About Circuits: Full-wave Bridge Rectifier With Output Filtering"
     url: https://www.allaboutcircuits.com/textbook/experiments/chpt-5/rectifier-filter-circuit/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Показує повнохвильовий мостовий випрямляч, фільтрацію конденсатором і залежність ripple від навантаження."
 ---
 
 ## Short answer
@@ -67,7 +36,3 @@ Bridge rectifier, або повнохвильовий мостовий випр�
 **Приклад:** якщо вхід має частоту 50 Гц, half-wave дає один зарядний пік за період, тобто 50 піків за секунду, а bridge – два, тобто 100. Це пояснює різницю частот ripple, але саме по собі не визначає його амплітуду: вона залежить від навантаження і ємності.[^aac-half-wave-lab][^aac-bridge-filter-lab]
 
 **Типова помилка:** казати, що мостовий випрямляч завжди дає більшу середню напругу без уточнень. Згладжування та навантаження змінюють середнє значення, а два прямі переходи мосту додають падіння напруги; порівнювати треба за однакових умов.[^aac-bridge-filter-lab]
-
-## Sources
-
-<!-- generated from frontmatter -->

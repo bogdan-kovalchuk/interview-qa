@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0185
 title: "Що відбувається з діодом при зворотному зміщенні (reverse bias)?"
-description: "Що відбувається з діодом при зворотному зміщенні (reverse bias)?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 18, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-zener-reverse-breakdown
     title: "SLVAG25 Application Brief: Zener Noise Phenomenon"
     url: https://www.ti.com/document-viewer/lit/html/SLVAG25/GUID-C0A4AD58-A8D2-4977-8B36-7D8455E203BA
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює умови avalanche breakdown і потребу в зворотному струмі для Zener; не задає межі звичайного діода."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Приклад: якщо джерело подає зворотні 5 V на діод, який працює далеко від своєї межі пробою, протікає лише малий витік і майже вся напруга припадає на діод. Якщо перевищено допустиме повторюване пікове значення `V_RRM`, схема вже не має гарантованого безпечного режиму.[^aac-semiconductors]
 
 **Типова помилка:** називати зворотний струм рівно нульовим або плутати граничну напругу з напругою, за якої кожен діод гарантовано руйнується. Перевіряйте тип компонента й datasheet: пробій може бути допустимим для одного діода й руйнівним для іншого.
-
-## Sources
-
-<!-- generated from frontmatter -->

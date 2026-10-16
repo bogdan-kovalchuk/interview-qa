@@ -1,69 +1,30 @@
 ---
 id: py-testing-0009
 title: "How can a broad-scoped mutable fixture create order-dependent tests and state leakage?"
-description: "How can a broad-scoped mutable fixture create order-dependent tests and state leakage?"
 track: python
 section: testing
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: pytest-how-to-fixtures-scopes
     title: "pytest documentation: How-to guides, Fixtures, Fixture scopes"
     url: https://docs.pytest.org/en/stable/how-to/fixtures.html#fixture-scopes
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official pytest documentation: fixture scope values and when a fixture is destroyed."
   - source_id: pytest-how-to-fixtures-yield
     title: "pytest documentation: How-to guides, Fixtures, yield fixtures"
     url: https://docs.pytest.org/en/stable/how-to/fixtures.html#yield-fixtures-recommended
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official pytest documentation: code after yield in a fixture runs as teardown."
 ---
 
 ## Short answer
@@ -114,23 +75,3 @@ The fix depends on what is stored. If the fixture is cheap to build, make it `fu
 - assuming that `scope="module"` isolates tests: it isolates modules from each other, not the tests inside one module;
 - calling the failure "flaky" and re-running the test instead of looking for the shared mutable state;
 - widening the `scope` "for speed" without checking whether the tests write to the fixture's value.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

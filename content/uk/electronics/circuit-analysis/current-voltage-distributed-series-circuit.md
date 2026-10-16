@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0008
 title: "Як у послідовному колі розподіляються струм і напруга?"
-description: "Як у послідовному колі розподіляються струм і напруга?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 27, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-voltage-divider
     title: "All About Circuits: Voltage Divider Circuits"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-6/voltage-divider-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує однаковий струм у послідовному колі резисторів, пропорційність спадів напруги опорам і суму спадів за KVL."
 ---
 
 ## Short answer
@@ -56,7 +33,3 @@ sources:
 - Казати, що в послідовному колі однакова напруга на кожному елементі; однаковим є струм.
 - Ділити напругу пропорційно опорам, не перевіривши, що елементи – резистори й немає навантаження подільника.
 - Забувати перевірити, що сума спадів узгоджується з напругою джерела.[^aac-voltage-divider]
-
-## Sources
-
-<!-- generated from frontmatter -->

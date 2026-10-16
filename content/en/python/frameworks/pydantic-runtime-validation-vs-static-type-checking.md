@@ -1,49 +1,21 @@
 ---
 id: py-framew-0001
 title: "How does Pydantic runtime validation differ from static type checking?"
-description: "Static type checkers analyze annotations without executing the program; Pydantic interprets annotations at runtime to validate or convert input into a model."
 track: python
 section: frameworks
-level: middle
-type: comparison
-tags: []
-frameworks: [pydantic]
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  uk: 3
-anki:
-  export: true
 sources:
   - source_id: py314-library-typing
     title: "Python 3.14: typing - Support for type hints"
     url: https://docs.python.org/3.14/library/typing.html#typing-support-for-type-hints
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the runtime does not enforce function and variable annotations."
   - source_id: pep-0484
     title: "PEP 484: Type Hints"
     url: https://peps.python.org/pep-0484/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "PEP 484: annotations are available at runtime through __annotations__, but no type checking happens at runtime; a separate off-line type checker does it."
   - source_id: pydantic-models
     title: "Pydantic documentation: Models"
     url: https://pydantic.dev/docs/validation/latest/concepts/models/
-    accessed: 2026-10-13
-    kind: official
-    version: "2"
-    applicability: "Official Pydantic documentation: models declare fields with annotations; the type guarantee applies to the validated output, not the input data; ValidationError is raised when parsing into a model fails."
   - source_id: pydantic-strict-mode
     title: "Pydantic documentation: Strict Mode"
     url: https://pydantic.dev/docs/validation/latest/concepts/strict_mode/
-    accessed: 2026-10-13
-    kind: official
-    version: "2"
-    applicability: "Official Pydantic documentation: in v2, by default compatible values are coerced to the type; strict mode rejects a wrong type instead of coercing it."
 ---
 
 ## Short answer
@@ -88,19 +60,3 @@ Static checking and Pydantic complement each other. The checker finds inconsiste
 - assuming that `def f(x: int)` checks the type of the argument at call time;
 - assuming that a Pydantic model checks all the internal code; it checks the data that enters the model;
 - expecting `"42"` for an `int` field to be rejected without strict mode; in Pydantic v2 by default it becomes `42`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

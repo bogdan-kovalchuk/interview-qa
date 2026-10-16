@@ -1,41 +1,18 @@
 ---
 id: py-fund-0009
 title: "How does reflection differ from ordinary access to an object's attribute that is already known in advance?"
-description: "How does reflection differ from ordinary access to an object's attribute that is already known in advance?"
 track: python
 section: fundamentals
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -85,19 +62,3 @@ at run time, at the moment of access itself.[^py314-reference-executionmodel]
 In short: ordinary access says "I know what I need"; reflection says "I will find out at run time
 what is here". Both use the same protocol, and the second pays for its flexibility with
 invisibility.[^py314-faq-general]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

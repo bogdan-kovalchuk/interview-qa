@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0007
 title: "Що виведе цей код?"
-description: "Виведе 42. Ім’я функції add1 у більшості виразів неявно перетворюється на pointer to function."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -44,7 +25,6 @@ printf("%d", op(41));
 Виведе `42`, якщо фрагмент оточений потрібними оголошеннями та `printf` доступний.
 
 Ім’я функції `add1` у цьому присвоєнні перетворюється на pointer to function, тож `op = add1` еквівалентно `op = &add1`. Виклик `op(41)` викликає функцію через покажчик; у C обидві форми виклику `op(41)` та `(*op)(41)` дозволені.[^iso-c-n1570]
-
 
 ## Detailed explanation
 
@@ -63,7 +43,3 @@ int result = op(41);  /* result is 42 */
 ```
 
 Важливо відрізняти перетворення function designator від виклику функції: у початковому присвоєнні `add1` не виконується, бо немає дужок виклику. Покажчик зберігає можливість обрати функцію зараз, а виконати її пізніше. Це основа callback-ів і таблиць функцій; проте сам тип покажчика має збігатися з типом цільової функції згідно з мовними правилами.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

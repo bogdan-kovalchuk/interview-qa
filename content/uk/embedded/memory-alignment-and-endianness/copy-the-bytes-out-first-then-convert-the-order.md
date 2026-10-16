@@ -1,34 +1,15 @@
 ---
 id: emb-align-0022
 title: "Як десеріалізувати байтовий буфер назад у структуру?"
-description: "Спершу безпечно зчитай байти через memcpy, потім конвертуй з network у host order."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -69,7 +50,3 @@ r->id  = buf[6];
 - Вважати `memcpy` заміною перевірці формату або меж буфера.
 
 Копіювання вирішує питання доступу до байтів, а функції перетворення вирішують питання byte order. Це незалежні кроки: пропуск будь-якого з них може давати помилку, що проявляється лише на іншому процесорі або для невирівняного пакета.[^embeddedinterviewlab] [^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

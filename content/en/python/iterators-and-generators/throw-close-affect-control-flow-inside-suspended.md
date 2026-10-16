@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0012
 title: "How do `throw()` and `close()` affect control flow inside a suspended generator?"
-description: "How do `throw()` and `close()` affect control flow inside a suspended generator?"
 track: python
 section: iterators-and-generators
-level: senior
-type: mechanism
-tags: [throw, close]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: generator-iterator methods (__next__, send, throw, close) and their behaviour in a suspended state."
 ---
 
 ## Short answer
@@ -95,11 +68,3 @@ If the generator returns a value in response to `GeneratorExit`, then from Pytho
 - thinking that `close()` only "closes" the generator: it raises `GeneratorExit` at the paused `yield`, so `finally` runs;
 - yielding again after `GeneratorExit`: `close()` then raises `RuntimeError`;
 - expecting `throw()` always to return a value: if the generator does not catch the exception or finishes without yielding again, the exception propagates or `StopIteration` is raised.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

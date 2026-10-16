@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0161
 title: "Який струм проходить через перший стабілізатор у каскаді 9 -> 5 -> 3,3 В?"
-description: "Який струм проходить через перший стабілізатор у каскаді 9 -> 5 -> 3,3 В?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 61, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Quiescent (ground) current визначено як різницю вхідного й вихідного струмів I_q = I_i - I_o; розсіювана стабілізатором потужність P_D = (V_i - V_o)*I_o; вираз для ККД. Записка про LDO: її числа й приклади стосуються LDO, а не 7805."
   - source_id: ti-lm340
     title: "TI: LM340, LM340A, LM7805 family wide VIN 1.5-A fixed voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/lm340.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SNOSBT0L, September 2016"
-    applicability: "Quiescent current LM340A (V_O = 5 В, V_I = 10 В, 25 °C) до 6 мА; dropout 2 В (типово) за 1 А. Значення стосуються родини LM340/LM7805, не інших стабілізаторів (зокрема LDO на 3,3 В)."
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ sources:
 - Перераховувати струм 3,3 В у струм 5 В за відношенням напруг.
 - Не враховувати `I_q` обох стабілізаторів.
 - Рахувати нагрів першого стабілізатора лише від навантаження 5 В і забувати другий каскад.
-
-## Sources
-
-<!-- generated from frontmatter -->

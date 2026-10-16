@@ -1,97 +1,42 @@
 ---
 id: py-fileio-0012
 title: "Чому JSON round trip не зберігає автоматично всі Python types та object identities?"
-description: "JSON підтримує лише обмежений набір типів: tuple стає list, ключі стають рядками, а для set і custom класів потрібен default."
 track: python
 section: files-and-io
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json-encoder-table
     title: "Python 3.14: Library/json (JSONEncoder)"
     url: https://docs.python.org/3.14/library/json.html#json.JSONEncoder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: перелік типів, які JSONEncoder серіалізує за замовчуванням, і правило для ключів, які не є str, int, float, bool або None."
   - source_id: py314-library-json-encoder-default
     title: "Python 3.14: Library/json (Encoders and Decoders)"
     url: https://docs.python.org/3.14/library/json.html#py-to-json-table
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: TypeError для непідтримуваних типів без default і перевірка циклічних посилань (check_circular)."
   - source_id: py314-library-json-decoder-table
     title: "Python 3.14: Library/json (JSONDecoder)"
     url: https://docs.python.org/3.14/library/json.html#json.JSONDecoder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: таблиця декодування, за якою JSON array стає list."
   - source_id: py314-library-json-dump
     title: "Python 3.14: Library/json (dump)"
     url: https://docs.python.org/3.14/library/json.html#json.dump
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: при серіалізації всі ключі dict перетворюються на рядки JSON."
 ---
 
 ## Short answer
@@ -135,23 +80,3 @@ except ValueError as error:
 - очікувати, що `json.loads(json.dumps(x)) == x` для будь-якого `x`: tuple стає list, і рівність порушується;
 - використовувати `default=str` для всіх невідомих типів: значення повернеться рядком, і початковий тип уже не відновиться;
 - покладатися на identity спільних об’єктів після декодування: кожне входження стає окремим об’єктом.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-perf-0018
 title: "Why can premature micro-optimization increase defect risk without a noticeable user-level benefit?"
-description: "Why can premature micro-optimization increase defect risk without a noticeable user-level benefit?"
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -79,23 +52,3 @@ Even a genuinely faster piece of code does not change the end-to-end time if the
 - adding a cache without checking whether arguments will repeat;
 - rewriting code for a micro-gain without tests for its behaviour;
 - assuming that a faster local piece automatically makes the request faster.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

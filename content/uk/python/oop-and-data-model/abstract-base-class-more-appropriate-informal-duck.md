@@ -1,76 +1,33 @@
 ---
 id: py-oop-0025
 title: "Коли abstract base class доречніша за неформальну duck typing перевірку?"
-description: "ABC доречні, коли потрібен контракт, що перевіряється при створенні instance, або явна реєстрація virtual subclass через register(); для простих сценаріїв достатньо duck typing."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-abc-abstractmethod
     title: "Python 3.14: Library/abc"
     url: https://docs.python.org/3.14/library/abc.html#abc.abstractmethod
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: abc.abstractmethod, вимога метакласу ABCMeta і неможливість створити клас з нереалізованими абстрактними методами."
   - source_id: py314-library-abc-abcmeta-register
     title: "Python 3.14: Library/abc"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.register
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: ABCMeta.register і віртуальні підкласи, для яких issubclass() і isinstance() дають True."
   - source_id: py314-library-abc-abcmeta-subclasshook
     title: "Python 3.14: Library/abc"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.__subclasshook__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: ABCMeta.__subclasshook__ і його значення True, False або NotImplemented, з прикладом перевірки наявності __iter__."
   - source_id: py314-library-typing-runtime-checkable
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html#typing.runtime_checkable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: runtime_checkable, який перевіряє лише наявність методів або атрибутів, а не їхні сигнатури й типи."
 ---
 
 ## Short answer
@@ -117,19 +74,3 @@ print(isinstance(Registered(), Shape))  # True: register() does not check method
 - вважати, що `@abstractmethod` без `ABC` або `ABCMeta` щось забороняє;
 - вважати, що `register()` перевіряє методи класу (у CPython не перевіряє);
 - вважати, що `isinstance()` з `@runtime_checkable` Protocol перевіряє сигнатури методів.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

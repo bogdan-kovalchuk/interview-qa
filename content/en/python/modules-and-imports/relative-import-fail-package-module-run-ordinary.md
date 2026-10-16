@@ -1,72 +1,30 @@
 ---
 id: py-modimp-0007
 title: "Why can a relative import fail when a package module is run as an ordinary script file?"
-description: "Run as a file, a package module has `__spec__` = None, so its relative import does not know its package and raises ImportError."
 track: python
 section: modules-and-imports
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-special-main
     title: "Python 3.14: Reference/import (Special considerations for __main__)"
     url: https://docs.python.org/3.14/reference/import.html#special-considerations-for-main
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Value of `__spec__` for `__main__`: None when a file is run directly, and set when run with `-m`."
   - source_id: py314-reference-datamodel-module-package
     title: "Python 3.14: Reference/datamodel (module.__package__)"
     url: https://docs.python.org/3.14/reference/datamodel.html#module.__package__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Import resolution uses `__spec__.parent` before `__package__`; `__package__` deprecated since Python 3.13."
   - source_id: py314-reference-import-package-relative-imports
     title: "Python 3.14: Reference/import (Package Relative Imports)"
     url: https://docs.python.org/3.14/reference/import.html#package-relative-imports
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Syntax of relative imports in Python 3.14: the dots count from the current package."
   - source_id: py315-whatsnew-other-language-changes
     title: "Python 3.15: What's New (Other language changes)"
     url: https://docs.python.org/3.15/whatsnew/3.15.html#other-language-changes
-    accessed: 2026-10-13
-    kind: official
-    version: "3.15"
-    applicability: "Python 3.15: `__package__` is deprecated and scheduled for removal."
 ---
 
 ## Short answer
@@ -95,23 +53,3 @@ There are two common fixes. The first is to run from the project root with `-m`.
 - assuming that `__name__ == '__main__'` means there is no package: with `python -m` the name is also `__main__`, but `__spec__` and the package are present;
 - writing new code with `__package__` even though the import system prefers `__spec__.parent`, and `__package__` is deprecated and scheduled for removal;
 - adding a `sys.path` hack to get around the error instead of running with `-m` from the project root.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

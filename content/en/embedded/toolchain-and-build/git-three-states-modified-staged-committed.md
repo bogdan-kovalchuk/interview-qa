@@ -1,34 +1,15 @@
 ---
 id: emb-build-0001
 title: "What are the three main states in git?"
-description: "A file in Git passes through three states – modified, staged, and committed – corresponding to the working directory, staging area, and local repository."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -64,7 +45,3 @@ $ git commit -m "Add feature X"
 ```
 
 Git stores each commit as a snapshot of the file state. When you commit, Git creates a new commit object that references the snapshot and the previous commit, forming a linear history. The staging area is a key Git feature that distinguishes it from other VCS – it gives precise control over what goes into each commit.
-
-## Sources
-
-<!-- generated from frontmatter -->

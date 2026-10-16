@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0006
 title: "Як виглядає типовий embedded callback contract?"
-description: "Типовий контракт: зареєструвати function pointer і context, а driver викликає їх при події."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,7 +40,3 @@ int uart_set_rx_callback(Uart *u, uart_rx_cb_t cb, void *ctx);
 Прикладом є callback у перериванні: тоді обмеження щодо блокування, пріоритету та потокобезпеки задаються платформою й driver-ом, а не самим C callback contract. Документація API повинна сказати, коли та звідки викликається обробник, чи може він бути null, чи дозволені blocking operations і як припиняється реєстрація.
 
 **Типова помилка:** зберегти адресу локальної змінної в `ctx`, повернутися з функції реєстрації, а потім розіменувати вже нечинний покажчик. Передавай об’єкт, який житиме достатньо довго, і узгодь його тип із реалізацією callback-а.
-
-## Sources
-
-<!-- generated from frontmatter -->

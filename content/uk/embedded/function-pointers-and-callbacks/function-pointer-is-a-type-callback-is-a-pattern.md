@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0013
 title: "Чим function pointer відрізняється від callback?"
-description: "Function pointer – це тип/значення, callback – архітектурний патерн."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -54,7 +35,3 @@ Callback виникає, коли API приймає такий вказівни
 - Визначати callback як окремий тип C: стандарт мови має типи функцій і вказівники, а callback є домовленістю використання.
 - Ігнорувати сигнатуру й приводити довільний function pointer до очікуваного типу.
 - Вважати, що сам function pointer визначає подію, час виклику або власника переданого стану.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,5 +1,0 @@
-gate: sections-by-level
-language: en
-replacements:
-  - old: 'level: middle'
-    new: 'level: junior'

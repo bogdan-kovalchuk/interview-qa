@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0022
 title: "How does a parameterized static type such as `list[str]` differ from a runtime check of a specific list's contents?"
-description: "How does a parameterized static type such as `list[str]` differ from a runtime check of a specific list's contents?"
 track: python
 section: objects-and-types
-level: senior
-type: comparison
-tags: [list-str]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -86,19 +59,3 @@ print(valid)  # False
 - performing defensive runtime validation over collections in hot paths, silently degrading $O(1)$ operations into expensive $O(n)$ scans;
 - assuming static type annotations protect against invalid runtime payloads from external sources (JSON, databases) without boundary validation;
 - overlooking the fact that a mutable list can be mutated via an aliased reference after passing an initial runtime validation check.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

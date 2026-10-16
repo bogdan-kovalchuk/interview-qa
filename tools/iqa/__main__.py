@@ -11,7 +11,6 @@ from .anki import main as anki_main
 from .export import write_export
 from .model import export_question_schema
 from .pinned_actions import main as pinned_actions_main
-from .report import main as report_main
 from .validate import print_report, validate_repository
 
 
@@ -31,26 +30,11 @@ def _parser() -> argparse.ArgumentParser:
     export.add_argument("--root", type=Path, default=Path.cwd())
     export.add_argument("--out", type=Path, default=None)
     export.add_argument("--base", default="/interview-qa")
-    export.add_argument(
-        "--in-withdrawal-window",
-        action="store_true",
-        help="treat withdrawn questions as still inside their two-release removal window",
-    )
 
     build = subcommands.add_parser(
         "build", help="the one build path: validate -> mirror -> astro build -> verify"
     )
     build.add_argument("--root", type=Path, default=Path.cwd())
-
-    report = subcommands.add_parser(
-        "report", help="write dist/export/progress.{json,csv}, or print the next TODO with --todo"
-    )
-    report.add_argument("--root", type=Path, default=Path.cwd())
-    report.add_argument(
-        "--todo",
-        action="store_true",
-        help="print the next incomplete (question, language) pairs instead of writing files",
-    )
 
     subcommands.add_parser(
         "deck",
@@ -89,23 +73,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.command == "export":
         destination = args.out if args.out is not None else root / "dist" / "export" / "questions.json"
-        count = write_export(
-            root / "content",
-            destination,
-            base=args.base,
-            in_withdrawal_window=args.in_withdrawal_window,
-        )
+        count = write_export(root / "content", destination, base=args.base)
         print(f"Exported {count} questions into {destination.as_posix()}")
         return 0
 
     if args.command == "build":
         return build_module.run(root)
-
-    if args.command == "report":
-        report_argv = ["--root", str(root)]
-        if args.todo:
-            report_argv.append("--todo")
-        return report_main(report_argv)
 
     report = validate_repository(root)
     print_report(report)

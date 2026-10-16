@@ -1,76 +1,33 @@
 ---
 id: py-stdlib-0004
 title: "Коли `itertools.chain()` доречніший за конкатенацію матеріалізованих collections?"
-description: "chain() по черзі обходить вхідні iterable лініво, без побудови списку з усіх елементів, тож не створює додаткової копії даних."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [itertools-chain]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools-chain
     title: "Python 3.14: Library/itertools, chain"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.chain
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: itertools.chain і chain.from_iterable (послідовний обхід iterable, еквівалент через yield from, лінива обробка)."
   - source_id: py314-library-stdtypes-common-sequence-operations
     title: "Python 3.14: Library/stdtypes, common sequence operations"
     url: https://docs.python.org/3.14/library/stdtypes.html#common-sequence-operations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: операція конкатенації s + t для sequence types; не стосується iterable, які не є sequence."
 ---
 
 ## Short answer
@@ -117,19 +74,3 @@ print(list(it))          # first produces 1, second produces 0, then [1, 0]
 - вважати, що `chain` створює копію даних: він лише обходить входи, а копію створює `list(chain(...))`;
 - очікувати від `chain` індексування, `len()` або повторного обходу;
 - очікувати, що `chain(['AB', 'CD'])` розбиває рядки на символи: він віддає `'AB'` і `'CD'` цілими; для розгортання одного iterable з iterable-елементами потрібен `chain.from_iterable()`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

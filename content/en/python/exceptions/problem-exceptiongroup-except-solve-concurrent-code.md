@@ -1,69 +1,30 @@
 ---
 id: py-excpt-0012
 title: "What problem do `ExceptionGroup` and `except*` solve in concurrent code?"
-description: "What problem do `ExceptionGroup` and `except*` solve in concurrent code?"
 track: python
 section: exceptions
-level: middle
-type: mechanism
-tags: [exceptiongroup]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-task-taskgroup
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#asyncio.TaskGroup
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: TaskGroup combines the task errors into an ExceptionGroup, while KeyboardInterrupt and SystemExit are re-raised without a group."
   - source_id: py314-library-asyncio-task-gather
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#asyncio.gather
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: with return_exceptions=False (the default), the first exception is propagated to the task awaiting gather(); the others are not."
   - source_id: py314-reference-compound-stmts-except-star
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#except-star
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: except* semantics, splitting the group, and passing the unmatched part on."
   - source_id: pep-0654-exception-groups
     title: "PEP 654: Exception Groups and except*"
     url: https://peps.python.org/pep-0654/
-    accessed: 2026-10-13
-    kind: spec
-    version: "3.11"
-    applicability: "PEP 654: ExceptionGroup and except* were proposed for Python 3.11 (Python-Version: 3.11)."
 ---
 
 ## Short answer
@@ -112,11 +73,3 @@ Use a group when several failures are real, independent results that each need h
 - expecting `except ValueError` to catch an error inside a group: handle the group with `except*` or with `except ExceptionGroup`;
 - mixing `except` and `except*` in one `try`, which is a syntax error;[^py314-reference-compound-stmts-except-star]
 - logging the group with `str(eg)`, which shows the group message and the number of nested exceptions (for example `there were problems (2 sub-exceptions)`), but not their types or messages.[^py314-tutorial-errors]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

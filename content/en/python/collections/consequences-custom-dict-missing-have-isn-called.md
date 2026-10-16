@@ -1,41 +1,18 @@
 ---
 id: py-coll-0012
 title: "What consequences does a custom `dict.__missing__()` have, and why isn't it called the same way by every method of accessing a key?"
-description: "What consequences does a custom `dict.__missing__()` have, and why isn't it called the same way by every method of accessing a key?"
 track: python
 section: collections
-level: senior
-type: mechanism
-tags: [dict-missing]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,11 +45,3 @@ applies in subclasses where it is explicitly overridden.
 
 One more practical trap – if `__missing__` itself accesses `self[key]` for the same key without a
 base case, it leads to infinite recursion, because every miss calls `__missing__` again.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

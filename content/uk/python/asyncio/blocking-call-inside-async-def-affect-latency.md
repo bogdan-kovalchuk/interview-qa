@@ -1,41 +1,18 @@
 ---
 id: py-async-0007
 title: "Як один blocking call в `async def` впливає на latency всіх інших Tasks у тому самому loop?"
-description: "Будь-який синхронний blocking call (наприклад, time.sleep(), I/O файлів, CPU-обчислення) зупиняє event loop на весь час виконання, затримуючи всі інші Tasks і I/O-події."
 track: python
 section: asyncio
-level: senior
-type: practical
-tags: [async-def]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,23 +42,3 @@ call на 500 мс. Це відрізняється від блокування 
 `PYTHONASYNCIODEBUG=1`), loop логує попередження про будь-який callback, що виконувався довше за
 `slow_callback_duration` (за замовчуванням 100 мс) – це прямий спосіб знайти blocking call, який
 непомітно псує latency решти системи.[^py314-library-asyncio-dev]
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0003
 title: "Why can the construct `value = user_input or default` incorrectly replace a valid value of `0` or an empty string?"
-description: "Why can the construct `value = user_input or default` incorrectly replace a valid value of `0` or an empty string?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: pitfall
-tags: [value-user-input-or-default]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -89,23 +66,3 @@ def make_port(user_input=MISSING, default=8080):
 
 `or` stays appropriate where truthiness is the criterion: `name = user_name or 'anonymous'`, when an
 empty string really should be treated as no name at all.[^py314-reference-simple-stmts]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

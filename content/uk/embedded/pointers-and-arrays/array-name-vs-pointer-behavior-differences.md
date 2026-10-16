@@ -1,27 +1,12 @@
 ---
 id: emb-ptrarr-0001
 title: "У чому різниця між ім’ям масиву та вказівником у C, і коли вони поводяться по-різному?"
-description: "Масив є об’єктом фіксованого розміру, а вказівник є окремим об’єктом, що зберігає адресу; вираз із масивом перетворюється на вказівник у більшості, але не в усіх контекстах."
 track: embedded
 section: pointers-and-arrays
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: c17-standard
     title: "ISO/IEC 9899:2018 (C17 Standard)"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n2310.pdf
-    accessed: 2026-09-08
-    kind: official
-    version: "C17"
-    applicability: "Офіційний стандарт мови C."
 ---
 
 ## Short answer
@@ -41,19 +26,3 @@ sources:
 Різниця типів важлива також під час арифметики: `arr + 1` пересувається на один елемент, а `&arr + 1` – на цілий масив. Це не означає, що адреси завжди мають різні числові байтові значення; арифметичний крок визначається типом вказівника.[^c17-standard]
 
 **Типова помилка:** оголосити параметр `void f(int a[])` і всередині обчислювати `sizeof a` як розмір переданого масиву. Параметр уже є вказівником; передайте довжину явно або використайте інший контракт, який її зберігає.[^c17-standard]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

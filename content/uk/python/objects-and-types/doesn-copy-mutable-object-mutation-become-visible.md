@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0005
 title: "Чому `y = x` не копіює mutable object і як mutation через `y` стає видимою через `x`?"
-description: "Присвоювання y = x копіює лише посилання на об'єкт, а не сам об'єкт; обидва імена вказують на той самий mutable об'єкт."
 track: python
 section: objects-and-types
-level: middle
-type: mechanism
-tags: [y-x]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -82,11 +55,3 @@ print(deep)     # [1, [2, 3]]: completely isolated from mutations
 - створення вкладених списків множенням: конструкція `matrix = [[0] * 3] * 3` створює список із трьох посилань на один і той самий внутрішній список;
 - поверхневе копіювання замість глибокого: зріз `x[:]` копіює лише верхній рівень, залишаючи вкладені списки або словники зв'язаними;
 - непередбачувані побічні ефекти: передача mutable об'єкта у функцію дозволяє їй змінювати стан об'єкта у викликаючому коді без явного повернення значення.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

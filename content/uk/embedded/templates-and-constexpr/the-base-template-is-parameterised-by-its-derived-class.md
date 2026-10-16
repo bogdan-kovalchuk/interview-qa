@@ -1,55 +1,24 @@
 ---
 id: emb-tmplcx-0011
 title: "Що таке CRTP і навіщо він у шаблонах?"
-description: "CRTP (curiously recurring template pattern): base – шаблон, параметризований похідним: class Derived : public Base<Derived>."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-expr-static-cast
     title: "C++ working draft: Static cast ([expr.static.cast])"
     url: https://eel.is/c++draft/expr.static.cast
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що вказівник на base, який є підоб’єктом об’єкта D, static_cast-ом перетворюється на вказівник на D; якщо base не є підоб’єктом D, поведінка undefined."
   - source_id: itanium-cxx-abi
     title: "Itanium C++ ABI"
     url: https://itanium-cxx-abi.github.io/cxx-abi/abi.html
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Визначає dynamic class як клас, що потребує virtual table pointer через наявність virtual-функцій чи virtual-баз; клас без них vptr не має. Це ABI, а не стандарт мови: інші ABI можуть відрізнятися в деталях."
   - source_id: cpp-draft-temp-inst
     title: "C++ working draft: Implicit instantiation ([temp.inst])"
     url: https://eel.is/c++draft/temp.inst
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що неявна інстанціація специфікації класового шаблону інстанціює оголошення, але не визначення member-функцій, а специфікація member-функції інстанціюється, коли її визначення потрібне. Про розмір коду не йдеться."
 ---
 
 ## Question code
@@ -109,7 +78,3 @@ int use_temp(Temp& t) { return t.read_filtered(); }
 - Вважати CRTP повною заміною virtual: коли тип відомий лише в runtime, спільної бази немає, і потрібен інший механізм.
 - Написати `class Temp : public SensorBase<Pressure>`: якщо `Pressure` не походить від `SensorBase<Pressure>`, `static_cast` не скомпілюється; якщо походить, це undefined behavior.[^cpp-draft-expr-static-cast]
 - Не реалізувати `read_raw` і не викликати `read_filtered`: помилки компіляції не буде.[^cpp-draft-temp-inst]
-
-## Sources
-
-<!-- generated from frontmatter -->

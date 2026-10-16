@@ -49,10 +49,6 @@ def test_a_comment_inside_a_fence_is_code_not_a_heading() -> None:
             "    ...",
             "```",
             "",
-            "## Sources",
-            "",
-            "<!-- generated from frontmatter -->",
-            "",
         ]
     )
 
@@ -61,7 +57,6 @@ def test_a_comment_inside_a_fence_is_code_not_a_heading() -> None:
     assert [section.heading for section in parsed.sections] == [
         "Short answer",
         "Detailed explanation",
-        "Sources",
     ]
     detailed = next(s for s in parsed.sections if s.heading == "Detailed explanation")
     assert "# a standalone comment at column 0" in detailed.content

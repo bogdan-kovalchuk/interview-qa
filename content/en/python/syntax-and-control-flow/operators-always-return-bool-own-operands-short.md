@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0001
 title: "Do the `and` and `or` operators always return a `bool`, or one of their own operands, and how does short-circuit evaluation work?"
-description: "Do the `and` and `or` operators always return a `bool`, or one of their own operands, and how does short-circuit evaluation work?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [and, or, bool]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -79,11 +56,3 @@ never read, and no `AttributeError` occurs.
 Separately, `and`/`or` should not be confused with `&`/`|`: the latter are bitwise operators, they
 do not short-circuit, and for ordinary objects they mean something else
 entirely.[^py314-reference-expressions]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

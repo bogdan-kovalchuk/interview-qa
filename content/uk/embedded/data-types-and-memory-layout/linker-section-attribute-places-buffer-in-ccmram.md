@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0050
 title: "Що означає? `__attribute__((section(\".ccmram\"))) uint32_t fast_buf[256];`"
-description: "Атрибут section просить компілятор помістити масив у секцію .ccmram; фактичне розміщення задає linker script."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: gcc-common-attributes
     title: "GCC: Common Attributes"
     url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює, що section attribute призначає змінну секції об’єктного файла; фізичне розміщення та підтримка залежать від linker і платформи."
 ---
 
 ## Short answer
@@ -55,11 +32,3 @@ sources:
 **Типові помилки:**
 - Вважати назву `.ccmram` достатньою для фактичного розміщення.
 - Приписувати секції властивості конкретного MCU без перевірки його reference manual.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

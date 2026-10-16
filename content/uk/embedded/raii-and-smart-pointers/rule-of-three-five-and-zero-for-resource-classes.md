@@ -1,48 +1,21 @@
 ---
 id: emb-raii-0025
 title: "Що таке rule of three / five / zero?"
-description: "Якщо клас керує ресурсом – визнач (або видали) усі спецфункції разом."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-copy-ctor
     title: "C++ working draft: Copy/move constructors ([class.copy.ctor])"
     url: https://eel.is/c++draft/class.copy.ctor
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що неявний move constructor не оголошується, якщо в класі є user-declared деструктор, а неявний copy constructor за такого деструктора deprecated. Про оптимізацію й згенерований код не йдеться."
   - source_id: cpp-draft-unique-ptr-single
     title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
     url: https://eel.is/c++draft/unique.ptr.single
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що copy-конструктор і copy-присвоєння unique_ptr видалені, а переміщення дозволені; деструктор викликає deleter лише для ненульового вказівника. Розміру не задає."
 ---
 
 ## Short answer
@@ -92,7 +65,3 @@ Rule of zero лишається доступним і зі stateful deleter (й�
 - Визначити деструктор і не визначити move: переміщення мовчки стає копіюванням, і два об’єкти закривають один хендл.[^cpp-draft-class-copy-ctor]
 - Видалити copy-операції і забути про move: клас стає непереміщуваним, і повернення його локальної змінної з функції не компілюється.[^cpp-draft-class-copy-ctor]
 - Тримати сирий `Handle*` як член без деструктора: ресурс протікає.
-
-## Sources
-
-<!-- generated from frontmatter -->

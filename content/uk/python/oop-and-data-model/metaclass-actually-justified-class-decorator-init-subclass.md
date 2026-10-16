@@ -1,90 +1,39 @@
 ---
 id: py-oop-0030
 title: "Коли metaclass справді виправданий, а коли class decorator або `__init_subclass__` дає простіше рішення?"
-description: "Metaclass потрібен, щоб втручатися в створення класу, наприклад у namespace через `__prepare__`; для реєстрації й перевірки підкласів простіші `__init_subclass__` або class decorator."
 track: python
 section: oop-and-data-model
-level: senior
-type: comparison
-tags: [init-subclass]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-preparing-the-class-namespace
     title: "Python 3.14: Reference/datamodel (Preparing the class namespace)"
     url: https://docs.python.org/3.14/reference/datamodel.html#preparing-the-class-namespace
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: метод __prepare__ створює namespace, який отримує тіло класу і передається в __new__ metaclass."
   - source_id: py314-reference-datamodel-creating-the-class-object
     title: "Python 3.14: Reference/datamodel (Creating the class object)"
     url: https://docs.python.org/3.14/reference/datamodel.html#creating-the-class-object
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: class object створюється після виконання тіла класу; type.__new__ викликає __set_name__ і __init_subclass__ батька, потім застосовуються class decorators."
   - source_id: py314-reference-datamodel-customizing-class-creation
     title: "Python 3.14: Reference/datamodel (Customizing class creation)"
     url: https://docs.python.org/3.14/reference/datamodel.html#customizing-class-creation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: __init_subclass__ викликається для майбутніх підкласів, а не для класу, де визначений; class decorator діє лише на клас, до якого застосований."
   - source_id: py314-reference-datamodel-determining-the-appropriate-metaclass
     title: "Python 3.14: Reference/datamodel (Determining the appropriate metaclass)"
     url: https://docs.python.org/3.14/reference/datamodel.html#determining-the-appropriate-metaclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: вибір metaclass за bases; якщо жоден кандидат не є підтипом усіх інших, визначення класу завершується TypeError."
   - source_id: py314-reference-datamodel-special-method-lookup
     title: "Python 3.14: Reference/datamodel (Special method lookup)"
     url: https://docs.python.org/3.14/reference/datamodel.html#special-method-lookup
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: неявні виклики спеціальних методів шукаються в type(obj), а не в екземплярі; для класу це type(cls)."
   - source_id: py314-reference-datamodel-customizing-instance-and-subclass-checks
     title: "Python 3.14: Reference/datamodel (Customizing instance and subclass checks)"
     url: https://docs.python.org/3.14/reference/datamodel.html#customizing-instance-and-subclass-checks
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: __instancecheck__ і __subclasscheck__ у metaclass; abc.ABCMeta реалізує їх для ABC."
 ---
 
 ## Short answer
@@ -173,19 +122,3 @@ Metaclass також потрібен, коли треба задати пове
 - брати metaclass для реєстрації, для якої вистачає `__init_subclass__`;
 - очікувати, що `__init_subclass__` або декоратор перехопить тіло класу чи замінить metaclass;
 - вважати, що class decorator діє на підкласи, або що `__init_subclass__` викликається для класу, де його визначено.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0010
 title: "Навіщо statement-макрос обгортають у `do { ... } while(0)`?"
-description: "Щоб макрос із кількох інструкцій поводився як один statement і коректно працював з if/else та крапкою з комою."
 track: embedded
 section: inline-and-macros
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -77,7 +58,3 @@ else
 - Додавати крапку з комою в кінець самого `#define`, змушуючи caller отримати зайвий порожній statement.
 - Забути зворотну скісну риску продовження рядка або залишити після неї пробіли.
 - Вважати конструкцію звичайним циклом із повтореннями; умова `0` гарантує одноразове виконання.
-
-## Sources
-
-<!-- generated from frontmatter -->

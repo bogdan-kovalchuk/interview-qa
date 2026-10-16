@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0003
 title: "Як гарантувати cleanup у `__exit__`, не приховавши original exception новою помилкою cleanup-коду?"
-description: "Cleanup-код у __exit__ треба огортати у власний try/except, щоб exception під час cleanup не замінив оригінальний."
 track: python
 section: context-managers
-level: senior
-type: practical
-tags: [exit]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -88,23 +65,3 @@ class ResilientResource:
 - ізоляція декількох cleanup-дій: якщо звільняються два або більше ресурсів, кожне закриття має бути обгорнуте в окремий блок або делеговане до `contextlib.ExitStack`;
 - не маскувати помилки нормального закриття: збій `close()` чи `flush()` без винятку в тілі `with` свідчить про реальну втрату цілісності даних і повинен генерувати виняток;
 - уникати перехоплення `BaseException` у cleanup: системні сигнали (`KeyboardInterrupt`, `SystemExit`) повинні негайно зупиняти процес без затримки на повторні спроби.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

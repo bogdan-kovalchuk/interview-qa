@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0288
 title: "Чому якісні бокорізи й плоскогубці важливі для прототипування?"
-description: "Чому якісні бокорізи й плоскогубці важливі для прототипування?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: facom-417spmt
     title: "FACOM MICRO-TECH Diagonal Cutter Pliers for DIP and CMS Components"
     url: https://www.facom.com/product/417spmt/micro-tech-diagonal-cutter-pliers-dip-and-cms-components
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Сторінка виробника описує тонкі бокорізи для DIP і CMS та flush cut; характеристики стосуються моделі 417.SPMT, не всіх інструментів."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Приклад: після встановлення компонента з наскрізними виводами бокорізами обрізають виступ дроту, підтримуючи його так, щоб відрізаний шматочок не відлетів. Для формування короткої перемички плоскогубці допомагають зігнути дріт без повторного перегинання біля самого корпусу компонента. Різання виконують до подачі живлення, а після нього перевіряють, чи не лишилося обрізків, здатних замкнути сусідні контакти.[^facom-417spmt]
 
 **Типові помилки:** різати загартований або товстий дріт інструментом для тонких виводів, використовувати бокорізи як плоскогубці та залишати гострі виступи. Перед роботою перевіряють призначення й обмеження інструмента, а плату оглядають і очищають від обрізків.
-
-## Sources
-
-<!-- generated from frontmatter -->

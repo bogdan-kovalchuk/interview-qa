@@ -1,48 +1,21 @@
 ---
 id: py-oop-0016
 title: "Як C3 MRO визначає порядок пошуку methods для множинного успадкування і яку властивість порядку він зберігає?"
-description: "C3 будує лінеаризацію L[C] = C + merge(L[B₁], …, L[Bₙ], B₁, …, Bₙ), зберігаючи local precedence order (порядок bases у class C(A, B)) і monotonicity (порядок із MRO класу зберігається в MRO його нащадків)."
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -103,11 +76,3 @@ except TypeError:
 **Типові помилки:**
 - плутати `__bases__` з `__mro__`: `__bases__` містить лише прямих батьків класу, а `__mro__` є повним порядком пошуку.[^py314-reference-datamodel]
 - вважати, що `class C(A, B)` і `class C(B, A)` дають однаковий пошук: порядок bases є частиною правила, тож у другому варіанті методи спершу шукаються в `B`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

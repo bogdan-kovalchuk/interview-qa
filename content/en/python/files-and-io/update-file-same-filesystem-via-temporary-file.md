@@ -1,83 +1,36 @@
 ---
 id: py-fileio-0007
 title: "How do you update a file within the same filesystem via a temporary file and `os.replace()`, so a reader never sees partial content?"
-description: "How do you update a file within the same filesystem via a temporary file and `os.replace()`, so a reader never sees partial content?"
 track: python
 section: files-and-io
-level: middle
-type: practical
-tags: [os-replace]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile-mkstemp
     title: "Python 3.14: Library/tempfile (mkstemp)"
     url: https://docs.python.org/3.14/library/tempfile.html#tempfile.mkstemp
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: mkstemp() creates a file readable and writable only by the creating user; the dir parameter sets the directory."
   - source_id: py314-library-functions-open
     title: "Python 3.14: Built-in Functions (open)"
     url: https://docs.python.org/3.14/library/functions.html#open
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: mode 'w' opens the file for writing, truncating it first."
 ---
 
 ## Short answer
@@ -119,23 +72,3 @@ def write_atomic(target: Path, data: str) -> None:
 - skipping `flush()` and `os.fsync()` and assuming the data is on disk after the rename;
 - not checking the file's permissions after the replacement;
 - assuming atomicity is guaranteed on every platform: the documentation describes it as a POSIX requirement.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

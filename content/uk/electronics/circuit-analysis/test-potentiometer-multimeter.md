@@ -1,48 +1,21 @@
 ---
 id: emb-elcirc-0005
 title: "Як перевірити потенціометр мультиметром?"
-description: "Як перевірити потенціометр мультиметром?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 27, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ohmmeter-usage
     title: "All About Circuits: How to Use an Ohmmeter to Measure Resistance"
     url: https://www.allaboutcircuits.com/textbook/experiments/chpt-2/ohmmeter-usage/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує вимірювання опору омметром і заборону вимірювати опір у колі під напругою; вимірювання в зібраному колі може включати паралельні шляхи."
   - source_id: aac-potentiometer-rheostat
     title: "All About Circuits: DC Lab – Potentiometer as a Rheostat"
     url: https://www.allaboutcircuits.com/TEXTBOOK/experiments/chpt-3/potentiometer-rheostat/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Описує зміну опору між wiper і крайньою клемою та сталість опору між крайніми клемами; процедура не задає допуск конкретного компонента."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Вимірювати опір, поки схема живиться.
 - Очікувати змінного значення між крайніми клемами замість опору всієї доріжки.
 - Вважати будь-яке відхилення від номіналу несправністю без урахування допуску й паралельних шляхів у схемі.
-
-## Sources
-
-<!-- generated from frontmatter -->

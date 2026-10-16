@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0005
 title: "How does the assignment expression `:=` differ from an ordinary assignment, and when does using it hurt readability?"
-description: "How does the assignment expression `:=` differ from an ordinary assignment, and when does using it hurt readability?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -89,19 +66,3 @@ A limitation that occasionally surprises: `:=` cannot be used as a standalone to
 `x := 5` is a syntax error, because it is an expression rather than an assignment; ordinary
 assignment is what `=` is for. Likewise `:=` does not work with attributes or indices: only plain
 names can be targets.[^py314-reference-expressions]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

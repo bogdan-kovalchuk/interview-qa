@@ -1,34 +1,15 @@
 ---
 id: emb-patterns-0010
 title: "Як у ring buffer визначають full і empty без лічильника?"
-description: "Empty: head == tail. Full: (head + 1) & MASK == tail (один слот завжди лишається порожнім)."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,7 +29,3 @@ Ring buffer із двома індексами зберігає позицію �
 Цей спосіб часто зручний у схемі «один виробник – один споживач», наприклад коли ISR додає дані, а main їх читає. Однак окремо треба перевірити, чи індекси читаються та записуються атомарно на цільовому MCU і чи компілятор не змінює потрібний порядок публікації даних. Правило про порожній слот усуває спільний лічильник, а не всі можливі перегони; `volatile` також не робить складену операцію атомарною.[^iso-c-n1570]
 
 Приклад для восьми комірок: після семи записів `head` стоїть на позиції перед `tail`; восьмий запис відхиляють, бо він зробив би `head` рівним `tail` і стер би різницю між full та empty.
-
-## Sources
-
-<!-- generated from frontmatter -->

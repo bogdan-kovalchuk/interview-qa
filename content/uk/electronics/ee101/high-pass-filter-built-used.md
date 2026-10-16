@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0108
 title: "Як побудований RC-фільтр високих частот і де його використовують?"
-description: "Як побудований RC-фільтр високих частот і де його використовують?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 51, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-capacitive-high-pass
     title: "All About Circuits: High-pass Filters"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/high-pass-filters/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: Топологія RC-ФВЧ, частотна поведінка послідовного конденсатора та приклад застосування; параметри залежать від навантаження.
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ RC-ФВЧ першого порядку складається з конденс
 - Називати ФВЧ «блокувальником постійного струму» без застереження про перехідний процес і витоки реального конденсатора.
 
 Схему використовують для AC-зв’язку та послаблення низькочастотних складових. Перед розрахунком перевірте навантаження і точку зняття виходу: вони визначають реальну частоту зрізу та рівень у смузі пропускання.
-
-## Sources
-
-<!-- generated from frontmatter -->

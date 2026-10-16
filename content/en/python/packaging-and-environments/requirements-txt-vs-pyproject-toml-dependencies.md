@@ -1,48 +1,21 @@
 ---
 id: py-pkgenv-0001
 title: "What is the difference between requirements.txt and pyproject.toml for managing Python project dependencies?"
-description: "pyproject.toml declares standardized project and build metadata; requirements.txt conventionally contains pip installation inputs for an environment, and the two files can be used together."
 track: python
 section: packaging-and-environments
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  uk: 3
-anki:
-  export: true
 sources:
   - source_id: pep621
     title: "PEP 621: Storing project metadata in pyproject.toml"
     url: https://peps.python.org/pep-0621/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "PEP that standardized pyproject.toml for project metadata."
   - source_id: packaging-guide
     title: "Python Packaging User Guide: Writing pyproject.toml"
     url: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "Official Python packaging documentation."
   - source_id: pip-requirements-format
     title: "pip documentation: Requirements File Format"
     url: https://pip.pypa.io/en/stable/reference/requirements-file-format/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "Official pip specification of requirements file syntax and scope."
   - source_id: packaging-install-requires-vs-requirements
     title: "Python Packaging User Guide: install_requires vs requirements files"
     url: https://packaging.python.org/en/latest/discussions/install-requires-vs-requirements/#install-requires-vs-requirements-files
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official PyPA page: install_requires declares abstract dependencies that pip analyzes at install time; requirements files are lists of pip arguments, often with exact versions, read only by pip install -r."
 ---
 
 ## Short answer
@@ -80,19 +53,3 @@ A real requirements file usually contains a complete list of pinned versions, in
 - putting exact versions in `[project].dependencies`, so that consumers of the library cannot upgrade the dependency;
 - assuming that `requirements.txt` is part of the build metadata: the project's installer does not read it;
 - assuming that the file name matters: pip accepts any name in `-r`, because `requirements.txt` is only the usual name.[^pip-requirements-format]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

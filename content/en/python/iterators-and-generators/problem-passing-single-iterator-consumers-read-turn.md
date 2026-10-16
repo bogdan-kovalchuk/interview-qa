@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0014
 title: "What problem does passing a single iterator to two consumers that read it in turn create?"
-description: "What problem does passing a single iterator to two consumers that read it in turn create?"
 track: python
 section: iterators-and-generators
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-glossary-term-iterable
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: definition of iterable; iter() returns an iterator for one pass."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: definition of iterator and exhausted."
   - source_id: py314-library-itertools-tee
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.tee
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: itertools.tee(), independent iterators from one iterable and their storage requirements."
 ---
 
 ## Short answer
@@ -98,23 +63,3 @@ The problem arises only when consumers hold the same iterator. A generator passe
 - passing one iterator or generator to two functions and expecting each to receive the full sequence;
 - treating `tee()` as free: it may require significant extra storage;
 - converting an iterator to a `list` without checking the size of the data: if the data does not fit in memory, that is a separate problem.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

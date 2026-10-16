@@ -1,48 +1,18 @@
 ---
 id: py-coll-0005
 title: "How does a tuple containing a mutable element behave when `t[0] += value` is attempted, and why can the mutation happen before the `TypeError`?"
-description: "How does a tuple containing a mutable element behave when `t[0] += value` is attempted, and why can the mutation happen before the `TypeError`?"
 track: python
 section: collections
-level: senior
-type: pitfall
-tags: [t-0-value, typeerror]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -89,23 +59,3 @@ print(t[1])  # [3, 4]
 - embedding mutable objects (`list`, `dict`) inside tuples, breaking the guarantee of immutability and rendering the tuple unhashable;
 - confusing an explicit mutating method like `lst.extend(...)` (which leaves the tuple untouched) with `+=` (which requires reassigning the slot);
 - wrapping `t[0] += value` in a `try/except TypeError` block as a hacky way to mutate, which creates fragile, anti-pattern control flow.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

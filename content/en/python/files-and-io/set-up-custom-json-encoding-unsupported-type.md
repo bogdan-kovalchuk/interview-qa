@@ -1,97 +1,42 @@
 ---
 id: py-fileio-0011
 title: "How do you set up custom JSON encoding for an unsupported type without losing an explicit wire schema?"
-description: "How do you set up custom JSON encoding for an unsupported type without losing an explicit wire schema?"
 track: python
 section: files-and-io
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json-encoder-table
     title: "Python 3.14: Library/json (JSONEncoder)"
     url: https://docs.python.org/3.14/library/json.html#json.JSONEncoder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the types JSONEncoder serializes by default."
   - source_id: py314-library-json-encoder-default
     title: "Python 3.14: Library/json (Encoders and Decoders)"
     url: https://docs.python.org/3.14/library/json.html#py-to-json-table
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the default parameter for unsupported types, TypeError without it, and a subclass with a default() method."
   - source_id: py314-library-json-decoder-object-hook
     title: "Python 3.14: Library/json (JSON-to-Python conversion table)"
     url: https://docs.python.org/3.14/library/json.html#json-to-py-table
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: object_hook is called with the result of each decoded JSON object, and its return value replaces the dict."
   - source_id: py314-library-json-dump
     title: "Python 3.14: Library/json (dump)"
     url: https://docs.python.org/3.14/library/json.html#json.dump
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the cls parameter for a JSONEncoder subclass that overrides default()."
 ---
 
 ## Short answer
@@ -131,23 +76,3 @@ print(restored)  # {'z': (1+2j), 'n': 3}
 - mixing up the arguments: `default` is passed to `json.dumps`, and `object_hook` to `json.loads`;
 - returning `None` or `str(obj)` for an unknown type instead of raising `TypeError`, which silently changes the data's type;
 - choosing a generic marker such as `"type"` that can collide with real data.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

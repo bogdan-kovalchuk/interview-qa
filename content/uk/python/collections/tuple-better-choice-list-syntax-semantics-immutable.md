@@ -1,41 +1,18 @@
 ---
 id: py-coll-0001
 title: "Коли tuple є кращим вибором за list не через syntax, а через семантику незмінної структури даних?"
-description: "Tuple варто обирати, коли дані логічно є незмінним записом (record) – його immutability сигналізує про намір і дозволяє використовувати tuple як dict key або елемент set."
 track: python
 section: collections
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -77,19 +54,3 @@ print(nested)  # (1, ['read', 'write'])
 - очікування повної незмінності від `tuple`, який містить змінювані елементи (`list`, `dict`, `set`), що також унеможливлює його використання в ролі ключа словника;
 - недооцінка захисного проектування: використання `tuple` як типу повернення функцій гарантує клієнтському коду, що колекція не зміниться;
 - заміна `tuple` на `list` заради незначних зручностей синтаксису, коли семантично структура є фіксованим кортежем значень.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

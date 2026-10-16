@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0037
 title: "Як додати timeout до polling-циклу очікування прапорця?"
-description: "Запам’ятай стартовий тік і на кожній ітерації порівнюй різницю тіків із лімітом."
 track: embedded
 section: common-code-patterns
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Підтверджує арифметику unsigned за модулем (6.2.5, пункт 9), integer promotions (6.3.1.1) і правила для volatile-об’єктів (6.7.3, пункт 7); не описує конкретних таймерів чи тулчейнів."
   - source_id: holzmann-power-of-ten
     title: "The Power of Ten – Rules for Developing Safety Critical Code (G. J. Holzmann, NASA/JPL)"
     url: https://spinroot.com/gerard/pdf/P10.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Стаття автора з NASA/JPL, розміщена на його сайті: правило 2 вимагає фіксованої межі для кожного циклу, правило 7 – перевіряти значення, що повертаються, й валідність параметрів. Це настанова для safety-critical C, а не вимога до кожного проєкту."
 ---
 
 ## Question code
@@ -79,7 +56,3 @@ return OK;
 - Мати лічильник іншої ширини, ніж змінна `start`.
 - Чекати прапорець у ISR або з вимкненими перериваннями, коли тік не оновлюється.
 - Лишати цикл очікування без жодної межі та без коду помилки.
-
-## Sources
-
-<!-- generated from frontmatter -->

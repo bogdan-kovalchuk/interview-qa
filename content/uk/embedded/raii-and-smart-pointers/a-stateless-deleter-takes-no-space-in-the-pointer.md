@@ -1,55 +1,24 @@
 ---
 id: emb-raii-0023
 title: "Чому custom deleter варто робити stateless?"
-description: "Stateless deleter type (лямбда без capture або empty functor) може не займати місця в unique_ptr завдяки empty base optimization."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-unique-ptr-single
     title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
     url: https://eel.is/c++draft/unique.ptr.single
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що unique_ptr зберігає вказівник і deleter, а його деструктор викликає deleter лише для ненульового вказівника; copy-операції видалені, move дозволені. Розміру об’єкта не задає."
   - source_id: cpp-draft-intro-object
     title: "C++ working draft: Object model ([intro.object])"
     url: https://eel.is/c++draft/intro.object
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що нульовий розмір має base-підоб’єкт standard-layout класу без нестатичних даних, а в інших випадках обставини нульового розміру визначає реалізація. Конкретних значень sizeof не задає."
   - source_id: itanium-cxx-abi
     title: "Itanium C++ ABI"
     url: https://itanium-cxx-abi.github.io/cxx-abi/abi.html
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Розкладка класів: порожня база спершу розміщується на зміщенні нуль, якщо це можливо. Це ABI, а не стандарт C++; вендорські тулчейни й інші платформи можуть відрізнятися."
 ---
 
 ## Short answer
@@ -88,7 +57,3 @@ Stateless не означає безпечний. Якщо виклик deleter-
 - Захоплювати хендл або шину в лямбді-deleter і очікувати, що розмір `unique_ptr` лишиться як у сирого вказівника.
 - Вважати розмір однаковим на всіх платформах: обставини нульового розміру визначає реалізація.[^cpp-draft-intro-object]
 - Писати deleter, який може кинути виняток: тоді це undefined behavior.
-
-## Sources
-
-<!-- generated from frontmatter -->

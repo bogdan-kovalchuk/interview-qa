@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0037
 title: "Що таке self-referential struct і чому для неї потрібен pointer?"
-description: "Self-referential struct містить pointer на об’єкт свого ж типу, наприклад linked list node."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,7 +31,3 @@ Self-referential struct – це структура, що містить пок�
 У embedded code така схема використовується, наприклад, для intrusive list у чергах RTOS або списках вільних блоків. Вона економить окрему обгортку для зв’язку, але вимагає контролювати час життя вузлів і коректність зв’язків. Якщо пам’ять обмежена чи динамічне виділення небажане, можна зберігати індекс наступного елемента в масиві pool замість покажчика; це інший спосіб представити зв’язок, а не вкладений об’єкт того самого типу.[^iso-c-n1570]
 
 **Типова помилка:** сприймати `struct Node *next` як вбудований наступний вузол. Це лише адреса; сам вузол має бути створений окремо, а покажчик належно ініціалізований перед використанням.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

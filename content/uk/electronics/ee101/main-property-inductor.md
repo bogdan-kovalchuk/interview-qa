@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0038
 title: "Яка основна властивість індуктора?"
-description: "Яка основна властивість індуктора?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 38, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-inductor-calculus
     title: "All About Circuits: Inductor voltage and current relationship"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-15/inductors-and-calculus/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Зв’язок напруги індуктивності зі швидкістю зміни струму, полярність за законом Ленца та магнітне поле; базова ідеальна модель."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 Приклад: якщо через ідеальний індуктор `L = 10 mH` струм зростає зі швидкістю `2 A/ms`, то потрібна індуктивна напруга `v_L = 0.01 H * 2000 A/s = 20 V`. За того самого струму, але без його зміни, індуктивна складова напруги дорівнює нулю.[^aac-inductor-calculus]
 
 **Типова помилка:** казати, що індуктор «блокує струм». Він протидіє його зміні; струм визначається всією схемою та історією кола.
-
-## Sources
-
-<!-- generated from frontmatter -->

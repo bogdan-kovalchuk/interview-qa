@@ -1,48 +1,21 @@
 ---
 id: py-funcs-0024
 title: "Як у Python 3.14 змінилася стандартна семантика обчислення annotations і чому для їх безпечної інспекції варто використовувати `annotationlib`, а не покладатися лише на пряме читання `__annotations__`?"
-description: "У Python 3.14 annotations обчислюються ліниво за замовчуванням (PEP 649): компілятор генерує __annotate__-callable, який викликається лише при зверненні до __annotations__, замість негайного обчислення при визначенні."
 track: python
 section: functions-and-scope
-level: senior
-type: mechanism
-tags: [annotationlib, annotations]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-annotations
     title: "Python 3.14: Howto/annotations"
     url: https://docs.python.org/3.14/howto/annotations.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-annotationlib
     title: "Python 3.14: Library/annotationlib"
     url: https://docs.python.org/3.14/library/annotationlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pep-649
     title: "PEP 649"
     url: https://peps.python.org/pep-0649/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Специфікація PEP 649."
   - source_id: py314-reference-compound-stmts-annotations
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#annotations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: анотації обчислюються ліниво за замовчуванням; стан майбутнього імпорту annotations."
 ---
 
 ## Short answer
@@ -92,11 +65,3 @@ print(outer().__annotations__)  # {'x': <class 'int'>, 'return': <class 'int'>}
 - вважати, що помилка в анотації з’явиться під час `def`: у 3.14 вона з’являється під час доступу до анотацій;
 - читати `__annotations__` напряму в інструментах без обробки `NameError`; замість цього використовувати `get_annotations()` з потрібним форматом;
 - додавати `from __future__ import annotations` у новий код як засіб для forward references: цей режим зберігає рядки, його заплановано вилучити, а `get_annotations()` і `typing.get_type_hints()` гірше розв’язують такі анотації.[^py314-reference-compound-stmts-annotations]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

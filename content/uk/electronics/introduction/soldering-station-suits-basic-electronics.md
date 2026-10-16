@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0282
 title: "Яка паяльна станція підходить для базової електроніки?"
-description: "Яка паяльна станція підходить для базової електроніки?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: hakko-fx888d
     title: "HAKKO FX-888D Specifications"
     url: https://www.hakko.com/english/products/detail.php?s_url=hakko_fx888d_spec
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Приклад регульованої станції з потужністю 70 W, діапазоном 50–480 °C і вказаною виробником температурною стабільністю; модель знята з виробництва."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 - Вибирати станцію лише за ватами, не перевіряючи температурне регулювання, сумісність жал і наявність підставки.
 - Підвищувати температуру до максимуму замість вибору відповідного жала й достатньої потужності для теплового навантаження.
 - Сприймати паспортну стабільність у режимі очікування як точність під час пайки.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,58 +1,24 @@
 ---
 id: py-perf-0020
 title: "Why doesn't growing RSS prove a Python object leak, and what additional measurements are needed?"
-description: "Growing RSS alone does not prove a leak: RSS also counts pymalloc arenas, fragmentation and C-extension memory."
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, tracemalloc module: traces most memory blocks allocated by Python (not all of the process memory); comparing two snapshots to detect leaks."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html#the-pymalloc-allocator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, pymalloc section: small objects up to 512 bytes, arenas of a fixed size (1 MiB on 64-bit); larger allocations go to PyMem_RawMalloc. It does not describe when arenas are returned to the OS."
   - source_id: cpython-obmalloc-arena-release
     title: "CPython Objects/obmalloc.c: arena release"
     url: https://github.com/python/cpython/blob/v3.14.6/Objects/obmalloc.c#L2431
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14.6"
-    applicability: "CPython 3.14.6 source, Objects/obmalloc.c, line 2431 (if (nf == ao->ntotalpools && ao->nextarena != NULL)): an arena is freed to the system when all its pools are free and it is not the last one in the list. An implementation detail of CPython, not a language guarantee."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html#gc.is_tracked
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, gc.get_objects and gc.is_tracked: returns only objects tracked by the collector; atomic types as a rule are not tracked. It does not describe process memory."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html#sys.getallocatedblocks
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, sys.getallocatedblocks: number of memory blocks allocated by the interpreter; the value can vary between calls because of internal caches, so gc.collect() and _clear_internal_caches() may be needed. It is not a measure of RSS."
 ---
 
 ## Short answer
@@ -96,23 +62,3 @@ tracemalloc does not see everything. In CPython, memory that a C extension reque
 - treating RSS growth as proof of a leak without snapshots or a repeated workload;
 - reading one `sys.getallocatedblocks()` value without `gc.collect()` and without comparing trends;
 - looking for leaked strings or bytes with `gc.get_objects()`, where as a rule they do not appear.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

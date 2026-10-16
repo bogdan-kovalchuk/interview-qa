@@ -1,41 +1,18 @@
 ---
 id: py-async-0020
 title: "Why can't awaiting cancellation on `to_thread()` forcibly stop a synchronous function already running in the worker thread?"
-description: "Why can't awaiting cancellation on `to_thread()` forcibly stop a synchronous function already running in the worker thread?"
 track: python
 section: asyncio
-level: senior
-type: pitfall
-tags: [to-thread]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -69,23 +46,3 @@ The practical consequence is that resources opened inside the function (file des
 locks) stay held for as long as the function itself has not finished, even if the caller received
 the `CancelledError` long ago and has moved on; if the function holds, say, a `threading.Lock`, and
 execution gets stuck, this can lead to a resource leak that outlives the cancellation itself.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

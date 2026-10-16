@@ -1,41 +1,18 @@
 ---
 id: py-coll-0011
 title: "How do the dict union operators `|` and `|=` resolve conflicts between identical keys, and how do they differ in mutation?"
-description: "How do the dict union operators `|` and `|=` resolve conflicts between identical keys, and how do they differ in mutation?"
 track: python
 section: collections
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ appear in `d2`.
 Unlike `dict.update()`, which always mutates `self` and returns `None`, `d1 | d2` is an
 expression that can be passed along immediately as an argument, without creating an intermediate
 named variable.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

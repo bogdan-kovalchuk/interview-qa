@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0020
 title: "Чим відрізняється передавання `handler` від передавання `handler()` як аргументу функції вищого порядку?"
-description: "handler передає сам function object (callable), який функція вищого порядку може викликати пізніше; handler() негайно викликає функцію й передає її результат."
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [handler]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-objects-values-and-types
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#objects-values-and-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: порядок обчислення аргументів виклику."
   - source_id: py314-reference-expressions-lambdas
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambdas
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: lambda створює function object з одного виразу."
 ---
 
 ## Short answer
@@ -78,19 +55,3 @@ except TypeError as e:
 - писати `register(handler())` замість `register(handler)`: реєстрація проходить без винятку, тому помилку легко не помітити;
 - вважати, що `handler()` лише передає функцію далі: насправді вона виконується тут і зараз;
 - передавати `handler(42)` там, де потрібен відкладений виклик; замість цього використати `lambda: handler(42)`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-perf-0005
 title: "Як перевірити, що asymptotically кращий algorithm реально виграє на representative input sizes та distributions?"
-description: "Перевірити повторними вимірами timeit на розмірах і розподілах, близьких до продакшн: асимптотика не гарантує переможця на конкретних даних."
 track: python
 section: performance
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація profile (Python 3.14): профайлер показує, як часто і як довго виконувались частини програми, додає накладні витрати для коду на Python і не призначений для бенчмаркінгу, для якого є timeit."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація timeit (Python 3.14): для точного вимірювання рекомендовано повторити його кілька разів і взяти найкращий час; за замовчуванням збирач сміття вимикається на час вимірювання."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація tracemalloc (Python 3.14): трасування блоків пам’яті, виділених Python; статистика виділень за файлом і рядком; порівняння двох знімків."
 ---
 
 ## Short answer
@@ -93,23 +70,3 @@ for n in (8, 64, 512, 4096):
 - тестувати лише випадкові дані, тоді як у продакшні багато дублікатів або майже відсортовані дані;
 - брати одне вимірювання або середнє замість найкращого часу з повторів;
 - бенчмаркати функцію ізольовано, хоча її вартість у системі визначає інший код.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

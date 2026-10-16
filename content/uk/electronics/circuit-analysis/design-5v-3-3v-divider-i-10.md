@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0030
 title: "Спроєктуйте ненавантажений подільник 5 В -> 3.3 В зі струмом 10 мА."
-description: "Спроєктуйте ненавантажений подільник 5 В -> 3.3 В зі струмом 10 мА."
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 30, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slaa067
     title: "Texas Instruments: Understanding Basic Analog – Circuit Equations"
     url: https://www.ti.com/lit/pdf/slaa067
-    accessed: 2026-10-04
-    kind: official
-    version: "SLAA067"
-    applicability: "Підтримує закон Ома та розрахунок ненавантаженого подільника; приклади ідеальних резистивних DC-кіл."
 ---
 
 ## Short answer
@@ -57,7 +34,3 @@ sources:
 - Не сказати, що розрахунок припускає ненавантажений вихід; під’єднаний споживач змінює ефективний опір нижньої гілки.
 
 У реальному пристрої дільник, який постійно споживає 10 мА, розсіює `P = V_in*I = 50 мВт` у сумі. Потрібно також перевірити допустиму потужність кожного резистора, точність доступних номіналів і діапазон струму навантаження. Якщо вихід має живити споживач, його струм потрібно включити до розрахунку або додати буфер; інакше цільові 3.3 В не гарантовані.[^ti-slaa067]
-
-## Sources
-
-<!-- generated from frontmatter -->

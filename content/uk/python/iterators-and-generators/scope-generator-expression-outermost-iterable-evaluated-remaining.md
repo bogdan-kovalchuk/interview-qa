@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0017
 title: "У якому scope обчислюється outermost iterable generator expression і коли обчислюються решта його clauses?"
-description: "Outermost iterable обчислюється негайно в enclosing scope; усі інші вирази (output expression, наступні for/if) обчислюються ліниво в окремому implicit nested scope."
 track: python
 section: iterators-and-generators
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ generator expressions: найлівіший iterable обчислюється одразу, решта виразів обчислюється лениво, як у generator."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dictionaries
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ displays: comprehension виконується в implicitly nested scope, а змінні target list не просочуються в enclosing scope."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ resolution of names: область імен класу не поширюється на comprehensions і generator expressions."
 ---
 
 ## Short answer
@@ -87,11 +52,3 @@ g = Config.gen                           # no error yet: creation succeeded
 - вважати, що помилка в output expression з’явиться одразу, під час створення generator expression;
 - звертатися в class body до імені класу в output expression і очікувати, що його буде знайдено: NameError з’явиться під час ітерації;
 - шукати змінну target list після генераторного виразу: вона не просочується в зовнішню область.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

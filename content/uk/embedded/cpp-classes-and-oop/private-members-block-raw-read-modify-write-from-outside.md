@@ -1,55 +1,24 @@
 ---
 id: emb-cppoop-0030
 title: "Чому private-члени важливі для коректної роботи з регістрами?"
-description: "Вони не дають зовнішньому коду робити сирі read-modify-write напряму, обходячи інваріанти класу."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-access
     title: "C++ working draft: Member access control, general ([class.access.general])"
     url: https://eel.is/c++draft/class.access.general
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що private-член можна назвати лише в членах і friends класу; це контроль доступу на рівні мови, а не апаратний захист регістра."
   - source_id: cpp-draft-expr-assign
     title: "C++ working draft: Assignment and compound assignment operators ([expr.assign])"
     url: https://eel.is/c++draft/expr.assign
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає E1 op= E2 як E1 = E1 op E2 з одноразовим обчисленням E1; не гарантує атомарності щодо переривань чи інших bus-master."
   - source_id: tm4c123-datasheet
     title: "Tiva TM4C123GH6PM Microcontroller Data Sheet (SPMS376E)"
     url: https://www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SPMS376E"
-    applicability: "Documentation Conventions (Table 2): значення reserved-біта слід зберігати через read-modify-write. Розділ 10.2.1.2: GPIODATA дозволяє змінювати окремі піни одним записом через маску в бітах [9:2] адреси, що ефективніше за read-modify-write. Приклад одного MCU; інші чипи відрізняються."
 ---
 
 ## Short answer
@@ -92,7 +61,3 @@ void use(Gpio &g) {
 - Вважати `private` апаратним захистом або захистом від ISR чи DMA.
 - Реалізувати `set` як `*odr_ = mask` замість зміни одного біта: решта біт регістра затирається.
 - Лишити `set`/`clear` без перевірки маски: приватність сама по собі некоректні значення не відсіває.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-perf-0018
 title: "Чому premature micro-optimization може збільшити defect risk без помітного user-level benefit?"
-description: "Micro-optimization змінює робочий код на складніший до того, як профайлінг підтвердив, що саме ця ділянка є bottleneck – і часто не впливає на user-visible latency."
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -79,23 +52,3 @@ print(parse_id.cache_info())
 - додавати кеш, не перевіривши, чи будуть повторні аргументи;
 - переписувати код заради мікровиграшу без тестів на поведінку;
 - вважати, що швидша локальна ділянка автоматично дає швидший запит.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

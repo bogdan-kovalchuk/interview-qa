@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0022
 title: "Що скомпілюється, а що ні: `int * const p`?"
-description: "p = 3 скомпілюється, p = &y не скомпілюється."
 track: embedded
 section: volatile-and-const
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -57,7 +38,3 @@ p = &y;
 Це не означає, що `p` вказує на незмінні дані: `x` можна змінити і через `*p`, і безпосередньо як `x`. Присвоєння `p = &y` є помилкою, бо змінювало б адресу; треба оголосити інший вказівник або прибрати `const`, якщо перепризначення справді потрібне. Саме значення адреси після ініціалізації не можна замінити.[^iso-c-n1570]
 
 Приклад: коли функція отримує фіксований буфер, але має змінювати його байти, параметр на кшталт `uint8_t * const data` виражає незмінну локальну адресу та змінювані дані. Це обмеження діє лише в межах оголошеного об’єкта-вказівника, а не на всі можливі псевдоніми буфера. Типова помилка – читати оголошення справа наліво без урахування зірочки; визначте окремо, чи кваліфіковано `p`, чи тип `*p`.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

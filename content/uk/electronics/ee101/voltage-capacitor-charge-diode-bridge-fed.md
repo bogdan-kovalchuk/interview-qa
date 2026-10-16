@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0129
 title: "До якої напруги зарядиться конденсатор після діодного моста від джерела 6 В RMS?"
-description: "До якої напруги зарядиться конденсатор після діодного моста від джерела 6 В RMS?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 55, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: libretexts-fiore-rectification
     title: "Fiore: Semiconductor Devices, 3.2 Rectification (Engineering LibreTexts)"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Однопівперіодний випрямляч, двопівперіодний із середньою точкою та мостовий: які діоди проводять у кожному півперіоді, падіння на двох діодах моста, конденсатор згладжування й імпульси зарядного струму. Підручник використовує типові 0,7 В на діод; це не заміняє datasheet конкретного діода."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: vishay-1n4001
     title: "Vishay: 1N4001 to 1N4007 general purpose plastic rectifier datasheet"
     url: https://www.vishay.com/docs/88503/1n4001.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Revision 29-Apr-2020"
-    applicability: "Максимальне V_F 1,1 В за 1 А (25 °C); I_R до 5 мкА за 25 °C і до 50 мкА за 125 °C за номінальної зворотної напруги; V_RRM від 50 до 1000 В залежно від типу. Стосується цієї серії випрямних діодів."
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ sources:
 - Вважати, що конденсатор зарядиться до 6 В або до `V_peak` без падіння на діодах.
 - Віднімати лише одне падіння `V_F`, а не два, хоча в мосту послідовно працюють два діоди.
 - Використовувати множник `sqrt(2)` для несинусоїдальної напруги або вважати 7,09 В гарантованою напругою під навантаженням.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,54 +1,21 @@
 ---
 id: py-gil-0001
 title: "Why does the free-threaded build not make every Python program faster?"
-description: "Removing the GIL removes one global lock, not the coordination that shared mutable state still needs."
 track: python
 section: concurrency-and-gil
-level: middle
-type: mechanism
-tags: [gil, free-threading, threads, scaling]
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 3
-see_also: [cs-cmplx-0001]
-applies_to:
-  - product: CPython free-threaded build
-    version: "3.14"
-  - product: CPython with GIL
-    version: "3.14"
-anki:
-  export: true
 sources:
   - source_id: py314-free-threading-howto
     title: "Python support for free threading"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-03
-    kind: official
-    version: "3.14"
-    applicability: "The free-threaded CPython build; does not describe other implementations."
   - source_id: py314-free-threading-extensions
     title: "C API extension support for free threading"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-03
-    kind: official
-    version: "3.14"
-    applicability: "Opt-in requirements for C extension modules under the free-threaded build."
   - source_id: pep-779
     title: "PEP 779: Criteria for supported status for free-threaded Python"
     url: https://peps.python.org/pep-0779/
-    accessed: 2026-09-03
-    kind: spec
-    version: null
-    applicability: "The support status of the free-threaded build from CPython 3.14 onwards."
   - source_id: pep-703
     title: "PEP 703: Making the Global Interpreter Lock Optional in CPython"
     url: https://peps.python.org/pep-0703/
-    accessed: 2026-09-03
-    kind: spec
-    version: null
-    applicability: "Design rationale and the runtime mechanisms that replace the GIL."
 ---
 
 ## Short answer
@@ -59,6 +26,7 @@ counting scheme, and that machinery is not free.[^pep-703] Code that was already
 nothing, code sharing mutable state now pays for finer-grained synchronisation, and every C
 extension must opt in before it may run without the GIL.[^py314-free-threading-extensions] The
 speed-up is real for CPU-bound work over independent data, and near zero elsewhere.
+
 ## Detailed explanation
 
 The free-threaded build ships as a separate interpreter configuration. It was experimental in 3.13 and
@@ -94,8 +62,6 @@ re-enables the GIL for the whole process unless the operator has forced it off.[
 A single unmarked dependency therefore silently returns the program to the old execution model, and
 measuring is the only way to notice.
 
-## Evaluation guide
-
 ### Expected signals
 
 - Names what replaced the GIL rather than saying the lock was simply deleted: per-object locks plus
@@ -119,7 +85,3 @@ profile, not from the feature.
 
 Then ask what happens to a program that relies on a dictionary update being atomic because of the
 GIL, once it runs on the free-threaded build.
-
-## Sources
-
-<!-- generated from frontmatter -->

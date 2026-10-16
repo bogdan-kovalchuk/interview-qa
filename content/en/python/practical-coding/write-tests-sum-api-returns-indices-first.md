@@ -1,34 +1,15 @@
 ---
 id: py-prac-0023
 title: "Write tests for a Two Sum API that returns the indices of the first pair in lexicographic order, never uses an element twice, and returns `None` when there is no solution."
-description: "Write tests for a Two Sum API that returns the indices of the first pair in lexicographic order, never uses an element twice, and returns `None` when there is no solution."
 track: python
 section: practical-coding
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-value-comparisons
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#value-comparisons
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: tuples and other sequences compare by their first unequal element."
   - source_id: py314-library-unittest-assertequal
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html#unittest.TestCase.assertEqual
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: assertEqual checks equality and fails when the values are not equal."
 ---
 
 ## Short answer
@@ -76,23 +57,3 @@ A correct implementation starts the inner loop at `i + 1`, so `j` is always grea
 - checking only `sum == target`, without the order and without forbidding index reuse;
 - writing the expected result without working out which pair is lexicographically smallest;
 - not testing `None` and the empty input, so an implementation that raises an exception instead of returning `None` goes unnoticed.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

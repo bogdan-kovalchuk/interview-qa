@@ -1,34 +1,15 @@
 ---
 id: py-prac-0009
 title: "Design a copy operation for a tree with shared subtrees and possible cycles, preserving the graph topology without aliasing with the original."
-description: "Use a memo dict keyed by the id() of the original node: before recursing, check whether the node is already copied, and return the existing copy."
 track: python
 section: practical-coding
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: deepcopy keeps a memo dictionary of objects already copied during the current copying pass; recursive structures can cause a recursive loop; user-defined classes can override copying through __deepcopy__. Does not describe how the memo is indexed."
   - source_id: py314-library-functions-id
     title: "Python 3.14: Library/functions, id"
     url: https://docs.python.org/3.14/library/functions.html#id
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: id() is unique and constant for an object during its lifetime; objects with non-overlapping lifetimes may have the same id(). Does not describe memo dictionaries."
 ---
 
 ## Short answer
@@ -90,23 +71,3 @@ The limits of this code: it copies only `list` and `dict`. Other types are retur
 - writing the memo after the recursive descent: on a cycle this raises `RecursionError`;
 - using a contents-based key, for example `repr(node)`, instead of `id()`: distinct but equal lists are then merged into one copy;
 - assuming that a `tuple` or a custom object is copied together with its containers: it stays shared with the original.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

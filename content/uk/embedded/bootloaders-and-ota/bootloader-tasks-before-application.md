@@ -1,34 +1,15 @@
 ---
 id: emb-boot-0004
 title: "Що таке bootloader у MCU і які задачі він виконує перед запуском application firmware?"
-description: "Bootloader стартує після reset, перевіряє або оновлює image, вибирає slot і передає керування application firmware."
 track: embedded
 section: bootloaders-and-ota
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -57,9 +38,7 @@ Bootloader MCU – це firmware-модуль, розташований у за�
 
 **Anti-rollback.** MCUboot підтримує security counter у TLV образу; bootloader відхиляє образ із counter меншим за збережений, запобігаючи відкату на вразливу версію firmware.
 
-## Evaluation guide
-
-### Expected signals
+### Очікувані сигнали
 
 - Чітко описує послідовність із 6 кроків: reset, мінімальна ініціалізація, верифікація образу, визначення режиму, оновлення (якщо потрібно), запуск application.
 - Згадує верифікацію цілісності firmware: CRC-32, SHA-256, криптографічний підпис (RSA-2048, ECDSA-P256), TLV-структуру MCUboot.
@@ -68,7 +47,7 @@ Bootloader MCU – це firmware-модуль, розташований у за�
 - Розуміє chain of trust: ROM bootloader перевіряє signature bootloader'а, bootloader перевіряє signature application.
 - Згадує anti-rollback через security counter у TLV образу.
 
-### Red flags
+### Червоні прапорці
 
 - Не знає про primary/secondary slot або про різницю між swap, overwrite і direct-XIP.
 - Плутає bootloader з monitor або debug-інструментом.
@@ -76,12 +55,8 @@ Bootloader MCU – це firmware-модуль, розташований у за�
 - Вважає, що bootloader і application виконуються одночасно.
 - Не згадує верифікацію образу (CRC, підпис) як обов'язковий етап.
 
-### Level-up follow-up
+### Питання на підвищення рівня
 
 - Як bootloader відновлюється після перерваного оновлення (power loss під час swap)?
 - Як реалізувати chain of trust від ROM bootloader до application?
 - Порівняти direct-XIP і swap: trade-offs між складністю, надійністю та часом оновлення.
-
-## Sources
-
-<!-- generated from frontmatter -->

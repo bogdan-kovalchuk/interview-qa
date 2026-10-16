@@ -1,41 +1,18 @@
 ---
 id: emb-fnptr-0024
 title: "Як оголосити тип ISR handler без аргументів і без return value?"
-description: "Тип function pointer описує C callback без аргументів і без значення результату, але не формат hardware vector table."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: arm-cortex-m-startup
     title: "Arm: Decoding the startup file for Arm Cortex-M4"
-    url: "https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/decoding-the-startup-file-for-arm-cortex-m4"
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Приклад Cortex-M4: vector table має початковий stack pointer і адреси handlers; не є однорідним масивом C function pointers."
+    url: https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/decoding-the-startup-file-for-arm-cortex-m4
 ---
 
 ## Short answer
@@ -65,7 +42,3 @@ static isr_handler_t callback = timer_handler;
 ```
 
 Це лише ілюструє тип у C; воно саме по собі не встановлює `callback` у hardware vector table. **Типові помилки:** плутати тип function pointer із типом самої функції, опускати дужки навколо `*name` та припускати, що typedef задає виклик ISR чи апаратне розміщення.[^iso-c-n1570] [^arm-cortex-m-startup]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,69 +1,30 @@
 ---
 id: py-excpt-0003
 title: "Коли перехоплення `BaseException` може зламати graceful shutdown або cancellation semantics?"
-description: "except BaseException перехоплює SystemExit, KeyboardInterrupt, GeneratorExit і asyncio.CancelledError: без raise процес не завершиться через sys.exit() чи Ctrl-C, а скасування task-и проковтується."
 track: python
 section: exceptions
-level: senior
-type: pitfall
-tags: [baseexception]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: CancelledError напряму наслідує BaseException; TaskGroup і asyncio.timeout() можуть працювати некоректно, якщо coroutine проковтує CancelledError; CancelledError зазвичай піднімають знову після cleanup."
   - source_id: py314-library-asyncio-task-cancel-method
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#asyncio.Task.cancel
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: Task.cancel() не гарантує скасування, якщо coroutine придушує виняток; придушення активно не рекомендується і потребує виклику Task.uncancel()."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: generator.close() піднімає GeneratorExit у точці паузи; якщо генератор не перехоплює його, close() повертається без помилки; якщо генератор yield-ить значення, close() піднімає RuntimeError."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: якщо генератор фіналізується без відновлення, викликається close(), що дозволяє виконатися відкладеним finally-блокам."
 ---
 
 ## Short answer
@@ -118,23 +79,3 @@ asyncio.run(main())
 - писати `except BaseException` замість `except Exception`, хоча потрібен лише `Exception`;
 - ловити `BaseException` без `raise` у coroutine, яку мають скасувати `TaskGroup` або `asyncio.timeout()`;
 - yield-ити значення з handler-а `GeneratorExit` і очікувати, що `close()` пройде без помилки.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

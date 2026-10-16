@@ -1,41 +1,18 @@
 ---
 id: py-prac-0003
 title: "What does `a = [[1]]; b = a.copy(); b[0].append(2); print(a)` print, and how does a shallow copy create this aliasing bug?"
-description: "It prints [[1, 2]]: list.copy() copies only the outer list, so a and b share the inner list."
 track: python
 section: practical-coding
-level: middle
-type: pitfall
-tags: [a-1-b-a-copy-b-0-append-2-print-a]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial
     title: "Python 3.14: Tutorial"
     url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference
     title: "Python 3.14: Reference"
     url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, copy module: assignment does not copy an object; list.copy() and copy.copy() make a shallow copy that inserts references to the original's elements; copy.deepcopy() copies nested objects recursively."
 ---
 
 ## Short answer
@@ -78,23 +55,3 @@ A deep copy is not always right either: it may copy data that was meant to stay 
 - assuming that `list.copy()` makes a full copy of nested structures;
 - changing a nested element in one copy and expecting the other one to stay the same;
 - using `copy.deepcopy()` everywhere, even when the data was meant to be shared.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-prac-0004
 title: "У Python 3.14 що надрукує `print(x)` після блоку `match 1:` з `case x: pass` і як capture pattern впливає на scope імені?"
-description: "Надрукує 1 – bare name у case є capture pattern і прив’язує subject до імені x."
 track: python
 section: practical-coding
-level: middle
-type: pitfall
-tags: [match-1-nbsp-nbsp-case-x-passprint-x]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial
     title: "Python 3.14: Tutorial"
     url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference
     title: "Python 3.14: Reference"
     url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-match-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ match: capture pattern прив’язує значення до імені й завжди збігається; одиночне _ не є capture pattern; value pattern (dotted name) збігається, коли значення дорівнює subject за =="
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#naming-and-binding
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Naming and binding: блоками є модуль, тіло функції й тіло класу; ім’я, прив’язане в коді модуля, є глобальним."
 ---
 
 ## Short answer
@@ -89,23 +62,3 @@ match 2:
 - писати `case RED:` для константи `RED` і очікувати порівняння, а не прив’язку;
 - вважати, що `case x:` не змінює вже існуюче `x`;
 - вважати, що `_` прив’язує значення і його можна прочитати після `match`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

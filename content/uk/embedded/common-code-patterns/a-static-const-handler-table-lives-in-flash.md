@@ -1,55 +1,24 @@
 ---
 id: emb-patterns-0038
 title: "Чому function-pointer FSM table роблять `static const`?"
-description: "const робить таблицю read-only: її кладуть у .rodata (зазвичай Flash), не витрачаючи RAM, а запис у неї не компілюється."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Підтверджує, що присвоєння const-об’єкту порушує constraint (6.5.16, 6.3.2.1), що зміна об’єкта, визначеного як const, через не-const lvalue є undefined behavior (6.7.3, пункт 6), і що адреса функції є address constant для static-ініціалізатора (6.6); не визначає, у якій пам’яті лежать дані."
   - source_id: gcc-gccint-sections
     title: "GCC 16.1.0 Internals: Defining the Output Assembler Language, Sections"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gccint/Sections.html
-    accessed: 2026-10-06
-    kind: official
-    version: "16.1.0"
-    applicability: "Підтверджує, що типова реалізація вибору секції в GCC кладе read-only змінні в readonly_data_section (на практиці .rodata); конкретний лінкер-скрипт вирішує, у якій пам’яті ця секція лежить."
   - source_id: gcc-named-address-spaces
     title: "GCC 16.1.0: Named Address Spaces (AVR Named Address Spaces)"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Named-Address-Spaces.html#AVR-Named-Address-Spaces
-    accessed: 2026-10-06
-    kind: official
-    version: "16.1.0"
-    applicability: "Показує, що на AVR поза avrtiny/avrxmega3 навіть read-only дані за замовчуванням лежать у RAM, а для Flash потрібні `__flash` або `progmem`; стосується лише AVR."
   - source_id: ld-output-section-lma
     title: "GNU ld: Output Section LMA"
     url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Пояснює, що секція може мати різні адреси завантаження (LMA, ROM-образ) і виконання (VMA), а ініціалізовані дані копіюють з ROM у RAM під час старту; це механізм, через який змінна таблиця займає і Flash, і RAM."
 ---
 
 ## Short answer
@@ -85,7 +54,3 @@ static const handler_t handlers[] = { on_idle, on_busy };
 - Не перевірити map file і припустити Flash, наприклад на AVR, де `const`-дані за замовчуванням лежать у RAM.
 - Знімати `const` приведенням, щоб «підправити» елемент таблиці в runtime.
 - Індексувати таблицю зовнішнім значенням без перевірки меж.
-
-## Sources
-
-<!-- generated from frontmatter -->

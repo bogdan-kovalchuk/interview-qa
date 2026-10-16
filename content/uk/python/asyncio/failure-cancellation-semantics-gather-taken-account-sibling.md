@@ -1,41 +1,18 @@
 ---
 id: py-async-0014
 title: "Які failure та cancellation semantics `gather()` потрібно врахувати, щоб не залишити sibling work без нагляду?"
-description: "З return_exceptions=False (default) перший exception негайно propagated до caller, але інші awaitables продовжують виконуватися – вони не скасовуються автоматично"
 track: python
 section: asyncio
-level: senior
-type: pitfall
-tags: [gather]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -66,23 +43,3 @@ cancellation на всі свої внутрішні Tasks – це протил
 `TaskGroup` вирішує це системно: при exception у будь-якому child він скасовує всіх siblings сам,
 без ручного коду. Ручна альтернатива без `TaskGroup` – зберегти список Tasks, обгорнути `gather()`
 у `try/except`, і в `except` явно викликати `.cancel()` на кожній ще не завершеній Task.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

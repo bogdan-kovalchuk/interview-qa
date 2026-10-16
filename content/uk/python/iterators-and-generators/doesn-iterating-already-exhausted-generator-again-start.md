@@ -1,55 +1,24 @@
 ---
 id: py-itergen-0013
 title: "Чому повторна ітерація вже exhausted generator не починає обчислення спочатку?"
-description: "Після першого StopIteration generator остаточно завершений: протокол вимагає, що всі наступні __next__() також піднімають StopIteration."
 track: python
 section: iterators-and-generators
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: методи generator-iterator (__next__, send, throw, close) і їхня поведінка у призупиненому стані."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення iterator і exhausted."
 ---
 
 ## Short answer
@@ -84,23 +53,3 @@ print(list(countdown(3)))           # [3, 2, 1]: a new call creates a new genera
 - очікувати, що другий `for` по тому самому generator знову пройде всі елементи;
 - зберігати generator в змінній, передавати його в кілька місць і дивуватися порожньому результату після першого споживання;
 - плутати iterable (`list`, `range`), по якому можна проходити багато разів, з iterator (generator), який можна пройти один раз.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

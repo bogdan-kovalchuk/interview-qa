@@ -1,41 +1,18 @@
 ---
 id: py-coll-0014
 title: "Чим `set` відрізняється від `frozenset` щодо mutability та можливості бути елементом іншого set?"
-description: "set – mutable і не hashable, тому не може бути елементом іншого set; frozenset – immutable й hashable, тому може."
 track: python
 section: collections
-level: middle
-type: comparison
-tags: [set, frozenset]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -62,19 +39,3 @@ sources:
 subset/superset – але кожна з них повертає новий `frozenset`, а не змінює наявний.[^py314-library-collections]
 Методів, що мутують на місці (`add`, `remove`, `discard`, `update`, `pop`, `clear`), у `frozenset`
 просто немає – це узгоджено з тим, що immutability є не рекомендацією, а гарантією типу.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

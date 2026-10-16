@@ -1,41 +1,18 @@
 ---
 id: py-itergen-0004
 title: "How do you implement a re-iterable collection so that two nested iterations do not share one cursor?"
-description: "How do you implement a re-iterable collection so that two nested iterations do not share one cursor?"
 track: python
 section: iterators-and-generators
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -101,23 +78,3 @@ The data should be copied in `__init__()`. If you pass in a generator or another
 - storing the position in `self` and returning `self` from `__iter__()`: nested and consecutive loops then share it;
 - creating an iterator once in `__init__()` and returning it from every `__iter__()`: after the first pass, each later pass gets an exhausted iterator, which means an empty result;
 - keeping the generator that was passed in, instead of its elements, and assuming the collection can be iterated many times.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

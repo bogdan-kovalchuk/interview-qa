@@ -1,76 +1,33 @@
 ---
 id: emb-elee-0221
 title: "Чому для ключа не використовують типове β активного режиму і який струм двигуна важливий для вибору компонентів?"
-description: "Чому для ключа не використовують типове β активного режиму і який струм двигуна важливий для вибору компонентів?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 73, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: rohm-bjt-basics
     title: "ROHM: Bipolar Junction Transistor (BJT) Basics: Operation and Applications (NPN & PNP)"
     url: https://techweb.rohm.com/product/transistors-diodes/transistors/27319/
-    accessed: 2026-10-14
-    kind: official
-    version: "2026.02.17"
-    applicability: "Посібник виробника ROHM: у перемиканні в насиченні ефективне підсилення помітно падає; β_forced обирають нижче мінімального h_FE з паспорта (типова відправна точка 5–10). Загальний посібник, а не паспорт конкретного транзистора."
   - source_id: fiore-bjt-basics
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.2 The Bipolar Junction Transistor"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.2: малосигнальні транзистори мають β типово 100–200, потужні – 25–50; I_E = I_C + I_B. Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor
   - source_id: mit-6071-bjt-notes
     title: "MIT OCW 6.071/22.071 (Spring 2006): Transistors: Bipolar Junction Transistors (BJT), lecture notes"
-    url: "https://ocw.mit.edu/courses/6-071j-introduction-to-electronics-signals-and-measurement-spring-2006/b30aa58fb0c9915da21e5a5855384818_19_bjt_1.pdf"
-    accessed: 2026-10-14
-    kind: book
-    version: "Spring 2006"
-    applicability: "Лекційні нотатки: у насиченні зв’язок між I_C і I_B нелінійний, в активному режимі I_C = β·I_B. Не документ виробника."
+    url: https://ocw.mit.edu/courses/6-071j-introduction-to-electronics-signals-and-measurement-spring-2006/b30aa58fb0c9915da21e5a5855384818_19_bjt_1.pdf
   - source_id: ti-drv8231a
     title: "Texas Instruments DRV8231A: 3.7-A Brushed DC Motor Driver datasheet"
     url: https://www.ti.com/lit/ds/symlink/drv8231a.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "SLVSFZ8A, revised January 2026"
-    applicability: "Паспорт драйвера TI: великі струми при низькій швидкості, пуску та загальмованому роторі. Цифри в таблицях стосуються тестових умов DRV8231A, а не всіх двигунів."
   - source_id: ti-tida00786
     title: "Texas Instruments TIDA-00786: Ultra Small Brushed DC Motor Current Regulation (reference design)"
     url: https://www.ti.com/lit/ug/tiduay8/tiduay8.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "2015"
-    applicability: "Довідковий дизайн TI для щіткового двигуна: ISTART = VSUPPLY / RWINDING, сталий струм (VSUPPLY – VBEMF) / RWINDING; реальний пусковий струм нижчий, бо двигун починає обертатися. Приклад для DRV8871 при 12–24 В; формули загальні, номінали – ні."
 ---
 
 ## Short answer
@@ -90,19 +47,3 @@ sources:
 - Вибирати транзистор, діод і джерело за робочим струмом 100 мА і не перевіряти пусковий або загальмований струм.
 - Рахувати базовий струм за типовим β активного режиму: при β = 100 вийде 1 мА, і транзистор може не насититися.
 - Брати `V/R` за точне значення пускового струму, хоча це верхня межа.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

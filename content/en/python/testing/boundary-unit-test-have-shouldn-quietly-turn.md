@@ -1,69 +1,30 @@
 ---
 id: py-testing-0001
 title: "What boundary does a unit test have, and why shouldn't it quietly turn into an integration test?"
-description: "What boundary does a unit test have, and why shouldn't it quietly turn into an integration test?"
 track: python
 section: testing
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: martinfowler-integration-test
     title: "Martin Fowler: Integration Test"
     url: https://martinfowler.com/bliki/IntegrationTest.html
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Essay by Martin Fowler (not official documentation): definition of integration tests, narrow and broad variants, solitary and sociable unit tests, contract tests."
   - source_id: martinfowler-test-pyramid
     title: "Martin Fowler: Test Pyramid"
     url: https://martinfowler.com/bliki/TestPyramid.html
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Essay by Martin Fowler (not official documentation): the test pyramid, broad-stack tests as slow, expensive and brittle, the limits of that assumption."
 ---
 
 ## Short answer
@@ -106,19 +67,3 @@ The practical conclusion: state the boundary explicitly – solitary or sociable
 - calling a test a unit test because it sits in a unit folder, even though it starts a real database or HTTP server;
 - replacing some dependencies but not the network or files, so the test quietly becomes an integration test;
 - checking only mock calls and not the module's behaviour: the test passes although the module is broken with a real dependency.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

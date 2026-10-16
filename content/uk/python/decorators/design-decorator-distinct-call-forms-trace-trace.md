@@ -1,41 +1,18 @@
 ---
 id: py-decor-0006
 title: "Як спроєктувати decorator з двома чіткими call forms, `@trace` і `@trace(level=2)`, не переплутавши decorated callable з configuration arguments?"
-description: "Треба перевірити, чи перший аргумент є callable: якщо func is not None – це bare @trace, інакше повернути partial-декоратор з конфігурацією."
 track: python
 section: decorators
-level: senior
-type: practical
-tags: [trace, trace-level-2]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -93,23 +70,3 @@ subtract(5, 2)  # [TRACE L1] Calling subtract
 - Спроба перевірки через `callable(func)` без keyword-only параметрів: якщо декоратор приймає функцію як аргумент конфігурації (наприклад, `@retry(predicate=is_transient)`), позиційна передача помилково запустить гілку bare decorator.
 - Підтримка виклику з порожніми дужками: форма `@trace()` повинна коректно повертати частково застосований декоратор, що природно гарантується умовою `if func is None`.
 - Типізація у статичних аналізаторах: для повноцінної підтримки mypy та автодоповнення в IDE таку функцію слід перевантажувати через `@typing.overload`, описуючи окремо гілку без аргументів та гілку з параметрами.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

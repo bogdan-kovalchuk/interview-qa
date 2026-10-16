@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0219
 title: "Як правильно орієнтувати flyback-діод паралельно котушці реле?"
-description: "Як правильно орієнтувати flyback-діод паралельно котушці реле?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 20, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -51,7 +28,3 @@ Flyback-діод під’єднують паралельно котушці т�
 Ця орієнтація передбачає саме показану топологію DC-ключа. Якщо котушка комутується мостом, має змінну напругу або ключ стоїть з іншого боку, не можна механічно переносити правило «катод до живлення»: спочатку визначають полярність у робочому режимі, а потім обирають затискальний шлях. Параметри діода також мають відповідати початковому струму котушки та напрузі живлення. Звичайний діод дає низьку напругу затиску й тому повільніше розмагнічує котушку; коли час відпускання важливий, вищий контрольований clamp-рівень може прискорити спад струму, але підвищує напругу на ключі.[^aac-semiconductors]
 
 **Типова помилка:** встановити діод у прямому напрямку під час нормальної роботи. Тоді він проводить струм живлення замість того, щоб чекати вимкнення, що може спричинити надмірний струм або коротке замикання. Перед увімкненням перевірте полярність на самій котушці, а не лише на умовному малюнку, та переконайтеся, що діод стоїть безпосередньо паралельно її виводам.[^aac-semiconductors]
-
-## Sources
-
-<!-- generated from frontmatter -->

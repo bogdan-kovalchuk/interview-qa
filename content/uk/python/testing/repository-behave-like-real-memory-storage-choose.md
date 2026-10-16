@@ -1,69 +1,30 @@
 ---
 id: py-testing-0010
 title: "Для repository, який має поводитися як real in-memory storage, коли обрати Fake, а коли Stub чи interaction-verifying Mock?"
-description: "Fake – спрощена, але робоча реалізація контракту (in-memory dict замість БД); Stub – пасивний об’єкт із фіксованими відповідями; Mock – записує виклики для interaction verification."
 track: python
 section: testing
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: py314-library-unittest-mock-quick-guide
     title: "Python 3.14: Library/unittest.mock, Quick Guide"
     url: https://docs.python.org/3.14/library/unittest.mock.html#quick-guide
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: Mock і MagicMock зберігають відомості про те, як їх використали."
   - source_id: py314-library-unittest-mock-assert-called-with
     title: "Python 3.14: Library/unittest.mock, Mock.assert_called_with"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock.assert_called_with
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: assert_called_with перевіряє, що останній виклик mock відбувся з вказаними аргументами."
 ---
 
 ## Short answer
@@ -117,19 +78,3 @@ print(stub.find("bob"))    # [{'id': 1, 'name': 'alice'}]: the query is ignored
 - Fake, що реалізує лише частину контракту (наприклад, `find` без фільтра), і тести проходять на хибній поведінці;
 - Stub там, де тест читає збережене: він нічого не запам’ятовує, тож розбіжність лишається непоміченою;
 - перевірка `save` через `assert_called_with` там, де важливий результат збереження: такий тест ламається від рефакторингу без зміни поведінки.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

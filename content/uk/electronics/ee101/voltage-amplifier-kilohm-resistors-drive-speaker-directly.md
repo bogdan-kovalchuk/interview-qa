@@ -1,69 +1,30 @@
 ---
 id: emb-elee-0232
 title: "Чи може підсилювач напруги з кілоомними резисторами напряму живити динамік 8 Ом?"
-description: "Чи може підсилювач напруги з кілоомними резисторами напряму живити динамік 8 Ом?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 75, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-common-emitter-amplifier
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.3 Common Emitter Amplifier"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.3: розділові конденсатори – розімкнення для постійного струму і коротке замикання для сигналу, якщо їх реактивний опір значно менший за сусідні резистори; A_v = -r_C/(r'_e + r_E) має мінус (інверсія, зсув фази на 180°); Z_out ≈ R_C, коли R_C значно менший за r'_C; з навантаженням A_divider = R_L/(R_L + R_C) (приклад 7.1)."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier
   - source_id: fiore-common-collector-amplifier
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.4 Common Collector Amplifier"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.4:_Common_Collector_Amplifier"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.4: емітерний повторювач має підсилення напруги близько одиниці, низький вихідний опір і дає підсилення струму та потужності; призначений для низькоомних навантажень, наприклад динаміків."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.4:_Common_Collector_Amplifier
   - source_id: fiore-bjt-dc-load-line
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.6 DC Load Lines"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.6: навантажувальна пряма; I_C(sat) = V_CC/R_C – найбільший колекторний струм; V_CE(cutoff) = V_CC при I_C = 0; у насиченні V_CE(sat) становить десяті частки вольта для малосигнальних приладів."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines
   - source_id: ti-slaa067
     title: "Texas Instruments: Understanding Basic Analog – Circuit Equations"
     url: https://www.ti.com/lit/pdf/slaa067
-    accessed: 2026-10-14
-    kind: official
-    version: "SLAA067"
-    applicability: "Закон Ома V = I·R для резистивного кола (розділ Laws of Physics). Лише закон Ома; розрахунків навантаження динаміка документ не містить."
 ---
 
 ## Short answer
@@ -85,19 +46,3 @@ sources:
 - Вважати, що на динаміку буде напруга з розрахунку без навантаження: дільник з вихідним опором її зменшує.
 - Підключати динамік до колектора без розділового конденсатора: постійна напруга колектора опиниться майже на нулі, і каскад піде в насичення.
 - Оцінювати гучність за напругою, не рахуючи струм і потужність на 8 Ом.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0025
 title: "Коли обирати `static inline`, а коли function-like макрос?"
-description: "static inline – для всього, що схоже на функцію: дрібні хелпери, type-safe bit-маніпуляції, обчислення з аргументами (рівно одне обчислення кожного)."
 track: embedded
 section: inline-and-macros
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +34,3 @@ sources:
 - Забувати, що одна підстановка макросу може обчислити аргумент кілька разів.
 
 Наприклад, `#define SQUARE(x) ((x) * (x))` небезпечно викликати як `SQUARE(i++)`: аргумент з’являється двічі. Типізована функція `static inline int square(int x)` отримує вже обчислене значення один раз. Для конкретної цілі компілятор може вбудувати її, залишити звичайний виклик або оптимізувати операцію іншим способом; швидкодію визначають за зібраним кодом і вимірюванням. У прошивці також враховують розмір коду, відлагодження та правила кодування проєкту.
-
-## Sources
-
-<!-- generated from frontmatter -->

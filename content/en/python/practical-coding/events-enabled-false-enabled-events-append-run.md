@@ -1,41 +1,18 @@
 ---
 id: py-prac-0002
 title: "What does `events = []; enabled = False; enabled and events.append(\"run\"); print(events)` print, and why didn't the side effect happen?"
-description: "It prints []: `and` short-circuits because enabled is False, so append is never called."
 track: python
 section: practical-coding
-level: middle
-type: mechanism
-tags: [events-enabled-false-enabled-and-events-append-run-print-events]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial
     title: "Python 3.14: Tutorial"
     url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference
     title: "Python 3.14: Reference"
     url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#boolean-operations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Boolean operations section: `and` evaluates its left operand first and evaluates the right one only when the left one does not decide the result; the operand's value is returned, not converted to bool."
 ---
 
 ## Short answer
@@ -66,11 +43,3 @@ The value of `and` is not reduced to `bool`: the last evaluated operand is retur
 - assuming that the right operand of `and` is always evaluated, so `append` is at least called;
 - treating `and` as a function that always returns `True` or `False`;
 - putting side effects into `and` or `or` instead of using `if`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

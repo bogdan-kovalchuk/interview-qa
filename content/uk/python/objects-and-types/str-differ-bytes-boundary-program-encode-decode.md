@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0017
 title: "Чим `str` відрізняється від `bytes` і на якій межі програми має відбуватися encode/decode?"
-description: "str – незмінна послідовність Unicode code point (текст), bytes – незмінна послідовність 8-бітних значень (двійкові дані); вони не сумісні напряму і потребують явного encode/decode."
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: [str, bytes]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -85,19 +58,3 @@ print(len(euro), len(euro_bytes))  # 1 3
 - припущення, що `len(s)` для `str` дорівнює розміру даних у байтах, що ламає роботу з протоколами, де потрібен заголовок `Content-Length`;
 - ігнорування параметра кодування (виклик `.encode()` або `.decode()` без аргументу), через що поведінка залежить від системної локалі замість стандартизованого UTF-8;
 - спроба відкрити бінарний файл у текстовому режимі без вказання `mode='rb'`, що призводить до спотворення переносів рядків (`\r\n` на Windows) або винятків `UnicodeDecodeError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

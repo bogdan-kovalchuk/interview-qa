@@ -1,41 +1,18 @@
 ---
 id: py-coll-0020
 title: "What does the stability of Python's sort mean, and how can it be used for multi-key sorting without a custom comparator?"
-description: "What does the stability of Python's sort mean, and how can it be used for multi-key sorting without a custom comparator?"
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -64,11 +41,3 @@ exactly where sequential `sorted()` calls with a separate `reverse` per key beat
 
 The limit of the approach: it needs as many passes as there are keys, that is O(k * n log n) instead
 of a single O(n log n) for the tuple-key variant - acceptable for a few keys, not for many.[^py314-library-stdtypes]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

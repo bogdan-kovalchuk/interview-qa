@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0135
 title: "Що таке ESR конденсатора простими словами?"
-description: "Що таке ESR конденсатора простими словами?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 13, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: kemet-ripple-current-mlcc
     title: "KEMET, Ripple Current and MLCC: Basic Principles"
     url: https://www.kemet.com/en/us/technical-resources/ripple-current-and-mlcc-basic-principles.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює ESR як еквівалентний опір втрат і формулу нагрівання від діючого ripple current; конкретна частотна поведінка й теплові межі залежать від компонента та монтажу."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Приклад: за `I_rms = 0.2 A` та ESR `0.5 Ω` втрати становлять `0.2^2*0.5 = 0.02 W`. За незмінного ESR збільшення струму до `0.4 A` збільшує оцінку до `0.08 W`, тобто вчетверо.
 
 **Типова помилка:** називати ESR «ємністю» або вважати його значення однаковим на всіх частотах. Для практичного порівняння дивляться ESR на потрібній частоті й переконуються, що нагрівання та пульсації вкладаються в обмеження схеми й компонента.[^kemet-ripple-current-mlcc]
-
-## Sources
-
-<!-- generated from frontmatter -->

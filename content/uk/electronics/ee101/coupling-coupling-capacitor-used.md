@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0021
 title: "Що таке AC-зв’язок (coupling capacitor) і де його використовують?"
-description: "Що таке AC-зв’язок (coupling capacitor) і де його використовують?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 35, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-input-output-coupling
     title: "All About Circuits: Input and Output Coupling"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/input-and-output-coupling/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Розділовий capacitor блокує DC зміщення між каскадами, але його high-pass властивості послаблюють низькі частоти."
   - source_id: aac-capacitor-highpass
     title: "All About Circuits: High-pass Filters"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-8/high-pass-filters/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Робота простого RC high-pass фільтра й частота зрізу з опором, який бачить capacitor."
 ---
 
 ## Short answer
@@ -67,7 +36,3 @@ sources:
 Приклад: у моделі, де capacitor бачить `10 kΩ`, значення `C = 10 µF` дає `f_c ≈ 1.59 Hz`. Це значення не є універсальним для будь-якого підсилювача: реальний опір може включати вихідний опір джерела, вхідний опір каскаду та інші елементи.[^aac-capacitor-highpass]
 
 **Типова помилка:** казати, що capacitor повністю «відсікає DC і пропускає весь AC». Фактично він ослаблює DC після перехідного процесу, а низькочастотний AC теж послаблює; розмір ефекту визначають частота сигналу й опір, який бачить capacitor.[^aac-input-output-coupling]
-
-## Sources
-
-<!-- generated from frontmatter -->

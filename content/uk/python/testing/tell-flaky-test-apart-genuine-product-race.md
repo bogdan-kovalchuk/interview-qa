@@ -1,76 +1,33 @@
 ---
 id: py-testing-0018
 title: "Як відрізнити flaky test від product race та як зберегти evidence для відтворення?"
-description: "Flaky test – недетермінований тест, що падає без змін коду; product race – реальна гонка в застосунку. Розрізняють їх ізольовані повторні запуски і збережений evidence."
 track: python
 section: testing
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: pytest-usage-node-ids
     title: "pytest documentation: Specifying which tests to run"
     url: https://docs.pytest.org/en/stable/how-to/usage.html#specifying-which-tests-to-run
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest: запуск окремого тесту за node id у форматі файл::функція."
   - source_id: pytest-output-junitxml
     title: "pytest documentation: Creating JUnitXML format files"
     url: https://docs.pytest.org/en/stable/how-to/output.html#creating-junitxml-format-files
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest: створення звіту у форматі JUnit XML через --junit-xml."
   - source_id: pytest-logging
     title: "pytest documentation: How to manage logging"
     url: https://docs.pytest.org/en/stable/how-to/logging.html#how-to-manage-logging
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest: показ захоплених логів для впалих тестів; за замовчуванням записи рівня WARNING і вище."
 ---
 
 ## Short answer
@@ -115,23 +72,3 @@ def test_register_sms() -> None:
 - додавати `time.sleep()` у тест, щоб він «став стабільним», замість виправлення синхронізації в продукті;
 - оголошувати тест flaky, не перевіривши падіння в ізоляції і спільний стан;
 - перезапускати тест до зеленого без збереження evidence: падіння зникає, а причина лишається.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

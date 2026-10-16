@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0047
 title: "Який струм є небезпечним для людини?"
-description: "Який струм є небезпечним для людини?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 6, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: osha-electricity-safety
-    title: 'OSHA: Basic Electricity Safety'
+    title: "OSHA: Basic Electricity Safety"
     url: https://www.osha.gov/sites/default/files/2019-04/Basic_Electricity_Materials.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: 'Навчальна таблиця OSHA про вплив струму та залежність тяжкості ураження від шляху, тривалості й умов контакту; наведені діапазони не є гарантованими порогами для окремої людини.'
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Твердження «100 mA зупиняють серце» надто категоричне. Такий струм може викликати фібриляцію за певного шляху й тривалості, але безпечний струм не можна вивести з одного числа; навіть нижчі рівні здатні завадити відпустити провідник, подовживши ураження. У практичній роботі не перевіряють безпечність дотиком і не працюють на відкритих частинах під напругою.
 
 **Приклад:** якщо мультиметр стоїть у режимі вимірювання струму, його входи мають малий опір. Підключення такого приладу паралельно до джерела може створити короткий шлях струму й пошкодити прилад або коло; для вимірювання напруги обирають режим напруги та підключають прилад паралельно до досліджуваної ділянки.
-
-## Sources
-
-<!-- generated from frontmatter -->

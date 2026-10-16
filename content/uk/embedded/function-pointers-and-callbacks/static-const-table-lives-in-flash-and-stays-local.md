@@ -1,41 +1,18 @@
 ---
 id: emb-fnptr-0022
 title: "Чому function pointer table варто робити `static const`?"
-description: "На рівні файлу static const задає internal linkage і незмінність елементів; linker script визначає розміщення таблиці."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: arm-cortex-m-startup
     title: "Arm: Decoding the startup file for Arm Cortex-M4"
-    url: "https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/decoding-the-startup-file-for-arm-cortex-m4"
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Приклад Cortex-M4 показує, що read-only секція розміщується linker options; це не універсальна гарантія розміщення будь-якого const об’єкта у Flash."
+    url: https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/decoding-the-startup-file-for-arm-cortex-m4
 ---
 
 ## Short answer
@@ -66,7 +43,3 @@ static const cmd_handler_t handlers[] = { cmd_ping, cmd_reset };
 - Вважати, що `static` саме по собі розміщує об’єкт у Flash.
 - Плутати file-scope internal linkage з локальною змінною функції.
 - Приймати `const` за гарантію захисту фізичної пам’яті від усіх можливих записів.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

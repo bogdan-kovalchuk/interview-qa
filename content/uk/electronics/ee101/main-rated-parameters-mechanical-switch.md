@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0010
 title: "Які основні паспортні параметри механічного перемикача?"
-description: "Які основні паспортні параметри механічного перемикача?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 33, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: omron-basic-switch-terms
     title: "OMRON: Basic Switches, Explanation of Terms"
     url: https://www.ia.omron.com/support/guide/29/explanation_of_terms.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Визначення рейтингів, опорів контактів та ізоляції; параметри залежать від конкретного перемикача й умов випробування."
   - source_id: omron-basic-switch-spec
     title: "OMRON: X General-purpose Basic Switch, Specifications"
     url: https://www.ia.omron.com/products/family/291/specification.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Числовий приклад конкретного базового перемикача: опори, ratings і довговічність; не узагальнюється на інші моделі."
 ---
 
 ## Short answer
@@ -67,7 +36,3 @@ Contact resistance характеризує замкнений контакт і
 Приклад вибору: для перемикання двигуна перевіряють номінал саме для індуктивного навантаження, допустимий пусковий струм, електричну довговічність і спосіб гасіння дуги. Перевищення рейтингу може спричинити зварювання контактів або прискорене зношення, навіть якщо механічно кнопка продовжує клацати.
 
 **Типова помилка:** порівнювати лише максимальні ампери й вольти та переносити опір чи ресурс з одного каталожного прикладу на всі перемикачі. Потрібно звірити даташит конкретної моделі, тип навантаження, частоту комутації та умови, для яких вказані результати.[^omron-basic-switch-spec]
-
-## Sources
-
-<!-- generated from frontmatter -->

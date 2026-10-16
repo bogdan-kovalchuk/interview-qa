@@ -1,48 +1,21 @@
 ---
 id: emb-tmplcx-0010
 title: "Що таке partial specialization шаблону?"
-description: "Спеціалізація за патерном (напр., усі вказівники), а не одним типом."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-temp-spec-partial-general
     title: "C++ working draft: Partial specialization, general ([temp.spec.partial.general])"
     url: https://eel.is/c++draft/temp.spec.partial.general
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що partial specialization є альтернативним визначенням шаблону, яке використовується замість primary template, коли аргументи збігаються з її патерном. Не описує вибір між кількома відповідними спеціалізаціями."
   - source_id: cpp-draft-temp-expl-spec
     title: "C++ working draft: Explicit specialization ([temp.expl.spec])"
     url: https://eel.is/c++draft/temp.expl.spec
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що template<> задає explicit specialization для одного набору аргументів, як у прикладі з stream<char>, а не для цілого сімейства типів."
 ---
 
 ## Question code
@@ -97,7 +70,3 @@ void use() {
 - Вважати, що `Buffer<T*>` стосується й посилань (`int&`), і масивів (`int[4]`): це інші типи, для них діє primary template або окрема спеціалізація.
 - Змінити primary template і очікувати, що спеціалізація теж зміниться: вона є окремим визначенням і правиться окремо.
 - Плутати `template<> class Buffer<int*>` з partial specialization: перша задає визначення лише для `int*`, а друга – для всіх вказівників.[^cpp-draft-temp-expl-spec]
-
-## Sources
-
-<!-- generated from frontmatter -->

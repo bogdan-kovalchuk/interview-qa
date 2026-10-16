@@ -1,97 +1,42 @@
 ---
 id: py-fileio-0011
 title: "Як задати custom JSON encoding для непідтримуваного type, не втрачаючи явного wire schema?"
-description: "Передати default-функцію (або підкласити json.JSONEncoder) для кодування, і object_hook – для декодування, використовуючи dict із маркерним ключем як wire-схему."
 track: python
 section: files-and-io
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json-encoder-table
     title: "Python 3.14: Library/json (JSONEncoder)"
     url: https://docs.python.org/3.14/library/json.html#json.JSONEncoder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: перелік типів, які JSONEncoder серіалізує за замовчуванням."
   - source_id: py314-library-json-encoder-default
     title: "Python 3.14: Library/json (Encoders and Decoders)"
     url: https://docs.python.org/3.14/library/json.html#py-to-json-table
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: параметр default для непідтримуваних типів, TypeError без нього і підклас із методом default()."
   - source_id: py314-library-json-decoder-object-hook
     title: "Python 3.14: Library/json (JSON-to-Python conversion table)"
     url: https://docs.python.org/3.14/library/json.html#json-to-py-table
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: object_hook викликається з результатом кожного декодованого JSON object, і його значення замінює dict."
   - source_id: py314-library-json-dump
     title: "Python 3.14: Library/json (dump)"
     url: https://docs.python.org/3.14/library/json.html#json.dump
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: параметр cls для підкласу JSONEncoder з перевизначеним методом default()."
 ---
 
 ## Short answer
@@ -131,23 +76,3 @@ print(restored)  # {'z': (1+2j), 'n': 3}
 - плутати аргументи: `default` передають у `json.dumps`, а `object_hook` – у `json.loads`;
 - повертати `None` або `str(obj)` для невідомого типу замість `TypeError`, через що дані тихо змінюють тип;
 - брати надто загальний маркер на кшталт `"type"`, який може збігтися з реальними даними.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,69 +1,30 @@
 ---
 id: emb-elee-0196
 title: "Що перевірити після обчислення колекторного струму транзистора?"
-description: "Що перевірити після обчислення колекторного струму транзистора?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 68, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-bjt-basics
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.2 The Bipolar Junction Transistor"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.2: I_E = I_C + I_B, I_C = β·I_B; при значно більшому I_C, ніж I_B, I_E ≈ I_C; V_BE ≈ 0,7 В для кремнію. Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor
   - source_id: fiore-bjt-ebers-moll
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.5 Ebers-Moll Model"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.5:_Ebers-Moll_Model"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.5: для правильного зміщення NPN потрібно V_C > V_B > V_E; β змінюється між екземплярами, зі струмом і температурою; модель Еберса–Молла. Загальна картина; числа прикладів стосуються лише їхніх кіл."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.5:_Ebers-Moll_Model
   - source_id: fiore-bjt-datasheet
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.4 BJT Data Sheet Interpretation"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.4:_BJT_Data_Sheet_Interpretation"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.4: приклад даташита 2N3904 – 625 мВт при 25 °C у вільному повітрі, I_C до 200 мА, V_CE до 40 В, не одночасно; нормована β падає при малих струмах і зростає з температурою; графік V_CE(sat). Стосується лише цього приладу."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.4:_BJT_Data_Sheet_Interpretation
   - source_id: fiore-bjt-dc-load-line
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.6 DC Load Lines"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.6: навантажувальна пряма, Q-точка (I_CQ, V_CEQ) лежить на ній; якщо розрахунковий струм перевищує граничний, транзистор у насиченні й реальний струм дорівнює граничному; типове V_CE(sat) близько десятої вольта, у прикладі 0,15 В при I_C = 10 мА і I_B = 0,3 мА. Точні значення беруть із графіків транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines
 ---
 
 ## Short answer
@@ -85,7 +46,3 @@ sources:
 - Перевіряти лише `I_C` і не дивитися на напруги у вузлах та режим.
 - Вважати, що якщо `I_C` і `V_CE` окремо в межах, то `P` теж у межах.
 - Брати `V_CE(sat)` = 0 або β з каталогу без поправки на струм і температуру.[^fiore-bjt-datasheet]
-
-## Sources
-
-<!-- generated from frontmatter -->

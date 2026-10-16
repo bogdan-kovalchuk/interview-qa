@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0052
 title: "Що означає `volatile` для спільних даних у C: чи це заміна mutex або atomic?"
-description: "Ні. volatile не замінює mutex, atomic або RTOS synchronization."
 track: embedded
 section: volatile-and-const
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,19 +29,3 @@ sources:
 Наприклад, якщо один RTOS task записує `ready = true`, а інший читає `ready` і після цього читає payload, `volatile bool ready` не встановлює гарантії, що читач побачить попередній запис payload. Потрібні atomic release/acquire або механізм RTOS із визначеною семантикою синхронізації. Для короткої критичної ділянки підійде mutex чи critical section, якщо їхній контракт охоплює обидва контексти. Вибір залежить від того, чи це потоки, ISR, DMA або memory-mapped I/O.[^iso-c-n1570]
 
 **Типова помилка:** вважати, що `volatile` означає «thread-safe». Воно не захищає складену операцію на кшталт перевірки, а потім оновлення, і не встановлює порядок для решти звичайної пам’яті. Спершу визнач джерело конкурентного доступу, а тоді застосуй примітив, який має потрібну семантику саме для цього середовища.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

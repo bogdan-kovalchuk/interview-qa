@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0005
 title: "Чому generator, використаний з `@contextmanager`, повинен виконати рівно один `yield`?"
-description: "Протокол @contextmanager відображає один yield на одну пару enter/exit; нуль або більше yield ламає цей контракт."
 track: python
 section: context-managers
-level: middle
-type: pitfall
-tags: [contextmanager]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -92,23 +69,3 @@ with correct_manager() as status:
 - розміщення `yield` всередині циклів `for` або `while`: генератор повинен містити рівно одну точку перемикання контексту;
 - відсутність `try...finally`: якщо в тілі `with` стається помилка, а код після `yield` не захищений `finally`, очищення ніколи не виконається або генератор завершиться некоректно;
 - помилкове використання `yield from`: делегування ітератору, що повертає більше ніж один елемент, гарантовано призведе до помилки зупинки генератора.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

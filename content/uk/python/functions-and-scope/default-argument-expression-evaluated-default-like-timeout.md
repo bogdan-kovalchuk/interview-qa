@@ -1,27 +1,12 @@
 ---
 id: py-funcs-0007
 title: "Коли обчислюється вираз default argument і чому default на кшталт `timeout=get_timeout()` може не відображати подальші зміни конфігурації?"
-description: "Default-вираз обчислюється під час виконання інструкції def, а не при кожному виклику функції."
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: [timeout-get-timeout]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -76,11 +61,3 @@ print(fetch('b'))                        # b timeout=60
 - вважати, що `timeout=get_timeout()` викликається при кожному виклику `fetch`;
 - змінити конфігурацію після імпорту і очікувати, що вже визначені default-значення оновляться;
 - ставити `datetime.now()` у default і очікувати актуального часу при кожному виклику.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

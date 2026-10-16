@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0132
 title: "Чим стабілітрон відрізняється від діода Шотткі за принципом і застосуванням?"
-description: "Чим стабілітрон відрізняється від діода Шотткі за принципом і застосуванням?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 56, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: nexperia-an90031
     title: "Nexperia AN90031: Zener diodes – physical basics, parameters and application examples"
     url: https://assets.nexperia.com/documents/application-note/AN90031.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. 3.0, 7 June 2023"
-    applicability: "Поведінка стабілітрона в прямому й зворотному напрямках, ефект Зенера до ≈ 5 В і лавинний пробій вище, зміна знака температурного коефіцієнта S_Z біля 6 В, диференційний опір r_dif, струм вимірювання V_Z, вибір R за формулою R1 = (V_IN - V_Z)/(I_Z(min) + I_LOAD(max)) і розсіювані потужності в простому стабілізаторі; дані наведено для серій Nexperia, інші виробники можуть мати інші числа."
   - source_id: nexperia-an90056
     title: "Nexperia AN90056: Trench Schottky diodes in modern switching applications"
     url: https://assets.nexperia.com/documents/application-note/AN90056.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. 1.0, 9 September 2024"
-    applicability: "Загальні властивості діодів Шотткі: перехід метал–напівпровідник, V_F типово 0,2–0,4 В проти ≈ 0,7 В у p-n діода, відсутність накопичення заряду неосновних носіїв, вищий зворотний витік, обмежений діапазон зворотних напруг і типові застосування в імпульсних перетворювачах; записка описує Trench-діоди Nexperia, наведені числа типові, а не гарантовані."
 ---
 
 ## Short answer
@@ -72,7 +41,3 @@ sources:
 - Чекати стабілізації від стабілітрона, ввімкненого в прямому напрямку: там він дає лише ≈ 0,7 В.
 - Вважати `V_Z` сталою: вона залежить від струму (`r_dif`), допуску й температури.
 - Обирати Шотткі за малим `V_F`, не перевіривши допустиму зворотну напругу й витік.
-
-## Sources
-
-<!-- generated from frontmatter -->

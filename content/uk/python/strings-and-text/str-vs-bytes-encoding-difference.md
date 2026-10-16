@@ -1,34 +1,15 @@
 ---
 id: py-strtxt-0001
 title: "У чому різниця між str і bytes у Python 3, і коли використовувати кожен тип?"
-description: "У Python 3 str представляє Unicode-текст, а bytes є незмінною послідовністю байтових значень; межа між ними потребує явного encoding або decoding."
 track: python
 section: strings-and-text
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-08
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-unicode
     title: "Python 3.14: Howto/unicode"
     url: https://docs.python.org/3.14/howto/unicode.html#tips-for-writing-unicode-aware-programs
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ про написання Unicode-програм. Підтверджує, що автоматичного encoding чи decoding немає (str + bytes дає TypeError), і рекомендацію декодувати на вході, кодувати на виході. Не визначає API bytes."
 ---
 
 ## Short answer
@@ -71,11 +52,3 @@ except UnicodeDecodeError:
 - вважати, що `len()` від `bytes` рахує символи: `len(b'\xc3\xa9')` дорівнює 2, а `len('é')` дорівнює 1;
 - декодувати байти без явного encoding, хоча формат чи протокол його задає;
 - змішувати `str` і `bytes` в одній операції, наприклад у конкатенації, або чекати, що Python перетворить їх сам.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

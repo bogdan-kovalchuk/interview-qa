@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0048
 title: "Як оголосити функцію, яка повертає function pointer?"
-description: "Приклад без typedef: int (select_op(int id))(int, int); Це означає: select_op приймає int і повертає pointer на функцію, яка приймає два int і повертає int."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,7 +37,3 @@ sources:
 - Сприймати `typedef` як новий окремий тип замість псевдоніма.
 
 На практиці після отримання вказівника перевіряйте контракт функції-вибирача: чи повертає вона придатний callback для кожного допустимого `id`, і чи може результат бути нульовим. Перш ніж викликати результат як `select_op(id)(a, b)`, треба гарантувати, що він вказує на сумісну функцію; виклик через function pointer несумісного типу має undefined behavior.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

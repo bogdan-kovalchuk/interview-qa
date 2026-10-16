@@ -1,72 +1,30 @@
 ---
 id: py-cpyint-0013
 title: "Why might a process's resident memory not shrink immediately after deleting a large number of Python objects?"
-description: "Why might a process's resident memory not shrink immediately after deleting a large number of Python objects?"
 track: python
 section: cpython-internals
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-dis
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-gc
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-c-api-memory
     title: "Python 3.14: C Api/memory"
     url: https://docs.python.org/3.14/c-api/memory.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-sys
     title: "Python 3.14: Library/sys"
     url: https://docs.python.org/3.14/library/sys.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-traceback-objects
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#traceback-objects
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -77,6 +35,7 @@ objects are freed by refcounting or `gc.collect()`, their blocks stay in pools i
 single live object keeps its arena mapped. The system allocator (malloc/free), used for large
 objects (>512 bytes), may also not return memory to the OS right away. So RSS shrinks only once
 entire arenas become empty.
+
 ## Detailed explanation
 
 Pymalloc – CPython's allocator for small objects (up to 512 bytes) – requests memory from the OS in
@@ -115,11 +74,3 @@ gc.collect()  # frees Python objects, but arenas may stay mapped
 - ignoring fragmentation: one long-lived object can keep an entire 1 MiB arena alive;
 - trying to "fix" this by forcing `gc.collect()` instead of reviewing allocation patterns or
   periodically restarting workers.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

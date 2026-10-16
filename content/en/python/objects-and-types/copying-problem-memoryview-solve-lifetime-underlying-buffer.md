@@ -1,51 +1,21 @@
 ---
 id: py-objtypes-0019
 title: "What copying problem does `memoryview` solve, and why does the lifetime of the underlying buffer object matter?"
-description: "What copying problem does `memoryview` solve, and why does the lifetime of the underlying buffer object matter?"
 track: python
 section: objects-and-types
-level: senior
-type: mechanism
-tags: [memoryview]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -103,11 +73,3 @@ except ValueError as err:
 - memory retention through base references: because a `memoryview` holds a strong reference to the entire underlying object, even a tiny slice `mv[0:10]` prevents garbage collection of a gigabyte-scale buffer as long as the view is alive;
 - resource management: using a context manager (`with memoryview(...) as mv:`) or calling `mv.release()` explicitly ensures that buffer exports are promptly released;
 - post-release access errors: any attempt to read or modify data through a released `memoryview` instantly raises `ValueError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

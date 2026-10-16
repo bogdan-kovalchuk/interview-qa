@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0068
 title: "Де зберігається у функції? `static const uint16_t lookup[] = {1, 2, 3};`"
-description: "static const визначає тривалість зберігання та заборону змінювати масив через це lvalue; фактичне розміщення визначають компілятор і linker."
 track: embedded
 section: data-types-and-memory-layout
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: gnu-ld-sections
     title: "GNU ld: SECTIONS Command"
     url: https://sourceware.org/binutils/docs/ld/SECTIONS.html
-    accessed: 2026-10-04
-    kind: official
-    version: "2.47"
-    applicability: "Пояснює зіставлення input/output sections та розміщення; секція для C оголошення залежить від toolchain і linker script."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,7 +36,3 @@ static const uint16_t lookup[] = {1, 2, 3};
 ```
 
 Таблицю lookup доречно оголошувати `static const`, але перевір, чи firmware linker script розміщує її саме у Flash. Також перевір alignment і доступність читання з потрібного контексту.[^gnu-ld-sections]
-
-## Sources
-
-<!-- generated from frontmatter -->

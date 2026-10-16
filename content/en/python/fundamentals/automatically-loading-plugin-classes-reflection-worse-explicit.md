@@ -1,46 +1,24 @@
 ---
 id: py-fund-0011
 title: "Why can automatically loading plugin classes through reflection be worse than an explicit registry, even though it removes manual registration?"
-description: "Why can automatically loading plugin classes through reflection be worse than an explicit registry, even though it removes manual registration?"
 track: python
 section: fundamentals
-level: senior
-type: comparison
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
 
 **Automatic loading through reflection makes the set of active plugin classes implicit, fragile under renaming, and without an allowlist.**[^py314-reference-executionmodel] Reflection scanning (importing a package's modules, finding subclasses via `__subclasses__()` or `getattr`) depends on naming conventions and import order, and can pick up classes nobody intended - test doubles, deprecated aliases or third-party types. An explicit registry gives a controlled allowlist, reduces import-time side effects and is easy to test, because the active set of classes is visible in the code.
+
 ## Detailed explanation
 
 Reflection-based loading of plugin classes means finding the implementations at run time:
@@ -98,19 +76,3 @@ scan.[^py314-reference-executionmodel]
 Reflection stays appropriate where the set really is open and outside the author's control - entry
 points registered by third-party packages, for instance. There the allowlist is the responsibility
 of the package installation mechanism, not of scanning a namespace.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

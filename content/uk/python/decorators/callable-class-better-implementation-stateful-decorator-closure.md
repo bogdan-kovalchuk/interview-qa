@@ -1,55 +1,24 @@
 ---
 id: py-decor-0007
 title: "Коли callable class є кращою реалізацією stateful decorator за closure?"
-description: "Callable class зручніша для stateful decorator, коли стан треба явно ініціалізувати, скидати чи тестувати; для декорування методів їй потрібен `__get__`."
 track: python
 section: decorators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-glossary-term-descriptor
     title: "Python 3.14: Glossary, descriptor"
     url: https://docs.python.org/3.14/glossary.html#term-descriptor
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Визначення дескриптора: об’єкт, що визначає `__get__()`, `__set__()` або `__delete__()`. Не описує, як декоратори зв’язуються з методами."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Протокол дескрипторів: якщо об’єкт в атрибуті класу визначає `__get__`, доступ через instance викликає його. Об’єкт без `__get__`, `__set__` і `__delete__` не є дескриптором."
 ---
 
 ## Short answer
@@ -106,19 +75,3 @@ print(Service.ping.calls)   # 0
 - вважати callable class завжди кращою: для одного лічильника closure коротший і достатній;
 - декорувати метод класом без `__get__` і отримати `TypeError`, бо `self` не передається;
 - очікувати окремий лічильник для кожного екземпляра, коли декоратор зберігає стан один раз для функції.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

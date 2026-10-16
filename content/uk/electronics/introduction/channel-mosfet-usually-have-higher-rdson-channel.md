@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0262
 title: "Чому P-channel MOSFET зазвичай має більший `R_DS(on)`, ніж N-channel?"
-description: "Чому P-channel MOSFET зазвичай має більший R_DS(on), ніж N-channel?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 23, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: infineon-mosfet-overview
     title: "Infineon: What Is a MOSFET?"
     url: https://www.infineon.com/technology/mosfets
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Порівнює рухливість електронів і дірок та типовий R_DS(on) N-channel і P-channel для однакової площі кристала; конкретні параметри залежать від пристрою та умов вимірювання."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Приклад: якщо два компоненти мають однакові корпус і напругу gate, але один має `R_DS(on)` 40 мОм, а інший 80 мОм, при 2 A втрати провідності за формулою `P = I²*R` становитимуть відповідно 0.16 W і 0.32 W. Це ілюстрація впливу опору, а не універсальна пара значень для N-channel та P-channel. Вища ефективність N-channel часто робить його привабливим для силових ключів, але P-channel може спростити high-side керування без окремого драйвера, коли його source під’єднаний до позитивної шини.[^infineon-mosfet-overview]
 
 Типова помилка – вважати, що тип каналу сам по собі визначає кращий вибір. Спершу визначте топологію та доступний рівень керування, далі перевірте `R_DS(on)` саме при вашому `V_GS`, допустимі напругу й струм, тепловий режим і заряд gate. Порогова напруга `V_GS(th)` лише позначає початок провідності за тестових умов datasheet; вона не обов’язково означає, що транзистор повністю відкритий для розрахункового навантаження.[^infineon-mosfet-overview]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0020
 title: "Що таке bit-field у C struct?"
-description: "Bit-field дозволяє оголосити поле структури з кількістю бітів, наприклад unsigned mode : 3;."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -54,7 +35,3 @@ Bit-fields допомагають описати набір невеликих �
 - переносити layout bit-fields між компіляторами без перевірки ABI.
 
 Наприклад, три поля шириною по одному біту можуть бути сусідніми в одному storage unit, але стандарт не обіцяє конкретних номерів фізичних бітів. Перевіряй layout документацією компілятора та тестом для цільової платформи; не трактуй саме оголошення як переносний протокол обміну.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

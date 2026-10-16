@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0183
 title: "Яка ємність потрібна, щоб імпульс навантаження 100 мА тривалістю 1 мс спричинив просідання не більше 0,1 В?"
-description: "Яка ємність потрібна, щоб імпульс навантаження 100 мА тривалістю 1 мс спричинив просідання не більше 0,1 В?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 66, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-ac-circuit-analysis
     title: "James M. Fiore: AC Electrical Circuit Analysis, A Practical Approach (sections 1.5 and 10.3)"
     url: https://www2.mvcc.edu/users/faculty/jfiore/Circuits2/ACElectricalCircuitAnalysis.pdf
-    accessed: 2026-10-13
-    kind: book
-    version: "1.1.2, 22 April 2021"
-    applicability: "Рівняння ідеальних елементів: i = C*dv/dt для конденсатора (напруга змінюється зі швидкістю i/C) і v = L*di/dt для котушки (зміна струму дає напругу). Опору та паразитних параметрів ідеальних елементів документ не моделює."
   - source_id: ti-switching-regulator-fundamentals
     title: "Texas Instruments: Switching regulator fundamentals"
     url: https://www.ti.com/lit/an/snva559c/snva559c.pdf
-    accessed: 2026-10-13
-    kind: official
-    version: "Rev. C"
-    applicability: "Записка про імпульсні регулятори: ESR – послідовний опір конденсатора, ESR сильно залежить від температури (для типового алюмінієвого електроліту може зрости приблизно в 40 разів від 25 °C до −40 °C); ESL обмежує алюмінієвий електроліт на високих частотах; локальні bypass-конденсатори – керамічні або плівкові. Конкретні значення беруть з datasheet."
 ---
 
 ## Short answer
@@ -69,7 +38,3 @@ sources:
 - Ігнорувати ESR і вважати, що весь допуск напруги доступний спаду на ємності.
 - Брати ESR без урахування температури, хоча на холоді він може зрости багаторазово.
 - Сприймати формулу як точний розрахунок для будь-якої схеми: регулятор і джерело під час імпульсу можуть віддавати струм, і тоді потрібна менша ємність.
-
-## Sources
-
-<!-- generated from frontmatter -->

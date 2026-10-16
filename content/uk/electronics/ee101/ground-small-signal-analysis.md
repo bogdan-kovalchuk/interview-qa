@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0213
 title: "Що таке AC-земля в малосигнальному аналізі?"
-description: "Що таке AC-земля в малосигнальному аналізі?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 72, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-common-emitter-amplifier
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.3 Common Emitter Amplifier"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.3: AC-еквівалент за принципом суперпозиції, конденсатори замінюють короткими замиканнями, постійні джерела – ідеальним внутрішнім опором (AC-земля); A_v = -r_C/(r'_e + r_E); Z_in(base) = β(r'_e + r_E); Z_out ≈ R_C; нешунтований R_E зменшує підсилення й спотворення. Числові приклади стосуються лише цих схем."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ AC-земля – ідеалізація. Реальне джерело має �
 
 - Вважати AC-землю фізичним з’єднанням із 0 В: шина +10 В може бути AC-землею, і це не означає, що її постійна напруга дорівнює нулю.[^fiore-common-emitter-amplifier]
 - Замінювати коротким замиканням джерело вхідного сигналу: в змінному еквіваленті замінюють лише постійні джерела.[^fiore-common-emitter-amplifier]
-
-## Sources
-
-<!-- generated from frontmatter -->

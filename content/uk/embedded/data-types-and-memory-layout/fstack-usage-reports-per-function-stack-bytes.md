@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0058
 title: "Як перевірити розмір stack frame функції в GCC?"
-description: "Прапорець -fstack-usage змушує GCC генерувати .su файли з розміром stack frame кожної функції."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: gcc-stack-usage
     title: "GCC: Developer Options"
     url: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує формат .su, значення qualifier-ів та межі звіту -fstack-usage у GCC; не визначає сумарний stack budget програми."
 ---
 
 ## Short answer
@@ -62,11 +39,3 @@ Qualifier важливий для інтерпретації числа. `static
 - Вважати число розміром усього стеку задачі або максимального шляху викликів.
 - Ігнорувати `dynamic` і сприймати необмежений запис як точний максимум.
 - Зіставляти числа з іншого target, оптимізації чи набору compiler flags із фінальною прошивкою.[^gcc-stack-usage]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

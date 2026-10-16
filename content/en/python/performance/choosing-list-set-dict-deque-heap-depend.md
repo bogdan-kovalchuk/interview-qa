@@ -1,48 +1,21 @@
 ---
 id: py-perf-0006
 title: "How does choosing between `list`, `set`, `dict`, `deque`, and a heap depend on the workload's dominant operations?"
-description: "The right container depends on the dominant operation: deque is O(1) at both ends, heapq keeps the minimum at heap[0], and a list checks membership by scanning."
 track: python
 section: performance
-level: middle
-type: comparison
-tags: [list, set, dict, deque]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections-deque
     title: "Python 3.14: Library/collections, deque"
     url: https://docs.python.org/3.14/library/collections.html#collections.deque
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 collections.deque documentation: appends and pops at either end cost approximately the same O(1); list has O(n) memory-movement cost for pop(0) and insert(0, v)."
   - source_id: py314-library-heapq
     title: "Python 3.14: Library/heapq"
     url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 heapq documentation: the smallest item is available as heap[0] without removing it (heappop description)."
   - source_id: cpython-heapq-source
     title: "CPython Lib/heapq.py: heap queue implementation"
     url: https://github.com/python/cpython/blob/3.14/Lib/heapq.py
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "CPython 3.14 implementation of heapq: heappush sifts an element up towards the root, heappop sifts an element down to a leaf and back up, nlargest keeps a heap of size n. This describes CPython, not a language guarantee."
   - source_id: py314-reference-expressions-membership-test-operations
     title: "Python 3.14: Reference/expressions, membership test operations"
     url: https://docs.python.org/3.14/reference/expressions.html#membership-test-operations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 language reference, membership tests: for list, tuple, set, frozenset, dict and collections.deque, x in y is equivalent to any(x is e or x == e for e in y). Does not describe complexity."
 ---
 
 ## Short answer
@@ -83,19 +56,3 @@ The choice changes with the dominant operation. If membership tests dominate, us
 - `x in list` in a hot loop instead of a `set` when membership tests are needed;
 - `list.pop(0)` as a queue instead of `deque.popleft()`;
 - expecting fast lookup of an arbitrary element from `heapq`: only the minimum is available through `heap[0]`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

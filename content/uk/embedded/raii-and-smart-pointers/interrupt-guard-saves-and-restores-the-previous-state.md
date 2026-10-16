@@ -1,62 +1,27 @@
 ---
 id: emb-raii-0006
 title: "Як виглядає interrupt-disable RAII guard і чому він безпечний у ISR?"
-description: "Ctor зберігає поточний стан переривань і вимикає їх; dtor відновлює попередній стан."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cmsis-core-register-access
     title: "CMSIS-Core (Cortex-M): Core Register Access"
     url: https://arm-software.github.io/CMSIS_6/latest/Core/group__Core__Register__gr.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Описує функції `__get_PRIMASK()`, `__set_PRIMASK()` і `__disable_irq()`: остання вимикає переривання й configurable fault handlers установленням PRIMASK інструкцією `CPSID i`, виконується лише в privileged mode, а вимкнене переривання все одно може стати pending. Не описує, як ці функції реалізовано в конкретному компіляторі, і не стосується ядер поза Cortex-M."
   - source_id: tm4c123-datasheet
     title: "Tiva TM4C123GH6PM Microcontroller Data Sheet (SPMS376E)"
     url: https://www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SPMS376E"
-    applicability: "Для ядра Cortex-M4F: PRIMASK = 1 забороняє активацію всіх exceptions з configurable priority, а Reset, NMI і hard fault мають фіксований пріоритет; регістр доступний лише в privileged mode, а в Handler mode виконання завжди privileged. Для інших ядер і чипів деталі можуть відрізнятися."
   - source_id: cpp-draft-stmt-jump
     title: "C++ working draft: Jump statements ([stmt.jump])"
     url: https://eel.is/c++draft/stmt.jump
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Нотатка каже, що при виході зі scope будь-яким способом об’єкти з automatic storage duration, які там створено, знищуються в зворотному порядку; виняток – завершення програми через `exit()` чи `abort()`. Про переривання нічого не каже."
   - source_id: gcc-extended-asm
     title: "GCC: Extended Asm"
     url: https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Каже, що clobber `\"memory\"` повідомляє компілятору, що asm читає чи пише пам’ять поза операндами, і діє як бар’єр для компілятора, але не перешкоджає процесору виконувати speculative reads. Не описує конкретну інструкцію `cpsid`."
 ---
 
 ## Short answer
@@ -98,7 +63,3 @@ void outer() {
 - Довга секція або повільні й блокуючі виклики всередині (мьютекс, `malloc`, затримка): усі masked exceptions чекають, а latency зростає.
 - Використання з unprivileged-коду: PRIMASK доступний лише в privileged mode.[^tm4c123-datasheet]
 - Припущення, що guard маскує NMI чи hard fault: вони мають фіксований пріоритет.[^tm4c123-datasheet]
-
-## Sources
-
-<!-- generated from frontmatter -->

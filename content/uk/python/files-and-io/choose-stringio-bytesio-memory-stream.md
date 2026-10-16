@@ -1,104 +1,45 @@
 ---
 id: py-fileio-0014
 title: "Коли обрати `StringIO`, а коли `BytesIO` для in-memory stream?"
-description: "StringIO – коли дані типу str (текст), BytesIO – коли bytes або bytearray (бінарні дані)."
 track: python
 section: files-and-io
-level: middle
-type: comparison
-tags: [stringio, bytesio]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-io-stringio
     title: "Python 3.14: Library/io (StringIO)"
     url: https://docs.python.org/3.14/library/io.html#io.StringIO
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: StringIO – текстовий потік у пам’яті, наслідує TextIOBase, має параметр newline."
   - source_id: py314-library-io-bytesio
     title: "Python 3.14: Library/io (BytesIO)"
     url: https://docs.python.org/3.14/library/io.html#io.BytesIO
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: BytesIO – бінарний потік у пам’яті, наслідує BufferedIOBase."
   - source_id: py314-library-io-binary-io
     title: "Python 3.14: Library/io (Binary I/O)"
     url: https://docs.python.org/3.14/library/io.html#binary-io
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: бінарні потоки приймають bytes-like об’єкти і не виконують кодування, декодування чи трансляцію кінців рядків."
   - source_id: py314-library-io-bytesio-getbuffer
     title: "Python 3.14: Library/io (BytesIO.getbuffer)"
     url: https://docs.python.org/3.14/library/io.html#io.BytesIO.getbuffer
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: getbuffer() повертає view без копіювання; поки view існує, BytesIO не можна змінити за розміром або закрити."
   - source_id: py314-library-io-textiowrapper
     title: "Python 3.14: Library/io (TextIOWrapper)"
     url: https://docs.python.org/3.14/library/io.html#io.TextIOWrapper
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: TextIOWrapper – буферизований текстовий потік над бінарним буфером із параметрами encoding і write_through."
 ---
 
 ## Short answer
@@ -146,19 +87,3 @@ print(buf.getvalue())                  # b'h\xc3\xa9llo'
 - записувати `str` у `BytesIO` або bytes у `StringIO`: обидва варіанти викликають `TypeError`;
 - вибирати `StringIO` для бінарного формату (зображення, пакети): він не приймає bytes, тож доведеться вигадувати кодування, якого формат не визначає;
 - кодувати текст через `.encode()` в одному місці, а декодувати з іншим кодуванням в іншому.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

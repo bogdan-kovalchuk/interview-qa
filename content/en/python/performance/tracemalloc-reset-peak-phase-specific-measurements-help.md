@@ -1,55 +1,24 @@
 ---
 id: py-perf-0010
 title: "How do `tracemalloc.reset_peak()` and phase-specific measurements help tell a temporary allocation spike apart from retained memory growth?"
-description: "How do `tracemalloc.reset_peak()` and phase-specific measurements help tell a temporary allocation spike apart from retained memory growth?"
 track: python
 section: performance
-level: senior
-type: practical
-tags: [tracemalloc-reset-peak]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: tracemalloc traces most memory blocks allocated by Python, from the start() call onward."
   - source_id: py314-library-tracemalloc-reset-peak
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html#tracemalloc.reset_peak
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: reset_peak() sets the peak to the current size, does not clear the traces, does nothing when tracing is off, and snapshots taken before and after the call can be compared."
   - source_id: py314-library-tracemalloc-get-traced-memory
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html#tracemalloc.get_traced_memory
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: get_traced_memory() returns a (current, peak) tuple for the blocks traced by tracemalloc."
   - source_id: py314-library-tracemalloc-record-current-peak
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html#record-the-current-and-peak-size-of-all-traced-memory-blocks
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a two-phase example; the peak is counted from start(), and without reset_peak() the second peak stays the peak of the earlier phase."
   - source_id: py314-library-tracemalloc-snapshot-compare-to
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html#tracemalloc.Snapshot.compare_to
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Snapshot.compare_to() computes the differences between two snapshots to detect memory leaks."
 ---
 
 ## Short answer
@@ -110,23 +79,3 @@ print(tracemalloc.get_traced_memory())  # (0, 0) on CPython 3.13 and 3.14 while 
 - taking one measurement and calling it retained growth, when the phase must be repeated;
 - treating traced memory as the process RSS;
 - calling `reset_peak()` without `tracemalloc.start()` and expecting an effect.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

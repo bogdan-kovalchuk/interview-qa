@@ -1,41 +1,18 @@
 ---
 id: py-async-0020
 title: "Чому cancellation await на `to_thread()` не може примусово зупинити вже запущену synchronous function у worker thread?"
-description: "Python не має механізму примусового зупинення thread; cancellation скасовує лише awaitable на стороні event loop, а worker thread продовжує виконання до завершення функції."
 track: python
 section: asyncio
-level: senior
-type: pitfall
-tags: [to-thread]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,23 +42,3 @@ await, що скасовується, лише "відпускає" очікую
 залишаються зайнятими на весь час, доки функція сама не завершиться, навіть якщо caller давно
 отримав `CancelledError` і рухається далі; якщо функція тримає, наприклад, `threading.Lock`, і
 виконання застрягло, це може призвести до resource leak, що переживає саму cancellation.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

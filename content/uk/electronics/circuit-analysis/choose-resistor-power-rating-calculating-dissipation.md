@@ -1,48 +1,21 @@
 ---
 id: emb-elcirc-0009
 title: "Як вибрати потужність резистора після розрахунку розсіювання?"
-description: "Як вибрати потужність резистора після розрахунку розсіювання?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 27, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-resistor-power
     title: "All About Circuits: Resistors"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-2/resistors/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює теплове розсіювання потужності резистором, його номінальну потужність і потребу вибрати номінал не нижче розрахункового."
   - source_id: vishay-resistor-derating
     title: "Vishay Sfernice: Power Dissipation Considerations in High Precision Thin Film Chips Resistors and Arrays"
     url: https://www.vishay.com/doc/?53047=
-    accessed: 2026-10-04
-    kind: official
-    version: "04-Mar-10"
-    applicability: "Показує, що допустиме розсіювання залежить від температури довкілля та теплового шляху; деталі стосуються зазначених чип-резисторів Vishay."
 ---
 
 ## Short answer
@@ -61,7 +34,3 @@ sources:
 - Вважати правило «взяти рівно вдвічі більший рейтинг» обов’язковим для всіх резисторів.
 - Порівнювати з номіналом потужність, обчислену не для напруги й струму саме цього компонента.
 - Ігнорувати temperature derating, імпульсний режим або допустиму робочу напругу.[^vishay-resistor-derating]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,90 +1,39 @@
 ---
 id: py-fileio-0013
 title: "Чому `pickle.loads()` не можна викликати для untrusted data навіть після перевірки expected object type?"
-description: "Код може виконатися під час самого unpickling, до того як результат існує, тож перевірити тип отриманого об’єкта вже пізно."
 track: python
 section: files-and-io
-level: senior
-type: pitfall
-tags: [pickle-loads]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle-restricting-globals
     title: "Python 3.14: Library/pickle (Restricting Globals)"
     url: https://docs.python.org/3.14/library/pickle.html#pickle-restrict
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: за замовчуванням unpickling імпортує будь-який клас або функцію з даних, що дає змогу викликати довільний код."
   - source_id: py314-library-pickle-object-reduce
     title: "Python 3.14: Library/pickle (object.__reduce__)"
     url: https://docs.python.org/3.14/library/pickle.html#object.__reduce__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: __reduce__ повертає callable і кортеж аргументів, який викликається, щоб створити об’єкт під час відновлення."
   - source_id: py314-library-pickle-find-class
     title: "Python 3.14: Library/pickle (Unpickler.find_class)"
     url: https://docs.python.org/3.14/library/pickle.html#pickle.Unpickler.find_class
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: find_class викликається щоразу, коли запитується клас або функція; його перевизначення може зменшити ризики безпеки."
 ---
 
 ## Short answer
@@ -120,23 +69,3 @@ print(isinstance(obj, dict))   # False: a check like this rejects the value, too
 - вважати, що `isinstance`-перевірка після `loads()` захищає від виконання коду;
 - вважати, що allow-list у `find_class` робить pickle безпечним для недовірених даних;
 - приймати pickle зі спільного кешу, черги чи каталогу, куди може писати інша сторона.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

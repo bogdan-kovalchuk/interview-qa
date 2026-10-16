@@ -1,48 +1,21 @@
 ---
 id: emb-align-0006
 title: "Навіщо структурі trailing (хвостовий) padding?"
-description: "Щоб у масиві структур кожен наступний елемент теж був вирівняний."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Додаткові відомості про структури"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додаткові приклади padding і розміру структури."
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додатковий український маршрут вивчення C++; не є нормативним джерелом object layout."
 ---
 
 ## Short answer
@@ -71,7 +44,3 @@ struct Sample {
 Trailing padding належить об'єкту структури та входить у `sizeof`; це не окремий проміжок, який додає масив. Тому assignment структури або `memcpy` розміром `sizeof(struct Sample)` копіює і ці байти, хоча їхні значення не визначені. LearnCpp наочно показує, як padding збільшує структуру порівняно із сумою розмірів полів.[^learncpp-struct-padding]
 
 Не виводь wire format із `sizeof(struct)`. На межі ABI перевіряй і розмір, і offsets через `_Static_assert`/`static_assert`; для serialized data задавай явний byte layout.
-
-## Sources
-
-<!-- generated from frontmatter -->

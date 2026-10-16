@@ -1,48 +1,21 @@
 ---
 id: py-excpt-0011
 title: "Чому custom exception зазвичай має наслідувати `Exception`, а не `BaseException`?"
-description: "Custom exception має наслідувати від Exception, щоб звичайний except Exception його перехоплював, не чіпаючи системних SystemExit, KeyboardInterrupt та GeneratorExit."
 track: python
 section: exceptions
-level: middle
-type: mechanism
-tags: [exception, baseexception]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-exceptions
     title: "Python 3.14: Library/asyncio-exceptions"
     url: https://docs.python.org/3.14/library/asyncio-exceptions.html#asyncio.CancelledError
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: CancelledError, його базовий клас BaseException з версії 3.8 і вимога піднімати його знову."
 ---
 
 ## Short answer
@@ -84,11 +57,3 @@ print(run(AppFatal))  # caught only by except BaseException
 - наслідувати від `BaseException`, щоб «ловити все»: загальні обробники `except Exception` такі помилки пропускають;
 - писати `except BaseException` і не піднімати виняток знову: так ковтаються `KeyboardInterrupt` і `SystemExit`;
 - вважати, що `except Exception` ловить усе: системні класи лишаються поза ним.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

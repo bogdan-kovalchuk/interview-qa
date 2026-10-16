@@ -1,62 +1,27 @@
 ---
 id: py-oop-0006
 title: "Що реально робить name mangling для атрибута `__value` і чому це не є security-механізмом приватності?"
-description: "Name mangling автоматично перейменовує __value у _ClassName__value, щоб уникнути випадкових колізій імен у підкласах."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [value]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-private-name-mangling
     title: "Python 3.14: Reference/expressions, Private name mangling"
     url: https://docs.python.org/3.14/reference/expressions.html#private-name-mangling
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: правило, за яким приватний ідентифікатор (два або більше початкових `_`, без кінцевих `__`) перетворюється на форму з іменем класу до генерації коду. Не описує mangling як механізм безпеки."
   - source_id: py314-tutorial-classes-private-variables
     title: "Python 3.14: Tutorial/classes, Private Variables"
     url: https://docs.python.org/3.14/tutorial/classes.html#private-variables
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: мета mangling (уникнути колізій імен, визначених у підкласах); правила розроблені переважно для уникнення випадкових помилок, доступ і зміна залишаються можливими; один початковий `_` як домовленість. Не описує descriptor."
 ---
 
 ## Short answer
@@ -102,11 +67,3 @@ print(vars(acc))                  # {'_Account__balance': 100}
 - вважати, що `__value` недоступний ззовні класу: його можна прочитати як `obj._ClassName__value`;
 - очікувати, що підклас перевизначить `self.__value` базового класу: з mangling це два різні атрибути;
 - шукати мангльований атрибут через `getattr(obj, '__value')`: рядок не перетворюється.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

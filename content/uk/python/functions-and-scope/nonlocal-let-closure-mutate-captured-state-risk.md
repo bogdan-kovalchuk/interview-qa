@@ -1,51 +1,21 @@
 ---
 id: py-funcs-0018
 title: "Як `nonlocal` дозволяє closure змінювати captured state, і який ризик це створює при конкурентних викликах?"
-description: "nonlocal дозволяє closure перезаписувати змінну в enclosing function scope, перетворюючи її на спільний мутабельний стан між усіма викликами closure."
 track: python
 section: functions-and-scope
-level: senior
-type: practical
-tags: [nonlocal]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython with GIL"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-simple-stmts-the-nonlocal-statement
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-nonlocal-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ The nonlocal statement: nonlocal прив’язує ім’я до найближчого enclosing scope, де воно вже зв’язане."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Resolution of names: ім’я, яке використано в блоці, але не визначено там, є free variable."
   - source_id: py314-faq-library-what-kinds-of-global-value-mutation-are-thread-safe
     title: "Python 3.14: Faq/library"
     url: https://docs.python.org/3.14/faq/library.html#what-kinds-of-global-value-mutation-are-thread-safe
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, FAQ: Python перемикає потоки між bytecode-інструкціями, а i = i + 1 не є атомарною операцією."
   - source_id: py314-library-threading-lock-objects
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html#lock-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Lock objects: acquire() блокується, доки інший потік не викличе release(); lock підтримує context management."
 ---
 
 ## Short answer
@@ -101,23 +71,3 @@ def make_safe_total():
 - вважати, що однопотоковий тест доводить безпеку closure з `nonlocal`;
 - прочитати `total` поза lock, а записати всередині нього: втрата оновлення все одно можлива;
 - вважати, що GIL робить `count += 1` атомарним.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

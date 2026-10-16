@@ -1,55 +1,24 @@
 ---
 id: py-decor-0011
 title: "How should a decorator for `async def` preserve awaitability and the correct propagation of exceptions?"
-description: "How should a decorator for `async def` preserve awaitability and the correct propagation of exceptions?"
 track: python
 section: decorators
-level: senior
-type: mechanism
-tags: [async-def]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-coroutine-objects
     title: "Python 3.14: Reference/datamodel, Coroutine Objects"
     url: https://docs.python.org/3.14/reference/datamodel.html#coroutine-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Coroutine objects are awaitable; execution is controlled through __await__(), and an exception raised in the coroutine is propagated by the iterator. It does not describe decorators."
   - source_id: py314-library-inspect-iscoroutinefunction
     title: "Python 3.14: Library/inspect, iscoroutinefunction"
     url: https://docs.python.org/3.14/library/inspect.html#inspect.iscoroutinefunction
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Returns True for functions defined with async def (and for partials of them, or sync functions marked with markcoroutinefunction()); an ordinary def function gives False. It does not describe decorator behaviour."
 ---
 
 ## Short answer
@@ -92,11 +61,3 @@ A plain `def` wrapper that returns `func(*args, **kwargs)` works synchronously: 
 - writing the wrapper as a `def` and assuming that a `try/except` around `return func(...)` will catch errors from the coroutine;
 - writing an `async def` wrapper that returns `func(...)` without `await`: the caller gets a coroutine object instead of the result;
 - omitting `@functools.wraps(func)`: then `__name__` and `__doc__` describe the wrapper.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

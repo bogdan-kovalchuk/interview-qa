@@ -1,55 +1,24 @@
 ---
 id: emb-elintro-0281
 title: "Чому для wire wrapping використовують квадратні піни?"
-description: "Чому для wire wrapping використовують квадратні піни?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: cooper-wire-wrap
     title: "CooperTools: Wire-Wrap Connections"
     url: https://static6.arrow.com/aropdfconversion/fc981550a66dae636e73dfb0581f75e8ea6a96eb/wirewrap.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує, як натягнутий дріт контактує з гострими кутами клеми та утворює газонепроникне з’єднання; не стверджує, що будь-який круглий контакт неможливий."
   - source_id: qatech-wire-wrap
     title: "QA Technology: Socket and Termination Selections"
     url: https://www.qatech.com/en/resources-general/socket-termination-selection.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує квадратні wire-wrap піни як тип клеми та вказує на газонепроникність з’єднання як захист від корозії."
 ---
 
 ## Short answer
@@ -70,7 +39,3 @@ Wire wrapping – це механічний спосіб створення ел
 - Вважати, що квадратна форма сама по собі гарантує надійність без правильного інструмента й параметрів дроту.
 - Пояснювати принцип лише «гострими гранями», не згадуючи натяг, контактний тиск і кілька точок контакту.
 - Стверджувати, що круглий контакт завжди прокручується: висновок залежить від конструкції конкретного з’єднання.
-
-## Sources
-
-<!-- generated from frontmatter -->

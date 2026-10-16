@@ -1,41 +1,18 @@
 ---
 id: py-coll-0008
 title: "Чим `d[key]`, `d.get(key)` і `setdefault()` відрізняються за поведінкою при відсутньому key та можливими side effects?"
-description: "d[key] викликає KeyError; d.get(key) повертає None (або переданий default) без побічних ефектів; d.setdefault(key, default) вставляє default у словник, якщо ключ відсутній, і повертає його."
 track: python
 section: collections
-level: middle
-type: comparison
-tags: [d-key, d-get-key, setdefault]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ sources:
 коли ключа справді немає, а не на кожному зверненні. Синтаксично обидва підходи виглядають
 однаково компактно, але семантично `defaultdict` уникає зайвого створення об'єкта на "гарячому"
 шляху, коли ключ уже існує.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

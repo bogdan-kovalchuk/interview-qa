@@ -1,34 +1,15 @@
 ---
 id: emb-build-0008
 title: "How do static and dynamic libraries differ during build and linking?"
-description: "Static libraries are linked into the image by the linker, while dynamic libraries remain separate artifacts loaded at runtime."
 track: embedded
 section: toolchain-and-build
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
-    kind: official
-    version: "latest"
-    applicability: "Authoritative section-level reference for toolchain and build concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -53,9 +34,6 @@ Embedded Linux often supports both options:
 - Static linking for performance-critical components (less overhead, no dynamic linking at runtime)
 - Dynamic linking for general-purpose libraries (libc, libpthread) to reduce firmware size and allow library updates without recompiling all programs
 
-
-## Evaluation guide
-
 ### Expected signals
 
 - Distinguishes static and dynamic libraries by linking and loading method
@@ -75,8 +53,3 @@ Embedded Linux often supports both options:
 - How does the static linker decide which object files to extract from the archive?
 - What overhead does dynamic linking have at runtime?
 - How to update a shared library on an embedded Linux device in production?
-
-
-## Sources
-
-<!-- generated from frontmatter -->

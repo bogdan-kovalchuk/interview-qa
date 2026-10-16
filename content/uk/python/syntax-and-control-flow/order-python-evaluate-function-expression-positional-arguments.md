@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0012
 title: "У якому порядку Python обчислює function expression, positional arguments і keyword arguments у виклику, якщо вони мають side effects?"
-description: "Python обчислює callable-вираз першим, потім усі argument expressions до початку виклику, причому *expr обчислюється перед keyword arguments, навіть якщо стоїть після них у коді."
 track: python
 section: syntax-and-control-flow
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -86,11 +63,3 @@ f(key=trace('kw'), *trace_iterable('star'))
 Це гарантія мови, а не деталь CPython, тож на неї можна спиратися в переносимому коді. Але спиратися
 варто рідко: код, коректність якого залежить від порядку обчислення аргументів, важко читати – краще
 обчислити значення в окремих рядках і передати вже готові.[^py314-reference-simple-stmts]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

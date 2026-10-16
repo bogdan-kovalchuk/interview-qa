@@ -1,44 +1,18 @@
 ---
 id: py-coll-0006
 title: "What exactly does dictionary insertion order guarantee in modern Python, and what does that guarantee not say about the internal hash table?"
-description: "What exactly does dictionary insertion order guarantee in modern Python, and what does that guarantee not say about the internal hash table?"
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: "3.14"
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -74,11 +48,3 @@ compares only the set of key-value pairs, so `{'a': 1, 'b': 2} == {'b': 2, 'a': 
 even though their iteration order differs. That is exactly why other Python implementations (PyPy,
 for instance) can honour the same insertion-order language guarantee using a completely different
 internal hash table structure – the behaviour is guaranteed, not a specific memory layout.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

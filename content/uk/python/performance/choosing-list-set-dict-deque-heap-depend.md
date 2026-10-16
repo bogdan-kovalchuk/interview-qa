@@ -1,48 +1,21 @@
 ---
 id: py-perf-0006
 title: "Як вибір між `list`, `set`, `dict`, `deque` та heap впливає на dominant operations workload?"
-description: "Вибір контейнера залежить від домінантної операції: deque дає O(1) на обох кінцях, heapq тримає мінімум у heap[0], а list перевіряє належність перебором."
 track: python
 section: performance
-level: middle
-type: comparison
-tags: [list, set, dict, deque]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections-deque
     title: "Python 3.14: Library/collections, deque"
     url: https://docs.python.org/3.14/library/collections.html#collections.deque
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація collections.deque (Python 3.14): додавання й видалення з обох кінців мають приблизно однакову O(1) вартість; list має O(n) вартість переміщення для pop(0) і insert(0, v)."
   - source_id: py314-library-heapq
     title: "Python 3.14: Library/heapq"
     url: https://docs.python.org/3.14/library/heapq.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація heapq (Python 3.14): найменший елемент доступний як heap[0] без вилучення (опис heappop)."
   - source_id: cpython-heapq-source
     title: "CPython Lib/heapq.py: heap queue implementation"
     url: https://github.com/python/cpython/blob/3.14/Lib/heapq.py
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Реалізація heapq у CPython 3.14: heappush піднімає елемент до кореня, heappop опускає елемент до листа і піднімає його назад, nlargest тримає купу розміру n. Опис CPython, не гарантія мови."
   - source_id: py314-reference-expressions-membership-test-operations
     title: "Python 3.14: Reference/expressions, membership test operations"
     url: https://docs.python.org/3.14/reference/expressions.html#membership-test-operations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Довідник мови Python 3.14, операції належності: для list, tuple, set, frozenset, dict і collections.deque вираз x in y еквівалентний any(x is e or x == e for e in y). Не описує складність."
 ---
 
 ## Short answer
@@ -83,19 +56,3 @@ print(heapq.heappop(heap), heap)   # 1 [4, 5]: removal is logarithmic
 - `x in list` у гарячому циклі замість `set`, коли потрібна перевірка належності;
 - `list.pop(0)` як черга замість `deque.popleft()`;
 - очікувати від `heapq` швидкого пошуку довільного елемента: через `heap[0]` доступний лише мінімум.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

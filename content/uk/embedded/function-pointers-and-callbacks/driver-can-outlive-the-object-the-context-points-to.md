@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0028
 title: "Що таке callback lifetime problem?"
-description: "Driver може зберегти callback/context довше, ніж живе об’єкт, на який вони вказують."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,7 +31,3 @@ Context pointer дає callback доступ до стану його власн
 Наприклад, `init` може зареєструвати `&local_config`, але повернутися раніше за наступне переривання таймера. Саме відкладене виконання перетворює локальний pointer на dangling context. Натомість caller може передати довгоживучий об’єкт, або власник може зберігати driver і контекст в одному екземплярі, життєвий цикл якого ним контролюється.[^iso-c-n1570]
 
 **Типова помилка:** вважати, що передача `void *` копіює структуру. Копіюється лише значення адреси; ownership і час життя залишаються відповідальністю коду, який створив об’єкт. Перевіряй контракт реєстрації та порядок зупинки: спочатку заборонити нові callbacks, потім дочекатися завершення вже активних і лише після цього знищувати контекст. Точний механізм очікування залежить від драйвера й RTOS.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

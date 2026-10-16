@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0061
 title: "Що не так: `memset(ptr, 0, sizeof(*ptr))` для ініціалізації `float`-поля у struct?"
-description: "memset покладається на те, що нуль-байти дають float 0.0f, а стандарт C формально цього не гарантує."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -57,23 +38,3 @@ struct State state = { .value = 0.0f, .context = NULL };
 Функція `memset` працює на рівні байтів і не знає типів полів. Навіть якщо конкретний ABI використовує нульове представлення для `0.0f`, це гарантія саме цієї платформи, а не переносиме правило мови. C11 окремо визначає нульове значення вказівника як результат перетворення цілого константного виразу зі значенням 0; це не вимагає, щоб об’єктне представлення вказівника складалося з нульових байтів.[^iso-c-n1570]
 
 Для масиву структур або повторного скидання стану застосовуйте ту саму дисципліну: явно присвоюйте нуль числовим полям і `NULL` вказівникам або використовуйте типізований compound literal. Так компілятор виконує потрібне перетворення до кожного типу, а код не залежить від побайтового кодування значень.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

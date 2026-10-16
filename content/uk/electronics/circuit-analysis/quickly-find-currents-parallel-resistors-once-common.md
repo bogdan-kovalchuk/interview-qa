@@ -1,34 +1,15 @@
 ---
 id: emb-elcirc-0019
 title: "Як швидко знайти струми в паралельних резисторах після знаходження спільної напруги?"
-description: "Як швидко знайти струми в паралельних резисторах після знаходження спільної напруги?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,7 +25,3 @@ sources:
 Приклад: до джерела 12 V паралельно під’єднано резистори 2 kΩ і 4 kΩ. Струми становлять `12 V / 2 kΩ = 6 mA` та `12 V / 4 kΩ = 3 mA`, тому джерело віддає сумарно 9 mA. Результат передбачає ідеальні з’єднання та задану напругу без просідання джерела.[^aac-direct-current]
 
 Поширена помилка – ділити напругу джерела між паралельними резисторами так, ніби вони з’єднані послідовно. Спершу встановіть, що обидва виводи кожного резистора з’єднані з тією самою парою вузлів; також не додавайте струм через окремий елемент, який насправді не належить цій паралельній групі.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

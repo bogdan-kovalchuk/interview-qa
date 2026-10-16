@@ -1,76 +1,33 @@
 ---
 id: emb-cppoop-0008
 title: "Trap: коли запускаються глобальні конструктори і що має зробити startup?"
-description: "Конструктори глобальних об’єктів викликає прохід по `.init_array`; на bare-metal його має виконати startup перед main()."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: arm-cpp-abi
     title: "C++ ABI for the Arm Architecture (CPPABI32)"
     url: https://raw.githubusercontent.com/ARM-software/abi-aa/main/cppabi32/cppabi32.rst
-    accessed: 2026-10-06
-    kind: spec
-    version: null
-    applicability: "У розділі Top-level static object construction: кожна translation unit дає фрагмент constructor vector у секції .init_array (SHT_INIT_ARRAY), елемент – адреса функції void(void), що конструює глобальні об’єкти цієї TU; run-time support code проходить вектор за зростанням адрес; порядок між TU ABI не задає; елементи можуть бути й self-relative. Це ABI для Arm; інші архітектури й тулчейни можуть відрізнятися."
   - source_id: cpp-draft-basic-start-static
     title: "C++ working draft: Static initialization ([basic.start.static])"
     url: https://eel.is/c++draft/basic.start.static
-    accessed: 2026-10-06
-    kind: spec
-    version: "working draft"
-    applicability: "Каже, що змінна зі static storage duration або constant-initialized, або zero-initialized, і що вся static initialization строго передує будь-якій dynamic initialization. Не каже, хто й коли викликає dynamic initialization."
   - source_id: cpp-draft-basic-start-dynamic
     title: "C++ working draft: Dynamic initialization of non-block variables ([basic.start.dynamic])"
     url: https://eel.is/c++draft/basic.start.dynamic
-    accessed: 2026-10-06
-    kind: spec
-    version: "working draft"
-    applicability: "Каже, що implementation-defined, чи dynamic initialization змінної зі static storage duration виконується до першого оператора main, чи відкладається. Не визначає механізм виклику (секції, startup-код)."
   - source_id: itanium-abi-ctor-vptr
     title: "Itanium C++ ABI: Virtual tables During Object Construction"
     url: https://itanium-cxx-abi.github.io/cxx-abi/abi.html#vtable-ctor-general
-    accessed: 2026-10-06
-    kind: spec
-    version: null
-    applicability: "У розділі 2.6.1 каже, що vptr об’єкта зазвичай виставляє конструктор класу (на vtable цього класу). Це ABI, а не стандарт мови; інші ABI можуть відрізнятися в деталях."
   - source_id: gnu-ld-manual-sections
     title: "GNU ld manual: SECTIONS and input section description"
     url: https://sourceware.org/binutils/docs/ld.html
-    accessed: 2026-10-06
-    kind: official
-    version: "current"
-    applicability: "Описує секції .init_array.NNNNN і .ctors.NNNNN (NNNNN пов’язане з GCC init_priority) та KEEP() для секцій, які не можна прибирати при --gc-sections (приклади – .init, .ctors). Не задає, який саме linker script має проєкт."
   - source_id: gcc-int-initialization
     title: "GCC Internals: How Initialization Functions Are Handled"
     url: https://gcc.gnu.org/onlinedocs/gccint/Initialization.html
-    accessed: 2026-10-06
-    kind: official
-    version: "current"
-    applicability: "Каже, що функції ініціалізації, які генерує компілятор, мають бути викликані до main, і що традиційні механізми GCC – секції .ctors/.dtors та .init, а за їх відсутності виклик __main. Не згадує .init_array."
 ---
 
 ## Short answer
@@ -108,20 +65,4 @@ static void call_static_constructors(void)
 - Узяти startup від C-проєкту без циклу по `.init_array`: глобальні C++-об’єкти «працюють», доки не знадобиться vptr чи непорожній стан.
 - Не захистити `.init_array` через `KEEP()` у linker script зі `--gc-sections`.
 - Викликати цикл до ініціалізації `.data` і `.bss` або до налаштування тактування, коли конструктор уже чіпає периферію.
-- Покладатися на порядок конструювання глобалів між різними `.cpp` (див. `qid:emb-cppoop-0010`).
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->
+- Покладатися на порядок конструювання глобалів між різними `.cpp` (див. qid:emb-cppoop-0010).

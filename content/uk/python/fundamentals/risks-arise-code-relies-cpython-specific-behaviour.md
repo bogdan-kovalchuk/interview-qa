@@ -1,44 +1,18 @@
 ---
 id: py-fund-0007
 title: "Які ризики виникають, якщо код покладається на CPython-specific поведінку під час перенесення на PyPy або іншу реалізацію Python?"
-description: "Такий код може втратити коректність, переносимість або очікувані performance characteristics."
 track: python
 section: fundamentals
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -86,23 +60,3 @@ CPython і змінюються між версіями, тож будь-яки�
 implementation detail, її не можна робити частиною контракту свого коду. Ресурси закриваються через
 context managers, рівність перевіряється через `==`, а припущення про швидкість перевіряються
 вимірюванням на тій реалізації, де код справді працюватиме.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

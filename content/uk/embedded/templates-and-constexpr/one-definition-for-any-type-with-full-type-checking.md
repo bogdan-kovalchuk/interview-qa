@@ -1,55 +1,24 @@
 ---
 id: emb-tmplcx-0001
 title: "Що таке function template і чим він кращий за макрос?"
-description: "Одне визначення для будь-якого типу, що підтримує потрібні операції, – з повним type checking."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-cpp-replace
     title: "C++ working draft: Replacement of macros ([cpp.replace])"
     url: https://eel.is/c++draft/cpp.replace
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Макрос підставляє в список заміни послідовність токенів аргументу, а не його значення; оператори # (stringizing) і ## (склеювання токенів) визначені в цьому розділі. Не описує конкретний препроцесор."
   - source_id: cpp-draft-expr-call
     title: "C++ working draft: Function call ([expr.call])"
     url: https://eel.is/c++draft/expr.call
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Під час виклику кожен параметр ініціалізується своїм відповідним аргументом, тож значення аргументу копіюється в параметр. Порядок обчислення аргументів цей розділ тут не розглядає."
   - source_id: cpp-draft-temp-deduct-call
     title: "C++ working draft: Deducing template arguments from a function call ([temp.deduct.call])"
     url: https://eel.is/c++draft/temp.deduct.call
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Якщо аргументи дають різні виводи для того самого T, виведення не вдається; стандартний приклад показує `error: conflicting deductions for T`. Не описує текст повідомлення конкретного компілятора."
 ---
 
 ## Question code
@@ -96,7 +65,3 @@ void demo() {
 - Вважати, що шаблон працює з будь-яким типом без вимог до операцій у тілі.
 - Замінювати макрос шаблоном там, де потрібні `#` (stringizing) або `##` (склеювання токенів).
 - Очікувати, що `clamp(1, 2, 3.0)` неявно узгодить `int` і `double`: T має вивестися однаково з усіх параметрів, інакше виклик відхиляється.
-
-## Sources
-
-<!-- generated from frontmatter -->

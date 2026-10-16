@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0204
 title: "Як розрахувати `I_B` через базовий резистор?"
-description: "Як розрахувати базовий струм через базовий резистор?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 19, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ohms-law
     title: "Ohm’s Law – How Voltage, Current, and Resistance Relate, All About Circuits"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-2/voltage-current-resistance-relate/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Закон Ома для струму через резистор; застосування формули до базового кола потребує врахувати падіння на переході та топологію кола."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Розрахунок базового струму – лише частина вибору резистора. Потрібно перевірити, чи керувальне джерело може віддати цей струм, чи не перевищено граничні параметри входу, та який струм навантаження треба комутувати. Для ключа базовий струм зазвичай задають із запасом відносно мінімального коефіцієнта підсилення, щоб транзистор надійно перейшов у saturation.[^aac-ohms-law]
 
 **Типова помилка:** використовувати `V_in/R_B` і забувати падіння `V_BE`, або автоматично вважати емітер заземленим. Спочатку визначте напругу на обох кінцях резистора, а потім застосуйте закон Ома.
-
-## Sources
-
-<!-- generated from frontmatter -->

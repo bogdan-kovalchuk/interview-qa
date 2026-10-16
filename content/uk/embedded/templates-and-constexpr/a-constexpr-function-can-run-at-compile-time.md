@@ -1,48 +1,21 @@
 ---
 id: emb-tmplcx-0005
 title: "Що таке constexpr-функція?"
-description: "Функція, яку можна викликати в константному виразі; там вона обчислюється під час компіляції."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-dcl-constexpr
     title: "C++ working draft: The constexpr specifier ([dcl.constexpr])"
     url: https://eel.is/c++draft/dcl.constexpr
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що виклик constexpr-функції дає той самий результат, що й виклик еквівалентної не-constexpr функції, але може бути константним виразом; вимагає, щоб constexpr-змінна була constant-initializable. Не описує, де розміщується результат."
   - source_id: cpp-draft-basic-start-static
     title: "C++ working draft: Static initialization ([basic.start.static])"
     url: https://eel.is/c++draft/basic.start.static
-    accessed: 2026-10-13
-    kind: spec
-    version: "working draft"
-    applicability: "Визначає константну ініціалізацію змінних зі static storage: вона не є динамічною ініціалізацією і не потребує коду, що виконується під час запуску. Не описує сегмент пам’яті на цільовій платформі."
 ---
 
 ## Short answer
@@ -79,7 +52,3 @@ std::uint32_t runtime_value(std::uint32_t x) {
 - Вважати, що кожен виклик constexpr-функції виконується під час компіляції: з аргументом, відомим лише під час роботи, це звичайний виклик.
 - Очікувати від `constexpr` прискорення runtime-коду: ключове слово описує можливість константного обчислення, а не гарантію швидкості.
 - Не перевіряти результат через `static_assert` чи constexpr-змінну: без них незрозуміло, чи обчислення справді відбулося під час компіляції.
-
-## Sources
-
-<!-- generated from frontmatter -->

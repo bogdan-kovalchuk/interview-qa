@@ -1,41 +1,18 @@
 ---
 id: emb-structs-0047
 title: "Trap: що не так із `#pragma pack` у public header без обережності?"
-description: "Він може змінити packing для наступних структур у чужому коді."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: gcc-structure-layout-pragmas
     title: "GCC documentation: Structure-Layout Pragmas"
     url: https://gcc.gnu.org/onlinedocs/gcc/Structure-Layout-Pragmas.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Документує для GCC зміну alignment наступних struct/union та семантику pack(push)/pack(pop); інші компілятори можуть відрізнятися."
 ---
 
 ## Short answer
@@ -65,19 +42,3 @@ struct WireHeader { uint8_t kind; uint32_t length; };
 Тут packing обмежений оголошенням `WireHeader`, якщо конкретний компілятор підтримує цю форму. Без `pop` подальші типи в підключених після цього фрагмента заголовках можуть отримати інший layout. Сам `pop` має відповідати push, зокрема коли є умовна компіляція чи ранній вихід із макросного include-фрагмента.[^gcc-structure-layout-pragmas]
 
 **Типова помилка:** написати `#pragma pack(1)` у public header і припустити, що його дія закінчиться разом із `struct`. Симптоми – неочікувані offsets, помилки сумісності ABI або невирівняні доступи. Застосовуй симетричні `push/pop`, не покладайся на непідтверджені атрибути та перевіряй layout через `sizeof` і `offsetof` для підтримуваних компіляторів.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

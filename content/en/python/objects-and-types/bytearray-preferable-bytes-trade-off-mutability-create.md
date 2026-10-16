@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0018
 title: "When is `bytearray` preferable to `bytes`, and what trade-off does its mutability create?"
-description: "When is `bytearray` preferable to `bytes`, and what trade-off does its mutability create?"
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: [bytearray, bytes]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -85,19 +58,3 @@ except TypeError as err:
 - aliasing prevention: if a mutable `bytearray` crosses architectural boundaries, convert it to immutable `bytes(ba)` before passing it to downstream consumers;
 - lack of hashability: the inability to use `bytearray` as a `dict` key or in lookup caches necessitates explicit conversion to `bytes`;
 - direct I/O buffers: methods like `sock.recv_into(ba)` and `f.readinto(ba)` read incoming bytes directly into pre-allocated memory buffers without intermediate object allocations.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

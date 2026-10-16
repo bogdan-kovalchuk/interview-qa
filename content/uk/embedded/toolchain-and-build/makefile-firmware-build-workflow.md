@@ -1,34 +1,15 @@
 ---
 id: emb-build-0013
 title: "Як працюють make і Makefile у firmware-проекті?"
-description: "make порівнює targets і dependencies у Makefile та виконує лише потрібні кроки компіляції, link і post-build."
 track: embedded
 section: toolchain-and-build
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
-    kind: official
-    version: "latest"
-    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -102,25 +83,22 @@ include $(wildcard modules/*.mk)
 -include $(OBJS:.o=.d)
 ```
 
-## Evaluation guide
+### Очікувані сигнали
 
-### Expected signals
 - Розуміє структуру Makefile (target, dependencies, recipe)
 - Знає, як make визначає, що потрібно переробити
 - Може пояснити variables і pattern rules
 - Розуміє phony targets і їх використання
 
-### Red flags
+### Червоні прапорці
+
 - Не знає різниці між target і dependency
 - Не розуміє, як make порівнює timestamps
 - Не може написати простий Makefile
 - Не знає, що таке phony targets
 
-### Level-up follow-up
+### Питання на підвищення рівня
+
 - Як автоматично генерувати dependencies для header files?
 - Як організувати multi-directory проект з Makefile?
 - Як інтегрувати CMake з Makefile?
-
-## Sources
-
-<!-- generated from frontmatter -->

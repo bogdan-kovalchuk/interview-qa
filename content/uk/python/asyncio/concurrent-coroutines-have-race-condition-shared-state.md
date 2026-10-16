@@ -1,46 +1,24 @@
 ---
 id: py-async-0021
 title: "Чому конкурентні coroutines можуть мати race condition на shared state навіть у одному OS thread?"
-description: "Тому що await є точкою добровільної поступки: event loop може перемкнути виконання на іншу Task, і та побачить проміжний стан shared resource."
 track: python
 section: asyncio
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
 
 **Тому що `await` є точкою добровільної поступки: event loop може перемкнути виконання на іншу Task, і та побачить проміжний стан shared resource.**[^py314-library-asyncio-task] Event loop планує кооперативно: поки Task не виконає `await`, жодна інша Task у тому самому thread не працює. Але як тільки coroutine робить `await` (наприклад, на I/O чи `asyncio.sleep`), loop передає керування іншій Task, яка може змінити спільний словник, лічильник чи список до того, як перша продовжить роботу. Рішення – `asyncio.Lock` навколо критичних секцій або код, у якому стан консистентний між `await`-точками.
+
 ## Detailed explanation
 
 Ключова відмінність від race condition між OS threads: тут перемикання може статися лише в точці
@@ -68,23 +46,3 @@ Task може встигнути виконати той самий блок і 
 стану, без жодного `await` усередині; якщо `await` неминучий (наприклад, потрібен I/O для запису),
 секцію треба огорнути в `asyncio.Lock`, щоб інші Task чекали звільнення, а не проходили паралельно
 той самий блок.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

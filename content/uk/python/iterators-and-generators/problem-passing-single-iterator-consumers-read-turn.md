@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0014
 title: "Яку проблему створює передавання одного iterator двом consumers, які читають його по черзі?"
-description: "Iterator – односпрямований і stateful: два consumers ділять один cursor, тому елементи, прочитані одним, стають недоступними для іншого."
 track: python
 section: iterators-and-generators
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-glossary-term-iterable
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення iterable; iter() повертає iterator для одного проходу."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення iterator і exhausted."
   - source_id: py314-library-itertools-tee
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.tee
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: itertools.tee(), незалежні iterators з одного iterable і вимоги до сховища."
 ---
 
 ## Short answer
@@ -98,23 +63,3 @@ print(list(x), list(y))             # [0, 1, 2, 3] [0, 1, 2, 3]
 - передавати один iterator або generator двом функціям і очікувати, що кожна отримає повну послідовність;
 - вважати `tee()` безкоштовним: він може потребувати значного додаткового сховища;
 - переводити iterator у `list`, не оцінивши розмір даних: якщо вони не вміщуються в пам’ять, це окрема проблема.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

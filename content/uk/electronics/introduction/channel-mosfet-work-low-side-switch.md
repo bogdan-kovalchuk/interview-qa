@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0253
 title: "Як працює N-channel MOSFET як low-side switch?"
-description: "Як працює N-channel MOSFET як low-side switch?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: ti-mosfet-selection
     title: "Texas Instruments: Avoid Common Mistakes When Selecting and Designing with Power MOSFETs"
     url: https://www.ti.com/lit/an/slpa021/slpa021.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "SLPA021, November 2024"
-    applicability: "Пояснює, чому VGS(th) не гарантує малого RDS(on), і наводить параметри для добору MOSFET; параметри конкретного компонента треба звіряти з його datasheet."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 23, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Важлива межа – `V_GS(th)` не є рекомендованою напругою керування. Цей параметр задають за дуже малого струму, коли MOSFET лише починає проводити. Щоб ключ працював із низькими втратами, знайдіть у datasheet значення `R_DS(on)` при `V_GS`, яке реально може видати контролер. Наприклад, не можна автоматично вважати, що MOSFET з `V_GS(th) = 2 V` повністю відкритий від GPIO 3.3 V: потрібна специфікація опору за відповідної напруги gate.[^ti-mosfet-selection]
 
 Практично перевіряють розсіювану потужність `P = I²*R_DS(on)`, нагрівання, допустимі `V_DS` та `V_GS`, а також перехідні процеси навантаження. Типова помилка – під’єднати MOSFET як ключ, але оцінити його лише за порогом `V_GS(th)` або за максимальним струмом із заголовка datasheet. Номінали треба оцінювати за умовами вимірювання, корпусом і реальним охолодженням.[^ti-mosfet-selection]
-
-## Sources
-
-<!-- generated from frontmatter -->

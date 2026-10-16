@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0022
 title: "Як X-macro синхронізує `enum` і масив рядків?"
-description: "Список ERR_LIST розгортають двічі з різними X, щоб enum і таблиця рядків залишалися узгодженими."
 track: embedded
 section: inline-and-macros
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -67,7 +48,3 @@ X-macro – це список, який передають макросу-обр
 - Використовувати індекс `enum` як позицію масиву, якщо значення перелічувачів задано не послідовно від нуля.
 
 Для прикладу `ERR_NONE = 0` і `ERR_TIMEOUT = 1` утворюють щільні індекси. Якщо ж кодам призначити `10` та `20`, масив із двох елементів вже не може бути проіндексований цими значеннями без іншого відображення. Отже, перед застосуванням треба вирішити, чи перелік означає індекси, чи лише зовнішні коди помилок; для другого випадку краще генерувати таблицю пар або функцію пошуку. Такий вибір робить припущення явним і не дозволяє помилково читати за межами масиву.
-
-## Sources
-
-<!-- generated from frontmatter -->

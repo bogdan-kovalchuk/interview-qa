@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0001
 title: "How does an object-identity check with `is` differ from equality with `==`?"
-description: "How does an object-identity check with `is` differ from equality with `==`?"
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: [is]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -75,19 +48,3 @@ print(id(a) == id(b))  # False: id() comparison matches the result of `is`
 - comparing numbers or strings using `is` instead of `==`: due to interning optimizations in CPython this may coincidentally evaluate to `True`, but it is not guaranteed by the language specification;
 - assuming `==` always returns a `bool`: objects in specialised libraries may return complex structures or raise exceptions;
 - overlooking performance differences: `is` is always instantaneous, whereas `==` on large nested collections recursively traverses every element.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-build-0008
 title: "Як відрізняються статична і динамічна бібліотека на етапах build та link?"
-description: "Практичне питання про embedded-розробку та її обмеження."
 track: embedded
 section: toolchain-and-build
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
-    kind: official
-    version: "latest"
-    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,31 +34,22 @@ Embedded Linux часто підтримує обидва варіанти:
 - Static linking для критичних до продуктивності компонентів (менше overhead, немає dynamic linking у runtime)
 - Dynamic linking для бібліотек загального використання (libc, libpthread), щоб зменшити розмір firmware і дозволити оновлення бібліотек без перекомпіляції всіх програм
 
-
-## Evaluation guide
-
-### Expected signals
+### Очікувані сигнали
 
 - Розрізняє static і dynamic libraries за способом лінкування та завантаження
 - Розуміє, що static linking копіює код у бінарник, а dynamic linking завантажує бібліотеку у runtime
 - Знає, що bare-metal MCU зазвичай використовують static linking через відсутність OS
 - Розуміє компроміс між розміром firmware, продуктивністю та гнучкістю оновлень
 
-### Red flags
+### Червоні прапорці
 
 - Плутає static library з static linking (це різні речі)
 - Не знає різниці між `.a`/`.lib` та `.so`/`.dll`
 - Вважає, що dynamic libraries завжди кращі за static
 - Не розуміє, чому bare-metal MCU не використовують dynamic linking
 
-### Level-up follow-up
+### Питання на підвищення рівня
 
 - Як static linker вирішує, які object files витягувати з архіву?
 - Які накладні витрати має dynamic linking у runtime?
 - Як оновити shared library на embedded Linux пристрої в production?
-
-
-## Sources
-
-<!-- generated from frontmatter -->
-

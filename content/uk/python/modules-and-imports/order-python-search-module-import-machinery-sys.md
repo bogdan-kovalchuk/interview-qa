@@ -1,76 +1,33 @@
 ---
 id: py-modimp-0005
 title: "У якому порядку Python шукає module через import machinery та `sys.path`?"
-description: "Python спочатку перевіряє sys.modules, потім проходить sys.meta_path; path-based finder обходить записи sys.path, а для підмодуля – __path__ батьківського пакета."
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [sys-path]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The module cache» офіційної документації Python 3.14: sys.modules перевіряється першим, до будь-якого пошуку."
   - source_id: py314-reference-import-meta-path
     title: "Python 3.14: Reference/import, The meta path"
     url: https://docs.python.org/3.14/reference/import.html#the-meta-path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The meta path» офіційної документації Python 3.14: sys.meta_path опитується по черзі; якщо жоден finder не повернув spec, піднімається ModuleNotFoundError."
   - source_id: py314-reference-import-finders-and-loaders
     title: "Python 3.14: Reference/import, Finders and loaders"
     url: https://docs.python.org/3.14/reference/import.html#finders-and-loaders
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «Finders and loaders» офіційної документації Python 3.14: стандартні finders знаходять built-in модулі, frozen модулі та модулі на import path."
   - source_id: py314-reference-import-path-based-finder
     title: "Python 3.14: Reference/import, The Path Based Finder"
     url: https://docs.python.org/3.14/reference/import.html#the-path-based-finder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The Path Based Finder» офіційної документації Python 3.14: ітерація записів sys.path або __path__; кеш finder-ів у sys.path_importer_cache; sys.path_hooks; None для записів без finder."
   - source_id: py314-library-sys-path
     title: "Python 3.14: Library/sys, sys.path"
     url: https://docs.python.org/3.14/library/sys.html#sys.path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Опис sys.path у документації Python 3.14: початкове заповнення з PYTHONPATH і типових шляхів; якщо не задано -P або PYTHONSAFEPATH, перед ними додається директорія скрипта, поточна директорія для -m або порожній рядок для -c і REPL."
 ---
 
 ## Short answer
@@ -115,11 +72,3 @@ print(type(sys.path_importer_cache[str(first_dir)]).__name__)  # FileFinder: cac
 - вважати, що `sys.path_importer_cache` кешує знайдений модуль (він кешує finder для запису `sys.path`);
 - очікувати, що файл на початку `sys.path` перекриє built-in модуль;
 - шукати підмодуль у `sys.path`, а не в `__path__` батьківського пакета.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0113
 title: "Чим `LED` відрізняється від резистора: що відбувається з напругою на ньому при зміні струму?"
-description: "Чим `LED` відрізняється від резистора: що відбувається з напругою на ньому при зміні струму?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 12, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: digikey-rgb-led-forward-voltage
     title: "DigiKey: RGB LEDs Provide Multicolor Display Solutions"
     url: https://www.digikey.com/en/articles/how-to-drive-multicolor-leds
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Описує LED як керований струмом напівпровідник і показує, що потрібна пряма напруга залежить від конкретного LED та струму; числові приклади стосуються Adafruit 2739."
 ---
 
 ## Short answer
@@ -61,7 +34,3 @@ sources:
 - Називати `V_f` фіксованою незалежно від струму.
 - Використовувати формулу резистора як доказ того, що `LED` поводиться лінійно.
 - Переносити типове `V_f` одного кольору або моделі на будь-який інший `LED`.
-
-## Sources
-
-<!-- generated from frontmatter -->

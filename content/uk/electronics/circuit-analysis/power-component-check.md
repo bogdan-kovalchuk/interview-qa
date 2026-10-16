@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0025
 title: "Яка потужність на кожному компоненті і як її перевірити?"
-description: "Яка потужність на кожному компоненті і як її перевірити?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-power-calculations
     title: "All About Circuits: How to Calculate Power in a Series and Parallel Circuit"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/power-calculations/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує формули потужності резистивних компонентів і додавання потужності в колі; баланс стосується повної моделі джерел та елементів, а не лише вибраних резисторів."
 ---
 
 ## Short answer
@@ -59,7 +36,3 @@ sources:
 - Застосовувати локальну формулу до загальних значень всього кола.
 - Порівнювати додатні потужності резисторів із підписаною від’ємною потужністю джерела, не пояснивши домовленість про знак.
 - Перевіряти лише резистори, хоча в колі можуть бути інші елементи, які накопичують чи передають енергію.[^aac-power-calculations]
-
-## Sources
-
-<!-- generated from frontmatter -->

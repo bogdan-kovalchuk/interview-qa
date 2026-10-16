@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0009
 title: "Що делегує вираз `yield from subiterator` крім простого повторного `yield` кожного value?"
-description: "yield from делегує subiterator-у send(), throw() і close() та повертає його StopIteration.value як результат виразу."
 track: python
 section: iterators-and-generators
-level: middle
-type: mechanism
-tags: [yield-from-subiterator]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pep-0380-yield-from
     title: "PEP 380: Syntax for Delegating to a Subgenerator"
     url: https://peps.python.org/pep-0380/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Специфікація yield from (PEP 380): делегування send, throw і close subiterator-у."
 ---
 
 ## Short answer
@@ -93,11 +66,3 @@ print(k.send("B"))                     # got None: "B" is not forwarded
 - замінювати `yield from` на `for ... yield` і потім очікувати, що `send()` дійде до subiterator;
 - вважати, що `return` у subgenerator віддається як елемент послідовності; насправді це результат `yield from`;
 - викликати `send()` з непорожнім значенням для subiterator без `send()`, наприклад для `list_iterator`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

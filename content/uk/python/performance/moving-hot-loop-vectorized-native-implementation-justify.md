@@ -1,48 +1,21 @@
 ---
 id: py-perf-0016
 title: "Коли перенесення hot loop у vectorized або native implementation виправдовує boundary-crossing та data-conversion cost?"
-description: "Перенесення виправдане, коли обчислювальна щільність (compute per element) висока, а об’єм даних достатній, щоб перекрити cost переходу Python vs native та конвертації даних."
 track: python
 section: performance
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-array
     title: "Python 3.14: Library/array"
     url: https://docs.python.org/3.14/library/array.html#module-array
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Опис модуля array: тип, що компактно зберігає масив базових значень одного типу. Не описує вартість конвертації з list."
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -74,23 +47,3 @@ print(packed[:3])                              # array('d', [0.0, 1.0, 2.0])
 - міряти на малих даних, де перехід займає більшість часу, і переносити висновок на великі дані;
 - конвертувати дані туди й назад на кожному кроці;
 - порівнювати час під профайлером із часом C-функції.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

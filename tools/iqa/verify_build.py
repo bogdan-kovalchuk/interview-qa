@@ -3,10 +3,10 @@
 The previous version of this script derived its expectations from whatever
 HTML happened to be sitting in ``site/dist`` - it could (and did) PASS against
 a stale build made from content that no longer existed. This version reads
-``content/`` through the same canonical model and lifecycle table the mirror
-and the exporter use (``tools/iqa/model.py``, ``tools/iqa/lifecycle.py``), computes
-the page set a correct production build must contain, and asserts the emitted
-set matches it exactly - nothing missing, nothing left over from a previous run.
+``content/`` through the same canonical model the mirror and the exporter use
+(``tools/iqa/model.py``), computes the page set a correct production build must
+contain, and asserts the emitted set matches it exactly - nothing missing,
+nothing left over from a previous run.
 
 Run this after ``npm run build`` (``site/scripts/build.mjs``) - or invoke the
 whole pipeline with ``python -m iqa build``, which runs this last by calling
@@ -26,10 +26,8 @@ import sys
 from urllib.parse import unquote, urlsplit
 
 from .export import canonical_path, group_by_id, read_all_questions, resolver_path
-from .lifecycle import PageMode, lifecycle_for
 
 
-SOURCE_COMMENT = "generated from frontmatter"
 RAW_CITATION_RE = re.compile(r"\[\^[a-zA-Z0-9][a-zA-Z0-9-]*\]")
 
 
@@ -134,9 +132,8 @@ def expected_pages(
 ) -> tuple[dict[tuple[str, str], str], dict[tuple[str, str], str]]:
     """Return (canonical_paths, resolver_paths) keyed by (language, question_id).
 
-    Only entries whose ``production_page`` lifecycle decision is ``page`` or
-    ``tombstone`` are included - those are exactly the (language, id) pairs the
-    mirror writes a file for and the site must therefore emit a page for.
+    Every question file gets a page in its language, so every (language, id)
+    pair in ``content/`` must have both pages in the build.
     """
     questions = read_all_questions(content_root)
     grouped = group_by_id(questions)
@@ -144,9 +141,6 @@ def expected_pages(
     resolver: dict[tuple[str, str], str] = {}
     for question_id, by_language in grouped.items():
         for language, question in by_language.items():
-            decision = lifecycle_for(question, language)
-            if decision.production_page is PageMode.ABSENT:
-                continue
             key = (language.value, question_id)
             canonical[key] = canonical_path(base, language, question_id, question.slug)
             resolver[key] = resolver_path(base, language, question_id)
@@ -163,13 +157,12 @@ def section_heading_leaks(vocabulary_path: Path) -> dict[str, str]:
 
     vocabulary = yaml.safe_load(vocabulary_path.read_text(encoding="utf-8")) or {}
     leaks: dict[str, str] = {}
-    for table_name in ("section_labels", "subsection_labels"):
-        for _key, labels in (vocabulary.get(table_name) or {}).items():
-            if not isinstance(labels, dict):
-                continue
-            en_label, uk_label = labels.get("en"), labels.get("uk")
-            if en_label and uk_label and en_label != uk_label:
-                leaks[en_label] = uk_label
+    for _key, labels in (vocabulary.get("section_labels") or {}).items():
+        if not isinstance(labels, dict):
+            continue
+        en_label, uk_label = labels.get("en"), labels.get("uk")
+        if en_label and uk_label and en_label != uk_label:
+            leaks[en_label] = uk_label
     return leaks
 
 
@@ -316,12 +309,10 @@ def main(argv: list[str] | None = None) -> int:
         if qid_crosslinks_by_locale[locale] == 0:
             failures.append(f"no resolved qid cross-link found in canonical {locale} pages")
 
-    # --- new checks: raw citation tokens and the un-rendered Sources placeholder ---
+    # --- raw citation tokens ---
     for path, document in documents.items():
         if RAW_CITATION_RE.search(document.text):
             failures.append(f"raw citation token `[^...]` leaked into HTML: {path.relative_to(dist)}")
-        if SOURCE_COMMENT in document.text:
-            failures.append(f"un-rendered Sources placeholder leaked into HTML: {path.relative_to(dist)}")
 
     # --- new check: no English section heading text on a /uk/ page ---
     leak_labels = section_heading_leaks(root / "meta" / "vocabulary.yml")

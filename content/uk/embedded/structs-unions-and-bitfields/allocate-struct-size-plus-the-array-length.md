@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0033
 title: "Як правильно виділити пам’ять для flexible array member?"
-description: "Потрібно виділити sizeof(struct Packet) + len байтів."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -70,7 +51,3 @@ p->len = len;
 Тут `len` має бути байтовою кількістю, оскільки елемент `data` має тип `uint8_t`. Для гнучкого масиву з елементами ширшого типу потрібен добуток кількості елементів на `sizeof` елемента, також із перевіркою переповнення. У системі без heap аналогічно резервують буфер достатнього розміру та перевіряють його alignment і межі.
 
 **Типова помилка:** виділити лише `sizeof *p`, а потім записати `data[0]`, або довіряти `len` без перевірок. Обидва випадки можуть спричинити вихід за межі allocation; ліміт має походити з довіреного розміру буфера чи протоколу, а не лише з поля пакета.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

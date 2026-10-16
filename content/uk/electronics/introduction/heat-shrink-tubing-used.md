@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0298
 title: "Навіщо використовують термоусадочну трубку?"
-description: "Навіщо використовують термоусадочну трубку?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 26, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: molex-heat-shrink
     title: "Molex: Heat Shrink Tubing"
     url: https://www.molex.com/en-us/products/wire-and-cable/heat-shrink-tubing
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Застосування термоусадочної трубки для ізоляції та захисту; клейова двостінна трубка забезпечує краще ущільнення й розвантаження від натягу. Характеристики залежать від типу виробу."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Перед вибором перевірте діаметр до й після усадки, робочі температури та сумісність матеріалу з середовищем. Трубка має вільно проходити поверх найбільшої частини з’єднання до складання й достатньо стискатися навколо меншої частини. Занадто коротка трубка залишить оголений метал, а перегрів може пошкодити ізоляцію дроту або сам компонент. Вона не замінює механічний затискач там, де кабель зазнає регулярного сильного натягу.[^molex-heat-shrink]
 
 Наприклад, для паяного стику двох дротів виберіть трубку, яка перед пайкою проходить через один провід, але після усадки охоплює обидві ізоляції й сам стик. Нагрів має бути рівномірним, без обвуглення ізоляції; режим температури беріть із документації виробника, а не вважайте однаковим для всіх матеріалів.[^molex-heat-shrink]
-
-## Sources
-
-<!-- generated from frontmatter -->

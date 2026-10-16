@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0009
 title: "Чим capture pattern у `match` відрізняється від value pattern і чому незакваліфіковане ім’я може несподівано зв’язати нову змінну?"
-description: "Capture pattern (голе ім'я, напр. case x:) завжди успішний і прив'язує subject до нового імені; value pattern (кваліфіковане ім'я, напр. case Color.RED:) порівнює subject через == з відомим значенням."
 track: python
 section: syntax-and-control-flow
-level: middle
-type: comparison
-tags: [match]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -81,19 +58,3 @@ match code:
 перезаписується. Статичні аналізатори здебільшого попереджають про недосяжні наступні case – і це
 найнадійніший сигнал, що замість порівняння написано
 capture.[^py314-reference-expressions]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

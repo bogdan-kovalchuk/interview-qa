@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0007
 title: "How does `ExitStack` preserve LIFO cleanup order, and what should happen if acquiring one of the resources fails?"
-description: "How does `ExitStack` preserve LIFO cleanup order, and what should happen if acquiring one of the resources fails?"
 track: python
 section: context-managers
-level: senior
-type: mechanism
-tags: [exitstack]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -91,11 +68,3 @@ except RuntimeError as err:
 - partial initialization does not leak resources: every previously opened file descriptor, socket, or lock is guaranteed to be closed;
 - cleanup order is strictly the inverse of acquisition order: dependent resources are torn down before the resources they depend on;
 - to safely transfer ownership of resources outside the local scope, use `stack.pop_all()` rather than attempting to manually mutate the internal callback list.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

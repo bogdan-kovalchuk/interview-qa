@@ -1,41 +1,18 @@
 ---
 id: py-coll-0002
 title: "Чому `range` може представляти дуже великий діапазон без зберігання всіх integers у пам’яті?"
-description: "range зберігає лише три значення – start, stop, step – і обчислює елементи на вимогу, тому споживає O(1) пам'яті незалежно від діапазону."
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: [range]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -67,11 +44,3 @@ sources:
 мільярдного `range` – операція O(1). Якщо ж перетворити `range` на `list(range(10**15))`, Python
 дійсно спробує виділити пам'ять під кожен елемент окремо, і це закономірно провалиться з
 `MemoryError` набагато раніше, ніж буде вичерпано диск.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

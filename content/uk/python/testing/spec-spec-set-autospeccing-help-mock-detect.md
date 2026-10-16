@@ -1,69 +1,30 @@
 ---
 id: py-testing-0012
 title: "Як `spec`, `spec_set` та autospeccing допомагають mock виявляти drift від real interface?"
-description: "spec обмежує доступ лише атрибутами реального об’єкта, spec_set додатково забороняє встановлювати неіснуючі атрибути, а autospeccing рекурсивно копіює інтерфейс і сигнатури."
 track: python
 section: testing
-level: middle
-type: mechanism
-tags: [spec, spec-set]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: py314-library-unittest-mock-mock-class
     title: "Python 3.14: Library/unittest.mock, Mock class"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: параметри spec і spec_set класу Mock; список імен береться з dir() об’єкта, а його сигнатура використовується для зіставлення викликів."
   - source_id: py314-library-unittest-mock-autospeccing
     title: "Python 3.14: Library/unittest.mock, Autospeccing"
     url: https://docs.python.org/3.14/library/unittest.mock.html#autospeccing
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: autospeccing копіює інтерфейс і сигнатури; виклик з неправильними аргументами дає TypeError."
 ---
 
 ## Short answer
@@ -111,11 +72,3 @@ except TypeError as e:
 - `Mock()` без spec у тестах, де важлива відповідність реальному API: такий тест не помітить перейменування;
 - `spec=Repo` для атрибута, який створюється в `__init__` (`self.conn = ...`): клас його не містить, тож читання дає `AttributeError`, хоча на екземплярі атрибут є (перевірено на 3.13 і 3.14); тоді беріть `spec` від екземпляра, якщо його створення безпечне;
 - вважати, що звичайний `spec` перевіряє сигнатури викликів: `TypeError` дає лише autospeccing.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0010
 title: "Що відбувається з sibling Tasks та exceptions, коли одна Task у `TaskGroup` падає?"
-description: "Якщо будь-яка Task у TaskGroup завершується з exception (окрім CancelledError), усі sibling Tasks скасовуються, а всі exception агрегуються в ExceptionGroup, який піднімається при виході з context manager."
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: [taskgroup]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -66,11 +43,3 @@ exception може бути більшим за один. А ось сам `Canc
 Стан "aborting" також блокує подальше `create_task()` на цій самій group – спроба додати нову Task
 після початку скасування піднімає `RuntimeError`, бо group більше не гарантує, що встигне дочекатися
 й скасувати щось, додане після старту завершення.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

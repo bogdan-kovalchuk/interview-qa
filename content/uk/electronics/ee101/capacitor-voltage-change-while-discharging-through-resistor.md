@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0034
 title: "Як змінюється напруга на конденсаторі під час розряджання через резистор?"
-description: "Як змінюється напруга на конденсаторі під час розряджання через резистор?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 37, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: gatech-rc-charging-discharging
     title: "Georgia Tech Physics Book: Charging and Discharging a Capacitor"
     url: https://physicsbook.gatech.edu/Charging_and_Discharging_a_Capacitor
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Закон експоненційного розряджання та струм у резистивному контурі для ідеального RC-кола."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Використовувати закон заряджання зі знаком «мінус» у показнику замість закону спадання від початкової напруги.
 - Казати, що після `τ` напруга впала на 36.8%; насправді вона впала приблизно на 63.2% і зберегла 36.8%.
 - Плутати напрямок струму розряду з умовним напрямком струму заряджання.
-
-## Sources
-
-<!-- generated from frontmatter -->

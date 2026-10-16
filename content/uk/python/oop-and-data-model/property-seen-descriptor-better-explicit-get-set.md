@@ -1,69 +1,30 @@
 ---
 id: py-oop-0011
 title: "Чому `property` можна розглядати як descriptor і коли він кращий за явні `get_*`/`set_*` methods?"
-description: "property – це вбудований data descriptor, який реалізує __get__, __set__ і __delete__, тому повністю підпорядковується descriptor protocol."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [property, get, set]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Invoking Descriptors моделі даних; data descriptor і його пріоритет над instance dictionary."
   - source_id: py314-howto-descriptor-properties
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#properties
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Properties; property як data descriptor, що викликає функцію при доступі до атрибута."
   - source_id: py314-howto-descriptor-invocation-summary
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#summary-of-invocation-logic
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Summary of invocation logic; descriptor-и викликаються через __getattribute__, тому його перевизначення вимикає автоматичні виклики."
 ---
 
 ## Short answer
@@ -110,19 +71,3 @@ except ValueError as error:
 - вважати `property` звичайним методом і писати `t.celsius()`: значення не викликається, буде `TypeError`;
 - очікувати, що property без setter дозволяє присвоєння: буде `AttributeError`;
 - ховати в getter важкі обчислення чи побічні ефекти, хоча викликач очікує просте читання поля.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

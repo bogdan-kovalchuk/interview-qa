@@ -1,65 +1,27 @@
 ---
 id: py-modimp-0012
 title: "What exactly does `if __name__ == \"__main__\"` protect, and what does it not change about import semantics?"
-description: "What exactly does `if __name__ == \"__main__\"` protect, and what does it not change about import semantics?"
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [if-name-main]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-library-main
     title: "Python 3.14: Library/__main__, Top-level code environment"
     url: https://docs.python.org/3.14/library/__main__.html#name-main
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __name__ is '__main__' in the top-level program and the module's name when imported; code under if __name__ == '__main__' does not run on import."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a module is added to sys.modules before its code runs, and a repeated import returns the already created module."
   - source_id: py314-reference-import-special-considerations-for-main
     title: "Python 3.14: Reference/import, Special considerations for __main__"
     url: https://docs.python.org/3.14/reference/import.html#special-considerations-for-main
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a file run as a script and the same file imported under its own name are distinct modules."
 ---
 
 ## Short answer
@@ -116,11 +78,3 @@ Consequences: code outside the guard runs twice, and classes defined in both cop
 - assuming that the guard makes a module safe to import: code outside the block always runs;
 - keeping functions and classes that other modules need inside `if __name__ == "__main__":`: importers will not see them;
 - importing a file that was run as a script and expecting its code to run only once.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0226
 title: "Стабілізатор напруги зі стабілітроном 5,6 В на базі, навантаження 50 мА, β ≈ 100, вхід 9 В. Які вихід, струм бази і потужність транзистора?"
-description: "Стабілізатор напруги зі стабілітроном 5,6 В на базі, навантаження 50 мА, β ≈ 100, вхід 9 В. Які вихід, струм бази і потужність транзистора?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 74, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-silicon-zener-diodes
     title: "Vishay: Silicon Zener Diodes (application document)"
     url: https://www.vishay.com/docs/84117/84117.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: null
-    applicability: "Документ виробника: стабілітрон у пробої як джерело сталої напруги V_Z0 із диференційним опором; динамічний опір різко зростає за дуже малих струмів стабілітрона; температурний коефіцієнт напруги α_VZ. Конкретні V_Z і I_ZT залежать від типу й тут не наводяться."
   - source_id: fiore-bjt-basics
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.2 The Bipolar Junction Transistor"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.2: I_E = I_C + I_B, I_C = β·I_B; при значно більшому I_C, ніж I_B, I_E ≈ I_C; V_BE ≈ 0,7 В для кремнію. Загальна картина, не для конкретного транзистора."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.2:_The_Bipolar_Junction_Transistor
   - source_id: fiore-bjt-dc-load-line
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.6 DC Load Lines"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.6: I_C(sat) = V_CC/R_C як максимум колекторного струму в насиченні; V_CE(sat) «десята частка вольта або близько того» для малосигнальних приладів; приклад дає 0,15 В при I_C = 10 mA, I_B = 0,3 mA. Розрахунок не враховує падіння на емітері."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.6:_DC_Load_Lines
 ---
 
 ## Short answer
@@ -76,7 +41,3 @@ sources:
 - Вважати вихід рівним `V_Z` (5,6 В) і не віднімати `V_BE`.
 - Плутати `I_B` із `I_E`: базовий струм лише близько `1/(β+1)` від струму навантаження.
 - Не перевіряти потужність транзистора: при `V_CE = 4.1 V` і 50 mA вона близько 0,2 W.
-
-## Sources
-
-<!-- generated from frontmatter -->

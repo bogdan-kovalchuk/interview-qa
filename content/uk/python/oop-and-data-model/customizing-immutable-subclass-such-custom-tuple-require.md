@@ -1,69 +1,30 @@
 ---
 id: py-oop-0002
 title: "Чому для налаштування immutable subclass на кшталт custom `tuple` потрібний `__new__`, а зміни лише в `__init__` запізнюються?"
-description: "Immutable типи (tuple, str, int) задають своє значення під час створення в __new__; до моменту виклику __init__ об’єкт уже створений, і його вміст не змінити."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [tuple, new, init]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-new
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__new__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ object.__new__ моделі даних."
   - source_id: py314-reference-datamodel-object-init
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__init__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ object.__init__ моделі даних."
   - source_id: py314-library-stdtypes-tuple
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#tuple
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ про tuple у стандартних типах."
 ---
 
 ## Short answer
@@ -102,11 +63,3 @@ print(d)              # (2, 4, 6)
 - перенести формування вмісту в `__init__`: код там виконається, але вміст уже зафіксований;
 - написати `super().__new__(cls, *args)`: `tuple.__new__` приймає один ітерабельний аргумент, тож для трьох значень з’являється `TypeError: tuple expected at most 1 argument, got 3`;
 - вважати, що `str` або `int` можна налаштувати через `__init__` так само, як звичайний клас.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

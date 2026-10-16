@@ -1,51 +1,21 @@
 ---
 id: py-objtypes-0003
 title: "Чому результат identity-порівняння двох однакових literals не можна використовувати як доказ interning або як переносиму гарантію Python?"
-description: "Interning малих цілих чисел і деяких рядків – це деталь реалізації CPython, а не гарантія мови."
 track: python
 section: objects-and-types
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -90,23 +60,3 @@ print(small_a is small_b)  # True: both resolve to the global singleton in CPyth
 - жорстка прив'язка до CPython: альтернативні середовища виконання (PyPy, GraalPy) або новіші релізи CPython застосовують інші стратегії оптимізації констант;
 - приховані баги на межах діапазонів: перевірка `x is 100` успішно проходить локальні юніт-тести на малих тестових числах, але призводить до аварійних ситуацій на продакшені, коли значення перевищує `256`;
 - попередження компілятора: починаючи з Python 3.8, інтерпретатор видає `SyntaxWarning: "is" with a literal. Did you mean "=="?` на будь-яке використання `is` з літералом.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

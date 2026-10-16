@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0200
 title: "Що таке `V_BE` і яке його значення для Si-транзистора?"
-description: "Що таке V_BE і яке його значення для Si-транзистора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 19, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +30,3 @@ sources:
 Приклад: для початкової оцінки кремнієвого NPN-каскаду можна прийняти `V_BE ≈ 0.65 V`, але потім перевірити робочу точку з реальним струмом бази та емітера. Якщо розрахунок критично залежить від різниці у кілька десятків мілівольт, потрібна модель переходу або паспортні криві, а не округлений орієнтир.[^aac-semiconductors]
 
 **Типові помилки:** називати 0.7 V універсальною сталою; вважати `V_BE` незалежною від струму й температури; плутати падіння напруги на переході з порогом, який миттєво вмикає ідеальний ключ.[^aac-semiconductors]
-
-## Sources
-
-<!-- generated from frontmatter -->

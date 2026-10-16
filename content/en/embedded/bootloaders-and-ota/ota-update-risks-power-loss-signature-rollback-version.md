@@ -1,34 +1,15 @@
 ---
 id: emb-boot-0007
 title: "What is OTA update and what risks must be covered: power loss, signature verification, rollback, and version compatibility?"
-description: "OTA updates firmware over a network without physical access and requires atomic install, signature verification, anti-rollback policy, version compatibility, and power-loss recovery."
 track: embedded
 section: bootloaders-and-ota
-level: senior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Authoritative section-level reference for bootloaders and ota concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -51,8 +32,6 @@ OTA update is the delivery and installation of new firmware on a device over a n
 
 The update package typically includes: image binary, version metadata, target device identifier, dependencies (if any), changelog, and cryptographic signature. The deployment platform must support: device authentication, staged rollout (canary deployment), audit log, and fleet-wide rollback.
 
-## Evaluation guide
-
 ### Expected signals
 
 - Understands that power loss during install is the primary risk, and dual-bank/A/B is the standard solution
@@ -73,7 +52,3 @@ The update package typically includes: image binary, version metadata, target de
 
 - How to implement anti-rollback policy, and why can it be controversial?
 - How to ensure secure key storage on a device with limited hardware security module?
-
-## Sources
-
-<!-- generated from frontmatter -->

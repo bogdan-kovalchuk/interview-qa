@@ -1,41 +1,18 @@
 ---
 id: py-async-0005
 title: "What makes an asyncio Task or callback ready after I/O, a timer, or a suspension point, and which fairness and exact-ordering guarantees can application code not assume?"
-description: "What makes an asyncio Task or callback ready after I/O, a timer, or a suspension point, and which fairness and exact-ordering guarantees can application code not assume?"
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -71,11 +48,3 @@ timers with the same `deadline`, the order depends on the internal heap implemen
 specification).[^py314-library-asyncio-eventloop] That means code has no right to assume either
 "round-robin across Tasks" or "the timer scheduled first runs first when deadlines tie" – the only
 hard guarantee is that callbacks queued via `call_soon` run in the order `call_soon` was called.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

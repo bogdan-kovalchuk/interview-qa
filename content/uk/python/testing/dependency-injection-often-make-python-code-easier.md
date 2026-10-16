@@ -1,76 +1,33 @@
 ---
 id: py-testing-0005
 title: "Чому dependency injection часто робить Python code простішим для deterministic testing?"
-description: "Dependency injection (DI) робить залежності явними параметрами, а не прихованими внутрішніми об’єктами, тому тест може передати fake/mock замість реального сервісу без patch."
 track: python
 section: testing
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: py314-library-unittest-mock-patch
     title: "Python 3.14: Library/unittest.mock (patch)"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.patch
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ unittest.mock.patch: тимчасова заміна об’єкта, на який вказує ім’я, на час декоратора або блоку with."
   - source_id: py314-tutorial-defining-functions
     title: "Python 3.14: Tutorial/Defining Functions"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#defining-functions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Defining Functions: аргументи виклику вводяться в локальну таблицю символів функції. Не описує dependency injection."
   - source_id: py314-library-unittest-mock-where-to-patch
     title: "Python 3.14: Library/unittest.mock (where to patch)"
     url: https://docs.python.org/3.14/library/unittest.mock.html#where-to-patch
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ where to patch: патч діє там, де код шукає ім’я; патч в іншому місці не має ефекту."
 ---
 
 ## Short answer
@@ -108,11 +65,3 @@ DI не робить код детермінованим сам по собі. �
 - вважати, що DI робить код детермінованим, коли всередині лишилися `datetime.now()` або `random`;
 - передавати fake з методами чи сигнатурою, яких немає в реального об’єкта, і тест проходить із неправильним інтерфейсом;
 - переводити на DI кожну функцію, навіть коли один `patch` простіший.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

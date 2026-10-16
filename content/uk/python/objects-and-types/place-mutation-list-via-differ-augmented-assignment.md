@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0006
 title: "Чим in-place mutation списку через `+=` відрізняється від augmented assignment для immutable tuple?"
-description: "Для list оператор += викликає __iadd__ і змінює список in-place (той самий id); для tuple методу __iadd__ немає, тому спрацьовує fallback на __add__, який створює новий tuple."
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -87,19 +60,3 @@ except TypeError:
 - передавати список у функцію та використовувати `+=` замість `+`, ненавмисно модифікуючи оригінальний список зусиллями виклику;
 - забувати, що правий операнд для `list += ...` може бути будь-яким iterable (наприклад, рядком, де `lst += "ab"` додасть окремі символи `['a', 'b']`, а не рядок цілком);
 - потрапляти у пастку `nested_tuple[0] += [item]`, коли виникає `TypeError`, але список усередині кортежу насправді змінюється.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

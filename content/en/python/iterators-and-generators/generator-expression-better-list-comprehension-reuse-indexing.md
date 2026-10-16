@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0016
 title: "When is a generator expression better than a list comprehension, and when does reuse or indexing make a list more appropriate?"
-description: "When is a generator expression better than a list comprehension, and when does reuse or indexing make a list more appropriate?"
 track: python
 section: iterators-and-generators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section generator expressions: the result is a generator iterator, and the expressions are evaluated lazily, when the iterator is asked for a value."
   - source_id: py314-library-stdtypes-generator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#generator-types
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Generator Types: a generator object provides the __iter__() and __next__() methods."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section generator-iterator methods: the send(), throw() and close() methods of a generator iterator."
 ---
 
 ## Short answer
@@ -87,19 +52,3 @@ So a list is the better choice when the results are read several times, indexed 
 - using a generator expression for code that reads the results twice: the second pass is empty;
 - assuming that a generator is always faster than a list comprehension: it saves memory, not necessarily time;
 - passing a generator where `len()` or indexing is expected, and getting a `TypeError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

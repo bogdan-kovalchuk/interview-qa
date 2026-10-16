@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0129
 title: "Формула заряду конденсатора?"
-description: "Формула заряду конденсатора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 13, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-capacitance-charge
     title: "All About Circuits: Electric Fields and Capacitance"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-13/electric-fields-capacitance/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Зв’язок заряду, напруги й ємності та накопичення й витікання заряду; реальний конденсатор може втрачати заряд через leakage."
 ---
 
 ## Short answer
@@ -69,7 +42,3 @@ Q = C*V = 0.001 Ф*12 В = 0.012 Кл
 - Підставляти 1000 мкФ як число 1000, не перевівши його у 0.001 Ф.
 - Плутати заряд у кулонах з енергією у джоулях.
 - Вважати, що заряд після відключення зберігається назавжди або зникає відразу.[^aac-capacitance-charge]
-
-## Sources
-
-<!-- generated from frontmatter -->

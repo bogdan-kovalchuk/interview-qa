@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0127
 title: "Чи є 0,7 В точним порогом кремнієвого діода?"
-description: "Чи є 0,7 В точним порогом кремнієвого діода?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 55, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-1n4148
     title: "Vishay: 1N4148 small signal fast switching diode datasheet"
     url: https://www.vishay.com/docs/81857/1n4148.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. 1.6, 07-Nov-2024"
-    applicability: "V_F не більше 1 В за I_F = 10 мА (25 °C); графіки V_F від струму (Fig. 2) і температури переходу (Fig. 1); струм витоку I_R до 25 нА за V_R = 20 В (25 °C) і до 50 мкА за 150 °C; V(BR) не менше 100 В. Значення стосуються цього малосигнального діода, а не всіх кремнієвих діодів; числа з графіків орієнтовні."
   - source_id: vishay-1n4001
     title: "Vishay: 1N4001 to 1N4007 general purpose plastic rectifier datasheet"
     url: https://www.vishay.com/docs/88503/1n4001.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Revision 29-Apr-2020"
-    applicability: "Максимальне V_F 1,1 В за 1 А (25 °C); I_R до 5 мкА за 25 °C і до 50 мкА за 125 °C за номінальної зворотної напруги; V_RRM від 50 до 1000 В залежно від типу. Стосується цієї серії випрямних діодів."
   - source_id: libretexts-fiore-diode-models
     title: "Fiore: Semiconductor Devices, 2.4 Diode Circuit Models (Engineering LibreTexts)"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/02:_PN_Junctions_and_Diodes/2.4:_Diode_Circuit_Models"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Моделі діода: «колінна» напруга 0,7 В для кремнію як поведінкове наближення, опір R_bulk, динамічний опір ≈ 26 мВ / I. Це спрощені моделі, а не точні значення для конкретного приладу."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/02:_PN_Junctions_and_Diodes/2.4:_Diode_Circuit_Models
 ---
 
 ## Short answer
@@ -80,7 +45,3 @@ sources:
 - Вважати 0,7 В гарантованою властивістю кремнієвого діода й закладати її в розрахунок без запасу.
 - Не враховувати, що `V_F` залежить від струму й температури, особливо в низьковольтних колах і силових випрямлячах.
 - Ігнорувати зворотний струм витоку й `V_RRM` / `V(BR)`, особливо при високій температурі.
-
-## Sources
-
-<!-- generated from frontmatter -->

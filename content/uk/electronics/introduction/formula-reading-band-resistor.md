@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0125
 title: "Формула для читання 4-смужкового резистора?"
-description: "Формула для читання 4-смужкового резистора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 13, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +30,3 @@ sources:
 **Типова помилка:** читати смуги з боку допуску або завжди трактувати золото як допуск. Спершу знайдіть віддалену смугу, а потім застосуйте значення кольору відповідно до її позиції.[^aac-direct-current]
 
 Значення смуг походять із таблиці коду кольорів; однаковий колір має різну функцію в залежності від номера смуги. Наприклад, червона перша смуга означає цифру 2, але червона третя смуга задає множник `10^2`. Це позиційне кодування, а не чотири цифри числа. Переконайтеся, що компонент саме чотирисмуговий: у 5-смуговому коді перші три кільця є значущими цифрами, тож застосування 4-смугового правила дасть хибний результат.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

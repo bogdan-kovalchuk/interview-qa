@@ -1,41 +1,18 @@
 ---
 id: py-async-0003
 title: "Чому просте створення кількох coroutine objects ще не запускає їх concurrently?"
-description: "Виклик async def-функції лише створює coroutine object, але не планує його виконання – код не запуститься, поки об'єкт не буде await-нуто або передано в asyncio.create_task()."
 track: python
 section: asyncio
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,23 +42,3 @@ object – state machine, схожу на generator, з власним frame, я
 async. А `t1 = create_task(a()); t2 = create_task(b()); await t1; await t2` дозволяє loop
 перемикатися між `a` і `b` на кожній їхній внутрішній точці призупинення, тому робота, що чекає на
 I/O в одній, не блокує прогрес іншої.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

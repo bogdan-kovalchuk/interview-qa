@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0002
 title: "Чому `iter(container)` зазвичай повертає новий iterator, а `iter(iterator)` має повертати той самий object?"
-description: "container.__iter__() створює новий iterator з власним станом, тоді як iterator.__iter__() повертає self."
 track: python
 section: iterators-and-generators
-level: middle
-type: mechanism
-tags: [iter-container, iter-iterator]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення iterator; контейнер дає новий iterator на кожен iter() або for, а повторний прохід по iterator дає той самий вичерпаний об’єкт."
 ---
 
 ## Short answer
@@ -89,11 +62,3 @@ print(count_and_list(x for x in [1, 2, 3]))  # (3, [])
 - очікувати, що повторний `for` по iterator почне спочатку: він продовжує з місця зупинки або нічого не дає;
 - сплутати `iterator.__iter__()` (повертає self) з `container.__iter__()` (створює новий iterator) і повертати self з класу-контейнера;
 - викликати `next()` на `list`: `next([1, 2])` підніме `TypeError`, бо список – iterable, а не iterator.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

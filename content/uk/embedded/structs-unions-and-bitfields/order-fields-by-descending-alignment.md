@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0004
 title: "Як зменшити padding у структурі без `packed`?"
-description: "Розташувати поля від найбільшого alignment до найменшого."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,7 +37,3 @@ uint32_t, uint8_t, uint8_t: 4 + 1 + 1 + 2 tail padding = 8 bytes
 Ці offsets і розміри відповідають лише наведеним ABI-припущенням, оскільки C залишає вирівнювання членів реалізаційно визначеним.[^iso-c-n1570]
 
 **Типова помилка:** вважати, що порядок «від найбільшого до найменшого» гарантує мінімальний розмір на кожному компіляторі. Перевіряйте фактичні `sizeof` та `offsetof` у цільовій збірці, а для серіалізації використовуйте визначений формат байтів.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0021
 title: "When is a named function via `def` a better choice than a `lambda`, even when both can implement the same short expression?"
-description: "When is a named function via `def` a better choice than a `lambda`, even when both can implement the same short expression?"
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-lambdas
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambdas
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pep-8
     title: "PEP 8: Style Guide for Python Code"
     url: https://peps.python.org/pep-0008/#programming-recommendations
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "PEP 8 guideline: use def rather than binding a lambda to a name; the name matters for tracebacks."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ A failure inside either function gives a traceback line `in normalize_price` for
 - assuming that a lambda and a `def` differ only in notation: a lambda cannot contain several statements, annotations or a docstring;
 - assigning a lambda to a variable and expecting a real name in the traceback, when it will show `<lambda>`;
 - choosing a lambda only for its shorter form when the function must be reused or diagnosed.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

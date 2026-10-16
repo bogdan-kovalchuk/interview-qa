@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0080
 title: "Знайдіть помилку? `char* get_name(void) { char buf[32] = \"test\"; return buf; }`"
-description: "Після завершення функції локальний масив виходить зі свого lifetime, тому повернений pointer не можна безпечно використовувати."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 4
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -58,11 +39,3 @@ void get_name(char *buf, size_t len);
 - Замінити локальний масив на `static`, не врахувавши спільний стан і повторний вхід.
 
 Компілятор може попередити про повернення адреси локальної змінної, але відсутність warning не робить lifetime коректним.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

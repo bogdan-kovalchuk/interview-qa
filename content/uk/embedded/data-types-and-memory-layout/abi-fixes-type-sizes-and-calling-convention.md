@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0074
 title: "Що таке ABI і як він впливає на розміри типів?"
-description: "ABI фіксує розміри типів, calling convention і вирівнювання structs для сумісності скомпільованих модулів."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: aapcs32
     title: "Procedure Call Standard for the Arm Architecture, Release 2019Q1.1"
     url: https://www.macs.hw.ac.uk/~hwloidl/Courses/F28HS/Docu/aapcs32.pdf
-    accessed: 2026-10-04
-    kind: spec
-    version: "2019Q1.1"
-    applicability: "Визначає правила AAPCS32, зокрема фундаментальні типи, розміри pointer, вирівнювання та процедури виклику; застосовується лише до сумісного 32-бітного Arm ABI."
 ---
 
 ## Short answer
@@ -61,11 +38,3 @@ ABI – це домовленості, яких мають дотримуват�
 Домовленість важлива на межі модулів: якщо один модуль передає аргумент у регістрі, а інший очікує його на stack, виклик читає не те значення. Так само різні розміри або правила padding у `struct` змінюють розташування полів і можуть зіпсувати передані структури. Компоненти зазвичай мають збиратися для сумісної архітектури, ABI та параметрів виклику, навіть якщо їхні вихідні файли різні.[^aapcs32]
 
 **Приклад:** для AAPCS32 покажчик має розмір 4 байти, тоді як `long long` займає 8 байтів; це не означає, що всі типи мають розмір, рівний розрядності CPU. Перед серіалізацією або записом у протокол не покладайтеся на `sizeof` без визначеного формату. Типова помилка – вважати, що зміна компілятора завжди безпечна, бо ціль той самий Cortex-M: ABI-прапорці, float calling convention, packing та інші налаштування можуть змінити сумісність бінарних модулів.[^aapcs32]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

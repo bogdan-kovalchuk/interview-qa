@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0038
 title: "Які чотири основні директиви SPICE-аналізу?"
-description: "Які чотири основні директиви SPICE-аналізу?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 31, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ngspice-analysis-manual
     title: "ngspice User's Manual"
     url: https://ngspice.sourceforge.io/docs/ngspice-manual.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "current manual"
-    applicability: "Описує значення .op, .tran, .ac і .dc саме в ngspice; параметри директив можуть мати відмінності між симуляторами."
 ---
 
 ## Short answer
@@ -55,7 +32,3 @@ sources:
 `.dc` змінює вибране джерело чи параметр у заданому діапазоні та повторно обчислює DC-стан. Так можна побудувати передавальну характеристику, наприклад вихідну напругу залежно від вхідного DC-рівня. На відміну від `.tran`, послідовність значень тут не означає перебіг часу.[^ngspice-analysis-manual]
 
 **Типова помилка:** називати будь-який графік виходу «AC-аналізом». Вибір залежить від питання: сталий режим – `.op`, часова форма – `.tran`, малосигнальна залежність від частоти – `.ac`, статичне sweep-залежність – `.dc`.[^ngspice-analysis-manual]
-
-## Sources
-
-<!-- generated from frontmatter -->

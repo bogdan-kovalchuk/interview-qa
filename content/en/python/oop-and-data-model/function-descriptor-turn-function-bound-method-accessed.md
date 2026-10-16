@@ -1,83 +1,36 @@
 ---
 id: py-oop-0015
 title: "How does the function descriptor turn a function into a bound method when accessed through an instance, but not when accessed through the class?"
-description: "How does the function descriptor turn a function into a bound method when accessed through an instance, but not when accessed through the class?"
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Invoking Descriptors section of the data model; the __get__ arguments for access through an instance and through the class."
   - source_id: py314-howto-descriptor-functions-and-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#functions-and-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Functions and Methods section; a function as a non-data descriptor that returns itself for obj None and a MethodType otherwise."
   - source_id: py314-howto-descriptor-class-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#class-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Class methods section; a classmethod receives the class whether it is called through the class or an instance."
   - source_id: py314-howto-descriptor-static-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#static-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Static methods section; a staticmethod returns the underlying function unchanged."
   - source_id: cpython-funcobject-func-descr-get
     title: "CPython Objects/funcobject.c: func_descr_get"
     url: https://github.com/python/cpython/blob/v3.14.7/Objects/funcobject.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14.7"
-    applicability: "CPython 3.14.7 source: the func_descr_get function; an implementation detail of CPython, not a language guarantee."
 ---
 
 ## Short answer
@@ -116,11 +69,3 @@ Binding on class access depends on the type of the descriptor. A `classmethod` b
 - treating `Calc.add` as a bound method and calling `Calc.add(1)`: this raises `TypeError`, because `1` becomes `self` and the argument `x` is not passed;
 - assuming that a `classmethod` accessed through the class behaves like a plain function: it binds to the class;
 - confusing `c.add` without parentheses with a call: it returns a bound method, not a result.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

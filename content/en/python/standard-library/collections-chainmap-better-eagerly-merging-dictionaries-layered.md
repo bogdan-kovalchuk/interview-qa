@@ -1,76 +1,33 @@
 ---
 id: py-stdlib-0001
 title: "When is `collections.ChainMap` better than eagerly merging dictionaries for layered configuration with precedence between the command line, environment, and defaults?"
-description: "When is `collections.ChainMap` better than eagerly merging dictionaries for layered configuration with precedence between the command line, environment, and defaults?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [collections-chainmap]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections-chainmap
     title: "Python 3.14: Library/collections (ChainMap)"
     url: https://docs.python.org/3.14/library/collections.html#collections.ChainMap
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: ChainMap searches the mappings successively, incorporates them by reference, and writes, updates, and deletions affect only the first mapping."
   - source_id: py314-library-collections-chainmap-maps
     title: "Python 3.14: Library/collections (ChainMap.maps)"
     url: https://docs.python.org/3.14/library/collections.html#collections.ChainMap.maps
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the maps attribute is a list of mappings ordered from first-searched to last-searched."
 ---
 
 ## Short answer
@@ -115,19 +72,3 @@ The limits of the approach: a `ChainMap` is not a `dict` (`isinstance(config, di
 - putting `defaults` first in the arguments: they then override the CLI and env values;
 - expecting a write to `config` to change the layer where the key is defined: only the first mapping changes;
 - assuming `ChainMap` keeps a snapshot of the configuration from the moment it was created, when changes in lower layers are visible at once.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

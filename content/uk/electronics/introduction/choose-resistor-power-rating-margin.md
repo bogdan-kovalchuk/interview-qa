@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0097
 title: "Навіщо брати резистор із запасом по потужності?"
-description: "Навіщо брати резистор із запасом по потужності?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 10, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-resistor-power
     title: "Resistors"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-2/resistors/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Розсіювана потужність резистора та необхідність номіналу не нижче розрахованої потужності; не встановлює універсального множника запасу."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Приклад розрахунку: через резистор `100 Ω` протікає сталий струм `33 mA`. Ідеальна оцінка дає `P = I^2*R = 0.109 W`, тобто приблизно `0.11 W`. Це ще не доводить, що номіналу `0.125 W` достатньо: за підвищеної температури його допустима потужність може бути знижена. Треба перевірити графік derating у datasheet і вибрати найближчий номінал, допустимий саме в заданих умовах.[^aac-resistor-power]
 
 **Типова помилка:** сприймати популярне правило запасу `2×` як вимогу стандарту. Воно може бути практичним початковим орієнтиром у певному дизайні, але не замінює перевірку datasheet, імпульсної стійкості та температурного режиму.
-
-## Sources
-
-<!-- generated from frontmatter -->

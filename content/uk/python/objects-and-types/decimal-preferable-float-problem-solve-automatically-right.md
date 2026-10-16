@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0015
 title: "Коли `Decimal` доцільніший за `float` і яку проблему він не вирішує автоматично без правильної precision та rounding policy?"
-description: "Decimal доцільний, коли потрібне точне десяткове представлення: фінансові розрахунки, грошові значення, збереження значущих нулів (1.30 + 1.20 = 2.50)."
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: [decimal, float]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -87,19 +60,3 @@ print(final_price)           # 20.00
 - контроль контексту: для розрахунків із підвищеною точністю налаштовуйте `getcontext().prec` або використовуйте локальний контекст `decimal.localcontext()`;
 - явне округлення для бізнес-логіки: використовуйте метод `.quantize()` для явного приведення результату до потрібного експонента та правила округлення (наприклад, `ROUND_HALF_UP` або `ROUND_HALF_EVEN`);
 - компроміс у швидкодії: обчислення з `Decimal` значно повільніші за апаратні двійкові операції з `float` та споживають більше пам'яті.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

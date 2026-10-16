@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0176
 title: "Що треба враховувати, з’єднуючи дві вторинні обмотки трансформатора?"
-description: "Що треба враховувати, з’єднуючи дві вторинні обмотки трансформатора?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 64, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: kuphaldt-phasing
     title: "Workforce LibreTexts: Lessons in Electric Circuits, Vol. II (Kuphaldt), 10.4 Phasing"
-    url: "https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_II_-_Alternating_Current_(Kuphaldt)/10:_Transformers/10.04:_Phasing"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Позначки dot convention на обмотках трансформатора вказують виводи однакової миттєвої полярності; збіг або розбіжність позначок визначає нульовий або 180-градусний зсув фази між обмотками. Розділ не розглядає послідовне чи паралельне з’єднання вторинних обмоток."
+    url: https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_II_-_Alternating_Current_(Kuphaldt)/10:_Transformers/10.04:_Phasing
   - source_id: esp-transformers-part2
     title: "Elliott Sound Products: Beginners’ Guide to Transformers, Part 2 (section 8, Windings in Series and Parallel)"
     url: https://sound-au.com/xfmr2.htm
-    accessed: 2026-10-06
-    kind: book
-    version: "page updated January 2023"
-    applicability: "Послідовне й паралельне з’єднання вторинних обмоток: приклад 2 x 25 В / 5 А (250 VA) дає 50 В / 5 А послідовно або 25 В / 10 А паралельно; послідовно в фазі напруги додаються, у протифазі віднімаються й це не шкодить трансформатору; паралельно допустимо лише з однаковою напругою й у фазі, розрахунок циркулюючого струму для обмоток по 0,25 Ом, порада перевіряти напруги й користуватися запобіжником. Авторська навчальна стаття практика, а не стандарт чи datasheet; числа в прикладах ілюстративні."
   - source_id: hammond-266m20
     title: "Hammond Manufacturing: 266M20 power transformer, dual primary and secondary (datasheet)"
     url: https://www.hammfg.com/files/parts/pdf/266M20.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Для моделі 266M20 (60 VA) виробник вказує вторинні обмотки: послідовно (з середньою точкою) 20 В / 3 А, паралельно 10 В / 6 А, і дозволяє використовувати їх з середньою точкою, паралельно або окремо. Значення стосуються лише цієї моделі; для інших трансформаторів схему з’єднання беруть з їхнього datasheet."
 ---
 
 ## Short answer
@@ -79,19 +44,3 @@ sources:
 - Вважати, що паралельне з’єднання збільшує напругу, а послідовне – струм (насправді навпаки).
 - У послідовному з’єднанні брати струм більший за номінал найслабшої обмотки.
 - Перевіряти нове з’єднання без запобіжника.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

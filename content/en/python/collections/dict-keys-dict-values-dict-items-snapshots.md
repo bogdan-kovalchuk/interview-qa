@@ -1,41 +1,18 @@
 ---
 id: py-coll-0017
 title: "Are `dict.keys()`, `dict.values()`, and `dict.items()` snapshots, and how does their live-view nature affect later changes to the dictionary?"
-description: "Are `dict.keys()`, `dict.values()`, and `dict.items()` snapshots, and how does their live-view nature affect later changes to the dictionary?"
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: [dict-keys, dict-values, dict-items]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -71,11 +48,3 @@ intermediate lists or writing manual loops.
 Because a view is bound to the live dictionary, iterating over it while the dictionary's size
 changes falls under the same `RuntimeError: dictionary changed size during iteration` rule as
 iterating over the dictionary directly.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

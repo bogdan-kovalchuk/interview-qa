@@ -1,69 +1,30 @@
 ---
 id: py-oop-0012
 title: "How should a reusable validation descriptor store values separately for each instance, without creating shared state between objects?"
-description: "How should a reusable validation descriptor store values separately for each instance, without creating shared state between objects?"
 track: python
 section: oop-and-data-model
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-set-name
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__set_name__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the __set_name__ method in the data model; called at class creation, not on a later attribute assignment."
   - source_id: py314-howto-descriptor-managed-attributes
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#managed-attributes
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Managed attributes section; the descriptor sits in the class dictionary while the data is stored in the instance dictionary."
   - source_id: py314-howto-descriptor-automatic-name-notification
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#automatic-name-notification
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Automatic name notification section; names are updated only when the class is created."
 ---
 
 ## Short answer
@@ -116,23 +77,3 @@ Limits. `__set_name__` runs only when the class is created: a descriptor added l
 - storing the value in the descriptor's `self.value`: one value for the whole class;
 - using the same descriptor object for several attributes or classes;
 - treating `_name` as private: it can be accessed directly, and the name may clash with another attribute.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

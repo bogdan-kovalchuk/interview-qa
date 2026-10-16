@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0040
 title: "Trap: що буде, якщо в state machine не перевірити індекс стану перед `handlers[state]`?"
-description: "Невалідний/пошкоджений стан -> out-of-bounds read таблиці й indirect call за випадковою адресою (ймовірний HardFault)."
 track: embedded
 section: common-code-patterns
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Підтверджує, що вихід індексу за межі масиву (6.5.6 п. 8, Annex J.2) і виклик через вказівник на функцію несумісного типу (6.5.2.2 п. 9) є undefined behavior; нічого не каже про поведінку конкретного процесора."
   - source_id: tm4c123-datasheet
     title: "Tiva TM4C123GH6PM Microcontroller Data Sheet (SPMS376E)"
     url: https://www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SPMS376E"
-    applicability: "Для ядра Cortex-M4F: bus error на instruction fetch, перехід у XN-регіон і спроба виконати код зі скинутим Thumb-бітом дають fault, а fault без ввімкненого обробника ескалює в HardFault. Розділ 2.6 Fault Handling. Для інших ядер і чипів деталі відрізняються; адреса на справжній код fault не викликає."
 ---
 
 ## Short answer
@@ -74,19 +51,3 @@ void dispatch(uint32_t state, event_t evt)
 - Писати `state <= STATE_COUNT` замість `<`: індекс `STATE_COUNT` уже за межами масиву.
 - Вважати HardFault «захистом»: для частини значень fault не станеться, а виконається чужий код.
 - Мовчки ігнорувати помилковий стан у `else` замість переходу в безпечний режим або reset.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

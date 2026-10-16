@@ -1,48 +1,21 @@
 ---
 id: py-perf-0016
 title: "When does moving a hot loop to a vectorized or native implementation justify the boundary-crossing and data-conversion cost?"
-description: "When does moving a hot loop to a vectorized or native implementation justify the boundary-crossing and data-conversion cost?"
 track: python
 section: performance
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-array
     title: "Python 3.14: Library/array"
     url: https://docs.python.org/3.14/library/array.html#module-array
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Description of the array module: a type that compactly represents an array of basic values of one type. Does not describe the cost of converting from a list."
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -74,23 +47,3 @@ Compare variants with `timeit`, on the same data and sizes as in production. The
 - measuring on small data, where the crossing takes most of the time, and drawing conclusions for large data;
 - converting the data back and forth on every step;
 - comparing time measured under a profiler with the time of a C function.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

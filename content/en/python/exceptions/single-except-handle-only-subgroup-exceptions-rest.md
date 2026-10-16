@@ -1,55 +1,24 @@
 ---
 id: py-excpt-0013
 title: "Why can a single `except*` handle only a subgroup of exceptions, while the rest of the group continues to propagate?"
-description: "Why can a single `except*` handle only a subgroup of exceptions, while the rest of the group continues to propagate?"
 track: python
 section: exceptions
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-except-star
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#except-star
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: except* semantics, splitting the group, passing the unmatched part on, and the rule that except and except* cannot be mixed in one try."
   - source_id: pep-0654-exception-groups
     title: "PEP 654: Exception Groups and except*"
     url: https://peps.python.org/pep-0654/
-    accessed: 2026-10-13
-    kind: spec
-    version: "3.11"
-    applicability: "PEP 654: ExceptionGroup and except* were proposed for Python 3.11 (Python-Version: 3.11)."
 ---
 
 ## Short answer
@@ -91,11 +60,3 @@ Handling does not swallow the group. If a handler raises a new exception, it is 
 - assuming that `eg` in `except*` is a single exception: it is always an `ExceptionGroup`, and the individual exceptions are in `eg.exceptions`;
 - mixing `except` and `except*` in one `try`, which is a syntax error;[^py314-reference-compound-stmts-except-star]
 - expecting the unhandled part to disappear: if no level handles it, it propagates as a group and ends the program with a traceback.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

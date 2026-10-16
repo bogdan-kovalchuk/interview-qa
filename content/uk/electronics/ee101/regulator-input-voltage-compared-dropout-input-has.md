@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0156
 title: "Яку вхідну напругу стабілізатора порівнюють із dropout, якщо на вході є пульсації?"
-description: "Яку вхідну напругу стабілізатора порівнюють із dropout, якщо на вході є пульсації?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 60, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Визначення dropout (регулятор перестає стабілізувати за подальшого зменшення входу; у dropout PMOS pass element поводиться як резистор, V_dropout = I_o*R_on) і визначення PSRR як V_o,ripple/V_i,ripple. Записка про LDO; наведені в ній значення dropout – лише приклади конкретних мікросхем."
   - source_id: ti-tps752q1-datasheet
     title: "Texas Instruments TPS752-Q1 datasheet"
     url: https://www.ti.com/lit/ds/symlink/tps752-q1.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Datasheet конкретного LDO: dropout приблизно пропорційний струму навантаження, залежить від температури переходу (графік), а мінімальну вхідну напругу задає примітка V_I(min) = V_O(max) + V_DO(max load). Значення стосуються лише TPS752-Q1."
 ---
 
 ## Short answer
@@ -71,19 +40,3 @@ Dropout – це різниця вхід–вихід, за якої регул�
 - Порівнювати dropout із середньою напругою на вході замість `V_in,min`.
 - Брати типове значення dropout за малого струму замість значення для максимального струму й найгіршої температури.
 - Не враховувати допуск і просідання мережі, падіння на діодах та перехідні режими під час визначення `V_in,min`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

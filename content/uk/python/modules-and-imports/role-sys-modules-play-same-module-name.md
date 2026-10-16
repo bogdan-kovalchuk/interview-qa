@@ -1,55 +1,24 @@
 ---
 id: py-modimp-0002
 title: "Яку роль відіграє `sys.modules` під час повторного імпорту того самого module name?"
-description: "sys.modules – це кеш, який зберігає вже завантажені module objects; повторний import того самого імені повертає кешований об’єкт без пошуку та виконання коду."
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [sys-modules]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «The module cache» офіційної документації Python 3.14: sys.modules перевіряється першим; значення None дає ModuleNotFoundError; видалений ключ викликає новий пошук; importlib.reload() повторно виконує код у тому самому object; старий і новий objects після повторного імпорту не є однаковими, якщо на старий є посилання."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ «Loading» офіційної документації Python 3.14: якщо завантаження модуля завершилося винятком, цей модуль видаляється з sys.modules."
 ---
 
 ## Short answer
@@ -96,11 +65,3 @@ except ModuleNotFoundError:
 - вважати, що кожен повторний `import` знову виконує код модуля (це так, лише коли запису в кеші немає або попередній імпорт упав);
 - видаляти ключ із `sys.modules`, щоб «перезавантажити» модуль, і потім порівнювати старі посилання з новими;
 - очікувати від `importlib.reload()` нового module object (reload повторно використовує той самий object).
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0257
 title: "Чому `R_DS(on)` треба дивитися при конкретній `V_GS`?"
-description: "Чому on-resistance MOSFET залежить від напруги gate-source?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 23, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: infineon-optimos
     title: "Infineon OptiMOS Power MOSFET Datasheet Explanation"
     url: https://www.infineon.com/assets/row/public/documents/24/42/infineon-mosfet-optimos-datasheet-explanation-applicationnotes-en.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "AN 2012-03 V1.1"
-    applicability: "Пояснює залежність R_DS(on) від V_GS та тестування V_GS(th); приклади не є параметрами кожної деталі."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ On-resistance MOSFET не є сталою незалежно від керува
 - Порівнювати опори при різних `V_GS` так, ніби умови однакові.
 - Обрати logic-level MOSFET лише за низьким `V_GS(th)`, не перевіривши `R_DS(on)`.
 - Вважати типове значення достатнім доказом для worst-case розрахунку.
-
-## Sources
-
-<!-- generated from frontmatter -->

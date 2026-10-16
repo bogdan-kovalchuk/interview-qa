@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0006
 title: "Trap: чому не можна напряму відправляти `sizeof(struct)` байтів як protocol packet?"
-description: "Бо структура може містити padding bytes і ABI-залежний layout."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,19 +29,3 @@ Padding bytes можуть мати невизначені значення; п�
 Приклад: структура з `uint8_t type` та `uint32_t length` може мати байти padding перед `length`; саме поле `length` також може передаватися у відмінному endian-порядку. Наявність `packed` може прибрати частину проміжків у конкретному компіляторі, але не визначає порядок байтів, не гарантує сумісності між компіляторами й може створити невирівняні доступи.[^iso-c-n1570]
 
 **Як уникнути помилки:** серіалізуйте та десеріалізуйте кожне поле у визначеному порядку байтів і перевіряйте межі buffer. Якщо апаратний чи внутрішній контракт справді вимагає фіксованого layout, зафіксуйте платформу й опції компілятора та перевіряйте offsets і розмір compile-time assertions; це перевірка конкретної збірки, не заміна специфікації формату.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

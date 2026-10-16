@@ -1,83 +1,36 @@
 ---
 id: py-fileio-0002
 title: "Why is it worth setting `encoding` explicitly for a portable text file, instead of relying on the platform default?"
-description: "Why is it worth setting `encoding` explicitly for a portable text file, instead of relying on the platform default?"
 track: python
 section: files-and-io
-level: middle
-type: practical
-tags: [encoding]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-locale
     title: "Python 3.14: Library/locale"
     url: https://docs.python.org/3.14/library/locale.html#locale.getencoding
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: locale.getencoding() on Windows and in UTF-8 Mode."
   - source_id: pep-0686
     title: "PEP 686: Make UTF-8 mode default"
     url: https://peps.python.org/pep-0686/
-    accessed: 2026-10-13
-    kind: spec
-    version: "3.15"
-    applicability: "PEP 686 specification (status Final): UTF-8 Mode is the default from Python 3.15; it does not describe 3.14 and earlier."
 ---
 
 ## Short answer
@@ -109,23 +62,3 @@ From Python 3.15, UTF-8 Mode is the default (PEP 686),[^pep-0686] but code that 
 - testing only on Linux with a UTF-8 locale and assuming the code is portable;
 - setting `encoding` only for reading or only for writing;
 - assuming that the UTF-8 default in 3.15 removes the need for `encoding` in code that must run on 3.14 or earlier.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

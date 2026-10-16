@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0004
 title: "How does a class-based context manager differ from a generator-based manager built with `@contextmanager`?"
-description: "How does a class-based context manager differ from a generator-based manager built with `@contextmanager`?"
 track: python
 section: context-managers
-level: middle
-type: comparison
-tags: [contextmanager]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -99,19 +76,3 @@ with res:
 - class-based is essential when the manager must expose helper methods, attributes, or complex lifecycle state to the caller via the `as` target;
 - exception suppression mechanics: in `@contextmanager`, catching an error around `yield` via `except` automatically suppresses it, whereas class-based managers require returning `True` from `__exit__`;
 - performance characteristics: generator-based managers introduce minor overhead due to generator frame creation and suspension, whereas class methods have slightly lower latency in hot paths.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

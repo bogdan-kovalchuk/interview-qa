@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0227
 title: "Чому струм через емітер дорівнює сумі струмів бази й колектора?"
-description: "Чому струм через емітер дорівнює сумі струмів бази й колектора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 21, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -49,7 +26,3 @@ sources:
 База керує провідністю переходу база–емітер, а колекторний струм є основною частиною струму навантаження. Частина струму проходить через базу, тож емітерна гілка несе обидва внески. У режимі активного підсилення часто використовують наближення `I_C ≈ β*I_B`, але коефіцієнт `β` залежить від екземпляра, струму, температури й напруги; у насиченні це наближення вже не є надійним способом визначити струм. Баланс `I_E = I_B + I_C` як закон вузла лишається чинним у кожному режимі.[^aac-semiconductors]
 
 Приклад: якщо виміряні `I_B = 2 mA` та `I_C = 98 mA`, то `I_E = 100 mA`. Амперметр, увімкнений послідовно в емітер, має показати суму, а прилад у колекторній гілці – тільки колекторний струм. Розбіжності реальних вимірювань можуть виникнути через похибку приладів, витоки, перехідні процеси або різні точки вимірювання, а не через порушення закону збереження заряду. Типова помилка – казати, що емітерний струм «підсилюється» відносно колекторного без пояснення внеску бази.[^aac-semiconductors]
-
-## Sources
-
-<!-- generated from frontmatter -->

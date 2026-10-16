@@ -1,41 +1,18 @@
 ---
 id: emb-align-0040
 title: "Чому однобайтові поля (`uint8_t`) не потребують byte swap при серіалізації?"
-description: "Endianness стосується лише порядку байтів усередині багатобайтового значення."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: linux-byteorder
     title: "byteorder(3) - Linux manual page"
     url: https://man7.org/linux/man-pages/man3/htonl.3.html
-    accessed: 2026-10-04
-    kind: official
-    version: "man-pages 6.19; POSIX.1-2008"
-    applicability: "Сигнатури htonl та htons і їхні типи 32 та 16 біт відповідно; сторінка описує інтерфейс POSIX у Linux."
 ---
 
 ## Short answer
@@ -55,7 +32,3 @@ Endianness описує, у якому порядку байти багатоб�
 **Приклад:** заголовок із полем `uint8_t opcode` і полем `uint16_t length` серіалізуй як один байт opcode, а потім два байти length у визначеному протоколом порядку. Не застосовуй swap до всього заголовка як до суцільного слова: це також переставило б місцями незалежне поле opcode. При отриманні спершу збери багатобайтове поле з його байтів за тим самим правилом, а однобайтове прочитай без перетворення.[^iso-c-n1570]
 
 **Типова помилка:** вважати, що запис структури безпосередньо в буфер автоматично задає переносимий формат. Padding, представлення типів і розміщення полів залишаються окремими питаннями; для стабільного обміну серіалізуй кожне поле явно.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

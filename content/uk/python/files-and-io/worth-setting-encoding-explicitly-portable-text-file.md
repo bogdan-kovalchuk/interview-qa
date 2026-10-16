@@ -1,83 +1,36 @@
 ---
 id: py-fileio-0002
 title: "Чому для переносного text file варто задавати `encoding` явно, а не покладатися на platform default?"
-description: "Типове кодування визначає locale (locale.getencoding()): на Windows це ANSI code page, на більшості Unix-систем utf-8, тому переносний файл потребує явного encoding."
 track: python
 section: files-and-io
-level: middle
-type: practical
-tags: [encoding]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-locale
     title: "Python 3.14: Library/locale"
     url: https://docs.python.org/3.14/library/locale.html#locale.getencoding
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: locale.getencoding() на Windows і в UTF-8 Mode."
   - source_id: pep-0686
     title: "PEP 686: Make UTF-8 mode default"
     url: https://peps.python.org/pep-0686/
-    accessed: 2026-10-13
-    kind: spec
-    version: "3.15"
-    applicability: "Специфікація PEP 686 (статус Final): UTF-8 Mode типовий з Python 3.15; не описує поведінку 3.14 і раніших версій."
 ---
 
 ## Short answer
@@ -109,23 +62,3 @@ print(locale.getencoding())   # UTF-8 in this Linux run; the ANSI code page (oft
 - тестувати лише на Linux з UTF-8 локаллю і вважати код переносним;
 - вказати `encoding` тільки для читання або тільки для запису;
 - вважати, що UTF-8 за замовчуванням у 3.15 знімає потребу в `encoding` у коді, який має працювати на 3.14 або раніше.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

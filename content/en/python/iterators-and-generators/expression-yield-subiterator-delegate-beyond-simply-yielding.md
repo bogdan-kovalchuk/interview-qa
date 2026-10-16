@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0009
 title: "What does the expression `yield from subiterator` delegate beyond simply re-yielding each value?"
-description: "yield from delegates send(), throw() and close() to the subiterator and returns its StopIteration.value as the expression's result."
 track: python
 section: iterators-and-generators
-level: middle
-type: mechanism
-tags: [yield-from-subiterator]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pep-0380-yield-from
     title: "PEP 380: Syntax for Delegating to a Subgenerator"
     url: https://peps.python.org/pep-0380/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Specification of yield from (PEP 380): delegation of send, throw and close to the subiterator."
 ---
 
 ## Short answer
@@ -93,11 +66,3 @@ If the subiterator is an ordinary iterator without `send()`, such as a `list_ite
 - replacing `yield from` with `for ... yield` and then expecting `send()` to reach the subiterator;
 - thinking that a `return` in a subgenerator is yielded as an item; it is actually the result of `yield from`;
 - sending a non-None value to a subiterator that has no `send()`, such as a `list_iterator`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

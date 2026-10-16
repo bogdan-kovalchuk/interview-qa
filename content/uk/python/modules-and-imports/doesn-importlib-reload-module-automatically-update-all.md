@@ -1,55 +1,24 @@
 ---
 id: py-modimp-0013
 title: "Чому `importlib.reload(module)` не оновлює автоматично всі раніше створені instances та names, імпортовані через `from ... import ...`?"
-description: "importlib.reload() перезапускає код модуля в тому самому module object, але не оновлює назв, скопійованих через from ... import ... в інші модулі, і не змінює класи вже створених instance’ів."
 track: python
 section: modules-and-imports
-level: senior
-type: pitfall
-tags: [importlib-reload-module, from-import]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-library-importlib-reload
     title: "Python 3.14: Library/importlib, importlib.reload()"
     url: https://docs.python.org/3.14/library/importlib.html#importlib.reload
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: reload повторно виконує код модуля в його словнику; імена з from-імпортів в інших модулях і класи, створені раніше, не оновлюються; reload не потокобезпечний."
   - source_id: py314-reference-simple-stmts-import
     title: "Python 3.14: Reference/simple statements, The import statement"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-import-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: from-імпорт зберігає посилання на значення в поточному namespace."
 ---
 
 ## Short answer
@@ -103,23 +72,3 @@ print(isinstance(svc, config.Service))  # False: the old instance is not an inst
 - очікувати, що reload оновить усі посилання: імена з `from`-імпортів в інших модулях, уже створені екземпляри класів;
 - перевантажувати модуль, у якому визначено клас, і перевіряти `isinstance` зі старими екземплярами;
 - робити reload модулів `sys`, `__main__` або `builtins`: документація прямо не рекомендує це, а модулі-розширення можуть впасти.[^py314-library-importlib-reload]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

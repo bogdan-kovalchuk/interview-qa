@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0010
 title: "Коли для filesystem operation варто лишитися на `os`, а коли обрати `pathlib`?"
-description: "pathlib зручніший для маніпуляцій зі шляхами та побудови нових шляхів; os потрібен для низькорівневих операцій з файловими дескрипторами, яких pathlib не має."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [os, pathlib]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-os-open
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.open
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, os.open: повертає файловий дескриптор відкритого файлу; прапорці відкриття."
   - source_id: py314-library-os-scandir
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.scandir
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, os.scandir: функція приймає path-like об’єкт."
   - source_id: py314-library-os-fspath
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fspath
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, os.fspath: повертає str або bytes; для path-like об’єкта викликає __fspath__()."
 ---
 
 ## Short answer
@@ -67,19 +44,3 @@ os.environ["SCRIPT"] = os.fspath(script) # env values must be str; a bare Path r
 - передавати `Path` туди, де очікується str, наприклад в `os.environ`, без `os.fspath()`;
 - вважати, що `pathlib` замінює весь `os`: fd-рівневих операцій (`os.open()`, `os.fstat()`) у `Path` немає;
 - змішувати `Path` і рядок в одному виразі: `Path("report") + ".txt"` кидає `TypeError`; для нового імені використовуйте `with_name()`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

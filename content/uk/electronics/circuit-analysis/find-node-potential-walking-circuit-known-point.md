@@ -1,48 +1,21 @@
 ---
 id: emb-elcirc-0022
 title: "Як знайти потенціал вузла, рухаючись по схемі від відомої точки?"
-description: "Як знайти потенціал вузла, рухаючись по схемі від відомої точки?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-kvl
     title: "All About Circuits: Kirchhoff’s Voltage Law (KVL)"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-6/kirchhoffs-voltage-law-kvl/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує алгебраїчне додавання підйомів і спадів напруги вздовж замкненого шляху; умовні напрями обходу довільні за послідовного обліку знаків."
   - source_id: aac-voltage-polarity
     title: "All About Circuits: Polarity of voltage drops"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-2/polarity-voltage-drops/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує визначення полярності спаду на резисторі відносно напряму conventional current; не визначає полярність довільного активного компонента."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Приписувати спад резистора за напрямом обходу, не перевіривши напрям струму або задану полярність.
 
 Якщо невідомі струми чи елементи утворюють складну мережу, простого обходу може бути недостатньо: тоді спершу розв’яжіть рівняння для струмів і напруг, а потім використайте їх для перевірки потенціалу вузла.[^aac-kvl]
-
-## Sources
-
-<!-- generated from frontmatter -->

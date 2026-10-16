@@ -1,27 +1,12 @@
 ---
 id: py-stdlib-0008
 title: "Який boilerplate усуває `functools.total_ordering` і які performance та traceback trade-offs варто врахувати?"
-description: "@total_ordering доповнює відсутні методи порівняння (__lt__, __le__, __gt__, __ge__) з одного визначеного методу порядку; бажано також визначити __eq__."
 track: python
 section: standard-library
-level: senior
-type: practical
-tags: [functools-total-ordering]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-total-ordering
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.total_ordering
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ total_ordering: які методи клас має визначити, рекомендація __eq__, повільніше виконання і складніші stack traces, порада реалізувати всі методи явно, неперевизначення успадкованих методів."
 ---
 
 ## Short answer
@@ -61,23 +46,3 @@ print(Version(2, 0) > Version(1, 9))   # True, __gt__ is derived too
 - вважати декоратор безкоштовним: похідні методи повільніші й ускладнюють налагодження;
 - не визначити `__eq__`: тоді `==` порівнює ідентичність, і для класу лише з `__lt__` вираз `NoEq(2) <= NoEq(2)` дає `False`;
 - очікувати, що декоратор замінить оператор, який уже є в базовому класі: він його не чіпає.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

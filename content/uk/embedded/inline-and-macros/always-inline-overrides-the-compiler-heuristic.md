@@ -1,41 +1,18 @@
 ---
 id: emb-macros-0032
 title: "Що робить `__attribute__((always_inline))` і коли воно потрібне?"
-description: "Примушує компілятор inline-ити функцію навіть коли його евристика обрала б звичайний виклик (зазвичай разом з inline)."
 track: embedded
 section: inline-and-macros
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: gcc-always-inline
     title: "GCC: Common Function Attributes – always_inline"
     url: https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html
-    accessed: 2026-10-04
-    kind: official
-    version: current
-    applicability: "Поведінка GNU C атрибута always_inline для функцій; не є гарантією стандарту C або інших компіляторів."
 ---
 
 ## Short answer
@@ -55,7 +32,3 @@ sources:
 Приклад: маленька функція читання регістра може бути кандидатом, якщо затримка виклику підтверджено важлива. Але якщо її адресу передали через function pointer, компілятор не бачить звичайного прямого місця виклику, тож атрибут не варто трактувати як гарантію усунення такого виклику.
 
 **Типова помилка:** вважати, що слово `inline` або GNU-атрибут гарантує швидший код на будь-якій архітектурі. Вибір має спиратися на дизасемблювання та вимірювання, а сам атрибут – лише наявність GCC або сумісного компілятора.
-
-## Sources
-
-<!-- generated from frontmatter -->

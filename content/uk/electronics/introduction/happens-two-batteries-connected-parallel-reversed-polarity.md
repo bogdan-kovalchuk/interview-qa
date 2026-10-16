@@ -1,62 +1,27 @@
 ---
 id: emb-elintro-0065
 title: "Що відбувається при з'єднанні паралельно двох 9В батарей з переплутаною полярністю?"
-description: "Що відбувається при з'єднанні паралельно двох 9В батарей з переплутаною полярністю?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: openstax-emf
     title: "OpenStax University Physics Volume 2, 10.1 Electromotive Force"
     url: https://openstax.org/books/university-physics-volume-2/pages/10-1-electromotive-force
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "ЕРС і внутрішній опір джерела: внутрішній опір послідовний із навантаженням, напруга на клемах V = ε − I*r."
   - source_id: openstax-kirchhoff
     title: "OpenStax University Physics Volume 2, 10.3 Kirchhoff's Rules"
     url: https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Правило контурів Кірхгофа: алгебраїчна сума змін потенціалу в замкненому контурі дорівнює нулю."
   - source_id: ti-slva139
     title: "Texas Instruments SLVA139: Reverse Current/Battery Protection Circuits"
     url: https://www.ti.com/lit/an/slva139/slva139.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "SLVA139"
-    applicability: "Механічний захист від переполюсування (спеціальні роз’єми, різні клеми 9-V батареї) і електронний захист послідовним діодом або MOSFET."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 8, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -80,7 +45,3 @@ sources:
 - Для паралельного батарейного блока дотримуйтеся вимог виробника щодо типу, напруги та сумісності елементів.
 
 Якщо помилкове з’єднання вже зроблено, не торкайтеся нагрітої чи пошкодженої батареї голими руками й не продовжуйте експеримент; безпечне поводження визначається інструкцією виробника конкретної батареї.
-
-## Sources
-
-<!-- generated from frontmatter -->

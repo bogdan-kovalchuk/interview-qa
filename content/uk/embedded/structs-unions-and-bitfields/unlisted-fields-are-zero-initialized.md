@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0030
 title: "Що буде з незаданими полями?"
-description: "parity і stop_bits будуть zero-initialized."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -62,7 +43,3 @@ Aggregate initialization у C занулює поля, які не були яв
 Приклад: якщо нульовий `parity` позначає відсутність перевірки парності, `{ .baud = 115200 }` може бути валідним. Якщо ж нульовий `mode` заборонений протоколом, структуру варто ініціалізувати явними значеннями або підготувати через функцію, яка встановлює валідну конфігурацію.[^iso-c-n1570]
 
 **Типова помилка:** трактувати нульове заповнення як логіку прикладного рівня. Компілятор застосовує правило ініціалізації C; він не знає, яке значення є безпечним для UART чи іншого пристрою.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

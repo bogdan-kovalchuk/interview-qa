@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0171
 title: "Чи можна подати логічний сигнал 5 В на вхід мікросхеми, що живиться від 3,3 В?"
-description: "Чи можна подати логічний сигнал 5 В на вхід мікросхеми, що живиться від 3,3 В?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 63, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-hc00
-    title: TI SN74HC00 quadruple NAND gates datasheet
+    title: "TI SN74HC00 quadruple NAND gates datasheet"
     url: https://www.ti.com/lit/ds/symlink/sn74hc00.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: SCLS181H
-    applicability: "Стандартний CMOS-вхід: рекомендована вхідна напруга 0...VCC, межа вхідного струму клампа IIK ±20 мА для VI > VCC + 0,5 В і примітка про можливість перевищити напруги за дотримання струмів, вхідні та вихідні діоди клампа до VCC і GND (розділ 8.5), VIH(min) 3,15 В за VCC = 4,5 В. Стосується лише SN74HC00; інші мікросхеми мають інші межі."
   - source_id: ti-sn74lvc1g125
     title: "Texas Instruments SN74LVC1G125 datasheet"
     url: https://www.ti.com/lit/ds/symlink/sn74lvc1g125.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SCES223U, August 2026"
-    applicability: "Приклад входу, толерантного до 5 В: для VCC від 1,65 до 5,5 В вхід приймає напругу 0...5,5 В, VIH(min) = 2 В за VCC від 3 до 3,6 В і 0,7*VCC за VCC від 4,5 до 5,5 В, Ioff для partial-power-down. Стосується лише SN74LVC1G125; для іншої мікросхеми толерантність треба знайти в її datasheet."
 ---
 
 ## Short answer
@@ -72,19 +41,3 @@ sources:
 - Робити висновок «працює, отже допустимо»: параметри гарантовано лише в рекомендованих умовах, а тривала робота біля абсолютних максимумів може впливати на надійність.[^ti-hc00]
 - Забути про протилежний напрямок: 3,3 В на вході CMOS із живленням 5 В може не досягати `VIH`.[^ti-sn74lvc1g125]
 - Розраховувати, що спільна земля й окремі стабілізовані шини вирішують сумісність рівнів.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

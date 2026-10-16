@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0283
 title: "Чому 63/37 SnPb припій зручний для навчання?"
-description: "Чому 63/37 SnPb припій зручний для навчання?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aim-sn63pb37
     title: "AIM Solder: Sn63/Pb37 Leaded Solder Alloy"
     url: https://www.aimsolder.com/products/sn63-pb37-leaded-solder-alloy/
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Підтверджує склад Sn63/Pb37, евтектичний характер і температуру плавлення 183 °C; не гарантує блиск чи надійність конкретного шва."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 - Називати 63/37 просто «легкоплавким» і не пояснювати відсутність пастоподібного інтервалу.
 - Вважати блиск гарантією хорошого шва або вимагати блиску від кожного припою.
 - Ігнорувати свинець: для поводження, вентиляції та утилізації слід дотримуватися інструкцій виробу й місцевих вимог.
-
-## Sources
-
-<!-- generated from frontmatter -->

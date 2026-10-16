@@ -1,55 +1,24 @@
 ---
 id: py-perf-0015
 title: "How can batching reduce per-call I/O overhead while increasing latency and memory use?"
-description: "How can batching reduce per-call I/O overhead while increasing latency and memory use?"
 track: python
 section: performance
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io-performance
     title: "Python 3.14: Library/io (Performance)"
     url: https://docs.python.org/3.14/library/io.html#performance
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Performance section: buffered I/O reads and writes in large chunks, and the gain depends on the OS and the kind of I/O. Does not describe application-level batching."
   - source_id: py314-library-functions-open
     title: "Python 3.14: Built-in Functions (open)"
     url: https://docs.python.org/3.14/library/functions.html#open
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Default buffering policy of open() when the buffering argument is omitted: binary files are buffered in fixed-size chunks. Does not describe the cost of application batches."
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -92,19 +61,3 @@ Compare variants with `timeit`, on the same data and sizes as in production. The
 - assuming batching is always faster: when the per-call overhead is small or the data is already buffered, the gain may be zero;
 - growing the batch without limit, without counting memory and the delay before the first item is sent;
 - forgetting to send the last, partial batch.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

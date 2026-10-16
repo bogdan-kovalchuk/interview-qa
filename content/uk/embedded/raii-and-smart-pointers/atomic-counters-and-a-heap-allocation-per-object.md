@@ -1,69 +1,30 @@
 ---
 id: emb-raii-0011
 title: "Які конкретні витрати має `shared_ptr`?"
-description: "Control block зі strong/weak лічильниками, зазвичай atomic increments/decrements, динамічна алокація (одна з `make_shared`) і момент знищення, що залежить від останнього власника."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: libstdcxx-memory
     title: "The GNU C++ Library Manual: Memory – shared_ptr"
     url: https://gcc.gnu.org/onlinedocs/libstdc++/manual/memory.html#std.util.memory.shared_ptr
-    accessed: 2026-10-06
-    kind: official
-    version: "current"
-    applicability: "Описує реалізацію libstdc++: shared_ptr містить pointer на об’єкт і pointer на control block; control block веде strong/weak лічильники, а deleter та allocator зберігають похідні класи; лічильники оновлюються atomic-операціями (політики atomic, mutex, single), а в однопотоковій програмі – дешевшими non-atomic; make_shared може покласти об’єкт і control block в один блок. Стосується лише libstdc++; інші бібліотеки можуть відрізнятися."
   - source_id: cpp-draft-util-smartptr-shared
     title: "C++ working draft: Class template shared_ptr ([util.smartptr.shared])"
     url: https://eel.is/c++draft/util.smartptr.shared
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що останній власник, який лишився, відповідає за знищення об’єкта; що member-функції для визначення data race зачіпають лише самі shared_ptr і weak_ptr, а не об’єкти, на які вони вказують; що зміни use_count() не відображають модифікацій, які можуть спричинити data race. Розкладку control block і вартість операцій не задає."
   - source_id: cpp-draft-util-smartptr-shared-create
     title: "C++ working draft: shared_ptr creation ([util.smartptr.shared.create])"
     url: https://eel.is/c++draft/util.smartptr.shared.create
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що реалізації make_shared і allocate_shared мають (should) виконувати не більше однієї алокації, що allocate_shared використовує копію переданого allocator-а і що ці функції зазвичай алокують більше за sizeof(T) для службових структур, як-от лічильники. Одного блоку не гарантує."
   - source_id: cppcg-r21
     title: "C++ Core Guidelines: R.21 – Prefer unique_ptr over shared_ptr unless you need to share ownership"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r21-prefer-unique_ptr-over-shared_ptr-unless-you-need-to-share-ownership
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Настанова: unique_ptr простіший, передбачуваніший (відомо, коли відбудеться знищення) і швидший, бо не веде use count; shared_ptr, чий лічильник ніколи не перевищує 1, веде його даремно. Це настанова, а не вимір швидкодії."
   - source_id: cppcg-r22
     title: "C++ Core Guidelines: R.22 – Use make_shared() to make shared_ptrs"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r22-use-make_shared-to-make-shared_ptrs
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Настанова: make_shared дає змогу прибрати окрему алокацію для лічильників, розмістивши їх поруч з об’єктом; також забезпечує exception safety у складних виразах до C++17. Про розмір чи вартість лічильників не каже."
 ---
 
 ## Short answer
@@ -96,7 +57,3 @@ auto b = std::make_shared<Buf>();           // об’єкт і control block р
 - Думати, що `make_shared` прибирає control block: він прибирає лише окрему алокацію, а службові структури лишаються.[^cpp-draft-util-smartptr-shared-create]
 - Вважати atomic-лічильники захистом самого об’єкта: стандарт говорить про data race лише для самих `shared_ptr` і `weak_ptr`, а не для об’єктів, на які вони вказують.[^cpp-draft-util-smartptr-shared]
 - Передавати `shared_ptr` за значенням у кожну функцію, яка лише використовує об’єкт: кожна така копія – це зайвий increment і decrement.
-
-## Sources
-
-<!-- generated from frontmatter -->

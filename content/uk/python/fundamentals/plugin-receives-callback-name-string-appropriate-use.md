@@ -1,41 +1,18 @@
 ---
 id: py-fund-0008
 title: "Плагін отримує name callback як string: коли доречно використати `getattr(plugin, name)`, а коли безпечнішим API буде явний registry allowed callbacks?"
-description: "getattr() доречний, коли dynamic attribute lookup є частиною довіреного контракту plugin API, а name уже перевірено."
 track: python
 section: fundamentals
-level: middle
-type: comparison
-tags: [getattr-plugin-name]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -82,19 +59,3 @@ action = ACTIONS.get(user_supplied)      # None instead of a random attribute
 іменем методу не знайде місце виклику, а IDE не покаже, що метод узагалі
 використовується.[^py314-reference-executionmodel] Для внутрішнього API це аргумент проти; для
 plugin API, де реалізації пишуть інші люди, це прийнятна ціна за розширюваність.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

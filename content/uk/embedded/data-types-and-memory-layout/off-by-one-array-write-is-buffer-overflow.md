@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0053
 title: "Яку помилку містить? `char buf[256]; buf[256] = '\\0';`"
-description: "Валідні індекси buf[256] - 0..255, тож запис у buf[256] - вихід за межі масиву."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -55,11 +36,3 @@ buf[255] = '\0';      // допустимий індекс
 Цей запис правильний лише якщо попередні байти утворюють не більше 255 символів даних. Для рядка з 256 символів плюс terminator потрібні 257 байтів, наприклад `char buf[257]`, а копіювання має бути обмежене місткістю призначення. Для довільного буфера без гарантії нульового terminator зберігай довжину окремо, а не шукай кінець за межами масиву.
 
 **Як помилка проявляється і як її уникнути:** межова перевірка `i <= sizeof buf` часто допускає зайвий індекс; для циклу по елементах використовуй `i < sizeof buf`, а для копіювання враховуй, чи потрібне місце для terminator. Перевіряй граничні довжини 0, 255, 256 та 257 окремо. Місткість треба брати з самого масиву або передавати разом із вказівником: після передачі масиву у функцію параметр-вказівник уже не зберігає його розмір. Це особливо важливо для API, де функція приймає окремо `char *buf` і `size_t capacity`; обидва параметри мають описувати ту саму область пам’яті.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

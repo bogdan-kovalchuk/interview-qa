@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0041
 title: "Який спільний інваріант робить SPSC ring buffer безпечним без локів?"
-description: "Кожен індекс має рівно одного writer-а: producer пише тільки head, consumer – тільки tail."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Підтверджує, що data race на не-атомарних об’єктах є undefined behavior (5.1.2.4 п. 25), що `volatile` лише вимагає виконання доступів за правилами abstract machine (6.7.3 п. 7), і описує _Atomic, memory_order (7.17.3) та atomic_signal_fence (7.17.4.2); вибір примітивів для конкретного MCU залежить від тулчейна."
   - source_id: linux-circular-buffers
     title: "Circular Buffers (Linux kernel documentation)"
     url: https://www.kernel.org/doc/html/latest/core-api/circular-buffers.html
-    accessed: 2026-10-06
-    kind: official
-    version: "7.3.0-rc6"
-    applicability: "Описує схему з одним producer і одним consumer без спільного локу, маску для буфера розміром у степінь двійки, завжди вільний один елемент та release/acquire-порядок запису даних і індексів. Це документація ядра Linux (SMP), а не bare-metal MCU: ідею можна переносити, а конкретні макроси й бар’єри – ні."
 ---
 
 ## Short answer
@@ -95,7 +72,3 @@ bool spsc_pop(spsc_t *q, uint8_t *v)
 - Вважати, що `volatile` індекс замінює atomic і порядок записів: дані можуть стати видимими після індексу.
 - Додати другого producer (наприклад, два ISR або ISR і main): інваріант «один writer» зникає, і потрібен лок або критична секція.
 - Використати розмір, що не є степенем двійки, з маскою `& (SIZE - 1)`, або забути вільний елемент і не відрізняти повний буфер від порожнього.
-
-## Sources
-
-<!-- generated from frontmatter -->

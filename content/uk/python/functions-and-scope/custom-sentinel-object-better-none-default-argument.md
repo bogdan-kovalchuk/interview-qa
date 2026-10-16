@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0008
 title: "Коли власний sentinel object кращий за `None` як default argument у публічному API?"
-description: "Sentinel потрібен, коли None є валідним значенням параметра і його треба відрізняти від «аргумент не передано»."
 track: python
 section: functions-and-scope
-level: senior
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: параметри, яких не вистачає у виклику, заповнюються значенням за замовчуванням з визначення функції; джерело описує зіставлення аргументів при виклику, а не вибір між None і sentinel."
   - source_id: py314-reference-expressions-is-not
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#is-not
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: is і is not перевіряють ідентичність; x is y істинне тоді і лише тоді, коли це один і той самий об’єкт."
 ---
 
 ## Short answer
@@ -76,19 +53,3 @@ except KeyError as error:
 - брати sentinel там, де `None` не має окремого значення, і ускладнювати API без потреби;
 - перевіряти sentinel через `==` замість `is`;
 - лишати в публічній сигнатурі sentinel без читабельного `repr`, через що в документації видно адресу пам’яті.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0119
 title: "Що таке bi-color `LED` і як він дає жовтий колір?"
-description: "Що таке bi-color `LED` і як він дає жовтий колір?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 12, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-led-colour-mixing
-    title: 'All About Circuits: Special-purpose Diodes'
+    title: "All About Circuits: Special-purpose Diodes"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-3/special-purpose-diodes/
-    accessed: '2026-10-04'
-    kind: book
-    version: null
-    applicability: 'Пояснює утворення жовтого враження при адитивному змішуванні червоного й зеленого світла від двох LED в одному корпусі; сприйнятий відтінок залежить від їхньої інтенсивності.'
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 **Приклад:** якщо червоно-зелений компонент має окремі контакти, контролер може обмежено подавати струм на обидва кристали. Зміна їхньої відносної інтенсивності змінює сприйнятий відтінок; однаковий струм не обов’язково дає візуально збалансовану суміш, бо світловіддача та чутливість ока для цих кольорів різні.[^aac-led-colour-mixing]
 
 **Типова помилка:** думати, що корпус фізично випромінює один новий жовтий колір або що кожен двоколірний `LED` може світити обома кольорами одночасно. Насправді жовте враження виникає через суму світла на рівні зорового сприйняття, а доступні режими визначаються електричним з’єднанням кристалів.[^aac-led-colour-mixing]
-
-## Sources
-
-<!-- generated from frontmatter -->

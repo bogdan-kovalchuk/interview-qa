@@ -1,48 +1,21 @@
 ---
 id: emb-raii-0024
 title: "Як виглядає `unique_ptr` з HAL-deinit як function pointer?"
-description: "Тип deleter'а – decltype(&HAL_DeInit), передаємо саму функцію."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-unique-ptr-single
     title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
     url: https://eel.is/c++draft/unique.ptr.single
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що unique_ptr зберігає вказівник і deleter, а його деструктор викликає deleter лише для ненульового вказівника; release() повертає вказівник і обнуляє його без виклику deleter-а. Розміру об’єкта не задає."
   - source_id: cpp-draft-intro-object
     title: "C++ working draft: Object model ([intro.object])"
     url: https://eel.is/c++draft/intro.object
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що нульовий розмір має base-підоб’єкт standard-layout класу без нестатичних даних, а в інших випадках обставини нульового розміру визначає реалізація. Конкретних значень sizeof не задає."
 ---
 
 ## Question code
@@ -84,7 +57,3 @@ Function pointer deleter підходить, коли функція деіні�
 - Очікувати, що `unique_ptr` з function pointer має розмір сирого вказівника.
 - Очікувати, що статус від `HAL_DeInit` дійде до коду: деструктор його відкидає.
 - Вважати, що `res` з `nullptr` викличе `HAL_DeInit`: при нульовому вказівнику deleter не викликається.[^cpp-draft-unique-ptr-single]
-
-## Sources
-
-<!-- generated from frontmatter -->

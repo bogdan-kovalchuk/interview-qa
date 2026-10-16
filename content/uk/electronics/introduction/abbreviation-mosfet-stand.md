@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0235
 title: "Що розшифровує абревіатура `MOSFET`?"
-description: "Що розшифровує абревіатура `MOSFET`?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 22, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: adi-mosfet-basics
     title: "Analog Devices University: Transistors, Chapter 8"
     url: https://wiki.analog.com/university/courses/electronics/text/chapter-8
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює структуру MOSFET і ізольований oxide-шар затвора; назва розшифровується як Metal-Oxide-Semiconductor Field-Effect Transistor."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 У спрощеній схемній моделі струм затвора після заряджання ємностей дуже малий. Проте затвор не є нескінченним опором у всіх режимах: під час перемикання драйвер мусить подати або забрати заряд, а перевищення максимальної напруги затвор-витік може пошкодити тонкий ізоляційний шар. Тому для швидкого перемикання важливі заряд затвора й імпеданс драйвера, а не лише твердження «струм затвора нульовий».[^adi-mosfet-basics]
 
 **Типова помилка:** розшифрувати MOSFET правильно, але зробити висновок, що він зовсім не споживає струму керування. У сталому стані струм невеликий, однак при зміні стану затвор заряджається й розряджається. Також не плутайте порогову напругу `V_GS(th)` із напругою, за якої силовий MOSFET гарантовано має потрібний `R_DS(on)` – останню перевіряють у datasheet для фактичного режиму.[^adi-mosfet-basics]
-
-## Sources
-
-<!-- generated from frontmatter -->

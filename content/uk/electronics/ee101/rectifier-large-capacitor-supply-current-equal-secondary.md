@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0175
 title: "Чи можна брати з випрямляча з великим конденсатором постійний струм, рівний номінальному RMS-струму вторинної обмотки?"
-description: "Чи можна брати з випрямляча з великим конденсатором постійний струм, рівний номінальному RMS-струму вторинної обмотки?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 64, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: hammond-rectifier-guide
     title: "Hammond Manufacturing: Design Guide for Rectifier Use"
     url: https://www.hammfg.com/pdf/5c007.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Настанова виробника трансформаторів: співвідношення між постійним струмом навантаження й змінним струмом вторинної обмотки для різних випрямлячів і фільтрів (мостовий з конденсатором – I_DC = 0.62*I_AC, мостовий з резистивним навантаженням – 0.90, однопівперіодний з конденсатором – 0.28); діоди з номіналом щонайменше вдвічі більшим за вихідний струм; RMS ripple current конденсатора може бути 2–3 I_DC. Це орієнтири для типових блоків, а не точний розрахунок для конкретної схеми."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Діод з конденсаторним фільтром відкривається лише коли вхід перевищує напругу конденсатора приблизно на 0,7 В, тому більша ємність дає коротші й більші піки зарядного струму (симуляція: до ≈ 800 мА для 1000 мкФ і 100 Ом); номінал трансформатора у VA – це номінальна вторинна напруга, помножена на максимальний вторинний струм. Книга не дає співвідношення RMS і постійного струму."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
 ---
 
 ## Short answer
@@ -72,19 +41,3 @@ sources:
 - Обчислювати потрібні VA як `V*I_DC`, ігноруючи імпульсність струму.
 - Збільшувати ємність, щоб зменшити пульсації, не перевіривши піковий струм діодів і обмотки.
 - Орієнтуватися лише на середній струм діода, а не на піковий.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

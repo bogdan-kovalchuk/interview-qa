@@ -1,44 +1,18 @@
 ---
 id: py-fund-0001
 title: "What stages does a Python module go through from source code to executing runtime instructions, and at which stage can bytecode appear?"
-description: "What stages does a Python module go through from source code to executing runtime instructions, and at which stage can bytecode appear?"
 track: python
 section: fundamentals
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -82,11 +56,3 @@ another. Every function call creates a new frame; returning destroys it.
 The main thing to take away: bytecode appears at compile time, before execution, not "on the fly
 while running". And a `.pyc` is only a cache of the first phase, changing neither the second phase
 nor the semantics.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

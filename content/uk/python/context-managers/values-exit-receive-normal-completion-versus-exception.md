@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0001
 title: "Які значення отримує `__exit__` при нормальному завершенні та при exception усередині `with`?"
-description: "При нормальному завершенні __exit__ отримує (None, None, None), а при exception – (exc_type, exc_val, exc_tb): клас, екземпляр і traceback."
 track: python
 section: context-managers
-level: middle
-type: mechanism
-tags: [exit]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -88,11 +65,3 @@ print("Continued execution after suppressed ValueError")
 - випадкове повернення істинного значення (наприклад, результат виклику функції логування чи вираз `return 1`) призводить до мовчазного пригнічення всіх винятків у блоці, маскуючи баги;
 - при нормальному завершенні значення повернення `__exit__` повністю ігнорується мовою; воно впливає на потік виконання лише тоді, коли `exc_type is not None`;
 - якщо `__exit__` сам викидає новий виняток під час очищення ресурсів, цей новий виняток замінює оригінальний, зв'язуючи його через атрибут `__context__`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

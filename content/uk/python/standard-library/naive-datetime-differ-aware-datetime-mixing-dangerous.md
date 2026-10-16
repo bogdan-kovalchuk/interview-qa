@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0011
 title: "Чим naive `datetime` відрізняється від aware `datetime` і чому їх небезпечно змішувати?"
-description: "Naive datetime не має інформації про часову зону (tzinfo is None або utcoffset() повертає None), тоді як aware має конкретний tzinfo з визначеним зсувом."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [datetime]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-datetime-determining-aware-or-naive
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html#determining-if-an-object-is-aware-or-naive
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: формальне визначення aware і naive для datetime (tzinfo не None і utcoffset(d) не повертає None)."
   - source_id: py314-library-datetime-aware-and-naive-objects
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html#aware-and-naive-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Aware and naive objects: naive значення не визначає, UTC це чи локальний час; aware означає конкретний момент."
   - source_id: py314-library-datetime-objects
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html#datetime-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ datetime objects: порядкове порівняння й віднімання naive з aware кидають TypeError; naive й aware ніколи не рівні; now(tz) і replace()."
 ---
 
 ## Short answer
@@ -67,19 +44,3 @@ print(naive < aware)                   # TypeError: can't compare offset-naive a
 - трактувати `False` від `==` як «різні моменти»: для naive й aware це лише несумісність типів;
 - додавати `tzinfo=timezone.utc` до naive значення, яке було локальним часом;
 - зберігати naive datetime без позначки зони в базі даних або API.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-align-0035
 title: "Що виведе цей код на little-endian машині?"
-description: "На little-endian молодший байт 0x44 лежить за найнижчою адресою, тож код виведе 44; на big-endian – 11."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -54,7 +35,3 @@ Endianness описує порядок байтів у багатобайтов�
 **Приклад:**
 
 Для читання протоколу не слід покладатися на те, що байти в пам’яті хоста вже мають потрібний wire order. Якщо формат задає big-endian, значення можна скласти явно: `value = ((uint32_t)b0 << 24) | ((uint32_t)b1 << 16) | ((uint32_t)b2 << 8) | b3`. Тоді результат не залежить від розкладки локального `uint32_t`; також треба перевірити, що в буфері є всі чотири байти.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

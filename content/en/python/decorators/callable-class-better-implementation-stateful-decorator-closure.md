@@ -1,55 +1,24 @@
 ---
 id: py-decor-0007
 title: "When is a callable class a better implementation of a stateful decorator than a closure?"
-description: "When is a callable class a better implementation of a stateful decorator than a closure?"
 track: python
 section: decorators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-glossary-term-descriptor
     title: "Python 3.14: Glossary, descriptor"
     url: https://docs.python.org/3.14/glossary.html#term-descriptor
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Definition of a descriptor: an object that defines `__get__()`, `__set__()` or `__delete__()`. It does not describe how decorators bind to methods."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Descriptor protocol: if an object stored as a class attribute defines `__get__`, attribute access through an instance calls it. An object that defines none of `__get__`, `__set__` or `__delete__` is not a descriptor."
 ---
 
 ## Short answer
@@ -106,19 +75,3 @@ If the counter must be separate for each instance, store it in attributes of `se
 - assuming a callable class is always better: for a single counter, a closure is shorter and sufficient;
 - decorating a method with a class that has no `__get__` and getting a `TypeError`, because `self` is not passed;
 - expecting a separate counter per instance when the decorator keeps its state once for the function.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

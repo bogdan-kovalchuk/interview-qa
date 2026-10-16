@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0169
 title: "Чому струм діода після відкриття зростає нелінійно?"
-description: "Чому струм діода після відкриття зростає нелінійно?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 16, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -51,7 +28,3 @@ sources:
 Це пояснює, чому LED або випрямний діод не можна під’єднувати просто до джерела напруги без обмеження струму. Навіть якщо напруга спершу трохи перевищує приблизну «напругу відкривання», додаткове підвищення може викликати великий приріст струму й перегрів. Послідовний резистор задає нахил навантажувальної прямої і стабілізує робочу точку кола.[^aac-semiconductors] [^aac-direct-current]
 
 Типова помилка – вважати `V_f` сталою та робити висновок, що після досягнення неї струм автоматично залишиться безпечним. Наприклад, якщо джерело має малий внутрішній опір, мале збільшення напруги може спричинити струм, більший за допустимий. Щоб уникнути цього, задають обмеження струму, перевіряють теплові рейтинги й аналізують фактичну криву `I-V`, а не лише одне значення прямого падіння.[^aac-semiconductors]
-
-## Sources
-
-<!-- generated from frontmatter -->

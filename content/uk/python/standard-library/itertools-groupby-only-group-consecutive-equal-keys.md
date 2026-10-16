@@ -1,69 +1,30 @@
 ---
 id: py-stdlib-0006
 title: "Чому `itertools.groupby()` групує лише consecutive equal keys і коли input потрібно попередньо відсортувати?"
-description: "groupby() створює нову групу щоразу, коли змінюється значення ключа – як Unix uniq, а не SQL GROUP BY."
 track: python
 section: standard-library
-level: senior
-type: pitfall
-tags: [itertools-groupby]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools-groupby
     title: "Python 3.14: Library/itertools, groupby"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.groupby
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: itertools.groupby (групування послідовних елементів за key, очікуване попереднє сортування, група ділить стан із базовим iterable)."
 ---
 
 ## Short answer
@@ -107,23 +68,3 @@ print([(k, list(g)) for k, g in pairs])  # [(1, []), (2, [])]: a group is empty 
 - очікувати, що `groupby` об’єднає всі однакові ключі з усього input, як SQL `GROUP BY`;
 - будувати словник із `groupby` без сортування: повторний ключ перезаписує попередню групу;
 - зберігати групу як ітератор і читати її після переходу до наступної групи.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

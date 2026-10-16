@@ -1,62 +1,27 @@
 ---
 id: py-testing-0006
 title: "How do you reproduce timeout and retry behaviour without a flaky dependency on a real external service?"
-description: "How do you reproduce timeout and retry behaviour without a flaky dependency on a real external service?"
 track: python
 section: testing
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: py314-library-unittest-mock-side-effect
     title: "Python 3.14: Library/unittest.mock (Mock.side_effect)"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock.side_effect
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Mock.side_effect: an iterable must yield a value on every call; an exception element is raised instead of returned."
 ---
 
 ## Short answer
@@ -109,23 +74,3 @@ An iterable in `side_effect` must yield a value on every call.[^py314-library-un
 - testing retry with a real `time.sleep`, so the test waits for seconds;
 - checking only the number of calls, without the result and without the behaviour after the attempts run out;
 - giving a `side_effect` list shorter than the number of calls, so the test fails with `StopIteration`.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

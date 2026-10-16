@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0084
 title: "Чому рекомендується розташовувати поля структури від більших до менших?"
-description: "Сортування полів від більшого вирівнювання до меншого мінімізує внутрішній padding structа."
 track: embedded
 section: data-types-and-memory-layout
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,7 +40,3 @@ int, char, char, 2 tail padding: 8 bytes
 У реальному коді перевіряй `sizeof(struct_name)` та `_Alignof(struct_name)` (або `alignof` у C++), компілюючи для цільового компілятора й прапорців. Якщо об’єкт передається мережею чи зберігається у flash як стабільний формат, серіалізуй поля явно замість покладатися на padding та layout компілятора.[^iso-c-n1570]
 
 Значення цього прийому особливо помітне у великих масивах структур: економія навіть кількох байтів на елемент множиться на кількість елементів. Але не міняй порядок полів автоматично, якщо зовнішній код читає їх за offset, якщо структуру передають через ABI або якщо вона є частиною binary protocol. У таких випадках сумісність має пріоритет над локальною економією RAM.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

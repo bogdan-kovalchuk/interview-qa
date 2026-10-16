@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0030
 title: "Що поверне? `uint16_t x = 60000; x += 10000;`"
-description: "Unsigned переповнення визначене стандартом як modular arithmetic, тому 60000+10000 дає 4464, а не undefined behavior."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,11 +40,3 @@ Unsigned арифметика має модульну семантику, але
 Такий аналіз особливо важливий, коли арифметика формує розмір буфера, індекс або лічильник протоколу: правильне модульне значення може бути небезпечним для логіки навіть без undefined behavior. Перевіряй допустимий діапазон до самого додавання, якщо wraparound не є бажаною поведінкою.[^iso-c-n1570]
 
 У виразі `x += 10000` компілятор застосовує правила compound assignment, еквівалентні обчисленню зліва й подальшому перетворенню до типу лівого операнда. Саме тому оголошений тип `x` сам по собі не повідомляє тип проміжної суми.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

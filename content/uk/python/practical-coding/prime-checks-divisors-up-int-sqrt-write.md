@@ -1,41 +1,18 @@
 ---
 id: py-prac-0022
 title: "Для `is_prime(n)`, яка перевіряє divisors до `int(sqrt(n))`, складіть tests, що вбивають mutants `<` vs `<=` на square boundary і помилку для `n < 2`."
-description: "Три групи тестів: base case n < 2, perfect square (вбиває мутацію < vs <=) і звичайні prime/composite."
 track: python
 section: practical-coding
-level: middle
-type: practical
-tags: [is-prime-n, int-sqrt-n, lt, n-lt-2]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-controlflow-the-range-function
     title: "Python 3.14: Tutorial/control flow, The range() Function"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#the-range-function
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: range(start, stop) не включає stop. Не описує тестування чи мутаційне тестування."
   - source_id: py314-library-math-math-nan
     title: "Python 3.14: Library/math, math.nan"
     url: https://docs.python.org/3.14/library/math.html#math.nan
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, примітка CPython: неприпустимі операції, наприклад sqrt(-1.0), дають ValueError. Це деталь реалізації CPython; не описує інші функції окремо."
   - source_id: py314-library-math-math-isqrt
     title: "Python 3.14: Library/math, math.isqrt"
     url: https://docs.python.org/3.14/library/math.html#math.isqrt
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: math.isqrt(n) повертає floor точного квадратного кореня цілого невід’ємного n. Не описує math.sqrt."
 ---
 
 ## Short answer
@@ -83,23 +60,3 @@ print(is_prime(7), is_prime_mutant(7))  # True True: a prime does not kill it
 - тестувати лише звичайні prime і composite: мутант проходить на `7` і `91`;
 - не тестувати `n < 2`: `0` і `1` дають `True`, і ніхто не помітить помилку;
 - не тестувати від’ємні числа: без guard тест упаде з `ValueError`, а не з логічною помилкою.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

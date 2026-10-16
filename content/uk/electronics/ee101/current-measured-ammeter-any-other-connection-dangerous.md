@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0227
 title: "Як правильно вимірювати струм амперметром і чому небезпечне інше підключення?"
-description: "Як правильно вимірювати струм амперметром і чому небезпечне інше підключення?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 74, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: kuphaldt-ammeter-usage
     title: "Workforce LibreTexts: Electric Circuits VI – Experiments (Kuphaldt), 2.4 How to Use an Ammeter to Measure Current"
-    url: "https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_VI_-_Experiments_(Kuphaldt)/02%3A_Basic_Concepts_and_Test_Equipment/2.04%3A_How_to_Use_an_Ammeter_to_Measure_Current"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник (Kuphaldt), розділ 2.4: амперметр вмикають послідовно й ідеально не створює падіння напруги; паралельно до значного джерела напруги він діє як коротке замикання, сплеск струму може пошкодити прилад і спрацювати його внутрішній запобіжник; для ручних приладів радять починати з найвищого діапазону. Конкретні моделі не розглядаються."
+    url: https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_VI_-_Experiments_(Kuphaldt)/02%3A_Basic_Concepts_and_Test_Equipment/2.04%3A_How_to_Use_an_Ammeter_to_Measure_Current
   - source_id: fiore-source-conversions
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 6.2 Source Conversions"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/06:_Analysis_Theorems_and_Techniques/6.2:_Source_Conversions"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 6.2: реальне джерело напруги має послідовний внутрішній опір; при короткому замиканні виходів максимальний струм дорівнює E/R. Про амперметри в цьому розділі не йдеться."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/06:_Analysis_Theorems_and_Techniques/6.2:_Source_Conversions
   - source_id: fiore-ohms-law
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 3.5 Ohm's Law"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/03:_Series_Resistive_Circuits/3.05:_Ohm's_Law"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 3.5: закон Ома V = I×R; з відомої напруги на резисторі знаходять струм. Загальна форма, не конкретні схеми."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/03:_Series_Resistive_Circuits/3.05:_Ohm's_Law
 ---
 
 ## Short answer
@@ -76,19 +41,3 @@ sources:
 - Вмикати амперметр паралельно джерелу або елементу, як вольтметр.
 - Торкатися провідників щупами, а не розривати ланцюг і не вставляти прилад у розрив.
 - Вибирати надто малий діапазон струму замість того, щоб почати з найвищого.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

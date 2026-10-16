@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0009
 title: "Як `raise ... from None` впливає на відображення exception context і коли це виправдано?"
-description: "raise NewError(...) from None встановлює __cause__ = None і __suppress_context__ = True, тому traceback приховує implicit __context__."
 track: python
 section: exceptions
-level: senior
-type: practical
-tags: [raise-from-none]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -72,23 +49,3 @@ except NotFound as err:
 - ставити `from None` за замовчуванням, щоб traceback виглядав чистішим, і втрачати причину багу;
 - вважати, що `from None` видаляє `__context__`: атрибут лишається, змінюється лише показ;
 - обирати `from None`, коли викликачу потрібна причина для діагностики: `from exc` показує обидва exception.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,40 +1,20 @@
 ---
 id: emb-dtypes-0015
 title: "Що виведе `sizeof(\"hello\")` та `strlen(\"hello\")`?"
-description: "sizeof рахує null-термінатор і дає 6, а strlen рахує символи без нього і дає 5."
 track: embedded
 section: data-types-and-memory-layout
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
 
 `sizeof("hello")` дає **6**, бо рядковий літерал є масивом із п'яти символів і завершального `\0`. `strlen("hello")` дає **5**, бо рахує байти до першого `\0`, не включаючи його. Виділяючи місце для копії C-рядка, потрібно врахувати й термінатор.[^iso-c-n1570]
-
 
 ## Detailed explanation
 
@@ -45,7 +25,3 @@ sources:
 Приклад: `char text[] = "hello";` має розмір 6, а `strlen(text)` повертає 5. Якщо натомість передати в `sizeof` вказівник на рядок, буде отримано розмір самого вказівника, а не довжину масиву: у більшості виразів масив перетворюється на вказівник, але `sizeof` є одним із винятків.[^iso-c-n1570]
 
 **Типова помилка:** виділити лише `strlen(s)` байтів і потім скопіювати рядок разом із `\0`. Для буфера копії потрібне місце ще й для завершального байта; інакше запис термінатора виходить за межі виділеної пам'яті.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0008
 title: "When is a custom sentinel object better than `None` as a default argument in a public API?"
-description: "When is a custom sentinel object better than `None` as a default argument in a public API?"
 track: python
 section: functions-and-scope
-level: senior
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: parameters left unfilled by a call are filled with the default value from the function definition; the source describes argument matching at call time, not the choice between None and a sentinel."
   - source_id: py314-reference-expressions-is-not
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#is-not
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: is and is not test identity; x is y is true if and only if x and y are the same object."
 ---
 
 ## Short answer
@@ -76,19 +53,3 @@ A public API has a cost. `inspect.signature` shows a plain `object()` sentinel a
 - using a sentinel where `None` has no separate value, which adds complexity to the API for no benefit;
 - testing the sentinel with `==` instead of `is`;
 - leaving a plain `object()` sentinel with no readable `repr` in a public signature, so the documentation shows a memory address.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

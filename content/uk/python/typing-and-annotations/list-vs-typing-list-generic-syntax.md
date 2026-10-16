@@ -1,41 +1,18 @@
 ---
 id: py-typing-0001
 title: "У чому різниця між List[str] з typing і list[str] вбудованим у Python 3.9+?"
-description: "typing.List[str] є legacy typing alias; list[str] є вбудованим generic-синтаксисом із Python 3.9 і рекомендований, якщо цільова версія Python не старіша за 3.9."
 track: python
 section: typing-and-annotations
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-08
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pep585
     title: "PEP 585: Type Hinting Generics In Standard Collections"
     url: https://peps.python.org/pep-0585/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "PEP, що ввів вбудований generic-синтаксис."
   - source_id: pep-563
     title: "PEP 563: Postponed Evaluation of Annotations"
     url: https://peps.python.org/pep-0563/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "PEP, що відклав обчислення анотацій функцій і змінних (доступно з Python 3.7). Не описує, які типи туди можна писати."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ print(first([42]))                                         # 42: the annotation 
 - вважати, що `list[str]` перевіряє елементи списку під час виконання (див. приклад вище);
 - порівнювати `List[str]` і `list[str]` через `==` або `isinstance` і очікувати однакову поведінку;
 - писати `list[str]` у runtime-коді (alias, cast, виклики `isinstance`), що має працювати на 3.8, і отримати `TypeError` лише на старій версії.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

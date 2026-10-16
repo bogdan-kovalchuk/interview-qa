@@ -1,48 +1,21 @@
 ---
 id: emb-align-0001
 title: "What is natural alignment?"
-description: "An N-byte type must reside at an address that is a multiple of N"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: learncpp-object-sizes
     title: "LearnCpp: Object sizes and the sizeof operator"
     url: https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary explanation of object sizes and implementation-dependent type sizes in C++."
   - source_id: acode-next-cpp
     title: "aCode: End? What next?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian C++ learning roadmap; not a normative source for alignment rules."
 ---
 
 ## Short answer
@@ -69,7 +42,3 @@ Compilers satisfy the requirement for ordinary variables, array elements, and al
 When bytes arrive from a packet, file, packed structure, or peripheral buffer, copy them into an aligned object with `memcpy` and decode the byte order explicitly. Do not assume that a cast fixes alignment or representation.
 
 Use `_Alignas` in C or `alignas` in C++ when storage needs a stricter alignment than its declaration would otherwise provide. Verify protocol, DMA, cache-line, and peripheral requirements separately because they can be stricter than the language type's natural alignment.
-
-## Sources
-
-<!-- generated from frontmatter -->

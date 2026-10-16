@@ -1,41 +1,18 @@
 ---
 id: py-coll-0007
 title: "Why must dictionary keys be hashable, and how does a dictionary use hash together with equality?"
-description: "Why must dictionary keys be hashable, and how does a dictionary use hash together with equality?"
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -72,11 +49,3 @@ automatically makes its instances unhashable (Python sets `__hash__ = None`), be
 interpreter cannot guarantee consistency between hash and equality without an explicit
 implementation of both. `tuple` and `frozenset` are hashable only when every one of their
 elements is hashable – recursively.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

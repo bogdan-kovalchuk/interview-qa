@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0064
 title: "Послідовне RC-коло: R = 100 Ω, X_C = 75 Ω, джерело 10 V RMS. Чому напруги на R і C (8 V і 6 V) не дають у сумі 14 V?"
-description: "Послідовне RC-коло: R = 100 Ω, X_C = 75 Ω, джерело 10 V RMS; напруги на R і C дорівнюють 8 V і 6 V."
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 42, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-rc
     title: "All About Circuits: Series Resistor-Capacitor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-4/series-resistor-capacitor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Комплексне складання імпедансу й фазорів напруги в послідовному RC-колі; не підтверджує конкретні числа навчального прикладу."
 ---
 
 ## Short answer
@@ -60,19 +33,3 @@ sources:
 У полярній формі імпеданс має кут близько `-36.87°`, отже за напруги джерела з фазою `0°` струм має кут `+36.87°`, бо `I = V/Z`. Це дає незалежну перевірку фазового співвідношення: струм випереджає напругу в ємнісному послідовному колі.[^aac-series-rc]
 
 **Типова помилка:** скласти `8 V + 6 V` і зробити висновок, що джерело має напругу `14 V`. Так додають тільки фазори з однаковим кутом; для компонентів із різними фазами спочатку треба подати напруги в комплексній формі, скласти їх, а вже тоді знайти модуль результату.[^aac-series-rc]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

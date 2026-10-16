@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0248
 title: "Що означає `I_G ≈ 0` для мікроконтролера, який керує MOSFET?"
-description: "Що означає IG приблизно 0 для мікроконтролера, який керує MOSFET?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 22, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: infineon-gate-driver-working-principle
     title: "Infineon: How Does a Gate Driver Work?"
     url: https://www.infineon.com/product-information/how-does-a-gate-driver-work
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює заряджання gate, параметри gate charge та вплив струму драйвера на час перемикання; конкретні значення залежать від MOSFET і режиму."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ Gate MOSFET відокремлений від каналу ізоляційни�
 **Типова помилка:** вважати, що майже нульовий DC струм означає, що gate можна перемикати миттєво або без навантаження на GPIO. Оцінюйте заряд за умовами застосування та перевіряйте, чи забезпечує керувальна напруга достатнє відкриття каналу.
 
 Приклад: якщо MOSFET має `Q_g = 20 nC` і перемикається `10 kHz`, на кожен цикл треба подати заряд; простий добуток `Q_g*f = 200 µA` оцінює середню складову заряду на одному фронті, але не піковий струм і не повну потужність драйвера. Враховуйте обидва фронти та реальний профіль керування.[^infineon-gate-driver-working-principle]
-
-## Sources
-
-<!-- generated from frontmatter -->

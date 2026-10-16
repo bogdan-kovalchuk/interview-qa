@@ -1,41 +1,18 @@
 ---
 id: py-async-0015
 title: "How is a cancellation request delivered to a Task as a `CancelledError`, and why is cancellation cooperative?"
-description: "How is a cancellation request delivered to a Task as a `CancelledError`, and why is cancellation cooperative?"
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: [cancellederror]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -70,11 +47,3 @@ A specific `await` can be shielded from cancellation with `asyncio.shield()`: it
 awaitable in a separate Task, and cancelling the outer coroutine cancels only the shield, not the
 inner Task, so the protected operation keeps running in the background to completion even after
 whoever was awaiting it has already received a `CancelledError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

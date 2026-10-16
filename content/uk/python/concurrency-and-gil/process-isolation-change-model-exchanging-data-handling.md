@@ -1,55 +1,24 @@
 ---
 id: py-gil-0004
 title: "Як process isolation змінює модель обміну даними та обробку worker crash порівняно з threads?"
-description: "Process isolation вимагає серіалізації даних (pickle) для IPC, але забезпечує ізоляцію crash – падіння worker не завершує батьківський process."
 track: python
 section: concurrency-and-gil
-level: senior
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -98,19 +67,3 @@ if __name__ == "__main__":
 - не всі об'єкти Python є picklable: генератори, файлові дескриптори, мережеві сокети та lambda-функції не можуть передаватися через стандартні IPC-канали;
 - на відміну від потоків, падіння worker через segmentation fault чи OOM killer не призводить до втрати основного процесу програми, що критично для високонадійних сервісів;
 - завершення процесу worker під час утримання IPC-блокування або запису в pipe може призвести до зависання черги, якщо не налаштовано тайм-аути чи механізми виявлення broken process pool.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

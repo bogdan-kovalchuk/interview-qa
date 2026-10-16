@@ -1,41 +1,18 @@
 ---
 id: py-async-0004
 title: "Чому для fire-and-forget Task потрібно зберігати strong reference та явно обробляти outcome?"
-description: "Event loop зберігає лише weak references на Tasks, тому Task без зовнішнього посилання може бути знищена GC до завершення."
 track: python
 section: asyncio
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -73,23 +50,3 @@ task.add_done_callback(background_tasks.discard)
 `TaskGroup` вирішує цю саму проблему структурно: він сам тримає strong references на всі свої
 children, поки `async with` блок не завершиться, і саме тому там неможливо випадково "загубити"
 Task – lifetime Task жорстко прив'язаний до lifetime блоку.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

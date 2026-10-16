@@ -1,34 +1,15 @@
 ---
 id: emb-patterns-0014
 title: "Як виглядають чотири базові бітові операції?"
-description: "Set – OR з маскою, clear – AND з інверсією маски, toggle – XOR, test – AND; маску роблять через BIT32(n)."
 track: embedded
 section: common-code-patterns
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -61,7 +42,3 @@ Set об’єднує значення з маскою через OR, тому �
 Для звичайної змінної це зрозумілі операції над значенням. Але запис у memory-mapped register може мати специфічну семантику: деякі регістри очищають прапорці записом одиниці, деякі мають окремі set/clear адреси, а певні біти змінюються апаратурою. У таких випадках стандартне `reg |= mask` виконує читання, зміну й запис і може стерти стороннє оновлення або записати неправильні біти. Треба користуватися процедурою з reference manual конкретного MCU, а `volatile` забезпечує лише властивості доступу, визначені реалізацією, не атомарність.[^iso-c-n1570]
 
 Приклад для `n = 3`: маска має вигляд `00001000`. OR встановлює цей біт, AND із доповненням маски очищає його, XOR перемикає, а AND із початковим значенням показує, чи він був встановлений. Перед застосуванням перевір ширину регістра та дозволені операції читання/запису.
-
-## Sources
-
-<!-- generated from frontmatter -->

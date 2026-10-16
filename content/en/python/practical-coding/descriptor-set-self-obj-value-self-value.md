@@ -1,58 +1,24 @@
 ---
 id: py-prac-0011
 title: "In a descriptor with `__set__(self, obj, value): self._value = value`, two instances see the last value written: why does this happen, and where should per-instance state be stored?"
-description: "self in __set__ is the descriptor object, which sits in the owner class as one class attribute, so self._value is shared by all instances."
 track: python
 section: practical-coding
-level: middle
-type: pitfall
-tags: [set-self-obj-value-self-value-value]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-implementing-descriptors
     title: "Python 3.14: Reference/datamodel, Implementing Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#implementing-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the descriptor must be in the class dictionary of the owner class or of a parent class; __set__ is called for an instance of the owner class. Does not describe a descriptor stored as an instance attribute."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a data descriptor with __get__ together with __set__ and/or __delete__ overrides a write to the instance dictionary; a descriptor without __get__ returns the descriptor object itself when the instance dictionary has no value. Does not describe user-written descriptor examples."
   - source_id: py314-reference-datamodel-object-set-name
     title: "Python 3.14: Reference/datamodel, object.__set_name__"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__set_name__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __set_name__ is called when a class is created for a descriptor assigned to a class attribute, and receives the attribute name. Does not describe validation."
   - source_id: py314-reference-datamodel-slots
     title: "Python 3.14: Reference/datamodel, __slots__"
     url: https://docs.python.org/3.14/reference/datamodel.html#slots
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __slots__ prevents the creation of __dict__ and __weakref__ unless they are declared in __slots__. Does not describe other ways of storing state."
   - source_id: py314-library-weakref-weakkeydictionary
     title: "Python 3.14: Library/weakref, WeakKeyDictionary"
     url: https://docs.python.org/3.14/library/weakref.html#weakref.WeakKeyDictionary
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: WeakKeyDictionary holds keys weakly, and entries are discarded when no strong reference to the key exists; not all objects support weak references. Does not describe hashability requirements for keys."
 ---
 
 ## Short answer
@@ -116,23 +82,3 @@ A `WeakKeyDictionary` keyed by `obj` does not change `obj`: its entries disappea
 - storing per-instance state in `self._value` of the descriptor: all instances then share one value;
 - writing only `__set__` and expecting a read before any write to return a value: it returns the descriptor object itself;
 - using `obj.__dict__` for a class with `__slots__` and no `__dict__`: this raises `AttributeError`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

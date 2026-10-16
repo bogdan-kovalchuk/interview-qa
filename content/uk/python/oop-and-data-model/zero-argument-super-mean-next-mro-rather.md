@@ -1,55 +1,24 @@
 ---
 id: py-oop-0017
 title: "Чому zero-argument `super()` означає «наступний у MRO», а не просто «безпосередній parent class»?"
-description: "super() без аргументів бере клас, у якому написано метод, і його перший аргумент, а далі шукає наступний клас у MRO фактичного типу об’єкта, а не клас, де super() написаний."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [super]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-builtins-functions-super
     title: "Python 3.14: Built-in Functions/super"
     url: https://docs.python.org/3.14/builtins/functions.html#super
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ super: порядок пошуку після type за __mro__, zero-argument form (type і перший аргумент методу), застереження про вкладені функції, рекомендація однакової сигнатури в cooperative methods. Не описує object.__init__ і не дає правил проєктування mixin."
 ---
 
 ## Short answer
@@ -98,11 +67,3 @@ B().hello()
 - писати `A.hello(self)` замість `super().hello()` у `B`: для `D()` такий виклик обходить `C`;
 - вважати, що `super()` завжди викликає батька, записаного в `class B(A)`;
 - викликати `super()` у вкладеній функції або generator expression і очікувати, що вона знає клас методу.[^py314-builtins-functions-super]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

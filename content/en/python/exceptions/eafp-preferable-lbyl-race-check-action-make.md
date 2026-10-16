@@ -1,62 +1,27 @@
 ---
 id: py-excpt-0014
 title: "When is EAFP preferable to LBYL, and how can a race between the check and the action make LBYL incorrect?"
-description: "When is EAFP preferable to LBYL, and how can a race between the check and the action make LBYL incorrect?"
 track: python
 section: exceptions
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-glossary-term-lbyl
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-LBYL
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of LBYL as explicitly testing preconditions before calls or lookups."
   - source_id: py314-glossary-term-eafp
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-EAFP
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of EAFP as assuming the operation succeeds and catching the exception if the assumption proves false."
   - source_id: py314-library-os-os-access
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.access
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: calling os.access() before open() creates a security hole through the time interval between the check and the open; EAFP is recommended."
 ---
 
 ## Short answer
@@ -101,19 +66,3 @@ EAFP does not make a sequence atomic. If the second step fails after the first o
 - catching a broad `Exception` around a large block, so an error from a neighbouring operation looks like "the key is missing";
 - assuming a `try` makes several steps atomic: after the first successful step, the second may fail;
 - keeping `if os.path.exists(p)` before `open(p)` "for safety", which reproduces the same window that EAFP removes.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

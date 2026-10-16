@@ -1,62 +1,27 @@
 ---
 id: emb-raii-0005
 title: "Які пари HAL-функцій варто загортати в scoped handle?"
-description: "Будь-яку пару acquire/release (init/deinit), де звільнення має відбутися на кожному шляху виходу."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cppcg-r1-raii
     title: "C++ Core Guidelines: R.1 – Manage resources automatically using resource handles and RAII"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r1-manage-resources-automatically-using-resource-handles-and-raii-resource-acquisition-is-initialization
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Настанова: обгортати ресурс із парними acquire/release в об’єкт, що захоплює в конструкторі й звільняє в деструкторі; приклади – файли, mutex, пам’ять, не апаратна периферія."
   - source_id: cmsis-core-register
     title: "CMSIS-Core (Cortex-M): Core Register Access"
     url: https://arm-software.github.io/CMSIS_6/latest/Core/group__Core__Register__gr.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Описує __disable_irq і __enable_irq (встановлюють і очищають PRIMASK; лише privileged mode), __get_PRIMASK і __set_PRIMASK (читання й запис PRIMASK); PRIMASK, коли встановлений, блокує всі винятки з конфігурованим пріоритетом. Сторінка позначає __get_PRIMASK як доступний лише для Armv8-M, тож доступність для конкретного ядра треба перевіряти в його документації."
   - source_id: cmsis-rtos2-mutex
     title: "CMSIS-RTOS2: Mutex Management"
     url: https://arm-software.github.io/CMSIS_6/latest/RTOS2/group__CMSIS__RTOS__MutexMgmt.html
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Описує mutex API CMSIS-RTOS2: osMutexAcquire і osMutexRelease; ці виклики недоступні з ISR. Конкретна RTOS-реалізація поза специфікацією може поводитися інакше."
   - source_id: cpp-draft-stmt-dcl
     title: "C++ working draft: Declaration statement ([stmt.dcl])"
     url: https://eel.is/c++draft/stmt.dcl
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Пункт 2: при кожній передачі керування в межах функції (зокрема при поверненні з неї) automatic-змінні блоку, активні в точці відправлення й неактивні в точці призначення, знищуються у зворотному порядку конструювання. Не охоплює завершення програми через exit чи abort і не описує винятки."
 ---
 
 ## Short answer
@@ -104,7 +69,3 @@ int read_reg(osMutexId_t bus, int cs_pin, std::uint8_t reg, std::uint8_t* out) {
 - Створити guard-и в неправильному порядку: лінія CS чи інший «вужчий» ресурс має створюватися після «ширшого» (шини) і тому знищуватися перед ним.
 - Дозволити копіювання handle: дві копії виконають release двічі (qid:emb-raii-0004).
 - Викликати в деструкторі те, що не можна виконувати в поточному контексті (mutex API в ISR).[^cmsis-rtos2-mutex]
-
-## Sources
-
-<!-- generated from frontmatter -->

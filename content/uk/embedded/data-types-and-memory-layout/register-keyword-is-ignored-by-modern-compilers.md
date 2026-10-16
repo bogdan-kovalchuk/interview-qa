@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0079
 title: "Що означає storage class `register` і чи має він значення сьогодні?"
-description: "У C `register` не гарантує розміщення у CPU-регістрі й забороняє брати адресу оголошеного так об’єкта."
 track: embedded
 section: data-types-and-memory-layout
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: cpp17-register-removal
     title: "C++17 draft: Removal of register storage-class specifier"
     url: https://eel.is/c%2B%2Bdraft/diff.cpp14.dcl.dcl
-    accessed: 2026-10-04
-    kind: spec
-    version: "C++17"
-    applicability: "Підтверджує вилучення специфікатора register у C++17; не описує правило C."
 ---
 
 ## Short answer
@@ -58,7 +35,3 @@ register unsigned count = 0;
 ```
 
 Для звичайного коду оголошуй змінну без `register`, а продуктивність вимірюй на реальній цілі з потрібними compiler flags. Розподіл регістрів краще залишити оптимізатору: ручний hint може лише створити обмеження на адресу, не гарантуючи виграшу.
-
-## Sources
-
-<!-- generated from frontmatter -->

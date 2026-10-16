@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0047
 title: "Як оголосити масив із 4 вказівників на функції `void handler(void)`?"
-description: "Оголосіть масив як void (*handlers[4])(void) або використайте typedef handler_t handlers[4]."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,7 +40,3 @@ handler_t handlers[4];
 - Вважати, що `typedef` перевіряє ініціалізацію або безпечність індексу.
 
 У реальному коді псевдонім типу часто полегшує сигнатури функцій, що приймають таку таблицю. Однак під час оголошення параметра функції масивний параметр коригується до вказівника, тож параметр `handler_t handlers[4]` не передає в callee інформацію про довжину; розмір потрібно передати чи обмежити окремо.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

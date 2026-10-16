@@ -1,34 +1,15 @@
 ---
 id: py-prac-0025
 title: "Складіть boundary та round-trip tests для RLE decoder з grammar `count:character|count:character`: count є positive decimal, а character не може бути `:` чи `|`; malformed input викликає `ValueError`."
-description: "Boundary: мінімальний count=1, round-trip decode(encode(s)) == s; malformed -> ValueError для заборонених символів, нульового count і порушення grammar."
 track: python
 section: practical-coding
-level: middle
-type: practical
-tags: [count-character-count-character, valueerror]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-exceptions-valueerror
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html#ValueError
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: ValueError означає аргумент правильного типу з неприйнятним значенням."
   - source_id: py314-library-functions-int
     title: "Python 3.14: Library/functions"
     url: https://docs.python.org/3.14/library/functions.html#int
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: int() приймає рядок з пробілами, знаком і одиничними підкресленнями між цифрами; цифри 0–9 можуть бути будь-якими Unicode decimal digits."
 ---
 
 ## Short answer
@@ -68,23 +49,3 @@ Round-trip перевіряє, що encode і decode узгоджені: `encode
 - перевіряти count через `int()` без окремої перевірки символів, тож `" 3"` і `"1_0"` приймаються;
 - тестувати лише однозначні count, без `12` і без `0`;
 - вважати, що character може бути рядком довшим за один символ, наприклад `"12:ab"`.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

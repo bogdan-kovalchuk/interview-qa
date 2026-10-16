@@ -1,69 +1,30 @@
 ---
 id: py-oop-0023
 title: "Чому comparison method має повертати `NotImplemented` для непідтримуваного operand замість негайного `False` або exception?"
-description: "Якщо comparison method повертає NotImplemented, інтерпретатор пробує reflected method другого operand; якщо й той відмовляється, == і != порівнюють ідентичність, а порядкові оператори дають TypeError."
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: [notimplemented]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-eq
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__eq__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: rich comparison methods, reflected method другого operand, fallback == і != до is і is not, і значення за замовчуванням object."
   - source_id: py314-reference-datamodel-notimplemented
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#notimplemented
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: NotImplemented і його поведінка в булевому контексті (застаріло з 3.9, TypeError з 3.14)."
   - source_id: py314-reference-expressions-value-comparisons
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#value-comparisons
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: value comparisons, зокрема відсутність стандартного порядкового оператора, спроба якого дає TypeError."
 ---
 
 ## Short answer
@@ -106,11 +67,3 @@ print(Lenient() == 1)                 # False: both sides gave NotImplemented, s
 - повертати `None` або `False` замість `NotImplemented` для непідтримуваного типу: `__eq__`, що повертає `None`, дає `None` як результат `==`, а `False` закриває другий operand;
 - очікувати від `==` з непідтримуваним типом `TypeError`: `==` дає `False`, а `TypeError` виникає для порядкових операторів;
 - писати `if self.__eq__(other):` або `bool(NotImplemented)`: у 3.9–3.13 це DeprecationWarning, а в 3.14 – `TypeError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

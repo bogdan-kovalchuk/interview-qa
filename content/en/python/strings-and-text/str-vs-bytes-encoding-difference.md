@@ -1,34 +1,15 @@
 ---
 id: py-strtxt-0001
 title: "What is the difference between str and bytes in Python 3, and when would you use each?"
-description: "In Python 3, str represents Unicode text and bytes represents an immutable sequence of byte values; explicit encoding or decoding crosses the boundary between them."
 track: python
 section: strings-and-text
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  uk: 3
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-08
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-unicode
     title: "Python 3.14: Howto/unicode"
     url: https://docs.python.org/3.14/howto/unicode.html#tips-for-writing-unicode-aware-programs
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the section on writing Unicode-aware programs. Confirms that there is no automatic encoding or decoding (str + bytes raises TypeError) and recommends decoding input and encoding output. Does not define the bytes API."
 ---
 
 ## Short answer
@@ -71,11 +52,3 @@ In practice this leads to a division of labour. Keep text as `str` inside the pr
 - assuming that `len()` of a `bytes` object counts characters: `len(b'\xc3\xa9')` is 2, while `len('é')` is 1;
 - decoding bytes without an explicit encoding even though the format or protocol defines one;
 - mixing `str` and `bytes` in one operation, for example in concatenation, or expecting Python to convert them.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

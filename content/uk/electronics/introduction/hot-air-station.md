@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0286
 title: "Для чого потрібна hot air station?"
-description: "Для чого потрібна hot air station?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: hakko-fr801-manual
     title: "HAKKO FR-801 SMD Rework Station Instruction Manual"
     url: https://www.hakko.com/english/support/doc/result.php?mode=download&seq=4968
-    accessed: 2026-10-04
-    kind: official
-    version: "MA01360XZ050913"
-    applicability: "Описує роботу FR-801: регулювання температури й потоку, локальне нагрівання та типові ризики під час демонтажу; це приклад конкретної моделі, а не універсальні налаштування для всіх станцій."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ Hot air station – це інструмент для локального наг
 Приклад: під час демонтажу QFP відповідне сопло спрямовують на ряд виводів і прогрівають його рівномірно; оператор чекає, поки припій розплавиться, і лише тоді піднімає корпус інструментом. Після роботи потрібно оглянути з’єднання, бо гаряче повітря не гарантує відсутності перемичок, кульок припою чи недостатнього змочування.[^hakko-fr801-manual]
 
 **Типові помилки:** вважати задану температуру показом температури самого компонента, ставити надто сильний потік або тягнути корпус до повного розплавлення припою. Вибирають режим за документацією компонента та припою, перевіряють результат і захищають сусідні деталі від потоку.
-
-## Sources
-
-<!-- generated from frontmatter -->

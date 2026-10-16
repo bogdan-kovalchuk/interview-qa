@@ -1,41 +1,18 @@
 ---
 id: py-async-0024
 title: "How do a bounded queue and a concurrency limit create backpressure and protect an async service from unbounded fan-out?"
-description: "How do a bounded queue and a concurrency limit create backpressure and protect an async service from unbounded fan-out?"
 track: python
 section: asyncio
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -47,6 +24,7 @@ queue.put(item)` waits until a consumer frees a slot via `get()` – natural bac
 `Semaphore` limits concurrent outbound calls, such as HTTP requests to a database: once its counter
 is exhausted, new Tasks wait on `acquire()`. Without these, a burst can exhaust memory or overload
 downstream.
+
 ## Detailed explanation
 
 `asyncio.Queue` implements backpressure not through some special mechanism but through a plain
@@ -72,23 +50,3 @@ downstream calls as soon as items show up in the queue, overloading a database o
 service with a burst of requests. A bounded queue limits *accumulated* work, a semaphore limits
 *concurrently running* work – both layers of protection are needed, because they act on different
 parts of the pipeline.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

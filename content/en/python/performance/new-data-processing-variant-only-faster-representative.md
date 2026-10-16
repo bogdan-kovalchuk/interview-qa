@@ -1,41 +1,18 @@
 ---
 id: py-perf-0017
 title: "A new data-processing variant is only 2% faster on a representative benchmark but noticeably more complex: how do you justify the choice based on latency budget and maintenance cost?"
-description: "A new data-processing variant is only 2% faster on a representative benchmark but noticeably more complex: how do you justify the choice based on latency budget and maintenance cost?"
 track: python
 section: performance
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -57,23 +34,3 @@ Example: processing takes 40 ms against a 50 ms budget. The variant gives 2%, th
 - comparing variants with the profiler instead of timeit;
 - not recording the latency budget, so "faster" becomes the goal in itself;
 - ignoring maintenance cost when tests and review do not cover the complex variant.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

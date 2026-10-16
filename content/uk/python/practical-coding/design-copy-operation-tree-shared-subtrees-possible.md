@@ -1,34 +1,15 @@
 ---
 id: py-prac-0009
 title: "Спроєктуйте copy operation для tree з shared subtrees та possible cycles, зберігши graph topology без aliasing з original."
-description: "Використати memo-dict, ключований за id() оригінального вузла: перед рекурсивним копіюванням перевіряти, чи вузол вже скопійований, і повертати існуючу копію."
 track: python
 section: practical-coding
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: deepcopy зберігає memo dictionary вже скопійованих об’єктів поточного проходу; рекурсивні структури можуть спричинити рекурсивний цикл; класи можуть перевизначити копіювання через __deepcopy__. Не описує, як саме memo індексується."
   - source_id: py314-library-functions-id
     title: "Python 3.14: Library/functions, id"
     url: https://docs.python.org/3.14/library/functions.html#id
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: id() унікальний і сталий, поки об’єкт живий; об’єкти з неперекривними життями можуть мати однаковий id(). Не описує memo-словники."
 ---
 
 ## Short answer
@@ -90,23 +71,3 @@ except RecursionError as error:
 - записувати memo після рекурсивного спуску: на циклі виникає `RecursionError`;
 - використовувати ключ за вмістом, наприклад `repr(node)`, замість `id()`: різні, але рівні списки зливаються в одну копію;
 - вважати, що `tuple` або власні об’єкти копіюються разом із контейнерами: вони лишаються спільними з оригіналом.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

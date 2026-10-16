@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0007
 title: "У чому різниця між умовним струмом і рухом електронів?"
-description: "У чому різниця між умовним струмом і рухом електронів?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 27, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-conventional-electron-flow
     title: "All About Circuits: Conventional Versus Electron Flow"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-1/conventional-versus-electron-flow/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює домовленість про напрям conventional current, протилежний дрейфу електронів у металах, та допустимість обох систем відліку."
 ---
 
 ## Short answer
@@ -54,7 +31,3 @@ sources:
 - Називати напрям умовного струму напрямом руху електронів у металевому дроті.
 - Вважати від’ємний результат помилкою замість індикації протилежного напряму відносно обраної стрілки.
 - Переносити модель електронного провідника на напівпровідники без згадки про дірки.[^aac-conventional-electron-flow]
-
-## Sources
-
-<!-- generated from frontmatter -->

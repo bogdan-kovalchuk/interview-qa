@@ -1,90 +1,39 @@
 ---
 id: py-perf-0002
 title: "Яку проблему вирішує `timeit` порівняно з одноразовим заміром wall-clock time?"
-description: "Повтори в timeit дають найменше значення як нижню межу швидкості коду; більші значення зазвичай спричинені іншими процесами, які заважають точності заміру."
 track: python
 section: performance
-level: middle
-type: mechanism
-tags: [timeit]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit-repeat
     title: "Python 3.14: Library/timeit (Timer.repeat)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit.Timer.repeat
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: timeit.Timer.repeat і примітка про min() як нижню межу та про інші процеси, що спотворюють вищі значення. Не описує setup чи GC."
   - source_id: py314-library-timeit-timeit
     title: "Python 3.14: Library/timeit (Timer.timeit)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit.Timer.timeit
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: timeit.Timer.timeit виконує setup один раз, повертає час основного оператора, вимикає garbage collector під час заміру, за замовчуванням number дорівнює 1000000."
   - source_id: py314-library-timeit-autorange
     title: "Python 3.14: Library/timeit (Timer.autorange)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit.Timer.autorange
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: timeit.Timer.autorange збільшує кількість ітерацій, доки сумарний час не стане щонайменше 0.2 секунди."
   - source_id: py314-library-timeit-default-timer
     title: "Python 3.14: Library/timeit (default_timer)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit.default_timer
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: таймер за замовчуванням завжди time.perf_counter(). Не описує інші таймери."
   - source_id: py314-library-timeit-cli
     title: "Python 3.14: Library/timeit (Command-Line Interface)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit-command-line-interface
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: командний рядок timeit автоматично підбирає кількість ітерацій, за замовчуванням повторює замір 5 разів і рекомендує найкращий час."
   - source_id: py314-library-time-time
     title: "Python 3.14: Library/time (time.time)"
     url: https://docs.python.org/3.14/library/time.html#time.time
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: time.time може повернути менше значення, ніж попередній виклик, якщо системний годинник перевели назад. Не є монотонним годинником."
   - source_id: py314-library-profile-introduction
     title: "Python 3.14: Library/profile (Introduction to the profilers)"
     url: https://docs.python.org/3.14/library/profile.html#introduction-to-the-profilers
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: профілювальники призначені для профілю виконання, а не для бенчмаркінгу; для досить точних результатів там згадується timeit."
 ---
 
 ## Short answer
@@ -119,11 +68,3 @@ best = min(times)                 # the lower bound; higher values are usually n
 - брати середнє з одного заміру або з повторів замість `min()`;
 - вважати, що `Timer.timeit()` сам повертає мінімум: він повертає час одного прогону з `number` ітераціями;
 - виконувати в `stmt` те, що має бути в `setup` (наприклад, створення даних), бо це повторюється в кожній ітерації.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

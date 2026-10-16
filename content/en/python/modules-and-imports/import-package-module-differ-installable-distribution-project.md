@@ -1,62 +1,27 @@
 ---
 id: py-modimp-0014
 title: "How does an import package/module differ from an installable distribution project with build metadata?"
-description: "How does an import package/module differ from an installable distribution project with build metadata?"
 track: python
 section: modules-and-imports
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-regular-packages
     title: "Python 3.14: Reference/import, Regular packages"
     url: https://docs.python.org/3.14/reference/import.html#regular-packages
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a regular package is typically a directory containing __init__.py."
   - source_id: py314-reference-import-namespace-packages
     title: "Python 3.14: Reference/import, Namespace packages"
     url: https://docs.python.org/3.14/reference/import.html#namespace-packages
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a namespace package has no __init__.py file."
   - source_id: packaging-distribution-package-vs-import-package
     title: "Python Packaging User Guide: Distribution package vs. import package"
     url: https://packaging.python.org/en/latest/discussions/distribution-package-vs-import-package/#distribution-package-vs-import-package
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official PyPA page: a distribution package is what pip installs, usually synonymous with project; one distribution can provide several import packages, and the names need not match."
 ---
 
 ## Short answer
@@ -87,19 +52,3 @@ except ModuleNotFoundError as error:
 - assuming that `pip install X` gives an import package named `X` (for Pillow it is `PIL`);
 - looking up a module by the distribution name instead of the import name;
 - assuming that the `name` in `pyproject.toml` creates an import package: the names are not required to match.[^packaging-distribution-package-vs-import-package]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

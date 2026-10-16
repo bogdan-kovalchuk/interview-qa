@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0027
 title: "Чому еквівалентний опір не достатній для повного аналізу схеми?"
-description: "Чому еквівалентний опір не достатній для повного аналізу схеми?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slaa067
     title: "Texas Instruments: Understanding Basic Analog – Circuit Equations"
     url: https://www.ti.com/lit/pdf/slaa067
-    accessed: 2026-10-04
-    kind: official
-    version: "SLAA067"
-    applicability: "Підтримує закон Ома, правила Кірхгофа, аналіз послідовних і паралельних кіл; приклади ідеальних резистивних DC-кіл."
 ---
 
 ## Short answer
@@ -59,7 +36,3 @@ R_eq дає загальну поведінку кола з боку джере�
 - Ігнорувати навантаження, яке змінює еквівалентну мережу та струм джерела.
 
 Для складнішої схеми, що не зводиться до простих послідовних і паралельних груп, потрібні вузлові чи контурні рівняння. Еквівалентна схема залишається корисною, але лише для того запитання, яке вона зберігає: поведінки на обраних затискачах.[^ti-slaa067]
-
-## Sources
-
-<!-- generated from frontmatter -->

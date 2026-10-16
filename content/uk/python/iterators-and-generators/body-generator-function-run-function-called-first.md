@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0005
 title: "Коли виконується тіло generator function: під час виклику функції чи першого `next()`?"
-description: "Тіло generator function не виконується під час виклику – воно запускається лише при першому next()."
 track: python
 section: iterators-and-generators
-level: middle
-type: mechanism
-tags: [next]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: вираз generator; найлівіший iterable обчислюється одразу."
 ---
 
 ## Short answer
@@ -78,11 +51,3 @@ except ValueError:
 - очікувати, що `gen = parse(...)` виконує код до першого `yield`, наприклад друк або відкриття файлу;
 - вважати, що помилка в тілі з’явиться вже під час створення generator;
 - плутати створення generator зі споживанням: без `next()` або `for` тіло не виконується ніколи.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

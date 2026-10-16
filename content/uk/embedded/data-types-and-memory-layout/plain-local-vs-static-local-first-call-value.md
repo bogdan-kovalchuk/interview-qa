@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0086
 title: "Trap: чи однаково поводяться `int x;` та `static int x;` всередині функції при першому виклику?"
-description: "int x; містить сміття зі стека, а static int x; гарантовано дорівнює нулю при першому виклику."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -46,23 +27,3 @@ sources:
 У C статична локальна змінна без явного ініціалізатора має статичну ініціалізацію нулем; у C++ локальна змінна зі static storage duration ініціалізується відповідно до правил статичної ініціалізації, а складна динамічна ініціалізація виконується при першому проходженні декларації. Тут `int` має просте нульове початкове значення, тож різниця між мовами цього прикладу не змінює.
 
 **Типова помилка:** пояснювати різницю словами «стек проти `.bss`» як обов’язкове правило. Важливо розрізняти automatic і static storage duration та не читати автоматичну змінну до ініціалізації.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

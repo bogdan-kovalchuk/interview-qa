@@ -1,83 +1,36 @@
 ---
 id: py-oop-0026
 title: "Чим structural subtyping через `typing.Protocol` відрізняється від nominal inheritance через ABC?"
-description: "Protocol перевіряє структуру: клас підходить, якщо має потрібні методи, без успадкування; ABC визначає належність явно через успадкування, register() або __subclasshook__."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [typing-protocol]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing-nominal-vs-structural-subtyping
     title: "Python 3.14: Library/typing (Nominal vs structural subtyping)"
     url: https://docs.python.org/3.14/library/typing.html#nominal-vs-structural-subtyping
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: означення nominal і structural subtyping для static type checkers. Не описує runtime-поведінку isinstance."
   - source_id: py314-library-typing-protocol
     title: "Python 3.14: Library/typing (typing.Protocol)"
     url: https://docs.python.org/3.14/library/typing.html#typing.Protocol
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: клас Protocol і вимога @runtime_checkable для isinstance та issubclass."
   - source_id: py314-library-typing-runtime-checkable
     title: "Python 3.14: Library/typing (typing.runtime_checkable)"
     url: https://docs.python.org/3.14/library/typing.html#typing.runtime_checkable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: @runtime_checkable перевіряє лише наявність атрибутів, не сигнатури й типи; isinstance з таким протоколом може бути повільним."
   - source_id: py314-library-abc-abcmeta-register
     title: "Python 3.14: Library/abc (ABCMeta.register)"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.register
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: register() робить клас virtual subclass ABC; ABC не з’являється в MRO, його методи не викликаються через super()."
   - source_id: py314-library-abc-abcmeta-subclasshook
     title: "Python 3.14: Library/abc (ABCMeta.__subclasshook__)"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.__subclasshook__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: __subclasshook__ як спосіб вирішити, чи вважати клас підкласом ABC, без register()."
 ---
 
 ## Short answer
@@ -121,19 +74,3 @@ print(isinstance(Socket(), Closable))   # True: the runtime check ignores signat
 - вважати, що `isinstance()` з `@runtime_checkable` Protocol перевіряє сигнатури або типи, а не лише наявність атрибутів;
 - вважати, що `register()` додає ABC до MRO або переносить його методи в клас;
 - викликати `isinstance()` з `Protocol`, який не позначено `@runtime_checkable`: це `TypeError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0021
 title: "Коли іменована функція через `def` є кращим вибором за `lambda`, навіть якщо обидві можуть реалізувати той самий короткий вираз?"
-description: "def кращий, коли потрібне зрозуміле ім’я для traceback, docstring, type annotations або кілька інструкцій у тілі."
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-lambdas
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#lambdas
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pep-8
     title: "PEP 8: Style Guide for Python Code"
     url: https://peps.python.org/pep-0008/#programming-recommendations
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Настанова PEP 8: для іменованої функції використовувати def, а не присвоювати lambda змінній; ім’я важливе для traceback."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ print(as_lambda.__doc__)                 # None
 - вважати, що lambda і `def` відрізняються лише записом: lambda не може містити кілька інструкцій, анотацій і docstring;
 - присвоювати lambda змінній і очікувати в traceback справжнього імені, хоча там буде `<lambda>`;
 - вибирати lambda лише через коротший запис, коли функцію потрібно повторно використовувати або діагностувати.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-perf-0017
 title: "Новий variant обробки даних лише на 2% швидший у representative benchmark, але суттєво складніший: як обґрунтувати вибір за latency budget і maintenance cost?"
-description: "Якщо 2% покращення не наближає систему до latency budget і не змінює масштабної здатності, складніший variant зазвичай не варто впроваджувати."
 track: python
 section: performance
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -57,23 +34,3 @@ Maintenance cost – це конкретна робота: кожна додат
 - порівнювати варіанти за профайлером, а не за timeit;
 - не записувати latency budget, тож «швидше» стає самоціллю;
 - не враховувати maintenance cost, якщо тести й рев’ю не покривають складний варіант.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

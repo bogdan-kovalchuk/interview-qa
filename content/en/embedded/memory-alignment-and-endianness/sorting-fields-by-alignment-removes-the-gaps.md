@@ -1,48 +1,21 @@
 ---
 id: emb-align-0005
 title: "How do you reorder fields to reduce padding?"
-description: "Group fields by decreasing alignment to reduce internal gaps when the layout is not fixed"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Struct miscellany"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary 12-versus-8-byte example and guidance to order members by decreasing size."
   - source_id: acode-next-cpp
     title: "aCode: End? What next?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian C++ learning roadmap that identifies LearnCpp as upstream educational material; not a normative layout source."
 ---
 
 ## Question code
@@ -107,7 +80,3 @@ Alignment is the more precise ordering key. Size and alignment often correlate f
 4. Measure whether the saved storage justifies any loss of readability or locality.
 
 Do not apply this transformation where external layout is part of the contract: memory-mapped hardware registers, network packets, persistent binary files, shared-memory ABIs, or structures consumed by separately built code. Packing is not a general substitute because it can create unaligned accesses.
-
-## Sources
-
-<!-- generated from frontmatter -->

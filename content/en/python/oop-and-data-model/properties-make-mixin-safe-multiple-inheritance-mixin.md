@@ -1,55 +1,24 @@
 ---
 id: py-oop-0020
 title: "What properties make a mixin safe for multiple inheritance, and why does a mixin usually not own the object's primary state?"
-description: "What properties make a mixin safe for multiple inheritance, and why does a mixin usually not own the object's primary state?"
 track: python
 section: oop-and-data-model
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-builtins-functions-super
     title: "Python 3.14: Built-in Functions/super"
     url: https://docs.python.org/3.14/builtins/functions.html#super
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, super section: search order after type along __mro__, the zero-argument form (type and the first method argument), the warning about nested functions, and the recommendation of the same calling signature in cooperative methods. Does not describe object.__init__ or mixin design."
 ---
 
 ## Short answer
@@ -90,23 +59,3 @@ The third condition is position. A mixin should not need to know which class com
 - assuming that two mixins with the same attribute name are isolated because they are declared in different classes;
 - adding a required `__init__` argument to a mixin that the other classes in the combination do not pass on;
 - using an attribute that the mixin neither creates nor documents, and breaking a combination where that attribute is missing.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

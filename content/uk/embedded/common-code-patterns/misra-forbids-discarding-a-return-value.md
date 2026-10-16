@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0022
 title: "Що вимагає MISRA C, коли код не використовує значення, повернене функцією?"
-description: "MISRA C Rule 17.7 вимагає використовувати значення, повернене функцією з non-void типом, крім явного cast до void."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: misra-c-2023-rule-17-7
     title: "MISRA C:2023 Addendum 2"
     url: https://misra.org.uk/app/uploads/2024/10/MISRA-C-2023-ADD2.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "2023 Addendum 2"
-    applicability: "Офіційний перелік змін підтверджує статус правила R.17.7; точне формулювання правила потребує повного тексту MISRA C:2023, доступного за ліцензією."
 ---
 
 ## Short answer
@@ -63,7 +40,3 @@ MISRA C – набір настанов для написання C у сист�
 - Плутати настанову мови C із вимогами процесу управління ризиком конкретної системи.
 
 Отже, питання інтерв’ю перевіряє розуміння використання поверненого значення й обґрунтованого рішення, а не універсальну перевагу return codes.
-
-## Sources
-
-<!-- generated from frontmatter -->

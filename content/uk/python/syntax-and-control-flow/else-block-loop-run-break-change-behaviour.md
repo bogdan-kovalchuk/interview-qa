@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0007
 title: "Коли виконується блок `else` циклу `for` або `while`, і як `break` змінює цю поведінку?"
-description: "else виконується, коли цикл завершується природним шляхом (iterable вичерпано або умова стала хибною), але пропускається, якщо спрацював break."
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [break]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -90,11 +67,3 @@ if found is None:
 Через невідому більшості семантику `for ... else` варто або супроводжувати коротким коментарем, або
 використовувати там, де альтернатива з прапорцем справді помітно
 гірша.[^py314-reference-expressions]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

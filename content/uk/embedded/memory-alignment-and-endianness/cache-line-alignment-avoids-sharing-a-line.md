@@ -1,48 +1,21 @@
 ---
 id: emb-align-0027
 title: "Навіщо вирівнювати буфер по cache line?"
-description: "Щоб дані не ділили cache line з іншими – уникнути false sharing і неузгодженості при DMA (direct memory access)."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: stm32-an4839
     title: "STMicroelectronics AN4839: Level 1 cache on STM32F7 and STM32H7 Series"
     url: https://www.st.com/resource/en/application_note/an4839-level-1-cache-on-stm32f7-series-and-stm32h7-series-stmicroelectronics.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "Rev 2"
-    applicability: "Cache lines і DMA coherency на STM32F7/H7 з Cortex-M7; не узагальнює інші MCU."
   - source_id: linux-false-sharing
     title: "Linux kernel documentation: False Sharing"
     url: https://docs.kernel.org/kernel-hacking/false-sharing.html
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Механізм false sharing і його вплив на продуктивність багатоядерних систем; не є вимогою для MCU."
 ---
 
 ## Short answer
@@ -70,7 +43,3 @@ DMA має іншу проблему. Якщо CPU і DMA працюють із 
 - Виконувати cache maintenance без урахування напрямку передачі DMA.
 
 Використовуйте padding або окрему область лише після вимірювання false sharing, а для DMA обирайте між некешованою пам’яттю та документованими cache maintenance операціями.
-
-## Sources
-
-<!-- generated from frontmatter -->

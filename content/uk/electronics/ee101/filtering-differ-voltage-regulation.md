@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0152
 title: "Чим фільтрація відрізняється від стабілізації напруги?"
-description: "Чим фільтрація відрізняється від стабілізації напруги?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 60, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Конденсатор згладжує випрямлену напругу, віддаючи заряд у навантаження між піками; зміна напруги від розряду конденсатора названа пульсаціями; зі зростанням струму навантаження пульсації збільшуються, а середній рівень виходу знижується, тоді як за легкого навантаження вихід тримається біля піка вторинної напруги. Книга не наводить параметрів лінійних стабілізаторів."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: fiore-capacitors
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 8.2 Capacitance and Capacitors"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08:_Capacitors/8.2:_Capacitance_and_Capacitors"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Співвідношення i = C*dv/dt: сталий струм через конденсатор дає лінійну зміну напруги, тобто ΔV = I*Δt/C; розділ не розглядає випрямлячі, ESR і реальні форми струму навантаження."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08:_Capacitors/8.2:_Capacitance_and_Capacitors
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Line regulation як зміна виходу від зміни входу, load regulation як зміна виходу від зміни струму навантаження (обидві усталені); PSRR як відношення пульсацій виходу до пульсацій входу на всіх частотах; dropout як різниця вхід-вихід, за якої схема перестає стабілізувати. Записка про LDO; значення PSRR залежать від частоти й конкретної мікросхеми, а числа прикладу нижче ілюстративні."
 ---
 
 ## Short answer
@@ -78,7 +43,3 @@ sources:
 - Вважати, що великий конденсатор «стабілізує» напругу: він зменшує пульсації, але не фіксує середній рівень.
 - Змішувати пульсації з line regulation: перші – швидка змінна складова за частотою мережі, друга – усталений зсув виходу при зміні входу.
 - Очікувати від стабілізатора ідеального згладжування, не перевіривши PSRR на частоті пульсацій і запас за dropout.
-
-## Sources
-
-<!-- generated from frontmatter -->

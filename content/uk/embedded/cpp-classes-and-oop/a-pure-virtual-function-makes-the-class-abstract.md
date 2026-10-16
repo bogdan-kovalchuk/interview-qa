@@ -1,55 +1,24 @@
 ---
 id: emb-cppoop-0016
 title: "Що таке pure virtual функція і abstract клас?"
-description: "= 0 робить функцію pure virtual; клас з нею стає abstract і його не можна інстанціювати."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-abstract
     title: "C++ working draft: Abstract classes ([class.abstract])"
     url: https://eel.is/c++draft/class.abstract
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає pure virtual функцію (pure-specifier) і abstract клас (є pure virtual функція, final overrider якої pure), забороняє об’єкти abstract класу крім підоб’єктів похідних, допускає визначення pure virtual функції для виклику через qualified-id і оголошує UB для virtual-виклику pure функції з constructor-а чи destructor-а того ж об’єкта. Про vptr чи vtable не йдеться."
   - source_id: cpp-draft-class-dtor
     title: "C++ working draft: Destructors ([class.dtor])"
     url: https://eel.is/c++draft/class.dtor
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Пункт 11: деструктор може бути virtual і з pure-specifier; якщо деструктор virtual і в програмі створюються об’єкти цього чи похідного класу, його має бути визначено. Не стосується інтерфейсів без деструктора."
   - source_id: cpp-core-guidelines
     title: "C++ Core Guidelines: C.121 (interface as pure abstract class)"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c121-if-a-base-class-is-used-as-an-interface-make-it-a-pure-abstract-class
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Правило C.121: інтерфейс нормально складається лише з public pure virtual функцій і default/порожнього virtual destructor. Це рекомендація стилю, а не вимога мови; про HAL чи embedded не йдеться."
 ---
 
 ## Question code
@@ -100,7 +69,3 @@ Adc adc;       // добре: read() реалізовано
 - Вважати, що abstract клас не можна використовувати взагалі: заборонені лише об’єкти, а вказівники й посилання – основний спосіб роботи з інтерфейсом.
 - Пропустити одну pure virtual функцію в похідному класі й дивуватися, що його теж не можна створити.
 - Викликати pure virtual функцію з конструктора чи деструктора базового класу: це undefined behavior.
-
-## Sources
-
-<!-- generated from frontmatter -->

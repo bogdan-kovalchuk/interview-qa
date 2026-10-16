@@ -1,69 +1,30 @@
 ---
 id: py-stdlib-0005
 title: "Чим `islice()` корисний для лінивого iterable, який не підтримує indexing?"
-description: "islice() дозволяє брати перші N елементів або діапазон з будь-якого iterable без перетворення його на список."
 track: python
 section: standard-library
-level: middle
-type: mechanism
-tags: [islice]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools-islice
     title: "Python 3.14: Library/itertools, islice"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.islice
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: itertools.islice (зріз для iterable; без від’ємних start, stop і step; пропуск елементів до start і між кроками)."
 ---
 
 ## Short answer
@@ -107,11 +68,3 @@ print(list(islice(numbers(), 2, 6, 2)))  # produce 0 to 5 are all printed, then 
 - очікувати від `islice(it, -1)` останній елемент: від’ємні значення не підтримуються, і виклик дає `ValueError`;
 - вважати, що `islice` не чіпає вхідний ітератор: він просуває його, і наступний `next()` продовжує з позиції, на якій зупинився `islice`;
 - вважати, що елементи, пропущені через `start` або `step`, не обчислюються: для generator вони створюються.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0022
 title: "When is a callable object with `__call__` preferable to a closure for encapsulating a functional component's state?"
-description: "When is a callable object with `__call__` preferable to a closure for encapsulating a functional component's state?"
 track: python
 section: functions-and-scope
-level: senior
-type: comparison
-tags: [call]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-object-call
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__call__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-function-closure
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#function.__closure__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the __closure__ attribute of a function holds cells for its free variables."
   - source_id: py314-library-pickle-what-can-be-pickled
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html#what-can-be-pickled-and-unpickled
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: what can be pickled; functions and classes are pickled by name from the module top level, and lambdas and local functions are not supported."
 ---
 
 ## Short answer
@@ -86,19 +63,3 @@ A closure suits short internal state that nobody outside should read. A callable
 - treating a closure as fully encapsulated: its state is visible through `__closure__`, so this only hides it from ordinary code;
 - writing a class with `__call__` but no methods or attributes, which gives no advantage over a function;
 - keeping a lambda or a local function in an attribute and then failing to pickle, even though the class itself is defined at module top level.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

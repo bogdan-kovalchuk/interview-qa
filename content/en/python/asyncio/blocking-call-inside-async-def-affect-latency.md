@@ -1,41 +1,18 @@
 ---
 id: py-async-0007
 title: "How does one blocking call inside `async def` affect the latency of every other Task on the same loop?"
-description: "How does one blocking call inside `async def` affect the latency of every other Task on the same loop?"
 track: python
 section: asyncio
-level: senior
-type: practical
-tags: [async-def]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -71,23 +48,3 @@ CPU-bound work. For diagnosis, the event loop's debug mode helps: if enabled
 callback that ran longer than `slow_callback_duration` (100 ms by default) – a direct way to find
 the blocking call that is quietly wrecking the rest of the system's latency.
 [^py314-library-asyncio-dev]
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

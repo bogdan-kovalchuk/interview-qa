@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0031
 title: "How does the capacitor voltage change while charging in an RC circuit?"
-description: "How does the capacitor voltage change while charging in an RC circuit?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Question origin: lecture 37 of the Udemy course; the original card is preserved in imports. The Ukrainian short answer and explanation were checked against cited technical sources on 2026-10-04; the course is not proof of these claims."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Authoritative section-level reference: AC circuits, reactance, phasors, impedance, filters and transformers; specific component values and circuits of the course can differ."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Authoritative section-level reference: diodes, Zener diodes, bipolar and field-effect transistors and power supplies; specific component values and circuits of the course can differ."
   - source_id: gatech-rc-charging-discharging
     title: "Georgia Tech Physics Book: Charging and Discharging a Capacitor"
     url: https://physicsbook.gatech.edu/Charging_and_Discharging_a_Capacitor
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Derivation of exponential charging and discharging laws and τ=RC for a simple series RC circuit with ideal R and C."
 ---
 
 ## Short answer
@@ -52,7 +25,3 @@ TODO
 ## Detailed explanation
 
 TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

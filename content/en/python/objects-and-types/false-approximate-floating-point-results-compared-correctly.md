@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0014
 title: "Why can `0.1 + 0.2 == 0.3` be `False`, and how should approximate floating-point results be compared correctly?"
-description: "Why can `0.1 + 0.2 == 0.3` be `False`, and how should approximate floating-point results be compared correctly?"
 track: python
 section: objects-and-types
-level: middle
-type: pitfall
-tags: [0-1-0-2-0-3]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -83,23 +56,3 @@ print(math.isclose(diff, 0.0, abs_tol=1e-9))   # True (abs_tol handles zero boun
 - neglecting `abs_tol` near zero: calling `math.isclose(val, 0.0)` without setting `abs_tol` always evaluates to `False` for any non-zero value;
 - relying on `round()` for comparisons: expressions like `round(a, 2) == round(b, 2)` are vulnerable to boundary rounding artifacts;
 - financial domain modeling: for monetary or accounting calculations, adopt the `decimal` module to prevent binary representation discrepancies.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0244
 title: "Генератор 10 МГц з допуском ±50 ppm і коефіцієнтом заповнення 50%. Які період, тривалість станів і похибка частоти?"
-description: "Генератор 10 МГц з допуском ±50 ppm і коефіцієнтом заповнення 50%. Які період, тривалість станів і похибка частоти?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 78, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-swra372
     title: "TI SWRA372C: AN100 Crystal Selection Guide"
     url: https://www.ti.com/lit/an/swra372c/swra372c.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "SWRA372C, November 2013"
-    applicability: "Загальний допуск кварцового генератора задається в ppm і складається з виробничого, температурного допуску та старіння; відхилення частоти в ppm відповідає такому самому відносному відхиленню. Приклад у документі стосується RF-частоти для радіомодулів TI."
   - source_id: ti-sdaa032
     title: "TI SDAA032: Seamless PWM Duty Cycle Updates Without Intermediate Artifacts"
     url: https://www.ti.com/lit/an/sdaa032/sdaa032.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: null
-    applicability: "Формула duty cycle `Duty = 100 × High/(High + Low)` (рівняння 5) у контексті PWM на EPWM TDA4x; сама формула стосується будь-якого сигналу з двома станами."
 ---
 
 ## Short answer
@@ -69,7 +38,3 @@ sources:
 - плутати ppm з відсотками: 50 ppm дорівнює 0,005 %, а не 50 %;
 - вважати, що ±500 Гц означає ±500 Гц на період; період змінюється лише на ±5 пс;
 - вважати 50 % duty cycle гарантованим для будь-якого генератора.
-
-## Sources
-
-<!-- generated from frontmatter -->

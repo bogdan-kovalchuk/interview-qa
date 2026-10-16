@@ -1,41 +1,18 @@
 ---
 id: emb-elee-0088
 title: "Ізольоване джерело 6 V RMS, R = 1 kΩ, `X_C` = 1 kΩ. Які струм, потужність резистора і напруга на C?"
-description: "Ізольоване джерело 6 V RMS, R = 1 kΩ, X_C = 1 kΩ. Які струм, потужність резистора і напруга на C?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 47, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +30,3 @@ sources:
 Цей розрахунок вважає джерело ідеальним, а R і C – ідеальними елементами із заданим реактивним опором на частоті джерела. Реальні допуски, ESR конденсатора й вихідний опір джерела змінять результат. Ізольоване джерело означає, що його вихід не має заданого зв’язку із землею; це не змінює фазорний розрахунок, але важливо для безпечного вимірювання.[^aac-alternating-current]
 
 **Типова помилка:** складати падіння напруги `4.24 V` на R та `4.24 V` на C арифметично й робити висновок, що джерело має `8.48 V`. Оскільки складові ортогональні за фазою, їхній результуючий модуль дорівнює `sqrt(4.24^2 + 4.24^2)`, тобто приблизно 6 V RMS.[^aac-alternating-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

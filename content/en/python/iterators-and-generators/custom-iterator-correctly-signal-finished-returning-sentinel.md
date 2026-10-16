@@ -1,62 +1,27 @@
 ---
 id: py-itergen-0003
 title: "How should a custom iterator correctly signal that it is finished, and why is returning a sentinel value from `__next__` not equivalent?"
-description: "How should a custom iterator correctly signal that it is finished, and why is returning a sentinel value from `__next__` not equivalent?"
 track: python
 section: iterators-and-generators
-level: middle
-type: pitfall
-tags: [next]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-for
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-for-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the for statement runs its suite for each item the iterator provides and ends when the iterator is exhausted."
   - source_id: py314-library-functions-iter
     title: "Python 3.14: Library/functions"
     url: https://docs.python.org/3.14/library/functions.html#iter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the two-argument form iter(callable, sentinel), which ends iteration when callable returns a value equal to sentinel."
   - source_id: pep-479
     title: "PEP 479: Change StopIteration handling inside generators"
     url: https://peps.python.org/pep-0479/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "PEP 479: a StopIteration that leaves the body of a generator is replaced with RuntimeError."
 ---
 
 ## Short answer
@@ -125,23 +90,3 @@ for x in iter(lambda: next(values), None):
 - returning `None` or an empty string from `__next__()` as an end marker: the loop does not stop;
 - raising `StopIteration` inside a generator function instead of using `return`: this gives `RuntimeError`;
 - assuming that after the first `StopIteration` you can call `__next__()` again and get items: the exception is raised again.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

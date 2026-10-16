@@ -1,41 +1,18 @@
 ---
 id: py-perf-0005
 title: "How do you verify that an asymptotically better algorithm actually wins on representative input sizes and distributions?"
-description: "Check with repeated timeit runs on production-like sizes and distributions, because asymptotic class does not guarantee a winner on real data."
 track: python
 section: performance
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 profile documentation: the profiler shows how often and how long parts of a program ran, adds overhead to Python code, and is not meant for benchmarking; timeit is for that."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 timeit documentation: for accurate timing, repeat the measurement a few times and use the best time; by default the garbage collector is turned off during timing."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 tracemalloc documentation: traces memory blocks allocated by Python; statistics of allocations per file and line; comparison of two snapshots."
 ---
 
 ## Short answer
@@ -93,23 +70,3 @@ The winner depends on the distribution, not only on `n`: the scan can win when `
 - testing only random data while production has many duplicates or nearly sorted data;
 - taking one measurement or an average instead of the best time of several repeats;
 - benchmarking a function in isolation when its cost in the system is set by other code.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

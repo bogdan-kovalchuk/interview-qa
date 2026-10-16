@@ -1,41 +1,18 @@
 ---
 id: py-coll-0002
 title: "Why can `range` represent a very large range without storing all the integers in memory?"
-description: "Why can `range` represent a very large range without storing all the integers in memory?"
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: [range]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -71,11 +48,3 @@ new `range` object with recomputed `start`/`stop`/`step`, not a list of elements
 slice of a billion-element `range` is an O(1) operation. If you do convert a `range` into
 `list(range(10**15))`, Python will genuinely try to allocate memory for each element separately,
 and that will predictably fail with `MemoryError` long before disk space runs out.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

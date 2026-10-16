@@ -1,76 +1,33 @@
 ---
 id: py-oop-0013
 title: "Чому доступ `obj.method` створює bound method і звідки береться implicit `self` під час виклику?"
-description: "Функції є non-data descriptors: їхній __get__ при доступі через instance повертає MethodType(func, obj), який і є bound method."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [obj-method]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor-functions-and-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#functions-and-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Functions and Methods; функції як non-data descriptors, MethodType і bound method з __func__ та __self__."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Invoking Descriptors моделі даних; non-data descriptor, який поступається запису в instance dictionary."
   - source_id: py314-library-dis-load-attr
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html#opcode-LOAD_ATTR
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: опис LOAD_ATTR з прапорцем method; деталь байткоду CPython, а не гарантія мови."
   - source_id: cpython-funcobject-func-descr-get
     title: "CPython Objects/funcobject.c: func_descr_get"
     url: https://github.com/python/cpython/blob/v3.14.7/Objects/funcobject.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14.7"
-    applicability: "Вихідний код CPython 3.14.7: функція func_descr_get; деталь реалізації CPython, а не гарантія мови."
 ---
 
 ## Short answer
@@ -115,11 +72,3 @@ Bound method, збережений у змінній, містить `__self__`,
 - очікувати, що `c.incr` виконає метод: без дужок повертається bound method, а не результат;
 - вважати `c.incr is c.incr` ознакою того, що метод один і той самий: кожен доступ дає новий об’єкт;
 - зберігати bound method як callback, не враховуючи, що він утримує instance.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

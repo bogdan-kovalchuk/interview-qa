@@ -1,5 +1,5 @@
 gate: sources
 language: en
 replacements:
-  - old: 'kind: official'
-    new: 'kind: community'
+  - old: 'while they wait.[^python-asyncio-docs]'
+    new: 'while they wait.[^not-a-listed-source]'

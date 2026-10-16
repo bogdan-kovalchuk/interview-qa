@@ -1,48 +1,21 @@
 ---
 id: py-prac-0004
 title: "In Python 3.14, what does `print(x)` print after a `match 1:` block with `case x: pass`, and how does the capture pattern affect the name's scope?"
-description: "It prints 1: a bare name in case is a capture pattern that binds the subject to x."
 track: python
 section: practical-coding
-level: middle
-type: pitfall
-tags: [match-1-nbsp-nbsp-case-x-passprint-x]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial
     title: "Python 3.14: Tutorial"
     url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference
     title: "Python 3.14: Reference"
     url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-match-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, match statement section: a capture pattern binds the value to a name and always matches; a single _ is not a capture pattern; a value pattern (dotted name) matches when the value equals the subject with =="
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#naming-and-binding
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, Naming and binding section: the blocks are a module, a function body and a class definition; a name bound in module code is global."
 ---
 
 ## Short answer
@@ -89,23 +62,3 @@ To compare with a named value, use a dotted name (a value pattern): it matches w
 - writing `case RED:` for a constant `RED` and expecting a comparison instead of a binding;
 - assuming that `case x:` does not change an `x` that already exists;
 - assuming that `_` binds a value that can be read after the `match`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

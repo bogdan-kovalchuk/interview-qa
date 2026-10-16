@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0065
 title: "Що означає від’ємний кут імпедансу кола?"
-description: "Що означає від’ємний кут імпедансу кола?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 42, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-rc-phase
     title: "All About Circuits: Series Resistor-Capacitor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-4/series-resistor-capacitor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує зв’язок від’ємного кута імпедансу з ємнісним характером та випередженням струму; приклади стосуються синусоїдального AC-режиму."
   - source_id: aac-power-factor-angle
     title: "All About Circuits: Calculating Power Factor"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-11/calculating-power-factor/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює, що від’ємний сумарний кут імпедансу означає переважно ємнісний характер кола порівняно з індуктивним."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -69,7 +38,3 @@ sources:
 - Вважати від’ємний кут негативним опором, хоча він указує на фазове співвідношення.
 - Міняти місцями фазу струму й напруги: `angle(I) = angle(V) - angle(Z)`.
 - Називати будь-яке коло з конденсатором ємнісним, не врахувавши індуктивність і частоту.[^aac-rc-phase]
-
-## Sources
-
-<!-- generated from frontmatter -->

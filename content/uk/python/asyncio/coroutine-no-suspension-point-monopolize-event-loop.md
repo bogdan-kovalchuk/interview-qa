@@ -1,41 +1,18 @@
 ---
 id: py-async-0006
 title: "Чому coroutine без suspension point може монополізувати event-loop thread?"
-description: "Coroutine, яка не містить жодного await, виконується синхронно від початку до кінця, не передаючи керування event loop, і тим самим блокує виконання всіх інших Tasks та I/O."
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -63,11 +40,3 @@ point.[^py314-library-asyncio-dev]
 ready callbacks на один оберт event loop, даючи іншим Task шанс попрацювати. Для CPU-bound
 обчислень це лише полегшує симптом, а не лікує причину – справжнє рішення тут: винести важку
 роботу в `run_in_executor()` або окремий процес, щоб вона взагалі не займала event-loop thread.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

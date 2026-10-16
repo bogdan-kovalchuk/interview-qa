@@ -1,100 +1,42 @@
 ---
 id: py-fileio-0008
 title: "How are `seek()` and `tell()` used for random access, and why can't text-stream offsets always be treated as character positions?"
-description: "How are `seek()` and `tell()` used for random access, and why can't text-stream offsets always be treated as character positions?"
 track: python
 section: files-and-io
-level: middle
-type: mechanism
-tags: [seek, tell]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-io-iobase-seek
     title: "Python 3.14: Library/io (IOBase.seek)"
     url: https://docs.python.org/3.14/library/io.html#io.IOBase.seek
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: seek() sets the stream position to a byte offset relative to whence."
   - source_id: py314-library-io-textiobase-seek
     title: "Python 3.14: Library/io (TextIOBase.seek)"
     url: https://docs.python.org/3.14/library/io.html#io.TextIOBase.seek
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: in text mode the offset must be a value returned by tell() or zero; other values produce undefined behavior; four call forms are supported."
   - source_id: py314-library-io-textiobase-tell
     title: "Python 3.14: Library/io (TextIOBase.tell)"
     url: https://docs.python.org/3.14/library/io.html#io.TextIOBase.tell
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: tell() returns an opaque number that usually does not represent a number of bytes in the underlying storage."
   - source_id: ietf-rfc3629
     title: "RFC 3629: UTF-8, a transformation format of ISO 10646"
     url: https://www.rfc-editor.org/rfc/rfc3629#section-3
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "RFC 3629, section 3: UTF-8 encodes Unicode characters in sequences of 1 to 4 octets; it does not describe Python behavior."
 ---
 
 ## Short answer
@@ -152,11 +94,3 @@ The limits of `seek()` in text mode are narrow. `seek(0)`, `seek(0, SEEK_END)` a
 - computing an offset as a character number, for example `seek(n)` for the n-th character of UTF-8 text;
 - assuming that `tell()` in text mode is a byte count or a character count, and comparing it with the length of a string;
 - passing an arbitrary number to `seek()`, such as an index found by a regular expression, instead of a value from `tell()`: this is undefined behavior.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

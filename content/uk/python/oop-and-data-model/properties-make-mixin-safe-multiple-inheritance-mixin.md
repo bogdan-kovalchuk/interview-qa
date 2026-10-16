@@ -1,55 +1,24 @@
 ---
 id: py-oop-0020
 title: "Які властивості роблять mixin безпечним для множинного успадкування і чому mixin зазвичай не володіє основним state об’єкта?"
-description: "Mixin зазвичай додає поведінку, а не володіє state: він не вимагає обов’язкових аргументів у __init__, передає керування через super() і покладається на атрибути, які дають інші класи."
 track: python
 section: oop-and-data-model
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-builtins-functions-super
     title: "Python 3.14: Built-in Functions/super"
     url: https://docs.python.org/3.14/builtins/functions.html#super
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ super: порядок пошуку після type за __mro__, zero-argument form (type і перший аргумент методу), застереження про вкладені функції, рекомендація однакової сигнатури в cooperative methods. Не описує object.__init__ і не дає правил проєктування mixin."
 ---
 
 ## Short answer
@@ -90,23 +59,3 @@ print(type(s.items).__name__)                 # dict: CacheMixin replaced the li
 - вважати, що два mixins з однаковим іменем атрибута ізольовані, бо оголошені в різних класах;
 - додати до mixin обов’язковий аргумент `__init__`, який інші класи в комбінації не передають;
 - використовувати атрибут, який mixin сам не створює і не документує, і зламати комбінацію, де його немає.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

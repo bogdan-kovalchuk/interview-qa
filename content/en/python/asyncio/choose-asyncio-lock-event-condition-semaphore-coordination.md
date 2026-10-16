@@ -1,41 +1,18 @@
 ---
 id: py-async-0022
 title: "How do you choose between `asyncio.Lock`, `Event`, `Condition`, and `Semaphore` for a coordination protocol?"
-description: "How do you choose between `asyncio.Lock`, `Event`, `Condition`, and `Semaphore` for a coordination protocol?"
 track: python
 section: asyncio
-level: senior
-type: comparison
-tags: [asyncio-lock, event, condition, semaphore]
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -46,6 +23,7 @@ concurrently.**[^py314-library-asyncio-task] `Lock` fits one Task modifying a sh
 `Event` fits one Task telling others it is ready, and `set()` holds until `clear()`. `Condition`
 fits a Task that waits for a condition and needs exclusive access on waking – the classic
 producer/consumer case. `Semaphore(N)` caps N concurrent users, such as a connection pool.
+
 ## Detailed explanation
 
 All four primitives are built on `Future` and are not thread-safe – they are meant for
@@ -69,19 +47,3 @@ other Tasks release the resource correctly.
 more times than `acquire()` was; this is useful for catching an "extra release" bug while
 developing a connection pool or rate limiter, a case where a plain `Semaphore` would just silently
 let its counter grow past the initial value.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

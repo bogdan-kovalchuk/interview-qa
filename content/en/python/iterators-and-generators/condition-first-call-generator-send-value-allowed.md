@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0011
 title: "Under what condition is the first call to `generator.send(value)` allowed, and why is `None` usually sent first?"
-description: "Under what condition is the first call to `generator.send(value)` allowed, and why is `None` usually sent first?"
 track: python
 section: iterators-and-generators
-level: middle
-type: pitfall
-tags: [generator-send-value]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: generator-iterator methods (__next__, send, throw, close) and their behaviour in a suspended state."
 ---
 
 ## Short answer
@@ -78,23 +51,3 @@ So the condition is this: for a just-created generator, the first value passed t
 - starting a generator with `send(value)` and a value other than `None`; in CPython this raises `TypeError`;
 - assuming that `send(value)` returns the value that was sent; it returns the next value that the generator yielded;
 - confusing `next(gen)` with `send(value)`: both resume the generator, but only `send()` passes a value into the current `yield`.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

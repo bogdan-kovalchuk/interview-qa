@@ -1,41 +1,18 @@
 ---
 id: py-async-0023
 title: "Why is `ContextVar` better than thread-local storage for request-scoped state across asyncio Tasks?"
-description: "Why is `ContextVar` better than thread-local storage for request-scoped state across asyncio Tasks?"
 track: python
 section: asyncio
-level: middle
-type: comparison
-tags: [contextvar]
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -46,6 +23,7 @@ Tasks in one thread do not "leak" into each other.**[^py314-library-asyncio-task
 would see the same value. `asyncio.create_task()` copies the current `Context` into the new Task,
 giving each its own `ContextVar` values (for example, request_id, tenant). Changing one in a Task
 does not affect other Tasks on the same thread.
+
 ## Detailed explanation
 
 Technically, `Context` is an immutable map: `ContextVar.set()` does not mutate the existing
@@ -68,19 +46,3 @@ There is one trap: if code runs a callback via `loop.call_soon()` or dispatches 
 an explicit call into a `ThreadPoolExecutor` runs on a foreign thread with no automatic `Context`
 transfer – to get the same values there, the call has to be wrapped in
 `contextvars.copy_context().run(...)`.[^py314-library-asyncio-eventloop]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

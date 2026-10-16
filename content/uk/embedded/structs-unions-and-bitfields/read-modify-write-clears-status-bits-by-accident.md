@@ -1,41 +1,18 @@
 ---
 id: emb-structs-0026
 title: "Trap: що не так із read-modify-write для status register?"
-description: "Компілятор може згенерувати read-modify-write усього register-а."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: stm32-w1c-manual
     title: "SR5E1x 32-bit Arm Cortex-M7 architecture microcontroller reference manual"
     url: https://www.st.com/resource/en/reference_manual/rm0483-sr5e1x-32bit-arm-cortexm7-architecture-microcontroller-for-electrical-vehicle-applications-stmicroelectronics.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "RM0483 Rev 6"
-    applicability: "Приклад визначення W1C у документації виробника; фактичну семантику треба перевіряти в manual конкретного пристрою."
 ---
 
 ## Question code
@@ -69,19 +46,3 @@ Read-modify-write для status register може підтвердити под�
 - Копіювати правило W1C на інший register без перевірки його семантики.
 
 Щоб уникнути втрати подій, знайди опис read/write поведінки кожного біта, використовуй рекомендований clear/set регістр і перевір фактичний код для потрібної цілі. Якщо апаратного способу уникнути гонки немає, врахуй синхронізацію з ISR та зміни стану, описані виробником.[^stm32-w1c-manual]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: emb-macros-0020
 title: "Що вимагає MISRA C Rule 20.7 і навіщо?"
-description: "MISRA C Rule 20.7 вимагає брати в дужки вирази, що утворилися з параметрів макросу."
 track: embedded
 section: inline-and-macros
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: misra-rule-20-7-reference
     title: "MathWorks Polyspace: MISRA C:2012 Rule 20.7"
     url: https://www.mathworks.com/help/bugfinder/ref/misrac2012rule20.7.html
-    accessed: 2026-10-04
-    kind: official
-    version: "R2026b"
-    applicability: "Надає формулювання Rule 20.7 та приклад пріоритету операторів; це документація checker, а не повний нормативний текст MISRA."
 ---
 
 ## Short answer
@@ -61,7 +38,3 @@ MISRA C Rule 20.7 вимагає, щоб вирази, отримані післ
 - Додавати дужки лише навколо всього тіла, залишаючи параметри без групування.
 - Вважати, що дужки запобігають повторному обчисленню аргументу.
 - Брати в дужки параметр, який у макросі є токеном типу або ідентифікатором, а не виразом.
-
-## Sources
-
-<!-- generated from frontmatter -->

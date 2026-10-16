@@ -1,55 +1,24 @@
 ---
 id: py-oop-0008
 title: "Як відсутність `__dict__` у класі з `__slots__` впливає на динамічне додавання атрибутів?"
-description: "Якщо всі класи ланцюга визначають __slots__, instance не має __dict__, і спроба додати атрибут, не перелічений у __slots__, піднімає AttributeError."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [dict, slots]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-slots
     title: "Python 3.14: Reference/datamodel, __slots__"
     url: https://docs.python.org/3.14/reference/datamodel.html#slots
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14 (розділ __slots__): слоти створюють descriptor для кожного імені і не створюють __dict__ та __weakref__, якщо їх не перелічено; базовий клас без __slots__ дає instance __dict__; '__dict__' у __slots__ відновлює довільні атрибути; економія пам’яті та швидший доступ; атрибут класу не може задавати значення за замовчуванням для слота."
 ---
 
 ## Short answer
@@ -99,11 +68,3 @@ print(c.extra)                 # 1
 - вважати, що будь-який клас зі `__slots__` забороняє нові атрибути: з базовим класом без `__slots__` словник є;
 - записувати значення за замовчуванням як атрибут класу з тим самим іменем, що й слот;
 - додавати `'__dict__'` до `__slots__` і очікувати, що всі переваги слотів збережуться.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-async-0009
 title: "How does `asyncio.TaskGroup` guarantee that the Tasks created in it finish before the context manager exits?"
-description: "How does `asyncio.TaskGroup` guarantee that the Tasks created in it finish before the context manager exits?"
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: [asyncio-taskgroup]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -67,11 +44,3 @@ after the function that created it has already returned.
 `create_task()` can only be called inside the `async with` block itself; trying to add a new Task
 after `__aexit__` has started (for example, from another task's callback) raises a `RuntimeError`,
 because the group has already moved into its finishing state and no longer accepts new members.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

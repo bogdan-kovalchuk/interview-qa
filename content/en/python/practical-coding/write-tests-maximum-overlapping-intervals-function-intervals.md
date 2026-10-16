@@ -1,34 +1,15 @@
 ---
 id: py-prac-0024
 title: "Write tests for a maximum-overlapping-intervals function: intervals are closed `[start, end]`, so start and end at the same instant count as overlapping."
-description: "Write tests for a maximum-overlapping-intervals function: intervals are closed `[start, end]`, so start and end at the same instant count as overlapping."
 track: python
 section: practical-coding
-level: middle
-type: practical
-tags: [start-end]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-controlflow-the-range-function
     title: "Python 3.14: Tutorial/control flow"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#the-range-function
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: range() never includes its end point, and its start point is included."
   - source_id: py314-reference-expressions-value-comparisons
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#value-comparisons
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: tuples and other sequences compare by their first unequal element."
 ---
 
 ## Short answer
@@ -85,23 +66,3 @@ The degenerate case `[(3, 3), (3, 3)]` gives 2: both intervals contain the point
 - testing only disjoint and nested intervals and skipping the touching case;
 - assuming that `[1, 5]` and `[5, 10]` do not intersect because `range(1, 5)` does not contain 5;
 - sorting events without a rule for equal coordinates, which changes the answer.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

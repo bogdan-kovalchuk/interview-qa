@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0030
 title: "Навіщо у фільтрі живлення ставлять керамічний конденсатор 100 нФ паралельно великому електролітичному?"
-description: "Навіщо у фільтрі живлення ставлять керамічний конденсатор 100 нФ паралельно великому електролітичному?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 36, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-switching-regulator-fundamentals
     title: "Texas Instruments: Switching regulator fundamentals"
     url: https://www.ti.com/lit/an/snva559c/snva559c.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "Rev. C"
-    applicability: "Розділ 3.1 пояснює ESR/ESL конденсаторів та потребу в паралельному високочастотному bypass; результат залежить від частоти, компонента й монтажу."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Вважати, що керамічний конденсатор завжди кращий на будь-якій частоті; вище власного резонансу ESL може визначати його поведінку.
 - Ставити конденсатор далеко від навантаження й не враховувати індуктивність доріжок.
 - Вважати пару «великий плюс 100 нФ» універсальною схемою, не перевіривши рекомендації виробника та вимірювання.
-
-## Sources
-
-<!-- generated from frontmatter -->

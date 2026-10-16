@@ -1,27 +1,12 @@
 ---
 id: py-funcs-0002
 title: "Коли й чому виклик `f(1, a=2)` для `def f(a): ...` завершується помилкою: до входу в тіло функції чи під час його виконання?"
-description: "TypeError про повторне значення для параметра a виникає до входу в тіло функції, на етапі binding аргументів."
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: [f-1-a-2, def-f-a]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -62,23 +47,3 @@ except TypeError:
 - шукати причину помилки в тілі функції, хоча тіло ще не виконувалося;
 - вважати, що вирази аргументів не обчислюються, якщо виклик завершився помилкою;
 - не помітити конфлікт позиційного аргумента з розпакуванням `**`: `f(1, **{'a': 2})` дає ту саму помилку.[^py314-reference-expressions-calls]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: py-modimp-0002
 title: "What role does `sys.modules` play when the same module name is imported again?"
-description: "What role does `sys.modules` play when the same module name is imported again?"
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [sys-modules]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The module cache” of the official Python 3.14 documentation: sys.modules is checked first; a None value raises ModuleNotFoundError; a deleted key causes a new search; reload() reruns the code in the same object; a kept reference to an old module object and a re-import after deletion give two objects that are not the same."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Loading” of the official Python 3.14 documentation: if loading a module fails with an exception, that module is removed from sys.modules."
 ---
 
 ## Short answer
@@ -96,11 +65,3 @@ A `None` value makes Python raise `ModuleNotFoundError` at once, even if the fil
 - assuming every repeated `import` runs the module code again (it does only when there is no cache entry or the previous import failed);
 - deleting a key from `sys.modules` to "reload" a module and then comparing old references with new ones;
 - expecting `importlib.reload()` to produce a new module object (reload reuses the same object).
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

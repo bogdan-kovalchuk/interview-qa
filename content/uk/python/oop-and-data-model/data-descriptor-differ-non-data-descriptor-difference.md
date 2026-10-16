@@ -1,62 +1,27 @@
 ---
 id: py-oop-0009
 title: "Чим data descriptor відрізняється від non-data descriptor і як ця різниця змінює precedence під час attribute lookup?"
-description: "Data descriptor визначає __set__ або __delete__ і перемагає instance __dict__; non-data descriptor визначає лише __get__ і поступається instance __dict__."
 track: python
 section: oop-and-data-model
-level: senior
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: data descriptor визначає __set__ або __delete__ і має пріоритет над словником екземпляра; non-data descriptor визначає лише __get__ і словник екземпляра може його перекрити; @property є data descriptor. Не описує власні приклади descriptor."
   - source_id: py314-reference-datamodel-implementing-descriptors
     title: "Python 3.14: Reference/datamodel, Implementing Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#implementing-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: descriptor має бути в словнику класу власника або його батьків; додавання __set__ або __delete__ змінює вид descriptor на data descriptor. Не описує поведінку descriptor, записаного в словник екземпляра."
 ---
 
 ## Short answer
@@ -112,19 +77,3 @@ print(Greeter().hello())         # method
 - думати, що «data» означає «зберігає дані»: назва визначається наявністю `__set__` або `__delete__`;
 - очікувати, що `obj.prop = 42` завжди спрацює: для property без setter присвоєння піднімає `AttributeError`;
 - записати descriptor як атрибут екземпляра (`obj.d = Desc()`), а не в клас: Python його не викликатиме.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

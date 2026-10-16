@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0031
 title: "Чи є різниця між `int x;` і `int x = 0;` оголошеними глобально?"
-description: "Обидва оголошення мають нульове значення до початку виконання; розміщення в секціях визначає toolchain."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: arm-aapcs32
     title: "Procedure Call Standard for the Arm Architecture (AAPCS32)"
     url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
-    accessed: 2026-10-04
-    kind: spec
-    version: "AAPCS32"
-    applicability: "Описує категорії пам’яті процесу; не визначає linker script конкретного MCU."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,23 +33,3 @@ sources:
 - Плутати нульове значення перед `main` із фізичним зберіганням нулів у Flash.
 
 Для конкретної плати перевірте linker script та map-файл: вони показують секцію символу. Startup code визначає, як ці дані стають доступними до `main`.[^arm-aapcs32] Наприклад, карта пам’яті може показати `.bss` у RAM без відповідного діапазону у Flash image, оскільки початковий вміст цієї секції дорівнює нулю і формується під час запуску. Це типовий спосіб реалізації, а не вимога C. Отже, порівнюйте артефакти конкретної збірки.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

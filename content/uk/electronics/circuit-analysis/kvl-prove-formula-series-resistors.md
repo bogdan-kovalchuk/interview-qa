@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0014
 title: "Як KVL доводить формулу послідовного з’єднання резисторів?"
-description: "Як KVL доводить формулу послідовного з’єднання резисторів?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-circuits
     title: "All About Circuits: Series Circuits and the Application of Ohm’s Law"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-series-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Однаковий струм у послідовному шляху, KVL, закон Ома й сума послідовних опорів."
 ---
 
 ## Short answer
@@ -57,7 +34,3 @@ sources:
 **Типова помилка:**
 
 - Підставляти різні струми в послідовні елементи. Спершу переконайтеся, що між ними немає вузла відгалуження, а потім застосовуйте один струм до всіх падінь напруги.[^aac-series-circuits]
-
-## Sources
-
-<!-- generated from frontmatter -->

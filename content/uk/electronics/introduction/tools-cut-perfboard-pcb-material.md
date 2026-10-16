@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0306
 title: "Якими інструментами можна різати perfboard або PCB-матеріал?"
-description: "Якими інструментами можна різати perfboard або PCB-матеріал?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 26, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: isola-fr402-sds
     title: "Isola FR402 Prepreg Safety Data Sheet"
     url: https://www.isola-group.com/wp-content/uploads/FR402-Prepreg-SDS-2020.07.19.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "2020-07-19"
-    applicability: "Вказівки виробника щодо пилу під час механічного різання матеріалу для PCB: місцева витяжка або пилозбірник, окуляри із боковим захистом і прибирання без стисненого повітря; це SDS для FR402 prepreg, а не всіх protoboard."
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ FR-4 – композит зі скловолокна й епоксидної с
 - Вважати, що будь-яку плату можна різати однаково: тонка перфорована плата та армований FR-4 по-різному реагують на згинання й різання.
 - Обробляти склотекстоліт без контролю пилу або прибирати його продуванням; пил може потрапити в очі й дихальні шляхи.[^isola-fr402-sds]
 - Залишати гостру крайку чи задирки: вони можуть травмувати під час монтажу й пошкодити дроти.
-
-## Sources
-
-<!-- generated from frontmatter -->

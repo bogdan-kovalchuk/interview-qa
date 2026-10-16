@@ -1,41 +1,18 @@
 ---
 id: py-decor-0005
 title: "Чим decorator factory відрізняється від самого decorator і на якому етапі обробляються її arguments?"
-description: "Decorator factory – це функція, що повертає decorator; її аргументи обчислюються один раз при decoration, а повернутий decorator потім застосовується до функції."
 track: python
 section: decorators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -89,19 +66,3 @@ greet("Alice")
 - Пропуск виклику фабрики (`@repeat` замість `@repeat()`): якщо фабрика вимагає дужок, використання імені без виклику передасть функцію замість аргументів конфігурації, викликаючи незрозумілий `TypeError`.
 - Змінні об'єкти як значення за замовчуванням у фабриці: передача списків або словників у параметри фабрики розділяє спільний стан між усіма декорованими функціями.
 - Спроба динамічно змінити конфігурацію фабрики під час виконання: оскільки аргументи фабрики замикаються на етапі визначення, зміна зовнішніх змінних після визначення функції не оновить поведінку wrapper, якщо фабрика явно не читає мутабельний об'єкт за посиланням.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

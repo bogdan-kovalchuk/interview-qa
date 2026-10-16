@@ -1,69 +1,30 @@
 ---
 id: py-testing-0001
 title: "Яку boundary має unit test і чому він не повинен непомітно перетворюватися на integration test?"
-description: "Unit test перевіряє один модуль (функцію, метод, клас): solitary-варіант замінює його колабораторів test doubles, а з реальними зовнішніми сервісами тест стає integration test."
 track: python
 section: testing
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: martinfowler-integration-test
     title: "Martin Fowler: Integration Test"
     url: https://martinfowler.com/bliki/IntegrationTest.html
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Есей Мартіна Фаулера (не офіційна документація): визначення integration test, вузькі й широкі варіанти, solitary і sociable unit tests, contract tests."
   - source_id: martinfowler-test-pyramid
     title: "Martin Fowler: Test Pyramid"
     url: https://martinfowler.com/bliki/TestPyramid.html
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Есей Мартіна Фаулера (не офіційна документація): піраміда тестів, широкі тести як повільні, дорогі й крихкі, обмеження цього припущення."
 ---
 
 ## Short answer
@@ -106,19 +67,3 @@ if __name__ == "__main__":
 - назвати тест unit-тестом, хоча він піднімає реальну БД або HTTP-сервер, лише тому, що він лежить у теці unit;
 - замінити частину залежностей, але не мережу чи файли, і тест тихо стає integration-тестом;
 - перевіряти лише виклики mock-ів, а не поведінку модуля: тест проходить, хоча модуль із реальною залежністю зламаний.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

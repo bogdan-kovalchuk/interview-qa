@@ -1,41 +1,18 @@
 ---
 id: py-itergen-0004
 title: "Як реалізувати re-iterable collection так, щоб дві вкладені ітерації не ділили один cursor?"
-description: "Розділити iterable та iterator: __iter__() колекції має щоразу повертати новий iterator."
 track: python
 section: iterators-and-generators
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -101,23 +78,3 @@ print(len([(a, b) for a in c for b in c]))  # 9: every outer item pairs with eve
 - зберігати позицію в `self` і повертати `self` з `__iter__()`: вкладені та послідовні цикли ділять її;
 - створити iterator один раз у `__init__()` і повертати його з кожного `__iter__()`: після першого проходу кожен наступний отримує вичерпаний iterator, тобто порожній результат;
 - зберігати переданий генератор замість його елементів і вважати, що колекцію можна ітерувати багато разів.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

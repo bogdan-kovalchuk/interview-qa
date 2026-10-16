@@ -1,48 +1,21 @@
 ---
 id: py-perf-0008
 title: "Why can repeated string concatenation in a loop cause repeated copying, and when is it better to collect the accumulated fragments with `\"\".join(...)`?"
-description: "Because str is immutable, accumulating fragments with repeated += is quadratic in the general case; collect them in a list and call join once."
 track: python
 section: performance
-level: middle
-type: comparison
-tags: [join]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 FAQ: accumulating many str objects by concatenation is quadratic in the general case; the recommended idiom is a list joined with str.join() at the end; io.StringIO is named as another efficient idiom."
   - source_id: py314-library-stdtypes-repeated-concatenation
     title: "Python 3.14: Library/stdtypes, repeated concatenation"
     url: https://docs.python.org/3.14/library/stdtypes.html#typesseq-repeated-concatenation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Python 3.14 sequence types documentation: concatenating immutable sequences always creates a new object, so repeated concatenation has a quadratic cost in the total length; linear alternatives are str.join or io.StringIO, and for bytes bytes.join, io.BytesIO or bytearray."
   - source_id: cpython-bytecodes-inplace-add-unicode
     title: "CPython 3.14: Python/bytecodes.c"
     url: https://github.com/python/cpython/blob/v3.14.6/Python/bytecodes.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "CPython 3.14 source (tag v3.14.6), _BINARY_OP_INPLACE_ADD_UNICODE: for x += y on a str, the string is extended in place when the next instruction is STORE_FAST to the same local and the string has no other references. An implementation detail, not a language guarantee."
   - source_id: cpython-unicodeobject-joinarray
     title: "CPython 3.14: Objects/unicodeobject.c"
     url: https://github.com/python/cpython/blob/v3.14.6/Objects/unicodeobject.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "CPython 3.14 source (tag v3.14.6), _PyUnicode_JoinArray: first computes the total length of the fragments, then allocates the result once. An implementation detail of CPython."
 ---
 
 ## Short answer
@@ -92,19 +65,3 @@ For a few concatenations outside a loop, `+` or an f-string is perfectly fine: i
 - assuming that the CPython optimization of `+=` always applies, and moving the loop to an attribute or to a variable that has other references;
 - calling `join` inside the loop or once per fragment, which defeats the purpose of collecting;
 - accumulating the whole large output in a `list` when it could be written out as a stream.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

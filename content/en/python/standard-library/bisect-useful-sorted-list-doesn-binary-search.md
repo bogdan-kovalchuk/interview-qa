@@ -1,27 +1,12 @@
 ---
 id: py-stdlib-0014
 title: "When is `bisect` useful for a sorted list, and why doesn't binary search make insertion cheap?"
-description: "When is `bisect` useful for a sorted list, and why doesn't binary search make insertion cheap?"
 track: python
 section: standard-library
-level: middle
-type: practical
-tags: [bisect]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-bisect
     title: "Python 3.14: Library/bisect"
     url: https://docs.python.org/3.14/library/bisect.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: bisect calls only __lt__; insort is O(n) because of the insert step; the key parameter was added in 3.10; the functions are not thread-safe; a dictionary is faster for locating specific values."
 ---
 
 ## Short answer
@@ -65,23 +50,3 @@ Limits: `bisect` does not check that the list is sorted, so on an unsorted list 
 - assuming that `insort` is O(log n) overall: only the search is logarithmic, while inserting into a list costs O(n);
 - relying on `bisect` for a membership check without comparing `a[i] == x`;
 - searching a list that was sorted by a different order or key: `bisect` returns a wrong position without raising an error.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-typing-0001
 title: "What is the difference between List[str] from typing and list[str] built-in in Python 3.9+?"
-description: "typing.List[str] is a legacy typing alias; list[str] is the built-in generic syntax added in Python 3.9 and is preferred when Python 3.9 or newer is the target."
 track: python
 section: typing-and-annotations
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 3
-reconciled_with:
-  uk: 3
-anki:
-  export: true
 sources:
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-08
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pep585
     title: "PEP 585: Type Hinting Generics In Standard Collections"
     url: https://peps.python.org/pep-0585/
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "PEP that introduced built-in generic syntax."
   - source_id: pep-563
     title: "PEP 563: Postponed Evaluation of Annotations"
     url: https://peps.python.org/pep-0563/
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "PEP that postponed evaluation of function and variable annotations (available since Python 3.7). It does not describe which types may be written there."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ Evaluating `list[str]` at runtime requires Python 3.9 or newer: PEP 585 ties the
 - assuming that `list[str]` checks the list's elements at runtime (see the example above);
 - comparing `List[str]` and `list[str]` with `==` or `isinstance` and expecting identical behaviour;
 - writing `list[str]` in runtime code (aliases, casts, `isinstance` calls) that must run on 3.8, and getting a `TypeError` only on the older version.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,72 +1,30 @@
 ---
 id: py-itergen-0015
 title: "Чому не варто покладатися на garbage collection generator для своєчасного звільнення external resource?"
-description: "Час виклику close() через GC невизначений: CPython використовує reference counting, але за наявності reference cycles або в інших реалізаціях Python generator може бути finalized значно пізніше або взагалі не бути."
 track: python
 section: iterators-and-generators
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ generator-iterator methods: close() піднімає GeneratorExit у точці призупинення generator."
   - source_id: py314-reference-datamodel-object-del
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__del__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ object.__del__: reference cycle не дає reference count дійти до нуля; такий цикл видаляє cyclic GC."
   - source_id: py314-reference-datamodel-objects-values-and-types
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#objects-values-and-types
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Objects, values and types: реалізація може відкласти збирання сміття або взагалі його не виконувати."
   - source_id: py314-library-gc-set-threshold
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html#gc.set_threshold
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, gc.set_threshold: автоматичне збирання починається, коли різниця між алокаціями і звільненнями перевищує threshold0."
 ---
 
 ## Short answer
@@ -110,23 +68,3 @@ print('after gc.collect()')
 - вважати, що `finally` у generator завжди спрацьовує одразу, щойно цикл перервано;
 - переносити момент звільнення з CPython на інші реалізації Python без перевірки;
 - використовувати фіналізацію як таймер для закриття файлів, сокетів чи з’єднань.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

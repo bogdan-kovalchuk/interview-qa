@@ -1,69 +1,30 @@
 ---
 id: emb-elee-0191
 title: "Звідки береться енергія підсиленого сигналу в транзисторному підсилювачі?"
-description: "Звідки береться енергія підсиленого сигналу в транзисторному підсилювачі?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 67, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-biasing-need
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 5.2 The Need For Biasing"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/05:_BJT_Biasing/5.2:_The_Need_For_Biasing"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 5.2: без додаткового джерела енергії підсилення неможливе; без постійного зсуву від’ємна півхвиля й напруги нижче приблизно 0.7 В не підсилюються; стабільна робоча точка має не змінюватися при зміні β. Якісний опис без числових даних приладу."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/05:_BJT_Biasing/5.2:_The_Need_For_Biasing
   - source_id: fiore-ebers-moll
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 4.5 Ebers-Moll Model"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.5:_Ebers-Moll_Model"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 4.5: β залежить від приладу, температури, I_C і V_CE; приклад базового зсуву з фіксованим I_B (β = 100 дає I_C = 4.65 мА, β = 200 дає 9.3 мА) і тепловий додатний зворотний зв’язок; спрощена модель Еберса–Молла. Даних конкретного приладу не наводить."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04:_Bipolar_Junction_Transistors_(BJTs)/4.5:_Ebers-Moll_Model
   - source_id: fiore-emitter-bias
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 5.3 Two-Supply Emitter Bias"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/05:_BJT_Biasing/5.3:_Two-Supply_Emitter_Bias"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 5.3: емітерний зсув від двох джерел, I_C = (|V_EE| - V_BE)/(R_E + R_B/β); якщо R_E значно більший за R_B/β, β майже не впливає на I_C; V_C = V_CC - I_C*R_C. Число прикладу (подвоєння β дає зміну I_C близько 1 %) стосується лише цих номіналів."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/05:_BJT_Biasing/5.3:_Two-Supply_Emitter_Bias
   - source_id: fiore-amplifier-model
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 6.2 Amplifier Model"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/06:_Amplifier_Concepts/6.2:_Amplifier_Model"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 6.2: коефіцієнт підсилення за потужністю – відношення P_out/P_in (приклад: 50 мВт при вході 10 мВт дає 5). Модель не пояснює, як схема створює підсилення."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/06:_Amplifier_Concepts/6.2:_Amplifier_Model
 ---
 
 ## Short answer
@@ -85,7 +46,3 @@ sources:
 - Вважати, що підсилювач «додає» енергію сигналу, бо вихідна потужність більша за вхідну.
 - Ототожнювати `P_out/P_in` з джерелом енергії: це лише відношення двох потужностей.
 - Подавати сигнал без постійного зсуву: тоді від’ємна півхвиля і додатні напруги нижче приблизно 0.7 В не відкривають перехід.[^fiore-biasing-need]
-
-## Sources
-
-<!-- generated from frontmatter -->

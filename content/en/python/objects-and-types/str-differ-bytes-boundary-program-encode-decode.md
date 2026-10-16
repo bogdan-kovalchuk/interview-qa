@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0017
 title: "How does `str` differ from `bytes`, and at which boundary of a program should encode/decode happen?"
-description: "How does `str` differ from `bytes`, and at which boundary of a program should encode/decode happen?"
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: [str, bytes]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -85,19 +58,3 @@ print(len(euro), len(euro_bytes))  # 1 3
 - assuming `len(s)` for a `str` matches the byte length on the wire, breaking protocols that require an accurate `Content-Length` header;
 - omitting the explicit encoding parameter (calling `.encode()` or `.decode()` without arguments), making behavior dependent on platform defaults rather than standard UTF-8;
 - opening binary streams in text mode without `mode='rb'`, leading to silent newline translations (`\r\n` on Windows) or runtime `UnicodeDecodeError` crashes.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: emb-align-0017
 title: "How do you write `swap16` to reverse the byte order?"
-description: "Shift the high byte down and the low byte up then combine them with bitwise OR"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: gcc-byte-swap-builtins
     title: "Byte-Swapping Builtins"
     url: https://gcc.gnu.org/onlinedocs/gcc/Byte-Swapping-Builtins.html
-    accessed: 2026-09-08
-    kind: official
-    version: null
-    applicability: "Documents GCC's explicit 16-bit, 32-bit, and 64-bit byte-swap operations."
   - source_id: learncpp-bitwise
     title: "Bitwise operators"
     url: https://www.learncpp.com/cpp-tutorial/bitwise-operators/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary explanation of shifts and bitwise OR."
   - source_id: acode-cpp-next
     title: "C++ вивчено – що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian learning roadmap; not normative evidence for byte-swap code generation."
 ---
 
 ## Question code
@@ -83,7 +52,3 @@ Useful properties for tests are:
 GCC also exposes `__builtin_bswap16`, whose documented meaning is to reverse the bytes of a 16-bit argument.[^gcc-byte-swap-builtins] A project can wrap that builtin when its toolchain contract permits it. Both the clear shift idiom and the builtin give the optimizer a chance to select the best instruction, but neither portable C nor the builtin documentation promises a particular Arm instruction for every build.
 
 LearnCpp explains the shift and OR operators used here,[^learncpp-bitwise] while aCode is a supplementary roadmap for extending C and C++ study.[^acode-cpp-next]
-
-## Sources
-
-<!-- generated from frontmatter -->

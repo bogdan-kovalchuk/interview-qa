@@ -1,76 +1,33 @@
 ---
 id: py-modimp-0005
 title: "In what order does Python search for a module through the import machinery and `sys.path`?"
-description: "In what order does Python search for a module through the import machinery and `sys.path`?"
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [sys-path]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The module cache” of the official Python 3.14 documentation: sys.modules is checked first, before any search."
   - source_id: py314-reference-import-meta-path
     title: "Python 3.14: Reference/import, The meta path"
     url: https://docs.python.org/3.14/reference/import.html#the-meta-path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The meta path” of the official Python 3.14 documentation: sys.meta_path is queried in order; if no finder returns a spec, ModuleNotFoundError is raised."
   - source_id: py314-reference-import-finders-and-loaders
     title: "Python 3.14: Reference/import, Finders and loaders"
     url: https://docs.python.org/3.14/reference/import.html#finders-and-loaders
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Finders and loaders” of the official Python 3.14 documentation: the default finders locate built-in modules, frozen modules and modules on an import path."
   - source_id: py314-reference-import-path-based-finder
     title: "Python 3.14: Reference/import, The Path Based Finder"
     url: https://docs.python.org/3.14/reference/import.html#the-path-based-finder
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The Path Based Finder” of the official Python 3.14 documentation: iteration over sys.path entries or a package’s __path__; the finder cache in sys.path_importer_cache; sys.path_hooks; None for entries with no finder."
   - source_id: py314-library-sys-path
     title: "Python 3.14: Library/sys, sys.path"
     url: https://docs.python.org/3.14/library/sys.html#sys.path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Entry sys.path in the official Python 3.14 documentation: initialized from PYTHONPATH and installation defaults; unless -P or PYTHONSAFEPATH is set, the script directory, the current directory for -m, or an empty string for -c and the REPL is prepended."
 ---
 
 ## Short answer
@@ -115,11 +72,3 @@ The `sys.meta_path` list does not always hold only the standard finders. On the 
 - assuming `sys.path_importer_cache` caches the found module (it caches the finder for a `sys.path` entry);
 - expecting a file at the front of `sys.path` to shadow a built-in module;
 - searching for a submodule in `sys.path` instead of the parent package's `__path__`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

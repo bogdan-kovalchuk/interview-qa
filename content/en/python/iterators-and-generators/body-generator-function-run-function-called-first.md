@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0005
 title: "When does the body of a generator function run: when the function is called, or on the first `next()`?"
-description: "When does the body of a generator function run: when the function is called, or on the first `next()`?"
 track: python
 section: iterators-and-generators
-level: middle
-type: mechanism
-tags: [next]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-expressions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: generator expressions; the leftmost iterable is evaluated immediately."
 ---
 
 ## Short answer
@@ -78,11 +51,3 @@ A generator expression `(x for x in items)` has one difference: its leftmost ite
 - expecting `gen = parse(...)` to run code up to the first `yield`, such as printing or opening a file;
 - assuming an error in the body appears as soon as the generator is created;
 - confusing creating a generator with consuming it: without `next()` or a `for` loop the body never runs.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

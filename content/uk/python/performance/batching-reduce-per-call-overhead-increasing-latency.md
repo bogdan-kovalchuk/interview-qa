@@ -1,55 +1,24 @@
 ---
 id: py-perf-0015
 title: "Як batching може зменшити per-call I/O overhead, але збільшити latency та memory use?"
-description: "Batching об’єднує багато дрібних I/O-операцій у один виклик, зменшуючи накладні витрати на кожну, але накопичує дані в пам’яті та затримує обробку першого елемента."
 track: python
 section: performance
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io-performance
     title: "Python 3.14: Library/io (Performance)"
     url: https://docs.python.org/3.14/library/io.html#performance
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ Performance: буферизований I/O читає й записує великими фрагментами, а вигода залежить від ОС і виду I/O. Не описує batching на рівні застосунку."
   - source_id: py314-library-functions-open
     title: "Python 3.14: Built-in Functions (open)"
     url: https://docs.python.org/3.14/library/functions.html#open
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Політика буферизації open() без аргументу buffering: бінарні файли буферизуються фіксованими фрагментами. Не описує вартість батчів у застосунку."
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -92,19 +61,3 @@ if batch:
 - вважати, що batching завжди швидший: якщо накладні витрати на виклик малі або дані вже буферизовані, виграш може бути нульовим;
 - збільшувати batch без межі, не рахуючи пам’ять і затримку першого елемента;
 - забути відправити останній, неповний batch.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

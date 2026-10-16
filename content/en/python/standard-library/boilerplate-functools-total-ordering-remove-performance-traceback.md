@@ -1,27 +1,12 @@
 ---
 id: py-stdlib-0008
 title: "What boilerplate does `functools.total_ordering` remove, and what performance and traceback trade-offs should you take into account?"
-description: "What boilerplate does `functools.total_ordering` remove, and what performance and traceback trade-offs should you take into account?"
 track: python
 section: standard-library
-level: senior
-type: practical
-tags: [functools-total-ordering]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-total-ordering
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.total_ordering
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, total_ordering section: which methods the class must define, the recommended __eq__, slower execution and more complex stack traces, advice to implement all methods explicitly, no override of inherited methods."
 ---
 
 ## Short answer
@@ -61,23 +46,3 @@ The cost is an extra Python-level call for every derived comparison. If `__lt__`
 - treating the decorator as free: derived methods are slower and harder to debug;
 - not defining `__eq__`: then `==` compares identity, and for a class that defines only `__lt__`, `NoEq(2) <= NoEq(2)` returns `False`;
 - expecting the decorator to replace an operator that the base class already defines: it leaves that operator alone.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

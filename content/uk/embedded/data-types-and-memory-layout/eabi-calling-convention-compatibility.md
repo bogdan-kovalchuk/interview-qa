@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0101
 title: "Що таке EABI і чому ABI важливий при змішуванні object files, libraries і compiler flags?"
-description: "EABI фіксує calling convention, layout типів, alignment і floating-point ABI, тому всі firmware objects і libraries мають узгоджуватися."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: arm-aapcs32
     title: "Arm ABI: Procedure Call Standard for the Arm Architecture"
     url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
-    accessed: 2026-10-04
-    kind: spec
-    version: "2025Q4"
-    applicability: "Визначення EABI, контракт викликів, типи й варіанти передачі floating-point для AArch32; не описує ABI інших архітектур."
 ---
 
 ## Short answer
@@ -55,11 +32,3 @@ ABI – це бінарний контракт, за яким окремо ск�
 - Вважати, що слово EABI саме по собі означає один набір правил для всіх архітектур; з’ясуйте конкретну ABI specification і platform ABI.
 - Вважати, що `volatile` або однакова ширина `int` гарантують binary compatibility; ці ознаки не задають calling convention.
 - Ігнорувати ABI-атрибути prebuilt library; перевірте їх документацію та повідомлення linker, а не лише командний рядок власного модуля.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

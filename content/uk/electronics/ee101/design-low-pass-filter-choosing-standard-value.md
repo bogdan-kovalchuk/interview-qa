@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0094
 title: "Як спроєктувати RC-ФНЧ на 1 kHz з R = 1 kΩ і що робити після вибору стандартного номіналу?"
-description: "Як спроєктувати RC-ФНЧ на 1 kHz з R = 1 kΩ і що робити після вибору стандартного номіналу?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 48, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-rc-low-pass-transfer
     title: "All About Circuits: Understanding Low-Pass Filter Transfer Functions"
     url: https://www.allaboutcircuits.com/technical-articles/understanding-transfer-functions-for-low-pass-filters/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Формула зрізу `1/(2*pi*R*C)` для RC-ФНЧ першого порядку; фактична частота залежить від реальних допусків компонентів і навантаження."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 - Не враховувати завантаження фільтра наступним каскадом.
 
 Практичний порядок такий: обрати доступні компоненти з потрібними допусками, повторно обчислити `f_c` і за потреби змоделювати або виміряти реальне коло.[^aac-rc-low-pass-transfer]
-
-## Sources
-
-<!-- generated from frontmatter -->

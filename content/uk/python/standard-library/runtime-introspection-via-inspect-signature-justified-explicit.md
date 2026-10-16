@@ -1,44 +1,18 @@
 ---
 id: py-stdlib-0017
 title: "Коли runtime introspection через `inspect.signature()` виправдана, а коли explicit protocol зменшує coupling до implementation details?"
-description: "inspect.signature() виправдана в generic-інструментах (DI-контейнери, decorators, wrapper-и), які приймають callable без заздалегідь відомого інтерфейсу; для відомого компонента краще explicit Protocol."
 track: python
 section: standard-library
-level: senior
-type: comparison
-tags: [inspect-signature]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-inspect-inspect-signature
     title: "Python 3.14: Library/inspect"
     url: https://docs.python.org/3.14/library/inspect.html#inspect.signature
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: inspect.signature() повертає Signature, піднімає ValueError, коли сигнатуру отримати не можна, і йде за __wrapped__ за замовчуванням (follow_wrapped)."
   - source_id: py314-library-typing-protocol
     title: "Python 3.14: Library/typing (typing.Protocol)"
     url: https://docs.python.org/3.14/library/typing.html#typing.Protocol
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: клас Protocol для structural subtyping, який застосовують static type checkers. Не описує runtime-перевірку сигнатур."
 ---
 
 ## Short answer
@@ -93,19 +67,3 @@ Explicit protocol зменшує цю залежність. Споживач о�
 - використовувати `signature()` там, де інтерфейс відомий заздалегідь, і отримувати зайву залежність від імен параметрів;
 - не обробляти `ValueError` і `TypeError` у контейнері, який приймає довільні callable;
 - обгорнути функцію без `functools.wraps` і через це сховати її справжню сигнатуру від introspection.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

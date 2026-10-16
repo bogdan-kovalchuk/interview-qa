@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0004
 title: "Що насправді обчислить цей код?"
-description: "r == 11, а не 25. Макрос – це текстова заміна без дужок, тому SQUARE(2 + 3) розгортається у 2 + 3 2 + 3."
 track: embedded
 section: inline-and-macros
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -64,19 +45,3 @@ SQUARE(2 + 3)
 ```
 
 **Як помилка проявляється і як її уникнути:** результат помітно відрізняється від квадрата п’яти, а додавання такого макроса до більшого виразу може змінити ще й його групування. Завжди перевіряй підстановку з аргументами, що містять оператори, і використовуй дужки навколо кожного параметра та цілого виразу; якщо параметр має побічний ефект, обери `static inline` функцію.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

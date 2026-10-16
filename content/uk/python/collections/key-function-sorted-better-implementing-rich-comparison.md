@@ -1,41 +1,18 @@
 ---
 id: py-coll-0021
 title: "Коли key function у `sorted()` краща за реалізацію rich comparison methods у domain class?"
-description: "Key function краща, коли порядок сортування залежить від контексту або зовнішніх даних, а не від природного порядку самого класу."
 track: python
 section: collections
-level: senior
-type: comparison
-tags: [sorted]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -66,19 +43,3 @@ Rich comparison, натомість, виправданий, коли в дом�
 одне й те саме в будь-якому контексті використання; тоді `__lt__` (разом із `functools.total_ordering`,
 щоб не писати всі шість методів вручну) робить порядок частиною публічного API типу, а не
 деталлю окремого виклику `sorted()`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

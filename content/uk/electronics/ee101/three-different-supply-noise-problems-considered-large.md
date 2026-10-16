@@ -1,69 +1,30 @@
 ---
 id: emb-elee-0182
 title: "Які три різні проблеми завад у живленні розглядаються і чому один великий конденсатор не вирішує всі?"
-description: "Які три різні проблеми завад у живленні розглядаються і чому один великий конденсатор не вирішує всі?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 66, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: libretexts-fiore-rectification
     title: "Fiore: Semiconductor Devices, 3.2 Rectification (Engineering LibreTexts)"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Мостовий випрямляч: у кожному півперіоді проводять два діоди, струм через навантаження має один напрямок в обидва півперіоди, а пульсація – це зміна вихідної напруги через розряд конденсатора. Це рівень підручника, а не datasheet конкретного моста."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: fiore-inductance-dc
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 9.2 Inductance and Inductors"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/09:_Inductors/9.2:_Inductance_and_Inductors"
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Визначення індуктивності як міри здатності провідника протидіяти зміні струму через нього, що випливає з магнітного поля струму. Числових значень для конкретних доріжок чи проводів розділ не дає."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/09:_Inductors/9.2:_Inductance_and_Inductors
   - source_id: fiore-ac-circuit-analysis
     title: "James M. Fiore: AC Electrical Circuit Analysis, A Practical Approach (sections 1.5 and 10.3)"
     url: https://www2.mvcc.edu/users/faculty/jfiore/Circuits2/ACElectricalCircuitAnalysis.pdf
-    accessed: 2026-10-13
-    kind: book
-    version: "1.1.2, 22 April 2021"
-    applicability: "Рівняння ідеальних елементів: i = C*dv/dt для конденсатора (напруга змінюється зі швидкістю i/C) і v = L*di/dt для котушки (зміна струму дає напругу). Опору та паразитних параметрів ідеальних елементів документ не моделює."
   - source_id: ti-switching-regulator-fundamentals
     title: "Texas Instruments: Switching regulator fundamentals"
     url: https://www.ti.com/lit/an/snva559c/snva559c.pdf
-    accessed: 2026-10-13
-    kind: official
-    version: "Rev. C"
-    applicability: "Записка про імпульсні регулятори: ESL обмежує алюмінієвий електроліт на високих частотах, ESR, ESL і C утворюють резонансний контур, ESR сильно залежить від температури; швидкі ключі й діоди дають EMI; виводи живлення IC шунтують до землі з малою індуктивністю, локальні bypass-конденсатори – керамічні або плівкові. Конкретні значення беруть з datasheet."
 ---
 
 ## Short answer
@@ -85,7 +46,3 @@ sources:
 - Вважати, що один великий конденсатор одночасно усуває пульсації, просідання і високочастотні завади.
 - Ставити bypass далеко від мікросхеми: довга доріжка має індуктивність, і `L*di/dt` на ній лишається.
 - Плутати пульсації мережі з високочастотними завадами і вибирати для них один і той самий фільтр.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0018
 title: "Намалюйте memory layout без packing `struct { uint8_t a; uint32_t b; uint8_t c; }`"
-description: "Компілятор вставляє padding між uint8_t і uint32_t полями, тож struct займає 12, а не 6 байт."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -50,11 +31,3 @@ sources:
 Навіть коли сумарний розмір збігається, padding bytes можуть містити невизначені значення, тому байтове порівняння структур через `memcmp` не завжди еквівалентне порівнянню їхніх полів. Якщо формат має точні offsets, задавайте серіалізацію по байтах або використовуйте перевірену специфікацію ABI, а не виводьте її з одного запуску компілятора.
 
 **Типова помилка:** запам’ятати число 12 як властивість мови. Воно випливає з конкретних розмірів та alignment; інша ABI або packing option може змінити layout.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

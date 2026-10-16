@@ -1,41 +1,18 @@
 ---
 id: py-coll-0010
 title: "Чому зміна розміру словника під час ітерації його keys може завершитися помилкою, тоді як зміна value наявного key часто допустима?"
-description: "Ітерація по словнику фіксує його розмір (кількість key-слотів); додавання або видалення ключа змінює цей розмір і викликає RuntimeError: dictionary changed size during iteration."
 track: python
 section: collections
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -67,23 +44,3 @@ sources:
 Безпечні альтернативи, крім `for k in list(d):` – будувати новий словник через dict comprehension
 (`{k: f(v) for k, v in d.items()}`) замість мутації під час обходу, або накопичувати зміни в
 окремому списку операцій і застосувати їх після завершення циклу.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

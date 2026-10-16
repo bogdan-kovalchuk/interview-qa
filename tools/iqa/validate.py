@@ -5,12 +5,9 @@ from __future__ import annotations
 from collections import defaultdict
 from dataclasses import dataclass, field
 import csv
-from difflib import SequenceMatcher
 import json
 from pathlib import Path
 import re
-import shutil
-import sys
 from typing import Any
 
 from jsonschema import Draft202012Validator
@@ -21,16 +18,10 @@ from .taxonomy import ordered_paths
 from .model import (
     code_spans,
     outside_code,
-    EVALUATION_SUBSECTIONS,
     OPTIONAL_SECTIONS,
-    EvaluationSubsection,
     Language,
-    Level,
     Question,
-    QuestionType,
     SectionName,
-    SourceKind,
-    Status,
     expected_sections,
     load_frontmatter,
     parse_body,
@@ -48,7 +39,6 @@ MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]\r\n]+\]\([^)\r\n]+\)")
 MARKDOWN_LINK_TARGET_RE = re.compile(
     r"(?<!!)\[[^\]\r\n]+\]\((?P<target>[^)\r\n]+)\)"
 )
-SOURCE_COMMENT = "<!-- generated from frontmatter -->"
 FORBIDDEN_CONTENT_CHARACTERS = {
     "\u2014": "em dash U+2014",
     "\u2190": "arrow U+2190",
@@ -143,10 +133,9 @@ def _load_registry(path: Path, report: ValidationReport) -> dict[str, RegistryEn
                     current_path=row["current_path"].strip().replace("\\", "/"),
                     reason=(row["reason"] or "").strip(),
                 )
-                # meta/questions.md section 8: a rejected question leaves no file
-                # behind, so the registry row is the only place the reason can
-                # live. An empty one turns a deliberate retirement into an
-                # indistinguishable gap in the id sequence.
+                # A deleted question leaves no file behind, so the registry row is
+                # the only place the reason can live. An empty one turns a
+                # deliberate retirement into an indistinguishable gap.
                 if entry.status == "retired" and not entry.reason:
                     report.add(
                         "id-immutable",
@@ -163,10 +152,10 @@ def _load_vocabulary(path: Path, report: ValidationReport) -> dict[str, Any]:
     try:
         value = yaml.safe_load(path.read_text(encoding="utf-8"))
     except (OSError, yaml.YAMLError) as error:
-        report.add("facets-vocabulary", f"cannot read vocabulary: {error}", path=path.as_posix())
+        report.add("taxonomy", f"cannot read vocabulary: {error}", path=path.as_posix())
         return {}
     if not isinstance(value, dict):
-        report.add("facets-vocabulary", "vocabulary must be a mapping", path=path.as_posix())
+        report.add("taxonomy", "vocabulary must be a mapping", path=path.as_posix())
         return {}
     return value
 
@@ -254,152 +243,61 @@ def _read_records(content_root: Path, report: ValidationReport) -> list[FileReco
                 f"{'/'.join(map(str, item['loc']))}: {item['msg']}" for item in error.errors()
             )
             report.add("schema", details, path=record.label)
-            locations = {tuple(item["loc"]) for item in error.errors()}
-            if any("execution" in location for location in locations):
-                report.add("example-executed", "execution is not well-formed", path=record.label)
-            if any("sources" in location for location in locations):
-                report.add("source-applicability", "source metadata is not well-formed", path=record.label)
-            if any(
-                set(location) & {"level", "type", "status", "frameworks"}
-                for location in locations
-            ):
-                report.add("facets-vocabulary", "a closed facet is invalid", path=record.label)
     report.files_checked = len(records)
     return records
 
 
 def _raw_content_gates(record: FileRecord, report: ValidationReport) -> None:
-    frontmatter = record.raw_frontmatter
-    if frontmatter is None:
-        return
-
-    sources = frontmatter.get("sources")
-    source_list = sources if isinstance(sources, list) else []
-    source_error = not source_list
-    if source_list and all(
-        isinstance(source, dict) and source.get("kind") == SourceKind.COMMUNITY.value
-        for source in source_list
-    ):
-        source_error = True
-    if source_error:
-        message = "at least one non-community source is required"
-        report.add("sources", message, path=record.label)
-        report.add("source-present", message, path=record.label)
-
-    for index, source in enumerate(source_list):
-        if not isinstance(source, dict):
-            report.add(
-                "source-applicability", f"source {index + 1} must be a mapping", path=record.label
-            )
-            continue
-        missing = [
-            key
-            for key in ("accessed", "version", "applicability")
-            if key not in source
-        ]
-        if missing or source.get("accessed") is None or not str(
-            source.get("applicability", "")
-        ).strip():
-            report.add(
-                "source-applicability",
-                f"source {index + 1} lacks explicit version, accessed date, or applicability",
-                path=record.label,
-            )
-
     for character, label in FORBIDDEN_CONTENT_CHARACTERS.items():
         if character in record.text:
             report.add("schema", f"contains forbidden {label}", path=record.label)
 
 
-def _facets_gate(record: FileRecord, vocabulary: dict[str, Any], report: ValidationReport) -> None:
-    frontmatter = record.raw_frontmatter
-    if frontmatter is None:
-        return
-    for field_name, enum_type in (
-        ("level", Level),
-        ("type", QuestionType),
-        ("status", Status),
-    ):
-        try:
-            enum_type(frontmatter.get(field_name))
-        except (TypeError, ValueError):
-            report.add(
-                "facets-vocabulary",
-                f"`{field_name}` is not in its closed vocabulary",
-                path=record.label,
-            )
-    allowed_frameworks = set((vocabulary.get("frameworks") or {}).keys())
-    frameworks = frontmatter.get("frameworks", [])
-    if not isinstance(frameworks, list):
-        report.add("facets-vocabulary", "`frameworks` must be a list", path=record.label)
-    else:
-        for framework in frameworks:
-            if framework not in allowed_frameworks:
-                report.add(
-                    "facets-vocabulary",
-                    f"framework `{framework}` is not in meta/vocabulary.yml",
-                    path=record.label,
-                )
+def _labels_gate(record: FileRecord, vocabulary: dict[str, Any], report: ValidationReport) -> None:
     question = record.question
-    if question is not None:
-        track = question.frontmatter.track
-        section_path = f"{track}/{question.frontmatter.section}"
-        if track not in (vocabulary.get("track_labels") or {}):
-            report.add(
-                "facets-vocabulary",
-                f"track `{track}` has no visible label",
-                path=record.label,
-            )
-        if section_path not in (vocabulary.get("section_labels_nav") or {}):
-            report.add(
-                "facets-vocabulary",
-                f"section `{section_path}` has no visible navigation label",
-                path=record.label,
-            )
-        if section_path not in (vocabulary.get("section_prefixes") or {}):
-            report.add(
-                "facets-vocabulary",
-                f"section `{section_path}` has no immutable ID prefix",
-                path=record.label,
-            )
-        else:
-            issued_prefix = question.frontmatter.id.rsplit("-", 1)[0].rsplit("-", 1)[-1]
-            allowed_prefixes = {
-                str(vocabulary["section_prefixes"][section_path]),
-                *map(str, (vocabulary.get("section_prefix_aliases") or {}).get(section_path, [])),
-            }
-            if issued_prefix not in allowed_prefixes:
-                report.add(
-                    "id-immutable",
-                    f"question ID uses prefix `{issued_prefix}`; "
-                    f"expected one of {sorted(allowed_prefixes)}",
-                    path=record.label,
-                )
+    if question is None:
+        return
+    track = question.frontmatter.track
+    section_path = f"{track}/{question.frontmatter.section}"
+    if track not in (vocabulary.get("track_labels") or {}):
+        report.add("taxonomy", f"track `{track}` has no visible label", path=record.label)
+    if section_path not in (vocabulary.get("section_labels_nav") or {}):
+        report.add(
+            "taxonomy", f"section `{section_path}` has no visible navigation label", path=record.label
+        )
+    if section_path not in (vocabulary.get("section_prefixes") or {}):
+        report.add(
+            "taxonomy", f"section `{section_path}` has no immutable ID prefix", path=record.label
+        )
+        return
+    issued_prefix = question.frontmatter.id.rsplit("-", 1)[0].rsplit("-", 1)[-1]
+    allowed_prefixes = {
+        str(vocabulary["section_prefixes"][section_path]),
+        *map(str, (vocabulary.get("section_prefix_aliases") or {}).get(section_path, [])),
+    }
+    if issued_prefix not in allowed_prefixes:
+        report.add(
+            "id-immutable",
+            f"question ID uses prefix `{issued_prefix}`; "
+            f"expected one of {sorted(allowed_prefixes)}",
+            path=record.label,
+        )
 
 
 def _vocabulary_contract_gate(vocabulary: dict[str, Any], report: ValidationReport) -> None:
     section_labels = vocabulary.get("section_labels") or {}
-    subsection_labels = vocabulary.get("subsection_labels") or {}
-    for section in SectionName:
-        labels = section_labels.get(section.value)
+    for heading in (*(section.value for section in SectionName), "Sources"):
+        labels = section_labels.get(heading)
         if not isinstance(labels, dict) or set(labels) != {"en", "uk"}:
             report.add(
-                "facets-vocabulary",
-                f"section `{section.value}` needs en and uk labels",
-                path="meta/vocabulary.yml",
-            )
-    for subsection in EvaluationSubsection:
-        labels = subsection_labels.get(subsection.value)
-        if not isinstance(labels, dict) or set(labels) != {"en", "uk"}:
-            report.add(
-                "facets-vocabulary",
-                f"subsection `{subsection.value}` needs en and uk labels",
+                "taxonomy",
+                f"section `{heading}` needs en and uk labels",
                 path="meta/vocabulary.yml",
             )
     for section_path, prefix in (vocabulary.get("section_prefixes") or {}).items():
         if not re.fullmatch(r"[a-z]{3,8}", str(prefix)):
             report.add(
-                "facets-vocabulary",
+                "taxonomy",
                 f"section prefix for `{section_path}` must be 3 to 8 lowercase letters",
                 path="meta/vocabulary.yml",
             )
@@ -407,13 +305,13 @@ def _vocabulary_contract_gate(vocabulary: dict[str, Any], report: ValidationRepo
     for section_path, aliases in (vocabulary.get("section_prefix_aliases") or {}).items():
         if section_path not in known_sections:
             report.add(
-                "facets-vocabulary",
+                "taxonomy",
                 f"section prefix aliases reference unknown section `{section_path}`",
                 path="meta/vocabulary.yml",
             )
         if not isinstance(aliases, list) or not aliases:
             report.add(
-                "facets-vocabulary",
+                "taxonomy",
                 f"section prefix aliases for `{section_path}` must be a non-empty list",
                 path="meta/vocabulary.yml",
             )
@@ -421,7 +319,7 @@ def _vocabulary_contract_gate(vocabulary: dict[str, Any], report: ValidationRepo
         for prefix in aliases:
             if not re.fullmatch(r"[a-z]{3,8}", str(prefix)):
                 report.add(
-                    "facets-vocabulary",
+                    "taxonomy",
                     f"section prefix alias for `{section_path}` must be 3 to 8 lowercase letters",
                     path="meta/vocabulary.yml",
                 )
@@ -442,12 +340,7 @@ def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
         for heading in headings
         if heading in known_names and SectionName(heading) in OPTIONAL_SECTIONS
     }
-    expected = [
-        section.value
-        for section in expected_sections(
-            question.frontmatter.type, question.frontmatter.level, present_optional
-        )
-    ]
+    expected = [section.value for section in expected_sections(present_optional)]
     if headings != expected:
         report.add(
             "sections",
@@ -458,8 +351,7 @@ def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
     if question.body.preamble:
         report.add("sections", "body content appears before the first section", path=record.label)
     # Fenced code is skipped: `# note` at the start of a line inside a Python or
-    # shell example is a comment, not a level-1 heading, and the house style for
-    # `Detailed explanation` puts exactly such comments in its examples.
+    # shell example is a comment, not a level-1 heading.
     spans = code_spans(question.body.raw)
     for marker in re.finditer(r"(?m)^(#{1,6})[ \t]+", question.body.raw):
         if not outside_code(marker.start(), spans):
@@ -471,37 +363,7 @@ def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
     for section in question.body.sections:
         if not section.content:
             report.add("sections", f"section `{section.heading}` is empty", path=record.label)
-        if section.heading == SectionName.SOURCES.value:
-            if section.content != SOURCE_COMMENT:
-                report.add(
-                    "sections",
-                    "Sources must contain only the generated comment",
-                    path=record.label,
-                )
-        elif section.heading == SectionName.EVALUATION_GUIDE.value:
-            subsection_names = [subsection.heading for subsection in section.subsections]
-            expected_subsections = [item.value for item in EVALUATION_SUBSECTIONS]
-            if section.content == "TODO":
-                if subsection_names:
-                    report.add(
-                        "sections",
-                        "a TODO Evaluation guide must not contain subblocks",
-                        path=record.label,
-                    )
-            elif subsection_names != expected_subsections:
-                report.add(
-                    "sections",
-                    f"Evaluation guide subblocks {subsection_names} do not match {expected_subsections}",
-                    path=record.label,
-                )
-            for subsection in section.subsections:
-                if not subsection.content:
-                    report.add(
-                        "sections",
-                        f"Evaluation guide subblock `{subsection.heading}` is empty",
-                        path=record.label,
-                    )
-        elif section.heading == SectionName.QUESTION_CODE.value:
+        if section.heading == SectionName.QUESTION_CODE.value:
             # The snippet the question is about, and nothing else: the question's
             # own wording is the title, and the section is optional - a question
             # with no code omits it instead of filling it with `TODO`.
@@ -518,30 +380,11 @@ def _sections_gates(record: FileRecord, report: ValidationReport) -> None:
                     f"Question code must hold exactly one code block and no other text (found {blocks})",
                     path=record.label,
                 )
-        elif section.subsections:
+        elif section.subsections and section.heading != SectionName.DETAILED_EXPLANATION.value:
+            # Only the explanation is long enough to need its own `###` structure;
+            # the short answer is a card and the question code is one block.
             report.add(
                 "sections", f"`###` is forbidden in `{section.heading}`", path=record.label
-            )
-
-    evaluation_present = SectionName.EVALUATION_GUIDE.value in headings
-    if question.frontmatter.level is Level.JUNIOR and evaluation_present:
-        report.add(
-            "sections-by-level", "junior questions must not have Evaluation guide", path=record.label
-        )
-    if question.frontmatter.level in {Level.MIDDLE, Level.SENIOR} and not evaluation_present:
-        report.add(
-            "sections-by-level",
-            f"{question.frontmatter.level.value} questions require Evaluation guide",
-            path=record.label,
-        )
-    if SectionName.FOLLOW_UP.value in headings:
-        if question.frontmatter.level is not Level.JUNIOR:
-            report.add(
-                "sections-by-level", "Follow-up is allowed only for junior", path=record.label
-            )
-        if question.frontmatter.type is QuestionType.BEHAVIORAL:
-            report.add(
-                "sections-by-level", "Follow-up is forbidden for behavioral", path=record.label
             )
 
 
@@ -676,9 +519,10 @@ def _xref_gate(record: FileRecord, known_ids: set[str], report: ValidationReport
     for target in QID_RE.findall(question.body.raw):
         if target not in known_ids:
             report.add("xref", f"qid:{target} does not resolve", path=record.label)
-    for target in (*question.frontmatter.see_also, *question.frontmatter.prerequisites):
-        if target not in known_ids:
-            report.add("xref", f"frontmatter reference `{target}` does not resolve", path=record.label)
+    # Inside code the site would print the resolved path as code, not a link.
+    for span in INLINE_CODE_RE.findall(_without_code(question.body.raw)):
+        if QID_RE.search(span):
+            report.add("xref", f"qid token inside inline code: {span}", path=record.label)
 
 
 def _taxonomy_gate(
@@ -726,10 +570,10 @@ def _id_gates(
                 f"registry path `{entry.current_path}` does not match `{canonical_path}`",
                 path=record.label,
             )
-        if entry.status != question.frontmatter.status.value:
+        if entry.status != "published":
             report.add(
                 "id-immutable",
-                f"registry status `{entry.status}` does not match `{question.frontmatter.status.value}`",
+                f"registry status of an existing question is `{entry.status}`, not `published`",
                 path=record.label,
             )
         if entry.current_path.startswith(("en/", "uk/")):
@@ -749,62 +593,29 @@ def _id_gates(
             report.add(
                 "id-unique", f"`{qid}` maps to multiple paths: {sorted(paths)}"
             )
+    # A deleted question must be retired explicitly; a live row with no file is
+    # an id that silently disappeared.
+    for qid, entry in registry.items():
+        if entry.status == "published" and qid not in paths_per_id:
+            report.add(
+                "id-immutable",
+                f"`{qid}` is `published` in id-registry.csv but has no file; retire it with a reason",
+            )
 
 
-def _claim_gate(record: FileRecord, report: ValidationReport) -> None:
+def _sources_gate(record: FileRecord, report: ValidationReport) -> None:
+    """Sources are optional, but every citation token must name one of them."""
     question = record.question
     if question is None:
         return
     source_ids = {source.source_id for source in question.frontmatter.sources}
-    citations = CITATION_RE.findall(question.body.raw)
-    for source_id in citations:
+    for source_id in CITATION_RE.findall(question.body.raw):
         if source_id not in source_ids:
             report.add(
-                "claim-linked", f"citation `{source_id}` has no matching source", path=record.label
+                "sources", f"citation `{source_id}` has no matching source", path=record.label
             )
     if re.search(r"(?m)^\[\^[^]]+\]:", question.body.raw):
-        report.add(
-            "claim-linked", "manual footnote definitions are forbidden", path=record.label
-        )
-
-    if question.frontmatter.type is QuestionType.CODING:
-        evidence_sections = (SectionName.COMPLEXITY,)
-    elif question.frontmatter.type is QuestionType.BEHAVIORAL:
-        evidence_sections = (SectionName.COMPETENCY_ASSESSED,)
-    else:
-        evidence_sections = (
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-        )
-    for section_name in evidence_sections:
-        section = question.section(section_name)
-        if section is None or section.content == "TODO":
-            continue
-        if not CITATION_RE.search(section.content):
-            report.add(
-                "claim-linked",
-                f"written `{section_name.value}` has no citation token",
-                path=record.label,
-            )
-
-
-def _toolchain_exists(name: str) -> bool:
-    if name == "cpython":
-        return bool(sys.executable and Path(sys.executable).exists())
-    return shutil.which(name) is not None
-
-
-def _execution_gate(record: FileRecord, report: ValidationReport) -> None:
-    question = record.question
-    if question is None or question.frontmatter.execution is None:
-        return
-    name = question.frontmatter.execution.toolchain.name
-    if not _toolchain_exists(name):
-        report.add(
-            "example-executed",
-            f"declared toolchain `{name}` is not available",
-            path=record.label,
-        )
+        report.add("sources", "manual footnote definitions are forbidden", path=record.label)
 
 
 def _language_gates(
@@ -837,6 +648,11 @@ def _language_gates(
                 "lang-files-exist",
                 f"`{qid}` language slugs or paths differ: `{en_canonical}` vs `{uk_canonical}`",
             )
+        if (en.frontmatter.track, en.frontmatter.section) != (
+            uk.frontmatter.track,
+            uk.frontmatter.section,
+        ):
+            report.add("lang-structure-parity", f"`{qid}` track or section differs")
 
         en_headings = [section.heading for section in en.body.sections]
         uk_headings = [section.heading for section in uk.body.sections]
@@ -846,15 +662,10 @@ def _language_gates(
                 f"`{qid}` section sequences differ",
             )
 
-        # Both gates below compare *written* text between languages. Per
-        # meta/quality-gates.md's framing rule, a `TODO` placeholder is
-        # exempt from having text at all - it carries no code and no
-        # citation/qid tokens to be identical or parallel to anything, so a
-        # section that is `TODO` on either side is excluded from both
-        # comparisons rather than compared against an empty section on the
-        # other side. A section written in both languages is still compared
-        # in full - this only stops the gate from treating "not written yet"
-        # as a mismatch.
+        # Both comparisons below are about *written* text. A section that is
+        # `TODO` on either side carries no code and no tokens to be parallel to
+        # anything, so it is excluded rather than compared against the other
+        # language's text.
         en_by_heading = {section.heading: section for section in en.body.sections}
         uk_by_heading = {section.heading: section for section in uk.body.sections}
         written_headings = [
@@ -866,6 +677,18 @@ def _language_gates(
         ]
         en_written_raw = "\n".join(en_by_heading[h].content for h in written_headings)
         uk_written_raw = "\n".join(uk_by_heading[h].content for h in written_headings)
+
+        # `###` headings are written in the file's language, so only their number
+        # can be compared: a subsection present in one language only is lost
+        # from the other.
+        for heading in written_headings:
+            en_count = len(en_by_heading[heading].subsections)
+            uk_count = len(uk_by_heading[heading].subsections)
+            if en_count != uk_count:
+                report.add(
+                    "lang-structure-parity",
+                    f"`{qid}` `{heading}` has {en_count} `###` in en and {uk_count} in uk",
+                )
 
         if CODE_BLOCK_RE.findall(en_written_raw) != CODE_BLOCK_RE.findall(uk_written_raw):
             report.add("lang-code-identical", f"`{qid}` code blocks differ")
@@ -901,46 +724,6 @@ def _language_gates(
                     path=uk_record.label,
                 )
 
-        en_revision = en.frontmatter.content_revision
-        uk_revision = uk.frontmatter.content_revision
-        if uk.frontmatter.reconciled_with.get(Language.EN, 0) < en_revision:
-            report.add(
-                "lang-reconciliation",
-                f"`{qid}` Ukrainian revision marker trails English revision {en_revision}",
-                severity="warning",
-            )
-        if en.frontmatter.reconciled_with.get(Language.UK, 0) < uk_revision:
-            report.add(
-                "lang-reconciliation",
-                f"`{qid}` English revision marker trails Ukrainian revision {uk_revision}",
-                severity="warning",
-            )
-
-
-def _duplicate_report(records: list[FileRecord], report: ValidationReport) -> None:
-    english = [
-        record.question
-        for record in records
-        if record.question is not None and record.question.language is Language.EN
-    ]
-    for index, left in enumerate(english):
-        assert left is not None
-        left_title = " ".join(re.findall(r"[a-z0-9]+", left.frontmatter.title.lower()))
-        for right in english[index + 1 :]:
-            assert right is not None
-            shared_tags = set(left.frontmatter.tags) & set(right.frontmatter.tags)
-            if not shared_tags:
-                continue
-            right_title = " ".join(re.findall(r"[a-z0-9]+", right.frontmatter.title.lower()))
-            similarity = SequenceMatcher(None, left_title, right_title).ratio()
-            if similarity >= 0.88:
-                report.add(
-                    "no-duplicates",
-                    f"possible duplicate `{left.frontmatter.id}` and `{right.frontmatter.id}` "
-                    f"(title similarity {similarity:.2f}, tags {sorted(shared_tags)})",
-                    severity="warning",
-                )
-
 
 def validate_repository(root: Path) -> ValidationReport:
     root = root.resolve()
@@ -955,12 +738,11 @@ def validate_repository(root: Path) -> ValidationReport:
 
     for record in records:
         _raw_content_gates(record, report)
-        _facets_gate(record, vocabulary, report)
+        _labels_gate(record, vocabulary, report)
         _sections_gates(record, report)
         _short_answer_gate(record, report)
         _taxonomy_gate(record, taxonomy_paths, report)
-        _claim_gate(record, report)
-        _execution_gate(record, report)
+        _sources_gate(record, report)
 
     _id_gates(records, registry, report)
     known_ids = {
@@ -969,7 +751,6 @@ def validate_repository(root: Path) -> ValidationReport:
     for record in records:
         _xref_gate(record, known_ids, report)
     _language_gates(records, vocabulary, report)
-    _duplicate_report(records, report)
     report.diagnostics.sort(key=lambda item: (item.severity, item.gate, item.path or "", item.message))
     return report
 

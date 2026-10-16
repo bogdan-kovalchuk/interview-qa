@@ -1,37 +1,15 @@
 ---
 id: py-perf-0019
 title: "Чому один positive `tracemalloc` snapshot diff після workload ще не доводить leak і як repeated steady-state measurements відрізняють cache growth від unbounded retention?"
-description: "tracemalloc відстежує лише блоки, виділені Python; один позитивний snapshot diff може відображати cache growth, lazy initialization або тимчасові структури, а не leak."
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: [tracemalloc]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -93,23 +71,3 @@ print("unbounded:", growth_per_round(unbounded) // 1024, "KiB per round")
 - запускати tracemalloc після вимірюваних раундів, тож їхні блоки не потраплять у snapshot;
 - вважати плато доказом відсутності leak, зокрема в пам’яті C extension;
 - порівнювати snapshots з різним обсягом роботи між ними і приймати різницю за retention.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0059
 title: "Trap: що не так із таким очікуванням DMA?"
-description: "Якщо dma_done змінює ISR або callback, потрібен узгоджений із toolchain спосіб асинхронної синхронізації."
 track: embedded
 section: volatile-and-const
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -65,19 +46,3 @@ while (dma_done == 0u) {
 Цей фрагмент ілюструє лише pattern. Для RTOS використовуй semaphore/event notification, сумісний з ISR, замість зайнятого циклу. Якщо ISR публікує вміст буфера, окремо визнач порядок запису даних, повідомлення і потрібні cache maintenance дії для DMA.[^iso-c-n1570]
 
 **Типова помилка:** додати volatile й вважати протокол повністю синхронізованим. Зависання може з’являтися лише з оптимізацією, а застарілі дані – після DMA. Перевір документацію compiler щодо ISR, атомарності, ordering і coherency.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

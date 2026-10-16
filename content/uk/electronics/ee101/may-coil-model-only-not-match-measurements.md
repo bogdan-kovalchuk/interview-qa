@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0081
 title: "Чому модель котушки лише з jωL може не збігтися з вимірами і що показує мультиметр на котушці?"
-description: "Чому модель котушки лише з jωL може не збігтися з вимірами і що показує мультиметр на котушці?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 45, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-inductor-quirks
     title: "All About Circuits: Inductor Quirks"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-3/inductor-quirks/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює опір обмотки, комплексний імпеданс реальної котушки та частотно залежні втрати; не визначає параметри конкретного компонента."
   - source_id: keysight-4263b-lcr
     title: "Keysight 4263B LCR Meter User's Guide"
     url: https://www.keysight.com/cd/en/assets/9018-40465/user-manuals/9018-40465.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "4263B User's Guide"
-    applicability: "Показує окреме вимірювання індуктивності змінним тестовим сигналом і опору DC (Rdc); це приклад LCR-метра, не специфікація звичайного мультиметра."
 ---
 
 ## Short answer
@@ -67,19 +36,3 @@ sources:
 Приклад: якщо мультиметр показує 18 Ω, це не означає, що індуктивність дорівнює 18 H або що котушка має саме такий імпеданс на робочій частоті. Показ є її DC-опором у межах точності приладу. Для перевірки L потрібно записати частоту тесту і конфігурацію LCR-метра, бо виміряна індуктивність без цих умов може бути непорівнянною з паспортним значенням.[^keysight-4263b-lcr]
 
 **Типова помилка:** трактувати показ Ω як вимірювання індуктивності або вважати `j*ω*L` точною моделлю у всьому діапазоні. Спочатку обирають відповідний режим приладу: Ω для DC-опору, LCR або імпедансний аналізатор для AC-параметрів. Потім звіряють тестову частоту та допустимі умови з документацією компонента; якщо вимірювання відрізняється, перевіряють опір обмотки, паразитні елементи, контакт і частоту, а не змінюють модель навмання.[^aac-inductor-quirks] [^keysight-4263b-lcr]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0083
 title: "Які передавальні функції та частота зрізу RL-кола з виходом на R і на L?"
-description: "Які передавальні функції та частота зрізу RL-кола з виходом на R і на L?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 46, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-rl
     title: "All About Circuits: Series Resistor-Inductor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-3/series-resistor-inductor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує комплексні імпеданси та фазорні співвідношення послідовного RL-кола; формули передавальних функцій випливають із цього подільника для ненавантаженого виходу."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Ця модель і частота зрізу зміняться, якщо котушка має істотний послідовний опір або якщо вихід навантажений. У розрахунку з реальним компонентом до імпедансу котушки додають її опір обмотки; для навантаженого виходу враховують імпеданс наступного каскаду. Крім того, проста модель зосереджених ідеальних компонентів не описує поведінку вище власної резонансної частоти котушки.[^aac-series-rl]
 
 **Типова помилка:** підставити мілігенрі як 2.2 замість 0.0022 H або назвати `f_c` універсальною властивістю самої котушки. Треба привести R та L до одиниць Ω і H, уточнити схему виходу та перевірити, чи є навантаження. Для кожного виходу модуль і фаза мають бути узгоджені з його формулою: R відповідає ФНЧ, а L – ФВЧ у цій ідеальній топології.[^aac-series-rl]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0013
 title: "Чим відрізняються `global` і `nonlocal` за тим, у якому scope вони шукають binding для присвоєння?"
-description: "global прив’язує ім’я до namespace модуля (top-level), а nonlocal – до найближчого enclosing function scope, не включаючи модуль."
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [global, nonlocal]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-simple-stmts-the-global-statement
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-global-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts-the-nonlocal-statement
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-nonlocal-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Розділ Resolution of names: global-декларація спрямовує звертання в блоці до top-level namespace, а nonlocal – до найближчої охоплюючої function scope. Документація Python 3.14."
 ---
 
 ## Short answer
@@ -76,19 +53,3 @@ print(x)         # global assigned: the global declaration reached the module
 - писати `nonlocal x` для модульного `x`: для модуля потрібна декларація `global`;
 - очікувати, що `global x` у вкладеній функції змінить `x` зовнішньої функції;
 - ставити `global x` після читання або присвоєння `x` у тому самому блоці: це `SyntaxError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0030
 title: "Як правильно передати стан у C callback без global variables?"
-description: "Через пару callback + context pointer."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,7 +37,3 @@ Callback – це вказівник на функцію, яку API викли�
 - Вважати, що context автоматично копіюється: зазвичай API зберігає лише адресу, тож зміни об’єкта буде видно через той самий вказівник.
 
 Перед реєстрацією перевіряють сигнатуру callback, тип об’єкта, який передається, і момент, коли API припиняє зберігати адресу. Якщо API дозволяє, зручніше оголосити типізований wrapper, щоб помилки типу було легше помітити під час компіляції.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

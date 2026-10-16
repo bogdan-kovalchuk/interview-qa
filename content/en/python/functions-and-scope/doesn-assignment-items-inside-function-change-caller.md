@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0009
 title: "Why doesn't the assignment `items = []` inside a function change the caller's list, while `items.append(value)` can change it?"
-description: "Why doesn't the assignment `items = []` inside a function change the caller's list, while `items.append(value)` can change it?"
 track: python
 section: functions-and-scope
-level: middle
-type: comparison
-tags: [items, items-append-value]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-faq-programming-how-do-i-write-a-function-with-output
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#how-do-i-write-a-function-with-output-parameters-call-by-reference
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-why-did-changing-list-y-also-change-list-x
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-did-changing-list-y-also-change-list-x
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a change to a mutable object is visible through all names that refer to it; assigning to a name only rebinds that name."
   - source_id: py314-reference-simple-stmts-augmented-assignment
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#augmented-assignment-statements
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: augmented assignment (+=) is performed in place when possible, modifying the old object instead of creating a new one."
 ---
 
 ## Short answer
@@ -71,19 +48,3 @@ Be careful with `+=`. For a list, `items += [value]` is done in place: the objec
 - expecting that assigning `items = ...` inside the function changes the caller's list;
 - writing `items += [value]` without noticing that for a list it is an in-place change that the caller sees;
 - modifying an argument without saying so in the function name or documentation, so the caller does not expect the side effect.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

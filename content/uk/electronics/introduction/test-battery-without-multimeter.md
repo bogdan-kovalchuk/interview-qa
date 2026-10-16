@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0062
 title: "Як перевірити 9V батарею без мультиметра?"
-description: "Як перевірити 9V батарею без мультиметра?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: energizer-tester
     title: "Energizer Point-of-Sale Battery Testers – Loaded Volt Meters"
     url: https://data.energizer.com/pdfs/batt_tester.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Тест 9 V під навантаженням 250 Ω і поріг 6.6 V у конкретному тестері Energizer, не універсальний критерій."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 7, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Не перевіряйте батарею язиком. Відчуття поколювання не є вимірюванням ні напруги під навантаженням, ні ємності, а контакт із хімією та металевими контактами не потрібен для безпечної діагностики. Якщо приладу немає, практична безпечна відповідь – замінити сумнівну батарею або перевірити її у місці, де є тестер.
 
 **Типова помилка:** вважати одну напругу універсальним показником стану. Поріг залежить від хімії, температури, навантаження та вимог пристрою; для важливої системи орієнтуйтеся на документацію батареї й тестуйте під заданим навантаженням.
-
-## Sources
-
-<!-- generated from frontmatter -->

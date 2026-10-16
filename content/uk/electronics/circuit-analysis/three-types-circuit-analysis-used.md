@@ -1,55 +1,24 @@
 ---
 id: emb-elcirc-0001
 title: "Які три типи аналізу кіл існують і де кожен застосовується?"
-description: "Які три типи аналізу кіл існують і де кожен застосовується?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 27, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-spice-analysis-types
     title: "All About Circuits: DC Analysis in SPICE"
     url: https://www.allaboutcircuits.com/textbook/designing-analog-chips/simulation/dc-analysis-in-spice/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює значення DC-аналізу та його приклади; висновки стосуються аналізу схеми в SPICE."
   - source_id: aac-spice-ac-analysis
     title: "All About Circuits: AC Analysis in SPICE"
     url: https://www.allaboutcircuits.com/textbook/designing-analog-chips/simulation/ac-analysis-in-spice/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує частотний малосигнальний аналіз навколо заданої робочої точки; нелінійна поведінка за великих сигналів може відрізнятися."
   - source_id: aac-spice-transient
     title: "All About Circuits: Transient Analysis in SPICE"
     url: https://www.allaboutcircuits.com/textbook/designing-analog-chips/simulation/transient-analysis-in-spice/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює часовий аналіз реакції схеми на заданий сигнал у SPICE."
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ Transient-аналіз розв’язує поведінку схеми в ча
 - Називати AC-аналіз моделлю довільного великого сигналу: він зазвичай лінеаризований біля робочої точки.
 - Очікувати від DC-аналізу часової форми: для фронтів і заряджання потрібен transient-аналіз.
 - Вважати, що «цифрова» схема завжди потребує тільки DC: перемикання також має часові перехідні процеси.
-
-## Sources
-
-<!-- generated from frontmatter -->

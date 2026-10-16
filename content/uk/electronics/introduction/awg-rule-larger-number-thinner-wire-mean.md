@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0277
 title: "Що означає правило `AWG`: більший номер – тонший дріт?"
-description: "Що означає правило `AWG`: більший номер – тонший дріт?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 25, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: nist-awg-wire-diameter
     title: "NIST: Evaluation of Wire Detection in X-Ray Images"
     url: https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=919567
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Наводить конкретні діаметри AWG 20, 24 і 30; підтримує порівняння номеру й діаметра, але не визначає допустимий струм проводу."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ American Wire Gauge (AWG) – це система позначення діам�
 Практичне порівняння: для коротких мідних проводів однакової конструкції 22 AWG товщий за 24 AWG, а 24 AWG – товщий за 30 AWG. Для багатожильного проводу важливо з’ясувати, чи вказаний AWG стосується кожної жили чи всього кабелю; зовнішній діаметр ізоляції не є діаметром міді. Так само не можна підміняти AWG іншою системою калібрів, де напрямок нумерації може відрізнятися.[^nist-awg-wire-diameter]
 
 **Типова помилка:** вважати, що «більший номер» означає «більший провід» або що з номера можна одразу визначити безпечний струм. Для вибору перерізу спершу встановіть матеріал і тип проводу, умови монтажу й струм навантаження, а тоді перевірте таблицю допустимого струму для цих умов. AWG допомагає ідентифікувати геометричний розмір, але сам собою не задає універсального рейтингу струму.[^nist-awg-wire-diameter]
-
-## Sources
-
-<!-- generated from frontmatter -->

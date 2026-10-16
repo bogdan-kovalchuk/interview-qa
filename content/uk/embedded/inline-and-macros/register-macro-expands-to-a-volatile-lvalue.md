@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0037
 title: "Як через макрос задати доступ до memory-mapped регістра?"
-description: "Макрос розгортається у lvalue-доступ до фіксованої адреси, тому можна писати GPIOA_ODR = 0xFF; і x = GPIOA_ODR;."
 track: embedded
 section: inline-and-macros
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -57,7 +38,3 @@ sources:
 **Типова помилка:** вважати, що додавання `volatile` автоматично робить будь-яку числову адресу безпечною. Наприклад, неправильна ширина може звернутися до сусідніх регістрів або порушити вимоги шини. Перевіряйте адресу й дозволений розмір транзакції в документації, а не виводьте їх із типу C.
 
 Приклад навмисно показує форму макросу, а не реєстр конкретної плати: для реального `GPIOA_ODR` значення адреси беруть із документації MCU, а тип вибирають згідно з описаною шириною регістра.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

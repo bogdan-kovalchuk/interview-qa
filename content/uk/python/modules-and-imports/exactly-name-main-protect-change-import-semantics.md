@@ -1,65 +1,27 @@
 ---
 id: py-modimp-0012
 title: "Що саме захищає `if __name__ == \"__main__\"` і чого він не змінює в import semantics?"
-description: "if __name__ == \"__main__\" захищає код від виконання під час імпорту: коли модуль запускають як скрипт, __name__ дорівнює \"__main__\", а при звичайному import – своїй dotted name."
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [if-name-main]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-library-main
     title: "Python 3.14: Library/__main__, Top-level code environment"
     url: https://docs.python.org/3.14/library/__main__.html#name-main
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: __name__ дорівнює '__main__' у верхньому рівні програми та імені модуля при імпорті; код під if __name__ == '__main__' не виконується при імпорті."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: модуль додається в sys.modules до виконання його коду, а повторний import повертає вже створений модуль."
   - source_id: py314-reference-import-special-considerations-for-main
     title: "Python 3.14: Reference/import, Special considerations for __main__"
     url: https://docs.python.org/3.14/reference/import.html#special-considerations-for-main
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: файл, запущений як скрипт, і той самий файл, імпортований під своїм іменем, є різними модулями."
 ---
 
 ## Short answer
@@ -116,11 +78,3 @@ same module object: False
 - вважати, що guard робить модуль безпечним для імпорту: код поза блоком виконується завжди;
 - тримати функції та класи, потрібні іншим модулям, усередині `if __name__ == "__main__":`: імпортер їх не побачить;
 - імпортувати файл, запущений як скрипт, і очікувати, що його код виконається один раз.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

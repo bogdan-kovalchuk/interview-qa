@@ -1,90 +1,39 @@
 ---
 id: py-fileio-0013
 title: "Why can't `pickle.loads()` be called on untrusted data, even after checking the expected object type?"
-description: "Why can't `pickle.loads()` be called on untrusted data, even after checking the expected object type?"
 track: python
 section: files-and-io
-level: senior
-type: pitfall
-tags: [pickle-loads]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle-restricting-globals
     title: "Python 3.14: Library/pickle (Restricting Globals)"
     url: https://docs.python.org/3.14/library/pickle.html#pickle-restrict
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: by default, unpickling imports any class or function found in the data, which allows arbitrary code to be invoked."
   - source_id: py314-library-pickle-object-reduce
     title: "Python 3.14: Library/pickle (object.__reduce__)"
     url: https://docs.python.org/3.14/library/pickle.html#object.__reduce__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __reduce__ returns a callable and a tuple of arguments, which is called to create the object during unpickling."
   - source_id: py314-library-pickle-find-class
     title: "Python 3.14: Library/pickle (Unpickler.find_class)"
     url: https://docs.python.org/3.14/library/pickle.html#pickle.Unpickler.find_class
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: find_class is called whenever a class or function is requested; overriding it can potentially reduce security risks."
 ---
 
 ## Short answer
@@ -120,23 +69,3 @@ If data comes from outside, use a format that does not execute code, such as `js
 - assuming that an `isinstance` check after `loads()` protects against code execution;
 - assuming that an allow-list in `find_class` makes pickle safe for untrusted data;
 - accepting pickle data from a shared cache, queue, or directory that another party can write to.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

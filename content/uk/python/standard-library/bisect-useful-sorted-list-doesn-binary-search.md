@@ -1,27 +1,12 @@
 ---
 id: py-stdlib-0014
 title: "Коли `bisect` корисний для sorted list і чому binary search не робить insertion дешевою?"
-description: "bisect знаходить позицію вставки за O(log n), але сам list.insert() коштує O(n) через зсув елементів у масиві."
 track: python
 section: standard-library
-level: middle
-type: practical
-tags: [bisect]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-bisect
     title: "Python 3.14: Library/bisect"
     url: https://docs.python.org/3.14/library/bisect.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: bisect викликає лише __lt__; insort має O(n) через крок insert; параметр key з 3.10; функції не потокобезпечні; для точних значень словник швидший."
 ---
 
 ## Short answer
@@ -65,23 +50,3 @@ print(contains(data, 30), contains(data, 35))         # True False
 - вважати, що `insort` має O(log n) загалом: логарифмічний лише пошук, а вставка в список коштує O(n);
 - покладатися на `bisect` у перевірці наявності без порівняння `a[i] == x`;
 - шукати в списку, відсортованому іншим порядком або іншим ключем: `bisect` дасть хибну позицію без помилки.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

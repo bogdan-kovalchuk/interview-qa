@@ -1,97 +1,42 @@
 ---
 id: py-fileio-0009
 title: "How does `pathlib.Path` make building and traversing paths easier compared to manual string concatenation?"
-description: "How does `pathlib.Path` make building and traversing paths easier compared to manual string concatenation?"
 track: python
 section: files-and-io
-level: middle
-type: comparison
-tags: [pathlib-path]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-io
     title: "Python 3.14: Library/io"
     url: https://docs.python.org/3.14/library/io.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-json
     title: "Python 3.14: Library/json"
     url: https://docs.python.org/3.14/library/json.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pickle
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-fsync
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.fsync
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-os-os-replace
     title: "Python 3.14: Library/os"
     url: https://docs.python.org/3.14/library/os.html#os.replace
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-tempfile
     title: "Python 3.14: Library/tempfile"
     url: https://docs.python.org/3.14/library/tempfile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib-path
     title: "Python 3.14: Library/pathlib (Path)"
     url: https://docs.python.org/3.14/library/pathlib.html#pathlib.Path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Path creates a concrete path for the running system, that is, a PosixPath or a WindowsPath."
   - source_id: py314-library-pathlib-pure-paths
     title: "Python 3.14: Library/pathlib (Pure paths)"
     url: https://docs.python.org/3.14/library/pathlib.html#pure-paths
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: paths are immutable and hashable; pure classes perform path operations without OS access and can be instantiated for any OS."
   - source_id: py314-library-pathlib-purepath-joinpath
     title: "Python 3.14: Library/pathlib (PurePath.joinpath)"
     url: https://docs.python.org/3.14/library/pathlib.html#pathlib.PurePath.joinpath
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: if a segment is an absolute path, all previous segments are ignored."
   - source_id: py314-library-pathlib-path-rglob
     title: "Python 3.14: Library/pathlib (Path.rglob)"
     url: https://docs.python.org/3.14/library/pathlib.html#pathlib.Path.rglob
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: rglob() searches for the pattern recursively, in all subdirectories."
 ---
 
 ## Short answer
@@ -138,19 +83,3 @@ for p in sorted(root.rglob('*.*')):   # recursive search, yields Path objects
 - building a path with `+`: `Path('a') + 'b'` raises `TypeError`, because `Path` does not support concatenation with a string;
 - assuming that creating `Path(...)` checks whether a file or directory exists;
 - assuming that an absolute right operand is simply appended to the left one.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

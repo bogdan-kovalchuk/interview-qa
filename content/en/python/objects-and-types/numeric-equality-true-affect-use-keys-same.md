@@ -1,55 +1,21 @@
 ---
 id: py-objtypes-0016
 title: "How does numeric equality between `1`, `1.0`, and `True` affect their use as keys of the same dictionary?"
-description: "How does numeric equality between `1`, `1.0`, and `True` affect their use as keys of the same dictionary?"
 track: python
 section: objects-and-types
-level: senior
-type: pitfall
-tags: [1-0]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -99,23 +65,3 @@ print(unique_items)  # {True}
 - unexpected retained key type: `dict` updates values but retains the first inserted key object, so iteration over `keys()` may yield `int` instead of an expected `bool`;
 - collection collapse in `set`: using `set` to deduplicate collections with mixed types silently drops items that the developer intended to treat as distinct entities;
 - defensive pattern: when key types must remain segregated, composite keys such as `(type(k), k)` or separate dictionaries per type should be used.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

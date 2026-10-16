@@ -1,65 +1,27 @@
 ---
 id: py-perf-0004
 title: "How do you compare a `cProfile` run with a control run on the same workload, to tell instrumentation overhead apart from a real bottleneck?"
-description: "Run the same deterministic workload twice, with and without cProfile, and compare the total time and the relative shares of functions."
 track: python
 section: performance
-level: senior
-type: practical
-tags: [cprofile]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-profile-introduction
     title: "Python 3.14: Library/profile (Introduction to the profilers)"
     url: https://docs.python.org/3.14/library/profile.html#introduction-to-the-profilers
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the profiler overhead falls on Python code, not on C-level functions; the profilers are meant for an execution profile rather than benchmarking, and for more accurate results it refers to timeit."
   - source_id: py314-library-profile-limitations
     title: "Python 3.14: Library/profile (Limitations)"
     url: https://docs.python.org/3.14/library/profile.html#limitations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the lag between an event and the clock reading accumulates in functions that are called many times or that call many functions."
   - source_id: py314-library-timeit-cli
     title: "Python 3.14: Library/timeit (Command-Line Interface)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit-command-line-interface
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: measurements can be affected by other programs on the machine, so repeating the timing and using the best time is recommended; 5 repetitions by default."
 ---
 
 ## Short answer
@@ -108,23 +70,3 @@ To tell overhead apart from a real bottleneck, check a change on the control run
 - treating a function as a hot spot only because of its `tottime` in the profile, without a control run;
 - comparing a profiled run with a control run on different inputs or in different processes;
 - taking a single control measurement instead of repeats.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

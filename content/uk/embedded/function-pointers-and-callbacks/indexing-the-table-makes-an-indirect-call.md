@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0019
 title: "Що виведе dispatch table?"
-description: "Виведе 42. ops[1] – це pointer на dbl."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -57,7 +38,3 @@ printf("%d", ops[1](21));
 Такий масив може містити лише вказівники сумісного типу. Функції з різними параметрами чи результатами не стають сумісними через спільне зберігання в одному масиві; потрібні wrapper-и, що приводять їх до єдиного контракту. Індекс також має бути в межах масиву, інакше читання елемента виходить за межі допустимого. [^iso-c-n1570]
 
 Покрокове читання прикладу: індекс `1` вибирає `dbl`; аргумент `21` передається як `x`; множення дає `42`; значення повертається викликачеві; `printf` виводить його через `%d`. Якщо таблицю пізніше змінити або побудувати з даних, перевірка індексу й коректна ініціалізація стають частиною безпечного dispatch-механізму. [^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

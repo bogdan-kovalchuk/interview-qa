@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0078
 title: "Що таке `RMS` і чому його використовують для `AC`?"
-description: "Що таке `RMS` і чому його використовують для `AC`?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 9, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ac-magnitude
     title: "All About Circuits: Measurements of AC Magnitude"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-1/measurements-ac-magnitude
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює RMS як нагрівальний еквівалент та співвідношення для чистих синусоїд; коефіцієнт не переноситься на інші форми хвилі."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 **Приклад:** якщо синусоїда має пік `10 V`, то її `RMS` становить приблизно `7.07 V`. Така напруга на тому самому резисторі створює таку саму середню потужність, як `7.07 V DC`. Це еквівалентність для теплової дії на резистор; інші навантаження можуть мати додаткові частотно-залежні ефекти.[^aac-ac-magnitude]
 
 **Типова помилка:** вважати, що RMS – це звичайне середнє або завжди `0.707` від піку. Спершу з’ясуйте форму сигналу та чи задано пік, `RMS` або peak-to-peak.[^aac-ac-magnitude]
-
-## Sources
-
-<!-- generated from frontmatter -->

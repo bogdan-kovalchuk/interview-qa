@@ -1,41 +1,18 @@
 ---
 id: py-async-0013
 title: "When should you choose `wait()`, and when `as_completed()`, for handling a set of concurrent operations?"
-description: "When should you choose `wait()`, and when `as_completed()`, for handling a set of concurrent operations?"
 track: python
 section: asyncio
-level: middle
-type: comparison
-tags: [wait, as-completed]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,19 +45,3 @@ the iterator, and that is where (not when the element is pulled from the iterato
 surfaces if the task failed. If the code exits the `for` loop early (for example via `break` after
 finding the first result it needed), the remaining tasks keep running in the background –
 `as_completed()` has no way to cancel them automatically; that is the caller's responsibility.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

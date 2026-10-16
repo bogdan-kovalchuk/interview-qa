@@ -1,58 +1,24 @@
 ---
 id: py-gil-0013
 title: "Коли `ProcessPoolExecutor` може дати виграш для CPU-bound pure-Python workload у GIL-enabled CPython?"
-description: "ProcessPoolExecutor дає справжній CPU-паралелізм у GIL-enabled CPython, оскільки кожен worker працює в окремому процесі з власним GIL."
 track: python
 section: concurrency-and-gil
-level: middle
-type: practical
-tags: [processpoolexecutor]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython with GIL"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -97,23 +63,3 @@ if __name__ == "__main__":
 - використання `chunksize > 1` у `executor.map()` є обов'язковим при обробці великих послідовностей для зменшення кількості IPC round trip;
 - усі аргументи, функції та значення повернення мають бути picklable; не можна передавати замикання, локальні функції, lambda чи відкриті дескриптори ресурсів;
 - блок створення пулу обов'язково захищається перевіркою `if __name__ == '__main__':`, щоб уникнути нескінченної рекурсії при імпорті модуля дочірніми процесами на платформах із `spawn` або `forkserver`.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

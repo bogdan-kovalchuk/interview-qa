@@ -1,41 +1,18 @@
 ---
 id: emb-dtypes-0052
 title: "Скільки пам'яті займає union і як розраховується його розмір?"
-description: "Розмір union дорівнює розміру найбільшого поля плюс padding для вирівнювання."
 track: embedded
 section: data-types-and-memory-layout
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: gcc-attributes-packed
     title: "GCC: Common Attributes"
     url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Описує специфічні атрибути layout компілятора; стандартні правила розміру union та вирівнювання залежать від реалізації мови."
 ---
 
 ## Short answer
@@ -66,7 +43,3 @@ union Value {
 Розмір має вмістити п’ять байтів і один `uint32_t`, а також узгодитися з вирівнюванням типу union. Щоб перевірити фактичний layout, компілюй для цільового ABI та дивись `sizeof` і `_Alignof`; для wire-format не покладайся на неявний padding або endian порядок.
 
 У union одночасно зберігається значення одного члена. Інтерпретація байтів через інший тип має мовні обмеження; union сам по собі не робить type punning переносимим. У C++ додатково важливе поняття active member та коректне створення об’єкта цього типу.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

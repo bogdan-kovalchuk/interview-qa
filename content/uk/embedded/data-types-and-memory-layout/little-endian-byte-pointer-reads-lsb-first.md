@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0090
 title: "Що виведе на little-endian? `uint32_t x = 0xDEADBEEF; uint8_t *p = (uint8_t*)&x; printf(\"%02X\", p[0]);`"
-description: "На little-endian молодший байт лежить за найменшою адресою, тож p[0] дає EF."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,11 +29,3 @@ Endianness описує порядок байтів багатобайтовог
 Для практичної перевірки порядок байтів можна виявити, записавши значення 1 у багатобайтове ціле та оглянувши його через `unsigned char*`. Такий тест повідомляє про конкретний target, але його результат не можна зашивати як універсальне припущення для іншого MCU, симулятора чи протоколу. Навіть на одному процесорі зовнішній формат має власний визначений порядок.
 
 **Типова помилка:** вважати, що little-endian визначає порядок байтів у протоколі або що всі MCU використовують його. Порядок треба встановити контрактом формату чи перевірити для конкретної цілі.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

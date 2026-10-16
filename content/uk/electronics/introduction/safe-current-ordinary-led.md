@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0118
 title: "Яке безпечне значення струму для звичайного `LED`?"
-description: "Яке безпечне значення струму для звичайного `LED`?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 12, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-led-current
-    title: 'All About Circuits: Special-purpose Diodes'
+    title: "All About Circuits: Special-purpose Diodes"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-3/special-purpose-diodes/
-    accessed: '2026-10-04'
-    kind: book
-    version: null
-    applicability: 'Дає орієнтир близько 20 mA для стандартного LED і пояснює потребу в послідовному резисторі; допустимий струм конкретної деталі визначає її datasheet.'
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Сприймати `30 mA` як однакову небезпечну межу для всіх LED. Допустимий струм залежить від компонента, температури та режиму.
 - Вважати, що резистор завжди потрібен саме на `20 mA`. Нижчий струм може бути достатнім і залишає більший запас за температурою та ресурсом.
 - Плутати максимальний рейтинг із рекомендованим режимом. Для надійної схеми перевіряють таблицю абсолютних максимумів, робочі умови та графіки derating виробника.[^aac-led-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

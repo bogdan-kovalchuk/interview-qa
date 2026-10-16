@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0022
 title: "Коли callable object із `__call__` доцільніший за closure для інкапсуляції стану функціонального компонента?"
-description: "Callable-об’єкт із __call__ доцільніший, коли стан потрібно відкрито зберігати, тестувати, серіалізувати або розширювати додатковими методами."
 track: python
 section: functions-and-scope
-level: senior
-type: comparison
-tags: [call]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-object-call
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__call__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-function-closure
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#function.__closure__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: атрибут __closure__ функції зберігає cells для вільних змінних."
   - source_id: py314-library-pickle-what-can-be-pickled
     title: "Python 3.14: Library/pickle"
     url: https://docs.python.org/3.14/library/pickle.html#what-can-be-pickled-and-unpickled
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: які об’єкти можна pickle; функції й класи за іменем з верхнього рівня модуля, локальні функції й lambda не підтримуються."
 ---
 
 ## Short answer
@@ -86,19 +63,3 @@ Closure доречна для короткого внутрішнього ста
 - вважати closure повністю інкапсульованою: її стан видно через `__closure__`, тож це лише приховування від звичайного коду;
 - писати клас із `__call__` без методів і атрибутів, який не дає жодної переваги перед функцією;
 - тримати в атрибутах callable lambda або локальну функцію, після чого `pickle` падає, хоча сам клас визначено на верхньому рівні.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

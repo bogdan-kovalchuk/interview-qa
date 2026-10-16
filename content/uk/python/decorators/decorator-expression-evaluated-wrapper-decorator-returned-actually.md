@@ -1,41 +1,18 @@
 ---
 id: py-decor-0001
 title: "Коли обчислюється decorator expression і коли викликається wrapper, який decorator повернув?"
-description: "Decorator expression обчислюється один раз під час визначення функції, а wrapper викликається при кожному виклику декорованої функції."
 track: python
 section: decorators
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -82,11 +59,3 @@ print(greet("Bob"))
 - Розміщення логіки, яка залежить від аргументів запиту чи сесії, у зовнішньому тілі decorator замість `wrapper`: такий код виконається лише один раз під час завантаження модуля, а не для кожного запиту.
 - Виконання тривалих операцій (мережеві запити, підключення до бази даних) на рівні визначення decorator, що сповільнює імпорт модуля або взагалі завершується аварійно, якщо ресурси ще не ініціалізовані.
 - Приховування побічних ефектів під час тестів: оскільки імпорт модуля одразу викликає всі його decorators, тестовий імпорт може ненавмисно модифікувати глобальні реєстри чи викликати системні ресурси.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

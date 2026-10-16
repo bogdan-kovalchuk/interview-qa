@@ -1,34 +1,15 @@
 ---
 id: emb-boot-0004
 title: "What is an MCU bootloader, and what does it do before application firmware starts?"
-description: "An MCU bootloader starts after reset, verifies or updates an image, selects a slot, and transfers control to application firmware."
 track: embedded
 section: bootloaders-and-ota
-level: middle
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Authoritative section-level reference for bootloaders and ota concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -57,8 +38,6 @@ An MCU bootloader is a firmware module located in a protected Flash region (boot
 
 **Anti-rollback.** MCUboot supports a security counter in the image TLV; the bootloader rejects an image with a counter lower than the stored value, preventing rollback to a vulnerable firmware version.
 
-## Evaluation guide
-
 ### Expected signals
 
 - Clearly describes the 6-step sequence: reset, minimal initialization, image verification, boot mode determination, firmware update (if needed), application launch.
@@ -81,7 +60,3 @@ An MCU bootloader is a firmware module located in a protected Flash region (boot
 - How does the bootloader recover from an interrupted update (power loss during swap)?
 - How do you implement chain of trust from the ROM bootloader to the application?
 - Compare direct-XIP and swap: trade-offs between complexity, reliability, and update time.
-
-## Sources
-
-<!-- generated from frontmatter -->

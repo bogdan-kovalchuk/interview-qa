@@ -1,34 +1,15 @@
 ---
 id: emb-align-0025
 title: "Що повертає `_Alignof(T)` (C11) / `alignof(T)`?"
-description: "Вимогу вирівнювання типу в байтах."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -59,7 +40,3 @@ _Static_assert(_Alignof(uint32_t) <= 8, "unexpected alignment");
 - Вважати наведені для однієї ABI числа універсальними.
 
 Власний allocator має забезпечити адресу, кратну вимозі alignment типу, а не просто достатньо великий розмір блока. У C11 стандартні alignment є фундаментальними; extended alignment можуть підтримуватися лише окремими реалізаціями, тому переносний код має враховувати можливості цільового компілятора.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

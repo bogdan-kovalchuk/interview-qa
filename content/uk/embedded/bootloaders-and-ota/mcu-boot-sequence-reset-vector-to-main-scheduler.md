@@ -1,41 +1,18 @@
 ---
 id: emb-boot-0005
 title: "Що відбувається під час boot sequence MCU від reset vector до main або scheduler start?"
-description: "Після reset CPU бере SP і reset handler з vector table, startup code копіює .data, очищає .bss, викликає constructors і переходить у main, далі ініціалізуються HAL/drivers і запускається scheduler."
 track: embedded
 section: bootloaders-and-ota
-level: senior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/e/
-    accessed: 2026-09-08
-    kind: official
-    version: "E"
-    applicability: "Архітектура ARMv7-M; reset behavior, vector table та exception model."
 ---
 
 ## Short answer
@@ -64,9 +41,7 @@ sources:
 
 **Ініціалізація .data/.bss і конструктори** – обов'язкові перед `main`, інакше глобальні змінні міститимуть сміття, а C++-об'єкти не будуть сконструйовані. Це вимога C/C++ ABI.[^armv7m-arm]
 
-## Evaluation guide
-
-### Expected signals
+### Очікувані сигнали
 
 - Чітко називає адресу vector table: SP з `0x00000000`, reset handler з `0x00000004`; розуміє, чому саме такий порядок (ARMv7-M spec).
 - Пояснює .data/.bss ініціалізацію як вимогу C/C++ ABI, не просто «copy-paste з linker script».
@@ -75,7 +50,7 @@ sources:
 - Згадує NVIC priority grouping (preemption vs sub-priority) і його вплив на ISR latency.
 - Описує __libc_init_array / constructors для C++ і чому це критично.
 
-### Red flags
+### Червоні прапорці
 
 - Не знає, що перші два слова Flash – це SP і PC, а не код.
 - Плутає Cortex-M boot з Cortex-A (MMU, Linux boot, U-Boot -> kernel).
@@ -83,12 +58,8 @@ sources:
 - Не розуміє різниці між MSP і PSP (Main vs Process Stack Pointer).
 - Не може пояснити, чому VTOR необхідний при переході від bootloader до application.
 
-### Level-up follow-up
+### Питання на підвищення рівня
 
 - Як змінюється boot sequence, якщо є secure bootloader (TrustZone, SAU)?
 - Як ініціалізація clock (PLL lock time) впливає на boot time і як її мінімізувати?
 - Як C++ exceptions та RTTI впливають на startup code і vector table (exception tables)?
-
-## Sources
-
-<!-- generated from frontmatter -->

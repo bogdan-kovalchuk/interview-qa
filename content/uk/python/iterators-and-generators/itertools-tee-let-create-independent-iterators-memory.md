@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0018
 title: "Як `itertools.tee()` дозволяє створити незалежні iterators і який memory trade-off виникає, якщо consumers рухаються з різною швидкістю?"
-description: "itertools.tee(iterable, n) повертає n незалежних iterators над одним вхідним iterable; різниця в швидкості між ними визначає, скільки даних тримається в пам’яті."
 track: python
 section: iterators-and-generators
-level: middle
-type: practical
-tags: [itertools-tee]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools-tee
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.tee
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ itertools.tee: n незалежних iterators, значна додаткова пам’ять, порада використати list() і те, що tee-iterators не є thread-safe."
 ---
 
 ## Short answer
@@ -84,23 +57,3 @@ print(kept_bytes(lockstep=True) < 1_000_000)    # True: little is kept when both
 - вважати, що `tee()` дешевший за `list()`, коли одна копія повністю проходить дані першою;
 - залишати копію, яка не читає дані, поки інша копія рухається: буфер росте з відставанням;
 - ділити tee-iterators між потоками без синхронізації.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

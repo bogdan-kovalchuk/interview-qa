@@ -1,62 +1,27 @@
 ---
 id: py-perf-0003
 title: "Як warm-up, caching, system load та input distribution можуть змістити microbenchmark result?"
-description: "Warm-up, кеші, фонові процеси й нерепрезентативні вхідні дані можуть змістити microbenchmark: перший прогін платить за прогрів, кеші повертають збережений результат, а дані можуть не відповідати реальним."
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit-repeat
     title: "Python 3.14: Library/timeit (Timer.repeat)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit.Timer.repeat
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: timeit.Timer.repeat і примітка про min() як нижню межу та про інші процеси, що спотворюють вищі значення. Не описує кеші чи прогрів."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Sorting HOWTO (Sort Stability and Complex Sorts)"
     url: https://docs.python.org/3.14/howto/sorting.html#sort-stability-and-complex-sorts
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: Timsort, алгоритм сортування Python, використовує впорядкованість, яка вже є в даних. Не задає кількість порівнянь."
 ---
 
 ## Short answer
@@ -105,23 +70,3 @@ print(Counted.count)              # 8532: about 8.5 times more on the same-size 
 - вважати один замір після імпорту стабільною оцінкою;
 - порівнювати кешований варіант з некешованим, не врахувавши кеш;
 - тестувати лише на вхідних даних, вигідних для реалізації (вже відсортованих або однорідних).
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

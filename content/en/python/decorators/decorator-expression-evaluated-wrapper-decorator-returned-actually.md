@@ -1,41 +1,18 @@
 ---
 id: py-decor-0001
 title: "When is the decorator expression evaluated, and when is the wrapper the decorator returned actually called?"
-description: "When is the decorator expression evaluated, and when is the wrapper the decorator returned actually called?"
 track: python
 section: decorators
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-decorator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-decorator
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-function-definitions
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#function-definitions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -82,11 +59,3 @@ print(greet("Bob"))
 - Placing logic that depends on per-invocation arguments or request context in the outer decorator body instead of inside the wrapper: that code runs only once upon import rather than per call.
 - Performing expensive I/O operations (network requests, opening database connections) during decorator execution, which drastically slows down module imports or crashes if dependencies are not yet initialized.
 - Unintended test side effects: because importing a module executes all top-level decorators, test suites importing modules can accidentally trigger global registrations or external service calls.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

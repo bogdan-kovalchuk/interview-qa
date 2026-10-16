@@ -1,83 +1,36 @@
 ---
 id: py-oop-0010
 title: "Які методи утворюють descriptor protocol і яку проблему інкапсуляції атрибутів він вирішує?"
-description: "Descriptor protocol – це __get__, __set__ та __delete__; він дозволяє винести логіку доступу до атрибута (валідацію, обчислення, логування) в окремий об’єкт, зберігаючи звичайний dot-синтаксис."
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: descriptor protocol – це __get__, __set__, __delete__; об’єкт, що визначає будь-який з них, є descriptor; він викликається під час пошуку атрибута в класі. Не описує приклади валідації."
   - source_id: py314-reference-datamodel-implementing-descriptors
     title: "Python 3.14: Reference/datamodel, Implementing Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#implementing-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: descriptor має бути в словнику класу власника або його батьків. Не описує поведінку descriptor, записаного як атрибут екземпляра."
   - source_id: py314-reference-datamodel-object-set-name
     title: "Python 3.14: Reference/datamodel, object.__set_name__"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__set_name__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: __set_name__ викликається під час створення класу для descriptor, присвоєного атрибуту класу, і отримує ім’я атрибута. Не описує валідацію."
   - source_id: py314-howto-descriptor-validator-class
     title: "Python 3.14: Howto/descriptor, Validator class"
     url: https://docs.python.org/3.14/howto/descriptor.html#validator-class
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: descriptor керує доступом до атрибута і перевіряє значення перед збереженням. Приклад у розділі є абстрактним базовим класом, а не готовим рішенням для цього питання."
   - source_id: py314-tutorial-classes-private-variables
     title: "Python 3.14: Tutorial/classes, Private Variables"
     url: https://docs.python.org/3.14/tutorial/classes.html#private-variables
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: «приватних» змінних екземпляра, доступних лише самому об’єкту, у Python немає; для позначення non-public використовують домовленість з одним `_`. Не описує descriptor."
 ---
 
 ## Short answer
@@ -133,11 +86,3 @@ except ValueError as e:
 - ставити descriptor у `__init__` як атрибут екземпляра (`self.width = Positive()`): його `__get__` і `__set__` не викликаються;
 - не перевіряти `obj is None` у `__get__`: доступ через клас (`Box.width`) тоді падає з `AttributeError`;
 - вважати, що descriptor робить дані приватними: `b._width` і `b.__dict__` доступні.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

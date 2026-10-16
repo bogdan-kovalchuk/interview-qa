@@ -1,48 +1,21 @@
 ---
 id: emb-dtypes-0006
 title: "Чому для рядкового літерала краще використовувати `const char*`, а не `char*`?"
-description: "Стандарт забороняє змінювати масив рядкового літерала, але не визначає, де саме реалізація його зберігає."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: cpp-draft-string-literals
     title: "C++ working draft, [lex.string]"
     url: https://eel.is/c++draft/lex.string
-    accessed: 2026-10-04
-    kind: spec
-    version: "current"
-    applicability: "Тип звичайного C++ string literal і заборона модифікації його об’єкта; це working draft стандарту C++."
   - source_id: gcc-write-strings
     title: "GCC 16.1 Warning Options: -Wwrite-strings"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Warning-Options.html
-    accessed: 2026-10-04
-    kind: official
-    version: "GCC 16.1"
-    applicability: "Поведінка GCC прапорця -Wwrite-strings; це діагностика компілятора, а не правило мови."
 ---
 
 ## Short answer
@@ -62,23 +35,3 @@ sources:
 У C передавання літерала функції з параметром `char *` може пройти перевірку типів, бо літерал має тип масиву `char`, але функція все одно не повинна його змінювати. Для інтерфейсу, який лише читає текст, параметр `const char *` виражає цей контракт; для функції, яка редагує текст, передайте окремий змінюваний масив.[^iso-c-n1570]
 
 **Типова помилка:** плутати фізичне розміщення з гарантією мови й вважати, що відсутність апаратної помилки робить запис допустимим. Використовуйте `const char *` для читання літерала, а змінювану копію зберігайте у `char` масиві.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

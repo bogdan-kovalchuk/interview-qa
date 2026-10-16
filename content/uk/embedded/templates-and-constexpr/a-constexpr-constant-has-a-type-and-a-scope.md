@@ -1,69 +1,30 @@
 ---
 id: emb-tmplcx-0008
 title: "Чому `constexpr`-змінна краща за `#define`-константу?"
-description: "Має тип і scope – типобезпечна, на відміну від текстової заміни."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-cpp-replace
     title: "C++ working draft: Replacement of macros ([cpp.replace])"
     url: https://eel.is/c++draft/cpp.replace
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає object-like макрос: його ім’я замінюється списком заміни з токенів препроцесора. Це текстова підстановка без типу; конкретний препроцесор не описано."
   - source_id: cpp-draft-lex-phases
     title: "C++ working draft: Phases of translation ([lex.phases])"
     url: https://eel.is/c++draft/lex.phases
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що на фазі 4 трансляції розгортаються виклики макросів, а на фазі 7 токени синтаксично й семантично аналізуються як translation unit. Конкретний препроцесор не описано."
   - source_id: cpp-draft-cpp-scope
     title: "C++ working draft: Scope of macro definitions ([cpp.scope])"
     url: https://eel.is/c++draft/cpp.scope
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що визначення макроса діє незалежно від блочної структури, до #undef або кінця translation unit, і не має значення після фази 4 трансляції."
   - source_id: cpp-draft-dcl-constexpr
     title: "C++ working draft: The constexpr and consteval specifiers ([dcl.constexpr])"
     url: https://eel.is/c++draft/dcl.constexpr
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що constexpr на об’єкті робить його const і вимагає, щоб ініціалізатор був constant-initializable; інакше програма некоректна."
   - source_id: cpp-draft-dcl-init-list
     title: "C++ working draft: List-initialization ([dcl.init.list])"
     url: https://eel.is/c++draft/dcl.init.list
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає звуження при list-initialization: перетворення цілого типу, яке не може представити всі його значення, є звуженням, якщо джерело не константний вираз, чия величина після перетворення вміщується в тип. Тому 300 у uint8_t – звуження."
 ---
 
 ## Question code
@@ -110,7 +71,3 @@ static_assert(sizeof(kRetries) == 1, "constexpr std::uint8_t is one byte");
 - Вважати `#define` безпечним, бо це «просто число»: без типу `sizeof` і перевірка звуження в місці використання поводяться інакше.
 - Лишати `#define` для констант окремого модуля: ім’я макроса діє в усьому translation unit, а `constexpr` у namespace видно лише через ім’я простору.
 - Вважати, що `constexpr` замінює `#ifdef`: вибір драйвера за платформою лишається препроцесорним.
-
-## Sources
-
-<!-- generated from frontmatter -->

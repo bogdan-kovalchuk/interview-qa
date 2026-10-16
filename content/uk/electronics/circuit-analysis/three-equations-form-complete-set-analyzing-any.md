@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0015
 title: "Які три базові закони використовують для аналізу лінійної резистивної DC-схеми?"
-description: "Які три базові закони використовують для аналізу лінійної резистивної DC-схеми?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-network-theorems-intro
     title: "All About Circuits: Introduction to Network Theorems for Circuit Analysis"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-10/introduction-network-theorems/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Опис Ohm’s law, KCL і KVL як базових законів мережевого аналізу; конкретна розв’язність залежить від моделей елементів."
 ---
 
 ## Short answer
@@ -59,7 +36,3 @@ sources:
 **Типова помилка:**
 
 - Вважати, що KCL і KVL самі задають характеристики компонентів або що `V = I*R` описує кожен елемент. Спершу визначте модель кожного елемента та межі застосовності рівнянь.[^aac-network-theorems-intro]
-
-## Sources
-
-<!-- generated from frontmatter -->

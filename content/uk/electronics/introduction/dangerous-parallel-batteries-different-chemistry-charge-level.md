@@ -1,55 +1,24 @@
 ---
 id: emb-elintro-0060
 title: "Чому небезпечно з'єднувати паралельно батареї різної хімії або з різним рівнем заряду?"
-description: "Чому небезпечно з'єднувати паралельно батареї різної хімії або з різним рівнем заряду?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 7, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: energizer-alkaline-faq
     title: "Energizer: Alkaline Batteries FAQ"
     url: https://data.energizer.com/pdfs/alkaline_faq.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Наслідки змішування батарей різної хімії, віку або стану в пристрої з послідовним живленням; не є інструкцією для проєктування паралельних акумуляторних збірок."
   - source_id: libretexts-battery-networks
     title: "Physics LibreTexts: Networks of Batteries and Resistors"
-    url: "https://phys.libretexts.org/Courses/University_of_California_Davis/UCD:_Physics_9C__Electricity_and_Magnetism/3:_Direct_Current_Circuits/3.3:_Networks_of_Batteries_and_Resistors"
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Модель джерела з внутрішнім опором і струму в колі; ілюструє, чому різниця напруги разом з опорами задає струм."
+    url: https://phys.libretexts.org/Courses/University_of_California_Davis/UCD:_Physics_9C__Electricity_and_Magnetism/3:_Direct_Current_Circuits/3.3:_Networks_of_Batteries_and_Resistors
 ---
 
 ## Short answer
@@ -65,7 +34,3 @@ sources:
 Попередження виробників про змішування нових і використаних батарей чи різних хімічних типів стосуються також звичайних пристроїв із кількома елементами: слабший елемент може бути надмірно розряджений сильнішими, що підвищує ризик витоку. Це окремий механізм від вирівнювального струму при прямому паралельному з’єднанні, але висновок практичний той самий – використовуйте лише передбачені виробником сумісні елементи.[^energizer-alkaline-faq]
 
 **Типова помилка:** вважати, що паралельні батареї безпечні, якщо на етикетках однакова номінальна напруга. Перед з’єднанням потрібні однакова сумісна хімія, близький стан і дозволена виробником схема з належним захистом.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-perf-0014
 title: "Why can adding more workers hurt throughput because of contention, context switching, and downstream saturation?"
-description: "Why can adding more workers hurt throughput because of contention, context switching, and downstream saturation?"
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-glossary-term-parallelism
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-parallelism
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: in builds with the GIL, only one thread runs Python bytecode at a time, so multi-core parallelism typically uses processes or native extensions that release the GIL."
   - source_id: py314-howto-free-threading
     title: "Python 3.14: Howto/free-threading"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: since 3.13, CPython has a free-threaded build in which the GIL is disabled."
   - source_id: py314-library-concurrent-futures-threadpoolexecutor
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.ThreadPoolExecutor
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the default max_workers is min(32, (os.process_cpu_count() or 1) + 4) since 3.13 and min(32, os.cpu_count() + 4) before that; the documentation describes defaults, not the optimal number of workers."
   - source_id: py314-library-concurrent-futures-processpoolexecutor
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.ProcessPoolExecutor
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the default max_workers is os.process_cpu_count() (since 3.13); the documentation describes the default, not the optimal number of workers."
 ---
 
 ## Short answer
@@ -95,23 +68,3 @@ Find the limit by measuring: increase the workers while throughput grows. When t
 - setting the number of workers above the downstream limit (connection pool, rate limit) instead of limiting that resource;
 - assuming the default `max_workers` is optimal;
 - measuring only throughput, without latency and errors.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

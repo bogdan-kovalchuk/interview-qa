@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0011
 title: "A function received a shallow copy of a list of dictionaries and changed a value in a nested dictionary. Why can the change be visible to the caller even though the outer list was copied?"
-description: "copy.copy creates a new outer list, but its items are references to the same nested objects as in the original."
 track: python
 section: functions-and-scope
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming-why-did-changing-list-y-also-change-li
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-did-changing-list-y-also-change-list-x
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,23 +49,3 @@ A deep copy made by `copy.deepcopy` recursively copies the nested objects, so a 
 - thinking that `copy.copy` recursively copies every level of nesting;
 - thinking that `x[:]` or `list.copy()` gives a deep copy: they also create a shallow copy;[^py314-library-copy]
 - always using `copy.deepcopy`, even when sharing the nested object is a deliberate choice.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

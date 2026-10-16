@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0009
 title: "Як `functools.partial` змінює call interface без негайного виклику wrapped callable?"
-description: "functools.partial повертає новий callable-об'єкт, у якому частину positional або keyword arguments «заморожено», але оригінальна функція не викликається до виклику partial-об'єкта."
 track: python
 section: comprehensions-and-functional
-level: middle
-type: mechanism
-tags: [functools-partial]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -87,11 +60,3 @@ print(say_hello("Bob", punctuation="?"))
 - позиційні аргументи завжди додаються попереду: неможливо стандартним `partial` «заморозити» другий аргумент, залишивши перший незаповненим (у такому разі слід використовувати keyword arguments або `lambda`);
 - відсутність підтримки дескрипторів: для методів класів слід використовувати `functools.partialmethod`, інакше `partial` не передасть `self` автоматично;
 - об'єкти `partial` не копіюють автоматично метадані `__name__` і `__doc__`, звертатися до них потрібно через атрибут `.func`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-fund-0002
 title: "Why does splitting languages into just \"compiled\" and \"interpreted\" incorrectly describe Python?"
-description: "Why does splitting languages into just \"compiled\" and \"interpreted\" incorrectly describe Python?"
 track: python
 section: fundamentals
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -81,19 +58,3 @@ The practical consequence: the claim "Python is slow because it is interpreted" 
 construction. Speed is decided by the specific implementation and the workload, not by a label; the
 same code on PyPy can be several times faster with no change to the
 source.[^py314-reference-datamodel]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

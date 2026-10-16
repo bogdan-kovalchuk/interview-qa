@@ -1,44 +1,18 @@
 ---
 id: py-coll-0013
 title: "When is a `set` better than a list for membership checks, and what element order should never be relied on as a contract?"
-description: "When is a `set` better than a list for membership checks, and what element order should never be relied on as a contract?"
 track: python
 section: collections
-level: middle
-type: comparison
-tags: [set]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -72,19 +46,3 @@ changes between process runs because of hash randomization
 (`PYTHONHASHSEED`).[^py314-library-collections] So code that relies on a particular set traversal
 order may work today and break on a different Python version or a different run – that is not a
 guarantee, but an accidental side effect of the implementation.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

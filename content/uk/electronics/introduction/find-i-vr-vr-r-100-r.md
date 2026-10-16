@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0102
 title: "Знайдіть I, V_R1 та V_R2 для R_1 = 100 Ω, R_2 = 330 Ω і джерела 3 V?"
-description: "Знайдіть I, V_R1 та V_R2 для R_1 = 100 Ω, R_2 = 330 Ω і джерела 3 V?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 11, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-series-circuits
     title: "All About Circuits: Series Circuits and the Application of Ohm’s Law"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-5/simple-series-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує правила послідовних кіл; числа залежать від заданих номіналів."
 ---
 
 ## Short answer
@@ -59,7 +32,3 @@ sources:
 - Не діліть напругу джерела окремо на кожен резистор, щоб отримати струм. Для струму всього послідовного кола використовуйте загальний опір.
 - Не плутайте mA з A: `0.00698 A` дорівнює `6.98 mA`.
 - Напруга джерела прикладена до обох резисторів разом, а окремі падіння визначаються за `V = I*R`.[^aac-series-circuits]
-
-## Sources
-
-<!-- generated from frontmatter -->

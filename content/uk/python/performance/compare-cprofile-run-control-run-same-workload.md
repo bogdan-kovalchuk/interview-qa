@@ -1,65 +1,27 @@
 ---
 id: py-perf-0004
 title: "Як порівняти `cProfile` run з контрольним run на однаковому workload, щоб відрізнити instrumentation overhead від bottleneck?"
-description: "Запустити той самий workload двічі – під cProfile і без нього на детермінованих вхідних даних – і порівняти загальний час та відносні частки функцій."
 track: python
 section: performance
-level: senior
-type: practical
-tags: [cprofile]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-timeit
     title: "Python 3.14: Library/timeit"
     url: https://docs.python.org/3.14/library/timeit.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-performance
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#performance
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-profile-introduction
     title: "Python 3.14: Library/profile (Introduction to the profilers)"
     url: https://docs.python.org/3.14/library/profile.html#introduction-to-the-profilers
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: накладні витрати профілювальника припадають на код Python, а не на C-рівневі функції; профілювальники призначені для профілю виконання, а не для бенчмаркінгу, і для точніших результатів там згадується timeit."
   - source_id: py314-library-profile-limitations
     title: "Python 3.14: Library/profile (Limitations)"
     url: https://docs.python.org/3.14/library/profile.html#limitations
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: затримка між подією і зчитуванням годинника накопичується у функцій, які викликаються багато разів або викликають багато функцій."
   - source_id: py314-library-timeit-cli
     title: "Python 3.14: Library/timeit (Command-Line Interface)"
     url: https://docs.python.org/3.14/library/timeit.html#timeit-command-line-interface
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: вимірювання можуть залежати від інших програм на машині, тому рекомендується повторити заміри і взяти найкращий час; за замовчуванням 5 повторів."
 ---
 
 ## Short answer
@@ -108,23 +70,3 @@ print(control > 0 and profiled > 0)   # True
 - вважати функцію гарячою точкою лише за `tottime` профілю, без контрольного прогону;
 - порівнювати профільований прогін з контрольним на різних вхідних даних або в різних процесах;
 - брати один контрольний замір замість повторів.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

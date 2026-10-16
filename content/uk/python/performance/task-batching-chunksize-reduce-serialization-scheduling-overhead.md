@@ -1,27 +1,12 @@
 ---
 id: py-perf-0013
 title: "Як task batching та `chunksize` можуть зменшити serialization і scheduling overhead у process pool, але погіршити load balancing?"
-description: "chunksize у ProcessPoolExecutor.map() групує елементи iterable у chunk-и, які надсилаються як окремі задачі: менше накладних витрат на планування, але гірше балансування навантаження."
 track: python
 section: performance
-level: middle
-type: comparison
-tags: [chunksize]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html#concurrent.futures.Executor.map
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: map() розбиває iterable на chunk-и, які надсилаються в пул як окремі задачі; для дуже довгих iterable великий chunksize може суттєво покращити продуктивність; у ThreadPoolExecutor chunksize не має ефекту; buffersize з 3.14 обмежує кількість задач без отриманого результату."
 ---
 
 ## Short answer
@@ -57,19 +42,3 @@ if __name__ == '__main__':
 - шукати параметр `chunksize` у `submit()`: його там немає, батчі формують вручну;
 - ставити великий `chunksize` для нерівномірних задач і отримувати простої наприкінці;
 - міряти на короткому iterable, де переважають запуск пулу й старт процесів.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

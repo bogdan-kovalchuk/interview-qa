@@ -1,62 +1,27 @@
 ---
 id: py-excpt-0001
 title: "Чому `except Exception` зазвичай безпечніший за bare `except` для application-level обробки?"
-description: "Bare except перехоплює всі BaseException, включно з SystemExit і KeyboardInterrupt, тоді як except Exception їх пропускає."
 track: python
 section: exceptions
-level: middle
-type: comparison
-tags: [except-exception]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions-exception-hierarchy
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html#exception-hierarchy
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ ієрархії винятків: BaseExceptionGroup, GeneratorExit, KeyboardInterrupt і SystemExit напряму успадковують BaseException; Exception є окремою прямою гілкою."
   - source_id: py314-tutorial-errors-handling-exceptions
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html#handling-exceptions
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ Handling Exceptions: Exception може бути wildcard, що ловить майже все, і рекомендовано бути якомога конкретнішим."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ generator-iterator methods: close() піднімає GeneratorExit, і якщо generator після цього дає значення, виникає RuntimeError."
 ---
 
 ## Short answer
@@ -92,19 +57,3 @@ print('not reached')             # the process exits with status 3 before this l
 - писати bare `except:` «на всяк випадок» і ковтати `SystemExit` та `KeyboardInterrupt`;
 - вважати, що `except Exception` ловить усе: він ловить майже все, але не `SystemExit`, `KeyboardInterrupt` і `GeneratorExit`;
 - перехоплювати `Exception` і мовчки продовжувати, приховуючи помилки в коді.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

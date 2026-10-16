@@ -1,34 +1,15 @@
 ---
 id: emb-boot-0006
 title: "What firmware update methods exist: wired flashing, bootloader, dual-bank, A/B image, OTA, and rollback?"
-description: "Wired flashing suits factory use, a bootloader accepts images over serial or network, dual-bank or A/B preserves the working image, and rollback restores the last valid version after failure."
 track: embedded
 section: bootloaders-and-ota
-level: senior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Authoritative section-level reference for bootloaders and ota concepts; details of specific devices and toolchains can differ."
 ---
 
 ## Short answer
@@ -49,8 +30,6 @@ Firmware update on microcontrollers uses several approaches, each with its own t
 
 **Rollback** is a critical mechanism for production OTA. The bootloader runs a health check after each boot (for example, verifying that the main process starts, or that the watchdog responds). If the new firmware fails the health check within N boot attempts, the bootloader automatically switches back to the previous valid image. The rollback mechanism, together with signature verification and an anti-rollback counter (to prevent downgrade attacks), is the foundation of a secure update system, and dual-bank/A/B schemes are designed specifically to support it.[^mcuboot-design]
 
-## Evaluation guide
-
 ### Expected signals
 
 - Distinguishes methods by physical access requirement and field update capability
@@ -69,7 +48,3 @@ Firmware update on microcontrollers uses several approaches, each with its own t
 
 - How to implement anti-rollback policy, and why is it important?
 - How to ensure atomic update on a device with limited flash?
-
-## Sources
-
-<!-- generated from frontmatter -->

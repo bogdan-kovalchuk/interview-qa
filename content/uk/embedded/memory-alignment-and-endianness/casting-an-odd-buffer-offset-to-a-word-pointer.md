@@ -1,34 +1,15 @@
 ---
 id: emb-align-0031
 title: "Trap: чому `*(uint32_t*)&buf[1]` небезпечно?"
-description: "Невирівняне перетворення pointer може мати undefined behavior; реакція апаратури залежить від платформи."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 5
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -62,19 +43,3 @@ uint32_t v = *(uint32_t*)&buf[1];
 - Забути, що після `memcpy` може знадобитися декодувати byte order.
 
 Для цього фрагмента спершу перевір межі буфера, скопіюй байти без pointer punning, а потім застосуй явно визначений порядок байтів повідомлення.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

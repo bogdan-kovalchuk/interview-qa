@@ -1,41 +1,18 @@
 ---
 id: py-async-0013
 title: "Коли обрати `wait()`, а коли `as_completed()` для обробки набору concurrent operations?"
-description: "wait() повертає два множества (done, pending) і підходить для контролю через return_when; as_completed() повертає ітератор результатів у порядку завершення – зручний для потокової обробки."
 track: python
 section: asyncio
-level: middle
-type: comparison
-tags: [wait, as-completed]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -63,19 +40,3 @@ Task за потреби.
 помилкою. Якщо код виходить з циклу `for` достроково (наприклад, через `break` після знаходження
 першого потрібного результату), решта задач продовжує виконуватися у фоні – `as_completed()` не
 має способу скасувати їх автоматично, це відповідальність викликача.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

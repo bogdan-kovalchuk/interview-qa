@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0024
 title: "Як перевірити правильність аналізу через KCL у вузлі розгалуження?"
-description: "Як перевірити правильність аналізу через KCL у вузлі розгалуження?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-kcl
     title: "All About Circuits: Kirchhoff’s Current Law (KCL)"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-6/kirchhoffs-current-law-kcl/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтримує алгебраїчну суму струмів у вузлі; знак для вхідних і вихідних струмів довільний, якщо його застосовують послідовно."
 ---
 
 ## Short answer
@@ -57,7 +34,3 @@ sources:
 - Додавати модулі струмів без поділу на вхідні та вихідні.
 - Вважати від’ємний розрахований струм ознакою помилки замість протилежного фактичного напряму.
 - Перевіряти тільки суму струмів, не переконавшись, що враховані всі гілки, приєднані до вузла.
-
-## Sources
-
-<!-- generated from frontmatter -->

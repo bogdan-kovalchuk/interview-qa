@@ -1,58 +1,24 @@
 ---
 id: py-oop-0028
 title: "Які trade-offs щодо пам’яті та успадкування має `__slots__` і чому це не універсальна performance-оптимізація?"
-description: "__slots__ прибирає `__dict__` екземпляра й може зменшити пам’ять, але обмежує атрибути, слабкі посилання та успадкування."
 track: python
 section: oop-and-data-model
-level: senior
-type: practical
-tags: [slots]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-slots
     title: "Python 3.14: Reference/datamodel (__slots__)"
     url: https://docs.python.org/3.14/reference/datamodel.html#slots
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ __slots__ про відсутність __dict__ і __weakref__, успадкування, обмеження множинного успадкування та конфлікт з атрибутами класу."
 ---
 
 ## Short answer
@@ -104,23 +70,3 @@ c.extra = 1                    # allowed, so the savings from __slots__ are gone
 - очікувати економію пам’яті від `__slots__` у subclass без власного `__slots__`;
 - вважати, що `__slots__` автоматично прискорює код, без вимірювання на реальному навантаженні;
 - задавати значення за замовчуванням атрибутом класу з іменем слота.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

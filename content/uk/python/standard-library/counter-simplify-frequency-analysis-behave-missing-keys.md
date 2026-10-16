@@ -1,69 +1,30 @@
 ---
 id: py-stdlib-0002
 title: "Як `Counter` спрощує frequency analysis і як він поводиться з missing keys?"
-description: "Counter повертає 0 для відсутніх ключів замість KeyError, що дозволяє рахувати елементи без перевірки наявності ключа."
 track: python
 section: standard-library
-level: middle
-type: mechanism
-tags: [counter]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections-counter
     title: "Python 3.14: Library/collections, Counter objects"
     url: https://docs.python.org/3.14/library/collections.html#collections.Counter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Counter objects про нульовий лічильник для відсутніх елементів, most_common(), subtract() і арифметичні операції з Counter."
 ---
 
 ## Short answer
@@ -96,11 +57,3 @@ print('dog' in freq, freq['dog'])  # True 1: a write does insert the key
 - вважати, що читання `counts[key]` створює запис, і будувати на цьому перевірку наявності ключа;
 - очікувати від’ємні лічильники після `+` або `-`: вони відкидаються, а від’ємні значення дає `subtract()`;
 - плутати `Counter` з `defaultdict(int)`: обидва дають `0` для відсутнього ключа, але `defaultdict` вставляє ключ під час читання (див. qid:py-stdlib-0003).
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

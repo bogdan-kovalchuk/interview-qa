@@ -1,76 +1,33 @@
 ---
 id: py-oop-0013
 title: "Why does accessing `obj.method` create a bound method, and where does the implicit `self` come from at call time?"
-description: "Why does accessing `obj.method` create a bound method, and where does the implicit `self` come from at call time?"
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: [obj-method]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor-functions-and-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#functions-and-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Functions and Methods section; functions as non-data descriptors, MethodType, and bound methods with __func__ and __self__."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Invoking Descriptors section of the data model; a non-data descriptor yields to a write in the instance dictionary."
   - source_id: py314-library-dis-load-attr
     title: "Python 3.14: Library/dis"
     url: https://docs.python.org/3.14/library/dis.html#opcode-LOAD_ATTR
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the LOAD_ATTR opcode with the method flag; CPython bytecode detail, not a language guarantee."
   - source_id: cpython-funcobject-func-descr-get
     title: "CPython Objects/funcobject.c: func_descr_get"
     url: https://github.com/python/cpython/blob/v3.14.7/Objects/funcobject.c
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14.7"
-    applicability: "CPython 3.14.7 source: the func_descr_get function; an implementation detail of CPython, not a language guarantee."
 ---
 
 ## Short answer
@@ -115,11 +72,3 @@ A bound method kept in a variable holds `__self__`, which is the instance itself
 - expecting `c.incr` to run the method: without parentheses it returns a bound method, not a result;
 - treating `c.incr is c.incr` as proof that the method is the same object: each access creates a new one;
 - storing a bound method as a callback without realizing that it keeps the instance alive.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

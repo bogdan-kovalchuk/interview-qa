@@ -1,48 +1,21 @@
 ---
 id: emb-patterns-0042
 title: "Що має вміти кандидат у питаннях про embedded code patterns?"
-description: "Писати FSM (finite state machine) у обох формах: switch і table; пояснювати trade-off-и; будувати ring buffer на степені двійки без спільного count (він дає race); робити bit operations через unsigned mask-and-shift."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Підтверджує правила зсувів і беззнакової арифметики (6.5.7, 6.2.5 п. 9), семантику `volatile` (6.7.3 п. 7), data race як undefined behavior (5.1.2.4 п. 25) і те, що `malloc` може повернути null (7.22.3); конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: holzmann-power-of-ten
     title: "The Power of Ten – Rules for Developing Safety Critical Code (G. J. Holzmann, NASA/JPL)"
     url: https://spinroot.com/gerard/pdf/P10.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Стаття автора з NASA/JPL, розміщена на його сайті: правило 3 забороняє динамічне виділення пам’яті після ініціалізації, бо алокатори на кшталт malloc і garbage collectors часто мають непередбачувану поведінку, що помітно впливає на продуктивність. Це настанова, а не вимога конкретного safety-стандарту; про фрагментацію heap стаття прямо не говорить."
   - source_id: linux-circular-buffers
     title: "Circular Buffers (Linux kernel documentation)"
     url: https://www.kernel.org/doc/html/latest/core-api/circular-buffers.html
-    accessed: 2026-10-06
-    kind: official
-    version: "7.3.0-rc6"
-    applicability: "Підтверджує, що для буфера розміром у степінь двійки обгортання індексу робиться побітовим AND замість ділення, і що схема з одним producer і одним consumer не потребує спільного локу. Це документація ядра Linux (SMP), а не bare-metal MCU."
 ---
 
 ## Short answer
@@ -83,7 +56,3 @@ ctrl = reg_set_field(ctrl, 0xF0u, 4u, 0x5u);    /* біти 7..4 стають 0x
 - Писати `1 << 31` або зсув знакового значення замість `1u` чи `UINT32_C(1)`.
 - Вважати `volatile` синхронізацією між ISR і main.
 - Ігнорувати код повернення або не перевіряти результат `malloc`.
-
-## Sources
-
-<!-- generated from frontmatter -->

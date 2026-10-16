@@ -1,62 +1,27 @@
 ---
 id: py-oop-0014
 title: "When should you choose an instance method, `@classmethod`, or `@staticmethod`, given the binding and polymorphism you need?"
-description: "When should you choose an instance method, `@classmethod`, or `@staticmethod`, given the binding and polymorphism you need?"
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [classmethod, staticmethod]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor-class-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#class-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Class methods section; a classmethod receives the class whether it is called through the class or an instance."
   - source_id: py314-howto-descriptor-static-methods
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#static-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Static methods section; a staticmethod returns the underlying function unchanged."
 ---
 
 ## Short answer
@@ -101,19 +66,3 @@ The limits of `@classmethod`: it has no access to instance state, because `cls` 
 - writing a factory with `@staticmethod` and a hard-coded class name: subclasses get the base type;
 - using `@classmethod` when no class is needed, only because the method does not use `self`;
 - believing that a `@staticmethod` cannot be overridden in a subclass.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

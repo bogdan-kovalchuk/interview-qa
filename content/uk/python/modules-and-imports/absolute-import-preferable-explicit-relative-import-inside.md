@@ -1,55 +1,24 @@
 ---
 id: py-modimp-0006
 title: "Коли absolute import доречніший за explicit relative import усередині package?"
-description: "Absolute import (from package.module import name) – форма, яку рекомендує PEP 8: вона читабельніша, не змінюється, коли файл переміщують на інший рівень пакета, і дає зрозуміліші помилки."
 track: python
 section: modules-and-imports
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: pep-8-imports
     title: "PEP 8: Style Guide for Python Code (Imports)"
     url: https://peps.python.org/pep-0008/#imports
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Рекомендація щодо абсолютних import і прийнятності відносних import у складних макетах пакетів; це стиль, а не специфікація import system."
   - source_id: py314-reference-import-package-relative-imports
     title: "Python 3.14: Reference/import (Package Relative Imports)"
     url: https://docs.python.org/3.14/reference/import.html#package-relative-imports
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Синтаксис відносних import у Python 3.14: крапки відраховуються від поточного пакета."
 ---
 
 ## Short answer
@@ -78,19 +47,3 @@ from pkg.models import User   # absolute: the full path from the top-level packa
 - вважати, що absolute import працює незалежно від способу запуску: йому потрібна тека, що містить верхній пакет, у `sys.path`;
 - змішувати обидві форми в одному пакеті без причини, тож при переміщенні файлу доводиться перевіряти обидва типи рядків;
 - переписувати всі відносні import на абсолютні лише заради стилю, не перевіривши, як пакет запускається й тестується.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

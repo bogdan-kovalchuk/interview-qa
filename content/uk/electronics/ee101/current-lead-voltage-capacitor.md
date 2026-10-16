@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0052
 title: "Чому в конденсаторі струм випереджає напругу?"
-description: "Чому в конденсаторі струм випереджає напругу?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 40, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ac-capacitor
     title: "All About Circuits: AC Capacitor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-4/ac-capacitor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Підтверджує співвідношення i = C*dv/dt та фазу ідеального конденсатора в синусоїдальному AC-колі."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 
 - Казати, що конденсатор блокує будь-який струм. Він блокує сталий струм після заряджання в ідеальній моделі, але пропускає змінний струм із частотно залежним реактивним опором.
 - Переносити фазові 90° на повне RC-коло. Опір змінює загальний кут між напругою та струмом. [^aac-ac-capacitor]
-
-## Sources
-
-<!-- generated from frontmatter -->

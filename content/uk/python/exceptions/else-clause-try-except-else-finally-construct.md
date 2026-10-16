@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0004
 title: "Коли виконується `else` у конструкції `try/except/else/finally` і навіщо виносити туди success-path code?"
-description: "else виконується лише тоді, коли try завершився без exception і без return/break/continue."
 track: python
 section: exceptions
-level: middle
-type: mechanism
-tags: [try-except-else-finally]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -69,11 +46,3 @@ print(to_int("x"))   # checked 'x', then None
 - класти ризиковий виклик в `else`, сподіваючись, що `except` його перехопить;
 - вважати, що `else` виконається після `return` у `try`;
 - плутати `else` з `finally`: `else` пропускається при `return`, `break` або `continue`, а `finally` ні.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

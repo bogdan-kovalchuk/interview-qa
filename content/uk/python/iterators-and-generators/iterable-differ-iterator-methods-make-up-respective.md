@@ -1,69 +1,30 @@
 ---
 id: py-itergen-0001
 title: "Чим iterable відрізняється від iterator і які methods утворюють їхні основні protocols?"
-description: "Iterable дає iterator, зазвичай через __iter__(); iterator зберігає стан, повертає елементи через __next__() і сам є iterable."
 track: python
 section: iterators-and-generators
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-getitem
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getitem__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: sequence iteration protocol очікує IndexError для неприпустимого індексу як ознаку кінця послідовності."
   - source_id: py314-glossary-term-iterable
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення iterable, включно з об’єктами з __getitem__() за семантикою послідовності."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: визначення iterator; кожен iterator є iterable, бо має __iter__(), що повертає його самого."
   - source_id: py314-library-functions-iter
     title: "Python 3.14: Library/functions"
     url: https://docs.python.org/3.14/library/functions.html#iter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: вимоги до аргументу iter(), протокол ітерації (__iter__()) або протокол послідовності (__getitem__() з цілими індексами від 0)."
 ---
 
 ## Short answer
@@ -98,19 +59,3 @@ except StopIteration:
 - вважати iterable і iterator синонімами та викликати `next()` на списку: `next([1, 2])` підніме `TypeError: 'list' object is not an iterator`;
 - шукати `__next__()` у `list`, `tuple` чи `str`: це iterable, але не iterator;
 - вважати, що iterator можна обійти двічі: після вичерпання він не починає спочатку.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

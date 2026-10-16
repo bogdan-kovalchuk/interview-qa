@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0177
 title: "Яке джерело AC безпечно використовувати для самостійних вправ з джерелом живлення?"
-description: "Яке джерело AC безпечно використовувати для самостійних вправ з джерелом живлення?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 64, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: hammond-catalog
     title: "Hammond Manufacturing: Transformers & Inductors catalog (Line Transformer Selection Guide; Class 2 Energy Limiting, BP series)"
     url: https://www.hammfg.com/files/literature/5c.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Примітки каталогу виробника: ізоляційні (double-wound) трансформатори дають ізоляцію від джерела живлення, автотрансформатори – ні (no isolation from the power source); плагінні енергообмежувальні трансформатори Class 2 серії BP у закритому пластиковому корпусі, 12–24 В AC, 20 або 40 VA, UL і CSA, 20-VA моделі inherently limited. Дані стосуються продукції Hammond для мережі 120 В / 60 Гц; це приклад типу пристрою, а не вимога місцевих норм."
   - source_id: busboard-bb170
     title: "BusBoard Prototype Systems: BB170 plug-in solderless breadboard (datasheet)"
     url: https://www.busboard.com/documents/datasheets/BPS-DAT-(BB170)-Datasheet.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev 4.00"
-    applicability: "Номінал макетної плати BB170: 36 В, 2 А максимум (за кількох контактів на максимальному струмі виникає нагрів). Значення стосуються цієї моделі; інші плати мають свої номінали."
 ---
 
 ## Short answer
@@ -72,19 +41,3 @@ sources:
 - Брати DC-адаптер, коли вправа починається з випрямляча, або AC-адаптер там, де потрібна готова DC-напруга.
 - Збирати первинну частину (вилку, запобіжник, вимикач) відкрито на макетній платі.
 - Вважати, що будь-яка низька напруга безпечна незалежно від потужності джерела.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

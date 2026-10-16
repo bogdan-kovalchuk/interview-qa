@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0106
 title: "Як зміниться частота зрізу RC-ФНЧ, якщо замінити 100 nF на 1 µF при R = 1 kΩ?"
-description: "Як зміниться частота зрізу RC-ФНЧ, якщо замінити 100 nF на 1 µF при R = 1 kΩ?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 50, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-rc-low-pass-cutoff
     title: "All About Circuits: Introduction to Analog Filters"
     url: https://www.allaboutcircuits.com/TEXTBOOK/designing-analog-chips/filters/introduction-to-analog-filters/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: Формула частоти зрізу однополюсного RC-ФНЧ; розрахунок передбачає заданий ефективний опір і ненавантажений ідеальний каскад.
 ---
 
 ## Short answer
@@ -62,7 +35,3 @@ sources:
 - Застосовувати формулу до навантаженої схеми, не перевіривши ефективний опір, який бачить конденсатор.
 
 Якщо до виходу під’єднано наступний каскад із скінченним вхідним опором або генератор має помітний вихідний опір, потрібно спершу знайти еквівалентну мережу опорів. Тоді простий розрахунок із заданими номіналами може не передбачити виміряну частоту зрізу.
-
-## Sources
-
-<!-- generated from frontmatter -->

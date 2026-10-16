@@ -1,48 +1,18 @@
 ---
 id: py-syntax-0002
 title: "What value does the expression `[] or \"fallback\"` produce, and why is the result not `True` or `False`?"
-description: "What value does the expression `[] or \"fallback\"` produce, and why is the result not `True` or `False`?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: mechanism
-tags: [or-fallback]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -87,11 +57,3 @@ method.[^py314-reference-simple-stmts]
 
 The same applies to `and`, only mirrored: `[] and 'x'` gives `[]`, because the first operand is
 falsy and settles the result immediately.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

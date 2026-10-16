@@ -1,48 +1,21 @@
 ---
 id: emb-align-0005
 title: "Як перевпорядкувати поля, щоб зменшити padding?"
-description: "Якщо layout не зафіксований, групуй поля за спаданням alignment, щоб зменшити внутрішні прогалини."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Додаткові відомості про структури"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додатковий приклад 12 проти 8 байт і порада впорядковувати поля за спаданням розміру."
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додатковий український маршрут вивчення C++, який називає LearnCpp першоджерелом навчальних матеріалів; не є нормативним джерелом layout."
 ---
 
 ## Question code
@@ -107,7 +80,3 @@ Offset: 0  1  2  3  4  5  6  7
 4. Виміряй, чи виправдовує економія storage можливу втрату readability або locality.
 
 Не застосовуй це перетворення там, де зовнішній layout є частиною контракту: memory-mapped hardware registers, network packets, persistent binary files, shared-memory ABI або structures, які використовує окремо зібраний code. Packing не є універсальною заміною, бо може створити unaligned access.
-
-## Sources
-
-<!-- generated from frontmatter -->

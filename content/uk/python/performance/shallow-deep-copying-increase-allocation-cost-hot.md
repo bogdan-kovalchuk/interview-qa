@@ -1,41 +1,18 @@
 ---
 id: py-perf-0009
 title: "Як shallow та deep copying можуть збільшити allocation cost у hot path?"
-description: "Shallow copy створює новий верхній контейнер і ділить вкладені об’єкти, а deep copy рекурсивно копіює контейнери, тож у hot path його виділення зростають з розміром структури."
 track: python
 section: performance
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація модуля copy (Python 3.14): присвоєння не копіює об’єкт; shallow copy створює новий контейнер верхнього рівня з тими самими вкладеними об’єктами; deepcopy зберігає memo-словник уже скопійованих об’єктів; list.copy() і зріз роблять shallow copy; deep copy може скопіювати дані, призначені для спільного використання."
   - source_id: cpython-copy-py
     title: "CPython 3.14: Lib/copy.py"
     url: https://github.com/python/cpython/blob/v3.14.6/Lib/copy.py
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Lib/copy.py у CPython 3.14 (тег v3.14.6): deepcopy повертає атомарні типи (str, int, None та інші) без копії, а контейнери обробляє рекурсивно через memo, у коді на Python. Опис реалізації CPython, не гарантія мови."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація tracemalloc (Python 3.14): трасування блоків пам’яті, виділених Python; статистика виділень за файлом і рядком; порівняння двох знімків."
 ---
 
 ## Short answer
@@ -81,11 +58,3 @@ Shallow copy достатньо, коли вкладені об’єкти не 
 - вважати, що shallow copy ізолює вкладені списки чи словники, і змінювати їх в одній копії;
 - викликати `deepcopy` на кожному запиті для великої структури замість копіювання лише змінюваного рівня;
 - використовувати deep copy для даних, які мають залишатися спільними між копіями.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

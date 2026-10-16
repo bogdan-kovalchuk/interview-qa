@@ -1,48 +1,21 @@
 ---
 id: py-modimp-0008
 title: "Що означає partially initialized module під час circular import і чому не всі його names уже доступні?"
-description: "Partially initialized module – це module object, який уже доданий у sys.modules, але його exec_module() ще не завершився, тому доступні лише ті names, що були визначені до точки циклічного імпорту."
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційний посібник із packaging для Python."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import (Loading)"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Порядок завантаження модуля в Python 3.14: модуль є в sys.modules до виконання його коду, щоб запобігти рекурсії."
 ---
 
 ## Short answer
@@ -90,11 +63,3 @@ print(right.use())               # prints 10 and False from right.py, then 20
 - вважати, що `import left` у `right.py` дає повний модуль; він дає незавершений об’єкт, і names, визначені нижче точки циклу, відсутні;
 - писати `from left import compute` на верхньому рівні модуля, що входить у цикл: це `ImportError` під час завантаження, а не `AttributeError` пізніше;
 - «лікувати» цикл перестановкою рядків імпорту, не перевіривши, які names потрібні вже під час імпорту.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0013
 title: "Чим hashability відрізняється від immutability і чому ці властивості не є повними синонімами?"
-description: "Hashability означає, що об'єкт має незмінний протягом lifetime hash і підтримує __eq__; immutability означає, що значення об'єкта не можна змінити після створення."
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -92,19 +65,3 @@ print(Point.__hash__ is None)  # True (Python sets __hash__ = None)
 - незмінність контейнера не гарантує гешованості: `tuple` або `frozenset` є hashable лише тоді, коли всі їхні елементи є hashable;
 - мутабельність не виключає гешованості за замовчуванням: класи без `__eq__` гешуються за ідентичністю незалежно від змін їхнього стану;
 - явний контракт при value-based рівності: для використання власних класів як ключів словника слід або використовувати незмінні поля й реалізувати узгоджений `__hash__`, або використовувати `dataclass(frozen=True)`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

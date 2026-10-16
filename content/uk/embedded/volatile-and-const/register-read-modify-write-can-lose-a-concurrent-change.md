@@ -1,41 +1,18 @@
 ---
 id: emb-volconst-0037
 title: "Чому read-modify-write для volatile register може бути небезпечним?"
-description: "Операція не атомарна: це читання register, модифікація в CPU, потім запис назад."
 track: embedded
 section: volatile-and-const
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: stm32-bsrr
     title: "STMicroelectronics STM32L1 reference manual, GPIO bitwise handling"
     url: https://www.st.com/resource/en/reference_manual/cd00240193.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "RM0038"
-    applicability: "Описує BSRR як атомарний set/reset для GPIO ODR саме на STM32L1; інші MCU та їхні регістри можуть мати іншу поведінку."
 ---
 
 ## Question code
@@ -67,19 +44,3 @@ Read-modify-write (RMW) – це послідовність із трьох ді
 - Якщо RMW неминучий і конкурент – ISR того самого CPU, виконай коротку critical section за правилами платформи.
 
 Не припускай, що C atomic API можна застосувати до будь-якого MMIO-регістра: апаратна підтримка, ширина доступу та дозволені операції визначаються платформою.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

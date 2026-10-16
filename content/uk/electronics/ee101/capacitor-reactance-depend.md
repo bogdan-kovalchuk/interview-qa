@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0019
 title: "Від чого залежить реактивний опір конденсатора `X_C`?"
-description: "Від чого залежить реактивний опір конденсатора X_C?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 35, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-capacitor-reactance
     title: "All About Circuits: AC Capacitor Circuits"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-4/ac-capacitor-circuits/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Формула ідеального ємнісного реактивного опору для синусоїдального AC, залежність від частоти й ємності та ідеалізований граничний випадок DC."
 ---
 
 ## Short answer
@@ -67,7 +40,3 @@ X_C ≈ 15.9 Ω
 При `f = 0` формула ідеального синусоїдального режиму має границю нескінченного реактивного опору, що відповідає розімкненому конденсатору після завершення заряджання в DC-аналізі. Це не описує перехідний процес під час підключення джерела: у цей час струм може бути значним і визначається початковою напругою та опором кола. Реальні деталі також мають витік і паразитні параметри; поблизу власного резонансу проста ємнісна модель може бути непридатною, тому для точного проєктування потрібні характеристики конкретного компонента.[^aac-capacitor-reactance]
 
 **Типова помилка:** вважати `X_C` сталою характеристикою конденсатора або підставляти частоту в кілогерцах без перетворення в герци. Завжди називайте частоту сигналу та перевіряйте одиниці ємності, а для неідеального кола аналізуйте комплексний імпеданс і datasheet.[^aac-capacitor-reactance]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,62 +1,27 @@
 ---
 id: emb-raii-0032
 title: "Чому `unique_ptr` вважають дефолтним smart pointer для embedded?"
-description: "Доступ як у raw pointer, ексклюзивне володіння, явна передача через move, підтримка custom deleter під HAL."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-unique-ptr-single
     title: "C++ working draft: unique_ptr for single objects ([unique.ptr.single])"
     url: https://eel.is/c++draft/unique.ptr.single
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що деструктор викликає deleter для ненульового вказівника; operator* і operator-> повертають *get() з precondition get() != nullptr; move-конструктор дає джерелу get() == nullptr. Описує стандартний тип, а не конкретну платформу."
   - source_id: cpp-draft-unique-ptr-dltr-dflt
     title: "C++ working draft: default_delete ([unique.ptr.dltr.dflt])"
     url: https://eel.is/c++draft/unique.ptr.dltr.dflt
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "default_delete викликає delete для свого аргумента; у його синопсисі немає даних-членів. Розмір unique_ptr у конкретних реалізаціях цей розділ не визначає."
   - source_id: cppcg-r21
     title: "C++ Core Guidelines: R.21 – Prefer unique_ptr over shared_ptr unless you need to share ownership"
     url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#r21-prefer-unique_ptr-over-shared_ptr-unless-you-need-to-share-ownership
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Настанова: використовувати unique_ptr, якщо не потрібне спільне володіння; unique_ptr простіший і передбачуваніший, бо не веде лічильника посилань. Не є вимірюванням вартості на конкретній платформі."
   - source_id: cpp-draft-util-smartptr-shared-create
     title: "C++ working draft: shared_ptr creation ([util.smartptr.shared.create])"
     url: https://eel.is/c++draft/util.smartptr.shared.create
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Примітка: реалізація може виділяти більше sizeof(T) для службових структур, як-от лічильники посилань; make_shared should виконувати не більше однієї алокації. Це не гарантія для всіх реалізацій."
 ---
 
 ## Short answer
@@ -100,7 +65,3 @@ void transfer(int bus) {
 - Вважати, що deleter з станом не збільшує розміру: вказівник на функцію або захоплювальна лямбда зберігаються в `unique_ptr`.
 - Розіменовувати джерело після того, як його переміщено (move-конструктором чи присвоєнням): його `get()` дорівнює `nullptr`, а `operator*` має precondition `get() != nullptr`, тож таке розіменування є undefined behavior.[^cpp-draft-unique-ptr-single]
 - Брати `shared_ptr` «на всяк випадок»: це додає лічильник і спільне володіння, яких немає в задачі.
-
-## Sources
-
-<!-- generated from frontmatter -->

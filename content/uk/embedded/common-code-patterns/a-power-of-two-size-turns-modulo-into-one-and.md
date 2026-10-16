@@ -1,41 +1,18 @@
 ---
 id: emb-patterns-0012
 title: "Чому розмір ring buffer роблять степенем двійки?"
-description: "(index + 1) & MASK – одна інструкція AND, а (index + 1) % SIZE вимагає ділення."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: arm-divide
     title: "Arm: Divide and Conquer"
     url: https://developer.arm.com/community/arm-community-blogs/b/architectures-and-processors-blog/posts/divide-and-conquer
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Підтверджує відсутність апаратного ділення на Cortex-M0 та залежність вартості `%` від реалізації; не задає фіксованого коефіцієнта прискорення."
 ---
 
 ## Question code
@@ -62,7 +39,3 @@ sources:
 Практична перевага – просте обчислення wrap-around без операції остачі у вихідному коді. Але компілятор може оптимізувати ділення на константу, а різні ядра мають різні можливості: Cortex-M0 не має апаратних інструкцій ділення, тож універсальна цифра на кшталт «у 10–20 разів» без виміру необґрунтована. Перевіряй assembly або вимірюй саме свою збірку, якщо час критичний.[^arm-divide]
 
 Приклад: для `SIZE = 8` маска дорівнює 7. Індекс 7 після просування стає `(7 + 1) & 7`, тобто 0; індекс 5 стає 6. Для кільцевої черги, що залишає одну позицію порожньою, маска обчислює наступну позицію, а окрема перевірка вирішує, чи можна записувати.
-
-## Sources
-
-<!-- generated from frontmatter -->

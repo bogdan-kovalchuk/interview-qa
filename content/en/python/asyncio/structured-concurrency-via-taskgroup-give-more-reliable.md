@@ -1,41 +1,18 @@
 ---
 id: py-async-0011
 title: "When does structured concurrency via `TaskGroup` give more reliable lifetime and failure semantics than a loose set of `create_task()` calls?"
-description: "When does structured concurrency via `TaskGroup` give more reliable lifetime and failure semantics than a loose set of `create_task()` calls?"
 track: python
 section: asyncio
-level: senior
-type: comparison
-tags: [taskgroup, create-task]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -74,19 +51,3 @@ So "reliability" here is not about performance or API surface, but about whether
 boundaries of one block of code, you can say for certain what concurrent work is still in flight.
 With `TaskGroup` the answer is always unambiguous: everything inside the block has either already
 finished, or is guaranteed to finish (successfully or via cancellation) before the block exits.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: py-prac-0024
 title: "Складіть tests для maximum-overlapping-intervals function: інтервали closed `[start, end]`, тому start і end в одну мить вважаються overlapping."
-description: "Ключовий boundary – closed intervals: дотичні [1,5] і [5,10] дають overlap == 2 у точці 5."
 track: python
 section: practical-coding
-level: middle
-type: practical
-tags: [start-end]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-controlflow-the-range-function
     title: "Python 3.14: Tutorial/control flow"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#the-range-function
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: range() не включає кінцеву точку, а початкова точка включається."
   - source_id: py314-reference-expressions-value-comparisons
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#value-comparisons
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: кортежі та інші послідовності порівнюються за першим елементом, що відрізняється."
 ---
 
 ## Short answer
@@ -85,23 +66,3 @@ if __name__ == "__main__":
 - тестувати лише неперетинні та вкладені інтервали, а дотик пропускати;
 - вважати, що `[1, 5]` і `[5, 10]` не перетинаються, бо `range(1, 5)` не містить 5;
 - сортувати події без правила для однакової координати, від чого залежить відповідь.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

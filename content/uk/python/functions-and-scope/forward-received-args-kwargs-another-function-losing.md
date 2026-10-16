@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0003
 title: "Як без втрати позиційних та keyword arguments передати отримані `*args` і `**kwargs` іншій функції, і яку помилку легко зробити під час такого forwarding?"
-description: "Потрібно розпаковувати їх при виклику: target(*args, **kwargs), а не передавати tuple і dict як звичайні аргументи."
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: [args, kwargs]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,11 +46,3 @@ print(wrong(1, 2, 3, flag=True, color='red'))
 - писати `target(args, kwargs)` або `target(*args, kwargs)`: тоді `kwargs` стає позиційним dict;
 - передавати лише `*args`, забувши `**kwargs`: keyword аргументи зникають без помилки;
 - додавати до виклику keyword, який уже є в `kwargs`: це `TypeError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

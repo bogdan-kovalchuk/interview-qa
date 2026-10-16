@@ -1,72 +1,30 @@
 ---
 id: py-itergen-0015
 title: "Why shouldn't you rely on garbage collection of a generator for the timely release of an external resource?"
-description: "Why shouldn't you rely on garbage collection of a generator for the timely release of an external resource?"
 track: python
 section: iterators-and-generators
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section generator-iterator methods: close() raises GeneratorExit at the point where the generator is suspended."
   - source_id: py314-reference-datamodel-object-del
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__del__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section object.__del__: a reference cycle keeps the reference count from reaching zero; the cyclic GC removes such a cycle."
   - source_id: py314-reference-datamodel-objects-values-and-types
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#objects-values-and-types
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Objects, values and types: an implementation may postpone garbage collection or omit it altogether."
   - source_id: py314-library-gc-set-threshold
     title: "Python 3.14: Library/gc"
     url: https://docs.python.org/3.14/library/gc.html#gc.set_threshold
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, gc.set_threshold: automatic collection starts when allocations minus deallocations exceed threshold0."
 ---
 
 ## Short answer
@@ -110,23 +68,3 @@ The reliable option is not to depend on finalization: call `close()` explicitly 
 - assuming that a generator's `finally` runs right away as soon as the loop is broken;
 - carrying CPython's release timing over to other Python implementations without testing;
 - using finalization as a timer for closing files, sockets or connections.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,69 +1,30 @@
 ---
 id: py-oop-0011
 title: "Why can `property` be seen as a descriptor, and when is it better than explicit `get_*`/`set_*` methods?"
-description: "Why can `property` be seen as a descriptor, and when is it better than explicit `get_*`/`set_*` methods?"
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [property, get, set]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Invoking Descriptors section of the data model; data descriptors and their precedence over the instance dictionary."
   - source_id: py314-howto-descriptor-properties
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#properties
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Properties section; property as a data descriptor that calls a function on attribute access."
   - source_id: py314-howto-descriptor-invocation-summary
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html#summary-of-invocation-logic
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: Summary of invocation logic section; descriptors are invoked by __getattribute__, so overriding it prevents automatic descriptor calls."
 ---
 
 ## Short answer
@@ -110,19 +71,3 @@ When `property` is better than explicit methods. The `get_*`/`set_*` methods cha
 - treating `property` as a method and writing `t.celsius()`: the value is not callable, so this raises `TypeError`;
 - expecting a property without a setter to accept assignment: it raises `AttributeError`;
 - hiding expensive work or side effects in a getter when the caller expects a plain field read.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

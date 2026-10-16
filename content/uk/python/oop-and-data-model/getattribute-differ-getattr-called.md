@@ -1,69 +1,30 @@
 ---
 id: py-oop-0005
 title: "Чим `__getattribute__` відрізняється від `__getattr__` і коли викликається кожен із них?"
-description: "__getattribute__ викликається для кожного явного доступу до атрибута екземпляра; __getattr__ – лише як fallback, коли звичайний lookup завершився AttributeError."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [getattribute, getattr]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-getattribute
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattribute__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ object.__getattribute__ моделі даних."
   - source_id: py314-reference-datamodel-object-getattr
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattr__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ object.__getattr__ моделі даних."
   - source_id: py314-reference-datamodel-special-method-lookup
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#special-method-lookup
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: розділ Special method lookup моделі даних."
 ---
 
 ## Short answer
@@ -108,19 +69,3 @@ print(len(t))      # no __getattribute__ line: len() looks up __len__ on the typ
 - вважати, що `__getattr__` викликається для кожного звернення, і логувати в ньому доступ до існуючих атрибутів; він їх не побачить;
 - писати `self.__dict__` або `self.name` всередині `__getattribute__`, що дає рекурсію;
 - очікувати, що `len(obj)` або `obj + 1` пройдуть через `__getattribute__`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-modimp-0008
 title: "What does a partially initialized module mean during a circular import, and why aren't all of its names already available?"
-description: "A partially initialized module is in sys.modules while its code still runs, so only names bound before the cycle point exist yet."
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import (Loading)"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Module loading order in Python 3.14: the module is in sys.modules before its code runs, to prevent recursion."
 ---
 
 ## Short answer
@@ -90,11 +63,3 @@ The line `from left import compute` at that stage raises `ImportError`, because 
 - assuming that `import left` in `right.py` gives the complete module; it gives an unfinished object, and names defined below the cycle point are missing;
 - writing `from left import compute` at the top level of a module that is part of the cycle: that is an `ImportError` at load time, not an `AttributeError` later;
 - "fixing" the cycle by reordering import lines without checking which names are needed during import itself.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

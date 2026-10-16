@@ -1,41 +1,18 @@
 ---
 id: py-fund-0012
 title: "Як executable nature інструкцій `def` і `class` впливає на умовне визначення, повторне визначення та import-time side effects?"
-description: "def і class – виконувані інструкції (executable statements): вони створюють об'єкт функції або класу та прив'язують ім'я під час виконання, а не на етапі компіляції."
 track: python
 section: fundamentals
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -94,11 +71,3 @@ handle(1)              # TypeError: handle() missing 1 required positional argum
 
 Практична вигода умовного визначення реальна: платформенні або версійні варіанти функції пишуться
 без обгортки-диспетчера, і на гарячому шляху не лишається жодної перевірки умови.[^py314-faq-general]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

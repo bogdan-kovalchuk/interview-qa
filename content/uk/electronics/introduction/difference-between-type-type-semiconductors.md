@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0161
 title: "Яка різниця між N-типом і P-типом напівпровідника?"
-description: "Яка різниця між N-типом і P-типом напівпровідника?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: aac-electrons-holes
     title: "All About Circuits: Electrons and holes"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-2/electrons-and-holes/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює донорне й акцепторне легування кремнію, утворення електронів і дірок та носії більшості; приклади не охоплюють усі матеріали й технологічні процеси."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 16, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -65,7 +38,3 @@ N-тип і P-тип описують напівпровідник, у яком�
 - Стверджувати, що домішкою може бути тільки один елемент. Фосфор є прикладом донора для кремнію, а бор – прикладом акцептора; є й інші домішки.[^aac-electrons-holes]
 
 Отже, ключова різниця – вид домішки та відповідний тип більшості носіїв; обидва матеріали залишаються напівпровідниками, провідність яких можна налаштовувати легуванням.[^aac-electrons-holes]
-
-## Sources
-
-<!-- generated from frontmatter -->

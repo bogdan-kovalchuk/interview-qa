@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0011
 title: "When is a comprehension usually more readable than `map()` or `filter()`, and when does callable composition win?"
-description: "When is a comprehension usually more readable than `map()` or `filter()`, and when does callable composition win?"
 track: python
 section: comprehensions-and-functional
-level: middle
-type: comparison
-tags: [map, filter]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -82,19 +55,3 @@ print(squares_over_15)
 - choose a comprehension if the operation requires evaluating an expression, accessing multiple variables, or combining filtering and mapping in a single pass;
 - avoid nested `map(lambda ..., filter(lambda ...))` constructs, as they read from the inside out and reduce maintainability;
 - use generator expressions (`(...)`) when lazy evaluation is needed without materializing the entire collection in memory.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

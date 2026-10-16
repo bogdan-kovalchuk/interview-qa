@@ -1,62 +1,27 @@
 ---
 id: emb-tmplcx-0012
 title: "Які переваги CRTP над virtual dispatch?"
-description: "Немає обов’язкового vptr (virtual pointer), немає indirect call і простіше аналізувати WCET (worst-case execution time)."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: itanium-cxx-abi
     title: "Itanium C++ ABI"
     url: https://itanium-cxx-abi.github.io/cxx-abi/abi.html
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Визначає dynamic class (з virtual-функціями чи virtual-базами) як клас, що потребує virtual table pointer; отже клас без них його не потребує. Це ABI, а не стандарт мови: інші ABI можуть відрізнятися в деталях."
   - source_id: cpp-draft-class-virtual
     title: "C++ working draft: Virtual functions ([class.virtual])"
     url: https://eel.is/c++draft/class.virtual
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Примітка в розділі каже, що виклик virtual-функції визначається dynamic type об’єкта, а виклик non-virtual – static type вказівника чи посилання. Механізм vptr/vtable тут не заданий."
   - source_id: cpp-draft-temp-inst
     title: "C++ working draft: Implicit instantiation ([temp.inst])"
     url: https://eel.is/c++draft/temp.inst
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що специфікація шаблону функції чи member-функції інстанціюється, коли її визначення потрібне; неявна інстанціація класового шаблону інстанціює лише оголошення членів. Про розмір коду не йдеться."
   - source_id: cpp-draft-expr-static-cast
     title: "C++ working draft: Static cast ([expr.static.cast])"
     url: https://eel.is/c++draft/expr.static.cast
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає, що static_cast вказівника на base у вказівник на похідний клас коректний, лише якщо цей base справді є підоб’єктом об’єкта похідного типу; інакше undefined behavior."
 ---
 
 ## Short answer
@@ -82,7 +47,3 @@ Virtual-диспетчеризація потрібна, коли конкрет
 - Вважати, що CRTP завжди швидший: він прибирає runtime-диспетчеризацію, але не замінює вимірювання.
 - Приводити `static_cast` до `Derived` для об’єкта іншого типу.
 - Очікувати, що об’єкти різних `Derived` можна зберігати в одному масиві без спільного базового типу.
-
-## Sources
-
-<!-- generated from frontmatter -->

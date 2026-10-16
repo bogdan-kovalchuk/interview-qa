@@ -1,34 +1,15 @@
 ---
 id: emb-boot-0007
 title: "Що таке OTA update і які ризики треба закрити: power loss, signature verification, rollback і version compatibility?"
-description: "OTA - оновлення firmware через мережу без фізичного доступу. Потрібні atomic install, image integrity, signature verification, anti-rollback policy, version compatibility з config/protocol і recovery після power loss."
 track: embedded
 section: bootloaders-and-ota
-level: senior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -51,9 +32,7 @@ OTA update – це доставка та встановлення нового 
 
 Update package зазвичай включає: image binary, version metadata, target device identifier, dependencies (якщо є), changelog, та cryptographic signature. Deployment платформа повинна підтримувати: device authentication, staged rollout (canary deployment), audit log, та fleet-wide rollback.
 
-## Evaluation guide
-
-### Expected signals
+### Очікувані сигнали
 
 - Розуміє, що power loss під час install – це основний ризик, і dual-bank/A/B є стандартним рішенням
 - Згадує signature verification як обов'язкову для security
@@ -61,7 +40,7 @@ Update package зазвичай включає: image binary, version metadata, 
 - Згадує staged rollout як спосіб мінімізації ризику version incompatibility
 - Розуміє, що recovery механізм (boot counter, watchdog) потрібен навіть з dual-bank
 
-### Red flags
+### Червоні прапорці
 
 - Вважає, що OTA не потребує rollback механізму
 - Не згадує signature verification або вважає її опціональною
@@ -69,11 +48,7 @@ Update package зазвичай включає: image binary, version metadata, 
 - Не розуміє різниці між dual-bank та A/B схемами
 - Вважає, що power loss не є проблемою для OTA
 
-### Level-up follow-up
+### Питання на підвищення рівня
 
 - Як реалізувати anti-rollback policy, і чому вона може бути controversial?
 - Як забезпечити secure key storage на пристрої з обмеженим hardware security module?
-
-## Sources
-
-<!-- generated from frontmatter -->

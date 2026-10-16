@@ -1,76 +1,33 @@
 ---
 id: emb-elee-0153
 title: "Чим відрізняються лінійний стабілізатор, LDO, імпульсний перетворювач і зарядова помпа?"
-description: "Чим відрізняються лінійний стабілізатор, LDO, імпульсний перетворювач і зарядова помпа?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 60, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva118a
     title: "Texas Instruments SLVA118A: Linear Regulator Design Guide For LDOs"
     url: https://www.ti.com/lit/an/slva118/slva118.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA118A, April 2003, revised June 2008"
-    applicability: "Лінійний стабілізатор має прохідний елемент, яким керує контролер за зворотним зв’язком; вхідний струм приблизно дорівнює вихідному, різниця напруг розсіюється як тепло, P_D = P_I - P_O, а Eff ≈ V_O/V_I (за малого струму спокою; для імпульсних перетворювачів формула не діє); dropout – мінімальна різниця V_I - V_O, за якої стабілізатор працює в межах специфікації, а LDO – підклас лінійних стабілізаторів із малим dropout. Записка про LDO, а не про імпульсні перетворювачі."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "У режимі dropout PMOS-прохідний елемент поводиться як резистор, V_dropout = I_o*R_on; стабільність LDO залежить від послідовного опору вихідного конденсатора (CSR = ESR + додатковий резистор), і виробник дає допустимий діапазон, наприклад 0,2–9 Ом для TPS763xx; тантал, алюміній і кераміка підходять, якщо відповідають вимозі. Числа стосуються конкретної серії; вимоги інших LDO беруть із їхніх datasheet."
   - source_id: ti-slyt527
     title: "Texas Instruments SLYT527: Linear versus switching regulators in industrial applications with a 24-V bus (Analog Applications Journal, 3Q 2013)"
     url: https://www.ti.com/lit/an/slyt527/slyt527.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Analog Applications Journal, 3Q 2013"
-    applicability: "Порівняння трьох схем «24 В на вході, 5 В на виході, 100 мА»: синхронний buck (TPS54061) має ККД 84,5% і втрати 0,093 Вт, інтегрований і дискретний лінійні стабілізатори – близько 20% і 2 Вт; лінійні схеми мають пульсації менше 10 мВ, buck – 75 мВ, а лінійні стабілізатори використовують для очищення виходу імпульсних. Дані для однієї плати й однієї мікросхеми, а не універсальні числа."
   - source_id: ti-switching-regulator-fundamentals
     title: "Texas Instruments: Switching regulator fundamentals"
     url: https://www.ti.com/lit/an/snva559c/snva559c.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "Rev. C"
-    applicability: "Розділи 1–3: у buck-перетворювачі ключ по черзі підключає вхід до індуктивності, струм індуктивності не може змінитися миттєво, тому після вимкнення ключа він тече через діод, а вихід регулюється шириною імпульсу (PWM); перетворювачі дають вищий ККД і змогу отримувати вищу або протилежну за знаком напругу; швидке перемикання створює EMI. Документ не порівнює їх із зарядовими помпами."
   - source_id: ti-charge-pump-basics
     title: "Texas Instruments SSZTBO1: Pump It up with Charge Pumps – Part 1 (technical article)"
     url: https://www.ti.com/lit/ta/ssztbo1/ssztbo1.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SSZTBO1, February 2016"
-    applicability: "Зарядова помпа накопичує енергію в конденсаторі, а не в індуктивності: подвоювач дає вихід ≈ 2*V_I, інвертор ≈ -V_I; проста схема не стабілізує вихід, регульований подвоювач стабілізує лише в діапазоні від V_I до 2*V_I; помпи добрі для струмів десятків міліампер, гірше – понад 250 мА, і менш ефективні за індуктивні перетворювачі, якщо не нерегульовані. Загальна оцінка виробника, а не гарантія для конкретної мікросхеми."
 ---
 
 ## Short answer
@@ -93,7 +50,3 @@ LDO – та сама архітектура, але з малим dropout, то
 - Ставити на вихід LDO довільний конденсатор без перевірки допустимого ESR у datasheet.
 - Ставити імпульсний перетворювач перед чутливим аналоговим вузлом без фільтра чи лінійного post-регулятора.
 - Брати зарядову помпу для великих струмів: вона розрахована на невеликі навантаження.
-
-## Sources
-
-<!-- generated from frontmatter -->

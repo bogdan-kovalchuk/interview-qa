@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0006
 title: "How does in-place mutation of a list via `+=` differ from augmented assignment for an immutable tuple?"
-description: "How does in-place mutation of a list via `+=` differ from augmented assignment for an immutable tuple?"
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -87,19 +60,3 @@ except TypeError:
 - passing a list into a function and using `+=` instead of `+`, inadvertently mutating the caller's list;
 - forgetting that the right operand for `list += ...` can be any iterable (for instance, `lst += "ab"` appends individual characters `['a', 'b']` rather than the string as a whole);
 - falling into the `nested_tuple[0] += [item]` trap, where a `TypeError` is raised even though the list inside the tuple was actually mutated.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0023
 title: "Do type annotations change the runtime semantics of calling an ordinary Python function, and does the interpreter check argument types automatically?"
-description: "Do type annotations change the runtime semantics of calling an ordinary Python function, and does the interpreter check argument types automatically?"
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-compound-stmts-annotations
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#annotations
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -61,23 +42,3 @@ Checking is done by other tools. A type checker reads the annotations without ru
 - expecting `a: int` to reject a string at call time: without a type checker the error appears only where the operation itself fails;
 - assuming `-> int` guarantees the result type: `scale(3, 1.5)` returns `4.5`;
 - building protection against wrong types on annotations alone: the check must be written explicitly or taken from a library.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

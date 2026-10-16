@@ -1,27 +1,12 @@
 ---
 id: py-perf-0012
 title: "Як спроєктувати cache invalidation та eviction, якщо source data можуть змінюватися?"
-description: "Потрібно поєднати стратегію eviction (обмеження розміру) із механізмом invalidation (скасування застарілих записів за зміною source data)."
 track: python
 section: performance
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: LRU-обмеження через maxsize, cache_clear() очищає весь cache функції, при maxsize=None cache може зростати без меж, cache потокобезпечний, але функція може виконатися повторно."
 ---
 
 ## Short answer
@@ -60,23 +45,3 @@ print(load_config.cache_info())  # CacheInfo(hits=1, misses=2, maxsize=256, curr
 - взяти `functools.cache` для даних, які змінюються: ліміту немає, і застарілі значення лишаються до перезапуску процесу;
 - очистити cache в одному процесі, вважаючи, що очистилися всі worker-и;
 - зробити TTL довшим за допустиму затримку оновлення або перевіряти версію дорогим запитом, через що cache не дає виграшу.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

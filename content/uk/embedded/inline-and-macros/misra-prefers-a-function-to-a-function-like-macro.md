@@ -1,48 +1,21 @@
 ---
 id: emb-macros-0019
 title: "Що рекомендує MISRA C Directive 4.9 щодо function-like макросів?"
-description: "MISRA C Directive 4.9 рекомендує функцію замість function-like макросу, коли вони взаємозамінні."
 track: embedded
 section: inline-and-macros
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: misra-c2012-amd3-dir49
     title: "MISRA C:2012 Amendment 3"
     url: https://misra.org.uk/app/uploads/2022/12/MISRA-C-2012-AMD3.pdf
-    accessed: 2026-10-04
-    kind: spec
-    version: "2012 Amendment 3"
-    applicability: "На сторінці 11 уточнює виняток Directive 4.9 для function-like macros із _Generic; повний текст директиви міститься в основному документі MISRA C:2012."
   - source_id: gcc-cpp-overview
     title: "GCC CPP: Overview"
     url: https://gcc.gnu.org/onlinedocs/cpp/Overview.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Пояснює призначення препроцесора і підстановку макросів перед компіляцією; не є рекомендацією MISRA."
 ---
 
 ## Short answer
@@ -68,7 +41,3 @@ Directive 4.9 не означає, що кожен макрос треба ме�
 - Називати Directive 4.9 правилом або трактувати її як абсолютну заборону.
 - Стверджувати, що MISRA завжди вимагає саме `static inline`.
 - Замінювати макрос без перевірки compile-time поведінки та сумісності типів.
-
-## Sources
-
-<!-- generated from frontmatter -->

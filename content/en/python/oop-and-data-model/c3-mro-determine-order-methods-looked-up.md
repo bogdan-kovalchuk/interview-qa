@@ -1,48 +1,21 @@
 ---
 id: py-oop-0016
 title: "How does C3 MRO determine the order in which methods are looked up under multiple inheritance, and what ordering property does it preserve?"
-description: "How does C3 MRO determine the order in which methods are looked up under multiple inheritance, and what ordering property does it preserve?"
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -103,11 +76,3 @@ Monotonicity matters because without it, creating a new subclass could silently 
 **Common mistakes:**
 - confusing `__bases__` with `__mro__`: `__bases__` holds only the direct bases of a class, while `__mro__` is the full lookup order.[^py314-reference-datamodel]
 - assuming `class C(A, B)` and `class C(B, A)` give the same method lookup: the order of bases is part of the rule, so in the second version methods are looked up in `B` first.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

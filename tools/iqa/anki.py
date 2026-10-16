@@ -15,11 +15,11 @@ Invariants this file must never violate (meta/anki.md, meta/decisions.md #7-8):
   `tools/iqa/guid.py` and is protected by golden-vector tests;
 - fields are written by name (`FIELD_ORDER` from the fingerprint), never by a
   hardcoded position;
-- a card ships only when `tools/iqa/lifecycle.py` says `card_in_apkg` for the
-  language being built - nothing else decides that, and no other language is
-  ever substituted into Back (meta/anki.md: a mixed-language deck is worse than
-  a smaller one). One package holds one language; the Ukrainian one is the
-  default and keeps the GUID namespace it was released with.
+- a card ships exactly when its `Short answer` is written in the language being
+  built, and no other language is ever substituted into Back (meta/anki.md: a
+  mixed-language deck is worse than a smaller one). One package holds one
+  language; the Ukrainian one is the default and keeps the GUID namespace it was
+  released with.
 """
 
 from __future__ import annotations
@@ -77,9 +77,8 @@ def deterministic_id(name: str, *, low: int, high: int) -> int:
 def render_inline(text: str) -> str:
     """Bold -> <strong>, inline code -> <code>, citation tokens stripped.
 
-    Shared by every Anki field that is not the Short answer (title, Task,
-    Constraints, Scale prompt): none of those get the leading-bold `.key`
-    treatment that meta/questions.md section 7 reserves for Short answer.
+    Used for the title, which does not get the leading-bold `.key` treatment
+    that meta/questions.md reserves for Short answer.
     """
     text = CITATION_RE.sub("", text)
     text = BOLD_RE.sub(lambda m: f"<strong>{m.group(1)}</strong>", text)
@@ -132,19 +131,6 @@ def render_paragraphs(text: str, *, key_lead: bool) -> str:
     return "\n".join(rendered_paragraphs)
 
 
-def render_constraints_list(text: str) -> str:
-    """Compact-rendered Constraints: a single-level list, per meta/anki.md.
-
-    "Compact rendering changes only the HTML: it removes extra margins and
-    shows Constraints as a single-level list. The exporter does not shorten or
-    paraphrase authored constraints." - so every `- ` line becomes one <li>,
-    inline-rendered, in the original order, nothing dropped or reworded.
-    """
-    items = LIST_ITEM_RE.findall(text)
-    rendered_items = "".join(f"<li>{render_inline(item.strip())}</li>" for item in items)
-    return f'<ul class="constraints">{rendered_items}</ul>'
-
-
 def render_sources_field(sources: list[dict[str, Any]]) -> str:
     """One line per source: title as link text, url as href (meta/anki.md)."""
     return "<br>".join(f'<a href="{source["url"]}">{source["title"]}</a>' for source in sources)
@@ -170,27 +156,6 @@ def section_nav_label_en(vocabulary: dict[str, Any], track: str, section: str) -
     if not isinstance(labels, dict) or "en" not in labels:
         raise ValueError(f"no en navigation label for section `{key}` in meta/vocabulary.yml")
     return labels["en"]
-
-
-def card_label(
-    vocabulary: dict[str, Any], question_type: str, language: str = DEFAULT_CARD_LANGUAGE
-) -> str | None:
-    """The visible label above Back for types whose Short answer has special
-
-    semantics (meta/anki.md "Що в яких полях"). Types with no entry here get
-    no label, matching the anki.md table's "solid" (no label) row.
-    """
-    key = {
-        "coding": "Solution outline",
-        "system-design": "Architecture summary",
-        "behavioral": "Answer framework",
-    }.get(question_type)
-    if key is None:
-        return None
-    labels = (vocabulary.get("card_labels") or {}).get(key)
-    if not isinstance(labels, dict) or language not in labels:
-        raise ValueError(f"no {language} card label for `{key}` in meta/vocabulary.yml")
-    return labels[language]
 
 
 def section_order(taxonomy_path: Path) -> dict[str, int]:
@@ -236,18 +201,10 @@ def deck_name(
 
 
 def build_tags(question: dict[str, Any]) -> list[str]:
-    tags = [
+    return [
         f"topic::{question['track']}::{question['section']}",
-        f"type::{question['type']}",
-        f"level::{question['level']}",
         f"qid::{question['id']}",
     ]
-    tags.extend(f"framework::{framework}" for framework in question["frameworks"])
-    tags.extend(f"tag::{tag}" for tag in question["tags"])
-    # role:: tags are omitted: they are derived from programs/*.yml membership,
-    # which does not exist yet (meta/plan.md step 7). Nothing to derive from means
-    # no role:: tag - not a placeholder value.
-    return tags
 
 
 def render_front(
@@ -259,33 +216,16 @@ def render_front(
 ) -> str:
     label = track_label(vocabulary, question["track"], language)
     parts = [f'<div class="deck-label">{label}</div>', render_inline(title)]
-    if question["type"] == "coding":
-        task_html = render_paragraphs(card["task"], key_lead=False)
-        constraints_html = render_constraints_list(card["constraints"])
-        parts.append(f'<div class="prompt-body">{task_html}{constraints_html}</div>')
-    elif question["type"] == "system-design":
-        scale_html = render_paragraphs(card["scale_prompt"], key_lead=False)
-        parts.append(f'<div class="prompt-body">{scale_html}</div>')
-    elif card.get("question_code"):
+    if card.get("question_code"):
         # The snippet the question is about. It belongs to the Front, not to the
-        # answer: `coding` and `system-design` already carry their prompt here,
-        # and every other type has only the title to put it next to.
+        # answer, next to the title it completes.
         code_html = render_paragraphs(card["question_code"], key_lead=False)
         parts.append(f'<div class="prompt-body">{code_html}</div>')
     return "".join(parts)
 
 
-def render_back(
-    vocabulary: dict[str, Any],
-    question: dict[str, Any],
-    card: dict[str, Any],
-    language: str = DEFAULT_CARD_LANGUAGE,
-) -> str:
-    label = card_label(vocabulary, question["type"], language)
-    answer_html = render_paragraphs(card["short_answer"], key_lead=True)
-    if label is None:
-        return answer_html
-    return f'<div class="answer-label">{label}</div>{answer_html}'
+def render_back(card: dict[str, Any]) -> str:
+    return render_paragraphs(card["short_answer"], key_lead=True)
 
 
 def font_face_css() -> str:
@@ -348,19 +288,16 @@ def build_notes(
         entry = question["languages"].get(language)
         if entry is None:
             continue
-        if not entry["lifecycle"]["card_in_apkg"]:
-            continue
         card = entry["card"]
         if card["short_answer"] is None:
-            # lifecycle says it ships but the body says otherwise: a contract
-            # invariant broke upstream. Fail loudly rather than ship an empty card.
-            raise ValueError(f"{question['id']}: card_in_apkg is true but short_answer is empty")
+            # Not written in this language yet: no card rather than an empty one.
+            continue
 
         reference = f"{SITE_ORIGIN}{entry['resolver_path']}"
         fields = note_fields(
             {
                 "Front": render_front(vocabulary, question, card, entry["title"], language),
-                "Back": render_back(vocabulary, question, card, language),
+                "Back": render_back(card),
                 "Reference": reference,
                 "Sources": render_sources_field(entry["sources"]),
                 "QID": question["id"],

@@ -50,7 +50,7 @@ def ordered_tracks_and_sections(path: Path) -> list[tuple[str, list[str]]]:
     """``[(track, [section, ...]), ...]`` in document order.
 
     Only two levels: the site navigation the taxonomy feeds is track then
-    section, and a deeper path (``cpp/frameworks/qt``) is carried by its
+    section, and a deeper path (``embedded/rtos/freertos``) is carried by its
     section entry rather than becoming a third level of menu.
     """
     tracks: dict[str, list[str]] = {}

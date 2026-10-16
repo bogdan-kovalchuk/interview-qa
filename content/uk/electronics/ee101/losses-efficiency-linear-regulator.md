@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0154
 title: "Які втрати і ККД лінійного стабілізатора 9 В -> 5 В при 100 мА і при 500 мА?"
-description: "Які втрати і ККД лінійного стабілізатора 9 В -> 5 В при 100 мА і при 500 мА?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 60, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva118a
     title: "Texas Instruments SLVA118A: Linear Regulator Design Guide For LDOs"
     url: https://www.ti.com/lit/an/slva118/slva118.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA118A, April 2003, revised June 2008"
-    applicability: "У лінійного стабілізатора прохідний елемент завжди ввімкнений, вхідний струм приблизно дорівнює вихідному, потужність втрат P_D = P_I - P_O, а Eff = V_O/V_I за малого струму спокою; з урахуванням I_Q Eff = V_O*I_O/(V_I*(I_O + I_Q)); максимальна потужність втрат визначається через (T_J - T_A)/θ_JA, а θ_JA корпусів у рис. 5 (без обдуву) – від 22–58 до 314–478 °C/W. Записка про LDO; для імпульсних перетворювачів формули не діють, а числа θ_JA залежать від корпусу, міді на платі й T_J."
 ---
 
 ## Short answer
@@ -65,7 +38,3 @@ sources:
 - Брати `η = V_out/V_in` для навантаження з дуже малим струмом, коли `I_q` порівнянний з `I_out`.
 - Порівнювати потужність у навантаженні (2,5 Вт) із можливостями корпусу замість потужності, що розсіюється в самому стабілізаторі (2 Вт).
 - Забувати, що допустиме `P_D` залежить від `T_A`, `T_J` і міді на платі, тож без цих значень число θ_JA нічого не означає.
-
-## Sources
-
-<!-- generated from frontmatter -->

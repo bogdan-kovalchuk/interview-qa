@@ -1,62 +1,27 @@
 ---
 id: emb-cppoop-0028
 title: "Що таке static member класу і де він живе?"
-description: "Static data member – спільний для всіх екземплярів; існує в одному примірнику, а не в кожному об’єкті."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-static
     title: "C++ working draft: Static members ([class.static])"
     url: https://eel.is/c++draft/class.static
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що static data member не входить до підоб’єктів класу, що він існує в одному примірнику на всі об’єкти (для thread_local – по одному на потік), що оголошення non-inline static data member у класі не є визначенням і що inline static member є визначенням. Не визначає розміщення в секціях пам’яті."
   - source_id: cpp-draft-basic-stc-static
     title: "C++ working draft: Static storage duration ([basic.stc.static])"
     url: https://eel.is/c++draft/basic.stc.static
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що змінні, вперше оголошені зі static (і не thread-local), мають static storage duration, тобто пам’ять існує протягом усієї програми. Не говорить про секції .data чи .bss."
   - source_id: cpp-draft-dcl-inline-variable
     title: "C++ working draft: The inline specifier ([dcl.inline])"
     url: https://eel.is/c++draft/dcl.inline
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що inline-змінна з external linkage може бути визначена в кількох translation unit і є однією сутністю з однією адресою. Не стосується розміщення в секціях."
   - source_id: gcc-zero-bss
     title: "GCC 16.1.0: Optimize Options – -fno-zero-initialized-in-bss"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
-    accessed: 2026-10-06
-    kind: official
-    version: "16.1.0"
-    applicability: "Описує типове розміщення нульово ініціалізованих globals у BSS в GCC та прапорець, що його змінює; не описує всі компілятори чи linkers."
 ---
 
 ## Question code
@@ -105,7 +70,3 @@ private:
 - Визначити його в заголовку без `inline`: кожен translation unit дістане своє визначення, а має бути рівно одне.[^cpp-draft-class-static]
 - Очікувати власну копію на кожен об’єкт або вважати, що зі `thread_local` копія все одно одна.
 - Вважати лічильник на кшталт `count_` безпечним для ISR лише тому, що він `static`.
-
-## Sources
-
-<!-- generated from frontmatter -->

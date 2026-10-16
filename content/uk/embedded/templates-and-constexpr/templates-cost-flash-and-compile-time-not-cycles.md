@@ -1,48 +1,21 @@
 ---
 id: emb-tmplcx-0013
 title: "Trap: чому не можна казати «templates не мають вартості»?"
-description: "Templates можуть мати нульову runtime-вартість, але мають реальну вартість у Flash і часі компіляції."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-temp-inst
     title: "C++ working draft: Implicit instantiation ([temp.inst])"
     url: https://eel.is/c++draft/temp.inst
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що специфікація шаблону функції чи member-функції інстанціюється, коли її визначення потрібне; неявна інстанціація класового шаблону інстанціює лише оголошення членів. Про розмір коду не йдеться."
   - source_id: gcc-optimize-options
     title: "GCC 16.1.0: Optimize Options"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
-    accessed: 2026-10-13
-    kind: official
-    version: "16.1.0"
-    applicability: "Описує -fipa-icf: identical code folding для функцій, що зменшує розмір коду, краще працює з увімкненим LTO і за замовчуванням увімкнено на -O2. Не каже, які саме тіла злито в конкретній програмі."
 ---
 
 ## Short answer
@@ -68,19 +41,3 @@ sources:
 - Казати «templates безкоштовні» і не перевіряти linker map чи розмір символів.
 - Плутати відсутність runtime-накладних витрат із відсутністю витрат у Flash.
 - Оцінювати вартість за кількістю рядків шаблону, не рахуючи унікальних аргументів.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

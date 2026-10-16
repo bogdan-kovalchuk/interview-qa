@@ -1,41 +1,18 @@
 ---
 id: py-stdlib-0016
 title: "When should you choose `dataclass` for a value-like record, and when `Enum` for a closed set of symbolic values?"
-description: "When should you choose `dataclass` for a value-like record, and when `Enum` for a closed set of symbolic values?"
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [dataclass, enum]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: @dataclass generates __init__, __repr__ and __eq__; the generated __eq__ compares fields in order for objects of the identical type; since 3.13 the fields are compared individually."
   - source_id: py314-library-dataclasses-dataclass
     title: "Python 3.14: Library/dataclasses, dataclass"
     url: https://docs.python.org/3.14/library/dataclasses.html#dataclasses.dataclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the rules for generating __hash__ in a dataclass depend on the eq and frozen parameters."
   - source_id: py314-library-enum
     title: "Python 3.14: Library/enum"
     url: https://docs.python.org/3.14/library/enum.html#module-enum
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: an enum is a set of symbolic names bound to unique values; members with the same value become aliases; @unique forbids aliases; iteration yields the canonical members in definition order."
 ---
 
 ## Short answer
@@ -89,19 +66,3 @@ In the example, `Point` with `frozen=True` works as a dictionary key, while `Mut
 - using a `@dataclass` without `frozen=True` as a dictionary key or a set member: `__hash__` is `None`, which raises `TypeError`.[^py314-library-dataclasses-dataclass]
 - writing an `Enum` with two names on one value without `@unique`: the second member becomes an alias and does not appear in iteration.[^py314-library-enum]
 - comparing an `Enum` member with its value (`Status.OPEN == "open"`) and expecting `True`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,5 +1,5 @@
 gate: schema
 language: en
 replacements:
-  - old: 'description: "A minimal valid English fixture."'
-    new: ''
+  - old: 'section: concurrency-and-gil'
+    new: "section: concurrency-and-gil\nlevel: middle"

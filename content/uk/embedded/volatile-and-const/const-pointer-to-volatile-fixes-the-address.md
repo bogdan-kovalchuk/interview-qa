@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0012
 title: "Що означає `volatile uint32_t * const reg`?"
-description: "reg є const pointer to volatile uint32_t."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -54,7 +35,3 @@ volatile uint32_t * const gpio_output = (volatile uint32_t *)GPIO_OUTPUT_ADDRESS
 ```
 
 Після створення вказівника код не може присвоїти йому іншу адресу, однак доступ через `*gpio_output` зберігає volatile-кваліфікатор даних. Якщо адреса повинна бути змінною, прибери `const` із самого вказівника; якщо регістр за специфікацією read-only, додай `const` до типу даних. Вибір кваліфікаторів має відображати окремо сталість адреси та допустимість доступу до даних.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

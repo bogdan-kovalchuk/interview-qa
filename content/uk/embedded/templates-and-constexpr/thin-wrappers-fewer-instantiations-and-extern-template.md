@@ -1,55 +1,24 @@
 ---
 id: emb-tmplcx-0015
 title: "Які є стратегії боротьби з template code bloat?"
-description: "Thin wrapper над `void*`; обмеження кількості інстанціацій; extern template; винесення T-незалежного коду у non-template base; LTO (link-time optimization)."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-temp-inst
     title: "C++ working draft: Implicit instantiation ([temp.inst])"
     url: https://eel.is/c++draft/temp.inst
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що специфікація шаблону функції чи member-функції інстанціюється, коли її визначення потрібне; неявна інстанціація класового шаблону інстанціює лише оголошення членів. Про розмір коду не йдеться."
   - source_id: cpp-draft-temp-explicit
     title: "C++ working draft: Explicit instantiation ([temp.explicit])"
     url: https://eel.is/c++draft/temp.explicit
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що для entity з явною декларацією інстанціації, яку використано так, що інакше була б неявна інстанціація, у програмі має бути явна інстанціація-визначення; явна інстанціація класу інстанціює його прямі не-шаблонні члени. Не описує, як компілятор уникає копій."
   - source_id: gcc-optimize-options
     title: "GCC 16.1.0: Optimize Options"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
-    accessed: 2026-10-13
-    kind: official
-    version: "16.1.0"
-    applicability: "Описує -fipa-icf: identical code folding для функцій, що зменшує розмір коду, краще працює з увімкненим LTO і за замовчуванням увімкнено на -O2. Не каже, які саме тіла злито в конкретній програмі."
 ---
 
 ## Short answer
@@ -93,7 +62,3 @@ private:
 - Винести в спільний код щось, що залежить від `T`, і отримати неправильну поведінку для окремих типів.
 - Розраховувати на LTO як на заміну проєктування: він зливає лише ідентичні функції.
 - Залишити `void*`-обгортку без перевірок типів у тонкому шарі.
-
-## Sources
-
-<!-- generated from frontmatter -->

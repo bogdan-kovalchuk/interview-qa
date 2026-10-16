@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0004
 title: "Чому groups, які повертає `itertools.groupby()`, потрібно спожити або матеріалізувати до переходу до наступної group?"
-description: "Кожна group – це iterator, який shares the underlying iterable з groupby(); при переході до наступної групи попередній iterator стає порожнім."
 track: python
 section: comprehensions-and-functional
-level: middle
-type: pitfall
-tags: [itertools-groupby]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -79,23 +52,3 @@ print(correct)
 - збереження пар `(key, group)` у список чи словник без виклику `list(group)` у момент ітерації;
 - використання `groupby()` на невідсортованих даних з очікуванням агрегації однакових ключів по всій колекції;
 - спроба повторного читання `group` після виходу з внутрішнього циклу або генераторного контексту.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

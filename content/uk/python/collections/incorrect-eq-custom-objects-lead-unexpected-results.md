@@ -1,41 +1,18 @@
 ---
 id: py-coll-0016
 title: "Чому некоректний `__eq__` у custom objects може призвести до несподіваних результатів membership у set?"
-description: "Set шукає елемент спочатку за hash() (bucket), потім порівнює __eq__; якщо __eq__ і __hash__ неузгоджені, membership дає хибні результати."
 track: python
 section: collections
-level: senior
-type: pitfall
-tags: [eq]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -67,23 +44,3 @@ unhashable – спроба покласти такий об'єкт у `set` ч�
 часу життя об'єкта в колекції (в ідеалі – заморожені `frozen` dataclass чи `NamedTuple`, де
 `__eq__` і `__hash__` генеруються узгоджено автоматично), і ніколи не покладатися на порівняння
 з об'єктами інших типів без явної симетричної перевірки.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

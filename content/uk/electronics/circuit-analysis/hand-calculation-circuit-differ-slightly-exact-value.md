@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0023
 title: "Чому при ручному розрахунку схеми виникає невелика розбіжність з точним значенням?"
-description: "Чому при ручному розрахунку схеми виникає невелика розбіжність з точним значенням?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-resistor-tolerance
     title: "Vishay: Resistors – General Information"
     url: https://www.vishay.com/docs/49873/49873_sg2113.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює допуск резистора як дозволене відхилення фактичного значення від номінального та окремі температурні й часові зміни; не встановлює універсального допуску 5–10% для всіх резисторів."
 ---
 
 ## Short answer
@@ -57,7 +34,3 @@ sources:
 - Вважати, що всі резистори мають допуск `±5–10%`; перевіряйте специфікацію саме вибраної деталі.[^vishay-resistor-tolerance]
 
 Під час ручної перевірки варто записати проміжні значення з кількома значущими цифрами, а наприкінці округлити результат. Кількість цифр у відповіді не створює фізичної точності: якщо вхідні номінали задані лише двома значущими цифрами, надмірно довгий десятковий результат створює хибне враження точності.
-
-## Sources
-
-<!-- generated from frontmatter -->

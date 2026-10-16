@@ -1,34 +1,15 @@
 ---
 id: emb-macros-0005
 title: "Trap: що не так із викликом `MAX(++x, y)`?"
-description: "Double evaluation: параметр a зустрічається у тілі двічі, тому ++x виконається двічі, якщо умова істинна."
 track: embedded
 section: inline-and-macros
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -56,19 +37,3 @@ sources:
 Приклад: якщо початкове `x` дорівнює `5`, а `y` дорівнює `5`, перший `++x` дає `6`, умова `6 > 5` істинна, і true-гілка ще раз збільшує `x` до `7`. Результат дорівнює `7`, хоча від максимуму очікували б `6` і одного інкременту. Якщо ж початкове `x` дорівнює `4`, перший `++x` дає `5`, умова `5 > 5` хибна, і результатом стає `y`, тобто `5`, з одним інкрементом – кількість побічних ефектів залежить від даних. Між умовою та обраною гілкою `?:` є точка послідовності, тож поведінка визначена, але не та, яку очікує читач.[^iso-c-n1570]
 
 **Як помилка проявляється і як її уникнути:** лічильник або периферійний стан змінюється більше разу, ніж очікує читач. Для операції з аргументами використовуй типізовану `static inline` функцію: параметри функції обчислюються під час виклику, а їхні значення використовуються в тілі без повторного обчислення виразу виклику.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

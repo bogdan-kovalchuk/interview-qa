@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0004
 title: "Які узгоджені вимоги мають виконувати `__eq__` і `__hash__`, якщо instances використовуються як keys словника?"
-description: "Об'єкти, що рівні за __eq__, обов'язково мають повертати однакове значення __hash__."
 track: python
 section: objects-and-types
-level: middle
-type: mechanism
-tags: [eq, hash]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -91,11 +64,3 @@ print(point_map[p2])         # "origin_offset": successfully resolved via hash a
 - обчислення `__hash__` за змінними полями: після модифікації атрибутів ключ стає недосяжним у колекції, порушуючи внутрішній стан геш-таблиці;
 - включення в `__hash__` атрибутів, що відсутні в `__eq__`: це призводить до розбіжності гешів для об'єктів, які метод `__eq__` вважає рівними;
 - пропущена реалізація `__hash__` при зміні `__eq__`: клас автоматично отримує `__hash__ = None`, що робить його об'єкти unhashable.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

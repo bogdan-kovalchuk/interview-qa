@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0254
 title: "Як працює P-channel MOSFET як high-side switch?"
-description: "Як працює P-channel MOSFET як high-side switch?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: ti-pmos-high-side
     title: "Texas Instruments: P-channel controllers simplify high-side gate drive"
     url: https://www.ti.com/document-viewer/lit/html/SSZT975/GUID-2E43C966-E5BD-4918-9B79-18A6DD85D045
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Пояснює керування P-channel high-side MOSFET відносно VIN; не визначає межі конкретного транзистора."
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 23, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ P-channel MOSFET як high-side switch розміщують між плюсов�
 Перевірте абсолютний максимум `V_GS` у datasheet. За великої напруги живлення повне стягування gate до землі може перевищити допустиму напругу gate-source, тому застосовують обмеження, наприклад відповідний стабілітрон та резистор у керуванні. Також перевіряють `R_DS(on)` за фактичного від’ємного `V_GS`, струм і розсіювану потужність.[^ti-pmos-high-side]
 
 Типова помилка – вважати, що «gate низький» завжди означає «MOSFET увімкнений». Важливий не абсолютний рівень відносно землі, а gate-source різниця. Після вимкнення gate має повернутися до потенціалу source, а схема керування мусить обмежувати напругу між цими виводами за всіх режимів живлення.[^ti-pmos-high-side]
-
-## Sources
-
-<!-- generated from frontmatter -->

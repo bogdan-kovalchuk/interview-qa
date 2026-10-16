@@ -1,76 +1,33 @@
 ---
 id: py-oop-0025
 title: "When is an abstract base class more appropriate than an informal duck-typing check?"
-description: "An ABC fits when an interface must be enforced at instance creation, or when a virtual subclass is registered explicitly with register(); for simple cases duck typing is enough."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-abc-abstractmethod
     title: "Python 3.14: Library/abc"
     url: https://docs.python.org/3.14/library/abc.html#abc.abstractmethod
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: abc.abstractmethod, the requirement that the metaclass is ABCMeta, and the fact that a class with unimplemented abstract methods cannot be instantiated."
   - source_id: py314-library-abc-abcmeta-register
     title: "Python 3.14: Library/abc"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.register
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: ABCMeta.register and virtual subclasses, for which issubclass() and isinstance() return True."
   - source_id: py314-library-abc-abcmeta-subclasshook
     title: "Python 3.14: Library/abc"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.__subclasshook__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: ABCMeta.__subclasshook__ and its return values True, False or NotImplemented, with an example that checks for __iter__."
   - source_id: py314-library-typing-runtime-checkable
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html#typing.runtime_checkable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: runtime_checkable, which checks only the presence of methods or attributes, not their signatures or types."
 ---
 
 ## Short answer
@@ -117,19 +74,3 @@ For structural checks without inheritance, there is `typing.Protocol`. The `@run
 - thinking that `@abstractmethod` without `ABC` or `ABCMeta` forbids anything;
 - thinking that `register()` checks the class's methods (in CPython it does not);
 - thinking that `isinstance()` with a `@runtime_checkable` Protocol checks method signatures.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

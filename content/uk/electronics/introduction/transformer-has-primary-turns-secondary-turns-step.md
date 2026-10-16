@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0150
 title: "Трансформатор: 100 витків на первинній, 1000 на вторинній – step-up чи step-down?"
-description: "Трансформатор: 100 витків на первинній, 1000 на вторинній – step-up чи step-down?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 15, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-transformer-ratio
     title: "All About Circuits: Step-up and Step-down Transformers"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-9/step-up-and-step-down-transformers/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Співвідношення витків і напруги та обернене співвідношення струмів у трансформаторній моделі; практичні втрати потребують окремого врахування."
 ---
 
 ## Short answer
@@ -68,7 +41,3 @@ V₂ ≈ 12 * 1000/100 = 120 V AC
 Значення 12 V у вихідній картці є прикладом для ідеального трансформатора, а не гарантією для довільного компонента. Не можна подавати сталу 12 V DC на звичайний трансформатор: після перехідного процесу немає змінного потоку для індукції вторинної напруги, а первинна обмотка може перегрітися через надмірний струм. Робота також залежить від номінальної частоти та допустимого навантаження.[^aac-transformer-ratio]
 
 **Типова помилка:** сказати step-down, бо «вторинна сторона має більший струм» або переплутати індекси обмоток. Назву визначає саме співвідношення напруг, а збільшення напруги супроводжується зменшенням струму в ідеальній моделі.[^aac-transformer-ratio]
-
-## Sources
-
-<!-- generated from frontmatter -->

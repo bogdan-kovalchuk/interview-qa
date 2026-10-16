@@ -1,62 +1,27 @@
 ---
 id: py-testing-0013
 title: "How does over-mocking implementation details make a test suite brittle during behaviour-preserving refactoring?"
-description: "How does over-mocking implementation details make a test suite brittle during behaviour-preserving refactoring?"
 track: python
 section: testing
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: py314-library-unittest-mock-assert-has-calls
     title: "Python 3.14: Library/unittest.mock, Mock.assert_has_calls"
     url: https://docs.python.org/3.14/library/unittest.mock.html#unittest.mock.Mock.assert_has_calls
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: assert_has_calls checks the mock_calls list; the order matters unless any_order is set."
 ---
 
 ## Short answer
@@ -114,23 +79,3 @@ A mock is appropriate when the call itself is the result: an email was sent exac
 - checking every internal call when the test should check the result;
 - assuming that more mocks make a test more isolated: isolation is needed from the outside world, not from your own code that the test runs anyway;
 - adjusting the test's expectations to a new sequence of calls, after which the test checks nothing useful.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

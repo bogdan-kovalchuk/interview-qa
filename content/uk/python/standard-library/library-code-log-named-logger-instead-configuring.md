@@ -1,48 +1,21 @@
 ---
 id: py-stdlib-0015
 title: "Чому library code має логувати через named logger, а не налаштовувати root logger при import?"
-description: "logging.getLogger(__name__) дає logger в ієрархії пакета, а basicConfig() або handler на root logger при import змінює вивід для всіх записів, що доходять до root."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-logger-hierarchy
     title: "Python 3.14: Library/logging, Logger Objects"
     url: https://docs.python.org/3.14/library/logging.html#logger-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: getLogger з тим самим іменем повертає той самий Logger; крапкові імена утворюють ієрархію предків, а root є предком усіх logger-ів."
   - source_id: py314-library-logging-logger-propagate
     title: "Python 3.14: Library/logging, Logger.propagate"
     url: https://docs.python.org/3.14/library/logging.html#logging.Logger.propagate
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: записи передаються handlers предків, якщо propagate істинний; рівні й фільтри предків для цього не враховуються."
   - source_id: py314-library-logging-basicconfig
     title: "Python 3.14: Library/logging, basicConfig"
     url: https://docs.python.org/3.14/library/logging.html#logging.basicConfig
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: basicConfig нічого не робить, якщо root logger уже має handlers, якщо не задано force=True."
   - source_id: py314-howto-logging-library
     title: "Python 3.14: Howto/logging, Configuring Logging for a Library"
     url: https://docs.python.org/3.14/howto/logging.html#configuring-logging-for-a-library
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14 (HOWTO з логування): бібліотека не додає handlers, крім NullHandler на top-level logger, і не логує в root logger."
 ---
 
 ## Short answer
@@ -77,19 +50,3 @@ log.warning("bad line")                               # mylib.parser WARNING bad
 - викликати `basicConfig()` у модулі бібліотеки: пізніший виклик застосунку стає no-op, і формат він задати не може.[^py314-library-logging-basicconfig]
 - додавати до logger-ів бібліотеки handlers, крім `NullHandler` на top-level logger: це прямо заборонено HOWTO[^py314-howto-logging-library], а коли застосунок налаштовує root, запис виводиться двічі, бо `propagate` передає його далі.[^py314-library-logging-logger-propagate]
 - писати в root logger з коду бібліотеки: застосунок тоді не може окремо задати рівень чи handlers для неї.[^py314-howto-logging-library]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

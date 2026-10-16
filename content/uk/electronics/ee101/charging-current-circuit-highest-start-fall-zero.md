@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0035
 title: "Чому струм заряджання RC-кола максимальний на початку і спадає до нуля?"
-description: "Чому струм заряджання RC-кола максимальний на початку і спадає до нуля?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 37, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-capacitor-transient
     title: "All About Circuits: Capacitor transient response"
     url: https://www.allaboutcircuits.com/textbook/direct-current/chpt-16/capacitor-transient-response/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Перехідний процес заряджання і спадання струму для RC-кола першого порядку; не описує додаткові елементи чи нелінійне навантаження."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ sources:
 Приклад: для `V_0 = 5 V` і `R = 1 kΩ` початковий струм дорівнює `I(0) = 5 V / 1 kΩ = 5 mA`. Збільшення `C` подовжить перехід, але не змінить це початкове значення за тих самих ідеальних `V_0` та `R`.[^aac-capacitor-transient]
 
 **Типова помилка:** називати `V_0/R` струмом усього процесу. Це лише початкове значення; надалі струм змінюється, бо змінюється напруга на резисторі.
-
-## Sources
-
-<!-- generated from frontmatter -->

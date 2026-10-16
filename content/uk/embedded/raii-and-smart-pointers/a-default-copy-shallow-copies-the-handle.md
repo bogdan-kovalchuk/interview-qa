@@ -1,55 +1,24 @@
 ---
 id: emb-raii-0026
 title: "Trap: чому забути `= delete` copy ctor у класі-обгортці ресурсу – критична помилка?"
-description: "Дефолтний copy ctor зробить поверхневу копію handle -> два об’єкти «володіють» одним ресурсом -> подвійне звільнення."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-class-copy-ctor
     title: "C++ working draft: [class.copy.ctor]"
     url: https://eel.is/c++draft/class.copy.ctor
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Точний пункт стандарту: неявно визначений copy-конструктор виконує memberwise copy баз і членів. Не описує, що означає копія конкретного RTOS-handle."
   - source_id: cpp-draft-new-delete-single
     title: "C++ working draft: [new.delete.single]"
     url: https://eel.is/c++draft/new.delete.single
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Точний пункт стандарту: передумова operator delete – вказівник має походити з попереднього operator new і не бути анульованим попереднім delete. Повторний delete того самого вказівника цій передумові не відповідає; RTOS-handle цим пунктом не охоплюються."
   - source_id: cpp-draft-structure-specifications
     title: "C++ working draft: [structure.specifications]"
     url: https://eel.is/c++draft/structure.specifications
-    accessed: 2026-10-13
-    kind: spec
-    version: null
-    applicability: "Точний пункт стандарту: порушення передумов (Preconditions) бібліотечної функції дає undefined behavior. Не описує RTOS-API, які стандарт C++ не визначає."
 ---
 
 ## Short answer
@@ -97,19 +66,3 @@ void example() {
 - Заборонити копіювання лише в коментарі чи документації, а не через `= delete`.
 - Заборонити copy і не реалізувати move, через що власність не можна передати іншій функції.
 - Розраховувати, що RTOS мовчки проігнорує повторне звільнення handle; це залежить від конкретного API.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

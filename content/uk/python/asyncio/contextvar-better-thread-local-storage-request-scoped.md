@@ -1,41 +1,18 @@
 ---
 id: py-async-0023
 title: "Чому `ContextVar` краще за thread-local storage для request-scoped state між asyncio Tasks?"
-description: "ContextVar ізолює значення за логічним контекстом (Task), а не за фізичним thread, тому кілька Task в одному thread не «затікають» одна в одну."
 track: python
 section: asyncio
-level: middle
-type: comparison
-tags: [contextvar]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -64,19 +41,3 @@ sources:
 явний виклик у `ThreadPoolExecutor` виконується в чужому потоці без автоматичного перенесення
 `Context` – щоб отримати ті самі значення там, потрібно обгорнути виклик у
 `contextvars.copy_context().run(...)`.[^py314-library-asyncio-eventloop]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

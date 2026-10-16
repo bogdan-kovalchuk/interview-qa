@@ -1,69 +1,30 @@
 ---
 id: py-excpt-0015
 title: "When should a library emit a warning instead of raising an exception?"
-description: "When should a library emit a warning instead of raising an exception?"
 track: python
 section: exceptions
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-warnings-module
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#module-warnings
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: warnings are issued where a condition normally does not warrant raising an exception and terminating the program."
   - source_id: py314-library-warnings-categories
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#warning-categories
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: warning categories; DeprecationWarning is ignored by default unless triggered by code in __main__; UserWarning is the default category for warn(); RuntimeWarning is for dubious runtime behavior."
   - source_id: py314-library-warnings-warn
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#warnings.warn
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: warn() with stacklevel=2 refers the warning to the caller rather than to the wrapper function."
   - source_id: py314-library-warnings-filter
     title: "Python 3.14: Library/warnings"
     url: https://docs.python.org/3.14/library/warnings.html#the-warnings-filter
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the error action turns matching warnings into exceptions."
 ---
 
 ## Short answer
@@ -118,19 +79,3 @@ The filter stays in the user's hands: the library decides what to report, and th
 - raising a warning where continuing will produce an incorrect result: the user sees a message, but the data is already corrupted;
 - omitting `stacklevel=2` in a library's `DeprecationWarning`: the message points at a line inside the library, and this category is ignored by default there, so the user never sees it;[^py314-library-warnings-categories]
 - changing the global `warnings` filters from library code: this affects the whole process, not only the library's own calls.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

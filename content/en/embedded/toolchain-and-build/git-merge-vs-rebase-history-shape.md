@@ -1,41 +1,18 @@
 ---
 id: emb-build-0007
 title: "What is the difference between merge and rebase?"
-description: "git merge preserves branch history with a merge commit, while git rebase rewrites commits onto a new base for a linear history."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: comparison
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
-    kind: official
-    version: "latest"
-    applicability: "Authoritative section-level reference for toolchain and build concepts; details of specific devices and toolchains can differ."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -45,6 +22,7 @@ sources:
 `git rebase` moves the current branch's commits onto another base, as if work had started from a newer commit. Plus: linear, cleaner history; minus: it rewrites commit hashes.
 
 Rule: **merge** is safe for shared branches; **rebase** suits a local feature branch before merging, but do not rebase someone else's published history without agreement.
+
 ## Detailed explanation
 
 `git merge` and `git rebase` are two ways to integrate changes from one branch into another, but they work differently and produce different history shapes.[^git-scm-doc]
@@ -69,8 +47,7 @@ $ git merge feature  # fast-forward merge
 
 Rebase is convenient for cleaning up local history before merging: you can combine commits (`squash`), reorder them, or edit commit messages via `git rebase -i` (interactive rebase).
 
-
-## Comparison
+### Comparison
 
 | Criteria | git merge | git rebase |
 |---|---|---|
@@ -80,7 +57,7 @@ Rebase is convenient for cleaning up local history before merging: you can combi
 | Conflict resolution | Once at merge time | Per commit separately |
 | Revert | Easy (`git revert merge-commit`) | Harder (need old hashes) |
 
-## When to choose which
+### When to choose which
 
 **Choose merge** when:
 - The branch is published and used by other developers
@@ -94,8 +71,3 @@ Rebase is convenient for cleaning up local history before merging: you can combi
 - Preparing commits for code review (each commit is a logical change)
 
 **Golden rule**: never rebase published branches that other people use. Rebase rewrites history, and if someone has already pulled the old commits, conflicts will arise on the next push.
-
-
-## Sources
-
-<!-- generated from frontmatter -->

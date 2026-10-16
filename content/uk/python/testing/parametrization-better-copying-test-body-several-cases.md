@@ -1,69 +1,30 @@
 ---
 id: py-testing-0008
 title: "Коли parametrization краща за копіювання одного test body для кількох cases?"
-description: "Parametrization краща, коли тестова логіка ідентична, а відрізняються лише вхідні дані та очікуваний результат."
 track: python
 section: testing
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
   - source_id: pytest-how-to-parametrize
     title: "pytest documentation: @pytest.mark.parametrize"
     url: https://docs.pytest.org/en/stable/how-to/parametrize.html#pytest-mark-parametrize-parametrizing-test-functions
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest, розділ @pytest.mark.parametrize: функція виконується для кожного набору значень, значення передаються без копіювання, а ID за замовчуванням складаються зі значень, наприклад test_eval[6*9-42]."
   - source_id: pytest-ref-param
     title: "pytest documentation: pytest.param"
     url: https://docs.pytest.org/en/stable/reference/reference.html#pytest.param
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Довідка pytest, pytest.param: задає набір параметрів для parametrize, його id і marks."
 ---
 
 ## Short answer
@@ -106,19 +67,3 @@ def test_parse_port(text, expected):
 - параметризувати тести з різною логікою, через що тіло тесту заповнюється умовами за випадком;
 - залишати ID за замовчуванням для складних значень, через що в звіті не видно, який випадок упав;
 - ставити той самий mutable-об’єкт у кількох наборах parametrize, який тест змінює, і отримувати залежність між випадками.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

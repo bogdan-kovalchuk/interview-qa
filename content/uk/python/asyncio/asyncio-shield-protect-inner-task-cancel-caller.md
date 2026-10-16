@@ -1,41 +1,18 @@
 ---
 id: py-async-0018
 title: "Коли `asyncio.shield()` захищає inner Task, але не скасовує cancellation самого caller?"
-description: "shield() захищає inner awaitable від скасування зовнішнього caller: caller отримує CancelledError, але inner task продовжує виконуватися."
 track: python
 section: asyncio
-level: senior
-type: comparison
-tags: [asyncio-shield]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -64,19 +41,3 @@ exception, яку вона підняла – `Task exception was never retrieve
 робить – `CancelledError` виникає всередині самої Task і поширюється звичайним чином, бо shield
 лише розриває один конкретний ланцюжок доставки скасування, а не робить Task взагалі
 незнищенною.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

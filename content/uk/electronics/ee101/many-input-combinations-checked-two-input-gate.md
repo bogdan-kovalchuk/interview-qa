@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0240
 title: "Скільки комбінацій входів треба перевірити у двовхідному вентилі і що записувати?"
-description: "Скільки комбінацій входів треба перевірити у двовхідному вентилі і що записувати?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 77, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-hc00
     title: "TI SN74HC00 quadruple NAND gates datasheet"
     url: https://www.ti.com/lit/ds/symlink/sn74hc00.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: SCLS181H
-    applicability: "Рекомендовані умови й електричні характеристики NAND серії HC: VIH і VIL при VCC 4,5 В, VOH при малому навантаженні; інші сімейства логіки мають інші пороги."
   - source_id: fiore-bjt-switching
     title: "Fiore: Semiconductor Devices, 4.7 BJT Switching and Driver Applications (LibreTexts)"
     url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/04%3A_Bipolar_Junction_Transistors_(BJTs)/4.7%3A_BJT_Switching_and_Driver_Applications
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Приклад LED-драйвера: логічний вихід може віддати обмежений струм (приклад 5 мА), а для потрібної яскравості LED може знадобитися понад 10 мА; це ілюстрація, а не дані конкретного логічного сімейства."
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ LED не є заміною вимірювання. Яскравість LED за
 - перевіряти лише ті рядки, де очікується 1, або кілька рядків, вважаючи решту очевидною;
 - вважати, що LED, який горить, означає правильний логічний рівень;
 - записувати «0» або «1» без виміряної напруги і без порога входу наступного каскаду.
-
-## Sources
-
-<!-- generated from frontmatter -->

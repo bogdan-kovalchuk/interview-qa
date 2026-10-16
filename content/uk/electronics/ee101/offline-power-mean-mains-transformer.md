@@ -1,69 +1,30 @@
 ---
 id: emb-elee-0172
 title: "Що означає offline-живлення і що робить мережевий трансформатор?"
-description: "Що означає offline-живлення і що робить мережевий трансформатор?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 64, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-an556
     title: "Texas Instruments AN-556 (SNVA006B): Introduction to Power Supplies"
     url: https://www.ti.com/lit/an/snva006b/snva006b.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SNVA006B, May 2004"
-    applicability: "Функції блока живлення від мережі (випрямлення, перетворення напруги, фільтрація, регулювання, ізоляція, захист); лінійний блок із 50/60 Hz трансформатором, випрямлячем, конденсатором і регулятором; означення off-line (напруга для ключа формується безпосередньо з мережі), обов’язкова ізоляція в off-line-перетворювачах 110/220 В, виконана трансформатором, і менший розмір високочастотного трансформатора. Огляд 2004 року; конкретні схеми й потужності не є нормою."
   - source_id: kuphaldt-transformer-operation
     title: "Tony R. Kuphaldt: Lessons In Electric Circuits, Vol. II (AC), 10.1 Mutual Inductance and Basic Operation (LibreTexts)"
     url: https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_II_-_Alternating_Current_(Kuphaldt)/10:_Transformers/10.01:_Mutual_Inductance_and_Basic_Operation
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Принцип роботи трансформатора: змінний струм змінює потік у спільному осерді, змінний потік індукує напругу у вторинній обмотці (взаємна індуктивність). Ідеалізований розгляд без втрат."
   - source_id: kuphaldt-transformer-isolation
     title: "Tony R. Kuphaldt: Lessons In Electric Circuits, Vol. II (AC), 10.3 Electrical Isolation (LibreTexts)"
     url: https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_II_-_Alternating_Current_(Kuphaldt)/10:_Transformers/10.03:_Electrical_Isolation
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Трансформатор передає потужність між колами без провідного з’єднання (електрична ізоляція), а синфазна напруга на вторинному колі не потрапляє на первинне; ізолювальні трансформатори мають співвідношення 1:1. Це модель зі SPICE, а не норма безпеки."
   - source_id: kuphaldt-transformer-practical
     title: "Tony R. Kuphaldt: Lessons In Electric Circuits, Vol. II (AC), 10.8 Practical Considerations – Transformers (LibreTexts)"
     url: https://workforce.libretexts.org/Bookshelves/Electronics_Technology/Electric_Circuits_II_-_Alternating_Current_(Kuphaldt)/10:_Transformers/10.08:_Practical_Considerations_-_Transformers
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Номінали трансформатора за напругою обмоток і VA (струм виводиться з VA); приклад 120 В / 48 В, 1 kVA; обмотки мають бути достатньо ізольовані одна від одної, щоб зберегти електричну ізоляцію; насичення осердя за зниженої частоти (50 замість 60 Hz). Загальний навчальний текст."
 ---
 
 ## Short answer
@@ -85,7 +46,3 @@ Offline-живлення отримує енергію безпосереднь�
 - Вважати, що трансформатор дає постійну напругу або стабілізує її: ці функції виконують випрямляч, конденсатор і стабілізатор.[^ti-an556]
 - Ототожнювати offline-блок із блоком із трансформатором на 50/60 Hz: в offline-імпульсному блоці мережу випрямляють до трансформатора.[^ti-an556]
 - Вважати гальванічну ізоляцію автоматичною: вона залежить від конструкції обмоток і ізоляції між ними.[^kuphaldt-transformer-practical]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,27 +1,12 @@
 ---
 id: py-perf-0012
 title: "How do you design cache invalidation and eviction when the source data can change?"
-description: "How do you design cache invalidation and eviction when the source data can change?"
 track: python
 section: performance
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: LRU eviction with maxsize, cache_clear() clears the whole cache of the function, with maxsize=None the cache can grow without bound, and the cache is thread-safe but the function may run more than once."
 ---
 
 ## Short answer
@@ -60,23 +45,3 @@ Scope. `lru_cache` lives in the memory of one process. Each worker of a `Process
 - using `functools.cache` for data that changes: there is no limit, and stale values stay until the process restarts;
 - clearing the cache in one process while assuming that all workers were cleared;
 - setting a TTL longer than the acceptable update delay, or checking a version with an expensive query, so the cache gains nothing.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

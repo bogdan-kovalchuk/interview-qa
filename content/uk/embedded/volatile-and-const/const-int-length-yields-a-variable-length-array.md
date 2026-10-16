@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0043
 title: "Що буде з таким кодом у C?"
-description: "У block scope в C це може бути VLA (variable length array), якщо реалізація підтримує VLA; це не обов’язково compile-time fixed array."
 track: embedded
 section: volatile-and-const
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -67,7 +48,3 @@ int fixed[N];       // integer constant expression задає сталий ро�
 VLA є умовною можливістю C: реалізація не зобов’язана її підтримувати, а компілятор або правила проєкту можуть забороняти її окремо. Стандарт визначає runtime розмір, але не каже, що пам’ять обов’язково виділяється саме на `stack`; це деталь реалізації. На MCU неконтрольований розмір може створити ризик перевищення доступної автоматичної пам’яті, тож для фіксованого буфера краще оголосити справжню integer constant expression і перевіряти бюджет пам’яті лінкером та засобами цільового toolchain.[^iso-c-n1570]
 
 Типова помилка – побачити `const` і припустити, що компілятор завжди створить fixed-size array. Ознака проблеми – програма збирається лише з конкретним компілятором або прапорцями. Для фіксованої місткості використовуй `enum { N = 8 }` чи `#define N 8`; залишай VLA лише коли runtime розмір справді потрібен і підтримку перевірено для кожної цілі.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

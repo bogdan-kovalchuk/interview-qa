@@ -1,41 +1,18 @@
 ---
 id: py-funcs-0015
 title: "Why doesn't a name defined in a class body become an ordinary enclosing lexical scope for the code of that class's methods?"
-description: "Why doesn't a name defined in a class body become an ordinary enclosing lexical scope for the code of that class's methods?"
 track: python
 section: functions-and-scope
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Resolution of names: scope of names in a class block and the annotation-scope exception."
   - source_id: py314-reference-executionmodel-lazy-evaluation
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#lazy-evaluation
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Lazy evaluation: most annotation scopes, including annotations, are lazily evaluated."
   - source_id: py314-reference-executionmodel-annotation-scopes
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#annotation-scopes
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Annotation scopes: since 3.14 annotation scopes are also used for annotations (Changed in version 3.14)."
 ---
 
 ## Short answer
@@ -67,11 +44,3 @@ The exception is annotation scopes. In 3.14, parameter and return annotations ru
 - assuming that a name from the class body is visible in methods as an ordinary variable; an attribute needs `self.attr` or `ClassName.attr`;
 - missing that a global with the same name silently replaces the intended class attribute inside a method;
 - applying the annotation exception to ordinary code in a method body.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

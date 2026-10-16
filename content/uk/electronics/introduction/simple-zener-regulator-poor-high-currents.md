@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0196
 title: "Чому простий Зенер-стабілізатор поганий для великих струмів?"
-description: "Чому простий Зенер-стабілізатор поганий для великих струмів?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 18, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -53,7 +30,3 @@ sources:
 Приклад: джерело 12 V, вихід 5.1 V, навантаження 20 mA і мінімум 5 mA для стабілітрона вимагають щонайменше 25 mA через резистор. За ідеалізованих значень `R = (12 V - 5.1 V)/25 mA = 276 Ω`; стандартний номінал треба перевірити з допусками та фактичним мінімальним струмом конкретного стабілітрона. Перевірте потужність резистора і стабілітрона також при нульовому навантаженні, коли стабілітрон проводить увесь струм резистора.[^aac-semiconductors]
 
 **Типові помилки:** рахувати тільки струм навантаження і забути запас для стабілітрона; перевірити потужність лише при максимальному навантаженні; вважати, що стабілітрон компенсує недостатню напругу чи струм джерела.[^aac-semiconductors]
-
-## Sources
-
-<!-- generated from frontmatter -->

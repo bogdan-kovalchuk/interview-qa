@@ -1,41 +1,18 @@
 ---
 id: py-coll-0007
 title: "Чому keys словника мають бути hashable і як dictionary використовує hash разом з equality?"
-description: "Ключ має бути hashable – мати __hash__() та __eq__() – тому що dict використовує hash для визначення bucket, а equality для розв'язання колізій."
 track: python
 section: collections
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -66,11 +43,3 @@ CPython `dict` – це не list ланцюжків (chaining) для кожн�
 unhashable (Python встановлює `__hash__ = None`), бо інтерпретатор не може гарантувати
 узгодженість hash і equality без явної реалізації обох. `tuple` і `frozenset` hashable лише тоді,
 коли hashable кожен їхній елемент – рекурсивно.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

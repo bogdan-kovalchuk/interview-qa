@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0228
 title: "Яку роль у практичному аудіопідсилювачі зі спільним емітером виконують вхідний і вихідний конденсатори та нешунтований `R_E`?"
-description: "Яку роль у практичному аудіопідсилювачі зі спільним емітером виконують вхідний і вихідний конденсатори та нешунтований `R_E`?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 75, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-common-emitter-amplifier
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.3 Common Emitter Amplifier"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.3: конденсатори є розривами для постійного струму й короткими замиканнями для змінного; нешунтований R_E (emitter degeneration) зменшує підсилення й спотворення; A_v = -r_C/(r'_e + r_E), r_C = R_C||R_L. Числові приклади стосуються лише цих схем."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.3:_Common_Emitter_Amplifier
   - source_id: fiore-bjt-ac-model
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 7.2 Simplified AC Model of the BJT"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT"
-    accessed: 2026-10-14
-    kind: book
-    version: null
-    applicability: "Підручник, розділ 7.2: r'_e = 26 мВ / I_C як динамічний опір переходу база–емітер (V_T ≈ 25,9 мВ при 300 K); опір об’ємного матеріалу не включено; залежить від I_C і температури."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/07:_BJT_Small_Signal_Amplifiers/7.2:_Simplified_AC_Model_of_the_BJT
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ sources:
 - Вважати, що вихідний конденсатор пропускає постійну напругу колектора до навантаження.
 - Очікувати від нешунтованого `R_E` такого самого підсилення, як при шунті: різниця приблизно в 39 разів.
 - Брати `A_v = -R_C/r'_e` без `R_E`, коли `C_E` відсутній.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0054
 title: "Який тип краще для ISR flag: `volatile bool` чи `bool`?"
-description: "Для flag, який змінює ISR і перевіряє main loop, часто потрібен volatile: static volatile bool button_pressed;."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,7 +29,3 @@ sources:
 Наприклад, `static volatile bool button_pressed;` може бути прапорцем події: ISR присвоює `true`, а main loop періодично читає його й обробляє подію. Така схема працює лише за умов, що конкретна ціль гарантує відповідний доступ, повторне читання та допустиму поведінку при перериванні. Якщо нова подія може статися до того, як main loop скине прапорець, один біт не зберігає кількість подій; потрібен лічильник або queue із належним захистом.[^iso-c-n1570]
 
 **Типова помилка:** вважати слово `volatile` заміною критичній секції. Воно може забезпечити потрібний окремий доступ, але не робить багатокрокову взаємодію нерозривною і не захищає пов’язаний стан. Спочатку визнач, скільки подій треба зберегти і які саме контексти мають доступ, потім перевір гарантії цільової платформи та обери відповідний протокол.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

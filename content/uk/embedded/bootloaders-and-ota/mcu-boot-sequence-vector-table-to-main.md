@@ -1,41 +1,18 @@
 ---
 id: emb-boot-0003
 title: "Як відбувається завантаження програми в мікроконтролері?"
-description: "Після reset Cortex-M читає vector table, вантажить SP і Reset Handler, startup code копіює .data й обнуляє .bss, тактування ініціалізується, і викликається main()."
 track: embedded
 section: bootloaders-and-ota
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: mcuboot-design
     title: "MCUboot design documentation"
     url: https://docs.mcuboot.com/design.html
-    accessed: 2026-09-06
-    kind: official
-    version: "current"
-    applicability: "Авторитетне джерело рівня секції для понять розділу bootloaders-and-ota; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/e/
-    accessed: 2026-09-08
-    kind: official
-    version: "E"
-    applicability: "Архітектура ARMv7-M; reset behavior, vector table та exception model."
 ---
 
 ## Short answer
@@ -66,7 +43,3 @@ sources:
 Програма зберігається у Flash (non-volatile пам'ять). Виконання може відбуватися безпосередньо з Flash (XIP – execute-in-place) або, для швидкодійного коду, критичних до латентності ISR, програма копіюється у RAM.
 
 Векторна таблиця містить 240 векторів переривань (для ARMv7-M); окрім SP та Reset Handler, вона включає адреси NMI_Handler, HardFault_Handler, MemManage_Handler тощо.[^armv7m-arm]
-
-## Sources
-
-<!-- generated from frontmatter -->

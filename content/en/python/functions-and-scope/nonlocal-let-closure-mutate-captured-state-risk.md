@@ -1,51 +1,21 @@
 ---
 id: py-funcs-0018
 title: "How does `nonlocal` let a closure mutate captured state, and what risk does that create under concurrent calls?"
-description: "How does `nonlocal` let a closure mutate captured state, and what risk does that create under concurrent calls?"
 track: python
 section: functions-and-scope
-level: senior
-type: practical
-tags: [nonlocal]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython with GIL"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-simple-stmts-the-nonlocal-statement
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-nonlocal-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section The nonlocal statement: nonlocal binds the name to the nearest enclosing scope where it is already bound."
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Resolution of names: a name used in a block but not defined there is a free variable."
   - source_id: py314-faq-library-what-kinds-of-global-value-mutation-are-thread-safe
     title: "Python 3.14: Faq/library"
     url: https://docs.python.org/3.14/faq/library.html#what-kinds-of-global-value-mutation-are-thread-safe
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, FAQ: Python switches threads only between bytecode instructions, and i = i + 1 is not an atomic operation."
   - source_id: py314-library-threading-lock-objects
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html#lock-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, section Lock objects: acquire() blocks until another thread calls release(); a lock supports the context management protocol."
 ---
 
 ## Short answer
@@ -101,23 +71,3 @@ def make_safe_total():
 - assuming that a single-threaded test proves a `nonlocal` closure is safe;
 - reading `total` outside the lock and writing it inside: an update can still be lost;
 - assuming that the GIL makes `count += 1` atomic.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

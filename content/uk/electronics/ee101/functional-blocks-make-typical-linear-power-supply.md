@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0151
 title: "З яких функціональних блоків складається типове лінійне джерело живлення від AC?"
-description: "З яких функціональних блоків складається типове лінійне джерело живлення від AC?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 60, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Трансформатор масштабує змінну напругу за відношенням витків і має обмеження за VA; мостовий випрямляч із чотирьох діодів дає струм через навантаження в один бік в обох півперіодах; конденсатор заряджається, поки діод проводить, і віддає заряд у навантаження між піками, а пульсації зростають зі струмом; пік вторинної напруги має перевищувати вихід на два прямі падіння діодів; після фільтра можна поставити стабілізатор. Книга не розглядає лінійні стабілізатори на мікросхемах."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: fiore-capacitors
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 8.2 Capacitance and Capacitors"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08:_Capacitors/8.2:_Capacitance_and_Capacitors"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Співвідношення i = C*dv/dt: сталий струм через конденсатор дає лінійну зміну напруги, тобто ΔV = I*Δt/C; розділ не розглядає випрямлячі, ESR і реальні форми струму навантаження."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08:_Capacitors/8.2:_Capacitance_and_Capacitors
   - source_id: ti-slva118a
     title: "Texas Instruments SLVA118A: Linear Regulator Design Guide For LDOs"
     url: https://www.ti.com/lit/an/slva118/slva118.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA118A, April 2003, revised June 2008"
-    applicability: "Лінійний стабілізатор має прохідний елемент, яким керує контролер за зворотним зв’язком, щоб підтримувати сталу вихідну напругу за зміни вхідної напруги й струму навантаження; різниця між входом і виходом за даного струму розсіюється як тепло, P_D = P_I - P_O; для лінійного стабілізатора Eff ≈ V_O/V_I, якщо струм спокою малий. Записка про LDO та їхній нагрів, а не про імпульсні перетворювачі."
 ---
 
 ## Short answer
@@ -78,7 +43,3 @@ sources:
 - Вважати конденсатор стабілізатором: він згладжує пульсації, але рівень виходу змінюється з мережею й навантаженням.
 - Забувати про запас напруги: у найнижчій точці пульсацій вхід стабілізатора все одно має перевищувати вихід на dropout.
 - Не враховувати нагрів: у лінійному стабілізаторі розсіюється `(V_in - V_out)*I_out`, тож висока напруга на вході за значного струму потребує тепловідведення.
-
-## Sources
-
-<!-- generated from frontmatter -->

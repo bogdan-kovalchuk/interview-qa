@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0002
 title: "Why does `iter(container)` usually return a new iterator, while `iter(iterator)` must return the same object?"
-description: "Why does `iter(container)` usually return a new iterator, while `iter(iterator)` must return the same object?"
 track: python
 section: iterators-and-generators
-level: middle
-type: mechanism
-tags: [iter-container, iter-iterator]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-glossary-term-iterator
     title: "Python 3.14: Glossary"
     url: https://docs.python.org/3.14/glossary.html#term-iterator
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the definition of iterator; a container yields a fresh iterator on each iter() call or for loop, while re-iterating an iterator yields the same exhausted object."
 ---
 
 ## Short answer
@@ -89,11 +62,3 @@ The rule "a container gives a new iterator" is a recommendation in the documenta
 - expecting a second `for` over an iterator to start from the beginning: it continues from where it stopped, or yields nothing;
 - confusing `iterator.__iter__()` (returns self) with `container.__iter__()` (creates a new iterator), and returning self from a container class;
 - calling `next()` on a `list`: `next([1, 2])` raises `TypeError`, because a list is an iterable, not an iterator.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

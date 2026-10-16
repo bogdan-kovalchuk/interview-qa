@@ -1,48 +1,21 @@
 ---
 id: emb-raii-0030
 title: "Який найбезпечніший RAII-патерн для використання в ISR?"
-description: "Interrupt-disable/restore scope guard – лише register-level операції."
 track: embedded
 section: raii-and-smart-pointers
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: ti-tm4c123-datasheet
     title: "Tiva TM4C123GH6PM Microcontroller Data Sheet (Texas Instruments)"
     url: https://www.ti.com/lit/ds/symlink/tm4c123gh6pm.pdf
-    accessed: 2026-10-13
-    kind: official
-    version: "June 12, 2014"
-    applicability: "Розділ регістрів PRIMASK і BASEPRI для Cortex-M4 у даташиті TI: PRIMASK маскує exception з програмованим пріоритетом, Reset, NMI і hard fault мають фіксований пріоритет; BASEPRI задає мінімальний пріоритет обробки. Не описує RTOS і не є стандартом C++."
   - source_id: freertos-reference-manual
     title: "The FreeRTOS Reference Manual, V10.0.0"
     url: https://www.freertos.org/media/2018/FreeRTOS_Reference_Manual_V10.0.0.pdf
-    accessed: 2026-10-13
-    kind: official
-    version: "V10.0.0"
-    applicability: "Розділи про використання API в ISR і про taskENTER_CRITICAL_FROM_ISR()/taskEXIT_CRITICAL_FROM_ISR(): API без суфікса FromISR не викликаються в ISR; на портах з вкладеністю critical section від ISR маскує переривання на рівні configMAX_SYSCALL_INTERRUPT_PRIORITY і нижче; секції мають бути короткими. Не описує поведінку конкретного порту чи апаратної платформи."
 ---
 
 ## Short answer
@@ -89,7 +62,3 @@ Guard зберігає попередній стан PRIMASK і відновлю
 - Безумовно викликати `__enable_irq()` у dtor: у вкладеному коді це розмаскує переривання, які зовнішній код свідомо вимкнув.
 - Викликати звичайний (не FromISR) API RTOS в ISR або всередині guard.
 - Вважати, що PRIMASK маскує NMI і HardFault: вони мають фіксований пріоритет.
-
-## Sources
-
-<!-- generated from frontmatter -->

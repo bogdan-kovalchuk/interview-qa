@@ -1,55 +1,24 @@
 ---
 id: py-modimp-0006
 title: "When is an absolute import preferable to an explicit relative import inside a package?"
-description: "Absolute imports (from package.module import name) are the form PEP 8 recommends: they read clearly, do not change when a file moves to another package depth, and give clearer errors."
 track: python
 section: modules-and-imports
-level: middle
-type: comparison
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: pep-8-imports
     title: "PEP 8: Style Guide for Python Code (Imports)"
     url: https://peps.python.org/pep-0008/#imports
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Recommendation on absolute imports and on the acceptability of relative imports in complex package layouts; a style guide, not a specification of the import system."
   - source_id: py314-reference-import-package-relative-imports
     title: "Python 3.14: Reference/import (Package Relative Imports)"
     url: https://docs.python.org/3.14/reference/import.html#package-relative-imports
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Syntax of relative imports in Python 3.14: the dots count from the current package."
 ---
 
 ## Short answer
@@ -78,19 +47,3 @@ Moving a file is the main argument for absolute imports. If `service.py` moves t
 - assuming an absolute import works however the file is run; it needs the directory that contains the top-level package on `sys.path`;
 - mixing both forms in one package without a reason, so a file move means checking both kinds of lines;
 - rewriting every relative import to an absolute one just for style, without checking how the package is run and tested.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

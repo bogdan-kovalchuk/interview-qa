@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0075
 title: "Що відбудеться? `int *p = (int*)malloc(10*sizeof(int)); p[10] = 0;`"
-description: "malloc(10*sizeof(int)) виділяє лише p[0]..p[9], тож p[10] пише за межі виділеного блоку heap."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 4
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -48,11 +29,3 @@ sources:
 **Приклад межі:** якщо успішне виділення дає масив із десяти `int`, останній допустимий запис має індекс 9. Індекс 10 можна утворити як one-past pointer, але присвоєння через нього вже виходить за об’єкт. Кількість елементів має походити з одного джерела істини: передавайте її разом із покажчиком або обчислюйте межу через `sizeof array / sizeof array[0]` лише там, де `array` ще є справжнім масивом, а не параметром-функції покажчиком.[^iso-c-n1570]
 
 Типова помилка – покладатися на те, що тестовий запуск завершився успішно або що `malloc` виділив трохи більше через округлення allocator. Доступ до байтів понад запитаний об’єкт лишається некоректним навіть тоді, коли вони фізично доступні. Перевіряйте розмір перед індексацією; у середовищі, яке це підтримує, санітайзер може допомогти знайти помилку близько до місця запису, але не замінює правильну перевірку меж.[^iso-c-n1570]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

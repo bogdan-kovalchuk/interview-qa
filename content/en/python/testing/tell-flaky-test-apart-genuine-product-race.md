@@ -1,76 +1,33 @@
 ---
 id: py-testing-0018
 title: "How do you tell a flaky test apart from a genuine product race, and how do you preserve evidence to reproduce it?"
-description: "A flaky test is a nondeterministic test that fails without code changes; a product race is a real concurrency bug in the application. Isolated repeated runs and kept evidence tell them apart."
 track: python
 section: testing
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: pytest-usage-node-ids
     title: "pytest documentation: Specifying which tests to run"
     url: https://docs.pytest.org/en/stable/how-to/usage.html#specifying-which-tests-to-run
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official pytest documentation: running a single test by node id in the form file::function."
   - source_id: pytest-output-junitxml
     title: "pytest documentation: Creating JUnitXML format files"
     url: https://docs.pytest.org/en/stable/how-to/output.html#creating-junitxml-format-files
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official pytest documentation: writing a JUnit XML report with --junit-xml."
   - source_id: pytest-logging
     title: "pytest documentation: How to manage logging"
     url: https://docs.pytest.org/en/stable/how-to/logging.html#how-to-manage-logging
-    accessed: 2026-10-13
-    kind: official
-    version: null
-    applicability: "Official pytest documentation: captured logs shown for failed tests; by default records of level WARNING and above."
 ---
 
 ## Short answer
@@ -115,23 +72,3 @@ To reproduce a failure later, keep the command with the node id, the seed of any
 - adding `time.sleep()` to a test to make it "stable" instead of fixing the synchronization in the product;
 - declaring a test flaky without checking whether it fails in isolation and whether shared state is involved;
 - re-running a test until it is green without keeping evidence: the failure disappears and the cause remains.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

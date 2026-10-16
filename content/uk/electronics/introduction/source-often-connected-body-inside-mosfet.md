@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0246
 title: "Чому source часто з’єднаний із body всередині MOSFET?"
-description: "Чому source часто з’єднаний із body всередині MOSFET?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 22, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: infineon-power-mosfet-body-diode
     title: "Infineon: Designing with power MOSFETs – How to avoid common issues and failure modes"
     url: https://www.infineon.com/dgdl/Infineon-Designing_with_power_MOSFETs-ApplicationNotes-v01_02-EN.pdf?fileId=8ac78c8c7ddc01d7017e6c619a490f47
-    accessed: 2026-10-04
-    kind: official
-    version: "V1.1, 2022-02-10"
-    applicability: "Пояснює внутрішнє з’єднання body із source у силових MOSFET та утворення body diode; не стверджує, що кожен MOSFET має однакову внутрішню конструкцію."
 ---
 
 ## Short answer
@@ -60,7 +33,3 @@ Body у силовому MOSFET формує частину напівпрові
 **Типова помилка:** трактувати MOSFET як симетричний перемикач і вважати, що drain та source можна міняти місцями без наслідків. Перевіряйте напрямок body diode та шлях струму в обох станах ключа.
 
 Приклад: якщо стандартний N-channel ключ вимкнений, але source має вищий потенціал за drain приблизно настільки, щоб прямо змістити body diode, струм може протікати через діод навіть без керувального сигналу на gate. Це окремий шлях від каналу, і його струм та нагрів потрібно перевірити за datasheet.[^infineon-power-mosfet-body-diode]
-
-## Sources
-
-<!-- generated from frontmatter -->

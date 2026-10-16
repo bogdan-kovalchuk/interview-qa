@@ -1,55 +1,24 @@
 ---
 id: emb-align-0002
 title: "Чому CPU взагалі вимагає вирівнювання даних?"
-description: "Шина читає/пише пам'ять word-aligned шматками фіксованого розміру."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: arm-cortex-m3-unaligned
     title: "Arm Cortex-M3 Devices Generic User Guide: Configurable Fault Status Register"
     url: https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-control-block/configurable-fault-status-register
-    accessed: 2026-09-08
-    kind: official
-    version: "1.0"
-    applicability: "Trapping невирівняного доступу в Cortex-M3 та інструкції, які завжди дають fault за невирівняної адреси."
   - source_id: learncpp-object-sizes
     title: "LearnCpp: Розміри об'єктів і оператор sizeof"
     url: https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додаткове пояснення byte-addressed об'єктів і залежних від реалізації розмірів об'єктів."
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додатковий український маршрут вивчення C++; не є нормативним джерелом поведінки processor."
 ---
 
 ## Short answer
@@ -99,7 +68,3 @@ Cortex-M3 може виконувати частину невирівняних 
 - Для packet або serial bytes використовуй `memcpy` у вирівняне ціле число, а потім декодуй endianness. Не перетворюй довільний byte pointer на `uint32_t *`.
 - Для DMA buffers і memory-mapped registers перевір reference manual MCU: alignment може бути потрібним для correctness, atomicity або performance.
 - Вимірюй саме target, перш ніж називати фіксований множник затримки.
-
-## Sources
-
-<!-- generated from frontmatter -->

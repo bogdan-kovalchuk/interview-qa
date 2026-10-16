@@ -1,49 +1,21 @@
 ---
 id: emb-elintro-0036
 title: "Що таке легування і два основні методи його здійснення?"
-description: "Що таке легування і два основні методи його здійснення?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 5, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-dopant-process
     title: "Analog Devices, Semiconductor Processing of NPN Transistors"
     url: https://www.allaboutcircuits.com/textbook/designing-analog-chips/analog-devices/semiconductor-processing-of-npn-transistors/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Описує газову дифузію домішок і йонну імплантацію, зокрема роль відпалу та точніше керування дозою імплантації; конкретний процес залежить від технології."
-
 ---
 
 ## Short answer
@@ -61,7 +33,3 @@ sources:
 Приклад: для формування локальної області заданого профілю технолог може застосувати імплантацію крізь маску, а відпал налаштувати так, щоб активувати домішки й обмежити їх подальше розтікання. Точні параметри визначаються конкретним процесом виробництва, а не універсальним правилом.
 
 Профіль концентрації важливий, бо він визначає, де утвориться перехід і як змінюватиметься опір ділянки. Під час дифузії температура й тривалість циклу впливають і на глибину проникнення, і на розмитість межі. Імплантація дає змогу задавати дозу та енергію йонів окремо, але не скасовує наступного теплового процесу: домішки мають зайняти придатні місця у ґратці, щоб стати електрично активними.[^aac-dopant-process]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: emb-cppoop-0031
 title: "Trap: чому методи інлайняться у bare-metal доступ лише з оптимізацією (наприклад `-O2`), а не на `-O0`?"
-description: "На -O0 GCC за замовчуванням не інлайнить – кожен set() лишається реальним викликом функції з прологом/епілогом."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: gcc-optimize-options
     title: "GCC 16.1.0: Optimize Options"
     url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
-    accessed: 2026-10-06
-    kind: official
-    version: "16.1.0"
-    applicability: "Документує, що без оптимізації GCC не розгортає функції inline (-fno-inline за замовчуванням, окрім функцій з always_inline), а -finline-small-functions вмикається на -O2, -O3 і -Os; конкретні рішення евристик залежать від коду, а про -O1 і -Og це джерело тут нічого не стверджує."
   - source_id: cpp-draft-class-mfct
     title: "C++ working draft: Member functions ([class.mfct])"
     url: https://eel.is/c++draft/class.mfct
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Підтверджує, що member-функція, визначена в тілі класу, є inline; сама по собі не гарантує підстановки тіла."
   - source_id: cpp-draft-dcl-inline
     title: "C++ working draft: The inline specifier ([dcl.inline])"
     url: https://eel.is/c++draft/dcl.inline
-    accessed: 2026-10-06
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Каже, що inline лише вказує на перевагу підстановки, а реалізація не зобов’язана її виконувати."
 ---
 
 ## Short answer
@@ -92,19 +61,3 @@ void blink(const Gpio &g) { g.set(); }
 - Вважати, що `inline` чи визначення методу в тілі класу гарантує підстановку.[^cpp-draft-dcl-inline]
 - Налагоджувати timing-critical код (bit-banging, ISR) лише в debug-збірці й переносити виміряні таймінги на release.
 - Узагальнювати результат одного компілятора чи його версії на всі інші.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

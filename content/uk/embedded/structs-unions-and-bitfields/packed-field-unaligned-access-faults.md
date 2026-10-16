@@ -1,41 +1,18 @@
 ---
 id: emb-structs-0012
 title: "Trap: чому `__attribute__((packed))` може спричинити HardFault?"
-description: "Бо multi-byte поле може стати невирівняним."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: gcc-attributes
     title: "GCC: Common Attributes"
     url: https://gcc.gnu.org/onlinedocs/gcc/Common-Attributes.html
-    accessed: 2026-10-04
-    kind: official
-    version: "current"
-    applicability: "Документація GCC для розширень атрибутів і їхніх обмежень."
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -65,19 +42,3 @@ sources:
 - Вважати, що `memcpy` виконує endian conversion або перевіряє вхідний буфер.
 
 У коді, який мусить працювати на кількох ядрах, краще парсити wire format явно або перевіряти властивості кожної цілі. Для register access не застосовуйте packed як спосіб обійти вимоги peripheral щодо ширини та alignment доступів.[^gcc-attributes]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

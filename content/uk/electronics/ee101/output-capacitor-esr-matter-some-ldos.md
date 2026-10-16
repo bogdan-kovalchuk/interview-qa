@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0170
 title: "Чому для деяких LDO важливий ESR вихідного конденсатора?"
-description: "Чому для деяких LDO важливий ESR вихідного конденсатора?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 63, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slva115
     title: "Texas Instruments SLVA115A: ESR, Stability, and the LDO Regulator"
     url: https://www.ti.com/lit/an/slva115/slva115.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA115A, February 2020"
-    applicability: "LDO з PMOS або PNP pass element: три полюси розімкненої петлі (домінантний, load pole, pass-device pole), нуль від ESR вихідного конденсатора `f_Z = 1/(2*pi*ESR*C_out)`, умова на ESR знизу й зверху, переваги вимірювання перехідної характеристики, приклад із осциляціями для 2,2 мкФ кераміки й стабільним режимом із додатковим 1 Ω, нові LDO для кераміки. Записка про LDO зазначених типів; числовий приклад у записці дає для 0,1 Ω і 2,2 мкФ значення 72,3 кГц, яке не збігається з формулою (за нею вийшло б близько 723 кГц), тому тут числа не беруться."
   - source_id: ti-tps752q1-datasheet
     title: "Texas Instruments TPS752-Q1 datasheet"
     url: https://www.ti.com/lit/ds/symlink/tps752-q1.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: null
-    applicability: "Конкретний LDO: мінімальна ємність 47 мкФ і ESR від 100 мОм до 10 Ω, примітка, що ESR включає зовнішній послідовний опір і опір доріжки до C_O, та висновок, що вищий ESR дає більше просідання на початку стрибка навантаження. Значення стосуються лише TPS752-Q1 і TPS754xx."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Розділ 10: стабільна область compensation series resistance `CSR = R_ESR + R_add` залежить від струму навантаження (tunnel of death), додатковий резистор можна ввести, якщо ESR замалий; діапазон 0,2–9 Ω наведено як приклад. Записка про LDO; межі є прикладом, а не універсальними."
 ---
 
 ## Short answer
@@ -79,7 +44,3 @@ LDO – це замкнена система зі зворотним зв’яз
 - Вважати, що чим менший ESR, тим краще: у таких LDO ESR має й нижню межу.[^ti-tps752q1-datasheet]
 - Не враховувати, що ESR у datasheet включає опір доріжки та додаткові резистори, і перевіряти стабільність лише за номіналом конденсатора.[^ti-tps752q1-datasheet]
 - Приймати стабільність без вимірювання перехідної характеристики: багаторазові осциляції після стрибка струму вказують на брак phase margin.[^ti-slva115]
-
-## Sources
-
-<!-- generated from frontmatter -->

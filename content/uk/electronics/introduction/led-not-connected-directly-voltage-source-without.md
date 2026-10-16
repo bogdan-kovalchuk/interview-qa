@@ -1,41 +1,18 @@
 ---
 id: emb-elintro-0121
 title: "Чому LED не можна підключати напряму до джерела напруги без резистора?"
-description: "Чому LED не можна підключати напряму до джерела напруги без резистора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 12, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -60,7 +37,3 @@ P_R = I²*R = 0.03 W
 Це ідеальний приклад; на практиці враховують розкид `V_f`, напруги живлення, допуск резистора та запас за потужністю. Типова помилка – вважати, що номінальна напруга LED сама обмежує струм.[^aac-direct-current]
 
 Під час вибору перевіряють не лише типовий режим, а й найгірші умови: найбільшу напругу джерела разом із найменшим `V_f` дають найбільший струм, а найменшу напругу з найбільшим `V_f` – найменший. Для живлення від GPIO враховують його допустимий вихідний струм і падіння напруги під навантаженням. Якщо потрібна яскравість за широкого діапазону живлення, стабілізатор струму зазвичай дає кращий контроль, але також має власні межі напруги та розсіювання потужності.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

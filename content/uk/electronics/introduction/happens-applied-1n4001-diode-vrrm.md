@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0168
 title: "Що станеться, якщо прикласти зворотні 200 V до 1N4001 із `V_RRM` = 50 V?"
-description: "Наслідок перевищення рейтингу повторюваної зворотної напруги 1N4001."
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 16, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: vishay-1n400x
     title: "Vishay: 1N4001–1N4007 datasheet"
     url: https://www.vishay.com/docs/88503/1n4001.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: "29-Apr-2020"
-    applicability: "Номінали VRRM, VDC та reverse current для серії 1N4001–1N4007; не гарантує поведінку компонента поза максимальними рейтингами."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Практична відповідь залежить також від того, чи є 200 V постійною напругою, повторюваними імпульсами або коротким перехідним процесом. Треба враховувати `V_RRM`, максимальну DC blocking voltage, форму сигналу, температурні умови й запас на викиди. Для серії Vishay 1N400x `V_RRM` зростає від 50 V для 1N4001 до 1000 V для 1N4007, але це не означає, що 1N4007 підходить за струмом, імпульсами чи тепловим режимом конкретної схеми.[^vishay-1n400x]
 
 Типова помилка – трактувати номінал 50 V як точний поріг руйнування або вважати, що діод просто «затисне» напругу на цьому рівні. Інша помилка – вибрати 1N4007 лише через більший `V_RRM`, не перевіривши решту параметрів і пікові напруги в схемі. Потрібно підібрати випрямляч за даташитом для реального режиму та передбачити зовнішнє обмеження струму, якщо аварійний пробій можливий.[^vishay-1n400x]
-
-## Sources
-
-<!-- generated from frontmatter -->

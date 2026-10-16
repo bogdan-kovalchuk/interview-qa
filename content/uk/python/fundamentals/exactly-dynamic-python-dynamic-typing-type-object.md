@@ -1,41 +1,18 @@
 ---
 id: py-fund-0004
 title: "Що саме є динамічним у dynamic typing Python: тип об’єкта чи зв’язок імені з об’єктом?"
-description: "Динамічним є зв’язок імені з об’єктом, а не тип уже створеного об’єкта."
 track: python
 section: fundamentals
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -86,11 +63,3 @@ print(b)       # [1, 2] - `b` still refers to the original list
 
 Саме тому анотація `x: int` нічого не забороняє в рантаймі: вона описує намір для зовнішнього
 аналізатора, а механіка binding лишається тією самою.[^py314-faq-general]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

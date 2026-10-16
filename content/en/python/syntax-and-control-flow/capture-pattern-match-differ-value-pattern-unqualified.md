@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0009
 title: "How does a capture pattern in `match` differ from a value pattern, and why can an unqualified name unexpectedly bind a new variable?"
-description: "How does a capture pattern in `match` differ from a value pattern, and why can an unqualified name unexpectedly bind a new variable?"
 track: python
 section: syntax-and-control-flow
-level: middle
-type: comparison
-tags: [match]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -82,19 +59,3 @@ The mistake is easy to miss because the code does not fail: the branch simply al
 variable is quietly overwritten. Static analysers mostly warn about the unreachable cases that
 follow - and that is the most reliable signal that a capture was written where a comparison was
 meant.[^py314-reference-expressions]
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

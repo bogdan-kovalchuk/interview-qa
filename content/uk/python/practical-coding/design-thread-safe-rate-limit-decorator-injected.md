@@ -1,55 +1,21 @@
 ---
 id: py-prac-0018
 title: "Спроєктуйте thread-safe rate-limit decorator з injected monotonic clock: до X викликів за rolling T seconds, перевищення викликає явний exception."
-description: "threading.Lock захищає timestamps list, injected clock (default time.monotonic) дозволяє тестування, rolling window реалізується видаленням expired timestamps з початку list."
 track: python
 section: practical-coding
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-execution:
-  language: python
-  standard: null
-  toolchain:
-    name: cpython
-    version: "3.14.7"
-  flags: []
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading-lock-objects
     title: "Python 3.14: Library/threading, Lock Objects"
     url: https://docs.python.org/3.14/library/threading.html#lock-objects
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, Lock Objects: Lock підтримує context management protocol. Не описує rate limiting і не гарантує порядок записів у структурах даних."
   - source_id: py314-library-time-time-monotonic
     title: "Python 3.14: Library/time"
     url: https://docs.python.org/3.14/library/time.html#time.monotonic
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, time.monotonic(): монотонний годинник, що не може йти назад і не зазнає впливу оновлень системного годинника; значення має сенс лише як різниця між двома викликами, бо точка відліку не визначена. Не описує time.time()."
   - source_id: py314-library-time-time-time
     title: "Python 3.14: Library/time, time.time"
     url: https://docs.python.org/3.14/library/time.html#time.time
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, time.time(): може повернути значення нижче за попередній виклик, якщо системний годинник перевели назад. Не описує monotonic-годинники."
   - source_id: py314-library-collections-collections-deque
     title: "Python 3.14: Library/collections, deque"
     url: https://docs.python.org/3.14/library/collections.html#collections.deque
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, deque: append і pop з обох кінців з приблизно однаковим O(1). Не описує rate limiting."
 ---
 
 ## Short answer
@@ -101,23 +67,3 @@ Rate limit з вікном `T` секунд дозволяє до `X` викли
 - читати час до lock: порядок записів ламається, як показано вище;
 - використовувати `time.time()` для вікна: перевід годинника назад затримує видалення записів, а перевід уперед видаляє їх передчасно;
 - викликати `func` усередині lock: усі потоки чекають на один довгий виклик.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

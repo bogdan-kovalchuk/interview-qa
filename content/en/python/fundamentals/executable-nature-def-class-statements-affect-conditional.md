@@ -1,46 +1,24 @@
 ---
 id: py-fund-0012
 title: "How does the executable nature of `def` and `class` statements affect conditional definition, redefinition, and import-time side effects?"
-description: "How does the executable nature of `def` and `class` statements affect conditional definition, redefinition, and import-time side effects?"
 track: python
 section: fundamentals
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-general
     title: "Python 3.14: Faq/general"
     url: https://docs.python.org/3.14/faq/general.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
 
 **`def` and `class` are executable statements: they create the function or class object and bind the name at run time, not at compile time.**[^py314-reference-executionmodel] They can therefore sit inside `if`/`else`, loops and nested scopes - only the branch that actually runs defines anything. A repeated `def` or `class` with the same name in one scope simply rebinds the name. And because a module body executes top to bottom on import, module-level code (I/O, network calls, print) becomes an import-time side effect that complicates testing and reuse.
+
 ## Detailed explanation
 
 `def` and `class` declare nothing at compile time - they are statements that execute when control
@@ -94,11 +72,3 @@ effect.[^py314-reference-executionmodel]
 The practical benefit of conditional definition is real: platform- or version-specific variants of a
 function are written without a dispatching wrapper, and no condition check is left on the hot
 path.[^py314-faq-general]
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

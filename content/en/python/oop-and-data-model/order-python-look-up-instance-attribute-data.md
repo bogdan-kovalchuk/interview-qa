@@ -1,62 +1,27 @@
 ---
 id: py-oop-0004
 title: "In what order does Python look up an instance attribute when a data descriptor, instance dictionary, non-data descriptor, and class attribute are all present?"
-description: "In what order does Python look up an instance attribute when a data descriptor, instance dictionary, non-data descriptor, and class attribute are all present?"
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the Invoking Descriptors section of the data model."
   - source_id: py314-reference-datamodel-object-getattr
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattr__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the object.__getattr__ section of the data model."
 ---
 
 ## Short answer
@@ -109,11 +74,3 @@ print(c.missing)  # __getattr__('missing'): the normal lookup found nothing
 - assuming that an entry in `obj.__dict__` always overrides a class attribute: this is not true for a `property`, and `self.x = 5` in a class with a `property` that has no setter raises `AttributeError: property 'x' of 'Q' object has no setter`;
 - expecting `__getattr__` to be called on every access; it runs only when the normal lookup found nothing;
 - forgetting that the order describes the default `object.__getattribute__`: an overridden `__getattribute__` changes this path (see qid:py-oop-0005).
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

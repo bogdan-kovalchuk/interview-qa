@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0001
 title: "Чим перевірка object identity через `is` відрізняється від equality через `==`?"
-description: "is перевіряє ідентичність об'єктів (той самий об'єкт у пам'яті), а == перевіряє рівність значень."
 track: python
 section: objects-and-types
-level: middle
-type: comparison
-tags: [is]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -75,19 +48,3 @@ print(id(a) == id(b))  # False: id() comparison matches the result of `is`
 - порівняння чисел або рядків через `is` замість `==`: через оптимізації interning у CPython таке порівняння може тимчасово давати `True`, але мова цього не гарантує;
 - припущення, що `==` завжди повертає `bool`: об'єкти спеціальних бібліотек можуть повертати складні структури або викликати винятки;
 - ігнорування вартості порівняння: `is` завжди виконується миттєво, тоді як `==` для глибоких вкладених колекцій рекурсивно обходить усі елементи.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

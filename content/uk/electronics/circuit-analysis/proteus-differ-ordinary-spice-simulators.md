@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0043
 title: "Чим Proteus відрізняється від звичайних SPICE-симуляторів?"
-description: "Чим Proteus відрізняється від звичайних SPICE-симуляторів?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 31, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: labcenter-proteus-vsm
     title: "Labcenter: Proteus VSM for Microprocessors"
     url: https://www.labcenter.com/microprocessors/
-    accessed: 2026-10-04
-    kind: official
-    version: "current product page"
-    applicability: "Підтверджує поєднання mixed-mode SPICE із симуляцією підтримуваних MCU; наявність моделей залежить від сімейства й пакета."
 ---
 
 ## Short answer
@@ -56,7 +33,3 @@ Proteus Design Suite охоплює також схематичне введен
 
 - Приписувати Proteus повну модель кожного MCU та будь-якої периферії. Перевіряйте актуальний перелік підтримки й обмеження моделі.
 - Плутати симуляцію firmware з виконанням коду на фізичному мікроконтролері; остаточну поведінку підтверджують апаратними тестами.
-
-## Sources
-
-<!-- generated from frontmatter -->

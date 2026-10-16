@@ -1,37 +1,15 @@
 ---
 id: py-perf-0019
 title: "Why doesn't a single positive `tracemalloc` snapshot diff after a workload prove a leak, and how do repeated steady-state measurements tell cache growth apart from unbounded retention?"
-description: "Why doesn't a single positive `tracemalloc` snapshot diff after a workload prove a leak, and how do repeated steady-state measurements tell cache growth apart from unbounded retention?"
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: [tracemalloc]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -93,23 +71,3 @@ Limits: tracemalloc follows the allocations made by Python (domain 0), while C e
 - starting tracemalloc after the measured rounds, so their blocks never reach the snapshot;
 - treating a plateau as proof that there is no leak, including memory of C extensions;
 - comparing snapshots taken around different amounts of work and reading the difference as retention.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

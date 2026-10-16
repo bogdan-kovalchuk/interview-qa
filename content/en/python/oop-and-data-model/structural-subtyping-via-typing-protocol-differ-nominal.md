@@ -1,83 +1,36 @@
 ---
 id: py-oop-0026
 title: "How does structural subtyping via `typing.Protocol` differ from nominal inheritance via an ABC?"
-description: "A Protocol checks structure: a class qualifies if it has the required methods, without inheritance; an ABC declares membership explicitly through inheritance, register() or __subclasshook__."
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [typing-protocol]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing-nominal-vs-structural-subtyping
     title: "Python 3.14: Library/typing (Nominal vs structural subtyping)"
     url: https://docs.python.org/3.14/library/typing.html#nominal-vs-structural-subtyping
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: definitions of nominal and structural subtyping for static type checkers. Does not describe runtime isinstance behaviour."
   - source_id: py314-library-typing-protocol
     title: "Python 3.14: Library/typing (typing.Protocol)"
     url: https://docs.python.org/3.14/library/typing.html#typing.Protocol
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the Protocol class and the requirement of @runtime_checkable for isinstance and issubclass."
   - source_id: py314-library-typing-runtime-checkable
     title: "Python 3.14: Library/typing (typing.runtime_checkable)"
     url: https://docs.python.org/3.14/library/typing.html#typing.runtime_checkable
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: @runtime_checkable checks only the presence of attributes, not signatures or types; isinstance with such a protocol can be slow."
   - source_id: py314-library-abc-abcmeta-register
     title: "Python 3.14: Library/abc (ABCMeta.register)"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.register
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: register() makes a class a virtual subclass of an ABC; the ABC does not appear in its MRO and its methods are not callable via super()."
   - source_id: py314-library-abc-abcmeta-subclasshook
     title: "Python 3.14: Library/abc (ABCMeta.__subclasshook__)"
     url: https://docs.python.org/3.14/library/abc.html#abc.ABCMeta.__subclasshook__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __subclasshook__ as a way for an ABC to decide subclass membership without register()."
 ---
 
 ## Short answer
@@ -121,19 +74,3 @@ In practice `Protocol` is convenient when you describe the expected behaviour of
 - assuming that `isinstance()` with a `@runtime_checkable` Protocol checks signatures or types, not only that attributes exist;
 - assuming that `register()` adds the ABC to the MRO or copies its methods into the class;
 - calling `isinstance()` with a `Protocol` that is not marked `@runtime_checkable`: this raises `TypeError`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

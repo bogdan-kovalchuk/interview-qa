@@ -1,34 +1,30 @@
 """Canonical question model and Markdown parser.
 
-This module owns every closed frontmatter vocabulary and every body section
-sequence. Consumers must import those definitions instead of copying them.
+This module owns the frontmatter shape and the body section sequence. Consumers
+must import those definitions instead of copying them.
 """
 
 from __future__ import annotations
 
-from collections.abc import Iterable, Mapping
-from datetime import date
+from collections.abc import Iterable
 from enum import Enum
 import json
 from pathlib import Path
 import re
-from types import MappingProxyType
 from typing import Annotated, Any
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, field_validator
 import yaml
 
 
 KEBAB_CASE = r"^[a-z0-9]+(?:-[a-z0-9]+)*$"
 SECTION_PATH = r"^[a-z0-9]+(?:-[a-z0-9]+)*(?:/[a-z0-9]+(?:-[a-z0-9]+)*)*$"
 QUESTION_ID = (
-    r"^(?:py|cpp|cs|sys|db|eng|sd|bhv|emb|ds|ml|de|be|ops|qa|elec)-"
+    r"^(?:py|emb)-"
     r"[a-z0-9]{3,8}-[0-9]{4}$"
 )
 
-KebabValue = Annotated[str, StringConstraints(pattern=KEBAB_CASE)]
 QuestionIdValue = Annotated[str, StringConstraints(pattern=QUESTION_ID)]
-RevisionValue = Annotated[int, Field(ge=1)]
 
 
 class Language(str, Enum):
@@ -36,248 +32,38 @@ class Language(str, Enum):
     UK = "uk"
 
 
-class Level(str, Enum):
-    JUNIOR = "junior"
-    MIDDLE = "middle"
-    SENIOR = "senior"
-
-
-class QuestionType(str, Enum):
-    CONCEPT = "concept"
-    MECHANISM = "mechanism"
-    COMPARISON = "comparison"
-    PITFALL = "pitfall"
-    PRACTICAL = "practical"
-    CODING = "coding"
-    DEBUGGING = "debugging"
-    SYSTEM_DESIGN = "system-design"
-    BEHAVIORAL = "behavioral"
-
-
-class Status(str, Enum):
-    DRAFT = "draft"
-    REVIEW = "review"
-    PUBLISHED = "published"
-    WITHDRAWN = "withdrawn"
-
-
-class SourceKind(str, Enum):
-    OFFICIAL = "official"
-    SPEC = "spec"
-    BOOK = "book"
-    COMMUNITY = "community"
-
-
 class SectionName(str, Enum):
     QUESTION_CODE = "Question code"
     SHORT_ANSWER = "Short answer"
     DETAILED_EXPLANATION = "Detailed explanation"
-    COMPARISON = "Comparison"
-    WHEN_TO_CHOOSE_WHICH = "When to choose which"
-    SYMPTOM = "Symptom"
-    WHY_IT_HAPPENS = "Why it happens"
-    HOW_TO_AVOID = "How to avoid"
-    TASK = "Task"
-    CONSTRAINTS = "Constraints"
-    EXAMPLES = "Examples"
-    SOLUTION = "Solution"
-    COMPLEXITY = "Complexity"
-    EDGE_CASES = "Edge cases"
-    TESTS = "Tests"
-    OBSERVATIONS = "Observations"
-    REPRODUCTION = "Reproduction"
-    HYPOTHESES = "Hypotheses"
-    DIAGNOSIS = "Diagnosis"
-    FIX = "Fix"
-    PREVENTION = "Prevention"
-    SCALE_PROMPT = "Scale prompt"
-    REQUIREMENTS = "Requirements"
-    SCALE_ASSUMPTIONS = "Scale assumptions"
-    ARCHITECTURE = "Architecture"
-    ALTERNATIVES = "Alternatives"
-    TRADE_OFFS = "Trade-offs"
-    FAILURE_MODES = "Failure modes"
-    COMPETENCY_ASSESSED = "Competency assessed"
-    STAR_OUTLINE = "STAR outline or illustrative example"
-    FOLLOW_UP_PROMPTS = "Follow-up prompts"
-    ENVIRONMENT = "Environment"
-    DELIVERABLE = "Deliverable"
-    ACCEPTANCE_CRITERIA = "Acceptance criteria"
-    EVALUATION_GUIDE = "Evaluation guide"
-    FOLLOW_UP = "Follow-up"
-    SOURCES = "Sources"
 
 
-class EvaluationSubsection(str, Enum):
-    EXPECTED_SIGNALS = "Expected signals"
-    RED_FLAGS = "Red flags"
-    LEVEL_UP_FOLLOW_UP = "Level-up follow-up"
-
-
-SECTION_SEQUENCES: Mapping[QuestionType, tuple[SectionName, ...]] = MappingProxyType(
-    {
-        QuestionType.CONCEPT: (
-            SectionName.QUESTION_CODE,
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.MECHANISM: (
-            SectionName.QUESTION_CODE,
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.COMPARISON: (
-            SectionName.QUESTION_CODE,
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.COMPARISON,
-            SectionName.WHEN_TO_CHOOSE_WHICH,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.PITFALL: (
-            SectionName.QUESTION_CODE,
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.SYMPTOM,
-            SectionName.WHY_IT_HAPPENS,
-            SectionName.HOW_TO_AVOID,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.CODING: (
-            SectionName.TASK,
-            SectionName.CONSTRAINTS,
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.EXAMPLES,
-            SectionName.SOLUTION,
-            SectionName.COMPLEXITY,
-            SectionName.EDGE_CASES,
-            SectionName.TESTS,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.DEBUGGING: (
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.SYMPTOM,
-            SectionName.OBSERVATIONS,
-            SectionName.REPRODUCTION,
-            SectionName.HYPOTHESES,
-            SectionName.DIAGNOSIS,
-            SectionName.FIX,
-            SectionName.PREVENTION,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.SYSTEM_DESIGN: (
-            SectionName.SCALE_PROMPT,
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.REQUIREMENTS,
-            SectionName.SCALE_ASSUMPTIONS,
-            SectionName.ARCHITECTURE,
-            SectionName.ALTERNATIVES,
-            SectionName.TRADE_OFFS,
-            SectionName.FAILURE_MODES,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-        QuestionType.BEHAVIORAL: (
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.COMPETENCY_ASSESSED,
-            SectionName.STAR_OUTLINE,
-            SectionName.FOLLOW_UP_PROMPTS,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.SOURCES,
-        ),
-        QuestionType.PRACTICAL: (
-            SectionName.SHORT_ANSWER,
-            SectionName.DETAILED_EXPLANATION,
-            SectionName.ENVIRONMENT,
-            SectionName.DELIVERABLE,
-            SectionName.ACCEPTANCE_CRITERIA,
-            SectionName.EVALUATION_GUIDE,
-            SectionName.FOLLOW_UP,
-            SectionName.SOURCES,
-        ),
-    }
+# The whole body: an optional code block that belongs to the question, then the
+# two answers. Nothing about the sequence depends on the question.
+SECTION_SEQUENCE: tuple[SectionName, ...] = tuple(SectionName)
+REQUIRED_SECTIONS: tuple[SectionName, ...] = (
+    SectionName.SHORT_ANSWER,
+    SectionName.DETAILED_EXPLANATION,
 )
-
-EVALUATION_SUBSECTIONS: tuple[EvaluationSubsection, ...] = tuple(EvaluationSubsection)
-OPTIONAL_SECTIONS = frozenset(
-    {SectionName.QUESTION_CODE, SectionName.FOLLOW_UP, SectionName.REPRODUCTION}
-)
+OPTIONAL_SECTIONS = frozenset({SectionName.QUESTION_CODE})
 
 
 class CanonicalModel(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
 
-class Toolchain(CanonicalModel):
-    name: str = Field(min_length=1, pattern=KEBAB_CASE)
-    version: str = Field(min_length=1)
-
-
-class Execution(CanonicalModel):
-    language: str = Field(min_length=1, pattern=KEBAB_CASE)
-    standard: str | None
-    toolchain: Toolchain
-    flags: tuple[str, ...]
-
-
-class Applicability(CanonicalModel):
-    product: str = Field(min_length=1)
-    version: str | None
-
-
-class AnkiSettings(CanonicalModel):
-    export: bool = True
-
-
 class Source(CanonicalModel):
     source_id: str = Field(pattern=KEBAB_CASE)
     title: str = Field(min_length=1)
     url: HttpUrl
-    accessed: date
-    kind: SourceKind
-    version: str | None
-    applicability: str = Field(min_length=1)
 
 
 class QuestionFrontmatter(CanonicalModel):
     id: QuestionIdValue
     title: str = Field(min_length=1)
-    description: str = Field(min_length=1)
     track: str = Field(pattern=KEBAB_CASE)
     section: str = Field(pattern=SECTION_PATH)
-    level: Level
-    type: QuestionType
-    status: Status
-    updated: date
-    content_revision: int = Field(ge=1)
-    reconciled_with: dict[Language, RevisionValue]
-    sources: tuple[Source, ...] = Field(min_length=1)
-    tags: tuple[KebabValue, ...] = ()
-    frameworks: tuple[KebabValue, ...] = ()
-    execution: Execution | None = None
-    applies_to: tuple[Applicability, ...] = ()
-    see_also: tuple[QuestionIdValue, ...] = ()
-    prerequisites: tuple[QuestionIdValue, ...] = ()
-    anki: AnkiSettings = AnkiSettings()
+    sources: tuple[Source, ...] = ()
 
     @field_validator("sources")
     @classmethod
@@ -311,16 +97,6 @@ class Question(CanonicalModel):
     source_path: str
     frontmatter: QuestionFrontmatter
     body: ParsedBody
-
-    @model_validator(mode="after")
-    def reconciliation_names_the_other_language(self) -> "Question":
-        expected = {language for language in Language if language is not self.language}
-        actual = set(self.frontmatter.reconciled_with)
-        if actual != expected:
-            raise ValueError(
-                "reconciled_with must name every other language and not its own language"
-            )
-        return self
 
     def section(self, name: SectionName | str) -> ParsedSection | None:
         wanted = name.value if isinstance(name, SectionName) else name
@@ -447,36 +223,19 @@ def parse_question_file(path: Path, *, content_root: Path) -> Question:
     )
 
 
-def expected_sections(
-    question_type: QuestionType,
-    level: Level,
-    present_optional: Iterable[SectionName] = (),
-) -> tuple[SectionName, ...]:
+def expected_sections(present_optional: Iterable[SectionName] = ()) -> tuple[SectionName, ...]:
     present = frozenset(present_optional)
-    result: list[SectionName] = []
-    for section in SECTION_SEQUENCES[question_type]:
-        if section is SectionName.EVALUATION_GUIDE and level is Level.JUNIOR:
-            continue
-        if section is SectionName.FOLLOW_UP and not (
-            level is Level.JUNIOR and section in present
-        ):
-            continue
-        if section is SectionName.REPRODUCTION and section not in present:
-            continue
-        if section is SectionName.QUESTION_CODE and section not in present:
-            continue
-        result.append(section)
-    return tuple(result)
-
-
-def required_text_sections(
-    question_type: QuestionType, level: Level
-) -> tuple[SectionName, ...]:
     return tuple(
         section
-        for section in expected_sections(question_type, level)
-        if section not in (SectionName.SOURCES, SectionName.QUESTION_CODE)
+        for section in SECTION_SEQUENCE
+        if section not in OPTIONAL_SECTIONS or section in present
     )
+
+
+def is_written(question: Question, name: SectionName) -> bool:
+    """Whether a section holds real text rather than the `TODO` placeholder."""
+    section = question.section(name)
+    return section is not None and section.content.strip() != "TODO"
 
 
 def question_schema() -> dict[str, Any]:

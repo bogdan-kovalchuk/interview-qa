@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0010
 title: "Які властивості роблять custom exception hierarchy стабільною частиною library API?"
-description: "Стабільна ієрархія має один базовий клас від Exception, проміжні категорії й конкретні імена, щоб перехоплювати точно."
 track: python
 section: exceptions
-level: middle
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -75,23 +52,3 @@ except QueryError as err:
 - не мати власного базового класу: споживачам доводиться перелічувати всі класи, щоб перехопити помилки бібліотеки;
 - переставити існуючий клас в іншу гілку ієрархії: змінюються `except`-блоки споживачів, хоча код бібліотеки формально правильний;
 - розбирати `str(err)`, щоб визначити причину: текст повідомлення зазвичай не вважають частиною API.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

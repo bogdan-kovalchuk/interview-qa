@@ -1,27 +1,12 @@
 ---
 id: py-perf-0021
 title: "Чому `lru_cache` небезпечно застосовувати до function, result якої залежить від current time, randomness, external mutable state чи side effects?"
-description: "lru_cache повертає збережене значення лише для повторного виклику з тими самими аргументами, поки запис у кеші; для non-pure function це застаріле значення, а side effects на cache hit пропускаються."
 track: python
 section: performance
-level: middle
-type: pitfall
-tags: [lru-cache]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-functools-functools-lru-cache
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.lru_cache
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, розділ lru_cache: ключ кешу – аргументи виклику, які мають бути hashable; повторний виклик з тими самими аргументами повертає кеш без нових викликів; кешувати функції з side effects і impure функції не має сенсу; maxsize=None вимикає виселення."
 ---
 
 ## Short answer
@@ -89,23 +74,3 @@ print(first is second)  # True
 - кешувати функцію, яка читає `time.time()`, `random` або файл, і вважати, що повторний виклик перевіряє стан знову;
 - очікувати, що логування чи лічильник усередині кешованої функції спрацьовують на кожен виклик;
 - повертати з кешованої функції mutable-об’єкт і змінювати його в місці виклику.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

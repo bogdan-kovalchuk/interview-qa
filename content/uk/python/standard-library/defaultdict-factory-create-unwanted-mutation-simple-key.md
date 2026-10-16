@@ -1,69 +1,30 @@
 ---
 id: py-stdlib-0003
 title: "Коли factory у `defaultdict` може створити небажану mutation при простому читанні key?"
-description: "Якщо default_factory задано, звернення d[key] до відсутнього ключа вставляє новий запис, навіть коли значення лише читають."
 track: python
 section: standard-library
-level: senior
-type: pitfall
-tags: [defaultdict]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections-defaultdict
     title: "Python 3.14: Library/collections, defaultdict.__missing__"
     url: https://docs.python.org/3.14/library/collections.html#collections.defaultdict.__missing__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: defaultdict.__missing__ (виклик default_factory і вставка значення; KeyError, якщо factory дорівнює None; get() і in не викликають __missing__)."
 ---
 
 ## Short answer
@@ -110,23 +71,3 @@ print(sorted(inventory))             # ['apple', 'kiwi', 'pear']
 - вважати, що `if d[key]:` лише перевіряє значення і нічого не змінює;
 - читати `d[key]` всередині циклу по тому самому `d` і отримувати `RuntimeError` або зайві ключі в результаті;
 - вважати, що `get()` створює ключ через `default_factory`: він повертає `None` (або переданий default) і не викликає factory.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

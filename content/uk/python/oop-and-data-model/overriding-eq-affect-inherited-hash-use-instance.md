@@ -1,62 +1,27 @@
 ---
 id: py-oop-0024
 title: "Як перевизначення `__eq__` впливає на успадкований `__hash__` і використання instance у set або dict?"
-description: "Якщо клас перевизначає __eq__ без визначення __hash__, то __hash__ неявно встановлюється в None, і instances стають unhashable – використання в set або dict викличе TypeError."
 track: python
 section: oop-and-data-model
-level: senior
-type: mechanism
-tags: [eq, hash]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-hash
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__hash__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: object.__hash__, вимога до hash для рівних об’єктів, неявний __hash__ = None і явне повернення hash батька."
   - source_id: py314-library-dataclasses-dataclass
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html#dataclasses.dataclass
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: правила створення __hash__ для dataclass залежно від параметрів eq і frozen."
 ---
 
 ## Short answer
@@ -106,11 +71,3 @@ print(len({a, b}))                    # 2: both stay in the set
 - перевизначити `__eq__` у підкласі й очікувати, що hash батька працює без явного рішення;
 - скопіювати `__hash__ = Base.__hash__` до класу з іншою рівністю, що порушує правило з прикладу;
 - хешувати змінюваний об’єкт за полями, які змінюються після додавання в `set` або `dict`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

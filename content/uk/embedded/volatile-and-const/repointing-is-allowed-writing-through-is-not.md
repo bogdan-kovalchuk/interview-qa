@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0021
 title: "Що скомпілюється, а що ні: `const int *p`?"
-description: "p = &y скомпілюється, p = 3 не скомпілюється."
 track: embedded
 section: volatile-and-const
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -57,7 +38,3 @@ p = &y;
 Важлива межа: `const` тут обмежує спосіб доступу через `p`; воно не створює копію даних і не гарантує фізичний захист пам’яті. Перетворити `const int *` на `int *` без явного зняття кваліфікатора не можна; навіть явне приведення не робить запис коректним, якщо початковий об’єкт сам був оголошений `const`.[^iso-c-n1570]
 
 Приклад: після `p = &y` читання `int value = *p;` дозволене, а `*p = 3;` має бути відхилене компілятором. Типова помилка – сприйняти `const` як заборону перепризначати `p`; перевіряйте, до якого саме типу в оголошенні належить кваліфікатор.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

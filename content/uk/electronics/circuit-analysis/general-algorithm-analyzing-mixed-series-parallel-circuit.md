@@ -1,34 +1,15 @@
 ---
 id: emb-elcirc-0020
 title: "Який загальний алгоритм аналізу змішаної (series-parallel) схеми?"
-description: "Який загальний алгоритм аналізу змішаної (series-parallel) схеми?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 29, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -46,7 +27,3 @@ sources:
 Приклад: резистор 1 kΩ послідовно з паралельною парою 2 kΩ і 2 kΩ має еквівалентний опір `1 kΩ + 1 kΩ = 2 kΩ`. За джерела 10 V загальний струм дорівнює 5 mA; на першому резисторі падає 5 V, і решта 5 V прикладена до паралельної пари. Кожна гілка бере 2.5 mA, тож сума гілкових струмів дорівнює 5 mA.[^aac-direct-current]
 
 **Типова помилка:** застосувати правило послідовного з’єднання до елементів, між якими є відгалуження, або прирівняти струми в паралельних гілках із різними опорами. Перевіряйте вузли схеми, а не геометричну близькість символів на кресленні.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-syntax-0011
 title: "Чому порядок `case` у structural pattern matching впливає на досяжність наступних patterns?"
-description: "Case blocks у match/case перевіряються зверху вниз, і після першого успішного збігу виконується його блок, а решта case ігнорується."
 track: python
 section: syntax-and-control-flow
-level: middle
-type: pitfall
-tags: [case]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-simple-stmts
     title: "Python 3.14: Reference/simple Stmts"
     url: https://docs.python.org/3.14/reference/simple_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -85,23 +62,3 @@ Guard змінює картину, але не правило. `case x if x > 10
 
 На відміну від `switch` у C, тут немає fallthrough: після виконання блоку `match` завершується, і
 `break` не потрібен.[^py314-reference-simple-stmts]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

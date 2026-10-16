@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0124
 title: "Чому важливо перевірити номінал котушки перед розрахунком RL-фільтра?"
-description: "Чому важливо перевірити номінал котушки перед розрахунком RL-фільтра?"
 track: electronics
 section: ee101
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 54, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-ac-circuit-analysis
     title: "James M. Fiore: AC Electrical Circuit Analysis, A Practical Approach (sections 1.5 and 10.3)"
     url: https://www2.mvcc.edu/users/faculty/jfiore/Circuits2/ACElectricalCircuitAnalysis.pdf
-    accessed: 2026-10-06
-    kind: book
-    version: "1.1.2, 22 April 2021"
-    applicability: "Розділ 1.5: напруга на ідеальній котушці випереджає струм на 90°, реактивний опір `X_L = j*2*pi*f*L`. Розділ 10.3: для RC lead-мережі зріз лежить на 3 dB нижче рівня смуги пропускання, `f_c = 1/(2*pi*R*C)`, фаза виходу +90° на низьких частотах і +45° на критичній. Фільтр RL там окремо не розглянуто: співвідношення для RL тут виведено з тих самих формул дільника напруги."
   - source_id: fontys-passive-hf
     title: "Fontys University of Applied Sciences: 1.2 Passive components at high frequency (LibreTexts)"
     url: https://eng.libretexts.org/Courses/Fontys_University_of_Applied_Sciences/Telecommunications/01:_Passive_Components/1.02:_Passive_components_at_high_frequency
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Еквівалентна схема реальної котушки: ідеальна індуктивність, послідовний опір обмотки `R_s` і паралельна паразитна ємність `C_d`; практична котушка придатна лише нижче власної резонансної частоти (self-resonant frequency), а skin effect підвищує опір обмотки. Загальна модель, а не параметри конкретної котушки курсу."
   - source_id: vishay-inductors-primer
     title: "Vishay: Inductors 101 – Primer Instructional Guide"
     url: https://www.vishay.com/docs/49782/49782.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "VMN-SG2139-1203"
-    applicability: "Визначення DCR, SRF і розподіленої ємності котушки: вище SRF переважає ємнісний реактанс, а менша розподілена ємність за тієї самої індуктивності дає вищу SRF. Числових значень для котушки курсу не дає; їх беруть з datasheet конкретної котушки."
 ---
 
 ## Short answer
@@ -76,19 +41,3 @@ sources:
 - Плутати `μH` і `mH` (і `kΩ` та `Ω`) при підстановці в `f_c = R/(2*pi*L)`: результат зсувається на цілі порядки.
 - Рахувати за номіналом без допуску й без опору обмотки: реальний зріз відрізняється.
 - Не перевіряти розумність результату: зріз у сотні кілогерц для малої котушки або в десятки герц для великої має насторожити.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

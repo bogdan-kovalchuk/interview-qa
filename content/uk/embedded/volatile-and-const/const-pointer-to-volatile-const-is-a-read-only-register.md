@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0013
 title: "Що означає `volatile const uint32_t * const STATUS`?"
-description: "STATUS є const pointer to volatile const uint32_t."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -56,7 +37,3 @@ uint32_t bits = *status;  // читання дозволене
 ```
 
 Присвоєння нового pointer значення змінній `status` заборонене через const на самому pointer. Присвоєння на кшталт `*status = 0` також заборонене, але з іншої причини: цільовий тип const-qualified. Не роби висновку про права запису лише з назви регістра – звір його властивості з reference manual, а тип оголошуй за контрактом апаратури та правилами тулчейна.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

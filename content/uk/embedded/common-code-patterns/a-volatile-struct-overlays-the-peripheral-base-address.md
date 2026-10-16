@@ -1,34 +1,15 @@
 ---
 id: emb-patterns-0023
 title: "Як описати блок регістрів периферії через struct?"
-description: "Структура з volatile полями, накладена на базову адресу периферії."
 track: embedded
 section: common-code-patterns
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Question code
@@ -67,7 +48,3 @@ typedef struct {
 - Переносити базову адресу чи поведінку регістра між різними моделями MCU.
 
 Отже, структура робить карту регістрів читабельною, але її коректність спирається на перевірений платформний контракт, а не лише на синтаксис C.
-
-## Sources
-
-<!-- generated from frontmatter -->

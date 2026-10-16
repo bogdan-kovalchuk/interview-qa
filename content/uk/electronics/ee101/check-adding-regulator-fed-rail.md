@@ -1,62 +1,27 @@
 ---
 id: emb-elee-0168
 title: "Що перевірити, додаючи стабілізатор 3,3 В, який живиться від шини 5 В?"
-description: "Що перевірити, додаючи стабілізатор 3,3 В, який живиться від шини 5 В?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 63, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-tps769
     title: "Texas Instruments TPS769: 100mA, 16V, Low-Dropout Linear Regulator (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/tps769.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVS203F, June 1999, revised January 2025"
-    applicability: "Родина TPS769 (зокрема TPS76933) у двох версіях кристала, legacy і new. Вхід: 2,7–10 В (legacy) або 2,5–16 В (new); вихідний струм до 100 мА; dropout TPS76933 за 100 мА типово 98 мВ (legacy) або 150 мВ (new), максимум 200 і 218 мВ; вихідний конденсатор не менш як 4,7 мкФ з ESR 0,2–10 Ом (legacy) або 2,2–200 мкФ з ESR 0–3 Ом (new), вхідний 1 мкФ, значення вважають зниженими вдвічі, а ефективна вихідна ємність має бути не менш як 1 мкФ; корпус DBV (SOT-23, 5 виводів): 1 – IN, 2 – GND, 3 – EN (низький рівень вмикає), 4 – FB/NC, 5 – OUT; RθJA нового кристала 178,6 °C/W. Значення стосуються лише цього сімейства, а не інших LDO."
   - source_id: ti-lm340
     title: "TI: LM340, LM340A, LM7805 family wide VIN 1.5-A fixed voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/lm340.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SNOSBT0L, September 2016"
-    applicability: "Таблиця LM340/LM7805 (V_O = 5 В, V_I = 10 В): вихідна напруга 4,75–5,25 В за 7,5 В ≤ V_IN ≤ 20 В, P_D ≤ 15 Вт і 5 мА ≤ I_O ≤ 1 А; виводи TO-220: 1 – INPUT, 2 – GND, 3 – OUTPUT. Значення стосуються родини LM340/LM7805, не інших стабілізаторів."
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Визначення dropout (різниця вхід–вихід, за якої стабілізація припиняється за подальшого зменшення входу); потужність, що розсіюється стабілізатором, P_D = (V_i - V_o)*I_o. Записка про LDO; її числа й приклади стосуються конкретних мікросхем TI."
 ---
 
 ## Short answer
@@ -67,7 +32,7 @@ sources:
 
 Другий лінійний стабілізатор для живлення від шини 5 В – просто ще одне навантаження цієї шини, але придатність конкретної мікросхеми визначає її datasheet. Перше – запас за напругою. Dropout – різниця вхід–вихід, за якої стабілізація припиняється;[^ti-slva079] для TPS76933 за 100 мА він не перевищує 218 мВ.[^ti-tps769] Сама шина 5 В на 7805 може бути в межах 4,75–5,25 В,[^ti-lm340] отже запас у найгіршому разі `4,75 - 3,3 = 1,45 В`, що значно більше за dropout. Вхідний діапазон 2,5–16 В (new) або 2,7–10 В (legacy) 5 В також охоплює.[^ti-tps769]
 
-Друге – струм. Для TPS769 рекомендований вихідний струм не перевищує 100 мА,[^ti-tps769] тож якщо шина 3,3 В бере 100 мА (як у `qid:emb-elee-0169`), мікросхема працює на самій межі, і для запасу обирають стабілізатор на більший струм. Цей струм іде з шини 5 В і додається до струму її власних навантажень (див. `qid:emb-elee-0161`). Тепло в новому стабілізаторі: `P = (5 - 3,3)*0,1 = 0,17 Вт`,[^ti-slva079] а за `RθJA = 178,6 °C/W` (new chip, SOT-23-5) це підвищення температури переходу на `0,17*178,6 ≈ 30 °C` над навколишньою.[^ti-tps769]
+Друге – струм. Для TPS769 рекомендований вихідний струм не перевищує 100 мА,[^ti-tps769] тож якщо шина 3,3 В бере 100 мА (як у qid:emb-elee-0169), мікросхема працює на самій межі, і для запасу обирають стабілізатор на більший струм. Цей струм іде з шини 5 В і додається до струму її власних навантажень (див. qid:emb-elee-0161). Тепло в новому стабілізаторі: `P = (5 - 3,3)*0,1 = 0,17 Вт`,[^ti-slva079] а за `RθJA = 178,6 °C/W` (new chip, SOT-23-5) це підвищення температури переходу на `0,17*178,6 ≈ 30 °C` над навколишньою.[^ti-tps769]
 
 Третє – конденсатори. Datasheet TPS769 вимагає вихідний конденсатор не менш як 4,7 мкФ з ESR 0,2–10 Ом (legacy) або 2,2–200 мкФ з ESR 0–3 Ом (new) і вхідний 1 мкФ, причому номінали вважають зниженими вдвічі, а ефективна вихідна ємність має лишатися не меншою за 1 мкФ.[^ti-tps769] Без підходящого вихідного конденсатора LDO може бути нестабільним, а ємність керамічних конденсаторів зменшується під DC-зміщенням, тож номінал беруть із запасом.
 
@@ -79,7 +44,3 @@ sources:
 - Не звіряти максимальний струм мікросхеми зі струмом шини 3,3 В.
 - Лишати вхід EN вільним, не з’ясувавши його активний рівень.
 - Не враховувати, що струм шини 3,3 В протікає крізь стабілізатор 5 В.
-
-## Sources
-
-<!-- generated from frontmatter -->

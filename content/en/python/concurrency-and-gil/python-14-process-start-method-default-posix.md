@@ -1,58 +1,24 @@
 ---
 id: py-gil-0021
 title: "In Python 3.14, which process start method is the default on POSIX and on Windows, and when do you need to explicitly choose `spawn`, `fork`, or `forkserver`?"
-description: "In Python 3.14, which process start method is the default on POSIX and on Windows, and when do you need to explicitly choose `spawn`, `fork`, or `forkserver`?"
 track: python
 section: concurrency-and-gil
-level: senior
-type: comparison
-tags: [spawn, fork, forkserver]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: "3.14"
-anki:
-  export: true
 sources:
   - source_id: py314-library-threading
     title: "Python 3.14: Library/threading"
     url: https://docs.python.org/3.14/library/threading.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-multiprocessing
     title: "Python 3.14: Library/multiprocessing"
     url: https://docs.python.org/3.14/library/multiprocessing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-concurrent-futures
     title: "Python 3.14: Library/concurrent.futures"
     url: https://docs.python.org/3.14/library/concurrent.futures.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-python
     title: "Python 3.14: Howto/free Threading Python"
     url: https://docs.python.org/3.14/howto/free-threading-python.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-free-threading-extensions
     title: "Python 3.14: Howto/free Threading Extensions"
     url: https://docs.python.org/3.14/howto/free-threading-extensions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -98,19 +64,3 @@ if __name__ == "__main__":
 - select `forkserver` on POSIX servers that repeatedly create short-lived worker processes; preloading heavy dependencies via `mp.set_forkserver_preload(['numpy', 'torch'])` shares memory efficiently;
 - restrict `fork` strictly to legacy single-threaded POSIX utilities where the complete absence of secondary threads is guaranteed and minimal spawn overhead is paramount;
 - avoid mutating global process state via `mp.set_start_method()`, which can collide across independent libraries; prefer explicit context instances obtained via `mp.get_context('...')`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: py-itergen-0012
 title: "Як `throw()` і `close()` впливають на control flow усередині suspended generator?"
-description: "throw() піднімає задану exception, а close() – GeneratorExit, саме в тій точці yield, де generator був призупинений."
 track: python
 section: iterators-and-generators
-level: senior
-type: mechanism
-tags: [throw, close]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes-iterator-types
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html#iterator-types
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-yield-expressions
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#yield-expressions
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-datamodel-object-iter
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__iter__
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-expressions-generator-iterator-methods
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#generator-iterator-methods
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: методи generator-iterator (__next__, send, throw, close) і їхня поведінка у призупиненому стані."
 ---
 
 ## Short answer
@@ -95,11 +68,3 @@ g2.close()                          # prints nothing: the body never started
 - думати, що `close()` лише «закриває» generator: він піднімає `GeneratorExit` у точці призупинення, тож `finally` виконується;
 - після `GeneratorExit` знову віддавати значення через `yield`: тоді `close()` піднімає `RuntimeError`;
 - очікувати, що `throw()` завжди повертає значення: якщо generator не перехопив виняток або завершився без наступного `yield`, виняток поширюється або піднімається `StopIteration`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,51 +1,21 @@
 ---
 id: py-objtypes-0019
 title: "Яку проблему копіювання вирішує `memoryview` і чому lifetime базового buffer object має значення?"
-description: "memoryview надає zero-copy доступ до внутрішнього buffer об'єкта, що підтримує buffer protocol (наприклад, bytes, bytearray, array.array), дозволяючи читати та змінювати ділянки пам'яті без створення копій."
 track: python
 section: objects-and-types
-level: senior
-type: mechanism
-tags: [memoryview]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -103,11 +73,3 @@ except ValueError as err:
 - витік пам'яті через збереження посилання: оскільки `memoryview` тримає сильне посилання на весь базовий об'єкт, навіть крихітний зріз `mv[0:10]` не дасть GC звільнити гігабайтний буфер, доки живий цей `memoryview`;
 - керування ресурсами: використання контекстного менеджера (`with memoryview(...) as mv:`) або явного `mv.release()` гарантує своєчасне звільнення експорту буфера;
 - помилки доступу після звільнення: будь-яка спроба прочитати або змінити буфер через уже закритий `memoryview` генерує `ValueError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

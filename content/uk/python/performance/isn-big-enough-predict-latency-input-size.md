@@ -1,48 +1,21 @@
 ---
 id: py-perf-0007
 title: "Чому Big O недостатньо для прогнозу latency без розміру input, constants та memory-access behavior?"
-description: "Big O відкидає константи й поведінку пам’яті, тому на практичних розмірах клас складності може не визначати, який код швидший."
 track: python
 section: performance
-level: senior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-profile
     title: "Python 3.14: Library/profile"
     url: https://docs.python.org/3.14/library/profile.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація profile (Python 3.14): профайлер показує, як часто і як довго виконувались частини програми, додає накладні витрати для коду на Python і не призначений для бенчмаркінгу, для якого є timeit."
   - source_id: py314-library-array
     title: "Python 3.14: Library/array"
     url: https://docs.python.org/3.14/library/array.html#module-array
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація модуля array (Python 3.14): тип, що компактно представляє масив базових значень одного типу."
   - source_id: cpython-listobject-h
     title: "CPython 3.14: Include/cpython/listobject.h"
     url: https://github.com/python/cpython/blob/v3.14.6/Include/cpython/listobject.h
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Заголовок CPython 3.14 (тег v3.14.6): список зберігає масив покажчиків на елементи (ob_item). Опис реалізації CPython, а не гарантія мови."
   - source_id: py314-library-tracemalloc
     title: "Python 3.14: Library/tracemalloc"
     url: https://docs.python.org/3.14/library/tracemalloc.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Документація tracemalloc (Python 3.14): трасування блоків пам’яті, виділених Python; статистика виділень за файлом і рядком; порівняння двох знімків."
 ---
 
 ## Short answer
@@ -75,23 +48,3 @@ print(data.index(99_999))          # 99999: same O(n) scan, but the loop runs in
 - вважати, що однакова Big O означає однакову латентність;
 - вибирати алгоритм, не оцінивши реальний розмір `n`;
 - пояснювати різницю ефектом кешу там, де домінують накладні витрати інтерпретатора.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

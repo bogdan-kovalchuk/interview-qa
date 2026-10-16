@@ -1,48 +1,21 @@
 ---
 id: py-funcs-0005
 title: "Чому wrapper із сигнатурою `(*args, **kwargs)` може прийняти синтаксично коректний виклик, який потім відхилить обгорнута функція, і на якому етапі виникає `TypeError`?"
-description: "Wrapper `(*args, **kwargs)` приймає будь-який виклик, а невідповідність сигнатури видно лише всередині обгорнутої функції."
 track: python
 section: functions-and-scope
-level: senior
-type: mechanism
-tags: [args-kwargs, typeerror]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-inspect-inspect-signature
     title: "Python 3.14: Library/inspect"
     url: https://docs.python.org/3.14/library/inspect.html#inspect.signature
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-functools-functools-wraps
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html#functools.wraps
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: functools.wraps додає до wrapper атрибут __wrapped__ і копіює метадані; не змінює, які аргументи wrapper приймає."
   - source_id: py314-library-inspect-signature-bind
     title: "Python 3.14: Library/inspect"
     url: https://docs.python.org/3.14/library/inspect.html#inspect.Signature.bind
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: Signature.bind зіставляє позиційні й іменовані аргументи з параметрами і кидає TypeError, якщо вони не відповідають сигнатурі."
 ---
 
 ## Short answer
@@ -78,11 +51,3 @@ except TypeError as error:
 - очікувати, що неправильні аргументи відхиляться на вході декоратора, тоді як wrapper їх приймає і передає далі;
 - не враховувати побічні ефекти wrapper, які встигають виконатися до `TypeError`;
 - вважати, що `functools.wraps` або `inspect.signature` роблять wrapper суворішим.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

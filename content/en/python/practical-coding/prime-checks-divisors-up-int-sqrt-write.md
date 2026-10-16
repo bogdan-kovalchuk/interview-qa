@@ -1,41 +1,18 @@
 ---
 id: py-prac-0022
 title: "For `is_prime(n)`, which checks divisors up to `int(sqrt(n))`, write tests that kill the mutants `<` vs `<=` at the square boundary and the bug for `n < 2`."
-description: "Three test groups: the base case n < 2, a perfect square (kills the < vs <= mutant), and ordinary prime and composite numbers."
 track: python
 section: practical-coding
-level: middle
-type: practical
-tags: [is-prime-n, int-sqrt-n, lt, n-lt-2]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-controlflow-the-range-function
     title: "Python 3.14: Tutorial/control flow, The range() Function"
     url: https://docs.python.org/3.14/tutorial/controlflow.html#the-range-function
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: range(start, stop) does not include stop. Does not describe testing or mutation testing."
   - source_id: py314-library-math-math-nan
     title: "Python 3.14: Library/math, math.nan"
     url: https://docs.python.org/3.14/library/math.html#math.nan
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation, a CPython implementation note: invalid operations such as sqrt(-1.0) raise ValueError. This is a CPython implementation detail; does not describe other functions individually."
   - source_id: py314-library-math-math-isqrt
     title: "Python 3.14: Library/math, math.isqrt"
     url: https://docs.python.org/3.14/library/math.html#math.isqrt
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: math.isqrt(n) returns the floor of the exact square root of a nonnegative integer n. Does not describe math.sqrt."
 ---
 
 ## Short answer
@@ -83,23 +60,3 @@ The test set has three groups: (1) `n < 2`: `0`, `1`, `-7` give `False`; (2) num
 - testing only ordinary prime and composite numbers: the mutant passes on `7` and `91`;
 - not testing `n < 2`: `0` and `1` give `True`, and nobody notices the error;
 - not testing negative numbers: without a guard the test fails with `ValueError`, not with a logic error.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

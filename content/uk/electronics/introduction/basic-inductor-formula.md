@@ -1,46 +1,24 @@
 ---
 id: emb-elintro-0145
 title: "Яка базова формула індуктора?"
-description: "Яка базова формула індуктора?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 14, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
 
 Напруга ідеального індуктора пропорційна швидкості зміни струму: `v = L*(di/dt)`. За сталого струму ідеальна індуктивна складова має нульову напругу, але реальна котушка також має опір обмотки.[^aac-direct-current]
+
 ## Detailed explanation
 
 Базове співвідношення ідеального індуктора пов’язує напругу на його виводах зі швидкістю зміни струму: `v = L*(di/dt)`. Тут `L` – індуктивність у генрі, `i` – струм, а знак залежить від обраних напрямків струму й напруги; фізично індукована напруга протидіє зміні струму.[^aac-direct-current]
@@ -52,7 +30,3 @@ sources:
 Приклад: якщо на ідеальну котушку `2 H` подати `4 V`, струм зростатиме зі швидкістю `2 A/s`. За `0.5 s` він збільшиться на `1 A`, якщо початковий струм нульовий і напруга справді лишається сталою.
 
 **Типова помилка:** плутати формулу індуктора з законом Ома резистора. Для резистора напруга визначається миттєвим струмом, а для індуктора – швидкістю зміни струму; тому однаковий струм може відповідати різним напругам залежно від того, як швидко він змінюється.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

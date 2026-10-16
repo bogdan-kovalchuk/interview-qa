@@ -1,34 +1,15 @@
 ---
 id: emb-structs-0044
 title: "Що таке anonymous struct/union і де це зустрічається?"
-description: "Anonymous struct/union дозволяє звертатися до вкладених member-ів без імені проміжного об’єкта, якщо це підтримується стандартом/компілятором у відповідному режимі."
 track: embedded
 section: structs-unions-and-bitfields
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -67,7 +48,3 @@ device.high = 1;
 Такий запис не гарантує, що `high` відповідає потрібним бітам на кожній платформі: порядок байтів і представлення цілих залежать від реалізації. У MMIO регістрах ще важливі вимоги виробника до ширини та атомарності доступу, тому приклад layout треба перевірити в документації MCU і заголовку конкретного SDK.[^iso-c-n1570]
 
 Типова помилка – вважати будь-який вкладений `struct` без імені переносимим синтаксисом C. Перевіряй стандартний режим компілятора й заголовки платформи; якщо сумісність важливіша за коротший доступ, назви вкладений member явно та зафіксуй потрібний layout окремими перевірками.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0153
 title: "Чому не можна бездумно подавати прямокутний сигнал на трансформатор?"
-description: "Чому не можна бездумно подавати прямокутний сигнал на трансформатор?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 15, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-magnetics-design-2
     title: "Texas Instruments: Magnetics Design 2 – Magnetic Core Characteristics"
     url: https://www.ti.com/lit/ml/slup124/slup124.pdf
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Зміна потоку пропорційна volt-seconds; нерівність протилежних імпульсів може спричинити flux walking і насичення осердя."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 - вважати, що трансформатор не працює з прямокутною формою сигналу;
 - перевіряти лише амплітуду, ігноруючи частоту та тривалість імпульсу;
 - забувати про баланс volt-seconds і розмагнічування осердя.
-
-## Sources
-
-<!-- generated from frontmatter -->

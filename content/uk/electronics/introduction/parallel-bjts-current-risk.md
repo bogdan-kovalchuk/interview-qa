@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0233
 title: "Як паралельно з’єднувати BJT для більшого струму і який ризик?"
-description: "Як паралельно з’єднувати BJT для більшого струму і який ризик?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 21, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-bjt-basics
     title: "All About Circuits: Introduction to Bipolar Junction Transistors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/chpt-4/bipolar-junction-transistors-bjt/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Описує BJT як керований струмом елемент із базовим і колекторним струмами; саме ці характеристики лежать в основі нерівномірного розподілу струму між непідібраними паралельними дискретними транзисторами."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ BJT – це транзистор, у якому базовий струм ке�
 Практичний спосіб отримати негативний зворотний зв’язок – поставити окремий малий резистор послідовно з емітером кожного транзистора. Якщо гілка починає проводити більший струм, на її резисторі зростає спад напруги, який зменшує ефективне керування база–емітер цієї гілки. Це частково протидіє початковому перекосу. Резистори розсіюють потужність і знижують напругу, доступну навантаженню, тому їхній опір та потужність треба розрахувати для робочого струму; окремі базові резистори можуть ізолювати гілки драйвера, але не замінюють емітерне балансування.[^aac-bjt-basics]
 
 **Типова помилка:** вважати, що два однакові маркування на корпусі означають однаковий струм. У реальному дизайні перевіряють запас за струмом і потужністю, температуру, тепловий контакт, допустиму область безпечної роботи та роботу при відмові однієї гілки. Якщо потрібен великий струм, спеціально призначений силовий ключ чи модуль часто простіше спроєктувати, ніж паралель кількох дискретних BJT.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-patterns-0019
 title: "Чому в багатьох API `ERR_OK` дорівнює 0?"
-description: "Щоб 0 означав успіх, а будь-яке ненульове значення – помилку (truthiness)."
 track: embedded
 section: common-code-patterns
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -62,7 +43,3 @@ if (result != ERR_OK) {
 - Вважати, що будь-який API зобов’язаний використовувати нуль для успіху. Деякі API повертають кількість байтів, індекс або окремий статус.
 - Вважати, що будь-яке ненульове значення в усіх системах є помилкою: у деяких контрактах ненульове значення може бути успішним результатом.
 - Перевірити лише truthiness там, де треба окремо обробити timeout і пошкоджені дані.
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,41 +1,18 @@
 ---
 id: py-ctxmgr-0005
 title: "Why must a generator used with `@contextmanager` execute exactly one `yield`?"
-description: "Why must a generator used with `@contextmanager` execute exactly one `yield`?"
 track: python
 section: context-managers
-level: middle
-type: pitfall
-tags: [contextmanager]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel-with-statement-context-managers
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#with-statement-context-managers
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-contextlib
     title: "Python 3.14: Library/contextlib"
     url: https://docs.python.org/3.14/library/contextlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-task-task-cancellation
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html#task-cancellation
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -92,23 +69,3 @@ with correct_manager() as status:
 - placing `yield` inside `for` or `while` loops: a context manager generator must yield exactly one value during its entire lifetime;
 - omitting `try...finally`: if an exception occurs within the `with` block and the post-yield code is not wrapped in `finally`, cleanup is bypassed entirely;
 - accidental `yield from`: delegating to an iterable that produces multiple elements inevitably triggers the "generator didn't stop" failure.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

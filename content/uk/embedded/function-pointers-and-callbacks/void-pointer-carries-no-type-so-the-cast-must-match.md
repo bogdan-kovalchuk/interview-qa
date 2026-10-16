@@ -1,34 +1,15 @@
 ---
 id: emb-fnptr-0031
 title: "Trap: чому `void *context` треба приводити до правильного типу?"
-description: "Cast із void * не перевіряє тип; неправильний доступ до об’єкта може спричинити undefined behavior."
 track: embedded
 section: function-pointers-and-callbacks
-level: junior
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 3
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -55,19 +36,3 @@ sources:
 - Робити висновок про коректність доступу лише з того, що тест пройшов на одній платформі.
 
 Під час перевірки простежте пару «місце реєстрації – місце читання»: який саме об’єкт передали, до якого типу його приводять, і чи відповідають його строк життя та вирівнювання очікуваному використанню.[^iso-c-n1570]
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

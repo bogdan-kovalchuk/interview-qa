@@ -1,41 +1,18 @@
 ---
 id: py-excpt-0002
 title: "Як порядок кількох `except` clauses впливає на досяжність handlers для subclass exceptions?"
-description: "Python перевіряє except clauses зверху вниз і спрацьовує перший збіг; якщо parent class стоїть перед child, handler для child стає недосяжним."
 track: python
 section: exceptions
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial-errors
     title: "Python 3.14: Tutorial/errors"
     url: https://docs.python.org/3.14/tutorial/errors.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-exceptions
     title: "Python 3.14: Library/exceptions"
     url: https://docs.python.org/3.14/library/exceptions.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference-compound-stmts-the-try-statement
     title: "Python 3.14: Reference/compound Stmts"
     url: https://docs.python.org/3.14/reference/compound_stmts.html#the-try-statement
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -70,11 +47,3 @@ print(parse("x"))  # generic failure, not 'bad number'
 - ставити `except Exception` перед конкретними винятками, які мають оброблятися окремо;
 - очікувати, що interpreter попередить про недосяжний handler (у CPython 3.13 і 3.14 він цього не робить);
 - вважати, що порядок ніколи не важливий для непов’язаних класів: він важливий, якщо один клас винятку наслідує обидва.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

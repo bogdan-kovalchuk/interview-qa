@@ -1,37 +1,15 @@
 ---
 id: py-funcs-0012
 title: "Чому функція може отримати `UnboundLocalError` під час читання глобального `x`, якщо нижче в її тілі є присвоєння `x = ...`?"
-description: "Python визначає ім’я як локальне, якщо будь-де в тілі функції є операція зв’язування, тому всі звертання до цього імені в тілі трактуються як до локального."
 track: python
 section: functions-and-scope
-level: middle
-type: pitfall
-tags: [unboundlocalerror]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-executionmodel-resolution-of-names
     title: "Python 3.14: Reference/executionmodel"
     url: https://docs.python.org/3.14/reference/executionmodel.html#resolution-of-names
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-why-am-i-getting-an-unboundlocalerror
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-am-i-getting-an-unboundlocalerror-when-the-variable-has-a-value
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -68,23 +46,3 @@ def with_global():
 - думати, що порядок рядків важливий: достатньо присвоєння будь-де в тілі, щоб ім’я стало локальним для всього тіла;
 - вважати, що глобального `x` нібито немає: він є, але функція звертається до локального імені, якому ще не присвоєно значення;
 - додавати `global x` як «виправлення» для читання: декларація змінює і присвоєння в тілі, а не лише читання.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

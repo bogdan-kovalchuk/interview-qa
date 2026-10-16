@@ -1,41 +1,18 @@
 ---
 id: emb-elcirc-0029
 title: "Від чого залежить V_out подільника – від відношення R чи від абсолютних значень?"
-description: "Від чого залежить V_out подільника – від відношення R чи від абсолютних значень?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 30, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-slaa067
     title: "Texas Instruments: Understanding Basic Analog – Circuit Equations"
     url: https://www.ti.com/lit/pdf/slaa067
-    accessed: 2026-10-04
-    kind: official
-    version: "SLAA067"
-    applicability: "Підтримує формулу ненавантаженого подільника та вплив навантаження; приклади ідеальних резистивних DC-кіл."
 ---
 
 ## Short answer
@@ -57,7 +34,3 @@ sources:
 - Розраховувати `V_out` за ненавантаженою формулою, коли до виходу під’єднано компонент; у такому разі треба замінити `R_2` на `R_2 || R_load`.
 
 Номінали також добирають з огляду на допустиму потужність резисторів і доступні стандартні значення. Якщо навантаження змінюється або потребує значного струму, буферний каскад чи стабілізатор зазвичай дає передбачуваніший вихід, ніж просте підвищення струму через подільник.[^ti-slaa067]
-
-## Sources
-
-<!-- generated from frontmatter -->

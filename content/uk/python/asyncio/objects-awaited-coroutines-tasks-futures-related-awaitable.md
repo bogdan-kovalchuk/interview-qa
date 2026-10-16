@@ -1,41 +1,18 @@
 ---
 id: py-async-0002
 title: "Які objects можна `await` і як coroutine, Task та Future пов’язані через awaitable protocol?"
-description: "await приймає будь-який awaitable-об'єкт – coroutine, Task або Future, – тобто об'єкт з методом __await__."
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -68,11 +45,3 @@ Task – підклас Future, і тому успадковує його `__awa
 `__step()`, ловить кожен Future, який ця coroutine yield'ить, підписується на нього і повторює
 цикл, аж доки coroutine не завершиться – і саме тоді Task як Future встановлює власний результат,
 розбуджуючи все, що на неї чекало.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

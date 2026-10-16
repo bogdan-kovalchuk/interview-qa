@@ -1,34 +1,15 @@
 ---
 id: py-stdlib-0012
 title: "Чому `zoneinfo.ZoneInfo` краще за фіксований UTC offset для civil time з daylight-saving transitions?"
-description: "ZoneInfo обчислює зсув від UTC для кожного моменту за правилами IANA-бази, тому фіксований зсув не може коректно пройти перехід на літній час."
 track: python
 section: standard-library
-level: middle
-type: comparison
-tags: [zoneinfo-zoneinfo]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-zoneinfo
     title: "Python 3.14: Library/zoneinfo"
     url: https://docs.python.org/3.14/library/zoneinfo.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: ZoneInfo за базою IANA, datetime-арифметика через DST, fold і джерела даних (системна база або пакет tzdata)."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14: timezone має фіксований зсув від UTC; додавання timedelta до aware datetime зберігає tzinfo без коригування часового поясу; віднімання для однакового tzinfo ігнорує tzinfo."
 ---
 
 ## Short answer
@@ -71,19 +52,3 @@ print(end.astimezone(timezone.utc) - start.astimezone(timezone.utc))  # 3:00:00 
 - вважати, що `timedelta(hours=N)` для ZoneInfo-часу завжди дає N реальних годин: при зміні зсуву між моментами різниця інша;
 - обчислювати тривалість через `-` для datetime з одним tzinfo і отримувати wall-clock різницю;
 - зберігати зсув як `-05:00` замість назви зони `America/New_York`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

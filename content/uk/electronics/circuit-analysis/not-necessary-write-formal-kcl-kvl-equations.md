@@ -1,34 +1,15 @@
 ---
 id: emb-elcirc-0016
 title: "Чому не обов’язково записувати формальні рівняння KCL/KVL для кожної задачі?"
-description: "Чому не обов’язково записувати формальні рівняння KCL/KVL для кожної задачі?"
 track: electronics
 section: circuit-analysis
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 28, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -44,7 +25,3 @@ sources:
 Наприклад, для джерела 12 V і двох послідовних резисторів 1 kΩ та 2 kΩ можна відразу скласти опори: `R_total = 3 kΩ`, а потім знайти струм `I = 12 V / 3 kΩ = 4 mA`. Напруги на резисторах дорівнюють відповідно 4 V і 8 V, разом 12 V. Така перевірка замикає KVL і допомагає помітити арифметичну помилку.[^aac-direct-current]
 
 **Типова помилка:** сприймати інтуїтивне міркування як дозвіл ігнорувати закон збереження заряду чи енергії. Якщо неможливо однозначно простежити еквівалентні групи або значення суперечать перевірці у вузлі чи контурі, треба повернутися до формального запису рівнянь.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

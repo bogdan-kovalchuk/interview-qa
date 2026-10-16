@@ -1,34 +1,15 @@
 ---
 id: emb-volconst-0033
 title: "Коли cast-away `const` не є UB, а коли стає UB?"
-description: "Cast-away const сам по собі не обов’язково UB; UB виникає при записі в об’єкт, який реально був оголошений const."
 track: embedded
 section: volatile-and-const
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
 ---
 
 ## Short answer
@@ -57,7 +38,3 @@ uint32_t *write_view = (uint32_t *)read_only_view;
 ```
 
 **Типова помилка:** казати, що «сам cast є UB» або, навпаки, що «після cast запис завжди безпечний». Критерій – чи дозволено змінювати об’єкт за цією адресою. У коді краще виправити сигнатуру функції, якщо вона без потреби приймає `const`, замість приховувати запис cast-ом.[^iso-c-n1570]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,55 +1,24 @@
 ---
 id: emb-align-0020
 title: "Trap: чому не можна передавати raw-структуру через `memcpy` між різними MCU?"
-description: "Object representation структури C не є переносним wire-форматом, адже layout, padding, widths і byte order можуть відрізнятися."
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання і відповіді; відповідь незалежно не перевірена."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C; конкретні пристрої й тулчейни можуть відрізнятися."
   - source_id: posix-byte-order
     title: "General Concepts: Data Types"
     url: https://pubs.opengroup.org/onlinepubs/009696699/basedefs/xbd_chap04.html
-    accessed: 2026-09-08
-    kind: spec
-    version: "The Open Group Base Specifications Issue 6"
-    applicability: "Дає авторитетний приклад явного зовнішнього порядку байтів і перетворень для конкретної ширини."
   - source_id: learncpp-struct-miscellany
     title: "Struct miscellany"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додаткове пояснення padding і layout структур."
   - source_id: acode-cpp-next
     title: "C++ вивчено – що далі?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Додаткова українська дорожня карта; не є нормативним джерелом щодо serialization."
 ---
 
 ## Short answer
@@ -77,7 +46,3 @@ sources:
 Raw-копіювання структури прийнятне лише всередині свідомо обмеженої ABI boundary, де обом сторонам гарантовано однакові визначення типу, compiler ABI, options, alignment, representation і version. Зафіксуй та перевір цю умову; не роби такого висновку лише тому, що обидва пристрої називаються MCU.
 
 Матеріал LearnCpp про структури показує, як padding з'являється в layout,[^learncpp-struct-miscellany] а дорожня карта aCode є додатковим орієнтиром для подальшого вивчення C і C++.[^acode-cpp-next]
-
-## Sources
-
-<!-- generated from frontmatter -->

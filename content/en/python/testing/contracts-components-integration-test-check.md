@@ -1,62 +1,27 @@
 ---
 id: py-testing-0002
 title: "What contracts between components does an integration test check?"
-description: "What contracts between components does an integration test check?"
 track: python
 section: testing
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official pytest documentation."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Hypothesis (property-based testing) documentation."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official mutmut (mutation testing) documentation."
   - source_id: martinfowler-integration-test
     title: "Martin Fowler: Integration Test"
     url: https://martinfowler.com/bliki/IntegrationTest.html
-    accessed: 2026-10-13
-    kind: book
-    version: null
-    applicability: "Essay by Martin Fowler (not official documentation): definition of integration tests, narrow and broad variants, contract tests for checking doubles."
 ---
 
 ## Short answer
@@ -101,11 +66,3 @@ To keep a double from drifting away from reality, it is checked separately: Fowl
 - testing SQL or HTTP code only with a `Mock`: the test passes with any schema or response;
 - assuming an integration test must start all services: a narrow variant with doubles is an integration test too;
 - trusting a double that nobody has checked against the real component.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,83 +1,36 @@
 ---
 id: py-oop-0010
 title: "Which methods make up the descriptor protocol, and what attribute-encapsulation problem does it solve?"
-description: "Which methods make up the descriptor protocol, and what attribute-encapsulation problem does it solve?"
 track: python
 section: oop-and-data-model
-level: middle
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-invoking-descriptors
     title: "Python 3.14: Reference/datamodel, Invoking Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#invoking-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the descriptor protocol is __get__, __set__, __delete__; an object defining any of them is a descriptor; it is invoked when the attribute is looked up on the class. Does not describe validation examples."
   - source_id: py314-reference-datamodel-implementing-descriptors
     title: "Python 3.14: Reference/datamodel, Implementing Descriptors"
     url: https://docs.python.org/3.14/reference/datamodel.html#implementing-descriptors
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the descriptor must be in the owner's class dictionary or in that of a parent class. Does not describe a descriptor stored as an instance attribute."
   - source_id: py314-reference-datamodel-object-set-name
     title: "Python 3.14: Reference/datamodel, object.__set_name__"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__set_name__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: __set_name__ is called when a class is created for a descriptor assigned to a class attribute, and receives the attribute name. Does not describe validation."
   - source_id: py314-howto-descriptor-validator-class
     title: "Python 3.14: Howto/descriptor, Validator class"
     url: https://docs.python.org/3.14/howto/descriptor.html#validator-class
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: a descriptor manages attribute access and verifies the value before storing it. The example in this section is an abstract base class, not a ready solution to this question."
   - source_id: py314-tutorial-classes-private-variables
     title: "Python 3.14: Tutorial/classes, Private Variables"
     url: https://docs.python.org/3.14/tutorial/classes.html#private-variables
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: private instance variables that cannot be accessed except from inside the object do not exist in Python; the single leading underscore is a convention for non-public names. Does not describe descriptors."
 ---
 
 ## Short answer
@@ -133,11 +86,3 @@ except ValueError as e:
 - putting a descriptor in `__init__` as an instance attribute (`self.width = Positive()`): its `__get__` and `__set__` are never called;
 - not checking `obj is None` in `__get__`: access through the class (`Box.width`) then fails with `AttributeError`;
 - assuming a descriptor makes data private: `b._width` and `b.__dict__` remain accessible.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

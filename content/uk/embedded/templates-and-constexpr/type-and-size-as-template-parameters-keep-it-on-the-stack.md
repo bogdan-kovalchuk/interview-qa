@@ -1,55 +1,24 @@
 ---
 id: emb-tmplcx-0003
 title: "Як виглядає class template для буфера фіксованого розміру?"
-description: "Тип і розмір – template-параметри; масив є частиною об’єкта, без динамічної пам’яті."
 track: embedded
 section: templates-and-constexpr
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-13; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: cpp-draft-temp-arg-nontype
     title: "C++ working draft: Constant template arguments ([temp.arg.nontype])"
     url: https://eel.is/c++draft/temp.arg.nontype
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Вимагає, щоб аргумент для non-type (constant) template-параметра відповідав правилам constexpr-змінної зі static storage, тобто був константним виразом; не описує розміщення об’єкта."
   - source_id: cpp-draft-basic-stc-auto
     title: "C++ working draft: [basic.stc.auto]"
     url: https://eel.is/c++draft/basic.stc.auto
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає automatic storage duration для змінних блоку; не описує, як стек реалізовано на конкретній платформі."
   - source_id: cpp-draft-basic-stc-static
     title: "C++ working draft: Static storage duration ([basic.stc.static])"
     url: https://eel.is/c++draft/basic.stc.static
-    accessed: 2026-10-13
-    kind: spec
-    version: "C++ working draft"
-    applicability: "Визначає static storage duration для змінних простору імен; не описує сегмент пам’яті на цільовій платформі."
 ---
 
 ## Question code
@@ -82,7 +51,3 @@ CircularBuffer<uint8_t, 64> uart_rx;
 - Вважати, що сам шаблон визначає місце об’єкта: глобальний `CircularBuffer` не лежить на стеку.
 - Оголошувати великий буфер локально в ISR чи у функції з малим стеком.
 - Очікувати змінного розміру в runtime: `N` має бути константою часу компіляції.
-
-## Sources
-
-<!-- generated from frontmatter -->

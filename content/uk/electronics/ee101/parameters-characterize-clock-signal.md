@@ -1,55 +1,24 @@
 ---
 id: emb-elee-0243
 title: "Які параметри характеризують тактовий сигнал?"
-description: "Які параметри характеризують тактовий сигнал?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-14
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 78, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-14; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: ti-snaa285
     title: "TI SNAA285: Time-Domain Jitter Measurement Considerations for Low-Noise Oscillators"
     url: https://www.ti.com/lit/an/snaa285/snaa285.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: "SNAA285, October 2015"
-    applicability: "Визначення period jitter і cycle-to-cycle jitter за JEDEC JESD65B, рекомендована вибірка 1000–10 000 циклів; вимірювання осцилографом у часовій області, не фазовий шум."
   - source_id: ti-sdaa032
     title: "TI SDAA032: Seamless PWM Duty Cycle Updates Without Intermediate Artifacts"
     url: https://www.ti.com/lit/an/sdaa032/sdaa032.pdf
-    accessed: 2026-10-14
-    kind: official
-    version: null
-    applicability: "Формула duty cycle `Duty = 100 × High/(High + Low)` (рівняння 5) у контексті PWM на EPWM TDA4x; сама формула стосується будь-якого сигналу з двома станами."
 ---
 
 ## Short answer
@@ -71,7 +40,3 @@ Jitter – це відхилення від ідеального часу. За 
 - вважати duty cycle 50 % за замовчуванням без перевірки datasheet;
 - плутати jitter з похибкою частоти: jitter описує відхилення окремих циклів, а допуск у ppm зсуває всю частоту;
 - вимірювати jitter на малій кількості циклів, тоді як для достовірного результату потрібно багато циклів.
-
-## Sources
-
-<!-- generated from frontmatter -->

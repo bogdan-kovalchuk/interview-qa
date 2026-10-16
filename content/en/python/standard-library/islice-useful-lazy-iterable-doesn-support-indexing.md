@@ -1,69 +1,30 @@
 ---
 id: py-stdlib-0005
 title: "How is `islice()` useful for a lazy iterable that doesn't support indexing?"
-description: "How is `islice()` useful for a lazy iterable that doesn't support indexing?"
 track: python
 section: standard-library
-level: middle
-type: mechanism
-tags: [islice]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-pathlib
     title: "Python 3.14: Library/pathlib"
     url: https://docs.python.org/3.14/library/pathlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-datetime
     title: "Python 3.14: Library/datetime"
     url: https://docs.python.org/3.14/library/datetime.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-re
     title: "Python 3.14: Library/re"
     url: https://docs.python.org/3.14/library/re.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-itertools-islice
     title: "Python 3.14: Library/itertools, islice"
     url: https://docs.python.org/3.14/library/itertools.html#itertools.islice
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: itertools.islice (slicing of an iterable; no negative start, stop or step; skipping of elements before start and between steps)."
 ---
 
 ## Short answer
@@ -107,11 +68,3 @@ In CPython, `islice` does not request an element beyond `stop`: after `islice(ge
 - expecting `islice(it, -1)` to return the last element: negative values are not supported, and the call raises `ValueError`;
 - assuming that `islice` leaves the input iterator alone: it advances it, and the next `next()` continues from the position where `islice` stopped;
 - assuming that elements skipped by `start` or `step` are not computed: for a generator they are produced.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

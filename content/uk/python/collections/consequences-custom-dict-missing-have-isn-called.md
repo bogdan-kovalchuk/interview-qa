@@ -1,41 +1,18 @@
 ---
 id: py-coll-0012
 title: "Які наслідки має custom `dict.__missing__()` і чому він не викликається однаково всіма способами доступу до key?"
-description: "__missing__(key) викликається лише методом __getitem__(), коли key відсутній; get(), pop() та setdefault() його не викликають."
 track: python
 section: collections
-level: senior
-type: mechanism
-tags: [dict-missing]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-collections
     title: "Python 3.14: Library/collections"
     url: https://docs.python.org/3.14/library/collections.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-howto-sorting
     title: "Python 3.14: Howto/sorting"
     url: https://docs.python.org/3.14/howto/sorting.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -65,11 +42,3 @@ explicit присвоєння в коді не було. Якщо ж `__missing_
 Ще одна практична пастка – якщо `__missing__` сам звертається до `self[key]` для того самого
 ключа без базового випадку, це призводить до нескінченної рекурсії, бо кожен промах знову
 викликає `__missing__`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

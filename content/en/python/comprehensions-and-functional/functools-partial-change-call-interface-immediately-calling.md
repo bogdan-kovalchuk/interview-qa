@@ -1,48 +1,21 @@
 ---
 id: py-compfn-0009
 title: "How does `functools.partial` change the call interface without immediately calling the wrapped callable?"
-description: "How does `functools.partial` change the call interface without immediately calling the wrapped callable?"
 track: python
 section: comprehensions-and-functional
-level: middle
-type: mechanism
-tags: [functools-partial]
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-howto-functional
     title: "Python 3.14: Howto/functional"
     url: https://docs.python.org/3.14/howto/functional.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-itertools
     title: "Python 3.14: Library/itertools"
     url: https://docs.python.org/3.14/library/itertools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-functools
     title: "Python 3.14: Library/functools"
     url: https://docs.python.org/3.14/library/functools.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-expressions-displays-for-lists-sets-and-dict
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#displays-for-lists-sets-and-dictionaries
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -87,11 +60,3 @@ print(say_hello("Bob", punctuation="?"))
 - positional arguments are always prepended: standard `partial` cannot freeze the second positional parameter while leaving the first unbound (use keyword arguments or a `lambda` instead);
 - lack of descriptor support: for class methods, use `functools.partialmethod`, otherwise `partial` will not pass `self` automatically;
 - `partial` objects do not automatically copy `__name__` and `__doc__` metadata; access them via the `.func` attribute instead.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

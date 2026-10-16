@@ -1,93 +1,39 @@
 ---
 id: py-modimp-0001
 title: "What stages does `import package.module` go through, from finding the spec to executing the module code?"
-description: "What stages does `import package.module` go through, from finding the spec to executing the module code?"
 track: python
 section: modules-and-imports
-level: middle
-type: mechanism
-tags: [import-package-module]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-applies_to:
-  - product: "CPython"
-    version: null
-anki:
-  export: true
 sources:
   - source_id: py314-reference-import
     title: "Python 3.14: Reference/import"
     url: https://docs.python.org/3.14/reference/import.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-importlib
     title: "Python 3.14: Library/importlib"
     url: https://docs.python.org/3.14/library/importlib.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py-packaging-guide
     title: "Python Packaging User Guide"
     url: https://packaging.python.org/en/latest/tutorials/packaging-projects/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Official Python Packaging User Guide."
   - source_id: py314-reference-import-searching
     title: "Python 3.14: Reference/import, Searching"
     url: https://docs.python.org/3.14/reference/import.html#searching
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Searching” of the official Python 3.14 documentation: for import foo.bar.baz, the top-level foo is imported first, then foo.bar and foo.bar.baz."
   - source_id: py314-reference-import-module-cache
     title: "Python 3.14: Reference/import, The module cache"
     url: https://docs.python.org/3.14/reference/import.html#the-module-cache
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The module cache” of the official Python 3.14 documentation: sys.modules is checked first; if the name is there, the cached module object is returned."
   - source_id: py314-reference-import-meta-path
     title: "Python 3.14: Reference/import, The meta path"
     url: https://docs.python.org/3.14/reference/import.html#the-meta-path
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The meta path” of the official Python 3.14 documentation: find_spec() and its path argument (for a submodule, the parent’s __path__); a returned spec or None passes the search on."
   - source_id: py314-reference-import-loading
     title: "Python 3.14: Reference/import, Loading"
     url: https://docs.python.org/3.14/reference/import.html#loading
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Loading” of the official Python 3.14 documentation: the module is placed in sys.modules before its code runs; the loader creates the module object; exec_module() runs the module code."
   - source_id: py314-reference-import-submodules
     title: "Python 3.14: Reference/import, Submodules"
     url: https://docs.python.org/3.14/reference/import.html#submodules
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Submodules” of the official Python 3.14 documentation: after loading, a submodule is an attribute of its parent package."
   - source_id: py314-reference-import-regular-packages
     title: "Python 3.14: Reference/import, Regular packages"
     url: https://docs.python.org/3.14/reference/import.html#regular-packages
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “Regular packages” of the official Python 3.14 documentation: a regular package’s __init__.py is implicitly executed when the package is imported."
   - source_id: py314-reference-simple-stmts-import
     title: "Python 3.14: Reference/simple statements, The import statement"
     url: https://docs.python.org/3.14/reference/simple_stmts.html#the-import-statement
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Section “The import statement” of the official Python 3.14 documentation: for a top-level module the module’s name is bound; for a module inside a package the top-level package’s name is bound."
 ---
 
 ## Short answer
@@ -147,11 +93,3 @@ For `demo.mod` the finder receives the parent's `__path__`, so the submodule is 
 - assuming `import package.module` binds the name `module` in the local namespace (it binds `package`);
 - searching for the submodule in `sys.path` when the search uses the parent package's `__path__`;
 - confusing `find_spec()`, which only finds a spec, with `exec_module()`, which runs the module code.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

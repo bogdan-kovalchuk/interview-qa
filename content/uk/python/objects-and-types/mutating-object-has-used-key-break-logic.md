@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0008
 title: "Як mutation об’єкта після використання його як key може пошкодити логіку hash-based collection?"
-description: "Якщо змінити об'єкт після того, як він став key у dict або елементом set, його hash зміниться і пошук за початковим hash поверне хибний результат – ключ «губиться»."
 track: python
 section: objects-and-types
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -98,23 +71,3 @@ print([k.val for k in lookup.keys()])  # ['modified']
 - у разі перевизначення `__eq__` у користувацькому класі інтерпретатор автоматично виставляє `__hash__ = None`, захищаючи від помилок; не варто примусово повертати `__hash__` для mutable класів;
 - використовувати `@dataclass(frozen=True)` або іменовані кортежі (`NamedTuple`) для складних ключів словників і елементів множин;
 - якщо клас обов'язково має бути mutable, слід залишити стандартний `__hash__` на основі ідентичності об'єкта (`id`) і не прив'язувати `__eq__` до його змінних полів.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

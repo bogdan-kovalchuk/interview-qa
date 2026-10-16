@@ -1,69 +1,30 @@
 ---
 id: emb-elee-0179
 title: "Джерело 9 В RMS 50 Гц, міст, C = 1000 мкФ, навантаження 0,1 А. Які пульсації і дно напруги на C?"
-description: "Джерело 9 В RMS 50 Гц, міст, C = 1000 мкФ, навантаження 0,1 А. Які пульсації і дно напруги на C?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 65, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: fiore-rectification
     title: "Engineering LibreTexts: Semiconductor Devices – Theory and Application (Fiore), 3.2 Rectification"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Конденсаторний фільтр і пульсації (розряд між піками, зростання пульсацій зі струмом навантаження), мостовий випрямляч (струм в одному напрямку в обох півперіодах, у кожному проводять два діоди, навантаження бачить вторинну напругу мінус два падіння V_F); книга не наводить формули ΔV = I/(f*C) і не задає V_F конкретного діода."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Semiconductor_Devices_-_Theory_and_Application_(Fiore)/03:_Diode_Applications/3.2:_Rectification
   - source_id: fiore-capacitors
     title: "Engineering LibreTexts: DC Electrical Circuit Analysis – A Practical Approach (Fiore), 8.2 Capacitance and Capacitors"
-    url: "https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08:_Capacitors/8.2:_Capacitance_and_Capacitors"
-    accessed: 2026-10-06
-    kind: book
-    version: null
-    applicability: "Співвідношення i = C*dv/dt: сталий струм через конденсатор дає лінійну зміну напруги, тобто ΔV = I*Δt/C; розділ не розглядає випрямлячі, ESR і реальні форми струму навантаження."
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/DC_Electrical_Circuit_Analysis_-_A_Practical_Approach_(Fiore)/08:_Capacitors/8.2:_Capacitance_and_Capacitors
   - source_id: ti-slva079
     title: "Texas Instruments SLVA079: Understanding the Terms and Definitions of LDO Voltage Regulators"
     url: https://www.ti.com/lit/an/slva079/slva079.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVA079, October 1999"
-    applicability: "Визначення dropout: регулятор перестає стабілізувати за подальшого зменшення входу. Записка про LDO; значення dropout у ній – лише приклади конкретних мікросхем."
   - source_id: ti-ua78
     title: "TI: uA7805, uA7808, uA7810, uA7812, uA7815, uA7824 positive-voltage regulators (datasheet)"
     url: https://www.ti.com/lit/ds/symlink/ua78.pdf
-    accessed: 2026-10-06
-    kind: official
-    version: "SLVS056P, January 2015"
-    applicability: "Розділ Recommended Operating Conditions: вхідна напруга uA7805 – від 7 до 25 В. Значення стосуються родини uA78xx від TI, а не 7805 інших виробників."
 ---
 
 ## Short answer
@@ -86,7 +47,3 @@ sources:
 - Забувати два падіння на діодах мосту (брати одне або жодного).
 - Вважати 9 В RMS амплітудою, а не діючим значенням.
 - Перевіряти стабілізатор за середньою напругою замість найнижчої.
-
-## Sources
-
-<!-- generated from frontmatter -->

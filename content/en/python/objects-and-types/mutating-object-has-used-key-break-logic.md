@@ -1,48 +1,21 @@
 ---
 id: py-objtypes-0008
 title: "How can mutating an object after it has been used as a key break the logic of a hash-based collection?"
-description: "How can mutating an object after it has been used as a key break the logic of a hash-based collection?"
 track: python
 section: objects-and-types
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-09-27
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-stdtypes
     title: "Python 3.14: Library/stdtypes"
     url: https://docs.python.org/3.14/library/stdtypes.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-typing
     title: "Python 3.14: Library/typing"
     url: https://docs.python.org/3.14/library/typing.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -98,23 +71,3 @@ print([k.val for k in lookup.keys()])  # ['modified']
 - rely on Python's default safety: defining `__eq__` automatically sets `__hash__ = None`, and developers should never manually implement `__hash__` based on mutable fields;
 - represent composite dictionary keys and set members with immutable data structures such as `@dataclass(frozen=True)` or `NamedTuple`;
 - if an entity must remain mutable, retain default identity-based hashing (`object.__hash__`) and avoid overriding `__eq__` based on mutable instance attributes.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

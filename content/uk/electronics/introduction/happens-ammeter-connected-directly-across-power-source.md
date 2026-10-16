@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0051
 title: "Що станеться, якщо амперметр підключити напряму паралельно джерелу живлення?"
-description: "Що станеться, якщо амперметр підключити напряму паралельно джерелу живлення?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 6, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ammeter-usage
     title: "All About Circuits: Intro Lab – How to Use an Ammeter to Measure Current"
     url: https://www.allaboutcircuits.com/textbook/experiments/chpt-2/ammeter-usage/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює низький опір амперметра, коротке замикання при паралельному підключенні до джерела та можливе спрацювання запобіжника; реальний струм залежить від джерела, вимірювача й проводів."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Щоб виміряти струм у гілці, розривають її та вмикають амперметр послідовно, аби весь струм гілки проходив крізь прилад. Щоб виміряти напругу джерела, мультиметр налаштовують на напругу й підключають паралельно; режими й гнізда щупів потрібно перевірити перед вимірюванням. Типова помилка – залишити щуп у струмовому гнізді й торкнутися ним обох клем джерела: це замикає коло через низькоомний тракт амперметра.[^aac-ammeter-usage]
 
 Приклад: якщо батарею з лампою вже з’єднано послідовно, для вимірювання струму роз’єднують один провід між батареєю та лампою і вставляють амперметр у розрив. Показ має відповідати струму через лампу; підключення щупів безпосередньо до двох клем батареї вимірює не робочий струм лампи, а струм короткого замикання через прилад.[^aac-ammeter-usage]
-
-## Sources
-
-<!-- generated from frontmatter -->

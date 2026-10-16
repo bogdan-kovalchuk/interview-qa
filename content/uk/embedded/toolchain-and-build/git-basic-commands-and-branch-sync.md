@@ -1,34 +1,15 @@
 ---
 id: emb-build-0002
 title: "Назвіть основні команди git."
-description: "Базові команди git охоплюють локальний цикл (init/add/commit/log/diff) і синхронізацію гілок (branch/switch/merge/rebase/pull/push)."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -82,7 +63,3 @@ $ git push origin feature-x
 ```
 
 Git команди працюють разом для управління історією та співпраці. Розуміння трьох станів (modified, staged, committed) допомагає зрозуміти, що робить кожна команда.
-
-## Sources
-
-<!-- generated from frontmatter -->

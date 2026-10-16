@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0003
 title: "How do you forward received `*args` and `**kwargs` to another function without losing positional and keyword arguments, and what mistake is easy to make while forwarding them?"
-description: "How do you forward received `*args` and `**kwargs` to another function without losing positional and keyword arguments, and what mistake is easy to make while forwarding them?"
 track: python
 section: functions-and-scope
-level: middle
-type: mechanism
-tags: [args, kwargs]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-expressions-calls
     title: "Python 3.14: Reference/expressions"
     url: https://docs.python.org/3.14/reference/expressions.html#calls
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-faq-programming
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -65,11 +46,3 @@ There are two more mistakes. A call with only `target(*args)` silently drops all
 - writing `target(args, kwargs)` or `target(*args, kwargs)`: then `kwargs` becomes a positional dict;
 - passing only `*args` and forgetting `**kwargs`: keyword arguments disappear without an error;
 - adding a keyword to the call that is already in `kwargs`: this is a `TypeError`.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

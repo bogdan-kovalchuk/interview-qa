@@ -1,48 +1,21 @@
 ---
 id: emb-align-0006
 title: "Why does a struct need trailing padding?"
-description: "Trailing padding ensures every element in an array of structs starts at an aligned address"
 track: embedded
 section: memory-alignment-and-endianness
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Source question and answer; answer not independently verified."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Authoritative section-level reference for the C language rules involved; specific devices and toolchains can differ."
   - source_id: learncpp-struct-padding
     title: "LearnCpp: Struct miscellany"
     url: https://www.learncpp.com/cpp-tutorial/struct-miscellany/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary examples of structure padding and size."
   - source_id: acode-next-cpp
     title: "aCode: End? What next?"
     url: https://acode.com.ua/end-cpp-what-is-next/
-    accessed: 2026-09-08
-    kind: community
-    version: null
-    applicability: "Supplementary Ukrainian C++ learning roadmap; not a normative object-layout source."
 ---
 
 ## Short answer
@@ -71,7 +44,3 @@ The members occupy five bytes, but `sizeof(struct Sample)` is typically eight. W
 Trailing padding belongs to the structure object and is included in `sizeof`; it is not an extra gap owned by the array. This also means structure assignment or `memcpy` of `sizeof(struct Sample)` copies those bytes, although their values are unspecified. LearnCpp illustrates that padding can make a structure larger than the sum of its members.[^learncpp-struct-padding]
 
 Do not derive a wire format from `sizeof(struct)`. For an ABI boundary, verify both size and offsets with `_Static_assert`/`static_assert`; for serialized data, define an explicit byte layout instead.
-
-## Sources
-
-<!-- generated from frontmatter -->

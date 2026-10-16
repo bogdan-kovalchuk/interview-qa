@@ -1,41 +1,18 @@
 ---
 id: py-async-0012
 title: "How does `asyncio.gather()` preserve the ordering of results when the awaitables finish in a different order?"
-description: "How does `asyncio.gather()` preserve the ordering of results when the awaitables finish in a different order?"
 track: python
 section: asyncio
-level: middle
-type: mechanism
-tags: [asyncio-gather]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -68,11 +45,3 @@ keep running in the background – this is a common source of bugs where forgott
 exceptions as `Task exception was never retrieved`. With `return_exceptions=True` the exception
 itself becomes the value in the result list at its position, and the caller gets the full list
 without an early break on the first failure.
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

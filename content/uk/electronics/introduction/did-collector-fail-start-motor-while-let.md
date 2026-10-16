@@ -1,48 +1,21 @@
 ---
 id: emb-elintro-0229
 title: "Чому 100 Ω у колекторі не запустив мотор, а 10 Ω уже дозволив йому стартувати?"
-description: "Чому 100 Ω у колекторі не запустив мотор, а 10 Ω уже дозволив йому стартувати?"
 track: electronics
 section: introduction
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 21, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-direct-current
     title: "All About Circuits textbook, Volume I: DC"
     url: https://www.allaboutcircuits.com/textbook/direct-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: DC-кола, закон Ома, закони Кірхгофа, джерела й вимірювання; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: pololu-motor-stall
     title: "Pololu Jrk G2 Motor Controller User’s Guide: Choosing the motor, power supply, and Jrk"
     url: https://www.pololu.com/docs/0J73/4.1
-    accessed: 2026-10-04
-    kind: official
-    version: null
-    applicability: "Визначення stall current, залежність від прикладеної напруги та короткочасний пусковий струм DC-мотора; не підтверджує конкретні параметри навчального макета."
 ---
 
 ## Short answer
@@ -58,7 +31,3 @@ sources:
 Приклад оцінки для ідеального джерела 5 V і резистора 10 Ω: навіть якщо весь перепад припадає на резистор, його потужність становила б `P = V²/R = 25/10 = 2.5 W`. Це межова оцінка; реальне значення залежить від падінь напруги, але звичайний малопотужний резистор не можна вважати придатним автоматично. Аналогічно, 100 Ω із тим самим ідеальним перепадом дає `0.25 W`. Потрібно звірити номінал потужності резистора та межі компонентів із режимом запуску.[^aac-direct-current]
 
 Тому опис «100 Ω не запустив, 10 Ω запустив» можна прийняти лише для конкретного навчального макета з його мотором, джерелом і транзистором. Це не універсальна пара значень. Для вибору треба знати опір обмотки або stall current за напруги живлення, падіння насиченого транзистора, допустимий струм джерела та потрібний момент. Типова помилка – назвати `0.5 A` гарантованим струмом, забувши про мотор і транзистор у тому самому колі.[^aac-direct-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,34 +1,15 @@
 ---
 id: emb-build-0003
 title: "What is an interactive rebase?"
-description: "git rebase -i opens a list of commits before a chosen base and lets you pick, reword, squash, edit, drop, or reorder each commit, rewriting history."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-13
-content_revision: 4
-reconciled_with:
-  uk: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Origin of this question and answer; the answer text is not independently verified against the original community Anki deck."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -38,6 +19,7 @@ sources:
 Actions: `pick` – keep the commit; `reword` – change the message; `squash`/`fixup` – combine commits; `edit` – stop to amend; `drop` – remove; commits can also be reordered.
 
 Use it to clean up a local feature branch before a pull request, combine fixup commits or fix a message. It <span class="warn">rewrites history</span>, so be careful with commits already pushed and used by others.
+
 ## Detailed explanation
 
 **Interactive rebase** (`git rebase -i`) is a mode for editing commit history that lets you change, combine, rename, or drop commits in a local branch before sharing it with others.[^git-scm-doc]
@@ -79,7 +61,3 @@ Interactive rebase is useful for:
 If you need to update the remote after rebase, use `git push --force-with-lease` (a safer option than `--force` because it checks that the remote branch has not changed).
 
 To undo a rebase, you can use `git reflog` to find the previous HEAD and `git reset --hard HEAD@{N}` to roll back.
-
-## Sources
-
-<!-- generated from frontmatter -->

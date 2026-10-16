@@ -1,69 +1,30 @@
 ---
 id: py-oop-0005
 title: "How does `__getattribute__` differ from `__getattr__`, and when is each one called?"
-description: "How does `__getattribute__` differ from `__getattr__`, and when is each one called?"
 track: python
 section: oop-and-data-model
-level: middle
-type: comparison
-tags: [getattribute, getattr]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-reference-datamodel
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-descriptor
     title: "Python 3.14: Howto/descriptor"
     url: https://docs.python.org/3.14/howto/descriptor.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-howto-mro
     title: "Python 3.14: Howto/mro"
     url: https://docs.python.org/3.14/howto/mro.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-dataclasses
     title: "Python 3.14: Library/dataclasses"
     url: https://docs.python.org/3.14/library/dataclasses.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-reference-datamodel-object-getattribute
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattribute__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the object.__getattribute__ section of the data model."
   - source_id: py314-reference-datamodel-object-getattr
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#object.__getattr__
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the object.__getattr__ section of the data model."
   - source_id: py314-reference-datamodel-special-method-lookup
     title: "Python 3.14: Reference/datamodel"
     url: https://docs.python.org/3.14/reference/datamodel.html#special-method-lookup
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation: the Special method lookup section of the data model."
 ---
 
 ## Short answer
@@ -108,19 +69,3 @@ That is why `__getattr__` is safer: it does not change the normal lookup path an
 - assuming that `__getattr__` is called for every access and logging existing-attribute access in it; it never sees those;
 - writing `self.__dict__` or `self.name` inside `__getattribute__`, which causes recursion;
 - expecting `len(obj)` or `obj + 1` to pass through `__getattribute__`.
-
-## Comparison
-
-TODO
-
-## When to choose which
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

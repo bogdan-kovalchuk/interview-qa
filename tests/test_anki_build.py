@@ -78,7 +78,7 @@ def test_english_notes_get_their_own_guid_namespace(payload: dict, vocabulary: d
     assert all(deck.startswith("Interview QA (EN)::") for deck in en_decks)
 
 
-def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
+def test_english_notes_ship_exactly_the_written_english_short_answers(
     payload: dict, vocabulary: dict
 ) -> None:
     # A card ships on the Short answer written in *that* language, nothing else
@@ -91,7 +91,7 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
     expected = {
         question["id"]
         for question in payload["questions"]
-        if question["languages"]["en"]["lifecycle"]["card_in_apkg"]
+        if question["languages"]["en"]["card"]["short_answer"] is not None
     }
     assert len(notes) == len(expected) == EN_CARDS
     shipped = {note.fields[anki_build.FIELD_ORDER.index("QID")] for _deck, note in notes}
@@ -101,19 +101,16 @@ def test_english_notes_ship_exactly_what_lifecycle_says_for_english(
     assert all("/en/q/" in note.fields[reference_index] for _deck, note in notes)
 
 
-def test_notes_ship_exactly_the_questions_lifecycle_says_should(payload: dict, vocabulary: dict) -> None:
-    # The 13 coding questions inherited from the original corpus keep
-    # `anki.export: false`
-    # (their Task/Solution/Tests were never authored - see the M4 report) and
-    # so must not ship a card even though their Ukrainian Short answer reads
-    # fine on its own.
+def test_ukrainian_notes_ship_exactly_the_written_short_answers(
+    payload: dict, vocabulary: dict
+) -> None:
     model = anki_build.make_model()
     notes = anki_build.build_notes(payload["questions"], vocabulary, model)
 
     expected_shipped = {
         question["id"]
         for question in payload["questions"]
-        if question["languages"]["uk"]["lifecycle"]["card_in_apkg"]
+        if question["languages"]["uk"]["card"]["short_answer"] is not None
     }
     assert len(notes) == len(expected_shipped) == UK_CARDS
 
@@ -149,36 +146,38 @@ def test_front_and_back_templates_no_longer_parse_the_qid() -> None:
         assert "<script>" not in text
 
 
-def test_coding_front_includes_task_and_constraints_list(payload: dict, vocabulary: dict) -> None:
-    by_id = {question["id"]: question for question in payload["questions"]}
-    question = by_id["py-prac-0001"]
+def test_question_code_goes_to_the_front_not_the_back(payload: dict, vocabulary: dict) -> None:
+    question = next(
+        question
+        for question in payload["questions"]
+        if question["languages"]["uk"]["card"]["question_code"] is not None
+    )
     card = question["languages"]["uk"]["card"]
     front_html = anki_build.render_front(vocabulary, question, card, question["languages"]["uk"]["title"])
-    assert '<div class="prompt-body">' in front_html
-    assert "<ul class=\"constraints\">" in front_html
-    assert front_html.count("<li>") == card["constraints"].count("\n- ") + 1
+    assert '<div class="prompt-body"><pre class="code-block">' in front_html
+    assert '<pre class="code-block">' not in anki_build.render_back(card)
 
 
-def test_answer_label_present_only_for_the_three_documented_types(vocabulary: dict) -> None:
-    assert anki_build.card_label(vocabulary, "coding") == "Кістяк розв'язання"
-    assert anki_build.card_label(vocabulary, "system-design") == "Кістяк архітектури"
-    assert anki_build.card_label(vocabulary, "behavioral") == "Каркас відповіді"
-    assert anki_build.card_label(vocabulary, "concept") is None
-    assert anki_build.card_label(vocabulary, "mechanism") is None
+def test_tags_carry_only_the_topic_and_the_qid(payload: dict) -> None:
+    question = payload["questions"][0]
+    assert anki_build.build_tags(question) == [
+        f"topic::{question['track']}::{question['section']}",
+        f"qid::{question['id']}",
+    ]
 
 
 def test_back_strips_citation_tokens_and_keeps_warn_span(payload: dict, vocabulary: dict) -> None:
     by_id = {question["id"]: question for question in payload["questions"]}
-    question = by_id["db-orm-0001"]
+    question = by_id["emb-align-0004"]
     card = question["languages"]["uk"]["card"]
-    back_html = anki_build.render_back(vocabulary, question, card)
+    back_html = anki_build.render_back(card)
     assert "[^" not in back_html
     assert '<span class="warn">' in back_html
 
 
 def test_sources_field_is_one_link_per_source(payload: dict) -> None:
     by_id = {question["id"]: question for question in payload["questions"]}
-    sources = by_id["cpp-ptrref-0001"]["languages"]["uk"]["sources"]
+    sources = by_id["py-async-0012"]["languages"]["uk"]["sources"]
     rendered = anki_build.render_sources_field(sources)
     assert rendered.count("<a href=") == len(sources)
     for source in sources:

@@ -197,17 +197,6 @@ def test_raw_citation_token_fails(repo: Path, capsys: pytest.CaptureFixture[str]
     assert "raw citation token" in out
 
 
-def test_generated_from_frontmatter_placeholder_fails(repo: Path, capsys: pytest.CaptureFixture[str]) -> None:
-    target = repo / "site" / "dist" / "en" / "q" / "py-gil-9000" / "sample-question" / "index.html"
-    target.write_text(
-        target.read_text(encoding="utf-8").replace("More text.", "<!-- generated from frontmatter -->"),
-        encoding="utf-8",
-    )
-    exit_code, out = _run_capture(repo, capsys)
-    assert exit_code == 1
-    assert "Sources placeholder" in out
-
-
 def test_english_heading_on_uk_page_fails(repo: Path, capsys: pytest.CaptureFixture[str]) -> None:
     target = repo / "site" / "dist" / "uk" / "q" / "py-gil-9000" / "sample-question" / "index.html"
     target.write_text(

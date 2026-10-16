@@ -1,41 +1,18 @@
 ---
 id: emb-build-0007
 title: "В чому полягає різниця між merge та rebase?"
-description: "git merge зберігає розгалужену історію через merge commit, а git rebase переносить commits на нову базу і робить історію лінійною, переписуючи хеші."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: comparison
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-    accessed: 2026-09-06
-    kind: official
-    version: "latest"
-    applicability: "Авторитетне джерело рівня секції для понять розділу toolchain-and-build; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -70,8 +47,7 @@ $ git merge feature  # fast-forward merge
 
 Rebase зручний для очищення локальної історії перед merge: можна об'єднати commit-и (`squash`), змінити порядок, відредагувати повідомлення через `git rebase -i` (interactive rebase).
 
-
-## Comparison
+### Порівняння
 
 | Критерій | git merge | git rebase |
 |---|---|---|
@@ -81,7 +57,7 @@ Rebase зручний для очищення локальної історії 
 | Вирішення конфліктів | Один раз при merge | Потрібно для кожного commit окремо |
 | Відкат | Легко (`git revert merge-commit`) | Складніше (потрібно знати старі hash-и) |
 
-## When to choose which
+### Коли що обирати
 
 **Обирайте merge**, коли:
 - Гілка опублікована і використовується іншими розробниками
@@ -95,8 +71,3 @@ Rebase зручний для очищення локальної історії 
 - Готуєте commit-и до code review (кожен commit – логічна зміна)
 
 **Золоте правило**: ніколи не робіть rebase опублікованих гілок, які використовують інші люди. Rebase переписує історію, і якщо хтось вже pull-ив старі commit-и, виникнуть конфлікти при наступному push.
-
-
-## Sources
-
-<!-- generated from frontmatter -->

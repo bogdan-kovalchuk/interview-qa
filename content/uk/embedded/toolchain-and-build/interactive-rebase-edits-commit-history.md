@@ -1,34 +1,15 @@
 ---
 id: emb-build-0003
 title: "Що таке інтерактивний rebase?"
-description: "git rebase -i відкриває список commits перед обраною базою, дозволяючи pick, reword, squash, edit чи drop кожен commit, переписуючи історію."
 track: embedded
 section: toolchain-and-build
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-09-08
-content_revision: 4
-reconciled_with:
-  en: 4
-anki:
-  export: true
 sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження цього питання й відповіді; текст відповіді не перевірений незалежно від оригінальної Anki-колоди спільноти."
   - source_id: git-scm-doc
     title: "Git documentation"
-    url: "https://git-scm.com/doc"
-    accessed: 2026-09-08
-    kind: official
-    version: "current"
-    applicability: "Official Git reference for version control concepts; specific workflows may vary by Git version."
+    url: https://git-scm.com/doc
 ---
 
 ## Short answer
@@ -80,7 +61,3 @@ Interactive rebase корисний для:
 Якщо потрібно оновити remote після rebase, використовуйте `git push --force-with-lease` (безпечніший варіант ніж `--force`, бо перевіряє, що remote гілка не змінилася).
 
 Для скасування rebase можна використати `git reflog` для знаходження попереднього HEAD та `git reset --hard HEAD@{N}` для відкату.
-
-## Sources
-
-<!-- generated from frontmatter -->

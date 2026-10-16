@@ -1,34 +1,15 @@
 ---
 id: emb-dtypes-0091
 title: "Trap: що відбудеться за стандартом C? `int x = INT_MAX; x++;`"
-description: "Переповнення signed int за INT_MAX - undefined behavior, а не гарантований wraparound до INT_MIN."
 track: embedded
 section: data-types-and-memory-layout
-level: middle
-type: pitfall
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 4
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; це джерело не є доказом тверджень."
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N1570"
-    applicability: "Авторитетне джерело рівня секції для понять розділу data-types-and-memory-layout; деталі конкретних пристроїв і тулчейнів можуть відрізнятися."
 ---
 
 ## Short answer
@@ -46,23 +27,3 @@ sources:
 Значення `INT_MAX` береться з `<limits.h>` і залежить від реалізації; не припускайте, що `int` завжди має 32 біти лише тому, що MCU має 32-бітні регістри. Операція `x++` спершу обчислює значення типу `int`, і саме неможливість представити результат створює проблему. Перевірка `x < INT_MAX` перед інкрементом безпечна, якщо між перевіркою та зміною ніхто не змінює `x`; для спільного стану окремо потрібна синхронізація.[^iso-c-n1570]
 
 **Типова помилка:** перевіряти `x + 1 > x` як спосіб виявлення переповнення. Сам вираз `x + 1` може вже мати undefined behavior; порівняйте `x` з `INT_MAX` до операції або використайте перевірену функцію арифметики конкретної платформи.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

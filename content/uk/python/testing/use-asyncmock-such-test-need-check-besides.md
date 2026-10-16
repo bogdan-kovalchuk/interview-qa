@@ -1,55 +1,24 @@
 ---
 id: py-testing-0014
 title: "Коли використати `AsyncMock` і що в такому тесті треба перевіряти окрім call arguments?"
-description: "AsyncMock потрібен для підміни async-функцій, бо повертає awaitable і коректно працює з await; окрім аргументів треба перевіряти, що mock було саме await-нуто."
 track: python
 section: testing
-level: middle
-type: practical
-tags: [asyncmock]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-unittest
     title: "Python 3.14: Library/unittest"
     url: https://docs.python.org/3.14/library/unittest.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-unittest-mock
     title: "Python 3.14: Library/unittest.mock"
     url: https://docs.python.org/3.14/library/unittest.mock.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: pytest-docs
     title: "pytest documentation"
     url: https://docs.pytest.org/en/stable/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація pytest."
   - source_id: hypothesis-docs
     title: "Hypothesis documentation"
     url: https://hypothesis.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація Hypothesis (property-based testing)."
   - source_id: mutmut-docs
     title: "mutmut documentation"
     url: https://mutmut.readthedocs.io/en/latest/
-    accessed: 2026-09-04
-    kind: official
-    version: null
-    applicability: "Офіційна документація mutmut (mutation testing)."
 ---
 
 ## Short answer
@@ -97,23 +66,3 @@ def test_fixed_checks_await() -> None:
 - перевіряти лише `assert_called_with`, бо він проходить і без `await`;
 - підставити `MagicMock` замість `AsyncMock`: `await` на результаті `MagicMock` кидає `TypeError` (текст повідомлення залежить від версії Python);
 - обмежитися `assert_awaited()` без аргументів і кількості викликів, коли потрібні точні значення.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0054
 title: "Навіщо переходити від часової області до частотної при аналізі AC-кіл?"
-description: "Навіщо переходити від часової області до частотної при аналізі AC-кіл?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 41, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-frequency-domain
     title: "All About Circuits: Learning to Live in the Frequency Domain"
     url: https://www.allaboutcircuits.com/textbook/radio-frequency-analysis-design/rf-principles-components/learning-to-live-in-the-frequency-domain/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Пояснює подання сигналів спектром і переваги частотного аналізу для частотної поведінки та RF; не доводить, що цей метод замінює аналіз перехідних процесів."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
 ---
 
 ## Short answer
@@ -63,7 +36,3 @@ sources:
 
 - Вважати, що частотна область просто «краща» для будь-якого кола. Вибір залежить від сигналу та шуканої властивості.
 - Приписувати один імпеданс компоненту незалежно від частоти: `X_L` зростає з частотою, а `X_C` зменшується в межах ідеальної моделі. [^aac-alternating-current]
-
-## Sources
-
-<!-- generated from frontmatter -->

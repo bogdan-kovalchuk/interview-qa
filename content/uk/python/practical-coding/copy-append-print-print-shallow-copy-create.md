@@ -1,41 +1,18 @@
 ---
 id: py-prac-0003
 title: "Що надрукує `a = [[1]]; b = a.copy(); b[0].append(2); print(a)` і як shallow copy створює цей aliasing bug?"
-description: "Надрукує [[1, 2]] – a теж бачить зміну."
 track: python
 section: practical-coding
-level: middle
-type: pitfall
-tags: [a-1-b-a-copy-b-0-append-2-print-a]
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-tutorial
     title: "Python 3.14: Tutorial"
     url: https://docs.python.org/3.14/tutorial/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-reference
     title: "Python 3.14: Reference"
     url: https://docs.python.org/3.14/reference/
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-10-13
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14, модуль copy: присвоєння не копіює об’єкт; list.copy() і copy.copy() створюють shallow copy, яка вставляє посилання на елементи оригіналу; copy.deepcopy() копіює вкладені об’єкти рекурсивно."
 ---
 
 ## Short answer
@@ -78,23 +55,3 @@ print(c)  # [[1, 2]]
 - вважати, що `list.copy()` робить повну копію вкладених структур;
 - змінити вкладений елемент однієї копії і очікувати, що інша не зміниться;
 - використовувати `copy.deepcopy()` завжди, навіть коли дані мали бути спільними.
-
-## Symptom
-
-TODO
-
-## Why it happens
-
-TODO
-
-## How to avoid
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

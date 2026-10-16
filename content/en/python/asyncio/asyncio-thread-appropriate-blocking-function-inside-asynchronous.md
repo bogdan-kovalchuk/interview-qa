@@ -1,41 +1,18 @@
 ---
 id: py-async-0019
 title: "When is `asyncio.to_thread()` appropriate for a blocking function inside an asynchronous application?"
-description: "When is `asyncio.to_thread()` appropriate for a blocking function inside an asynchronous application?"
 track: python
 section: asyncio
-level: middle
-type: practical
-tags: [asyncio-to-thread]
-status: published
-updated: 2026-09-05
-content_revision: 2
-reconciled_with:
-  uk: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-asyncio-task
     title: "Python 3.14: Library/asyncio Task"
     url: https://docs.python.org/3.14/library/asyncio-task.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-eventloop
     title: "Python 3.14: Library/asyncio Eventloop"
     url: https://docs.python.org/3.14/library/asyncio-eventloop.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
   - source_id: py314-library-asyncio-dev
     title: "Python 3.14: Library/asyncio Dev"
     url: https://docs.python.org/3.14/library/asyncio-dev.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Official Python 3.14 documentation."
 ---
 
 ## Short answer
@@ -69,23 +46,3 @@ released between bytecode instructions enough to give real parallelism, so such 
 competes with the main thread for the GIL and even adds context-switch overhead. In that case a
 separate process is needed, via `ProcessPoolExecutor`, where each worker has its own interpreter and
 its own GIL.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->

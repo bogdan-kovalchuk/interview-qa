@@ -1,48 +1,21 @@
 ---
 id: emb-elee-0059
 title: "Як застосовують закон Ома і правила з’єднань у AC-колах?"
-description: "Як застосовують закон Ома і правила з’єднань у AC-колах?"
 track: electronics
 section: ee101
-level: junior
-type: concept
-tags: []
-status: published
-updated: 2026-10-04
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: udemy-electronics-course
     title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-    accessed: 2026-09-27
-    kind: community
-    version: null
-    applicability: "Походження питання: лекція 41, курс Udemy; оригінальна картка збережена в imports. Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-04; курс не є доказом цих тверджень."
   - source_id: aac-alternating-current
     title: "All About Circuits textbook, Volume II: AC"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: AC-кола, реактивний опір, фазори, імпеданс, фільтри й трансформатори; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
-    accessed: 2026-09-27
-    kind: book
-    version: null
-    applicability: "Авторитетне джерело рівня секції: діоди, стабілітрони, біполярні й польові транзистори та джерела живлення; конкретні номінали й схеми курсу можуть відрізнятися."
   - source_id: aac-ac-series-parallel-laws
     title: "All About Circuits: Series-parallel R, L, and C"
     url: https://www.allaboutcircuits.com/textbook/alternating-current/chpt-5/series-parallel-r-l-and-c/
-    accessed: 2026-10-04
-    kind: book
-    version: null
-    applicability: "Закон Ома для AC і послідовне та паралельне зведення комплексних імпедансів на спільній частоті."
 ---
 
 ## Short answer
@@ -64,7 +37,3 @@ sources:
 - Зводити імпеданси за їх модулями як звичайні опори.
 - Змішувати фазори різних частот в одному простому зведенні.
 - Застосовувати послідовну формулу до паралельної топології або навпаки.[^aac-ac-series-parallel-laws]
-
-## Sources
-
-<!-- generated from frontmatter -->

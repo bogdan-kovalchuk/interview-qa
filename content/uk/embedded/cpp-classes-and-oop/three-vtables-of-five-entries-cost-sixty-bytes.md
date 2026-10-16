@@ -1,48 +1,21 @@
 ---
 id: emb-cppoop-0014
 title: "Порахуй спрощену вартість: 3 класи, по 5 virtual-методів. Скільки ROM на vtables?"
-description: "Оцінка лише для entries: 60 байт ROM (read-only memory), тобто 3 vtables × 5 entries × 4 байти на 32-bit target; реальна vtable більша через службові слоти ABI."
 track: embedded
 section: cpp-classes-and-oop
-level: junior
-type: mechanism
-tags: []
-status: published
-updated: 2026-10-06
-content_revision: 2
-reconciled_with:
-  en: 3
-anki:
-  export: true
 sources:
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/
-    accessed: 2026-09-06
-    kind: community
-    version: null
-    applicability: "Походження питання й первинної відповіді (власна колода). Коротку відповідь і пояснення звірено з технічними джерелами 2026-10-06; це джерело не є доказом тверджень."
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
-    accessed: 2026-09-06
-    kind: spec
-    version: "N4861"
-    applicability: "Авторитетне джерело рівня секції для згаданих правил мови C++; freestanding і вендорські тулчейни можуть відрізнятися."
   - source_id: itanium-cxx-abi
     title: "Itanium C++ ABI"
     url: https://itanium-cxx-abi.github.io/cxx-abi/abi.html
-    accessed: 2026-10-06
-    kind: spec
-    version: null
-    applicability: "У розділах 2.4 і 2.5 описує vtable як послідовність offset-ів і function pointer-ів із розміром та вирівнюванням pointer-а, обов’язкові слоти offset-to-top і typeinfo pointer, entry на кожну virtual-функцію, пару entries для virtual destructor і vptr на offset 0 dynamic class без primary base. Це ABI, а не стандарт мови; конкретний розмір pointer-а задає платформа."
   - source_id: arm-cpp-abi
     title: "C++ ABI for the Arm Architecture (CPPABI32)"
     url: https://raw.githubusercontent.com/ARM-software/abi-aa/main/cppabi32/cppabi32.rst
-    accessed: 2026-10-06
-    kind: spec
-    version: null
-    applicability: "Називає generic (Itanium) C++ ABI базовим стандартом для Arm; у зведенні відмінностей від нього layout vtable (розділ 2.5) не згадано, тож для Arm відхилень у layout vtable там не заявлено. Не визначає, де лінкер розміщує vtable."
 ---
 
 ## Short answer
@@ -76,7 +49,3 @@ constexpr unsigned vptr_ram     = 100 * p;                      // 400
 - Називати 60 байт повним розміром vtables і забувати про offset-to-top, typeinfo pointer і destructor entries.
 - Множити розмір vtable на кількість об’єктів, а не на кількість класів.
 - Вважати, що кожен новий virtual-метод збільшує RAM кожного об’єкта: росте ROM таблиць, а об’єкт лишається з одним vptr.
-
-## Sources
-
-<!-- generated from frontmatter -->

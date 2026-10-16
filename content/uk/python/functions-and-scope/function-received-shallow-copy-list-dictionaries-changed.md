@@ -1,34 +1,15 @@
 ---
 id: py-funcs-0011
 title: "Функція отримала shallow copy списку словників і змінила значення у вкладеному словнику. Чому зміна може бути видима викликачу, хоча зовнішній список скопійовано?"
-description: "copy.copy (shallow copy) створює новий зовнішній список, але вставляє в нього посилання на ті самі вкладені об’єкти, що й в оригіналі."
 track: python
 section: functions-and-scope
-level: senior
-type: practical
-tags: []
-status: published
-updated: 2026-10-13
-content_revision: 2
-reconciled_with:
-  en: 2
-anki:
-  export: true
 sources:
   - source_id: py314-library-copy
     title: "Python 3.14: Library/copy"
     url: https://docs.python.org/3.14/library/copy.html
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
   - source_id: py314-faq-programming-why-did-changing-list-y-also-change-li
     title: "Python 3.14: Faq/programming"
     url: https://docs.python.org/3.14/faq/programming.html#why-did-changing-list-y-also-change-list-x
-    accessed: 2026-09-04
-    kind: official
-    version: "3.14"
-    applicability: "Офіційна документація Python 3.14."
 ---
 
 ## Short answer
@@ -68,23 +49,3 @@ print(original[0]['value'])          # 99: the deep copy did not share the dict
 - вважати, що `copy.copy` рекурсивно копіює всі рівні вкладеності;
 - вважати, що `x[:]` або `list.copy()` дають глибоку копію: вони теж створюють shallow copy;[^py314-library-copy]
 - завжди використовувати `copy.deepcopy`, навіть коли спільний вкладений об’єкт є свідомим рішенням.
-
-## Environment
-
-TODO
-
-## Deliverable
-
-TODO
-
-## Acceptance criteria
-
-TODO
-
-## Evaluation guide
-
-TODO
-
-## Sources
-
-<!-- generated from frontmatter -->
