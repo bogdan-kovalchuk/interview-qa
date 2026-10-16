@@ -4,8 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node ./scripts/build.mjs",
-    "scale-spike": "node ./scripts/scale-spike.mjs"
+    "build": "node ./scripts/build.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "0.35.2",

@@ -2,7 +2,6 @@
 /dist/
 /site/dist/
 /site/.astro/
-/site/.scale-spike-*/
 
 # built Anki packages - binaries, published as GitHub Release assets, never committed
 /anki/dist/
@@ -21,9 +20,6 @@ __pycache__/
 .venv/
 *.egg-info/
 
-# local review runs are temporary; accepted findings live in meta/review-backlog.md
-/.audit-run-*/
-
 # editors
 .idea/
 .vscode/
@@ -37,12 +33,6 @@ __pycache__/
 Thumbs.db
 desktop.ini
 .DS_Store
-
-# spike run artifacts
-/anki/spike/.tag-refresh-run-*/
-/anki/spike/.tag-refresh-inspect.anki2
-/anki/spike/.tag-refresh-venv/
-/anki/spike/.tag-refresh-inspect.media/
 
 # generated mirror for the site
 /site/src/content/docs/
