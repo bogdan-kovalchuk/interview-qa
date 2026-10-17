@@ -1,46 +1,57 @@
 # Interview Questions and Answers
 
-A bilingual (English / Ukrainian) knowledge base of technical interview questions with in-depth
-answers, covering **Python**, **C/C++**, and specialization tracks such as **Embedded**,
-**Data Science**, **Machine Learning**, **Backend**, **DevOps** and **QA Automation**.
+A bilingual (English / Ukrainian) set of technical interview questions in three tracks:
+**Python**, **Embedded** and **Electronics**.
 
-**One question = one file = one page = one flashcard.** The same file becomes a page on the site, a
-card in an Anki deck that links back to that page, and an entry in one or more role-based study
-programs. A fix made once is a fix everywhere.
+Every question is exactly three things in both languages: **the question, a short answer and a
+detailed answer**. One question = one file = one page = one flashcard: the same file becomes a page
+on the site and a card in an Anki deck that links back to that page.
 
 - Site: `https://bogdan-kovalchuk.github.io/interview-qa/`
 - Question permalink: `…/interview-qa/{lang}/q/{id}/` – stable forever, taxonomy-independent
 
-> **Work in progress, by design.** Every question exists in both languages from the day it is
-> created, with unwritten sections marked `TODO`, and is filled in over time. An unwritten section
-> is not rendered on the page at all: on 224 of the pages that existed at the time it produced four
-> or more identical "not written yet" notices, so the gaps are reported as data instead.
->
-> **Current state:** 2089 questions in both languages, 2089 shipping as Ukrainian flashcards and
-> 1278 as English ones, and the site is live at the link above. Every question has a Ukrainian short
-> answer and 1278 have an English one; 462 also carry a written detailed explanation in both
-> languages, among them all 377 Python questions. A further 1075 embedded and electronics questions
-> have a checked Ukrainian answer with a Ukrainian detailed explanation, so 1537 Ukrainian files
-> carry one. For the rest, the detailed explanation is still `TODO`. The
-> localized `/status/` page reports those gaps by language, track, section, and question type from
-> `dist/export/progress.json`.
+**Current state:** 2047 questions in both languages. Every question has a Ukrainian short answer,
+1239 have an English one, and those are the cards that ship (2047 Ukrainian, 1239 English).
+Detailed answers are written for 1498 Ukrainian and 423 English files, including all 363 Python
+questions in both languages. An unwritten section is marked `TODO` in the source and is not shown on
+the page.
 
-The [coverage snapshot](meta/status.md) lists every track's Ukrainian and English cards,
-detailed explanations, complete questions and remaining gaps, with the latest verification scope.
+## A question
+
+```markdown
+---
+id: py-async-0012
+title: "How does `asyncio.gather()` preserve the order of results?"
+track: python
+section: asyncio
+sources:                          # optional
+  - source_id: py314-asyncio-task
+    title: "Python 3.14: asyncio Tasks"
+    url: https://docs.python.org/3.14/library/asyncio-task.html
+---
+
+## Short answer
+
+Two to five sentences – this is the back of the card.
+
+## Detailed explanation
+
+As long as it needs to be – this is the page.
+```
+
+An optional `## Question code` section before the short answer holds a code snippet the question is
+about; it goes on the front of the card. The full contract is `meta/questions.md`.
 
 ## How it works
 
 ```
-content/{en,uk}/{track}/**/*.md      plain Markdown + YAML frontmatter, no generator lock-in
-        │
-        ├─ tools/   →  site/         generated mirror → Astro Starlight → GitHub Pages
-        ├─ tools/   →  dist/export/  questions.json, progress table
-        └─ anki/                    .apkg decks, one per study direction
+content/{en,uk}/{track}/**/*.md     plain Markdown + YAML frontmatter
+  tools/iqa  ->  site/              generated mirror -> Astro Starlight -> GitHub Pages
+  tools/iqa  ->  dist/export/       questions.json -> Anki .apkg decks
 ```
 
-Links inside content are written as `qid:<id>` tokens, never as URLs – the site, the JSON export and
-the Anki card each materialise their own form. That is why a card printed in 2026 still resolves
-after the taxonomy is reorganised.
+Links inside content are written as `qid:<id>` tokens, never as URLs – the site and the Anki card
+each materialise their own form.
 
 Cards are updated, not replaced: note GUIDs are derived deterministically from the question id, so
 re-importing a rebuilt deck edits the existing note and **keeps your review schedule**. This was
@@ -52,34 +63,28 @@ measured on real collections, not assumed – see `meta/measurements.md`.
 |---|---|
 | `content/` | the questions, in both languages |
 | `meta/` | the specification, decisions and measurements (Ukrainian) |
-| `anki/` | note type, fonts, measurement harness (the deck builder is `tools/iqa/anki.py`) |
+| `anki/` | note type and fonts (the deck builder is `tools/iqa/anki.py`) |
 | `site/` | Astro Starlight – the only Node part |
 | `tools/` | the Python pipeline |
-| `tests/` | automated quality gates and regression tests |
-| `imports/` | source material of imported decks, kept as evidence; not a build input |
+| `tests/` | quality gates and regression tests |
 | `requirements/` | reproducible Python dependency lock |
-| `meta/plan.md` | what happens next |
 
-## Stack
+## Commands
 
-Plain Markdown + YAML for content, Astro Starlight for the site (built-in i18n, Pagefind search),
-Python for validation, export and reports, `genanki` for the decks, GitHub Pages via Actions for
-hosting.
+```
+python -m iqa validate                  content and language-parity gates
+python -m iqa export                    dist/export/questions.json
+python -m iqa deck --language {uk,en}   the .apkg, from the export
+python -m iqa build                     validate -> export -> mirror -> astro build -> verify
+python -m pytest --basetemp=<dir>
+```
 
 ## Licence
 
 [MIT](LICENSE) – code and content alike.
 
-Community sources are treated as all-rights-reserved, since they carry no licence of their own, and
-they are used in two different ways. The Python material uses them only to find questions worth
-asking; its wording is written for this project. The `embedded/` track is different: 853 of its
-questions were imported from the owner's own two decks; at import their Ukrainian short answers kept
-the source's wording, normalised rather than rewritten, and their English short answers are
-translations of that same wording. Since then 450 of them have been checked against technical
-sources and corrected where wrong, together with their English answers. Another 828 are the owner's
-flashcards for the Udemy course *Crash Course Electronics and PCB Design* (course sections 2–8, the
-`electronics/` track), initially moved as is. The first 20 introduction questions now have
-independently revised answers and detailed explanations in both languages, and 515 more have checked
-Ukrainian answers with Ukrainian explanations; the other 808 English files carry only translated
-titles. Every such question names its origin in `sources`, and `meta/questions.md` records
-which is which.
+The Python material uses community sources only to find questions worth asking; its wording is
+written for this project. The `embedded/` questions were imported from the owner's own two decks,
+and the `electronics/` questions are the owner's flashcards for the Udemy course *Crash Course
+Electronics and PCB Design*; their answers started from the owner's card wording and have since been
+checked against technical sources and corrected where wrong.
