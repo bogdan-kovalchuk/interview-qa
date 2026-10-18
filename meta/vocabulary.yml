@@ -16,33 +16,27 @@ track_labels:
   python:        {en: Python,          uk: Python}
 
 section_labels_nav:
+  embedded/fundamentals: {en: "Fundamentals", uk: "Основи"}
   embedded/data-types-and-memory-layout: {en: "Data types and memory layout", uk: "Типи даних і розкладка пам'яті"}
   embedded/pointers-and-arrays: {en: "Pointers, arrays and pointer arithmetic", uk: "Вказівники, масиви й адресна арифметика"}
-  embedded/structs-unions-and-bitfields: {en: "Structs, unions and bitfields", uk: "Структури, об'єднання й бітові поля"}
   embedded/volatile-and-const: {en: "Volatile and const", uk: "Volatile і const"}
-  embedded/function-pointers-and-callbacks: {en: "Function pointers and callbacks", uk: "Вказівники на функції й callbacks"}
-  embedded/inline-and-macros: {en: "Inline and macros", uk: "Inline і макроси"}
-  embedded/memory-alignment-and-endianness: {en: "Memory alignment and endianness", uk: "Вирівнювання пам'яті й порядок байтів"}
-  embedded/common-code-patterns: {en: "Common code patterns", uk: "Типові патерни коду"}
   embedded/cpp-classes-and-oop: {en: "C++ classes and OOP", uk: "Класи C++ і ООП"}
+  embedded/structs-unions-and-bitfields: {en: "Structs, unions and bitfields", uk: "Структури, об'єднання й бітові поля"}
+  embedded/cpp-embedded-constraints-and-stl: {en: "C++ embedded constraints and STL", uk: "Обмеження C++ у вбудованих системах і STL"}
+  embedded/common-code-patterns: {en: "Common code patterns", uk: "Типові патерни коду"}
+  embedded/function-pointers-and-callbacks: {en: "Function pointers and callbacks", uk: "Вказівники на функції й callbacks"}
+  embedded/memory-alignment-and-endianness: {en: "Memory alignment and endianness", uk: "Вирівнювання пам'яті й порядок байтів"}
   embedded/raii-and-smart-pointers: {en: "RAII and smart pointers", uk: "RAII і smart pointers"}
   embedded/templates-and-constexpr: {en: "Templates and constexpr", uk: "Шаблони і constexpr"}
-  embedded/cpp-embedded-constraints-and-stl: {en: "C++ embedded constraints and STL", uk: "Обмеження C++ у вбудованих системах і STL"}
-  embedded/fundamentals:          {en: "Fundamentals", uk: "Основи"}
-  embedded/toolchain-and-build:   {en: "Toolchain and build", uk: "Тулчейн і збірка"}
-  embedded/c-in-embedded:         {en: "C in embedded", uk: "C у вбудованих системах"}
-  embedded/cpp-in-embedded:       {en: "C++ in embedded", uk: "C++ у вбудованих системах"}
-  embedded/memory-and-linker:     {en: "Memory and linker", uk: "Пам'ять і лінкер"}
+  embedded/inline-and-macros: {en: "Inline and macros", uk: "Inline і макроси"}
+  embedded/toolchain-and-build: {en: "Toolchain, build and linking", uk: "Тулчейн, збірка й лінкування"}
   embedded/interrupts-and-timing: {en: "Interrupts and timing", uk: "Переривання і час"}
   embedded/peripherals-and-buses: {en: "Peripherals and buses", uk: "Периферія і шини"}
-  embedded/rtos:                  {en: "RTOS", uk: "RTOS"}
-  embedded/power-management:      {en: "Power management", uk: "Керування живленням"}
-  embedded/bootloaders-and-ota:   {en: "Bootloaders and OTA", uk: "Завантажники і OTA"}
-  embedded/debugging-and-tracing: {en: "Debugging and tracing", uk: "Налагодження і трасування"}
-  embedded/testing-embedded:      {en: "Testing embedded", uk: "Тестування вбудованих систем"}
-  embedded/safety-and-standards:  {en: "Safety and standards", uk: "Безпека і стандарти"}
-  embedded/connectivity:          {en: "Connectivity", uk: "Зв'язок"}
-  embedded/hardware-basics:       {en: "Hardware basics", uk: "Основи апаратури"}
+  embedded/hardware-and-power: {en: "Hardware and power", uk: "Апаратура і живлення"}
+  embedded/rtos-and-operating-systems: {en: "RTOS, operating systems and Linux", uk: "RTOS, ОС і Linux"}
+  embedded/connectivity: {en: "Protocols and wireless", uk: "Протоколи й бездротовий зв'язок"}
+  embedded/debugging-and-testing: {en: "Debugging and testing", uk: "Налагодження й тестування"}
+  embedded/safety-security-and-reliability: {en: "Safety, security and updates", uk: "Безпека, надійність і оновлення"}
   electronics/introduction:          {en: "Introduction to electronics", uk: "Вступ до електроніки"}
   electronics/circuit-analysis:      {en: "Circuit analysis",             uk: "Аналіз кіл"}
   electronics/ee101:                 {en: "Electrical engineering 101",   uk: "Electrical Engineering 101"}
@@ -70,11 +64,6 @@ section_labels_nav:
   python/standard-library:              {en: Standard library,              uk: Стандартна бібліотека}
   python/testing:                       {en: Testing,                       uk: Тестування}
   python/performance:                   {en: Performance,                   uk: Продуктивність}
-  python/strings-and-text:              {en: Strings and text,              uk: Рядки і текст}
-  python/typing-and-annotations:        {en: Typing and annotations,        uk: Типізація і анотації}
-  python/packaging-and-environments:    {en: Packaging and environments,    uk: Пакування і середовища}
-  python/frameworks:                    {en: Frameworks,                    uk: Фреймворки}
-  embedded/linux-embedded:              {en: Linux embedded,                uk: Linux у вбудованих системах}
 
 # Видимі підписи головної сторінки та індексів треку/секції.
 site_labels:
@@ -90,33 +79,27 @@ site_labels:
 
 # Префікс секції для схеми ID. Належить секції, а не питанню; фіксується один раз.
 section_prefixes:
+  embedded/fundamentals: fund
   embedded/data-types-and-memory-layout: dtypes
   embedded/pointers-and-arrays: ptrarr
-  embedded/structs-unions-and-bitfields: structs
   embedded/volatile-and-const: volconst
-  embedded/function-pointers-and-callbacks: fnptr
-  embedded/inline-and-macros: macros
-  embedded/memory-alignment-and-endianness: align
-  embedded/common-code-patterns: patterns
   embedded/cpp-classes-and-oop: cppoop
+  embedded/structs-unions-and-bitfields: structs
+  embedded/cpp-embedded-constraints-and-stl: cppstl
+  embedded/common-code-patterns: patterns
+  embedded/function-pointers-and-callbacks: fnptr
+  embedded/memory-alignment-and-endianness: align
   embedded/raii-and-smart-pointers: raii
   embedded/templates-and-constexpr: tmplcx
-  embedded/cpp-embedded-constraints-and-stl: cppstl
-  embedded/fundamentals:          fund
-  embedded/toolchain-and-build:   build
-  embedded/c-in-embedded:         cemb
-  embedded/cpp-in-embedded:       cppemb
-  embedded/memory-and-linker:     memlink
+  embedded/inline-and-macros: macros
+  embedded/toolchain-and-build: build
   embedded/interrupts-and-timing: irq
   embedded/peripherals-and-buses: periph
-  embedded/rtos:                  rtos
-  embedded/power-management:      power
-  embedded/bootloaders-and-ota:   boot
-  embedded/debugging-and-tracing: debug
-  embedded/testing-embedded:      testemb
-  embedded/safety-and-standards:  safety
-  embedded/connectivity:          conn
-  embedded/hardware-basics:       hwbasic
+  embedded/hardware-and-power: hwpower
+  embedded/rtos-and-operating-systems: rtos
+  embedded/connectivity: conn
+  embedded/debugging-and-testing: debug
+  embedded/safety-security-and-reliability: safety
   electronics/introduction:          elintro
   electronics/circuit-analysis:      elcirc
   electronics/ee101:                 elee
@@ -144,16 +127,30 @@ section_prefixes:
   python/standard-library:              stdlib
   python/testing:                       testing
   python/performance:                   perf
-  python/strings-and-text:              strtxt
-  python/typing-and-annotations:        typing
-  python/packaging-and-environments:    pkgenv
-  python/frameworks:                    framew
-  embedded/linux-embedded:              linemb
 
 # Історичні префікси вже виданих ID. Нові ID беруть префікс лише з
 # `section_prefixes`; alias існує тому, що виданий ID не можна перейменувати.
 section_prefix_aliases:
-  embedded/c-in-embedded: [cppfound]
+  embedded/fundamentals: [dtypes, hwbasic, memlink]
+  embedded/data-types-and-memory-layout: [cemb, memlink]
+  embedded/pointers-and-arrays: [cemb, cppfound]
+  embedded/volatile-and-const: [cemb]
+  embedded/cpp-classes-and-oop: [cemb]
+  embedded/structs-unions-and-bitfields: [cemb, dtypes]
+  embedded/cpp-embedded-constraints-and-stl: [cemb, cppemb]
+  embedded/common-code-patterns: [cemb, fund]
+  embedded/memory-alignment-and-endianness: [cemb, dtypes]
+  embedded/inline-and-macros: [cemb]
+  embedded/toolchain-and-build: [cemb, dtypes, memlink]
+  embedded/interrupts-and-timing: [dtypes]
+  embedded/hardware-and-power: [debug, hwbasic, power]
+  embedded/rtos-and-operating-systems: [boot, dtypes, fund, linemb]
+  embedded/connectivity: [fund]
+  embedded/debugging-and-testing: [build, testemb]
+  embedded/safety-security-and-reliability: [boot, irq]
+  python/modules-and-imports: [pkgenv]
+  python/objects-and-types: [strtxt, typing]
+  python/oop-and-data-model: [framew]
 
 # Термінологія перекладу. Ворота lang-glossary звіряють вжиті форми з цим списком.
 glossary:

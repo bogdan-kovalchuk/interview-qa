@@ -1,0 +1,23 @@
+---
+id: emb-fund-0007
+title: "Що таке алгоритми сортування та які знаєте?"
+track: embedded
+section: common-code-patterns
+sources:
+  - source_id: dou-embedded-interview
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
+    url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+  - source_id: zephyr-introduction
+    title: "Zephyr Project documentation: Introduction"
+    url: https://docs.zephyrproject.org/latest/introduction/index.html
+---
+
+## Short answer
+
+Алгоритм сортування впорядковує елементи за ключем: за зростанням, спаданням або власним компаратором[^dou-embedded-interview]; важливі характеристики - складність за часом, додаткова пам'ять, стабільність і поведінка на майже відсортованих даних.
+
+`bubble sort` і `insertion sort` прості, але зазвичай O(n²), причому insertion sort хороший для малих масивів. `merge sort` стабільний і O(n log n), але потребує пам'яті; `quick sort` швидкий на практиці, середньо O(n log n), але worst case O(n²); `heap sort` має O(n log n) і працює in-place.
+
+## Detailed explanation
+
+TODO

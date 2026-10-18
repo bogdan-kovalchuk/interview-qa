@@ -19,16 +19,13 @@ python/
   syntax-and-control-flow/
   objects-and-types/            id, type, mutability, truthiness
   collections/                  list, tuple, dict, set, deque, namedtuple
-  strings-and-text/             encoding, str vs bytes, f-strings, normalization
   functions-and-scope/          аргументи, замикання, LEGB
   oop-and-data-model/           dunder, MRO, descriptors, dataclasses, slots
-  typing-and-annotations/       typing, Protocol, Generic, mypy/pyright
   decorators/
   iterators-and-generators/
   context-managers/
   exceptions/
   modules-and-imports/          import system, packages, циклічні імпорти
-  packaging-and-environments/   venv, pip, uv, pyproject, wheels, версіонування
   files-and-io/
   comprehensions-and-functional/
   cpython-internals/            refcount, GC, memory arenas, інтернування
@@ -38,45 +35,35 @@ python/
   testing/                      pytest, fixtures, mocks, parametrize
   performance/                  профілювання, оптимізація, C-розширення
   practical-coding/             задачі «напиши код» на інтерв'ю
-  frameworks/                   Python-специфічні бібліотеки (pydantic тощо)
 ```
 
 ## `embedded/`
 
 ```
 embedded/
-  # Phase 1: C/C++ Foundations - структура джерела Embedded Interview Lab,
-  # збережена один в один. Порядок тут - порядок навчання.
-  data-types-and-memory-layout/     типи, представлення, layout структур у пам'яті
-  pointers-and-arrays/              вказівники, масиви, адресна арифметика
-  structs-unions-and-bitfields/     агрегати, packed, бітові поля
-  volatile-and-const/               volatile, const, їхня взаємодія й типові помилки
-  function-pointers-and-callbacks/  вказівники на функції, таблиці, callbacks
-  inline-and-macros/                препроцесор, inline, макроси проти функцій
-  memory-alignment-and-endianness/  вирівнювання, padding, порядок байтів
-  common-code-patterns/             типові прийоми C у прошивках
-  cpp-classes-and-oop/              класи, віртуальність, ціна ООП на MCU
-  raii-and-smart-pointers/          RAII, unique_ptr, володіння без heap
-  templates-and-constexpr/          шаблони, constexpr, обчислення на етапі компіляції
-  cpp-embedded-constraints-and-stl/ exceptions/RTTI, STL і статична алокація
-  fundamentals/                 MCU vs MPU vs SoC, bare-metal vs RTOS vs Linux, крос-компіляція
-  toolchain-and-build/          GCC/Clang для ARM, лінкер, флаги, розмір бінаря
-  c-in-embedded/                volatile, const, бітові поля, фіксована точка, freestanding
-  cpp-in-embedded/              чому вимикають exceptions/RTTI, constexpr, статична алокація
-  memory-and-linker/            linker script, секції .text/.data/.bss, startup code, стек vs купа
-  interrupts-and-timing/        ISR, латентність, пріоритети, критичні секції, WCET
-  peripherals-and-buses/        GPIO, UART, SPI, I2C, CAN, USB, DMA, ADC
-  rtos/                         планування, пріоритетна інверсія, черги, семафори
-    freertos/
-    zephyr/
-  power-management/             режими сну, wake-up, бюджет енергії
-  bootloaders-and-ota/          завантажники, оновлення прошивки, відкат, підпис
-  debugging-and-tracing/        JTAG/SWD, gdb, логічний аналізатор, трасування
-  testing-embedded/             HIL, симуляція, mock-и периферії, unit-тести без заліза
-  safety-and-standards/         MISRA C/C++, IEC 61508, ISO 26262, DO-178C, AUTOSAR
-  connectivity/                 BLE, Wi-Fi, LoRa, MQTT, Modbus
-  hardware-basics/              для прошивників: рівні, підтяжки, живлення, осцилограма
-  linux-embedded/               P2: Yocto, buildroot, device tree, драйвери
+  # Від простого до складного: основи, 12 тем C/C++ з Embedded Interview Lab у його
+  # порядку (спершу Foundational, далі Intermediate), система, далі складніші теми.
+  fundamentals/                      MCU vs MPU vs SoC, bare-metal vs RTOS vs Linux, архітектура
+  data-types-and-memory-layout/      типи, класи пам'яті, stack і heap, де живе змінна
+  pointers-and-arrays/               вказівники, масиви, адресна арифметика
+  volatile-and-const/                volatile, const, регістри, змінні спільні з ISR
+  cpp-classes-and-oop/               класи, віртуальність, ціна ООП на MCU
+  structs-unions-and-bitfields/      агрегати, packed, бітові поля
+  cpp-embedded-constraints-and-stl/  exceptions/RTTI, STL і статична алокація
+  common-code-patterns/              state machines, ring buffers, бітові операції
+  function-pointers-and-callbacks/   вказівники на функції, таблиці, callbacks
+  memory-alignment-and-endianness/   вирівнювання, padding, порядок байтів
+  raii-and-smart-pointers/           RAII, unique_ptr, володіння без heap
+  templates-and-constexpr/           шаблони, constexpr, обчислення на етапі компіляції
+  inline-and-macros/                 препроцесор, inline, макроси проти функцій
+  toolchain-and-build/               компілятор, лінкер, ELF, ABI
+  interrupts-and-timing/             ISR, латентність, пріоритети, критичні секції
+  peripherals-and-buses/             GPIO, UART, SPI, I2C, CAN, DMA, ADC
+  hardware-and-power/                рівні, підтяжки, режими сну, енергоспоживання
+  rtos-and-operating-systems/        планування, синхронізація, процеси й потоки, Linux
+  connectivity/                      мережеві протоколи, BLE, Wi-Fi
+  debugging-and-testing/             JTAG/SWD, gdb, тестування, git і CI
+  safety-security-and-reliability/   MISRA, watchdog, завантажувачі, OTA
 ```
 
 ## `electronics/`
