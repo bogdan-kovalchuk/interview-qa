@@ -418,3 +418,18 @@ def test_subsection_count_must_match_between_written_languages(tmp_path: Path) -
     )
     gates = {item.gate for item in validate_repository(repository).errors}
     assert "lang-structure-parity" in gates
+
+
+def test_a_listed_section_must_list_every_question_once(tmp_path: Path) -> None:
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    repository = _base_repository(tmp_path, en_text=en_base, uk_text=uk_base)
+    order = repository / "meta" / "order.yml"
+
+    order.write_text("python/concurrency-and-gil: [py-gil-9000]\n", encoding="utf-8")
+    assert validate_repository(repository).errors == []
+
+    order.write_text("python/concurrency-and-gil: [py-gil-9999]\n", encoding="utf-8")
+    messages = [item.message for item in validate_repository(repository).errors]
+    assert any("misses ['py-gil-9000']" in message for message in messages), messages
+    assert any("from elsewhere: ['py-gil-9999']" in message for message in messages), messages

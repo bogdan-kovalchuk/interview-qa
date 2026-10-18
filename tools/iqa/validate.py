@@ -14,6 +14,7 @@ from jsonschema import Draft202012Validator
 from pydantic import ValidationError
 import yaml
 
+from .order import load_order
 from .taxonomy import ordered_paths
 from .model import (
     code_spans,
@@ -725,6 +726,56 @@ def _language_gates(
                 )
 
 
+def _order_gate(
+    path: Path, records: list[FileRecord], taxonomy_paths: set[str], report: ValidationReport
+) -> None:
+    """A section listed in `meta/order.yml` lists exactly the questions it holds.
+
+    Otherwise a moved, added or deleted question would silently fall out of the
+    reading order or keep a stale place in it.
+    """
+    try:
+        order = load_order(path)
+    except (OSError, ValueError, yaml.YAMLError) as error:
+        report.add("taxonomy", f"cannot read order: {error}", path=path.as_posix())
+        return
+    members: dict[str, set[str]] = defaultdict(set)
+    for record in records:
+        question = record.question
+        if question is not None and question.language is Language.EN:
+            members[f"{question.frontmatter.track}/{question.frontmatter.section}"].add(
+                question.frontmatter.id
+            )
+    for section_path, listed in order.items():
+        if section_path not in taxonomy_paths:
+            report.add(
+                "taxonomy", f"order lists unknown section `{section_path}`", path="meta/order.yml"
+            )
+            continue
+        duplicates = sorted({qid for qid in listed if listed.count(qid) > 1})
+        if duplicates:
+            report.add(
+                "taxonomy",
+                f"order lists {duplicates} more than once in `{section_path}`",
+                path="meta/order.yml",
+            )
+        actual = members.get(section_path, set())
+        missing = sorted(actual - set(listed))
+        foreign = sorted(set(listed) - actual)
+        if missing:
+            report.add(
+                "taxonomy",
+                f"order of `{section_path}` misses {missing}",
+                path="meta/order.yml",
+            )
+        if foreign:
+            report.add(
+                "taxonomy",
+                f"order of `{section_path}` lists questions from elsewhere: {foreign}",
+                path="meta/order.yml",
+            )
+
+
 def validate_repository(root: Path) -> ValidationReport:
     root = root.resolve()
     report = ValidationReport()
@@ -735,6 +786,7 @@ def validate_repository(root: Path) -> ValidationReport:
     registry = _load_registry(root / "meta" / "id-registry.csv", report)
     _schema_gate(records, root / "meta" / "question.schema.json", report)
     _vocabulary_contract_gate(vocabulary, report)
+    _order_gate(root / "meta" / "order.yml", records, taxonomy_paths, report)
 
     for record in records:
         _raw_content_gates(record, report)

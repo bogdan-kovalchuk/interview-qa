@@ -313,3 +313,25 @@ def test_unknown_qid_target_raises(tmp_path: Path) -> None:
     out = tmp_path / "out"
     with pytest.raises(ValueError, match="unknown qid target"):
         mirror.generate(content, out, "/interview-qa", root=ROOT)
+
+
+def test_section_order_follows_meta_order_yml(tmp_path: Path) -> None:
+    content = _make_content_tree(
+        tmp_path,
+        {
+            "first-slug": _question("py-gil-0001", title="First by id"),
+            "second-slug": _question("py-gil-0002", title="Second by id"),
+        },
+    )
+    root = tmp_path / "root"
+    (root / "meta").mkdir(parents=True)
+    for name in ("vocabulary.yml", "taxonomy.md"):
+        (root / "meta" / name).write_text((ROOT / "meta" / name).read_text(encoding="utf-8"), encoding="utf-8")
+    (root / "meta" / "order.yml").write_text(
+        "python/concurrency-and-gil: [py-gil-0002, py-gil-0001]\n", encoding="utf-8"
+    )
+    out = tmp_path / "out"
+    mirror.generate(content, out, "/interview-qa", root=root)
+
+    index = (out / "en" / "python" / "concurrency-and-gil" / "index.md").read_text(encoding="utf-8")
+    assert index.find("Second by id") < index.find("First by id")

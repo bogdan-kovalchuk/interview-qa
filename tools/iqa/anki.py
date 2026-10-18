@@ -36,6 +36,7 @@ import genanki
 import yaml
 
 from .guid import GUID_NAMESPACE, guid_for
+from .order import load_order, positions, sort_key
 from .taxonomy import ordered_tracks_and_sections
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -280,9 +281,12 @@ def build_notes(
     library import into one collection without duplicating anything
     (meta/anki.md: "перетин пакетів нешкідливий").
     """
-    positions = section_order(ROOT / "meta" / "taxonomy.md") if order is None else order
+    deck_positions = section_order(ROOT / "meta" / "taxonomy.md") if order is None else order
+    # Notes are added in reading order, so a new card's position in its deck
+    # follows `meta/order.yml` exactly as the site's section page does.
+    position_of = positions(load_order(ROOT / "meta" / "order.yml"))
     notes: list[tuple[str, genanki.Note]] = []
-    for question in questions:
+    for question in sorted(questions, key=lambda item: sort_key(position_of, item["id"])):
         if track is not None and question["track"] != track:
             continue
         entry = question["languages"].get(language)
@@ -312,7 +316,7 @@ def build_notes(
         notes.append(
             (
                 deck_name(
-                    vocabulary, positions, question["track"], question["section"], language
+                    vocabulary, deck_positions, question["track"], question["section"], language
                 ),
                 note,
             )

@@ -34,6 +34,7 @@ from typing import Any, NamedTuple
 
 import yaml
 
+from .order import load_order, positions, sort_key
 from .taxonomy import ordered_tracks_and_sections
 from .model import Language, Question, Source, parse_question_file
 
@@ -333,8 +334,10 @@ def navigation_pages(
     base: str,
     vocabulary: dict[str, Any],
     taxonomy: list[tuple[str, list[str]]],
+    position_of: dict[str, int] | None = None,
 ) -> list[list[NavigationPage]]:
     """Return complete, locale-isolated reading orders for footer pagination."""
+    position_of = position_of or {}
     languages = sorted({page.language for page in pages})
     by_key: dict[tuple[str, str, str], list[MirroredPage]] = {}
     for page in pages:
@@ -375,7 +378,8 @@ def navigation_pages(
                     )
                 )
                 for page in sorted(
-                    by_key[(language, track, section)], key=lambda item: item.question_id
+                    by_key[(language, track, section)],
+                    key=lambda item: sort_key(position_of, item.question_id),
                 ):
                     order.append(
                         NavigationPage(
@@ -431,6 +435,7 @@ def write_navigation(
     base: str,
     vocabulary: dict[str, Any],
     taxonomy: list[tuple[str, list[str]]],
+    position_of: dict[str, int] | None = None,
 ) -> list[dict[str, Any]]:
     """Write the home, track and section index pages; return the sidebar tree.
 
@@ -443,8 +448,10 @@ def write_navigation(
     questions listed on the section's own page. Order of tracks and sections is
     `meta/taxonomy.md`'s document order, never alphabetical, because that file
     is where the intended reading order is declared. Questions within each
-    section are ordered by question ID, matching Anki deck card progression.
+    section follow `meta/order.yml`, or question ID where a section is not
+    listed there - the same order as the cards in its Anki deck.
     """
+    position_of = position_of or {}
     languages = sorted({page.language for page in pages})
     by_key: dict[tuple[str, str, str], list[MirroredPage]] = {}
     for page in pages:
@@ -485,7 +492,8 @@ def write_navigation(
             section_links: list[str] = []
             for section in live_sections:
                 entries = sorted(
-                    by_key.get((language, track, section), ()), key=lambda page: page.question_id
+                    by_key.get((language, track, section), ()),
+                    key=lambda page: sort_key(position_of, page.question_id),
                 )
                 if not entries:
                     continue
@@ -607,8 +615,11 @@ def generate(
                 )
             )
         taxonomy = ordered_tracks_and_sections(root / "meta" / "taxonomy.md")
-        sidebar = write_navigation(temporary, mirrored, base, vocabulary, taxonomy)
-        add_pagination(navigation_pages(temporary, mirrored, base, vocabulary, taxonomy))
+        position_of = positions(load_order(root / "meta" / "order.yml"))
+        sidebar = write_navigation(temporary, mirrored, base, vocabulary, taxonomy, position_of)
+        add_pagination(
+            navigation_pages(temporary, mirrored, base, vocabulary, taxonomy, position_of)
+        )
         if output.exists():
             remove_tree(output)
         swap_tree(temporary, output)
