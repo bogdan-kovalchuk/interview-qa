@@ -4,18 +4,58 @@ title: "Чому виводи ADC6 і ADC7 мікроконтролера ATmega
 track: electronics
 section: circuitmaker-projects
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: microchip-atmega328p-datasheet
+    title: "Microchip Technology: ATmega328P 8-bit AVR Microcontroller Datasheet"
+    url: https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
+  - source_id: arduino-nano-schematic
+    title: "Arduino: Arduino Nano Reference Design & Schematic"
+    url: https://docs.arduino.cc/hardware/nano
+  - source_id: horowitz-art-of-electronics
+    title: "Paul Horowitz, Winfield Hill. The Art of Electronics, 3rd Edition, Cambridge University Press"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer
 
-В архітектурі ATmega328P у корпусі TQFP-32 виводи ADC6 і ADC7 є виключно аналоговими входами мультиплексора. Вони апаратно позбавлені цифрових вихідних транзисторів і регістрів керування портом GPIO. Спроба сконфігурувати їх на вихід не працюватиме, тому світлодіоди підключають до інших ліній.[^udemy-electronics-course]
+В архітектурі ATmega328P у корпусах TQFP-32 та QFN-32 виводи ADC6 і ADC7 є суто аналоговими входами мультиплексора АЦП. Вони апаратно позбавлені цифрових вихідних транзисторів, тригерів Шмітта та регістрів керування портом GPIO (PORT, DDR, PIN). Спроба сконфігурувати їх на вихід не дає жодного результату, тому світлодіоди підключають виключно до повнофункціональних цифрових ліній.[^microchip-atmega328p-datasheet]
 
 ## Detailed explanation
 
-TODO
+Мікроконтролер ATmega328P компанії Microchip (раніше Atmel) є апаратним серцем плат Arduino Uno, Nano та Pro Mini.[^microchip-atmega328p-datasheet] Проте між класичним вивідним корпусом PDIP-28 та планарними SMD-корпусами TQFP-32 і QFN-32 існує критична архітектурна відмінність у функціоналі аналогових виводів, яка безпосередньо обмежує можливість підключення навантажень, таких як світлодіоди.[^arduino-nano-schematic]
+
+### Кремнієва топологія та відмінності корпусів DIP-28 і TQFP-32
+
+Базовий кристал ATmega328P спочатку проєктувався з урахуванням 28-вивідного корпусу PDIP, де доступні шість аналогових входів АЦП (ADC0–ADC5), суміщених із цифровими лініями порту C (лінії PC0–PC5):[^microchip-atmega328p-datasheet]
+- при переході на компактніший 32-вивідний корпус TQFP-32 з’явилися чотири додаткові контактні площадки: дві з них відвели під додаткові виводи живлення й землі (`VCC` та `GND`), а ще дві – під лінії `ADC6` (вивід 19) та `ADC7` (вивід 22);[^microchip-atmega328p-datasheet]
+- ці дві додаткові лінії підключені безпосередньо та виключно до аналогового вхідного мультиплексора внутрішнього 10-бітного АЦП послідовного наближення (SAR ADC);[^microchip-atmega328p-datasheet]
+- у топології кремнієвого кристала для пінів ADC6 та ADC7 інженери Atmel взагалі **не інтегрували цифрову периферію** введення-виведення загального призначення (GPIO).[^microchip-atmega328p-datasheet]
+
+### Апаратна відсутність цифрового інтерфейсу GPIO
+
+Повнофункціональний цифровий порт введення-виведення архітектури AVR (наприклад, порти B, C, D) апаратно містить розгалужену цифрову комірку:[^microchip-atmega328p-datasheet]
+1. Двотактний вихідний каскад (Push-Pull Output Buffer) на потужних P- та N-канальних КМОН-транзисторах, здатних віддавати або приймати струм до 20–40 мА;[^microchip-atmega328p-datasheet]
+2. Регістр напрямку даних `DDRx` (Data Direction Register), що вмикає вихідні транзистори;
+3. Вихідний регістр даних `PORTx`, що визначає високий або низький стан виходу;
+4. Вхідний буфер із тригером Шмітта для дискретизації логічних рівнів `0` та `1` і запису в регістр `PINx`;
+5. Внутрішній підтягувальний резистор до живлення (Pull-up resistor) номіналом 20–50 кОм.[^microchip-atmega328p-datasheet]
+
+На виводах ADC6 і ADC7 **жодного з цих елементів фізично немає**:[^microchip-atmega328p-datasheet]
+- немає P-FET та N-FET драйверів;
+- у карті регістрів введення-виведення мікроконтролера не існує бітів для керування цими пінами (немає `PORTC6/7` чи `DDRC6/7`, оскільки біти 6 та 7 порту C зарезервовані для виводів резонатора XTAL1/XTAL2 у порту B, або біт PC6 є лінією RESET);[^microchip-atmega328p-datasheet]
+- фізичний канал від виводу мікросхеми веде лише до аналогового ключа на польовому транзисторі всередині вхідного комутатора АЦП і схеми захисних діодів від електростатичного розряду (ESD-diodes).[^microchip-atmega328p-datasheet]
+
+### Поведінка програмного коду та спроби конфігурації в Arduino IDE
+
+Якщо розробник у коді скетчу Arduino намагається налаштувати ці піни для керування світлодіодом:[^arduino-nano-schematic]
+```cpp
+pinMode(A6, OUTPUT);
+digitalWrite(A6, HIGH);
+```
+- функція `pinMode()` звертається до внутрішніх таблиць мапінгу виводів середовища розробки;
+- оскільки для пінів A6 та A7 не існує відповідних адрес у просторі вводу-виводу (I/O registers), функція завершується без виконання жодної дії;
+- виклики `digitalWrite(A6, ...)` та `digitalRead(A6)` так само ігноруються або призводять до невизначеної поведінки;[^arduino-nano-schematic]
+- єдина стандартна функція, яка коректно взаємодіє з цими лініями, – це `analogRead(A6)` та `analogRead(A7)`, оскільки вона налаштовує біти селектора каналів `MUX3..0` у регістрі `ADMUX` АЦП.[^microchip-atmega328p-datasheet]
+
+### Ризики некоректного підключення навантаження до аналогових ліній
+
+Якщо до виводу ADC6/ADC7 підключити світлодіод, він ніколи не світитиметься, оскільки мікроконтролер не може подати на пін ні живлення, ні землю.[^horowitz-art-of-electronics] Більше того, спроба подачі струму від зовнішнього джерела крізь світлодіод у незахищений аналоговий вхід може викликати паразитне відкриття захисних ESD-діодів або стікання струму на підкладку кристала. Це спотворить показання АЦП на всіх сусідніх каналах через ефект міжканального перехресного затікання (ADC channel crosstalk) і здатне викликати тиристорне замикання (CMOS Latch-up) з фатальним перегрівом кристала.[^horowitz-art-of-electronics] Керування світлодіодами має здійснюватися виключно через стандартні лінії GPIO (D0–D13, A0–A5).[^arduino-nano-schematic]

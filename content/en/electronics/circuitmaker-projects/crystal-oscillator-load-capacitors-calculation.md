@@ -4,12 +4,15 @@ title: "How are load capacitor values calculated for an ATmega328P crystal oscil
 track: electronics
 section: circuitmaker-projects
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: atmel-avr042
+    title: "AVR042: AVR Hardware Design Considerations (Application Note)"
+    url: https://ww1.microchip.com/downloads/en/Appnotes/Atmel-2521-AVR-Hardware-Design-Considerations_ApplicationNote_AVR042.pdf
+  - source_id: microchip-atmega328p-datasheet
+    title: "ATmega328P 8-bit AVR Microcontroller with 32K Bytes In-System Programmable Flash Datasheet"
+    url: https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
+  - source_id: ti-crystal-selection
+    title: "Texas Instruments Application Report SZZA043: Crystal Oscillator Basics and Crystal Selection"
+    url: https://www.ti.com/lit/an/szza043/szza043.pdf
 ---
 
 ## Short answer

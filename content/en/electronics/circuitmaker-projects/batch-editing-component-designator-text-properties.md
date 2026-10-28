@@ -4,12 +4,15 @@ title: "Why are component designator silkscreen properties standardized via batc
 track: electronics
 section: circuitmaker-projects
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-7351b
+    title: "IPC-7351B: Generic Requirements for Surface Mount Design and Land Pattern Standard"
+    url: https://www.ipc.org/ipc-7351
+  - source_id: ipc-2221
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/ipc-2221
+  - source_id: altium-pcb-inspector
+    title: "Altium: Working with the Properties and PCB List Panels in Altium Designer and CircuitMaker"
+    url: https://www.altium.com/documentation/altium-designer/pcb-inspector-ad
 ---
 
 ## Short answer

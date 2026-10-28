@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ftdi-ft231x-datasheet
+    title: "FTDI Chip: FT231X USB to Full Handshake UART IC Datasheet"
+    url: https://ftdichip.com/wp-content/uploads/2020/08/DS_FT231X.pdf
+  - source_id: ftdi-ft232r-datasheet
+    title: "FTDI Chip: FT232R USB UART IC Datasheet"
+    url: https://ftdichip.com/wp-content/uploads/2020/07/DS_FT232R.pdf
 ---
 
 ## Short answer

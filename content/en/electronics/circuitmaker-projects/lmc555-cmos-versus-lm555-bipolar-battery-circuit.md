@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ti-lmc555-datasheet
+    title: "Texas Instruments: LMC555 CMOS Timer Datasheet"
+    url: https://www.ti.com/lit/ds/symlink/lmc555.pdf
+  - source_id: ti-lm555-datasheet
+    title: "Texas Instruments: LM555 Timer Datasheet"
+    url: https://www.ti.com/lit/ds/symlink/lm555.pdf
 ---
 
 ## Short answer

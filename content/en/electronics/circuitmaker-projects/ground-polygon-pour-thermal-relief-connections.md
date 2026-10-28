@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
+  - source_id: ipc-7351b
+    title: "IPC-7351B: Generic Requirements for Surface Mount Design and Land Pattern Standard"
+    url: https://www.ipc.org/
 ---
 
 ## Short answer

@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ti-lm555-datasheet
+    title: "Texas Instruments: LM555 Timer Datasheet"
+    url: https://www.ti.com/lit/ds/symlink/lm555.pdf
+  - source_id: ott-emc-engineering
+    title: "Henry W. Ott: Electromagnetic Compatibility Engineering"
+    url: https://www.wiley.com/en-us/Electromagnetic+Compatibility+Engineering-p-9780470189306
 ---
 
 ## Short answer

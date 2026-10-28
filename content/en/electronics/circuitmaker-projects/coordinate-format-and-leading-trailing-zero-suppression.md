@@ -4,12 +4,15 @@ title: "What do coordinate format and zero suppression specify in Gerber and NC 
 track: electronics
 section: circuitmaker-projects
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ucamco-gerber-spec
+    title: "The Gerber Layer Format Specification (Revision 2023.08)"
+    url: https://www.ucamco.com/files/downloads/file_en/456/gerber-layer-format-specification-revision-2023-08_en.pdf
+  - source_id: ipc-nc-349
+    title: "IPC-NC-349: Computer Numerical Control Formatting for Drillers and Routers"
+    url: https://www.ipc.org/
+  - source_id: altium-gerber-output
+    title: "Altium Documentation: Gerber and NC Drill Output Options"
+    url: https://www.altium.com/documentation/altium-designer/gerber-output-options
 ---
 
 ## Short answer

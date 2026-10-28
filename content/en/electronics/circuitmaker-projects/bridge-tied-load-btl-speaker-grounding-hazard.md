@@ -1,15 +1,18 @@
 ---
 id: emb-elcmproj-0063
-title: "Why must neither speaker terminal of a Bridge-Tied Load amplifier be connected to ground?"
+title: "Why must neither speaker terminal of a BTL amplifier be connected to ground?"
 track: electronics
 section: circuitmaker-projects
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ti-sloa044-btl
+    title: "Texas Instruments. Application Report SLOA044: Bridge-Tied Load (BTL) Audio Power Amplifiers"
+    url: https://www.ti.com/lit/an/sloa044/sloa044.pdf
+  - source_id: horowitz-art-of-electronics
+    title: "Paul Horowitz, Winfield Hill. The Art of Electronics, 3rd Edition, Cambridge University Press"
+    url: https://artofelectronics.net/
+  - source_id: douglas-self-audio
+    title: "Douglas Self. Audio Power Amplifier Design, 6th Edition, Focal Press / Routledge"
+    url: https://www.routledge.com/Audio-Power-Amplifier-Design/Self/p/book/9780240526132
 ---
 
 ## Short answer

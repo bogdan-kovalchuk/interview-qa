@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ucamco-gerber-spec
+    title: "Ucamco: The Gerber Format Specification (Revision 2023.03)"
+    url: https://www.ucamco.com/en/gerber
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
 ---
 
 ## Short answer

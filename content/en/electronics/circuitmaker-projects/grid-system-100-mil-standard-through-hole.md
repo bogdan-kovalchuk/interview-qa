@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
+  - source_id: horowitz-hill-art-electronics
+    title: "Horowitz & Hill: The Art of Electronics (3rd Edition)"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer

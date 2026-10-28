@@ -1,15 +1,18 @@
 ---
 id: emb-elcmproj-0032
-title: "Which critical DRC parameters must strictly equal zero before releasing a PCB for fabrication?"
+title: "Which critical Design Rule Check parameters must strictly equal zero before sign-off?"
 track: electronics
 section: circuitmaker-projects
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
+  - source_id: altium-drc-guide
+    title: "Altium Documentation: Design Rule Checking (DRC)"
+    url: https://www.altium.com/documentation/altium-designer/design-rule-checking
+  - source_id: ipc-a-600
+    title: "IPC-A-600: Acceptability of Printed Boards"
+    url: https://www.ipc.org/
 ---
 
 ## Short answer
