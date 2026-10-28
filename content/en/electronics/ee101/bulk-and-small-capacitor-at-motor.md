@@ -13,6 +13,15 @@ sources:
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
+  - source_id: ti-motor-driver-capacitors
+    title: "Texas Instruments Application Report SLVA797: Capacitor Selection for Motor Drivers"
+    url: https://www.ti.com/lit/an/slva797/slva797.pdf
+  - source_id: murata-capacitor-characteristics
+    title: "Murata Manufacturing: Basics of Capacitors – Impedance and ESR Characteristics"
+    url: https://article.murata.com/en-us/article/impedance-esr-frequency-characteristics-in-capacitors
+  - source_id: art-of-electronics
+    title: "Horowitz P., Hill W. The Art of Electronics. 3rd ed. Cambridge University Press, 2015"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer

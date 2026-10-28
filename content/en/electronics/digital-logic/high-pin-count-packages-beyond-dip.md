@@ -10,6 +10,12 @@ sources:
   - source_id: aac-digital
     title: "All About Circuits textbook, Volume IV: Digital"
     url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: jedec-jesd30
+    title: "JEDEC Standard JESD30: Descriptive Designation System for Semiconductor-Device Packages"
+    url: https://www.jedec.org/standards-documents/docs/jesd-30
+  - source_id: ti-packaging-guide
+    title: "Texas Instruments: Semiconductor and IC Packaging Terms and Guidelines"
+    url: https://www.ti.com/packaging/docs/searchpackaging.tsp
 ---
 
 ## Short answer

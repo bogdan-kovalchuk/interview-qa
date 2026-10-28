@@ -13,6 +13,15 @@ sources:
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
+  - source_id: littelfuse-tvs-diodes
+    title: "Littelfuse Application Note: TVS Diode Application and Theory"
+    url: https://www.littelfuse.com/~/media/electronics/application_notes/littelfuse_tvs_diode_application_note.pdf.pdf
+  - source_id: bourns-multifuse-ptc
+    title: "Bourns Multifuse Polymer PTC Resettable Fuses Application Guide"
+    url: https://www.bourns.com/docs/technical-documents/technical-library/circuit-protection/publications/bourns_multifuse_app_guide.pdf
+  - source_id: art-of-electronics
+    title: "Horowitz P., Hill W. The Art of Electronics. 3rd ed. Cambridge University Press, 2015"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer

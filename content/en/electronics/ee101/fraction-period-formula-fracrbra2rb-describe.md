@@ -1,18 +1,18 @@
 ---
 id: emb-elee-0258
-title: "Which fraction of the period does the formula <span class=\"formula\">\\(\\frac{R_B}{R_A+2R_B}\\)</span> describe for the 555, and can <span class=\"formula\">\\(R_A\\)</span> be 0?"
+title: "Which fraction of the period does the formula R_B / (R_A + 2*R_B) describe for the 555, and can R_A be 0?"
 track: electronics
 section: ee101
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-alternating-current
-    title: "All About Circuits textbook, Volume II: AC"
-    url: https://www.allaboutcircuits.com/textbook/alternating-current/
-  - source_id: aac-semiconductors
-    title: "All About Circuits textbook, Volume III: Semiconductors"
-    url: https://www.allaboutcircuits.com/textbook/semiconductors/
+  - source_id: ti-ne555-datasheet
+    title: "Texas Instruments: NE555 Precision Timers Datasheet (SLRS022)"
+    url: https://www.ti.com/lit/ds/symlink/ne555.pdf
+  - source_id: fiore-555-timer
+    title: "Engineering LibreTexts: Operational Amplifiers and Linear Integrated Circuits (Fiore), 9.6 The 555 Timer"
+    url: https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Operational_Amplifiers_and_Linear_Integrated_Circuits_-_Theory_and_Application_(Fiore)/09:_Specialized_Linear_Circuits/9.6:_The_555_Timer
+  - source_id: aac-555-circuits
+    title: "All About Circuits: 555 Timer Circuits"
+    url: https://www.allaboutcircuits.com/textbook/experiments/chpt-8/555-timer-circuits/
 ---
 
 ## Short answer

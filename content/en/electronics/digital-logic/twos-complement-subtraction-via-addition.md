@@ -4,12 +4,12 @@ title: "Why does two's complement allow subtraction to be implemented purely thr
 track: electronics
 section: digital-logic
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd: Digital Fundamentals (11th Edition), Pearson"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003264
+  - source_id: aac-subtraction-twos-complement
+    title: "All About Circuits: Two's Complement Subtraction"
+    url: https://www.allaboutcircuits.com/textbook/digital/chpt-2/binary-arithmetic/
 ---
 
 ## Short answer
@@ -18,4 +18,4 @@ TODO
 
 ## Detailed explanation
 
-TODO
+TODO

@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0250
-title: "A crystal has a rated <span class=\"formula\">\\(C_L\\)</span> = 18 pF and stray capacitance ≈ 3 pF. Which equal capacitors <span class=\"formula\">\\(C_1=C_2\\)</span> are needed?"
+title: "A crystal has a rated C_L = 18 pF and stray capacitance ≈ 3 pF. Which equal capacitors C_1=C_2 are needed?"
 track: electronics
 section: ee101
 sources:
@@ -13,6 +13,15 @@ sources:
   - source_id: aac-semiconductors
     title: "All About Circuits textbook, Volume III: Semiconductors"
     url: https://www.allaboutcircuits.com/textbook/semiconductors/
+  - source_id: st-an2867-oscillator-design
+    title: "STMicroelectronics Application Note AN2867: Oscillator design guide for STM32 microcontrollers"
+    url: https://www.st.com/resource/en/application_note/an2867-oscillator-design-guide-for-stm32-microcontrollers-stmicroelectronics.pdf
+  - source_id: microchip-an826-crystal-basics
+    title: "Microchip Application Note AN826: Crystal Oscillator Basics and Crystal Selection for rfPIC and PICmicro Devices"
+    url: https://ww1.microchip.com/downloads/en/appnotes/00826a.pdf
+  - source_id: art-of-electronics
+    title: "Horowitz P., Hill W. The Art of Electronics. 3rd ed. Cambridge University Press, 2015"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer
