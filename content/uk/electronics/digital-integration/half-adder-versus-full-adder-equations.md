@@ -4,18 +4,82 @@ title: "Чим повний двійковий суматор відрізняє
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: floyd-digital
+    title: "Thomas L. Floyd: Digital Fundamentals, 11th Edition. Pearson"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003254
+  - source_id: mano-digital-design
+    title: "M. Morris Mano, Michael D. Ciletti: Digital Design: With an Introduction to the Verilog HDL, 5th Edition"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-design-with-an-introduction-to-the-verilog-hdl/P200000003296
+  - source_id: tocci-digital-systems
+    title: "Ronald J. Tocci, Neal S. Widmer, Gregory L. Moss: Digital Systems: Principles and Applications, 12th Edition"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-systems-principles-and-applications/P200000003297
 ---
 
 ## Short answer
 
-Напівсуматор додає лише два однобітні операнди (<span class="formula">\(S = A \oplus B\)</span>, <span class="formula">\(C_{out} = A\cdot B\)</span>), не маючи входу для перенесення. Повний суматор враховує вхідне перенесення <span class="formula">\(C_{in}\)</span> від молодшого розряду. Його виходи описуються формулами <span class="formula">\(S = A \oplus B \oplus C_{in}\)</span> та <span class="formula">\(C_{out} = A\cdot B + C_{in}\cdot(A \oplus B)\)</span>, що дозволяє об'єднувати суматори в ланцюжки довільної розрядності.[^udemy-electronics-course]
+Напівсуматор (Half Adder) додає лише два однобітні операнди A та B (рівняння: S = A ^ B, C_out = A & B) і не має входу для перенесення. Повний суматор (Full Adder) додає три однобітні сигнали: A, B та вхідне перенесення C_in від молодшого розряду. Його виходи описуються рівняннями: S = A ^ B ^ C_in та C_out = (A & B) | (C_in & (A ^ B)), що дозволяє каскадувати повні суматори у ланцюжки довільної розрядності.[^floyd-digital]
 
 ## Detailed explanation
 
-TODO
+Суматор є базовим елементом арифметико-логічних пристроїв (АЛП) та цифрових процесорів. Різниця між напівсуматором і повним суматором полягає в кількості вхідних операндів та здатності обробляти перенесення від попередніх розрядів.[^floyd-digital]
+
+### Напівсуматор (Half Adder, HA)
+
+Напівсуматор виконує арифметичне додавання двох однорозрядних двійкових чисел `A` та `B`. Він має два входи (`A`, `B`) та два виходи:[^mano-digital-design]
+- `S` (Sum) – молодший біт результату (сума);
+- `C` або `C_out` (Carry Out) – старший біт результату (вихідне перенесення).
+
+Таблиця істинності напівсуматора:
+- `0 + 0 = 00_2` -> `S = 0, C = 0`
+- `0 + 1 = 01_2` -> `S = 1, C = 0`
+- `1 + 0 = 01_2` -> `S = 1, C = 0`
+- `1 + 1 = 10_2` -> `S = 0, C = 1`
+
+Булеві рівняння напівсуматора:
+- `S = A ^ B` (операція XOR – «виключне АБО»);
+- `C_out = A & B` (операція AND – кон’юнкція).
+
+Головне обмеження напівсуматора полягає в тому, що він не має входу для прийому біта перенесення від сусіднього молодшого розряду. Через це напівсуматор може застосовуватися лише для додавання наймолодшого розряду (LSB) багаторозрядного числа або в простих інкрементних лічильниках.[^tocci-digital-systems]
+
+### Повний суматор (Full Adder, FA)
+
+Повний суматор додає три однобітні сигнали: розряди операндів `A`, `B` та вхідне перенесення `C_in` від молодшого розряду.[^floyd-digital]
+
+Таблиця істинності повного суматора (для всіх 8 комбінацій):
+
+| A | B | C_in | S (Сума) | C_out (Перенесення) |
+| :-: | :-: | :--: | :------: | :-----------------: |
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 0 | 1 | 1 | 0 |
+| 0 | 1 | 0 | 1 | 0 |
+| 0 | 1 | 1 | 0 | 1 |
+| 1 | 0 | 0 | 1 | 0 |
+| 1 | 0 | 1 | 0 | 1 |
+| 1 | 1 | 0 | 0 | 1 |
+| 1 | 1 | 1 | 1 | 1 |
+
+Булеві рівняння повного суматора:[^mano-digital-design]
+- **Сума**: `S = A ^ B ^ C_in`
+  (Функція перевірки на непарність: `S = 1`, якщо серед трьох входів активна непарна кількість одиниць – одна або три).
+- **Вихідне перенесення**:
+  `C_out = (A & B) | (C_in & (A ^ B))`
+  В еквівалентній канонічній мажоритарній формі (SOP):
+  `C_out = (A & B) | (B & C_in) | (A & C_in)`
+  (Перенесення формується, коли принаймні будь-які два з трьох входів дорівнюють одиниці).
+
+### Реалізація повного суматора на базі двох напівсуматорів
+
+Повний суматор можна побудувати з двох напівсуматорів та одного логічного вентиля OR:[^tocci-digital-systems]
+1. Перший напівсуматор обчислює суму та перенесення операндів A і B:
+   `S_int = A ^ B`
+   `C_1 = A & B`
+2. Другий напівсуматор додає отриману проміжну суму `S_int` із вхідним перенесенням `C_in`:
+   `S = S_int ^ C_in = (A ^ B) ^ C_in`
+   `C_2 = S_int & C_in = (A ^ B) & C_in`
+3. Вихідне перенесення формується об’єднанням перенесень обох ступенів вентилем OR:
+   `C_out = C_1 | C_2 = (A & B) | ((A ^ B) & C_in)`
+   (Оскільки події `C_1 = 1` та `C_2 = 1` є взаємовиключними, елемент OR працює коректно без гонок сигналів).
+
+### Каскадування в багаторозрядні структури
+
+Наявність входу `C_in` та виходу `C_out` дозволяє об’єднувати n повних суматорів у ланцюжки для додавання двійкових слів довільної розрядності (8, 16, 32, 64 біти). У класичному послідовному суматорі (ripple-carry adder) вихід `C_out` кожного i-го розряду підключається до входу `C_in` розряду `(i + 1)`, а на вхід `C_in` нульового розряду подається 0 (при додаванні) або 1 (при відніманні в доповняльному коді).[^floyd-digital]

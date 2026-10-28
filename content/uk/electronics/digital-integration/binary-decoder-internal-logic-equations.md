@@ -4,18 +4,88 @@ title: "Як працює двійковий дешифратор 2:4 і які 
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd. Digital Fundamentals, 11th Edition"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003295
+  - source_id: tocci-digital-systems
+    title: "Ronald J. Tocci, Neal S. Widmer, Gregory L. Moss. Digital Systems: Principles and Applications, 12th Edition"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-systems-principles-and-applications/P200000003296
+  - source_id: ti-74hc139-datasheet
+    title: "Texas Instruments. SN74HC139 Dual 2-Line to 4-Line Decoders/Demultiplexers Data Sheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74hc139.pdf
+  - source_id: sedra-smith-microelectronic-circuits
+    title: "Adel S. Sedra, Kenneth C. Smith. Microelectronic Circuits, 7th Edition"
+    url: https://global.oup.com/ushe/product/microelectronic-circuits-9780199339143
 ---
 
 ## Short answer
 
-Дешифратор перетворює n-бітний вхідний код на активний сигнал на одному з <span class="formula">\(2^n\)</span> виходів. Для двох адресних входів S1 і S0 формуються чотири вихідні мінтерми: <span class="formula">\(Y_0 = \overline{S_1}\cdot\overline{S_0}\)</span>, <span class="formula">\(Y_1 = \overline{S_1}\cdot S_0\)</span>, <span class="formula">\(Y_2 = S_1\cdot\overline{S_0}\)</span> та <span class="formula">\(Y_3 = S_1\cdot S_0\)</span>. У кожен момент часу активним стає рівно один вихід, що відповідає поданому двійковому числу.[^udemy-electronics-course]
+Дешифратор перетворює n-розрядний вхідний двійковий код на активний рівень на одному з `2^n` виходів. Для двох адресних входів A1 і A0 формуються чотири вихідні мінтерми: `Y_0 = /A1 * /A0`, `Y_1 = /A1 * A0`, `Y_2 = A1 * /A0` та `Y_3 = A1 * A0` для активного високого рівня. У будь-який момент часу активним стає рівно один вихід, що однозначно відповідає поданому двійковому числу.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 
-TODO
+Двійковий дешифратор (Binary Decoder) – це базова комбінаційна цифрова схема, яка розпізнає двійковий код на своїх адресних входах і встановлює активний логічний рівень на одному відповідному вихідному проводі (унітарний позиційний код «1-із-`2^n`» або «one-hot»).[^floyd-digital-fundamentals] Для `n = 2` адресних ліній дешифратор має `2^2 = 4` виходи, що позначається як дешифратор 2:4 (2-to-4 Line Decoder).[^tocci-digital-systems]
+
+### Логічні рівняння та таблиця істинності (Active-High)
+
+Позначимо вхідні змінні як `A_1` (старший розряд адреси, MSB) та `A_0` (молодший розряд адреси, LSB). Виходи позначимо як `Y_0, Y_1, Y_2, Y_3`.
+
+Для дешифратора з активним високим рівнем виходів (Active-High) таблиця істинності має вигляд:[^floyd-digital-fundamentals]
+
+| Вхід A1 | Вхід A0 | Вихід Y0 | Вихід Y1 | Вихід Y2 | Вихід Y3 | Двійковий еквівалент |
+|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------------------:|
+|    0    |    0    |    1     |    0     |    0     |    0     |          0           |
+|    0    |    1    |    0     |    1     |    0     |    0     |          1           |
+|    1    |    0    |    0     |    0     |    1     |    0     |          2           |
+|    1    |    1    |    0     |    0     |    0     |    1     |          3           |
+
+Кожен вихід безпосередньо реалізує булевий мінтерм вхідних змінних:[^tocci-digital-systems]
+- `Y_0 = /A_1 * /A_0` (мінтерм `m_0`)
+- `Y_1 = /A_1 * A_0`  (мінтерм `m_1`)
+- `Y_2 = A_1 * /A_0`  (мінтерм `m_2`)
+- `Y_3 = A_1 * A_0`   (мінтерм `m_3`)
+
+Внутрішня структура такої схеми складається з двох логічних інверторів NOT (для формування інверсних сигналів `/A_1` та `/A_0`) і чотирьох двовходових логічних елементів AND.[^floyd-digital-fundamentals]
+
+### Промислові мікросхеми та активний низький рівень (Active-Low)
+
+У більшості стандартних інтегральних мікросхем (наприклад, здвоєний дешифратор 74HC139 або 74LS139) виходи виконані інверсними (Active-Low) і позначаються як `/Y_0 ... /Y_3`:[^ti-74hc139-datasheet]
+- Активний вихід приймає значення логічного 0 (`LOW`);
+- Неактивні виходи утримуються в стані логічної 1 (`HIGH`).
+
+Застосовуючи правила де Моргана до інвертованих виходів:
+`/Y_i = not(m_i)`
+- `/Y_0 = not(/A_1 * /A_0) = NAND(/A_1, /A_0)`
+- `/Y_1 = not(/A_1 * A_0)  = NAND(/A_1, A_0)`
+- `/Y_2 = not(A_1 * /A_0)  = NAND(A_1, /A_0)`
+- `/Y_3 = not(A_1 * A_0)   = NAND(A_1, A_0)`
+
+Використання вентилів NAND замість AND є стандартним інженерним вибором, оскільки в технологіях КМОН (CMOS) і ТТЛ (TTL) вентиль NAND є базовим інвертуючим елементом. Він має меншу кількість транзисторів і меншу затримку поширення сигналу `t_pd`, ніж каскад AND (який у КМОН фізично будується як NAND плюс окремий інвертор).[^sedra-smith-microelectronic-circuits]
+
+### Вхід дозволу (Enable / Strobe)
+
+Практичні дешифратори завжди мають один або більше входів стробування/дозволу роботи `E` (або активний низький вхід `/E` чи `/G`).[^ti-74hc139-datasheet]
+
+Якщо дешифратор має активний низький вхід дозволу `/E`:
+- коли `/E = 0`, схема дешифрує вхідну адресу і переводить відповідний вихід `/Y_i` в стан 0;
+- коли `/E = 1`, робота дешифратора повністю блокується, і на всіх виходах встановлюється неактивний стан `HIGH` незалежно від стану адресних входів `A_1, A_0`.
+
+Логічні рівняння виходів з урахуванням активного низького входу дозволу `/E` набувають вигляду (всередині кристала сигнал `/E` інвертується перед подачею на 3-входові вентилі NAND):[^ti-74hc139-datasheet]
+- `/Y_0 = not(/A_1 * /A_0 * not(/E)) = NAND(/A_1, /A_0, not(/E))`
+- `/Y_1 = not(/A_1 * A_0 * not(/E))  = NAND(/A_1, A_0, not(/E))`
+- `/Y_2 = not(A_1 * /A_0 * not(/E))  = NAND(A_1, /A_0, not(/E))`
+- `/Y_3 = not(A_1 * A_0 * not(/E))   = NAND(A_1, A_0, not(/E))`
+
+За правилом де Моргана ці самі вирази можна записати у диз’юнктивній формі:
+- `/Y_0 = A_1 + A_0 + /E`
+- `/Y_1 = A_1 + /A_0 + /E`
+- `/Y_2 = /A_1 + A_0 + /E`
+- `/Y_3 = /A_1 + /A_0 + /E`
+
+Коли `/E = 1` (заборона), доданок `/E` примусово встановлює логічну 1 на всіх виходах одночасно. Кожен вихід формується одним 3-входовим вентилем NAND.
+
+### Сфери застосування
+
+1. **Дешифрація адрес пам’яті та периферії:** вибір кристала (Chip Select `/CS`) відповідної мікросхеми RAM/ROM за старшими бітами адресної шини процесора.[^tocci-digital-systems]
+2. **Демультиплексування:** якщо вхід дозволу використовувати як лінію вхідних даних `DATA`, сигнал передається на один із чотирьох виходів відповідно до коду адреси.[^floyd-digital-fundamentals]
+3. **Керування силовими ключами та дисплеями:** покрокове сканування матриць клавіатури або розрядів динамічної індикації.

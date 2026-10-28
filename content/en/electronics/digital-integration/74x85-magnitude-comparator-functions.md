@@ -4,12 +4,12 @@ title: "What functions does the 74x85 magnitude comparator perform and what sign
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: ti-sn74hc85-datasheet
+    title: "Texas Instruments: SN74HC85 4-Bit Magnitude Comparators datasheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74hc85.pdf
+  - source_id: floyd-digital
+    title: "Thomas L. Floyd: Digital Fundamentals, 11th Edition. Pearson"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003254
 ---
 
 ## Short answer

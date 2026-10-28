@@ -4,12 +4,15 @@ title: "Why do sequential logic circuits strictly require an initial reset upon 
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: ti-slva670
+    title: "Texas Instruments SLVA670: Understanding and Applying the Power-On Reset Function"
+    url: https://www.ti.com/lit/an/slva670g/slva670g.pdf
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd: Digital Fundamentals (11th Edition), Pearson"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003290
+  - source_id: horowitz-art-of-electronics
+    title: "Paul Horowitz, Winfield Hill: The Art of Electronics (3rd Edition), Cambridge University Press"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer

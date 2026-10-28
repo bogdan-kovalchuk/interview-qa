@@ -4,12 +4,15 @@ title: "Why is an LED connected with its anode to VCC and cathode to an active-l
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: ti-74ls138-datasheet
+    title: "Texas Instruments. SN74LS138, SN74S138 3-Line to 8-Line Decoders/Demultiplexers Data Sheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74ls138.pdf
+  - source_id: sedra-smith-microelectronic-circuits
+    title: "Adel S. Sedra, Kenneth C. Smith. Microelectronic Circuits, 7th Edition"
+    url: https://global.oup.com/ushe/product/microelectronic-circuits-9780199339143
+  - source_id: horowitz-art-of-electronics
+    title: "Paul Horowitz, Winfield Hill. The Art of Electronics, 3rd Edition, Cambridge University Press"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer
