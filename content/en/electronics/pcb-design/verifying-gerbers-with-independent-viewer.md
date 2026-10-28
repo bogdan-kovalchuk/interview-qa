@@ -1,15 +1,18 @@
 ---
 id: emb-elpcb-0018
-title: "Why is it risky to inspect exported Gerber files only with a CAD tool's built-in viewer?"
+title: "Why is it dangerous to verify Gerber files only with the built-in CAD viewer?"
 track: electronics
 section: pcb-design
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ucamco-gerber-spec
+    title: "Ucamco. The Gerber Format Specification: High-level Format Description"
+    url: https://www.ucamco.com/en/gerber/specification
+  - source_id: coombs-pcb-handbook
+    title: "Clyde F. Coombs, Happy T. Holden. Printed Circuits Handbook (7th Edition)"
+    url: https://www.accessengineeringlibrary.com/content/book/9780071833950
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
 ---
 
 ## Short answer

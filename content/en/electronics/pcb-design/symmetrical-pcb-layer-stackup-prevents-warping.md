@@ -1,15 +1,18 @@
 ---
 id: emb-elpcb-0015
-title: "Why must a PCB layer stackup be symmetrical with an even number of layers?"
+title: "Why should a PCB layer stackup be symmetrical and have an even number of layers?"
 track: electronics
 section: pcb-design
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
+  - source_id: ipc-6012e
+    title: "IPC-6012E: Qualification and Performance Specification for Rigid Printed Boards"
+    url: https://www.ipc.org/
+  - source_id: coombs-pcb-handbook
+    title: "Clyde F. Coombs, Happy T. Holden. Printed Circuits Handbook (7th Edition)"
+    url: https://www.accessengineeringlibrary.com/content/book/9780071833950
 ---
 
 ## Short answer

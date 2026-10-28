@@ -4,12 +4,15 @@ title: "What should a good bill of materials (BOM) for manufacturing contain?"
 track: electronics
 section: pcb-design
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-d-325
+    title: "IPC-d-325: Documentation Requirements for Printed Boards"
+    url: https://www.ipc.org/ipc-d-325
+  - source_id: ipc-2221
+    title: "IPC-2221: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/ipc-2221
+  - source_id: horowitz-art-of-electronics
+    title: "Paul Horowitz, Winfield Hill. The Art of Electronics, 3rd Edition, Cambridge University Press"
+    url: https://artofelectronics.net/
 ---
 
 ## Short answer

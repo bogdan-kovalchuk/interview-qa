@@ -1,15 +1,21 @@
 ---
 id: emb-elpcb-0006
-title: "Which files do the PCB manufacturer and the assembler need?"
+title: "What files do the PCB manufacturer and assembler need?"
 track: electronics
 section: pcb-design
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-2581
+    title: "IPC-2581C: Generic Requirements for Printed Board Assembly Products Manufacturing Description Data and Transfer Methodology"
+    url: https://www.ipc.org/
+  - source_id: ipc-d-356a
+    title: "IPC-D-356A: Bare Substrate Electrical Test Data Format"
+    url: https://www.ipc.org/
+  - source_id: ipc-7351b
+    title: "IPC-7351B: Generic Requirements for Surface Mount Design and Land Pattern Standard"
+    url: https://www.ipc.org/
+  - source_id: ucamco-gerber-spec
+    title: "Ucamco. The Gerber Format Specification: High-level Format Description"
+    url: https://www.ucamco.com/en/gerber/specification
 ---
 
 ## Short answer

@@ -10,6 +10,12 @@ sources:
   - source_id: aac-digital
     title: "All About Circuits textbook, Volume IV: Digital"
     url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: ti-sn7493a
+    title: "Texas Instruments: SN5493A, SN54LS93, SN7493A, SN74LS93 4-Bit Binary Counters Datasheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74ls93.pdf
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd: Digital Fundamentals (11th Edition), Pearson"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003264
 ---
 
 ## Short answer

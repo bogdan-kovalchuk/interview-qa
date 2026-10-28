@@ -1,15 +1,21 @@
 ---
 id: emb-elinteg-0058
-title: "Why does an LED wiring mismatch on the carry output lead to inverted overflow indication?"
+title: "Why does mismatching the LED indicator polarity for the carry output cause a false overflow indication?"
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: horowitz-hill-art-of-electronics
+    title: "Paul Horowitz, Winfield Hill: The Art of Electronics, 3rd Edition. Cambridge University Press, 2015"
+    url: https://artofelectronics.net/
+  - source_id: ti-sn74ls181-datasheet
+    title: "Texas Instruments: SN54LS181, SN54S181, SN74LS181, SN74S181 Arithmetic Logic Units/Function Generators datasheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74ls181.pdf
+  - source_id: ti-sn74f382-datasheet
+    title: "Texas Instruments: SN74F382 4-Bit Arithmetic Logic Unit datasheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74f382.pdf
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd: Digital Fundamentals, 11th Edition. Pearson, 2015"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003294
 ---
 
 ## Short answer

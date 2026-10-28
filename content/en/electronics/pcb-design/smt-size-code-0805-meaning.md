@@ -10,6 +10,12 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-7351b
+    title: "IPC-7351B: Generic Requirements for Surface Mount Design and Land Pattern Standard, IPC"
+    url: https://www.ipc.org/ipc-7351
+  - source_id: vishay-resistor-datasheet
+    title: "Vishay Dale: Thick Film Chip Resistors, Industrial, CRCW Series Datasheet"
+    url: https://www.vishay.com/docs/20035/dcrcw.pdf
 ---
 
 ## Short answer

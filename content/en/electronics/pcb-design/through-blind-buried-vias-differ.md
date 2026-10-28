@@ -4,12 +4,15 @@ title: "How do through, blind and buried vias differ?"
 track: electronics
 section: pcb-design
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
+  - source_id: ipc-2226
+    title: "IPC-2226: Sectional Design Standard for High Density Interconnect (HDI) Printed Boards"
+    url: https://www.ipc.org/
+  - source_id: bogatin-signal-integrity
+    title: "Eric Bogatin. Signal and Power Integrity - Simplified (3rd Edition)"
+    url: https://www.pearson.com/en-us/subject-catalog/p/signal-and-power-integrity-simplified/P200000003233
 ---
 
 ## Short answer

@@ -1,15 +1,18 @@
 ---
 id: emb-elinteg-0050
-title: "Why do carry signals Cn and Cn+4 in the 74x181 have inverted polarity in active-high data mode?"
+title: "Why do the carry signals Cn and Cn+4 in the 74x181 have inverted polarity when operating with active-high data?"
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: ti-sn74ls181-datasheet
+    title: "Texas Instruments: SN54LS181, SN54S181, SN74LS181, SN74S181 Arithmetic Logic Units/Function Generators datasheet"
+    url: https://www.ti.com/lit/ds/symlink/sn74ls181.pdf
+  - source_id: mano-logic-computer-design
+    title: "M. Morris Mano, Charles R. Kime: Logic and Computer Design Fundamentals, 4th Edition. Pearson, 2008"
+    url: https://www.pearson.com/en-us/subject-catalog/p/logic-and-computer-design-fundamentals/P200000003308
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd: Digital Fundamentals, 11th Edition. Pearson, 2015"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003294
 ---
 
 ## Short answer

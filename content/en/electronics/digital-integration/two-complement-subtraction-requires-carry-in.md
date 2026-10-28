@@ -1,15 +1,18 @@
 ---
 id: emb-elinteg-0056
-title: "Why must carry-in be explicitly asserted when performing two's complement subtraction in an ALU?"
+title: "Why does two's complement subtraction in an ALU require an active carry-in?"
 track: electronics
 section: digital-integration
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: aac-digital
-    title: "All About Circuits textbook, Volume IV: Digital"
-    url: https://www.allaboutcircuits.com/textbook/digital/
+  - source_id: floyd-digital-fundamentals
+    title: "Thomas L. Floyd: Digital Fundamentals, 11th Edition. Pearson, 2015"
+    url: https://www.pearson.com/en-us/subject-catalog/p/digital-fundamentals/P200000003294
+  - source_id: mano-logic-computer-design
+    title: "M. Morris Mano, Charles R. Kime: Logic and Computer Design Fundamentals, 4th Edition. Pearson, 2008"
+    url: https://www.pearson.com/en-us/subject-catalog/p/logic-and-computer-design-fundamentals/P200000003308
+  - source_id: patterson-hennessy-cod
+    title: "David A. Patterson, John L. Hennessy: Computer Organization and Design: The Hardware/Software Interface, 5th Edition. Morgan Kaufmann, 2014"
+    url: https://www.elsevier.com/books/computer-organization-and-design/patterson/978-0-12-407726-3
 ---
 
 ## Short answer

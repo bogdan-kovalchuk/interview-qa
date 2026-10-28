@@ -1,15 +1,18 @@
 ---
 id: emb-elpcb-0014
-title: "What is FR-4 substrate and how are core and prepreg used in multilayer PCB construction?"
+title: "What is FR-4 PCB substrate and what roles do core and prepreg play in multilayer boards?"
 track: electronics
 section: pcb-design
 sources:
-  - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
-    url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
-  - source_id: circuitmaker-docs
-    title: "CircuitMaker documentation"
-    url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-4101e
+    title: "IPC-4101E: Specification for Base Materials for Rigid and Multilayer Printed Boards"
+    url: https://www.ipc.org/
+  - source_id: bogatin-signal-integrity
+    title: "Eric Bogatin. Signal and Power Integrity - Simplified (3rd Edition)"
+    url: https://www.pearson.com/en-us/subject-catalog/p/signal-and-power-integrity-simplified/P200000003233
+  - source_id: coombs-pcb-handbook
+    title: "Clyde F. Coombs, Happy T. Holden. Printed Circuits Handbook (7th Edition)"
+    url: https://www.accessengineeringlibrary.com/content/book/9780071833950
 ---
 
 ## Short answer
