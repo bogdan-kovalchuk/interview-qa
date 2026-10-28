@@ -10,6 +10,15 @@ sources:
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
     url: https://www.altium.com/documentation/altium-circuitmaker
+  - source_id: ipc-7525b
+    title: "IPC-7525B: Stencil Design Guidelines"
+    url: https://www.ipc.org/
+  - source_id: ucamco-gerber-specification
+    title: "Ucamco: The Gerber Layer Format Specification"
+    url: https://www.ucamco.com/en/gerber/specification
+  - source_id: ipc-2221b
+    title: "IPC-2221B: Generic Standard on Printed Board Design"
+    url: https://www.ipc.org/
 ---
 
 ## Short answer
