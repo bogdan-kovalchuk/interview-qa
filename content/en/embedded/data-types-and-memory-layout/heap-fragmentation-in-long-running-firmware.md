@@ -5,8 +5,14 @@ track: embedded
 section: data-types-and-memory-layout
 sources:
   - source_id: dou-embedded-interview
-    title: "DOU: Embedded Engineer interview questions (community Anki deck)"
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
+  - source_id: freertos-heap
+    title: "FreeRTOS heap_4 implementation"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/main/portable/MemMang/heap_4.c
+  - source_id: misra-c-2023-addendum-2
+    title: "MISRA C:2023 Addendum 2"
+    url: https://misra.org.uk/app/uploads/2024/10/MISRA-C-2023-ADD2.pdf
   - source_id: gnu-ld-manual
     title: "GNU linker ld manual"
     url: https://sourceware.org/binutils/docs/ld/index.html

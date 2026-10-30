@@ -10,6 +10,9 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: gcc-warning-options
+    title: "GCC 16.1.0: Warning Options"
+    url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Warning-Options.html
 ---
 
 ## Question code

@@ -4,6 +4,9 @@ title: "How does a function call work?"
 track: embedded
 section: data-types-and-memory-layout
 sources:
+  - source_id: arm-aapcs32
+    title: "Procedure Call Standard for the Arm Architecture (AAPCS32)"
+    url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/

@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0093
-title: "What is printed?"
+title: "What does this array subscript expression print?"
 track: embedded
 section: pointers-and-arrays
 sources:

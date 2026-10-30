@@ -10,6 +10,12 @@ sources:
   - source_id: gnu-ld-manual
     title: "GNU linker ld manual"
     url: https://sourceware.org/binutils/docs/ld/index.html
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: arm-aapcs32
+    title: "Procedure Call Standard for the Arm Architecture (AAPCS32)"
+    url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
 ---
 
 ## Short answer

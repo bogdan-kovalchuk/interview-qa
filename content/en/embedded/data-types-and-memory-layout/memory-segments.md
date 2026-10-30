@@ -5,11 +5,14 @@ track: embedded
 section: data-types-and-memory-layout
 sources:
   - source_id: dou-embedded-interview
-    title: "DOU: Embedded Engineer interview questions (community Anki deck)"
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
   - source_id: gnu-ld-manual
     title: "GNU linker ld manual"
     url: https://sourceware.org/binutils/docs/ld/index.html
+  - source_id: embedded-ld-layout
+    title: "GNU ld documentation: linker scripts and output section LMA"
+    url: https://sourceware.org/binutils/docs/ld/Output-Section-LMA.html
 ---
 
 ## Short answer

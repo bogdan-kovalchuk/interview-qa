@@ -10,6 +10,9 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: gcc-gccint-sections
+    title: "GCC 16.1.0 Internals: Defining the Output Assembler Language, Sections"
+    url: https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gccint/Sections.html
 ---
 
 ## Short answer

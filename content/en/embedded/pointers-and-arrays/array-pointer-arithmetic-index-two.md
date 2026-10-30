@@ -1,6 +1,6 @@
 ---
 id: emb-cppfound-0008
-title: "What does this print?"
+title: "What does this pointer arithmetic example print?"
 track: embedded
 section: pointers-and-arrays
 sources:
