@@ -5,11 +5,20 @@ track: embedded
 section: fundamentals
 sources:
   - source_id: dou-embedded-interview
-    title: "DOU: Embedded Engineer interview questions (community Anki deck)"
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-introduction
-    title: "Zephyr Project documentation: Introduction"
-    url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
+  - source_id: arm-cortex-m4-guide
+    title: "Cortex-M4 Devices Generic User Guide"
+    url: https://documentation-service.arm.com/static/5f2ac76d60a93e65927bbdc5
+  - source_id: microchip-atmega328p-datasheet
+    title: "Microchip Technology: ATmega328P 8-bit AVR Microcontroller Datasheet"
+    url: https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf
+  - source_id: avr-libc-program-space
+    title: "AVR-LibC: Data in Program Space"
+    url: https://avrdudes.github.io/avr-libc/avr-libc-user-manual/pgmspace.html
 ---
 
 ## Short answer

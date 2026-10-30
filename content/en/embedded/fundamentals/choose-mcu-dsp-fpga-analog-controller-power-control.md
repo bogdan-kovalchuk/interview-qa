@@ -10,6 +10,15 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: ti-c2000-real-time-mcu
+    title: "Texas Instruments SPRUIV6: Getting Started With C2000 Real-Time Control Microcontrollers"
+    url: https://www.ti.com/lit/ug/spruiv6/spruiv6.pdf
+  - source_id: uc3842-datasheet
+    title: "Texas Instruments UCx84x Current-Mode PWM Controllers Data Sheet"
+    url: https://www.ti.com/lit/ds/symlink/uc3842.pdf
+  - source_id: xilinx-xapp808
+    title: "Xilinx Application Note XAPP808: FPGA Motor Control Reference Design"
+    url: https://docs.amd.com/v/u/en-US/xapp808
 ---
 
 ## Short answer

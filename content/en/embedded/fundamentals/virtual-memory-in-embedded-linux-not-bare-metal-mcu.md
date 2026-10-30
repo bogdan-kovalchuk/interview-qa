@@ -10,6 +10,15 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: love-linux-kernel-development
+    title: "Robert Love: Linux Kernel Development, 3rd Edition. Addison-Wesley, 2010"
+    url: https://www.pearson.com/en-us/subject-catalog/p/linux-kernel-development/P200000003468
+  - source_id: armv7a-arm
+    title: "ARMv7-A and ARMv7-R Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0406/latest/
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
 ---
 
 ## Short answer

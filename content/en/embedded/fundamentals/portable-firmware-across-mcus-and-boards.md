@@ -5,11 +5,17 @@ track: embedded
 section: fundamentals
 sources:
   - source_id: dou-embedded-interview
-    title: "DOU: Embedded Engineer interview questions (community Anki deck)"
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: zephyr-devicetree
+    title: "Zephyr Project documentation: Devicetree Guide"
+    url: https://docs.zephyrproject.org/latest/build/dts/intro.html
+  - source_id: arm-cmsis-core
+    title: "Arm CMSIS-Core: Peripheral Access and Architecture Documentation"
+    url: https://arm-software.github.io/CMSIS_5/Core/html/index.html
 ---
 
 ## Short answer

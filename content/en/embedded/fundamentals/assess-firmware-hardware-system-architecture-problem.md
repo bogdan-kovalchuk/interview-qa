@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: iec-61508-1-2010
+    title: "IEC 61508-1:2010: Functional safety of electrical/electronic/programmable electronic safety-related systems – Part 1: General requirements"
+    url: https://webstore.iec.ch/en/publication/5515
+  - source_id: nasa-hdbk-1002
+    title: "NASA-HDBK-1002: Fault Management Handbook"
+    url: https://ntrs.nasa.gov/api/citations/20120002598/downloads/20120002598.pdf
 ---
 
 ## Short answer

@@ -5,18 +5,24 @@ track: embedded
 section: fundamentals
 sources:
   - source_id: dou-embedded-interview
-    title: "DOU: Embedded Engineer interview questions (community Anki deck)"
+    title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: gnu-ld-manual
-    title: "GNU linker ld manual"
-    url: https://sourceware.org/binutils/docs/ld/index.html
+  - source_id: ti-slaa526
+    title: "Texas Instruments SLAA526: MSP430 FRAM Quality and Reliability"
+    url: https://www.ti.com/lit/an/slaa526a/slaa526a.pdf
+  - source_id: linux-mtd
+    title: "Linux Kernel Documentation: Memory Technology Device (MTD) Subsystem"
+    url: https://docs.kernel.org/driver-api/mtd/index.html
+  - source_id: zephyr-nvs
+    title: "Zephyr Project documentation: Non-Volatile Storage (NVS)"
+    url: https://docs.zephyrproject.org/latest/services/storage/nvs/nvs.html
 ---
 
 ## Short answer
 
-**NOR Flash** – byte-level reading, XIP (execute-in-place), addressable bus; used for firmware storage (MCU built-in Flash).[2] Slow block erase (~10K cycles).
+**NOR Flash** – byte-level reading, XIP (execute-in-place), addressable bus; used for firmware storage (MCU built-in Flash); slow block erase (~10K cycles).
 
-**NAND Flash** – high density, cheaper; page-level reading only, not XIP.[2] SD cards, eMMC, SSDs; requires FTL (flash translation layer).
+**NAND Flash** – high density, cheaper; page-level reading only, not XIP (SD cards, eMMC, SSDs); requires FTL (flash translation layer).
 
 **EEPROM** – byte-level erase/write, ~1M cycles; slow, small capacity; for configuration and settings.
 

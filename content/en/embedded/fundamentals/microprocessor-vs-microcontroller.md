@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: microchip-mpu-memory
+    title: "Microchip Developer Help: Differences Between MCU and MPU Development"
+    url: https://developerhelp.microchip.com/xwiki/bin/view/products/mcu-mpu/32bit-mpu/differences-between-mcu-and-mpu-development/
+  - source_id: uboot-memory-startup
+    title: "U-Boot documentation: Memory Management"
+    url: https://docs.u-boot.org/en/latest/develop/memory.html
 ---
 
 ## Short answer

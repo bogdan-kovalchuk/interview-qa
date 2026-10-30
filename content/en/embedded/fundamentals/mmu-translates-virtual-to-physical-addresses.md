@@ -10,6 +10,15 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: arm-memory-management
+    title: "Arm: AArch64 Memory Management Guide"
+    url: https://developer.arm.com/documentation/101811/latest/
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
+  - source_id: linux-nommu-mmap
+    title: "The Linux Kernel Documentation: No-MMU memory-mapping support"
+    url: https://docs.kernel.org/admin-guide/mm/nommu-mmap.html
 ---
 
 ## Short answer
