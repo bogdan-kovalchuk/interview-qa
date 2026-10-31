@@ -88,6 +88,15 @@ def test_word_count_ignores_html_markup_but_keeps_its_text() -> None:
     assert _word_count("Use `vector<int>` here.") == 4
 
 
+def test_word_count_treats_both_apostrophe_forms_as_one_word() -> None:
+    """Typesetting the Ukrainian apostrophe as U+2019 must not split words:
+    every Short answer would silently grow by one word per apostrophe."""
+    ascii_form = "Пам'ять і зв'язок."
+    typeset_form = ascii_form.replace("'", chr(0x2019))
+
+    assert _word_count(ascii_form) == _word_count(typeset_form) == 3
+
+
 def _registry(path: Path, rows: list[tuple[str, str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:

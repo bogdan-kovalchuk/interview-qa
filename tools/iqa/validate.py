@@ -447,7 +447,9 @@ def _sentence_count(text: str) -> int:
 def _word_count(text: str) -> int:
     cleaned = CITATION_RE.sub("", _without_code(text))
     cleaned = _without_html_tags(cleaned)
-    return len(re.findall(r"(?u)\b[\w'+-]+\b", cleaned))
+    # A Ukrainian apostrophe is part of the word whether it is typed as ASCII
+    # `'` or typeset as U+2019: `пам'ять` and `пам’ять` are one word each.
+    return len(re.findall(r"(?u)\b[\w'\u2019+-]+\b", cleaned))
 
 
 def _short_answer_gate(record: FileRecord, report: ValidationReport) -> None:
