@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-**`std::array`, `std::optional`, `std::string_view`, `std::bitset`, `std::tuple`/`std::pair`, `std::variant`, ``, ``.**
+**`std::array`, `std::optional`, `std::string_view`, `std::bitset`, `std::tuple`/`std::pair`, `std::variant`, `<algorithm>`, `<numeric>`.**
 
 All of them have fixed size or work on iterators without allocation. `std::sort`, `std::find`, `std::accumulate` are header-only, no heap.
 

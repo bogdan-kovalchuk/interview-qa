@@ -10,15 +10,18 @@ sources:
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
 ---
 
 ## Short answer
 
-<span class="warn">A C compiler hits `extern "C"` and fails with a syntax error</span> – this is a C++ construct unknown to C.
+<span class="warn">A C compiler encounters `extern "C"` and fails with a syntax error</span> – this is a C++ construct unknown to C.
 
-A header intended for both languages, without the guard, breaks the C build.
+A header meant for both languages will break the C build without a guard.
 
-Protection: always wrap `extern "C" { ... }` in `#ifdef __cplusplus ... #endif` on both sides.[^embeddedinterviewlab]
+Protection: always wrap `extern "C" { ... }` in `#ifdef __cplusplus ... #endif` on both ends.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

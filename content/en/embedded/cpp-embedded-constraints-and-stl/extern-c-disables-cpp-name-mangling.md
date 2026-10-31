@@ -10,6 +10,9 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: iso-cpp-n4861
+    title: "C++ International Standard working draft N4861"
+    url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
 ---
 
 ## Short answer
