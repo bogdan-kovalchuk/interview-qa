@@ -15,7 +15,7 @@ sources:
     url: https://developer.arm.com/documentation/ddi0403/latest/
   - source_id: freertos-isr-comms
     title: "FreeRTOS xTaskNotifyFromISR API reference"
-    url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/05-Direct-to-task-notifications/02-xTaskNotifyFromISR
+    url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/05-Direct-to-task-notifications/07-xTaskNotifyFromISR
   - source_id: linux-circular-buffers
     title: "Linux kernel: Circular Buffers"
     url: https://docs.kernel.org/core-api/circular-buffers.html

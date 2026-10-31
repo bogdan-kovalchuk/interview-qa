@@ -7,9 +7,6 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
   - source_id: zephyr-uart
     title: "Zephyr Project documentation: Universal Asynchronous Receiver-Transmitter (UART)"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/uart.html
@@ -26,7 +23,7 @@ sources:
 
 ## Detailed explanation
 
-Universal Asynchronous Receiver-Transmitter (UART) – це апаратний периферійний модуль мікроконтролера або окрема спеціалізована мікросхема, призначена для взаємного перетворення даних між внутрішньою паралельною шиною процесора та послідовним асинхронним бітовим потоком.[^zephyr-peripherals] UART є найстарішим і найпоширенішим інтерфейсом у вбудованих системах завдяки простоті схемотехніки (потрібно лише два сигнальні дроти) та універсальності застосування: від виведення налагоджувальних логів і командних оболонок (CLI) до комунікації з GSM/LTE, Wi-Fi, Bluetooth та GNSS-модулями.
+Universal Asynchronous Receiver-Transmitter (UART) – це апаратний периферійний модуль мікроконтролера або окрема спеціалізована мікросхема, призначена для взаємного перетворення даних між внутрішньою паралельною шиною процесора та послідовним асинхронним бітовим потоком. UART є найстарішим і найпоширенішим інтерфейсом у вбудованих системах завдяки простоті схемотехніки (потрібно лише два сигнальні дроти) та універсальності застосування: від виведення налагоджувальних логів і командних оболонок (CLI) до комунікації з GSM/LTE, Wi-Fi, Bluetooth та GNSS-модулями.
 
 ### Фізичні лінії та асинхронний принцип зв’язку
 
