@@ -10,6 +10,24 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: rfc-9293-tcp
+    title: "RFC 9293: Transmission Control Protocol (TCP)"
+    url: https://www.rfc-editor.org/rfc/rfc9293.html
+  - source_id: lwip-opts-tcp
+    title: "lwIP 2.1.0: TCP options (lwipopts.h)"
+    url: https://www.nongnu.org/lwip/2_1_x/group__lwip__opts__tcp.html
+  - source_id: rfc-6298-tcp-rto
+    title: "RFC 6298: Computing TCP's Retransmission Timer"
+    url: https://www.rfc-editor.org/rfc/rfc6298.html
+  - source_id: linux-man-tcp
+    title: "tcp(7) – Linux manual page"
+    url: https://man7.org/linux/man-pages/man7/tcp.7.html
+  - source_id: posix-send
+    title: "POSIX.1-2024: send()"
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/functions/send.html
+  - source_id: lwip-tcp-raw-api
+    title: "lwIP 2.1.0: TCP raw API"
+    url: https://www.nongnu.org/lwip/2_1_x/group__tcp__raw.html
 ---
 
 ## Short answer

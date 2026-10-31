@@ -10,6 +10,21 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: mqtt-v5
+    title: "MQTT Version 5.0, OASIS Standard"
+    url: https://docs.oasis-open.org/mqtt/mqtt/v5.0/os/mqtt-v5.0-os.html
+  - source_id: lwip-overview
+    title: "lwIP 2.1.0: Overview"
+    url: https://www.nongnu.org/lwip/2_1_x/index.html
+  - source_id: zephyr-net-stack-architecture
+    title: "Zephyr Project documentation: Network Stack Architecture"
+    url: https://docs.zephyrproject.org/latest/services/connectivity/networking/net-stack-architecture.html
+  - source_id: rfc-6455-websocket
+    title: "RFC 6455: The WebSocket Protocol"
+    url: https://www.rfc-editor.org/rfc/rfc6455.html
+  - source_id: rabbitmq-mqtt-plugin
+    title: "RabbitMQ documentation: MQTT Plugin"
+    url: https://www.rabbitmq.com/docs/mqtt
 ---
 
 ## Short answer

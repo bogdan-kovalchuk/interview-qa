@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: oasis-mqtt-v5
+    title: "OASIS: MQTT Version 5.0"
+    url: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html
+  - source_id: zephyr-mqtt
+    title: "Zephyr Project documentation: MQTT"
+    url: https://docs.zephyrproject.org/latest/services/connectivity/networking/api/mqtt.html
 ---
 
 ## Short answer

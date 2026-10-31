@@ -10,6 +10,24 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: bt-core-link-layer
+    title: "Bluetooth Core Specification 6.0, Vol 6 Part B: Link Layer Specification"
+    url: https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/low-energy-controller/link-layer-specification.html
+  - source_id: bt-core-hci
+    title: "Bluetooth Core Specification 6.0, Vol 4 Part E: Host Controller Interface Functional Specification"
+    url: https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/host-controller-interface/host-controller-interface-functional-specification.html
+  - source_id: bt-core-gap
+    title: "Bluetooth Core Specification 6.0, Vol 3 Part C: Generic Access Profile"
+    url: https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/host/generic-access-profile.html
+  - source_id: bt-core-att
+    title: "Bluetooth Core Specification 6.0, Vol 3 Part F: Attribute Protocol"
+    url: https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/host/attribute-protocol--att-.html
+  - source_id: bt-core-architecture
+    title: "Bluetooth Core Specification 6.0, Vol 1 Part A: Architecture"
+    url: https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/architecture,-change-history,-and-conventions/architecture.html
+  - source_id: bt-core-gatt
+    title: "Bluetooth Core Specification 6.0, Vol 3 Part G: Generic Attribute Profile"
+    url: https://www.bluetooth.com/wp-content/uploads/Files/Specification/HTML/Core-60/out/en/host/generic-attribute-profile--gatt-.html
 ---
 
 ## Short answer

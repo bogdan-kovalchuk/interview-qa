@@ -10,6 +10,27 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: esp-idf-wifi-station
+    title: "ESP-IDF Programming Guide: Wi-Fi Driver, Station Scenarios"
+    url: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/wifi-driver/station-scenarios.html
+  - source_id: rfc-2131-dhcp
+    title: "RFC 2131: Dynamic Host Configuration Protocol"
+    url: https://www.rfc-editor.org/rfc/rfc2131.html
+  - source_id: rfc-8446-tls13
+    title: "RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3"
+    url: https://www.rfc-editor.org/rfc/rfc8446.html
+  - source_id: rfc-5280-x509
+    title: "RFC 5280: Internet X.509 Public Key Infrastructure Certificate and CRL Profile"
+    url: https://www.rfc-editor.org/rfc/rfc5280.html
+  - source_id: rfc-8449-record-size-limit
+    title: "RFC 8449: Record Size Limit Extension for TLS"
+    url: https://www.rfc-editor.org/rfc/rfc8449.html
+  - source_id: esp-idf-wifi-power
+    title: "ESP-IDF Programming Guide: Wi-Fi Driver, Performance and Power Save"
+    url: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/wifi-driver/wifi-performance-and-power-save.html
+  - source_id: rfc-826-arp
+    title: "RFC 826: An Ethernet Address Resolution Protocol"
+    url: https://www.rfc-editor.org/rfc/rfc826.html
 ---
 
 ## Short answer

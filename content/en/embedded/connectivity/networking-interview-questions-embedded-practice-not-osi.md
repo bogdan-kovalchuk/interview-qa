@@ -10,6 +10,18 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: rfc-2131-dhcp
+    title: "RFC 2131: Dynamic Host Configuration Protocol"
+    url: https://www.rfc-editor.org/rfc/rfc2131
+  - source_id: rfc-5227-ipv4-acd
+    title: "RFC 5227: IPv4 Address Conflict Detection"
+    url: https://www.rfc-editor.org/rfc/rfc5227
+  - source_id: rfc-9293-tcp
+    title: "RFC 9293: Transmission Control Protocol (TCP)"
+    url: https://www.rfc-editor.org/rfc/rfc9293
+  - source_id: oasis-mqtt-v5
+    title: "OASIS: MQTT Version 5.0"
+    url: https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html
 ---
 
 ## Short answer
