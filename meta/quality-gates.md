@@ -11,7 +11,7 @@
 
 | Ворота | Що перевіряє |
 |---|---|
-| `schema` | frontmatter відповідає моделі (`meta/question.schema.json` згенеровано з `tools/iqa/model.py` і не застарів): лише `id`, `title`, `track`, `section`, необов'язкові `sources`; у тексті немає em dash U+2014 і стрілок U+2190/U+2192 |
+| `schema` | frontmatter відповідає моделі (`meta/question.schema.json` згенеровано з `tools/iqa/model.py` і не застарів): лише `id`, `title`, `track`, `section`, необов'язкові `sources`; у тексті немає em dash U+2014 і стрілок U+2190/U+2192, а поза кодом – LaTeX `$...$` (формули пишуться інлайн-кодом) |
 | `id-unique` | `id` не повторюється в межах мови й веде на один шлях |
 | `id-immutable` | кожен `id` є в `meta/id-registry.csv` зі `status: published` і тим самим шляхом; префікс секції збігається з `section_prefixes` або `section_prefix_aliases`; `retired` має причину; рядок `published` без файлів – помилка |
 | `sections` | `[Question code] -> Short answer -> Detailed explanation`, без інших `##`; `###` лише в `Detailed explanation`; жодних `#` чи `####`; порожня секція – помилка; `Question code` – рівно один блок коду й не `TODO` |

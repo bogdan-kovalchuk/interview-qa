@@ -34,6 +34,7 @@ CITATION_RE = re.compile(r"\[\^([a-z0-9]+(?:-[a-z0-9]+)*)\]")
 QID_RE = re.compile(r"(?<![a-z0-9-])qid:([a-z0-9][a-z0-9-]*)", re.IGNORECASE)
 CODE_BLOCK_RE = re.compile(r"(?ms)^```[^\r\n]*\r?\n.*?^```[ \t]*(?=\r?$)")
 INLINE_CODE_RE = re.compile(r"`[^`\r\n]+`")
+INLINE_LATEX_RE = re.compile(r"(?<![\w$])\$[^$\n]{1,80}?\$(?![\w$])")
 CYRILLIC_RE = re.compile(r"[\u0400-\u04ff]+")
 HTML_TAG_RE = re.compile(r"</?(?:br|code|span)\b[^>]*>", re.IGNORECASE)
 READY_URL_RE = re.compile(r"https?://|(?<![\w])/(?:en|uk)/q/", re.IGNORECASE)
@@ -253,6 +254,15 @@ def _raw_content_gates(record: FileRecord, report: ValidationReport) -> None:
     for character, label in FORBIDDEN_CONTENT_CHARACTERS.items():
         if character in record.text:
             report.add("schema", f"contains forbidden {label}", path=record.label)
+    # Neither the site nor the card renders math: `$T_{clk}$` reaches the
+    # reader verbatim. Formulas are written as inline code.
+    if record.question is not None:
+        formula = INLINE_LATEX_RE.search(_without_any_code(record.question.body.raw))
+        if formula:
+            report.add(
+                "schema", f"inline LaTeX {formula.group(0)!r}; write it as inline code",
+                path=record.label,
+            )
 
 
 def _labels_gate(record: FileRecord, vocabulary: dict[str, Any], report: ValidationReport) -> None:

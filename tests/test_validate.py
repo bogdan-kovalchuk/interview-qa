@@ -406,6 +406,25 @@ def test_a_qid_token_inside_inline_code_is_rejected(tmp_path: Path) -> None:
     assert messages == ["qid token inside inline code: `qid:py-gil-9000`"] * 2
 
 
+def test_inline_latex_in_prose_is_rejected_but_not_in_code(tmp_path: Path) -> None:
+    """Nothing renders math, so `$T_{clk}$` would reach the reader verbatim.
+    A dollar sign inside code (`$HOME`, a shell prompt) is not a formula."""
+    en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
+    uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
+    old = "## Detailed explanation"
+    in_code = "## Detailed explanation\n\nRun `echo $HOME $PATH` first."
+    in_prose = "## Detailed explanation\n\nThe period is $T_{clk}$ here."
+    clean = _base_repository(
+        tmp_path / "code", en_text=_replace(en_base, old, in_code), uk_text=_replace(uk_base, old, in_code)
+    )
+    assert [d for d in validate_repository(clean).errors if "LaTeX" in d.message] == []
+    dirty = _base_repository(
+        tmp_path / "prose", en_text=_replace(en_base, old, in_prose), uk_text=uk_base
+    )
+    messages = [d.message for d in validate_repository(dirty).errors if d.gate == "schema"]
+    assert messages == ["inline LaTeX '$T_{clk}$'; write it as inline code"]
+
+
 def test_a_published_registry_row_without_files_is_rejected(tmp_path: Path) -> None:
     en_base = (FIXTURES / "valid" / "base-en.md").read_text(encoding="utf-8")
     uk_base = (FIXTURES / "valid" / "base-uk.md").read_text(encoding="utf-8")
