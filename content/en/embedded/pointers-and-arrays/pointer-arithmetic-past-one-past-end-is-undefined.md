@@ -25,7 +25,7 @@ p+=5;
 
 <span class="warn">Yes, undefined behavior</span> (even without dereferencing).
 
-Forming the pointer `p += 5` goes beyond the array by more than one: `arr` has 4 elements, so valid pointers are `arr` through `arr+4` (inclusive of "one-past-the-end"). `arr+5` -> undefined behavior already at formation.
+Forming the pointer `p += 5` goes beyond the array by more than one: `arr` has 4 elements, so valid pointers are `arr` through `arr+4` (inclusive of "one-past-the-end"). The expression `arr+5` is undefined behavior already at address formation.
 
 One-past-the-end (`arr+4`) – may be formed, but <span class="warn">must not be dereferenced</span>.[^embeddedinterviewlab]
 

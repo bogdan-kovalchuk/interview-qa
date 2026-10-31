@@ -25,7 +25,7 @@ printf("%td", p-str);
 
 `5`.
 
-`str` decays to `char*`, so the loop runs until `'\0'`: after `'h','e','l','l','o'` – `*p = '\0'` (false) -> stop. `p` points to the null terminator.
+`str` decays to `char*`, so the loop runs until `'\0'`: after `'h','e','l','l','o'` – `*p = '\0'` (false) – the loop terminates. `p` points to the null terminator.
 
 `p - str` = 5 elements = `strlen("hello")`. This is the standard way to implement `strlen` via pointer arithmetic, using `%td` for `ptrdiff_t`.[^embeddedinterviewlab]
 

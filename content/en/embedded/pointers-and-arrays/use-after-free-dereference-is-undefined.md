@@ -23,7 +23,7 @@ if(*ptr == 0)
 
 <span class="warn">Use-after-free is undefined behavior.</span> After `free(ptr)`, the memory block is returned to the heap manager and may be immediately reused.
 
-Reading `*ptr` -> undefined behavior: it may return 0, the old value, or a new value from another malloc. In real code, it is a source of security vulnerabilities (type confusion, heap exploitation).
+Reading `*ptr` is undefined behavior: it may return 0, the old value, or a new value from another malloc. In real code, it is a source of security vulnerabilities (type confusion, heap exploitation).
 
 Rule: after `free`, always: `ptr = NULL;`; then `if(ptr != NULL && *ptr == 0)` is safe.[^embeddedinterviewlab]
 

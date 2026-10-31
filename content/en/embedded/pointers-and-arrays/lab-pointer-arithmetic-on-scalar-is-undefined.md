@@ -24,7 +24,9 @@ printf("%d",*q);
 
 ## Short answer
 
-<span class="warn">Undefined behavior</span>. `q++` -> `q` now points to the address immediately after `a` on the stack – this is not an array element, only a standalone variable. Pointer arithmetic is defined only within an array (or struct under certain conditions). For two separate variables – even if adjacent on the stack – `&a + 1` -> UB; the compiler may place `a` in a register with no memory address -> `*q` reads garbage.[^embeddedinterviewlab]
+<span class="warn">Undefined behavior</span>. `q++` forms a valid one-past-the-end pointer, but dereferencing `*q` is undefined behavior (UB): scalar `a` is treated as a 1-element array, so no valid element exists past it.
+
+Pointer arithmetic is defined within an array. For separate scalar variables, computing the past-the-end pointer `&a + 1` is valid, but dereferencing `*(&a + 1)` or advancing further is UB. The compiler may also keep `a` in a register without a RAM address, so `*q` reads garbage or causes a fault.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

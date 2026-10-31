@@ -4,6 +4,9 @@ title: "Cortex-M0 trap: what is the risk?"
 track: embedded
 section: pointers-and-arrays
 sources:
+  - source_id: arm-cortex-m0-alignment
+    title: "Arm Cortex-M0 Devices Generic User Guide: Address alignment"
+    url: https://documentation-service.arm.com/static/5ea6ce5e9931941038def8c1
   - source_id: embeddedinterviewlab
     title: "Embedded Interview Lab"
     url: https://embeddedinterviewlab.com/

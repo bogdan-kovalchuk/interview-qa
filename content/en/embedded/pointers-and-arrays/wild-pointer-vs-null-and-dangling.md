@@ -21,7 +21,7 @@ Comparison:
 - **Dangling pointer**: pointed to a valid object that has been destroyed;
 - **Wild pointer**: never pointed to a valid object.
 
-All three -> undefined behavior when dereferenced. A wild pointer is the most dangerous: its address is non-zero and random, so it passes the `if(p != NULL)` check.[^embeddedinterviewlab]
+All three lead to undefined behavior when dereferenced. A wild pointer is the most dangerous: its address is non-zero and random, so it passes the `if(p != NULL)` check.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

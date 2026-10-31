@@ -24,7 +24,7 @@ printf("%d",a[0]);
 
 ## Short answer
 
-`99`. `a` decays to a pointer, so the function `f` receives `int*` – a pointer to the first element `a[0]`. `p[0] = 99` -> modifies `a[0]` in the caller. Arrays in C are passed by reference (through a pointer to the first element) – the function can modify the original data; if only reading is needed: `const int *p`.[^embeddedinterviewlab]
+`99`. `a` decays to a pointer, so the function `f` receives `int*` – a pointer to the first element `a[0]`. `p[0] = 99` – modifies `a[0]` in the caller. Arrays in C are passed by reference (through a pointer to the first element) – the function can modify the original data; if only reading is needed: `const int *p`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

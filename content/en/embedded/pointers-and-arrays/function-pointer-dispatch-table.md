@@ -21,7 +21,7 @@ typedef void (*handler_t)(void);
 handler_t table[16] = {
     isr0, isr1, isr2, ...
 };
-// Виклик:
+// Call:
 table[irq_num]();
 ```
 

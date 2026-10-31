@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-**Pointer aliasing** – a situation where two pointers of different types point to the same memory area.
+**Pointer aliasing** – a situation where two or more pointers refer to the same memory location.
 
 Strict aliasing rule (C99 §6.5): the compiler may assume that pointers of different types do not alias (except for `char*`/`unsigned char*`). This allows more aggressive optimization.
 
