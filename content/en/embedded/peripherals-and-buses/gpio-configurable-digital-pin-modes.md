@@ -10,15 +10,18 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
 ---
 
 ## Short answer
 
-**General Purpose Input/Output** – a general-purpose digital microcontroller pin configured in software.
+**General Purpose Input/Output** – a software-configurable digital microcontroller pin.
 
-Modes: `Input` (with pull-up / pull-down / floating); `Output Push-Pull` – drives HIGH/LOW; `Output Open-Drain` – drives only LOW, HIGH via an external resistor; `Alternate Function` – the pin is routed to UART/SPI/I2C/Timer.
+Modes: `Input` (pull-up / pull-down / floating); `Output Push-Pull` – drives HIGH/LOW; `Output Open-Drain` – drives only LOW, HIGH via external pull-up resistor; `Alternate Function` – pin connects to UART/SPI/I2C/Timer.
 
-Control via registers: `MODER`, `ODR`, `IDR`, `BSRR` (STM32). Atomic write: `BSRR` sets or clears a bit in one cycle with no race-condition risk.[^dou-embedded-interview]
+Register control: `MODER`, `ODR`, `IDR`, `BSRR` (STM32). Atomic write: `BSRR` sets or resets a bit in a single cycle without race conditions.[^dou-embedded-interview]
 
 ## Detailed explanation
 

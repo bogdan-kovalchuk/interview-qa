@@ -10,15 +10,18 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: nxp-um10204
+    title: "NXP UM10204: I2C-bus specification and user manual"
+    url: https://www.nxp.com/docs/en/user-guide/UM10204.pdf
 ---
 
 ## Short answer
 
-**Inter-Integrated Circuit** – a synchronous serial interface.[^dou-embedded-interview] Only two wires: `SCL` (clock) and `SDA` (data), both open-drain + pull-up resistors.
+**Inter-Integrated Circuit** – synchronous serial interface.[^dou-embedded-interview] Only two wires: `SCL` (clock) and `SDA` (data), both open-drain + pull-up resistors.
 
-Key point: devices on the bus can only **pull the line low**; the HIGH level is produced by the pull-up resistor. This lets multiple devices share one bus safely.
+Key nuance: devices on the bus can only **pull the line down**; the HIGH state is formed by a pull-up resistor. This allows multiple devices to safely share one bus.
 
-Multi-master, multi-slave; Each slave has a unique 7-bit address; Half-duplex; Speeds: 100 kHz, 400 kHz, 1 MHz; ACK/NACK supported; Typical: sensors, EEPROM, RTC, OLED.
+Multi-master, multi-slave; Each slave has a unique 7-bit address; Half-duplex; Speeds: 100 kHz, 400 kHz, 1 MHz; Has ACK/NACK; Typical: sensors, EEPROM, RTC, OLED.
 
 ## Detailed explanation
 

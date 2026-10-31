@@ -10,6 +10,9 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: usb-20-spec
+    title: "Universal Serial Bus Specification Revision 2.0"
+    url: https://www.usb.org/document-library/usb-20-specification
 ---
 
 ## Short answer

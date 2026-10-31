@@ -1,6 +1,6 @@
 ---
 id: emb-irq-0012
-title: "What is an interrupt vector, and how does it differ between MCU startup code and the Linux kernel?"
+title: "What is an interrupt vector and how does it differ between MCU startup code and the Linux kernel?"
 track: embedded
 section: interrupts-and-timing
 sources:
@@ -10,6 +10,12 @@ sources:
   - source_id: cmsis-core-nvic
     title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
     url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: linux-kernel-irq
+    title: "Linux Kernel IRQ Handling"
+    url: https://docs.kernel.org/core-api/genericirq.html
 ---
 
 ## Short answer

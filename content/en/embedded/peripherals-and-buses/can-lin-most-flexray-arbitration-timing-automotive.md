@@ -10,6 +10,9 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: iso-11898-1
+    title: "ISO 11898-1: Road vehicles – Controller area network (CAN) – Part 1: Data link layer and physical signalling"
+    url: https://www.iso.org/standard/63648.html
 ---
 
 ## Short answer

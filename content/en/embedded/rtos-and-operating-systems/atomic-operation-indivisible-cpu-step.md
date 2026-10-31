@@ -10,6 +10,9 @@ sources:
   - source_id: freertos-kernel-book
     title: "FreeRTOS Kernel Book and Reference Manual"
     url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
 ---
 
 ## Short answer

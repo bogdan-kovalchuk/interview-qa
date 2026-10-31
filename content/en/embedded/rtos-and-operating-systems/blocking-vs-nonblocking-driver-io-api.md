@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: zephyr-peripherals
+    title: "Zephyr Project documentation: Peripherals"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: freertos-kernel-book
+    title: "FreeRTOS Kernel Book and Reference Manual"
+    url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
 ---
 
 ## Short answer

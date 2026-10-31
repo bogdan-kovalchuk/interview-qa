@@ -10,6 +10,9 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: bogatin-signal-integrity
+    title: "Eric Bogatin: Signal and Power Integrity - Simplified"
+    url: https://www.pearson.com/en-us/subject-catalog/p/signal-and-power-integrity---simplified/P200000003257
 ---
 
 ## Short answer

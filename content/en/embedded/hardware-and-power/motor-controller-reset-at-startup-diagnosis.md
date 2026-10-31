@@ -10,6 +10,9 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-motor-drive-protection
+    title: "Texas Instruments: Understanding Motor Inrush and Power Supply Protection"
+    url: https://www.ti.com/lit/an/slva961/slva961.pdf
 ---
 
 ## Short answer

@@ -10,6 +10,12 @@ sources:
   - source_id: cmsis-core-nvic
     title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
     url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: freertos-task-delay
+    title: "FreeRTOS vTaskDelay API reference"
+    url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/01-Task-control/01-vTaskDelay
 ---
 
 ## Short answer

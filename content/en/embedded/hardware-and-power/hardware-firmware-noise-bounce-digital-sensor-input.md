@@ -10,6 +10,9 @@ sources:
   - source_id: gdb-manual
     title: "Debugging with GDB"
     url: https://sourceware.org/gdb/current/onlinedocs/gdb.pdf
+  - source_id: ganssle-debouncing
+    title: "Jack Ganssle: A Guide to Debouncing"
+    url: http://www.ganssle.com/debouncing.pdf
 ---
 
 ## Short answer
