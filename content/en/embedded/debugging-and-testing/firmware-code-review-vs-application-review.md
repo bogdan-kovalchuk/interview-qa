@@ -10,6 +10,21 @@ sources:
   - source_id: zephyr-testing
     title: "Zephyr Project documentation: Testing"
     url: https://docs.zephyrproject.org/latest/develop/test/index.html
+  - source_id: gcc-volatiles
+    title: "GCC manual: When is a Volatile Object Accessed?"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html
+  - source_id: cmsis-core-dcache
+    title: "CMSIS-Core (Cortex-M): D-Cache Functions"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__Dcache__functions__m7.html
+  - source_id: gcc-developer-options
+    title: "GCC manual: GCC Developer Options (-fstack-usage)"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html
+  - source_id: zephyr-coding-guidelines
+    title: "Zephyr Project documentation: Coding Guidelines"
+    url: https://docs.zephyrproject.org/latest/contribute/coding_guidelines/index.html
+  - source_id: misra-compliance-2020
+    title: "MISRA Compliance:2020 – Achieving compliance with MISRA Coding Guidelines"
+    url: https://misra.org.uk/app/uploads/2021/06/MISRA-Compliance-2020.pdf
 ---
 
 ## Short answer

@@ -10,6 +10,21 @@ sources:
   - source_id: zephyr-testing
     title: "Zephyr Project documentation: Testing"
     url: https://docs.zephyrproject.org/latest/develop/test/index.html
+  - source_id: zephyr-ztest
+    title: "Zephyr Project documentation: Test Framework (Ztest)"
+    url: https://docs.zephyrproject.org/latest/develop/test/ztest.html
+  - source_id: zephyr-native-sim
+    title: "Zephyr Project documentation: Native simulator - native_sim"
+    url: https://docs.zephyrproject.org/latest/boards/native/native_sim/doc/index.html
+  - source_id: zephyr-posix-arch
+    title: "Zephyr Project documentation: The POSIX architecture"
+    url: https://docs.zephyrproject.org/latest/boards/native/doc/arch_soc.html
+  - source_id: zephyr-twister
+    title: "Zephyr Project documentation: Test Runner (Twister)"
+    url: https://docs.zephyrproject.org/latest/develop/twister/index.html
+  - source_id: zephyr-coverage
+    title: "Zephyr Project documentation: Generating coverage reports"
+    url: https://docs.zephyrproject.org/latest/develop/test/coverage.html
 ---
 
 ## Short answer

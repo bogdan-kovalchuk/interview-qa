@@ -10,6 +10,15 @@ sources:
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+  - source_id: mcuboot-design
+    title: "MCUboot documentation: Bootloader design"
+    url: https://docs.mcuboot.com/design.html
+  - source_id: mcuboot-imgtool
+    title: "MCUboot documentation: Image tool"
+    url: https://docs.mcuboot.com/imgtool.html
+  - source_id: zephyr-twister
+    title: "Zephyr Project documentation: Test Runner (Twister)"
+    url: https://docs.zephyrproject.org/latest/develop/twister/index.html
 ---
 
 ## Short answer

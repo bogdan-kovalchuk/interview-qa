@@ -10,6 +10,18 @@ sources:
   - source_id: gdb-manual
     title: "Debugging with GDB"
     url: https://sourceware.org/gdb/current/onlinedocs/gdb.pdf
+  - source_id: openocd-arch-commands
+    title: "OpenOCD User's Guide: Architecture and Core Commands"
+    url: https://openocd.org/doc/html/Architecture-and-Core-Commands.html
+  - source_id: openocd-general-commands
+    title: "OpenOCD User's Guide: General Commands"
+    url: https://openocd.org/doc/html/General-Commands.html
+  - source_id: openocd-reset-config
+    title: "OpenOCD User's Guide: Reset Configuration"
+    url: https://openocd.org/doc/html/Reset-Configuration.html
+  - source_id: cmsis-itm
+    title: "CMSIS-Core: ITM Functions"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__ITM__Debug__gr.html
 ---
 
 ## Short answer

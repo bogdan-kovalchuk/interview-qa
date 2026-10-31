@@ -10,6 +10,18 @@ sources:
   - source_id: gcc-overall-options
     title: "GCC manual: Options Controlling the Kind of Output"
     url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+  - source_id: github-actions-matrix
+    title: "GitHub Docs: Running variations of jobs in a workflow"
+    url: https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/run-job-variations
+  - source_id: cmake-toolchains
+    title: "CMake documentation: cmake-toolchains(7)"
+    url: https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html
+  - source_id: reproducible-builds-sde
+    title: "Reproducible Builds: SOURCE_DATE_EPOCH"
+    url: https://reproducible-builds.org/docs/source-date-epoch/
+  - source_id: zephyr-twister
+    title: "Zephyr Project documentation: Test Runner (Twister)"
+    url: https://docs.zephyrproject.org/latest/develop/twister/index.html
 ---
 
 ## Short answer

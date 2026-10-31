@@ -10,6 +10,15 @@ sources:
   - source_id: zephyr-testing
     title: "Zephyr Project documentation: Testing"
     url: https://docs.zephyrproject.org/latest/develop/test/index.html
+  - source_id: cmsis-core-peripheral-access
+    title: "CMSIS-Core (Cortex-M): Peripheral Access"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__peripheral__gr.html
+  - source_id: gcc-volatiles
+    title: "GCC manual: When is a Volatile Object Accessed?"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Volatiles.html
+  - source_id: zephyr-ztest
+    title: "Zephyr Project documentation: Test Framework (Ztest)"
+    url: https://docs.zephyrproject.org/latest/develop/test/ztest.html
 ---
 
 ## Short answer
