@@ -16,12 +16,12 @@ sources:
 
 ```c
 int find_max(const int *arr, size_t n) {
-    if(arr == NULL || n == 0) return INT_MIN;
+    if (arr == NULL || n == 0) return INT_MIN;
     const int *p = arr;
     const int *end = arr + n;
     int max = *p++;
-    while(p != end) {
-        if(*p > max) max = *p;
+    while (p != end) {
+        if (*p > max) max = *p;
         p++;
     }
     return max;

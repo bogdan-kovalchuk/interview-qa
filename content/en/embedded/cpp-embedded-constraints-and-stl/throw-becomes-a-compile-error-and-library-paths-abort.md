@@ -10,6 +10,9 @@ sources:
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
+  - source_id: gcc-fexceptions
+    title: "GCC: Options for Code Generation Conventions (-fexceptions)"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html#index-fexceptions
 ---
 
 ## Short answer

@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-**Strict aliasing rule** (C99 §6.5): the compiler may assume that pointers of different incompatible types do NOT alias (do not point to the same memory area). This allows aggressive optimization: if modified through `float*` – the compiler is not required to re-read through `int*`. Exception: `char*` and `unsigned char*` may alias anything. Violation: `int x; float *fp=(float*)&x; *fp=1.0f;` -> UB; protection: `memcpy` or `union` (in C).[^embeddedinterviewlab]
+**Strict aliasing rule** (C99/C11 §6.5): the compiler assumes that pointers of incompatible types do not address the same memory. This allows aggressive optimization: writing through `float*` does not force the compiler to reload the value through `int*`. Exception: character types (`char*`, `unsigned char*`, `uint8_t*`) may alias any object. Violation: `int x; float *fp = (float*)&x; *fp = 1.0f;` causes UB. Safe type punning: `memcpy` or `union` (in C).[^embeddedinterviewlab]
 
 ## Detailed explanation
 

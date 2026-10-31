@@ -10,6 +10,9 @@ sources:
   - source_id: iso-cpp-n4861
     title: "C++ International Standard working draft N4861"
     url: https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2020/n4861.pdf
+  - source_id: gcc-fno-rtti
+    title: "GCC: C++ Dialect Options (-fno-rtti)"
+    url: https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html#index-fno-rtti
 ---
 
 ## Short answer

@@ -10,6 +10,9 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
 ---
 
 ## Short answer
@@ -19,7 +22,6 @@ sources:
 ```c
 int *p = malloc(n * sizeof(int));
 if(p == NULL) { error_handler(); return; }
-// Тепер безпечно використовувати
 ```
 
 In embedded: malloc can fail even for small requests due to fragmentation; safety-critical standards forbid malloc altogether – but if you use it, the check is mandatory.[^embeddedinterviewlab]

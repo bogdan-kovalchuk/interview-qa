@@ -23,7 +23,7 @@ printf("%d",*p);
 
 ## Short answer
 
-<span class="warn">Yes, UB.</span> `p = arr` -> pointer to `arr[0]`. `p--` -> `arr-1`, which is <span class="warn">outside the array</span>. Valid pointers for `arr[3]`: `arr` (=arr+0) to `arr+3` (one-past-the-end). `arr-1` – UB already when formed, not only when dereferenced; the compiler may assume UB does not occur -> unpredictable optimizations, so arr-1 must not be formed.[^embeddedinterviewlab]
+<span class="warn">Yes, UB.</span> `p = arr` points to `arr[0]`. `p--` forms `arr - 1`, which is <span class="warn">outside the array</span>. Valid pointers for `arr[3]`: `arr` (= `arr + 0`) to `arr + 3` (one-past-the-end). `arr - 1` is UB already when formed, not only when dereferenced; the compiler may assume UB does not occur, leading to unpredictable optimizations, so `arr - 1` must never be formed.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

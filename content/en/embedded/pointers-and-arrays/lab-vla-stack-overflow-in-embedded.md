@@ -15,7 +15,7 @@ sources:
 ## Short answer
 
 **VLA** (C99) – an array with a size determined at runtime: `void f(int n) { int arr[n]; }`. Dangers in embedded:
-1. <span class="warn">Stack overflow</span>: size is unknown at compile-time -> cannot guarantee sufficient stack;
+1. <span class="warn">Stack overflow</span>: size is unknown at compile time, making it impossible to guarantee sufficient stack space;
 2. No compile-time `sizeof` – difficult to analyze stack usage;
 3. MISRA C:2012 and C11 – VLA is optional (removed from mandatory);
 4. Clang/GCC: `-Wvla` for warnings;
