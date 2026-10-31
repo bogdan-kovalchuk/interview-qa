@@ -10,6 +10,18 @@ sources:
   - source_id: cmsis-core-nvic
     title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
     url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
+  - source_id: linux-watchdog-api
+    title: "The Linux Watchdog driver API"
+    url: https://docs.kernel.org/watchdog/watchdog-api.html
+  - source_id: nrf52840-wdt
+    title: "nRF52840 Product Specification: WDT – Watchdog timer"
+    url: https://docs.nordicsemi.com/bundle/ps_nrf52840/page/wdt.html
+  - source_id: zephyr-watchdog-api
+    title: "Zephyr Project documentation: Watchdog driver API"
+    url: https://docs.zephyrproject.org/latest/doxygen/html/group__watchdog__interface.html
+  - source_id: esp-idf-watchdogs
+    title: "ESP-IDF Programming Guide (ESP32): Watchdogs"
+    url: https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/system/wdts.html
 ---
 
 ## Short answer
