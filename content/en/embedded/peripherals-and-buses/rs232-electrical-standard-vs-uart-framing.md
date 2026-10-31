@@ -7,9 +7,15 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-slla037
+    title: "TI SLLA037A: Interface Circuits for TIA/EIA-232-F"
+    url: https://www.ti.com/lit/an/slla037a/slla037a.pdf
+  - source_id: ti-max3232
+    title: "TI MAX3232 3-V to 5.5-V Multichannel RS-232 Line Driver and Receiver (datasheet)"
+    url: https://www.ti.com/lit/ds/symlink/max3232.pdf
+  - source_id: ti-max232
+    title: "TI MAX232 Dual EIA-232 Drivers and Receivers (datasheet)"
+    url: https://www.ti.com/lit/ds/symlink/max232.pdf
 ---
 
 ## Short answer

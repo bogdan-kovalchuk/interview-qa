@@ -13,6 +13,9 @@ sources:
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: cmsis-core-dcache
+    title: "CMSIS-Core (Cortex-M): D-Cache Functions"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__Dcache__functions__m7.html
 ---
 
 ## Short answer

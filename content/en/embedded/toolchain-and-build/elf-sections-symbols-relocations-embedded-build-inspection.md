@@ -13,6 +13,9 @@ sources:
   - source_id: gnu-ld-manual
     title: "GNU linker ld manual"
     url: https://sourceware.org/binutils/docs/ld/index.html
+  - source_id: linux-man-elf
+    title: "Linux manual page: elf(5)"
+    url: https://man7.org/linux/man-pages/man5/elf.5.html
 ---
 
 ## Short answer

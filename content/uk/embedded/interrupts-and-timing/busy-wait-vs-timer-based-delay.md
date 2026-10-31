@@ -16,6 +16,12 @@ sources:
   - source_id: freertos-task-delay
     title: "FreeRTOS vTaskDelay API reference"
     url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/01-Task-control/01-vTaskDelay
+  - source_id: cmsis-core-cm4-header
+    title: "CMSIS 6: core_cm4.h (Cortex-M4 core peripheral access layer)"
+    url: https://github.com/ARM-software/CMSIS_6/blob/main/CMSIS/Core/Include/core_cm4.h
+  - source_id: cmsis-core-systick
+    title: "CMSIS-Core (Cortex-M): SysTick Timer"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__SysTick__gr.html
 ---
 
 ## Short answer
@@ -38,10 +44,10 @@ Delay може бути busy loop, CPU cycle counter, SysTick, hardware timer а
    Ключове слово `volatile` запобігає видаленню циклу компілятором під час оптимізації. Проте реальна тривалість циклу залежить від рівня оптимізації (`-O0`, `-O2`, `-Os`), наявності Flash wait states, Flash prefetch, I-Cache та конвеєра ядра.
 
 2. **Апаратний лічильник циклів (DWT CYCCNT):**
-   Ядра ARM Cortex-M3/M4/M7 мають лічильник циклів `DWT->CYCCNT`.[^armv7m-arm] Він рахує кожен такт процесора, дозволяючи реалізувати детермінований мікросекундний polling без калібрування кількості ітерацій циклу. Проте CPU залишається повністю завантаженим.
+   Ядра ARM Cortex-M3/M4/M7 мають лічильник циклів `DWT->CYCCNT`.[^armv7m-arm] Він опційний: біт `DWT_CTRL.NOCYCCNT` показує, що лічильника немає, а перед використанням його вмикають бітами `DEMCR.TRCENA` і `DWT_CTRL.CYCCNTENA`.[^cmsis-core-cm4-header] Увімкнений лічильник рахує кожен такт процесора, дозволяючи реалізувати детермінований мікросекундний polling без калібрування кількості ітерацій циклу. Проте CPU залишається повністю завантаженим.
 
 3. **Апаратний таймер або системний таймер SysTick:**
-   SysTick або периферійний таймер тактується від фіксованої шини.[^cmsis-core-nvic] Опитування його прапорця переповнення (`COUNTFLAG`) або використання глобального лічильника мілісекунд у перериванні `SysTick_Handler` забезпечує незалежність інтервалу від оптимізації коду.
+   SysTick – 24-бітний лічильник ядра (поле `RELOAD` має маску `0xFFFFFF`).[^cmsis-core-cm4-header] Приклад CMSIS налаштовує мілісекундний тік викликом `SysTick_Config(SystemCoreClock / 1000)`, тобто період задається в тактах ядра, і після зміни частоти ядра таймер треба переналаштувати.[^cmsis-core-systick] Периферійний таймер тактується від своєї шини або окремого джерела. Опитування прапорця `COUNTFLAG` або використання глобального лічильника мілісекунд у перериванні `SysTick_Handler` забезпечує незалежність інтервалу від оптимізації коду.
 
 4. **Блокуюча затримка в RTOS (`vTaskDelay` / `vTaskDelayUntil`):**
    При виклику такої функції планувальник переводить поточну задачу зі стану `Running` у стан `Blocked` на вказану кількість системних тіків.[^freertos-task-delay] Процесор негайно перемикається на виконання інших готових задач або переходить у фонову задачу `Idle`, яка може ввести мікроконтролер у режим зниженого енергоспоживання за допомогою інструкції `WFI` (Wait For Interrupt).

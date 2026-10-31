@@ -7,9 +7,9 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: bluetooth-ble-throughput
+    title: "Bluetooth SIG: Exploring Bluetooth 5 – How Fast Can It Be?"
+    url: https://www.bluetooth.com/blog/exploring-bluetooth-5-how-fast-can-it-be/
 ---
 
 ## Short answer

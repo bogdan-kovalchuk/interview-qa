@@ -13,6 +13,12 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: gcc-code-gen-options
+    title: "GCC manual: Options for Code Generation Conventions"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Code-Gen-Options.html
+  - source_id: gcc-10-changes
+    title: "GCC 10 Release Series: Changes, New Features, and Fixes"
+    url: https://gcc.gnu.org/gcc-10/changes.html
 ---
 
 ## Short answer

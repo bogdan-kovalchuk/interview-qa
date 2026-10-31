@@ -13,6 +13,15 @@ sources:
   - source_id: linux-kernel-pci
     title: "The Linux Kernel documentation: PCI Subsystem"
     url: https://docs.kernel.org/driver-api/pci/index.html
+  - source_id: linux-pci-driver-guide
+    title: "The Linux Kernel: How To Write Linux PCI Drivers"
+    url: https://docs.kernel.org/PCI/pci.html
+  - source_id: linux-pci-msi-howto
+    title: "The Linux Kernel: The MSI Driver Guide HOWTO"
+    url: https://docs.kernel.org/PCI/msi-howto.html
+  - source_id: linux-pci-regs
+    title: "Linux source: include/uapi/linux/pci_regs.h"
+    url: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/include/uapi/linux/pci_regs.h
 ---
 
 ## Short answer

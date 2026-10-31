@@ -7,12 +7,12 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-introduction
-    title: "Zephyr Project documentation: Introduction"
-    url: https://docs.zephyrproject.org/latest/introduction/index.html
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: posix-read
+    title: "POSIX.1-2024: read, pread – read from a file"
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/functions/read.html
+  - source_id: zephyr-uart
+    title: "Zephyr Project documentation: Universal Asynchronous Receiver-Transmitter (UART)"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/uart.html
   - source_id: freertos-kernel-book
     title: "FreeRTOS Kernel Book and Reference Manual"
     url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book

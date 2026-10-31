@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: zephyr-uart
+    title: "Zephyr Project documentation: Universal Asynchronous Receiver-Transmitter (UART)"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/uart.html
+  - source_id: stm32f4-hal-uart
+    title: "STMicroelectronics STM32F4 HAL: stm32f4xx_hal_uart.c (UART driver)"
+    url: https://github.com/STMicroelectronics/stm32f4xx-hal-driver/blob/master/Src/stm32f4xx_hal_uart.c
 ---
 
 ## Short answer

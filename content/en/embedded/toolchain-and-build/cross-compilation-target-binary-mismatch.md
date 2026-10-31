@@ -13,6 +13,15 @@ sources:
   - source_id: arm-aapcs32
     title: "Arm ABI: Procedure Call Standard for the Arm Architecture"
     url: https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
+  - source_id: gccint-configure-terms
+    title: "GCC Internals: Configure Terms and History"
+    url: https://gcc.gnu.org/onlinedocs/gccint/Configure-Terms.html
+  - source_id: gcc-arm-options
+    title: "GCC manual: ARM Options"
+    url: https://gcc.gnu.org/onlinedocs/gcc/ARM-Options.html
+  - source_id: cmsis-core-nvic
+    title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
 ---
 
 ## Short answer

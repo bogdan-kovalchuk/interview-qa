@@ -13,6 +13,12 @@ sources:
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: cmsis-core-intrinsics
+    title: "CMSIS-Core (Cortex-M): Intrinsic Functions for CPU Instructions"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__intrinsic__CPU__gr.html
+  - source_id: cmsis-core-registers
+    title: "CMSIS-Core (Cortex-M): Core Register Access"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__Core__Register__gr.html
 ---
 
 ## Short answer

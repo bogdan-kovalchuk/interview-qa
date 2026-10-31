@@ -13,6 +13,12 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: gcc-optimize-options
+    title: "GCC manual: Options That Control Optimization"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
+  - source_id: ld-options
+    title: "GNU ld manual: Command-line Options"
+    url: https://sourceware.org/binutils/docs/ld/Options.html
 ---
 
 ## Short answer

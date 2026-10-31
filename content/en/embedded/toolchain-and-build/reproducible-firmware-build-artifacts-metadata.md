@@ -13,6 +13,9 @@ sources:
   - source_id: gnu-ld-manual
     title: "GNU linker ld manual"
     url: https://sourceware.org/binutils/docs/ld/index.html
+  - source_id: reproducible-builds-definition
+    title: "Reproducible Builds: Definitions"
+    url: https://reproducible-builds.org/docs/definition/
 ---
 
 ## Short answer

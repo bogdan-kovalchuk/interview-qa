@@ -7,9 +7,9 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
   - source_id: st-rm0090
     title: "ST RM0090: STM32F405/415, STM32F407/417, STM32F427/437 and STM32F429/439 Reference Manual"
     url: https://www.st.com/resource/en/reference_manual/rm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf

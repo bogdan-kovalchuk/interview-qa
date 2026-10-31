@@ -7,15 +7,18 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: gcc-overall-options
-    title: "GCC manual: Options Controlling the Kind of Output"
-    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
+  - source_id: gcc-optimize-options
+    title: "GCC manual: Options That Control Optimization"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: gcc-extended-asm
+    title: "GCC manual: Extended Asm – Assembler Instructions with C Expression Operands"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Extended-Asm.html
 ---
 
 ## Short answer
@@ -26,7 +29,7 @@ sources:
 
 ### Основні типи оптимізацій сучасного компілятора
 
-Сучасні оптимізувальні компілятори (зокрема GCC та Clang) виконують глибоку трансформацію коду на проміжних рівнях представлення (GIMPLE, SSA, LLVM IR) з метою зменшення розміру бінарника або підвищення швидкодії[^gcc-overall-options]:
+Сучасні оптимізувальні компілятори (зокрема GCC та Clang) виконують глибоку трансформацію коду на проміжних рівнях представлення (GIMPLE, SSA, LLVM IR) з метою зменшення розміру бінарника або підвищення швидкодії; у GCC кожна з перелічених нижче оптимізацій має окремий прапорець, а рівні `-O1`, `-O2`, `-Os` вмикають їхні набори[^gcc-optimize-options]:
 
 - **Inlining**: підстановка тіла функції безпосередньо в точку виклику. Усуває накладні витрати на пролог/епілог функції та передачу аргументів через регістри або стек, а також відкриває можливості для подальших локальних оптимізацій.
 - **Dead-Code Elimination (DCE)**: виявлення та видалення інструкцій або цілих блоків коду, результати яких не впливають на спостережувану поведінку програми.
@@ -79,7 +82,7 @@ void delay_nop(uint32_t count) {
 }
 ```
 
-Інструкція `__asm__ volatile` повідомляє оптимізатору про наявність сторонніх побічних ефектів, забороняючи видаляти ітерації або переставляти цикл за межі попередніх дій.
+Кваліфікатор `volatile` у `__asm__ volatile` повідомляє оптимізатору про побічні ефекти: такий оператор не видаляють і не виносять із циклу, тож ітерації залишаються. Проте документація GCC попереджає, що навіть volatile asm компілятор може переставляти відносно іншого коду, зокрема через інструкції переходу; для впорядкування з доступами до пам’яті потрібен clobber `"memory"`.[^gcc-extended-asm] Тривалість такої затримки до того ж залежить від частоти ядра, конвеєра й станів очікування Flash, тому для точних інтервалів надійніший апаратний таймер.
 
 ### Методи перевірки коректності оптимізації
 

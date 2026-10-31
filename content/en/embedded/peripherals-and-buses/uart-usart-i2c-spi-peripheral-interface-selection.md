@@ -10,6 +10,9 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: nxp-um10204
+    title: "NXP UM10204: I2C-bus specification and user manual"
+    url: https://www.nxp.com/docs/en/user-guide/UM10204.pdf
 ---
 
 ## Short answer

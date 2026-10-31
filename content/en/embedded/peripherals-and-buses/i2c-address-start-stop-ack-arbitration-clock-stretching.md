@@ -13,6 +13,9 @@ sources:
   - source_id: nxp-um10204
     title: "NXP UM10204: I2C-bus specification and user manual"
     url: https://www.nxp.com/docs/en/user-guide/UM10204.pdf
+  - source_id: smbus-3-2
+    title: "System Management Bus (SMBus) Specification, Version 3.2"
+    url: https://smbus.org/specs/SMBus_3_2_20220112.pdf
 ---
 
 ## Short answer

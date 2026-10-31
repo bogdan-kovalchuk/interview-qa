@@ -18,7 +18,10 @@ sources:
     url: https://www.kernel.org/doc/html/latest/core-api/circular-buffers.html
   - source_id: freertos-isr-comms
     title: "FreeRTOS xTaskNotifyFromISR API reference"
-    url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/05-Direct-to-task-notifications/02-xTaskNotifyFromISR
+    url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/05-Direct-to-task-notifications/07-xTaskNotifyFromISR
+  - source_id: freertos-semphr-h
+    title: "FreeRTOS-Kernel: include/semphr.h (semaphore and mutex API reference)"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/main/include/semphr.h
 ---
 
 ## Short answer

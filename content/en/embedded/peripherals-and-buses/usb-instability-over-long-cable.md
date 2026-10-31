@@ -13,6 +13,9 @@ sources:
   - source_id: usb-20-spec
     title: "Universal Serial Bus Specification Revision 2.0"
     url: https://www.usb.org/document-library/usb-20-specification
+  - source_id: ti-rs485-design-guide
+    title: "TI: The RS-485 Design Guide (SLLA272)"
+    url: https://www.ti.com/lit/an/slla272/slla272.pdf
 ---
 
 ## Short answer

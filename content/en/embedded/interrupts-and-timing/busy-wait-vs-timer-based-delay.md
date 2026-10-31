@@ -16,6 +16,12 @@ sources:
   - source_id: freertos-task-delay
     title: "FreeRTOS vTaskDelay API reference"
     url: https://www.freertos.org/Documentation/02-Kernel/04-API-references/01-Task-control/01-vTaskDelay
+  - source_id: cmsis-core-cm4-header
+    title: "CMSIS 6: core_cm4.h (Cortex-M4 core peripheral access layer)"
+    url: https://github.com/ARM-software/CMSIS_6/blob/main/CMSIS/Core/Include/core_cm4.h
+  - source_id: cmsis-core-systick
+    title: "CMSIS-Core (Cortex-M): SysTick Timer"
+    url: https://arm-software.github.io/CMSIS_6/latest/Core/group__SysTick__gr.html
 ---
 
 ## Short answer

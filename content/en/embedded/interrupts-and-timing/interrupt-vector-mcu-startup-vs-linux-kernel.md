@@ -16,6 +16,12 @@ sources:
   - source_id: linux-kernel-irq
     title: "Linux Kernel IRQ Handling"
     url: https://docs.kernel.org/core-api/genericirq.html
+  - source_id: linux-x86-irq-vectors
+    title: "Linux kernel source: arch/x86/include/asm/irq_vectors.h"
+    url: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/arch/x86/include/asm/irq_vectors.h
+  - source_id: linux-kernel-hacking
+    title: "Linux kernel documentation: Unreliable Guide To Hacking The Linux Kernel"
+    url: https://docs.kernel.org/kernel-hacking/hacking.html
 ---
 
 ## Short answer

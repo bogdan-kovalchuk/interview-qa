@@ -13,6 +13,9 @@ sources:
   - source_id: bogatin-signal-integrity
     title: "Eric Bogatin: Signal and Power Integrity - Simplified"
     url: https://www.pearson.com/en-us/subject-catalog/p/signal-and-power-integrity---simplified/P200000003257
+  - source_id: ti-scaa082-high-speed-layout
+    title: "Texas Instruments SCAA082A: High-Speed Layout Guidelines"
+    url: https://www.ti.com/lit/an/scaa082a/scaa082a.pdf
 ---
 
 ## Short answer

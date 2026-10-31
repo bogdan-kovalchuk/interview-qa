@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: zephyr-pwm
+    title: "Zephyr Project documentation: Pulse Width Modulation (PWM)"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/pwm.html
+  - source_id: stm32f4-hal-tim
+    title: "STMicroelectronics STM32F4 HAL: stm32f4xx_hal_tim.c (TIM driver)"
+    url: https://github.com/STMicroelectronics/stm32f4xx-hal-driver/blob/master/Src/stm32f4xx_hal_tim.c
 ---
 
 ## Short answer

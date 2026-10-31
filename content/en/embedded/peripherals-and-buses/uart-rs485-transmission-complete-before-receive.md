@@ -7,9 +7,12 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-tl16c550d
+    title: "TI TL16C550D Asynchronous Communications Element with Autoflow Control (datasheet)"
+    url: https://www.ti.com/lit/ds/symlink/tl16c550d.pdf
+  - source_id: linux-serial-rs485
+    title: "Linux kernel documentation: RS485 Serial Communications"
+    url: https://docs.kernel.org/driver-api/serial/serial-rs485.html
 ---
 
 ## Short answer

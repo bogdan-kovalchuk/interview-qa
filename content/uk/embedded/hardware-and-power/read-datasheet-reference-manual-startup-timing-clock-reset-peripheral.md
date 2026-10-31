@@ -7,9 +7,9 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
   - source_id: st-rm0090
     title: "ST RM0090: STM32F405/415, STM32F407/417, STM32F427/437 and STM32F429/439 Reference Manual"
     url: https://www.st.com/resource/en/reference_manual/rm0090-stm32f405415-stm32f407417-stm32f427437-and-stm32f429439-advanced-armbased-32bit-mcus-stmicroelectronics.pdf
@@ -45,8 +45,8 @@ sources:
 
 ### Обмеження периферії: шинні домени, конвеєри та DMA
 
-При взаємодії з апаратною периферією Reference Manual регламентує правила доступу:[^zephyr-peripherals]
-1. **Затримка ввімкнення тактування шини**: регістри ввімкнення тактування периферії розташовані на шині AHB, тоді як сама периферія підключена до шин APB1/APB2 через шинні мости (Bus Bridges). Після запису в регістр `RCC->APB1ENR` потрібна пауза щонайменше у 1–2 такти шини до першого звернення до регістрів модуля. У ядрах із конвеєром і буфером запису (Cortex-M4/M7) рекомендується використовувати бар’єр даних (`__DSB()`) або фіктивне читання того самого регістра:
+При взаємодії з апаратною периферією Reference Manual регламентує правила доступу:
+1. **Затримка ввімкнення тактування шини**: регістри ввімкнення тактування периферії розташовані на шині AHB, тоді як сама периферія підключена до шин APB1/APB2 через шинні мости (Bus Bridges). Після запису в регістр `RCC->APB1ENR` потрібна пауза щонайменше у 1–2 такти шини до першого звернення до регістрів модуля. У ядрах із конвеєром і буфером запису (Cortex-M4/M7) рекомендується використовувати бар’єр даних (`__DSB()`: жодна наступна інструкція не виконується, доки не завершаться всі явні доступи до пам’яті перед ним[^armv7m-arm]) або фіктивне читання того самого регістра:
    ```c
    RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
    (void)RCC->APB1ENR; // Гарантує завершення запису перед зверненням до TIM2

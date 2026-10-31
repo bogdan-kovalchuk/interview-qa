@@ -7,9 +7,15 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-sn74hc165
+    title: "TI SNx4HC165 8-Bit Parallel-Load Shift Registers"
+    url: https://www.ti.com/lit/ds/symlink/sn74hc165.pdf
+  - source_id: ti-cd74hc4067
+    title: "TI CD74HCx4067 High-Speed CMOS Logic 16-Channel Analog Multiplexer and Demultiplexer"
+    url: https://www.ti.com/lit/ds/symlink/cd74hc4067.pdf
+  - source_id: ti-sn74hc138
+    title: "TI SNx4HC138 3-Line To 8-Line Decoders/Demultiplexers"
+    url: https://www.ti.com/lit/ds/symlink/sn74hc138.pdf
 ---
 
 ## Short answer

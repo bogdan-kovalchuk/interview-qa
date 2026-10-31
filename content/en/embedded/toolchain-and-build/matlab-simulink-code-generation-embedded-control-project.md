@@ -7,12 +7,9 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: gcc-overall-options
-    title: "GCC manual: Options Controlling the Kind of Output"
-    url: https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html
-  - source_id: iso-c-n1570
-    title: "ISO/IEC 9899:201x Committee Draft N1570"
-    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: gcc-optimize-options
+    title: "GCC manual: Options That Control Optimization"
+    url: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 ---
 
 ## Short answer

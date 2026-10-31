@@ -13,6 +13,12 @@ sources:
   - source_id: iso-11898-1
     title: "ISO 11898-1: Road vehicles – Controller area network (CAN) – Part 1: Data link layer and physical signalling"
     url: https://www.iso.org/standard/63648.html
+  - source_id: ti-sloa101-can
+    title: "Texas Instruments SLOA101B: Introduction to the Controller Area Network (CAN)"
+    url: https://www.ti.com/lit/an/sloa101b/sloa101b.pdf
+  - source_id: lin-2-2a-spec
+    title: "LIN Specification Package, Revision 2.2A"
+    url: https://www.cs-group.de/wp-content/uploads/2016/11/LIN_Specification_Package_2.2A.pdf
 ---
 
 ## Short answer

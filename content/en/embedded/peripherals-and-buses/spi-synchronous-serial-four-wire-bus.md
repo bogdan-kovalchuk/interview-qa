@@ -7,9 +7,9 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: linux-spi-summary
+    title: "Linux kernel: Overview of Linux kernel SPI support"
+    url: https://docs.kernel.org/spi/spi-summary.html
 ---
 
 ## Short answer

@@ -7,9 +7,9 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-sprugp1-uart
+    title: "TI SPRUGP1: KeyStone Architecture Universal Asynchronous Receiver/Transmitter (UART) User Guide"
+    url: https://www.ti.com/lit/ug/sprugp1/sprugp1.pdf
 ---
 
 ## Short answer

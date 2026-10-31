@@ -7,9 +7,6 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/

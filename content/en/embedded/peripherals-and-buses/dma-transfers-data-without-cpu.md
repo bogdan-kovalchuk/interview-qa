@@ -13,6 +13,12 @@ sources:
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: zephyr-dma
+    title: "Zephyr Project documentation: Direct Memory Access (DMA)"
+    url: https://docs.zephyrproject.org/latest/hardware/peripherals/dma.html
+  - source_id: stm32f4-hal-dma
+    title: "STMicroelectronics STM32F4 HAL: stm32f4xx_hal_dma.c (DMA driver)"
+    url: https://github.com/STMicroelectronics/stm32f4xx-hal-driver/blob/master/Src/stm32f4xx_hal_dma.c
 ---
 
 ## Short answer

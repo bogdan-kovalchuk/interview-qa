@@ -10,6 +10,9 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-slla272-rs485
+    title: "Texas Instruments SLLA272D: The RS-485 Design Guide"
+    url: https://www.ti.com/lit/an/slla272d/slla272d.pdf
 ---
 
 ## Short answer

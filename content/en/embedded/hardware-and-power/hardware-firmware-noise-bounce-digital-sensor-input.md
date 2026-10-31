@@ -11,8 +11,11 @@ sources:
     title: "Debugging with GDB"
     url: https://sourceware.org/gdb/current/onlinedocs/gdb.pdf
   - source_id: ganssle-debouncing
-    title: "Jack Ganssle: A Guide to Debouncing"
-    url: http://www.ganssle.com/debouncing.pdf
+    title: "Jack Ganssle: A Guide to Debouncing, Part 1 (Wayback Machine copy)"
+    url: https://web.archive.org/web/20261003021807/https://www.ganssle.com/debouncing.htm
+  - source_id: ganssle-debouncing-part2
+    title: "Jack Ganssle: A Guide to Debouncing, Part 2 (Wayback Machine copy)"
+    url: https://web.archive.org/web/20260905204217/https://www.ganssle.com/debouncing-pt2.htm
 ---
 
 ## Short answer

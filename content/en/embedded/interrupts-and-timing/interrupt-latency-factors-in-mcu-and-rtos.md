@@ -14,8 +14,14 @@ sources:
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/
   - source_id: freertos-interrupt-config
-    title: "FreeRTOS interrupt nesting and priority configuration"
-    url: https://www.freertos.org/Documentation/02-Kernel/02-Kernel-features/06-Interrupt-management
+    title: "Mastering the FreeRTOS Real Time Kernel, chapter 7: Interrupt Management (interrupt nesting and priorities)"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel-Book/blob/main/ch07.md
+  - source_id: freertos-critical-sections
+    title: "Mastering the FreeRTOS Real Time Kernel, chapter 8: Resource Management (critical sections)"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel-Book/blob/main/ch08.md
+  - source_id: freertos-port-arm-cm4f
+    title: "FreeRTOS-Kernel: portable/GCC/ARM_CM4F/portmacro.h"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/main/portable/GCC/ARM_CM4F/portmacro.h
 ---
 
 ## Short answer

@@ -10,9 +10,12 @@ sources:
   - source_id: cmsis-core-nvic
     title: "CMSIS-Core (Cortex-M): Interrupts and Exceptions (NVIC)"
     url: https://arm-software.github.io/CMSIS_6/latest/Core/group__NVIC__gr.html
-  - source_id: st-an4013
-    title: "STMicroelectronics Application Note AN4013: STM32 cross-series timer overview"
-    url: https://www.st.com/resource/en/application_note/an4013-stm32-crossseries-timer-overview-stmicroelectronics.pdf
+  - source_id: stm32f4-hal-tim
+    title: "STMicroelectronics STM32F4 HAL: stm32f4xx_hal_tim.c (TIM driver)"
+    url: https://github.com/STMicroelectronics/stm32f4xx-hal-driver/blob/master/Src/stm32f4xx_hal_tim.c
+  - source_id: stm32f4-hal-tim-h
+    title: "STMicroelectronics STM32F4 HAL: stm32f4xx_hal_tim.h (TIM definitions)"
+    url: https://github.com/STMicroelectronics/stm32f4xx-hal-driver/blob/master/Inc/stm32f4xx_hal_tim.h
 ---
 
 ## Short answer

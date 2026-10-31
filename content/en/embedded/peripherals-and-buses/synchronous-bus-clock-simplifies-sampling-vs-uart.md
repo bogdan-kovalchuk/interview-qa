@@ -10,6 +10,12 @@ sources:
   - source_id: zephyr-peripherals
     title: "Zephyr Project documentation: Peripherals"
     url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
+  - source_id: ti-keystone-uart
+    title: "TI: KeyStone Architecture Universal Asynchronous Receiver/Transmitter (UART) User Guide (SPRUGP1)"
+    url: https://www.ti.com/lit/ug/sprugp1/sprugp1.pdf
+  - source_id: ti-i2c-slva704
+    title: "TI: Understanding the I2C Bus (SLVA704)"
+    url: https://www.ti.com/lit/an/slva704/slva704.pdf
 ---
 
 ## Short answer

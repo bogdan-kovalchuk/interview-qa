@@ -7,12 +7,12 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
-  - source_id: armv7m-arm
-    title: "ARMv7-M Architecture Reference Manual"
-    url: https://developer.arm.com/documentation/ddi0403/latest/
+  - source_id: zephyr-stm32-qdec
+    title: "Zephyr Project documentation: st,stm32-qdec devicetree binding"
+    url: https://docs.zephyrproject.org/latest/build/dts/api/bindings/sensor/st,stm32-qdec.html
+  - source_id: arm-cortex-m3-trm
+    title: "Arm Cortex-M3 Processor Technical Reference Manual, r2p1"
+    url: https://documentation-service.arm.com/static/5f2286f2f3ce30357bc28b2a
 ---
 
 ## Short answer

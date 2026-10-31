@@ -7,9 +7,6 @@ sources:
   - source_id: dou-embedded-interview
     title: "DOU: Питання співбесід Embedded Engineer (Anki-колода спільноти)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/
-  - source_id: zephyr-peripherals
-    title: "Zephyr Project documentation: Peripherals"
-    url: https://docs.zephyrproject.org/latest/hardware/peripherals/index.html
   - source_id: armv7m-arm
     title: "ARMv7-M Architecture Reference Manual"
     url: https://developer.arm.com/documentation/ddi0403/latest/
@@ -26,7 +23,7 @@ sources:
 ## Detailed explanation
 
 ### Внутрішня апаратна структура піна GPIO
-GPIO (General Purpose Input/Output) – це універсальний цифровий вивід мікроконтролера, внутрішня схема якого містить конфігуровані вхідні буфери, вихідні драйвери та схеми підтяжки, підключені до внутрішньої системної шини через контролер периферії [^zephyr-peripherals].
+GPIO (General Purpose Input/Output) – це універсальний цифровий вивід мікроконтролера, внутрішня схема якого містить конфігуровані вхідні буфери, вихідні драйвери та схеми підтяжки, підключені до внутрішньої системної шини через контролер периферії.
 
 Апаратна структура типового піна (наприклад, у сімействах STM32 або NXP LPC) включає:
 1. **Захисні діоди (Clamping Diodes)**:
@@ -67,7 +64,7 @@ STR r1, [r0]       ; 3. Записати результат назад у ODR
 Якщо між кроками `LDR` та `STR` виникає переривання (ISR), яке змінює стан іншого піна цього ж порту (наприклад, `PA6`), після повернення з ISR інструкція `STR` затре старе значення, скасувавши зміну, зроблену в обробнику переривання. Виникає класичний стан гонитви (race condition).
 
 **Атомарне керування через регістр BSRR (Bit Set/Reset Register)**:
-Для запобігання race condition апаратний контролер GPIO має спеціальний регістр `BSRR` [^zephyr-peripherals]:
+Для запобігання race condition апаратний контролер GPIO в STM32 має спеціальний регістр `BSRR`:
 - Запис '1' у молодші 16 бітів (`BS0`–`BS15`) атомарно встановлює відповідний пін у стан HIGH.
 - Запис '1' у старші 16 бітів (`BR0`–`BR15`) атомарно скидає відповідний пін у стан LOW.
 - Запис '0' не має жодного ефекту.
