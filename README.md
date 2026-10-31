@@ -12,7 +12,7 @@ on the site and a card in an Anki deck that links back to that page.
 
 **Current state:** 2047 questions in both languages. Every question has a Ukrainian short answer,
 1239 have an English one, and those are the cards that ship (2047 Ukrainian, 1239 English).
-Detailed answers are written for 1498 Ukrainian and 423 English files, including all 363 Python
+Detailed answers are written for 1991 Ukrainian and 423 English files, including all 363 Python
 questions in both languages. An unwritten section is marked `TODO` in the source and is not shown on
 the page.
 
