@@ -26,7 +26,7 @@ sources:
 
 The `is` operator determines whether two variables reference the exact same object in memory, whereas the `==` operator checks whether the values of the objects are equivalent.[^py314-reference-datamodel]
 
-In CPython, every object has an immutable identity, a type, and a value. The built-in `id()` function returns an integer representing the object's address in memory. The `is` operator directly compares object pointers at the C-structure level. This operation runs in $O(1)$ time, invokes no Python methods, and cannot be overloaded by user code.
+In CPython, every object has an immutable identity, a type, and a value. The built-in `id()` function returns an integer representing the object's address in memory. The `is` operator directly compares object pointers at the C-structure level. This operation runs in `O(1)` time, invokes no Python methods, and cannot be overloaded by user code.
 
 In contrast, the `==` operator delegates evaluation to the `__eq__()` special method of the left operand. If that method returns `NotImplemented`, the interpreter attempts to call `__eq__()` on the right operand. If neither operand defines an equality comparison, Python falls back to `object.__eq__`, which defaults to an identity check using `is`.[^py314-library-stdtypes] User-defined classes can freely override `__eq__` to compare specific attributes or apply custom equality semantics.
 

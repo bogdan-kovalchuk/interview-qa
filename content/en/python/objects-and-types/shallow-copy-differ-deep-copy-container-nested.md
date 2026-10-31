@@ -30,7 +30,7 @@ A shallow copy (created via `copy.copy()`, slice notation `lst[:]`, constructors
 
 In contrast, a deep copy (created via `copy.deepcopy()`) recursively traverses the entire object graph, constructing new instances for every compound object it encounters. For immutable primitive objects (integers, strings, or tuples containing exclusively immutable items), Python optimizes execution by returning the original object reference directly, as immutability guarantees safety. For all mutable containers, brand new isolated objects are instantiated, eliminating shared-state side effects entirely.
 
-Choosing between the two involves balancing execution speed against safety. Shallow copying runs in $O(n)$ time proportional to the outer container's length with minimal memory overhead, whereas deep copying incurs significant performance penalties due to full graph traversal, internal memo table management, and extensive object allocation.
+Choosing between the two involves balancing execution speed against safety. Shallow copying runs in `O(n)` time proportional to the outer container's length with minimal memory overhead, whereas deep copying incurs significant performance penalties due to full graph traversal, internal memo table management, and extensive object allocation.
 
 An example contrasting shallow copy and deep copy behavior on nested lists:
 
