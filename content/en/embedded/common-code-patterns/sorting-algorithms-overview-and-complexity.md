@@ -10,8 +10,10 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
----
-
+  - source_id: iso-c-n1570
+    title: "ISO/IEC 9899:201x Committee Draft N1570"
+    url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+---
 ## Short answer
 
 A sorting algorithm orders elements by key: ascending, descending, or a custom comparator[^dou-embedded-interview]; important characteristics are time complexity, extra memory, stability, and behavior on nearly sorted data.

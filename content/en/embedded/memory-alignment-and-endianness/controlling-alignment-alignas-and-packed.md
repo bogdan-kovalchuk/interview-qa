@@ -10,8 +10,10 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
----
-
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
+---
 ## Short answer
 
 Alignment is needed for fast and correct CPU access to data.[^dou-embedded-interview] Many architectures read 2/4/8-byte values more efficiently when the address is a multiple of the type size; some MCUs can generate a fault on misaligned access.

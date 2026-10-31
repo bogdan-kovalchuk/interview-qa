@@ -4,6 +4,9 @@ title: "How do you determine the size of a struct?"
 track: embedded
 section: memory-alignment-and-endianness
 sources:
+  - source_id: armv7m
+    title: "Armv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/latest/
   - source_id: dou-embedded-interview
     title: "DOU: Embedded Engineer interview questions (community Anki deck)"
     url: https://dou.ua/lenta/articles/interview-embedded-engineer/

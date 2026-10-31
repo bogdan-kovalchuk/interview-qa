@@ -10,8 +10,10 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
----
-
+  - source_id: armv7m-arm
+    title: "ARMv7-M Architecture Reference Manual"
+    url: https://developer.arm.com/documentation/ddi0403/e/
+---
 ## Short answer
 
 `&` AND – clear a bit: `reg &= ~(1<<n)` `|` OR – set a bit: `reg |= (1<<n)` `^` XOR – toggle: `reg ^= (1<<n)` `~` NOT – bitwise inversion `<<` left shift: `x << 3` = x × 8 `>>` right shift: `x >> 1` = x / 2.
