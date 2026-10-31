@@ -10,6 +10,18 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: linux-man-standards
+    title: "Linux manual page: standards(7)"
+    url: https://man7.org/linux/man-pages/man7/standards.7.html
+  - source_id: posix-2024-introduction
+    title: "POSIX.1-2024 (IEEE Std 1003.1-2024), Base Definitions: 1. Introduction"
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap01.html
+  - source_id: posix-2024-unistd-h
+    title: "POSIX.1-2024 (IEEE Std 1003.1-2024): <unistd.h>"
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/unistd.h.html
+  - source_id: zephyr-posix-overview
+    title: "Zephyr Project documentation: POSIX Overview"
+    url: https://docs.zephyrproject.org/latest/services/portability/posix/overview/index.html
 ---
 
 ## Short answer

@@ -10,6 +10,21 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: linux-man-socket
+    title: "Linux manual page: socket(2)"
+    url: https://man7.org/linux/man-pages/man2/socket.2.html
+  - source_id: linux-man-socket-7
+    title: "Linux manual page: socket(7)"
+    url: https://man7.org/linux/man-pages/man7/socket.7.html
+  - source_id: linux-man-unix
+    title: "Linux manual page: unix(7)"
+    url: https://man7.org/linux/man-pages/man7/unix.7.html
+  - source_id: linux-socketcan
+    title: "Linux kernel: SocketCAN - Controller Area Network"
+    url: https://docs.kernel.org/networking/can.html
+  - source_id: zephyr-bsd-sockets
+    title: "Zephyr Project documentation: BSD Sockets"
+    url: https://docs.zephyrproject.org/latest/services/connectivity/networking/api/sockets.html
 ---
 
 ## Short answer

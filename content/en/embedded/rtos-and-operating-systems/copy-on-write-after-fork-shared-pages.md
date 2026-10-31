@@ -10,6 +10,27 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: linux-man-fork
+    title: "Linux manual page: fork(2)"
+    url: https://man7.org/linux/man-pages/man2/fork.2.html
+  - source_id: linux-page-tables
+    title: "Linux kernel: Page Tables"
+    url: https://docs.kernel.org/mm/page_tables.html
+  - source_id: linux-man-mmap
+    title: "Linux manual page: mmap(2)"
+    url: https://man7.org/linux/man-pages/man2/mmap.2.html
+  - source_id: linux-overcommit-accounting
+    title: "Linux kernel: Overcommit Accounting"
+    url: https://docs.kernel.org/mm/overcommit-accounting.html
+  - source_id: linux-man-mlock
+    title: "Linux manual page: mlock(2)"
+    url: https://man7.org/linux/man-pages/man2/mlock.2.html
+  - source_id: linux-man-vfork
+    title: "Linux manual page: vfork(2)"
+    url: https://man7.org/linux/man-pages/man2/vfork.2.html
+  - source_id: linux-nommu-mmap
+    title: "Linux kernel: No-MMU memory mapping support"
+    url: https://docs.kernel.org/admin-guide/mm/nommu-mmap.html
 ---
 
 ## Short answer

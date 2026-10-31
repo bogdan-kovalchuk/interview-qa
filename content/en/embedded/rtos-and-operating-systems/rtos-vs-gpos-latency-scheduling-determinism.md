@@ -10,6 +10,12 @@ sources:
   - source_id: freertos-kernel-book
     title: "FreeRTOS Kernel Book and Reference Manual"
     url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+  - source_id: linux-man-sched
+    title: "Linux manual page: sched(7)"
+    url: https://man7.org/linux/man-pages/man7/sched.7.html
+  - source_id: linux-lock-types
+    title: "Linux kernel: Lock types and their rules"
+    url: https://docs.kernel.org/locking/locktypes.html
 ---
 
 ## Short answer

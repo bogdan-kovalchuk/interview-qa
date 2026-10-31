@@ -10,6 +10,12 @@ sources:
   - source_id: freertos-kernel-book
     title: "FreeRTOS Kernel Book and Reference Manual"
     url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+  - source_id: freertos-port-cm4f
+    title: "FreeRTOS-Kernel source: portable/GCC/ARM_CM4F/port.c"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/main/portable/GCC/ARM_CM4F/port.c
+  - source_id: freertos-portmacro-cm4f
+    title: "FreeRTOS-Kernel source: portable/GCC/ARM_CM4F/portmacro.h"
+    url: https://github.com/FreeRTOS/FreeRTOS-Kernel/blob/main/portable/GCC/ARM_CM4F/portmacro.h
 ---
 
 ## Short answer

@@ -13,6 +13,27 @@ sources:
   - source_id: linux-vfio
     title: "VFIO - Virtual Function I/O"
     url: https://docs.kernel.org/driver-api/vfio.html
+  - source_id: linux-kernel-hacking-guide
+    title: "The Linux Kernel: Unreliable Guide To Hacking The Linux Kernel"
+    url: https://docs.kernel.org/kernel-hacking/hacking.html
+  - source_id: linux-spidev
+    title: "The Linux Kernel: SPI userspace API"
+    url: https://docs.kernel.org/spi/spidev.html
+  - source_id: linux-i2c-dev
+    title: "The Linux Kernel: Implementing I2C device drivers in userspace"
+    url: https://docs.kernel.org/i2c/dev-interface.html
+  - source_id: linux-gpio-chardev
+    title: "The Linux Kernel: GPIO Character Device Userspace API"
+    url: https://docs.kernel.org/userspace-api/gpio/chardev.html
+  - source_id: linux-stable-api-nonsense
+    title: "The Linux Kernel Driver Interface (stable API nonsense)"
+    url: https://docs.kernel.org/process/stable-api-nonsense.html
+  - source_id: linux-tuntap
+    title: "The Linux Kernel: Universal TUN/TAP device driver"
+    url: https://docs.kernel.org/networking/tuntap.html
+  - source_id: linux-uinput
+    title: "The Linux Kernel: uinput module"
+    url: https://docs.kernel.org/input/uinput.html
 ---
 
 ## Short answer

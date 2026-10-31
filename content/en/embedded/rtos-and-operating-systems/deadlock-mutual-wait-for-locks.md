@@ -10,6 +10,18 @@ sources:
   - source_id: freertos-kernel-book
     title: "FreeRTOS Kernel Book and Reference Manual"
     url: https://www.freertos.org/Documentation/02-Kernel/07-Books-and-manual/01-RTOS_book
+  - source_id: ostep-concurrency-bugs
+    title: "Arpaci-Dusseau, Operating Systems: Three Easy Pieces, ch. 32: Common Concurrency Problems"
+    url: https://pages.cs.wisc.edu/~remzi/OSTEP/threads-bugs.pdf
+  - source_id: posix-pthread-mutex-lock
+    title: "POSIX.1-2024: pthread_mutex_lock, pthread_mutex_trylock, pthread_mutex_unlock"
+    url: https://pubs.opengroup.org/onlinepubs/9799919799/functions/pthread_mutex_lock.html
+  - source_id: linux-spinlocks
+    title: "Linux kernel documentation: Locking lessons (spinlocks)"
+    url: https://docs.kernel.org/locking/spinlocks.html
+  - source_id: linux-lockdep-design
+    title: "Linux kernel documentation: Runtime locking correctness validator"
+    url: https://docs.kernel.org/locking/lockdep-design.html
 ---
 
 ## Short answer

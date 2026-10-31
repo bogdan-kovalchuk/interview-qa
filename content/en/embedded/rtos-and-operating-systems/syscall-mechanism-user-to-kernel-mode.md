@@ -10,6 +10,27 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: ostep-limited-direct-execution
+    title: "Arpaci-Dusseau, Operating Systems: Three Easy Pieces, ch. 6: Mechanism: Limited Direct Execution"
+    url: https://pages.cs.wisc.edu/~remzi/OSTEP/cpu-mechanisms.pdf
+  - source_id: linux-man-syscall
+    title: "Linux manual page: syscall(2)"
+    url: https://man7.org/linux/man-pages/man2/syscall.2.html
+  - source_id: linux-man-syscalls
+    title: "Linux manual page: syscalls(2)"
+    url: https://man7.org/linux/man-pages/man2/syscalls.2.html
+  - source_id: linux-x86-64-syscall-table
+    title: "Linux kernel source: arch/x86/entry/syscalls/syscall_64.tbl"
+    url: https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/arch/x86/entry/syscalls/syscall_64.tbl
+  - source_id: linux-man-vdso
+    title: "Linux manual page: vdso(7)"
+    url: https://man7.org/linux/man-pages/man7/vdso.7.html
+  - source_id: zephyr-usermode-overview
+    title: "Zephyr Project documentation: User Mode Overview"
+    url: https://docs.zephyrproject.org/latest/kernel/usermode/overview.html
+  - source_id: zephyr-syscalls
+    title: "Zephyr Project documentation: System Calls"
+    url: https://docs.zephyrproject.org/latest/kernel/usermode/syscalls.html
 ---
 
 ## Short answer

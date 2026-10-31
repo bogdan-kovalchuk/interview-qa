@@ -10,6 +10,15 @@ sources:
   - source_id: zephyr-introduction
     title: "Zephyr Project documentation: Introduction"
     url: https://docs.zephyrproject.org/latest/introduction/index.html
+  - source_id: buildroot-manual
+    title: "The Buildroot user manual"
+    url: https://buildroot.org/downloads/manual/manual.html
+  - source_id: yocto-overview-intro
+    title: "Yocto Project Overview and Concepts Manual: Introducing the Yocto Project"
+    url: https://docs.yoctoproject.org/overview-manual/yp-intro.html
+  - source_id: openwrt-readme
+    title: "OpenWrt source repository README"
+    url: https://github.com/openwrt/openwrt/blob/main/README.md
 ---
 
 ## Short answer
