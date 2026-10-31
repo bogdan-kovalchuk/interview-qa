@@ -10,6 +10,9 @@ sources:
   - source_id: iso-c-n1570
     title: "ISO/IEC 9899:201x Committee Draft N1570"
     url: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf
+  - source_id: cmsis-dsp-filtering-h
+    title: "CMSIS-DSP: Include/dsp/filtering_functions.h"
+    url: https://github.com/ARM-software/CMSIS-DSP/blob/main/Include/dsp/filtering_functions.h
 ---
 
 ## Short answer
