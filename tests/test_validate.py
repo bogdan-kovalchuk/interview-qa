@@ -30,6 +30,7 @@ EXPECTED_FIXTURE_GATES = {
     "lang-code-identical",
     "lang-links-parity",
     "lang-glossary",
+    "lang-script",
 }
 
 

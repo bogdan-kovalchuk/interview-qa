@@ -34,6 +34,7 @@ CITATION_RE = re.compile(r"\[\^([a-z0-9]+(?:-[a-z0-9]+)*)\]")
 QID_RE = re.compile(r"(?<![a-z0-9-])qid:([a-z0-9][a-z0-9-]*)", re.IGNORECASE)
 CODE_BLOCK_RE = re.compile(r"(?ms)^```[^\r\n]*\r?\n.*?^```[ \t]*(?=\r?$)")
 INLINE_CODE_RE = re.compile(r"`[^`\r\n]+`")
+CYRILLIC_RE = re.compile(r"[\u0400-\u04ff]+")
 HTML_TAG_RE = re.compile(r"</?(?:br|code|span)\b[^>]*>", re.IGNORECASE)
 READY_URL_RE = re.compile(r"https?://|(?<![\w])/(?:en|uk)/q/", re.IGNORECASE)
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[[^\]\r\n]+\]\([^)\r\n]+\)")
@@ -526,6 +527,30 @@ def _xref_gate(record: FileRecord, known_ids: set[str], report: ValidationReport
             report.add("xref", f"qid token inside inline code: {span}", path=record.label)
 
 
+def _lang_script_gate(record: FileRecord, report: ValidationReport) -> None:
+    """English prose is English.
+
+    Workers have pasted the Ukrainian text into the English file, and the
+    English card then ships in Ukrainian with every parity gate green. Code is
+    excluded: it is byte-identical in both languages, and the encoding examples
+    print Ukrainian strings on purpose. Source titles keep their own language.
+    """
+    question = record.question
+    if question is None or question.language != Language.EN:
+        return
+    for where, text in (
+        ("title", question.frontmatter.title),
+        ("body", _without_any_code(question.body.raw)),
+    ):
+        found = CYRILLIC_RE.findall(text)
+        if found:
+            report.add(
+                "lang-script",
+                f"English {where} contains Cyrillic: {' '.join(found[:3])}",
+                path=record.label,
+            )
+
+
 def _taxonomy_gate(
     record: FileRecord, taxonomy_paths: set[str], report: ValidationReport
 ) -> None:
@@ -795,6 +820,7 @@ def validate_repository(root: Path) -> ValidationReport:
         _short_answer_gate(record, report)
         _taxonomy_gate(record, taxonomy_paths, report)
         _sources_gate(record, report)
+        _lang_script_gate(record, report)
 
     _id_gates(records, registry, report)
     known_ids = {

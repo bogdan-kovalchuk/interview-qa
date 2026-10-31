@@ -1,0 +1,5 @@
+gate: lang-script
+language: en
+replacements:
+  - old: "A blocking call prevents that thread from advancing other callbacks."
+    new: "Блокуючий виклик зупиняє цей потік."
