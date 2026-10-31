@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-**Comprehension створює окрему неявну scope для iteration variable, але `:=` (assignment expression) спеціально прив'язує свій target у containing scope, оминаючи цю ізоляцію.**[^py314-howto-functional] Наприклад, після `[y := x for x in data]` ім'я `y` доступне поза comprehension, тоді як `x` – ні. <span class="warn">Якщо в containing scope є `nonlocal` або `global` декларація для цього імені, `:=` її поважає.</span>
+**Comprehension створює окрему неявну scope для iteration variable, але `:=` (assignment expression) спеціально прив’язує свій target у containing scope, оминаючи цю ізоляцію.**[^py314-howto-functional] Наприклад, після `[y := x for x in data]` ім’я `y` доступне поза comprehension, тоді як `x` – ні. <span class="warn">Якщо в containing scope є `nonlocal` або `global` декларація для цього імені, `:=` її поважає.</span>
 
 ## Detailed explanation
 
@@ -28,9 +28,9 @@ sources:
 
 В історичних версіях Python 2 змінні циклу `for` у list comprehensions витікали в навколишній контекст, перезаписуючи змінні функції чи модуля. Починаючи з Python 3, кожний comprehension (list, set, dict та generator expressions) компілюється в окрему неявну функціональну область видимості (nested code object), тому його ітераційні змінні є локальними для цього блоку і видаляються після завершення обчислення.[^py314-reference-expressions-displays-for-lists-sets-and-dict]
 
-Коли PEP 572 додав оператор assignment expression (`:=`), розробники свідомо заклали виняток із цього правила для comprehensions: присвоєння через `:=` завжди прив'язує ім'я в найближчу *зовнішню* область видимості (containing scope функції або модуля), а не всередині неявної функції comprehension.[^py314-reference-expressions-displays-for-lists-sets-and-dict] Це зроблено прагматично, щоб дозволити збереження проміжних результатів або фільтрів (наприклад, вирахуваного дорогого значення для фільтрації та формування елемента списку). Водночас Python забороняє використовувати ім'я ітераційної змінної comprehension як ціль для `:=` (наприклад, `[i := i + 1 for i in range(5)]` викличе `SyntaxError`), щоб уникнути конфлікту між локальною та зовнішньою областями видимості.
+Коли PEP 572 додав оператор assignment expression (`:=`), розробники свідомо заклали виняток із цього правила для comprehensions: присвоєння через `:=` завжди прив’язує ім’я в найближчу *зовнішню* область видимості (containing scope функції або модуля), а не всередині неявної функції comprehension.[^py314-reference-expressions-displays-for-lists-sets-and-dict] Це зроблено прагматично, щоб дозволити збереження проміжних результатів або фільтрів (наприклад, вирахуваного дорогого значення для фільтрації та формування елемента списку). Водночас Python забороняє використовувати ім’я ітераційної змінної comprehension як ціль для `:=` (наприклад, `[i := i + 1 for i in range(5)]` викличе `SyntaxError`), щоб уникнути конфлікту між локальною та зовнішньою областями видимості.
 
-Ізоляція змінної ітерації та зовнішнє зв'язування walrus operator:
+Ізоляція змінної ітерації та зовнішнє зв’язування walrus operator:
 
 ```python
 data = [1, 2, 3, 4]
@@ -51,6 +51,6 @@ print(last)                # 40 (holds the value from the last matching iteratio
 
 **Підводні камені та архітектурні обмеження:**
 - ненавмисне затінення (shadowing) чи перезапис змінних навколишньої функції через оператор `:=` всередині генераторних виразів чи comprehensions;
-- спроба прив'язати ціль `:=` до самої змінної ітерації, що викликає `SyntaxError` ще на етапі компіляції;
-- використання `:=` у comprehension на рівні класу, де scoping rules забороняють зв'язування з простором імен класу, викликаючи `TargetScopeError` / `SyntaxError`;
+- спроба прив’язати ціль `:=` до самої змінної ітерації, що викликає `SyntaxError` ще на етапі компіляції;
+- використання `:=` у comprehension на рівні класу, де scoping rules забороняють зв’язування з простором імен класу, викликаючи `TargetScopeError` / `SyntaxError`;
 - залежність від значення змінної walrus після порожнього або відфільтрованого comprehension, якщо жоден елемент не пройшов фільтр `if`.

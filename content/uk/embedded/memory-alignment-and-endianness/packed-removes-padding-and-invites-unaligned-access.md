@@ -31,7 +31,7 @@ sources:
 
 ## Detailed explanation
 
-`__attribute__((packed))` – розширення GNU, а не ISO C. GCC документує, що для packed structure кожне поле, крім zero-width bit-fields, розміщується так, щоб мінімізувати потрібну пам'ять.[^gcc-packed]
+`__attribute__((packed))` – розширення GNU, а не ISO C. GCC документує, що для packed structure кожне поле, крім zero-width bit-fields, розміщується так, щоб мінімізувати потрібну пам’ять.[^gcc-packed]
 
 ```c
 struct __attribute__((packed)) Packet {
@@ -40,7 +40,7 @@ struct __attribute__((packed)) Packet {
 };
 ```
 
-Такий layout зазвичай займає п'ять байтів, а `value` починається з offset 1. Адреса всього `Packet` може задовольняти alignment packed type, тоді як `&packet.value` не є належно вирівняною для звичайного `uint32_t *`.
+Такий layout зазвичай займає п’ять байтів, а `value` починається з offset 1. Адреса всього `Packet` може задовольняти alignment packed type, тоді як `&packet.value` не є належно вирівняною для звичайного `uint32_t *`.
 
 ### Симптом
 
@@ -57,6 +57,6 @@ Packing змінює layout, але не integer representation мови й не
 - Для wire format віддавай перевагу явному byte array та encode/decode helpers.
 - Якщо packed layout неминучий, копіюй поле через `memcpy` у aligned storage перед використанням і окремо виконуй byte-order conversion.
 - Не відображай MMIO через бездумно packed structure. Дотримуйся access width, offsets, reserved gaps і `volatile` qualification із device manual.
-- Фіксуй обов'язковий зовнішній layout compile-time перевірками size/offset та конкретним compiler/ABI.
+- Фіксуй обов’язковий зовнішній layout compile-time перевірками size/offset та конкретним compiler/ABI.
 
 Приклади звичайного layout у LearnCpp корисні як контраст: перевпорядкування полів часто зменшує padding без послаблення alignment полів.[^learncpp-struct-padding]

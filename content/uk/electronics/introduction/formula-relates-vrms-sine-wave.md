@@ -1,6 +1,6 @@
 ---
 id: emb-elintro-0083
-title: "Яка формула пов'язує `V_rms` і `V_pp` для синусоїди?"
+title: "Яка формула пов’язує `V_rms` і `V_pp` для синусоїди?"
 track: electronics
 section: introduction
 sources:

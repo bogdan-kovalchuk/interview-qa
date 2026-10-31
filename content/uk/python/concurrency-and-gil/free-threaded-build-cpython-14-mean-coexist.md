@@ -50,13 +50,13 @@ print(sys._is_gil_enabled())  # False on free-threaded build, unless re-enabled
 явно (`PYTHON_GIL=1`) або автоматично увімкнений через несумісний C extension.
 
 Free-threaded build змінює й внутрішню memory-модель: замість pymalloc використовується allocator
-mimalloc, а reference counting стає biased - кожен об'єкт має окремі поля для лічильника власного
+mimalloc, а reference counting стає biased - кожен об’єкт має окремі поля для лічильника власного
 (owning) потоку і для спільного (shared) лічильника, що дозволяє уникнути atomic-операцій на
-швидкому шляху, коли об'єктом користується лише один потік. Ціна цього - single-threaded overhead
+швидкому шляху, коли об’єктом користується лише один потік. Ціна цього - single-threaded overhead
 приблизно 1-8% порівняно зі звичайним build.
 
 **На що зважати при виборі:**
 - екосистема бібліотек (особливо C extensions) ще не повністю сумісна з free-threaded ABI;
 - потрібен окремий деплой - відповідний wheel tag, а не просто прапорець запуску;
-- виграш з'являється лише для CPU-bound коду на кількох threads; для I/O-bound навантаження різниця
+- виграш з’являється лише для CPU-bound коду на кількох threads; для I/O-bound навантаження різниця
   мінімальна.

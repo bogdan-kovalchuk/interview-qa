@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0001
-title: "Що таке секція `.text` у пам'яті embedded програми?"
+title: "Що таке секція `.text` у пам’яті embedded програми?"
 track: embedded
 section: data-types-and-memory-layout
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-У типовому embedded linker script секція `.text` містить виконувані інструкції; її адресу й доступність визначає компонування для конкретної цілі. Часто код виконується з Flash, але XIP, копіювання до RAM і захист від запису залежать від MCU та налаштувань. Саме ім'я `.text` не гарантує HardFault при спробі запису.[^embedded-ld-layout]
+У типовому embedded linker script секція `.text` містить виконувані інструкції; її адресу й доступність визначає компонування для конкретної цілі. Часто код виконується з Flash, але XIP, копіювання до RAM і захист від запису залежать від MCU та налаштувань. Саме ім’я `.text` не гарантує HardFault при спробі запису.[^embedded-ld-layout]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-**`ContextVar` ізолює значення за логічним контекстом (Task), а не за фізичним thread, тому кілька Task в одному thread не «затікають» одна в одну.**[^py314-library-asyncio-task] `threading.local()` прив'язує стан до OS thread; в asyncio багато Task виконуються в одному thread і бачили б однакове thread-local значення. `asyncio.create_task()` автоматично копіює поточний `Context` у нову Task, тому кожна Task має власні значення `ContextVar` (наприклад, request_id, tenant). Зміна `ContextVar` в одній Task не впливає на інші Task, навіть якщо вони виконуються в тому ж thread.
+**`ContextVar` ізолює значення за логічним контекстом (Task), а не за фізичним thread, тому кілька Task в одному thread не «затікають» одна в одну.**[^py314-library-asyncio-task] `threading.local()` прив’язує стан до OS thread; в asyncio багато Task виконуються в одному thread і бачили б однакове thread-local значення. `asyncio.create_task()` автоматично копіює поточний `Context` у нову Task, тому кожна Task має власні значення `ContextVar` (наприклад, request_id, tenant). Зміна `ContextVar` в одній Task не впливає на інші Task, навіть якщо вони виконуються в тому ж thread.
 
 ## Detailed explanation
 
@@ -32,7 +32,7 @@ sources:
 зміна `ContextVar` усередині дочірньої Task ніяк не повертається назад у батьківську – кожна Task
 працює зі своєю копією, а не зі спільним мутабельним сховищем. Це відрізняється від `threading.local()`
 лише термінологічно, у нюансі copy-on-fork, а не поведінково: `threading.local()` теж не ділиться
-між потоками, але прив'язка йде до OS thread, а не до логічної одиниці виконання, тож усередині
+між потоками, але прив’язка йде до OS thread, а не до логічної одиниці виконання, тож усередині
 одного thread з кількома Task усі вони бачили б те саме значення `threading.local()`, тоді як
 `ContextVar` розрізняє їх.
 

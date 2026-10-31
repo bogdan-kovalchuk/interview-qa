@@ -21,11 +21,11 @@ sources:
 
 ## Detailed explanation
 
-`asyncio.shield(aw)` не блокує cancellation як таку – він розриває зв'язок між `CancelledError`,
+`asyncio.shield(aw)` не блокує cancellation як таку – він розриває зв’язок між `CancelledError`,
 який приходить caller-у, і самою inner Task.[^py314-library-asyncio-task] Всередині `shield()`
 awaitable обгортається в окрему `Task` (через `ensure_future`), і caller фактично очікує не саму
 inner Task, а `Future`-проксі. Коли caller-а скасовують, `CancelledError` доставляється саме в
-точку `await shield(...)`, а не в inner Task: shield перехоплює це виключення, відв'язує проксі від
+точку `await shield(...)`, а не в inner Task: shield перехоплює це виключення, відв’язує проксі від
 inner Task (прибирає callback, який мав би скасувати її) і одразу пробрасує `CancelledError` далі
 caller-у. Сама inner Task при цьому не отримує запиту на скасування і продовжує виконуватися в
 event loop незалежно від того, що робить caller далі.

@@ -34,7 +34,7 @@ sources:
 ## Detailed explanation
 
 `tracemalloc` – це вбудований модуль, який записує, звідки (source location) було виконано кожен
-allocation пам'яті для Python-об'єктів, і дозволяє порівнювати ці записи між двома моментами
+allocation пам’яті для Python-об’єктів, і дозволяє порівнювати ці записи між двома моментами
 часу.[^py314-library-tracemalloc]
 
 Метод `Snapshot.compare_to(old_snapshot, key_type)` порівнює поточний snapshot з попереднім і

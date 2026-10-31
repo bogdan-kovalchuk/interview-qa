@@ -23,18 +23,18 @@ sources:
 
 ## Short answer
 
-**`Future.result()` повертає значення або повторно викидає exception worker-а; `Future.exception()` повертає exception-об'єкт або `None`.**[^py314-library-threading] Для збору результатів кількох futures використовуйте `concurrent.futures.as_completed(fs)`, який yield-ить futures у порядку завершення – це дозволяє обробити кожну помилку індивідуально. `Executor.map()` повертає результати у порядку викликів, але exception піднімається лише при зверненні до нього. <span class="warn">Якщо не викликати `result()` або не обробити future через `as_completed`, exception worker-а буде silently lost.</span>
+**`Future.result()` повертає значення або повторно викидає exception worker-а; `Future.exception()` повертає exception-об’єкт або `None`.**[^py314-library-threading] Для збору результатів кількох futures використовуйте `concurrent.futures.as_completed(fs)`, який yield-ить futures у порядку завершення – це дозволяє обробити кожну помилку індивідуально. `Executor.map()` повертає результати у порядку викликів, але exception піднімається лише при зверненні до нього. <span class="warn">Якщо не викликати `result()` або не обробити future через `as_completed`, exception worker-а буде silently lost.</span>
 
 ## Detailed explanation
 
-`Future` – це об'єкт-обіцянка результату асинхронної задачі, надісланої в executor. Він завжди
+`Future` – це об’єкт-обіцянка результату асинхронної задачі, надісланої в executor. Він завжди
 переходить в один із трьох станів: успішно завершений з результатом, завершений з exception, або
 скасований. Проблема на практиці не в тому, що результат втрачається технічно – `Future`
 зберігає exception усередині, – а в тому, що код може просто ніколи не перевірити цей
 стан.[^py314-library-concurrent-futures]
 
 `future.result()` повертає значення, якщо задача завершилась успішно, і повторно піднімає той
-самий exception, якщо worker впав. `future.exception()` дає доступ до exception-об'єкта без
+самий exception, якщо worker впав. `future.exception()` дає доступ до exception-об’єкта без
 повторного підняття, повертаючи `None` при успіху. Обидва методи блокують виклик до завершення
 задачі (з опційним `timeout`).
 

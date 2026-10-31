@@ -31,7 +31,7 @@ sources:
 
 ## Detailed explanation
 
-Inline assembly прив'язує source до instruction set, syntax, register constraints та compiler interface. Він також може завадити constant folding або instruction scheduling, якщо constraints неправильно описують хоча б один ефект. Language-level operation зберігає більше інформації для whole-program optimization і водночас має визначену поведінку на targets без спеціальної byte-swap instruction.
+Inline assembly прив’язує source до instruction set, syntax, register constraints та compiler interface. Він також може завадити constant folding або instruction scheduling, якщо constraints неправильно описують хоча б один ефект. Language-level operation зберігає більше інформації для whole-program optimization і водночас має визначену поведінку на targets без спеціальної byte-swap instruction.
 
 Є два вдалі способи виразити намір:
 
@@ -42,4 +42,4 @@ GCC документує `__builtin_bswap16`, `__builtin_bswap32` і `__builtin_
 
 Code generation залежить від обраного CPU, ISA features, optimization level, навколишнього коду та compiler version. Наприклад, constant input може бути обчислений без жодної runtime instruction, а старішому target можуть знадобитися кілька shifts. Тому «це стане однією `REV`» – спостереження, яке треба перевірити в optimized disassembly, а не частина контракту C.
 
-Починай із найзрозумілішої коректної форми, компілюй для фактичного MCU з release options і перевіряй або вимірюй hot path. Застосовуй intrinsic чи inline assembly лише тоді, коли виміряний результат і підтримуваний toolchain виправдовують додатковий зв'язок. Дорожня карта aCode є додатковим орієнтиром для ширшого вивчення C і C++.[^acode-cpp-next]
+Починай із найзрозумілішої коректної форми, компілюй для фактичного MCU з release options і перевіряй або вимірюй hot path. Застосовуй intrinsic чи inline assembly лише тоді, коли виміряний результат і підтримуваний toolchain виправдовують додатковий зв’язок. Дорожня карта aCode є додатковим орієнтиром для ширшого вивчення C і C++.[^acode-cpp-next]

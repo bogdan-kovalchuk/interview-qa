@@ -14,7 +14,7 @@ sources:
     title: "Arm Cortex-M0 Devices Generic User Guide: Address alignment"
     url: https://documentation-service.arm.com/static/5ea6ce5e9931941038def8c1
   - source_id: learncpp-object-sizes
-    title: "LearnCpp: Розміри об'єктів і оператор sizeof"
+    title: "LearnCpp: Розміри об’єктів і оператор sizeof"
     url: https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
@@ -27,7 +27,7 @@ sources:
 
 Cortex-M0 не підтримує unaligned memory access: для halfword потрібна halfword-aligned адреса, а для word – word-aligned адреса. Load або store з порушенням цієї вимоги піднімає HardFault.
 
-Не узагальнюй цю відповідь на кожен Cortex-M або іншу ISA. Байти за довільним offset копіюй через `memcpy` у вирівняний об'єкт, а потім декодуй byte order.[^embeddedinterviewlab]
+Не узагальнюй цю відповідь на кожен Cortex-M або іншу ISA. Байти за довільним offset копіюй через `memcpy` у вирівняний об’єкт, а потім декодуй byte order.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

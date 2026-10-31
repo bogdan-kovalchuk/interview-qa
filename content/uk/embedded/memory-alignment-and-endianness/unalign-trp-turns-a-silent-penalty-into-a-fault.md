@@ -17,7 +17,7 @@ sources:
     title: "Arm Cortex-M4 Processor Datasheet"
     url: https://developer.arm.com/-/media/Arm%20Developer%20Community/PDF/Processor%20Datasheets/Arm%20Cortex-M4%20Processor%20Datasheet.pdf
   - source_id: learncpp-object-sizes
-    title: "LearnCpp: Розміри об'єктів і оператор sizeof"
+    title: "LearnCpp: Розміри об’єктів і оператор sizeof"
     url: https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"

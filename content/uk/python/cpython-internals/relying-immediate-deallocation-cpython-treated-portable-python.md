@@ -29,21 +29,21 @@ sources:
 
 ## Short answer
 
-**Immediate deallocation при refcount=0 – це CPython implementation detail, а не гарантія мови Python; інші реалізації та free-threaded build можуть відкладати звільнення об'єктів.**[^py314-library-dis] Python Language Reference описує object lifecycle у загальних термінах і не зобов'язує негайної finalization. PyPy використовує tracing GC, free-threaded CPython застосовує deferred refcounting. Тому ресурси (файли, сокети, locking) слід керувати через `with` / context managers, а не покладатися на момент деструкції.
+**Immediate deallocation при refcount=0 – це CPython implementation detail, а не гарантія мови Python; інші реалізації та free-threaded build можуть відкладати звільнення об’єктів.**[^py314-library-dis] Python Language Reference описує object lifecycle у загальних термінах і не зобов’язує негайної finalization. PyPy використовує tracing GC, free-threaded CPython застосовує deferred refcounting. Тому ресурси (файли, сокети, locking) слід керувати через `with` / context managers, а не покладатися на момент деструкції.
 
 ## Detailed explanation
 
-Immediate deallocation – коли об'єкт звільняється рівно там, де зникає останнє посилання на нього –
+Immediate deallocation – коли об’єкт звільняється рівно там, де зникає останнє посилання на нього –
 є наслідком конкретної реалізації reference counting в CPython, а не гарантією, яку дає специфікація
 мови Python.
 
-Python Language Reference описує lifecycle об'єктів у загальних термінах: об'єкт колись буде
+Python Language Reference описує lifecycle об’єктів у загальних термінах: об’єкт колись буде
 "reclaimed", можливо буде викликаний `__del__`, але специфікація не фіксує, коли саме це станеться,
 і навіть не гарантує виклик `__del__` у всіх випадках – наприклад, при reference cycles або
 наприкінці роботи інтерпретатора.[^py314-reference-datamodel-traceback-objects]
 
 Інші реалізації дотримуються цієї специфікації, але не CPython-механізму: PyPy використовує
-generational tracing GC, де об'єкти звільняються пачками під час collection pass, а не в момент
+generational tracing GC, де об’єкти звільняються пачками під час collection pass, а не в момент
 останнього decref. Це правда й для самого CPython у free-threaded build (3.13+), де deferred та
 biased reference counting відкладають фактичне звільнення до найближчого safe point замість того,
 щоб робити це синхронно.[^py314-howto-free-threading-python]
@@ -57,6 +57,6 @@ biased reference counting відкладають фактичне звільне
 **Типові помилки:**
 - писати `f = open(path); ...; f = None`, розраховуючи, що файл закриється негайно, замість
   `with open(path) as f: ...`;
-- покладатися на порядок виклику `__del__` для звільнення взаємопов'язаних ресурсів;
+- покладатися на порядок виклику `__del__` для звільнення взаємопов’язаних ресурсів;
 - тестувати лише на CPython і вважати поведінку деструкторів частиною мови, а не деталлю
   реалізації.

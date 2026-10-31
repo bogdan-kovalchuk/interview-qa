@@ -30,15 +30,15 @@ sources:
 
 Будувати такий ланцюжок можна з generator expressions (`(x for x in ...)`) і функцій, які самі
 повертають iterator: `map`, `filter`, `itertools.chain`, `itertools.islice`, `itertools.takewhile`,
-`itertools.dropwhile`.[^py314-library-itertools] Кожна така функція лише запам'ятовує джерело і
+`itertools.dropwhile`.[^py314-library-itertools] Кожна така функція лише запам’ятовує джерело і
 правило перетворення, не викликаючи його одразу.
 
-Головна пастка – list comprehension (`[x for x in ...]`) матеріалізує весь результат у пам'яті
+Головна пастка – list comprehension (`[x for x in ...]`) матеріалізує весь результат у пам’яті
 одразу. Тому ланки lazy pipeline мають бути generator expressions або функціями, що повертають
 iterator, а не comprehension у квадратних дужках.[^py314-reference-expressions-displays-for-lists-sets-and-dict]
 
 Приклад pipeline, який читає файл, фільтрує рядки й бере перші десять, не завантажуючи файл у
-пам'ять цілком:
+пам’ять цілком:
 
 ```python
 lines = (line.strip() for line in open('access.log'))
@@ -50,14 +50,14 @@ for msg in first_ten:  # nothing is read from disk until this loop runs
 ```
 
 Обчислення запускається лише кінцевим споживачем – циклом `for`, викликом `list()` або `next()`. До
-цього моменту `lines`, `errors` і `first_ten` – це лише об'єкти-iterator, які нічого не порахували.
+цього моменту `lines`, `errors` і `first_ten` – це лише об’єкти-iterator, які нічого не порахували.
 
 **Типові будівельні блоки lazy pipeline:**
 - `filter(predicate, it)` і `map(func, it)` – базові однопрохідні перетворення;
-- `itertools.chain(*its)` – послідовне об'єднання кількох iterables без копіювання;
+- `itertools.chain(*its)` – послідовне об’єднання кількох iterables без копіювання;
 - `itertools.islice(it, n)` – обмеження кількості елементів без вичерпання всього iterator;
 - `itertools.takewhile(predicate, it)` і `itertools.dropwhile(predicate, it)` – обрізання за умовою.
 
 Перевага такого підходу – constant memory: pipeline обробляє по одному елементу за раз, тому розмір
-вхідних даних не обмежений об'ємом RAM, на відміну від ланцюжка list comprehensions, де кожна ланка
+вхідних даних не обмежений об’ємом RAM, на відміну від ланцюжка list comprehensions, де кожна ланка
 створює власний повний список.[^py314-howto-functional]

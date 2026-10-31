@@ -35,7 +35,7 @@ Free-threaded build CPython вимагає, щоб кожен C extension явн
 `Py_mod_exec` слоти) додається окремий слот `Py_mod_gil` зі значенням `Py_MOD_GIL_NOT_USED` у масиві
 `PyModuleDef_Slot`. Для старішого single-phase init, де модуль створюється напряму через
 `PyModule_Create`, той самий ефект дає виклик `PyUnstable_Module_SetGIL(module, Py_MOD_GIL_NOT_USED)`
-у функції `PyInit_*` одразу після створення об'єкта module.
+у функції `PyInit_*` одразу після створення об’єкта module.
 
 Приклад декларації підтримки free-threaded build у multi-phase init:
 

@@ -18,7 +18,7 @@ Bootloader – маленький firmware, який стартує першим
 
 ## Detailed explanation
 
-Bootloader MCU – це firmware-модуль, розташований у захищеній області Flash (boot sector), який виконує обов'язки між reset та запуском основної application firmware.
+Bootloader MCU – це firmware-модуль, розташований у захищеній області Flash (boot sector), який виконує обов’язки між reset та запуском основної application firmware.
 
 **Послідовність роботи bootloader:**
 
@@ -53,7 +53,7 @@ Bootloader MCU – це firmware-модуль, розташований у за�
 - Плутає bootloader з monitor або debug-інструментом.
 - Не згадує VTOR при описі переходу від bootloader до application.
 - Вважає, що bootloader і application виконуються одночасно.
-- Не згадує верифікацію образу (CRC, підпис) як обов'язковий етап.
+- Не згадує верифікацію образу (CRC, підпис) як обов’язковий етап.
 
 ### Питання на підвищення рівня
 

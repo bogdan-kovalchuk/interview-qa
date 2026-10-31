@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-**`ThreadPoolExecutor` – для I/O-bound задач з мінімальним overhead (спільна пам'ять, без серіалізації); `ProcessPoolExecutor` – для CPU-bound pure-Python задач, де потрібен обхід GIL.**[^py314-library-threading] Data-transfer cost: threads ділять пам'ять, processes вимагають pickle-серіалізації аргументів і результатів через pipes. Failure model: `BrokenProcessPool` виникає при crash worker-процесу й робить executor непридатним; у threads failure одного worker менш руйнівний. Для CPU-bound у free-threaded CPython (3.13+) threads також можуть дати паралелізм без process overhead.
+**`ThreadPoolExecutor` – для I/O-bound задач з мінімальним overhead (спільна пам’ять, без серіалізації); `ProcessPoolExecutor` – для CPU-bound pure-Python задач, де потрібен обхід GIL.**[^py314-library-threading] Data-transfer cost: threads ділять пам’ять, processes вимагають pickle-серіалізації аргументів і результатів через pipes. Failure model: `BrokenProcessPool` виникає при crash worker-процесу й робить executor непридатним; у threads failure одного worker менш руйнівний. Для CPU-bound у free-threaded CPython (3.13+) threads також можуть дати паралелізм без process overhead.
 
 ## Detailed explanation
 
@@ -32,7 +32,7 @@ sources:
 навантаження і скільки коштує передати дані worker-у.[^py314-library-concurrent-futures]
 
 Для I/O-bound задач (мережеві запити, читання файлів, звернення до БД) threads підходять краще:
-усі worker-и в тому самому process і мають доступ до спільної пам'яті, тому передача аргументів і
+усі worker-и в тому самому process і мають доступ до спільної пам’яті, тому передача аргументів і
 результатів не потребує серіалізації. GIL на час блокуючого I/O звільняється, тож threads реально
 перекриваються в очікуванні.
 
@@ -53,8 +53,8 @@ with ProcessPoolExecutor() as pool:
 ```
 
 Data-transfer cost для `ProcessPoolExecutor` реальний: аргументи й результати `pickle`-яться і
-передаються через pipes, тому передача великих об'єктів (DataFrame, масивів) може звести нанівець
-виграш від паралелізму. Для threads такої вартості немає – передається лише посилання на об'єкт.
+передаються через pipes, тому передача великих об’єктів (DataFrame, масивів) може звести нанівець
+виграш від паралелізму. Для threads такої вартості немає – передається лише посилання на об’єкт.
 
 Failure model теж різна. Якщо worker-процес аварійно завершується (наприклад, сегфолт у
 C-розширенні), `ProcessPoolExecutor` піднімає `BrokenProcessPool` для всіх futures і сам executor

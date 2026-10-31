@@ -25,7 +25,7 @@ sources:
 ## Detailed explanation
 
 Ізоляція scope реалізована технічно: починаючи з Python 3, comprehension компілюється у власний
-implicit код-об'єкт (як маленька вкладена функція), яка викликається одразу з переданим їй першим
+implicit код-об’єкт (як маленька вкладена функція), яка викликається одразу з переданим їй першим
 (найзовнішнішим) iterable як аргументом.[^py314-howto-functional] Саме тому змінна `x` живе лише
 всередині цього прихованого виклику й ніколи не потрапляє в enclosing scope – це не спеціальний
 виняток для comprehension, а звичайна ізоляція locals функції.
@@ -38,7 +38,7 @@ iteration variable доступною після себе; Python 3 уніфік
 Наслідок для closures: функції (наприклад, `lambda`), створені всередині тіла comprehension,
 захоплюють iteration variable з implicit scope самого comprehension, а не з enclosing scope. Це
 означає, що список `[lambda: i for i in range(3)]` створює lambda-функції, які після виконання
-comprehension усі повертають `2` – класична проблема пізнього зв'язування (late binding), але вона
+comprehension усі повертають `2` – класична проблема пізнього зв’язування (late binding), але вона
 відбувається всередині власної, ізольованої scope comprehension, а не enclosing.
 
 Якщо в comprehension кілька `for`, окрему implicit scope отримує весь comprehension цілком, а не

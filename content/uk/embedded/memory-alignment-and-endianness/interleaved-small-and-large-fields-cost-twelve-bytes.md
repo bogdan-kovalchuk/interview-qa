@@ -53,7 +53,7 @@ typedef struct {
 1. `flags` займає offset 0.
 2. Для `timestamp` потрібен offset, кратний 4, тому offsets 1–3 є padding, а `timestamp` займає offsets 4–7.
 3. `sensor_id` займає offset 8.
-4. Об'єкт уже займає 9 байт. Три trailing padding bytes роблять крок масиву рівним 12, тому `timestamp` залишається вирівняним у кожному елементі.
+4. Об’єкт уже займає 9 байт. Три trailing padding bytes роблять крок масиву рівним 12, тому `timestamp` залишається вирівняним у кожному елементі.
 
 Підсумковий byte layout:
 ```

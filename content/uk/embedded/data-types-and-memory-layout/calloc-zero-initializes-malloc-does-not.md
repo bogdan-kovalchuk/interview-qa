@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0060
-title: "Як `calloc` відрізняється від `malloc` в контексті ініціалізації пам'яті?"
+title: "Як `calloc` відрізняється від `malloc` в контексті ініціалізації пам’яті?"
 track: embedded
 section: data-types-and-memory-layout
 sources:

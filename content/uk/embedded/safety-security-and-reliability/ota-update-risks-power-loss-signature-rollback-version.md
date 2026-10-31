@@ -35,8 +35,8 @@ Update package зазвичай включає: image binary, version metadata, 
 ### Очікувані сигнали
 
 - Розуміє, що power loss під час install – це основний ризик, і dual-bank/A/B є стандартним рішенням
-- Згадує signature verification як обов'язкову для security
-- Розуміє anti-rollback policy та її зв'язок з security vulnerabilities
+- Згадує signature verification як обов’язкову для security
+- Розуміє anti-rollback policy та її зв’язок з security vulnerabilities
 - Згадує staged rollout як спосіб мінімізації ризику version incompatibility
 - Розуміє, що recovery механізм (boot counter, watchdog) потрібен навіть з dual-bank
 

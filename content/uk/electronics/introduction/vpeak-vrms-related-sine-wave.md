@@ -1,6 +1,6 @@
 ---
 id: emb-elintro-0084
-title: "Який зв'язок між `V_peak`, `V_pp` і `V_rms` для синусоїди?"
+title: "Який зв’язок між `V_peak`, `V_pp` і `V_rms` для синусоїди?"
 track: electronics
 section: introduction
 sources:

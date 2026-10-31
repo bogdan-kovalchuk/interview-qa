@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0035
-title: "Де буде рядковий літерал `\"Hello, World!\"` у пам'яті embedded програми?"
+title: "Де буде рядковий літерал `\"Hello, World!\"` у пам’яті embedded програми?"
 track: embedded
 section: data-types-and-memory-layout
 sources:

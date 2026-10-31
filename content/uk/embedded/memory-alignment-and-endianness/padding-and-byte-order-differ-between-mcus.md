@@ -36,13 +36,13 @@ sources:
 - `int`, `long`, enums, pointers і floating-point types можуть мати різні розміри або representations;
 - integer byte order може відрізнятися;
 - bit-field allocation order і packing є implementation-defined;
-- padding bytes можуть містити unspecified data й під час передавання розкрити старі дані з пам'яті;
+- padding bytes можуть містити unspecified data й під час передавання розкрити старі дані з пам’яті;
 - compiler options на кшталт packing змінюють ABI, але не визначають протокол.
 
-Сам `memcpy` точно виконує запитане копіювання байтів. Помилка полягає в його застосуванні до об'єкта, байти якого ніколи не визначали як interoperable message. Packing може скоротити padding, але не нормалізує endianness, scalar representation або versioning.
+Сам `memcpy` точно виконує запитане копіювання байтів. Помилка полягає в його застосуванні до об’єкта, байти якого ніколи не визначали як interoperable message. Packing може скоротити padding, але не нормалізує endianness, scalar representation або versioning.
 
 Визначай wire format незалежно: точні widths полів, byte offsets, signedness, byte order, reserved bytes і правила версій. Кодуй кожне поле в byte buffer і декодуй його у вирівняні native objects. POSIX network order – один із прикладів такого явного контракту для певних integer widths.[^posix-byte-order] Тестуй за golden byte vectors, а не лише round trip між однаковими збірками.
 
 Raw-копіювання структури прийнятне лише всередині свідомо обмеженої ABI boundary, де обом сторонам гарантовано однакові визначення типу, compiler ABI, options, alignment, representation і version. Зафіксуй та перевір цю умову; не роби такого висновку лише тому, що обидва пристрої називаються MCU.
 
-Матеріал LearnCpp про структури показує, як padding з'являється в layout,[^learncpp-struct-miscellany] а дорожня карта aCode є додатковим орієнтиром для подальшого вивчення C і C++.[^acode-cpp-next]
+Матеріал LearnCpp про структури показує, як padding з’являється в layout,[^learncpp-struct-miscellany] а дорожня карта aCode є додатковим орієнтиром для подальшого вивчення C і C++.[^acode-cpp-next]

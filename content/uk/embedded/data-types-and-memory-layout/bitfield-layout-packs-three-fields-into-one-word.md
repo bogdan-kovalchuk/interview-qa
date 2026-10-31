@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0088
-title: "Як виглядає у пам'яті? `struct { uint32_t flags:1; uint32_t mode:3; uint32_t value:28; }`"
+title: "Як виглядає у пам’яті? `struct { uint32_t flags:1; uint32_t mode:3; uint32_t value:28; }`"
 track: embedded
 section: data-types-and-memory-layout
 sources:

@@ -36,7 +36,7 @@ match command:
         do_quit()
 ```
 
-Найгостріше це проявляється з irrefutable pattern – таким, що не може не зіставитися: голе ім'я
+Найгостріше це проявляється з irrefutable pattern – таким, що не може не зіставитися: голе ім’я
 (`case value:`) або wildcard (`case _:`). Для них компілятор навіть не чекає рантайму: якщо такий
 case стоїть не останнім, це `SyntaxError`.[^py314-reference-expressions]
 

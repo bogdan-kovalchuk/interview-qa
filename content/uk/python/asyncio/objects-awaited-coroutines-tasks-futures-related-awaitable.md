@@ -17,17 +17,17 @@ sources:
 
 ## Short answer
 
-**`await` приймає будь-який awaitable-об'єкт – coroutine, Task або Future, – тобто об'єкт з методом `__await__`.**[^py314-library-asyncio-task] Coroutine – це «сирий» об'єкт з `async def`. Task – обгортка над coroutine, яку event loop виконує concurrently. Future – low-level примітив, що представляє майбутній результат; Task є підкласом Future. Усі троє реалізують awaitable protocol, тому взаємозамінні в `await`.
+**`await` приймає будь-який awaitable-об’єкт – coroutine, Task або Future, – тобто об’єкт з методом `__await__`.**[^py314-library-asyncio-task] Coroutine – це «сирий» об’єкт з `async def`. Task – обгортка над coroutine, яку event loop виконує concurrently. Future – low-level примітив, що представляє майбутній результат; Task є підкласом Future. Усі троє реалізують awaitable protocol, тому взаємозамінні в `await`.
 
 ## Detailed explanation
 
-Bytecode-рівень `await` фактично каже: викликати `__await__()` на об'єкті, отримати iterator і
+Bytecode-рівень `await` фактично каже: викликати `__await__()` на об’єкті, отримати iterator і
 резюмувати його доти, доки він не підніме `StopIteration` (значення якого й стає результатом
 `await`) або якийсь інший exception.[^py314-library-asyncio-task] Різні типи реалізують цей
 iterator по-різному, і саме ця різниця пояснює, чим вони відрізняються один від одного.
 
 `Future.__await__` – найпростіший випадок: якщо результат ще не встановлено, метод один раз
-`yield self`, тобто повертає сам Future об'єкт назовні як "проміжне значення" iterator-а. Саме цей
+`yield self`, тобто повертає сам Future об’єкт назовні як "проміжне значення" iterator-а. Саме цей
 yield розпізнає machinery Task, що керує coroutine: коли всередині coroutine yield'иться Future
 (а не звичайне значення), Task реєструє на ньому `add_done_callback` і призупиняє себе, а не
 трактує це як помилку. Коли Future отримує результат чи exception, callback резюмує `__await__`

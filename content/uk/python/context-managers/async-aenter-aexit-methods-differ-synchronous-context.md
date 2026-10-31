@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-**`__aenter__` і `__aexit__` – це coroutine-методи: вони повертають awaitable, який event loop має await, тоді як синхронні `__enter__`/`__exit__` викликаються як звичайні функції.**[^py314-reference-datamodel-with-statement-context-managers] `async with` можна використовувати лише всередині `async def`. Семантика suppression та сама: truthy return з `__aexit__` пригнічує exception. Async-варіант потрібен, коли enter/exit виконують I/O (мережеві з'єднання, пули БД, async-locks).
+**`__aenter__` і `__aexit__` – це coroutine-методи: вони повертають awaitable, який event loop має await, тоді як синхронні `__enter__`/`__exit__` викликаються як звичайні функції.**[^py314-reference-datamodel-with-statement-context-managers] `async with` можна використовувати лише всередині `async def`. Семантика suppression та сама: truthy return з `__aexit__` пригнічує exception. Async-варіант потрібен, коли enter/exit виконують I/O (мережеві з’єднання, пули БД, async-locks).
 
 ## Detailed explanation
 
@@ -36,7 +36,7 @@ exc_tb)`.
 виклик `__aexit__`, і будь-який await всередині нього можуть призупинити coroutine, поки event loop
 обробляє інші задачі.
 
-Приклад асинхронного context manager, який відкриває з'єднання в `__aenter__` і закриває в
+Приклад асинхронного context manager, який відкриває з’єднання в `__aenter__` і закриває в
 `__aexit__`:
 
 ```python
@@ -63,4 +63,4 @@ async def main():
 - enter/exit виконують мережеві I/O-операції (HTTP, черги, бази даних) і не повинні блокувати event
   loop;
 - потрібна async-безпечна synchronization (наприклад, `asyncio.Lock` як context manager);
-- ресурс сам надає лише async API для встановлення й закриття з'єднання.
+- ресурс сам надає лише async API для встановлення й закриття з’єднання.

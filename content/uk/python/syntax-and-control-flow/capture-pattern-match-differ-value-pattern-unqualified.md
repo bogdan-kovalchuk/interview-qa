@@ -17,18 +17,18 @@ sources:
 
 ## Short answer
 
-**Capture pattern (голе ім'я, напр. `case x:`) завжди успішний і прив'язує subject до нового імені; value pattern (кваліфіковане ім'я, напр. `case Color.RED:`) порівнює subject через `==` з відомим значенням.**[^py314-reference-expressions] Якщо ви очікували, що `case status:` порівняє з наявною змінною `status`, натомість створиться нова змінна `status`, що затінить попередню. Щоб порівняти з відомим значенням, використовуйте dotted name (`case MyEnum.status:`) або literal.
+**Capture pattern (голе ім’я, напр. `case x:`) завжди успішний і прив’язує subject до нового імені; value pattern (кваліфіковане ім’я, напр. `case Color.RED:`) порівнює subject через `==` з відомим значенням.**[^py314-reference-expressions] Якщо ви очікували, що `case status:` порівняє з наявною змінною `status`, натомість створиться нова змінна `status`, що затінить попередню. Щоб порівняти з відомим значенням, використовуйте dotted name (`case MyEnum.status:`) або literal.
 
 ## Detailed explanation
 
-У `match` голе ім'я ніколи не означає «порівняй з тим, що в цій змінній». Граматика вирішує це за
-формою імені: некваліфіковане ім'я – це capture pattern, а ім'я з крапкою – value
+У `match` голе ім’я ніколи не означає «порівняй з тим, що в цій змінній». Граматика вирішує це за
+формою імені: некваліфіковане ім’я – це capture pattern, а ім’я з крапкою – value
 pattern.[^py314-reference-compound-stmts]
 
-Capture pattern завжди успішний. Він нічого не порівнює, а просто прив'язує subject до цього імені –
+Capture pattern завжди успішний. Він нічого не порівнює, а просто прив’язує subject до цього імені –
 тому будь-який `case x:` збігається з чим завгодно й перекриває всі наступні case.
 
-Value pattern порівнює. Він обчислює кваліфіковане ім'я (`Color.RED`, `settings.MODE`) і звіряє
+Value pattern порівнює. Він обчислює кваліфіковане ім’я (`Color.RED`, `settings.MODE`) і звіряє
 subject з ним через `==`.
 
 ```python

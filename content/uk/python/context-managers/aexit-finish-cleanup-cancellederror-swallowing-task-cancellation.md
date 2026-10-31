@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-**`__aexit__` має виконати cleanup і потім або не перехоплювати `CancelledError`, або повторно її підняти, щоб cancellation дійшла до завдання.**[^py314-reference-datamodel-with-statement-context-managers] `CancelledError` успадковує від `BaseException`, тому звичайний `except Exception` її не зловить. <span class="warn">Якщо код навмисно подавляє `CancelledError`, він зобов'язаний викликати `Task.uncancel()`, інакше structured concurrency (TaskGroup, timeout) працюватиме некоректно.</span> Загальне правило: cleanup -> re-raise.
+**`__aexit__` має виконати cleanup і потім або не перехоплювати `CancelledError`, або повторно її підняти, щоб cancellation дійшла до завдання.**[^py314-reference-datamodel-with-statement-context-managers] `CancelledError` успадковує від `BaseException`, тому звичайний `except Exception` її не зловить. <span class="warn">Якщо код навмисно подавляє `CancelledError`, він зобов’язаний викликати `Task.uncancel()`, інакше structured concurrency (TaskGroup, timeout) працюватиме некоректно.</span> Загальне правило: cleanup -> re-raise.
 
 ## Detailed explanation
 
@@ -29,7 +29,7 @@ sources:
 `Exception`.[^py314-library-asyncio-task-task-cancellation] Тому `except Exception` його не ловить,
 і cleanup-код, написаний "як завжди", коректно пропускає скасування далі. Проблема виникає, коли
 `__aexit__` явно ловить ширший виняток (`except BaseException` або голий `except:`) заради cleanup –
-тоді він зобов'язаний виконати потрібні дії і одразу підняти виняток повторно (`raise`), інакше
+тоді він зобов’язаний виконати потрібні дії і одразу підняти виняток повторно (`raise`), інакше
 cancellation завдання буде "проковтнуте", і задача продовжить виконання, ніби нічого не відбулося.
 
 Безпечний патерн – виконати cleanup у `try`, а `CancelledError` не перехоплювати або підняти
@@ -49,7 +49,7 @@ async def __aexit__(self, exc_type, exc_val, exc_tb):
 закриття.
 
 Якщо код навмисно вирішує подавити скасування (наприклад, `__aexit__` повертає truthy значення),
-він зобов'язаний викликати `task.uncancel()`, бо `asyncio.TaskGroup` і `asyncio.timeout()`
+він зобов’язаний викликати `task.uncancel()`, бо `asyncio.TaskGroup` і `asyncio.timeout()`
 рахують кількість активних cancellation-запитів і без цього виклику вважатимуть задачу досі
 скасованою.[^py314-library-asyncio-task-task-cancellation]
 

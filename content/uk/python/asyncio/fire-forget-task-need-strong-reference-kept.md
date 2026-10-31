@@ -23,7 +23,7 @@ sources:
 
 Це свідомий вибір дизайну, а не недогляд: якби loop сам тримав strong reference на кожну створену
 Task, довгоживучий процес, що постійно робить `create_task()` для fire-and-forget роботи, ніколи б
-не звільняв пам'ять цих Tasks, навіть після їхнього завершення.[^py314-library-asyncio-eventloop]
+не звільняв пам’ять цих Tasks, навіть після їхнього завершення.[^py314-library-asyncio-eventloop]
 Тому відповідальність за lifetime Task свідомо покладена на код, який її створив.
 
 Момент, коли GC знищує Task, має значення для того, яке саме попередження побачить розробник. Якщо
@@ -49,4 +49,4 @@ task.add_done_callback(background_tasks.discard)
 
 `TaskGroup` вирішує цю саму проблему структурно: він сам тримає strong references на всі свої
 children, поки `async with` блок не завершиться, і саме тому там неможливо випадково "загубити"
-Task – lifetime Task жорстко прив'язаний до lifetime блоку.
+Task – lifetime Task жорстко прив’язаний до lifetime блоку.

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-**Coroutine function – це `async def`-функція; coroutine object – об'єкт, який повертає виклик такої функції; результат `await` – значення, яке coroutine повертає після виконання.**[^py314-library-asyncio-task] Виклик `async def`-функції не виконує її тіло, а лише створює coroutine object. Щоб код справді виконався, цей об'єкт потрібно передати в `await`, `asyncio.create_task()` або інший механізм запуску. Результат `await coro()` – це те, що coroutine повертає через `return`.
+**Coroutine function – це `async def`-функція; coroutine object – об’єкт, який повертає виклик такої функції; результат `await` – значення, яке coroutine повертає після виконання.**[^py314-library-asyncio-task] Виклик `async def`-функції не виконує її тіло, а лише створює coroutine object. Щоб код справді виконався, цей об’єкт потрібно передати в `await`, `asyncio.create_task()` або інший механізм запуску. Результат `await coro()` – це те, що coroutine повертає через `return`.
 
 ## Detailed explanation
 

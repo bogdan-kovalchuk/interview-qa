@@ -1,6 +1,6 @@
 ---
 id: emb-elintro-0105
-title: "Як з'єднані ряди і рейки живлення на breadboard?"
+title: "Як з’єднані ряди і рейки живлення на breadboard?"
 track: electronics
 section: introduction
 sources:

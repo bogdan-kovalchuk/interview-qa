@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0052
-title: "Скільки пам'яті займає union і як розраховується його розмір?"
+title: "Скільки пам’яті займає union і як розраховується його розмір?"
 track: embedded
 section: data-types-and-memory-layout
 sources:

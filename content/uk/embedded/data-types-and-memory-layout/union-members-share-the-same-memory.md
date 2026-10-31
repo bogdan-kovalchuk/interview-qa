@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0023
-title: "Який layout пам'яті матиме? `union { uint32_t word; uint8_t bytes[4]; };`"
+title: "Який layout пам’яті матиме? `union { uint32_t word; uint8_t bytes[4]; };`"
 track: embedded
 section: data-types-and-memory-layout
 sources:

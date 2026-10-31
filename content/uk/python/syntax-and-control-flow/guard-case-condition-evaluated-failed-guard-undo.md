@@ -17,16 +17,16 @@ sources:
 
 ## Short answer
 
-**Guard обчислюється лише після успішного pattern; якщо guard хибний, case не обирається, але bindings з pattern НЕ гарантовано скасовуються.**[^py314-reference-expressions] Language Reference явно застерігає: «Do not rely on bindings being made for a failed match. Conversely, do not rely on variables remaining unchanged after a failed match.» У CPython 3.14 bindings зберігаються (наприклад, після `case (y,) if y > 100:` змінна `y` залишається прив'язаною навіть при невдалому guard), але це implementation detail.
+**Guard обчислюється лише після успішного pattern; якщо guard хибний, case не обирається, але bindings з pattern НЕ гарантовано скасовуються.**[^py314-reference-expressions] Language Reference явно застерігає: «Do not rely on bindings being made for a failed match. Conversely, do not rely on variables remaining unchanged after a failed match.» У CPython 3.14 bindings зберігаються (наприклад, після `case (y,) if y > 100:` змінна `y` залишається прив’язаною навіть при невдалому guard), але це implementation detail.
 
 ## Detailed explanation
 
 `case` з guard перевіряється у два кроки. Спочатку зіставляється pattern; лише якщо він успішний,
 обчислюється умова після `if`. Порядок саме такий, бо guard майже завжди посилається на імена, які
-прив'язав pattern – без успішного зіставлення їх просто не
+прив’язав pattern – без успішного зіставлення їх просто не
 існувало б.[^py314-reference-compound-stmts]
 
-Наслідок, який дивує: щоб guard міг подивитися на `y`, `y` уже має бути прив'язаний. Тобто на момент
+Наслідок, який дивує: щоб guard міг подивитися на `y`, `y` уже має бути прив’язаний. Тобто на момент
 перевірки умови bindings **уже зроблені**, і якщо guard виявиться хибним, вони нікуди не зникають.
 
 ```python
@@ -52,8 +52,8 @@ Language Reference не описує це як гарантію, а прямо �
 - якщо значення потрібне після `match`, присвоювати його явно всередині гілки, яка справді
   спрацювала;
 - не покладатися на «стару» змінну одразу після `match`, навіть якщо жодна гілка не спрацювала;
-- пам'ятати, що це стосується і wildcard-подібних імен: `case value if ...:` прив'язує `value`
+- пам’ятати, що це стосується і wildcard-подібних імен: `case value if ...:` прив’язує `value`
   завжди, коли pattern успішний.
 
-Практичне правило просте: `match` – це конструкція, яка **прив'язує**, а не лише перевіряє. Ставитися
+Практичне правило просте: `match` – це конструкція, яка **прив’язує**, а не лише перевіряє. Ставитися
 до її імен варто як до локальних для гілки, навіть якщо мова технічно не робить їх такими.

@@ -48,7 +48,7 @@ size firmware.elf            # Text/data/bss sizes
 ```
 
 **Linker map file** генерується з `-Wl,-Map=firmware.map` і показує:
-- Розміщення всіх sections у пам'яті
+- Розміщення всіх sections у пам’яті
 - Адреси всіх symbols
 - Розмір кожної section
 - Memory usage по regions (FLASH, RAM)

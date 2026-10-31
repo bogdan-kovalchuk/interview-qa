@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-Спершу preprocessing розкриває `#include`, `#define` і conditional compilation. Далі compiler генерує assembly або IR, assembler створює object file, linker об'єднує objects/libraries і розміщує sections. Для firmware часто ще виконують `objcopy` у `.hex`/`.bin` і генерують map-файл.[^dou-embedded-interview]
+Спершу preprocessing розкриває `#include`, `#define` і conditional compilation. Далі compiler генерує assembly або IR, assembler створює object file, linker об’єднує objects/libraries і розміщує sections. Для firmware часто ще виконують `objcopy` у `.hex`/`.bin` і генерують map-файл.[^dou-embedded-interview]
 
 ## Detailed explanation
 
@@ -39,7 +39,7 @@ C-файл проходить кілька етапів перед тим, як 
 - Результат: `.o` файл (object file)
 
 **4. Linking** (`ld` або `gcc`):
-- Об'єднує всі object files і libraries
+- Об’єднує всі object files і libraries
 - Вирішує symbol references (external symbols)
 - Розміщує sections (.text, .data, .bss) згідно з linker script
 - Генерує executable або firmware image

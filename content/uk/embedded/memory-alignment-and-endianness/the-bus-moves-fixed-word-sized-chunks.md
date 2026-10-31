@@ -14,7 +14,7 @@ sources:
     title: "Arm Cortex-M3 Devices Generic User Guide: Configurable Fault Status Register"
     url: https://developer.arm.com/documentation/dui0552/a/cortex-m3-peripherals/system-control-block/configurable-fault-status-register
   - source_id: learncpp-object-sizes
-    title: "LearnCpp: Розміри об'єктів і оператор sizeof"
+    title: "LearnCpp: Розміри об’єктів і оператор sizeof"
     url: https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/
   - source_id: acode-next-cpp
     title: "aCode: Кінець? Що далі?"
@@ -31,7 +31,7 @@ sources:
 
 ## Detailed explanation
 
-Правило C і правило processor – різні речі. C вимагає належного вирівнювання типізованого об'єкта; порушення цієї вимоги дає undefined behavior ще до розгляду processor-specific поведінки.[^iso-c-n1570]
+Правило C і правило processor – різні речі. C вимагає належного вирівнювання типізованого об’єкта; порушення цієї вимоги дає undefined behavior ще до розгляду processor-specific поведінки.[^iso-c-n1570]
 
 На рівні processor реалізація може перетворити одну невирівняну instruction на кілька вирівняних bus transfer. Для умовного 32-бітного transfer перетин межі виглядає так:
 
@@ -54,7 +54,7 @@ Data:    [4 bytes]    [4 bytes]    [4 bytes]
           ^^^^         ^^^^
           1 byte       3 bytes
 ```
-Реалізація може прочитати обидва вирівняні слова та об'єднати потрібні байти. Це модель, а не гарантія, що кожен 32-бітний MCU має чотирибайтову bus transaction.
+Реалізація може прочитати обидва вирівняні слова та об’єднати потрібні байти. Це модель, а не гарантія, що кожен 32-бітний MCU має чотирибайтову bus transaction.
 
 **Конкретний приклад Cortex-M3**
 
@@ -64,7 +64,7 @@ Cortex-M3 може виконувати частину невирівняних 
 
 **Практичні наслідки**
 
-- Дозволь compiler розміщувати звичайні об'єкти та структури відповідно до target ABI.
+- Дозволь compiler розміщувати звичайні об’єкти та структури відповідно до target ABI.
 - Для packet або serial bytes використовуй `memcpy` у вирівняне ціле число, а потім декодуй endianness. Не перетворюй довільний byte pointer на `uint32_t *`.
 - Для DMA buffers і memory-mapped registers перевір reference manual MCU: alignment може бути потрібним для correctness, atomicity або performance.
 - Вимірюй саме target, перш ніж називати фіксований множник затримки.

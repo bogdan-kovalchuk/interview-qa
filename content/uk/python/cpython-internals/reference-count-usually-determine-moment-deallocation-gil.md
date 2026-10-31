@@ -29,25 +29,25 @@ sources:
 
 ## Short answer
 
-**У GIL-enabled CPython об'єкт deallocate-иться негайно, коли його reference count досягає нуля; у free-threaded build це не гарантовано через biased, deferred та per-thread reference counting.**[^py314-library-dis] GIL забезпечує атомарність операцій з refcount, тому zero -> immediate deallocation. У free-threaded build (Python 3.13+) деякі об'єкти використовують deferred refcounting (звільняються лише при наступному GC), per-thread counting (звільняються при safe point або виході потоку), або biased counting (об'єкт «queued» для відкладеного звільнення).
+**У GIL-enabled CPython об’єкт deallocate-иться негайно, коли його reference count досягає нуля; у free-threaded build це не гарантовано через biased, deferred та per-thread reference counting.**[^py314-library-dis] GIL забезпечує атомарність операцій з refcount, тому zero -> immediate deallocation. У free-threaded build (Python 3.13+) деякі об’єкти використовують deferred refcounting (звільняються лише при наступному GC), per-thread counting (звільняються при safe point або виході потоку), або biased counting (об’єкт «queued» для відкладеного звільнення).
 
 ## Detailed explanation
 
-У GIL-enabled build кожен об'єкт має один лічильник `ob_refcnt`, а GIL гарантує, що incref і decref
+У GIL-enabled build кожен об’єкт має один лічильник `ob_refcnt`, а GIL гарантує, що incref і decref
 виконуються без перегонів між потоками. Коли decref зменшує лічильник до нуля, тут-таки, синхронно,
-в тому самому виклику, викликається деструктор об'єкта.[^py314-c-api-memory]
+в тому самому виклику, викликається деструктор об’єкта.[^py314-c-api-memory]
 
 У free-threaded build (PEP 703, з Python 3.13) GIL немає, тож наївний atomic incref/decref на
-кожному зверненні до об'єкта був би завеликою вартістю при конкурентному доступі багатьох
+кожному зверненні до об’єкта був би завеликою вартістю при конкурентному доступі багатьох
 потоків.[^py314-howto-free-threading-python]
 
-CPython вирішує це через biased reference counting: кожен об'єкт має "локальний" лічильник, який
+CPython вирішує це через biased reference counting: кожен об’єкт має "локальний" лічильник, який
 non-atomically змінює лише потік-власник, і "спільний" (shared) лічильник для decref з інших потоків,
 який оновлюється atomically. Частину decref з інших потоків узагалі відкладають (deferred reference
 counting) до найближчого safe point, замість негайного atomic decrement.[^py314-c-api-memory]
 
-Тому "локальний" лічильник теоретично може виглядати нульовим, а фактичний стан об'єкта
-з'ясується лише коли runtime зведе (merge) local, shared і deferred лічильники на найближчому safe
+Тому "локальний" лічильник теоретично може виглядати нульовим, а фактичний стан об’єкта
+з’ясується лише коли runtime зведе (merge) local, shared і deferred лічильники на найближчому safe
 point чи під час GC-паузи. Deallocation через це стає відкладеною подією, а не миттєвим наслідком
 останнього decref.
 

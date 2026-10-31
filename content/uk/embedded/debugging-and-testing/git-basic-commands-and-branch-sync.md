@@ -18,7 +18,7 @@ sources:
 
 `git init` – створити репозиторій; `git clone URL` – скопіювати існуючий; `git status` – подивитися стан; `git add` – додати зміни в staging area; `git commit` – створити commit; `git log` – історія; `git diff` – перегляд різниці.
 
-Гілки та синхронізація: `git branch` – список/створення гілок; `git switch` або `git checkout` – перейти на гілку; `git merge` – об'єднати гілки; `git rebase` – перенести commits на іншу базу; `git pull` – отримати й інтегрувати зміни; `git push` – відправити commits на remote.
+Гілки та синхронізація: `git branch` – список/створення гілок; `git switch` або `git checkout` – перейти на гілку; `git merge` – об’єднати гілки; `git rebase` – перенести commits на іншу базу; `git pull` – отримати й інтегрувати зміни; `git push` – відправити commits на remote.
 
 ## Detailed explanation
 

@@ -17,11 +17,11 @@ sources:
 
 ## Short answer
 
-**Class-based визначає `__enter__` і `__exit__` як окремі методи та легко зберігає стан у `self`; generator-based використовує одну функцію з `yield`, де код до yield – це enter, а після – exit.**[^py314-reference-datamodel-with-statement-context-managers] `@contextmanager` скорочує boilerplate для простих менеджерів, але створює "one-shot" об'єкт – повторне використання того самого instance викличе `RuntimeError`. Class-based підхід кращий, коли потрібна reuse, reentrancy або складна ініціалізація.
+**Class-based визначає `__enter__` і `__exit__` як окремі методи та легко зберігає стан у `self`; generator-based використовує одну функцію з `yield`, де код до yield – це enter, а після – exit.**[^py314-reference-datamodel-with-statement-context-managers] `@contextmanager` скорочує boilerplate для простих менеджерів, але створює "one-shot" об’єкт – повторне використання того самого instance викличе `RuntimeError`. Class-based підхід кращий, коли потрібна reuse, reentrancy або складна ініціалізація.
 
 ## Detailed explanation
 
-Контекстний менеджер на основі класу безпосередньо реалізує протокол мови через методи `__enter__` і `__exit__`, тоді як генераторний підхід використовує декоратор `@contextmanager` із бібліотеки `contextlib` для перетворення генераторної функції з одним `yield` на об'єкт контексту.[^py314-reference-datamodel-with-statement-context-managers][^py314-library-contextlib]
+Контекстний менеджер на основі класу безпосередньо реалізує протокол мови через методи `__enter__` і `__exit__`, тоді як генераторний підхід використовує декоратор `@contextmanager` із бібліотеки `contextlib` для перетворення генераторної функції з одним `yield` на об’єкт контексту.[^py314-reference-datamodel-with-statement-context-managers][^py314-library-contextlib]
 
 Під капотом `@contextmanager` огортає функцію допоміжним класом `_GeneratorContextManager`. Під час входу у `with` викликається `next(gen)`, який виконує код до ключового слова `yield`, а повернуте виразом значення передається у змінну після `as`. Під час виходу з блоку інтерпретатор викликає `__exit__`, де за відсутності помилок викликається повторний `next(gen)` для виконання коду після `yield`, а при виникненні винятку – метод `gen.throw()`. Це дозволяє писати очищення через звичну конструкцію `try...finally`.
 

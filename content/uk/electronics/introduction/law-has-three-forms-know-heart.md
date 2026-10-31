@@ -1,6 +1,6 @@
 ---
 id: emb-elintro-0089
-title: "Закон Ома – три форми. Яку ви знаєте напам'ять?"
+title: "Закон Ома – три форми. Яку ви знаєте напам’ять?"
 track: electronics
 section: introduction
 sources:

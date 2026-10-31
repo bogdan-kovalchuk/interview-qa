@@ -1,6 +1,6 @@
 ---
 id: emb-dtypes-0008
-title: "Визначте секцію пам'яті: `uint32_t error_count;` (глобальна) та `uint32_t sensor_count = 5;` (глобальна)"
+title: "Визначте секцію пам’яті: `uint32_t error_count;` (глобальна) та `uint32_t sensor_count = 5;` (глобальна)"
 track: embedded
 section: data-types-and-memory-layout
 sources:
