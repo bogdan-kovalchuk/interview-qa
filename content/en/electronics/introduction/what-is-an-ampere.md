@@ -34,4 +34,4 @@ For a time-varying current, the ratio of total charge to the duration of the int
 
 **Example:** if a charge of `6 C` is transferred through a cross-section in `2 s`, the average current equals `I = Q/t = 6 C/2 s = 3 A`.
 
-**Common mistake:** confusing current with charge itself. Charge is measured in coulombs, and current – in amperes, that is, in coulombs per second.
+**Common mistake:** confusing current with charge itself. Charge is measured in coulombs, and current in amperes, that is, in coulombs per second.

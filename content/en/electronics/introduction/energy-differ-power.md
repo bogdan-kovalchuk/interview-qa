@@ -28,6 +28,6 @@ Energy describes the total quantity of work or heat transferred to or from a sys
 
 Power indicates the rate at which energy is transferred or converted. For constant power, energy equals power multiplied by time: `E = P*t`. In a circuit, electric power is also calculated as `P = V*I`, where `V` is voltage and `I` is current; the unit watt equals one joule per second.[^openstax-electric-power-energy]
 
-From this, one sees the difference between two appliances with identical power operating for different durations: a 10 W device over 2 hours consumes 20 Wh, and over 5 hours – 50 Wh, assuming constant power. Power answers the question "how fast", while energy answers "how much total".[^openstax-electric-power-energy]
+From this, one sees the difference between two appliances with identical power operating for different durations: a 10 W device over 2 hours consumes 20 Wh, and over 5 hours, 50 Wh, assuming constant power. Power answers the question "how fast", while energy answers "how much total".[^openstax-electric-power-energy]
 
 Example: a 60 W lamp operating for 3 hours at constant power consumes `E = P*t = 60 W*3 h = 180 Wh`, or 0.18 kWh. Watt-hours cannot be called watts: the former accounts for operating time, whereas the latter characterizes the rate of energy transfer.[^openstax-electric-power-energy]

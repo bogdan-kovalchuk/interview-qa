@@ -28,7 +28,7 @@ The cathode of an `LED` is the electrode connected to the lower potential during
 
 An `LED` is a diode, so direction matters. In the forward direction, current flows from anode to cathode, and light emission occurs in the semiconductor junction. External markings help determine this direction prior to assembly, when electrical verification has not yet been performed.[^aac-led-cathode]
 
-For a common round through-hole package, compare the leads: the longer one is typically the anode, the shorter one – the cathode. The package often has a notch or flat area near the cathode. Inside, the larger metal anvil is often connected to the cathode, and the thin wire – to the anode; however, the internal shape should not be considered a guaranteed standard for all products.[^aac-led-cathode]
+For a common round through-hole package, compare the leads: the longer one is typically the anode, the shorter one is the cathode. The package often has a notch or flat area near the cathode. Inside, the larger metal anvil is often connected to the cathode, and the thin wire to the anode; however, the internal shape should not be considered a guaranteed standard for all products.[^aac-led-cathode]
 
 **Verification example:** if a new round `LED` has one shorter lead and one longer lead, identify the shorter one as the cathode and the longer one as the anode. If the leads are already trimmed, look for the flat side; when markings are unreadable or the package is unusual, you need to check the part number against the datasheet or test it using a multimeter's diode-test mode.
 
