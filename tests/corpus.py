@@ -20,4 +20,4 @@ QUESTIONS = 2047
 # Cards that ship in each package: a question ships when its Short answer is
 # written in that language (meta/anki.md).
 UK_CARDS = 2047
-EN_CARDS = 1239
+EN_CARDS = 1439

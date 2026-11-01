@@ -11,8 +11,8 @@ on the site and a card in an Anki deck that links back to that page.
 - Question permalink: `…/interview-qa/{lang}/q/{id}/` – stable forever, taxonomy-independent
 
 **Current state:** 2047 questions in both languages. Every question has a Ukrainian short answer,
-1239 have an English one, and those are the cards that ship (2047 Ukrainian, 1239 English).
-Detailed answers are written for all 2047 Ukrainian and 423 English files, including all 363 Python
+1439 have an English one, and those are the cards that ship (2047 Ukrainian, 1439 English).
+Detailed answers are written for all 2047 Ukrainian and 623 English files, including all 363 Python
 questions in both languages. An unwritten section is marked `TODO` in the source and is not shown on
 the page.
 
