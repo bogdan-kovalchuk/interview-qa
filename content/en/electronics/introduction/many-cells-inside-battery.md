@@ -26,8 +26,14 @@ sources:
 
 ## Short answer
 
-TODO
+An alkaline 9 V battery has the IEC designation `6LR61` (or `6LF22`), and the first digit of such a code indicates the number of series-connected cells – that is, six cells.[^energizer-522-datasheet] [^battery-nomenclature] The nominal voltages of series cells add up: `6 × 1.5 V = 9 V`.[^aac-direct-current] Batteries of the 9 V format with different chemistry, such as lithium or NiMH, may have a different number of cells.
 
 ## Detailed explanation
 
-TODO
+A 9 V format battery is a battery pack, not necessarily a single electrochemical cell. In the common alkaline design, there are six cells connected in series inside. Each has a nominal voltage of about 1.5 V, so the sum of the nominal values gives 9 V.[^energizer-522-datasheet] [^battery-nomenclature]
+
+A series connection means that the positive terminal of one cell is connected to the negative terminal of the next. The same current flows through all cells, and their electromotive forces add together. For example, for six identical cells, `V_total = 6*1.5 V = 9 V` by nominal values.[^aac-direct-current]
+
+However, the 9 V marking on the case is a nominal designation, not a promise of constant voltage. Terminal voltage depends on chemistry, charge, temperature, load, and internal resistance. Not all batteries of this format have the same internal construction: a manufacturer may use different chemistry or cell arrangement. Therefore, the answer "six" applies to the common alkaline variant, not to every possible 9-volt pack.[^energizer-9v]
+
+**Common mistake:** assuming the number of cells is universal based solely on the voltage rating. You should consult the documentation for a specific model, because the same nominal voltage does not guarantee the same chemistry or internal structure.[^energizer-9v]
