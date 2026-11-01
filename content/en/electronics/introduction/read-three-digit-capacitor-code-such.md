@@ -20,8 +20,16 @@ sources:
 
 ## Short answer
 
-TODO
+In the common three-digit code, the first two digits specify the significant figures in picofarads, and the third is the number of zeros following them. Therefore, `104` means `10*10^4 pF` = `100000 pF` = `100 nF` = `0.1 µF`.[^kemet-capacitor-picofarad-code]
 
 ## Detailed explanation
 
-TODO
+The three-digit code is an abbreviated representation of nominal capacitance, typically in picofarads. The first two positions form a number, and the third specifies the power of ten by which this number is multiplied. For example, in `104`, the significant digits are `10`, and the suffix `4` means four zeros: yielding `100000 pF`.[^kemet-capacitor-picofarad-code]
+
+To convert to a more convenient unit, remember that `1000 pF = 1 nF`, and `1000 nF = 1 µF`. Therefore, `100000 pF` equals `100 nF`, or `0.1 µF`. This is the nominal capacitance, not the tolerance, voltage rating, or date of manufacture; other adjacent characters on the package may encode separate parameters.[^kemet-capacitor-picofarad-code]
+
+For such a code, the digit `9` has a special meaning: it specifies division by ten, not nine zeros. That is why decoding must be tied to a specific marking system rather than treating any group of three characters as this format. In manufacturer tables, verify the code and nominal value against the part series.[^kemet-capacitor-picofarad-code]
+
+Example for `472`: the significant part is `47`, the third digit specifies two zeros, so you obtain `4700 pF`, or `4.7 nF`. The reverse check is straightforward: the expressions in pF and nF must differ by a factor of one thousand.
+
+**Common mistake:** reading `104` as `10 nF`, forgetting that the code counts in pF. You should also not infer the voltage rating from this code – it is marked separately or found from the full component part number in the datasheet.[^kemet-capacitor-picofarad-code]
