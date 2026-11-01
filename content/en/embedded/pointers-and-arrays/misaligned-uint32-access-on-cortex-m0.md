@@ -26,7 +26,7 @@ uint32_t val=*(uint32_t*)p;
 
 `p` is `uint8_t*`: no alignment guarantees. Casting to `uint32_t*` and dereferencing:
 
-If the address `0x40020000` is aligned to 4 -> OK. But if `p` points to `0x40020001` (misaligned) -> Cortex-M0: <span class="warn">HardFault</span>. Cortex-M3/M4: slow but no fault.
+If the address `0x40020000` is aligned to 4 -> OK. But if `p` points to `0x40020001` (misaligned) -> Cortex-M0: <span class="warn">HardFault</span>. Cortex-M3/M4 handle an unaligned `LDR` only in normal memory (SRAM, Flash), more slowly; `0x4002xxxx` is a peripheral (Device memory) address, where no core supports unaligned access.
 
 Safe approach: `uint32_t val; memcpy(&val, p, sizeof(val));` – the compiler optimizes to a single LDR if aligned.[^embeddedinterviewlab]
 

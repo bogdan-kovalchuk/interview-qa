@@ -26,7 +26,7 @@ uint32_t val=*(uint32_t*)p;
 
 `p` – `uint8_t*`: гарантій вирівнювання нема. Cast до `uint32_t*` і розіменування:
 
-Якщо адреса `0x40020000` вирівняна на 4 -> ОК. Але якщо `p` вказує на `0x40020001` (misaligned) -> Cortex-M0: <span class="warn">HardFault</span>. Cortex-M3/M4: повільно але без fault.
+Якщо адреса `0x40020000` вирівняна на 4 -> ОК. Але якщо `p` вказує на `0x40020001` (misaligned) -> Cortex-M0: <span class="warn">HardFault</span>. Cortex-M3/M4 виконують невирівняний `LDR` лише у звичайній пам’яті (SRAM, Flash), повільніше; `0x4002xxxx` – адреса периферії (Device memory), де невирівняний доступ не підтримує жодне ядро.
 
 Безпечно: `uint32_t val; memcpy(&val, p, sizeof(val));` – компілятор оптимізує до одного LDR якщо вирівняно.[^embeddedinterviewlab]
 

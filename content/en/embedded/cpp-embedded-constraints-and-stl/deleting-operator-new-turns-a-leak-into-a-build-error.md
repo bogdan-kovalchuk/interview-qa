@@ -14,11 +14,11 @@ sources:
 
 ## Short answer
 
-**If the global `operator new` is deleted or blocked, an accidental heap allocation becomes a compile/link error.**
+**If the heap is blocked at build time, an accidental heap allocation becomes a compile/link error.**
 
 Objects can be built via placement new in statically allocated buffers or fixed-capacity pools. This is easier to argue in a memory-safety review than a policy of "just do not use the heap".
 
-Rule: `= delete` on the global `new` turns a no-heap policy from discipline into a structural guarantee.[^embeddedinterviewlab]
+Rule: `= delete` on a class's `operator new` and a link error on `malloc` for the whole project turn a no-heap policy from discipline into a structural guarantee; the global `operator new` cannot be declared `= delete`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

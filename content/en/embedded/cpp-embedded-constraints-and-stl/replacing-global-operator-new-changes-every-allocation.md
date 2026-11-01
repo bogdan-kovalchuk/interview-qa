@@ -18,7 +18,7 @@ sources:
 
 Any code that calls `new` anywhere inside (even library code) will suddenly go through your pool – with unpredictable consequences for size/timing.
 
-Defence: it is safer to `= delete` the global `operator new` entirely, so that an accidental heap allocation becomes a compile error.[^embeddedinterviewlab]
+Defence: it is safer to ban the heap entirely at link time (a link error on `malloc`), so that an accidental heap allocation stops the build; the global `operator new` cannot be declared `= delete`.[^embeddedinterviewlab]
 
 ## Detailed explanation
 

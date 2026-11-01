@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-**C++ encodes the signature into the symbol (for overload resolution): `sensor_read(uint8_t)` -> `_Z10sensor_readh`; C does not mangle.**
+**C++ encodes the signature into the symbol (for overload resolution): `sensor_read(uint8_t)` -> `_Z11sensor_readh`; C does not mangle.**
 
 Without `extern "C"` the linker looks for the mangled name and does not find the unmangled C symbol -> link error.
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-**C++ кодує сигнатуру у символ (для overload resolution): `sensor_read(uint8_t)` -> `_Z10sensor_readh`; C не мангли́ть.**
+**C++ кодує сигнатуру у символ (для overload resolution): `sensor_read(uint8_t)` -> `_Z11sensor_readh`; C не мангли́ть.**
 
 Без `extern "C"` лінкер шукатиме mangled-ім’я й не знайде немангленого C-символу -> помилка лінкування.
 
