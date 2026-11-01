@@ -20,8 +20,14 @@ sources:
 
 ## Short answer
 
-TODO
+Voltage is defined between two points, not relative to an absolute zero. In a circuit, one can designate a reference point `GND` and agree by convention to define its potential as `0 V`; this is a choice of reference, not an assertion that the point possesses a universal zero potential.[^aac-voltage-current-resistance]
 
 ## Detailed explanation
 
-TODO
+Voltage is the difference in electric potential between two points, so its numerical value always depends on the chosen pair. This is analogous to height: the statement "a point is located at a height of 10 m" requires a reference level, whereas the height difference between two points can be determined without any absolute zero. Likewise, measuring voltage with a multimeter compares the potentials of its two probes.[^aac-voltage-current-resistance]
+
+In circuit analysis, one point is often designated as the reference and labeled `GND`; its potential is written by convention as `0 V`. Following this choice, a node voltage means the difference between that node and `GND`. If the reference point is changed, individual node voltages shift by a common constant, but the voltage between any pair of nodes remains identical. Therefore, it is more accurate to say "a node has 5 V relative to `GND`" rather than "a node has an absolute 5 V."[^aac-voltage-current-resistance]
+
+`GND` does not always signify a physical connection to earth ground. In a battery-powered device, it may merely be a common return wire and a convenient reference point; in a grounded system, the connection to protective earth depends on the specific design. The label `0 V` does not mean the absence of voltage between this node and another point, nor does it prove that the node itself is safe to touch.[^aac-voltage-current-resistance]
+
+Example: if node A has `5 V` relative to `GND`, and node B has `2 V` relative to the same `GND`, then the voltage of A relative to B equals `3 V`. If B is chosen as the new zero, the readings become `3 V` for A and `0 V` for B, but the difference between A and B does not change. A common mistake is treating `GND` as a physical absolute zero or confusing it with a mandatory earth ground connection; always name both measurement points.[^aac-voltage-current-resistance]

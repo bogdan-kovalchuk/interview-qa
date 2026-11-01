@@ -23,8 +23,14 @@ sources:
 
 ## Short answer
 
-TODO
+Directly paralleling batteries with different voltages produces a current between them, whose magnitude depends on the voltage difference and the total circuit resistance. Mixing batteries of different chemistries or states of charge without specially designed management is dangerous: excessive current, heating, damage, or leakage can occur.[^libretexts-battery-networks] [^energizer-alkaline-faq]
 
 ## Detailed explanation
 
-TODO
+The danger of a direct parallel connection is that both sources are placed across common terminals. If their voltages differ, the potential difference drives a current between the batteries. In a simple model, this current is determined by that difference and the sum of the internal resistances and connection resistances; a small total resistance can produce a large current even with no external load connected.[^libretexts-battery-networks]
+
+State of charge affects voltage, but matching voltages at a single moment does not prove compatibility: different chemical systems have different operating limits and charging requirements. Excessive current can overheat cells and wiring. For lithium batteries, an improper operating regime can cause a hazardous condition, so manufacturer-specified configuration, protection, and management are required; internal resistance cannot be assumed to provide sufficient protection on its own.[^libretexts-battery-networks]
+
+Manufacturer warnings against mixing new and used batteries or different chemical types also apply to standard multi-cell devices: a weaker cell can be driven into deep discharge by stronger ones, increasing the risk of leakage. This is a distinct mechanism from the balancing current in direct paralleling, but the practical takeaway is the same – use only manufacturer-specified compatible cells.[^energizer-alkaline-faq]
+
+**Common mistake:** assuming that parallel batteries are safe as long as the labels show the same nominal voltage. Paralleling requires identical compatible chemistry, closely matched state of charge, and a manufacturer-approved circuit with proper protection.

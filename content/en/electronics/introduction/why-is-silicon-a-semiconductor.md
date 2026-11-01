@@ -20,8 +20,14 @@ sources:
 
 ## Short answer
 
-TODO
+In crystalline silicon, valence electrons form covalent bonds; thermal energy can free some electrons and create mobile electron-hole pairs. Their quantity depends on temperature, which allows the conductivity of silicon to be controlled, notably through doping.[^mit-semiconductor-physics]
 
 ## Detailed explanation
 
-TODO
+Silicon is a semiconductor due to its crystal structure and the energy states of its electrons, not simply because the atom has "four valence electrons." In a crystal, each Si atom shares valence electrons with its neighbors and forms covalent bonds; at very low temperatures, nearly all of these electrons remain bound.[^mit-semiconductor-physics]
+
+At finite temperatures, some bonds can break due to thermal energy. This generates a mobile electron and a hole – the absence of an electron in a bond, which behaves like a positive charge carrier. An electric field can cause both types of carriers to move, producing an electric current.[^mit-semiconductor-physics]
+
+In intrinsic silicon, thermal generation produces electrons and holes in pairs. Introducing impurities during doping makes it possible to control carrier concentrations: donor dopants increase the electron concentration, whereas acceptor dopants increase the hole concentration. It is precisely this controllability that makes silicon suitable for diodes and transistors; the claim that it is a semiconductor solely because of an intermediate number of valence electrons misses the crucial role of crystal structure and carrier energy.[^mit-semiconductor-physics]
+
+Thus, valence electrons explain how the lattice is formed, but electrons and holes that have become mobile can transport charge.
