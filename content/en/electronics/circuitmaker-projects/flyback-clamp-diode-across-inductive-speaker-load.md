@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A speaker voice coil has inductance that generates an inductive flyback voltage spike when the switching transistor turns off abruptly: `v_L = -L * (di / dt)`. This high-voltage spike can easily exceed the collector-emitter breakdown rating `V_CEO` of the transistor, causing avalanche breakdown. A flyback diode recirculates the coil discharge current, clamping the spike to the supply rail and protecting the transistor.[^horowitz-hill-art-of-electronics]
 
 ## Detailed explanation
 

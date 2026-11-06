@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A bare-board fabricator requires Gerber files (RS-274X or Gerber X2) for each layer (copper, solder mask, silkscreen, board outline), Excellon drill files (PTH and NPTH), and an IPC-D-356 netlist for electrical testing. For automated assembly (PCBA), the assembler additionally requires a bill of materials (BOM), a Pick-and-Place centroid file, and assembly drawings.[^ipc-2581]
 
 ## Detailed explanation
 

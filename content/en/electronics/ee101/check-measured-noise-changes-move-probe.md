@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Check the probe ground lead loop geometry: a long alligator ground lead acts as a single-turn loop antenna and picks up radiated noise from nearby fast-switching signals. Test whether the observed noise waveform changes when moving the lead; use a short ground spring contact near the test point and compare results under identical oscilloscope settings.[^tektronix-abcs-probes]
 
 ## Detailed explanation
 

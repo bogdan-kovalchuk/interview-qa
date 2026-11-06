@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Outputs of an oscillator and a pulled-down push-button cannot be tied directly together due to output contention when logic levels disagree. Instead, both signals are combined through a two-input `OR` gate whose output drives the counter clock pin. During manual pulsing, the oscillator must be halted at logic `0`, otherwise a continuous high level on the `OR` input masks button pulses.[^tocci-digital-systems]
 
 ## Detailed explanation
 

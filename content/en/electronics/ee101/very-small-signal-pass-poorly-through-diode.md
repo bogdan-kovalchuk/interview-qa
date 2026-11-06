@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+In each half-cycle, load current flows through two bridge diodes in series, requiring an input voltage of approximately `2*V_F`, or about 1.4 V for silicon.[^fiore-rectification] Any signal with peak amplitude below this threshold cannot initiate conduction, while a signal only slightly above it produces only short, clipped peaks attenuated by `2*V_F`.[^fiore-rectification]
 
 ## Detailed explanation
 

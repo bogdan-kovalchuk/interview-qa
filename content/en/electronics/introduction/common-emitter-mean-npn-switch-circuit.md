@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a `common emitter` configuration, the base input circuit and the collector output circuit share the emitter as a common reference point; in a typical NPN switch, it connects to `GND`. With a collector load connected to the supply rail, the output is inverted: a conducting transistor results in a low collector level.[^aac-common-emitter]
 
 ## Detailed explanation
 

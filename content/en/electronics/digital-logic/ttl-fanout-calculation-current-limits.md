@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Fanout is calculated separately for HIGH as `|I_OH| / I_IH` and for LOW as `I_OL / |I_IL|`. The overall fanout is the lesser of the two resulting values. For a 74LS04 inverter under standard datasheet currents, this calculation yields a fanout of 20 for both logic states.[^ti-74ls-logic-databook]
 
 ## Detailed explanation
 

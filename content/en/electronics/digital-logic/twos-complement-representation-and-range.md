@@ -14,8 +14,8 @@ sources:
 
 ## Short answer
 
-TODO
+To form a negative number in two's complement, invert all bits of the positive number and add 1 to the result. For `n` bits, the representable value range spans `-2^(n-1)` to `2^(n-1) - 1`. In an 8-bit system, this covers -128 to +127, where a 1 in the most significant bit (MSB) indicates a negative sign.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 
-TODO
+TODO

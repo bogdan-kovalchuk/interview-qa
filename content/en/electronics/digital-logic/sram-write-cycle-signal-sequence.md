@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+First, a stable address is asserted onto the address bus. Next, chip enable `/CE` (`/CS`) and write enable `/WE` are asserted, and data is driven onto the bidirectional data bus. The data must remain stable for the specified setup time prior to the trailing edge of `/WE`, after which the write strobe is deasserted.[^issi-is61wv5128bll] [^floyd-digital]
 
 ## Detailed explanation
 

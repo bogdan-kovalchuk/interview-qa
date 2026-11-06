@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Thermal resistance from junction to ambient is the sum of series thermal resistances: `θ_JA = θ_JC + θ_CS + θ_SA` (°C/W), representing junction-to-case, case-to-sink (interface material), and sink-to-ambient.[^ti-sboa020] Thermal paste lowers `θ_CS` relative to dry contact, whereas an electrical insulator generally adds higher `θ_CS` than paste alone.[^ti-sboa020] Electrical insulation is often mandatory because the regulator mounting tab connects to ground or output.[^ti-lm340]
 
 ## Detailed explanation
 

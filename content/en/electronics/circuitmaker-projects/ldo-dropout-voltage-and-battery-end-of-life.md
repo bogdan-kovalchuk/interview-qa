@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The minimum regulated input voltage is governed by `V_in(min) = V_out + V_DO`. Lowering `V_DO` allows the device to continue operating along the flat plateau of the battery discharge curve below 7 V. A lithium 9 V battery maintains significantly flatter discharge voltage compared to a standard alkaline cell.[^udemy-electronics-course][^ti-ldo-definitions]
 
 ## Detailed explanation
 

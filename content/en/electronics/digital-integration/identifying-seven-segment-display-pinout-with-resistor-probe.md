@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Testing requires a 5 V power supply with a series `220–330 Ω` resistor to prevent damaging the LEDs. One probe is held on a suspected common terminal while the other probe touches the remaining pins in sequence. If segments light up when the second probe is negative, the display is common anode; if they illuminate when it is positive, the display is common cathode.[^horowitz-hill-art-electronics]
 
 ## Detailed explanation
 

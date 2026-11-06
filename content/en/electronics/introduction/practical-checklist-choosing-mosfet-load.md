@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Verify maximum drain-source voltage and operating current under real conditions, guaranteed `R_DS(on)` at available `V_GS`, power dissipation, safe operating area (SOA), and junction temperature.[^ti-mosfet-selection] For switching applications, additionally evaluate `Q_g`, body diode reverse recovery, and package-to-PCB thermal dissipation capabilities.[^infineon-mosfet-layout]
 
 ## Detailed explanation
 

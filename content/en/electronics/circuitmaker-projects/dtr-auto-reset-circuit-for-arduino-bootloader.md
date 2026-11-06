@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0057
-title: "How does a 0.1 µF capacitor on DTR provide auto-reset for the Arduino bootloader?"
+title: "How does a 0.1 µF capacitor in the DTR circuit provide auto-reset for the Arduino bootloader?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+When a host PC opens the serial COM port, the `DTR` line transitions low and stays low throughout communication. The series capacitor combined with the pull-up resistor on the `RESET` pin forms a differentiating RC high-pass network. This generates a brief negative reset pulse, triggering the bootloader at the exact instant flashing begins.[^arduino-uno-schematic]
 
 ## Detailed explanation
 

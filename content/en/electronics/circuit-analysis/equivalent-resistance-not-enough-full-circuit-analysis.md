@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An equivalent resistance `R_eq` characterizes port behavior seen by the source, but conceals individual voltages and currents across internal elements. To determine local branch currents and internal node potentials, you must unwrap the original circuit topology and apply Ohm's law, KCL, and KVL.[^ti-slaa067]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Digital IC inputs contain internal ESD protection diodes with cathodes tied to the `V_CC` rail. Driving an input pin while the device power rail is off conducts current through the upper clamping diode onto `V_CC`, partially powering the circuit. This unintended state can trap logic in undefined configurations, prevent proper power-on reset, and exceed diode current limits, causing damage.[^ti-slyt527]
 
 ## Detailed explanation
 

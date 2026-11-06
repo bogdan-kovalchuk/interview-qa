@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Because of winding resistance `r_L`: at DC an ideal inductor is a short circuit, leaving a voltage divider `V_out = V_in*r_L/(R + r_L)` rather than zero for an unloaded coil output.[^fontys-passive-hf] At very high frequencies, parasitic capacitance causes self-resonance (SRF), above which capacitive reactance dominates and the inductor behaves like a capacitor.[^vishay-inductors-primer] The measurement bandwidth is further limited by the oscilloscope and probe.[^tektronix-abcs-probes]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Repeated downward pressure from keypresses causes elastic flexing along an unsupported FR-4 board. Cyclical mechanical strain leads to material fatigue, cracked solder joints, and barrel shearing in plated through-hole vias. Adding a central mounting standoff or support post prevents board deflection and preserves structural integrity.[^ipc-2221]
 
 ## Detailed explanation
 

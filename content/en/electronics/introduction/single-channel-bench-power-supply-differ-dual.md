@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A single channel supplies one independent voltage rail. Having two or three channels allows simultaneous powering of multiple sub-circuits, such as 5 V digital logic, ±12 V analog stages, or separate loads with individual current limits.[^keithley-dc-supplies]
 
 ## Detailed explanation
 

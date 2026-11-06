@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Within a single phasor calculation, maintain a consistent amplitude representation (for instance, all RMS or all peak values) and a single phase reference. Phasors directly describe sinusoidal quantities of a single frequency. Components of different frequencies must be analyzed separately, and their instantaneous signals can then be summed in the time domain.[^aac-phasor-conventions]
 
 ## Detailed explanation
 

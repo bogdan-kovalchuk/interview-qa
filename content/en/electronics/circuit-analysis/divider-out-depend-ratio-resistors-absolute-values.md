@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an unloaded divider, `V_out = V_in*R_2/(R_1+R_2)`, so scaling both resistors by the same factor preserves output voltage while altering quiescent current. When an external load is connected, absolute resistor values become critical because they dictate the divider's output impedance and the resulting voltage sag under load.[^ti-slaa067]
 
 ## Detailed explanation
 

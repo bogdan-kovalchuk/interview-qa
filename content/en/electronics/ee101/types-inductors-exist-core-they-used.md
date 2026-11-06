@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0043
-title: "What types of inductors exist by core, and where are they used?"
+title: "What types of inductors exist by core material, and where are they used?"
 track: electronics
 section: ee101
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Inductors are made with air, ferrite, powdered iron, and other core materials; core selection and geometry depend on frequency, current rating, losses, and size constraints. An air-core coil eliminates core losses, whereas ferrite and powdered-iron cores achieve higher inductance in compact footprints, though subject to their own frequency and saturation limits.[^aac-alternating-current]
 
 ## Detailed explanation
 

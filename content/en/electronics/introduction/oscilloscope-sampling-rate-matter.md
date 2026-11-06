@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Sampling rate is the number of waveform samples an oscilloscope captures per second; it determines the time resolution of the digitized signal.[^tek-oscilloscope-specs] An insufficient sampling rate leads to aliasing or missed narrow glitches, and the Nyquist criterion of "at least twice the highest frequency" is insufficient in practice for faithfully reconstructing non-sinusoidal edges and arbitrary transients.[^tek-oscilloscope-specs]
 
 ## Detailed explanation
 

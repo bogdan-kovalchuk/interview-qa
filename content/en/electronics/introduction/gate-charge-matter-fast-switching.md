@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+`Q_g` is the charge required to transition the gate state under specified test conditions; it dictates required gate driver current and transition times without solely determining them.[^infineon-gate-drive] For a given driver current, larger gate charge extends switching time, while dynamic switching losses also depend on bus voltage, switched current, and operating frequency.[^ti-mosfet-selection]
 
 ## Detailed explanation
 

@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Paste mask layers are intended exclusively for laser-cutting apertures in stainless steel solder paste stencils during component assembly. During bare-board fabrication, exposed copper pads receive a protective surface finish and do not involve solder paste. Submitting unnecessary paste layers confuses CAM engineers and risks order delays or fabrication holds.[^udemy-electronics-course][^ipc-7525b]
 
 ## Detailed explanation
 

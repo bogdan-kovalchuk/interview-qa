@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Transconductance is `g_m = I_C/V_T ≈ 1 mA / 26 mV ≈ 38.5 mS`, while dynamic emitter resistance is `r'_e = 26 mV / I_C ≈ 26 Ω`. The base input resistance without external emitter degeneration is `r_pi = β/g_m = β*r'_e ≈ 2.6 kΩ`.[^fiore-bjt-ac-model][^fiore-common-emitter-amplifier]
 
 ## Detailed explanation
 

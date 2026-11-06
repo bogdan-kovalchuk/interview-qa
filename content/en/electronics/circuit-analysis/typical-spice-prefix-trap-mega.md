@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In ngspice, the suffix `m` denotes milli (10^-3) and `Meg` denotes mega (10^6), regardless of letter case.[^ngspice-number-suffixes] Therefore, `1M` represents 1 mΩ as a numeric suffix, whereas 1 MΩ must be written as `1Meg`.[^ngspice-number-suffixes] Rules can depend on the specific SPICE-compatible simulator, so they should be checked in its manual.[^ngspice-number-suffixes]
 
 ## Detailed explanation
 

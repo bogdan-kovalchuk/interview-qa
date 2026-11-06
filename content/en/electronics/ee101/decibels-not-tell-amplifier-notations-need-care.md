@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Decibels describe gain magnitude rather than phase: a voltage gain of −10 has a magnitude of 10 (20 dB) but also implies a 180° phase inversion. The `dBV` notation designates a voltage level relative to 1 V. The `dBm` notation designates a power level relative to 1 mW, requiring a reference impedance to convert from a measured voltage.[^aac-decibels] [^keysight-db-reference]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The effective load capacitance is `C_L ≈ (C_1 * C_2) / (C_1 + C_2) + C_stray = C / 2 + 3 pF`, yielding `C ≈ 30 pF`. This provides an initial design estimate; actual PCB stray capacitance and crystal manufacturer recommendations determine the final component value.[^udemy-electronics-course]
 
 ## Detailed explanation
 

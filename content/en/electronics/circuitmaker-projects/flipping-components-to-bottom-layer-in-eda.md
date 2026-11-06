@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The top layer is dedicated to bulky interface components: buttons, LEDs, speakers, and external connectors. Placing tiny SMD passives on the bottom layer allows decoupling capacitors and termination resistors to sit directly beneath IC pins. This substantially shrinks board surface area and shortens high-speed signal routing.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

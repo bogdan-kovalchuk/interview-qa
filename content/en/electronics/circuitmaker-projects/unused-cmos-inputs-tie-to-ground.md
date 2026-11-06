@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+All input pins of the unused half of a 74HC393 binary counter, namely clock input `2CP` and master reset `2MR`, must be tied to a defined logic level, typically `GND`. Floating CMOS inputs drift into the linear threshold region near `V_CC / 2` due to picked-up noise, turning both internal MOSFETs partially on. This causes shoot-through current, overheating, and high-frequency oscillation that can disrupt the active counter half. Unused outputs are left unconnected.[^ti-74hc393]
 
 ## Detailed explanation
 

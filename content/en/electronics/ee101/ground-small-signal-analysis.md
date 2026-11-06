@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In small-signal analysis, an ideal DC voltage supply carries zero AC variation, so its AC equivalent resistance is zero and it is modeled as an AC short circuit. Any circuit node connected to such a rail is referred to as an AC ground.[^fiore-common-emitter-amplifier] This is an analytical modeling technique, not an instruction to physically short power rails to ground.
 
 ## Detailed explanation
 

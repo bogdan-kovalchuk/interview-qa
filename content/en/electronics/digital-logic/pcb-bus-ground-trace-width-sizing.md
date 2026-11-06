@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A shared ground return trace carries the simultaneous combined return current of all active bus lines. For example, if eight lines each sink `100 mA`, the ground return must conduct a total current of `800 mA`. A narrow `10 mil` trace with `0.5 oz` copper is rated for only about `0.5 A` and will overheat, so designers widen it to `25 mil` or use a continuous ground plane.[^ipc-2152]
 
 ## Detailed explanation
 

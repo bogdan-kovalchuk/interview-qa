@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Bandwidth specifies the frequency at which the measured amplitude of an input sine wave is attenuated to 70.7% of its true amplitude, which corresponds to the -3 dB cutoff point.[^tek-oscilloscope-specs] Insufficient bandwidth attenuates high-frequency harmonics and slows displayed edge transitions; the required bandwidth margin depends on signal edge speeds and target measurement accuracy.[^tek-oscilloscope-specs]
 
 ## Detailed explanation
 

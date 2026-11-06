@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`dBm` represents an absolute power level referenced to 1 mW, where 10 mW equals +10 dBm. `dBV` represents a voltage level referenced to 1 V, so for RMS measurements, 0.1 V equals −20 dBV and 1 V equals 0 dBV. Unlike these units, standard dB expresses only a relative ratio without an absolute reference.[^rs-decibel-guide]
 
 ## Detailed explanation
 

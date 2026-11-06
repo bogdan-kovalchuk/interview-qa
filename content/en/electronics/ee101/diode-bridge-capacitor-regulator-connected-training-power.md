@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0178
-title: "How are the diode bridge, capacitor and regulator connected in a training power supply?"
+title: "How are the diode bridge, capacitor, and regulator connected in a training power supply?"
 track: electronics
 section: ee101
 sources:
@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+The two bridge `~` AC terminals connect to the secondary winding, while `+` and `-` output rectified DC; verify terminal pinouts from the package markings.[^vishay-gbu4] The electrolytic capacitor's positive terminal connects to bridge `+` and its negative terminal connects to `-` (common return). The voltage regulator input connects to the capacitor's positive node, and regulator GND connects to `-`.[^vishay-alu-intro][^ti-lm340]
 
 ## Detailed explanation
 

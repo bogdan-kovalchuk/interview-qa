@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 7493 IC is internally divided into two independent sections: a divide-by-2 stage using the first flip-flop (input `CKA`, output `QA`) and a 3-bit divide-by-8 counter (input `CKB`, outputs `QB–QD`). Without externally connecting `QA` to `CKB`, the chip operates only as two isolated dividers. Adding this external jumper cascades them into a complete 4-bit counter cycling from 0 to 15.[^ti-sn7493a]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For natural current decay in an RL circuit, the exponent is `-t*R/L`, and the time constant `τ = L/R` is measured in seconds. Writing `e^(-t*L/R)` or claiming `τ = R/L` inverts the relationship: `R/L` has units of `1/s` and represents the reciprocal time constant.[^rl-time-constant]
 
 ## Detailed explanation
 

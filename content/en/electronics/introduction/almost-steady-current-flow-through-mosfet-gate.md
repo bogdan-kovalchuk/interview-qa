@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A MOSFET gate is isolated from the channel by an insulating dielectric layer, forming a capacitive structure. In steady state, only a tiny leakage current flows, while noticeable current is drawn primarily when charging or discharging gate capacitance during transitions.[^aac-semiconductors]
 
 ## Detailed explanation
 

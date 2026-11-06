@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Generic passives (resistors, capacitors) are placed on schematics as parametric symbols, assigning standard footprints and manufacturer part numbers during BOM consolidation. Specific components (connectors, switches, microcontrollers) possess unique pinouts and mechanical geometries. Before placement, they must be mapped to exact manufacturer part numbers, verified footprints, and datasheet-matched 3D models.[^altium-component-management]
 
 ## Detailed explanation
 

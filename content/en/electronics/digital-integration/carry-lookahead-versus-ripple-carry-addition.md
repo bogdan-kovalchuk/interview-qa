@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a ripple-carry adder, carry bits propagate sequentially through each bit stage, causing total delay to scale linearly with word width `O(n)`. A carry-lookahead adder (CLA) calculates carry signals across all bit positions in parallel using generate `G_i` and propagate `P_i` functions. This parallel architecture reduces carry propagation delay to `O(1)` or logarithmic `O(log n)` in multilevel hierarchical implementations.[^floyd-digital]
 
 ## Detailed explanation
 

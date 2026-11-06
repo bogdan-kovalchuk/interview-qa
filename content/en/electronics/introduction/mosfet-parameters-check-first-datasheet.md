@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Start with voltage and current limits.** Check `V_DS`, rated `I_D`, `R_DS(on)` specifically at your available `V_GS`, package thermal limits, and the absolute maximum `V_GS`. `V_GS(th)` indicates only the onset of slight conduction rather than guaranteed full enhancement; for fast switching, also check `Q_g`.[^ti-mosfet-selection]
 
 ## Detailed explanation
 

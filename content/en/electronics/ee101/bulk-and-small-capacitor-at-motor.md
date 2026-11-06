@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A large reservoir capacitor (2200 µF in the lecture) delivers high motor starting currents, preventing rail sags and avoiding heavy transient currents across supply wiring from the regulator. A small 0.1 µF ceramic capacitor across the motor terminals shunts high-frequency brush noise right where it is generated. Together, they suppressed supply rail noise from several volts down to approximately ±50 mV.[^udemy-electronics-course]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Buffers increase bus fan-out and drive capability, restoring clean logic transition edges when driving capacitive board traces and cables. They provide electrical isolation between sensitive microprocessor pins and noisy external peripheral buses. In addition, three-state buffers can disconnect drivers from shared communication buses to prevent bus contention.[^ti-sn74hc244]
 
 ## Detailed explanation
 

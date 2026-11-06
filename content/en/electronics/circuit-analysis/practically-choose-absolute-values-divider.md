@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+First, set the ratio required for the target `V_out`, then choose the divider current taking the load into account. Lower resistor values decrease output impedance but increase power consumption and heat dissipation. Higher values conserve current but react more strongly to loading and input bias current.[^aac-direct-current]
 
 ## Detailed explanation
 

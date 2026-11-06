@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Operating mode in the 74HC166 is governed by the parallel enable input `/PE`. When `/PE = 0`, the active clock edge synchronously latches 8 bits from inputs `D0–D7` into the register stages. When `/PE` returns to `1`, subsequent clock pulses shift the stored bits out sequentially through serial output `Q7`.[^nexperia-74hc166-datasheet]
 
 ## Detailed explanation
 

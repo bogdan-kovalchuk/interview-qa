@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Winding resistance `r_L` in series with R reduces the transfer ratio even at DC: `H(0) = R/(R + r_L)`. For R = 100 Ω and `r_L` = 20 Ω, this ratio is `100/120 ≈ 0.833`. In this model, the pole is located at `f_p = (R + r_L)/(2π*L)`, and the 3 dB cutoff frequency is defined relative to the actual low-frequency plateau.[^aac-low-pass-filters]
 
 ## Detailed explanation
 

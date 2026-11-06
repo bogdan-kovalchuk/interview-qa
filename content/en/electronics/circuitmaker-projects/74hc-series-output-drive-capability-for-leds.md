@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output stages of 74HC logic guarantee a rated drive current of about 4–6 mA, with an absolute maximum limit of 25 mA per pin. Modern indicator LEDs achieve sufficient brightness at only 2–3 mA. Current-limiting resistors of 470–1000 Ω set a safe load current, preventing IC die overheating, damage, and logic level degradation.[^ti-sn74hc00-datasheet]
 
 ## Detailed explanation
 

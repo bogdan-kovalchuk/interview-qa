@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Connecting a capacitor via a side stub introduces parasitic trace inductance into the decoupling loop. Routing the power trace directly through the capacitor pad forces high-frequency ripple currents to shunt directly to ground at the entry point. This provides low-impedance transient filtering right at the IC supply pin.[^bogatin-signal-integrity]
 
 ## Detailed explanation
 

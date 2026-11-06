@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0001
-title: "Why use fork instead of editing the original project in CircuitMaker?"
+title: "Why is forking used instead of editing the original project in CircuitMaker?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Original projects created by other users in CircuitMaker are read-only and protected against direct modification. The `Fork` command creates an independent working copy within the user's personal cloud workspace while preserving project structure. A local `Save` writes changes to disk, whereas `Commit` versions and synchronizes those changes back to the cloud.[^circuitmaker-projects-docs]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74x138 features two active-low enable inputs `/G2A` and `/G2B` (or `/E1`, `/E2`) and one active-high enable input `G1` (or `E3`). The decoder outputs are enabled only when `G1 = 1`, `/G2A = 0`, and `/G2B = 0` simultaneously. This mix of polarities allows cascading multiple decoders to expand address decoding or connecting directly to memory address buses without external logic gates.[^ti-74ls138-datasheet]
 
 ## Detailed explanation
 

@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+AND outputs 1 only for input 11[^ti-hc08], while NAND outputs 0 only for 11.[^ti-hc00] OR outputs 0 only for 00[^ti-hc32], while NOR outputs 1 only for 00.[^ti-hc02] The governing Boolean equations are `Y = A*B` (AND)[^ti-hc08], `Y = NOT(A*B)` (NAND)[^ti-hc00], `Y = A+B` (OR)[^ti-hc32], `Y = NOT(A+B)` (NOR)[^ti-hc02], and `Y = NOT A` (NOT).[^ti-hc04]
 
 ## Detailed explanation
 

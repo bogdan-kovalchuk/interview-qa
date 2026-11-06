@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A phasor is a complex number that encodes the amplitude and phase of a sinusoidal signal relative to a chosen reference at a given frequency. For `v(t) = V_m*sin(ω*t + φ)`, it can be written as `V = V_m∠φ` under the sine convention, with the exponential form tied to Euler's formula. Phasors simplify the analysis of linear circuits in sinusoidal steady state, but they do not by themselves describe an arbitrary transient or a signal with mixed frequencies.[^aac-phasor-definition]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+With the Zener in breakdown (`V_out ≈ V_Z = 5.1 V`), resistor current is `I_R = (9 - 5.1)/390 = 10 mA`, splitting between load and Zener.[^fiore-rectification] At 10 kΩ, the load draws `5.1/10000 = 0.51 mA`, leaving ≈ 9.49 mA for the Zener. At 1 kΩ, the load takes 5.1 mA, leaving ≈ 4.9 mA. These are nominal values: for a BZX84-C5V1, `V_Z` tolerance (4.8–5.4 V at 5 mA) allows residual current at 1 kΩ to range from about 3.8 to 6.0 mA.[^nexperia-bzx84]
 
 ## Detailed explanation
 

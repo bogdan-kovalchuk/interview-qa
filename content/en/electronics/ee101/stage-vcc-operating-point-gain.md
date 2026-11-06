@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+The DC bias levels are `V_E ≈ 1 V`, `V_B ≈ 1.7 V`, and `V_C ≈ 10 - 4.7 = 5.3 V`, yielding `V_CE ≈ 4.3 V` with adequate headroom to both the supply rail and saturation.[^fiore-bjt-basics][^mit-6071-bjt-notes] If `R_E` is unbypassed, voltage gain is `A_v = -R_C/(r'_e + R_E)` with `r'_e ≈ 26 Ω`, giving `A_v ≈ -4.6` neglecting external loading and transistor output impedance.[^fiore-bjt-ac-model][^fiore-common-emitter-amplifier]
 
 ## Detailed explanation
 

@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74HC164 features two serial inputs, `DSA` and `DSB`, which are internally connected through a two-input `AND` gate. This allows one pin to carry serial data while the other acts as an active-high data enable or gating strobe. Holding the control pin `LOW` inhibits data entry and shifts only logic zeros into the register.[^ti-74hc164]
 
 ## Detailed explanation
 

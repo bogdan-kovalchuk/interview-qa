@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In midband frequencies, the output coupling capacitor acts as an AC short circuit, connecting the load directly to the collector. The DC supply rail feeding `R_C` acts as an AC ground via bypass capacitors, placing `R_load` directly in AC parallel with `R_C` to ground.[^fiore-common-emitter-amplifier]
 
 ## Detailed explanation
 

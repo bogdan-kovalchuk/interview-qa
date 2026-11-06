@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Routing long wires across an entire schematic sheet clutters the drawing and makes it difficult to read. Named net labels and ports partition the schematic into clear, autonomous functional modules. EDA software automatically groups nets with identical names into a single electrical netlist without messy wire crossings.[^udemy-electronics-course]
 
 ## Detailed explanation
 

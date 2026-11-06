@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an N-channel MOSFET, 10 kΩ between gate and source is a common starting point, but it is a guideline rather than a universal requirement.[^infineon-mosfet-gate-drive] The resistor holds the gate near source potential when the driver output is disconnected or high-impedance, draining residual charge. A smaller value pulls down more strongly, but consumes unnecessary drive current whenever the driver turns the transistor on.[^infineon-mosfet-gate-drive]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output tapping point determines the filter type. In a series RL circuit, taking the output across R forms a low-pass filter, because as frequency increases, a greater fraction of the input voltage drops across the inductor. Taking the output across L forms a high-pass filter, as inductive impedance increases and the inductor voltage approaches the input. This holds for ideal components and an unloaded output.[^aac-series-rl]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+BJTs can be connected in parallel to increase total current, but current does not necessarily split equally: parameter spread can cause one transistor to carry excessive load. Dedicated emitter ballast resistors provide local negative feedback to help balance currents; matched thermal mounting and adequate heat sinking are also required.[^aac-bjt-basics]
 
 ## Detailed explanation
 

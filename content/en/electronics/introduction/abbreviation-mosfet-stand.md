@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`Metal-Oxide-Semiconductor Field-Effect Transistor` is a field-effect transistor with a gate separated from the semiconductor by an insulating oxide layer. Gate voltage modulates the channel between source and drain via an electric field; in steady state, an idealized insulated gate draws no DC current, though real gates exhibit capacitance and specified leakage current.[^adi-mosfet-basics]
 
 ## Detailed explanation
 

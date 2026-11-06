@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0219
-title: "Why is a flyback diode placed across a motor and how is it connected?"
+title: "Why is a flyback diode placed across a motor, and how is it connected?"
 track: electronics
 section: ee101
 sources:
@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A motor is an inductive load: when the switching transistor turns off, inductor current cannot drop instantaneously to zero, generating a high-voltage inductive spike. Connecting a flyback diode with its cathode to the positive supply and its anode to the collector provides a safe recirculation path for this decaying current; during normal conduction, the diode is reverse-biased.[^fiore-bjt-switching]
 
 ## Detailed explanation
 

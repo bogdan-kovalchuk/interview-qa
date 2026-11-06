@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0226
-title: "Voltage regulator with a 5.6 V Zener on the base, 50 mA load, β ≈ 100, 9 V input. What are the output, the base current and the transistor power?"
+title: "Voltage regulator with a 5.6 V Zener on the base, 50 mA load, β ≈ 100, 9 V input. What are the output, the base current, and the transistor power?"
 track: electronics
 section: ee101
 sources:
@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output is `V_out ≈ 5.6 - 0.7 = 4.9 V`: the Zener clamps the base near 5.6 V while the emitter sits a `V_BE ≈ 0.7 V` drop lower.[^vishay-silicon-zener-diodes][^fiore-bjt-basics] Base drive current `I_B ≈ 0.5 mA` (`I_E/(β+1)`) is supplied from the 9 V rail through the resistor feeding the Zener diode. With `V_CE ≈ 4.1 V`, transistor power dissipation is `P ≈ 4.1*0.05 ≈ 0.2 W`.
 
 ## Detailed explanation
 

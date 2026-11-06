@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A pole describes a separate circuit or common terminal of a switch, while a throw is the number of positions or terminals to which that pole can connect. For example, an SPDT switch has one pole and two selectable output terminals; the designation alone does not define momentary action or the pinout of a specific part.[^te-switch-poles-throws]
 
 ## Detailed explanation
 

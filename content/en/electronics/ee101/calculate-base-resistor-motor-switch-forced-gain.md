@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Base drive current must satisfy `I_B ≥ I_C/β_forced = 100 mA / 10 = 10 mA`.[^rohm-bjt-basics] This gives `R_B = (5 - 0.8)/0.01 ≈ 420 Ω`, where saturated `V_BE = 0.8 V` typically falls in the 0.7–0.9 V range.[^rohm-bjt-basics] The chosen `β_forced` must sit well below the datasheet minimum `h_FE` at this current.[^rohm-bjt-basics] The 5 V control source must be capable of sourcing the required 10 mA.
 
 ## Detailed explanation
 

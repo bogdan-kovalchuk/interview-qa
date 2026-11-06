@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For `R = 1 kΩ` and `f_c = 1 kHz`, the required capacitance is `C = 1/(2*pi*R*f_c) ≈ 159 nF`. Selecting the standard value `150 nF` shifts the actual cutoff to `1/(2*pi*1 kΩ*150 nF) ≈ 1.06 kHz`. After choosing standard components, recalculate the cutoff frequency while accounting for component tolerances and load impedance.[^aac-rc-low-pass-transfer]
 
 ## Detailed explanation
 

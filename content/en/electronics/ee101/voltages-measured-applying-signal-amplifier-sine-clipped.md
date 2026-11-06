@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0212
-title: "Why should DC voltages be measured before applying a signal to an amplifier, and what should you do if the sine is clipped?"
+title: "Why should DC voltages be measured before applying a signal to an amplifier, and what should you do if the sine wave is clipped?"
 track: electronics
 section: ee101
 sources:
@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Without an established Q-point, the stage may already sit in cutoff or saturation before an AC signal arrives, so `V_B`, `V_E`, and `V_C` must first be verified without input.[^mit-6071-bjt-notes] If the output sine wave clips, check the operating point: if biasing is correct, reduce the input signal amplitude; if biasing is shifted, correct the bias resistor network.[^fiore-bjt-dc-load-line]
 
 ## Detailed explanation
 

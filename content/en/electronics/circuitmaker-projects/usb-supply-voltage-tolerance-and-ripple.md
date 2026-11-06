@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0052
-title: "Why can USB bus power not be considered a stable and precise 5.0V source?"
+title: "Why can USB bus power not be considered a stable and precise 5.0 V source?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The USB specification allows bus voltage to vary between 4.75 V and 5.25 V (and down to 4.40 V on low-power downstream ports), often with substantial switching noise. In addition, long cables introduce dynamic IR voltage drops under varying loads. Precise analog ADC measurements therefore require a dedicated, stabilized voltage reference rather than raw USB bus power.[^udemy-electronics-course]
 
 ## Detailed explanation
 

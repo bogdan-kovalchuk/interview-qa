@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+When an initially discharged capacitor is charged from an ideal constant-voltage source `V_0` through a resistor, half the energy delivered by the source is stored in the capacitor and half is dissipated in the resistor. The final capacitor energy equals `E_C = C*V_0^2/2`; this result is independent of `R` once charging is complete.[^openstax-rc-circuits]
 
 ## Detailed explanation
 

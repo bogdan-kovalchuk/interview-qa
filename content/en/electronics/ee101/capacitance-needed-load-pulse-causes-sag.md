@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Neglecting ESR, the capacitor equation `i = C*dv/dt` yields `C = I*t/V`, so 0.1 A × 1 ms / 0.1 V = 1000 µF.[^fiore-ac-circuit-analysis] If the capacitor has an ESR of 0.2 Ω, the instantaneous step `I*ESR = 20 mV` uses part of the allowable voltage margin, requiring at least 1250 µF.
 
 ## Detailed explanation
 

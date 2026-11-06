@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a synchronous counter, clock inputs of all flip-flops are connected in parallel to a shared clock source, causing all stages to switch simultaneously. The least significant flip-flop has `J0 = K0 = 1`, and each subsequent stage connects its inputs to the `AND`-combination of preceding `Q` outputs (`J1 = K1 = Q0`, `J2 = K2 = Q0 * Q1`). Because of parallel clocking, total settling time equals the propagation delay of just a single flip-flop.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

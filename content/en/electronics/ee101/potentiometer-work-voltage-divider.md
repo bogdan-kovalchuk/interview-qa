@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The outer terminals of the potentiometer connect to `V_in` and GND, with the output taken from the wiper. For an unloaded ideal divider, `V_out = V_in*R_2/(R_1+R_2)`, where `R_1+R_2 = R_total`; thus, the output varies between the voltages at the outer terminals. Output loading alters this voltage division, so the unloaded formula does not always describe a real circuit.[^bourns-potentiometer]
 
 ## Detailed explanation
 

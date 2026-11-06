@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+When enable input `/E` (or `/G`) is held `HIGH` (disabled), the 74x151 does not put its outputs into a high-impedance (Hi-Z) state. Instead, true output `Y` is forced to logic `0`, and complementary output `/W` (or `~Y`) is forced to logic `1` regardless of data inputs. Direct bus sharing requires three-state multiplexers such as the 74x251.[^ti-sn74hc151-datasheet]
 
 ## Detailed explanation
 

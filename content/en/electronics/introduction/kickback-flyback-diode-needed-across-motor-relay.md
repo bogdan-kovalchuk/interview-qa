@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Inductance opposes rapid changes in current: when switched off, the coil current cannot drop to zero instantly and generates a voltage spike capable of damaging the switch. A flyback diode provides a recirculation path for the current and clamps the voltage across the switch. Its ratings and circuit topology must match the load current and switch voltage ratings.[^ti-inductive-load-clamping]
 
 ## Detailed explanation
 

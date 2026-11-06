@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal inductor, `X_L = 2π*f*L ≈ 1.38 Ω`, which is far smaller than `R = 200 Ω`, so nearly all of the source voltage drops across the resistor. Calculations yield approximately `35.0 mA RMS` and `48.4 mV RMS` across the inductor, with the inductor voltage leading the current by 90°.[^aac-alternating-current]
 
 ## Detailed explanation
 

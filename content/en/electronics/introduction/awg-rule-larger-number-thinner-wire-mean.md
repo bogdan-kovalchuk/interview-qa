@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In the American Wire Gauge system, a higher gauge number designates a smaller conductor diameter and, for identical material and length, higher electrical resistance. For example, 30 AWG is substantially thinner than 22 AWG; maximum allowable ampacity depends on insulation, thermal conditions, and bundling rather than AWG number alone.[^nist-awg-wire-diameter]
 
 ## Detailed explanation
 

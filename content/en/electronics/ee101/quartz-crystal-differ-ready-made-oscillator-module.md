@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A quartz crystal resonator sets the frequency, but oscillation requires an active feedback amplifier such as an inverter in a Pierce configuration.[^ti-sn74lvc1gx04-oscillator] A ready-made oscillator module typically outputs a logic-level clock signal (such as TTL or HCMOS), though sine-wave outputs also exist.[^abracon-quartz-glossary] An enable pin, if present, controls the output state: grounding it places the output into a high-impedance state.[^abracon-quartz-glossary]
 
 ## Detailed explanation
 

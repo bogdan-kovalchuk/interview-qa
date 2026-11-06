@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. For constant inductance, `X_L = 2π*f*L`, so a tenfold increase in frequency yields a tenfold increase in inductive reactance, but current and voltages depend on the total complex impedance of the circuit. The voltages across the resistor and inductor are phasors, so their magnitudes cannot simply be added as scalar numbers.[^aac-series-rl]
 
 ## Detailed explanation
 

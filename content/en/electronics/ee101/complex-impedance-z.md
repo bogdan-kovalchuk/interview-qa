@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Impedance `Z` is the complex ratio of voltage and current phasors, `Z = V/I`, generalizing resistance for AC. For a series combination of `R` and a reactive component, it is written as `Z = R + j*X`, where the magnitude is `|Z| = sqrt(R² + X²)` and the phase angle is `atan2(X, R)`. Impedance is measured in ohms, and its angle defines the phase relationship between voltage and current.[^aac-impedance-definition]
 
 ## Detailed explanation
 

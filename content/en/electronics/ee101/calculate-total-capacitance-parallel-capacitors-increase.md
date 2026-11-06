@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For capacitors connected in parallel, `C_total = C_1 + C_2 + ... + C_n`, provided their terminals connect to the same pair of nodes. For instance, `10 µF + 22 µF = 32 µF` in an ideal model. This equivalence arises because all components share the same voltage while their stored charges sum together.[^aac-parallel-capacitors]
 
 ## Detailed explanation
 

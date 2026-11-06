@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For `z = a + j*b`, the magnitude is `M = sqrt(a² + b²)`, and the angle should be found as `φ = atan2(b, a)` to correctly account for the quadrant. In the reverse direction, `a = M*cos(φ)` and `b = M*sin(φ)`, giving `z = M∠φ`. In electronics, the imaginary unit is denoted by `j` to avoid confusion with current `i`.[^aac-complex-polar-rectangular]
 
 ## Detailed explanation
 

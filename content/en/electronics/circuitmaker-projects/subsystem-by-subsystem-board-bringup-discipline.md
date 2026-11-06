@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: horowitz-hill-art-electronics
     title: "Horowitz, P., & Hill, W. (2015). The Art of Electronics (3rd ed.). Cambridge University Press"
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Assembly begins strictly with the power supply section to verify regulated rail voltages before exposing sensitive ICs to potential overvoltage damage. Next, the microcontroller and clock circuitry are populated, followed by peripheral components only after clocking and firmware communications are confirmed. Staged bring-up isolates solder bridges and assembly faults without risking widespread circuit burnout.[^udemy-electronics-course]
 
 ## Detailed explanation
 

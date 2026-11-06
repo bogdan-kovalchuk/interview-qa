@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+When power is applied, internal flip-flops and registers wake up in indeterminate states due to subtle transistor threshold mismatches. Without forced initialization, sequential circuits can begin operating in invalid, locked, or unpredictable states. A power-on reset (POR) circuit holds the reset line asserted until the supply voltage stabilizes to guarantee a clean initial state.[^ti-slva670]
 
 ## Detailed explanation
 

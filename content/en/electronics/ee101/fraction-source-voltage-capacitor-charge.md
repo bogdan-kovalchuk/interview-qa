@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0033
-title: "To what fraction of the source voltage does a capacitor charge after 1τ, 2τ, 3τ and 5τ?"
+title: "To what fraction of the source voltage does a capacitor charge after 1τ, 2τ, 3τ, and 5τ?"
 track: electronics
 section: ee101
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+After `1τ`, `2τ`, `3τ`, and `5τ`, an ideally charging capacitor reaches approximately 63.2%, 86.5%, 95.0%, and 99.3% of the final voltage, respectively. After `5τ`, roughly 0.7% of the step remains, so being "practically charged" depends on the required application tolerance.[^gatech-rc-charging-discharging]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A group of n bits represents exactly `2^n` unique states or combinations. Because unsigned binary counting begins at zero, the maximum representable value is `2^n - 1`. For instance, 8 bits encode 256 states spanning values from 0 to 255 inclusive (`0xFF` in hexadecimal).[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

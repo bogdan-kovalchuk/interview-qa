@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The period is `T = 1/f = 100 ns`. At a nominal 50% duty cycle, the HIGH and LOW states each last 50 ns, since `D = 100*High/(High + Low)`.[^ti-sdaa032] A ±50 ppm tolerance defines the relative frequency error, giving an absolute deviation of `Δf = f*ppm*10^-6 = 10^7*50*10^-6 = ±500 Hz`.[^ti-swra372]
 
 ## Detailed explanation
 

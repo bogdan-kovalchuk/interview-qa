@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Start at a node with a known reference potential and algebraically accumulate voltage changes along a chosen path to the target node. For a resistor with current entering its labeled `+` terminal, stepping from `+` to `-` is a potential drop while the opposite is a rise; for an independent voltage source, add or subtract its fixed terminal voltage according to polarity.[^aac-kvl] [^aac-voltage-polarity]
 
 ## Detailed explanation
 

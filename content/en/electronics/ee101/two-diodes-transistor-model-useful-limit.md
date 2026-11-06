@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0192
-title: "What is the \"two diodes\" transistor model useful for and where is its limit?"
+title: "What is the \"two-diode\" transistor model useful for, and where is its limit?"
 track: electronics
 section: ee101
 sources:
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The two-diode model is useful for checking the B–E and B–C junctions with a multimeter in diode test mode.[^fiore-bjt-basics] However, two discrete diodes cannot replace a transistor because they cannot reproduce transistor action or controlled collector current.[^fiore-ebers-moll] Pinout configurations for B, C, and E must always be verified against the device datasheet.
 
 ## Detailed explanation
 

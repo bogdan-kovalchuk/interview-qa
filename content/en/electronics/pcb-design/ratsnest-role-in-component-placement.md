@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The ratsnest is a graphical display of unrouted electrical connections from the schematic, shown as thin straight lines between component pins. During component placement, designers orient and cluster components to minimize line lengths and crossovers. This organizes components into natural functional blocks, prevents routing bottlenecks, and preserves signal integrity.[^coombs-pcb-handbook]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+An ammeter is connected in series with the component whose current is being measured: it has near-zero internal resistance and barely alters the circuit current.[^kuphaldt-ammeter-usage] Connecting it in parallel across a voltage source causes a near short circuit where current is limited only by the shorted path resistance `E/R` (where `R` is the internal source resistance plus meter resistance), blowing the meter's internal fuse.[^kuphaldt-ammeter-usage][^fiore-source-conversions] Current can also be determined from the voltage drop across a known resistor, `I = V/R`.[^fiore-ohms-law]
 
 ## Detailed explanation
 

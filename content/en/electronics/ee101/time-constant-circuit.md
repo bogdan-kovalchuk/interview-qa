@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0032
-title: "What is the time constant τ of an RC circuit?"
+title: "What is the time constant `τ` of an RC circuit?"
 track: electronics
 section: ee101
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The time constant of a simple RC circuit equals `τ = R*C` and is measured in seconds, because `Ω*F = s`. In one `τ`, charging voltage covers 63.2% of the total step toward its steady-state value; during discharging, 36.8% of the initial voltage remains.[^gatech-rc-charging-discharging]
 
 ## Detailed explanation
 

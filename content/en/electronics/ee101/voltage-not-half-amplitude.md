@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A −3 dB voltage ratio corresponds to `10^(-3/20) ≈ 0.708`, which is approximately 70.8% rather than half. Halving the voltage corresponds to roughly −6.02 dB. Halving the power corresponds to −3 dB when impedances are equal.[^aac-decibels]
 
 ## Detailed explanation
 

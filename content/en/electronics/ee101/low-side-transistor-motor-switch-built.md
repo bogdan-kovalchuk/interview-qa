@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The emitter of an NPN transistor connects to ground, the collector connects to the negative motor terminal, and the positive motor terminal connects to the power supply. A base resistor sets and limits the control drive current into saturation.[^fiore-bjt-switching]
 
 ## Detailed explanation
 

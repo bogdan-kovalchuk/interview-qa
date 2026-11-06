@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+When a data signal arrives too early relative to a clock edge, causing a hold violation, it can be intentionally delayed using buffer stages. Two cascaded inverters restore the original logic polarity while adding the cumulative propagation delay of both gates. For example, two inverters with a 5 ns delay each insert 10 ns of total delay without modifying the logical function.[^ti-timing-analysis] [^harris-harris-ddca]
 
 ## Detailed explanation
 

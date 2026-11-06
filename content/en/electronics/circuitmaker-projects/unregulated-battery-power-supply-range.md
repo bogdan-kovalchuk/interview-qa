@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+74HC series logic ICs operate reliably across a wide supply voltage range of `2.0` to `6.0 V`. A battery pack of three alkaline cells supplies `4.5–4.8 V` when fresh and drops to around `3.0 V` when depleted, staying well within operating limits. Omitting a linear regulator eliminates voltage dropout overhead and saves quiescent current draw.[^ti-74hc-handbook]
 
 ## Detailed explanation
 

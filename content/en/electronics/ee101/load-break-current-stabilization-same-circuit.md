@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A 4.7 kΩ load between +5 V and the collector drops 4.7 V at 1 mA, leaving `V_C ≈ 0.3 V`, which falls below `V_E ≈ 1 V`. The collector must remain above the emitter by at least the saturation voltage of a few tenths of a volt.[^fiore-bjt-collector-curves] Without this headroom, the transistor enters saturation, dropping out of constant-current regulation and reducing load current.
 
 ## Detailed explanation
 

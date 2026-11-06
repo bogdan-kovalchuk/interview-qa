@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a low-side NPN switch, the motor is placed between the supply and the collector while the emitter is connected to ground; placing it in the emitter creates an emitter follower, leaving less voltage for the motor due to `V_BE`. A protective diode is required in parallel with the motor to provide a path for inductive current during turn-off.[^aac-semiconductors]
 
 ## Detailed explanation
 

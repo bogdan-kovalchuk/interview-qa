@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0005
-title: "What do SPST, SPDT, DPST and DPDT mean, and how many contacts does each have?"
+title: "What do SPST, SPDT, DPST, and DPDT mean, and how many contacts does each have?"
 track: electronics
 section: ee101
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+**SPST** has one pole and one contact path, while **SPDT** has one pole with two selectable outputs. DPST and DPDT control two single-throw circuits and two changeover circuits simultaneously; typical terminal configurations have 2, 3, 4, and 6 terminals, respectively.[^aratas-switch-basics]
 
 ## Detailed explanation
 

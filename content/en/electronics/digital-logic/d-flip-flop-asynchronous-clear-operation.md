@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The `/CLR` pin is typically an active-low asynchronous input, taking immediate effect regardless of the D input or CLK clock edge. Asserting logic 0 on `/CLR` immediately forces output Q to 0 (and `/Q` to 1) after the internal propagation delay. During normal synchronous operation, this pin is tied or pulled up to `V_CC` through a 10 kΩ resistor to avoid spurious reset events.[^ti-sn74hc74a] [^floyd-digital]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Verify the polarity of connectors and LEDs, component values, series resistor placement, and inspect the solder joints for bridges. With the board unpowered, verify that there is no short circuit between `+9V` and `GND` and confirm continuity along intended traces; note that continuity alone does not prove full schematic correctness.[^fluke-continuity-test]
 
 ## Detailed explanation
 

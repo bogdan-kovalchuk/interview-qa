@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The body in a power MOSFET forms part of the semiconductor substrate, and tying it to the source prevents unwanted body effect variations in threshold voltage.[^infineon-power-mosfet-body-diode] This internal connection also allows the device to be packaged with only three external terminals.[^infineon-power-mosfet-body-diode]
 
 ## Detailed explanation
 

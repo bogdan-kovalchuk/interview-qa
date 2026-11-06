@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Solid-core 22 AWG wire is often convenient for solderless breadboards; BusBoard also recommends solid wire in the 22–26 AWG range. The optimal choice depends on the specific spring clips: wire that is too thick can permanently deform them, while wire that is too thin makes unreliable contact.[^busboard-breadboard-wire-gauge] The exact allowable gauge depends on the geometry and condition of the spring contacts on a given board.[^busboard-breadboard-wire-gauge]
 
 ## Detailed explanation
 

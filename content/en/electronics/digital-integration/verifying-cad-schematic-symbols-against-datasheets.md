@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+CAD library components are created by humans and frequently contain latent errors in pin numbering or signal assignments. Furthermore, schematic symbols group pins by logical function, whereas physical component footprints follow specific mechanical pin arrangements. An unverified pinout error typically yields a nonfunctional printed circuit board that requires costly redesign.[^horowitz-hill-art-electronics]
 
 ## Detailed explanation
 

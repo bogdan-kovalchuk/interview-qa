@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. An H-bridge requires a recirculation path across every switch: either antiparallel freewheeling diodes across all four switches or active synchronous rectification.[^ti-slva321a] Flyback diodes only provide a low-impedance clamp path for inductive flyback, protecting switches from overvoltage spikes.[^ti-slvae59a] They do not eliminate high-frequency electromagnetic noise caused by mechanical brush arcing.
 
 ## Detailed explanation
 

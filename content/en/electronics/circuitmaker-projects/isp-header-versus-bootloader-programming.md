@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Programming via USB requires a functional bootloader already residing in microcontroller flash memory. Factory-fresh microcontrollers ship blank and can be initially flashed only over SPI via the ISP header. Additionally, the ISP interface is required to configure hardware fuse bits and recover bricked devices after firmware corruption.[^udemy-electronics-course][^microchip-avr042]
 
 ## Detailed explanation
 

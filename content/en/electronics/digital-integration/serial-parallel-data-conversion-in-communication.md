@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Parallel buses require dedicated conductors for every data bit, increasing cable bulk, connector pin counts, and susceptibility to trace skew. Serial interfaces (such as UART, SPI, and USB) transmit bits sequentially over a single physical line. Shift registers convert internal parallel processor data into a serial bitstream at the transmitter and reconstruct incoming bytes at the receiver.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

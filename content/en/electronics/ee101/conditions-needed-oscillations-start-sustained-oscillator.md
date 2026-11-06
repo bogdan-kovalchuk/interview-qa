@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In steady state, the Barkhausen criterion requires `|A*beta| ≈ 1` and loop phase shift of an integer multiple of 360°; startup requires `|A*beta| > 1` so small perturbations grow.[^libretexts-fiore-oscillators] To compress the loop gain back to unity as amplitude builds, a non-linear limiting element such as a diode or incandescent bulb is placed in the negative feedback network.[^libretexts-fiore-oscillators] Here `beta` denotes the feedback factor rather than BJT current gain.
 
 ## Detailed explanation
 

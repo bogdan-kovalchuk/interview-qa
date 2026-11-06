@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0042
-title: "Why should system clock frequency be limited considering combinational comparator delay?"
+title: "Why must system clock frequency be limited to account for combinational comparator delay?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A magnitude comparator is a combinational circuit whose outputs stabilize only after transitions ripple through multiple internal gate levels. Propagation delay `t_pd` for 74HC devices is approximately `15–25 ns` per IC and accumulates further when stages are cascaded. If clock frequency is too high and results are latched before settling completes, registers capture transient glitches or enter metastability.[^floyd-digital]
 
 ## Detailed explanation
 

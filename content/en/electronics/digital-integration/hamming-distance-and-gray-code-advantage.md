@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Hamming distance is the number of bit positions that differ between two binary codewords. In standard binary counting, transitioning from `0111` to `1000` changes all four bits at once, producing transient combinational glitches caused by unequal propagation delays. In a Gray code, the Hamming distance between adjacent states is strictly 1, which prevents spurious intermediate states during counting.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

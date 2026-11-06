@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Synthesis begins by constructing a state transition diagram where nodes represent stable states and directed edges indicate input-driven transition conditions. Next, states are encoded into binary vectors (such as binary or one-hot encoding) to construct a state transition table. From this table, Boolean next-state equations are derived for each flip-flop with respect to current state variables and inputs.[^mano-digital-design]
 
 ## Detailed explanation
 

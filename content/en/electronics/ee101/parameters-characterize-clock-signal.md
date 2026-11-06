@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A clock signal is characterized by its frequency `f`, period `T = 1/f`, and duty cycle `D = t_HIGH/T` (as a percentage, `D = 100*t_HIGH/T`, or as expressed by TI, `D = 100*High/(High + Low)`).[^ti-sdaa032] Other critical parameters include logic voltage levels, rise and fall edge times, and jitter (the deviation of cycle duration from an ideal period).[^ti-snaa285]
 
 ## Detailed explanation
 

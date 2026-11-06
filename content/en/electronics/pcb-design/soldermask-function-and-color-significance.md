@@ -1,6 +1,6 @@
 ---
 id: emb-elpcb-0021
-title: "What is the primary function of PCB soldermask and does its color affect electrical performance?"
+title: "What is the primary function of PCB solder mask and does its color affect electrical performance?"
 track: electronics
 section: pcb-design
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Solder mask is a heat-resistant polymer coating that shields copper traces from oxidation and prevents solder bridges between adjacent pads during assembly. Its color (green, blue, red, black) is primarily aesthetic and does not alter basic circuit electrical characteristics. Green remains the industry standard because it provides superior optical resolution during application and minimizes eye fatigue during manual inspection.[^ipc-sm-840]
 
 ## Detailed explanation
 

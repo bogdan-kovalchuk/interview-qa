@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A decoder activates one of multiple output lines based on an input address code. In contrast, a multiplexer has `n` data inputs, one common output, and `k = log2(n)` select lines. Depending on the binary address applied to the select lines, the multiplexer routes the logic state of exactly one chosen data input to the output.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

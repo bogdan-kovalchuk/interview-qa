@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The ECO mechanism compares the schematic electrical netlist against the current PCB layout state. It compiles a targeted list of actions: adding new components, updating footprints, and reassigning modified nets. This allows engineers to forward-annotate schematic changes to the PCB incrementally without deleting existing routed traces.[^altium-eco-process]
 
 ## Detailed explanation
 

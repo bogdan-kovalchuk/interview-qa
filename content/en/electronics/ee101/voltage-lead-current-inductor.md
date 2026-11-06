@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal inductor, `v = L*di/dt`, so voltage is proportional to the rate of change of current. In sinusoidal steady state, voltage leads current by 90° rather than simply "turning on earlier", and the analogy with inertia is merely mnemonic.[^aac-ac-inductor]
 
 ## Detailed explanation
 

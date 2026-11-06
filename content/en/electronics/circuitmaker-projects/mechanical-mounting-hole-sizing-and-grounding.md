@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0046
-title: "How is the mounting hole diameter chosen for a PCB, and why are they plated and grounded?"
+title: "How is the mounting hole diameter chosen for a PCB, and why are mounting holes plated and grounded?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The drill diameter is chosen with clearance for the mounting screw (such as 125 mil for M3 or #4-40 hardware), keeping screw head and washer diameters in mind. A plated annular pad securely clamps the board against metal chassis standoffs without tearing dielectric laminate. Connecting the plated hole to the ground plane discharges electrostatic transients and shields internal circuitry.[^udemy-electronics-course]
 
 ## Detailed explanation
 

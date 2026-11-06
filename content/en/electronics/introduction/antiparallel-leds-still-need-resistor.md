@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+An antiparallel connection determines which LED conducts for each polarity, but it does not limit the forward current. A series resistor sets the current to approximately `(V_supply - V_f)/R` and protects the conducting LED from overcurrent.[^ti-led-resistor]
 
 ## Detailed explanation
 

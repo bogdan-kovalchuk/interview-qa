@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74x181 ALU is a purely asynchronous combinational block containing no internal flip-flops or clock inputs. Input signals propagate through 6 to 7 cascaded gate stages before the final result stabilizes. The processor clock cycle must exceed this worst-case arithmetic delay with margin, or the instruction execution stage must span multiple clock cycles.[^patterson-hennessy-cod]
 
 ## Detailed explanation
 

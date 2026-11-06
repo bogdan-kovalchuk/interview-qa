@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a resistor, power dissipation can be computed as `P = V*I`, `P = I²*R`, or `P = V²/R` using consistent voltage, current, and resistance values for that component. Verify conservation of power across the entire circuit: total power absorbed by passive loads must equal total power delivered by active sources, where a delivering source has negative power under the passive sign convention.[^aac-power-calculations]
 
 ## Detailed explanation
 

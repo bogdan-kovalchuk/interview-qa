@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In an ideal circuit consisting only of resistors, the division ratio for an AC signal is independent of frequency. In a real circuit, parasitic capacitance from the load and layout can make transmission frequency-dependent; there is no universal cutoff such as tens of MHz.[^adi-frequency-divider]
 
 ## Detailed explanation
 

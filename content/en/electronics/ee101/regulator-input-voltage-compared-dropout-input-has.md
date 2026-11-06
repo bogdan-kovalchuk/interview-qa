@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The minimum instantaneous input voltage (the ripple trough) is compared against dropout rather than the average voltage: `V_in,min > V_out + V_dropout` is required. Dropout depends on load current and junction temperature, so worst-case maximum current numbers must be taken from the datasheet. If the ripple trough falls below this threshold, regulation ceases during troughs and input ripple passes straight to the output.[^ti-slva079][^ti-tps752q1-datasheet]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. Junction-to-ambient thermal resistance `θ_JA` depends heavily on the PCB because board copper acts as the primary heatsink dissipating thermal energy.[^ti-spra953] Dedicated copper area attached to the package tab significantly changes `θ_JA` (for an LM340 in DDPAK, ranging from 50 down to 32 °C/W).[^ti-lm340] A breadboard DIP adapter lacks large thermal copper planes, so thermal behavior will diverge substantially.
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Shift registers are divided into four primary topologies: serial-in/serial-out (SISO), serial-in/parallel-out (SIPO), parallel-in/serial-out (PISO), and parallel-in/parallel-out (PIPO). PISO architectures serialize parallel data for transmission across a single-wire link. SIPO registers deserialize the incoming bitstream back into parallel words at the receiver.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The final DRC report must show zero violations for short circuits, clearance constraints, and unrouted nets. Even a single unrouted net produces an open circuit in the manufactured board. Ordering PCB fabrication is permissible only after resolving every reported DRC violation.[^ipc-2221b]
 
 ## Detailed explanation
 

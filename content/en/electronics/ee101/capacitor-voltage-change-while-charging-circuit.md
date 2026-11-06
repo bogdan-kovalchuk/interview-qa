@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an uncharged capacitor connected to a constant voltage `V_s` through a resistor, `V_C(t) = V_s*(1 - e^(-t/τ))`, where `τ = R*C`. The voltage increases exponentially toward `V_s`, though in an ideal mathematical model it never reaches it in finite time.[^gatech-rc-charging-discharging]
 
 ## Detailed explanation
 

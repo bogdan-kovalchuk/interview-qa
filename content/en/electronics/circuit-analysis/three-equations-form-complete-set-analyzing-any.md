@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Analyzing a linear resistive DC circuit relies on Ohm's law (`V = I*R`), Kirchhoff's Current Law (the algebraic sum of currents at a node is zero), and Kirchhoff's Voltage Law (the algebraic sum of voltages around a closed loop is zero). Complete analysis also requires knowing the circuit topology and element ratings; asserting these laws alone solve any arbitrary circuit without component models is overly broad.[^aac-network-theorems-intro]
 
 ## Detailed explanation
 

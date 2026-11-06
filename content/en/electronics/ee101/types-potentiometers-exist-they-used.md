@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Mechanical potentiometers include rotary, slide, and trimmer configurations; digital potentiometers adjust resistance electronically. Application and available control interfaces depend on the device construction and model: for instance, specific digital ICs use SPI or I²C.[^aac-potentiometer-types] [^ad-max5481] [^microchip-mcp4018]
 
 ## Detailed explanation
 

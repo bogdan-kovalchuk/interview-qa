@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The square-wave output of a 555 timer carries a substantial DC offset of roughly half the supply voltage. A coupling capacitor blocks this DC level, passing only the AC audio-frequency signal to the amplifier stage. This prevents the driver transistor from being driven into hard saturation or thermal overload and keeps the amplifier operating point properly biased.[^horowitz-art-of-electronics]
 
 ## Detailed explanation
 

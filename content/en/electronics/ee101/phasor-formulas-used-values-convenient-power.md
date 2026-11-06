@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Phasor formulas apply to steady-state sinusoidal quantities of a single frequency, while different frequencies must be analyzed separately. For standard power formulas, RMS values are convenient, but using them does not replace the requirement of sinusoidal operation.[^aac-single-frequency-phasors] [^aac-ac-rms]
 
 ## Detailed explanation
 

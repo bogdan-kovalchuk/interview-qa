@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Pin 1 is identified by a notch at one end of the package or a dot adjacent to the first pin. Viewing the package from above with the notch pointing up, pin 1 is immediately to the left of the notch. Pin numbering proceeds downward along the left row and wraps counterclockwise up the right row to the highest pin.[^jedec-ms-001] [^horowitz-hill-art-electronics]
 
 ## Detailed explanation
 

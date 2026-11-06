@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A single common-anode resistor forces all illuminated segments to share the total available current. When displaying the digit `1`, current divides between two segments, but displaying `8` splits that same current among seven segments, making the `8` noticeably dim. Proper circuit design requires a dedicated current-limiting resistor for each individual segment.[^horowitz-hill-art-electronics]
 
 ## Detailed explanation
 

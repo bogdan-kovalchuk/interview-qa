@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+In DC mode, a multimeter displays a time-averaged reading, meaning symmetrical ripple or high-frequency oscillations may go entirely unnoticed.[^keysight-34401a-tutorial] An oscilloscope captures the actual time-domain waveform, revealing ripple amplitude and frequency, ringing, and dropouts; detecting such anomalies requires an oscilloscope.[^tek-dmm7510-ripple-an]
 
 ## Detailed explanation
 

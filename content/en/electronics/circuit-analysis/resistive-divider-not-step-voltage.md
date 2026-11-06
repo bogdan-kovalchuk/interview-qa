@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For two resistors connected across a source, the transfer ratio is `V_out = V_in*R_2/(R_1+R_2)`. Because passive resistances satisfy `R_1 >= 0` and `R_2 >= 0`, the scaling factor `R_2/(R_1+R_2)` can never exceed 1, making voltage step-up impossible. Stepping voltage above the input rail requires an active power conversion topology or energy storage element, such as a boost converter or transformer circuit.[^aac-direct-current]
 
 ## Detailed explanation
 

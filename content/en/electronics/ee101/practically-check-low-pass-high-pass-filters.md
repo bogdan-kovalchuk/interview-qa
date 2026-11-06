@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+For each circuit, apply a small sine wave at `0.1*f_c`, `f_c`, and `10*f_c`, record frequency, `V_in`, `V_out`, and phase shift, and compare them with calculations. In a low-pass filter the output rolls off with frequency, while in a high-pass filter it rises; cutoff is the frequency where output equals approximately 70.7% of the passband level (around `-3.01 dB`).[^kuphaldt-low-pass-filters][^fiore-ac-circuit-analysis]
 
 ## Detailed explanation
 

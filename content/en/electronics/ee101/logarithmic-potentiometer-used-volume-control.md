@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Human perception of loudness is approximately logarithmic, so an audio taper adjusts signal levels more gradually at lower settings and more rapidly at higher settings. This typically yields subjectively smoother volume adjustment, although exact performance depends on the potentiometer curve and audio circuit topology.[^analog-devices-taper]
 
 ## Detailed explanation
 

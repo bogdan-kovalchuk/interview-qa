@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0037
-title: "Why is an LDO voltage regulator required instead of an LM7805 when powering from a 9V battery?"
+title: "Why is an LDO voltage regulator required instead of an LM7805 when powering from a 9 V battery?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The standard LM7805 linear regulator requires an input-to-output headroom of at least 2.0–2.5 V. An LDO regulator with a dropout of only 0.2–0.65 V maintains a regulated 5 V output until the battery discharges down to roughly 5.65 V. This extracts nearly all usable energy from the battery, whereas an LM7805 drops out of regulation once the battery falls below 7.0–7.5 V.[^ti-ldo-basics]
 
 ## Detailed explanation
 

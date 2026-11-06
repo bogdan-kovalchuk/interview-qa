@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A JK flip-flop resolves the invalid state of an SR latch: `J = 0, K = 0` holds state, `J = 1, K = 0` sets the output to `1`, and `J = 0, K = 1` resets it to `0`. The combination `J = 1, K = 1` configures toggle mode, where each clock pulse inverts the output. This toggle behavior makes the JK flip-flop an ideal divide-by-2 frequency divider and a core building block for binary counters.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

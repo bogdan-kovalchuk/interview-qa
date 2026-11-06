@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The two outer terminals of a potentiometer connect to the opposite ends of a resistive element, while the wiper terminal makes movable contact along its track; its physical pinout depends on the package.[^aac-potentiometer-divider] The resistance between the wiper and either end terminal varies as the wiper travels, while the total resistance between the two outer terminals remains essentially constant.[^aac-potentiometer-divider]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The first stage has a voltage gain of 0.5 (−6.02 dB) and the second has a gain of 10 (+20 dB), yielding a net gain of 5 or +13.98 dB. In cascaded stages, voltage gain factors multiply while their decibel values add together.[^aac-decibels]
 
 ## Detailed explanation
 

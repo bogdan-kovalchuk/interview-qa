@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0172
-title: "What does offline power mean and what does a mains transformer do?"
+title: "What does offline power mean, and what does a mains transformer do?"
 track: electronics
 section: ee101
 sources:
@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Offline power draws energy directly from the AC mains. A mains transformer (50/60 Hz) converts AC voltage via magnetic coupling and provides galvanic isolation when the windings are separate, but it neither rectifies nor regulates: the secondary output remains AC.[^ti-an556][^kuphaldt-transformer-isolation] In offline switching supplies, the mains voltage is rectified before the transformer, and high-frequency transformer operation provides isolation.[^ti-an556]
 
 ## Detailed explanation
 

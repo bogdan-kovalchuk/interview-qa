@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a 555 timer astable circuit, oscillation frequency depends inversely on timing resistance: `f ≈ 1.44 / ((R_A + 2 * R_B) * C)`. Each key button connects a dedicated precision resistor or resistor ladder tap, altering the charge and discharge RC time constant. Pressing multiple keys simultaneously in parallel topologies lowers the net timing resistance, raising the output audio pitch.[^ti-lm555-datasheet]
 
 ## Detailed explanation
 

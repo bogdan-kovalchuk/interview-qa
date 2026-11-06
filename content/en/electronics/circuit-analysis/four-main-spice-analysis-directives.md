@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+`.op` finds the DC operating point, `.tran` calculates time-domain transient response, `.ac` determines small-signal frequency response, and `.dc` sweeps a DC parameter or source to compute the operating point for each value.[^ngspice-analysis-manual] These names and directives follow ngspice; feature support and syntax of a specific simulator should be verified in its documentation.[^ngspice-analysis-manual]
 
 ## Detailed explanation
 

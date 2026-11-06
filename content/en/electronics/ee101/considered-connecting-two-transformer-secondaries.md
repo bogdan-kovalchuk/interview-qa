@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+First determine the phasing from terminal dot conventions and verify the rated voltages of the windings.[^kuphaldt-phasing] An in-phase series connection adds the voltages, and the current is limited by the lower-rated winding; an out-of-phase series connection subtracts the voltages.[^esp-transformers-part2] Windings should be connected in parallel only if they have identical voltages, are in phase, and the manufacturer permits it: out-of-phase parallel connection creates a near dead short.[^esp-transformers-part2]
 
 ## Detailed explanation
 

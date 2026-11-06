@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output is taken from the emitter: `V_out ≈ V_Z - V_BE ≈ 5.6 - 0.7 = 4.9 V`, where `V_BE` varies with load current and operating temperature.[^fiore-zener-follower][^fiore-bjt-ac-model] Resistor bias current must exceed the minimum Zener knee current plus peak base current `I_B` to keep the diode in steep breakdown regulation.[^nexperia-an90031]
 
 ## Detailed explanation
 

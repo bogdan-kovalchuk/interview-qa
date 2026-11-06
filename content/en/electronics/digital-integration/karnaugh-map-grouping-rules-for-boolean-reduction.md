@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Rows and columns of a Karnaugh map are ordered using Gray code (`00, 01, 11, 10`) so adjacent cells differ by exactly one bit. Adjacent ones are grouped into rectangular blocks of `2^k` cells (such as 1, 2, 4, 8, or 16), wrapping around map edges. When grouping cells, any variable that appears as both `0` and `1` across the group is eliminated from the resulting product term.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

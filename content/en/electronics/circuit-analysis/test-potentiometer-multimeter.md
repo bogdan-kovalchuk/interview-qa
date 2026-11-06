@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Turn off power and measure the resistance between the two outer terminals: it should remain constant and match the nominal value within tolerance.[^aac-ohmmeter-usage] [^aac-potentiometer-rheostat] Next, measure between the wiper and each end terminal while sweeping the control smoothly; the readings should vary inversely, and sudden jumps or open circuits reveal wiper contact wear or contamination.[^aac-potentiometer-rheostat]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A DIP package beyond 40 or 64 pins becomes excessively bulky, introducing severe PCB routing penalties. High-pin-count parts use pin grid arrays (PGA) or square PLCC packages with J-leads for socketing. Modern designs rely on surface-mount packaging (SOIC, TSSOP, QFP), employing SMT-to-DIP breakout adapters for breadboard prototyping.[^jedec-jesd30] [^ti-packaging-guide]
 
 ## Detailed explanation
 

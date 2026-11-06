@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The standard pin pitch between adjacent pins of a DIP package is 0.1 inches (exactly 2.54 mm). Row spacing between parallel pin rows is 0.3 inches (300 mil, 7.62 mm) for narrow 8–24 pin packages. For wider 28–40+ pin integrated circuits, row spacing increases to 0.6 inches (600 mil, 15.24 mm).[^jedec-ms-001] [^ti-packaging-guide]
 
 ## Detailed explanation
 

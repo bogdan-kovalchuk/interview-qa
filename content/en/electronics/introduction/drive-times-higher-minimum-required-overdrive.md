@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Overdrive means supplying base current with a margin so that the switch reliably enters saturation at a given collector current. The "5–10 times" rule is only a rule of thumb, not a guarantee: current is determined by `V_CE(sat)` conditions in the transistor datasheet; excessive overdrive can increase turn-off time due to stored charge.[^aac-semiconductors]
 
 ## Detailed explanation
 

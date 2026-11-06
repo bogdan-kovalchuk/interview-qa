@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+After simplifying a resistive network to an equivalent resistance and solving total source current or voltage, reverse unfolding reconstructs branch voltages and currents step by step back into the original topology. Series elements share identical current while parallel branches share identical voltage, allowing Ohm's law to solve each subcircuit sequentially.[^ti-slaa067]
 
 ## Detailed explanation
 

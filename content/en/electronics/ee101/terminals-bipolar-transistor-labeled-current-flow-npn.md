@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0187
-title: "How are the terminals of a bipolar transistor labeled and how does current flow in an NPN?"
+title: "How are the terminals of a bipolar transistor labeled, and how does current flow in an NPN?"
 track: electronics
 section: ee101
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The terminals are base `B`, collector `C`, and emitter `E`. In an `NPN` transistor operating in active mode, conventional current flows into the collector and base and exits through the emitter; in a `PNP` transistor, polarities and current directions are reversed. The emitter schematic arrow points outward for `NPN` and toward the base for `PNP`.[^fiore-bjt-basics]
 
 ## Detailed explanation
 

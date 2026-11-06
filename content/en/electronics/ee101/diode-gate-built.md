@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output is pulled up to the supply with a resistor, diode anodes connect to the output node, and cathodes connect to the inputs. Any low input turns its diode on, holding the output at approximately `V_in,LOW + V_F`; a high output appears only when all inputs are high.[^nexperia-diode-handbook][^utah-cs6710-diode-logic]
 
 ## Detailed explanation
 

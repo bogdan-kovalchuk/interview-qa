@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0260
-title: "Why can a motor on a shared supply rail make a microcontroller hang?"
+title: "Why can a motor on a shared supply rail cause a microcontroller to hang?"
 track: electronics
 section: ee101
 sources:
@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A motor is an inductive load: during rotation and commutation, it generates voltage spikes and back-EMF that kick back onto the power rail. In the course lecture, spikes on a 3.3 V rail reached 2–3 V peak-to-peak and even pulled the voltage below ground. Such transients trigger brownout resets or corrupt digital logic, which is easily mistaken for a firmware bug.[^udemy-electronics-course]
 
 ## Detailed explanation
 

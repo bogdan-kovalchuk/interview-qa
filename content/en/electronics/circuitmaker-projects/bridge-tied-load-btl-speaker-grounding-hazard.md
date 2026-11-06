@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a bridge-tied load (BTL) amplifier, both speaker terminals are tied to active outputs driven in opposite phase. Each terminal sits at a DC bias voltage equal to approximately half the supply voltage. Grounding either terminal creates a direct short circuit from an active output driver to ground, destroying the IC instantly.[^ti-sloa044-btl]
 
 ## Detailed explanation
 

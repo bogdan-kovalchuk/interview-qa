@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+KCL applies universally to every circuit node: the algebraic sum of entering and leaving currents always equals zero. In a single series loop it merely confirms that current is identical everywhere, whereas in branched, multi-loop networks it is essential to relate individual branch currents; loop count alone does not dictate its validity.[^aac-kcl]
 
 ## Detailed explanation
 

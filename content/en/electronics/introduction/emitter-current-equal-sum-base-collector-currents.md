@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+By conservation of charge, the currents at the three terminals of a BJT satisfy `I_E = I_B + I_C`: in an NPN transistor the base and collector currents enter while the emitter current exits, and in a PNP the directions are reversed. Consequently, the magnitude of the emitter current equals the sum of the base and collector current magnitudes.[^aac-semiconductors]
 
 ## Detailed explanation
 

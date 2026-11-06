@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+When the button is not pressed and the base receives no current, the NPN transistor is in `cutoff`, so collector current is practically zero. In a typical circuit with a resistor between the collector and `V_CC`, the voltage drop across the resistor is negligible, and the collector voltage is close to `V_CC`, not necessarily 5 V.[^aac-bjt-switch]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`R_DS(on)` is the channel resistance between drain and source of an on-state MOSFET under specified conditions, particularly `V_GS` and junction temperature. For continuous current, conduction losses are approximately `P = I²*R_DS(on)`, so lower resistance directly reduces these losses; it does not account for switching, gate drive, or other loss mechanisms.[^toshiba-mosfet-drive]
 
 ## Detailed explanation
 

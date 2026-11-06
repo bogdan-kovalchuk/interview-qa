@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Two internal comparators compare input voltages against internal divider thresholds of ≈ 1/3 and 2/3 `V_CC`. A TRIG voltage below 1/3 `V_CC` sets the internal flip-flop and drives OUT HIGH; a THRES voltage above 2/3 `V_CC` resets the flip-flop, pulling OUT LOW and turning on DISCH to ground the discharge path. Driving RESET LOW overrides both inputs and forces the output LOW.[^udemy-electronics-course]
 
 ## Detailed explanation
 

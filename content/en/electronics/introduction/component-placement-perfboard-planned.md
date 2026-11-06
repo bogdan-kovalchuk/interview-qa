@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Plan component placement and routing paths in advance, noting LED polarity and dedicated locations for connectors, switches, and resistors. Leave adequate space for jumpers and inspection; the physical perfboard layout must accurately reflect the schematic topology.[^mit-perfboard]
 
 ## Detailed explanation
 

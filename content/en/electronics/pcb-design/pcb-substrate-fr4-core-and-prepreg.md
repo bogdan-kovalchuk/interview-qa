@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+FR-4 (Flame Retardant 4) is a composite material of woven fiberglass cloth impregnated with a flame-resistant epoxy resin. In multilayer PCBs, a core is a cured rigid laminate with copper foil bonded to its faces, while prepreg is uncured fiberglass cloth with semi-cured resin (B-stage). During hot lamination, the prepreg melts, bonds adjacent copper layers, and cures completely into a solid dielectric.[^ipc-4101e]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a sinusoidal source, `V_peak = sqrt(2)*6 ≈ 8.49 V`. Subtracting two diode drops of 0.7 V gives `V_C,max ≈ V_peak - 2*V_F ≈ 7.09 V`.[^libretexts-fiore-rectification] This estimate assumes light load: at higher currents, `V_F` increases (up to 1.1 V at 1 A for a 1N4001), resulting in lower voltage.[^vishay-1n4001]
 
 ## Detailed explanation
 

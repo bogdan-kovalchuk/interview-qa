@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+An enhancement-mode MOSFET is normally off at `V_GS = 0`, whereas a depletion-mode MOSFET is normally on.[^ti-mosfet-modes-an558] The required polarity and magnitude of `V_GS` needed to change state depend on channel type and device construction.[^ti-mosfet-modes-an558]
 
 ## Detailed explanation
 

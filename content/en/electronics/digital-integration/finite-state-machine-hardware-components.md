@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0065
-title: "What core hardware building blocks constitute a sequential Finite State Machine (FSM)?"
+title: "What core hardware building blocks constitute a sequential finite state machine (FSM)?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A hardware finite state machine comprises a state register (synchronous flip-flops), next-state combinational logic, and output logic. The state register stores the current state, next-state logic computes the upcoming state based on current state and external inputs, and a clock signal synchronizes transitions. Output logic maps internal states and inputs into control signals.[^harris-harris-ddca]
 
 ## Detailed explanation
 

@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Diode logic is passive: it provides neither signal amplification nor level restoration, causing `V_F` voltage drops to accumulate with each cascaded stage.[^utah-cs6710-diode-logic] Schottky diodes feature lower `V_F`, which slows logic-level degradation, but cascading degradation still occurs and lower `V_F` trades off against higher reverse leakage.[^nexperia-diode-handbook] Compatibility must always be verified against input logic thresholds of following stages.[^ti-hc00]
 
 ## Detailed explanation
 

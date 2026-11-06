@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a sine wave without DC offset, `V_RMS = V_peak/√2 = V_pp/(2√2)`, and `V_pp = 2*V_peak`. The RMS value represents the heating-equivalent DC voltage. These relationships cannot be directly applied to an arbitrary waveform.[^aac-alternating-current]
 
 ## Detailed explanation
 

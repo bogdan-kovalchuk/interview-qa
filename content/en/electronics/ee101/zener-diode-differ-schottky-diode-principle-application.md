@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A Zener diode operates in reverse breakdown where voltage is largely independent of current, making it useful as a reference and voltage clamp; in the forward direction it behaves like a normal silicon diode.[^nexperia-an90031] A Schottky diode features a metal-semiconductor junction with low `V_F` (typically 0.2–0.4 V versus ≈ 0.7 V for a p-n diode) and fast switching, making it ideal for switching supplies, freewheeling, and clamping.[^nexperia-an90056] The trade-offs are higher reverse leakage and lower maximum reverse voltage.[^nexperia-an90056]
 
 ## Detailed explanation
 

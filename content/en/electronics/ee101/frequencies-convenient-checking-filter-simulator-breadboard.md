@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Test the RL filter at frequencies of `0.1*f_c`, `f_c`, and `10*f_c`, measuring `V_in`, `V_out`, the amplitude ratio, and the phase at each point.[^aac-alternating-current] A real inductor has winding resistance, so practical results will deviate from the ideal model.[^aac-alternating-current]
 
 ## Detailed explanation
 

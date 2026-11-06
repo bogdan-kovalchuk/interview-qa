@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a TO-220 package, the standard 7805 pinout is: pin 1 is input, pin 2 is common (ground), and pin 3 is output; verify pinouts in the manufacturer datasheet for alternative packages.[^ti-ua78] Decoupling capacitors must be placed close to the device pins: TI specifies 0.33 µF at the input and 0.1 µF at the output for the uA7805.[^ti-ua78] If the regulator sits more than approximately six inches from the bulk supply filter, a local input capacitor is mandatory, as a distant electrolytic capacitor cannot replace it.[^ti-lm340]
 
 ## Detailed explanation
 

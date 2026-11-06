@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Without a load, it will show approximately 11.3 V rather than 9 V: 9 V is the RMS value, giving a peak of `9*sqrt(2) ≈ 12.73 V`, minus two diode drops in the bridge, `2*0.7 V = 1.4 V`.[^fiore-rectification] Under load, the voltage will have ripple and sag, and the transformer's secondary voltage itself also varies with load.[^fiore-rectification][^kuphaldt-transformer-regulation]
 
 ## Detailed explanation
 

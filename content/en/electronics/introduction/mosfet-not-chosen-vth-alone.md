@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`V_th` is specified at a tiny test current, so it does not guarantee a low `R_DS(on)`.[^onsemi-fds2582-datasheet] For switching applications, verify `R_DS(on)` at the actual available `V_GS` in the datasheet.[^onsemi-fds2582-datasheet]
 
 ## Detailed explanation
 

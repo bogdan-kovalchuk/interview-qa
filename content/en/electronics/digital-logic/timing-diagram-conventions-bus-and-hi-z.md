@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A middle line centered between HIGH and LOW levels indicates a high-impedance Hi-Z state where the driver is disconnected. Parallel lines displayed simultaneously at HIGH and LOW represent an entire multi-bit bus or a signal that may take either valid logic level. Cross-hatching or sloped transitions denote a timing uncertainty window during which a transition can occur.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Line regulation specifies the change in output voltage resulting from input voltage variation at constant load: `ΔV_out/ΔV_in`. Load regulation specifies output voltage variation resulting from load current changes at constant input voltage: `ΔV_out/ΔI_out`.[^ti-slva079] Both parameters describe steady-state behavior rather than transient response, and a smaller absolute value indicates superior voltage stabilization.[^ti-slva079]
 
 ## Detailed explanation
 

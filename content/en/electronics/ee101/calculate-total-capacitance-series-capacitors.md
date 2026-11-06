@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a series connection, reciprocal capacitances sum together: `1/C_total = 1/C_1 + 1/C_2 + ...`; for two capacitors, this simplifies to `C_total = C_1*C_2/(C_1+C_2)`. For example, 10 µF and 22 µF yield `220/32 = 6.875 µF`, or approximately 6.88 µF. For `n` identical capacitors, the total equals the capacitance of one divided by `n`.[^aac-capacitors-series-parallel]
 
 ## Detailed explanation
 

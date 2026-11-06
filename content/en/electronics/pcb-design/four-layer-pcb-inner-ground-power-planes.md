@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Signals are typically routed on outer layers, dropping vias into solid inner ground and power planes from anywhere on the board. A continuous ground plane minimizes loop area for high-frequency return currents, provides controlled transmission line impedance, and shields against EMI. Closely spaced power and ground planes also form an intrinsic low-inductance distributed decoupling capacitance.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

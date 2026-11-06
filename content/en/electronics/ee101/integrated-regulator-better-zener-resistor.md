@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+An integrated regulator is preferable when load current varies widely or the load draws heavy current. In a Zener circuit, the series resistor must be sized for maximum load current, meaning that at no load the entire current passes through the Zener as waste heat.[^nexperia-an90031] An IC linear regulator provides specified load regulation (up to 25 mV across 5 mA to 1.5 A for LM340A) along with internal current limiting and thermal shutdown.[^ti-lm340]
 
 ## Detailed explanation
 

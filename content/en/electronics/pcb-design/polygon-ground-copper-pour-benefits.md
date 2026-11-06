@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A ground copper pour significantly lowers return path impedance and loop inductance, mitigating electromagnetic interference (EMI) and reducing circuit noise. Continuous copper also acts as an effective heat sink for power components, reduces chemical etchant consumption, and ensures uniform etching and mechanical stability during fabrication.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

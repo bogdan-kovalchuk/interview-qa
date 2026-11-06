@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The master-slave topology consists of two cascaded latches clocked by complementary signals. While the clock pulse is high, the input master latch is transparent and captures the data, whereas the output slave latch remains disabled. When the clock transitions low, the master disconnects from inputs and the slave transfers the captured state to output `Q`, preventing race-around conditions.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

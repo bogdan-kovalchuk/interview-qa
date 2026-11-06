@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Low-frequency rectifier ripple and transient load sags have different origins, while high-frequency switching noise originates from fast transitions such as switching regulators.[^ti-switching-regulator-fundamentals] Power traces possess parasitic resistance and inductance.[^fiore-inductance-dc] Rapid current steps induce transient voltages across them according to `V_L = L*di/dt`.[^fiore-ac-circuit-analysis] A single bulk capacitor cannot solve all three problems: ripple and sags require high capacitance, whereas high-frequency suppression depends on low ESL and short trace inductance.[^ti-switching-regulator-fundamentals]
 
 ## Detailed explanation
 

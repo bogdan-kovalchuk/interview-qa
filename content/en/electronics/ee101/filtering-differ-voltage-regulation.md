@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Filtering smoothes rectified voltage by reducing the AC ripple component, though DC output still sags as load current increases.[^fiore-rectification] Voltage regulation actively maintains a stable output level across changing input voltages and load currents while suppressing input ripple via power supply rejection (PSRR).[^ti-slva079]
 
 ## Detailed explanation
 

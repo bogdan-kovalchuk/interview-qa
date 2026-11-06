@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Side cutters and pliers provide controlled cutting and gripping of fine wires and component leads during prototyping; precision electronics flush cutters can cut leads flush against the board. Tool selection depends on wire material and diameter, so cutters should only be operated within their rated specifications.[^facom-417spmt] Cutting edges must match the wire type and gauge rather than being overloaded on hard or oversized materials.[^facom-417spmt]
 
 ## Detailed explanation
 

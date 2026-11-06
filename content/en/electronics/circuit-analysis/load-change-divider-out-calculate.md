@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Connecting a load `R_L` places it in parallel with `R_2`, reducing the effective lower resistance to `R_2,eff = R_2*R_L/(R_2+R_L)`. Substitute `R_2,eff` in place of `R_2` in the standard voltage divider equation. A smaller load resistance `R_L` results in a lower effective resistance and a lower output voltage `V_out`.[^aac-direct-current]
 
 ## Detailed explanation
 

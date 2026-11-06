@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal RL low-pass filter with a 1 kHz cutoff and R = 1 kΩ, an inductance of L ≈ 159 mH is required. In many low-power signal circuits, an RC filter is simpler and more compact because an inductor of that value can have large physical dimensions, high cost, and significant winding resistance. This is a practical preference rather than a strict ban on RL filters: inductors are advantageous when low series resistance and high current capability are essential.[^aac-low-pass-filters]
 
 ## Detailed explanation
 

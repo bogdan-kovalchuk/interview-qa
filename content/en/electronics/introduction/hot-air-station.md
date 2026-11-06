@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A hot air station provides adjustable heated air and airflow for localized heating of solder during SMD component assembly or rework. The component and pads are heated until the solder melts, with airflow and temperature settings chosen based on the nozzle, board, and component package.[^hakko-fr801-manual] The station's displayed temperature does not necessarily match the temperature of the part itself, so verify it separately if needed.[^hakko-fr801-manual]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A large electrolytic capacitor provides bulk capacitance for lower frequencies and slower load steps, whereas a ceramic capacitor provides a low-ESR and low-ESL path for high-frequency ripple. This is not a universal rule for arbitrary component values: impedance varies with frequency, parasitics, and layout, so any specific pair must be validated in the circuit.[^ti-switching-regulator-fundamentals]
 
 ## Detailed explanation
 

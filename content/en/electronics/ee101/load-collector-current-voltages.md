@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+With `V_BE ≈ 0.7 V`[^libretexts-fiore-diode-models], the emitter current is `I_E = (1.7 - 0.7)/1000 = 1 mA`, yielding `I_C = β/(β+1)*I_E = 0.990 mA` for β = 100.[^mit-6071-bjt-notes] The node voltages are `V_E ≈ 1 V` and `V_C = 5 - 0.99 = 4.01 V`, providing ample headroom for active mode because `V_CE ≈ 3 V`, well above typical `V_CE(sat)` values of a few tenths of a volt.[^fiore-bjt-dc-load-line]
 
 ## Detailed explanation
 

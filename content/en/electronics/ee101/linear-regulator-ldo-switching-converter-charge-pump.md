@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+A linear regulator adjusts pass-element resistance so that `V_in - V_out` is dissipated as heat: it is simple and low-noise, but inefficient across large voltage drops.[^ti-slva118a][^ti-slyt527] An LDO is a linear regulator with low dropout voltage, but requires careful adherence to datasheet output capacitor constraints.[^ti-slva118a][^ti-slva079] A switching converter cycles switches with inductors: efficiency is significantly higher, but it introduces ripple, EMI, and complex design.[^ti-slyt527][^ti-switching-regulator-fundamentals] A charge pump switches capacitors without inductors for modest currents and integer ratios like ≈ `2*V_in` or `-V_in`.[^ti-charge-pump-basics]
 
 ## Detailed explanation
 

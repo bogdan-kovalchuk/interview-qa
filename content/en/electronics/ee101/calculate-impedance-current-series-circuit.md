@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a series RL circuit at frequency `f`, inductive reactance is `X_L = 2π*f*L`, and total impedance is `Z = R + jX_L`. The current phasor is calculated as `I = V/Z`. Its magnitude is `V/√(R² + X_L²)`, and the current lags the source voltage by `atan2(X_L, R)`.[^aac-alternating-current]
 
 ## Detailed explanation
 

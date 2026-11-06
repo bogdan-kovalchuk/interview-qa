@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+An inductor develops a voltage that opposes changes in the current passing through it: for an ideal inductance, `v_L = L*di/dt`. It stores energy in a magnetic field according to `E = L*I^2/2`; under constant DC current, its induced voltage is zero.[^aac-inductor-calculus]
 
 ## Detailed explanation
 

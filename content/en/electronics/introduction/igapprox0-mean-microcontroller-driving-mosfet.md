@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Gate current is drawn primarily during brief switching intervals to charge or discharge parasitic gate capacitances.[^infineon-gate-driver-working-principle] Average drive current increases proportionally with gate charge and switching frequency.[^infineon-gate-driver-working-principle]
 
 ## Detailed explanation
 

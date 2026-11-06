@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74HC148 priority encoder compresses eight active-low button inputs into a 3-bit binary code (`2^3 = 8`). This reduces required microcontroller GPIO lines from eight down to three data lines and one interrupt pin. The hardware group-select pin `GS` alerts the MCU whenever any button is pressed, while internal priority logic unambiguously selects the highest-order active input if multiple keys are struck simultaneously.[^ti-sn74hc148-datasheet]
 
 ## Detailed explanation
 

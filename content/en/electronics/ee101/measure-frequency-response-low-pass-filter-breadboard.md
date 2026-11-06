@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Apply a sine wave with zero DC offset, probing CH1 at the filter input and CH2 at the output. At each frequency, measure the actual `V_in` and `V_out`, calculate `A = V_out/V_in` and `G_dB = 20*log10(A)`, and verify the generator's load termination setting.[^tek-scope-frequency-response] [^tek-generator-load]
 
 ## Detailed explanation
 

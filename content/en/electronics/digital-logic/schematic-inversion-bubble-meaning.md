@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An inversion bubble denotes logical inversion (a NOT operation) at an input or output pin, indicating active-low signal behavior. For example, an AND gate symbol with an inversion bubble at its output forms a NAND gate. Two adjacent bubbles along the same interconnect line cancel each other out, restoring the original non-inverted signal.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

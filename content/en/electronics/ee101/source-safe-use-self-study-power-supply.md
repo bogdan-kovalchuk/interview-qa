@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The best choice is a commercial, enclosed AC wall adapter with an isolated low-voltage AC output, manufactured and certified for this purpose.[^hammond-catalog] The exposed mains (primary) section must never be assembled on a solderless breadboard: such breadboards are rated only for tens of volts, such as 36 V and 2 A for the BusBoard BB170.[^busboard-bb170] An autotransformer is not a substitute for an isolation transformer because its output is not galvanically isolated from the mains.[^hammond-catalog]
 
 ## Detailed explanation
 

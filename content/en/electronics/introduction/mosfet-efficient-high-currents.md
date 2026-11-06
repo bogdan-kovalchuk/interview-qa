@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+With sufficient gate voltage, a power MOSFET can achieve a low `R_DS(on)`, resulting in small conduction losses even at substantial currents. For example, an idealized 5 A through 25 mΩ yields `P = I²*R = 0.625 W`; this figure excludes switching losses, gate driver losses, and temperature rises that increase resistance.[^toshiba-mosfet-drive]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. Forward drop `V_F` depends on current, temperature, and device type; 0.7 V is merely a convenient approximation.[^libretexts-fiore-diode-models] For instance, according to datasheets, `V_F` reaches 1 V at 10 mA for a 1N4148 and 1.1 V at 1 A for a 1N4001 rectifier.[^vishay-1n4148][^vishay-1n4001] In the reverse direction, leakage current and reverse voltage ratings also apply.
 
 ## Detailed explanation
 

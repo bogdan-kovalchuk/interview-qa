@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A no-clean flux leaves a residue formulated to be safely left on the board under normal operating conditions. Rosin describes the chemical base of the flux, so these are not mutually exclusive categories: rosin-based no-clean formulations exist, and the cleaning decision depends on the specific flux specification.[^nordson-flux-classifications] Therefore, no-clean does not mean residues are never removed, and rosin by itself does not dictate whether cleaning is mandatory.[^nordson-flux-classifications]
 
 ## Detailed explanation
 

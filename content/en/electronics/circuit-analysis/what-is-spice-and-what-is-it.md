@@ -1,6 +1,6 @@
 ---
 id: emb-elcirc-0037
-title: "What is SPICE and what is it for?"
+title: "What is SPICE and what is its purpose?"
 track: electronics
 section: circuit-analysis
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+SPICE stands for **Simulation Program with Integrated Circuit Emphasis**, a circuit simulator originated at UC Berkeley in 1973.[^berkeley-spice-report-1973] It computes the behavior of a specified circuit model, including DC operating conditions, transient responses, and small-signal AC response, without requiring a physical prototype.[^ngspice-manual]
 
 ## Detailed explanation
 

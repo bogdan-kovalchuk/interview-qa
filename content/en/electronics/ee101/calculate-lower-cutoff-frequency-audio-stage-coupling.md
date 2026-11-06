@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a single RC network with a coupling capacitor, the cutoff frequency where the signal drops by 3 dB is `f_c = 1/(2*pi*R*C)`, where R is the equivalent resistance seen by the capacitor.[^fiore-ac-circuit-analysis] With R = 10 kΩ, a 1 µF capacitor gives ≈ 15.9 Hz and 100 nF gives ≈ 159 Hz; reducing C tenfold raises the cutoff frequency tenfold.
 
 ## Detailed explanation
 

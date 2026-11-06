@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Resistor `R_A` connects from the supply to DISCH, `R_B` connects from DISCH to the tied TRIG/THRES node, and timing capacitor C connects from that node to ground. Capacitor C charges through `R_A + R_B` and discharges through `R_B` alone, cycling between 1/3 and 2/3 `V_CC`. As a result, the output continuously generates a periodic pulse train without needing an external trigger.[^udemy-electronics-course]
 
 ## Detailed explanation
 

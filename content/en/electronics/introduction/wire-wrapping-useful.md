@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Wire wrapping is a method of connecting a stripped wire by wrapping it with a tool around a dedicated square post designed for such termination. It eliminates soldering at the wire joint itself, but requires compatible posts, wire, and wrapping tools.[^te-wire-wrap-terminal]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Copper weight represents mass per unit area: `1 oz/ft²` corresponds to a thickness of approximately `35 µm` (`1.37 mil`). This relationship is linear, so `2 oz` is roughly `70 µm`, and `0.5 oz` is `17.5 µm`. Thicker copper handles higher current and dissipates heat better, whereas thinner copper allows etching finer trace widths and tighter clearances.[^ipc-2152]
 
 ## Detailed explanation
 

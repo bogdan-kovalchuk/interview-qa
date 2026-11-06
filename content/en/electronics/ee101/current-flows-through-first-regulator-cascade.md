@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output of the first regulator delivers the sum of the direct 5 V rail load current and the input current of the second regulator (its 3.3 V load current plus quiescent current); the 9 V source additionally supplies the first regulator's own quiescent current.[^ti-slva079] For example, 100 mA drawn on the 5 V rail plus 50 mA on the 3.3 V rail totals roughly 150 mA through the first stage.
 
 ## Detailed explanation
 

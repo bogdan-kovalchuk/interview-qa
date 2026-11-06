@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Replicating the Arduino Nano core schematic guarantees full compatibility with the Optiboot bootloader, existing libraries, and the Arduino IDE ecosystem. The developer gains proven clocking, reset, and flashing circuitry without writing custom hardware drivers. Integrating the core directly onto the main PCB eliminates unreliable header pin contacts, lowers production cost, and optimizes power and analog trace routing.[^arduino-nano-schematic]
 
 ## Detailed explanation
 

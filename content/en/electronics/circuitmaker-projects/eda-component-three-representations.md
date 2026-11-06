@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A component model comprises a schematic symbol, a PCB footprint, and a 3D mechanical model. For bare-board fabrication, the schematic symbol and footprint are essential because they generate the netlist, copper pads, drill holes, and silkscreen geometry. The 3D model is utilized for enclosure clearance verification and automated assembly planning.[^ipc-7351b]
 
 ## Detailed explanation
 

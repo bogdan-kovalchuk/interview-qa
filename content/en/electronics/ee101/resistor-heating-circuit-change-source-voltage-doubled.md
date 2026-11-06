@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For constant R, C, and frequency, doubling the sinusoidal voltage doubles the current and quadruples the average power dissipated in R, since `P_R = I_RMS^2*R`.[^aac-alternating-current] This assumes linear components that do not overheat or change parameters.[^aac-alternating-current]
 
 ## Detailed explanation
 

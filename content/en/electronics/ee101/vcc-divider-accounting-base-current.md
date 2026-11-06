@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A divider with 33 kΩ to `V_CC` and 22 kΩ to ground yields `V_TH = 2 V` and `R_TH = 13.2 kΩ`. Accounting for base loading with `V_BE ≈ 0.7 V` and `β = 100`, the circuit gives `I_B ≈ 11.4 µA`, `V_B ≈ 1.85 V`, `V_E ≈ 1.15 V`, and `I_E ≈ 1.15 mA`. This is noticeably lower than the 1.3 mA predicted by an unloaded divider approximation.[^fiore-voltage-divider-bias]
 
 ## Detailed explanation
 

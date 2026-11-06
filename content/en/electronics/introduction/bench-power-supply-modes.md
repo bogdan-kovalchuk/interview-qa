@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In `CV` mode, the supply maintains a programmed voltage until the load reaches the preset current limit. In `CC` mode, it regulates current at the target level by adjusting output voltage to suit the load resistance.[^keysight-bench-power-supply] Setting a current limit restricts fault current during short circuits, though it does not guarantee protection against all transients or component damage.
 
 ## Detailed explanation
 

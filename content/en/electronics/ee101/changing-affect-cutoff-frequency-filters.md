@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+In opposite directions. In an RC filter `f_c = 1/(2*pi*R*C)`, so increasing `R` lowers the cutoff frequency. In an RL filter `f_c = R/(2*pi*L)`, so increasing `R` raises the cutoff frequency: doubling `R` doubles `f_c`.[^fiore-ac-circuit-analysis][^kuphaldt-low-pass-filters]
 
 ## Detailed explanation
 

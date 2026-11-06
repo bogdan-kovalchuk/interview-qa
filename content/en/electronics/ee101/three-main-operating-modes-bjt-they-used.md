@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0188
-title: "What are the three main operating modes of a BJT and where are they used?"
+title: "What are the three main operating modes of a BJT, and where are they used?"
 track: electronics
 section: ee101
 sources:
@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+In cutoff, the base-emitter junction is not forward-biased, collector current is virtually zero, and the transistor acts as an open switch. In active mode, base-emitter is forward-biased and base-collector is reverse-biased, enabling linear amplification. In saturation, both junctions are forward-biased, acting as a closed switch.[^mit-6071-bjt-notes] Active mode is used in analog amplifiers, while saturation is used in digital switching.[^fiore-bjt-collector-curves]
 
 ## Detailed explanation
 

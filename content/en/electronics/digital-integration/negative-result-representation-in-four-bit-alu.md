@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0057
-title: "How is a negative result of subtraction interpreted and why is it distorted on a decimal display in a 4-bit ALU?"
+title: "How is a negative subtraction result interpreted and why is it distorted on a decimal display in a 4-bit ALU?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+When subtracting a larger number from a smaller one, the result is produced in 4-bit two's complement (for example, `5 - 9 = -4` is encoded as `1100`). An unsigned BCD decoder like the 7447 interprets `1100` as decimal `12`. Because the 7447 does not support negative signs or hexadecimal glyphs, it renders a distorted non-standard pattern on the seven-segment display.[^ti-sn74ls47-datasheet]
 
 ## Detailed explanation
 

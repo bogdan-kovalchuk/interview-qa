@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A solderless breadboard connects components using spring clips without soldering, making it easy to quickly reconfigure a circuit. On a perfboard, components are soldered to pads, creating a fixed build where the connection method depends on the specific board pattern.[^adafruit-breadboards]
 
 ## Detailed explanation
 

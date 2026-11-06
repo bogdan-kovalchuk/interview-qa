@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Proteus VSM combines mixed-mode SPICE simulation with co-simulation of supported microcontrollers, enabling verification of circuit and firmware interactions in simulation. Support depends on the specific MCU, model, and software package; Proteus Design Suite also integrates schematic capture and PCB layout tools.[^labcenter-proteus-vsm]
 
 ## Detailed explanation
 

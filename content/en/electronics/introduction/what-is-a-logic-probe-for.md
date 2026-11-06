@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A logic probe quickly verifies whether a digital line is recognized as `HIGH` or `LOW`, and some models can also detect activity pulses.[^tek-logic-probe] Detection thresholds and pulse-stretching features depend on the probe model and logic family; inspecting the actual analog waveform requires an oscilloscope.[^tek-logic-probe]
 
 ## Detailed explanation
 

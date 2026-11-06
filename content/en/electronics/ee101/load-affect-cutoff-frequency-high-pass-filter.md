@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A load `R_L` connected in parallel with the output resistor R decreases the effective resistance to `R_eff = R || R_L`, so the cutoff frequency `f_c = 1/(2π*R_eff*C)` increases. For `R = R_L = 10 kΩ` and `C = 100 nF`, it shifts from approximately 159 Hz to 318 Hz.[^aac-high-pass-filters]
 
 ## Detailed explanation
 

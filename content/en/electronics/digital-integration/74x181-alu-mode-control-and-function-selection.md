@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0049
-title: "How is the selection between logic and arithmetic functions accomplished in the 74x181 ALU?"
+title: "How are logic and arithmetic functions selected in the 74x181 ALU?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Operating mode in the 74x181 is determined by mode control input `M`: when `M = 1` (`HIGH`), the ALU performs one of 16 bitwise logic functions with internal carry disabled. When `M = 0` (`LOW`), the device executes one of 16 arithmetic operations with full carry propagation. The specific operation within the selected mode is defined by a 4-bit code on select inputs `S3–S0`.[^ti-sn74ls181-datasheet]
 
 ## Detailed explanation
 

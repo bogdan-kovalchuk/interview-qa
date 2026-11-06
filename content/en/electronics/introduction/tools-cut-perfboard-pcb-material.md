@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Tool selection depends on board thickness, reinforcement, and construction: thin perfboard can be carefully cut with sheet-metal shears, whereas rigid fiberglass laminate requires mechanical sawing or routing with dust control. Fiberglass dust is irritating to skin and lungs, so machining requires eye protection, proper ventilation or dust collection, and clean handling procedures.[^isola-fr402-sds]
 
 ## Detailed explanation
 

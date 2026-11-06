@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+This formula describes the LOW output fraction `t_LOW / T`, not the HIGH fraction. In a standard astable 555 circuit, the HIGH duty cycle is always strictly greater than 50%. Reducing `R_A` to zero is strictly forbidden, because during the discharge phase pin 7 is tied to ground by the internal switch, creating a direct short circuit across the power supply that destroys the IC.[^ti-ne555-datasheet]
 
 ## Detailed explanation
 

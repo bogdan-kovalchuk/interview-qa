@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal capacitor, `i = C*dv/dt`, meaning current is proportional to the rate of change of voltage. In sinusoidal steady state, current leads voltage by 90°; this is a phase shift rather than a universal sequence of events for an arbitrary signal.[^aac-ac-capacitor]
 
 ## Detailed explanation
 

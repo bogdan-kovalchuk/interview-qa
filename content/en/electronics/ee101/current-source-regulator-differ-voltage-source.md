@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A voltage source maintains a constant output voltage `V_out` despite variations in load current, up to its maximum current capability.[^fiore-source-conversions] A current source maintains a constant load current `I_load` despite variations in load voltage drop, up to its compliance voltage limit.[^fiore-source-conversions]
 
 ## Detailed explanation
 

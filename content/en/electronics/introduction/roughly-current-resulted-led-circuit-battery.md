@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+With a measured drop of 6.55 V across a 220 Ω resistor, the current is approximately 29.8 mA by Ohm's law. The value of around 30 mA is the specific result of the lecture example; a nominal 9 V battery and resistor value alone do not determine the exact current, because actual battery terminal voltage and LED forward drop must be known.[^udemy-electronics-course] [^adafruit-led-forward-voltage-kvl]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+When an LED cathode connects to an IC output while the anode connects to `VCC` through a resistor, it illuminates on a `LOW` level. If the ALU carry output is active-high (`HIGH` on carry), the LED lights up when there is no carry and turns off when carry occurs. Indicator wiring polarity must always match the active logic level specified in the datasheet.[^horowitz-hill-art-of-electronics]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+PCBs are fabricated with an even layer count (2, 4, 6, 8) arranged symmetrically around the center plane to prevent mechanical warping: bow and twist. An asymmetrical distribution of dielectric thicknesses or copper density creates an imbalance in thermal expansion and residual stress during cooling after lamination and reflow soldering.[^ipc-2221b]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Two worst-case conditions must be checked. Minimum input voltage with maximum load current: the Zener may be starved of current, causing loss of regulation.[^fiore-rectification] Maximum input voltage with no load: the entire resistor current flows through the Zener, causing maximum dissipation.[^nexperia-an90031] Without a series resistor, current through the Zener is completely unlimited.[^fiore-rectification]
 
 ## Detailed explanation
 

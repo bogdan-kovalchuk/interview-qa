@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The source of the P-channel MOSFET connects to `+V`, and the drain connects to the load. To turn it on, the gate is pulled below the source, establishing a negative `V_GS`; to turn it off, the gate is pulled up to the source so that `V_GS` approaches zero. The maximum rated `V_GS` must never be exceeded.[^ti-pmos-high-side]
 
 ## Detailed explanation
 

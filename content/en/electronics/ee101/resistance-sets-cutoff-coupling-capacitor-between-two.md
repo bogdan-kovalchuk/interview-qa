@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The cutoff frequency is determined by the total resistance seen by the coupling capacitor, which is the sum of the source stage's output impedance and the load stage's input impedance, rather than `R_E` alone.[^fiore-multi-stage-amplifiers][^fiore-common-emitter-amplifier] For this high-pass RC network, `f_c = 1/(2*pi*R*C)`, and gain drops by 3 dB at `f_c` relative to the midband level.[^fiore-ac-circuit-analysis]
 
 ## Detailed explanation
 

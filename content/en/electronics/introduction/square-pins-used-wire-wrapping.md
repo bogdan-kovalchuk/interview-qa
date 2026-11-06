@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+During wire wrapping, tensioned wire is pulled against the sharp corners of a square pin, creating multiple high-pressure contact points and a gas-tight connection. This is a property of a properly matched wire, pin, and tool, rather than a universal guarantee against any round post.[^cooper-wire-wrap]
 
 ## Detailed explanation
 

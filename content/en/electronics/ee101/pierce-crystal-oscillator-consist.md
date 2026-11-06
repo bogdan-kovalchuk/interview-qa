@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A Pierce crystal oscillator consists of an inverting amplifier (unbuffered in the TI reference design), a quartz crystal resonator, two load capacitors `C_1` and `C_2`, and a feedback resistor `R_F` that biases the inverter into its linear region.[^ti-sn74lvc1gx04-oscillator] In the TI design, a secondary buffered inverter shapes the output to provide full rail-to-rail logic swing.[^ti-sn74lvc1gx04-oscillator]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A through-hole pin soldered through the PCB provides superior mechanical strength against insertion and extraction forces, whereas SMT pads can tear off under stress. Additionally, a through-hole pin barrel spans every layer and can act as a built-in via for signal routing.[^ipc-2221]
 
 ## Detailed explanation
 

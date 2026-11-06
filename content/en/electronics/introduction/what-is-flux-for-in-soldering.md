@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Flux helps remove or prevent oxide formation on heated metal surfaces and facilitates wetting by molten solder. It is not a heat transfer medium; some solder wires for hand soldering contain a flux core to deliver flux directly to the joint area.[^koki-flux-wetting] [^kester-cored-solder-wire]
 
 ## Detailed explanation
 

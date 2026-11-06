@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Start with requirements: output voltage, continuous and peak load currents, input voltage range, and permissible ripple. From these, estimate dissipation `P = (V_in - V_out)*I_out` to decide whether a linear regulator is viable. Then consult the IC datasheet to verify recommended operating conditions, dropout headroom, output capacitor stability requirements, and thermal constraints.[^ti-slva079][^ti-tps752q1-datasheet]
 
 ## Detailed explanation
 

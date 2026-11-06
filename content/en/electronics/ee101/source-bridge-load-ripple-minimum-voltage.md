@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+After a full-wave bridge, ripple frequency is `2*50 = 100 Hz`, yielding `ΔV_pp ≈ I/(f*C) = 0.1/(100*0.001) = 1 V`.[^fiore-capacitors] The peak voltage on the capacitor is `9*sqrt(2) - 2*0.7 ≈ 11.33 V`, giving a trough of `11.33 - 1 ≈ 10.33 V` as an approximation.[^fiore-rectification] A linear regulator requires `V_in,trough > V_out + V_dropout` to maintain regulation.[^ti-slva079]
 
 ## Detailed explanation
 

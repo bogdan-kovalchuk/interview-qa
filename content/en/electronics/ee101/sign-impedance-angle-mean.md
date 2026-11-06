@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a passive circuit with impedance `Z = R + jX`, a positive angle indicates predominantly inductive behavior, where voltage leads current. A negative angle indicates predominantly capacitive behavior, where current leads voltage, while a pure resistor has an angle of 0°.[^aac-rxz-review]
 
 ## Detailed explanation
 

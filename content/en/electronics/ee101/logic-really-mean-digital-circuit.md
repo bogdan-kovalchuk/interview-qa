@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Logic 0 and 1 are voltage ranges rather than exact numbers: an input recognizes LOW up to `V_IL` (maximum) and HIGH from `V_IH` (minimum), while voltages between them produce an undefined state.[^auburn-digital-voltages] Half of the supply voltage is not the threshold: for 74HC at `V_CC = 4.5 V`, the input limits are 1.35 V and 3.15 V, so 2.25 V falls entirely in the undefined region.[^ti-hc00]
 
 ## Detailed explanation
 

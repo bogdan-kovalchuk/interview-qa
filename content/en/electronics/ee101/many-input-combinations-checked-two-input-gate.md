@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+All four input combinations must be tested: 00, 01, 10, and 11 (`2^2 = 4`), even if the circuit appears to work. For each state, record the actual measured output voltage rather than simply observing an indicator LED, verifying that the level complies with the logic input thresholds of the downstream gate.[^ti-hc00]
 
 ## Detailed explanation
 

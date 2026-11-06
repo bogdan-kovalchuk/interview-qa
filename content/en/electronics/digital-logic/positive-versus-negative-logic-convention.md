@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In the positive logic convention, the higher voltage level (HIGH) represents logic 1 (TRUE) and the lower level (LOW) represents logic 0 (FALSE). In negative logic, this mapping is inverted: HIGH represents logic 0 and LOW represents logic 1. Digital processors generally use positive logic for internal data paths, while using negative logic for active-low control and handshake signals.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

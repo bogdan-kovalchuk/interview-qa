@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: ipc-2221b
     title: "IPC-2221B: Generic Standard on Printed Board Design"
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Dedicated test points provide accessible probe pads for oscilloscope tips and multimeter grabber clips. They eliminate the risk of accidentally shorting adjacent fine-pitch IC pins during board bring-up and probing. These pads streamline staged bring-up, debugging, and verification of individual functional blocks.[^udemy-electronics-course]
 
 ## Detailed explanation
 

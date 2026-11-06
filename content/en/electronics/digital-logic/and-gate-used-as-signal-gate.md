@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An AND gate obeys the Boolean identities `X * 1 = X` and `X * 0 = 0`. Applying a data signal to one input and an ENABLE control signal to the other allows the data to pass unaltered when ENABLE = 1. Applying ENABLE = 0 blocks the gate, holding the output at a steady logic 0 regardless of the data input.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

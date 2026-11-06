@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Dynamic (differential) resistance `r_Z = ΔV_Z/ΔI_Z` is the inverse slope of the Zener breakdown curve at an operating point, giving small-signal changes `ΔV_Z ≈ r_Z*ΔI_Z`.[^nexperia-an90031] It is non-zero and current-dependent: for a BZX84-C5V1, maximum `r_Z` is 480 Ω at 1 mA and 60 Ω at 5 mA.[^nexperia-bzx84] Because of `r_Z`, regulator output drifts slightly with load and input voltage; smaller `r_Z` produces tighter regulation.
 
 ## Detailed explanation
 

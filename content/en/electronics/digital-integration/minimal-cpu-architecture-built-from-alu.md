@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Transforming an ALU into a CPU requires instruction and data memory, a program counter (PC) for sequential addressing, and operand storage registers. It also requires a control unit (FSM) that cyclically fetches instructions, decodes them, and writes results back to registers or memory. Using these discrete 74xx logic blocks, hobbyists construct complete retro-computers such as Magic-1.[^harris-harris-ddca]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a passive RC low-pass filter without significant loading, `H(f) = 1/(1 + j*f/f_c)`, where `f_c = 1/(2*pi*R*C)`. Then `|H| = 1/sqrt(1 + (f/f_c)^2)`, and the output phase relative to the input is `-atan(f/f_c)`. At the cutoff frequency, the magnitude is `1/sqrt(2)` of its low-frequency value, and the phase is `-45°`.[^aac-rc-low-pass-transfer]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Tinning stranded wire bonds its individual fine strands together so they do not fray or cause accidental short circuits. Apply only enough solder to wet and wick between the strands, as excess solder can make the wire end too stiff or oversized for a terminal.[^nasa-wire-tinning]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The gate stores charge capacitively, so when the driving output floats or disconnects, the gate voltage becomes indeterminate. A resistor between gate and source establishes `V_GS ≈ 0` for an off N-channel MOSFET and bleeds off charge, preventing accidental partial turn-on. Its resistance is chosen considering driver loading and turn-off speed rather than by a universal rule.[^infineon-gate-drive]
 
 ## Detailed explanation
 

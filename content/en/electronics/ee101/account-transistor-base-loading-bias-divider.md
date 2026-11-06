@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Replace the resistive divider with its Thevenin equivalent: `V_TH = V_CC*R2/(R1+R2)` and `R_TH = R1*R2/(R1+R2)`. Then calculate base current as `I_B = (V_TH - V_BE)/(R_TH + (β+1)*R_E)` and the loaded base voltage as `V_B = V_TH - I_B*R_TH`, where `I_E = (β+1)*I_B`.[^fiore-voltage-divider-bias][^fiore-bjt-basics]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+In an ideal model at DC after transients settle, a capacitor has infinite `X_C` and an inductor has zero `X_L`. For a sinusoidal signal, `X_C = 1/(2π*f*C)` decreases with increasing frequency, whereas `X_L = 2π*f*L` increases.[^aac-capacitor-reactance] Real components do not become ideal short circuits or open circuits, as parasitic parameters alter their behavior, especially near self-resonance.[^aac-inductor-quirks]
 
 ## Detailed explanation
 

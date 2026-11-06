@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A reflow profile defines how the temperature of a board and its components changes over time during solder paste reflow. Its parameters, including ramp rate, thermal soak, peak temperature, time above liquidus, and cooling rate, must match the specifications of the specific paste and components.[^indium-reflow-profile] Target process limits are taken from manufacturer datasheets for the solder paste and components rather than transferred blindly between processes.[^indium-reflow-profile]
 
 ## Detailed explanation
 

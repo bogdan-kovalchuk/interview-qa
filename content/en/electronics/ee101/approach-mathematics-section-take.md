@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The course presents mathematics through a sequential understanding of physical circuit behavior rather than as a collection of formulas for rote application. Through examples, the instructor moves from explanation and calculation to simulation and breadboarding to reconcile models with measurements.[^udemy-course-math-approach]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A digital multiplexer consists of logic gates and transmits only unidirectional discrete logic voltage levels from inputs to output. In contrast, an analog multiplexer (such as the 74HC4051) utilizes transmission gates as bidirectional electronic switches. This architecture enables continuous analog signals of arbitrary waveform to pass in either direction between shared and channel terminals.[^ti-cd74hc4051-datasheet]
 
 ## Detailed explanation
 

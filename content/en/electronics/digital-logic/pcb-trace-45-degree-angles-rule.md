@@ -17,8 +17,8 @@ sources:
 
 ## Short answer
 
-TODO
+A 90-degree corner increases trace width locally by a factor of `1.414`, causing a characteristic impedance discontinuity and parasitic capacitance. This mismatch induces signal reflections and ringing on high-speed transmission lines. Furthermore, sharp internal corners historically acted as acid traps during PCB etching, so designers use 45-degree bends or curved corners instead.[^montrose-emc-pcb]
 
 ## Detailed explanation
 
-TODO
+TODO

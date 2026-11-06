@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Reverse biasing an electrolytic capacitor causes electrolyte boiling, dielectric breakdown, potential case explosion, and short circuits. During manual PCB assembly, technicians rely entirely on polarity markings printed on the silkscreen layer. Any mismatch between schematic polarity and footprint graphics creates an immediate risk of component destruction.[^udemy-electronics-course]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A P-channel MOSFET allows switching the positive rail directly with its gate driven relative to the source near `+V`, often eliminating bootstrap or charge-pump driver circuitry. This simplifies design, though it does not make P-channel universally superior: N-channel high-side switches are commonly chosen when lower conduction losses and smaller silicon area justify a specialized gate driver.[^ti-pmos-high-side]
 
 ## Detailed explanation
 

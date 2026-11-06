@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+When the driver releases the base, the pull-up pulls it back to the emitter potential and keeps the PNP transistor in cutoff. Without this resistor, a floating node can leave the base–emitter junction forward-biased, preventing the switch from turning off reliably.[^aac-semiconductors]
 
 ## Detailed explanation
 

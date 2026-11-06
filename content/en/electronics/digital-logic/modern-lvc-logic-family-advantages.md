@@ -17,8 +17,8 @@ sources:
 
 ## Short answer
 
-TODO
+The 74LVC family supports a wide supply voltage range from `1.65 V` to `3.6 V` and operating frequencies exceeding `100 MHz`. It provides symmetrical output drive capability of up to `±24 mA` to reliably drive capacitive buses and transmission lines. Most LVC devices feature 5 V-tolerant inputs, enabling direct interfacing between modern `3.3 V` systems and legacy `5 V` logic without dedicated level shifters.[^ti-scba010]
 
 ## Detailed explanation
 
-TODO
+TODO

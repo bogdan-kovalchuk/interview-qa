@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A forward-biased LED clamps the voltage drop across itself to approximately `1.8–2.2 V`. Tapping a logic signal at the node between the LED and the resistor yields an invalid intermediate voltage instead of a full logic swing between `V_CC` and ground. To ensure reliable logic thresholds, downstream inputs must connect directly to the driver output pin before the resistor.[^horowitz-art-of-electronics]
 
 ## Detailed explanation
 

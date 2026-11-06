@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For small ripple, `ΔV_pp ≈ I_load/(f_ripple*C)`: between peaks the capacitor supplies the load current for approximately one ripple period.[^fiore-capacitors] After a bridge rectifier, `f_ripple = 2*f_mains`, or 100 Hz for a 50 Hz line, so at 20 mA and 1000 µF, `ΔV_pp ≈ 0.02/(100*0.001) = 0.2 V`. This approximation assumes constant current and neglects capacitor ESR. To reduce ripple at the same load current, C is increased, though diodes then conduct in shorter, higher-current pulses.[^fiore-rectification]
 
 ## Detailed explanation
 

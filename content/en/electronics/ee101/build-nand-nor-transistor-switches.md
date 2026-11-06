@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Two NPN switches in series to ground with a pull-up resistor pull the output LOW only when both inputs are HIGH, creating a NAND gate.[^montana-eele414-cmos] Connecting two switches in parallel pulls the output LOW whenever either input is HIGH, forming a NOR gate. Adding an output inverter turns NAND into AND and NOR into OR.
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Power gain in decibels is calculated as `G_P = 10*log10(P_out/P_in)` dB. For voltage, `G_V = 20*log10(|V_out/V_in|)` applies only when input and output impedances are equal; otherwise, actual powers must be computed. A positive value indicates gain, a negative value indicates attenuation, and 0 dB represents a 1:1 ratio.[^rs-decibel-guide]
 
 ## Detailed explanation
 

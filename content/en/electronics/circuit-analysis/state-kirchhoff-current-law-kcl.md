@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+At any circuit node, the algebraic sum of currents is zero when a consistent sign convention is applied to all connected branches.[^aac-kcl] Equivalently, the sum of currents entering the node equals the sum of currents leaving the node.
 
 ## Detailed explanation
 

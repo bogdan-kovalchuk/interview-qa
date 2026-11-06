@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A built-in CAD viewer often pulls graphical data directly from internal project databases or makes undocumented rendering assumptions, masking post-processing defects. An independent third-party viewer parses only the raw text stream of Gerber and NC Drill files, just like factory CAM workstations do. This reveals layer misalignments, corrupted apertures, mirroring errors, or missing copper pours before releasing files to fabrication.[^ucamco-gerber-spec]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74F382 IC features three select inputs `S2–S0` that encode eight operations: clear (`0`), subtraction `B - A`, subtraction `A - B`, addition `A + B`, bitwise `XOR`, `OR`, `AND`, and preset all ones. In addition to the `F3–F0` result outputs, the device generates carry-out `Cn+4` and two's complement arithmetic overflow `OVR` flags.[^ti-sn74f382-datasheet]
 
 ## Detailed explanation
 

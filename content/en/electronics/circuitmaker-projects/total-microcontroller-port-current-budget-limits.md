@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: microchip-atmega328p-datasheet
     title: "Microchip Technology: ATmega328P 8-bit AVR Microcontroller Datasheet (DS40002061B)"
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An individual GPIO pin can handle 20–40 mA, but the total supply current through the MCU power and ground pins is capped at 200 mA. Illuminating multiple LEDs simultaneously risks exceeding this cumulative package budget and overheating internal bond wires and silicon. Increasing current-limiting resistors to 330–1000 Ω maintains the aggregated draw well within safe limits.[^udemy-electronics-course]
 
 ## Detailed explanation
 

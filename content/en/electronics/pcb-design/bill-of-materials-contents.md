@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Each entry should specify reference designators, quantity, manufacturer and part number, description, package footprint, distributor link, and assembly notes. Explaining critical parameters, such as 1% resistors in a feedback loop, prevents unauthorized cheaper substitutions. Revision changes should be highlighted, accompanied by the schematic, test procedures, and assembled board photos.[^ipc-d-325]
 
 ## Detailed explanation
 

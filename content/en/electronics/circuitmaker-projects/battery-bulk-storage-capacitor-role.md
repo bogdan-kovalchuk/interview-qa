@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Chemical batteries exhibit non-negligible internal resistance that increases substantially as they discharge. A `100 µF` electrolytic capacitor acts as a local energy reservoir. It supplies instantaneous switching current spikes and prevents transient dips on the IC supply rail.[^horowitz-art-of-electronics]
 
 ## Detailed explanation
 

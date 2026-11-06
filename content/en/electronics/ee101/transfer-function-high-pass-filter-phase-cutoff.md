@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal RC high-pass filter, `H(jω) = jωRC/(1 + jωRC)`, and at the cutoff frequency `f_c = 1/(2*pi*R*C)` the output leads the input by 45°.[^aac-high-pass-transfer-function] This holds when any external load is already accounted for in the effective R.
 
 ## Detailed explanation
 

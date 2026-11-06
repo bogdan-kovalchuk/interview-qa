@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A junction of circuit branches connected by ideal conductors without intervening components forms a single node sharing a common electric potential; GND is commonly chosen as the reference node assigned to 0 V.[^aac-kcl-node] Nodes provide the foundation for formulating Kirchhoff's Current Law (KCL) and referencing voltages throughout the circuit.[^aac-kcl-node]
 
 ## Detailed explanation
 

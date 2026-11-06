@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A D flip-flop latches the state of input `D` and transfers it to output `Q` on each active clock edge. Connecting output `Q` of one stage to input `D` of the next under a common clock advances stored bits by one position per cycle. A cascade of `n` such stages forms an `n`-bit shift register.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

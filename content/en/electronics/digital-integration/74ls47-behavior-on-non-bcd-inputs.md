@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74LS47 is designed for binary-coded decimal (BCD, digits 0–9) rather than full hexadecimal decoding. Input codes from 10 to 14 display irregular non-standard patterns or truncated shapes, while code 15 blanks all segments entirely. Displaying valid hexadecimal characters `A` through `F` requires dedicated hexadecimal decoders or programmable logic devices.[^ti-sn74ls47-datasheet]
 
 ## Detailed explanation
 

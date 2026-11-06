@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Setup time `t_su` is the minimum time window that input data must remain stable BEFORE the active clock transition. Hold time `t_h` is the minimum duration that data must remain unchanged AFTER the active clock edge. Violating either requirement can trigger flip-flop metastability or cause corrupt data capture.[^ti-sn74hc74a] [^harris-harris-ddca]
 
 ## Detailed explanation
 

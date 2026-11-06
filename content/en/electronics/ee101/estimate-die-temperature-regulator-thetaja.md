@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a linear regulator, power dissipation is `P = (12 - 5)*0.2 = 1.4 W`, yielding `T_j = T_a + P*theta_JA = 25 + 1.4*60 = 109 °C`.[^ti-slva079][^ti-spra953d] Compare this estimate against the datasheet maximum junction temperature with appropriate safety margin.[^ti-slva079] Because `theta_JA` depends heavily on PCB copper area and airflow, this is an estimate rather than a fixed universal constant.[^ti-spra953d]
 
 ## Detailed explanation
 

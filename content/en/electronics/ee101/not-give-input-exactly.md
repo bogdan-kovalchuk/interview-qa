@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A 7805 is not an LDO: its dropout is typically 2 V at 1 A and `T_J = 25 °C`, and datasheets specify a minimum input of 7.5 V to guarantee line regulation.[^ti-lm340] An input of 5 V provides zero headroom over the nominal 5 V output, leaving the regulator dropped out and the output below 5 V.[^ti-slva079]
 
 ## Detailed explanation
 

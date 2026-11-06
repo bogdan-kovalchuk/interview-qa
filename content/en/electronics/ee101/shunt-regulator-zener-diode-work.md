@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A series resistor R connects `V_in` to the output, the Zener diode connects cathode to output and anode to ground, and the load sits in parallel. Current through R splits between load and Zener: `I_R = (V_in - V_Z)/R = I_load + I_Z`.[^fiore-rectification] The output stays near `V_Z` only while the Zener remains in breakdown with at least its minimum operating current; if the load takes almost all resistor current, the Zener turns off, regulation is lost, and R and the load form a simple divider.[^nexperia-an90031]
 
 ## Detailed explanation
 

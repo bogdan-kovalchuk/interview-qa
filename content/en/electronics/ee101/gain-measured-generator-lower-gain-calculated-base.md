@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The generator output impedance forms a voltage divider with the stage input impedance, attenuating the signal arriving at the base: `A_v(gen) = A_v(base)*Z_in/(Z_in + R_gen)`.[^fiore-common-emitter-amplifier] Furthermore, the ideal base gain formula neglects the Early effect and high-frequency parasitic capacitances, so measured gain can deviate from calculation even without source attenuation.[^fiore-bjt-collector-curves][^fiore-bjt-ac-model]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Orthogonal routing places traces predominantly horizontally on one layer and vertically on the other. This prevents a long uninterrupted trace on one layer from partitioning the board and blocking cross-routing. It also minimizes mutual parallel trace length across layers, reducing capacitive crosstalk and facilitating 100% routing completion.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

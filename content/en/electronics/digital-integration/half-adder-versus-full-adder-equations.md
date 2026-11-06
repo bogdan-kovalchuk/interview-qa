@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A half adder adds only two single-bit operands `A` and `B` (`S = A ^ B`, `C_out = A & B`) without a carry input. A full adder adds three single-bit inputs: `A`, `B`, and an incoming carry `C_in` from a previous stage. Its outputs follow `S = A ^ B ^ C_in` and `C_out = (A & B) | (C_in & (A ^ B))`, enabling cascading into adders of arbitrary bit width.[^floyd-digital]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0011
-title: "What functions do the /LT, /RBI, and /BI/RBO pins perform in the 74LS47 IC?"
+title: "What functions do the `/LT`, `/RBI`, and `/BI/RBO` pins perform in the 74LS47 IC?"
 track: electronics
 section: digital-integration
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The lamp test input `/LT` forces all seven segments on to verify display operation. The ripple blanking input `/RBI` suppresses leading zeros in multi-digit displays. The bidirectional `/BI/RBO` pin acts either as a blanking input to extinguish all segments unconditionally or as a ripple blanking output to propagate zero suppression to adjacent digits.[^ti-sn74ls47-datasheet]
 
 ## Detailed explanation
 

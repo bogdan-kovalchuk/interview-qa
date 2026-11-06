@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Only if the chip's datasheet confirms that the input is 5 V tolerant when powered from 3.3 V. A standard CMOS input has clamp diodes to `V_CC` and to ground, and the recommended input voltage is limited to `V_CC`, so applying 5 V exceeds recommended conditions and stresses the upper diode.[^ti-hc00] Certain inputs, such as the `SN74LVC1G125`, explicitly tolerate up to 5.5 V with a 3.3 V supply.[^ti-sn74lvc1g125] A shared ground and separate regulated rails do not by themselves ensure signal compatibility.
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Two cross-coupled `NOR` gates store one bit through feedback: asserting `S = 1` sets `Q = 1`, asserting `R = 1` resets `Q = 0`, and `S = R = 0` retains the current state. When `S = 1` and `R = 1` are applied simultaneously, both `Q` and `~Q` are forced to `0`, violating the complementary output rule. Deasserting both inputs at once to `00` triggers a race condition, leaving the latch in an unpredictable state.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

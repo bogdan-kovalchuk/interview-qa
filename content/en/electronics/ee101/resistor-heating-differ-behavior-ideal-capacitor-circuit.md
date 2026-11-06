@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An ideal capacitor draws zero average real power, returning stored energy to the source over each cycle. A resistor dissipates average power `P_R = I_RMS^2*R` as heat, so having the same impedance magnitude does not imply identical heating.[^aac-alternating-current]
 
 ## Detailed explanation
 

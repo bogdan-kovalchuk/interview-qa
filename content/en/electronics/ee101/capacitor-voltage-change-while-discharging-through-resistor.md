@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+When a charged capacitor discharges through a resistor, its voltage decays according to `V_C(t) = V_0*e^(-t/τ)`, where `τ = R*C` for a simple RC loop. After `1τ`, `3τ`, and `5τ`, approximately 36.8%, 5.0%, and 0.7% of the initial voltage remains, respectively.[^gatech-rc-charging-discharging]
 
 ## Detailed explanation
 

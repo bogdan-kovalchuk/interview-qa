@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal constant voltage source `V_0`, series resistor `R`, and initially discharged capacitor `C`, the initial current is `V_0/R`. As the capacitor charges, the resistor voltage and charging current decay exponentially with time constant `τ = R*C`; in steady state, the current approaches zero.[^aac-capacitor-transient]
 
 ## Detailed explanation
 

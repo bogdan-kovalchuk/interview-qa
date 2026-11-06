@@ -14,8 +14,8 @@ sources:
 
 ## Short answer
 
-TODO
+The first half adder adds input bits `A` and `B`, generating an intermediate sum and a first carry. The second half adder adds this intermediate sum to the carry-in bit `C_in`, producing the final sum `S = A ^ B ^ C_in`. The carry outputs of both half adders are combined through a two-input `OR` gate to form the overall carry-out `C_out = C_1 | C_2`.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 
-TODO
+TODO

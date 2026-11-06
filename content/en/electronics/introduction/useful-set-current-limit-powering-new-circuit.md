@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+If there is an assembly error or short circuit, the power supply transitions into `CC` mode and clamps output current. This frequently prevents catastrophic damage to semiconductors, PCB traces, wiring, and the power supply itself.[^keysight-current-limit]
 
 ## Detailed explanation
 

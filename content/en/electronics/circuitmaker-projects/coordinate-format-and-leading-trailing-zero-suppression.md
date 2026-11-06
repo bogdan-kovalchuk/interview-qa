@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The coordinate format (such as 2:4 or 2:5 in inches) sets the number of integer and decimal digits, defining positioning resolution down to 0.1 or 0.01 mil. Leading or trailing zero suppression reduces file size by omitting non-significant zeros from coordinate strings. A mismatch in these settings between EDA export and the manufacturer CAM station causes tenfold coordinate scaling errors or severe drill-to-copper misalignment.[^ucamco-gerber-spec]
 
 ## Detailed explanation
 

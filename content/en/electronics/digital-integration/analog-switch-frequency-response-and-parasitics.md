@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The switch exhibits finite on-state resistance `R_on` and parasitic capacitances to the substrate and adjacent channels. These parasitics form an `RC` low-pass filter that limits bandwidth and rolls off fast pulse edges. At frequencies of several megahertz and above, square waves suffer overshoot and ringing due to stray inductance in breadboard leads and board traces.[^ti-cd74hc4051-datasheet]
 
 ## Detailed explanation
 

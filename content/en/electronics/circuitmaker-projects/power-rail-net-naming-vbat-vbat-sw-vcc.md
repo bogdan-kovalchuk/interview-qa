@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Assigning distinct net names prevents different power segments from merging accidentally into a single continuous net in the netlist. The label `VBAT` identifies raw battery terminals, `VBAT_SW` designates switched power after the power switch, and `VCC` marks the regulated output rail. This keeps power stages distinct and ensures proper layout and routing.[^udemy-electronics-course]
 
 ## Detailed explanation
 

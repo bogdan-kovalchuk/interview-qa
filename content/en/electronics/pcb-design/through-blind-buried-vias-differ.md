@@ -1,6 +1,6 @@
 ---
 id: emb-elpcb-0004
-title: "How do through, blind and buried vias differ?"
+title: "How do through-hole, blind, and buried vias differ?"
 track: electronics
 section: pcb-design
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A through-hole via traverses the entire stackup and is visible on both outer surfaces. A blind via connects an outer layer to one or more inner layers, whereas a buried via connects only internal layers. Blind and buried vias increase fabrication cost due to sequential lamination, but they eliminate signal stubs and save valuable routing channels.[^ipc-2226]
 
 ## Detailed explanation
 

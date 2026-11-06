@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A power MOSFET contains an intrinsic body diode that conducts when forward-biased even if the gate channel is turned off.[^infineon-mosfet-layout] In bridge topologies, dead time and reverse recovery behavior are critical, and in reverse-polarity protection a single MOSFET cannot block current in both directions.[^infineon-mosfet-layout]
 
 ## Detailed explanation
 

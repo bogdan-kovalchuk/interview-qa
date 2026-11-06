@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Diodes conduct only when the input AC voltage exceeds the capacitor voltage by approximately `V_F`, creating short conduction pulses near waveform peaks.[^fiore-rectification] Over each ripple period, the diodes must replenish all charge drained by the load during the non-conducting interval, forcing peak diode current to be substantially higher than average load current.[^fiore-rectification]
 
 ## Detailed explanation
 

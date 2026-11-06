@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The asynchronous reset inputs `R0(1)` and `R0(2)` trigger only after decoding the terminal count state (for example, state 13 when counting up to 12). Consequently, code 13 must briefly appear on the output pins for several nanoseconds before the reset signal propagates and clears the flip-flops. This transient glitch can be erroneously captured by downstream high-speed logic as a valid state.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

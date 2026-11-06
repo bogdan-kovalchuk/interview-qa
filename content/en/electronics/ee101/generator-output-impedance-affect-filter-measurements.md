@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The generator's output impedance forms a voltage divider with the filter's input impedance; on many generators it is 50 Ω, though this must be verified for the specific instrument.[^keysight-generator-load-termination] Therefore, measure the reference input signal directly at the filter input node rather than relying on the amplitude displayed on the generator panel.
 
 ## Detailed explanation
 

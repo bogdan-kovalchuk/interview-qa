@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The input capacitance and resistive loading of an oscilloscope probe alter the loop phase and gain conditions of the resonant tank. To prevent loading, always measure at the buffered clock output rather than the sensitive crystal nodes, while keeping drive level within specified limits.[^udemy-electronics-course]
 
 ## Detailed explanation
 

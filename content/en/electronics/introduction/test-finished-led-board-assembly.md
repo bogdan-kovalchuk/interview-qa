@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Inspect solder joints and test for short circuits on an unpowered board, using continuity mode only while power is off. Next, apply power through the designated supply input, verify circuit voltages, and observe LED operation, turning off power before rechecking polarities or wiring.[^fluke-continuity-test]
 
 ## Detailed explanation
 

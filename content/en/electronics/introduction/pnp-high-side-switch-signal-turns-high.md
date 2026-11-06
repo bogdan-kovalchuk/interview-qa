@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A `PNP` high-side switch turns on when the base is lower than the emitter, so in a typical common-ground circuit this is often `LOW`. The junction forward voltage depends on current and device characteristics, so a fixed `0.7 V` is not an exact universal threshold; a GPIO level is suitable only when supply voltages are compatible.[^aac-semiconductors]
 
 ## Detailed explanation
 

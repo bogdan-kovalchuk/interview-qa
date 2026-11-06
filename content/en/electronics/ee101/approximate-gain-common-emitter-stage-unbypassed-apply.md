@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+With an unbypassed emitter resistor satisfying `R_E ≫ r_e` and load `R_L ≫ R_C`, the voltage gain is approximately `A_v ≈ -R_C/R_E`, where the negative sign denotes phase inversion. An unbypassed `R_E` reduces overall gain but stabilizes it against variations in `r_e` and β while lowering distortion. DC operating point stability is maintained by `R_E` regardless of AC bypassing.[^fiore-common-emitter-amplifier][^fiore-emitter-bias]
 
 ## Detailed explanation
 

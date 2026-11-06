@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74x85 compares two 4-bit unsigned binary words, `A3–A0` and `B3–B0`. It provides three mutually exclusive active-high outputs: `A > B`, `A < B`, and `A = B`, asserting exactly one depending on the magnitude comparison result. The comparator consists of purely combinational asynchronous logic and requires no external clock.[^ti-sn74hc85-datasheet]
 
 ## Detailed explanation
 

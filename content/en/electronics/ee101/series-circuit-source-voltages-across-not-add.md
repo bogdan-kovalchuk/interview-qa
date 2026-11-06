@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For `R = 100 Ω` and `X_C = 75 Ω`, the circuit impedance is `Z = 100 - j75 Ω`, with a magnitude of `125 Ω` and an angle of approximately `-36.87°`. With a `10 V RMS` source, the current magnitude is `0.08 A`. The voltages `8 V` across R and `6 V` across C are shifted by 90° relative to each other, so their phasor sum has a magnitude of `10 V` rather than `14 V`.[^aac-series-rc]
 
 ## Detailed explanation
 

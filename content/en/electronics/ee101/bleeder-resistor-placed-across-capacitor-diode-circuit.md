@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+A bleeder resistor provides a discharge path for the capacitor because the diode blocks reverse current: without it, a charged capacitor retains high voltage long after power-off, which is dangerous, and tracks falling input peaks sluggishly.[^kuphaldt-bleeder-supply][^fiore-peak-detector] For example, 100 kΩ and 1 µF give `τ = R*C = 0.1 s`; after `5τ`, approximately 0.67% of initial voltage remains.[^gatech-rc-charging-discharging] The penalty is continuous quiescent power dissipated in the resistor.
 
 ## Detailed explanation
 

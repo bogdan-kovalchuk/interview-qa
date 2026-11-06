@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+LTspice is a free SPICE simulator from Analog Devices featuring a schematic editor, waveform viewer, educational examples, and device models, with versions available for Windows and macOS. It is a convenient starting point for analog circuits, but it should not be described as "without functional limits" or best for all tasks: model availability and compatibility with a specific workflow must be verified.[^analog-ltspice]
 
 ## Detailed explanation
 

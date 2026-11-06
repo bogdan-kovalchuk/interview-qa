@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For these component values, the timing intervals are `t_HIGH ≈ 39.5 ms` and `t_LOW ≈ 32.6 ms`, giving a total period `T ≈ 72.1 ms`. The resulting output frequency is `f ≈ 13.9 Hz` with a HIGH duty cycle of `D ≈ 54.8%`. Real circuit performance will deviate slightly from these nominal calculations due to component manufacturing tolerances, capacitor leakage currents, and internal comparator delays.[^ti-ne555-datasheet]
 
 ## Detailed explanation
 

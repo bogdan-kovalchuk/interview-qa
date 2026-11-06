@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+ICE reminds us that in an ideal capacitor, current leads voltage by 90° in sinusoidal steady state, while ELI reminds us that in an ideal inductor, voltage leads current by 90°. These are mnemonics for phase relationships rather than claims that one quantity physically appears before the other in a real circuit.[^aac-ac-capacitor] [^aac-ac-inductor]
 
 ## Detailed explanation
 

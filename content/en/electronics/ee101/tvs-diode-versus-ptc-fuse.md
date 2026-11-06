@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A TVS diode clamps brief high-voltage transients within nanoseconds, protecting against surges like lightning, but it does not protect against sustained overcurrent. A resettable PTC fuse limits sustained overcurrent: as it heats up, its resistance rises sharply to choke current, and it resets automatically once cooled down.[^udemy-electronics-course]
 
 ## Detailed explanation
 

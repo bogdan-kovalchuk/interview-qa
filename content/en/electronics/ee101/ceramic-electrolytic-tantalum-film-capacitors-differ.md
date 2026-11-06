@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0023
-title: "How do ceramic, electrolytic, tantalum and film capacitors differ?"
+title: "How do ceramic, electrolytic, tantalum, and film capacitors differ?"
 track: electronics
 section: ee101
 sources:
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Ceramic MLCCs are typically compact with low ESR/ESL, though capacitance in certain dielectric classes depends significantly on temperature and DC bias. Aluminum electrolytics and most solid tantalums are polarized; tantalums offer high volumetric efficiency, whereas film capacitors are non-polarized. Selection depends on the specific dielectric, series, voltage rating, ESR, stability, and circuit conditions.[^aac-practical-capacitors] [^adi-capacitor-selection]
 
 ## Detailed explanation
 

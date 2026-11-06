@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Every buffer element introduces a finite propagation delay `t_pd` (typically `1 to 10 ns` depending on logic family). When some parallel bus lines pass through buffers while others are routed directly, a timing offset (skew) develops between the lines. If this skew exceeds receiver setup or hold margins, downstream registers latch corrupted or invalid data.[^ti-szza036c]
 
 ## Detailed explanation
 

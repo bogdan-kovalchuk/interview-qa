@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Addition and subtraction are convenient in rectangular form, done component by component. Multiplication and division are convenient in polar form: magnitudes are multiplied or divided, while angles are added or subtracted. Multiplying by `j` rotates a complex number by `+90°`, while multiplying by `-j` rotates it by `-90°`.[^aac-complex-arithmetic]
 
 ## Detailed explanation
 

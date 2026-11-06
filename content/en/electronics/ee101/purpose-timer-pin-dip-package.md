@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The DIP-8 pinout is: pin 1 is GND, pin 2 is TRIG (trigger input), pin 3 is OUT, and pin 4 is RESET. Pin 5 is CONT (control voltage), pin 6 is THRES (threshold input), pin 7 is DISCH (discharge open-collector pin), and pin 8 is `V_CC`.[^udemy-electronics-course]
 
 ## Detailed explanation
 

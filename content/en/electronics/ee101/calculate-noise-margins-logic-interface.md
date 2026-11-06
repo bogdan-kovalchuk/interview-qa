@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Noise margins are defined as `NM_L = V_IL,max - V_OL,max` and `NM_H = V_OH,min - V_IH,min` for LOW and HIGH levels, respectively.[^ti-szza036c] A positive margin indicates that the guaranteed driver output maintains a safety margin before reaching the input voltage limit of the receiving gate.
 
 ## Detailed explanation
 

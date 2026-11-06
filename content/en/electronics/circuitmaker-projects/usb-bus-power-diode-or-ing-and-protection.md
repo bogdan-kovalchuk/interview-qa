@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Diodes placed in series with the USB bus and battery supply rails form a diode-OR power multiplexer. Current is drawn automatically from whichever source provides higher potential, reverse-biasing the lower-voltage source. Reverse blocking prevents battery back-feeding into the host USB port, while the low forward voltage drop of Schottky diodes minimizes supply voltage loss.[^udemy-electronics-course]
 
 ## Detailed explanation
 

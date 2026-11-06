@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+No: the resistor sets base current rather than base voltage. The base voltage is clamped by the forward-biased base-emitter junction to approximately 0.7 V, while the collector current `I_C = β*I_B` fluctuates with β, which varies widely between individual transistors and drifts with temperature.[^fiore-bjt-ebers-moll]
 
 ## Detailed explanation
 

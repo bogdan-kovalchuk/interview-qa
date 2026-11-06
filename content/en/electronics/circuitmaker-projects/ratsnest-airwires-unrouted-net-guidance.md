@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Rat's nest lines (or airwires) dynamically display unrouted electrical connections between component pads as straight lines. Designers assess the length and crossovers of these guide lines, rotating and regrouping parts into functional clusters to minimize parasitic inductance and trace congestion. Optimal placement clears routing channels and significantly reduces the number of required layer-transition vias.[^altium-pcb-routing-guide]
 
 ## Detailed explanation
 

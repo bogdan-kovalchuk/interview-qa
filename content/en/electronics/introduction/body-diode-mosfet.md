@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The body diode is an inherent parasitic PN junction between source and drain formed by the MOSFET semiconductor structure. In a standard enhancement-mode N-channel MOSFET, its anode connects to the source and its cathode connects to the drain, so it conducts in reverse when the transistor is off; the polarity is inverted for P-channel devices.[^toshiba-body-diode]
 
 ## Detailed explanation
 

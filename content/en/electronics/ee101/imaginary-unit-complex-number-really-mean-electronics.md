@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`j² = -1`. In a complex phasor, the real and imaginary parts are coordinates that encode the amplitude and phase of a sinusoidal quantity. Therefore, an "imaginary voltage" is not a separate physical voltage.[^aac-complex-intro]
 
 ## Detailed explanation
 

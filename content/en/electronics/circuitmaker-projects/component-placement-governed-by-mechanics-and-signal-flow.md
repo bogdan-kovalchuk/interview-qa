@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Components with fixed mechanical constraints are placed first: connectors, mounting holes, switches, and user interface elements. Remaining ICs and passive components are then grouped into functional blocks following the natural flow of signals. This minimizes interconnect lengths and simplifies subsequent trace routing.[^ipc-2221]
 
 ## Detailed explanation
 

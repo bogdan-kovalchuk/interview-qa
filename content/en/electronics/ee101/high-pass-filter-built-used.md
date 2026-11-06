@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a simple RC high-pass filter, a capacitor is placed in series with the input, and the output is taken across a resistor connected to common ground.[^aac-capacitive-high-pass] The capacitor attenuates lower frequencies, while higher frequencies pass through above the cutoff frequency, allowing the circuit to serve as an AC coupling network.
 
 ## Detailed explanation
 

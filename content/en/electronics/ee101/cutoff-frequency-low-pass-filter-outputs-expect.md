@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal RC low-pass filter, `f_c = 1/(2π*R*C) ≈ 1.59 kHz`. With a 1 V RMS input, the outputs at 160 Hz, 1.59 kHz, and 15.9 kHz are approximately 0.995 V, 0.707 V, and 0.0995 V. At the cutoff frequency, the phase lags by 45°.[^aac-low-pass]
 
 ## Detailed explanation
 

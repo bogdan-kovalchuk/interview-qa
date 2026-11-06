@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+`V_IL` is the highest input voltage guaranteed to be recognized as logic 0, while `V_IH` is the lowest input voltage recognized as logic 1. `V_OL` is the maximum output voltage in logic state 0, and `V_OH` is the minimum output voltage in logic state 1.[^auburn-digital-voltages] These parameters are worst-case limits specified in the datasheet rather than nominal voltages.[^ti-hc00]
 
 ## Detailed explanation
 

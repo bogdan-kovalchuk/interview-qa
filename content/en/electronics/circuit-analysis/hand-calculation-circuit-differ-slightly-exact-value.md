@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Discrepancies between manual calculations and exact solver outputs typically arise from rounding intermediate values, such as rounding `92.307... Ω` to `92.3 Ω`. This arithmetic rounding must not be confused with physical component tolerance, which specifies manufacturing variance and does not justify computational errors.[^aac-direct-current] [^vishay-resistor-tolerance]
 
 ## Detailed explanation
 

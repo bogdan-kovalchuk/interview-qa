@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a series RL low-pass filter with output across R, the transfer function is `H(jω) = R/(R + jωL)`, the cutoff frequency is `f_c = R/(2π*L)`, and the time constant is `τ = L/R`. For R = 1 kΩ and L = 330 µH, we obtain `f_c ≈ 482 kHz`. With R kept constant, doubling L cuts the cutoff frequency in half.[^aac-low-pass-filters]
 
 ## Detailed explanation
 

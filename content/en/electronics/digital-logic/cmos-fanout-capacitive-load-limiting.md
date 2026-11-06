@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+CMOS transistor inputs have extremely high input impedance and negligible static leakage currents. However, each driven input introduces a parasitic capacitance `C_I ≈ 1–10 pF` that loads the driver output. Maximum fanout is governed by `C_L / C_I`; exceeding the rated load capacitance `C_L` degrades transition rise/fall times and violates circuit timing specifications.[^ti-74hc-logic-family]
 
 ## Detailed explanation
 

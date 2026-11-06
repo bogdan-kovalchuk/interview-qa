@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+ELI means that in an inductor (`L`), voltage (`E`, electromotive force) leads current (`I`) by 90° in sinusoidal steady state. The paired mnemonic ICE reminds us that in a capacitor, current leads voltage by 90°.[^phase-basics]
 
 ## Detailed explanation
 

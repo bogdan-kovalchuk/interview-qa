@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For basic electronics, choose a station with temperature control, compatible interchangeable tips, and a sturdy stand; the required power depends on the thermal mass of the joint. For example, the HAKKO FX-888D station is rated for 70 W and provides temperature control, but this is merely an example model rather than a universal threshold.[^hakko-fx888d]
 
 ## Detailed explanation
 

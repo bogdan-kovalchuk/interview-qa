@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Surface-mount assembly comes first: solder paste is stenciled onto pads, pick-and-place machines position components, and the assembly passes through a reflow oven. Through-hole components are then inserted and soldered using wave soldering, selective soldering, or hand soldering.[^ipc-a-610]
 
 ## Detailed explanation
 

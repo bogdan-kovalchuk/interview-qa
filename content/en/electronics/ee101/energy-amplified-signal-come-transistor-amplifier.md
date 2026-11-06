@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Energy comes from the DC power supply rather than from the input signal: amplification is impossible without an external power source.[^fiore-biasing-need] The transistor merely modulates this power flow, using a small base current to control a larger collector current.[^fiore-ebers-moll] This collector current is drawn directly from `V_CC` through the load.[^fiore-emitter-bias]
 
 ## Detailed explanation
 

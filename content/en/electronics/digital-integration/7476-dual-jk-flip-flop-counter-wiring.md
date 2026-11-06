@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+To place both JK flip-flops of the 7476 into toggle mode, connect their `J` and `K` inputs to logic high (`VCC`). The input clock source feeds the clock input of the first flip-flop, while output `Q0` connects to the clock input of the second stage. Active-low asynchronous preset `~PRE` and clear `~CLR` inputs are pulled high, being pulsed low only when immediate reset is needed.[^ti-sn7476]
 
 ## Detailed explanation
 

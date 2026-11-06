@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The voltage formula `20*log10(|V_out/V_in|)` gives the same value as the power ratio formula only when both voltages appear across equal resistances. If the resistances differ, calculate the powers separately and compare them using `10*log10(P_out/P_in)`.[^rs-decibel-guide]
 
 ## Detailed explanation
 

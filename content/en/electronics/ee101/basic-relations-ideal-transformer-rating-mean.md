@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0173
-title: "What are the basic relations of an ideal transformer and what does its VA rating mean?"
+title: "What are the basic relations of an ideal transformer, and what does its VA rating mean?"
 track: electronics
 section: ee101
 sources:
@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal transformer, `V_s/V_p = N_s/N_p` and `I_s/I_p = N_p/N_s`: voltage and current scale inversely, and power is conserved.[^kuphaldt-transformer-ratios] The VA rating is the apparent power `S = V_s,RMS*I_s,RMS` at the rated secondary voltage; it defines the maximum secondary RMS current `I_s,max = S/V_s` rather than real power in watts.[^kuphaldt-transformer-practical][^fiore-ac-apparent-power]
 
 ## Detailed explanation
 

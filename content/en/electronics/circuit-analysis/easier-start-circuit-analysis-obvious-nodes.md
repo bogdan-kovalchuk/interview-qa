@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Voltages relative to a chosen reference node, such as GND, are often known immediately or fixed directly by ideal sources, making them convenient starting points.[^aac-node-voltage-method] Identifying these fixed potentials upfront reduces the number of unknown node voltages in subsequent system equations.
 
 ## Detailed explanation
 

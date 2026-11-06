@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0020
-title: "Why is a separate VEE power supply pin provided on the 74HC4051 analog multiplexer?"
+title: "Why is a separate `V_EE` power supply pin provided on the 74HC4051 analog multiplexer?"
 track: electronics
 section: digital-integration
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The `V_EE` pin serves as the negative supply rail for the internal analog switches, enabling bipolar analog signals such as audio to pass through without distortion. Analog signal voltages may swing from `V_EE` to `V_CC`, while digital control inputs remain referenced to `GND`. When switching only single-supply positive voltages, `V_EE` is tied directly to system ground `GND`.[^ti-cd74hc4051-datasheet]
 
 ## Detailed explanation
 

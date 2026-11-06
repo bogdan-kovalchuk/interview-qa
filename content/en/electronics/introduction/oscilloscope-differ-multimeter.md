@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A multimeter displays a single numeric aggregate measurement, such as DC or RMS voltage, whereas an oscilloscope plots voltage as a function of time.[^tek-oscilloscope-specs] This reveals fast transitions, noise, and transients, though the displayed waveform is constrained by probe and oscilloscope bandwidth and sampling limits.[^tek-oscilloscope-specs]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. A low dropout voltage only allows operation with a small input-to-output headroom; it does not improve conversion efficiency across wide spreads. All load current passes through the regulator pass device, dissipating approximately `P = (V_in - V_out)*I_out`, with efficiency fundamentally limited by `V_out/V_in`. Stepping 12 V down to 3.3 V yields around 27.5% efficiency, with the remaining power wasted as heat.[^ti-slva079]
 
 ## Detailed explanation
 

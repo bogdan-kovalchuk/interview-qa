@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Open-collector outputs omit the upper pull-up transistor and can only sink current to ground. This design allows each output to safely sink up to `24 mA` and switch displays powered from rails higher than `5 V`. Each segment of the common-anode display requires an external current-limiting resistor to protect the LEDs and set operating current.[^ti-sn74ls47-datasheet]
 
 ## Detailed explanation
 

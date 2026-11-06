@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Crystal load capacitors typically range from a few to several tens of picofarads (pF). Automated video subtitles often confuse pF with µF – a million-fold error – making it critical to verify capacitance units against the schematic and crystal datasheet.[^udemy-electronics-course]
 
 ## Detailed explanation
 

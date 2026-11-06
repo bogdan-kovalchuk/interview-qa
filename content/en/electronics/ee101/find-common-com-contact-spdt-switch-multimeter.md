@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+De-energize and disconnect the switch from the circuit, then test continuity across each terminal pair in both toggle positions: COM is the only terminal that shows continuity alternately with each of the other two terminals. In a closed pair, the multimeter indicates low resistance or beeps, whereas an open pair reads OL or remains silent; exact readings depend on the instrument and contact condition.[^fluke-continuity]
 
 ## Detailed explanation
 

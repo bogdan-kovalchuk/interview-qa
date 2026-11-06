@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Antiparallel LEDs share the same two circuit nodes but are connected with opposite polarities. For either supply polarity, forward current flows through one LED while the other is reverse-biased; ensure the applied reverse voltage does not exceed the maximum rating in the datasheet.[^kingbright-led-ratings]
 
 ## Detailed explanation
 

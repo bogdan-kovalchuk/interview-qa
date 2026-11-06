@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Verify units and prefixes, ground node 0 reference, node connectivity, and source polarities; confirm that component models and analysis types match the measured target. Then compare the result with hand calculations for a simplified case: discrepancies can indicate schematic errors, simulator setup issues, or model limitations.[^aac-spice-series-parallel] [^aac-spice-model-quality]
 
 ## Detailed explanation
 

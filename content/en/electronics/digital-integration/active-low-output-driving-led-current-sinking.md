@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0006
-title: "Why is an LED connected with its anode to VCC and cathode to an active-low decoder output?"
+title: "Why is an LED connected with its anode to V_CC and cathode to an active-low decoder output?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An active-low output pulls down toward ground when asserted, completing the circuit to sink current. Bipolar TTL logic ICs can sink significantly greater current `I_OL` in the low state than they can source `I_OH` in the high state. Connecting the LED cathode to the output through a current-limiting resistor ensures full brightness without overloading the driving gate.[^ti-74ls138-datasheet]
 
 ## Detailed explanation
 

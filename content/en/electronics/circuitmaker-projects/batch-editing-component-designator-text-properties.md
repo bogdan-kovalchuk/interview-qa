@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Inconsistent font sizes and arbitrary text orientations make component markings difficult to read during assembly and increase the risk of silkscreen clipping onto exposed pads. EDA batch-editing tools allow designers to select all reference designators and unify their text height, stroke width, and orientation in a single operation. Standardized legends prevent soldering defects and streamline automated optical inspection and manual board repair.[^ipc-7351b]
 
 ## Detailed explanation
 

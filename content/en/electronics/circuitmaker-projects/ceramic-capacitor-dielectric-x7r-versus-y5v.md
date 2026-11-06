@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+X7R ceramic dielectric maintains capacitance stability within `±15%` across temperatures from `-55 °C` to `+125 °C`. In contrast, inexpensive Y5V capacitors can lose up to `80%` of their rated capacitance over temperature or under DC voltage bias. This capacitance collapse causes frequency drift and severe timing instability in oscillator circuits.[^tdk-mlcc-characteristics]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+`OR` gates perform bitwise logical addition of input signals. If a user presses two buttons simultaneously, the circuit generates a merged bitwise code, causing an unintended operation. To resolve this contention, a priority encoder (such as the 74x148) is used; it selects only the highest-priority input and ignores lower-priority active inputs.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

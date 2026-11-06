@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Autoplacers only process netlist connectivity rather than circuit function, resulting in chaotic component arrangements. Placement is a multi-constraint optimization problem balancing board outline, assembly ergonomics, thermal paths, manufacturing yield, cost, and aesthetics. Consequently, engineers perform placement manually, using autorouters only as secondary aids on non-critical boards.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

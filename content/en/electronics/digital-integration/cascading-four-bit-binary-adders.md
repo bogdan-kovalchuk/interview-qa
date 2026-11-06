@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Building an 8-bit adder requires two 74LS83 (or 74LS283) ICs, connecting carry-out `C4` of the lower-order stage to carry-in `C0` of the higher-order stage. Carry-in `C0` of the first stage is tied to ground (`GND`) for normal addition. The combined 8-bit sum is taken from outputs `Σ1–Σ4` of both ICs, with `C4` of the upper stage indicating carry overflow.[^ti-sn74ls83a-datasheet]
 
 ## Detailed explanation
 

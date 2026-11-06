@@ -1,11 +1,11 @@
 ---
 id: emb-elcmproj-0054
-title: "Why are 1 kOhm series resistors placed on UART lines between the MCU and USB bridge?"
+title: "Why are 1 kΩ series resistors placed on UART lines between the MCU and USB bridge?"
 track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Series 1 kΩ resistors limit bus-contention current if both UART transmitters drive opposing logic levels simultaneously. They also allow an external adapter or development shield to override the UART lines without desoldering the onboard bridge IC. Furthermore, the resistance dampens ringing reflections on high-speed signal edges.[^udemy-electronics-course][^arduino-uno-schematics]
 
 ## Detailed explanation
 

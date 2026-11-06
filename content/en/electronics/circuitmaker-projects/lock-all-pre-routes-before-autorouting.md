@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Without locking enabled, the autorouter can rip up, reroute, or modify previously established traces at will. Locking pre-routes preserves meticulously hand-routed power buses, sensitive analog paths, and decoupling loops intact. The autorouter is then restricted strictly to completing non-critical digital interconnects.[^udemy-electronics-course]
 
 ## Detailed explanation
 

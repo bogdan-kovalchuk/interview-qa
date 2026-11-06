@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal long-channel NMOS in the saturation region, `I_D = K*(V_GS - V_th)^2`, where `K` combines process and geometry parameters and depends on whether the `1/2` factor is absorbed. The model requires `V_GS > V_th` and `V_DS >= V_GS - V_th`; real current also deviates due to device non-idealities.[^aac-semiconductors]
 
 ## Detailed explanation
 

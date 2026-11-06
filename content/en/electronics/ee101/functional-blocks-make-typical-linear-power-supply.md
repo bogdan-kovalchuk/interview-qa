@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A step-down transformer reduces line AC voltage, a rectifier (diode bridge) converts it to unipolar pulsing DC, and a reservoir capacitor smoothes the ripple.[^fiore-rectification] A linear regulator at the final stage maintains a steady output voltage despite variations in line voltage and load current.[^ti-slva118a]
 
 ## Detailed explanation
 

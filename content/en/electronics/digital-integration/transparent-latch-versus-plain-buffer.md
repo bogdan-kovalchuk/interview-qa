@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74x244 is a purely combinational buffer that only drives input states onto its outputs with current amplification. In contrast, the 74x373 contains internal memory elements: while latch enable `LE` is `1`, outputs track inputs transparently, but when `LE` drops to `0`, the data is latched. This storage capability allows multiplexed processor buses to be freed for subsequent transfers.[^ti-74hc373]
 
 ## Detailed explanation
 

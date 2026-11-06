@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A long trace leading to a distant grounding point introduces distributed parasitic inductance. At high switching speeds, this causes transient inductive voltage spikes and localized ground bounce under the component. Placing a dedicated via immediately adjacent to the pad routes return currents along the shortest path directly into the ground plane.[^udemy-electronics-course][^ipc-2221b]
 
 ## Detailed explanation
 

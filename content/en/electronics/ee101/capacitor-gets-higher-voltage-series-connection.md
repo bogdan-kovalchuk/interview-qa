@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+For equal charge in an ideal steady state, the capacitor with the smaller capacitance develops the higher voltage because `V = Q/C`. During transients, distribution is determined by capacitances, but leakage spread and component tolerances can shift the actual voltage division; high-voltage strings require deliberate balancing circuits.[^aac-capacitors-series-parallel] [^ti-series-capacitor-voltage-balancing]
 
 ## Detailed explanation
 

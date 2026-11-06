@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A bench power supply with current limiting, a digital multimeter, access to an oscilloscope, and preferably a logic analyzer form a practical starter kit. Without these instruments, circuit debugging often degrades into blind guesswork.[^aac-measurement]
 
 ## Detailed explanation
 

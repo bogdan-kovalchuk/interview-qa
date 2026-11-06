@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a parallel bank, the voltage across every branch is identical because all components terminate at the same two nodes.[^aac-direct-current] Calculate each individual branch current using Ohm's law, `I_i = V/R_i`, and verify that their sum matches total current using KCL: `I_total = I_1 + I_2 + ...`.[^aac-direct-current]
 
 ## Detailed explanation
 

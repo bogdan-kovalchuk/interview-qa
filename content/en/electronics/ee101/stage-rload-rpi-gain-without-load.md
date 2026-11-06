@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Loaded gain is `A_v = -β*R_C_ac/(r_pi + (β+1)*R_E)`, where `R_C_ac = R_C || R_load ≈ 3.20 kΩ`, yielding `A_v ≈ -3.09`; unloaded gain is `A_v ≈ -4.54`. Load resistance cannot be ignored because it reduces stage gain by nearly one-third.[^fiore-common-emitter-amplifier]
 
 ## Detailed explanation
 

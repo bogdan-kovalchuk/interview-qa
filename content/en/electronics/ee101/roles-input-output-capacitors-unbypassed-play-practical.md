@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The input capacitor blocks DC base bias voltage from reaching the source, while the output capacitor blocks DC collector voltage from reaching the load; both pass the AC signal.[^fiore-common-emitter-amplifier] An unbypassed `R_E` lowers the voltage gain, but it also stabilizes gain against variations in `r'_e` and reduces distortion.[^fiore-common-emitter-amplifier]
 
 ## Detailed explanation
 

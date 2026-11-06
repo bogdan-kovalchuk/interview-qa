@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Designing without checking stock leads to fabricated boards that cannot be assembled because of end-of-life (EOL) obsolescence or prohibitive lead times. Substituting a chip in a different footprint requires redesigning the board layout, updating footprints, and paying for another fabrication run. Therefore, designers verify distributor inventory beforehand, ensuring adequate stock depth and multiple second sources.[^ipc-2221]
 
 ## Detailed explanation
 

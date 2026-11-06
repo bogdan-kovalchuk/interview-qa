@@ -1,11 +1,11 @@
 ---
 id: emb-elcmproj-0030
-title: "How is hybrid board routing organized combining manual routing and an autorouter?"
+title: "How is hybrid board routing organized using manual routing and an autorouter?"
 track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The engineer manually routes critical power nets, clock oscillators, and sensitive analog traces, locking them against changes. An autorouter is then run to route remaining non-critical digital lines rapidly. The process concludes with mandatory manual cleanup: removing acute trace angles, eliminating stubs and redundant vias, and optimizing clearances.[^udemy-electronics-course][^ipc-2221b]
 
 ## Detailed explanation
 

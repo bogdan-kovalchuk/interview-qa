@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a common-anode display, all LED anodes are tied together to `V_CC`, and individual segments turn on when their cathodes are driven `LOW`. In a common-cathode display, all cathodes share a common ground, and segments light up when their anodes are driven `HIGH`. Consequently, common-anode displays typically use drivers such as the 74LS47, whereas common-cathode displays pair with drivers such as the 74LS48.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

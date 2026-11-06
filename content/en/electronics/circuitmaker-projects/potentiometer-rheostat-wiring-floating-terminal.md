@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0014
-title: "Why must the unused outer terminal of a rheostat potentiometer be tied to the wiper?"
+title: "Why must the unused outer terminal of a potentiometer wired as a rheostat be tied to the wiper?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+If the unused terminal of the resistive track is left floating, any vibration or wiper oxidation causes an instantaneous open circuit. The oscillator circuit then sees infinite resistance, causing clock oscillation to fail completely. Tying the wiper to the outer terminal limits the fault-condition resistance to the maximum nominal value of the potentiometer.[^udemy-electronics-course]
 
 ## Detailed explanation
 

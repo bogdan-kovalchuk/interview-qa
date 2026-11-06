@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal unloaded RC circuit with the output across the capacitor, the transfer function is `H_C = V_C/V_in = 1/(1 + j*2π*f*R*C)`. As frequency increases, the capacitor's impedance decreases, so a larger portion of the signal drops across the resistor and the output weakens. The cutoff frequency `f_c = 1/(2π*R*C)` corresponds to a transfer magnitude of `1/sqrt(2)`.[^aac-rc-lowpass]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+SPICE calculates the behavior of specified models and operating conditions rather than automatically accounting for all real-board effects. Parasitic parameters, tolerances, temperature dependencies, and cross-coupling between traces appear in results only when represented by appropriate models or analysis directives; the available feature set depends on the simulator and netlist.[^ngspice-manual-models]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Monostable mode (one-shot) has a single stable quiescent state with OUT LOW: an external negative-going trigger at TRIG produces exactly one pulse of duration `t_pulse ≈ 1.1 * R * C` before the circuit returns to rest. Astable mode (multivibrator) has no stable state, continuously free-running and generating an unending periodic pulse train through automatic self-triggering.[^ti-ne555-datasheet]
 
 ## Detailed explanation
 

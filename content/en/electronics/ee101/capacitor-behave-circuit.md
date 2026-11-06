@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+After transients settle in an ideal DC circuit, a capacitor maintains constant voltage and carries zero current, effectively behaving as an open circuit. During charging, current decays over time; in an AC circuit, continuous voltage changes cause cyclic charging and discharging, with ideal reactance decreasing as frequency rises.[^aac-capacitor-transient] [^aac-capacitor-reactance]
 
 ## Detailed explanation
 

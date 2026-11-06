@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Combinational path delay equals the sum of propagation delays of all cascaded logic gates along the critical (longest) path. If a signal traverses a gate with a 15 ns delay followed by a gate with a 10 ns delay, the total propagation time is approximately 25 ns. This delay determines the minimum time required after input transitions before output data is stable and valid.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

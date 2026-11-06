@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Cutting perfboard and trimming leads can launch hard fragments and board particles at high velocity, so always wear safety glasses with side shields. After cutting, deburr the edges carefully to prevent debris from flying toward your face.[^osha-eye-protection]
 
 ## Detailed explanation
 

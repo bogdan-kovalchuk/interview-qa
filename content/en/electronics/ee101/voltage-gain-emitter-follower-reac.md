@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The voltage gain is `A_v ≈ R_E,ac / (r_e + R_E,ac) = 1000 / (26 + 1000) ≈ 0.975`, where `R_E,ac = R_E || R_load` and `r_e ≈ 26 mV / I_E = 26 Ω`.[^fiore-common-collector][^fiore-bjt-ac-model] The output signal is in phase with the input, with zero phase inversion.[^fiore-common-collector]
 
 ## Detailed explanation
 

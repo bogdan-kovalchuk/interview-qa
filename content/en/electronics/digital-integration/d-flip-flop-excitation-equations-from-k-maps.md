@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a D flip-flop, the next-state value strictly equals the logic level on the data input: `Q(t+1) = D`. Because of this characteristic equation, the Karnaugh map for each next-state bit directly serves as the excitation map for input `D`. Other flip-flop types (JK, T, SR) would require an intermediate translation step using transition excitation tables.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

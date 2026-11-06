@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Multiple drain pins on a specific MOSFET package are typically tied internally to a single drain node to provide parallel electrical and thermal conduction paths; the pinout must be verified in the device datasheet.[^onsemi-fds4685] They do not indicate separate transistors or guarantee higher current capability: limits are set by silicon die area, package ratings, PCB copper, and operating temperature.[^infineon-mosfet-layout]
 
 ## Detailed explanation
 

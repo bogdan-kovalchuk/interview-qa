@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Instead of building a complex combinational encoder from discrete gates, push buttons or an instruction bus are wired to the address lines of a ROM or flash memory IC. Predefined binary ALU operation codes are stored at memory addresses corresponding to single-bit inputs (such as 1, 2, 4, 8, and 16). The memory functions as a flexible lookup table (LUT), allowing control logic remapping without rewiring discrete gates.[^patterson-hennessy-cod]
 
 ## Detailed explanation
 

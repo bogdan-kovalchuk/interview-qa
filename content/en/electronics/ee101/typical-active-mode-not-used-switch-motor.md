@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+To guarantee saturation, base current is designed using a forced gain `β_forced` (typically 10) below the datasheet minimum `h_FE`, because effective current gain drops sharply in saturation and active-mode β does not apply.[^rohm-bjt-basics] During startup and stall conditions, a motor draws high stall current.[^ti-drv8231a] The transistor, flyback diode, and power supply must therefore be sized for peak stall and inrush current rather than steady-state running current alone.
 
 ## Detailed explanation
 

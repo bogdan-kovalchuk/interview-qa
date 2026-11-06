@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The LED drops a forward voltage `V_f`, leaving approximately `9 V - V_f` across the series resistor, so the circuit current equals this remaining voltage divided by 220 Ω.[^ti-led-resistor] Assuming `V_f = 2 V`, the estimated current is about 31.8 mA rather than `9/220`.
 
 ## Detailed explanation
 

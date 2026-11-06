@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Set the source phase to 0°, compute `Z_C = 1/(j*2π*f*C) = -j/(2π*f*C)`, and find the total impedance as `Z = R + Z_C`. Calculate the current `I = V_in/Z`, then the voltages `V_R = I*R` and `V_C = I*Z_C`. Finally, verify the complex relationship `V_R + V_C = V_in`.[^aac-series-rc-analysis]
 
 ## Detailed explanation
 

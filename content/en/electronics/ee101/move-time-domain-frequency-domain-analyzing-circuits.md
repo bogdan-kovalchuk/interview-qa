@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a linear circuit in sinusoidal steady state, phasors and complex impedance simplify the calculation of amplitudes and phases. Frequency-domain analysis shows how the circuit modifies components of different frequencies, which is useful for filters and amplifiers, whereas transient processes and non-linearities require additional analysis.[^aac-alternating-current] [^aac-frequency-domain]
 
 ## Detailed explanation
 

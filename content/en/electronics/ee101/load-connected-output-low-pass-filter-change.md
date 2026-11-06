@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Assuming an ideal source, a load `R_L` connected in parallel with C changes both the passband gain and the cutoff frequency. For a resistive load, the effective resistance in the time constant becomes `R||R_L`, shifting the cutoff to `f_c = 1/(2π*C*(R||R_L))`. The standard formula `1/(2π*R*C)` applies only to an unloaded filter.[^aac-low-pass-filters]
 
 ## Detailed explanation
 

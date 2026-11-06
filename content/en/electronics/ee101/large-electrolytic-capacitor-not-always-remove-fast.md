@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+At high frequencies, the effectiveness of an electrolytic capacitor is degraded by its equivalent series resistance (ESR), equivalent series inductance (ESL), and long lead or trace inductances.[^ti-switching-regulator-fundamentals] Local ceramic bypass capacitors placed close to the chip's power pins are therefore required to shunt high-frequency noise.[^ti-switching-regulator-fundamentals]
 
 ## Detailed explanation
 

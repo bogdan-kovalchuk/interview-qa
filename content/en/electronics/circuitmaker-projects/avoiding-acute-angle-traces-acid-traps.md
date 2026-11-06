@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Liquid etchant accumulates in sharp, wedge-like trace corners during PCB etching and resists washing out. These acid traps cause localized over-etching of the copper, leading to microfractures or open circuits during operation. In addition, sharp bends create local characteristic impedance discontinuities and increase electromagnetic radiation at high frequencies.[^ipc-2221]
 
 ## Detailed explanation
 

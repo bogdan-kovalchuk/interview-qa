@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+RC circuits are used in low-pass and high-pass filters, timing delays, and waveform shaping circuits. Choosing R and C sets the frequency response or the time constant `τ = R*C`; a debouncing circuit can suppress brief contact pulses, but the required time constant depends on switch characteristics and input thresholds.[^aac-rc-low-pass]
 
 ## Detailed explanation
 

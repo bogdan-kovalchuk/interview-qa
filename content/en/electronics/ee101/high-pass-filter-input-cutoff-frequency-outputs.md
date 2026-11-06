@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The cutoff frequency `f_c` is approximately 159.15 Hz. For an ideal unloaded RC high-pass filter, the outputs are approximately 0.0995 V, 0.707 V, and 0.995 V RMS, respectively.[^aac-high-pass-filters]
 
 ## Detailed explanation
 

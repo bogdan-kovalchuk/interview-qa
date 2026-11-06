@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In an RL low-pass filter, the inductor is connected in series with the input, and the load resistor is connected between the output node and common ground; the output is taken across the resistor. At high frequencies, the inductive impedance increases, so the fraction of voltage across the load drops.[^aac-low-pass-filters]
 
 ## Detailed explanation
 

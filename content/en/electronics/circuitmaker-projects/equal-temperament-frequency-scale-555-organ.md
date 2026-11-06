@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a 12-tone equal-temperament tuning system, the frequency of each successive semitone increases by a constant geometric ratio: `f_(n+1) = f_n * 2^(1/12) ≈ f_n * 1.05946`. A full octave of twelve semitones doubles the audio frequency. Calculating precise resistor values in synthesizer timing circuits relies directly on this exponential progression.[^ti-ne555-datasheet]
 
 ## Detailed explanation
 

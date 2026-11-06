@@ -1,6 +1,6 @@
 ---
 id: emb-elintro-0223
-title: "Why does an LED in the collector branch light when the transistor is off?"
+title: "Why does an LED in the collector branch light up when the transistor is off?"
 track: electronics
 section: introduction
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+If the resistor and LED form a separate closed path from `+V` to `GND`, current in this path does not flow through the transistor, so the LED can light up in the `cutoff` state. This depends on the connections of the specific circuit.[^aac-bjt-switch]
 
 ## Detailed explanation
 

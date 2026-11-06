@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Overshoot and ringing can be introduced by a long oscilloscope probe ground lead: its parasitic inductance forms a resonant LC circuit with the probe's input capacitance.[^keysight-probing-5988-5021] Using a short ground attachment minimizes inductance and shifts the ringing frequency beyond the bandwidth of the probe and oscilloscope.[^keysight-probing-5988-5021]
 
 ## Detailed explanation
 

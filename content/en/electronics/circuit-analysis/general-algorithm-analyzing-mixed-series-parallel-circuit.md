@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+Identify distinct series and parallel resistor groups and replace them with equivalent resistances until the network reduces to a single source and `R_eq`.[^aac-direct-current] Compute total source current using Ohm's law, then work backward to unfold branch voltages and currents, verifying the solution with KCL and KVL at the end.[^aac-direct-current]
 
 ## Detailed explanation
 

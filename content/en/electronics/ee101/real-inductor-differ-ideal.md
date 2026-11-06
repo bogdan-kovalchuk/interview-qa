@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A physical inductor exhibits winding resistance that causes conduction losses, along with inter-turn parasitic capacitance that forms a self-resonant frequency with the inductance. Near and above this frequency, the component ceases to behave as a simple inductor; in coils with magnetic cores, inductance can also drop sharply near saturation.[^aac-alternating-current]
 
 ## Detailed explanation
 

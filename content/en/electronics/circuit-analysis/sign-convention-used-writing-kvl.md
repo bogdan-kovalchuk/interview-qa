@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+First choose a loop traversal direction and sum potential changes consistently: moving from `-` to `+` represents a voltage rise, while moving from `+` to `-` is a voltage drop.[^aac-direct-current] Under the passive sign convention, current enters a resistor at the higher-potential terminal, so traversing in the direction of assumed current corresponds to a voltage drop.[^aac-direct-current]
 
 ## Detailed explanation
 

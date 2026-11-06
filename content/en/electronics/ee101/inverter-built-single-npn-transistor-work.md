@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The collector is pulled up to the supply via `R_C`, the emitter is grounded, and the input drives the base through `R_B`. A LOW input holds the transistor in cutoff so the output rises HIGH; a HIGH input drives it into saturation so the output drops LOW, producing a logical NOT. Along the DC load line `I_C = (V_CC - V_CE)/R_C`, with a 5 V supply, `R_C = 4.7 kΩ`, and `V_CE,sat ≈ 0.2 V`, the collector saturation current is ≈ 1.02 mA.[^fiore-bjt-dc-load-line]
 
 ## Detailed explanation
 

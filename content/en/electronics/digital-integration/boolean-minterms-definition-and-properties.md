@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+A minterm is a Boolean product (`AND`) of all circuit variables, where each variable appears once in either its complemented or uncomplemented form. Each minterm evaluates to logic `1` for exactly one specific combination of input values. Any Boolean function can be uniquely expressed as a canonical sum of products (`OR` across minterms) corresponding to the truth table rows that yield `1`.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

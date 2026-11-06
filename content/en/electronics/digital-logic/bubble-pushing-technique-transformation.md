@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Pushing an inversion bubble through a logic gate changes an AND gate into an OR gate (or vice versa) and places bubbles on all pins on the opposite side. To preserve circuit functionality, double inversion `not(not(Z)) = Z` is introduced first. One bubble is then pushed through the gate body while the compensating bubble remains on the interconnect signal line.[^tocci-digital-systems]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+An N-channel MOSFET forms a conducting channel where electrons are the majority charge carriers. A typical enhancement-mode device requires a sufficiently positive gate voltage relative to the source, but connecting the source to a lower potential is a common circuit convention rather than the physical definition of an N-channel device.[^aac-semiconductors]
 
 ## Detailed explanation
 

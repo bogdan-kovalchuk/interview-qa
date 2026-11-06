@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In current mode, a multimeter must be connected in series: the circuit is broken, and load current is routed through the meter's measuring input.[^fluke-current-measurement-fuses] Because this input has very low shunt resistance, connecting it in parallel across a voltage source causes a massive fault current that blows the fuse or damages the instrument.
 
 ## Detailed explanation
 

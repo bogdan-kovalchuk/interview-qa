@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Every signal current returns to its source, forming a closed loop. A large loop area between the signal conductor and its return path acts as a loop antenna that radiates electromagnetic emissions and picks up external interference. Routing the signal trace directly above an unbroken ground plane or adjacent to a return trace minimizes loop area, lowers parasitic loop inductance, and prevents signal distortion.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

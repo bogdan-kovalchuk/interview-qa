@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a Moore machine, outputs depend solely on the current state stored in flip-flops, ensuring synchronous and glitch-free output signals. In a Mealy machine, outputs are a function of both the current state and asynchronous external inputs. Any noise, transitions, or contact bounce on Mealy inputs can propagate directly to the outputs as transient glitches.[^harris-harris-ddca]
 
 ## Detailed explanation
 

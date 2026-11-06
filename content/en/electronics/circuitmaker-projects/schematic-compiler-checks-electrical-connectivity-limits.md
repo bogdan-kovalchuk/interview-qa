@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The schematic compiler and Electrical Rules Check (ERC) detect topological and syntax errors: duplicate designators, unconnected pins, pin-type matrix conflicts such as output-to-output shorts, and invalid net names. However, the compiler does not perform physical or circuit simulation. It cannot verify component values, power dissipation, overall functional correctness, or whether component operating points were calculated properly.[^altium-schematic-compilation]
 
 ## Detailed explanation
 

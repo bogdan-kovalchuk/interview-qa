@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+3D visualization allows verification of component heights, orientations, and enclosure clearances before manufacturing. It exposes physical collisions between bulky parts (tall capacitors, heatsinks, connectors) and internal enclosure structures. Exporting the assembly as a STEP model allows mechanical engineers to import the PCB into MCAD suites (SolidWorks, Inventor) for precise enclosure design.[^iso-10303-step]
 
 ## Detailed explanation
 

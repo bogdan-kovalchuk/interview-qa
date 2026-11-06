@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+Without a signal, measure `V_B`, `V_E`, and `V_C` to confirm active mode operation: in a silicon NPN, `V_BE` is approximately 0.7 V and the collector voltage is higher than the base.[^fiore-bjt-basics] Next, apply a small sine wave near 1 kHz and compare amplitude and phase: a common-emitter stage inverts the signal.[^fiore-common-emitter-amplifier] Increase the input until the output starts clipping, then back off into the linear range. Finally, sweep the frequency to observe the effect of coupling capacitors.
 
 ## Detailed explanation
 

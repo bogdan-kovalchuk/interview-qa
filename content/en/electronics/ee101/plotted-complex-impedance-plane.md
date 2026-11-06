@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In the complex impedance plane, resistance has a positive real part `R`, inductance has a positive imaginary part `jωL`, and capacitance has a negative imaginary part `-j/(ωC)`. Consequently, their ideal impedances point to the right, upward, and downward, respectively.[^aac-rxz-review]
 
 ## Detailed explanation
 

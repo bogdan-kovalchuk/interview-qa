@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The astable 555 intervals are `t_HIGH ≈ 0.693 * (R_A + R_B) * C` and `t_LOW ≈ 0.693 * R_B * C`. The total period is `T = t_HIGH + t_LOW ≈ 0.693 * (R_A + 2*R_B) * C`, yielding an output frequency `f ≈ 1.44 / ((R_A + 2*R_B) * C)`. The HIGH duty cycle is `D = (R_A + R_B) / (R_A + 2*R_B)`. Doubling timing capacitance C halves the oscillation frequency.[^ti-ne555-datasheet]
 
 ## Detailed explanation
 

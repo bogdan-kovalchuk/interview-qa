@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+If `τ = R*C` is small compared to the half-period, the RC high-pass filter output forms short pulses near the edges: positive after a rising edge and negative after a falling edge. Between edges, the exponential transient decays almost to zero; the circuit does not rectify the signal.[^aac-high-pass-filters] [^aac-capacitor-transient]
 
 ## Detailed explanation
 

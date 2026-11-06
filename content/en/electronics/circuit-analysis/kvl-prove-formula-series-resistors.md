@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a series circuit, the identical current `I` flows sequentially through all resistors. By KVL, the source voltage equals the sum of the series voltage drops: `V_s = I*R_1 + I*R_2 + ...`, which factors into `R_eq = R_1 + R_2 + ...`.[^aac-series-circuits]
 
 ## Detailed explanation
 

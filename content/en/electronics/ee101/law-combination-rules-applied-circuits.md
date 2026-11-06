@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In sinusoidal steady state at a common frequency, Ohm's law for phasors takes the form `V = I*Z`, where `V`, `I`, and `Z` are complex quantities. Series impedances add as `Z_total = ΣZ`, while parallel impedances combine as `1/Z_total = Σ(1/Z)`. All calculations are carried out in complex form to preserve phase information.[^aac-ac-series-parallel-laws]
 
 ## Detailed explanation
 

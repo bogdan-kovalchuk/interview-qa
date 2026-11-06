@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+The outer pad diameter of a via is calculated as the sum of the finished drill hole diameter and twice the annular ring width: `D_via = d_hole + 2 * b`. The copper annular ring compensates for CNC drilling positional tolerances and board misregistration during fabrication. An adequate ring width prevents drill breakout beyond the pad metallization.[^udemy-electronics-course]
 
 ## Detailed explanation
 

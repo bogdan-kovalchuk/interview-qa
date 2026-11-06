@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The equivalent resistance of a parallel group must always be strictly less than the smallest individual branch resistance. For `R1 = 1.2 kΩ` and `R2 = 100 Ω`, the result must be below `100 Ω`; any value equal to or greater indicates a topology or calculation mistake, such as misplaced calculator parentheses.[^aac-parallel-resistance]
 
 ## Detailed explanation
 

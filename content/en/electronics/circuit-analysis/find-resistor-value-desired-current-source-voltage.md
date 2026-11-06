@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal resistor connected directly across a source, the resistance is given by `R = V/I`.[^aac-ohms-law] Given `V = 10.5 V` and `I = 25 mA`, `R = 420 Ω`, and the dissipated power is `P = V*I = 0.2625 W`; choose a resistor power rating with adequate margin for operating temperature and cooling.[^aac-resistor-power]
 
 ## Detailed explanation
 

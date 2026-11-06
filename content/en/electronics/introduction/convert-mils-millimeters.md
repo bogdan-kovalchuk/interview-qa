@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+One mil equals 0.001 inch, and the international inch is exactly 25.4 mm, making 1 mil equal to 0.0254 mm.[^nist-inch] To convert mils to millimeters, multiply the value in mils by 0.0254; for example, 25 mil equals 0.635 mm.
 
 ## Detailed explanation
 

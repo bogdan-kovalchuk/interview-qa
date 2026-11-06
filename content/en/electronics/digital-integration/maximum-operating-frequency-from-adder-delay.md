@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0047
-title: "How do you estimate maximum operating frequency from adder propagation delay?"
+title: "How is maximum operating frequency estimated from adder propagation delay?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The maximum clock frequency `f_max` of a synchronous arithmetic datapath is determined by the minimum clock period `T_clk` covering the critical path delay. The required period is `T_clk >= t_cq + t_adder + t_setup + t_skew`, where `t_cq` is source register clock-to-Q delay, `t_adder` is combinational adder delay, `t_setup` is destination setup time, and `t_skew` is clock skew. Maximum frequency is `f_max = 1 / T_clk_min`.[^floyd-digital]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Sockets facilitate easy IC replacement, firmware flashing, and protect sensitive parts from soldering iron heat during prototyping and debugging. In mass production, they are omitted because sockets increase bill-of-materials cost, require extra assembly steps, and increase vertical profile height. Furthermore, spring contacts oxidize over time and loosen under vibration, degrading long-term reliability.[^ipc-a-610]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0189
-title: "What are the basic BJT current relations and why does I_C = βI_B not always hold?"
+title: "What are the basic BJT current relations, and why does I_C = βI_B not always hold?"
 track: electronics
 section: ee101
 sources:
@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+`I_E = I_C + I_B`; in the active region, `I_C = β*I_B` and `V_BE ≈ 0.7 V` for silicon, so `V_B = V_E + V_BE`. The formula fails in saturation where `I_C` is constrained by the external circuit rather than by `I_B`. For instance, with `I_B = 20 µA` and `β = 100`, the formula predicts 2 mA, but a circuit with 5 V and 5 kΩ permits only about 0.96 mA. Furthermore, β varies with current and temperature, making it only an approximation.[^fiore-bjt-basics][^mit-6071-bjt-notes][^fiore-bjt-datasheet]
 
 ## Detailed explanation
 

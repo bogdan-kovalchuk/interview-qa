@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a P-channel device, majority charge carriers are holes, which exhibit lower mobility than electrons in an N-channel device. For a given silicon die size, this lower mobility typically gives the P-channel MOSFET a higher `R_DS(on)`, although actual values depend on device geometry and operating conditions.[^infineon-mosfet-overview]
 
 ## Detailed explanation
 

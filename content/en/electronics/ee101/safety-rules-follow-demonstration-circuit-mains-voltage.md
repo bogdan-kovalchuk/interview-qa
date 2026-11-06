@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Mains circuits are lethal, so use a simulator or a safe isolated low-voltage source for exercises. Never touch an energized circuit; de-energize and verify zero voltage with an instrument before touching. Never float the oscilloscope ground: an autotransformer does not provide galvanic isolation, and an isolation transformer does not eliminate shock hazards between its secondary terminals. Measure component temperatures with instruments, never with fingers.[^osha-basic-electricity-safety]
 
 ## Detailed explanation
 

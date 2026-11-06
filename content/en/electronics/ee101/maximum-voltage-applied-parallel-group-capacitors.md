@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For this capacitor pair, the maximum voltage applied across the group cannot exceed 10 V, because parallel components share identical voltage. This represents the component rating limit; practical circuits must also account for supply tolerances, ripple, transient surges, and voltage derating requirements.[^aac-capacitors-series-parallel]
 
 ## Detailed explanation
 

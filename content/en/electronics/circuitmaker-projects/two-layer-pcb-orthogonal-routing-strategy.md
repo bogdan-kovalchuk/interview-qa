@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The orthogonal routing strategy dedicates one layer primarily to horizontal traces and the other layer to vertical traces. Maintaining mutual orthogonality between layers prevents routing channels from being blocked and simplifies complex interconnects. On two-layer boards, this approach must be used with caution to avoid fragmenting ground copper pours and disrupting current return paths.[^ipc-2221]
 
 ## Detailed explanation
 

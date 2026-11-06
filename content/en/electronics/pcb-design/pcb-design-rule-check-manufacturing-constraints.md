@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+DRC automatically verifies PCB topology against the manufacturing constraints of a specific fab house and the electrical requirements of the schematic. The tool checks minimum trace widths, clearances between copper elements, minimum hole sizes, annular ring widths, and solder mask bridges. This prevents short circuits, broken nets, and yield loss during board fabrication and assembly.[^ipc-2221b]
 
 ## Detailed explanation
 

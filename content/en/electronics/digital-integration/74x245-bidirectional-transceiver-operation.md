@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74x245 contains eight back-to-back pairs of three-state buffers for bidirectional data transmission. Direction pin `DIR` sets data flow: when `DIR = 1`, data flows from port `A` to port `B`, and when `DIR = 0`, data flows from `B` to `A`. When output enable `/OE` is `HIGH`, both ports enter the high-impedance (Hi-Z) state, isolating the transceiver from the buses.[^ti-sn74hc245-datasheet]
 
 ## Detailed explanation
 

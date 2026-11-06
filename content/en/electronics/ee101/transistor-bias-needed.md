@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0198
-title: "What is transistor bias and why is it needed?"
+title: "What is transistor bias, and why is it needed?"
 track: electronics
 section: ee101
 sources:
@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Transistor biasing establishes the steady DC operating point (Q-point) of voltages and currents for the device. This allows an AC signal to swing around the operating point without cutting off the transistor on alternate half-cycles, since the silicon base-emitter junction only conducts above roughly 0.7 V.[^fiore-bias-need]
 
 ## Detailed explanation
 

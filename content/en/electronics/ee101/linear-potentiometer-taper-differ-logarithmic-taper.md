@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a linear potentiometer, resistance from wiper to terminal varies roughly proportionally to mechanical displacement; in a logarithmic potentiometer, this relationship is non-linear. The precise curve, direction, and A/B marking depend on the manufacturer and regional conventions, so they must be verified in the specific model datasheet.[^analog-devices-taper]
 
 ## Detailed explanation
 

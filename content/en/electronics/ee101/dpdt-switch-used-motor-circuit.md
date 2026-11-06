@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A two-position DPDT switch can be cross-wired to swap polarity across the terminals of a reversible DC motor in each position, reversing its rotation direction. Both poles switch simultaneously, but effective operation relies on proper cross-connection of the throws and motor suitability for reversal.[^mit-dc-motor-switching]
 
 ## Detailed explanation
 

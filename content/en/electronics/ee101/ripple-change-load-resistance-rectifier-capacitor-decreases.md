@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Ripple increases: lower load resistance draws higher current, discharging the capacitor faster between peaks.[^fiore-rectification] For small ripple, `ΔV_pp ≈ I_load/(f_ripple*C)`, meaning ripple amplitude scales approximately with load current,[^fiore-capacitors] while average output voltage drops.[^fiore-rectification] Laboratory verification is done in steps: without a filter capacitor, with a capacitor in proper polarity, and finally under increased load.
 
 ## Detailed explanation
 

@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+In simple series-parallel circuits, Kirchhoff's laws and Ohm's law can be applied step by step without formulating a full system of simultaneous equations by progressively solving local voltages, currents, and equivalent resistances.[^aac-direct-current] Formal node or mesh equations become necessary when network topologies cannot be reduced by series-parallel reductions or when multiple unknowns are mutually coupled.[^aac-direct-current]
 
 ## Detailed explanation
 

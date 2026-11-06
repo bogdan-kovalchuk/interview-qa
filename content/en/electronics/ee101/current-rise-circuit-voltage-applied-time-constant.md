@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal series RL circuit with constant voltage source `V_0` and zero initial current, `I(t) = (V_0/R)*(1 - e^(-t/τ))`, where `τ = L/R`. After `5τ`, the current reaches approximately 99.3% of `V_0/R`; this estimate assumes constant `R` and `L` values.[^aac-alternating-current]
 
 ## Detailed explanation
 

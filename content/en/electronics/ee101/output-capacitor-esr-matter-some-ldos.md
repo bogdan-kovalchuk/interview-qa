@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+In an LDO with a `PMOS` or `PNP` pass element, the output capacitor's ESR introduces a zero that compensates for poles in the feedback loop, so the datasheet specifies an allowable ESR range and a minimum capacitance.[^ti-slva115][^ti-tps752q1-datasheet] An ESR that is too low (such as in ceramic capacitors) can leave the loop uncompensated, while an excessively high ESR can disrupt it at high frequencies; both cases risk instability. A high ESR also increases voltage sag during a load current step.[^ti-tps752q1-datasheet]
 
 ## Detailed explanation
 

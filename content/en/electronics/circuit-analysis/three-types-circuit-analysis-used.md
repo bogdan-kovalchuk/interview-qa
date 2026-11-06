@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+DC analysis determines operating bias or DC sweep responses, AC analysis calculates the small-signal frequency response linearized around an operating point, and transient analysis computes voltages and currents over time following dynamic input changes.[^aac-spice-analysis-types] [^aac-spice-ac-analysis] [^aac-spice-transient] DC is used to verify transistor biasing, AC evaluates gain and phase across frequency, and transient analyzes switching behavior, step responses, or pulses.[^aac-spice-analysis-types] [^aac-spice-ac-analysis] [^aac-spice-transient]
 
 ## Detailed explanation
 

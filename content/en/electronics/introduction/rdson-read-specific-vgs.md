@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`R_DS(on)` strongly depends on `V_GS`, drain current, and junction temperature, so design calculations must use guaranteed datasheet limits matched to actual driver and load conditions.[^infineon-optimos] The threshold voltage `V_GS(th)` represents only the onset of slight conduction at a small test current rather than full channel enhancement.[^infineon-optimos]
 
 ## Detailed explanation
 

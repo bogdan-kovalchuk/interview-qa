@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a given frequency, calculate `X_L = 2π*f*L` and `X_C = 1/(2π*f*C)`, then form `Z = R + j*(X_L - X_C)`. The magnitude is `|Z| = sqrt(R² + (X_L - X_C)²)`, and the angle is `atan2(X_L - X_C, R)`. In a series circuit, the current phasor is `I = V/Z`.[^aac-series-rlc]
 
 ## Detailed explanation
 

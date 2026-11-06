@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a collector circuit, the NPN controls the LED current as a low-side switch; an LED in the emitter branch operates as an emitter follower, where the emitter voltage depends on the base and the load current. In both cases, a series resistor is required to limit the LED current.[^aac-semiconductors]
 
 ## Detailed explanation
 

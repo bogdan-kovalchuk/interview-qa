@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The ALU serves as the primary execution engine of a CPU, performing arithmetic operations (addition, subtraction, increment, decrement) and bitwise logic operations (`AND`, `OR`, `XOR`, `NOT`) on machine words. It receives operands from the register file or data bus as selected by control unit opcodes. The result is written back to a destination register while updating status flags such as Zero, Sign, Carry, and Overflow.[^patterson-hennessy-cod]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+When current is drawn from a passive pull-up output, the HIGH level drops by `I*R` to `V_CC - I*R`.[^ti-slaa067] Because LED indicator current and downstream base drive both flow through the pull-up resistor, LED brightness alone does not verify valid logic voltage levels.
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The load is connected between the supply and drain, while the source connects to common `GND`. When the control signal applies a sufficiently positive `V_GS`, the N-channel MOSFET conducts current from load to ground; `V_GS(th)` marks only the onset of conduction rather than guaranteeing a low `R_DS(on)`.[^ti-mosfet-selection]
 
 ## Detailed explanation
 

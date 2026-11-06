@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a targeted attenuation limit, choose an RC high-pass cutoff frequency safely below 20 Hz and calculate `C = 1/(2*π*R*f_c)`. Assuming `R = 10 kΩ` and `f_c = 2 Hz`, this yields `C ≈ 8.0 µF`; a standard 8.2 µF value provides a close match.[^aac-capacitor-highpass]
 
 ## Detailed explanation
 

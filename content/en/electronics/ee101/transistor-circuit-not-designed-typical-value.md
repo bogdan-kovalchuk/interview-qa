@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+Current gain β varies widely between individual components[^fiore-ebers-moll] and drifts with collector current and operating temperature,[^fiore-bjt-datasheet] while `V_BE` is also temperature-dependent.[^fiore-pn-junction] A reliable design establishes the Q-point using resistor ratios and negative feedback so that collector current remains largely independent of β.[^fiore-biasing-need]
 
 ## Detailed explanation
 

@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+Output is approximately `V_in + V_F = 0 + 0.3 = 0.3 V`, and current is `I = (5 - 0.3)/10000 ≈ 0.47 mA` without an external load. This current flows from the supply through the pull-up resistor and diode into the input, so the driving device asserting logic low must sink it.[^nexperia-diode-handbook][^utah-cs6710-diode-logic]
 
 ## Detailed explanation
 

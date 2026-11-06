@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A divider has a finite output resistance: the load shunts `R_2`, altering the lower resistance and dropping `V_out`. Smaller resistor values reduce this sag but increase quiescent current and power losses. Therefore, a divider is typically suitable for a signal or high-impedance input rather than for powering a variable load.[^aac-direct-current]
 
 ## Detailed explanation
 

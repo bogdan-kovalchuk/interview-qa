@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The standard three-lead TO-92 package lacks a universal pinout convention. Depending on the naming standard (JEDEC, Pro Electron, or JIS), pin arrangements vary: 2N3904 uses an E-B-C pinout, BC547 uses C-B-E, and 2SC1815 uses E-C-B. Incorrect schematic symbol to footprint mapping can swap the base or invert the transistor, dropping gain to near zero or causing junction breakdown.[^onsemi-2n3904]
 
 ## Detailed explanation
 

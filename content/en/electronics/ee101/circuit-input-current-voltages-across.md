@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+At `f ≈ 1591.5 Hz`, with `R = 1 kΩ` and `C = 100 nF`, reactance is `X_C ≈ 1 kΩ`, yielding `Z ≈ 1000 - j1000 Ω`. For an input of `1 V RMS∠0°`, the current is approximately `0.707 mA∠45°`, giving `V_R ≈ 0.707 V∠45°` and `V_C ≈ 0.707 V∠−45°`, whose complex sum equals the input phasor. Rounding intermediate numbers yields only approximate values.[^aac-series-rc-analysis]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Connecting the inverted output of the last flip-flop to the serial input of the first stage creates a Johnson counter. An `n`-stage shift register produces a repeating sequence of `2n` states. The register fills sequentially with `n` ones over `n` clock pulses, followed by `n` clock pulses that clear the stages back to zeros.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

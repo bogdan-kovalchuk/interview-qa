@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`Stall current` is the current of a powered DC motor when its shaft is held stationary. It is typically much higher than the free-run current, so the switch, power supply, and wiring must be sized to accommodate this starting current.[^pololu-motor-stall]
 
 ## Detailed explanation
 

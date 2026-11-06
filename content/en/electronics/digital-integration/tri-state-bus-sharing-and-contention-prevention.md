@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In the high-impedance (Hi-Z) state, both output transistors are turned off, presenting an open circuit that electrically disconnects the pin from the bus line. Bus contention occurs when two or more drivers simultaneously drive conflicting logic levels onto a shared line. This condition creates large shoot-through currents, drops supply rails, and can permanently damage the drivers through thermal breakdown.[^ti-sdya009]
 
 ## Detailed explanation
 

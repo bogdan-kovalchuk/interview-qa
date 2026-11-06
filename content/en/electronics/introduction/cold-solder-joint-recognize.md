@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A cold solder joint exhibits poor wetting and typically has a dull, grayish, or porous appearance, often caused by insufficient heat or surface contamination. Visual inspection provides a clue rather than a definitive test, so suspicious joints should be verified with unpowered electrical measurements and reflowed or resoldered if necessary.[^ipc-cold-solder-definition]
 
 ## Detailed explanation
 

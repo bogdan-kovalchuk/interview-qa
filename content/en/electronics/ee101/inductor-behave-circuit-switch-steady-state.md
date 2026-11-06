@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a series RL circuit after applying a constant voltage, current through the inductor cannot change instantaneously, rising instead toward steady state with time constant `τ = L/R`. In steady-state DC, an ideal inductor develops zero voltage and acts as a short circuit; a physical coil retains winding resistance and core losses.[^aac-inductor-calculus]
 
 ## Detailed explanation
 

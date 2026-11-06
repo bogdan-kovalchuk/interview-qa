@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The continuity function injects a small test current, evaluates resistance, and sounds an audible beeper when resistance is below a model-dependent threshold.[^fluke-continuity-test] Testing must be performed on de-energized circuits, and components often require isolation to prevent parallel circuit paths from giving false continuity readings.[^fluke-continuity-test]
 
 ## Detailed explanation
 

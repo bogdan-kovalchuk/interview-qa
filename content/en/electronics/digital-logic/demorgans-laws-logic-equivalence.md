@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+De Morgan's laws state that the complement of a product equals the sum of the complements, `!(X * Y) = !X + !Y`, and the complement of a sum equals the product of the complements, `!(X + Y) = !X * !Y`. In digital circuit design, this establishes that a NAND gate is logically equivalent to an OR gate with inverted inputs, while a NOR gate is equivalent to an AND gate with inverted inputs.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

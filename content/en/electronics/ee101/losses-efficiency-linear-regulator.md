@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+`P_loss ≈ (V_in - V_out)*I_out`: at 100 mA this equals `4 V * 0.1 A = 0.4 W`, giving `η ≈ V_out/V_in ≈ 55.6%` assuming negligible quiescent current.[^ti-slva118a] At 500 mA losses increase to 2 W with the same efficiency, demanding verification of package and board thermal limits.[^ti-slva118a]
 
 ## Detailed explanation
 

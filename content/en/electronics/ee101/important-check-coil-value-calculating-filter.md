@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The cutoff frequency `f_c = R/(2*pi*L)` is inversely proportional to `L`, and microhenries versus millihenries differ by a factor of 1000, so a unit prefix mistake shifts the calculation by three orders of magnitude. For example, with `R = 1 kΩ`, cutoff is approximately 482 kHz at 330 µH and approximately 482 Hz at 330 mH.[^fiore-ac-circuit-analysis]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+As a rule of thumb, maintaining `R_load >= 10*R_2` limits loaded output voltage sag to approximately 9.1% or less compared to the unloaded divider. Because `R_load` is connected in parallel with the lower resistor `R_2`, the exact output voltage must be calculated using the parallel combination `R_2 || R_load`.[^ti-slaa067]
 
 ## Detailed explanation
 

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Winding resistance (DCR) and generator output resistance add to the series resistance, reducing low-frequency transmission in a low-pass filter and shifting `f_c`. Inductance tolerance also shifts `f_c` because `f_c` is inversely proportional to L; inductor datasheets often specify tolerances up to ± 20%.[^vishay-ihlp-2525cz-l7] Long leads and probe capacitance introduce parasitic elements causing additional poles or resonance;[^tektronix-abcs-probes] inter-turn coil capacitance produces self-resonance (SRF).[^vishay-inductors-primer]
 
 ## Detailed explanation
 

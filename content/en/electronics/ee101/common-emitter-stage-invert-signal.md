@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+When a positive input excursion increases base-emitter voltage, collector current increases, causing a larger voltage drop across `R_C`, which drives `V_C = V_CC - I_C*R_C` downward.[^fiore-ac-model-bjt][^fiore-bjt-dc-load-line] The output signal is therefore 180° out of phase with the input in the midband frequency range.[^fiore-common-emitter-amplifier]
 
 ## Detailed explanation
 

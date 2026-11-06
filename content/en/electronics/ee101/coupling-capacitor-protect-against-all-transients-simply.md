@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+No: a coupling capacitor is not a universal shield against voltage transients because an input step creates an output spike. Cascaded transfer functions can be multiplied directly only when the stages do not load each other, such as when separated by a buffer; otherwise, the combined circuit must be analyzed as a whole.[^aac-capacitor-transient] [^aac-filter-cascading]
 
 ## Detailed explanation
 

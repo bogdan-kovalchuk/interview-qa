@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+`V_OH` is the guaranteed minimum output voltage for logic 1, and `V_OL` is the maximum output voltage for logic 0. Input thresholds `V_IH` and `V_IL` define the minimum voltage recognized as logic 1 and the maximum voltage recognized as logic 0, respectively. The voltage difference between corresponding output and input levels defines the circuit's noise margins.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

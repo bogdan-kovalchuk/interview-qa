@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+During transition, mechanical switch contacts can rapidly make and break connection multiple times, creating several electrical edges instead of a single transition. A fast digital input can register these transitions as multiple events, requiring hardware or software debouncing; bounce duration depends on the specific component.[^ti-switch-debounce]
 
 ## Detailed explanation
 

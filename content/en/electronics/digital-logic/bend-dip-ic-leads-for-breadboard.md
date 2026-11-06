@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+New DIP ICs are manufactured with pins splayed outward to aid automatic insertion machinery. Forcing an unprepared package into a solderless breadboard or socket will bend or break the pins. Before insertion, gently roll each row of pins against a flat tabletop to align them perpendicular at 90 degrees.[^jedec-ms-001] [^horowitz-hill-art-electronics]
 
 ## Detailed explanation
 

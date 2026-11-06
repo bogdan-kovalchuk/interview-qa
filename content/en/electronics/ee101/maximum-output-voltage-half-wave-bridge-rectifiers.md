@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+For silicon diodes with `V_F ≈ 0.7 V`, a half-wave rectifier yields a peak of `5 - 0.7 = 4.3 V` because only one diode is in the conducting path.[^fiore-rectification] A bridge rectifier yields `5 - 2*0.7 = 3.6 V` because two diodes conduct in series during each half-cycle.[^fiore-rectification] While input voltage remains below diode drop thresholds, the diodes conduct negligibly, keeping output near zero around sine zero-crossings.[^fiore-rectification]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0181
-title: "Why must the diode bridge contacts not be rearranged at random?"
+title: "Why must the diode bridge terminals not be rearranged at random?"
 track: electronics
 section: ee101
 sources:
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The two AC terminals of a bridge rectifier are interchangeable because output DC polarity does not depend on which AC pin is positive.[^libretexts-fiore-rectification] Only the `+` and `-` DC terminals have fixed polarity, so connecting the secondary winding directly across them causes two bridge diodes to short-circuit the winding on alternate half-cycles. If both secondary leads are wired to the same terminal node, the winding is shorted directly.
 
 ## Detailed explanation
 

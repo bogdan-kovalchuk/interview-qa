@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Key measures include bulk capacitance to buffer low-frequency motor current transients, local ceramic decoupling capacitors near ICs, short power loops, a separate return path for motor current, and small ceramics directly across the power stage.[^ti-slva959b-motor-driver-layout] A separate return path prevents motor switching currents from modulating the ground reference of sensitive logic stages.[^ti-slva959b-motor-driver-layout]
 
 ## Detailed explanation
 

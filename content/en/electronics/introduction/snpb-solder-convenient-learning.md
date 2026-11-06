@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The Sn63/Pb37 alloy is eutectic and melts and solidifies at 183 °C without a pasty state interval. This sharp transition makes it easier to judge when the joint has frozen, although by itself it does not guarantee a shiny or reliable joint.[^aim-sn63pb37]
 
 ## Detailed explanation
 

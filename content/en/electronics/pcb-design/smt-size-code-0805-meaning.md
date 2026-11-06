@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The code uses imperial units: the first two digits indicate length and the last two indicate width in hundredths of an inch, meaning 0805 measures roughly `0.08 × 0.05` inches or `2.0 × 1.25 mm`. Components of this size remain easy to solder by hand under a magnifying glass. Designers transition to `0603` (`1.6 × 0.8 mm`) and `0402` (`1.0 × 0.5 mm`) with experience or when high packaging density is required.[^ipc-7351b]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+To expand word width, outputs `A > B`, `A < B`, and `A = B` of the lower-order stage connect to the matching expansion inputs of the next stage. For a standalone device or the least-significant first stage, expansion input `A = B` must be tied to logic `1` (`V_CC`), while `A > B` and `A < B` are tied to `GND`. Omitting this bias yields incorrect outputs when all compared bits are equal.[^ti-sn74hc85-datasheet]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 3.3 V regulator dissipates `P = (5 - 3.3)*0.1 = 0.17 W`. The 5 V regulator passes approximately 150 mA (50 mA local load plus 100 mA for the 3.3 V stage) and dissipates `P = (9 - 5)*0.15 = 0.6 W`. Combined dissipation is 0.77 W neglecting quiescent currents: cascading spreads heat across two packages, but does not reduce overall linear regulation loss.[^ti-slva118a]
 
 ## Detailed explanation
 

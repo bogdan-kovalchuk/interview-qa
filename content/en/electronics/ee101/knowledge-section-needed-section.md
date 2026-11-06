@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Before proceeding, it is useful to have a confident grasp of voltage, current, Ohm's law `V = I*R`, and basic series-parallel circuit analysis. Fundamentals of capacitors, inductors, and DC/AC distinctions help with subsequent topics, but comprehensive analysis of reactive circuits begins directly in section 4 of the course.[^aac-series-parallel-method] [^udemy-course-sections-2-and-4]
 
 ## Detailed explanation
 

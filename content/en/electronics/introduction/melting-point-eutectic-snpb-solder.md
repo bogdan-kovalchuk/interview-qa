@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Eutectic 63/37 SnPb solder melts at 183 °C, with manufacturers specifying identical solidus and liquidus temperatures. Unlike non-eutectic alloys with a wide melting range, it transitions directly between solid and liquid without an intermediate pasty state.[^lucas-milhaupt-sn63pb37]
 
 ## Detailed explanation
 

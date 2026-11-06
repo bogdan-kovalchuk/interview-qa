@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A logic-level MOSFET is engineered to achieve its rated `R_DS(on)` at a lower gate-to-source voltage `V_GS`.[^infineon-logic-level-mosfet] Usable drive voltage and on-resistance must always be verified under specific datasheet test conditions rather than assumed from a marketing label.[^infineon-logic-level-mosfet]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+First verify the actual wiring, component values and tolerances, source settings, and measurement technique before altering the theoretical model. In an RC circuit, the result depends on actual values of `R` and `C`, frequency, loading, and parasitic parameters.[^aac-alternating-current]
 
 ## Detailed explanation
 

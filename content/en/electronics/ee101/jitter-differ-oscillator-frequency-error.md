@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Frequency error is the static deviation from nominal frequency at room temperature, specified in ppm (such as ±50 ppm).[^abracon-quartz-glossary] Jitter represents short-term variations in the timing of individual clock periods relative to their ideal positions, changing cycle to cycle.[^ti-snaa285]
 
 ## Detailed explanation
 

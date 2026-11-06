@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The section covers mechanical switches and potentiometers, capacitors, inductors, RC/RL circuits, AC analysis, reactance, phasors, and complex impedance. It then addresses filters, diodes, power supplies, transistor stages, digital logic, clock oscillators, and the 555 timer; this reflects the outline of this specific course rather than a complete electrical engineering curriculum.[^udemy-course-section-4-outline]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A logic analyzer records multiple digital channels simultaneously and decodes bus protocols such as `I²C`, `SPI`, and `UART`. This is useful when verifying timing sequences and protocol state machines across many lines rather than analyzing analog signal fidelity.[^tek-oscilloscope-types]
 
 ## Detailed explanation
 

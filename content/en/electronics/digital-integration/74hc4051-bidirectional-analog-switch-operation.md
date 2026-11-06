@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74HC4051 contains eight bidirectional CMOS transmission gates that connect a selected channel `Y0–Y7` to a common pin `Z`. Because the internal switches are bidirectional, the device functions either as a multiplexer (routing 8 inputs to 1 output) or as a demultiplexer (routing 1 input to 8 destinations). Channel selection is controlled by three digital address lines `S0–S2`.[^ti-cd74hc4051-datasheet]
 
 ## Detailed explanation
 

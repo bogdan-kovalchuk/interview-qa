@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Adding zero gives `0 + 0 = 0` and `1 + 0 = 1` with no carry. Adding two ones gives `1 + 1 = 0` with a carry of 1 to the next bit, because the sum equals binary `10` (decimal 2). Adding three ones gives `1 + 1 + 1 = 1` with a carry-out of 1 (binary `11`, decimal 3).[^floyd-digital] [^harris-harris-ddca]
 
 ## Detailed explanation
 

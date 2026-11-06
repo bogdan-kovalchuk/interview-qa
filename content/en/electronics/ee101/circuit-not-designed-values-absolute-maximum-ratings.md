@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+These are limiting stress ratings: exceeding them can cause permanent device damage, and extended operation near them impairs long-term reliability. The datasheet guarantees functional operation only within recommended operating conditions, so circuits must be designed against those limits.[^ti-tps752q1-datasheet] Safety margins below absolute maximum ratings remain the engineer's responsibility.
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. The 1.75 V value is the open-circuit voltage of an unloaded divider; base current flows through the Thevenin equivalent resistance `R_TH`, producing a voltage drop so that `V_B = V_TH - I_B*R_TH` sits strictly below 1.75 V.[^fiore-voltage-divider-bias]
 
 ## Detailed explanation
 

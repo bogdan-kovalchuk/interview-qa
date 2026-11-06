@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Hardware subtraction is implemented via two's complement addition: `B - A = B + NOT(A) + 1`. Inverting the operand as `NOT(A)` produces only the one's complement. Converting it into a true two's complement requires adding one via carry-in `Cn = 1`, otherwise the resulting difference is off by one.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Heat-shrink tubing insulates exposed electrical connections and provides mechanical protection and strain relief for wires and components. Slide the tubing over the wire before making the joint, then position it over the soldered area and heat it according to the manufacturer's specification.[^molex-heat-shrink]
 
 ## Detailed explanation
 

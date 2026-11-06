@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Perfboards and wire wrapping are excellent for learning and proof-of-concept testing, but their manual layouts are difficult to reproduce consistently. A custom PCB fixes component placement and routing for manufacturing; in RF circuits, precise trace geometry and layer stackup directly dictate circuit performance.[^udemy-electronics-course] [^ti-rf-pcb-layout-review]
 
 ## Detailed explanation
 

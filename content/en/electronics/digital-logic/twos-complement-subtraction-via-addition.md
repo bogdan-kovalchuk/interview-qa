@@ -14,8 +14,8 @@ sources:
 
 ## Short answer
 
-TODO
+Subtracting `A - B` is mathematically equivalent to adding the negation `A + (-B)`. Because the negative value is formed as `~B + 1`, the processor executes subtraction using the exact same hardware adder circuit. Any carry-out generated beyond the register bit width during two's complement subtraction is simply discarded.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 
-TODO
+TODO

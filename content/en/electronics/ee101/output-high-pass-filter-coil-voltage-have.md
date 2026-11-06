@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Current in an RL circuit lags the source voltage by `arctan(2*pi*f*L/R)`, while the voltage across L leads that current by 90°. Therefore, the output phase `φ = 90° - arctan(2*pi*f*L/R)` is always positive: around +90° at low frequencies, +45° at `f_c`, and approaching 0° at high frequencies.[^fiore-ac-circuit-analysis]
 
 ## Detailed explanation
 

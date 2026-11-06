@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+**There is insufficient voltage compliance:** sinking 10 mA across 1 kΩ requires `V = I*R = 10 V`, yet the total supply rail is only 9 V.[^fiore-ohms-law] Because the target current is physically unattainable, the transistor saturates, and the sink delivers no more than roughly 9 mA as governed by the circuit resistance.[^fiore-bjt-dc-load-line]
 
 ## Detailed explanation
 

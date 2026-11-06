@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. For a single-pole RC low-pass filter, `f_c` is simply the frequency where amplitude drops to `1/sqrt(2)` of its passband level (about `3.01 dB`), not an abrupt cutoff. Above cutoff, amplitude rolls off smoothly toward `-20 dB` per decade, reaching approximately one-tenth of the passband amplitude at `10*f_c`.[^aac-rc-low-pass-transfer]
 
 ## Detailed explanation
 

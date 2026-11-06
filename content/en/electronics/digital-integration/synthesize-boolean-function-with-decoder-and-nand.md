@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0005
-title: "How to implement an arbitrary logic function using a 74x138 decoder and a single NAND gate?"
+title: "How can an arbitrary logic function be implemented using a 74x138 decoder and a single NAND gate?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The outputs of the 74x138 represent active-low minterms of the input variables. By De Morgan's laws, a `NAND` gate fed by active-low inputs is logically equivalent to an `OR` gate operating on active-high minterms. Implementing any Boolean function therefore requires only routing the corresponding decoder outputs into the inputs of a single multi-input `NAND` gate.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+HASL (hot air solder leveling) is economical and provides excellent solderability, but yields an uneven surface topography. ENIG (electroless nickel immersion gold) produces a flat, coplanar surface finish. Consequently, ENIG is selected for fine-pitch surface-mount ICs and BGA packages, whereas HASL is preferred for simpler, cost-sensitive designs.[^ipc-4552]
 
 ## Detailed explanation
 

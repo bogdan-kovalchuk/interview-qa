@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Resistor current is `I_R = (9 - 5.1)/390 = 10 mA`. With a 5 mA load, approximately 5 mA remains for the Zener. Without load, the entire current flows through the Zener: `P_Z = 5.1*0.01 ≈ 51 mW`, while the resistor dissipates `P_R = 3.9²/390 ≈ 39 mW`. These values assume nominal `V_Z = 5.1 V`: real `V_Z` has manufacturing tolerance and varies with current.[^nexperia-an90031]
 
 ## Detailed explanation
 

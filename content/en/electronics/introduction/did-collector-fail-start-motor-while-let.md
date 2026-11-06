@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+With an idealized 5 V drop, a 100 Ω resistor yields an upper-bound current of 50 mA, while 10 Ω gives 0.5 A by Ohm's law. Actual current is lower and depends on winding resistance, the transistor, and the power source; a smaller resistor can increase starting torque, but whether it is sufficient depends on the specific motor.[^aac-direct-current]
 
 ## Detailed explanation
 

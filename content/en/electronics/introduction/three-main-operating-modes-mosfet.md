@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In an enhancement-mode MOSFET, the primary modes are `cutoff`, `linear/triode`, and `saturation`: below threshold `V_GS` the channel barely conducts, in `linear` it exhibits low resistance suitable for switching, and in `saturation` current depends weakly on `V_DS`, which is useful for amplification. The threshold is not a hard cutoff of zero current, and operating conditions depend on polarity and device type.[^toshiba-mosfet-drive]
 
 ## Detailed explanation
 

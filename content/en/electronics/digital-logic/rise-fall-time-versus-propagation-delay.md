@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Rise time `t_r` is measured between 20% and 80% (or 10% and 90%) of signal amplitude, while fall time `t_f` is measured between 80% and 20% (or 90% and 10%). Propagation delay between input and output edges is measured between their 50% voltage points. Using the 50% threshold provides a consistent, standardized timing reference regardless of edge transition rates.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+No. A capacitor filter forces the diodes to conduct only in short charging current pulses near the peaks, so the secondary RMS current is higher than the average DC load current.[^fiore-rectification] For a bridge rectifier with a capacitor input filter, transformer manufacturer guidelines suggest approximately `I_DC ≈ 0.62*I_RMS` of the secondary.[^hammond-rectifier-guide]
 
 ## Detailed explanation
 

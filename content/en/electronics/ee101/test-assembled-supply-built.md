@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+First measure output voltage without load, then connect a sized load resistor to draw test current. Measure `V_in` directly across the IC INPUT and GND pins to confirm adequate headroom above dropout. Check output variation against load shifts and moderate input adjustments within datasheet limits for line and load regulation.[^ti-lm340] Any power indicator LED requires a current-limiting resistor, and its draw adds to total load.
 
 ## Detailed explanation
 

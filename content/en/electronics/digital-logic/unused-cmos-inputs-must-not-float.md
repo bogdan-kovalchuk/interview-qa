@@ -17,8 +17,8 @@ sources:
 
 ## Short answer
 
-TODO
+CMOS inputs have extremely high insulated-gate impedance and easily pick up electrostatic noise. A floating potential inevitably drifts into the intermediate threshold region near `V_CC / 2`, partially turning on both complementary transistors of the input inverter simultaneously. This causes excessive shoot-through current between supply rails, overheating, and erratic oscillation, so all unused inputs must be tied to `V_CC` or `GND`.[^ti-scba004]
 
 ## Detailed explanation
 
-TODO
+TODO

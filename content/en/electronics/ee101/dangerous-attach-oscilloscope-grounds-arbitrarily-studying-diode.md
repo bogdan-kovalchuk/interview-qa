@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Probes of a standard oscilloscope share earth ground through the line cord safety conductor, so connecting ground clips to two different bridge nodes, such as the negative DC rail and an AC input terminal, shorts out part of the bridge.[^tektronix-abcs-probes] If the bridge is fed directly from the AC mains, the ground lead also creates a dangerous short to earth ground.[^tektronix-abcs-probes] Bridges are safely studied in simulation or from an isolated low-voltage transformer secondary, keeping all ground clips on the negative DC output.
 
 ## Detailed explanation
 

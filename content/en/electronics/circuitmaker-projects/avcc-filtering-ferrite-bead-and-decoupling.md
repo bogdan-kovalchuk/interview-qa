@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+High-speed switching in digital CPU cores injects high-frequency noise and voltage ripple onto the primary `VCC` bus. A low-pass filter composed of a 10 µH inductor (or ferrite bead) and a decoupling capacitor attenuates these transients. Providing clean supply voltage to `AVCC` prevents digital rail noise from entering the internal ADC comparator and sample network, preserving conversion accuracy.[^microchip-atmega328p-datasheet]
 
 ## Detailed explanation
 

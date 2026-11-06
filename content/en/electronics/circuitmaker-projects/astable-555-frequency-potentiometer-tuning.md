@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A 555 astable oscillator frequency depends on capacitor charge and discharge times: `f approx 1.44 / ((R_A + 2 * R_B) * C)`. Wiring potentiometers as rheostats in series with fixed resistors smoothly adjusts equivalent timing resistance. This allows tuning oscillation rates from fractions of a hertz to hundreds of kilohertz while fixed series resistors protect the discharge transistor against short circuits.[^ti-lm555-datasheet]
 
 ## Detailed explanation
 

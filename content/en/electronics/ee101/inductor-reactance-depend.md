@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a sinusoidal signal, an ideal inductor has reactance `X_L = 2*pi*f*L`, which increases proportionally with frequency `f` and inductance `L`. In steady-state DC with `f = 0`, its ideal `X_L` equals zero; practical windings retain non-zero wire resistance.[^aac-alternating-current]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A real inductor has winding resistance and frequency-dependent core losses, and at sufficiently high frequencies parasitic capacitance also matters, making a pure `j*ω*L` model limited. A multimeter in Ω mode measures winding DC resistance, not inductance. Measuring L requires an LCR meter or another instrument that measures impedance at a specified frequency.[^aac-inductor-quirks] [^keysight-4263b-lcr]
 
 ## Detailed explanation
 

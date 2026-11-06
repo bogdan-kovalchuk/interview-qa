@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The impedance `Z = 3 + j4 Ω` has a magnitude of `5 Ω` and an angle of `53.13°`. By Ohm's law for phasors, the current equals `2∠-53.13° A`, or `1.2 - j1.6 A RMS`. The sign of the angle indicates that current lags voltage.[^aac-ac-complex-ohms]
 
 ## Detailed explanation
 

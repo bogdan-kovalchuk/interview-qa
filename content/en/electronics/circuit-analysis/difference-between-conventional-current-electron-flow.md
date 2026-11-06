@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+**Conventional current** is defined as the direction in which positive charge would move, which in metallic conductors is opposite to the average drift of negative electrons. Both conventions yield identical physical calculations, but standard circuit analysis and component schematic symbols adhere to conventional current.[^aac-conventional-electron-flow]
 
 ## Detailed explanation
 

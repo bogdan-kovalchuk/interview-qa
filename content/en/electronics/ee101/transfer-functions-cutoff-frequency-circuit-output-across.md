@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an unloaded ideal circuit, `H_R = R/(R + j*ω*L)`, `H_L = j*ω*L/(R + j*ω*L)`, and the cutoff frequency is `f_c = R/(2π*L)`. At cutoff, both magnitudes equal `1/√2`, while the phases are −45° for R and +45° for L. For R = 200 Ω and L = 2.2 mH, the cutoff frequency is approximately 14.47 kHz.[^aac-series-rl]
 
 ## Detailed explanation
 

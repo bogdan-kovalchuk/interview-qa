@@ -1,6 +1,6 @@
 ---
 id: emb-elcirc-0045
-title: "When should you use `.op`, `.tran` and `.ac` in SPICE?"
+title: "When should you use `.op`, `.tran`, and `.ac` in SPICE?"
 track: electronics
 section: circuit-analysis
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+`.op` finds the DC operating point; `.tran` displays the time-domain response to specified stimuli; `.ac` computes the small-signal frequency response linearized around the operating point. An `.ac` analysis requires an AC source excitation, whereas large-signal nonlinear behavior is typically examined using `.tran`.[^ngspice-analysis-types]
 
 ## Detailed explanation
 

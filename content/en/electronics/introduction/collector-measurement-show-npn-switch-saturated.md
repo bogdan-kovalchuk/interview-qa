@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a saturated NPN switch, the voltage `V_CE(sat)` is low but non-zero; its specific value depends on the transistor and the load current. Therefore, the collector voltage is close to the emitter voltage if the emitter is connected to `GND`.[^aac-bjt-switch]
 
 ## Detailed explanation
 

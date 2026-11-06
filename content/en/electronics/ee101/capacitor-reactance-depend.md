@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a sinusoidal signal, `X_C = 1/(2π*f*C)`, where `f` is frequency and `C` is capacitance. Reactance decreases as either parameter increases; the ideal formula approaches infinity at `f = 0`, whereas a real capacitor exhibits leakage and parasitic components.[^aac-capacitor-reactance]
 
 ## Detailed explanation
 

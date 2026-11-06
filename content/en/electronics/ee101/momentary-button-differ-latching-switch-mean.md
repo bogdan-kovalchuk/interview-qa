@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A momentary switch maintains its active state only while actuated and returns when released; a latching switch maintains its state until actuated again. NO designates normally open contacts in the unactuated state, while NC designates normally closed contacts; actuation reverses the respective connection state.[^aratas-switch-basics]
 
 ## Detailed explanation
 

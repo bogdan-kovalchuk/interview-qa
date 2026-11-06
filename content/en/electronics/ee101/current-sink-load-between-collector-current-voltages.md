@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+With `V_BE ≈ 0.7 V`, emitter current is `I_E = (1.7 - 0.7)/100 = 10 mA`, and `I_C ≈ I_E`.[^fiore-bjt-basics] The load voltage drop is approximately 2.2 V, leaving `V_C ≈ 6.8 V` and `V_E ≈ 1 V`, which confirms active-mode operation with sufficient headroom.[^mit-6071-bjt-notes]
 
 ## Detailed explanation
 

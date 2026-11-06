@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Low-to-high (`t_PLH`) and high-to-low (`t_PHL`) transitions are governed by different internal pull-up and pull-down transistor paths with unequal drive strengths and parasitic capacitances. In the 74LS series, a 74LS32 (OR) gate typically exhibits lower or comparable propagation delay relative to a 74LS08 (AND). When a critical timing path fails its timing budget, transforming logic equations to use faster gate types optimizes total circuit speed.[^ti-74ls-logic-databook]
 
 ## Detailed explanation
 

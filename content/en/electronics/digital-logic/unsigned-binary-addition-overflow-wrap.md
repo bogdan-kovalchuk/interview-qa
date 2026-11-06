@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+When addition produces a sum exceeding the maximum representable value `2^n - 1`, unsigned overflow occurs. For example, adding 1 to the 8-bit maximum of 255 (binary `11111111`) generates a carry into the ninth bit, wrapping the 8-bit register result to 0. The carry-out bit is captured in a processor status flag or discarded, corrupting the direct register result.[^harris-harris-ddca] [^patterson-hennessy-cod]
 
 ## Detailed explanation
 

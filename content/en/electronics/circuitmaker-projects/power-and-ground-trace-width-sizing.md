@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Main power and ground buses carry the aggregated return and supply currents of all circuit loads. Increasing trace width lowers ohmic DC resistance and parasitic loop inductance. This minimizes static voltage drops across power rails and shields logic ICs from switching transients.[^udemy-electronics-course]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A raw PWM pulse train contains high-frequency switching carrier components and harmonics that cause non-linear distortion, RF interference, and unnecessary heating in the amplifier and speaker voice coil. A low-pass filter with cutoff frequency `f_c = 1 / (2 * pi * R * C)` extracts the baseband audio envelope by smoothing pulse transitions. The downstream amplifier receives a reconstructed analog audio waveform free of carrier switching noise.[^ti-pwm-audio-appnote]
 
 ## Detailed explanation
 

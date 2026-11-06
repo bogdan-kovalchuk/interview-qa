@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+During logic switching transitions, digital ICs draw short, high-frequency supply current spikes. The parasitic inductance of power traces causes voltage dips and glitches that can disrupt neighboring ICs. Placing a ceramic capacitor directly adjacent to the power pins provides a local charge reservoir and shunts high-frequency noise.[^horowitz-art-of-electronics]
 
 ## Detailed explanation
 

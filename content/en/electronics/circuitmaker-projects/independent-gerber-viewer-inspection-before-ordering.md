@@ -1,11 +1,11 @@
 ---
 id: emb-elcmproj-0070
-title: "Why must Gerber files be inspected in an independent viewer before submitting to manufacturing?"
+title: "Why must Gerber files be inspected in an independent viewer before submitting them for manufacturing?"
 track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+An internal EDA viewer often renders the native design database directly, masking export glitches. A standalone viewer (such as Gerbv or ViewMate) parses the exact raw vectors and aperture commands that manufacturing equipment will execute. This allows designers to catch misaligned layers, corrupted aperture definitions, or missing copper pours prior to costly board fabrication.[^udemy-electronics-course][^ucamco-gerber-spec]
 
 ## Detailed explanation
 

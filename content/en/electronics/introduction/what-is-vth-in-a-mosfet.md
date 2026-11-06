@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+`V_GS(th)` is the gate-source voltage measured at a specified small drain current and test conditions in the datasheet; it is not the full turn-on voltage. Achieving low `R_DS(on)` typically requires a significantly higher `V_GS`, which should be taken from the specified test conditions of the given MOSFET.[^aac-semiconductors]
 
 ## Detailed explanation
 

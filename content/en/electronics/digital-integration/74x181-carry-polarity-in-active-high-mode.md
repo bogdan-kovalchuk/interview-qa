@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0050
-title: "Why do the carry signals Cn and Cn+4 in the 74x181 have inverted polarity when operating with active-high data?"
+title: "Why do carry signals `Cn` and `Cn+4` in the 74x181 have inverted polarity when operating with active-high data?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74x181 is designed to support both active-high and active-low operand data conventions. When operating with active-high data, carry inputs and outputs use active-low logic: `Cn = 1` represents no carry-in, while `Cn = 0` represents an asserted carry-in. For standard addition `A + B` without an incoming carry, input `Cn` must be tied to logic high (`1`).[^ti-sn74ls181-datasheet]
 
 ## Detailed explanation
 

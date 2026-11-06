@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A coupling capacitor placed in series with a signal blocks DC and forms a high-pass network with source and load resistances. This allows transferring an AC signal between stages without shifting their DC bias levels. For a simple RC circuit, `f_c = 1/(2*π*R*C)`, where `R` is the effective resistance seen by the capacitor.[^aac-input-output-coupling] [^aac-capacitor-highpass]
 
 ## Detailed explanation
 

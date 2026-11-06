@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Early prototype revisions should include exposed test points on power rails, ground, and critical signal lines for oscilloscope probe attachment. Designers also include zero-ohm resistors or solder jumpers to disconnect functional blocks, along with prototyping breakout pads. These provisions allow engineers to isolate faults and solder bodge wires or modification parts without damaging the PCB substrate.[^ipc-2221]
 
 ## Detailed explanation
 

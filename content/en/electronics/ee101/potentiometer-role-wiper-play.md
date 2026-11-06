@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A potentiometer is a resistive component with two outer terminals and a movable contact (wiper) that connects an output to a selected point along the resistive element. The full resistance is measured across the outer terminals, while the wiper divides this into two partial resistances whose sum approximately equals the total.[^bourns-potentiometer]
 
 ## Detailed explanation
 

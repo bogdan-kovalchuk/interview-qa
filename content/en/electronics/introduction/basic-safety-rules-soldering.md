@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Keep the hot soldering tip in its stand, do not touch it, and use fume extraction to pull flux smoke away from your face.[^hakko-fx888d-safety] [^hse-solder-fume-indg248] Wear eye protection when there is a risk of flying debris or solder splashes.[^osha-eye-protection] Do not overheat the iron, and wash your hands before eating or taking a break if using leaded solder to avoid transferring residues.[^hse-soldering-controls]
 
 ## Detailed explanation
 

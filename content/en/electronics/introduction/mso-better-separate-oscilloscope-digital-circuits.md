@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+An `MSO` combines an oscilloscope with a digital logic analyzer in a single instrument. It allows correlated viewing of analog signal integrity, supply rail ringing, and bus protocol transitions on a shared timebase.[^tek-mso-digital-circuits]
 
 ## Detailed explanation
 

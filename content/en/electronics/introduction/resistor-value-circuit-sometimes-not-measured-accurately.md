@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Parallel circuit paths on the PCB alter the measurement, causing the multimeter to report the equivalent network resistance across the probes rather than the value of the isolated resistor. For an accurate reading, one terminal must often be desoldered or isolated from the rest of the circuit.[^fluke-in-circuit-resistance]
 
 ## Detailed explanation
 

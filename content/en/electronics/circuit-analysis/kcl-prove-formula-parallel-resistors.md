@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For resistors connected across the same two nodes, the branch voltage `V` is identical across each element. Applying KCL and Ohm's law yields total current `I_s = V/R_1 + V/R_2`, which gives `1/R_eq = 1/R_1 + 1/R_2`, reducing for two resistors to `R_eq = R_1*R_2/(R_1+R_2)`.[^aac-parallel-resistors]
 
 ## Detailed explanation
 

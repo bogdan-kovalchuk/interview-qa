@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+BJTs are worth learning because they represent a fundamental technology for amplification and switching that is still widely encountered and offers distinct practical advantages. MOSFETs are often preferred as power switches due to simpler drive requirements and faster switching, but the choice depends on voltage, losses, speed, and cost for the specific application.[^ti-bjt-mosfet-switching]
 
 ## Detailed explanation
 

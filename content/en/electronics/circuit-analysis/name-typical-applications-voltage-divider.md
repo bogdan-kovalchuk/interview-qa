@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A voltage divider scales down a signal level for an ADC input and enables measuring battery voltage if its output matches the allowed input range. A potentiometer is used as an adjustable divider to set a signal level; a passive divider itself is not a stable power source.[^adi-voltage-divider] For an ADC, one must consider its input loading, source resistance, and settling time rather than only the ideal resistor ratio.[^ti-voltage-divider-adc]
 
 ## Detailed explanation
 

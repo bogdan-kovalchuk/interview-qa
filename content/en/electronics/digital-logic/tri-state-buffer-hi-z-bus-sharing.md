@@ -1,6 +1,6 @@
 ---
 id: emb-eldig-0013
-title: "Why is a tri-state buffer and Hi-Z state needed in digital circuits?"
+title: "Why are a tri-state buffer and a Hi-Z state needed in digital circuits?"
 track: electronics
 section: digital-logic
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Directly connecting standard push-pull outputs causes a short circuit whenever one driver asserts HIGH and another drives LOW. A tri-state buffer includes an enable input (typically active-low `/OE`), which disconnects the output into a high-impedance Hi-Z state when disabled. In the Hi-Z state, output impedance reaches megohms, allowing multiple devices to safely share a common multiplexed data bus without bus contention.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

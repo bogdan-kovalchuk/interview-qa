@@ -1,6 +1,6 @@
 ---
 id: emb-elcmproj-0022
-title: "Why must a clearance of at least 20-30 mil be maintained between component bodies on a PCB?"
+title: "Why must a clearance of at least 20–30 mil be maintained between component bodies on a PCB?"
 track: electronics
 section: circuitmaker-projects
 sources:
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A minimum clearance of 20–30 mil (approximately 0.5–0.75 mm) accommodates component manufacturing tolerances and prevents mechanical interference between adjacent bodies. It also ensures adequate clearance for soldering iron tips, visual joint inspection, and rework without damaging neighboring parts. Furthermore, this gap leaves space between pads for signal routing channels and reliable solder mask dams.[^udemy-electronics-course]
 
 ## Detailed explanation
 

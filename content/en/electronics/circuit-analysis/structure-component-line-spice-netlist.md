@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In ngspice, a component line typically specifies its name, the nodes required for that specific element type, and then its value or parameters.[^ngspice-netlist-manual] For example, `R1 1 2 1k` defines a resistor, while `V1 1 0 DC 5` defines a DC source between node 1 and ground node 0; the format of remaining fields depends on the component type.[^ngspice-netlist-manual]
 
 ## Detailed explanation
 

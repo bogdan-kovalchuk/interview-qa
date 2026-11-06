@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a series RC circuit with `R = X_C = 1 kΩ`, the current equals `4.24 mA RMS` and the power dissipated by R is `18 mW`.[^aac-alternating-current] The voltage across the capacitor equals `4.24 V RMS` (approximately `6 V peak` for a sine wave).[^aac-alternating-current]
 
 ## Detailed explanation
 

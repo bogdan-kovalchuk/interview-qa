@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0033
-title: "How are persistence of human vision leveraged in dynamic display multiplexing and scanning?"
+title: "How is persistence of vision leveraged in dynamic display multiplexing and scanning?"
 track: electronics
 section: digital-integration
 sources:
@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The human eye cannot distinguish discrete light pulses when flash rates exceed approximately `30–50 Hz`, integrating them into a continuous visual perception. In multiplexed LED displays, individual digits or rows are activated sequentially at high speed. This technique substantially reduces the number of driver pins and routing traces required to control multi-digit panels.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

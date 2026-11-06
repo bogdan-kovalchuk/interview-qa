@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A Boolean variable and its complement always take mutually opposite truth values of 0 and 1. Because a logical AND with 0 is always 0, the conjunction yields `X * /X = 0`. Because a logical OR with 1 is always 1, the disjunction yields `X + /X = 1`. These complement identities form the cornerstone of Boolean logic minimization, allowing redundant terms and logic gates to be eliminated.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

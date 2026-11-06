@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+A negative impedance angle indicates that the circuit is overall capacitive in sinusoidal steady state. Current leads voltage by the absolute value of this angle; for an ideal capacitor, this lead is 90°.[^aac-power-factor-angle] [^aac-rc-phase]
 
 ## Detailed explanation
 

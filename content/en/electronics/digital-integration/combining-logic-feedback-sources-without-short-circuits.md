@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Wiring two push-pull outputs directly together creates a short circuit whenever one driver outputs logic `1` (`V_CC`) while the other drives logic `0` (`GND`). The resulting bus contention draws excessive currents, degrades logic levels, and risks thermal damage to the IC. Safely combining feedback signals or manual inputs requires a gating logic element such as an `OR` gate.[^ti-sdya009]
 
 ## Detailed explanation
 

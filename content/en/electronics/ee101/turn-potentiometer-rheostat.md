@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Connect the wiper to one outer terminal, and place the external circuit between this joined connection and the remaining outer terminal: the potentiometer then operates as a two-terminal variable resistor. Its resistance varies roughly from zero to `R_total`, allowing current adjustment in a series circuit; actual limits depend on contact resistance and component construction.[^aac-potentiometer-rheostat]
 
 ## Detailed explanation
 

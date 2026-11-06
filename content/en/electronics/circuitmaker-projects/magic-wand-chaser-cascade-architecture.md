@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A 555 astable timer generates clock pulses at several hertz to drive a 74HC393 binary counter. The upper three bits of the counter feed into a 74HC138 3-to-8 decoder, which sequentially activates one of eight output channels. The active-low output pulls current through the selected LED to ground, creating the chasing light effect.[^udemy-electronics-course]
 
 ## Detailed explanation
 

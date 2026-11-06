@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A schematic abstractly defines electrical connectivity: component symbols and their logical connections, without any physical geometry. A PCB layout represents the physical board: outline, component footprints, copper traces across layers, and drilled holes. In CircuitMaker, these are managed as two separate documents of one project, `.SchDoc` and `.PcbDoc`.[^montrose-emc-pcb]
 
 ## Detailed explanation
 

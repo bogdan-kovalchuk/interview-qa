@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+No, even though the logic function is identical. Commercial SN74 series parts feature multi-emitter inputs[^ti-sn74ls00], and true TTL uses a totem-pole output stage[^adi-ttl-lab], whereas an RTL gate uses a passive pull-up resistor.[^utah-cs6710-diode-logic] As a result, guaranteed voltage levels and drive capability differ significantly, requiring compatibility to be verified against the datasheet.
 
 ## Detailed explanation
 

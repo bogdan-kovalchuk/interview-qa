@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A square wave consists of a fundamental frequency and higher harmonics, and the RC low-pass filter attenuates its high-frequency components. As a result, sharp transitions become rounded. In the time domain, the capacitor charges and discharges exponentially through the resistor with a time constant of `τ = R*C`.[^aac-low-pass-filters]
 
 ## Detailed explanation
 

@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The central common terminal of the switch connects to the system power rail. One outer throw connects to the positive battery terminal, while the opposite throw is left unconnected or pulled to ground through a bleeder resistor. In the active position, battery power feeds the circuit, while the open position disconnects and unpowers the device.[^udemy-electronics-course][^e-switch-basics]
 
 ## Detailed explanation
 

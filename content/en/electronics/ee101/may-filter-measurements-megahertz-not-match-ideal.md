@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For R = 1 kΩ and L = 330 µH, `f_c = R/(2*pi*L) ≈ 482 kHz`, so `10*f_c` reaches approximately 4.8 MHz. At these frequencies, the inductor's distributed capacitance (its SRF) and winding resistance alter its behavior, while breadboard capacitance, probe loading, and instrument bandwidth also distort the measurement.[^vishay-inductors-primer] If the measurement curve becomes non-monotonic, check the circuit model and layout rather than just arithmetic.
 
 ## Detailed explanation
 

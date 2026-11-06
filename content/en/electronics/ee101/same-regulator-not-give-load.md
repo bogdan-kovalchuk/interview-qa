@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Delivering 5.1 V into 100 Ω requires `5.1/100 = 51 mA`, but the 390 Ω resistor at `V_out = 5.1 V` can supply only `(9 - 5.1)/390 = 10 mA`. Assuming `V_out ≈ V_Z` would imply a negative Zener current, which is impossible because a reverse-biased diode cannot source current. The Zener cuts off, and the output is determined by a resistive divider: `9*100/(390 + 100) ≈ 1.84 V`.[^fiore-rectification]
 
 ## Detailed explanation
 

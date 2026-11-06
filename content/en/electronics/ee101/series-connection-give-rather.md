@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a series circuit, reciprocal capacitances sum together, so for 10 µF and 1 µF, `C_total = 10*1/(10+1) ≈ 0.91 µF` rather than 11 µF. Capacitances add directly in parallel connections; a series equivalent is always smaller than the smallest individual capacitance.[^aac-capacitors-series-parallel]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an unloaded first-order RC low-pass filter, `|H| = 1/sqrt(1 + (f/f_c)^2)` and the phase is `-atan(f/f_c)`. At `0.1*f_c`, `|H| ≈ 0.995` with a phase of `-5.7°`. At `f_c`, `|H| ≈ 0.707` with a phase of `-45°`. At `10*f_c`, `|H| ≈ 0.0995` with a phase of `-84.3°`.[^aac-rc-low-pass-transfer]
 
 ## Detailed explanation
 

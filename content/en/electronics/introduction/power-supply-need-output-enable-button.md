@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The `Output Enable` button turns off the power terminals while keeping the instrument powered on. This allows the user to safely configure voltage and current limits and wire the load before energizing the circuit, preventing accidental exposure to unverified settings, though it does not eliminate all output transients on its own.[^keysight-e364xa-user-guide]
 
 ## Detailed explanation
 

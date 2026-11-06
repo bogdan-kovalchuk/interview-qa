@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Such an amplifier is an emitter follower: its voltage gain `A_v` is slightly less than unity, but it provides substantial current gain, high input impedance, and low output impedance. Consequently, it presents minimal loading to high-impedance signal sources while driving low-impedance loads, functioning as an impedance buffer between stages.[^fiore-common-collector-amplifier]
 
 ## Detailed explanation
 

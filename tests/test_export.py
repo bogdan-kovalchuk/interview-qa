@@ -41,15 +41,32 @@ def test_card_carries_only_the_short_answer_and_question_code() -> None:
     assert written == {"en": EN_CARDS, "uk": UK_CARDS}
 
 
-def test_unwritten_short_answer_is_exported_as_none_not_todo() -> None:
+def test_unwritten_short_answer_is_exported_as_none_not_todo(tmp_path: Path) -> None:
     payload = build_export(CONTENT)
     answers = [
         entry["card"]["short_answer"]
         for question in payload["questions"]
         for entry in question["languages"].values()
     ]
-    assert None in answers
     assert "TODO" not in answers
+
+    en_dir = tmp_path / "en" / "python" / "concurrency-and-gil"
+    en_dir.mkdir(parents=True)
+    (en_dir / "unwritten.md").write_text(
+        "---\n"
+        "id: py-gil-9999\n"
+        'title: "Unwritten question"\n'
+        "track: python\n"
+        "section: concurrency-and-gil\n"
+        "---\n\n"
+        "## Short answer\n\n"
+        "TODO\n\n"
+        "## Detailed explanation\n\n"
+        "TODO\n",
+        encoding="utf-8",
+    )
+    partial = build_export(tmp_path)
+    assert partial["questions"][0]["languages"]["en"]["card"]["short_answer"] is None
 
 
 def test_helpers_agree_on_url_shape() -> None:

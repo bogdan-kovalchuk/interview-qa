@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a positional binary system, the weight of each subsequent bit position is double that of the preceding position. Shifting a binary word left by one position doubles the value of every bit, which is mathematically equivalent to multiplication by 2. Shifting right halves the place values, implementing integer division by 2 with the remainder truncated.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

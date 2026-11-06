@@ -82,9 +82,7 @@ def test_english_notes_ship_exactly_the_written_english_short_answers(
     payload: dict, vocabulary: dict
 ) -> None:
     # A card ships on the Short answer written in *that* language, nothing else
-    # (meta/anki.md "Коли картка з'являється в пакеті"). Most English bodies are
-    # still TODO, so this number is far below the Ukrainian one - and that is the
-    # honest state, not a bug.
+    # (meta/anki.md "Коли картка з'являється в пакеті").
     model = anki_build.make_model()
     notes = anki_build.build_notes(payload["questions"], vocabulary, model, "en")
 

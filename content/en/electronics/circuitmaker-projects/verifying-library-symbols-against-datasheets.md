@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Community component libraries are populated by third parties and frequently contain critical hidden defects. Swapped power pins or mirrored pad layouts will result in completely non-functional fabricated boards. Verifying every pin and footprint dimension against manufacturer datasheets prevents costly delays and scrap boards.[^udemy-electronics-course]
 
 ## Detailed explanation
 

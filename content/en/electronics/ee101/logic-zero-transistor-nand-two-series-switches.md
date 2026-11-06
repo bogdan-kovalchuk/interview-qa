@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a NAND gate with two transistors in series, the output LOW level equals the sum of `V_CE(sat)` across both conducting switches, which prevents it from reaching 0 V. For a PMBT3904, the maximum `V_CE(sat)` is 0.2 V at `I_C = 10 mA` and 0.3 V at `I_C = 50 mA`, meaning two stacked transistors can introduce up to 0.4 V or 0.6 V.[^nexperia-pmbt3904] In contrast, a NOR gate with parallel transistors has its LOW level determined by a single conducting device.
 
 ## Detailed explanation
 

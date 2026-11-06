@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Two: in each half-cycle, current flows through two bridge diodes in series (a diagonal pair), so `2*V_F` is subtracted from the peak secondary voltage.[^fiore-rectification] Only one `V_F` is subtracted in a center-tapped transformer rectifier, but applying that to a bridge is an error.[^fiore-rectification] The `V_F` value must be taken from the datasheet for the actual operating current: for a 1N4001 at 1 A, it reaches 1.1 V per diode.[^vishay-1n400x]
 
 ## Detailed explanation
 

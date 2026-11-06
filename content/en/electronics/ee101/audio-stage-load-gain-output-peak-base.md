@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The voltage gain is `A_v = -(R_C||R_load)/(r'_e + R_E) = -3197/1026 ≈ -3.1`, where `r'_e = 26 mV / 1 mA = 26 Ω`. The output is approximately 62 mV peak with phase inversion, provided 20 mV peak is present directly at the base.[^fiore-common-emitter-amplifier][^fiore-bjt-ac-model]
 
 ## Detailed explanation
 

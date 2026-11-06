@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output of a 4-to-1 multiplexer is expressed as a sum of products of data inputs `D0–D3` and select lines `S1, S0`: `Y = ~S1 * ~S0 * D0 + ~S1 * S0 * D1 + S1 * ~S0 * D2 + S1 * S0 * D3`. Each select code enables exactly one three-input `AND` gate while blocking the others. The outputs of these gates are combined through a common `OR` gate to drive the output `Y`.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

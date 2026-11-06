@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Leads are bent to retain through-hole components in the board prior to soldering or to match the required hole pitch. Bending must be done before soldering without applying mechanical stress to the component body, as excessive bending can damage the part or short adjacent pads.[^kingbright-lead-forming]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A plain `arctan(b/a)` cannot determine the quadrant of a complex number because the ratio loses the signs of the individual components; for `-3 + j4`, it gives −53.13°, whereas the true angle is 126.87°. The `atan2(b, a)` function accepts both coordinates and returns the angle in the correct quadrant. Always verify whether the returned angle is in radians or degrees.[^aac-atan2-quadrants]
 
 ## Detailed explanation
 

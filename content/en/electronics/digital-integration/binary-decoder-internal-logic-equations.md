@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A binary decoder converts an `n`-bit input code into an active signal on one of `2^n` outputs. For two address inputs `A1` and `A0`, the four active-high output minterms are `Y_0 = /A1 * /A0`, `Y_1 = /A1 * A0`, `Y_2 = A1 * /A0`, and `Y_3 = A1 * A0`. Exactly one output is asserted at any time, uniquely identifying the applied binary input value.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

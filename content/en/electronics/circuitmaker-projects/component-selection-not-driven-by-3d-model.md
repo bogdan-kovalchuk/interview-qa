@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Component selection is primarily governed by electrical specifications, distributor availability, and unit cost. Selecting an expensive or obsolete part simply because it has a ready-made 3D model introduces unnecessary cost and supply risks. Missing footprints or 3D models for an optimal part can always be drawn manually or downloaded from open manufacturer repositories.[^udemy-electronics-course]
 
 ## Detailed explanation
 

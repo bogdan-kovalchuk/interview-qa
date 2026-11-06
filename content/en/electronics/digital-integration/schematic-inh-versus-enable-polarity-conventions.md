@@ -1,6 +1,6 @@
 ---
 id: emb-elinteg-0021
-title: "Why is the same pin on the 4051 IC designated as INH or /E across different schematic libraries?"
+title: "Why is the same pin on the 4051 IC designated as INH or `/E` across different schematic libraries?"
 track: electronics
 section: digital-integration
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+The naming difference reflects opposite perspectives on the logic polarity of the same control node. The label `INH` (inhibit) highlights active-high disabling (driving it `HIGH` opens all analog switches), whereas `/E` (enable) highlights active-low enabling (driving it `LOW` turns on the selected switch). Designers must verify the active logic level in the datasheet rather than relying solely on the pin label text.[^ti-cd74hc4051-datasheet]
 
 ## Detailed explanation
 

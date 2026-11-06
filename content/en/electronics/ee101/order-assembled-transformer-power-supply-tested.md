@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+First measure the secondary AC voltage unloaded without the regulator connected, then verify polarity and DC level across the bridge and filter capacitor, and only then connect the regulator and the design load. Before making any circuit changes, disconnect the AC source and verify that the filter capacitor is fully discharged.[^openstax-rc-circuits]
 
 ## Detailed explanation
 

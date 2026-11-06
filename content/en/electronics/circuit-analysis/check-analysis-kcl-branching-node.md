@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Assign reference directions to every branch current and adopt a consistent sign convention, such as treating entering currents as positive and leaving currents as negative. By KCL, the algebraic sum at the node must equal zero; in the textbook example, `136 mA` enters while `125.6 mA` and `10.4 mA` leave, balancing the sum exactly to zero.[^aac-kcl]
 
 ## Detailed explanation
 

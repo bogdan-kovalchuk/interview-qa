@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a single-phase sinusoidal steady state with RMS values, real power `P = V*I*cos(φ)` is measured in W, reactive power `Q = V*I*sin(φ)` in var, and apparent power `S = V*I` in VA. The power factor equals `P/S`, and an ideal purely reactive load has zero average real power.[^aac-ac-power]
 
 ## Detailed explanation
 

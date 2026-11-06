@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+In an unbranched series circuit, the identical current passes sequentially through every component. For resistors, each individual voltage drop is directly proportional to its resistance, and the sum of all component voltage drops equals the total applied source voltage.[^aac-voltage-divider]
 
 ## Detailed explanation
 

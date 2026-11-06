@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a standard earth-grounded oscilloscope, the channel ground clips are connected to each other and to protective earth (PE), so attaching them to different nodes can cause a short circuit.[^tek-probing] To measure voltage differences, connect both clips to the circuit's common ground and subtract channels, or use an appropriate differential probe.[^tek-probing]
 
 ## Detailed explanation
 

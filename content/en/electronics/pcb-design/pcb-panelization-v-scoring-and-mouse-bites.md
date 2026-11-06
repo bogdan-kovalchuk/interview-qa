@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Panelization aggregates multiple small boards into a standard manufacturing array, allowing solder paste printing, automated pick-and-place, and reflow soldering in a single continuous pass. Boards are separated using V-scoring (shallow V-shaped grooves cut from both sides) or perforated breakout tabs (mouse bites). After assembly, boards are broken out along score lines or routed out without damaging populated components.[^ipc-2221]
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-eldig-0033
-title: "Why does interfacing a 5V TTL output to a 5V CMOS input require a pull-up resistor?"
+title: "Why does interfacing a 5 V TTL output to a 5 V CMOS input require a pull-up resistor?"
 track: electronics
 section: digital-logic
 sources:
@@ -17,8 +17,8 @@ sources:
 
 ## Short answer
 
-TODO
+A standard TTL output guarantees a high level of only `V_OH >= 2.4 V`, whereas a 5 V CMOS input requires at least `V_IH = 3.5 V` (`0.7 * V_CC`). Without level shifting, the TTL voltage falls into the CMOS indeterminate region, causing shoot-through supply currents and logic faults. A `1–10 kΩ` pull-up resistor to `+5 V` pulls the TTL output up to the full supply rail `V_CC`.[^ti-sdya009]
 
 ## Detailed explanation
 
-TODO
+TODO

@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a linear capacitor, `Q = C*V`, `i = C*dV/dt`, and stored energy is `E = C*V²/2`. For ideal parallel plates, `C = ε*A/d`; physical components also exhibit tolerances, leakage, and parasitic parameters.[^aac-capacitor-calculus] [^aac-capacitor-fields]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A resistor is connected in series with the source, the inductor is placed from the output node to common ground, and the output is taken across the inductor. At DC, the impedance of an ideal inductor is zero, but as frequency rises, its impedance increases so that the output approaches the input.[^aac-high-pass-filters]
 
 ## Detailed explanation
 

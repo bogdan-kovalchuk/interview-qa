@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For a simple first-order RC filter, `f_c = 1/(2*π*R*C)`, while for a simple RL filter, `f_c = R/(2*π*L)`. These formulas assume the basic canonical topologies without external loading that would shift the cutoff frequency.[^filter-cutoff]
 
 ## Detailed explanation
 

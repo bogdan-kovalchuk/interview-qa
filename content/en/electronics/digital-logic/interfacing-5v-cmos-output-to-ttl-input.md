@@ -1,6 +1,6 @@
 ---
 id: emb-eldig-0032
-title: "Why can a 5V CMOS output directly drive a 5V TTL input?"
+title: "Why can a 5 V CMOS output directly drive a 5 V TTL input?"
 track: electronics
 section: digital-logic
 sources:
@@ -17,8 +17,8 @@ sources:
 
 ## Short answer
 
-TODO
+A 5 V CMOS output (such as 74HC) provides `V_OH >= 4.4 V`, which comfortably exceeds the input threshold `V_IH = 2.0 V` of a TTL IC (74LS). The output low level `V_OL <= 0.33 V` is also well below the TTL input threshold `V_IL = 0.8 V`. With excellent noise margins, the connection operates directly as long as the CMOS output can sink the low-level current `I_IL` sourced by the TTL input stage.[^ti-sdya009]
 
 ## Detailed explanation
 
-TODO
+TODO

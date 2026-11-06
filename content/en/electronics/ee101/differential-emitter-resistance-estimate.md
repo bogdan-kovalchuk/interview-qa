@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0203
-title: "What is the differential emitter resistance `r_e` and how do you estimate it?"
+title: "What is the differential emitter resistance `r_e`, and how do you estimate it?"
 track: electronics
 section: ee101
 sources:
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+`r_e` is the small-signal (differential) resistance of the base-emitter junction at the operating point, equal to the reciprocal slope of the exponential I-V curve: `r_e = dV_BE/dI_E ≈ 26 mV / I_E` at 300 K. For `I_E = 1 mA`, this evaluates to approximately 26 Ω.[^fiore-bjt-ac-model]
 
 ## Detailed explanation
 

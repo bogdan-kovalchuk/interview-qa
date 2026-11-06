@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+A BJT uses base current to control collector current. A MOSFET is controlled by voltage between gate and source; its insulated gate draws only a small leakage current in steady state, but requires current to charge or discharge capacitance during switching.[^aac-semiconductors]
 
 ## Detailed explanation
 

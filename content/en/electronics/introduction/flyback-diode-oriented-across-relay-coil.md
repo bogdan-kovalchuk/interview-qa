@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The diode cathode is connected to `+V`, and the anode is connected to the side of the coil pulled by the transistor. During normal operation the diode is off, and upon turn-off it turns on to provide a recirculation path for the coil current.[^aac-semiconductors]
 
 ## Detailed explanation
 

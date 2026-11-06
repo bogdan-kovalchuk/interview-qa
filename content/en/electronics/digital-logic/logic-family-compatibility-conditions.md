@@ -17,8 +17,8 @@ sources:
 
 ## Short answer
 
-TODO
+To transmit a logic `1`, the minimum output high voltage of the driver must exceed the input high threshold of the receiver: `V_OH >= V_IH`. For logic `0`, the maximum output low voltage of the driver must remain below the input low threshold of the receiver: `V_OL <= V_IL`. In addition to voltage levels, the driver must supply the required load current in both states without violating voltage limits.[^horowitz-art-of-electronics]
 
 ## Detailed explanation
 
-TODO
+TODO

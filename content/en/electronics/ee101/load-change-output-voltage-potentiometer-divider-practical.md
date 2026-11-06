@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+A connected load is in parallel with the lower section of the divider, reducing its equivalent resistance and typically lowering `V_out`. A practical rule of thumb is to choose `R_load` at least 10 times larger than the total potentiometer resistance, but this is only an approximation: loading error depends on wiper position and precision requirements.[^aac-voltage-divider-loading]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In steady-state DC, an ideal capacitor acts as an open circuit, whereas an ideal inductor acts as a short circuit. Under sinusoidal AC conditions, current through a capacitor leads voltage by 90°, whereas voltage across an inductor leads current by 90°.[^phase-basics]
 
 ## Detailed explanation
 

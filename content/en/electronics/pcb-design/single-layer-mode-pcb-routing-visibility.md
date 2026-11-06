@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In multilayer boards, displaying all copper layers simultaneously creates visual clutter that hinders trace tracking. Single Layer Mode hides or dims inactive layers in gray, leaving only the active layer visible. This enables designers to clearly identify open routing channels, spot bottlenecks, and verify clearances and copper pour integrity without visual overload.[^circuitmaker-docs]
 
 ## Detailed explanation
 

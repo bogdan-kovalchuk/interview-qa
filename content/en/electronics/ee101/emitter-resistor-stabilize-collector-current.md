@@ -32,7 +32,7 @@ sources:
 
 ## Short answer
 
-TODO
+If `V_B` is held constant, then `V_E ≈ V_B - V_BE`, and `R_E` sets the emitter current according to `I_E = (V_B - V_BE)/R_E`.[^fiore-emitter-bias] Any increase in current raises `V_E`, which reduces `V_BE` and throttles the transistor, acting as local negative feedback.[^fiore-pn-junction]
 
 ## Detailed explanation
 

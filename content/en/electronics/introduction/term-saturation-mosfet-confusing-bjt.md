@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a BJT, `saturation` means that both junctions are forward-biased and the switching transistor exhibits a low `V_CE`; it is not simply a synonym for being fully on. In a MOSFET, `saturation` means channel pinch-off near the drain and typically corresponds to the amplification region. An on-state MOSFET switch operates in the `linear/triode` region with low `R_DS(on)`.[^aac-semiconductors] [^toshiba-mosfet-drive]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+The effective crystal load capacitance is given by `C_L = (C1 * C2) / (C1 + C2) + C_stray`. For symmetrical capacitors, this simplifies to `C1 = C2 = 2 * (C_L - C_stray)`. Assuming a typical PCB stray capacitance `C_stray ≈ 3–5 pF` and a standard 16 MHz crystal rated at `C_L = 15 pF`, standard 22 pF ceramic capacitors are selected.[^atmel-avr042]
 
 ## Detailed explanation
 

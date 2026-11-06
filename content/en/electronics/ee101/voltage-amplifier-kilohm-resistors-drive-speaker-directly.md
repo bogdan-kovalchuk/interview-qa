@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+No: the output impedance of a stage with a collector resistor approximately equals `R_C` (when `R_C` is much smaller than the transistor's internal output resistance), so an 8 Ω speaker forms a voltage divider with it and receives only a tiny fraction of the voltage.[^fiore-common-emitter-amplifier] Driving a speaker requires a stage with low output impedance, such as an emitter follower.[^fiore-common-collector-amplifier]
 
 ## Detailed explanation
 

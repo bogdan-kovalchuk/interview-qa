@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a half-wave rectifier, a single diode conducts only during one half-cycle, and ripple frequency equals the input frequency f. In a bridge rectifier, two diodes conduct in series during each half-cycle (alternating pairs), load current maintains a single direction, and ripple frequency is 2f.[^libretexts-fiore-rectification] The penalty for the bridge is two `V_F` drops instead of one.
 
 ## Detailed explanation
 

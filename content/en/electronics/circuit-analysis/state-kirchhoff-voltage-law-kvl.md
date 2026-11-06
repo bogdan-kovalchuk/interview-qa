@@ -14,7 +14,7 @@ sources:
 
 ## Short answer
 
-TODO
+The algebraic sum of all voltages around any closed circuit loop is zero: `ΣV = 0`.[^aac-direct-current] Signs are determined by the loop traversal direction and the assigned voltage polarities, meaning the sum of voltage rises equals the sum of voltage drops.[^aac-direct-current]
 
 ## Detailed explanation
 

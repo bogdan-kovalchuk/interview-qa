@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Calculate power dissipation as `P = V*I`, or equivalently using `I` or `V` with resistance, and select a component rated above this value under expected thermal and cooling conditions.[^aac-resistor-power] There is no universal `2×` safety margin rule; consult the manufacturer derating curve in the datasheet for high ambient temperatures.[^vishay-resistor-derating]
 
 ## Detailed explanation
 

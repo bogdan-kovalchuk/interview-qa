@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0201
-title: "What is an emitter follower (common collector) and what is it for?"
+title: "What is an emitter follower (common collector), and what is it for?"
 track: electronics
 section: ee101
 sources:
@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+The output is taken from the emitter, tracking the base input voltage with a DC shift of approximately `V_BE`. Although voltage gain is slightly less than unity, the stage provides current gain, high input impedance, and low output impedance. This minimizes loading on the preceding source while driving heavy loads effectively, serving as an impedance buffer.[^fiore-common-collector]
 
 ## Detailed explanation
 

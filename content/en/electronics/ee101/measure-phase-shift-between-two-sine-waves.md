@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Measure the time difference `Δt` between corresponding phase points and the period `T`; the magnitude of the phase shift is `φ = 360°*Δt/T`. The signal that reaches the corresponding point earlier leads, and the sign depends on which signal is chosen as the reference.[^aac-alternating-current]
 
 ## Detailed explanation
 

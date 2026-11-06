@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In this circuit, the saturated NPN pulls the collector to a low voltage and shunts the LED branch, reducing the current through the LED. This produces an inversion: an active-high input signal corresponds to a low collector level.[^aac-bjt-switch]
 
 ## Detailed explanation
 

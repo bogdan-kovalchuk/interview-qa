@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+When formulating KCL, currents entering a node can be defined as positive and leaving currents as negative, or vice versa. Both conventions are valid as long as one is applied consistently; a negative solved value simply indicates that the physical current flows opposite to the assumed reference arrow.[^aac-kcl]
 
 ## Detailed explanation
 

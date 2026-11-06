@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an unchanged effective R, the cutoff frequency drops tenfold, from approximately 1.59 kHz to 159 Hz, because `f_c = 1/(2*pi*R*C)`.[^aac-rc-low-pass-cutoff] This represents an ideal calculation without additional loading.
 
 ## Detailed explanation
 

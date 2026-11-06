@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Sum of Products (SOP) is an OR expression over multiple AND product terms, analogous to `if ((a && b) || (c && d))`. Product of Sums (POS) is an AND expression over multiple OR sum terms. Converting between SOP and POS using De Morgan's laws allows logic implementation with available gate types and minimizes silicon or board area.[^floyd-digital-fundamentals]
 
 ## Detailed explanation
 

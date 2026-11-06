@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Probe input capacitance and parasitic wiring parameters load the circuit node and alter the measured amplitude, phase, or waveform, as the probe's capacitive reactance drops at high frequencies.[^tek-probe-capacitive-loading] Consequently, deviations from the theoretical model may stem from the measurement setup itself.
 
 ## Detailed explanation
 

@@ -1,6 +1,6 @@
 ---
 id: emb-elee-0084
-title: "At the cutoff frequency of an RL circuit both outputs are 0.707 of the input. Why does this not contradict their forming the input together?"
+title: "At the cutoff frequency of an RL circuit, both outputs are 0.707 of the input. Why does this not contradict their forming the input together?"
 track: electronics
 section: ee101
 sources:
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal unloaded series RL circuit, `H_R + H_L = 1` as a complex equation, but this does not imply `|H_R| + |H_L| = 1`. At the cutoff frequency, both magnitudes equal `1/√2` because the voltages across R and L are 90° out of phase and add as phasors.[^aac-series-rl]
 
 ## Detailed explanation
 

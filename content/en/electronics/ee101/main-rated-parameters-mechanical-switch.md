@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The primary switch parameters include rated voltage and current for specified load types, initial contact resistance, insulation resistance, dielectric strength, and mechanical and electrical endurance. Values depend on the specific model and test conditions; there are no universal limits such as "under 50 mΩ" or a fixed cycle lifespan.[^omron-basic-switch-terms]
 
 ## Detailed explanation
 

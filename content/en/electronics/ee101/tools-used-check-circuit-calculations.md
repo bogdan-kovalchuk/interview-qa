@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+To verify calculations, you can plot an analytical curve in MATLAB or Simulink and compare it with a SPICE model, where `.tran` shows the transient response and `.ac` shows the small-signal frequency response. A simulation verifies only the specified model, so the schematic, component values, and initial conditions must be correct.[^simulink-simulation]
 
 ## Detailed explanation
 

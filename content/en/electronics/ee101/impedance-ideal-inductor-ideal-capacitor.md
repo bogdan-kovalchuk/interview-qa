@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+For an ideal inductor, `Z_L = j*ω*L = j*X_L`, where `X_L = ω*L` is positive. For an ideal capacitor, `Z_C = 1/(j*ω*C) = -j/(ω*C) = -j*X_C`, where `X_C = 1/(ω*C)` is positive. Because `ω = 2π*f`, inductive impedance has an angle of `+90°` and capacitive impedance has an angle of `-90°` at frequencies `f > 0`.[^aac-ideal-lc-impedance]
 
 ## Detailed explanation
 

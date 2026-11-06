@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+The 74HC138 decoder features inverting outputs with active-low logic. When an address is selected, the corresponding output pin transitions to logic low and sinks LED current to ground. Connecting LED anodes through current-limiting resistors to the `VCC` rail ensures that an LED illuminates specifically when its output is driven active-low.[^ti-sn74hc138-datasheet]
 
 ## Detailed explanation
 

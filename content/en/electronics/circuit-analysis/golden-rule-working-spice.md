@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Use SPICE to verify hypotheses within explicitly defined circuit schematics and models, confirming key assumptions through analytical calculations or prototype measurements. Simulation does not guarantee matching hardware behavior: results depend on model accuracy, component parameters, and the chosen analysis type.[^ngspice-manual-models]
 
 ## Detailed explanation
 

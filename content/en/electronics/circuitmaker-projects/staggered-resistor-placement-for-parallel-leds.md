@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -23,7 +23,7 @@ sources:
 
 ## Short answer
 
-TODO
+Dense spacing of an LED array leaves insufficient room to place parallel axial resistors in a single straight row. Staggering the resistors shifts their through-hole pads along the board. This prevents solder bridging between adjacent pads and opens clear corridors for routing signal traces.[^udemy-electronics-course][^ipc-2221b]
 
 ## Detailed explanation
 

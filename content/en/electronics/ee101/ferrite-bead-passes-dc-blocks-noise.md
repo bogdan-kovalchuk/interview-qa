@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+A ferrite bead acts as an inductor whose inductive reactance `X_L = 2*pi*f*L` increases with frequency. For direct current (DC), the reactance is near zero, but for high-frequency noise in the kilohertz and megahertz range, the impedance is substantial and dissipative. It is therefore placed in series with the power rail, often at the input and output of a voltage regulator.[^udemy-electronics-course]
 
 ## Detailed explanation
 

@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Solderless breadboards and long jumper wires introduce significant parasitic capacitance (up to `2–5 pF` per tie point) and lead inductance. Fast switching edges from LED loads induce voltage spikes across supply and ground rails that couple into high-impedance clock inputs. The shift register interprets these transient glitches as extra clock pulses, shifting in erroneous bits.[^horowitz-art-of-electronics]
 
 ## Detailed explanation
 

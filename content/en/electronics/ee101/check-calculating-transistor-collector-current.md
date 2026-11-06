@@ -29,7 +29,7 @@ sources:
 
 ## Short answer
 
-TODO
+Verify operating mode: for active mode in an NPN, voltages must satisfy `V_C > V_B > V_E`.[^fiore-bjt-ebers-moll] Next, check power dissipation `P ≈ V_CE*I_C` against datasheet maximum limits, along with absolute maximum ratings for `I_C` and `V_CE`. Circuit simulation using a device-specific model highlights real deviations from idealized calculations. Finally, remember that β varies with current and temperature, and `V_CE(sat)` increases with collector current.[^fiore-bjt-datasheet]
 
 ## Detailed explanation
 

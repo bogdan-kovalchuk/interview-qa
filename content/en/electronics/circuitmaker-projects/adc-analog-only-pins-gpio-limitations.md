@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+On ATmega328P TQFP-32 and QFN-32 packages, pins `ADC6` and `ADC7` are dedicated exclusively as analog inputs to the internal ADC multiplexer. They lack internal digital output driver FETs, Schmitt triggers, and GPIO port registers (`PORT`, `DDR`, `PIN`). Attempting to configure them as digital outputs has no effect, so indicator LEDs must be connected to standard GPIO pins instead.[^microchip-atmega328p-datasheet]
 
 ## Detailed explanation
 

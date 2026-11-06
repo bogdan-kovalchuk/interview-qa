@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Balancing resistors placed across each series capacitor establish a controlled current path that mitigates differences in leakage currents and equalizes voltage distribution. Their resistance is not a universal value like 100 kΩ: balancing current must comfortably exceed expected leakage, and power losses and ratings must be verified for the specific circuit.[^ti-series-capacitor-voltage-balancing]
 
 ## Detailed explanation
 

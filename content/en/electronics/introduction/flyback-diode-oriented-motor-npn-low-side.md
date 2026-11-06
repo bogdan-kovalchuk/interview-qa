@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+In a typical circuit with an NPN low-side switch, the flyback diode cathode connects to the positive supply rail of the coil, and the anode connects to the node between the coil and collector. In this configuration, the diode is reverse-biased while the motor is powered and conducts after the switch turns off, when the coil reverses polarity to maintain current flow.[^ti-inductive-load-clamping]
 
 ## Detailed explanation
 

@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+De-energize the wire, strip the insulation from the end, and measure the diameter of the bare conductor using calipers or a micrometer. Compare the measured value with an AWG table: 24 AWG is about `0.51 mm`, and 30 AWG is about `0.26 mm`.[^nist-awg-wire-diameter]
 
 ## Detailed explanation
 

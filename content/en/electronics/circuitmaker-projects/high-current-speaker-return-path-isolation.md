@@ -5,7 +5,7 @@ track: electronics
 section: circuitmaker-projects
 sources:
   - source_id: udemy-electronics-course
-    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), course flashcards"
+    title: "Udemy: Crash Course Electronics and PCB Design (Andre LaMothe), картки курсу"
     url: https://www.udemy.com/course/crash-course-electronics-and-pcb-design/
   - source_id: circuitmaker-docs
     title: "CircuitMaker documentation"
@@ -20,7 +20,7 @@ sources:
 
 ## Short answer
 
-TODO
+Heavy pulsed currents drawn by the speaker load produce transient voltage drops across the finite resistance of ground traces. If this current flows through the shared ground track of the 555 timer, unwanted ground bounce creates parasitic feedback. This causes frequency modulation, audio distortion, and low-frequency motorboating oscillation.[^udemy-electronics-course][^ti-lm555-datasheet]
 
 ## Detailed explanation
 

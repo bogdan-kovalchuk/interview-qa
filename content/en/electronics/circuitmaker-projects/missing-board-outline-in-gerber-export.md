@@ -17,7 +17,7 @@ sources:
 
 ## Short answer
 
-TODO
+Without an explicit board outline layer, CNC routing machines cannot determine the intended physical boundary or profile of the board. The fabrication facility either halts production pending clarification or routs the PCB using arbitrary copper pour extents. This results in mechanical enclosure fit failures and costly project delivery delays.[^udemy-electronics-course]
 
 ## Detailed explanation
 

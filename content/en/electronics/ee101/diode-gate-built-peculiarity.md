@@ -26,7 +26,7 @@ sources:
 
 ## Short answer
 
-TODO
+Diode anodes connect to the inputs, cathodes connect to the output, and the output is pulled down to ground through a resistor. Any high input pulls the output high, but the high logic output is degraded by approximately `V_F` below the input voltage.[^nexperia-diode-handbook][^utah-cs6710-diode-logic]
 
 ## Detailed explanation
 
