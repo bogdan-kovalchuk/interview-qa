@@ -24,4 +24,22 @@ For an ideal resistor connected directly across a source, the resistance is give
 
 ## Detailed explanation
 
-TODO
+To find resistance, apply Ohm's law: for a resistor, `R = V/I`, where `V` is the voltage dropped across the resistor itself and `I` is the current flowing through it. If the resistor is connected directly across an ideal source, the voltage across it equals the source voltage. In a circuit containing an LED, lamp, or other series load, subtract that component's forward drop: the resistor does not receive the entire supply voltage.[^aac-ohms-law]
+
+Before calculating, convert all quantities to consistent SI units. Milliamperes must be converted to amperes, and resistance is typically expressed in ohms or kilohms. For example, for a single resistor connected across a 10.5 V source requiring 25 mA, the calculation proceeds as follows:
+
+```text
+I = 25 mA = 0.025 A
+R = 10.5 V / 0.025 A = 420 Ω
+P = 10.5 V * 0.025 A = 0.2625 W
+```
+
+Thus, the ideal resistance value is 420 Ω. In a physical circuit, check standard preferred values, resistor tolerance, and variations in supply voltage: selecting the nearest standard value yields a current slightly above or below the target value. For an LED circuit, the numerator becomes `V_supply - V_f` rather than the raw supply voltage.[^aac-ohms-law]
+
+Power dissipation does not determine the required resistance value, but it dictates whether the component can withstand the resulting heat. After determining the current, calculate `P = V*I` or `P = I²*R` using the voltage drop across the resistor. A resistor power rating represents the maximum allowable dissipation under the specific conditions defined by the manufacturer; elevated ambient temperatures, poor airflow, and sustained operation near limits necessitate derating margins verified against component documentation.[^aac-resistor-power]
+
+**Common mistakes:**
+
+- Plugging 25 into the formula instead of 0.025, yielding a resistance value one thousand times too small.
+- Using the full source voltage when part of it drops across a series load.
+- Selecting a resistor solely by its resistance value without checking power dissipation and thermal operating conditions.

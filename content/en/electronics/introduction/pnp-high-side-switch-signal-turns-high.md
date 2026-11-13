@@ -21,4 +21,10 @@ A `PNP` high-side switch turns on when the base is lower than the emitter, so in
 
 ## Detailed explanation
 
-TODO
+In a typical PNP high-side switch, the emitter is connected to the positive rail, and the load is placed between the collector and the lower rail. To turn on the transistor, the base–emitter junction must be forward-biased: the base potential must be lower than the emitter potential. Therefore, control relative to ground often has an active-low level, unlike a common low-side NPN switch.[^aac-semiconductors]
+
+The word "often" is important. A microcontroller `LOW` can be sufficient if the emitter supply is low, a common ground is defined, and base current is limited by a resistor. If the emitter is connected to a voltage higher than the allowable GPIO levels, directly connecting the base to the GPIO can violate its maximum ratings even in the `HIGH` state. For such circuits, a separate driver is used, such as an NPN transistor, and permissible voltages and currents are verified against component documentation.[^aac-semiconductors]
+
+In the off state, the base must be at approximately the emitter potential so that the base–emitter junction does not remain forward-biased. When the driver pulls the base down to a lower potential through a resistor, base current flows and collector current powers the load. Thus, whether the answer is `HIGH` or `LOW` depends on the circuit: one must compare the base voltage specifically to the emitter voltage and take into account how the driver is connected.[^aac-semiconductors]
+
+**Common mistake:** calling `LOW` an unconditional rule without defining ground and emitter voltage. To verify the circuit, trace the current path from the emitter through the collector to the load and determine whether the base is low enough relative to the emitter to turn on the junction without exceeding absolute maximum ratings. The base resistor and driver are selected considering supply voltages, required load current, and the transistor datasheet.[^aac-semiconductors]

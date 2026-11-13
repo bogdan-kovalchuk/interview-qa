@@ -24,4 +24,10 @@ A hot air station provides adjustable heated air and airflow for localized heati
 
 ## Detailed explanation
 
-TODO
+A hot air station is a tool for localized board heating using a stream of heated air. Unlike a soldering iron that transfers heat through tip contact, a hot air station heats multiple leads or board regions simultaneously. This is convenient for multi-lead SMD packages, such as QFP, as well as for desoldering small chip resistors and capacitors. Once the solder on all target leads reaches its melting point, the component can be lifted without tearing copper pads off the board.[^hakko-fr801-manual]
+
+On the station, temperature and airflow rate are adjusted independently. Nozzle size, standoff distance to the board, dwell time, and thermal mass of the assembly are also critical. The same dial setting does not guarantee the same component temperature across different stations, which is why manufacturer HAKKO describes measuring temperature not only in the air stream near the nozzle, but also directly on the workpiece. Excessive airflow can dislodge adjacent lightweight components, while excessive heating can damage the component body or laminate.[^hakko-fr801-manual]
+
+Example: when desoldering a QFP, a matching nozzle is directed at the lead rows and heats them evenly; the operator waits until the solder fully melts and only then lifts the package using a vacuum pickup or tweezers. After rework, the joints must be inspected, because hot air does not inherently prevent solder bridging, solder balls, or insufficient wetting.[^hakko-fr801-manual]
+
+**Common mistakes:** assuming the set temperature reflects the temperature of the component itself, setting excessive airflow, or pulling on the component body before the solder has completely melted. Process settings should be chosen based on component and solder paste datasheets, results verified under magnification, and adjacent parts shielded from the hot air stream.

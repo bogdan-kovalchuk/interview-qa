@@ -27,4 +27,14 @@ sources:
 
 ## Detailed explanation
 
-TODO
+Gate charge `Q_g` is the amount of charge that the driver must deliver to the gate when switching a MOSFET. The gate is insulated but possesses gate-source and gate-drain capacitances, so switching requires short current pulses to charge and discharge them. Datasheets specify `Q_g` alongside test conditions because the value depends on drain voltage, drain current, and final gate drive voltage.[^infineon-gate-drive]
+
+While the gate charges, `V_GS` rises, and upon reaching the Miller plateau, a significant portion of the drive current goes into changing the drain voltage via the gate-drain capacitance. This interval dictates edge speed, electromagnetic interference (EMI), and switching losses. A higher `Q_g` for the same available gate current generally implies slower switching; a higher switching frequency also increases the average driver current. A rough estimate of the driver power consumption is given by `P_gate ≈ Q_g*V_drive*f_sw`, but this does not equal the total MOSFET losses.[^infineon-gate-drive] [^ti-mosfet-selection]
+
+When selecting a part, do not minimize `Q_g` in isolation. A MOSFET with lower `R_DS(on)` may have a larger die area and higher gate charge, and the optimal trade-off depends on frequency, load, and whether conduction or switching losses dominate. `Q_GD` is also critical because it relates to traversing the Miller plateau, as is the driver's source and sink current capability. Compare candidates under identical test conditions rather than relying solely on a single headline number from the datasheet.[^ti-mosfet-selection]
+
+**Common mistakes:**
+
+- Treating `Q_g` as a constant capacitance: charge depends on voltage trajectories and test conditions.
+- Assuming high `Q_g` is the sole cause of slow switching: driver current limits and gate resistance are also critical.
+- Conflating the driver power loss estimate with total transistor switching losses.

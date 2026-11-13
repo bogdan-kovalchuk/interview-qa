@@ -30,4 +30,15 @@ Flux helps remove or prevent oxide formation on heated metal surfaces and facili
 
 ## Detailed explanation
 
-TODO
+Flux is a chemical agent that facilitates the wetting of metal surfaces by solder during heating. Metal surfaces rapidly form oxides, and this thin layer prevents molten solder from coming into direct contact with the base metal. Active flux removes existing oxides or inhibits their formation during heating, allowing the solder to flow across the joint rather than beading up into a ball.[^koki-flux-wetting]
+
+Flux is no substitute for proper heating of the joint components. Heat is transferred from the iron tip to the contacts via direct physical contact; flux simply maintains a chemically receptive surface for wetting. The required flux type is governed by the materials and soldering process. For instance, electronics flux must be compatible with circuit board substrates and cleaning procedures; plumbing acid flux must never be used on printed circuit boards. Residues of certain formulations can be corrosive, so always verify manufacturer markings and datasheets.[^koki-flux-wetting]
+
+Solder wire for hand soldering is manufactured with a flux core; for example, the Kester 275 product line specifies various core sizes and flux percentages. When heated, this flux is delivered directly to the point where the solder melts. This is convenient, but it does not mean external flux is never necessary: on heavily oxidized surfaces or under challenging thermal conditions, supplemental flux is applied in accordance with the assembly process and material specifications.[^kester-cored-solder-wire]
+
+Example: if solder forms a bead on an oxidized copper pad, applying a suitable electronics flux can help clean the surface and achieve wetting. If the joint itself remains cold, however, flux cannot compensate for a lack of thermal transfer from the tip or poor mechanical contact.[^koki-flux-wetting]
+
+**Common mistakes:**
+- Attributing mechanical cleaning or heat transfer to flux instead of recognizing its chemical role in oxide removal and wetting.
+- Assuming any flux is suitable for electronics and leaving unidentified active residues on the board.
+- Inhaling solder fumes: rosin flux fumes pose health hazards, so use proper fume extraction and keep your face out of the plume.[^hse-solder-fume-indg248]

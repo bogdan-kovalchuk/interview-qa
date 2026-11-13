@@ -27,4 +27,16 @@ DC analysis determines operating bias or DC sweep responses, AC analysis calcula
 
 ## Detailed explanation
 
-TODO
+These three analysis types describe different dimensions of the same circuit's behavior. In DC analysis, sources are held at constant values or stepped sequentially, producing the circuit operating point: node voltages and branch currents. This helps verify whether transistors are properly biased, whether an output stage is saturated, and how much quiescent current the circuit draws. Circuit simulators also offer DC sweep analysis, where a source parameter is varied to observe the steady-state transfer response; this is not the same as observing a signal in the time domain.[^aac-spice-analysis-types]
+
+AC analysis is typically small-signal: the DC operating point is calculated first, nonlinear components are linearized around that point, and the stimulus is applied as a small sinusoidal perturbation. A frequency sweep yields amplitude gain and phase response across a spectrum of frequencies. This approach is used to analyze the passband and phase margin of filters or amplifiers, but it cannot predict large-signal clipping or transitions between operating regions.[^aac-spice-ac-analysis]
+
+Transient analysis computes circuit behavior over time based on defined source waveforms and initial conditions of energy-storage components. It is essential for observing digital switching edges, power-on sequencing, or capacitor charging profiles. The simulation result depends on the maximum time step, total duration, and initial capacitor voltages or inductor currents; these simulation settings must be configured appropriately to capture rapid events.[^aac-spice-transient]
+
+Example selection: for an amplifier circuit, verify DC voltages and currents first, then evaluate AC gain and bandwidth across the operating frequency band, and finally simulate the transient response to an input pulse or step change. One analysis type cannot substitute for another: a correct quiescent operating point alone does not guarantee dynamic stability or transient response fidelity.
+
+**Common mistakes:**
+
+- Treating AC analysis as a general large-signal model: it is typically linearized about a DC operating point.
+- Expecting time-domain waveforms from a DC analysis: observing edge transitions and charging dynamics requires transient analysis.
+- Assuming digital circuits require only DC analysis: dynamic switching involves transient behaviors.

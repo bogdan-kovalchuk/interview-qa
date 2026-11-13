@@ -24,4 +24,10 @@ In a `common emitter` configuration, the base input circuit and the collector ou
 
 ## Detailed explanation
 
-TODO
+The name `common emitter` describes the connection topology: the emitter serves as a common node for both the base input circuit and the collector output circuit. "Common" refers to the shared electrical reference node of these circuits, not necessarily ground in every possible application. In a simple NPN switch, the emitter is typically tied to `GND`, the base receives the control signal, and the output is taken from the collector.[^aac-common-emitter]
+
+When the base does not turn on the transistor, `cutoff` makes the collector–emitter path practically open; the collector resistor then pulls the output up to the supply. When base current is sufficient for saturation, the transistor conducts, the collector approaches the emitter potential, and the output level drops. Thus, inversion results from the resistive collector load and transistor behavior, rather than simply from the configuration name.[^aac-common-emitter]
+
+**Example:** with the emitter grounded and a resistor between `V_CC` and the collector, a low level at the base leaves the collector high, while a high level providing sufficient base current pulls the collector low. Actual voltages depend on the supply, the load, and transistor characteristics.[^aac-common-emitter]
+
+**Common mistake:** treating `common emitter` as synonymous with "emitter is always connected to ground" or as a guarantee of inversion under any load. Locate the common node on the schematic and trace separately how the load establishes the output voltage.[^aac-common-emitter]

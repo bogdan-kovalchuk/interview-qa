@@ -24,4 +24,10 @@ In a saturated NPN switch, the voltage `V_CE(sat)` is low but non-zero; its spec
 
 ## Detailed explanation
 
-TODO
+An enabled NPN switch receives sufficient base current to enter saturation: both transistor junctions are forward-biased, and the collector-to-emitter voltage becomes low. The transistor resembles a closed switch, but actual `V_CE(sat)` is non-zero and depends on the device type and collector current.[^aac-bjt-switch]
+
+If the emitter is connected to `GND`, measuring collector voltage relative to ground yields approximately `V_CE(sat)`. It should not be confused with the supply voltage or treated as a universal constant. Datasheets specify saturation under defined conditions, including collector and base currents; a value from one demonstration circuit does not automatically carry over to another.[^aac-bjt-switch]
+
+**Example:** in a measurement with the emitter at ground, a reading of around 0.1 V indicates that the transistor is conducting and drops only a small voltage. A reading of several volts with the same supply may indicate that the transistor is not saturated, the load or wiring differs, or the wrong node is being probed.[^aac-bjt-switch]
+
+**Common mistake:** stating that `V_CE(sat)` is zero volts or giving a guaranteed range without specifying the part number and test conditions. For design calculations, take the parameter from the transistor datasheet under conditions close to your circuit.[^aac-bjt-switch]

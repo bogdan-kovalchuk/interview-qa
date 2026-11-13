@@ -24,4 +24,8 @@ Cutting perfboard and trimming leads can launch hard fragments and board particl
 
 ## Detailed explanation
 
-TODO
+Safety glasses are required because of mechanical flying-debris hazards: cutters can launch severed lead fragments, while abrasives or saws produce fine board substrate and copper dust. Even during small prototype cuts, fragment trajectories are unpredictable, and eyes are especially vulnerable to impact injury. For projectile and particle hazards, OSHA cites safety glasses with side shields or goggles as appropriate personal protective equipment; the specific selection should match the cutting tool and risk assessment.[^osha-eye-protection]
+
+Eye protection must fit securely without slipping when leaning over the workbench. Standard prescription glasses do not provide impact protection unless they carry an approved industrial safety rating. A face shield can supplement safety glasses when significant debris is generated, but it does not replace primary eye protection against impact hazards.[^osha-eye-protection]
+
+Before cutting, secure the board, direct the cut line away from yourself and bystanders, and keep fingers well clear of the tool path. Afterwards, inspect the edge and deburr it carefully using a file or abrasive; sweep away dust and chips with a bench brush rather than bare fingers. Eye protection is equally vital when trimming excess component leads after soldering, as short lead clippings often launch at higher velocities and with less predictable trajectories than board cuttings.

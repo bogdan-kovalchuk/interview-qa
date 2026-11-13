@@ -24,4 +24,10 @@ A reflow profile defines how the temperature of a board and its components chang
 
 ## Detailed explanation
 
-TODO
+A reflow profile is a thermal time-temperature chart followed during the heating of an assembled SMD board to melt solder paste and form solder joints without overheating components. In a typical profile, the board heats up gradually, may pass through a soak zone to equalize temperatures, exceeds the paste's liquidus point, and then cools at a controlled rate. Not every solder paste requires an independent soak zone; this is specified by its manufacturer.[^indium-reflow-profile]
+
+The profile is critical because the same oven heats different boards differently. Large copper planes, heavy components, and conveyor loading alter actual thermal dwell times and temperatures at the solder joints. For this reason, paste datasheets typically constrain ramp-up rate, time above liquidus (TAL), peak temperature, and cooling rate. The profile is verified using profiling thermocouples attached to the board rather than relying solely on set oven zone temperatures.[^indium-reflow-profile]
+
+Example calculation from an Indium profile for Indium8.9HF paste: the liquidus line is crossed at 3.1 minutes, and cooling below liquidus occurs at 4.4 minutes. Thus, TAL equals 4.4 – 3.1 = 1.3 minutes, or 78 seconds; the manufacturer benchmarks this duration against the process window for this specific paste. This is not a universal target for every alloy or component package.[^indium-reflow-profile]
+
+**Common mistakes:** copying a single numerical profile across all paste chemistries or relying exclusively on oven controller settings. First verify the solder paste datasheet and component thermal limits, then measure the profile directly on a populated test board. An overly short or cool cycle can leave joints incompletely reflowed, while excessive thermal dwell or peak temperatures can degrade flux activity or damage sensitive parts.[^indium-reflow-profile]

@@ -24,4 +24,10 @@ In `CV` mode, the supply maintains a programmed voltage until the load reaches t
 
 ## Detailed explanation
 
-TODO
+A bench power supply is designed to control two primary quantities: the voltage supplied to the load and the maximum allowable current. In `CV` (constant voltage) mode, it adjusts its output so that the voltage remains at the setpoint; the load itself then primarily determines the current draw. If the current reaches the programmed limit, the power supply transitions to current regulation, and the output voltage can drop accordingly.[^keysight-bench-power-supply]
+
+In `CC` (constant current) mode, the supply attempts to maintain the set current, while the resulting voltage depends on load resistance and behavior. This is useful, for example, when testing LEDs or battery charging circuits where clamping current is critical. CV and CC are regulation modes rather than two independent physical outputs: the active mode is determined dynamically by the programmed limits and the connected load.[^keysight-bench-power-supply]
+
+Example: to power a 5 V board, set `CV = 5 V` and choose a current limit appropriate for the board and wiring. If a circuit fault creates a very low impedance, the supply can transition into CC and reduce its output voltage to keep current within the limit. However, a brief inrush current transient can still occur, and the current limit itself does not replace fuses or dedicated protection devices; always verify the instrument's dynamic response specifications and the load's transient sensitivity.[^keysight-bench-power-supply]
+
+A common mistake is to treat CC as a mode that always "delivers" the set current regardless of circuit conditions. If the load requires a voltage exceeding the programmed `CV` setpoint or the instrument's maximum output limit (or if the circuit is open), the target current cannot be reached. Before connecting the load, estimate normal operating current, configure appropriate voltage and current limits, and observe which mode indicator illuminates during operation.[^keysight-bench-power-supply]

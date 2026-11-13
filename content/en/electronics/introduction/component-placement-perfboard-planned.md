@@ -27,4 +27,8 @@ Plan component placement and routing paths in advance, noting LED polarity and d
 
 ## Detailed explanation
 
-TODO
+Component placement on a perfboard should be planned before soldering because the grid holes do not automatically determine the electrical connections: many nodes must be linked using separate jumper wires or component leads. First, transfer the schematic into a top-side and copper-pad-side sketch, noting polarities, power rails, ground, and jumper locations. Such a plan helps identify trace crossings and clearance constraints before components are soldered into place.[^adafruit-perfboard]
+
+Position connectors and controls where they remain physically accessible, and orient polarized components so their markings can be inspected. Leave adequate clearance for component widths, package heights, hookup wires, and the soldering iron tip. On a standard perfboard with isolated pads, adjacent holes are not electrically connected to each other; however, some prototyping boards feature continuous copper bus strips, so verify your specific board type with a multimeter or its datasheet before assembly.[^adafruit-perfboard]
+
+After placing components, trace each electrical connection on the solder side and verify routing from node to node. Shorter jumper wires generally simplify visual inspection and minimize the chance of accidental contact, but they must not be routed across adjacent pads or obstruct other components. It is often helpful to assemble the circuit on a breadboard first to verify operation before transferring the validated connections to perfboard; for a prototype, this reduces rework, but it does not eliminate the need for a final continuity check with a multimeter.[^adafruit-perfboard]

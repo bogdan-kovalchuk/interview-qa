@@ -24,4 +24,10 @@ Parallel circuit paths on the PCB alter the measurement, causing the multimeter 
 
 ## Detailed explanation
 
-TODO
+The resistance of a component inside an assembled circuit cannot always be measured directly because an ohmmeter measures the equivalent resistance of all conductive paths existing between the test probes.[^fluke-in-circuit-resistance]
+
+In resistance measurement mode, a multimeter injects a small test current and calculates resistance from the resulting voltage drop. If another resistive path is wired in parallel with the resistor under test, the measurement current splits among the branches. For example, two `10 kΩ` resistors in parallel yield an equivalent resistance of `5 kΩ`; when probing the board, the meter measures this lower parallel combination rather than the `10 kΩ` value of the individual component.[^fluke-in-circuit-resistance]
+
+More complex circuits often contain diodes, transistors, capacitors, and active ICs. The multimeter's test voltage can forward-bias a semiconductor PN junction, causing the reading to vary with probe polarity, measurement range, and the state of surrounding circuitry. An unexpected reading does not necessarily indicate a defective resistor. Before probing, always de-energize the circuit and discharge all capacitors, as residual voltage can damage the meter or corrupt measurements.[^fluke-in-circuit-resistance]
+
+To verify an individual resistor accurately, consult the schematic and isolate at least one of its terminals from the board. Then measure resistance across its leads and compare the reading to its nominal rating, accounting for component tolerance. Do not confuse in-circuit resistance measurement with the continuity buzzer function: an audible tone merely indicates that loop resistance is below the meter's threshold, rather than confirming a specific component value.[^fluke-in-circuit-resistance]

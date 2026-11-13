@@ -24,4 +24,16 @@ The continuity function injects a small test current, evaluates resistance, and 
 
 ## Detailed explanation
 
-TODO
+The continuity function tests whether a continuous conductive path with resistance below a model-specific threshold exists between the test probes. The multimeter injects a small test current, measures the resulting voltage response, and sounds an audible beeper when the detected resistance is sufficiently low; an audible tone does not mean the path resistance is exactly zero.[^fluke-continuity-test]
+
+This allows rapid verification of fuses, closed switches, cables, and PCB traces for opens. The absence of a beeper tone indicates that the path is open or exceeds the continuity resistance threshold, but does not conclusively prove a component is defective: always verify probe contact quality and the selected meter range first.[^fluke-continuity-test]
+
+The circuit must be fully de-energized and capacitors discharged before testing. External live voltage can damage the multimeter or invalidate readings. If a component remains soldered in place, parallel sneak paths through adjacent circuitry can trigger the beeper even when the component itself is open; therefore, isolating at least one lead is necessary for definitive results.[^fluke-continuity-test]
+
+Example: to test a fuse, de-energize the circuit, touch the probes across its terminals, and correlate the audible beeper with the displayed resistance reading. A beeper tone along with a low resistance reading indicates an intact fuse; infinite resistance or `OL` indicates an open circuit. Do not infer the exact resistance value from the beeper tone alone – read the multimeter's numeric display.
+
+**Common mistakes:**
+
+- Assuming that every multimeter beeps at the same universal resistance threshold.
+- Testing live energized circuits or neglecting stored capacitor charge.
+- Diagnosing a component as shorted without isolating it from parallel circuit paths.
