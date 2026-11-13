@@ -21,7 +21,7 @@ sources:
 
 ## Detailed explanation
 
-Для довгоканального enhancement NMOS у спрощеній square-law моделі saturation region струм задають як `I_D = K*(V_GS - V_th)^2`. Тут `V_GS - V_th` – overdrive voltage, а `K` об’єднує mobility, oxide capacitance і відношення ширини каналу до його довжини. У поширеному виведенні коефіцієнт дорівнює `K = μ*C_ox*(W/L)/2`; в інших джерелах множник `1/2` можуть включити в саме визначення `K`, тому формулу треба читати разом із цим визначенням.[^aac-semiconductors]
+Для довгоканального enhancement NMOS у спрощеній square-law моделі saturation region струм задають як `I_D = K*(V_GS - V_th)^2`. Тут `V_GS - V_th` – overdrive voltage, а `K` об’єднує mobility, oxide capacitance і відношення ширини каналу до його довжини. У поширеному виведенні коефіцієнт `K = μ*C_ox*(W/L)/2` уже містить множник `1/2`; в інших джерелах `K` визначають без `1/2` як `μ*C_ox*(W/L)` і пишуть `I_D = (1/2)*K*(V_GS - V_th)^2`, тому формулу треба читати разом із визначенням `K`.[^aac-semiconductors]
 
 Для NMOS умова saturation приблизно має вигляд `V_DS >= V_GS - V_th` за `V_GS > V_th`. У цій області канал біля drain затискається, а ідеальна модель вважає `I_D` незалежним від подальшого зростання `V_DS`. Реальний транзистор має channel-length modulation та інші неідеальності, тому струм не є абсолютно сталим.[^aac-semiconductors]
 
