@@ -24,4 +24,10 @@ A −3 dB voltage ratio corresponds to `10^(-3/20) ≈ 0.708`, which is approxim
 
 ## Detailed explanation
 
-TODO
+The decibel value for a voltage ratio is calculated using the formula `G_dB = 20*log10(V_out/V_in)`. Therefore, −3 dB yields `V_out/V_in = 10^(-3/20) ≈ 0.708`: the output amplitude is about 70.8% of the input, not 50%. The voltage formula relies on equal resistances; only then does the power ratio equal the square of the voltage ratio.[^aac-decibels]
+
+The figure of 3 dB originates from power: `10*log10(0.5) ≈ -3.01 dB`, representing half power. When resistances are equal, power is proportional to the square of voltage, so half power corresponds to a voltage of `sqrt(0.5) ≈ 0.707` of the initial value. For half voltage, the calculation is different: `20*log10(0.5) ≈ -6.02 dB`.[^aac-decibels]
+
+Example for a signal with an initial amplitude of 2 V: after an attenuation of 3 dB, the amplitude will be approximately `2*0.708 = 1.416 V`, not 1 V. If the source and load have equal resistances, the signal power will be approximately half of its initial value.[^aac-decibels]
+
+**Common mistake:** Interpreting 'half power' as 'half voltage'. This manifests as measuring −6 dB instead of −3 dB for the cutoff point of a simple RC filter. To avoid this, first determine whether you are comparing voltage, current, or power, and for voltage ratios, verify whether resistances are equal across both measurements.[^aac-decibels]

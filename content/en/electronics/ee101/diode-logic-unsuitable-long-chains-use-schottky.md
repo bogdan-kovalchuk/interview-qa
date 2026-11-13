@@ -33,4 +33,16 @@ Diode logic is passive: it provides neither signal amplification nor level resto
 
 ## Detailed explanation
 
-TODO
+In a diode AND gate, the low-level output equals the low input plus `V_F`. If this output is fed into the input of a subsequent identical gate, that gate adds another `V_F`, and so forth: after `n` stages, logic low rises to approximately `n*V_F` (assuming constant `V_F` and zero initial input). The handout provides an example: five cascaded AND gates at 0.7 V each yield 3.5 V at the output, which is far from any recognizable logic low.[^utah-cs6710-diode-logic] In a diode OR gate, a `V_F` drop of the high logic level is lost at each stage in a similar manner (see qid:emb-elee-0147).
+
+This cannot be corrected using diodes and resistors alone: the circuit lacks an active element to restore the signal to the supply rail or ground. According to the handout, raising the supply voltage merely shifts logic level ranges and increases power dissipation without removing the limit on the number of stages; an inverter cannot be built from diodes and resistors alone, and these limitations are resolved by transistors.[^utah-cs6710-diode-logic]
+
+**Example (idealized).** Consider an SN74HC00 at `V_CC = 4.5 V` as the subsequent stage: `V_IL(max) = 1.35 V`.[^ti-hc00] For silicon diodes with `V_F = 0.7 V`, a chain of two AND gates already yields `2*0.7 = 1.4 V > 1.35 V`, meaning logic low is no longer guaranteed to be recognized. For Schottky diodes with `V_F = 0.3 V`, four stages yield `4*0.3 = 1.2 V < 1.35 V`, while the fifth gives `1.5 V > 1.35 V`. Thus, Schottky diodes extend the permissible chain length, but do not make it unlimited. This is a simplified estimate: actual `V_F` depends on current (for the BAT54, the maximum rises from 0.24 V at 0.1 mA to 0.8 V at 100 mA).[^vishay-bat54]
+
+Schottky diodes are chosen for their lower forward voltage drop,[^nexperia-diode-handbook] which reduces the loss per stage and increases headroom to the logic threshold. However, lower `V_F` involves a trade-off with reverse leakage current, so parameters must be verified against the datasheet.[^nexperia-diode-handbook]
+
+**Common mistakes:**
+
+- Believing that Schottky diodes make diode logic suitable for arbitrarily long chains: they only increase permissible length.
+- Assuming `V_F = 0.7 V` for all diodes without considering dependence on current and diode type.[^vishay-bat54]
+- Checking only logic low in AND chains while ignoring high-level degradation in OR chains.

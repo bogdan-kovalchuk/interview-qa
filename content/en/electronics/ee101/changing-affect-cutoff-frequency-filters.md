@@ -30,4 +30,16 @@ In opposite directions. In an RC filter `f_c = 1/(2*pi*R*C)`, so increasing `R` 
 
 ## Detailed explanation
 
-TODO
+**Where the formula comes from.** The first-order cutoff occurs where the reactance equals the resistance `R`: at that point the output is 70.7% of the passband level, or `-3 dB`.[^kuphaldt-low-pass-filters] For RC, this is `X_C = 1/(2*pi*f*C) = R`, yielding `f_c = 1/(2*pi*R*C)`.[^fiore-ac-circuit-analysis] For RL, the condition `X_L = 2*pi*f*L = R` yields `f_c = R/(2*pi*L)`. This formula is easily verified: in the `R` and `L` voltage divider, the LPF transfer function magnitude is `R/sqrt(R^2 + X_L^2)`, which indeed equals `1/sqrt(2)` when `X_L = R`.
+
+**Why the directions are opposite.** Reactances behave oppositely: `X_C` decreases with frequency, while `X_L` increases. In an RC circuit, with a larger `R`, the capacitor must reach a larger reactance to match the resistor, which happens at a lower frequency: the cutoff shifts downward. In an RL circuit, with a larger `R`, the inductor must develop a larger `X_L`, which only occurs at a higher frequency: the cutoff shifts upward. These relationships are identical for low-pass and high-pass filters of the same topology because they share the same `f_c`.
+
+**Example.** RC with `C = 100 nF`: with `R = 1.6 kΩ` we get `f_c = 1/(2*pi*1600*1e-7) ≈ 995 Hz`, and with `R = 3.2 kΩ` it is `≈ 497 Hz`, exactly half. RL with `L = 10 mH`: with `R = 1 kΩ` we get `f_c = 1000/(2*pi*0.01) ≈ 15.9 kHz`, and with `R = 2 kΩ` it is `≈ 31.8 kHz`, exactly double.
+
+**What `R` actually is.** The formula includes the total resistance seen by the reactive element: the resistor plus the source output resistance, and for RL, also the inductor's winding resistance.[^fontys-passive-hf] Load resistance also alters the filter response, and the unloaded formula holds only for an open-circuit output.[^kuphaldt-low-pass-filters] Therefore, "changing R" in practice means changing the sum of all such resistances.
+
+**Common mistakes:**
+
+- Transferring RC intuition to RL: in RL circuits, increasing `R` raises the cutoff rather than lowering it.
+- Confusing `f_c` in hertz with `ω_c` in rad/s: `ω_c = R/L`, `f_c = ω_c/(2*pi)`.
+- Ignoring source output resistance, winding resistance, and loading: the real cutoff differs from calculations based solely on the resistor's nominal value.

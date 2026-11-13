@@ -24,4 +24,15 @@ Within a single phasor calculation, maintain a consistent amplitude representati
 
 ## Detailed explanation
 
-TODO
+A phasor is a complex representation of the amplitude and phase of a sinusoidal signal at a specified frequency. It simplifies the differential equations of a circuit into algebra with complex impedances, but all voltages and currents within one such calculation must correspond to that same frequency. Therefore, a sum of phasors cannot represent the sum of sine waves of different frequencies as a single phasor.[^aac-phasor-conventions]
+
+Choose one waveform as the phase reference, such as a source with an angle of 0°, and consistently measure all other phases relative to it. Likewise, use a consistent amplitude convention: RMS, peak, or peak-to-peak. It is possible to convert from one convention to another, but all quantities must be converted rather than just a subset. For a sine wave, `V_RMS = V_peak/sqrt(2)`, so mixing an RMS source with a peak component voltage introduces errors in ratios and verification checks.[^aac-phasor-conventions]
+
+For example, if a resistor and a capacitor are connected in series to a 1 V RMS source, assign an angle of 0° to the source and find both voltages as RMS phasors. Their vector sum must reproduce the source phasor according to Kirchhoff's voltage law; adding only magnitudes generally will not work because the voltages have different phases.[^aac-phasor-conventions]
+
+**Common mistakes:**
+- Adding phasors of different frequencies without separate frequency-domain analysis.
+- Mixing RMS and peak values in a single equation.
+- Changing the phase reference mid-solution or adding magnitudes instead of complex quantities.
+
+After completing calculations, verify the amplitude units, the frequency of each phasor, and the complex sum of voltages around the loop.[^aac-phasor-conventions]

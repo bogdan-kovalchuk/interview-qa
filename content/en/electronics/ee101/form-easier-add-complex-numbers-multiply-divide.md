@@ -24,4 +24,16 @@ Addition and subtraction are convenient in rectangular form, done component by c
 
 ## Detailed explanation
 
-TODO
+In rectangular form `a + jb`, a complex number is specified by two coordinates. During addition, corresponding coordinates are added together: `(a + jb) + (c + jd) = (a + c) + j(b + d)`. The same component-wise principle applies to subtraction. Therefore, this form is convenient when quantities must be added, such as when finding the total impedance of series components.[^aac-complex-arithmetic]
+
+In polar form, a number is specified by a magnitude and an angle, `r∠θ`. When multiplying, the resulting magnitude is the product of the magnitudes and the resulting angle is the sum of the angles; when dividing, the magnitudes are divided and the denominator angle is subtracted. This is convenient for phasor relationships such as `I = V/Z`. If an operation combines addition and multiplication, converting from one form to the other between steps is often necessary.[^aac-complex-arithmetic]
+
+Multiplying by `j` is equivalent to a rotation by `+90°`, since `j = 1∠90°`; multiplying by `-j` rotates by `-90°`. This applies to the complex plane and phasor algebra, not to a mechanical rotation of a physical component. In calculations, it is important not to mix degrees and radians in a calculator and to preserve the correct quadrant when converting from rectangular to polar form.[^aac-complex-arithmetic]
+
+Example: `3 + j4` and `1 - j2` are easily added in rectangular form to give `4 + j2`. To multiply them, one can convert both numbers to polar form or expand the brackets. Checking the result in the other form helps identify sign errors in the imaginary coordinate or angle.[^aac-complex-arithmetic]
+
+**Common mistakes:**
+
+- Adding polar magnitudes and angles directly as ordinary coordinates.
+- During division, subtracting the numerator angle from the denominator angle instead of the other way around.
+- Assuming that `j` adds phase independently of multiplication.[^aac-complex-arithmetic]

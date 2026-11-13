@@ -27,4 +27,10 @@ Decibels describe gain magnitude rather than phase: a voltage gain of −10 has 
 
 ## Detailed explanation
 
-TODO
+Decibels describe a logarithmic ratio of levels, but the sign of such a ratio does not encode phase. For voltage gain, `G_dB = 20*log10(|V_out/V_in|)` is used. If a stage has a gain factor of `-10`, its magnitude equals 10, so amplitude gain is `20 dB`; the minus sign indicates that the sinusoidal signal is inverted by 180°, not that the gain in dB is negative.[^aac-decibels]
+
+This is important when cascading stages: decibel values allow adding gain magnitudes, but reconstructing the signal waveform and sign requires knowing the phase or polarity. Negative dB values indicate amplitude attenuation relative to a reference level, whereas inversion is a distinct phase property. For example, an inverting stage with a gain factor of `-10` provides `20 dB` in magnitude, even though the sinusoidal output is opposite in phase.[^aac-decibels]
+
+Absolute levels also have different notations. `dBV` is a voltage level relative to 1 V RMS. `dBm` is a power level relative to 1 mW; when converting a measured voltage to dBm, an instrument must use a specified reference resistance. Therefore, a single number in dBm does not determine voltage without this resistance. Notations such as `dBv` should be checked against the documentation of the specific instrument or source rather than treated as a universal standard notation.[^keysight-db-reference]
+
+**Common mistake:** Interpreting `-10` as a negative gain in dB, or drawing a conclusion about phase from a decibel value alone. This leads to a false prediction of the output signal level or waveform shape. Record the gain magnitude in dB and the phase/inversion separately; for absolute units, specify the reference level and, for dBm, the resistance used during measurement.[^aac-decibels] [^keysight-db-reference]

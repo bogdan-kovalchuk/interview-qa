@@ -36,4 +36,15 @@ Output is approximately `V_in + V_F = 0 + 0.3 = 0.3 V`, and current is `I = (5 -
 
 ## Detailed explanation
 
-TODO
+When the input of a diode AND gate is grounded, the diode between the output and input conducts, and the output node settles at the input level plus the diode forward drop: `V_out = V_in + V_F`.[^nexperia-diode-handbook][^utah-cs6710-diode-logic] For `V_in = 0 V` and `V_F ≈ 0.3 V`, this yields `0.3 V`. The pull-up resistor drops the remainder of the supply voltage, so the current is determined by Ohm's law: `I = (V_CC - V_out)/R = (5 - 0.3)/10000 = 0.47 mA`. The power dissipated in the resistor is `P = 0.47 mA * 4.7 V ≈ 2.2 mW`.
+
+The value `V_F ≈ 0.3 V` for a Schottky diode is plausible, but it depends on current and diode type. For example, for the BAT54, maximum `V_F` is 0.24 V at 0.1 mA and 0.32 V at 1 mA, so at 0.47 mA it does not exceed 0.32 V.[^vishay-bat54] For a silicon diode in a simple model, the drop is 0.7 V:[^libretexts-fiore-diode-models] the output would then be `0.7 V` and the current `(5 - 0.7)/10000 = 0.43 mA`. The difference in current is small, but the output voltage differs by more than a factor of two, which is where Schottky diodes excel.
+
+There are three additional caveats. First, `0 V` at the input is an idealization: if the input driver holds zero with its own `V_OL`, the output equals `V_OL + V_F` rather than simply `V_F`. Second, the `0.47 mA` current flows into the input driver, which must sink it. Third, it is critical whether the resulting voltage is a valid logic low for the subsequent stage. For the SN74HC00 at `V_CC = 4.5 V`, the maximum low-level input voltage `V_IL(max)` is `1.35 V`, so `0.3 V` and even `0.7 V` pass, but this table does not cover 5 V and does not apply to other logic families.[^ti-hc00]
+
+**Common mistakes:**
+
+- Assuming the output is zero: it is higher than the low input by `V_F`.
+- Forgetting that the pull-up current flows into the input rather than "nowhere".
+- Substituting 0.7 V for a Schottky diode and 0.3 V for a silicon diode.
+- Overlooking the load at the output: it alters both current and voltage level.

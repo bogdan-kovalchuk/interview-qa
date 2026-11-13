@@ -24,4 +24,14 @@ Probe input capacitance and parasitic wiring parameters load the circuit node an
 
 ## Detailed explanation
 
-TODO
+At high frequencies, the measurement signal path itself becomes part of the circuit: the probe, cable, breadboard, and interconnects add capacitance, inductance, and resistance. In particular, the probe's input capacitance exhibits lower reactance as frequency increases, so it loads the node more heavily and can alter the signal's amplitude, phase, and edge transitions.[^tek-probe-capacitive-loading]
+
+For an ideal RC filter, a single pole is sufficient, but such a model does not capture all the details of a real test bench. Parasitic capacitance together with the node's output resistance forms an additional time constant; lead inductance and capacitance can interact to cause resonance. This does not mean the basic formula is wrong: it simply does not include these components. Their effect becomes noticeable when the parasitic impedance becomes comparable to the impedance of the node under test.
+
+For example, if a probe is connected to a high-impedance node, its capacitance can substantially reduce the measured bandwidth. Tektronix demonstrates that higher probe capacitance distorts the edge and increases rise time; thus, the mere fact of having high input resistance, such as 10 MΩ, does not guarantee the absence of loading at high frequencies.[^tek-probe-capacitive-loading]
+
+**Common mistakes:**
+- Attributing the entire change in frequency response to a defect in the filter itself.
+- Ignoring probe capacitance simply because the probe specifies a high input resistance.
+
+To verify the result, use a probe with low input capacitance, a short ground lead, and compact layout. Compare measurements with the probe connected and disconnected, or change probe types; if the response changes noticeably, the measurement loading must be included in the model.

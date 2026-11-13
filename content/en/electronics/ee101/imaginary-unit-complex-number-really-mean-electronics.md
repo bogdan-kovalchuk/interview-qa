@@ -24,4 +24,14 @@ sources:
 
 ## Detailed explanation
 
-TODO
+In electrical engineering, `j` denotes the imaginary unit satisfying `j² = -1`; the letter `j` is used to avoid confusion with the common symbol for current `i`. In the expression `a + jb`, the numbers `a` and `b` specify the coordinates of the complex number: `a` is the real part and `b` is the imaginary part. This is a mathematical representation, not an assertion of two physically independent types of voltage.[^aac-complex-intro]
+
+For single-frequency sinusoidal AC, a phasor preserves two essential characteristics: magnitude and phase relative to a reference signal. For instance, `3 + j4` corresponds to a point with coordinates `3` and `4`; its magnitude is `5` and its angle is approximately `53.13°`. The same quantity in polar form is `5∠53.13°`. Both notations describe the same complex quantity, merely in different coordinates.[^aac-complex-intro]
+
+In the time domain, physical voltage remains a real sine wave. Phasor notation is a compact computational tool: after solving, the complex coordinates are interpreted as amplitude and phase relationship, and the time-domain waveform can be reconstructed if needed. The quantity `j` here is not an "imaginary" component of a multimeter measurement.[^aac-complex-intro]
+
+**Common mistakes:**
+
+- Treating `j` as a physical variable or imagining the measured voltage as unreal.
+- Confusing `b` with magnitude: in `a + jb`, it is a coordinate; magnitude is determined from both coordinates.
+- Using a phasor without a shared frequency and reference angle.[^aac-complex-intro]

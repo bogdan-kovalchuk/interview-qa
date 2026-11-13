@@ -30,4 +30,14 @@ Phasor formulas apply to steady-state sinusoidal quantities of a single frequenc
 
 ## Detailed explanation
 
-TODO
+A phasor is a complex representation of a sine wave's amplitude and its phase relative to a common time reference. It transforms the differential relationships of circuit components into algebraic ones: for example, inductance and capacitance are represented by frequency-dependent impedances. This simplification is valid for a linear circuit in sinusoidal steady state; a separate calculation is required for each frequency.[^aac-single-frequency-phasors]
+
+A switching transient, a nonlinear component, or a mixture of frequencies cannot be described by a single phasor. In such cases, individual harmonics, time-domain equations, or nonlinear analysis are used. If quantities are specified as peak values, all calculated voltages and currents remain peak; if specified as RMS, the impedance calculation yields RMS values. Different amplitude conventions must not be mixed.[^aac-single-frequency-phasors] [^aac-ac-rms]
+
+For sinusoidal voltage and current, the average real power is calculated as `P = V_RMS*I_RMS*cos(φ)`, where `φ` is the angle between voltage and current. The product of RMS values by itself gives the apparent power in volt-amperes, while the `cos(φ)` factor accounts for the phase shift. For a non-sinusoidal waveform, RMS remains meaningful for resistor heating, but the simple real power formula given above may be insufficient.[^aac-power-phase] [^aac-ac-rms]
+
+**Common mistakes:**
+
+- Applying a single phasor to signals of different frequencies or during a transient process.
+- Confusing peak values with RMS values and introducing a scale error.
+- Calling `V_RMS*I_RMS` real power without accounting for the power factor.[^aac-single-frequency-phasors] [^aac-ac-rms]

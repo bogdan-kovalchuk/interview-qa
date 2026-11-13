@@ -33,4 +33,14 @@ Because of winding resistance `r_L`: at DC an ideal inductor is a short circuit,
 
 ## Detailed explanation
 
-TODO
+**A real inductor is more than just `L`.** The equivalent circuit of a real inductor includes an ideal inductance, series winding resistance `r_L`, and parallel parasitic capacitance `C_d`.[^fontys-passive-hf] Therefore, the output "across the inductor" is the voltage across the `r_L` + `L` branch. At DC, the reactive impedance equals zero, leaving only `r_L`, which forms a resistive voltage divider with `R`. For example, with `R = 1 kΩ` and `r_L = 50 Ω`: `V_out/V_in = 50/1050 ≈ 0.0476`, which is ≈ 4.8% of the input (`-26.4 dB`), rather than 0 as predicted by the ideal model.
+
+**How this alters the frequency response.** The transfer function becomes `(r_L + j*2*pi*f*L)/(R + r_L + j*2*pi*f*L)`. It has a zero at `r_L/(2*pi*L)` and a pole at `(R + r_L)/(2*pi*L)`. For `L = 10 mH`, the zero is at ≈ 796 Hz and the pole is at ≈ 16.7 kHz instead of the ideal 15.9 kHz, because the total series resistance `R + r_L` now enters the cutoff expression. Below the zero, the response does not roll off further, but plateaus at ≈ 4.8%. At 16.7 kHz, the amplitude reaches ≈ 0.707 of the passband plateau level, while the phase falls short of +90° at low frequencies and approaches 0° at DC.
+
+**Why it does not pass "any" high frequency.** The parallel capacitance `C_d` together with the inductance creates a self-resonance. Above its frequency (self-resonant frequency, SRF), capacitive reactance dominates and the inductor behaves like a capacitor.[^vishay-inductors-primer] Therefore, a practical inductor is useful only below this limit.[^fontys-passive-hf] At high frequencies, the effective winding resistance also increases due to the skin effect and core losses.[^kuphaldt-high-pass-filters] Consequently, a real inductor-based high-pass filter has a "passband window" between the cutoff and the inductor's self-resonance, rather than an infinite passband. A separate limitation arises from the measurement setup itself: the oscilloscope and probe have their own bandwidth limits (falling by 3 dB at their cutoff), and the probe additionally loads the circuit with its tip capacitance.[^tektronix-abcs-probes]
+
+**Common mistakes:**
+
+- Expecting near-zero output from an RL high-pass filter at DC: a real inductor has finite `r_L`, so the output is set by a voltage divider rather than being zero.
+- Failing to add `r_L` (and the source output resistance) to `R` when calculating cutoff.
+- Interpreting the high-frequency roll-off as a circuit design flaw when it may stem from inductor self-resonance or probe and oscilloscope bandwidth limits.

@@ -27,4 +27,16 @@ Diodes conduct only when the input AC voltage exceeds the capacitor voltage by a
 
 ## Detailed explanation
 
-TODO
+Past the peak, the input voltage drops faster than the capacitor discharges through the load, so the diodes turn off and the load is subsequently supplied solely by the capacitor. A diode turns on again only when the input voltage exceeds the capacitor voltage by approximately 0.7 V; it is during this short interval that the capacitor is replenished, which results in very large current pulses.[^fiore-rectification] The larger the capacitor, the higher its voltage is sustained, the shorter the diode conduction interval, and the higher the current pulse: in the textbook simulation, increasing capacitance from 50 µF to 1000 µF with the same 100 Ω load raised the peak charging current from approximately 180 mA to approximately 800 mA while shortening the pulse from ≈ 4 ms to ≈ 2.5 ms.[^fiore-rectification]
+
+The root cause is charge conservation. In steady state, capacitor voltage repeats cyclically every period, so the charge drained by the load during the ripple period, `Q = I_load*T`, must be restored by the diodes during the conduction time `t_c`, which is much shorter than `T`. The average diode current during the conduction interval is ≈ `I_load*T/t_c`, which is `T/t_c` times higher than `I_load`, and the peak of the pulse is higher still.
+
+**Example (independent calculation).** A bridge rectifier, 50 Hz line, `f_ripple = 100 Hz`, `T = 10 ms`, `I_load = 100 mA`, `C = 2000 µF`, capacitor peak `V_p ≈ 12 V`. Ripple is `ΔV ≈ I/(f*C) = 0.1/(100*0.002) = 0.5 V`; the charge per period `Q = 0.1*0.01 = 1 mC` matches `C*ΔV = 0.002*0.5 = 1 mC`. Diodes conduct while the input voltage exceeds `V_p - ΔV`, which spans an angle of `acos(1 - 0.5/12) ≈ 16.6°` before the peak out of 180° between peaks, giving `t_c ≈ 10*16.6/180 ≈ 0.92 ms`. Thus, the average pulse current is ≈ `1 mC/0.92 ms ≈ 1.1 A`, which is ≈ 11 times higher than 0.1 A, and the peak of the pulse is even higher. In a bridge, each diode conducts only every other half-cycle, so the average current through an individual diode equals half of `I_load`.
+
+**Implications for diode selection.** Diodes cannot be chosen based on average load current alone. For the 1N4001, the datasheet specifies an average rectified forward current `I_F(AV) = 1.0 A`, but also a non-repetitive surge peak current `I_FSM = 30 A` (8.3 ms half sine),[^vishay-1n4001] so repetitive peak currents and transformer loading must be checked. Peak current is also limited by transformer winding resistance and capacitor ESR, which are outside this simple model.
+
+**Common mistakes:**
+
+- Selecting diodes based solely on the average load current.
+- Increasing filter capacitance without verifying peak current ratings of the diodes and transformer.
+- Assuming that diodes conduct over the entire half-cycle, as in an unfiltered rectifier.

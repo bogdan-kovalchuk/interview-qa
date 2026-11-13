@@ -27,4 +27,22 @@ Ripple increases: lower load resistance draws higher current, discharging the ca
 
 ## Detailed explanation
 
-TODO
+Between peaks, the diodes are reverse-biased and the load is powered solely by the capacitor. Its voltage drops according to `i = C*dv/dt`: at approximately constant current, the decrease is linear, `ΔV = I*Δt/C`, where `Δt` is the interval between peaks.[^fiore-capacitors] Load current is `I = V/R_load`, so reducing `R_load` increases current and consequently increases voltage sag over that same interval. The textbook summarizes this: ripple increases with load current, whereas under light load the output remains near the secondary peak with very low ripple; at large currents, ripple increases and average output voltage drops.[^fiore-rectification]
+
+This can also be understood through the time constant `τ = R_load*C`: discharge is exponential, and the lower `R_load`, the smaller `τ` is relative to the interval between peaks, meaning the filter is less effective at holding voltage.[^fiore-rectification] The linear formula `ΔV ≈ I/(f*C)` is an approximation valid only when `τ` is much larger than the ripple period; for large ripple it is not sufficiently accurate.
+
+**Example (independent calculation).** A bridge rectifier fed from a 50 Hz line, `f_ripple = 100 Hz`, `C = 1000 µF`, voltage about 12 V:
+
+- `R_load = 600 Ω`: `I = 12/600 = 20 mA`, `ΔV ≈ 0.02/(100*0.001) = 0.2 V`;
+- `R_load = 120 Ω`: `I = 100 mA`, `ΔV ≈ 0.1/(100*0.001) = 1.0 V`; exponential calculation `12*(1 - e^(-0.01/0.12)) ≈ 0.96 V` closely agrees;
+- `R_load = 12 Ω`: `I = 1 A`, the linear formula gives 10 V, which is absurd; the exponential `12*(1 - e^(-0.01/0.012)) ≈ 6.8 V` shows that over 10 ms the capacitor loses more than half its voltage, and filtering has practically collapsed.
+
+Reducing resistance by a factor of 5 increases ripple approximately 5 times, as long as `τ` remains much larger than 10 ms. For 600 Ω `τ = 0.6 s`, for 120 Ω `τ = 0.12 s`, and for 12 Ω `τ = 12 ms`, which is already comparable to the period, and the linear estimate ceases to apply.
+
+There is also a side effect: higher load current produces larger short diode current pulses (in the textbook simulation, peaks reach hundreds of mA).[^fiore-rectification] Therefore, reducing `R_load` must also be verified against the peak current ratings of the diodes and transformer.
+
+**Common mistakes:**
+
+- Believing that higher current "smooths" the output: on the contrary, the filter performs worse with smaller `R_load`.
+- Using the linear formula for large ripple when `R_load*C` is comparable to the ripple period.
+- Forgetting that in a bridge `f_ripple = 2*f_mains`, whereas in a half-wave circuit `f_ripple = f_mains`.
