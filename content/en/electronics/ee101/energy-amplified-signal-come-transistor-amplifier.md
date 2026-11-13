@@ -33,4 +33,16 @@ Energy comes from the DC power supply rather than from the input signal: amplifi
 
 ## Detailed explanation
 
-TODO
+An amplifier does not create energy from nothing. The input signal at the base merely determines how current delivered by the power supply into the collector circuit is modulated. Without an auxiliary energy source, amplification is impossible.[^fiore-biasing-need]
+
+At the quiescent operating point, collector current is steady: it flows from `+V_CC` through load `R_C` and the transistor to ground. A change in base current by `ΔI_B` produces a change in collector current `ΔI_C = β * ΔI_B`.[^fiore-ebers-moll] The voltage at the collector `V_C = V_CC - I_C * R_C` then varies in the opposite direction, and this alternating voltage constitutes the output signal.[^fiore-emitter-bias]
+
+For example: at the quiescent point, collector current is 0.99 mA with +5 V and a 1 kΩ load. The supply delivers DC power of 5 V × 0.99 mA ≈ 4.95 mW into the collector circuit. Suppose the AC component of the collector current has an amplitude of 0.1 mA. Its RMS value is 0.1 mA / √2 ≈ 0.071 mA, yielding an AC power in the load of `(0.071 mA)² × 1 kΩ ≈ 5 µW`. This useful signal power represents approximately 0.1% of the power drawn from the supply. The signal governs what fraction of this supply power is converted into the load signal, but does not generate it.
+
+Power gain is the ratio `P_out / P_in`, so a value greater than 1 does not violate conservation of energy. A textbook example: 50 mW at the output with 10 mW at the input yields a power gain of 5.[^fiore-amplifier-model] The required energy is drawn from the power supply, not from the signal itself.
+
+**Common mistakes:**
+
+- Believing an amplifier "adds" energy to a signal because output power exceeds input power.
+- Conflating `P_out / P_in` with an energy source: it is merely a ratio of two power levels.
+- Applying an AC signal without DC bias: the negative half-cycle and positive voltages below roughly 0.7 V will fail to turn on the junction.[^fiore-biasing-need]

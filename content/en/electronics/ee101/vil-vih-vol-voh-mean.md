@@ -27,4 +27,16 @@ sources:
 
 ## Detailed explanation
 
-TODO
+These four parameters are the limits within which a logic family interprets signals. For inputs, `V_IL` and `V_IH` matter: a voltage below `V_IL` is read as 0, above `V_IH` as 1, and between them the result is undefined.[^auburn-digital-voltages] For outputs, `V_OL` and `V_OH` matter: an output in state 0 must deliver no more than `V_OL`, and in state 1 no less than `V_OH`.[^auburn-digital-voltages]
+
+The output guarantees a voltage level that the receiving input will still interpret correctly, and the difference between them is the noise margin. For the HIGH level, this is written as `V_OH = V_IH + V_noise`: noise can shift the level by `V_noise` without changing the interpreted logic state.[^auburn-digital-voltages] For TTL, `V_OH = 2.4 V`, `V_IH = 2.0 V`, `V_IL = 0.8 V`, and `V_OL = 0.4 V`, giving a 0.4 V margin on both sides.[^auburn-digital-voltages]
+
+These values depend on the logic family and supply voltage. For 74HC at 4.5 V, `V_OH` (min) = 4.4 V and `V_IH` (min) = 3.15 V yield a 1.25 V margin, which is significantly larger than TTL.[^ti-hc00] The parameter names are identical, but the numbers in the datasheet differ, so they must be taken from the specific device datasheet.
+
+Output limits also depend on load current. For 74HC at 20 µA, `V_OL` (max) = 0.1 V, whereas at 4 mA it reaches up to 0.33 V across –40 to 85 °C.[^ti-hc00] A noise margin calculated from a single row of the datasheet table might not match the actual operating load.
+
+**Common mistakes:**
+
+- Confusing `V_IL` (max) with `V_OL` (max): the former belongs to the input, the latter to the output, and their difference defines the margin.
+- Assuming that an output delivers exactly 0 V or `V_CC`: datasheets guarantee only limits.
+- Using TTL thresholds (2.0 V and 0.8 V) for the HC family at 4.5 V, where `V_IH` (min) = 3.15 V.

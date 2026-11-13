@@ -36,4 +36,16 @@ AND outputs 1 only for input 11[^ti-hc08], while NAND outputs 0 only for 11.[^ti
 
 ## Detailed explanation
 
-TODO
+A truth table lists the output for every combination of inputs. For two inputs, there are `2^2 = 4` combinations (00, 01, 10, 11); for three inputs, `2^3 = 8`. A truth table unambiguously defines the logic function, but not the physical gate itself: TTL and CMOS NAND gates share the same truth table, so devices with identical truth tables are interchangeable logically, but not necessarily in terms of voltage levels, drive capability, and propagation speed.
+
+For inputs 00, AND and OR output 0, while NAND and NOR output 1. For 01 and 10, AND and NOR output 0, while NAND and OR output 1. For 11, AND and OR output 1, while NAND and NOR output 0.[^ti-hc00][^ti-hc02][^ti-hc08][^ti-hc32]
+
+NAND and NOR are the inversions of AND and OR in every row: `NAND = NOT(AND)`, `NOR = NOT(OR)`. From this follows De Morgan's law `NOT(A * B) = NOT A + NOT B`, meaning NAND is an OR gate with inverted inputs. Row-by-row verification: for 01, both expressions yield 1; for 11, both yield 0.
+
+The truth table describes ideal logic levels. A physical input is recognized as 0 or 1 only within the limits of `V_IL` and `V_IH`, and the output must comply with `V_OL` and `V_OH`. For a floating input, the table does not apply, because standard CMOS inputs must never be left floating.[^ti-hc00]
+
+**Common mistakes:**
+
+- Confusing NAND with AND: NAND outputs 0 only for 11, which is the inverted result.
+- Assuming that NOR outputs 1 for any input 1: it outputs 1 only for 00.
+- Using 4 rows instead of 8 for three inputs.

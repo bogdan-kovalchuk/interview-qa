@@ -27,4 +27,14 @@ sources:
 
 ## Detailed explanation
 
-TODO
+If a 1 kΩ load and the current sink are connected in series between the 9 V rail and ground, the sum of voltage drops across them cannot exceed 9 V. Sinking 10 mA across 1 kΩ requires `0.010 A * 1000 Ω = 10 V` across the load alone. This exceeds the total supply voltage, so this operating point is unattainable with any transistor and any emitter resistor. The limitation follows from Ohm's law `V = I * R` applied to the resistor in the circuit.[^fiore-ohms-law]
+
+The circuit sets the maximum current: `V_CC / R = 9 V / 1 kΩ = 9 mA`. When the programmed current is higher, the transistor saturates and delivers no more than 9 mA.[^fiore-bjt-dc-load-line] Even neglecting the voltage drop across the emitter resistor and assuming `V_CE(sat)` of roughly 0.1 V, the load receives no more than `(9 - 0.1) / 1000 = 8.9 mA`. The ideal limit with zero loss is 9 mA, which is already less than 10 mA.
+
+A current sink maintains the programmed current only when voltage headroom is available. Therefore, the minimum supply voltage for 10 mA through 1 kΩ is 10 V plus the drop across the sink itself. At 9 V, the load must not exceed 900 Ω (`9 V / 10 mA`), and accounting for voltage drops across the sink, it must be even less.
+
+**Common mistakes:**
+
+- Assuming that a current sink delivers the programmed 10 mA regardless of the load: the power supply limits the current.
+- Checking only the emitter resistor value rather than the available voltage headroom across the load.
+- Failing to account for `V_CE(sat)` and the emitter resistor voltage drop when finding the maximum load.

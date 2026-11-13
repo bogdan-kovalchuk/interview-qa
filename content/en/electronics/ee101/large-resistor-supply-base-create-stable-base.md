@@ -30,4 +30,16 @@ No: the resistor sets base current rather than base voltage. The base voltage is
 
 ## Detailed explanation
 
-TODO
+A resistor `R_B` between supply `V_CC` and the base drops `V_CC - V_B`. With a forward-biased base–emitter junction and the emitter grounded, `V_B ≈ V_BE ≈ 0.7 V` for silicon.[^fiore-bjt-ebers-moll] Thus the drop across the resistor is nearly fixed, and base current is determined by the resistor itself: `I_B = (V_CC - V_BE) / R_B`. The resistor sets base current rather than base voltage, so choosing a large `R_B` is not a way to establish a stable base voltage: it merely reduces `I_B`, leaving collector current stability unimproved.
+
+Collector current is subsequently governed by `β`, because `I_C = β * I_B`. The textbook examines such a circuit: base powered through `R_B` = 200 kΩ from 10 V, and collector powered through 1 kΩ from 15 V. At `β = 100`, this yields `I_B` = 46.5 µA, `I_C` = 4.65 mA, and `V_CE` = 10.35 V. At `β = 200`, the identical `I_B` results in double the collector current: `I_C` = 9.3 mA and `V_CE` = 5.7 V.[^fiore-bjt-ebers-moll] The operating point drifts directly with `β`, even though the base remains clamped near 0.7 V.
+
+The textbook identifies this behavior as the chief drawback of base bias and describes the thermal effect: at constant `I_B`, higher `β` increases `I_C`, greater `I_C` generates more heat, and rising heat in turn increases `β`. The cycle can compound, necessitating an alternative topology for stability.[^fiore-bjt-ebers-moll]
+
+A voltage divider provides a stable base voltage. Fiore refers to voltage divider bias as a high-stability configuration and approximates `V_B` by the open-circuit Thevenin voltage `V_TH` when the divider is lightly loaded. This approximation holds when `R_E` is significantly larger than `R_TH / β`; under this condition, `I_C` is virtually independent of `β`.[^fiore-voltage-divider-bias]
+
+**Common mistakes:**
+
+- Assuming `R_B` determines `V_B`: the voltage is clamped by `V_BE`, while the resistor establishes `I_B`.
+- Believing a large `R_B` stabilizes the circuit: `I_C = β * I_B` remains directly dependent on `β`.
+- Ignoring thermal positive feedback: as temperature rises, `β` increases and `I_C` climbs with it.[^fiore-bjt-ebers-moll]

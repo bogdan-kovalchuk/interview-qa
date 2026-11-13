@@ -33,4 +33,14 @@ When a positive input excursion increases base-emitter voltage, collector curren
 
 ## Detailed explanation
 
-TODO
+A common-emitter stage applies the input signal to the base and takes the output from the collector. The collector current determines the voltage at the collector: for DC, `V_C = V_CC - I_C*R_C`, so higher collector current causes a lower collector voltage.[^fiore-bjt-dc-load-line] Current `I_C` depends strongly on the base–emitter voltage: in the simplified model, `I_C = I_S*exp(38.6*V_BE)` at 300 K, meaning a change in `V_BE` of just 2.6 mV changes the current by approximately 10%.[^fiore-ac-model-bjt]
+
+Example: let `V_CC = 12 V`, `R_C = 4.7 kΩ`, and the quiescent operating point be `I_C = 1 mA`, yielding `V_C = 12 - 1*4.7 = 7.3 V`. An input signal increases `V_BE` by approximately 2.6 mV. The dynamic resistance is `r_e = 26 mV / 1 mA = 26 Ω`, so collector current increases by `2.6 mV / 26 Ω = 0.1 mA`, up to 1.1 mA. Then `V_C = 12 - 1.1*4.7 = 6.83 V`: when the input rises, the output drops by 0.47 V, which represents signal inversion.[^fiore-ac-model-bjt]
+
+Inversion is a property of the circuit topology with the output taken from the collector, not of the transistor itself: higher current creates a larger voltage drop across `R_C`. The negative sign in `A_v = -r_C/(r_e + r_E)` represents this inversion, corresponding to a 180° phase shift in the midband.[^fiore-common-emitter-amplifier] At frequencies near the cutoffs introduced by capacitors, the phase deviates from 180°; in a lead RC network, the phase shift is 45° at the critical frequency.[^fiore-ac-circuit-analysis] An emitter follower, by contrast, does not invert because the output is taken from the emitter.[^fiore-ac-model-bjt]
+
+**Common mistakes:**
+
+- Treating inversion as an intrinsic property of the transistor rather than of the circuit configuration with collector output.
+- Assuming the 180° phase shift holds at all frequencies, particularly near cutoff boundaries.
+- Confusing phase inversion with clipping: inversion can be cancelled by adding a second inverting stage in the signal chain.

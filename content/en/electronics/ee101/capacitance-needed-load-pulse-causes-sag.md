@@ -27,4 +27,14 @@ Neglecting ESR, the capacitor equation `i = C*dv/dt` yields `C = I*t/V`, so 0.1 
 
 ## Detailed explanation
 
-TODO
+The calculation starts from the capacitor governing equation `i = C*dv/dt`: voltage changes at a rate of `i/C`.[^fiore-ac-circuit-analysis] If the load current I is constant throughout a pulse of duration t, the voltage drop is linear and equals `dV = I*t/C`, yielding `C = I*t/dV`. For 100 mA and 1 ms neglecting ESR: `C = 0.1 A * 0.001 s / 0.1 V = 0.001 F = 1000 µF`. This is a conservative estimate because it assumes the upstream power source supplies zero current during the transient pulse.
+
+A practical capacitor exhibits equivalent series resistance (ESR) through which this same load current must pass.[^ti-switching-regulator-fundamentals] The initial voltage step `I*ESR` is independent of capacitance and develops immediately at the onset of the current pulse. For an ESR of 0.2 Ω, this step is `0.1 A * 0.2 Ω = 0.02 V = 20 mV`. The allowable 0.1 V margin is then split: 20 mV across the ESR and 80 mV across capacitive discharge, requiring `C = 0.1 A * 0.001 s / 0.08 V = 0.00125 F = 1250 µF`. Verification: capacitive sag is `0.1 * 0.001 / 0.00125 = 0.08 V`, plus 0.02 V across ESR, totaling 0.1 V.
+
+Application constraints. ESR is strongly temperature dependent: for a typical aluminum electrolytic capacitor, ESR can increase by a factor of roughly 40 as temperature drops from 25 °C down to –40 °C.[^ti-switching-regulator-fundamentals] Therefore, at low temperatures the resistive step across ESR and overall voltage sag can be substantially larger than calculated at room temperature. Conversely, if a voltage regulator with adequate loop bandwidth supplies part of the pulse current during the transient, a smaller capacitance suffices; the formula represents a worst-case design margin.
+
+**Common mistakes:**
+
+- Neglecting ESR and assuming the entire voltage tolerance budget is available for capacitive discharge.
+- Sizing ESR without considering temperature variation, even though cold temperatures can increase ESR manifold.
+- Treating the formula as an exact prediction for all circuits: in practice, the upstream regulator and source may deliver current during the pulse, reducing required capacitance.

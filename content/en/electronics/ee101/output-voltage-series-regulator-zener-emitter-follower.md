@@ -33,4 +33,15 @@ The output is taken from the emitter: `V_out ≈ V_Z - V_BE ≈ 5.6 - 0.7 = 4.9 
 
 ## Detailed explanation
 
-TODO
+The Zener diode is connected in reverse bias between base and ground, while the input voltage is fed to the base through resistor `R`. The Zener clamps the base voltage at `V_Z` = 5.6 V, so the emitter, and with it the output, sits at `V_Z` − `V_BE` ≈ 4.9 V. This is how the textbook describes a Zener follower: the Zener diode establishes the output voltage, while the load current is supplied through the transistor.[^fiore-zener-follower]
+
+For silicon, `V_BE` is typically 0.7 V, making 4.9 V the nominal value.[^fiore-bjt-basics] However, `V_BE` is not constant: according to the exponential model, it increases by approximately 26 mV when the emitter current increases by a factor of e. If the load current increases from 1 mA to 10 mA (a tenfold increase), `V_BE` rises by approximately 25.9 mV × ln 10 ≈ 60 mV, and the output drops by approximately 60 mV.[^fiore-bjt-ac-model]
+
+The current through `R` equals `I_Z` + `I_B`, where `I_B` = `I_E` / (β + 1), since `I_E` = (β + 1) × `I_B`.[^fiore-bjt-basics] Suppose `V_in` = 9 V, load current is up to 10 mA, β = 100, and the Zener diode requires 5 mA; datasheets typically specify `V_Z` near this current level.[^nexperia-an90031] Then `I_B` ≈ 10 mA / 101 ≈ 0.1 mA, and `R` ≤ (9 − 5.6) V / (5 + 0.1) mA ≈ 3.4 V / 5.1 mA ≈ 667 Ω. If a larger `R` is selected, at maximum load current the Zener diode will receive less than the minimum required for the steep breakdown region, degrading regulation.[^nexperia-an90031]
+
+Circuit limitations. The temperature coefficient of the Zener diode depends on the operating current, and for lower voltages this effect is significant, so 4.9 V is a nominal value for the given current and temperature, not a universal guarantee.[^nexperia-an90031] The load is powered through the collector, whereas only `I_B` flows through `R`: if `I_E` exceeds ≈ (β + 1) × (`I_R` − `I_Z,min`), where `I_R` is the current through resistor `R`, the Zener diode will lose its minimum knee current and `V_out` will drop.[^fiore-zener-follower][^fiore-bjt-basics] There is no current limiting, so an output short circuit can overheat the transistor.
+
+**Common mistakes:**
+- Assuming the output equals `V_Z` = 5.6 V without subtracting `V_BE`.
+- Assuming the output is independent of load: `V_BE` increases with current.
+- Checking `R` only at no-load: at maximum load, the Zener diode receives the least current.

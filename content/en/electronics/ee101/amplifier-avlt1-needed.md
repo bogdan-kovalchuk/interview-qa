@@ -24,4 +24,14 @@ Such an amplifier is an emitter follower: its voltage gain `A_v` is slightly les
 
 ## Detailed explanation
 
-TODO
+An amplifier with `A_v < 1` is an emitter follower (common-collector circuit). The output voltage is taken from the emitter and follows the base voltage, so `A_v = r_E/(r_e + r_E)`, where `r_E` is the total AC resistance in the emitter circuit including the load. This value is always less than 1 and approaches 1 when `r_E ≫ r_e`.[^fiore-common-collector-amplifier]
+
+The need for such a stage is not voltage amplification, but impedance matching. A signal source with high internal resistance driving a low-resistance load forms a voltage divider where most of the signal voltage is lost. In Fiore's example, a source has an internal resistance of 1 kΩ, the load is 500 Ω, and the open-circuit input signal is 100 mV: without a follower, the voltage across the load is 100 mV × 500 / 1500 ≈ 33 mV. With a follower, the stage input resistance is about 9 kΩ, the loaded gain is about 0.94, the divider attenuation with the source is about 0.90, and the load receives about 85 mV.[^fiore-common-collector-amplifier]
+
+The follower does not amplify voltage, but it provides significant current and power gain. Its output resistance is low: about 37 Ω in the example, which is far lower than that of common-emitter stages, allowing it to drive low-impedance loads effectively. Distortion in followers is typically low because the voltage gain is close to unity, which is a desirable design goal.[^fiore-common-collector-amplifier] The output signal is in phase with the input.[^fiore-common-collector-amplifier]
+
+**Common mistakes:**
+
+- Expecting a voltage gain greater than 1 from a follower.
+- Failing to account for its input resistance as a load on the signal source alongside the source's internal resistance.
+- Assuming the output resistance is zero: it is determined by `R_E` in parallel with the reflected base circuit impedance, so it is non-zero.

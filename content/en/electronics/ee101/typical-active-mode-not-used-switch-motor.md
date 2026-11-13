@@ -36,4 +36,14 @@ To guarantee saturation, base current is designed using a forced gain `β_forced
 
 ## Detailed explanation
 
-TODO
+The typical active-mode β gives `I_C = β * I_B`, but for a switch this is not the operating mode. In saturation, the relationship between `I_C` and `I_B` becomes nonlinear.[^mit-6071-bjt-notes] In this mode, the collector current is determined by the load and the power supply.[^rohm-bjt-basics] Effective gain drops noticeably during such switching, so `β_forced` is specified with a safety margin.[^rohm-bjt-basics] For a small-signal transistor, typical β is 100–200; for a power transistor, it is 25–50.[^fiore-bjt-basics] If β = 100 is used for a 100 mA switch, `I_B = 100 mA / 100 = 1 mA`. For `β_forced = 10`, 10 mA is required, so the base current would be underestimated by a factor of ten, and the transistor might fail to saturate.
+
+Inrush current is critical precisely at the start of motion. When the motor rotates, the back EMF is subtracted from the supply voltage, and the current equals `(V - E) / R`, where `R` is the winding resistance.[^ti-tida00786] While the rotor is stationary, there is no back EMF, and the initial current is estimated as `V / R`.[^ti-tida00786] For illustration, assume a 10 Ω winding and a 5 V supply. A running current of 100 mA means a back EMF of 4 V: `(5 - 4) / 10 = 0.1 A`. With a stalled rotor, the current is `5 / 10 = 0.5 A`, which is five times higher than the running current.
+
+Therefore, the transistor is sized for 0.5 A, the recirculation diode is sized for the same current, and to saturate at `β_forced = 10`, the base current must be 50 mA: `R_B = (5 - 0.8) / 0.05 = 84 Ω`. If the driver delivers only 10 mA, there is not enough base current for 0.5 A: 50 mA is required. The `V / R` estimate is an upper bound rather than a measured value: the motor begins to rotate before the current reaches `V / R`, so the actual inrush current drawn from the source is lower.[^ti-tida00786]
+
+**Common mistakes:**
+
+- Selecting the transistor, diode, and power supply based on the 100 mA running current without checking the inrush or stall current.
+- Calculating base current using the typical active-mode β: with β = 100, the result is 1 mA, and the transistor may not saturate.
+- Taking `V / R` as the exact inrush current value, even though it is an upper bound.

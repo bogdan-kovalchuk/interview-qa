@@ -27,4 +27,16 @@ Frequency error is the static deviation from nominal frequency at room temperatu
 
 ## Detailed explanation
 
-TODO
+Frequency error and jitter describe different properties. Frequency error is the offset of the average frequency from nominal. Manufacturers specify it in ppm, meaning parts per million of the nominal value, and Abracon's definition applies to the deviation at room temperature (25 ± 5 °C).[^abracon-quartz-glossary] Example: for an 8 MHz oscillator with a tolerance of ±50 ppm, `8*10^6 * 50*10^-6 = 400 Hz`, so the average frequency lies between 7,999,600 Hz and 8,000,400 Hz.
+
+The same offset can be expressed in terms of period. The period of a nominal 8 MHz oscillator is 125 ns. At +50 ppm, the period becomes approximately 124.99375 ns, which is about 6.25 ps shorter in every cycle. This is a systematic quantity: it is identical for every period, so the difference between adjacent periods equals zero.
+
+Jitter describes something else. According to TI, period jitter is the deviation of cycle duration from the ideal period, while cycle-to-cycle jitter is the variation in duration between adjacent cycles.[^ti-snaa285] A constant shift of 6.25 ps does not change the difference between adjacent periods, so the resulting cycle-to-cycle jitter is zero. Example from the source: the largest positive change of +62 ps and the largest negative change of –65 ps yield a cycle-to-cycle jitter of 65 ps, because the larger of the absolute values is taken.[^ti-snaa285]
+
+Jitter is measured over a sufficient sample size: TI recommends 1,000 to 10,000 cycles for the result to be reliable.[^ti-snaa285] Frequency error, on the other hand, is checked against the average frequency, rather than the dispersion of individual edges.
+
+**Common mistakes:**
+
+- Confusing a constant frequency offset with jitter: the offset is identical on every period, whereas jitter varies from cycle to cycle;
+- Evaluating jitter over only a few cycles; TI recommends 1,000 to 10,000;[^ti-snaa285]
+- Assuming that ±50 ppm at 25 °C guarantees the same error over the entire temperature range; stability over temperature is specified by Abracon separately.[^abracon-quartz-glossary]

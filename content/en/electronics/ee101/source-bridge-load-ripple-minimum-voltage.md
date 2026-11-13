@@ -33,4 +33,17 @@ After a full-wave bridge, ripple frequency is `2*50 = 100 Hz`, yielding `ΔV_pp 
 
 ## Detailed explanation
 
-TODO
+**Ripple voltage.** The full-wave bridge rectifies both half-cycles, so voltage peaks across the filter capacitor repeat at twice the line frequency, `2*50 = 100 Hz`, and the time between peaks does not exceed `1/100 = 10 ms`.[^fiore-rectification] During this time, the capacitor delivers 0.1 A to the load, and for a constant discharge current the fundamental capacitor relationship `i = C*dv/dt` yields `ΔV = I*Δt/C`.[^fiore-capacitors] Hence, `ΔV_pp = 0.1*0.01/0.001 = 1 V`: the peak-to-peak ripple is 1 V, which corresponds to approximately ±0.5 V around the mean DC level.
+
+**Minimum voltage (trough).** The peak secondary voltage is `9*sqrt(2) ≈ 12.73 V`. In a bridge rectifier two diodes conduct simultaneously, so the load experiences the secondary voltage minus two diode forward drops.[^fiore-rectification] Assuming a nominal 0.7 V per diode, the peak voltage on the capacitor is `12.73 - 1.4 ≈ 11.33 V`. Subtracting the peak-to-peak ripple yields a trough voltage of `11.33 - 1 ≈ 10.33 V`, with an average DC value of approximately `11.33 - 0.5 ≈ 10.83 V`. Consequently, a 9 V RMS secondary winding yields not 9 V DC, but approximately 10.8 V average DC.
+
+**Approximation accuracy.** The formula assumes constant current discharge over the full 10 ms interval, whereas in reality the diodes begin recharging the capacitor before the AC peak, shortening the discharge phase. At the same time, winding resistance and diode dynamic impedance depress the peak voltage during charging current pulses. In a numerical simulation (sinusoidal source, 0.7 V per diode, constant 0.1 A load, 1000 µF), a total series resistance of 0.5 Ω produces a ripple of ≈ 0.83 V and a trough of ≈ 10.33 V, whereas 2 Ω yields a ripple of ≈ 0.74 V and a trough of ≈ 9.79 V. Therefore, 10.33 V is an initial approximation neglecting internal impedances rather than a rigid guarantee. If the mains voltage drops by 10% (`9*0.9 = 8.1 V RMS`), the same formula gives a trough of `8.1*sqrt(2) - 1.4 - 1 ≈ 9.06 V`.
+
+**Condition for regulator operation.** A linear regulator ceases regulating when its input falls below `V_out + V_dropout`.[^ti-slva079] This condition must be checked against the lowest instantaneous input voltage (the bottom of the ripple trough) rather than the average DC level (see qid:emb-elee-0156). For the uA7805, the recommended input voltage range is 7–25 V, meaning a 10.33 V trough leaves a safety headroom of `10.33 - 7 = 3.33 V`, while ≈ 9.06 V under low mains provides approximately `9.06 - 7 ≈ 2.1 V` of headroom.[^ti-ua78]
+
+**Common mistakes:**
+
+- Using 50 Hz instead of 100 Hz for the ripple frequency in a full-wave bridge, doubling the estimated ripple.
+- Forgetting the two diode drops in the bridge (accounting for only one or none).
+- Mistaking 9 V RMS for the peak amplitude rather than the RMS value.
+- Evaluating regulator dropout against the average input voltage rather than the trough of the ripple.

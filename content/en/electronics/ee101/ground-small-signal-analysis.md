@@ -24,4 +24,15 @@ In small-signal analysis, an ideal DC voltage supply carries zero AC variation, 
 
 ## Detailed explanation
 
-TODO
+Small-signal analysis is performed in two separate steps. First, DC voltages and currents are calculated to find the transistor operating point. Second, the AC signal is analyzed independently using the superposition principle. In the AC equivalent circuit, coupling and bypass capacitors are replaced with short circuits, and DC sources are replaced by their ideal internal resistance, which is also a short circuit.[^fiore-common-emitter-amplifier]
+
+The rationale is straightforward: an ideal DC voltage source maintains a constant voltage, so its AC variation is identically zero. Because an ideal source has zero internal resistance, no AC voltage can develop across its terminals, meaning any circuit node connected to such a rail has zero AC voltage relative to ground. In a common-emitter stage with `V_CC` = 10 V, this means the supply rail remains at +10 V DC, but functions as ground for AC signals.[^fiore-common-emitter-amplifier]
+
+This leads directly to how component impedances are modeled. In the DC circuit, `R_C` is connected to `V_CC`, but in the AC circuit its upper terminal connects to ground. That is why in the small-signal equivalent circuit, the collector load resistor is placed between collector and ground rather than between collector and the power rail.[^fiore-common-emitter-amplifier]
+
+AC ground is an analytical idealization. Real power supplies exhibit non-zero internal impedance, so the short-circuit assumption holds only when this impedance is negligibly small compared to circuit impedances at signal frequencies. The input signal source is an exception to this rule: its AC source is not shorted, because its time-varying signal is precisely what is being analyzed.[^fiore-common-emitter-amplifier]
+
+**Common mistakes:**
+
+- Treating AC ground as a physical connection to 0 V: a +10 V rail can be an AC ground, which does not mean its DC voltage is zero.[^fiore-common-emitter-amplifier]
+- Replacing the input signal source with a short circuit: in the AC small-signal model, only DC sources are shorted.[^fiore-common-emitter-amplifier]

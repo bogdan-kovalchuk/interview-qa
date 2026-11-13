@@ -30,4 +30,14 @@ The cutoff frequency is determined by the total resistance seen by the coupling 
 
 ## Detailed explanation
 
-TODO
+A coupling capacitor between stages forms a high-pass filter together with the impedances it sees on both sides. To the left, it sees the output impedance of the driving stage. For a common-emitter stage, `Z_out ≈ R_C`, because the internal resistance of the collector current source is high.[^fiore-common-emitter-amplifier] To the right, it sees the input impedance of the succeeding stage, which acts as the load for the first stage.[^fiore-multi-stage-amplifiers] For AC signals, these two resistances appear in series with the capacitor, so `R = Z_out + Z_in` and `f_c = 1/(2*pi*R*C)`.[^fiore-ac-circuit-analysis]
+
+For example: let `R_C = 4.7 kΩ` be the collector resistor of the first stage, the input impedance of the second stage be `Z_in = 10 kΩ` (which already includes its `R_B ∥ β(r_e + r_E)`), and `C = 1 µF`. Then `R = 14.7 kΩ`, and `f_c = 1/(2*pi*14700*1e-6)` ≈ 10.8 Hz. If one mistakenly uses only `R_E = 470 Ω` of the second stage instead, the calculation gives `1/(2*pi*470*1e-6)` ≈ 339 Hz, which is roughly thirty times higher. However, `R_E` is not in series with `C`: it enters only indirectly through `Z_in` of the second stage, so an estimate based on `R_E` alone is incorrect.
+
+At the cutoff frequency, the voltage gain is 3 dB below the midband level, and below cutoff it rolls off at approximately 6 dB per octave.[^fiore-ac-circuit-analysis] Therefore, midband gain formulas such as `A_v = -r_C/(r_e + r_E)` are valid only well above `f_c`, where attenuation across the coupling capacitor is negligible.[^fiore-common-emitter-amplifier]
+
+**Common mistakes:**
+
+- Estimating the cutoff frequency from `R_E` alone when it is not directly in series with the coupling capacitor.
+- Neglecting the driving stage's output impedance when calculating the total resistance seen by the capacitor.
+- Forgetting that `f_c` depends on both `C` and the total loop resistance `R`, not on capacitance alone.

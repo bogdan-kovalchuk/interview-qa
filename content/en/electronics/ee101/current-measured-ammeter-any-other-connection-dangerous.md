@@ -30,4 +30,14 @@ An ammeter is connected in series with the component whose current is being meas
 
 ## Detailed explanation
 
-TODO
+An ammeter measures current by passing it through itself, so it is connected into a break in the conductor: in series with the load or resistor through which the current flows.[^kuphaldt-ammeter-usage] An ideal ammeter produces no voltage drop, so it barely alters the circuit current. The measurement is performed by breaking the circuit at the desired point and inserting the instrument into this break.
+
+For illustration, assume an ideal 9 V source (having zero internal resistance), a 1 kΩ load, and an ammeter resistance of 0.1 Ω on that current range (a nominal example value, not a datasheet spec). In a series circuit, `I = 9 / (1000 + 0.1) ≈ 9.0 mA`, meaning the instrument barely alters the current. If, however, the ammeter is placed in parallel across the source, the path from the source goes solely through the meter, and `I = E / R = 9 / 0.1 = 90 A`, which is approximately 10,000 times higher. Here, the current is determined by the meter resistance because the source internal resistance is zero; in the general case, the current is limited only by the resistance of the shorted path.[^fiore-source-conversions]
+
+Why this is dangerous: 90 A vastly exceeds the current rating the meter is designed to measure, so the surge can damage it. The internal fuse blows, and the instrument cannot measure current until the fuse is replaced.[^kuphaldt-ammeter-usage] For handheld meters, it is recommended to start at the highest current range and step down to lower ranges until the reading is strongest without overload.[^kuphaldt-ammeter-usage]
+
+**Common mistakes:**
+
+- Connecting an ammeter in parallel across a source or component, like a voltmeter.
+- Touching probes across conductors instead of breaking the circuit and inserting the meter into the break.
+- Selecting too low a current range instead of starting from the highest.

@@ -30,4 +30,11 @@ A motor is an inductive load: when the switching transistor turns off, inductor 
 
 ## Detailed explanation
 
-TODO
+**Origin of the spike.** For an inductor, `v = L*di/dt`: faster rates of current change generate higher voltages.[^fiore-ac-circuit-analysis] Current flowing through motor windings cannot collapse instantaneously, so when the switching transistor turns off, the collapsing magnetic field induces a reverse-polarity voltage across the winding that appears directly between collector and emitter.[^fiore-bjt-switching] As an illustrative example: a winding with `L = 10 mH` carrying `I = 1 A` that shuts off in `10 µs` generates `v = 0.01*1/(10*10^-6) = 1000 V`, tens of times higher than a typical 12 V supply. Such inductive spikes easily destroy the switching transistor.[^fiore-bjt-switching]
+
+**Where to place the diode.** The flyback diode is connected in parallel with the motor: cathode to the positive supply rail, anode to the collector. During normal conduction, the transistor is turned on and the collector is pulled near ground; the cathode sits at +12 V while the anode is near ground, keeping the diode reverse-biased and non-conducting.[^fiore-bjt-switching] When the transistor turns off, the collector voltage spikes upward; as soon as it exceeds `V_CC` by approximately 0.7 V, the diode becomes forward-biased.[^libretexts-fiore-diode-models] Winding current then recirculates safely through the diode, clamping the collector voltage to approximately `V_CC + 0.7 V` under the knee-voltage diode model.
+
+**Common mistakes:**
+
+- Installing the diode with reversed polarity (anode to positive rail, cathode to collector): when the transistor turns on, the diode conducts directly from `+V` through the transistor to ground, creating a dead short circuit.
+- Assuming the diode interferes with normal motor operation: during normal conduction, the diode is reverse-biased and draws zero current.[^fiore-bjt-switching]

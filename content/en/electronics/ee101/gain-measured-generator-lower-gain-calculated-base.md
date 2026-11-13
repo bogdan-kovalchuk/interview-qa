@@ -30,4 +30,14 @@ The generator output impedance forms a voltage divider with the stage input impe
 
 ## Detailed explanation
 
-TODO
+**Two different gains.** Calculated gain `A_v(base) = v_out/v_b` relates the output voltage directly to the voltage at the base terminal. In contrast, measurements typically evaluate `A_v(gen) = v_out/v_g`, where `v_g` is the open-circuit generator voltage and `R_gen` is its internal resistance. The stage input impedance `Z_in = R_B || β(r'_e + r_E)` forms a voltage divider with `R_gen`:[^fiore-common-emitter-amplifier] `v_b = v_g*Z_in/(Z_in + R_gen)`. Consequently, `A_v(gen) = A_v(base)*Z_in/(Z_in + R_gen)`, so whenever `R_gen` is non-zero, measured generator gain is strictly lower in magnitude than calculated base gain.
+
+**Example.** For illustration, suppose `R_gen = 1 kΩ` and `Z_in = 5 kΩ`. The divider attenuation is `5/(5 + 1) ≈ 0.833`. For the unloaded stage from the preceding question where `A_v(base) ≈ -4.54` (see qid:emb-elee-0215), the generator-referenced gain is `A_v(gen) ≈ -3.78`, representing a 17% reduction. Input impedance increases with β and with `R_E` when `R_E` is unbypassed,[^fiore-common-emitter-amplifier] so a larger `R_E` reduces this attenuation effect.
+
+**Why the base-referenced formula is approximate.** Calculating base gain using `r_C = R_C || R_load` neglects the finite transistor output resistance `r'_C`, which according to Fiore is on the order of 100 kΩ.[^fiore-common-emitter-amplifier] For `R_C = 4.7 kΩ`, paralleling it with `r'_C` yields 4.49 kΩ, lowering gain magnitude by about 4.5%. This stems from the Early effect: collector current increases slightly with `V_CE`, and extrapolating the active region curves intercepts the voltage axis at the Early voltage `V_A`.[^fiore-bjt-collector-curves] Furthermore, Fiore's small-signal model omits junction capacitances and is intended for low and midband frequencies, so calculated base gain also deviates at higher frequencies.[^fiore-bjt-ac-model]
+
+**Common mistakes:**
+
+- Assuming a signal generator delivers its full open-circuit voltage to the stage input: `R_gen` and `Z_in` always form an attenuating divider.
+- Treating a 1 kΩ generator resistance as negligible: with an input resistance of 5 kΩ, it attenuates the signal by nearly 17%.
+- Comparing measured generator gain directly against calculated base gain without factoring in the divider formed by `Z_in` and `R_gen`.
