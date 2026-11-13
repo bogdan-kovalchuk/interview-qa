@@ -24,4 +24,12 @@ In a linear potentiometer, resistance from wiper to terminal varies roughly prop
 
 ## Detailed explanation
 
-TODO
+Taper describes the relationship between the resistance from the wiper to an end terminal and the physical position of the wiper contact. In a linear potentiometer, resistance changes roughly proportionally to mechanical displacement: at the midpoint of mechanical travel, the resistance is approximately half of the total resistance. This is convenient when knob position should directly map to a fraction of a control signal, such as in a simple voltage divider.[^analog-devices-taper]
+
+In a logarithmic potentiometer, resistance varies along a non-linear curve. For an audio taper, resistance changes more slowly at the beginning of travel and more rapidly near the end, providing a subjectively smoother volume adjustment. The actual curve is often an approximation rather than a mathematically exact logarithm; identical resistance markings across different manufacturers do not guarantee identical taper profiles.[^analog-devices-taper]
+
+For example, in an unloaded 10 kΩ linear potentiometer, approximately 50% travel yields about 5 kΩ from the wiper to one end terminal. For an audio taper, this does not hold: the mechanical midpoint does not necessarily correspond to half the resistance or half the voltage. External loading also alters the output characteristic for both types.[^analog-devices-taper]
+
+Markings are not universal across all markets and product series: the letter A or B can have different meanings depending on the manufacturer. Before replacing a component, check the taper description in the datasheet rather than relying solely on the letter code or vendor catalog description.[^analog-devices-taper]
+
+**Common mistake:** applying the rule "B is linear, A is log" universally to every component and assuming that a log taper always follows an exact curve. First determine the actual characteristic from the datasheet and confirm whether it matches the circuit function.

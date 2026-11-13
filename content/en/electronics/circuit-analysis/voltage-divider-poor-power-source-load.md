@@ -21,4 +21,15 @@ A divider has a finite output resistance: the load shunts `R_2`, altering the lo
 
 ## Detailed explanation
 
-TODO
+A divider establishes a voltage only for known resistances and a defined load. Its output can be represented as a Thevenin source: the open-circuit divider voltage in series with an internal resistance of `R_1` in parallel with `R_2`. When the load draws current, a voltage drop develops across this internal resistance, lowering the voltage delivered to the load. As the load current varies, the output voltage fluctuates accordingly.[^aac-direct-current]
+
+Output resistance can be reduced by scaling both resistors down proportionally without changing the nominal division ratio. However, this increases the quiescent current continuously drawn from the source and the power dissipated in the resistors. Increasing the resistances conserves this current, but it makes the output far more sensitive to load variations. A buffer amplifier can decouple a high-impedance divider from the load, while a voltage regulator provides power within its operating ratings.[^aac-direct-current]
+
+Example:
+
+A `12 V` divider made of two `10 kΩ` resistors produces `6 V` unloaded. Its output resistance is `10 kΩ || 10 kΩ = 5 kΩ`. If `R_L = 5 kΩ` is connected, the output drops to `6 V*5 kΩ/(5 kΩ+5 kΩ) = 3 V`. The same divider can be accurate for a high-impedance input yet completely unsuitable for a load that draws substantial current.
+
+**Common mistakes:**
+
+- Selecting the resistor ratio solely based on voltage without checking load current and required precision.
+- Believing that increasing the power rating of the resistors eliminates voltage sag: higher wattage only handles heating, but does not reduce output resistance.

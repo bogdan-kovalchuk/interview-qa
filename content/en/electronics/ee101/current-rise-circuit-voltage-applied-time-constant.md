@@ -21,4 +21,14 @@ For an ideal series RL circuit with constant voltage source `V_0` and zero initi
 
 ## Detailed explanation
 
-TODO
+In a series RL circuit following the application of a constant voltage, current does not jump instantaneously to the value dictated by the resistor. The change in current induces a voltage across the inductor proportional to the rate of change of current, so initially most of the source voltage falls across the inductor.[^aac-alternating-current]
+
+For an ideal inductor and resistor, Kirchhoff's voltage law yields `V_0 = I*R + L*dI/dt`. After connecting the source with initial condition `I(0) = 0`, the solution tends toward the steady-state value `I_final = V_0/R`. The time constant `τ = L/R` dictates the rate of transition: after one `τ`, current completes approximately 63.2% of the step between its initial and final values, and after five time constants, approximately 99.3%.[^aac-alternating-current]
+
+Example: let `L = 10 mH`, `R = 100 Ω`, and `V_0 = 5 V`. Then `τ = 0.01/100 = 0.0001 s = 0.1 ms`, and the final current is `5/100 = 0.05 A`. At `0.5 ms`, or `5τ`, the current is approximately `0.05*(1 - e^(-5)) ≈ 0.0497 A`. This calculation assumes a constant voltage and a linear model; source and winding resistances must be added to `R` if significant.[^aac-alternating-current]
+
+**Common mistakes:**
+
+- Confusing the RL time constant `L/R` with the RC time constant `R*C`.
+- Assuming that after `5τ` the current mathematically reaches its exact final value; the exponential curve merely approaches it.
+- Neglecting the initial current. A different `I(0)` alters the amplitude of the exponential transient component.[^aac-alternating-current]

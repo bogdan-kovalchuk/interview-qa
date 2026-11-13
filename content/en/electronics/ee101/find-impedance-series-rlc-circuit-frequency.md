@@ -24,4 +24,12 @@ For a given frequency, calculate `X_L = 2π*f*L` and `X_C = 1/(2π*f*C)`, then f
 
 ## Detailed explanation
 
-TODO
+The impedance of a series RLC circuit is found by adding the complex impedances of its elements at the given frequency. First convert frequency `f` to angular frequency `ω = 2π*f`, then compute the inductive reactance `X_L = ω*L` and capacitive reactance `X_C = 1/(ω*C)`. The resistor value remains the real part.[^aac-series-rlc]
+
+Because inductance and capacitance have opposite signs in their imaginary parts, the total impedance is `Z = R + j*(X_L - X_C)`. From this, the magnitude is `|Z| = sqrt(R² + (X_L - X_C)²)`, and the phase is `φ = atan2(X_L - X_C, R)`. The `atan2` function preserves the correct quadrant; for a passive series circuit with `R > 0`, this angle lies between -90° and +90°.[^aac-series-rlc]
+
+When `X_L = X_C`, the reactive parts cancel each other out, so the impedance equals simply `R` with a phase angle of zero. Below this frequency, the circuit exhibits capacitive behavior, and above it, inductive behavior. If one of the components is absent from the circuit, the corresponding term is omitted: for an RC circuit, `-j*X_C` remains, and for an RL circuit, `+j*X_L`.[^aac-series-rlc]
+
+To find current, one divides the source voltage phasor by the complex impedance: `I = V/Z`. Dividing solely by `|Z|` yields the current magnitude, but not its phase relative to voltage. Similarly, component voltages combine as phasors, even though their scalar magnitudes may not arithmetically sum to the source magnitude.[^aac-series-rlc]
+
+**Common mistake:** subtracting reactances without tracking signs or taking the square root of merely `R² + X_L² + X_C²`. First combine the imaginary parts with their appropriate signs, and only then determine the magnitude and angle of the resulting complex number.[^aac-series-rlc]

@@ -27,4 +27,12 @@ De-energize and disconnect the switch from the circuit, then test continuity acr
 
 ## Detailed explanation
 
-TODO
+COM in an SPDT switch is the movable common contact: the switch connects it to one of two alternative contacts, and in the opposite position, to the other. On a fixed package, terminals can be arranged in various ways, so the package shape or middle terminal row cannot be assumed to reliably identify COM. Identify the terminal using the manufacturer diagram or by measurement.[^aratas-switch-basics]
+
+Before testing, disconnect power and isolate the switch from parallel paths in the circuit. Continuity mode supplies its own small test current; it cannot be used to measure an energized circuit. Select continuity or resistance mode, touch the probes to two terminals, and check both mechanical toggle positions. Across a COM–throw pair, the state should transition from conductive to open or vice versa. The beeper signal merely indicates that resistance is below the threshold of that specific instrument, not necessarily exactly zero ohms.[^fluke-continuity]
+
+For three terminals, test all three pairs in both switch positions. For a working standard SPDT switch, one terminal will show continuity to the first of the remaining two in one position and to the second in the other position; that terminal is COM. Between the two throw terminals, there is typically no direct connection. If the switch has multiple poles, an indicator, or another special circuit, the number of physical pins will be greater, and one must first review the schematic of the specific device.[^aratas-switch-basics] [^fluke-continuity]
+
+Example: label the terminals A, B, and C. If A–B is closed in the first position and A–C in the second, A is COM, and B and C are the two throws. There is no basis to call B "NO" until the normal state and specific mechanical construction are defined: NC/NO designations depend on the unactuated state of the actuator.[^aratas-switch-basics]
+
+**Common mistakes:** performing a continuity test on an energized board or identifying COM solely by its physical placement. De-energizing the circuit and testing all pairs in every position distinguishes actual switch contacts from paths in the surrounding circuit.[^fluke-continuity]

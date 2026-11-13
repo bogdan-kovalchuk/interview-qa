@@ -27,4 +27,14 @@ When an initially discharged capacitor is charged from an ideal constant-voltage
 
 ## Detailed explanation
 
-TODO
+For this result, it is important to clearly define what energy is being compared: the source delivers a total of `E_source = C*V_0^2`, not `C*V_0^2/2`. Half of this energy remains stored in the electric field of the capacitor, while the other half is converted to heat in the resistor during the transient.[^openstax-rc-circuits]
+
+Suppose the capacitor is initially uncharged, an ideal source maintains a constant voltage `V_0`, and a resistor `R` is placed in series between them. Once charging is complete, the stored charge is `Q = C*V_0`. The work performed by the source equals its constant voltage multiplied by the total transferred charge: `E_source = V_0*Q = C*V_0^2`.[^openstax-rc-circuits]
+
+The energy stored in the capacitor is calculated as `E_C = C*V_0^2/2`.[^openstax-capacitor-energy] The difference between the energy supplied by the source and the final energy stored in the capacitor represents the dissipation in the resistor: `E_R = E_source - E_C = C*V_0^2/2`. Thus, the fraction of dissipated energy relative to the total source energy is `E_R/E_source = 1/2`.[^openstax-rc-circuits]
+
+**Calculation example:** for `C = 100 µF` and `V_0 = 10 V`, the source delivers `E_source = 0.0001*10^2 = 0.01 J`; the capacitor stores `0.005 J`, and the resistor dissipates `0.005 J`. The value of `R` determines the charging time `τ = R*C`, but does not affect this energy partition, provided the process is integrated to steady state.[^openstax-rc-circuits]
+
+In a real circuit, part of the energy may be lost in the source internal resistance, wiring, and other parasitic elements, and source impedance also affects where the heat is dissipated. Therefore, the phrase "half is dissipated in the resistor" strictly describes an ideal circuit with a single series resistor and a constant-voltage source, rather than every practical charging arrangement.[^openstax-rc-circuits]
+
+**Common mistake:** referring to `C*V_0^2/2` as the energy supplied by the source. That is the final energy stored in the capacitor; the source delivers twice as much in this idealized circuit.

@@ -24,4 +24,19 @@ For this capacitor pair, the maximum voltage applied across the group cannot exc
 
 ## Detailed explanation
 
-TODO
+In a parallel connection, each capacitor is connected to the same pair of nodes; therefore, the voltage across each is identical.[^aac-capacitors-series-parallel]
+
+For capacitors rated at 10 V and 25 V, the voltage across both will be the supply voltage. If the supply exceeds 10 V, the element with the lower rating will operate beyond its rated limits, even though the second capacitor is still operating within its 25 V limit. Based on these ratings alone, therefore, the upper limit for the group is 10 V, not 25 V and not the sum of the two values.[^aac-capacitors-series-parallel]
+
+This does not mean that 10 V is always an appropriate operating setpoint. The component rating must be compared against the actual voltage, its ripple, and possible transient spikes; the margin is determined by capacitor chemistry, temperature, reliability goals, and manufacturer requirements. A polarized capacitor must also be connected with the correct polarity if that requirement applies to the chosen type. Group-level calculations do not waive the individual limits of the weakest element.[^aac-capacitors-series-parallel]
+
+Example of verifying the supply:
+
+```text
+V_source_max = 9.0 V + 0.5 V ripple + 0.8 V transient
+V_source_max = 10.3 V
+```
+
+Under such specified maximums, the 10-volt capacitor may already be overstressed; this arithmetic merely illustrates checking the aggregate worst case and does not dictate a universal derating margin. Before assembly, verify the allowable operating conditions of the specific component.[^aac-capacitors-series-parallel]
+
+**Common mistake:** designing around the higher-rated capacitor or adding voltage ratings together. To avoid this, first establish the circuit topology, then compare the shared voltage against each component's rating, and check the peak source voltage.

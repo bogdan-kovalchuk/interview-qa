@@ -18,4 +18,10 @@ In a parallel bank, the voltage across every branch is identical because all com
 
 ## Detailed explanation
 
-TODO
+In a parallel connection, all branches share the same pair of nodes. The potential difference between these nodes is identical for every branch, meaning the same voltage `V` appears across each resistor. Each branch current can be solved independently of the others using Ohm's law: `I_i = V/R_i`.[^aac-direct-current]
+
+After computing branch currents, sum them to find the total current entering the node from the source: `I_total = I_1 + I_2 + ...`. This is an application of KCL: at a node, total entering current equals total leaving current. If calculations are correct, substituting all branches into this relation must achieve balance.[^aac-direct-current]
+
+Example: resistors of 2 kΩ and 4 kΩ are connected in parallel across a 12 V source. The branch currents are `12 V / 2 kΩ = 6 mA` and `12 V / 4 kΩ = 3 mA`, so the source supplies a total of 9 mA. This result assumes ideal interconnects and an ideal specified voltage without source sag.[^aac-direct-current]
+
+A common mistake is dividing source voltage among parallel resistors as if they were connected in series. First verify that both terminals of each resistor connect to the exact same pair of nodes; also avoid adding current through a separate element that does not actually belong to this parallel group.[^aac-direct-current]

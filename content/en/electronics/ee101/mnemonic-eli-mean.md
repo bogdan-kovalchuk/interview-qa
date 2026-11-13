@@ -24,4 +24,10 @@ ELI means that in an inductor (`L`), voltage (`E`, electromotive force) leads cu
 
 ## Detailed explanation
 
-TODO
+In the mnemonic ELI, the letters help recall the phase order in an inductor: `E` (voltage, or electromotive force) leads `I` (current) in `L` by 90°. This is consistent with the equation `v = L*di/dt`: voltage is proportional to the derivative of current, and the derivative of a sine wave leads the original sine wave by a quarter period.[^phase-basics]
+
+For a capacitor, the paired mnemonic ICE is used: `I` leads `E` in `C`. The equation `i = C*dv/dt` explains this phase relationship. "Leads" means that the corresponding peak of the sinusoid occurs earlier; an angle of 90° corresponds to a quarter of a period, and the time interval between peaks depends on the signal frequency.[^phase-basics]
+
+For example, at a frequency of `50 Hz`, the period is `20 ms`, and a quarter period is `5 ms`. In an ideal inductor, the voltage reaches its peak `5 ms` earlier than the current. A real inductor has winding resistance and parasitic effects, so the angle between the total voltage and the current can differ from 90°.[^phase-basics]
+
+**Common mistake:** reading ELI as though current leads voltage. Expand the letters in their mnemonic order: `E` before `I` in `L`; for a capacitor, `I` before `E` in `C`. The rule applies to sinusoidal steady state, not to transient processes or constant DC voltage, for which phase lead is not an appropriate description.

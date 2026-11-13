@@ -24,4 +24,10 @@ Connect the wiper to one outer terminal, and place the external circuit between 
 
 ## Detailed explanation
 
-TODO
+A potentiometer has a resistive track between two outer terminals and a movable contact – the wiper. When an external circuit is connected between the wiper and one outer terminal, current flows through only a portion of the track. Moving the wiper changes the length of this portion and thus its resistance; the terminal on the opposite end can be left unconnected. Using the opposite outer terminal provides the reverse direction of resistance change for the same knob rotation.[^aac-potentiometer-rheostat]
+
+In an idealized model, resistance is nearly zero near the chosen end and approaches the full track resistance at the opposite end. This does not mean the component can safely handle any current: its power rating, maximum current limit, cooling, and voltage rating are critical. For higher-current loads, even a low track resistance can dissipate significant power; calculate `P = I²*R` and verify the result against the specific component datasheet.[^aac-potentiometer-rheostat]
+
+Example: if the track is 10 kΩ and the wiper position leaves approximately 25% of its length to the selected end, the resistance between these terminals is roughly 2.5 kΩ for a uniform track. This is an estimate of position rather than a calibrated exact law: tolerances and track taper can be linear or logarithmic. A rheostat is typically connected in series to adjust current or voltage drop across a load; by itself, it does not regulate or stabilize current.[^aac-potentiometer-rheostat]
+
+**Common mistake:** using the two outer terminals without the wiper and expecting variable resistance. Between the outer terminals, the track resistance remains constant regardless of knob position. In circuits where an intermittent open circuit at the wiper contact would be hazardous, the unused outer terminal can be tied to the wiper: if the wiper contact momentarily loses connection, a conduction path through the full track remains. This protects against a single failure mode rather than substituting for component reliability verification.[^aac-potentiometer-rheostat]

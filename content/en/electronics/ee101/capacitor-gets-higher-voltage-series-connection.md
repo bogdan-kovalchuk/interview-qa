@@ -27,4 +27,17 @@ For equal charge in an ideal steady state, the capacitor with the smaller capaci
 
 ## Detailed explanation
 
-TODO
+In an initial ideal calculation, the higher voltage appears across the capacitor with the smaller capacitance when the series elements carry identical charge.[^aac-capacitors-series-parallel]
+
+For each element, `V = Q/C`. For a fixed charge, decreasing `C` increases `V`, and the sum of the voltages across the capacitors equals the source voltage. For instance, a pair of 10 µF and 20 µF capacitors in a simple model divides voltage in a 2:1 ratio: the smaller capacitance receives two-thirds of the total voltage, while the larger receives one-third. This represents a capacitance-based distribution model during charging or for ideal elements, not a guarantee of reliable division in a real DC string.[^aac-capacitors-series-parallel]
+
+After charging, real leakage currents can differ, and capacitances have tolerances. As a result, the voltage across an individual capacitor can rise beyond the simple estimate based on nominal capacitance. TI explicitly points to the need for balancing resistors in a series string of high-voltage bulk capacitors and notes that the balancing current must significantly exceed the leakage current.[^ti-series-capacitor-voltage-balancing] In a specific circuit, active balancing is also used if passive resistors fail to meet loss or accuracy requirements.[^ti-series-capacitor-voltage-balancing]
+
+Example for a total voltage of 30 V:
+
+```text
+V_10uF = 30 V * 20/(10+20) = 20 V
+V_20uF = 30 V * 10/(10+20) = 10 V
+```
+
+**Common mistake:** assuming that voltage divides proportionally to capacitance, or relying on nominal ratings as a guarantee of safe operation. In a real bank, the maximum voltage rating of each element must be verified taking into account tolerance, leakage, temperature, and transients.

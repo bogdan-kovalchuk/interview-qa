@@ -24,4 +24,16 @@ A phasor is a complex number that encodes the amplitude and phase of a sinusoida
 
 ## Detailed explanation
 
-TODO
+A phasor represents a single-frequency sinusoid by its constant amplitude and phase, eliminating explicit time dependence from calculations. For example, if a voltage has the form `v(t) = V_m*sin(ω*t + φ)`, the phasor quantity contains `V_m` and `φ`, while the common time factor with angular frequency `ω` is omitted from each equation. This is useful in steady state when sources and responses share the same frequency.[^aac-phasor-definition]
+
+Phase angle is not an absolute property of a signal: it is measured relative to a chosen reference sinusoid. Therefore, a source is often conventionally assigned a phase of `0°`, and other voltages and currents are described as leading or lagging relative to it. Complex notation with `j` is convenient because the real and imaginary parts represent two orthogonal components; electrical engineering uses `j` to avoid confusing the imaginary unit with current `i`.[^aac-phasor-definition]
+
+When converting between time-domain and phasor forms, one must ensure consistency in the sine or cosine convention, peak or RMS amplitude, and angle units. A phasor specified in RMS cannot be substituted into a formula where amplitude denotes peak without conversion. The analysis also assumes circuit linearity and steady state; for a non-sinusoidal periodic signal, different harmonics are analyzed as separate frequency components.[^aac-phasor-definition]
+
+Example: if `v(t) = 10*sin(ω*t + 30°) V`, then under the peak sine convention the phasor has a magnitude of `10 V` and an angle of `30°`. If that same voltage is chosen as the reference in the circuit, its angle becomes `0°`, and all other angles shift by that same difference, preserving relative phases.[^aac-phasor-definition]
+
+**Common mistakes:**
+
+- Treating phase as absolute without specifying a reference signal.
+- Mixing peak and RMS amplitudes or sine and cosine conventions.
+- Using a single phasor for signals of different frequencies or for transient processes.[^aac-phasor-definition]

@@ -24,4 +24,12 @@ Human perception of loudness is approximately logarithmic, so an audio taper adj
 
 ## Detailed explanation
 
-TODO
+A logarithmic potentiometer is used for volume control so that knob rotation better matches human perception of sound level changes. Human perception is non-linear: an identical absolute change in amplitude is not perceived identically at quiet versus loud listening levels. An audio taper creates a non-linear relationship between resistance and angle, resulting in a non-linear signal change at the divider output.[^analog-devices-taper]
+
+In a typical audio taper, signal adjustment across the lower portion of travel is more gradual, enabling finer control at low volume; higher up, the level changes more rapidly. This makes the control more user-friendly, but it does not mean the mechanical angle directly determines perceived loudness: the outcome is influenced by potentiometer loading, amplifier input impedance, circuit topology, and acoustic conditions.[^analog-devices-taper]
+
+In a physical component, the logarithmic curve is an approximation and may be composed of several piecewise linear segments. Therefore, the center position of the knob corresponds to neither half the output voltage nor half the subjective loudness. When precise decibel control or tight stereo tracking is required, one should check the specific model curve or use an active or digital attenuator.[^analog-devices-taper]
+
+Example: in a voltage divider, a linear taper potentiometer produces an output voltage approximately proportional to rotation angle, whereas an audio taper intentionally alters this relationship so the knob response feels more natural to the ear. In an actual audio signal path, loading will modify the curve shape, so the expected behavior should be verified in circuit.[^analog-devices-taper]
+
+**Common mistake:** claiming that the human ear is perfectly logarithmic or that a logarithmic potentiometer guarantees a linear sensation of volume. It is a practical approximation rather than an exact psychoacoustic law.[^analog-devices-taper]

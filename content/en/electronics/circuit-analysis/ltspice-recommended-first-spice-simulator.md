@@ -21,4 +21,13 @@ LTspice is a free SPICE simulator from Analog Devices featuring a schematic edit
 
 ## Detailed explanation
 
-TODO
+LTspice integrates schematic capture, SPICE simulation, and waveform viewing within a single application. A beginner can draw a simple circuit, configure sources and component values, run an analysis, and view voltage or current waveforms over time. Analog Devices also provides educational materials, demonstration circuits, and a model library for its components, helping users quickly recreate a typical analog problem.[^analog-ltspice]
+
+It is important to distinguish being free from being universal. A component model may be missing, have a limited domain of validity, or require compatibility verification. Likewise, the SPICE name does not guarantee that any third-party netlist, model, or simulation script will run without modification. For a first exercise, it is advisable to pick a small circuit, verify the model against component documentation, and then confirm units, initial conditions, and analysis ranges.
+
+Example: for an RC filter, one can first examine the steady-state operating point, then the transient response following an input step, and subsequently the frequency response. Different analysis types answer different questions, so the mere presence of a plot does not validate model correctness.
+
+**Common mistakes:**
+
+- Assuming that the software automatically includes an accurate model for every component; always verify the model source and parameters.
+- Treating a clean waveform plot as confirmation of physical design; the result reflects only the specified models and conditions, not a real physical board with its parasitic effects.

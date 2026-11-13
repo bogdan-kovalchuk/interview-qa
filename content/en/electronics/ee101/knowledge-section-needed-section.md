@@ -27,4 +27,12 @@ Before proceeding, it is useful to have a confident grasp of voltage, current, O
 
 ## Detailed explanation
 
-TODO
+Before starting section 4, it is essential to understand core circuit quantities – voltage, current, resistance, and power – and be able to relate them using Ohm's law. The syllabus of introductory section 2 covers Ohm's law and basic circuit analysis; section 4 subsequently builds upon these principles when examining reactive components and AC.[^udemy-course-sections-2-and-4] [^aac-series-parallel-method]
+
+For resistive DC circuits, one must distinguish series from parallel connections and associate circuit quantities with the specific component or branch where they apply. For instance, in a series circuit, current is identical through all resistors while source voltage divides among them; in a parallel circuit, voltage across branches is identical while branch currents sum together. A common mistake is plugging the total source voltage and an individual branch current into the same `V = I*R` equation, even though the quantities pertain to different parts of the circuit.[^aac-series-parallel-method]
+
+Basic familiarity with capacitors, inductors, and the distinction between DC and AC is helpful, but one does not need to master the entire syllabus in advance: the section 4 outline includes dedicated lectures on capacitors, inductors, RC/RL circuits, phasors, and impedance. Advanced mathematics enters gradually when AC analysis is introduced, rather than being required for the first baseline check of a resistive network.[^udemy-course-sections-2-and-4] [^aac-alternating-current]
+
+**Self-check example:**
+
+For an ideal 9 V source connected to 3 kΩ and 6 kΩ resistors in series, the total resistance is 9 kΩ, yielding a current of `I = 9 V / 9 kΩ = 1 mA`. Such a simple calculation helps catch unit errors or connection mistakes before moving on to more complex models.[^aac-series-parallel-method]

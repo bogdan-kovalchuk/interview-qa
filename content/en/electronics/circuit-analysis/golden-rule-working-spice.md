@@ -21,4 +21,13 @@ Use SPICE to verify hypotheses within explicitly defined circuit schematics and 
 
 ## Detailed explanation
 
-TODO
+A useful rule when working with SPICE is to treat the output as a verification of the model rather than as a measurement of an assembled hardware device. The simulator reads the netlist, constructs mathematical representations of the components, and solves the corresponding equations. If a node is miswired in the description, a required model is missing, or incorrect initial conditions are applied, the resulting plot may look neat, but it will reflect that faulty description.[^ngspice-manual-models]
+
+Therefore, before launching a simulation, articulate what the analysis is intended to verify, and check whether necessary parameters are represented in the model. After running it, evaluate the order of magnitude, polarity, operating point, and boundary conditions. For critical conclusions, compare the simulation with an independent calculation or benchmark measurement; discrepancies often reveal a circuit error, an overlooked physical effect, or component limitations.
+
+For example, before testing an amplifier, verify that the transistor model matches the component type, sources have correct values, and the operating point does not clamp the output against a supply rail. Then compare simulated amplitude against a prototype measurement under identical test conditions. Discrepancies should not be automatically dismissed as a "SPICE error": first inspect comparison conditions and model fidelity.
+
+**Common mistakes:**
+
+- Assuming that the simulator verified physical tolerances, thermal dissipation, or parasitic coupling when none were specified.
+- Trusting a single waveform plot without performing a sanity check using Ohm's law, energy conservation, and component operating ratings.
